@@ -1,0 +1,35 @@
+package menuItems.sales.transactions;
+
+import io.appium.java_client.windows.WindowsDriver;
+import org.json.simple.parser.ParseException;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+import com.wings.pages.AppLogin;
+import com.wings.pages.sales.transactions.SalesQuotations;
+
+import java.io.IOException;
+
+public class SalesQuotationTransaction {
+    WindowsDriver driver;
+    AppLogin appLogin = new AppLogin();
+    String file="./src/main/resources/MenuItems/Sales/Transactions/salesQuotation.json";
+
+    @BeforeTest
+    public void beforeTest() throws IOException, InterruptedException, ParseException {
+        driver = appLogin.launchSingleUserApp();
+        appLogin.singleUserLogin();
+    }
+
+    @Test
+    public void salesquotation() throws IOException, ParseException, InterruptedException {
+        SalesQuotations quotations=new SalesQuotations(driver,file);
+        quotations.salesQuotation();
+
+    }
+
+    @AfterTest
+    public void afterTest(){
+        appLogin.logout();
+    }
+}
