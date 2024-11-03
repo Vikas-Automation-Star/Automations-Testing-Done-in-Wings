@@ -1,0 +1,33 @@
+<!--<suite name="SuiteName">-->
+<!--    <listeners>-->
+<!--        <listener class-name="util.listener"/>-->
+<!--    </listeners>-->
+<!--    <test id="WOW-57, WOW-58" name="Navigation to MenuItems">-->
+<!--        <classes>-->
+<!--            <class name="Demo"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--</suite>-->
+
+
+
+<suite name="SuiteName">
+    <listeners>
+        <listener class-name="com.wings.utils.listener"/>
+    </listeners>
+    <test name="Test 1">
+        <classes>
+            <class name="util.Test1"/>
+        </classes>
+    </test>
+    <test name="Test 2">
+        <classes>
+            <class name="util.Test2"/>
+        </classes>
+    </test>
+    <test name="Test 3">
+        <classes>
+            <class name="util.Test3"/>
+        </classes>
+    </test>
+</suite>

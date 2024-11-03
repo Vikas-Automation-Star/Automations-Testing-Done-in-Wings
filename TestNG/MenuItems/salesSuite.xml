@@ -1,0 +1,329 @@
+<suite name="Sales Menu">
+
+    <listeners>
+        <listener class-name="com.wings.utils.listener"/>
+    </listeners>
+        <!-- Sales Masters -->
+
+    <test name="Customers Master">
+        <classes>
+            <class name="menuItems.sales.masters.CustomerMaster"/>
+        </classes>
+    </test>
+
+    <test name="Types of Customers Master">
+        <classes>
+            <class name="menuItems.sales.masters.TypeOfCustomerMaster"/>
+        </classes>
+    </test>
+
+    <test name="Price and Discount - Sales Price Lists Master">
+        <classes>
+            <class name="menuItems.sales.masters.SalesPriceListMaster"/>
+        </classes>
+    </test>
+
+    <test name="Price and Discount - Party Discount Group Master">
+        <classes>
+            <class name="menuItems.sales.masters.PartyDiscountGroupMaster"/>
+        </classes>
+    </test>
+
+    <test name="Price and Discount - Product Discount Group Master">
+        <classes>
+            <class name="menuItems.sales.masters.ProductDiscountMaster"/>
+        </classes>
+    </test>
+
+    <test name="Sales Target -Product Sales Target Groups Master">
+        <classes>
+            <class name="menuItems.sales.masters.SalesTargetGroupMaster"/>
+        </classes>
+    </test>
+
+        <!-- Sales Transactions -->
+    <test name="Sales Enquiries Transaction">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesEnquiryTransaction"/>
+        </classes>
+    </test>
+
+    <test name="Sales Enquiries Cancellation Transaction">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesEnquiryCancellationTransaction"/>
+        </classes>
+    </test>
+
+    <test name="Sales Quotations Transaction">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesQuotationTransaction"/>
+        </classes>
+    </test>
+
+    <test name="Sales Quotations against Enquiry Transaction">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesQuotationAgainstEnquiryTransaction"/>
+        </classes>
+    </test>
+
+    <test name="Sales Quotation Cancellation Transaction">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesQuotationsCancellationTransaction"/>
+        </classes>
+    </test>
+
+    <test name="Sales Order against Quotations Transaction">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesOrdersAgainstQuotationsTransaction"/>
+        </classes>
+    </test>
+
+    <test name="Sales Order Transaction">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesOrderTransaction"/>
+        </classes>
+    </test>
+
+    <test name="Sales Order Cancellation Transaction">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesOrderTransaction"/>
+        </classes>
+    </test>
+
+    <test name="Sales Deliveries Transaction">
+        <classes>
+            <class name="menuItems.sales.transactions.DeliveriesTransaction"/>
+        </classes>
+    </test>
+
+    <test name="Sales Deliveries against Orders Transaction">
+        <classes>
+            <class name="menuItems.sales.transactions.DeliveriesAgainstOrdersTransaction"/>
+        </classes>
+    </test>
+
+    <test name="Delivery Returns Transaction">
+        <classes>
+            <class name="menuItems.sales.transactions.DeliveryReturnsTransactions"/>
+        </classes>
+    </test>
+
+    <test name="Sales Invoice Transaction">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesInvoiceTransaction"/>
+        </classes>
+    </test>
+
+    <test name="Sales Invoice against Orders Transaction">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesInvoiceAgainstOrdersTransaction"/>
+        </classes>
+    </test>
+
+    <test name="Sales Invoice against Deliveries Transaction">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesInvoiceAgainstDeliveriesTransaction"/>
+        </classes>
+    </test>
+
+    <test name="Invoice - Proforma sales Invoice Transaction">
+        <classes>
+            <class name="menuItems.sales.transactions.ProformaSalesInvoiceTransaction"/>
+        </classes>
+    </test>
+
+    <test name="Sales Return Transaction">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesReturnTransaction"/>
+        </classes>
+    </test>
+
+    <test name="Sales Return with Invoice NO Transaction">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesReturnWithInvoiceReferenceTransaction"/>
+        </classes>
+    </test>
+
+    <test name="Prices and Discounts-Sales Price Transaction">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesPriceTransaction"/>
+        </classes>
+    </test>
+
+    <test name="Prices and Discounts-Party and Product wise discounts Transaction">
+        <classes>
+            <class name="menuItems.sales.transactions.ProductPartyDiscountTransaction"/>
+        </classes>
+    </test>
+
+    <test name="Targets - Define Sales Targets Executive wise Transaction">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesTargetExectiveWiseTransaction"/>
+        </classes>
+    </test>
+
+                <!-- Sales Reports -->
+    <test name="Reports - Sales Enquiry">
+        <classes>
+            <class name="menuItems.sales.reports.salesEnquiryReport"/>
+        </classes>
+    </test>
+
+    <test name="Reports - Pending Sales Enquiry">
+        <classes>
+            <class name="menuItems.sales.reports.PendingSaleEnquiryReport"/>
+        </classes>
+    </test>
+
+    <test name="Reports - Sales Enquiry Cancellation">
+        <classes>
+            <class name="menuItems.sales.reports.SalesEnquiryCancellationReport"/>
+        </classes>
+    </test>
+
+    <test name="Reports - Sales Quotations">
+        <classes>
+            <class name="menuItems.sales.reports.SalesQuotationReport"/>
+        </classes>
+    </test>
+
+    <test name="Reports - Pending sales Quotation">
+        <classes>
+            <class name="menuItems.sales.reports.PendingSalesQuotationsReport"/>
+        </classes>
+    </test>
+
+    <test name="Reports - Sales Quotation against Enquiry">
+        <classes>
+            <class name="menuItems.sales.reports.SalesQuotationAgnstEnquiryReport"/>
+        </classes>
+    </test>
+
+    <test name="Reports - Sales Quotations Cancellations">
+        <classes>
+            <class name="menuItems.sales.reports.SalesQuotationCancellationReport"/>
+        </classes>
+    </test>
+
+    <test name="Reports - Sales Order against Quotation">
+        <classes>
+            <class name="menuItems.sales.reports.SalesOrdrAgainstQuotationReport"/>
+        </classes>
+    </test>
+
+    <test name="Reports - Sales Order">
+        <classes>
+            <class name="menuItems.sales.reports.SalesOrderReport"/>
+        </classes>
+    </test>
+    <test name="Reports - Pending Sales Order">
+        <classes>
+            <class name="menuItems.sales.reports.PendingSalesOrderReport"/>
+        </classes>
+    </test>
+    <test name="Reports - Sales Order Status Details">
+        <classes>
+            <class name="menuItems.sales.reports.SalesOrderStatusDetailsReport"/>
+        </classes>
+    </test>
+
+    <test name="Reports - Sales Order Cancellation">
+        <classes>
+            <class name="menuItems.sales.reports.SalesOrderCancellationReport"/>
+        </classes>
+    </test>
+
+    <test name="Reports - Deliveries">
+        <classes>
+            <class name="menuItems.sales.reports.DeliveryReport"/>
+        </classes>
+    </test>
+
+    <test name="Reports - PendingDeliveries">
+        <classes>
+            <class name="menuItems.sales.reports.PendingDeliveriesReport"/>
+        </classes>
+    </test>
+
+    <test name="Reports - Pending sales orders with deliveries">
+        <classes>
+            <class name="menuItems.sales.reports.PendingSalesOrderWithDeliveriesReport"/>
+        </classes>
+    </test>
+
+
+
+    <test name="Reports - Delivery returns">
+        <classes>
+            <class name="menuItems.sales.reports.DeliveryReturnReport"/>
+        </classes>
+    </test>
+
+
+    <test name="Reports - Sales Book">
+        <classes>
+            <class name="menuItems.sales.reports.SalesBookReport"/>
+        </classes>
+    </test>
+
+    <test name="Reports - Sales Detailed with product batch">
+        <classes>
+            <class name="menuItems.sales.reports.SalesDetailsWithProductBatchReport"/>
+        </classes>
+    </test>
+
+    <test name="Reports - Sales Invoice against Orders">
+        <classes>
+            <class name="menuItems.sales.reports.SalesInvoiceAgainstOrdersReport"/>
+        </classes>
+    </test>
+
+    <test name="Reports - Sales Price Updation">
+        <classes>
+            <class name="menuItems.sales.reports.SalesPriceUpdationReport"/>
+        </classes>
+    </test>
+
+    <test name="Reports - Sales invoice against Deliveries">
+        <classes>
+            <class name="menuItems.sales.reports.SalesInvoiceAgainstDeliveriesReport"/>
+        </classes>
+    </test>
+
+    <test name="Reports - Proforma sales invoice">
+        <classes>
+            <class name="menuItems.sales.reports.ProformaSalesInvoiceReport"/>
+        </classes>
+    </test>
+
+    <test name="Reports - Sales Return">
+        <classes>
+            <class name="menuItems.sales.reports.SalesReturnReport"/>
+        </classes>
+    </test>
+
+    <test name="Reports - sales return with serial no">
+        <classes>
+            <class name="menuItems.sales.reports.SalesReturnWithSerialNoReport"/>
+        </classes>
+    </test>
+
+    <test name="Reports - sales return with invoice ref no">
+        <classes>
+            <class name="menuItems.sales.reports.SalesReturnWithInvoiceReferenceReport"/>
+        </classes>
+    </test>
+
+    <test name="Reports - Define sales targets-executive wise">
+        <classes>
+            <class name="menuItems.sales.reports.SaleTargetExecutiveWiseReport"/>
+        </classes>
+    </test>
+
+    <test name="Reports - Target variance report executive wise">
+        <classes>
+            <class name="menuItems.sales.reports.TargetVarianceReportExecutiveWise"/>
+        </classes>
+    </test>
+
+</suite>

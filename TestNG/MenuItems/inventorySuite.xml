@@ -1,0 +1,207 @@
+<suite name="Inventory Menu">
+    
+    <listeners>
+        <listener class-name="com.wings.utils.listener"/>
+    </listeners>
+
+        <test name="Location Master">
+            <classes>
+                <class name="menuItems.inventory.masters.product.Location"/>
+            </classes>
+        </test>
+
+        <test name="Non-Inventory Items Master">
+            <classes>
+                <class name="menuItems.inventory.masters.product.NonInventoryItem"/>
+            </classes>
+        </test>
+
+        <test name="Products Master">
+            <classes>
+                <class name="menuItems.inventory.masters.product.Product"/>
+            </classes>
+        </test>
+
+        <test name="Services Master">
+            <classes>
+                <class name="menuItems.inventory.masters.product.Service"/>
+            </classes>
+        </test>
+
+        <test name="Storage Bins Master">
+        <classes>
+            <class name="menuItems.inventory.masters.product.StorageBin"/>
+        </classes>
+    </test>
+
+        <test name="Units Of Measure Master">
+        <classes>
+            <class name="menuItems.inventory.masters.product.UnitOfMeasure"/>
+        </classes>
+    </test>
+
+        <test name="Product Batch Master">
+        <classes>
+            <class name="menuItems.inventory.masters.product.batches.ProductBatche"/>
+        </classes>
+    </test>
+
+        <test name="Product Batch-serial No Master">
+        <classes>
+            <class name="menuItems.inventory.masters.product.batches.ProductBatchesSerialNo"/>
+        </classes>
+    </test>
+
+        <test name="Product Batch-Multi Batch Master">
+        <classes>
+            <class name="menuItems.inventory.masters.product.batches.ProductsMultiBatch"/>
+        </classes>
+    </test>
+
+        <test name="Opening Stock Transaction">
+        <classes>
+            <class name="menuItems.inventory.transactions.OpeningStockTransaction"/>
+        </classes>
+    </test>
+
+        <test name="Opening Stock Report">
+        <classes>
+            <class name="menuItems.inventory.reports.OpeningStockReport"/>
+        </classes>
+    </test>
+
+        <test name="Stock Creation Transaction">
+        <classes>
+            <class name="menuItems.inventory.transactions.StockCreationTransaction"/>
+        </classes>
+    </test>
+
+        <test name="Stock Creation Report">
+        <classes>
+            <class name="menuItems.inventory.reports.StockCreationReport"/>
+        </classes>
+    </test>
+
+        <test name="Stock Consumption Transaction">
+        <classes>
+            <class name="menuItems.inventory.transactions.StockConsumptionTransaction"/>
+        </classes>
+    </test>
+
+        <test name="Stock Consumption Report">
+        <classes>
+            <class name="menuItems.inventory.reports.StockConsumptionReport"/>
+        </classes>
+    </test>
+
+        <test name="Stock Conversion Transaction">
+        <classes>
+            <class name="menuItems.inventory.transactions.StockConversionTransaction"/>
+        </classes>
+    </test>
+
+        <test name="Stock Conversion Report">
+        <classes>
+            <class name="menuItems.inventory.reports.StockConversionReport"/>
+        </classes>
+    </test>
+
+        <test name="Inter Location Transfer Transaction">
+        <classes>
+            <class name="menuItems.inventory.transactions.InterLocatonTransfersTransaction"/>
+        </classes>
+    </test>
+
+        <test name="Inter Location Transfer Report">
+            <classes>
+                <class name="menuItems.inventory.reports.InterLocationTransfers"/>
+            </classes>
+        </test>
+<!---->
+    <test name="Master Info-Product with GST Detail Report">
+        <classes>
+            <class name="menuItems.inventory.reports.masterInfo.ProductWithGSTDetail"/>
+        </classes>
+    </test>
+
+    <test name="Master Info- Master Detail Report">
+        <classes>
+            <class name="menuItems.inventory.reports.masterInfo.MasterDetail"/>
+        </classes>
+    </test>
+
+    <test name="Master Info-Product Alternate UOM Detail Report">
+        <classes>
+            <class name="menuItems.inventory.reports.masterInfo.ProductAlternateUOMDetail"/>
+        </classes>
+    </test>
+
+    <test name="Master Info-Product Batch Report">
+        <classes>
+            <class name="menuItems.inventory.reports.masterInfo.ProductBatch"/>
+        </classes>
+    </test>
+
+//////////////////
+    <test name="Stock- Stock Ledger Report">
+        <classes>
+            <class name="menuItems.inventory.reports.stock.StockLedgerReport"/>
+        </classes>
+    </test>
+
+    <test name="Stock - Stock List Report">
+        <classes>
+            <class name="menuItems.inventory.reports.stock.StockListReport"/>
+        </classes>
+    </test>
+
+    <test name="Stock - Stock Balance Report">
+        <classes>
+            <class name="menuItems.inventory.reports.stock.StockBalanceReport"/>
+        </classes>
+    </test>
+
+    <test name="Stock - Stock Valuation Report">
+        <classes>
+            <class name="menuItems.inventory.reports.stock.StockValuationReport"/>
+        </classes>
+    </test>
+
+    <test name="Stock- stock ageing Report">
+        <classes>
+            <class name="menuItems.inventory.reports.stock.StockAgeingReport"/>
+        </classes>
+    </test>
+
+    <test name="Stock - Stock Transaction Analysis Report">
+        <classes>
+            <class name="menuItems.inventory.reports.stock.StockTransactionAnalysisReport"/>
+        </classes>
+    </test>
+
+    <test name="Stock- company wise recorder level Report">
+        <classes>
+            <class name="menuItems.inventory.reports.stock.CompanyWiseReorderLevelReport"/>
+        </classes>
+    </test>
+
+    <test name="Stock - Stock List with alternate UOM Report">
+        <classes>
+            <class name="menuItems.inventory.reports.stock.StockListWithAlternatUOM"/>
+        </classes>
+    </test>
+
+    <test name="Stock- Serial No history Report">
+        <classes>
+            <class name="menuItems.inventory.reports.stock.SerialNoHistoryReport"/>
+        </classes>
+    </test>
+
+    <test name="Stock - Material Issues and Stock consumption Report">
+        <classes>
+            <class name="menuItems.inventory.reports.stock.MaterialIssueAndStockConsumption"/>
+        </classes>
+    </test>
+
+</suite>
+
