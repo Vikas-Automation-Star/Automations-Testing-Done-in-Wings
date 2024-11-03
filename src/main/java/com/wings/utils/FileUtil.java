@@ -1,9 +1,10 @@
-package com.wings.Utils;
+package com.wings.utils;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -12,6 +13,10 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 public class FileUtil {
+
+
+    Time time=new Time();
+    String timeStamp= time.timeStamp();
 
     public static void unzip1(String zipFilePath, String destDir) throws Exception{
         File dir = new File(destDir);
@@ -78,5 +83,42 @@ public class FileUtil {
         //FileUtil.copyFile(new File(System.getProperty("user.dir")+"\\downloads\\target\\Build_14026_19013_24DBooks\\Wings Books 24D.exe"),"C:\\Program Files (x86)\\Wings Test");
 
     }
+
+    public String getData(String fileName, String key) throws IOException, ParseException {
+
+        JSONParser parser = new JSONParser();
+        FileReader reader = new FileReader(fileName);
+        Object obj = parser.parse(reader);
+        JSONObject jsonObject = (JSONObject) obj;
+        Object value = jsonObject.get(key);
+        if(value ==null ){
+            return null;
+        } else if(value instanceof String) {
+            return (String) value;
+        } else if (value instanceof Long) {
+            return Long.toString((Long) value);
+        } else if (value instanceof Double) {
+            return Double.toString((Double) value);
+        } else if (value instanceof Boolean) {
+            return Boolean.toString((Boolean) value);
+        } else {
+            return String.valueOf(value);
+        }
+    }
+
+    public void createJson(JSONObject object){
+        try {
+            String filename = String.format("./results/json/jsonresult_%s.json",timeStamp);
+
+            FileWriter fileWriter = new FileWriter(filename);
+            fileWriter.write(object.toJSONString());
+            fileWriter.close();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
 
 }

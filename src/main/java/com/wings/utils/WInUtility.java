@@ -1,4 +1,4 @@
-package com.wings.Utils;
+package com.wings.utils;
 
 import java.io.IOException;
 

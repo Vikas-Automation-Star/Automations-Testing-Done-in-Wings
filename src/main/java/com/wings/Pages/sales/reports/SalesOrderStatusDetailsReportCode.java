@@ -1,0 +1,27 @@
+package com.wings.pages.sales.reports;
+
+import io.appium.java_client.windows.WindowsDriver;
+import com.wings.pages.Report;
+import com.wings.utils.Common;
+
+public class SalesOrderStatusDetailsReportCode extends Report {
+    WindowsDriver driver;
+    Common common;
+
+    public SalesOrderStatusDetailsReportCode(WindowsDriver driver) {
+        super(driver);
+        this.driver = driver;
+        common = new Common(this.driver);
+    }
+
+    public void salesOrderStatusDetails() throws InterruptedException {
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Orders");
+        common.clickElement("xpath", "//MenuItem[@Name='Sales Order Status Details']");
+        Thread.sleep(1500);
+        common.clickElement("xpath","//Pane/Button[@Name='Submit']");
+        Thread.sleep(1000);
+        super.bulkVerifyReport("SO 8");
+        super.closeReport("Sales Order Status Details");
+    }
+}

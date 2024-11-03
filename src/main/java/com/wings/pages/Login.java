@@ -1,4 +1,4 @@
-package com.wings.Pages;
+package com.wings.pages;
 
 public class Login {
 

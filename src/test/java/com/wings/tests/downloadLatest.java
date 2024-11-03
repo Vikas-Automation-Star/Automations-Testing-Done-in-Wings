@@ -1,6 +1,6 @@
 package com.wings.tests;
 
-import com.wings.Utils.FileUtil;
+import com.wings.utils.FileUtil;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
