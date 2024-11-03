@@ -39,6 +39,7 @@ public class Company {
         System.out.println("Legacy Accessible State :"+driver.findElementByXPath("//Button[@Name='Next']").getAttribute("LegacyState"));
         driver.findElementByXPath("//Button[@Name='Next']").click();
         Thread.sleep(3000);
+        System.out.println("company creation updated");
 
         driver.findElementByXPath("//Edit[@Name='Login Name']").sendKeys(CompanyName);
         driver.findElementByXPath("//Edit[@Name='Company Name']").sendKeys(CompanyName);
