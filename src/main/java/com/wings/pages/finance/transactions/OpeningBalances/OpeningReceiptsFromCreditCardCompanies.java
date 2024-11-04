@@ -38,10 +38,11 @@ public class OpeningReceiptsFromCreditCardCompanies extends Transaction{
             selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
             Thread.sleep(2500);
             //f3-accounts
-            common.inputText("xpath","//Edit[@Name='Account Code Row 0, Not sorted.']", common.getData(dataFile,"accountCode"));
-            common.clickElement("xpath","//Edit[@Name='Account * Row 0, Not sorted.']");
-            enterData("xpath","//Edit[@Name='Swipe Machine Type * Row 0, Not sorted.']", dataFile,"swipeMachineType");
-            enterData("xpath","//Edit[@Name='Swipe Type * Row 0, Not sorted.']", dataFile,"swipeType");
+            enterDataAndValidate("xpath","//Edit[@Name='Account Code Row 0, Not sorted.']",dataFile,"accountCode");
+//            common.inputText("xpath","//Edit[@Name='Account Code Row 0, Not sorted.']", common.getData(dataFile,"accountCode"));
+//            common.clickElement("xpath","//Edit[@Name='Account * Row 0, Not sorted.']");
+            enterDataAndValidate("xpath","//Edit[@Name='Swipe Machine Type * Row 0, Not sorted.']", dataFile,"swipeMachineType");
+            enterDataAndValidate("xpath","//Edit[@Name='Swipe Type * Row 0, Not sorted.']", dataFile,"swipeType");
             enterData("xpath","//Edit[@Name='Amount * Row 0, Not sorted.']", dataFile,"amount");
             enterData("xpath","//Edit[@Name='Approval No * Row 0, Not sorted.']", dataFile,"approvalNo");
             //save

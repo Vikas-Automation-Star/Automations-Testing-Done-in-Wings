@@ -3,9 +3,9 @@
   "transaction": "INR",
   "executive": "HYDExec",
   "accountCode": 926,
-  "swipeMachineType": "Traditional",
-  "swipeType": "magnetic",
-  "amount": 15250,
+  "swipeMachineType": "Traditional POS",
+  "swipeType": "Magnetic stripe",
+  "amount": 1550,
   "approvalNo": 8527,
   "close": "Opening Receipts from Credit Card Companies"
 
