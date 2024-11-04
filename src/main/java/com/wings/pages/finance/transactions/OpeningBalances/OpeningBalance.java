@@ -53,7 +53,8 @@ public class OpeningBalance extends Transaction {
 
         //f3-cash
         navigateToCashTab();
-        common.inputText("xpath", "//Edit[@Name='Cash Account Code Row 0, Not sorted.']", common.getData(dataFile, "cashAccount"));
+        enterData("xpath","//Edit[@Name='Cash Account Code Row 0, Not sorted.']",dataFile,"cashAccount");
+//        common.inputText("xpath", "//Edit[@Name='Cash Account Code Row 0, Not sorted.']", common.getData(dataFile, "cashAccount"));
         enterData("xpath", "//Edit[@Name='Amount * Row 0, Not sorted.']", dataFile, "cashAmount");
 
         //save
