@@ -1,0 +1,11 @@
+{
+  "branch": "Hyderabad",
+  "priceList": "APpriceList",
+  "executive": "HYDExec",
+  "stockAcc": "Purchase Account",
+  "productCode": "1707",
+  "Location": "hyderabad114",
+  "Quantity": "200",
+  "goods": "purchase",
+  "close": "Stock Creation"
+}

@@ -1,0 +1,16 @@
+{
+  "branch": "Hyderabad",
+  "location": "hyderabad114",
+  "transaction": "INR",
+  "partyCode":153,
+  "priceList": "Inclusive SalesPriceList",
+  "executive": "HYDExec",
+  "productCode": 1707,
+  "quantity": 150,
+  "pdcAccount": "Cheques In Hand",
+  "amount": 550,
+  "cheque": 585,
+  "chequeDate": 10,
+  "drawnOn": "checks",
+  "close": "Sales Orders"
+}

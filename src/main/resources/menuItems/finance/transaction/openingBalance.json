@@ -1,0 +1,12 @@
+{
+  "credit": "1500",
+  "branch": "Hyderabad",
+  "executive": "HYDExec",
+  "transaction": "INR",
+  "accountCode": "567",
+  "bankAccount": "Bank Account",
+  "bankDebit": 50,
+  "cashAccount": "Cash Account",
+  "cashAmount": 1250,
+  "close": "Opening Balances"
+}

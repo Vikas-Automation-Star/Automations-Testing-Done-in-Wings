@@ -1,0 +1,18 @@
+{
+  "Tests":[
+  {
+    "TestName":"Test1",
+    "Staus":"PASSED",
+    "ExecutionStartTime":"23/08/2024 09:53:22",
+    "ExecutionEndTime":"23/08/2024 09:55:53",
+    "ExeTime":"234"
+  },
+  {
+    "TestName":"Test2",
+    "Staus":"FAILED",
+    "ExecutionStartTime":"23/08/2024 09:53:22",
+    "ExecutionEndTime":"23/08/2024 09:55:53",
+    "ExeTime":"213"
+  }
+]
+}

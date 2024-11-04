@@ -1,0 +1,12 @@
+{
+  "close": "Deliveries",
+  "gstType": "Registered",
+  "location": "hyderabad114",
+  "partyCode": 153,
+  "transaction": "INR",
+  "branch": "Hyderabad",
+  "priceList": "Inclusive SalesPriceList",
+  "executive": "HYDExec",
+  "quantity": 10,
+  "productCode": 1707
+}

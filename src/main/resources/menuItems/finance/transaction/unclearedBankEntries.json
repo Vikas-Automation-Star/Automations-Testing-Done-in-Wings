@@ -1,0 +1,12 @@
+{
+  "branch": "Hyderabad",
+  "transaction": "INR",
+  "bankCode": 123,
+  "executive": "HYDExec",
+  "drawnOnBank": "checks",
+  "receiptAccount": 153,
+  "issuedAccount": 17,
+  "receipt": 30,
+  "issued": 50,
+  "close": "Opening Uncleared Bank Entries"
+}

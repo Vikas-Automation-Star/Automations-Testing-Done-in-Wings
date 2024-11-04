@@ -1,0 +1,13 @@
+{
+  "branch": "Hyderabad",
+  "executive": "HYDExec",
+  "transaction": "INR",
+  "accountCode": 567,
+  "partyCode": 153,
+  "reason": "07-Others",
+  "voucherNo": "PV 2",
+  "supplierDate": 9,
+  "supplierBill": 36,
+  "voucherDate": 9,
+  "close": "Debit Note from Suppliers"
+}

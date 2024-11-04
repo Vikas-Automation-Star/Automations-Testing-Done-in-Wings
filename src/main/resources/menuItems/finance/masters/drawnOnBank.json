@@ -1,0 +1,8 @@
+{
+  "type1": "checks",
+  "type2": "Bank Drafts",
+  "type3": "Money Orders",
+  "type4": "Promissory Notes",
+  "type5": "Letters of Credit",
+  "description": "Taken from bank"
+}

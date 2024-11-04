@@ -1,0 +1,9 @@
+{
+  "branch": "Hyderabad",
+  "transaction": "INR",
+  "cashAccount": "Cash Account",
+  "partyCode": 153,
+  "gstType": "Registered",
+  "executive": "HYDExec",
+  "close": "Receipts from Parties"
+}

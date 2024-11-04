@@ -1,0 +1,12 @@
+{
+"MasterType":"Products",
+  "minimum": "100",
+  "maximum": "500",
+  "rate": "200",
+  "MRP": "500",
+  "branch": "Hyderabad",
+  "close": "Sales Prices",
+  "executive": "HYDExec",
+  "transaction": "INR",
+  "priceList": "Inclusive SalesPriceList"
+}

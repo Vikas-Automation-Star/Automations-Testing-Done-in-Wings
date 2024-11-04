@@ -1,0 +1,12 @@
+{
+  "branch": "Hyderabad",
+  "transaction": "INR",
+  "PartyCode": "77",
+  "executive": "HYDExec",
+  "deposit": "Cash Account No 2",
+  "credit": "3500",
+  "close": "Cash Deposits and withdrawals",
+  "cheque": "222",
+  "withdraw": "Cash Account",
+  "debit": "50"
+}

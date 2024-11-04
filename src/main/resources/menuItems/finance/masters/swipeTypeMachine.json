@@ -1,0 +1,9 @@
+{
+  "machine": "Traditional POS",
+  "machine1": "ContactLess",
+  "machine2": "Self-service",
+  "machine4": "Tablet-Based",
+  "machine type": "magnetic",
+  "discount": "2",
+  "description": "card swiping machine"
+}

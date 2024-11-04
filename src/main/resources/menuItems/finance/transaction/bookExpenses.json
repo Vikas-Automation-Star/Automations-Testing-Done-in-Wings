@@ -1,0 +1,9 @@
+{
+  "branch": "Hyderabad",
+  "transaction": "INR",
+  "accountCode": 153,
+  "executive": "HYDExec",
+  "accountCode2": 567,
+  "billDate": 31,
+  "close": "Book Expenses or Payables"
+}

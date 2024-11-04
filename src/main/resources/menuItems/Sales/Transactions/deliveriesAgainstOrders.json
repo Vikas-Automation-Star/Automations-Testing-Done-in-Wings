@@ -1,0 +1,10 @@
+{
+  "close": "Deliveries against Orders",
+  "branch": "Hyderabad",
+  "location": "hyderabad114",
+  "transaction": "INR",
+  "Quantity": 10,
+  "partyCode": 153,
+  "gstType": "Registered"
+
+}

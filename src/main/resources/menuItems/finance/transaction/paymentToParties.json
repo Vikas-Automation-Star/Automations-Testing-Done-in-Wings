@@ -1,0 +1,9 @@
+{
+  "branch": "Hyderabad",
+  "transaction": "INR",
+  "PartyCode": "153",
+  "executive": "HYDExec",
+  "cashAccount": "Cash Account",
+  "amount": "3500",
+  "close": "Payments to Parties"
+}

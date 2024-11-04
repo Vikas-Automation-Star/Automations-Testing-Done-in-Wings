@@ -1,0 +1,12 @@
+{
+  "branch": "Hyderabad",
+  "executive": "HYDExec",
+  "transaction": "INR",
+  "accountCode": 567,
+  "partyCode": 17,
+  "amount": 1000,
+  "TDSNature": "TDS Transaction Nature",
+  "TDSAccount": "TDS Paid Account",
+  "TDSAmount": 150,
+  "close": "Debit Note"
+}

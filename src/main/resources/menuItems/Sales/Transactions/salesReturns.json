@@ -1,0 +1,13 @@
+{
+  "branch": "Hyderabad",
+  "transaction": "INR",
+  "location": "hyderabad114",
+  "close": "Sales Returns",
+  "partyCode": 153,
+  "productCode": 1707,
+  "invoice": "SI 9",
+  "invoideDate": 17,
+  "quantity": 1,
+  "gstType": "Registered",
+  "priceList": "Inclusive SalesPriceList"
+}

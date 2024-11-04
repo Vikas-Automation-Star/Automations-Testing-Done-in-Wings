@@ -1,0 +1,10 @@
+{
+  "branch": "Hyderabad",
+  "transaction": "INR",
+  "executive": "HYDExec",
+  "partyCode": 153,
+  "cheque": 8965,
+  "bankCode": 123,
+  "drawnOn": "checks",
+  "close": "Bank Receipts"
+}

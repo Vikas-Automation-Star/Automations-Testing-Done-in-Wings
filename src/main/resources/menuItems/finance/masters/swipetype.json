@@ -1,0 +1,7 @@
+{
+  "swipeType": "Magnetic stripe",
+  "swipeType1": "Chip card",
+  "swipeType2": "Contactless",
+  "swipeType3": "Card not present",
+  "description": "cashless transaction"
+}

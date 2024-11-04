@@ -1,0 +1,11 @@
+{
+  "branch": "Hyderabad",
+  "transaction": "INR",
+  "accountCode": "77",
+  "executive": "HYDExec",
+  "from": "Cash Account",
+  "to": "Cash Account No 2",
+  "amount": "500",
+  "hsn": "8517",
+  "close": "Cash Transfers"
+}

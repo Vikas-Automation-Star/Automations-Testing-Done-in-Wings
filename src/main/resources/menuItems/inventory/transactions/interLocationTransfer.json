@@ -1,0 +1,10 @@
+{
+  "fromLocation": "Hyderabad Default Location",
+  "toLocation": "hyderabad114",
+  "branch": "Hyderabad",
+  "executive": "HYDExec",
+  "productCode": "1707",
+  "transaction": "INR",
+  "quantity": "20",
+  "close": "Inter Location Transfers"
+}

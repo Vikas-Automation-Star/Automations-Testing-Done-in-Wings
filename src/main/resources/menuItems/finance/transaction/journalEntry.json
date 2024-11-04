@@ -1,0 +1,9 @@
+{
+  "branch": "Hyderabad",
+  "executive": "HYDExec",
+  "transaction": "INR",
+  "amount": 250,
+  "debitAccount": 153,
+  "creditAccount": 17,
+  "close": "Journal Entries"
+}

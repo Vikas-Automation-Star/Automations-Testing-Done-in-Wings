@@ -1,0 +1,12 @@
+{
+  "branch": "Hyderabad",
+  "transaction": "INR",
+  "executive": "HYDExec",
+  "accountCode": 926,
+  "swipeMachineType": "Traditional",
+  "swipeType": "magnetic",
+  "amount": 15250,
+  "approvalNo": 8527,
+  "close": "Opening Receipts from Credit Card Companies"
+
+}

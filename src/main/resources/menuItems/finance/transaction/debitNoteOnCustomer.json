@@ -1,0 +1,10 @@
+{
+  "branch": "Hyderabad",
+  "executive": "HYDExec",
+  "transaction": "INR",
+  "accountCode": 567,
+  "partyCode": 153,
+  "invoiceNo": "SI11",
+  "amount": 1000,
+  "close": "Debit Note On Customers"
+}

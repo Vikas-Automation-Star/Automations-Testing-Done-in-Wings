@@ -1,0 +1,11 @@
+{
+  "branch": "Hyderabad",
+  "transaction": "INR",
+  "partyCode": 153,
+  "priceList": "Inclusive SalesPriceList",
+  "gstType": "Registered",
+  "executive": "HYDExec",
+  "productCode": "1707",
+  "Quantity": "10",
+  "close": "Proforma Sales Invoices"
+}

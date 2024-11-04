@@ -1,0 +1,10 @@
+{
+  "branch": "Hyderabad",
+  "executive": "HYDExec",
+  "transaction": "INR",
+  "accountCode": 567,
+  "partyCode": 153,
+  "amount": 408.16,
+  "TDSNature": "TDS Transaction Nature 1",
+  "close": "Credit Note"
+}

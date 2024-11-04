@@ -1,0 +1,13 @@
+{
+  "branch": "Hyderabad",
+  "transaction": "INR",
+  "fromBank": "Bank Account",
+  "executive": "HYDExec",
+  "toBank": "State Bank",
+  "amount": "3500",
+  "close": "Inter Bank Fund Transfers",
+  "cheque": "777",
+  "charges": "50",
+  "supplier Bill": "753",
+  "supplierDate": "01-10-2024"
+}

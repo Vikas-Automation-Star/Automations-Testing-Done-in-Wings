@@ -1,0 +1,12 @@
+{
+  "branch": "Hyderabad",
+  "transaction": "INR",
+  "PartyCode": "153",
+  "executive": "HYDExec",
+  "accountCode": 567,
+  "amount": "10",
+  "close": "Receipts from Credit Card Companies",
+  "cheque": 242,
+  "ccc": "ICICI",
+  "gstType": "Intra State Purchase from Registered Dealers"
+}
