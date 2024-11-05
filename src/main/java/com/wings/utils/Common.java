@@ -222,6 +222,45 @@ public class Common {
         }
     }
 
+    public String getDataEvenNoKeyPresent(String fileName, String key) throws IOException, ParseException {
+        JSONParser parser = new JSONParser();
+        try (FileReader reader = new FileReader(fileName)) { // Try-with-resources for automatic closing
+            Object obj = parser.parse(reader);
+            JSONObject jsonObject = (JSONObject) obj;
+
+            if (!jsonObject.containsKey(key)) {
+                System.out.println("No key present in the file.");
+                return null; // Return null if the key is not present
+            }
+
+            Object value = jsonObject.get(key);
+            if (value == null) {
+                return null; // Return null if the value is null
+            } else if (value instanceof String) {
+                return (String) value;
+            } else if (value instanceof Long) {
+                return Long.toString((Long) value);
+            } else if (value instanceof Double) {
+                return Double.toString((Double) value);
+            } else if (value instanceof Boolean) {
+                return Boolean.toString((Boolean) value);
+            } else {
+                return String.valueOf(value); // Fallback for other types
+            }
+        } catch (FileNotFoundException e) {
+            System.err.println("File not found: " + fileName);
+            e.printStackTrace(); // Print stack trace for debugging
+        } catch (IOException e) {
+            System.err.println("An I/O error occurred while reading the file.");
+            e.printStackTrace(); // Print stack trace for debugging
+        } catch (ParseException e) {
+            System.err.println("Error parsing the JSON file.");
+            e.printStackTrace(); // Print stack trace for debugging
+        }
+
+        return null; // Return null in case o
+    }
+
     public void quit(){
         driver.quit();
     }

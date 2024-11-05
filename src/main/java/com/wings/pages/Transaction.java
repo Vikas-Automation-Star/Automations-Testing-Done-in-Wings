@@ -5,6 +5,7 @@ import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import com.wings.utils.Common;
 import java.io.IOException;
@@ -375,4 +376,146 @@ public class Transaction {
         common.clickElement("xpath", "//TabItem[@Name='"+ screenName +"']/Button[@Name='Close']");
 
     }
+
+
+    public void closeTransaction (String transaction ){
+        common.clickElement("xpath", "//TabItem[@Name='" + transaction + "']/Button[@Name='Close']");
+    }
+
+    public void oldTTransaction () {
+        System.out.println("Recent Transaction Id :" + common.findWebElement("xpath", "//Text[@Name='Last Saved :']/following-sibling::Text").getAttribute("Name"));
+    }
+
+    public void newTransaction () {
+        System.out.println("New Transaction ID  :" + common.findWebElement("xpath", "//Text[@Name='Last Saved :']/following-sibling::Text").getAttribute("Name"));
+    }
+
+    public void saveTransaction () throws InterruptedException {
+        common.clickElement("xpath", "//Button[@Name='Save']");
+        common.clickElement("xpath", "//Button[@Name='Yes']");
+        Thread.sleep(2000);
+        common.clickElement("xpath", "//Button[@Name='OK']");
+    }
+
+    public void selectMasterWithValidation(String transaction, String locatorType, String locator) {
+        List<WebElement> elementList = common.findWebElements("xpath", "//Table[@Name='Lookup']/*/*[contains(@Name,'Master Row')]");
+        System.out.println("Size :" + elementList.size());
+        for (WebElement j : elementList) {
+            if (j.getText().contains(transaction)) {
+                System.out.println(j.getText());
+                j.click();
+                j.sendKeys(Keys.ENTER);
+            }
+        }
+        WebElement ele = common.findWebElement(locatorType, locator);
+        if (ele.getText().equals(transaction)) {
+            System.out.println("element Selected :" + ele.getText());
+        } else {
+            Assert.fail("pls select the element");
+        }
+    }
+
+    public void inputTextWithValidation(String locatorType,String locator,String inputText) {
+        WebElement element = common.findWebElement(locatorType, locator);
+        element.sendKeys(inputText);
+        System.out.println(element.getText());
+        if (element.getText().equals(inputText)) {
+            System.out.println("entered currect Input :" + element.getText());
+        } else {
+            Assert.fail("wrong input");
+        }
+    }
+
+
+    public void sliderHandle () {
+        int offset = 550;
+        WebElement slider = common.findWebElement("xpath", "//Table[@Name='Items']/ScrollBar[@Name='Horizontal']/Thumb[@Name='Position']");
+        Actions actions = new Actions(driver);
+        actions.clickAndHold(slider).moveByOffset(offset, 0).release().perform();
+    }
+
+    public void gstSelectionWhenBothRegisteredDealers() {
+        List<WebElement> elementList = common.findWebElements("xpath", "//Table/*[@Name='Data Panel']/*/*[contains(@Name,'GST Transaction Type row')]");
+        System.out.println("Size :" + elementList.size());
+        for (WebElement j : elementList) {
+            System.out.println(j.getText());
+            if (j.getText().equals("Intra State Purchase from Registered Dealers")) {
+                j.click();
+                j.sendKeys(Keys.LEFT, Keys.SPACE, Keys.ENTER, Keys.ENTER);
+                break;
+            }
+        }
+    }
+
+    public void partyCodeGstSelection () {
+        List<WebElement> elementList1 = common.findWebElements("xpath", "//Table/*[@Name='Data Panel']/*/*[contains(@Name,'GST Transaction Type row')]");
+        System.out.println("Size :" + elementList1.size());
+        for (WebElement j : elementList1) {
+            System.out.println(j.getText());
+            if (j.getText().contains("Registered Dealers")) {
+                j.click();
+                j.sendKeys(Keys.LEFT, Keys.SPACE, Keys.ENTER, Keys.ENTER);
+                break;
+            }
+        }
+    }
+
+
+    public void generalInfoSliderHandle () {
+        int offset = 800;
+        WebElement slider = common.findWebElement("xpath", "//ScrollBar[@Name='Horizontal']/Thumb[@Name='Position']");
+        Actions actions = new Actions(driver);
+        actions.clickAndHold(slider).moveByOffset(offset, 0).release().perform();
+    }
+    public void genaralInfoNegativeSliderHandle () {
+        int offset = -500;
+        WebElement slider = common.findWebElement("xpath", "//ScrollBar[@Name='Horizontal']/Thumb[@Name='Position']");
+        Actions actions = new Actions(driver);
+        actions.clickAndHold(slider).moveByOffset(offset, 0).release().perform();
+    }
+
+    public void checkBoxSelectionBillsReceivables (String locatorType, String rowLocator, String voucherLocator, String checkBoxLocator){
+        List<WebElement> rows = common.findWebElements(locatorType, rowLocator);
+        System.out.println("Row count :" + rows.size());
+        for (WebElement row : rows) {
+            WebElement voucher = row.findElement(By.xpath(voucherLocator));
+            String value = voucher.getText();
+            System.out.println("Voucher value: " + value);
+            if (value == (null) || "(null)".equals(value)) {
+                // If the value is null, throw an assertion error// value.isEmpty() ||
+                if (rows.size() == 1) {
+                    Assert.fail("No Accounts found in row: " + row.getAttribute("outerHTML"));
+                }
+            } else {
+                // If the voucher has a valid value, find the checkbox and click it
+                WebElement checkBox = row.findElement(By.xpath(checkBoxLocator));
+                checkBox.click();
+                System.out.println("Checkbox clicked for voucher: " + value);
+            }
+        }
+    }
+
+
+    public void checkBoxSelectionBillsPayable (String locatorType, String rowLocator, String voucherLocator, String
+            checkBoxLocator){
+        List<WebElement> rows = common.findWebElements(locatorType, rowLocator);
+        System.out.println("Row count :" + rows.size());
+        for (WebElement row : rows) {
+            WebElement voucher = row.findElement(By.xpath(voucherLocator));
+            String value = voucher.getText();
+            System.out.println("Voucher value: " + value);
+            if (value == (null) || "(null)".equals(value)) {
+                // If the value is null, throw an assertion error// value.isEmpty() ||
+                if (rows.size() == 1) {
+                    Assert.fail("No Accounts found in row: " + row.getAttribute("outerHTML"));
+                }
+            } else {
+                // If the voucher has a valid value, find the checkbox and click it
+                WebElement checkBox = row.findElement(By.xpath(checkBoxLocator));
+                checkBox.click();
+                System.out.println("Checkbox clicked for voucher: " + value);
+            }
+        }
+    }
+
 }

@@ -6,7 +6,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.wings.pages.AppLogin;
-import com.wings.pages.purchases.reports.PurchaseOrderStatusDetails;
+import com.wings.pages.purchase.reports.PurchaseOrderStatusDetails;
 import java.io.IOException;
 
 public class PurchaseOrderStatusDetailsReport {

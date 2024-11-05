@@ -6,8 +6,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.wings.pages.AppLogin;
-import com.wings.pages.purchases.reports.PendingPurchaseOrder;
-import com.wings.pages.purchases.reports.PurchaseOrdrCancellationReport;
+import com.wings.pages.purchase.reports.PurchaseOrdrCancellationReport;
 
 import java.io.IOException;
 
