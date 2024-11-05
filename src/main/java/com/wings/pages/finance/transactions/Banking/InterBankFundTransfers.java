@@ -2,8 +2,6 @@ package com.wings.pages.finance.transactions.Banking;
 
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import java.awt.*;
@@ -27,38 +25,33 @@ public class InterBankFundTransfers extends Transaction {
         common.clickElement("name", "Banking");
         common.clickElement("xpath", "//MenuItem[@Name='Inter Bank Fund Transfers']");
         Thread.sleep(1000);
-        super.lastTransactionName();
+        lastTransactionName();
+        common.clickElement("xpath","//Edit[@Name='Voucher Type']");
+        selectOptionalMaster(common.getData(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']");
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        super.selectMaster(common.getData(dataFile, "branch"));
+        selectAndValidateData(common.getData(dataFile, "branch"),"xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
-        super.selectMaster(common.getData(dataFile, "transaction"));
+        selectAndValidateData(common.getData(dataFile, "transaction"),"xpath", "//Edit[@Name='Trans Currency *']");
         common.clickElement("xpath", "//Edit[@Name='From Bank Code']");
-        super.selectMaster(common.getData(dataFile, "fromBank"));
+        selectAndValidateData(common.getData(dataFile, "fromBank"),"xpath", "//Edit[@Name='From Bank Code']");
         common.clickElement("xpath", "//Edit[@Name='To Bank Code']");
-        super.selectMaster(common.getData(dataFile, "toBank"));
+        selectAndValidateData(common.getData(dataFile, "toBank"),"xpath", "//Edit[@Name='To Bank Code']");
         common.inputText("xpath","//Edit[@Name='Amount *']", common.getData(dataFile,"amount"));
         common.inputText("xpath","//Edit[@Name='Cheque/EFT No *']", common.getData(dataFile,"cheque"));
         common.clickElement("xpath","//Edit[@Name='Charges Account Code']");
         common.inputText("xpath","//Edit[@Name='Transfered Charges']", common.getData(dataFile,"charges"));
         //slider
-        int offset=550;
-        WebElement slider=common.findWebElement("xpath","//Thumb[@Name='Position']");
-        Actions actions=new Actions(driver);
-        actions.clickAndHold(slider).moveByOffset(offset,0).release().perform();
-
+        common.sliderHandling("xpath","//Thumb[@Name='Position']", 550,0);
         common.inputText("xpath","//Edit[@Name='Supplier Bill No *']", common.getData(dataFile,"supplier Bill"));
         common.inputText("xpath","//Edit[@Name='Supplier Bill Date *']", common.getData(dataFile,"supplierDate"));
         common.clickElement("xpath", "//Edit[@Name='Executive *']");
-        super.selectMaster(common.getData(dataFile,"executive"));
+        selectAndValidateData(common.getData(dataFile,"executive"),"xpath", "//Edit[@Name='Executive *']");
+        common.clickElement("xpath","//Edit[@Name='Remarks']");
+        selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
         Thread.sleep(1000);
-        common.clickElement("name","  F11 Summary  ");
-
+        navigateToSummaryTab();
         //save
-        super.transactionSave();
-        super.lastTransactionName();
-        super.transactionClose(common.getData(dataFile,"close"));
-
-
-
+        transactionSave();
+        lastTransactionName();
     }
 }

@@ -25,36 +25,30 @@ public class DepositPostDatedCheques extends Transaction {
         common.clickElement("name", "Banking");
         common.clickElement("xpath", "//MenuItem[@Name='Deposit Post Dated Cheques']");
         Thread.sleep(1000);
-        super.lastTransactionName();
+        lastTransactionName();
         //enter data
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");
-        super.selectOptionalMaster(common.getData(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']");
+        selectOptionalMaster(common.getData(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']");
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        super.selectMaster(common.getData(dataFile, "branch"));
+        selectAndValidateData(common.getData(dataFile, "branch"),"xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
-        super.selectMaster(common.getData(dataFile, "transaction"));
+        selectAndValidateData(common.getData(dataFile, "transaction"),"xpath", "//Edit[@Name='Trans Currency *']");
         common.clickElement("xpath", "//Edit[@Name='Bank Code']");
-        super.selectAndValidateData(common.getData(dataFile,"bankCode"),"xpath", "//Edit[@Name='Bank Code']" );
-
+        selectAndValidateData(common.getData(dataFile,"bankCode"),"xpath", "//Edit[@Name='Bank Code']" );
         common.clickElement("xpath", "//Edit[@Name='Cheques Received Account *']");
-        super.selectAndValidateData(common.getData(dataFile,"cheques"),"xpath", "//Edit[@Name='Cheques Received Account *']" );
+        selectAndValidateData(common.getData(dataFile,"cheques"),"xpath", "//Edit[@Name='Cheques Received Account *']" );
         common.clickElement("xpath","//CheckBox[@Name='Select Row 0']");
         common.clickElement("xpath","//Button[@Name='Ok']");
         common.clickElement("xpath", "//Edit[@Name='Executive *']");
-        super.selectMaster(common.getData(dataFile, "executive"));
+        selectAndValidateData(common.getData(dataFile, "executive"),"xpath", "//Edit[@Name='Executive *']");
         common.clickElement("xpath","//Edit[@Name='Remarks']");
-        super.selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
+        selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
         //f3-accounts
         common.clickElement("xpath","//CheckBox[@Name='Deposited * Row 0']");
         //f7 summary
-        common.clickElement("xpath","//TabItem[@Name='  F7 Summary  ']");
-
+        navigateToSummaryTab();
         //save
-        super.transactionSave();
-        super.lastTransactionName();
-        super.transactionClose(common.getData(dataFile,"close"));
-
-
-
+        transactionSave();
+        lastTransactionName();
     }
 }

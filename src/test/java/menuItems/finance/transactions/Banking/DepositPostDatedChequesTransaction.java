@@ -24,8 +24,8 @@ public class DepositPostDatedChequesTransaction {
         public void beforeTest() throws IOException, ParseException, InterruptedException {
             driver = appLogin.launchSingleUserApp();
             appLogin.singleUserLogin();
-            SalesOrderPostDatedCheques orderPostDatedCheques=new SalesOrderPostDatedCheques(driver,orderFile);
-            orderPostDatedCheques.salesOrder();
+//            SalesOrderPostDatedCheques orderPostDatedCheques=new SalesOrderPostDatedCheques(driver,orderFile);
+//            orderPostDatedCheques.salesOrder();
         }
 
         @Test

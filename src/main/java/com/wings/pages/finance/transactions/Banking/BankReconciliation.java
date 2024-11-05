@@ -26,20 +26,20 @@ public class BankReconciliation extends Transaction {
         common.clickElement("name", "Banking");
         common.clickElement("xpath", "//MenuItem[@Name='Bank Reconciliation']");
         Thread.sleep(1000);
-        super.lastTransactionName();
+        lastTransactionName();
         //enter data
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");
-        super.selectOptionalMaster(common.getData(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']");
+        selectOptionalMaster(common.getData(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']");
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        super.selectMaster(common.getData(dataFile, "branch"));
+        selectAndValidateData(common.getData(dataFile, "branch"),"xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
-        super.selectMaster(common.getData(dataFile, "transaction"));
+        selectAndValidateData(common.getData(dataFile, "transaction"),"xpath", "//Edit[@Name='Trans Currency *']");
         common.clickElement("xpath", "//Edit[@Name='Bank Code']");
-        super.selectMaster(common.getData(dataFile, "bankCode"));
+        selectAndValidateData(common.getData(dataFile, "bankCode"),"xpath", "//Edit[@Name='Bank Code']");
         common.clickElement("xpath", "//Edit[@Name='Bank Account *']");
         Thread.sleep(1000);
         common.clickElement("xpath", "//Edit[@Name='Executive *']");
-        super.selectMaster(common.getData(dataFile, "executive"));
+        selectAndValidateData(common.getData(dataFile, "executive"),"xpath", "//Edit[@Name='Executive *']");
         common.clickElement("xpath","//Edit[@Name='Remarks']");
         super.selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
         Thread.sleep(3000);
@@ -48,10 +48,9 @@ public class BankReconciliation extends Transaction {
         common.clickElement("xpath","//CheckBox[@Name='Clearing Status * Row 0']");
         common.deleteInvalidRows();
         //save
-        super.transactionSave();
-        super.lastTransactionName();
-        super.transactionClose("Bank Reconciliation");
-
+        transactionSave();
+        lastTransactionName();
+        transactionClose("Bank Reconciliation");
 //        super.checkBoxSelection("xpath","//Table[@Name='Accounts']/*[starts-with(@Name,'Row')]","//Edit[starts-with(@Name,'Towards VNo *')]","//CheckBox[starts-with(@Name,'Clearing Status *')]");
 
 

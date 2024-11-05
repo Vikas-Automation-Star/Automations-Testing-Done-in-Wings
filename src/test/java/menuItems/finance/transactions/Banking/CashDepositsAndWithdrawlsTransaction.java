@@ -24,7 +24,7 @@ public class CashDepositsAndWithdrawlsTransaction {
     @Test
     public void cashDepositandWithdrawl() throws InterruptedException, AWTException, IOException, ParseException {
         CashDepositsAndWithdrawls depositsAndWithdrawls=new CashDepositsAndWithdrawls(driver,dataFile);
-        depositsAndWithdrawls.depositAndWithdrawl();
+        depositsAndWithdrawls.depositAndWithdrawal();
     }
 
     @AfterTest

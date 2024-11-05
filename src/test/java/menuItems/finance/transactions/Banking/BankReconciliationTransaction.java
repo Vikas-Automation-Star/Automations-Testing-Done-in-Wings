@@ -27,8 +27,8 @@ public class BankReconciliationTransaction {
         reconciliation.bankReconciliation();
     }
 
-//    @AfterTest
-//    public void afterTest(){
-//        appLogin.logout();
-//    }
+    @AfterTest
+    public void afterTest(){
+        appLogin.logout();
+    }
 }
