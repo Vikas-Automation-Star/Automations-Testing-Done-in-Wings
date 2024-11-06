@@ -1,6 +1,6 @@
 package menuItems.company.masters;
 
-import com.wings.pages.company.masters.Project;
+import com.wings.pages.company.masters.Projects;
 import com.wings.pages.AppLogin;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
@@ -14,7 +14,7 @@ import java.io.IOException;
 public class ProjectMaster {
     WindowsDriver driver;
     AppLogin appLogin=new AppLogin();
-    Project project;
+    Projects project;
     String file="./src/main/resources/MenuItems/Company/Masters/ProjectData.json";
 
     @BeforeTest
@@ -25,7 +25,7 @@ public class ProjectMaster {
 
     @Test
     public void createCostMaster() throws IOException, ParseException, InterruptedException, AWTException {
-        project =new Project(driver,file);
+        project =new Projects(driver,file);
         project.project();
     }
 
