@@ -30,34 +30,36 @@ public class DebitNoteFromSuppliers extends Transaction {
             common.clickElement("name", "Party Adjustments");
             common.clickElement("xpath", "//MenuItem[@Name='Debit Note from Suppliers']");
             Thread.sleep(1000);
-            super.lastTransactionName();
+            lastTransactionName();
+            common.clickElement("xpath","//Edit[@Name='Voucher Type']");
+            selectOptionalMaster(common.getData(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']");
             common.clickElement("xpath", "//Edit[@Name='Branch *']");
-            super.selectAndValidateData(common.getData(dataFile, "branch"),"xpath", "//Edit[@Name='Branch *']");
+            selectAndValidateData(common.getData(dataFile, "branch"),"xpath", "//Edit[@Name='Branch *']");
             common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
-            super.selectAndValidateData(common.getData(dataFile, "transaction"),"xpath", "//Edit[@Name='Trans Currency *']");
+            selectAndValidateData(common.getData(dataFile, "transaction"),"xpath", "//Edit[@Name='Trans Currency *']");
             common.inputText("xpath","//Edit[@Name='Purchase VNo *']", common.getData(dataFile,"voucherNo"));
             common.inputText("xpath","//Edit[@Name='Voucher Date *']", common.getData(dataFile,"voucherDate"));
             common.clickElement("xpath", "//Edit[@Name='Party Code']");
-            super.selectAndValidateData(common.getData(dataFile, "partyCode"),"xpath", "//Edit[@Name='Party Code']");
+            selectAndValidateData(common.getData(dataFile, "partyCode"),"xpath", "//Edit[@Name='Party Code']");
             common.inputText("xpath","//Edit[@Name='Supplier Bill No *']", common.getData(dataFile,"supplierBill"));
             common.inputText("xpath","//Edit[@Name='Supplier Bill Date *']", common.getData(dataFile,"supplierDate"));
 //            Thread.sleep(20000);
             common.clickElement("xpath","//Edit[@Name='Reason For Issuing Document']/Button[@Name='Open']");
             Thread.sleep(7000);
-            super.selectDropDown(common.getData(dataFile,"reason"));
+            selectDropDown(common.getData(dataFile,"reason"));
             Thread.sleep(20000);
             common.clickElement("xpath", "//Edit[@Name='Executive *']");
-            super.selectAndValidateData(common.getData(dataFile,"executive"),"xpath", "//Edit[@Name='Executive *']");
+            selectAndValidateData(common.getData(dataFile,"executive"),"xpath", "//Edit[@Name='Executive *']");
+            common.clickElement("xpath","//Edit[@Name='Remarks']");
+            selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
             //f3-accounts
-            super.enterData("xpath","//Edit[@Name='Account Code Row 0, Not sorted.']",dataFile,"accountCode");
+            enterData("xpath","//Edit[@Name='Account Code Row 0, Not sorted.']",dataFile,"accountCode");
             common.clickElement("xpath","//CheckBox[@Name='Inclusive Tax Row 0']");
-
             //f7-bills receivable
-            common.clickElement("xpath","//TabItem[@Name='  Ctrl-F7 Bills Receivable  ']");
+            navigateToBillsReceivablesTab();
             finalAmount= super.billsReceivable("xpath","//Table[@Name='BillsReceivable']/*[starts-with(@Name,'Row')]","//Edit[starts-with(@Name,'Towards VNo *')]","//CheckBox[starts-with(@Name,'Adjust Row')]","//Edit[starts-with(@Name,'Pending Amount * Row')]");
-
             //navigate back to accounts and enter amount
-            common.clickElement("xpath","//TabItem[@Name='  F3 Accounts  ']");
+            navigateToAccountsTab();
             List<WebElement> amount = common.findWebElements("xpath", "//Edit[@Name='Amount * Row 0, Not sorted.']");
             System.out.println("Size :" + amount.size());
             for (WebElement i : amount) {
@@ -66,7 +68,7 @@ public class DebitNoteFromSuppliers extends Transaction {
             }
 
             //f11- summary
-            common.clickElement("xpath","//TabItem[@Name='  Ctrl-F11 Summary  ']");
+            navigateToSummaryTab();
             //check net and payable amount --net>payable
             WebElement netAmount= common.findWebElement("xpath","//Edit[@Name='Net Amount']");
             String net=netAmount.getText();
@@ -84,10 +86,8 @@ public class DebitNoteFromSuppliers extends Transaction {
             }catch (NumberFormatException e) {
                 System.out.println("Error parsing amounts: " + e.getMessage());
             }
-
             //save
-            super.transactionSave();
-            super.lastTransactionName();
-            super.transactionClose(common.getData(dataFile,"close"));
+            transactionSave();
+            lastTransactionName();
         }
     }
