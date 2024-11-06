@@ -58,7 +58,7 @@ public class PaymentToParties extends Transaction {
         System.out.println(finalAmount);
         //navigate back to f3-items and enter amount
         Thread.sleep(2000);
-        common.clickElement("xpath", "//TabItem[@Name='  F3 Cash  ']");
+        navigateToCashTab();
         List<WebElement> amount = common.findWebElements("xpath", "//Edit[@Name='Amount * Row 0, Not sorted.']");
         for (WebElement i : amount) {
             i.click();
@@ -67,6 +67,6 @@ public class PaymentToParties extends Transaction {
         //save
         transactionSave();
         lastTransactionName();
-        transactionClose(common.getData(dataFile,"close"));
+//        transactionClose(common.getData(dataFile,"close"));
     }
 }

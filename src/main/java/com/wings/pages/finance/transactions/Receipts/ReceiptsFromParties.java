@@ -58,7 +58,7 @@ public class ReceiptsFromParties extends Transaction {
         navigateToBillsReceivablesTab();
         finalAmount=super.singleCheckBoxSelection("xpath","//Table[@Name='BillsReceivable']/*[starts-with(@Name,'Row')]","//Edit[starts-with(@Name,'Towards VNo *')]");
         //enter into amount in f3
-        common.clickElement("xpath","//TabItem[@Name='  F3 Cash  ']");
+        navigateToCashTab();
         List<WebElement> amount = common.findWebElements("xpath", "//Edit[@Name='Amount * Row 0, Not sorted.']");
         System.out.println("Size :" + amount.size());
         for (WebElement i : amount) {

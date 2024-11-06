@@ -58,6 +58,6 @@ public class BankPayment extends Transaction {
             //save
             transactionSave();
             lastTransactionName();
-            transactionClose(common.getData(dataFile,"close"));
+//            transactionClose(common.getData(dataFile,"close"));
         }
     }

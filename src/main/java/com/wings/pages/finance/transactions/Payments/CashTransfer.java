@@ -40,7 +40,7 @@ public class CashTransfer extends Transaction {
         selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
         //f3-items
         Thread.sleep(5000);
-        super.enterData("xpath", "//Edit[@Name='Cash A/c Code Row 0, Not sorted.']", dataFile, "from");
+        enterData("xpath", "//Edit[@Name='Cash A/c Code Row 0, Not sorted.']", dataFile, "from");
         Thread.sleep(1000);
         common.inputText("xpath", "//Edit[@Name='Amount * Row 0, Not sorted.']", common.getData(dataFile, "amount"));
         Thread.sleep(1000);
@@ -50,6 +50,6 @@ public class CashTransfer extends Transaction {
        //save
         transactionSave();
         lastTransactionName();
-        transactionClose(common.getData(dataFile,"close"));
+//        transactionClose(common.getData(dataFile,"close"));
     }
 }
