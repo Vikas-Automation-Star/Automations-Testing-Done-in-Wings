@@ -8,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import com.wings.utils.Common;
+import sun.security.mscapi.CPublicKey;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -357,6 +359,9 @@ public class Transaction {
     }
     public void navigateToItemsTab(){
         common.clickElement("xpath","//TabItem[contains(@Name,'Items')]");
+    }
+    public void navigateToUnclearedPayments(){
+        common.clickElement("xpath","//TabItem[contains(@Name,'Uncleared Payments')]");
     }
 
 

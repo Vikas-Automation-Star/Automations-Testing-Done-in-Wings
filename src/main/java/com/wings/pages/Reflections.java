@@ -6,46 +6,6 @@ public class Reflections {
 
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //Class<?> getObj = Class.forName("Pages.Student");
 //////             System.out.println("Class Name : "+ getObj.getName());
 ////             System.out.println("Simple Name : "+ getObj.getSimpleName());

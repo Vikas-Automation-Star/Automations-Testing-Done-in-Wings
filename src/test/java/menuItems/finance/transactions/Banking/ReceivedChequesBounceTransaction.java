@@ -1,12 +1,12 @@
 package menuItems.finance.transactions.Banking;
 
+import com.wings.pages.finance.transactions.Banking.ReceivedChequesBounce;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.wings.pages.AppLogin;
-import com.wings.pages.finance.transactions.Banking.ReceivedChequesBounce;
 
 import java.awt.*;
 import java.io.IOException;
@@ -25,7 +25,7 @@ public class ReceivedChequesBounceTransaction {
     @Test
     public void chequesBounce() throws IOException, ParseException, InterruptedException, AWTException {
         ReceivedChequesBounce chequesBounce=new ReceivedChequesBounce(driver,dataFile);
-        chequesBounce.chequeBounce();
+        chequesBounce.receivedCheckBounce();
     }
 
     @AfterTest
