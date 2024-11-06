@@ -1,0 +1,11 @@
+{
+  "branch": "Hyderabad",
+  "currency": "INR",
+  "partyCode": "200138",
+  "priceList":"purchase pricelist",
+  "executive": "Executive3",
+  "product": "Tractors",
+  "quantity": "1000",
+  "mrp": "50",
+  "unitRate": "100"
+}

@@ -1,0 +1,80 @@
+<suite name="Creating all masters of Company module">
+
+    <listeners>
+        <listener class-name="com.wings.utils.listener"></listener>
+    </listeners>
+
+    <test name="Creating BranchMaster">
+        <classes>
+            <class name="menuItems.company.masters.BranchesMaster"></class>
+        </classes>
+    </test>
+
+    <test name="Creating CompanyPropertiesMaster">
+        <classes>
+            <class name="menuItems.company.masters.CompanyPropertiesMaster"></class>
+        </classes>
+    </test>
+
+    <test name="Creating DepartmentMaster">
+        <classes>
+            <class name="menuItems.company.masters.DepartmentsMaster"></class>
+        </classes>
+    </test>
+
+    <test name="Creating ProjectMaster">
+        <classes>
+            <class name="menuItems.company.masters.ProjectMaster"></class>
+        </classes>
+    </test>
+
+    <test name="Creating CostCentresMaster">
+        <classes>
+            <class name="menuItems.company.masters.CostCentresMaster"></class>
+        </classes>
+    </test>
+
+    <test name="Creating ProfitCentresMaster">
+        <classes>
+            <class name="menuItems.company.masters.ProfitCentresMaster"></class>
+        </classes>
+    </test>
+
+    <test name="Creating RoutesMaster">
+        <classes>
+            <class name="menuItems.company.masters.RoutesMaster"></class>
+        </classes>
+    </test>
+
+    <test name="Creating TransportersMaster">
+        <classes>
+            <class name="menuItems.company.masters.TransportersMaster"></class>
+        </classes>
+    </test>
+
+    <test name="Creating TermTypesMaster">
+        <classes>
+            <class name="menuItems.company.masters.TermTypeMaster"></class>
+        </classes>
+    </test>
+
+    <test name="Creating TermsMaster">
+        <classes>
+            <class name="menuItems.company.masters.TermsMaster"></class>
+        </classes>
+    </test>
+
+    <test name="Creating ReasonsMaster">
+        <classes>
+            <class name="menuItems.company.masters.ReasonsMaster"></class>
+        </classes>
+    </test>
+
+    <test name="Creating ExecutiveMaster">
+        <classes>
+            <class name="menuItems.company.masters.ExecutiveMaster"></class>
+        </classes>
+    </test>
+
+
+</suite>

@@ -1,0 +1,15 @@
+{
+  "branch": "Hyderabad",
+  "currency": "INR",
+  "executive": "Executive3",
+  "Pcode": "20012",
+  "tcsAsseseeType": "New TaxCollectedSource38",
+  "tcsTransNature": "New TaxCollectedSource Transaction Nature",
+  "tcsSubType": "New Sub TaxCollectedSource1",
+  "tcsAccount": "TCS Collected Account",
+  "tcsAssesableValue": "5000",
+  "TcsRate": "5",
+  "amount": "1000"
+
+
+}

@@ -1,54 +1,66 @@
 package com.wings.pages.company.masters;
 
+
+import com.wings.pages.Masters;
+import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import com.wings.utils.Common;
-import com.wings.utils.FileUtil;
 
 import java.io.IOException;
 
-public class Executive {
+public class Executive extends Masters {
     WindowsDriver driver;
     Common common;
     String dataFile;
-    FileUtil file=new FileUtil();
 
     public Executive(WindowsDriver driver, String file){
+        super(driver);
         this.driver=driver;
-        common=new Common(this.driver);
+        common=new Common(driver);
         dataFile=file;
     }
 
-    public void exec() throws InterruptedException, IOException, ParseException {
-        common.clickElement("name","Company");
-        common.clickElement("name","Executives");
-        Thread.sleep(1200);
-        WebElement AllBranch = common.findWebElement("xpath", "//TreeItem[@Name='Executives']/TreeItem[@Name='All Executives']");
-        Actions actions = new Actions(driver);
-        actions.contextClick(AllBranch).perform();
-        common.clickElement("name", "New Master");
+    public void Executive() throws InterruptedException, IOException, ParseException {
 
-      Thread.sleep(2000);
-        common.inputText("xpath","//Edit[@Name='New Executive *']", common.getData(dataFile,"execName")+common.getRandom());
-        common.inputText("xpath","//Edit[@Name='Executive Code']",String.valueOf(common.getRandom()));
-//        common.inputText("xpath","//Edit{@Name='Description']",file.getData(dataFile,"description"));
-        common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
+        common.clickElement("name", "Company");
+        common.clickElement("name", "Executives");
+        Thread.sleep(2500);
+        super.createMaster("xpath","//TreeItem[@Name='Executives']/TreeItem[@Name='All Executives']");
+        Thread.sleep(1000);
+        common.inputText("xpath","//Edit[@Name='New Executive *']",common.getData(dataFile,"Executive")+common.getRandom());
+        common.inputText("xpath", "//Edit[@Name='Executive Code']", common.getData(dataFile,"eCode")+common.getRandom());
+        common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile,"description"));
         common.clickElement("xpath","//Pane[@Name='Address and Contact Details']/Button[@Name='...']");
-        Thread.sleep(1200);
-
-        WebElement address=driver.findElementByXPath("//Window[@Name='Address and Contact Details']/Pane/Pane/Edit[@Name='Address 1']");
-        address.sendKeys(common.getData(dataFile,"address1"), Keys.TAB,common.getData(dataFile,"address2"),Keys.TAB, common.getData(dataFile,"address3"),Keys.TAB, common.getData(dataFile,"city"),Keys.TAB, common.getData(dataFile,"state"),Keys.TAB, common.getData(dataFile,"country"),Keys.ENTER, common.getData(dataFile,"zip"),Keys.TAB, common.getData(dataFile,"tel1"),Keys.TAB, common.getData(dataFile,"tel2"),Keys.TAB, common.getData(dataFile,"tel3"),Keys.TAB,common.getData(dataFile,"tel4"),Keys.TAB, common.getData(dataFile,"fax"),Keys.TAB, common.getData(dataFile,"email"),Keys.TAB, common.getData(dataFile,"website"),Keys.TAB, common.getData(dataFile,"cp"),Keys.TAB, common.getData(dataFile,"cpd"),Keys.TAB, common.getData(dataFile,"cptn"),Keys.TAB, common.getData(dataFile,"cpmn"), Keys.TAB, common.getData(dataFile,"cpe"),Keys.TAB,Keys.ENTER);
-
-        common.clickElement("xpath","//Pane/Button[@Name='Save']");
         Thread.sleep(1000);
-        common.clickElement("xpath","//Window/Button[@Name='OK']");
+        super.inputTextWithValidation("xpath","//Edit[@Name='Address 1']", common.getData(dataFile,"Address1"));
+        super.inputTextWithValidation("xpath","//Edit[@Name='Address 2']", common.getData(dataFile,"Address2"));
+        super.inputTextWithValidation("xpath","//Edit[@Name='Address 3']", common.getData(dataFile,"Address3"));
+        super.inputTextWithValidation("xpath","//Edit[@Name='City']", common.getData(dataFile,"city"));
+        super.inputTextWithValidation("xpath","//Edit[@Name='State']", common.getData(dataFile,"state"));
         Thread.sleep(1000);
-        common.clickElement("xpath","//Pane/Button[@Name='Cancel']");
-
-        common.clickElement("xpath", "//TabItem[@Name='Executives']/Button[@Name='Close']");
-
+        WebElement country=common.findWebElement("xpath","//Edit[@Name='Country']");
+        country.clear();
+        country.sendKeys(common.getData(dataFile,"country"), Keys.ENTER);
+        super.inputTextWithValidation("xpath","//Edit[@Name='Zip']", common.getData(dataFile,"zip"));
+        super.inputTextWithValidation("xpath","//Edit[@Name='Telephones 1']", common.getData(dataFile,"Telephone1"));
+        super.inputTextWithValidation("xpath","//Edit[@Name='Telephones 2']", common.getData(dataFile,"Telephone2"));
+        super.inputTextWithValidation("xpath","//Edit[@Name='Telephones 3']", common.getData(dataFile,"Telephone3"));
+        super.inputTextWithValidation("xpath","//Edit[@Name='Telephones 4']", common.getData(dataFile,"Telephone4"));
+        super.inputTextWithValidation("xpath","//Edit[@Name='Fax']", common.getData(dataFile,"fax"));
+        super.inputTextWithValidation("xpath","//Edit[@Name='Email']", common.getData(dataFile,"email"));
+        super.inputTextWithValidation("xpath","//Edit[@Name='Website']", common.getData(dataFile,"website"));
+        super.inputTextWithValidation("xpath","//Edit[@Name='Contact Person']", common.getData(dataFile,"contactPersion"));
+        super.inputTextWithValidation("xpath","//Edit[@Name='Contact Person Designation']", common.getData(dataFile,"contactPersonDesignation"));
+        super.inputTextWithValidation("xpath","//Edit[@Name='Contact Person Telephone No']", common.getData(dataFile,"contactPersonTelephoneNo"));
+        super.inputTextWithValidation("xpath","//Edit[@Name='Contact Person Mobile No']", common.getData(dataFile,"contactPersonMobileNo"));
+        super.inputTextWithValidation("xpath","//Edit[@Name='Contact Person Email']", common.getData(dataFile,"contactPersonEmail"));
+        common.clickElement("xpath","//Button[@Name='Ok']");
+        Thread.sleep(1000);
+        super.saveAfterMasterCreate();
+        super.closeMaster("Executives");
     }
+
 }

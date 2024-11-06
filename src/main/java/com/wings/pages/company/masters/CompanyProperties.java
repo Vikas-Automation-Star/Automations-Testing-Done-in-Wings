@@ -1,6 +1,8 @@
 package com.wings.pages.company.masters;
 
+
 import com.wings.pages.Masters;
+
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
@@ -38,7 +40,7 @@ public class CompanyProperties extends Masters {
         super.inputTextWithValidation("xpath","//Edit[@Name='City']",common.getData(dataFile,"city"));
         WebElement country= common.findWebElement("xpath","//Edit[@Name='Country']/Button[@Name='Open']");
         country.click();
-        country.sendKeys(common.getData(dataFile,"country"), Keys.ENTER);
+        country.sendKeys(common.getData(dataFile,"country"),Keys.ENTER);
         super.inputTextWithValidation("xpath","//Edit[@Name='Zip']",common.getData(dataFile,"zip"));
         super.inputTextWithValidation("xpath","//Edit[@Name='Telephones 1']",common.getData(dataFile,"telephone1"));
         super.inputTextWithValidation("xpath","//Edit[@Name='Telephones 2']",common.getData(dataFile,"telephone2"));

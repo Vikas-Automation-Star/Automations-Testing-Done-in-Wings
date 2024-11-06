@@ -1,0 +1,10 @@
+{
+  "hsnName": "NewHsnName",
+  "basisTaxValue": "Gross Amount Minus Discount",
+  "hsnCode": "2001",
+  "gstPercentage": "GST 12%",
+  "cessPercentage": "CESS 1%",
+  "slabGstPercentage": "GST 12%",
+  "minValue": "50",
+  "maxValue": "100"
+}

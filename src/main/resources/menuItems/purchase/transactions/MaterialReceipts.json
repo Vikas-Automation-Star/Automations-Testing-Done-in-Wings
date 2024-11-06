@@ -1,0 +1,12 @@
+{
+  "branch": "Hyderabad",
+  "currency": "INR",
+  "partyCode": "200138",
+  "consigner": "NEW CONSIGNOR",
+  "batchPolicy": "New Purchase Batch Policy19",
+  "executive": "Executive3",
+  "Product":"Tractors",
+  "mrp": "50",
+  "quantity": "500",
+  "unitRate": "100"
+}

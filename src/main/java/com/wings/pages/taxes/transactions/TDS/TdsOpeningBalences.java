@@ -54,6 +54,7 @@ public class TdsOpeningBalences extends Transaction {
         common.clickElement("xpath","//Edit[@Name='TDS Rate Row 0, Not sorted.']");
         common.inputText("xpath","//Edit[@Name='TDS Assessable Value Row 0, Not sorted.']", common.getData(dataFile,"TdsRate"));
         common.clickElement("xpath","//Edit[@Name='TDS Amount * Row 0, Not sorted.']");
+        common.inputText("xpath","//Edit[@Name='TDS Amount * Row 0, Not sorted.']",common.getData(dataFile,"amount"));
         super.saveTransaction();
         Thread.sleep(1000);
         super.closeTransaction("TDS Opening Balances");

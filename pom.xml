@@ -61,7 +61,7 @@
           <version>3.3.0</version>
           <configuration>
             <suiteXmlFiles>
-              <suiteXmlFile>TestNG.xml</suiteXmlFile>
+              <suiteXmlFile>TestNG/MenuItems/purchaseMastersTransactionsAndReport.xml</suiteXmlFile>
             </suiteXmlFiles>
           </configuration>
         </plugin>

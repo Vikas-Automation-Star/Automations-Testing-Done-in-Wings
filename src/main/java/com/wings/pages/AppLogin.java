@@ -43,7 +43,6 @@ public class AppLogin {
     }
 
     public void singleUserLogin() throws InterruptedException, IOException, ParseException {
-//        launchSingleUserApp();
         Thread.sleep(2000);
         common.clickElement("xpath","//Pane[@Name='Choose a recent company']/Text[@Name='> "+common.getData(fileData,"companyName")+"']/*[@Name='> "+common.getData(fileData,"companyName")+"']");
         Thread.sleep(3000);
@@ -66,5 +65,9 @@ public class AppLogin {
         common.clickElement("xpath","//MenuItem[@Name='File']");
         common.clickElement("name","Exit");
         common.clickElement("name","Yes");
+    }
+
+    public void singleUserlogin() {
+
     }
 }

@@ -1,0 +1,12 @@
+{
+  "branch": "Hyderabad",
+  "currency": "INR",
+  "PartyCode": "200138",
+  "purchase A/C Code": "Purchase Account",
+  "billNo": "987456",
+  "billDate": "23-09-2024",
+  "pricelist": "purchase pricelist",
+  "executive": "Executive3",
+  "mrpRate":"50",
+  "quantity": "10"
+}

@@ -65,6 +65,7 @@ public class TcsOpeningBalances extends Transaction {
         common.clickElement("xpath", "//Edit[@Name='TCS Rate Row 0, Not sorted.']");
         common.inputText("xpath", "//Edit[@Name='TCS Assessable Value Row 0, Not sorted.']", common.getData(dataFile, "TcsRate"));
         common.clickElement("xpath", "//Edit[@Name='TCS Amount * Row 0, Not sorted.']");
+        common.inputText("xpath", "//Edit[@Name='TCS Amount * Row 0, Not sorted.']", common.getData(dataFile,"amount"));
         super.saveTransaction();
         Thread.sleep(1000);
         super.closeTransaction("TCS Opening Balances");

@@ -71,11 +71,8 @@ public class HsnCodes extends Masters {
         common.inputText("xpath","//Edit[@Name='Maximum Value Row 0, Not sorted.']",common.getData(dataFile,"maxValue"));
         common.clickElement("xpath","//Button[@Name='Ok']");
 
-        common.clickElement("xpath", "//Button[@Name='Save']");
-        common.clickElement("xpath", "//Button[@Name='OK']");
-        common.clickElement("xpath","//Button[@Name='Close']");
+        saveMaster();
         Thread.sleep(1000);
-//        System.out.println("New Transaction ID  :" + common.findWebElement("xpath", "//Text[@Name='Last Saved :']/following-sibling::Text").getAttribute("Name"));
         super.closeMaster("HSN Codes");
         Thread.sleep(2000);
 

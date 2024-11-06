@@ -47,7 +47,7 @@ public class CashDepositsAndWithdrawls extends Transaction {
             Thread.sleep(1200);
             //check for withdrawl
             Thread.sleep(5000);
-            navigateToWithdrawalsTab();
+//            navigateToWithdrawalsTab();
             enterData("xpath","//Edit[@Name='Cash Account * Row 0, Not sorted.']",dataFile,"withdraw");
             Thread.sleep(5000);
             enterData("xpath","//Edit[@Name='Amount * Row 0, Not sorted.']",dataFile,"debit");

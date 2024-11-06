@@ -22,7 +22,8 @@ public class MaterialIssuesAndReceiptsFromProduction extends Report {
         Thread.sleep(1500);
 //        common.clickElement("xpath", "//CheckBox[@Name='Detailed']");
         common.clickElement("xpath", "//Button[@Name='Submit']");
-        super.bulkVerifyReport("MIRFP 3");
+        super.bulkVerifyReport("");
         super.closeReport("Material Issues and Receipts from Production");
+        Thread.sleep(2000);
     }
 }

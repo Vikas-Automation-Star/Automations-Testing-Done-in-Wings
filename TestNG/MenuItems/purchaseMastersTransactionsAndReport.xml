@@ -1,0 +1,246 @@
+<suite name="SUITE EXECUTION OF ALL MASTERS TRANSACTION AND REPORTS IN THE PURCHASE MODULE">
+
+    <listeners>
+        <listener class-name="com.wings.utils.listener"></listener>
+    </listeners>
+
+    <test name="Creating SupplierMaster">
+        <classes>
+            <class name="menuItems.purchase.masters.SuppliersMaster"></class>
+        </classes>
+    </test>
+
+    <test name="Creating PurchaseBatchPoliciesMaster">
+        <classes>
+            <class name="menuItems.purchase.masters.PurchaseBatchPoliciesMaster"></class>
+        </classes>
+    </test>
+
+    <test name="Creating PriceListMaster">
+        <classes>
+            <class name="menuItems.purchase.masters.PriceListMaster"></class>
+        </classes>
+    </test>
+
+    <!-- Masters of purchase menu completed 3 -->
+
+    <test name="Performing PurchaseEnquiries Transaction">
+        <classes>
+            <class name="menuItems.purchase.transactions.PurchaseEnquiriesTransaction"></class>
+        </classes>
+    </test>
+
+    <test name="Performing PurchaseEnquiriesCancellation Transaction">
+        <classes>
+            <class name="menuItems.purchase.transactions.PurchaseEnquiriesCancellationTransaction"></class>
+        </classes>
+    </test>
+
+    <test name="Performing PurchaseQuotations Transaction">
+        <classes>
+            <class name="menuItems.purchase.transactions.PurchaseQuotationsTransaction"></class>
+        </classes>
+    </test>
+
+    <test name="Performing PurchaseQuotationsAgainstEnquiries Transaction">
+        <classes>
+            <class name="menuItems.purchase.transactions.PurchaseQuotationsAgainstEnquiriesTransaction"></class>
+        </classes>
+    </test>
+
+    <test name="Performing PurchaseOrdersAgainstQuotations Transaction">
+        <classes>
+            <class name="menuItems.purchase.transactions.PurchaseOrdersAgainstQuotationsTransaction"></class>
+        </classes>
+    </test>
+
+    <test name="Performing PurchaseOrders Transaction">
+        <classes>
+            <class name="menuItems.purchase.transactions.PurchaseOrdersTransaction"></class>
+        </classes>
+    </test>
+
+    <test name="Performing PurchaseOrdersCancellation Transaction">
+        <classes>
+            <class name="menuItems.purchase.transactions.PurchaseOrderCancellationTransaction"></class>
+        </classes>
+    </test>
+
+    <test name="Performing MaterialReceipts Transaction">
+        <classes>
+            <class name="menuItems.purchase.transactions.MaterialReceiptsTransaction"></class>
+        </classes>
+    </test>
+
+    <test name="Performing MaterialReceiptsAgainstOrders Transaction">
+        <classes>
+            <class name="menuItems.purchase.transactions.MaterialReceiptsAgainstOrdersTransaction"></class>
+        </classes>
+    </test>
+
+    <test name="Performing MaterialReturns Transaction">
+        <classes>
+            <class name="menuItems.purchase.transactions.MaterialReturnsTransaction"></class>
+        </classes>
+    </test>
+
+    <test name="Performing  PurchaseVouchers Transaction">
+        <classes>
+            <class name="menuItems.purchase.transactions.PurchaseVouchersTransaction"></class>
+        </classes>
+    </test>
+
+    <test name="Performing PurchaseVouchersAgainstOrders Transaction">
+        <classes>
+            <class name="menuItems.purchase.transactions.PurchaseVouchersAgainstOrdersTransaction"></class>
+        </classes>
+    </test>
+
+    <test name="Performing PurchaseVouchersAgainstReceipts Transaction">
+        <classes>
+            <class name="menuItems.purchase.transactions.PurchaseVouchersAgainstReceiptsTransaction"></class>
+        </classes>
+    </test>
+
+    <test name="Performing PurchaseReturnsWithInvoicesReferences Transaction">
+        <classes>
+            <class name="menuItems.purchase.transactions.PurchaseReturnsWithInvoicesReferencesTransaction"></class>
+        </classes>
+    </test>
+
+    <test name="Performing PurchasePrices Transaction">
+        <classes>
+            <class name="menuItems.purchase.transactions.PurchasePricesTransaction"></class>
+        </classes>
+    </test>
+
+    <!-- Transactions of purchase menu completed 15-->
+
+    <test name="Checking PurchaseEnquiries Report">
+        <classes>
+            <class name="menuItems.purchase.reports.PurchaseEnquiriesReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking PendingPurchaseEnquiries Report">
+        <classes>
+            <class name="menuItems.purchase.reports.PendingPurchaseEnquiriesReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking PurchaseEnquiriesCancellation Report">
+        <classes>
+            <class name="menuItems.purchase.reports.PurchaseEnquiriesCancellationsReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking PurchaseQuotations Report">
+        <classes>
+            <class name="menuItems.purchase.reports.PurchaseQuotationsReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking PendingPurchaseQuotations Report">
+        <classes>
+            <class name="menuItems.purchase.reports.PendingPurchaseQuotationsReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking PurchaseQuotationsAgainstEnquiries Report">
+        <classes>
+            <class name="menuItems.purchase.reports.PurchaseQuotationsAgainstEnquiriesReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking PurchaseOrdersAgainstQuotations Report">
+        <classes>
+            <class name="menuItems.purchase.reports.PurchaseOrdersAgainstQuotationsReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking PurchaseOrders Report">
+        <classes>
+            <class name="menuItems.purchase.reports.PurchaseOrdersReport"></class>
+        </classes>
+    </test>
+    <test name="Checking PendingPurchaseOrders Report">
+        <classes>
+            <class name="menuItems.purchase.reports.PendingPurchaseOrdersReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking PurchaseOrderStatusDetails Report">
+        <classes>
+            <class name="menuItems.purchase.reports.PurchaseOrderStatusDetailsReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking PurchaseOrdersCancellations Report">
+        <classes>
+            <class name="menuItems.purchase.reports.PurchaseOrdersCancellationsReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking MaterialReceipts Report">
+        <classes>
+            <class name="menuItems.purchase.reports.MaterialReceiptsReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking PendingMaterialReceipts Report">
+        <classes>
+            <class name="menuItems.purchase.reports.PendingMaterialReceiptsReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking MaterialReceiptsAgainstOrders Report">
+        <classes>
+            <class name="menuItems.purchase.reports.MaterialReceiptsAgainstOrdersReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking PendingPurchaseOrdersWithReceipts Report">
+        <classes>
+            <class name="menuItems.purchase.reports.PendingPurchaseOrdersWithReceiptsReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking MaterialReturns Report">
+        <classes>
+            <class name="menuItems.purchase.reports.MaterialReturnsReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking PurchaseBooks Report">
+        <classes>
+            <class name="menuItems.purchase.reports.PurchaseBooksReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking PurchaseVouchersAgainstOrders Report">
+        <classes>
+            <class name="menuItems.purchase.reports.PurchaseVouchersAgainstOrdersReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking PurchaseVouchersAgainstReceiptsReport Report">
+        <classes>
+            <class name="menuItems.purchase.reports.PurchaseVouchersAgainstReceiptsReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking PurchaseReturnsWithInvoiceReferences Report">
+        <classes>
+            <class name="menuItems.purchase.reports.PurchaseReturnsWithInvoiceReferencesReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking PurchasePriceUpdations Report">
+        <classes>
+            <class name="menuItems.purchase.reports.PurchasePriceUpdationReport"></class>
+        </classes>
+    </test>
+
+    <!-- CheckingReports of purchase menu completed 21-->
+
+</suite>

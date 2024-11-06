@@ -1,0 +1,127 @@
+<suite name="Production Masters Transactions and Reports">
+
+    <listeners>
+        <listener class-name="com.wings.utils.listener"></listener>
+    </listeners>
+
+    <test name="Create BillOfMaterialsMaster">
+        <classes>
+            <class name="menuItems.Production.masters.BillOfMaterialsMater"></class>
+        </classes>
+    </test>
+
+    <test name="Create ProductionBatchPoliciesMaster">
+        <classes>
+            <class name="menuItems.Production.masters.ProductionBatchPoliciesMaster"></class>
+        </classes>
+    </test>
+
+    <test name="Performing Assign StandardRates Transaction">
+        <classes>
+            <class name="menuItems.Production.transactions.AssignStandardRatesTransaction"></class>
+        </classes>
+    </test>
+
+    <test name="Performing ProductionOrder Transaction">
+        <classes>
+            <class name="menuItems.Production.transactions.ProductionOrdersTransaction"></class>
+        </classes>
+    </test>
+
+    <test name="Performing MaterialIssuesToProduction Transaction">
+        <classes>
+            <class name="menuItems.Production.transactions.MaterialIssuesToProductionTransaction"></class>
+        </classes>
+    </test>
+
+    <test name="Performing MaterialReturnsFromProduction Transaction">
+        <classes>
+            <class name="menuItems.Production.transactions.MaterialReturnsFromProductionTransaction"></class>
+        </classes>
+    </test>
+
+    <test name="Performing MaterialReceiptsFrom Production">
+        <classes>
+            <class name="menuItems.Production.transactions.MaterialReceiptFromProductionTransaction"></class>
+        </classes>
+    </test>
+
+    <test name="Performing CloseProductionOrder Transaction">
+        <classes>
+            <class name="menuItems.Production.transactions.CloseProductionOrderTransaction"></class>
+        </classes>
+    </test>
+
+    <test name="Performing MaterialIssuesAndReceiptsFromProduction Trasaction">
+        <classes>
+            <class name="menuItems.Production.transactions.MaterialIssuesAndReceiptsFromProductionTransaction"></class>
+        </classes>
+    </test>
+
+    <test name="Checking BillOfMaterialsReport">
+        <classes>
+            <class name="menuItems.Production.reports.BillOfMaterials"></class>
+        </classes>
+    </test>
+
+    <test name="Checking AssignStandardRateReport">
+        <classes>
+            <class name="menuItems.Production.reports.AssignStandardRatesReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking ProductionOrderReport">
+        <classes>
+            <class name="menuItems.Production.reports.ProductionOrdersReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking PendingProductionOrderReport">
+        <classes>
+            <class name="menuItems.Production.reports.PendingProductionOrderReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking MaterialIssuesToProductionReport">
+        <classes>
+            <class name="menuItems.Production.reports.MaterialIssuesToProductionReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking PendingMaterialIssuesToProductionReport">
+        <classes>
+            <class name="menuItems.Production.reports.PendingMaterialIssuesToProductionReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking MaterialReturnsFromProductionReport ">
+        <classes>
+            <class name="menuItems.Production.reports.MaterialReturnsFromProductionReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking MaterialReceiptsFromProductionReport ">
+        <classes>
+            <class name="menuItems.Production.reports.MaterialReceiptsFromProductionReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking PendingMaterialReceiptsFromProductionReport ">
+        <classes>
+            <class name="menuItems.Production.reports.PendingMaterialReceiptsFromProductionReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking CloseProductionOrderReport ">
+        <classes>
+            <class name="menuItems.Production.reports.CloseProductionOrderReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking MaterialIssuesAndReceiptsFromProductionReport ">
+        <classes>
+            <class name="menuItems.Production.reports.MaterialIssuesAndReceiptsFromProductionReport"></class>
+        </classes>
+    </test>
+
+</suite>

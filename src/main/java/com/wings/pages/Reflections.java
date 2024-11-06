@@ -1,17 +1,64 @@
 package com.wings.pages;
-import java.lang.reflect.Method;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Reflections {
+    public static void main(String args[]) {
 
-    public static void main(String[] args) {
-//        List<Class<?>> testClasses = findTestClassesUsingMethod(AppLogin.class, "singleUserLogin");
-//        System.out.println("TestNG classes using singleUserLogin:");
-//        for (Class<?> testClass : testClasses) {
-//            System.out.println(testClass.getName());
-        }
+
     }
+}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Class<?> getObj = Class.forName("Pages.Student");
+//////             System.out.println("Class Name : "+ getObj.getName());
+////             System.out.println("Simple Name : "+ getObj.getSimpleName());
+//Student studentObject = (Student) getObj.newInstance();
+//Method methods = getObj.getDeclaredMethod("showData",null);
+//            methods.setAccessible(true);
+//            methods.invoke(studentObject,null);
+//
+//        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+//        e.printStackTrace();
+//
+//        } catch (NoSuchMethodException e) {
+//        throw new RuntimeException(e);
+//        } catch (InvocationTargetException e) {
+//        throw new RuntimeException(e);
+//        }

@@ -1,0 +1,238 @@
+<suite name="Taxes Masters Transactions and Reports Suite">
+
+    <listeners>
+        <listener class-name="com.wings.utils.listener"></listener>
+    </listeners>
+
+    <test name="Crea teHsnCodesMaster">
+        <classes>
+            <class name="menuItems.Taxes.masters.GST.HsnCodesMaster"></class>
+        </classes>
+    </test>
+
+    <test name="Create GstRegistrationMaster">
+        <classes>
+            <class name="menuItems.Taxes.masters.GST.GstRegistrationMaster"></class>
+        </classes>
+    </test>
+
+    <test name="Create ConsignerMaster">
+        <classes>
+            <class name="menuItems.Taxes.masters.GST.ConsignerMaster"></class>
+        </classes>
+    </test>
+
+    <test name="Create EcommerceOperatorMaster">
+        <classes>
+            <class name="menuItems.Taxes.masters.GST.EcommerceOperatorMaster"></class>
+        </classes>
+    </test>
+
+    <test name="Create TdsAssesseeTypesMaster">
+        <classes>
+            <class name="menuItems.Taxes.masters.TDS.TdsAssesseeTypesMaster"></class>
+        </classes>
+    </test>
+
+    <test name="Create TdsSubTypesMaster">
+        <classes>
+            <class name="menuItems.Taxes.masters.TDS.TdsSubTypesMaster"></class>
+        </classes>
+    </test>
+
+    <test name="Create TdsTransactionNaturesMaster">
+        <classes>
+            <class name="menuItems.Taxes.masters.TDS.TdsTransactionNaturesMaster"></class>
+        </classes>
+    </test>
+
+    <test name="Create TcsAssesseeTypesMaster">
+        <classes>
+            <class name="menuItems.Taxes.masters.TCS.TcsAssesseeTypesMaster"></class>
+        </classes>
+    </test>
+
+    <test name="Create TcsSubTypesMaster">
+        <classes>
+            <class name="menuItems.Taxes.masters.TCS.TcsSubTypesMaster"></class>
+        </classes>
+    </test>
+
+        <test name="Create TcsTransactionNatureMaster">
+            <classes>
+                <class name="menuItems.Taxes.masters.TCS.TcsTransactionNatureMaster"></class>
+            </classes>
+        </test>
+
+<!-- masters completed -->
+
+    <test name="Performing Gstr1MonthEndTransaction">
+        <classes>
+            <class name="menuItems.Taxes.transactions.GST.Gstr1MonthEndTransaction"></class>
+        </classes>
+    </test>
+
+    <test name="Performing TdsOpeningBalencesTransaction">
+        <classes>
+            <class name="menuItems.Taxes.transactions.TDS.TdsOpeningBalencesTransaction"></class>
+        </classes>
+    </test>
+
+    <test name="Performing TdsPaymentsTransaction">
+        <classes>
+            <class name="menuItems.Taxes.transactions.TDS.TdsPaymentsTransaction"></class>
+        </classes>
+    </test>
+
+    <test name="Performing TcsOpeningBalancesTransaction">
+        <classes>
+            <class name="menuItems.Taxes.transactions.TCS.TcsOpeningBalancesTransaction"></class>
+        </classes>
+    </test>
+
+    <test name="Performing TcsPaymentsTransaction">
+        <classes>
+            <class name="menuItems.Taxes.transactions.TCS.TcsPaymentsTransaction"></class>
+        </classes>
+    </test>
+
+    <!-- Transactions complete -->
+    <test name="CreateGstr1MonthEndTransactionReport">
+        <classes>
+            <class name="menuItems.Taxes.reports.GST.Gstr1MonthEndTransactionReport"></class>
+        </classes>
+    </test>
+
+    <test name="CreateGstr1B2BReport">
+        <classes>
+            <class name="menuItems.Taxes.reports.GST.Gstr1B2BReport"></class>
+        </classes>
+    </test>
+
+    <test name="CreateGstr1B2CLReport">
+        <classes>
+            <class name="menuItems.Taxes.reports.GST.Gstr1B2CLReport"></class>
+        </classes>
+    </test>
+
+    <test name="CreateGstr1B2CSReport">
+        <classes>
+            <class name="menuItems.Taxes.reports.GST.Gstr1B2CSReport"></class>
+        </classes>
+    </test>
+
+    <test name="CreateGstr1CDNRReport">
+        <classes>
+            <class name="menuItems.Taxes.reports.GST.Gstr1CDNRReport"></class>
+        </classes>
+    </test>
+
+    <test name="CreateGstr1CDNURReport">
+        <classes>
+            <class name="menuItems.Taxes.reports.GST.Gstr1CDNURReport"></class>
+        </classes>
+    </test>
+
+    <test name="CreateGstr1EXPReport">
+        <classes>
+            <class name="menuItems.Taxes.reports.GST.Gstr1EXPReport"></class>
+        </classes>
+    </test>
+
+    <test name="CreateGstr1EXEMPReport">
+        <classes>
+            <class name="menuItems.Taxes.reports.GST.Gstr1EXEMPReport"></class>
+        </classes>
+    </test>
+
+    <test name="CreateGstr1HSNReport">
+        <classes>
+            <class name="menuItems.Taxes.reports.GST.Gstr1HSNReport"></class>
+        </classes>
+    </test>
+
+    <test name="CreateGstr1DOCSReport">
+        <classes>
+            <class name="menuItems.Taxes.reports.GST.Gstr1DOCSReport"></class>
+        </classes>
+    </test>
+
+    <test name="CreateGstOutPutReport">
+        <classes>
+            <class name="menuItems.Taxes.reports.GST.GstOutPutReport"></class>
+        </classes>
+    </test>
+
+    <test name="CreateGstInputReport">
+        <classes>
+            <class name="menuItems.Taxes.reports.GST.GstInputReport"></class>
+        </classes>
+    </test>
+
+    <test name="CreateGst3BReport">
+        <classes>
+            <class name="menuItems.Taxes.reports.GST.Gst3BReport"></class>
+        </classes>
+    </test>
+
+    <test name="CreateTdsOpeningBalencesReport">
+        <classes>
+            <class name="menuItems.Taxes.reports.TDS.TdsOpeningBalencesReport"></class>
+        </classes>
+    </test>
+
+    <test name="CreateTdsPaymentsReport">
+        <classes>
+            <class name="menuItems.Taxes.reports.TDS.TdsPaymentsReport"></class>
+        </classes>
+    </test>
+
+    <test name="CreatePendingTdsPaymentsReport">
+        <classes>
+            <class name="menuItems.Taxes.reports.TDS.PendingTdsPaymentsReport"></class>
+        </classes>
+    </test>
+
+    <test name="CreateTdsDeductedByUsReport">
+        <classes>
+            <class name="menuItems.Taxes.reports.TDS.TdsDeductedByUsReport"></class>
+        </classes>
+    </test>
+
+    <test name="CreateTdsDeductedByOthersReport">
+        <classes>
+            <class name="menuItems.Taxes.reports.TDS.TdsDeductedByOthersReport"></class>
+        </classes>
+    </test>
+
+    <test name="CreateTcsOpeningBalancesReport">
+        <classes>
+            <class name="menuItems.Taxes.reports.TCS.TcsOpeningBalancesReport"></class>
+        </classes>
+    </test>
+
+    <test name="CreateTcsPaymentsReport">
+        <classes>
+            <class name="menuItems.Taxes.reports.TCS.TcsPaymentsReport"></class>
+        </classes>
+    </test>
+
+    <test name="CreatePendingTcsPaymentsReports">
+        <classes>
+            <class name="menuItems.Taxes.reports.TCS.PendingTcsPaymentsReports"></class>
+        </classes>
+    </test>
+
+    <test name="CreateTcsPurchaseReport">
+        <classes>
+            <class name="menuItems.Taxes.reports.TCS.TcsPurchaseReport"></class>
+        </classes>
+    </test>
+
+    <test name="CreateTcsSalesReport">
+        <classes>
+            <class name="menuItems.Taxes.reports.TCS.TcsSalesReport"></class>
+        </classes>
+    </test>
+<!-- Reports completed -->
+</suite>

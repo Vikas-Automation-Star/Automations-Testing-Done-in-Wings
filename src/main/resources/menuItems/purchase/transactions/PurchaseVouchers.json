@@ -1,0 +1,18 @@
+{
+  "branch": "Hyderabad",
+  "currency": "INR",
+  "partyCode":"200138",
+  "Consignor": "NEW CONSIGNOR",
+  "PurchaseA/cCode": "Purchase Account",
+  "billNo": "12456",
+ "billDate": "23-09-2024",
+  "batchPolicy": "New Purchase Batch Policy19",
+  "tcsTranNature": "New TaxCollectedSource Transaction Nature40",
+  "tdsTranNature": "TaxDeductionNature36",
+  "priceList": "purchase pricelist",
+  "executive": "Executive3",
+  "productCode": "Tractors",
+  "quantity": "1000",
+  "mrpRate":"50",
+  "unitRate": "100"
+}

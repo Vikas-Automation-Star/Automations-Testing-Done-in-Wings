@@ -1,0 +1,13 @@
+{
+  "branch": "Hyderabad",
+  "executive": "Executive3",
+  "Pcode": "20012",
+  "tdsAssesseType": "New TaxDeductedSource69",
+  "TdsTransactionNature": "TaxDeductionNature89",
+  "tdsSubType": "New Sub TaxDeductedSource38",
+  "tdsAccount": "TDS Collected Account",
+  "tdsAssesableValue":"1000",
+  "TdsRate": "2",
+  "amount": "1000"
+
+}

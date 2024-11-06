@@ -377,7 +377,6 @@ public class Transaction {
 
     }
 
-
     public void closeTransaction (String transaction ){
         common.clickElement("xpath", "//TabItem[@Name='" + transaction + "']/Button[@Name='Close']");
     }
@@ -425,7 +424,6 @@ public class Transaction {
             Assert.fail("wrong input");
         }
     }
-
 
     public void sliderHandle () {
         int offset = 550;
@@ -496,8 +494,7 @@ public class Transaction {
     }
 
 
-    public void checkBoxSelectionBillsPayable (String locatorType, String rowLocator, String voucherLocator, String
-            checkBoxLocator){
+    public void checkBoxSelectionBillsPayable (String locatorType, String rowLocator, String voucherLocator, String checkBoxLocator){
         List<WebElement> rows = common.findWebElements(locatorType, rowLocator);
         System.out.println("Row count :" + rows.size());
         for (WebElement row : rows) {
