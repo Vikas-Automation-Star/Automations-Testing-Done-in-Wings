@@ -24,6 +24,6 @@ public class BRSReportCode extends Report {
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
 //        super.bulkVerifyReport("PREC 2");
-        super.closeReport("BRS");
+        closeReport("BRS");
     }
 }

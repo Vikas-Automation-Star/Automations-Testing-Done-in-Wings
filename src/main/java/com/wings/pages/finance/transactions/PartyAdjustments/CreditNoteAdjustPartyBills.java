@@ -28,40 +28,37 @@ public class CreditNoteAdjustPartyBills extends Transaction{
             common.clickElement("name", "Party Adjustments");
             common.clickElement("xpath", "//MenuItem[@Name='Credit Note']");
             Thread.sleep(1000);
-            super.lastTransactionName();
+            lastTransactionName();
+            common.clickElement("xpath","//Edit[@Name='Voucher Type']");
+            selectOptionalMaster(common.getData(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']");
             common.clickElement("xpath", "//Edit[@Name='Branch *']");
-            super.selectAndValidateData(common.getData(dataFile, "branch"),"xpath","//Edit[@Name='Branch *']");
+            selectAndValidateData(common.getData(dataFile, "branch"),"xpath","//Edit[@Name='Branch *']");
             common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
-            super.selectAndValidateData(common.getData(dataFile, "transaction"),"xpath","//Edit[@Name='Trans Currency *']");
-
+            selectAndValidateData(common.getData(dataFile, "transaction"),"xpath","//Edit[@Name='Trans Currency *']");
             common.clickElement("xpath", "//Edit[@Name='Party Code']");
-            super.selectAndValidateData(common.getData(dataFile, "partyCode"),"xpath","//Edit[@Name='Party Code']");
+            selectAndValidateData(common.getData(dataFile, "partyCode"),"xpath","//Edit[@Name='Party Code']");
             common.clickElement("xpath", "//Edit[@Name='Party Account *']");
             Thread.sleep(2000);
             common.clickElement("xpath","//Edit[@Name='Invoice Type']/Button[@Name='Open']");
-            super.selectDropDown("Regular");
+            selectDropDown("Regular");
             Thread.sleep(10000);
             common.clickElement("xpath", "//Edit[@Name='Executive *']");
-            super.selectAndValidateData(common.getData(dataFile, "executive"),"xpath","//Edit[@Name='Executive *']");
-
+            selectAndValidateData(common.getData(dataFile, "executive"),"xpath","//Edit[@Name='Executive *']");
+            common.clickElement("xpath","//Edit[@Name='Remarks']");
+            selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
             //f3-accounts
-            super.enterData("xpath","//Edit[@Name='Account Code Row 0, Not sorted.']",dataFile,"accountCode");
-            super.enterData("xpath","//Edit[@Name='Amount * Row 0, Not sorted.']",dataFile,"amount");
+            enterData("xpath","//Edit[@Name='Account Code Row 0, Not sorted.']",dataFile,"accountCode");
+            enterData("xpath","//Edit[@Name='Amount * Row 0, Not sorted.']",dataFile,"amount");
             //validate account code here
-            super.validateElements("xpath","//Edit[@Name='Account Code Row 0, Not sorted.']", common.getData(dataFile,"accountCode"));
+            validateElements("xpath","//Edit[@Name='Account Code Row 0, Not sorted.']", common.getData(dataFile,"accountCode"));
             common.clickElement("xpath","//CheckBox[@Name='Deduct TDS Row 0']");
-            super.enterDataAndValidate("xpath","//Edit[@Name='TDS Transaction Nature Row 0, Not sorted.']",dataFile,"TDSNature");
-
+            enterDataAndValidate("xpath","//Edit[@Name='TDS Transaction Nature Row 0, Not sorted.']",dataFile,"TDSNature");
             //f5-bills receivable
-            common.clickElement("xpath","//TabItem[@Name='  F5 Bills Receivable  ']");
-            WebElement element= common.findWebElement("xpath","//Edit[@Name=' Row 0, Not sorted.']");
-            Actions actions=new Actions(driver);
-            actions.contextClick(element).perform();
-            common.clickElement("xpath","//MenuItem[@Name='Delete Invalid Rows']");
-//            super.checkBoxSelection("xpath","//Table[@Name='BillsReceivable']/*[starts-with(@Name,'Row')]","//Edit[starts-with(@Name,'Towards VNo *')]","//CheckBox[starts-with(@Name,'Adjust Row')]");
+            navigateToBillsReceivablesTab();
+            common.deleteInvalidRows();
             //save
-            super.transactionSave();
-            super.lastTransactionName();
+            transactionSave();
+            lastTransactionName();
 //            super.transactionClose(common.getData(dataFile,"close"));
         }
     }

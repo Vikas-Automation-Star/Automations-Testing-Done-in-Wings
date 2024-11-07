@@ -25,6 +25,6 @@ public class CreditNoteReportCode extends Report {
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
 //        super.bulkVerifyReport("CR 1");
-        super.closeReport("Credit Note");
+        closeReport("Credit Note");
     }
 }

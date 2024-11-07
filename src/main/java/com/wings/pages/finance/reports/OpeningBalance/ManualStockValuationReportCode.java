@@ -22,7 +22,7 @@ public class ManualStockValuationReportCode extends Report {
         Thread.sleep(1000);
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
-        super.bulkVerifyReport("MSV 1");
-        super.closeReport("Manual Stock Valuation");
+        bulkVerifyReport("MSV 1");
+        closeReport("Manual Stock Valuation");
     }
 }

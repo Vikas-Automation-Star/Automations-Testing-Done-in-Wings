@@ -1,6 +1,5 @@
 package menuItems.company.masters;
 
-import com.wings.pages.company.masters.Project;
 import com.wings.pages.company.masters.Terms;
 import com.wings.pages.AppLogin;
 import io.appium.java_client.windows.WindowsDriver;
@@ -15,7 +14,6 @@ import java.io.IOException;
 public class TermsMaster {
     WindowsDriver driver;
     AppLogin appLogin=new AppLogin();
-    Project project;
     String file="./src/main/resources/MenuItems/Company/Masters/TermsData.json";
 
     @BeforeTest

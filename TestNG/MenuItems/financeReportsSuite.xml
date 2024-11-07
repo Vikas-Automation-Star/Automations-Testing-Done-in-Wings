@@ -57,7 +57,7 @@
             <class name="menuItems.finance.reports.PendingBills.PendingBillsForSuppliersReport"/>
         </classes>
     </test>
------------------
+ -----------------
     <test name="Financial Statements - Trial Balance">
         <classes>
             <class name="menuItems.finance.reports.FinancialStatements.TrialBalanceReport"/>
@@ -153,7 +153,7 @@
             <class name="menuItems.finance.reports.MasterInfo.SuppliersReport"/>
         </classes>
     </test>
------------
+ -----------
     <test name="Ledger - ledger">
         <classes>
             <class name="menuItems.finance.reports.Ledger.LedgerReport"/>

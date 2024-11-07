@@ -24,7 +24,7 @@ public class ReceiptFromPartyReportCode extends Report {
         Thread.sleep(1000);
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
-        super.bulkVerifyReport("PREC 2");
-        super.closeReport("Receipts from Parties");
+        bulkVerifyReport("PREC 2");
+        closeReport("Receipts from Parties");
     }
 }

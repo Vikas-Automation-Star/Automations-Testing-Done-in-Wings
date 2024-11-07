@@ -24,7 +24,6 @@ public class DeliveriesAgainstOrdersTransaction {
     public void deliveriesAgainstOrders() throws IOException, InterruptedException, ParseException {
         DeliveriesAgainstOrders deliveriesAgainstOrders=new DeliveriesAgainstOrders(driver,dataFile);
         deliveriesAgainstOrders.deliveriesAgainstOrders();
-
     }
 
     @AfterTest

@@ -41,7 +41,7 @@ public class BankReconciliation extends Transaction {
         common.clickElement("xpath", "//Edit[@Name='Executive *']");
         selectAndValidateData(common.getData(dataFile, "executive"),"xpath", "//Edit[@Name='Executive *']");
         common.clickElement("xpath","//Edit[@Name='Remarks']");
-        super.selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
+        selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
         Thread.sleep(3000);
         common.sliderHandling("xpath","//Thumb[@Name='Position']",0,-150);
         //f3-accounts
@@ -50,9 +50,5 @@ public class BankReconciliation extends Transaction {
         //save
         transactionSave();
         lastTransactionName();
-        transactionClose("Bank Reconciliation");
-//        super.checkBoxSelection("xpath","//Table[@Name='Accounts']/*[starts-with(@Name,'Row')]","//Edit[starts-with(@Name,'Towards VNo *')]","//CheckBox[starts-with(@Name,'Clearing Status *')]");
-
-
     }
 }

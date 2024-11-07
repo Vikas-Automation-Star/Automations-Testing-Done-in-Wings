@@ -25,6 +25,6 @@ public class ProfitandLossManualStockReportCode extends Report {
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1000);
 //        super.bulkVerifyReport("ORFCC 2");
-        super.closeReport("Profit and Loss Manual Stock");
+        closeReport("Profit and Loss Manual Stock");
     }
 }

@@ -23,7 +23,7 @@ public class InterBankFundTransfersReportCode extends Report {
         Thread.sleep(1000);
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
-        super.bulkVerifyReport("BFT 2");
-        super.closeReport("Inter Bank Fund Transfers");
+        bulkVerifyReport("BFT 2");
+        closeReport("Inter Bank Fund Transfers");
     }
 }

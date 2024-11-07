@@ -24,6 +24,6 @@ public class CashFlowReportCode extends Report {
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
 //        super.bulkVerifyReport("ORFCC 2");
-        super.closeReport("Cash Flow");
+        closeReport("Cash Flow");
     }
 }

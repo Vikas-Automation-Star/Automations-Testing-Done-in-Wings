@@ -24,6 +24,6 @@ public class BankReconciliationReportCode extends Report {
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
 //        super.bulkVerifyReport("PREC 2");
-        super.closeReport("Bank Reconciliation");
+        closeReport("Bank Reconciliation");
     }
 }

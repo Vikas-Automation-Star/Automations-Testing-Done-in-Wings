@@ -24,8 +24,8 @@ public class CashReceiptsReportCode extends Report {
         Thread.sleep(1000);
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
-        super.bulkVerifyReport("CR 1");
-        super.closeReport("Cash Receipts");
+        bulkVerifyReport("CR 1");
+        closeReport("Cash Receipts");
     }
 
 }

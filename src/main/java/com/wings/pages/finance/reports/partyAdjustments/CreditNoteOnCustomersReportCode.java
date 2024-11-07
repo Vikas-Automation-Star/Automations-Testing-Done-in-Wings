@@ -24,7 +24,7 @@ public class CreditNoteOnCustomersReportCode extends Report {
         Thread.sleep(1000);
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
-        super.bulkVerifyReport("CNOC 1");
-        super.closeReport("Credit Note on Customers");
+        bulkVerifyReport("CNOC 1");
+        closeReport("Credit Note on Customers");
     }
 }

@@ -66,6 +66,6 @@ public class CreditCardReceipts extends Transaction {
         //save
         transactionSave();
         lastTransactionName();
-        transactionClose(common.getData(dataFile,"close"));
+//        transactionClose(common.getData(dataFile,"close"));
     }
 }

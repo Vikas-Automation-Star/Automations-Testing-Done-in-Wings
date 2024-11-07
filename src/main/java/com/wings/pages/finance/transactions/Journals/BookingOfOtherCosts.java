@@ -28,48 +28,53 @@ public class BookingOfOtherCosts extends Transaction {
             common.clickElement("name", "Journals");
             common.clickElement("xpath", "//MenuItem[@Name='Booking Of Other Costs']");
             Thread.sleep(1000);
-            super.lastTransactionName();
+            lastTransactionName();
+            common.clickElement("xpath","//Edit[@Name='Voucher Type']");
+            selectOptionalMaster(common.getData(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']");
             common.clickElement("xpath", "//Edit[@Name='Branch *']");
-            super.selectMaster(common.getData(dataFile, "branch"));
+            selectAndValidateData(common.getData(dataFile, "branch"),"xpath", "//Edit[@Name='Branch *']");
             common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
-            super.selectMaster(common.getData(dataFile, "transaction"));
+            selectAndValidateData(common.getData(dataFile, "transaction"),"xpath", "//Edit[@Name='Trans Currency *']");
             common.clickElement("xpath","//Edit[@Name='Account Code']");
-            super.selectMaster(common.getData(dataFile,"accountCode"));
+            selectAndValidateData(common.getData(dataFile,"accountCode"),"xpath","//Edit[@Name='Account Code']");
             common.clickElement("xpath","//Edit[@Name='Account *']");
 
+            gstTransactionType("Registered Dealers");
 
-        List<WebElement> elementList = common.findWebElements("xpath", "//Table/*[@Name='Data Panel']/*/*[contains(@Name,'GST Transaction Type row')]");
-        System.out.println("Size :" + elementList.size());
-        for (WebElement i : elementList) {
-            System.out.println(i.getText());
-            if (i.getText().contains("Registered Dealers")) {
-                i.click();
-                i.sendKeys(Keys.LEFT, Keys.SPACE,Keys.ENTER,Keys.ENTER);
-            }
-        }
+
+//        List<WebElement> elementList = common.findWebElements("xpath", "//Table/*[@Name='Data Panel']/*/*[contains(@Name,'GST Transaction Type row')]");
+//        System.out.println("Size :" + elementList.size());
+//        for (WebElement i : elementList) {
+//            System.out.println(i.getText());
+//            if (i.getText().contains("Registered Dealers")) {
+//                i.click();
+//                i.sendKeys(Keys.LEFT, Keys.SPACE,Keys.ENTER,Keys.ENTER);
+//            }
+//        }
             common.inputText("xpath","//Edit[@Name='Supplier Bill No *']", common.getData(dataFile,"supplierBill"));
             common.inputText("xpath","//Edit[@Name='Supplier Bill Date *']", common.getData(dataFile,"billDate"));
 
             common.clickElement("xpath", "//Edit[@Name='Executive *']");
-            super.selectMaster(common.getData(dataFile, "executive"));
+            selectAndValidateData(common.getData(dataFile, "executive"),"xpath", "//Edit[@Name='Executive *']");
+            common.clickElement("xpath","//Edit[@Name='Remarks']");
+            selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
             //f3- accounts
-            super.enterData("xpath","//Edit[@Name='Account Code Row 0, Not sorted.']",dataFile,"accountCode2");
-            //f12-bills Payable
-            common.clickElement("xpath","//TabItem[@Name='  Ctrl-F7 Bills Receivable  ']");
+            enterData("xpath","//Edit[@Name='Account Code Row 0, Not sorted.']",dataFile,"accountCode2");
+            //f12-bills Receivable
+            navigateToBillsReceivablesTab();
             finalAmount= super.billsReceivable("xpath","//Table[@Name='BillsReceivable']/*[starts-with(@Name,'Row')]","//Edit[starts-with(@Name,'Towards VNo *')]","//CheckBox[starts-with(@Name,'Adjust Row')]","//Edit[starts-with(@Name,'Pending Amount * Row')]");
 
             //navigate back to accounts and enter data
-            common.clickElement("xpath","//TabItem[@Name='  F3 Accounts  ']");
+            navigateToAccountsTab();
             List<WebElement> amount = common.findWebElements("xpath", "//Edit[@Name='Amount * Row 0, Not sorted.']");
             System.out.println("Size :" + amount.size());
             for (WebElement i : amount) {
                 i.click();
                 i.sendKeys(String.valueOf(finalAmount), Keys.TAB);
             }
-
             //save
-            super.transactionSave();
-            super.lastTransactionName();
-            super.transactionClose(common.getData(dataFile,"close"));
+            transactionSave();
+            lastTransactionName();
+//            super.transactionClose(common.getData(dataFile,"close"));
         }
     }

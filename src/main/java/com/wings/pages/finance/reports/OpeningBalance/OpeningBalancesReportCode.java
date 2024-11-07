@@ -22,7 +22,7 @@ public class OpeningBalancesReportCode extends Report {
         Thread.sleep(1000);
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
-        super.bulkVerifyReport("OB 1");
-        super.closeReport("Opening Balances");
+        bulkVerifyReport("OB 1");
+        closeReport("Opening Balances");
     }
 }

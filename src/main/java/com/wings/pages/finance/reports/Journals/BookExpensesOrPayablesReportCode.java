@@ -23,7 +23,7 @@ public class BookExpensesOrPayablesReportCode extends Report {
         common.clickElement("xpath","//CheckBox[@Name='Detailed']");
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1000);
-        super.bulkVerifyReport("BEP 1");
-        super.closeReport("Book Expenses or Payables");
+        bulkVerifyReport("BEP 1");
+        closeReport("Book Expenses or Payables");
     }
 }

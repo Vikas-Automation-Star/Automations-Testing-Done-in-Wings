@@ -22,6 +22,6 @@ public class PendingDepositPostDatedChequesReportCode extends Report {
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
 //        super.bulkVerifyReport("CE 2");
-        super.closeReport("Pending Deposit Post Dated Cheques");
+        closeReport("Pending Deposit Post Dated Cheques");
     }
 }

@@ -24,6 +24,6 @@ public class FundsFlowReportCode extends Report {
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
 //        super.bulkVerifyReport("ORFCC 2");
-        super.closeReport("Funds Flow");
+        closeReport("Funds Flow");
     }
 }

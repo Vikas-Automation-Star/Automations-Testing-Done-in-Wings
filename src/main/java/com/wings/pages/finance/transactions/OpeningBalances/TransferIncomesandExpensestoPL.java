@@ -25,21 +25,19 @@ public class TransferIncomesandExpensestoPL extends Transaction {
         common.clickElement("name", "Opening Balances");
         common.clickElement("xpath", "//MenuItem[@Name='Transfer Incomes and Expenses to PL']");
         Thread.sleep(1000);
-        super.lastTransactionName();
+        lastTransactionName();
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        super.selectMaster(common.getData(dataFile, "branch"));
+        selectAndValidateData(common.getData(dataFile, "branch"),"xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Reserves And Surplus Account *']");
-        super.selectMaster(common.getData(dataFile, "reserves"));
+        selectAndValidateData(common.getData(dataFile, "reserves"),"xpath", "//Edit[@Name='Reserves And Surplus Account *']");
+        common.clickElement("xpath","//Edit[@Name='Remarks']");
+        selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
         //f5 - incomes
-        common.clickElement("xpath","//TabItem[@Name='  F5 Incomes  ']");
+        navigateToIncomesTab();
         //f8 summary
-        common.clickElement("xpath","//TabItem[@Name='  F8 Summary  ']");
-
+        navigateToSummaryTab();
         //save
-        super.transactionSave();
-        super.lastTransactionName();
-        super.transactionClose(common.getData(dataFile,"close"));
-
-
+        transactionSave();
+        lastTransactionName();
     }
 }

@@ -24,8 +24,8 @@ public class CashDepositAndWithdrawlsReportCode extends Report {
         Thread.sleep(1000);
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
-        super.bulkVerifyReport("CE 2");
-        super.closeReport("Cash Deposits and withdrawals");
+        bulkVerifyReport("CE 2");
+        closeReport("Cash Deposits and withdrawals");
     }
 
 }

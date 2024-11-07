@@ -23,7 +23,7 @@ public class OpeningReceiptsfromCreditCardCompaniesReportCode extends Report {
         common.clickElement("xpath","//CheckBox[@Name='Detailed']");
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
-        super.bulkVerifyReport("ORFCC 2");
-        super.closeReport("Opening Receipts from Credit Card Companies");
+        bulkVerifyReport("ORFCC 2");
+        closeReport("Opening Receipts from Credit Card Companies");
     }
 }

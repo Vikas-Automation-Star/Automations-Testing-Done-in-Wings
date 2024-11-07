@@ -25,6 +25,6 @@ public class BalanceSheetManualStockReportCode extends Report {
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
 //        super.bulkVerifyReport("ORFCC 2");
-        super.closeReport("Balance Sheet Manual Stock");
+        closeReport("Balance Sheet Manual Stock");
     }
 }

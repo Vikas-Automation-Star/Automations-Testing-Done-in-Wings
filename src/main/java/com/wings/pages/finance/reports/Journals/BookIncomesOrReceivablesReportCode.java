@@ -23,7 +23,7 @@ public class BookIncomesOrReceivablesReportCode extends Report {
         common.clickElement("xpath","//CheckBox[@Name='Detailed']");
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1000);
-        super.bulkVerifyReport("BIR 1");
-        super.closeReport("Book Incomes or Receivables");
+        bulkVerifyReport("BIR 1");
+        closeReport("Book Incomes or Receivables");
     }
 }

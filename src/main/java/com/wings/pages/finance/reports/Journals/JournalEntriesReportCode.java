@@ -22,7 +22,7 @@ public class JournalEntriesReportCode extends Report {
         Thread.sleep(1000);
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1000);
-        super.bulkVerifyReport("JE 3");
-        super.closeReport("Journal Entries");
+        bulkVerifyReport("JE 3");
+        closeReport("Journal Entries");
     }
 }

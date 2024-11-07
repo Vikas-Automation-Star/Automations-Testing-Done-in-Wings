@@ -66,8 +66,4 @@ public class AppLogin {
         common.clickElement("name","Exit");
         common.clickElement("name","Yes");
     }
-
-    public void singleUserlogin() {
-
-    }
 }
