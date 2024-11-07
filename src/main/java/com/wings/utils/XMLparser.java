@@ -1,4 +1,4 @@
-package com.wings.pages;
+package com.wings.utils;
 
 
 import org.w3c.dom.Document;
