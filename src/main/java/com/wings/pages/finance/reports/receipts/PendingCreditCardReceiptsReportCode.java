@@ -24,6 +24,6 @@ public class PendingCreditCardReceiptsReportCode extends Report {
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
 //        super.bulkVerifyReport("CR 1");
-        super.closeReport("Pending Credit Card Receipts");
+        closeReport("Pending Credit Card Receipts");
     }
 }

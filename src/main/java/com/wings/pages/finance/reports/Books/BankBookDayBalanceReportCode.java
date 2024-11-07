@@ -32,6 +32,6 @@ public class BankBookDayBalanceReportCode extends Report{
             common.clickElement("xpath","//Pane/Button[@Name='Submit']");
             Thread.sleep(1500);
 //        super.bulkVerifyReport("ORFCC 2");
-            super.closeReport("Bank Book [Day Balance]");
+            closeReport("Bank Book [Day Balance]");
         }
     }

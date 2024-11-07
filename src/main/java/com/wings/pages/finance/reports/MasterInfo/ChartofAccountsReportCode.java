@@ -21,6 +21,6 @@ public class ChartofAccountsReportCode extends Report {
         common.clickElement("xpath","//MenuItem[@Name='Chart of Accounts']");
         Thread.sleep(1500);
 //        super.bulkVerifyReport("ORFCC 2");
-        super.closeReport("Chart of Accounts");
+        closeReport("Chart of Accounts");
     }
 }

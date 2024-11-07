@@ -25,6 +25,6 @@ public class PendingBillsForSuppliersReportCode extends Report {
             common.clickElement("xpath","//Pane/Button[@Name='Submit']");
             Thread.sleep(1000);
 //        super.bulkVerifyReport("JE 3");
-            super.closeReport("Pending Bills For Suppliers");
+            closeReport("Pending Bills For Suppliers");
         }
 }

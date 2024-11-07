@@ -25,6 +25,6 @@ public class AccountBalances extends Report {
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
 //        Thread.sleep(1500);
 //        super.bulkVerifyReport("ILT 1");
-        super.closeReport("Account Balances");
+        closeReport("Account Balances");
     }
 }

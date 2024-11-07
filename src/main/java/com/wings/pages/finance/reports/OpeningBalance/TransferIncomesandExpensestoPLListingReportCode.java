@@ -23,7 +23,7 @@ public class TransferIncomesandExpensestoPLListingReportCode extends Report {
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
 //        super.bulkVerifyReport("TIE 1");
-        super.closeReport("Transfer Incomes and Expenses to PL Listing");
+        closeReport("Transfer Incomes and Expenses to PL Listing");
     }
 
 }

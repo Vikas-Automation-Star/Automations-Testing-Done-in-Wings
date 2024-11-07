@@ -23,6 +23,6 @@ public class PartyBillingAddresswithGSTRegDetailsReportCode extends Report {
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
 //        super.bulkVerifyReport("ORFCC 2");
-        super.closeReport("Party Billing Address with GST Reg Details");
+        closeReport("Party Billing Address with GST Reg Details");
     }
 }

@@ -25,7 +25,7 @@ public class DebitNoteReportCode extends Report {
         Thread.sleep(1000);
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
-        super.bulkVerifyReport("DN 4");
-        super.closeReport("Debit Note");
+        bulkVerifyReport("DN 4");
+        closeReport("Debit Note");
     }
 }

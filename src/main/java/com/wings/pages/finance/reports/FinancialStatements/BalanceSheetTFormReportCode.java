@@ -24,6 +24,6 @@ public class BalanceSheetTFormReportCode extends Report {
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
 //        super.bulkVerifyReport("ORFCC 2");
-        super.closeReport("Balance Sheet T-Form");
+        closeReport("Balance Sheet T-Form");
     }
 }

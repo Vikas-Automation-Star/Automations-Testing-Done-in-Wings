@@ -25,7 +25,7 @@ public class CreditNoteFromSupplier extends Transaction {
             dataFile = file;
         }
 
-        public void creditNoteFromSupplier() throws InterruptedException, IOException, ParseException, AWTException {
+        public void creditNoteFromSupplier() throws InterruptedException, IOException, ParseException {
             common.clickElement("name", "Finance");
             common.clickElement("name", "Party Adjustments");
             common.clickElement("xpath", "//MenuItem[@Name='Credit Note from Suppliers']");
@@ -68,7 +68,7 @@ public class CreditNoteFromSupplier extends Transaction {
             }
 
             //f8- summary
-            common.clickElement("xpath","//TabItem[@Name='  Ctrl-F8 Summary  ']");
+            navigateToSummaryTab();
             //check net and payable amount --net>payable
             WebElement netAmount= common.findWebElement("xpath","//Edit[@Name='Net Amount']");
             String net=netAmount.getText();

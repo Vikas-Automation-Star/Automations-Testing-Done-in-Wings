@@ -24,7 +24,7 @@ public class DepositPostDatedChequesReportCode extends Report {
         Thread.sleep(1000);
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
-        super.bulkVerifyReport("DPDC 3");
-        super.closeReport("Deposit Post Dated Cheques");
+        bulkVerifyReport("DPDC 3");
+        closeReport("Deposit Post Dated Cheques");
     }
 }

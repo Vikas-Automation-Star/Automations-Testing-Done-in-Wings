@@ -24,7 +24,7 @@ public class BankPaymentsReportCode extends Report {
         Thread.sleep(1000);
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
-        super.bulkVerifyReport("BP 1");
-        super.closeReport("Bank Payments");
+        bulkVerifyReport("BP 1");
+        closeReport("Bank Payments");
     }
 }

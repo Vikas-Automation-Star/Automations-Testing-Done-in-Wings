@@ -24,8 +24,8 @@ public class CreditCardReceiptsReportCode extends Report {
         Thread.sleep(1000);
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
-        super.bulkVerifyReport("CCR 2");
-        super.closeReport("Credit Card Receipts");
+        bulkVerifyReport("CCR 2");
+        closeReport("Credit Card Receipts");
     }
 
 }

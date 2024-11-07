@@ -24,7 +24,7 @@ public class CreditNoteFromSuppliersReportCode extends Report {
         Thread.sleep(1000);
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
-        super.bulkVerifyReport("CNFS 1");
-        super.closeReport("Credit Note from Suppliers");
+        bulkVerifyReport("CNFS 1");
+        closeReport("Credit Note from Suppliers");
     }
 }

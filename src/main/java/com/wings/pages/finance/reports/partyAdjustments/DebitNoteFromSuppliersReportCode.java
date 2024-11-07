@@ -24,7 +24,7 @@ public class DebitNoteFromSuppliersReportCode extends Report {
         Thread.sleep(1000);
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
-        super.bulkVerifyReport("DNFS 1");
-        super.closeReport("Debit Note from Suppliers");
+        bulkVerifyReport("DNFS 1");
+        closeReport("Debit Note from Suppliers");
     }
 }

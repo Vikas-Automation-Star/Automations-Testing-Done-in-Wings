@@ -23,8 +23,8 @@ public class PartyOpeningBalanceReportCode extends Report {
         Thread.sleep(1000);
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
-        super.bulkVerifyReport("POB 3");
-        super.closeReport("Party Opening Balances");
+        bulkVerifyReport("POB 3");
+        closeReport("Party Opening Balances");
     }
 
 }
