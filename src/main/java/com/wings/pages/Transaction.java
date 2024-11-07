@@ -239,6 +239,7 @@ public class Transaction {
                 System.out.println("element Selected :" + ele.getText());
             } else {
                 Assert.fail("pls select the element");
+                System.out.println("commit to bitbucket");
             }
         }
     }
@@ -250,7 +251,8 @@ public class Transaction {
             WebElement voucher = row.findElement(By.xpath(voucherLocator));
             String value = voucher.getText();
             System.out.println("Voucher value: " + value);
-            if (value == (null) || "(null)".equals(value)) {                // value.isEmpty() ||
+            if (value == (null) || "(null)".equals(value)) {
+                // value.isEmpty() ||
                 // If the value is null, throw an assertion error
                 if (rows.size() == 1) {
                     Assert.fail("No Accounts found in row: " + row.getAttribute("outerHTML"));
