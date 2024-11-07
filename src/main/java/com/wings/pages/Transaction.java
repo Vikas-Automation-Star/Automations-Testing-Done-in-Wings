@@ -249,12 +249,8 @@ public abstract class Transaction {
                 System.out.println("element Selected :" + ele.getText());
             } else {
                 Assert.fail("pls select the element");
-                System.out.println("commit to bitbucket");
             }
         }
-
-        System.out.println("just for sample");
-
     }
 
     public double singleCheckBoxSelection(String locatorType,String rowLocator,String voucherLocator){
