@@ -251,6 +251,9 @@ public abstract class Transaction {
                 Assert.fail("pls select the element");
             }
         }
+
+        System.out.println("just for sample");
+
     }
 
     public double singleCheckBoxSelection(String locatorType,String rowLocator,String voucherLocator){
