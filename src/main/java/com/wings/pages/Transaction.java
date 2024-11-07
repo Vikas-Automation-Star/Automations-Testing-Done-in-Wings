@@ -12,14 +12,23 @@ import com.wings.utils.Common;
 import java.io.IOException;
 import java.util.List;
 
-public class Transaction {
-    WindowsDriver driver;
-    Common common;
+public abstract class Transaction {
+    protected WindowsDriver driver;
+    protected Common common;
 
     public Transaction(WindowsDriver driver) {
         this.driver = driver;
-        common = new Common(this.driver);
+        this.common = new Common(this.driver);
     }
+//public class Transaction {
+//    WindowsDriver driver;
+//    Common common;
+//
+//    public Transaction(WindowsDriver driver) {
+//        this.driver = driver;
+//        common = new Common(this.driver);
+//    }
+
     public void selectMaster(String transaction) {
         List<WebElement> elementList = common.findWebElements("xpath", "//Table[@Name='Lookup']/*/*[contains(@Name,'Master Row')]");
         System.out.println("Size :" + elementList.size());

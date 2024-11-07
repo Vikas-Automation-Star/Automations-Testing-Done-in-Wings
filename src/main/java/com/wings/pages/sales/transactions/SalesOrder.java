@@ -10,15 +10,20 @@ import com.wings.utils.Common;
 
 import java.io.IOException;
 
-public class SalesOrder extends SalesOrdersBaseClass {
-        WindowsDriver driver;
-        Common common;
-        String dataFile;
+//public class SalesOrder extends SalesOrdersBaseClass {
+//        WindowsDriver driver;
+//        Common common;
+//        String dataFile;
+//
+//        public SalesOrder(WindowsDriver driver, String file) {
+//            super(driver,file);
+//            common = new Common(this.driver = driver);
+//            dataFile = file;
+//        }
+    public class SalesOrder extends SalesOrdersBaseClass {
 
         public SalesOrder(WindowsDriver driver, String file) {
-            super(driver,file);
-            common = new Common(this.driver = driver);
-            dataFile = file;
+            super(driver, file);
         }
 
         public void salesOrder() throws InterruptedException, IOException, ParseException {

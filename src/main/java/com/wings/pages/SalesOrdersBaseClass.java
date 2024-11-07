@@ -10,17 +10,24 @@ import com.wings.utils.Common;
 
 import java.io.IOException;
 
-public class SalesOrdersBaseClass extends Transaction{
-    WindowsDriver baseClassdriver;
-    Common common;
-    String dataFile;
+//public class SalesOrdersBaseClass extends Transaction{
+//    WindowsDriver baseClassdriver;
+//    Common common;
+//    String dataFile;
+//
+//    public SalesOrdersBaseClass(WindowsDriver driver,String file){
+//        super(driver);
+//        baseClassdriver=driver;
+//        common=new Common(baseClassdriver);
+//        dataFile=file;
+//    }
+    public class SalesOrdersBaseClass extends Transaction {
+        protected String dataFile;
 
-    public SalesOrdersBaseClass(WindowsDriver driver,String file){
-        super(driver);
-        baseClassdriver=driver;
-        common=new Common(baseClassdriver);
-        dataFile=file;
-    }
+        public SalesOrdersBaseClass(WindowsDriver driver, String file) {
+            super(driver);
+            this.dataFile = file;
+        }
 
     public void voucherType() throws IOException, ParseException {
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");
