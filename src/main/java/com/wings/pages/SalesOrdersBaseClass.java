@@ -21,17 +21,17 @@ import java.io.IOException;
 //        common=new Common(baseClassdriver);
 //        dataFile=file;
 //    }
-    public class SalesOrdersBaseClass extends Transaction {
-        protected String dataFile;
+public class SalesOrdersBaseClass extends Transaction {
+    protected String dataFile;
 
-        public SalesOrdersBaseClass(WindowsDriver driver, String file) {
-            super(driver);
-            this.dataFile = file;
-        }
+    public SalesOrdersBaseClass(WindowsDriver driver, String file) {
+        super(driver);
+        this.dataFile = file;
+    }
 
     public void voucherType() throws IOException, ParseException {
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");
-            super.selectOptionalMaster(common.getData(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']");
+        super.selectOptionalMaster(common.getData(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']");
     }
 
     public void branch_baseClass() throws IOException, ParseException {

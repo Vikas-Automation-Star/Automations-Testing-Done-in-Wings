@@ -14,7 +14,9 @@ import java.io.File;
 import java.io.IOException;
 
 public class XMLparser {
+
     public static void main(String args[])  {
+
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {
             // Create a document builder

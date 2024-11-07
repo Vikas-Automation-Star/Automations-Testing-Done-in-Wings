@@ -75,5 +75,6 @@ public class Locations extends Masters {
         super.saveMaster();
         super.closeMaster("Locations");
         System.out.println("Locations created successfully");
+        Thread.sleep(2000);
     }
 }

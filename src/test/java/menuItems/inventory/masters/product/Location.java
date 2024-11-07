@@ -29,6 +29,6 @@ public class Location {
 
     @AfterTest
     public void afterTest() {
-//        appLogin.logout();
+        appLogin.logout();
     }
 }
