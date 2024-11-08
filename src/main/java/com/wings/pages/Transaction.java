@@ -188,7 +188,7 @@ public abstract class Transaction {
             System.out.println("successfully selected/opened:- " + element.getText());
 
         } else {
-            Assert.fail(element.getText() + "is not seleced");
+            Assert.fail(element.getText() + "is not selected");
         }
     }
 
