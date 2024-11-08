@@ -9,7 +9,7 @@ public class ReadDataFromExcel {
 
     static String file = "./src/main/resources/ExcelData.xlsx";
 
-    public String readExcel(String filePath, String sheetName, String key) throws IOException {
+    public String readExcel(String filePath, String sheetName) throws IOException {
         FileInputStream fis = new FileInputStream(new File(filePath));
         XSSFWorkbook workbook = new XSSFWorkbook(fis);
         XSSFSheet sheet = workbook.getSheet(sheetName);
@@ -21,6 +21,6 @@ public class ReadDataFromExcel {
 
     public static void main(String[] args) throws IOException {
         ReadDataFromExcel read = new ReadDataFromExcel();
-        System.out.println(read.readExcel(file, "Credentials", "Password"));
+        System.out.println(read.readExcel(file, "Credentials"));
     }
 }

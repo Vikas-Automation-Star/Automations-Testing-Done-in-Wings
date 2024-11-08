@@ -55,7 +55,6 @@ public class XMLparser {
                             System.out.println("Finished-Time :->" + testMethodElement.getAttribute("finished-at"));
                             System.out.println("Duration :->" + testMethodElement.getAttribute("duration-ms"));
                             System.out.println("Status :->" + testMethodElement.getAttribute("status"));
-                            System.out.println("commit to Bitbucket");
                         }
                     }
                 }
