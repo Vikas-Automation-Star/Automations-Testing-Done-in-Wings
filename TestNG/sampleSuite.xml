@@ -1,0 +1,20 @@
+<suite name="Sample suite">
+    <listeners>
+        <listener class-name="com.wings.utils.listener"/>
+    </listeners>
+    <test name="Test 1">
+        <classes>
+            <class name="util.SampleTest1"/>
+        </classes>
+    </test>
+    <test name="Test 2">
+        <classes>
+            <class name="util.SampleTest2"/>
+        </classes>
+    </test>
+    <test name="Test 3">
+        <classes>
+            <class name="util.SampleTest3"/>
+        </classes>
+    </test>
+</suite>

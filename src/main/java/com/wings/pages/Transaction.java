@@ -372,11 +372,6 @@ public abstract class Transaction {
     public void navigateToUnclearedPayments(){
         common.clickElement("xpath","//TabItem[contains(@Name,'Uncleared Payments')]");
     }
-
-
-
-
-
     public void transactionSave() throws InterruptedException {
         common.clickElement("xpath","//Button[@Name='Save']");
         common.clickElement("xpath","//Button[@Name='Yes']");
@@ -390,15 +385,27 @@ public abstract class Transaction {
         common.clickElement("xpath", "//TabItem[@Name='"+ screenName +"']/Button[@Name='Close']");
 
     }
-
     public void closeTransaction (String transaction ){
         common.clickElement("xpath", "//TabItem[@Name='" + transaction + "']/Button[@Name='Close']");
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public void oldTTransaction () {
         System.out.println("Recent Transaction Id :" + common.findWebElement("xpath", "//Text[@Name='Last Saved :']/following-sibling::Text").getAttribute("Name"));
     }
-
     public void newTransaction () {
         System.out.println("New Transaction ID  :" + common.findWebElement("xpath", "//Text[@Name='Last Saved :']/following-sibling::Text").getAttribute("Name"));
     }
@@ -472,13 +479,13 @@ public abstract class Transaction {
         }
     }
 
-
     public void generalInfoSliderHandle () {
         int offset = 800;
         WebElement slider = common.findWebElement("xpath", "//ScrollBar[@Name='Horizontal']/Thumb[@Name='Position']");
         Actions actions = new Actions(driver);
         actions.clickAndHold(slider).moveByOffset(offset, 0).release().perform();
     }
+
     public void genaralInfoNegativeSliderHandle () {
         int offset = -500;
         WebElement slider = common.findWebElement("xpath", "//ScrollBar[@Name='Horizontal']/Thumb[@Name='Position']");
@@ -506,8 +513,6 @@ public abstract class Transaction {
             }
         }
     }
-
-
     public void checkBoxSelectionBillsPayable (String locatorType, String rowLocator, String voucherLocator, String checkBoxLocator){
         List<WebElement> rows = common.findWebElements(locatorType, rowLocator);
         System.out.println("Row count :" + rows.size());
