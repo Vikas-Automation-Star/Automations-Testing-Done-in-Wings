@@ -2,6 +2,7 @@ package com.wings.pages.inventory.masters.product;
 
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import com.wings.pages.Masters;
@@ -40,7 +41,7 @@ public class Locations extends Masters {
         common.inputAndVerify("xpath","//Edit[@Name='ZIP/PostalCode']", common.getData(filepath,"zip"));
         Thread.sleep(5000);
         common.clickElement("xpath","//Pane[@Name='AddressAndContactDetails']/Pane[@Name='Address and Contact Details']");
-        List<WebElement> button=  common.findWebElements("xpath","//Pane[@Name='AddressAndContactDetails']/Pane[@Name='Address and Contact Details']/Button[@Name='...']");
+        List<WebElement> button =  common.findWebElements("xpath","//Pane[@Name='AddressAndContactDetails']/Pane[@Name='Address and Contact Details']/Button[@Name='...']");
         System.out.println("button size:-"+button.size());
         button.get(0).click();
         Thread.sleep(1000);
@@ -50,15 +51,13 @@ public class Locations extends Masters {
         common.inputAndVerify("xpath","//Edit[@Name='Address 3']", common.getData(filepath,"address3"));
         common.inputAndVerify("xpath","//Edit[@Name='City']", common.getData(filepath,"city"));
         common.inputAndVerify("xpath","//Edit[@Name='State']", common.getData(filepath,"state"));
-        common.inputAndVerify("xpath","//Edit[@Name='Country']", common.getData(filepath,"country"));
-        Robot robot=new Robot();
-        robot.keyPress(KeyEvent.VK_DOWN);
-        robot.keyRelease(KeyEvent.VK_DOWN);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-        Thread.sleep(1500);
+        WebElement country= common.findWebElement("xpath","//Edit[@Name='Country']");
+        country.clear();
+        country.sendKeys(common.getData(filepath,"country"), Keys.ENTER);
+        Thread.sleep(3000);
         common.clickElement("xpath","//Edit[@Name='Zip']");
-        common.inputAndVerify("xpath","//Edit[@Name='Zip']", common.getData(filepath,"zip"));
+        common.clickElement("xpath","//Edit[@Name='Zip']");
+        common.inputAndVerify("xpath","//Edit[@Name='Zip']", common.getData(filepath,"Zip"));
         common.inputAndVerify("xpath","//Edit[@Name='Telephones 1']",common.getData(filepath,"tel1"));
         common.inputAndVerify("xpath","//Edit[@Name='Telephones 2']",common.getData(filepath,"tel2"));
         common.inputAndVerify("xpath","//Edit[@Name='Telephones 3']",common.getData(filepath,"tel3"));
