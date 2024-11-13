@@ -27,9 +27,9 @@ public class PaymentToPartiesTransaction {
         paymentToParties.paymentToParty();
     }
 
-//    @AfterTest
-//    public void afterTest(){
-//        appLogin.logout();
-//    }
+    @AfterTest
+    public void afterTest(){
+        appLogin.logout();
+    }
 
 }

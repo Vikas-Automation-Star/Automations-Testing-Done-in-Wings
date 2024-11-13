@@ -35,7 +35,7 @@ public class TLSEmail {
         };
         Session session = Session.getInstance(props, auth);
 
-        EmailUtil.sendEmail(session, toEmail,"Production Sanity Test Automation Execution Report", "TLSEmail Testing Body");
+        EmailUtil.sendEmail(session, toEmail, "TLSEmail Testing Body");
 
     }
 

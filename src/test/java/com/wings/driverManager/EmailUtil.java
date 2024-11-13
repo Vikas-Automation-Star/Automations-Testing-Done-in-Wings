@@ -23,15 +23,15 @@ public class EmailUtil {
      * Utility method to send simple HTML email
      * @param session
      * @param toEmail
-     * @param subject
-     * @param body
+     * @param path
      */
-    public static void sendEmail(Session session, String toEmail, String subject, String body){
+
+    public static void sendEmail(Session session, String toEmail,  String path){
         try
         {
             Multipart multipart = new MimeMultipart();
             MimeBodyPart messageBodyPart = new MimeBodyPart();
-            DataSource source = new FileDataSource("C://Users//Manoj//IdeaProjects//WingsDemo//mailTemplates//execution.html");
+            DataSource source = new FileDataSource(path);
             messageBodyPart.setDataHandler(new DataHandler(source));
             //messageBodyPart.setFileName(attachmentName);
             multipart.addBodyPart(messageBodyPart);
@@ -46,7 +46,7 @@ public class EmailUtil {
 
             //msg.setReplyTo(InternetAddress.parse("no_reply@example.com", false));
 
-            msg.setSubject(subject, "UTF-8");
+            msg.setSubject("Test Automation Execution Report", "UTF-8");
 
             //msg.setText(body, "UTF-8");
             msg.setContent(multipart);

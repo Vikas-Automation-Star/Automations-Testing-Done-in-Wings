@@ -39,6 +39,7 @@ public class LedgerReportCode extends Report {
                     Thread.sleep(1500); // Adjusted sleep time
                     i.click();
                     i.sendKeys(Keys.ENTER);
+
                     break;
                 } else {
                     i.sendKeys(Keys.DOWN);

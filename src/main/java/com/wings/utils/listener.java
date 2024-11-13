@@ -139,6 +139,7 @@ public class listener implements ITestListener,ISuiteListener,IExecutionListener
     @Override
     public void onFinish(ISuite suite) {
         suiteTotalTest = suite.getResults().size();
+//        suite.getXmlSuite()
 
         for (ISuiteResult sr : suite.getResults().values()) {
             tc = sr.getTestContext();
