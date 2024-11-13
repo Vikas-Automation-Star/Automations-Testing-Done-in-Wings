@@ -3,61 +3,61 @@
     <listeners>
         <listener class-name="com.wings.utils.listener"/>
     </listeners>
-
-<!--    <test name="Receipts - Receipts from Parties">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.finance.transactions.Receipts.ReceiptsFromPartiesTransaction"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-
-<!--    <test name="Receipts - Cash Receipts">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.finance.transactions.Receipts.CashReceiptTransaction"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-
-<!--    <test name="Receipts - Bank Receipts">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.finance.transactions.Receipts.BankReceiptsTransaction"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-
-<!--    <test name="Receipts - Credit Card Receipts">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.finance.transactions.Receipts.CreditCardReceiptTransaction"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-
-<!--    <test name="Receipts - Receipts from credit card companies">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.finance.transactions.Receipts.ReceiptsFromCreditCardCompaniesTransaction"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-
-                <!-- Payments !-->
-    <test name="Payments- Payments to Parties">
+                  <!-- receipts -->
+    <test name="Receipts - Receipts from Parties">
         <classes>
-            <class name="menuItems.finance.transactions.Payments.PaymentToPartiesTransaction"/>
+            <class name="menuItems.finance.transactions.Receipts.ReceiptsFromPartiesTransaction"/>
         </classes>
     </test>
 
-    <test name="Payments- Cash Payments">
+    <test name="Receipts - Cash Receipts">
         <classes>
-            <class name="menuItems.finance.transactions.Payments.CashPaymentsTransaction"/>
+            <class name="menuItems.finance.transactions.Receipts.CashReceiptTransaction"/>
         </classes>
     </test>
 
-    <test name="Payments- Bank Payments">
+    <test name="Receipts - Bank Receipts">
         <classes>
-            <class name="menuItems.finance.transactions.Payments.BankPaymentsTransaction"/>
+            <class name="menuItems.finance.transactions.Receipts.BankReceiptsTransaction"/>
         </classes>
     </test>
 
-    <test name="Payments- Cash Transfers">
+    <test name="Receipts - Credit Card Receipts">
         <classes>
-            <class name="menuItems.finance.transactions.Payments.CashTransferTransaction"/>
+            <class name="menuItems.finance.transactions.Receipts.CreditCardReceiptTransaction"/>
         </classes>
     </test>
+
+    <test name="Receipts - Receipts from credit card companies">
+        <classes>
+            <class name="menuItems.finance.transactions.Receipts.ReceiptsFromCreditCardCompaniesTransaction"/>
+        </classes>
+    </test>
+
+<!--                &lt;!&ndash; Payments !&ndash;&gt;-->
+<!--    <test name="Payments- Payments to Parties">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.finance.transactions.Payments.PaymentToPartiesTransaction"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+<!--    <test name="Payments- Cash Payments">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.finance.transactions.Payments.CashPaymentsTransaction"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+<!--    <test name="Payments- Bank Payments">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.finance.transactions.Payments.BankPaymentsTransaction"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+<!--    <test name="Payments- Cash Transfers">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.finance.transactions.Payments.CashTransferTransaction"/>-->
+<!--        </classes>-->
+<!--    </test>-->
                 <!-- Banking !-->
 <!--    <test name="Banking - Cash Deposits and Withdrawls">-->
 <!--        <classes>-->

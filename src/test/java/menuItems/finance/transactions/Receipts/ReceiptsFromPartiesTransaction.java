@@ -27,8 +27,8 @@ public class ReceiptsFromPartiesTransaction {
         fromParties.receiptFromParty();
     }
 
-//    @AfterTest
-//    public void afterTest(){
-//        appLogin.logout();
-//    }
+    @AfterTest
+    public void afterTest(){
+        appLogin.logout();
+    }
 }

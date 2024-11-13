@@ -27,9 +27,9 @@ public class BankReceiptsTransaction{
         bankReceipts.bankReceipt();
     }
 
-//    @AfterTest
-//    public void afterTest(){
-//        appLogin.logout();
-//    }
+    @AfterTest
+    public void afterTest(){
+        appLogin.logout();
+    }
 
 }

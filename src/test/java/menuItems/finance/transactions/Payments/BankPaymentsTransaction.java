@@ -27,8 +27,8 @@ public class BankPaymentsTransaction {
         bankPayment.bankPayment();
     }
 
-//    @AfterTest
-//    public void afterTest(){
-//        appLogin.logout();
-//    }
+    @AfterTest
+    public void afterTest(){
+        appLogin.logout();
+    }
 }

@@ -61,6 +61,9 @@ public class CreditCardReceipts extends Transaction {
             i.click();
             i.sendKeys(String.valueOf(finalAmount), Keys.TAB);
         }
+        //here, if u want u can add company charges also, based on the scenario
+
+
         //check summary
         navigateToSummaryTab();
         //save

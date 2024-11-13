@@ -28,8 +28,8 @@ public class ReceiptsFromCreditCardCompaniesTransaction {
 
     }
 
-//    @AfterTest
-//    public void afterTest(){
-//        appLogin.logout();
-//    }
+    @AfterTest
+    public void afterTest(){
+        appLogin.logout();
+    }
 }

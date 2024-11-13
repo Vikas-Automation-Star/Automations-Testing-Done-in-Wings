@@ -75,7 +75,7 @@ public class createCompany {
         System.out.println("Super User Login for "+CompanyName+" company is successful " +new String(Character.toChars(0x2705)));
 
 
-        logindriver.findElement(By.name("FileUtil")).click();
+        logindriver.findElement(By.name("File")).click();
         logindriver.findElement(By.name("Company")).click();
         logindriver.findElement(By.name("Sales")).click();
         logindriver.findElement(By.xpath("//TabItem[@Name='Configure']")).click();

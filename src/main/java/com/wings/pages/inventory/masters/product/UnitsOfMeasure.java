@@ -30,8 +30,11 @@ public class UnitsOfMeasure extends Masters {
         super.actionsMaster("xpath","//TreeItem[@Name='Units of Measure']/TreeItem[@Name='All Units of Measure']","//MenuItem[@Name='New Master']");
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='New Units Of Measure *']", common.getData(filepath, "uom")+common.getRandom());
+        Thread.sleep(2500);
         common.inputText("xpath", "//Edit[@Name='UQC *']", common.getData(filepath,"uom"));
         Robot robot=new Robot();
+        robot.keyPress(KeyEvent.VK_DOWN);
+        robot.keyRelease(KeyEvent.VK_DOWN);
         robot.keyPress(KeyEvent.VK_DOWN);
         robot.keyRelease(KeyEvent.VK_DOWN);
         robot.keyPress(KeyEvent.VK_ENTER);
