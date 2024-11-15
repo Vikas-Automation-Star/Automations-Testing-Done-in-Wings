@@ -226,6 +226,7 @@ public class XMLUtil {
 
     public static void main(String[] args) {
         XMLUtil xmlUtil = new XMLUtil();
+
         try {
             xmlUtil.readTestNG();        // Parse both sampleSuite.xml and testng-results.xml
             xmlUtil.readTestNGResults(); // Process test results and send email
