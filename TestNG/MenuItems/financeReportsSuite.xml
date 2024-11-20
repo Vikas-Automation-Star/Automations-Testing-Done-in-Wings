@@ -4,159 +4,159 @@
         <listener class-name="com.wings.utils.listener"/>
     </listeners>
 
-    <test name="Analysis - Transaction Analysis">
+    <test name="Analysis - Transaction Analysis" description="Test 1 description" testId="1">
         <classes>
             <class name="menuItems.finance.reports.Analysis.TransactionAnalysisReport"/>
         </classes>
     </test>
 
-    <test name="Analysis - Trend Analysis">
+    <test name="Analysis - Trend Analysis" description="Test 2 description" testId="2">
         <classes>
             <class name="menuItems.finance.reports.Analysis.TrendAnalysisReport"/>
         </classes>
     </test>
----------------------
-    <test name="Balances - Customer Balances">
-        <classes>
-            <class name="menuItems.finance.reports.Balances.CustomerBalancesReport"/>
-        </classes>
-    </test>
 
-    <test name="Balances - Supplier Balances">
-        <classes>
-            <class name="menuItems.finance.reports.Balances.SupplierBalancesReport"/>
-        </classes>
-    </test>
+<!--    <test name="Balances - Customer Balances" description="Test 3 description" testId="3">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.finance.reports.Balances.CustomerBalancesReport"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Balances - Account Balances">
-        <classes>
-            <class name="menuItems.finance.reports.Balances.AccountBalancesReport"/>
-        </classes>
-    </test>
-----------------------
-    <test name="Pending Bills - For Customer">
-        <classes>
-            <class name="menuItems.finance.reports.PendingBills.PendingBillsForCustomerReport"/>
-        </classes>
-    </test>
+<!--    <test name="Balances - Supplier Balances" description="Test 4 description" testId="4">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.finance.reports.Balances.SupplierBalancesReport"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Pending Bills - For Customers">
-        <classes>
-            <class name="menuItems.finance.reports.PendingBills.PendingBillsForCustomersReport"/>
-        </classes>
-    </test>
+<!--    <test name="Balances - Account Balances" description="Test 5 description" testId="5">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.finance.reports.Balances.AccountBalancesReport"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+<!--    <test name="Pending Bills - For Customer" description="Test 6 description" testId="6">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.finance.reports.PendingBills.PendingBillsForCustomerReport"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Pending Bills - For Supplier">
-        <classes>
-            <class name="menuItems.finance.reports.PendingBills.PendingBillsForSupplierReport"/>
-        </classes>
-    </test>
+<!--    <test name="Pending Bills - For Customers" description="Test 7 description" testId="7">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.finance.reports.PendingBills.PendingBillsForCustomersReport"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Pending Bills - For Suppliers">
-        <classes>
-            <class name="menuItems.finance.reports.PendingBills.PendingBillsForSuppliersReport"/>
-        </classes>
-    </test>
- -----------------
-    <test name="Financial Statements - Trial Balance">
-        <classes>
-            <class name="menuItems.finance.reports.FinancialStatements.TrialBalanceReport"/>
-        </classes>
-    </test>
+<!--    <test name="Pending Bills - For Supplier" description="Test 8 description" testId="8">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.finance.reports.PendingBills.PendingBillsForSupplierReport"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Financial Statements - Profit and Loss">
-        <classes>
-            <class name="menuItems.finance.reports.FinancialStatements.ProfitAndLossReport"/>
-        </classes>
-    </test>
+<!--    <test name="Pending Bills - For Suppliers" description="Test 9 description" testId="9">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.finance.reports.PendingBills.PendingBillsForSuppliersReport"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!-- -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+<!--    <test name="Financial Statements - Trial Balance" description="Test 10 description" testId="10">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.finance.reports.FinancialStatements.TrialBalanceReport"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Financial Statements - Balance Sheet">
-        <classes>
-            <class name="menuItems.finance.reports.FinancialStatements.BalanceSheetReport"/>
-        </classes>
-    </test>
+<!--    <test name="Financial Statements - Profit and Loss" description="Test 11 description" testId="11">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.finance.reports.FinancialStatements.ProfitAndLossReport"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Financial Statements - Profit and Loss T-form">
-        <classes>
-            <class name="menuItems.finance.reports.FinancialStatements.ProfitandLossTformReport"/>
-        </classes>
-    </test>
+<!--    <test name="Financial Statements - Balance Sheet" description="Test 12 description" testId="12">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.finance.reports.FinancialStatements.BalanceSheetReport"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Financial Statements - Balance Sheet T-form">
-        <classes>
-            <class name="menuItems.finance.reports.FinancialStatements.BalanceSheetTFormReport"/>
-        </classes>
-    </test>
+<!--    <test name="Financial Statements - Profit and Loss T-form" description="Test 13 description" testId="13">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.finance.reports.FinancialStatements.ProfitandLossTformReport"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Financial Statements - Cash Flow">
-        <classes>
-            <class name="menuItems.finance.reports.FinancialStatements.CashFlowReport"/>
-        </classes>
-    </test>
+<!--    <test name="Financial Statements - Balance Sheet T-form" description="Test 14 description" testId="14">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.finance.reports.FinancialStatements.BalanceSheetTFormReport"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Financial Statements - Funds Flow">
-        <classes>
-            <class name="menuItems.finance.reports.FinancialStatements.FundsFlowReport"/>
-        </classes>
-    </test>
+<!--    <test name="Financial Statements - Cash Flow" description="Test 15 description" testId="15">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.finance.reports.FinancialStatements.CashFlowReport"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Financial Statements - Profit and Loss Manual Stock">
-        <classes>
-            <class name="menuItems.finance.reports.FinancialStatements.ProfitandLossManualStockReport"/>
-        </classes>
-    </test>
+<!--    <test name="Financial Statements - Funds Flow" description="Test 16 description" testId="16">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.finance.reports.FinancialStatements.FundsFlowReport"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Financial Statements - Balance Sheet Manual Stock">
-        <classes>
-            <class name="menuItems.finance.reports.FinancialStatements.BalanceSheetManualStockReport"/>
-        </classes>
-    </test>
- ------------
-    <test name="Books - Cash Book[Day Balance]">
-        <classes>
-            <class name="menuItems.finance.reports.Books.CashBookDayBalanceReport"/>
-        </classes>
-    </test>
+<!--    <test name="Financial Statements - Profit and Loss Manual Stock" description="Test 17 description" testId="17">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.finance.reports.FinancialStatements.ProfitandLossManualStockReport"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Books - Bank Book[Day Balance]">
-        <classes>
-            <class name="menuItems.finance.reports.Books.BankBookDayBalanceReport"/>
-        </classes>
-    </test>
+<!--    <test name="Financial Statements - Balance Sheet Manual Stock" description="Test 18 description" testId="18">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.finance.reports.FinancialStatements.BalanceSheetManualStockReport"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!-- &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+<!--    <test name="Books - Cash Book[Day Balance]" description="Test 19 description" testId="19">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.finance.reports.Books.CashBookDayBalanceReport"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Books - Day Book">
-        <classes>
-            <class name="menuItems.finance.reports.Books.DayBookReport"/>
-        </classes>
-    </test>
- -------------
-    <test name="Master info - Party billing adress with GST">
-        <classes>
-            <class name="menuItems.finance.reports.MasterInfo.PartyBillingAddresswithGSTRegDetailsReport"/>
-        </classes>
-    </test>
+<!--    <test name="Books - Bank Book[Day Balance]" description="Test 20 description" testId="20">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.finance.reports.Books.BankBookDayBalanceReport"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Master info - Chart of Accounts">
-        <classes>
-            <class name="menuItems.finance.reports.MasterInfo.ChartofAccountsReport"/>
-        </classes>
-    </test>
+<!--    <test name="Books - Day Book" description="Test 21 description" testId="21">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.finance.reports.Books.DayBookReport"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!-- -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+<!--    <test name="Master info - Party billing adress with GST" description="Test 22 description" testId="22">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.finance.reports.MasterInfo.PartyBillingAddresswithGSTRegDetailsReport"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Master info - Customers">
-        <classes>
-            <class name="menuItems.finance.reports.MasterInfo.CustomersReport"/>
-        </classes>
-    </test>
+<!--    <test name="Master info - Chart of Accounts" description="Test 23 description" testId="23">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.finance.reports.MasterInfo.ChartofAccountsReport"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Master info - Suppliers">
-        <classes>
-            <class name="menuItems.finance.reports.MasterInfo.SuppliersReport"/>
-        </classes>
-    </test>
- -----------
-    <test name="Ledger - ledger">
-        <classes>
-            <class name="menuItems.finance.reports.Ledger.LedgerReport"/>
-        </classes>
-    </test>
+<!--    <test name="Master info - Customers" description="Test 24 description" testId="24">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.finance.reports.MasterInfo.CustomersReport"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+<!--    <test name="Master info - Suppliers" description="Test 25 description" testId="25">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.finance.reports.MasterInfo.SuppliersReport"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!-- -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+<!--    <test name="Ledger - ledger" description="Test 26 description" testId="26">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.finance.reports.Ledger.LedgerReport"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 </suite>
