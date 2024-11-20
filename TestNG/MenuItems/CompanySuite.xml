@@ -4,7 +4,6 @@
         <listener class-name="com.wings.utils.listener"></listener>
     </listeners>
 
-
     <test name="Creating BranchMaster" description="description for BranchMaster"  testID="WOW 1">
         <classes>
             <class name="menuItems.company.masters.BranchesMaster"></class>

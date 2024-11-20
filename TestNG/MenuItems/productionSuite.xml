@@ -1,6 +1,5 @@
 <suite name="Production Masters Transactions and Reports">
 
-
     <listeners>
         <listener class-name="com.wings.utils.listener"></listener>
     </listeners>

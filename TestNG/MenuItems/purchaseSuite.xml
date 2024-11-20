@@ -1,5 +1,6 @@
 <suite name="SUITE EXECUTION OF ALL MASTERS TRANSACTION AND REPORTS IN THE PURCHASE MODULE">
 
+
     <listeners>
         <listener class-name="com.wings.utils.listener"></listener>
     </listeners>
