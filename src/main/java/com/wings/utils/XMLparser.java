@@ -144,7 +144,7 @@ public class XMLparser {
 
             final String fromEmail = "QA@wingsinfo.net"; //requires valid gmail id
             final String password = "TestAutomation@19"; // correct password for gmail id
-            final String toEmail = "madhuri.matta@wingsinfo.net";//,manoj.c@wingsinfo.net,venkatarathaiah.m@wingsinfo.net ";//, vikas.empuluri@wingsinfo.net, manoj.c@wingsinfo.net"; // can be any email id
+            final String toEmail = "vikas.empuluri@wingsinfo.net";//,manoj.c@wingsinfo.net,venkatarathaiah.m@wingsinfo.net ";//, vikas.empuluri@wingsinfo.net, manoj.c@wingsinfo.net"; // can be any email id
 
             System.out.println("TLSEmail Start");
             Properties props = new Properties();
