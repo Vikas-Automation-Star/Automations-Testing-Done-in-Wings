@@ -198,7 +198,7 @@ public class XMLUtil {
         EmailUtil.sendEmail(session, toEmail, String.valueOf(toFile));
         System.out.println("Report generated and email sent successfully!");
     }
-    
+
 
     public static void main(String[] args) {
         XMLUtil xmlUtil = new XMLUtil();
