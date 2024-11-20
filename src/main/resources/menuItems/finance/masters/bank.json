@@ -1,3 +1,9 @@
 {
-
+  "accountName": "Bank_Account",
+  "accNum": "9874569856",
+  "bankBranch": "Hyderabad",
+  "accType": "Savings",
+  "ifsc": "ICIC000890",
+  "upi": "890912@icicibank",
+  "gst": "36AADCR9381B1ZB"
 }

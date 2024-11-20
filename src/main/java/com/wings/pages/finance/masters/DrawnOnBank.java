@@ -29,7 +29,7 @@ public class DrawnOnBank {
         actions.contextClick(AllBranch).perform();
         common.clickElement("name", "New Master");
         Thread.sleep(1000);
-        common.inputText("xpath", "//Edit[@Name='New Drawn On Banks *']", common.getData(dataFile, "type1"));
+        common.inputText("xpath", "//Edit[@Name='New Drawn On Banks *']", common.getData(dataFile, "name")+common.getRandom());
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
         Thread.sleep(1000);
@@ -38,7 +38,6 @@ public class DrawnOnBank {
         common.clickElement("xpath", "//Window/Button[@Name='OK']");
         Thread.sleep(1000);
         common.clickElement("xpath", "//Pane/Button[@Name='Cancel']");
-
         common.clickElement("xpath", "//TabItem[@Name='Drawn On Banks']/Button[@Name='Close']");
     }
 }

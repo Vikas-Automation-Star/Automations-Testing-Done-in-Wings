@@ -5,247 +5,247 @@
     </listeners>
         <!-- Sales Masters -->
 
-    <test name="Customers Master">
+    <test name="Customers Master" description="Test 1 description" testId="1">
         <classes>
             <class name="menuItems.sales.masters.CustomerMaster"/>
         </classes>
     </test>
 
-    <test name="Types of Customers Master">
+    <test name="Types of Customers Master" description="Test 2 description" testId="2">
         <classes>
             <class name="menuItems.sales.masters.TypeOfCustomerMaster"/>
         </classes>
     </test>
 
-    <test name="Price and Discount - Sales Price Lists Master">
+    <test name="Price and Discount - Sales Price Lists Master" description="Test 3 description" testId="3">
         <classes>
             <class name="menuItems.sales.masters.SalesPriceListMaster"/>
         </classes>
     </test>
 
-    <test name="Price and Discount - Party Discount Group Master">
+    <test name="Price and Discount - Party Discount Group Master" description="Test 4 description" testId="4">
         <classes>
             <class name="menuItems.sales.masters.PartyDiscountGroupMaster"/>
         </classes>
     </test>
 
-    <test name="Price and Discount - Product Discount Group Master">
+    <test name="Price and Discount - Product Discount Group Master" description="Test 5 description" testId="5">
         <classes>
             <class name="menuItems.sales.masters.ProductDiscountMaster"/>
         </classes>
     </test>
 
-    <test name="Sales Target -Product Sales Target Groups Master">
+    <test name="Sales Target -Product Sales Target Groups Master" description="Test 6 description" testId="6">
         <classes>
             <class name="menuItems.sales.masters.SalesTargetGroupMaster"/>
         </classes>
     </test>
 
         <!-- Sales Transactions -->
-    <test name="Sales Enquiries Transaction">
+    <test name="Sales Enquiries Transaction" description="Test 7 description" testId="7">
         <classes>
             <class name="menuItems.sales.transactions.SalesEnquiryTransaction"/>
         </classes>
     </test>
 
-    <test name="Sales Enquiries Cancellation Transaction">
+    <test name="Sales Enquiries Cancellation Transaction" description="Test 8 description" testId="8">
         <classes>
             <class name="menuItems.sales.transactions.SalesEnquiryCancellationTransaction"/>
         </classes>
     </test>
 
-    <test name="Sales Quotations Transaction">
+    <test name="Sales Quotations Transaction" description="Test 9 description" testId="9">
         <classes>
             <class name="menuItems.sales.transactions.SalesQuotationTransaction"/>
         </classes>
     </test>
 
-    <test name="Sales Quotations against Enquiry Transaction">
+    <test name="Sales Quotations against Enquiry Transaction" description="Test 10 description" testId="10">
         <classes>
             <class name="menuItems.sales.transactions.SalesQuotationAgainstEnquiryTransaction"/>
         </classes>
     </test>
 
-    <test name="Sales Quotation Cancellation Transaction">
+    <test name="Sales Quotation Cancellation Transaction" description="Test 11 description" testId="11">
         <classes>
             <class name="menuItems.sales.transactions.SalesQuotationsCancellationTransaction"/>
         </classes>
     </test>
 
-    <test name="Sales Order against Quotations Transaction">
+    <test name="Sales Order against Quotations Transaction" description="Test 12 description" testId="12">
         <classes>
             <class name="menuItems.sales.transactions.SalesOrdersAgainstQuotationsTransaction"/>
         </classes>
     </test>
 
-    <test name="Sales Order Transaction">
+    <test name="Sales Order Transaction" description="Test 13 description" testId="13">
         <classes>
             <class name="menuItems.sales.transactions.SalesOrderTransaction"/>
         </classes>
     </test>
 
-    <test name="Sales Order Cancellation Transaction">
+    <test name="Sales Order Cancellation Transaction" description="Test 14 description" testId="14">
         <classes>
             <class name="menuItems.sales.transactions.SalesOrderTransaction"/>
         </classes>
     </test>
 
-    <test name="Sales Deliveries Transaction">
+    <test name="Sales Deliveries Transaction" description="Test 15 description" testId="15">
         <classes>
             <class name="menuItems.sales.transactions.DeliveriesTransaction"/>
         </classes>
     </test>
 
-    <test name="Sales Deliveries against Orders Transaction">
+    <test name="Sales Deliveries against Orders Transaction" description="Test 16 description" testId="16">
         <classes>
             <class name="menuItems.sales.transactions.DeliveriesAgainstOrdersTransaction"/>
         </classes>
     </test>
 
-    <test name="Delivery Returns Transaction">
+    <test name="Delivery Returns Transaction" description="Test 17 description" testId="17">
         <classes>
             <class name="menuItems.sales.transactions.DeliveryReturnsTransactions"/>
         </classes>
     </test>
 
-    <test name="Sales Invoice Transaction">
+    <test name="Sales Invoice Transaction" description="Test 18 description" testId="18">
         <classes>
             <class name="menuItems.sales.transactions.SalesInvoiceTransaction"/>
         </classes>
     </test>
 
-    <test name="Sales Invoice against Orders Transaction">
+    <test name="Sales Invoice against Orders Transaction" description="Test 19 description" testId="19">
         <classes>
             <class name="menuItems.sales.transactions.SalesInvoiceAgainstOrdersTransaction"/>
         </classes>
     </test>
 
-    <test name="Sales Invoice against Deliveries Transaction">
+    <test name="Sales Invoice against Deliveries Transaction" description="Test 20 description" testId="20">
         <classes>
             <class name="menuItems.sales.transactions.SalesInvoiceAgainstDeliveriesTransaction"/>
         </classes>
     </test>
 
-    <test name="Invoice - Proforma sales Invoice Transaction">
+    <test name="Invoice - Proforma sales Invoice Transaction" description="Test 21 description" testId="21">
         <classes>
             <class name="menuItems.sales.transactions.ProformaSalesInvoiceTransaction"/>
         </classes>
     </test>
 
-    <test name="Sales Return Transaction">
+    <test name="Sales Return Transaction" description="Test 22 description" testId="22">
         <classes>
             <class name="menuItems.sales.transactions.SalesReturnTransaction"/>
         </classes>
     </test>
 
-    <test name="Sales Return with Invoice NO Transaction">
+    <test name="Sales Return with Invoice NO Transaction" description="Test 23 description" testId="23">
         <classes>
             <class name="menuItems.sales.transactions.SalesReturnWithInvoiceReferenceTransaction"/>
         </classes>
     </test>
 
-    <test name="Prices and Discounts-Sales Price Transaction">
+    <test name="Prices and Discounts-Sales Price Transaction" description="Test 24 description" testId="24">
         <classes>
             <class name="menuItems.sales.transactions.SalesPriceTransaction"/>
         </classes>
     </test>
 
-    <test name="Prices and Discounts-Party and Product wise discounts Transaction">
+    <test name="Prices and Discounts-Party and Product wise discounts Transaction" description="Test 25 description" testId="25">
         <classes>
             <class name="menuItems.sales.transactions.ProductPartyDiscountTransaction"/>
         </classes>
     </test>
 
-    <test name="Targets - Define Sales Targets Executive wise Transaction">
+    <test name="Targets - Define Sales Targets Executive wise Transaction" description="Test 26 description" testId="26">
         <classes>
             <class name="menuItems.sales.transactions.SalesTargetExectiveWiseTransaction"/>
         </classes>
     </test>
 
                 <!-- Sales Reports -->
-    <test name="Reports - Sales Enquiry">
+    <test name="Reports - Sales Enquiry" description="Test 27 description" testId="27">
         <classes>
             <class name="menuItems.sales.reports.salesEnquiryReport"/>
         </classes>
     </test>
 
-    <test name="Reports - Pending Sales Enquiry">
+    <test name="Reports - Pending Sales Enquiry" description="Test 28 description" testId="28">
         <classes>
             <class name="menuItems.sales.reports.PendingSaleEnquiryReport"/>
         </classes>
     </test>
 
-    <test name="Reports - Sales Enquiry Cancellation">
+    <test name="Reports - Sales Enquiry Cancellation" description="Test 29 description" testId="29">
         <classes>
             <class name="menuItems.sales.reports.SalesEnquiryCancellationReport"/>
         </classes>
     </test>
 
-    <test name="Reports - Sales Quotations">
+    <test name="Reports - Sales Quotations" description="Test 30 description" testId="30">
         <classes>
             <class name="menuItems.sales.reports.SalesQuotationReport"/>
         </classes>
     </test>
 
-    <test name="Reports - Pending sales Quotation">
+    <test name="Reports - Pending sales Quotation" description="Test 31 description" testId="31">
         <classes>
             <class name="menuItems.sales.reports.PendingSalesQuotationsReport"/>
         </classes>
     </test>
 
-    <test name="Reports - Sales Quotation against Enquiry">
+    <test name="Reports - Sales Quotation against Enquiry" description="Test 32 description" testId="32">
         <classes>
             <class name="menuItems.sales.reports.SalesQuotationAgnstEnquiryReport"/>
         </classes>
     </test>
 
-    <test name="Reports - Sales Quotations Cancellations">
+    <test name="Reports - Sales Quotations Cancellations" description="Test 33 description" testId="33">
         <classes>
             <class name="menuItems.sales.reports.SalesQuotationCancellationReport"/>
         </classes>
     </test>
 
-    <test name="Reports - Sales Order against Quotation">
+    <test name="Reports - Sales Order against Quotation" description="Test 34 description" testId="34">
         <classes>
             <class name="menuItems.sales.reports.SalesOrdrAgainstQuotationReport"/>
         </classes>
     </test>
 
-    <test name="Reports - Sales Order">
+    <test name="Reports - Sales Order" description="Test 35 description" testId="35">
         <classes>
             <class name="menuItems.sales.reports.SalesOrderReport"/>
         </classes>
     </test>
-    <test name="Reports - Pending Sales Order">
+    <test name="Reports - Pending Sales Order" description="Test 36 description" testId="36">
         <classes>
             <class name="menuItems.sales.reports.PendingSalesOrderReport"/>
         </classes>
     </test>
-    <test name="Reports - Sales Order Status Details">
+    <test name="Reports - Sales Order Status Details" description="Test 37 description" testId="37">
         <classes>
             <class name="menuItems.sales.reports.SalesOrderStatusDetailsReport"/>
         </classes>
     </test>
 
-    <test name="Reports - Sales Order Cancellation">
+    <test name="Reports - Sales Order Cancellation" description="Test 38 description" testId="38">
         <classes>
             <class name="menuItems.sales.reports.SalesOrderCancellationReport"/>
         </classes>
     </test>
 
-    <test name="Reports - Deliveries">
+    <test name="Reports - Deliveries" description="Test 39 description" testId="39">
         <classes>
             <class name="menuItems.sales.reports.DeliveryReport"/>
         </classes>
     </test>
 
-    <test name="Reports - PendingDeliveries">
+    <test name="Reports - PendingDeliveries" description="Test 40 description" testId="40">
         <classes>
             <class name="menuItems.sales.reports.PendingDeliveriesReport"/>
         </classes>
     </test>
 
-    <test name="Reports - Pending sales orders with deliveries">
+    <test name="Reports - Pending sales orders with deliveries" description="Test 41 description" testId="41">
         <classes>
             <class name="menuItems.sales.reports.PendingSalesOrderWithDeliveriesReport"/>
         </classes>
@@ -253,74 +253,74 @@
 
 
 
-    <test name="Reports - Delivery returns">
+    <test name="Reports - Delivery returns" description="Test 42 description" testId="42">
         <classes>
             <class name="menuItems.sales.reports.DeliveryReturnReport"/>
         </classes>
     </test>
 
 
-    <test name="Reports - Sales Book">
+    <test name="Reports - Sales Book" description="Test 43 description" testId="43">
         <classes>
             <class name="menuItems.sales.reports.SalesBookReport"/>
         </classes>
     </test>
 
-    <test name="Reports - Sales Detailed with product batch">
+    <test name="Reports - Sales Detailed with product batch" description="Test 44 description" testId="44">
         <classes>
             <class name="menuItems.sales.reports.SalesDetailsWithProductBatchReport"/>
         </classes>
     </test>
 
-    <test name="Reports - Sales Invoice against Orders">
+    <test name="Reports - Sales Invoice against Orders" description="Test 45 description" testId="45">
         <classes>
             <class name="menuItems.sales.reports.SalesInvoiceAgainstOrdersReport"/>
         </classes>
     </test>
 
-    <test name="Reports - Sales Price Updation">
+    <test name="Reports - Sales Price Updation" description="Test 46 description" testId="46">
         <classes>
             <class name="menuItems.sales.reports.SalesPriceUpdationReport"/>
         </classes>
     </test>
 
-    <test name="Reports - Sales invoice against Deliveries">
+    <test name="Reports - Sales invoice against Deliveries" description="Test 47 description" testId="47">
         <classes>
             <class name="menuItems.sales.reports.SalesInvoiceAgainstDeliveriesReport"/>
         </classes>
     </test>
 
-    <test name="Reports - Proforma sales invoice">
+    <test name="Reports - Proforma sales invoice" description="Test 48 description" testId="48">
         <classes>
             <class name="menuItems.sales.reports.ProformaSalesInvoiceReport"/>
         </classes>
     </test>
 
-    <test name="Reports - Sales Return">
+    <test name="Reports - Sales Return" description="Test 49 description" testId="49">
         <classes>
             <class name="menuItems.sales.reports.SalesReturnReport"/>
         </classes>
     </test>
 
-    <test name="Reports - sales return with serial no">
+    <test name="Reports - sales return with serial no" description="Test 50 description" testId="50">
         <classes>
             <class name="menuItems.sales.reports.SalesReturnWithSerialNoReport"/>
         </classes>
     </test>
 
-    <test name="Reports - sales return with invoice ref no">
+    <test name="Reports - sales return with invoice ref no" description="Test 51 description" testId="51">
         <classes>
             <class name="menuItems.sales.reports.SalesReturnWithInvoiceReferenceReport"/>
         </classes>
     </test>
 
-    <test name="Reports - Define sales targets-executive wise">
+    <test name="Reports - Define sales targets-executive wise" description="Test 52 description" testId="52">
         <classes>
             <class name="menuItems.sales.reports.SaleTargetExecutiveWiseReport"/>
         </classes>
     </test>
 
-    <test name="Reports - Target variance report executive wise">
+    <test name="Reports - Target variance report executive wise" description="Test 53 description" testId="53">
         <classes>
             <class name="menuItems.sales.reports.TargetVarianceReportExecutiveWise"/>
         </classes>

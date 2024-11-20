@@ -29,7 +29,7 @@ public class SwipeMachineType {
         actions.contextClick(AllBranch).perform();
         common.clickElement("name", "New Master");
         Thread.sleep(1000);
-        common.inputText("xpath", "//Edit[@Name='New Swipe Machine Type *']", common.getData(dataFile, "machine1"));
+        common.inputText("xpath", "//Edit[@Name='New Swipe Machine Type *']", common.getData(dataFile, "name")+common.getRandom());
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
         Thread.sleep(1000);

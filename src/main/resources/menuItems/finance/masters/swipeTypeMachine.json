@@ -4,6 +4,7 @@
   "machine2": "Self-service",
   "machine4": "Tablet-Based",
   "machine type": "magnetic",
+  "name": "Swipe_Machine_Type",
   "discount": "2",
   "description": "card swiping machine"
 }
