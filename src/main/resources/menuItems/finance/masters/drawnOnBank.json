@@ -4,5 +4,6 @@
   "type3": "Money Orders",
   "type4": "Promissory Notes",
   "type5": "Letters of Credit",
+  "name": "Drawn_On_Bank",
   "description": "Taken from bank"
 }

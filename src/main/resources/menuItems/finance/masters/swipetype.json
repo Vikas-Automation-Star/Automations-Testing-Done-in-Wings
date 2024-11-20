@@ -3,5 +3,6 @@
   "swipeType1": "Chip card",
   "swipeType2": "Contactless",
   "swipeType3": "Card not present",
+  "name": "Swipe_Type",
   "description": "cashless transaction"
 }

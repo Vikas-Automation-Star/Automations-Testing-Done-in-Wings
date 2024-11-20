@@ -43,9 +43,10 @@ public class Masters {
         System.out.println("Size :" + elementList.size());
         for (WebElement i : elementList) {
             System.out.println(i.getText());
-            Thread.sleep(1500);
-            i.click();
-            break;
+            if (i.getText().contains(element)) {
+                i.click();
+                break;
+            }
         }
     }
 
