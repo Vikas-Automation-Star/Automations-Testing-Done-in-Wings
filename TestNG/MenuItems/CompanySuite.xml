@@ -4,73 +4,74 @@
         <listener class-name="com.wings.utils.listener"></listener>
     </listeners>
 
-    <test name="Creating BranchMaster">
+
+    <test name="Creating BranchMaster" description="description for BranchMaster"  testID="WOW 1">
         <classes>
             <class name="menuItems.company.masters.BranchesMaster"></class>
         </classes>
     </test>
 
-    <test name="Creating CompanyPropertiesMaster">
+    <test name="Creating CompanyPropertiesMaster" description="description for CompanyPropertiesMaster"  testID="WOW 2">
         <classes>
             <class name="menuItems.company.masters.CompanyPropertiesMaster"></class>
         </classes>
     </test>
 
-    <test name="Creating DepartmentMaster">
+    <test name="Creating DepartmentMaster" description="description for DepartmentMaster"  testID="WOW 3">
         <classes>
             <class name="menuItems.company.masters.DepartmentsMaster"></class>
         </classes>
     </test>
 
-    <test name="Creating ProjectMaster">
+    <test name="Creating ProjectMaster" description="description for ProjectMaster"  testID="WOW 4">
         <classes>
             <class name="menuItems.company.masters.ProjectMaster"></class>
         </classes>
     </test>
 
-    <test name="Creating CostCentresMaster">
+    <test name="Creating CostCentresMaster" description="description for ProjectMaster"  testID="WOW 5">
         <classes>
             <class name="menuItems.company.masters.CostCentresMaster"></class>
         </classes>
     </test>
 
-    <test name="Creating ProfitCentresMaster">
+    <test name="Creating ProfitCentresMaster" description="description for ProfitCentresMaster"  testID="WOW 6">
         <classes>
             <class name="menuItems.company.masters.ProfitCentresMaster"></class>
         </classes>
     </test>
 
-    <test name="Creating RoutesMaster">
+    <test name="Creating RoutesMaster" description="description for RoutesMaster"  testID="WOW 7">
         <classes>
             <class name="menuItems.company.masters.RoutesMaster"></class>
         </classes>
     </test>
 
-    <test name="Creating TransportersMaster">
+    <test name="Creating TransportersMaster" description="description for TransportersMaster"  testID="WOW 8">
         <classes>
             <class name="menuItems.company.masters.TransportersMaster"></class>
         </classes>
     </test>
 
-    <test name="Creating TermTypesMaster">
+    <test name="Creating TermTypesMaster" description="description for TermTypesMaster"  testID="WOW 9">
         <classes>
             <class name="menuItems.company.masters.TermTypeMaster"></class>
         </classes>
     </test>
 
-    <test name="Creating TermsMaster">
+    <test name="Creating TermsMaster" description="description for TermsMaster"  testID="WOW 10">
         <classes>
             <class name="menuItems.company.masters.TermsMaster"></class>
         </classes>
     </test>
 
-    <test name="Creating ReasonsMaster">
+    <test name="Creating ReasonsMaster" description="description for ReasonsMaster"  testID="WOW 11">
         <classes>
             <class name="menuItems.company.masters.ReasonsMaster"></class>
         </classes>
     </test>
 
-    <test name="Creating ExecutiveMaster">
+    <test name="Creating ExecutiveMaster" description="description for ExecutiveMaster"  testID="WOW 12">
         <classes>
             <class name="menuItems.company.masters.ExecutiveMaster"></class>
         </classes>
