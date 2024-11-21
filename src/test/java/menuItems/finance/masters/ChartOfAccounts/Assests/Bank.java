@@ -1,4 +1,4 @@
-package menuItems.finance.masters.ChartOfAccounts;
+package menuItems.finance.masters.ChartOfAccounts.Assests;
 
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
