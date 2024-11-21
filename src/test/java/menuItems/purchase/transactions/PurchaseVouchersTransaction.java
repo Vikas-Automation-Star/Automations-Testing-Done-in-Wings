@@ -27,11 +27,9 @@ public class PurchaseVouchersTransaction  {
     public void purchaseVouchers() throws IOException, ParseException, InterruptedException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         PurchaseVoucher po=new PurchaseVoucher(driver,file);
         po.purchaseVoucher();
-        Method method = po.getClass().getMethod("purchaseVoucher");
-        String callerMethodName = method.getName();
-        System.out.println("Caller method: " + callerMethodName);
-        // Invoke the method
-//        method.invoke(po);
+//        Method method = po.getClass().getMethod("purchaseVoucher");
+//        String callerMethodName = method.getName();
+//        System.out.println("Caller method: " + callerMethodName);
     }
 
     @AfterTest

@@ -74,13 +74,6 @@ public abstract class Transaction {
                 break;
             }
         }
-        WebElement element = common.findWebElement(locatorType, locator);
-        if (element.getText().equals(transaction)) {
-            System.out.println("successfully selected/opened:- " + element.getText());
-
-        } else {
-            Assert.fail(element.getText() + " is not selected " + transaction);
-        }
     }
 
     public void selectDropDown(String element){

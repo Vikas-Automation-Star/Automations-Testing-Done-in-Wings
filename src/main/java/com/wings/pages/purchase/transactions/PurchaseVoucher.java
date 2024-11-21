@@ -66,7 +66,7 @@ public class PurchaseVoucher extends Transaction {
         common.clickElement("xpath","//Edit[@Name='Remarks']");
         super.selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"remarks"), "xpath","//Edit[@Name='Remarks']");
         common.clickElement("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']");
-        super.selectMaster(common.getData(dataFile,"productCode"));
+        super.selectAndValidateDataNew(common.getData(dataFile,"productCode"), "xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']");
         Thread.sleep(1000);
         common.clickElement("xpath","//Edit[@Name='Quantity Row 0, Not sorted.']");
         common.inputText("xpath","//Edit[@Name='Quantity Row 0, Not sorted.']", common.getData(dataFile,"quantity"));
