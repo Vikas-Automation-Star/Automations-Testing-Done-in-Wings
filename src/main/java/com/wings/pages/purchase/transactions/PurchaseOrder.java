@@ -46,7 +46,7 @@ public class PurchaseOrder extends Transaction {
         super.selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"remarks"), "xpath","//Edit[@Name='Remarks']");
         Thread.sleep(1000);
         common.clickElement("xpath","//Edit[@Name='Product Code Row 0, Not sorted.']");
-        selectMaster(common.getData(dataFile,"product"));
+        selectAndValidateDataNew(common.getData(dataFile,"product"),"xpath","//Edit[@Name='Product Code Row 0, Not sorted.']");
         common.clickElement("xpath","//Edit[@Name='Quantity * Row 0, Not sorted.']");
         common.inputText("xpath","//Edit[@Name='Quantity * Row 0, Not sorted.']", common.getData(dataFile,"quantity"));
         common.clickElement("xpath","//Edit[@Name='MRP Row 0, Not sorted.']");

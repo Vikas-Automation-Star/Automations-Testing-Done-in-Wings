@@ -47,7 +47,7 @@ public class MaterialReceipt extends Transaction {
         common.clickElement("xpath","//Edit[@Name='Remarks']");
         super.selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"remarks"), "xpath","//Edit[@Name='Remarks']");
         common.clickElement("xpath","//Edit[@Name='Product Code Row 0, Not sorted.']");
-        super.selectMasterWithValidation(common.getData(dataFile,"Product"),"xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']");
+        super.selectAndValidateDataNew(common.getData(dataFile,"Product"),"xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']");
 
         common.clickElement("xpath","//Edit[@Name='Quantity Row 0, Not sorted.']");
         common.inputText("xpath","//Edit[@Name='Quantity Row 0, Not sorted.']", common.getData(dataFile,"quantity"));
