@@ -1,22 +1,23 @@
 <suite name="SUITE EXECUTION OF ALL MASTERS TRANSACTION AND REPORTS IN THE PURCHASE MODULE">
 
+
     <listeners>
         <listener class-name="com.wings.utils.listener"></listener>
     </listeners>
 
-    <test name="Creating SupplierMaster">
+    <test name="Creating SupplierMaster" description="description for Supplier Master"  testID="WOW 1">
         <classes>
             <class name="menuItems.purchase.masters.SuppliersMaster"></class>
         </classes>
     </test>
 
-    <test name="Creating PurchaseBatchPoliciesMaster">
+    <test name="Creating PurchaseBatchPoliciesMaster" description="description for PurchaseBatchPolicies Master"  testID="WOW 2">
         <classes>
             <class name="menuItems.purchase.masters.PurchaseBatchPoliciesMaster"></class>
         </classes>
     </test>
 
-    <test name="Creating PriceListMaster">
+    <test name="Creating PriceListMaster" description="description for PriceList Master"  testID="WOW 3">
         <classes>
             <class name="menuItems.purchase.masters.PriceListMaster"></class>
         </classes>
@@ -24,91 +25,91 @@
 
     <!-- Masters of purchase menu completed 3 -->
 
-    <test name="Performing PurchaseEnquiries Transaction">
+    <test name="Performing PurchaseEnquiries Transaction" description="description for PurchaseEnquiries Transaction"  testID="WOW 4">
         <classes>
             <class name="menuItems.purchase.transactions.PurchaseEnquiriesTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing PurchaseEnquiriesCancellation Transaction">
+    <test name="Performing PurchaseEnquiriesCancellation Transaction" description="description for PurchaseEnquiriesCancellation Transaction"  testID="WOW 5">
         <classes>
             <class name="menuItems.purchase.transactions.PurchaseEnquiriesCancellationTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing PurchaseQuotations Transaction">
+    <test name="Performing PurchaseQuotations Transaction" description="description for PurchaseQuotations Transaction"  testID="WOW 6">
         <classes>
             <class name="menuItems.purchase.transactions.PurchaseQuotationsTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing PurchaseQuotationsAgainstEnquiries Transaction">
+    <test name="Performing PurchaseQuotationsAgainstEnquiries Transaction" description="description for PurchaseQuotationsAgainstEnquiries Transaction"  testID="WOW 7">
         <classes>
             <class name="menuItems.purchase.transactions.PurchaseQuotationsAgainstEnquiriesTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing PurchaseOrdersAgainstQuotations Transaction">
+    <test name="Performing PurchaseOrdersAgainstQuotations Transaction" description="description for PurchaseOrdersAgainstQuotations Transaction"  testID="WOW 8">
         <classes>
             <class name="menuItems.purchase.transactions.PurchaseOrdersAgainstQuotationsTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing PurchaseOrders Transaction">
+    <test name="Performing PurchaseOrders Transaction" description="description for PurchaseOrders Transaction"  testID="WOW 9">
         <classes>
             <class name="menuItems.purchase.transactions.PurchaseOrdersTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing PurchaseOrdersCancellation Transaction">
+    <test name="Performing PurchaseOrdersCancellation Transaction" description="description for PurchaseOrdersCancellation Transaction"  testID="WOW 10">
         <classes>
-            <class name="menuItems.purchase.transactions.PurchaseOrderCancellationTransaction"></class>
+            <class name="menuItems.purchase.transactions.PurchaseOrderCancellationTransaction" ></class>
         </classes>
     </test>
 
-    <test name="Performing MaterialReceipts Transaction">
+    <test name="Performing MaterialReceipts Transaction" description="descriptionM for MaterialReceipts Transaction"  testID="WOW 11">
         <classes>
             <class name="menuItems.purchase.transactions.MaterialReceiptsTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing MaterialReceiptsAgainstOrders Transaction">
+    <test name="Performing MaterialReceiptsAgainstOrders Transaction" description="description for MaterialReceiptsAgainstOrders Transaction"  testID="WOW 12">
         <classes>
             <class name="menuItems.purchase.transactions.MaterialReceiptsAgainstOrdersTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing MaterialReturns Transaction">
+    <test name="Performing MaterialReturns Transaction" description="description for MaterialReturns Transaction"  testID="WOW 13">
         <classes>
             <class name="menuItems.purchase.transactions.MaterialReturnsTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing  PurchaseVouchers Transaction">
+    <test name="Performing  PurchaseVouchers Transaction" description="description for PurchaseVouchers Transaction"  testID="WOW 14">
         <classes>
             <class name="menuItems.purchase.transactions.PurchaseVouchersTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing PurchaseVouchersAgainstOrders Transaction">
+    <test name="Performing PurchaseVouchersAgainstOrders Transaction" description="description for PurchaseVouchersAgainstOrders Transaction"  testID="WOW 15">
         <classes>
             <class name="menuItems.purchase.transactions.PurchaseVouchersAgainstOrdersTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing PurchaseVouchersAgainstReceipts Transaction">
+    <test name="Performing PurchaseVouchersAgainstReceipts Transaction" description="description for PurchaseVouchersAgainstReceipts Transaction"  testID="WOW 16">
         <classes>
             <class name="menuItems.purchase.transactions.PurchaseVouchersAgainstReceiptsTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing PurchaseReturnsWithInvoicesReferences Transaction">
+    <test name="Performing PurchaseReturnsWithInvoicesReferences Transaction" description="description for PurchaseReturnsWithInvoiceReference Transaction"  testID="WOW 17">
         <classes>
             <class name="menuItems.purchase.transactions.PurchaseReturnsWithInvoicesReferencesTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing PurchasePrices Transaction">
+    <test name="Performing PurchasePrices Transaction" description="description for PurchasePrices Transaction"  testID="WOW 18">
         <classes>
             <class name="menuItems.purchase.transactions.PurchasePricesTransaction"></class>
         </classes>
@@ -116,126 +117,126 @@
 
     <!-- Transactions of purchase menu completed 15-->
 
-    <test name="Checking PurchaseEnquiries Report">
+    <test name="Checking PurchaseEnquiries Report" description="description for PurchaseEnquiries Report"  testID="WOW 19">
         <classes>
             <class name="menuItems.purchase.reports.PurchaseEnquiriesReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PendingPurchaseEnquiries Report">
+    <test name="Checking PendingPurchaseEnquiries Report" description="description for PendingPurchaseEnquiries Report"  testID="WOW 20">
         <classes>
             <class name="menuItems.purchase.reports.PendingPurchaseEnquiriesReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PurchaseEnquiriesCancellation Report">
+    <test name="Checking PurchaseEnquiriesCancellation Report" description="description for PurchaseEnquiriesCancellation Report"  testID="WOW 21">
         <classes>
             <class name="menuItems.purchase.reports.PurchaseEnquiriesCancellationsReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PurchaseQuotations Report">
+    <test name="Checking PurchaseQuotations Report" description="description for PurchaseQuotations Report"  testID="WOW 22">
         <classes>
             <class name="menuItems.purchase.reports.PurchaseQuotationsReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PendingPurchaseQuotations Report">
+    <test name="Checking PendingPurchaseQuotations Report" description="description for PendingPurchaseQuotations Report"  testID="WOW 23">
         <classes>
             <class name="menuItems.purchase.reports.PendingPurchaseQuotationsReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PurchaseQuotationsAgainstEnquiries Report">
+    <test name="Checking PurchaseQuotationsAgainstEnquiries Report" description="description for PurchaseQuotationsAgainstEnquiries Report"  testID="WOW 24">
         <classes>
             <class name="menuItems.purchase.reports.PurchaseQuotationsAgainstEnquiriesReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PurchaseOrdersAgainstQuotations Report">
+    <test name="Checking PurchaseOrdersAgainstQuotations Report" description="description for PurchaseOrdersAgainstQuotations Report"  testID="WOW 25">
         <classes>
             <class name="menuItems.purchase.reports.PurchaseOrdersAgainstQuotationsReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PurchaseOrders Report">
+    <test name="Checking PurchaseOrders Report" description="description for PurchaseOrders Report"  testID="WOW 26">
         <classes>
             <class name="menuItems.purchase.reports.PurchaseOrdersReport"></class>
         </classes>
     </test>
-    <test name="Checking PendingPurchaseOrders Report">
+    <test name="Checking PendingPurchaseOrders Report" description="description for PendingPurchaseOrders Report"  testID="WOW 27">
         <classes>
             <class name="menuItems.purchase.reports.PendingPurchaseOrdersReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PurchaseOrderStatusDetails Report">
+    <test name="Checking PurchaseOrderStatusDetails Report" description="description for PurchaseOrderStatusDetails Report"  testID="WOW 28">
         <classes>
             <class name="menuItems.purchase.reports.PurchaseOrderStatusDetailsReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PurchaseOrdersCancellations Report">
+    <test name="Checking PurchaseOrdersCancellations Report" description="description for PurchaseOrdersCancellations Report"  testID="WOW 29">
         <classes>
             <class name="menuItems.purchase.reports.PurchaseOrdersCancellationsReport"></class>
         </classes>
     </test>
 
-    <test name="Checking MaterialReceipts Report">
+    <test name="Checking MaterialReceipts Report" description="description for MaterialReceipts Report"  testID="WOW 30">
         <classes>
             <class name="menuItems.purchase.reports.MaterialReceiptsReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PendingMaterialReceipts Report">
+    <test name="Checking PendingMaterialReceipts Report" description="description for PendingMaterialReceipts Report"  testID="WOW 31">
         <classes>
             <class name="menuItems.purchase.reports.PendingMaterialReceiptsReport"></class>
         </classes>
     </test>
 
-    <test name="Checking MaterialReceiptsAgainstOrders Report">
+    <test name="Checking MaterialReceiptsAgainstOrders Report" description="description for MaterialReceiptsAgainstOrders Report"  testID="WOW 32">
         <classes>
             <class name="menuItems.purchase.reports.MaterialReceiptsAgainstOrdersReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PendingPurchaseOrdersWithReceipts Report">
+    <test name="Checking PendingPurchaseOrdersWithReceipts Report" description="description for PendingPurchaseOrdersWithReceipts Report"  testID="WOW 32">
         <classes>
             <class name="menuItems.purchase.reports.PendingPurchaseOrdersWithReceiptsReport"></class>
         </classes>
     </test>
 
-    <test name="Checking MaterialReturns Report">
+    <test name="Checking MaterialReturns Report" description="description for MaterialReturns Report"  testID="WOW 34">
         <classes>
             <class name="menuItems.purchase.reports.MaterialReturnsReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PurchaseBooks Report">
+    <test name="Checking PurchaseBooks Report" description="description for PurchaseBooks Report"  testID="WOW 35">
         <classes>
             <class name="menuItems.purchase.reports.PurchaseBooksReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PurchaseVouchersAgainstOrders Report">
+    <test name="Checking PurchaseVouchersAgainstOrders Report" description="description for PurchaseVouchersAgainstOrders Report"  testID="WOW 36">
         <classes>
             <class name="menuItems.purchase.reports.PurchaseVouchersAgainstOrdersReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PurchaseVouchersAgainstReceiptsReport Report">
+    <test name="Checking PurchaseVouchersAgainstReceiptsReport Report" description="description for PurchaseVouchersAgainstReceipts Report"  testID="WOW 37">
         <classes>
             <class name="menuItems.purchase.reports.PurchaseVouchersAgainstReceiptsReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PurchaseReturnsWithInvoiceReferences Report">
+    <test name="Checking PurchaseReturnsWithInvoiceReferences Report" description="description for PurchaseReturnsWithInvoiceReferences Report"  testID="WOW 38">
         <classes>
             <class name="menuItems.purchase.reports.PurchaseReturnsWithInvoiceReferencesReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PurchasePriceUpdations Report">
+    <test name="Checking PurchasePriceUpdations Report" description="description for PurchasePriceUpdations Report"  testID="WOW 39">
         <classes>
             <class name="menuItems.purchase.reports.PurchasePriceUpdationReport"></class>
         </classes>

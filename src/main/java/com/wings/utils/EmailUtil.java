@@ -42,7 +42,7 @@ public class EmailUtil {
 
             //msg.setReplyTo(InternetAddress.parse("no_reply@example.com", false));
 
-            msg.setSubject("Sales Suite Execution Report", "UTF-8");
+            msg.setSubject("sample suite execution", "UTF-8");
 
             //msg.setText(body, "UTF-8");
             msg.setContent(multipart);

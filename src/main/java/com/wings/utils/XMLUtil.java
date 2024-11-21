@@ -24,7 +24,6 @@ import java.util.regex.Pattern;
 
 public class XMLUtil {
     Document document;
-
     long executionTimeMillis = 0;
     String executionMachine = "";
     String executionStartTime = "";
@@ -51,57 +50,27 @@ public class XMLUtil {
         document.getDocumentElement().normalize();
     }
 
-    public void readTestNG() throws ParserConfigurationException, IOException, SAXException {
-        // First, parse sampleSuite.xml to fetch name, description, and testID
-//        readXMLFile("TestNG/sampleSuite.xml");
-//        NodeList suiteList = document.getElementsByTagName("suite");
-//
-//        if (suiteList.getLength() > 0) {
-//            Element suiteElement = (Element) suiteList.item(0);
-//            suiteName = suiteElement.getAttribute("name");
-//            String suiteDescription = suiteElement.getAttribute("description");
-//            String suiteTestID = suiteElement.getAttribute("testId");
-//
-//            // Print the suite attributes
-//            System.out.printf("Suite Name: %s, Description: %s, Test ID: %s%n", suiteName, suiteDescription, suiteTestID);
-//        }
-//
-//        // After parsing sampleSuite.xml, now parse testng-results.xml
-//        readXMLFile("target/surefire-reports/testng-results.xml");
-//        document.getDocumentElement().normalize();
-//
-//        // Initialize the XML document by reading the testng-results.xml
-//        NodeList testList = document.getElementsByTagName("test");
-//        for (int i = 0; i < testList.getLength(); i++) {
-//            Element testElement = (Element) testList.item(i);
-//            String name = testElement.getAttribute("name");
-//            String description = testElement.getAttribute("description");
-//            String testId = testElement.getAttribute("testId");
-//
-//            // Print the attributes for each test
-//            System.out.printf("Test Name: %s, Description: %s, Test ID: %s%n", name, description, testId);
-        // First, parse sampleSuite.xml to fetch name, description, and testID
-        readXMLFile("TestNG/MenuItems/inventorySuite.xml");
+    public void readTestNG(String TestNGFile,String TestNGResultsFIle) throws ParserConfigurationException, IOException, SAXException {
+        readXMLFile(TestNGFile);
         NodeList childList=document.getElementsByTagName("test");
         for (int i = 0; i < childList.getLength(); i++) {
             Element testElement= (Element) childList.item(i);
             name=testElement.getAttribute("name");
             description=testElement.getAttribute("description");
-            testID=testElement.getAttribute("testId");
+            testID=testElement.getAttribute("testID");
 
             Map<String, String> testData = new HashMap<>();
             testData.put("name", name);
             testData.put("description", description);
             testData.put("testID", testID);
             testDetailsList.add(testData);
-
 //            System.out.println(name);
 //            System.out.println(description);
 //            System.out.println(testID);
         }
-        readXMLFile("target/surefire-reports/testng-results.xml");
-        document.getDocumentElement().normalize();
 
+        readXMLFile(TestNGResultsFIle);
+        document.getDocumentElement().normalize();
         NodeList suiteList = document.getElementsByTagName("suite");
         String suiteName = "";
         if (suiteList.getLength() > 0) {
@@ -120,7 +89,7 @@ public class XMLUtil {
         }
     }
 
-    public void readTestNGResults() throws ParseException, IOException {
+    public void readTestNGResults(String JSONFile) throws ParseException, IOException {
         // Parse testng-results.xml for results (this will now happen after parsing sampleSuite.xml)
         NodeList suiteList = document.getElementsByTagName("suite");
         executionMachine = InetAddress.getLocalHost().getHostName();
@@ -163,7 +132,12 @@ public class XMLUtil {
                 }
                 Map<String, String> testDetailsMap = testDetailsList.get(i); // Get the test details map
 
-                testDetails.append(String.format("<tr style='text-align: center; vertical-align: middle;'><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%.2f s</td></tr>",
+                testDetails.append(String.format("<tr style='text-align: center; vertical-align: middle;'> <td align=\"center\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \"> <a href=\"https://wingsinfo.atlassian.net/browse/%s\">%s</a></td>" +
+                                "<td align=\"left\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">%s</td>" +
+                                "<td  align=\"left\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">%s</td>" +
+                                "<td align=\"center\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">%s</td>" +
+                                "<td align=\"left\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">%.2f s</td></tr>",
+                        testDetailsMap.get("testID"),
                         testDetailsMap.get("testID"),
                         testDetailsMap.get("name"),
                         testDetailsMap.get("description"),
@@ -175,7 +149,7 @@ public class XMLUtil {
         passRate = (totalTests > 0) ? (passedTests / (double) totalTests) * 100 : 0;
 
         // Read data from JSON file (if needed)
-        String jsonContent = new String(Files.readAllBytes(Paths.get("./src/main/resources/XMLdata.json")));
+        String jsonContent = new String(Files.readAllBytes(Paths.get(JSONFile)));
         ObjectMapper objectMapper = new ObjectMapper();
         Map<String, Object> jsonMap = objectMapper.readValue(jsonContent, Map.class);
 
@@ -189,6 +163,7 @@ public class XMLUtil {
         String htmlTemplate = new String(Files.readAllBytes(Paths.get("mailTemplates/executiontemplate.html")), "UTF-8");
         htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#ExecutionMachine#"), executionMachine);
         htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#SuiteName#"), suiteName1);
+
         htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#TestPassRate#"), String.format("%.2f%%", passRate));
         htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#PassedTests#"), Integer.toString(passedTests));
         htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#FailedTests#"), Integer.toString(failedTests));
@@ -206,7 +181,7 @@ public class XMLUtil {
         // Send email with report attached
         final String fromEmail = "QA@wingsinfo.net";
         final String password = "TestAutomation@19";
-        final String toEmail = "madhuri.matta@wingsinfo.net";
+        final String toEmail = "vikas.empuluri@wingsinfo.net";//,venkatarathaiah.m@wingsinfo.net,manoj.c@wingsinfo.netr";
 
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.office365.com");
@@ -224,12 +199,12 @@ public class XMLUtil {
         System.out.println("Report generated and email sent successfully!");
     }
 
+
     public static void main(String[] args) {
         XMLUtil xmlUtil = new XMLUtil();
-
         try {
-            xmlUtil.readTestNG();        // Parse both sampleSuite.xml and testng-results.xml
-            xmlUtil.readTestNGResults(); // Process test results and send email
+            xmlUtil.readTestNG("TestNG/sampleSuite.xml","target/surefire-reports/testng-results.xml");// Parse both sampleSuite.xml and testng-results.xml
+            xmlUtil.readTestNGResults("./src/main/resources/XMLdata.json"); // Process test results and send email
         } catch (Exception e) {
             e.printStackTrace();
         }

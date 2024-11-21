@@ -4,124 +4,125 @@
         <listener class-name="com.wings.utils.listener"></listener>
     </listeners>
 
-    <test name="Create BillOfMaterialsMaster">
+    <test name="Create BillOfMaterialsMaster" description="description for BillOfMaterialsMaster"  testID="WOW 1">
         <classes>
             <class name="menuItems.Production.masters.BillOfMaterialsMater"></class>
         </classes>
     </test>
 
-    <test name="Create ProductionBatchPoliciesMaster">
+    <test name="Create ProductionBatchPoliciesMaster" description="description for BillOfMaterialsMaster"  testID="WOW 2">
         <classes>
             <class name="menuItems.Production.masters.ProductionBatchPoliciesMaster"></class>
         </classes>
     </test>
-
-    <test name="Performing Assign StandardRates Transaction">
+<!-- masters of Production menu completed-->
+    <test name="Performing Assign StandardRates Transaction" description="description for AssignStandardRatesTransaction"  testID="WOW 3">
         <classes>
             <class name="menuItems.Production.transactions.AssignStandardRatesTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing ProductionOrder Transaction">
+    <test name="Performing ProductionOrder Transaction" description="description for ProductionOrderTransaction"  testID="WOW 4">
         <classes>
             <class name="menuItems.Production.transactions.ProductionOrdersTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing MaterialIssuesToProduction Transaction">
+    <test name="Performing MaterialIssuesToProduction Transaction" description="description for MaterialIssuesToProductionTransaction"  testID="WOW 5">
         <classes>
             <class name="menuItems.Production.transactions.MaterialIssuesToProductionTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing MaterialReturnsFromProduction Transaction">
+    <test name="Performing MaterialReturnsFromProduction Transaction" description="description for MaterialReturnsFromProductionTransaction"  testID="WOW 6">
         <classes>
             <class name="menuItems.Production.transactions.MaterialReturnsFromProductionTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing MaterialReceiptsFrom Production">
+    <test name="Performing MaterialReceiptsFrom Production Transaction" description="description for MaterialReceiptsFromProductionTransaction"  testID="WOW 7">
         <classes>
             <class name="menuItems.Production.transactions.MaterialReceiptFromProductionTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing CloseProductionOrder Transaction">
+    <test name="Performing CloseProductionOrder Transaction" description="description for CloseProductionOrderTransaction"  testID="WOW 8">
         <classes>
             <class name="menuItems.Production.transactions.CloseProductionOrderTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing MaterialIssuesAndReceiptsFromProduction Trasaction">
+    <test name="Performing MaterialIssuesAndReceiptsFromProduction Transaction " description="description for MaterialIssuesAndReceiptsFromProductionTransaction"  testID="WOW 9">
         <classes>
             <class name="menuItems.Production.transactions.MaterialIssuesAndReceiptsFromProductionTransaction"></class>
         </classes>
     </test>
+    <!-- Transactions of production menu completed-->
 
-    <test name="Checking BillOfMaterialsReport">
+    <test name="Checking BillOfMaterialsReport" description="description for BillOfMaterials Report"  testID="WOW 10">
         <classes>
             <class name="menuItems.Production.reports.BillOfMaterials"></class>
         </classes>
     </test>
 
-    <test name="Checking AssignStandardRateReport">
+    <test name="Checking AssignStandardRateReport" description="description for AssignStandardRate Report"  testID="WOW 11">
         <classes>
             <class name="menuItems.Production.reports.AssignStandardRatesReport"></class>
         </classes>
     </test>
 
-    <test name="Checking ProductionOrderReport">
+    <test name="Checking ProductionOrderReport" description="description for ProductionOrder Report"  testID="WOW 12">
         <classes>
             <class name="menuItems.Production.reports.ProductionOrdersReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PendingProductionOrderReport">
+    <test name="Checking PendingProductionOrderReport" description="description for PendingProductionOrder Report"  testID="WOW 13">
         <classes>
             <class name="menuItems.Production.reports.PendingProductionOrderReport"></class>
         </classes>
     </test>
 
-    <test name="Checking MaterialIssuesToProductionReport">
+    <test name="Checking MaterialIssuesToProductionReport" description="description for MaterialIssuesToProduction Report"  testID="WOW 14">
         <classes>
             <class name="menuItems.Production.reports.MaterialIssuesToProductionReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PendingMaterialIssuesToProductionReport">
+    <test name="Checking PendingMaterialIssuesToProductionReport" description="description for PendingMaterialIssuesToProduction Report"  testID="WOW 15">
         <classes>
             <class name="menuItems.Production.reports.PendingMaterialIssuesToProductionReport"></class>
         </classes>
     </test>
 
-    <test name="Checking MaterialReturnsFromProductionReport ">
+    <test name="Checking MaterialReturnsFromProductionReport " description="description for MaterialReturnsFromProduction Report"  testID="WOW 16">
         <classes>
             <class name="menuItems.Production.reports.MaterialReturnsFromProductionReport"></class>
         </classes>
     </test>
 
-    <test name="Checking MaterialReceiptsFromProductionReport ">
+    <test name="Checking MaterialReceiptsFromProductionReport " description="description for MaterialReceiptsFromProduction Report"  testID="WOW 17">
         <classes>
             <class name="menuItems.Production.reports.MaterialReceiptsFromProductionReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PendingMaterialReceiptsFromProductionReport ">
+    <test name="Checking PendingMaterialReceiptsFromProductionReport " description="description for PendingMaterialReceiptsFromProduction Report"  testID="WOW 18">
         <classes>
             <class name="menuItems.Production.reports.PendingMaterialReceiptsFromProductionReport"></class>
         </classes>
     </test>
 
-    <test name="Checking CloseProductionOrderReport ">
+    <test name="Checking CloseProductionOrderReport " description="description for CloseProductionOrderReport"  testID="WOW 19">
         <classes>
             <class name="menuItems.Production.reports.CloseProductionOrderReport"></class>
         </classes>
     </test>
 
-    <test name="Checking MaterialIssuesAndReceiptsFromProductionReport ">
+    <test name="Checking MaterialIssuesAndReceiptsFromProductionReport " description="description for MaterialIssuesAndReceiptsFromProduction Report"  testID="WOW 20">
         <classes>
             <class name="menuItems.Production.reports.MaterialIssuesAndReceiptsFromProductionReport"></class>
         </classes>
     </test>
-
+<!-- Reports of Production menu completed-->
 </suite>

@@ -2,19 +2,19 @@
     <listeners>
         <listener class-name="com.wings.utils.listener"/>
     </listeners>
-    <test name="TestName 1" description="Test 1 description" testId="WOW-64">
+    <test name="Test 1"  description="Test 1 description"  testID="WOW 1">
         <classes>
             <class name="util.SampleTest1"/>
         </classes>
     </test>
-<!--    <test name="TestName 2" description="Test 2 description" testId="WOW-65">-->
-<!--        <classes>-->
-<!--            <class name="util.SampleTest2"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-<!--    <test name="TestName 3" description="Test 3 description" testId="WOW-66">-->
-<!--        <classes>-->
-<!--            <class name="util.SampleTest3"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="Test 2"  description="Test 2 description"  testID="WOW 2">
+        <classes>
+            <class name="util.SampleTest2"/>
+        </classes>
+    </test>
+    <test name="Test 3"  description="Test 3 description"  testID="WOW 3">
+        <classes>
+            <class name="util.SampleTest3"/>
+        </classes>
+    </test>
 </suite>
