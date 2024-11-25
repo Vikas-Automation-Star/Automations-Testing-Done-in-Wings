@@ -1,7 +1,7 @@
 package menuItems.finance.masters.ChartOfAccounts.Assests;
 
 import com.wings.pages.AppLogin;
-import com.wings.pages.finance.masters.ChartOfAccounts.InventoriesMaster;
+import com.wings.pages.finance.masters.ChartOfAccounts.Assests.InventoriesMaster;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;

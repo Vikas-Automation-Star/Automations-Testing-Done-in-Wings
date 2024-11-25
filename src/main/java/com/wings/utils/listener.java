@@ -3,6 +3,10 @@ package com.wings.utils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.testng.*;
+import org.apache.commons.io.FileUtils;
+
+import java.io.File;
+import java.io.IOException;
 
 public class listener implements ITestListener,ISuiteListener,IExecutionListener {
     int totalTest, passed, failed, skipped = 0;
@@ -134,6 +138,13 @@ public class listener implements ITestListener,ISuiteListener,IExecutionListener
     public void onStart(ISuite suite) {
         Reporter.log(suite.getXmlSuite().getParameters().toString());
         System.out.println("On suite start");
+        try {
+//            FileUtils.deleteDirectory(new File("./allure-results"));
+            FileUtils.moveDirectory(new File("./allure-results"),new File("./backup"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     @Override

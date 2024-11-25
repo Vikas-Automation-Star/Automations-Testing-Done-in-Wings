@@ -4,37 +4,37 @@
         <listener class-name="com.wings.utils.listener"/>
     </listeners>
                   <!-- receipts -->
-    <test name="Receipts - Receipts from Parties">
-        <classes>
-            <class name="menuItems.finance.transactions.Receipts.ReceiptsFromPartiesTransaction"/>
-        </classes>
-    </test>
+<!--    <test name="Receipts - Receipts from Parties">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.finance.transactions.Receipts.ReceiptsFromPartiesTransaction"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Receipts - Cash Receipts">
-        <classes>
-            <class name="menuItems.finance.transactions.Receipts.CashReceiptTransaction"/>
-        </classes>
-    </test>
+<!--    <test name="Receipts - Cash Receipts">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.finance.transactions.Receipts.CashReceiptTransaction"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Receipts - Bank Receipts">
-        <classes>
-            <class name="menuItems.finance.transactions.Receipts.BankReceiptsTransaction"/>
-        </classes>
-    </test>
+<!--    <test name="Receipts - Bank Receipts">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.finance.transactions.Receipts.BankReceiptsTransaction"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Receipts - Credit Card Receipts">
-        <classes>
-            <class name="menuItems.finance.transactions.Receipts.CreditCardReceiptTransaction"/>
-        </classes>
-    </test>
+<!--    <test name="Receipts - Credit Card Receipts">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.finance.transactions.Receipts.CreditCardReceiptTransaction"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Receipts - Receipts from credit card companies">
-        <classes>
-            <class name="menuItems.finance.transactions.Receipts.ReceiptsFromCreditCardCompaniesTransaction"/>
-        </classes>
-    </test>
+<!--    <test name="Receipts - Receipts from credit card companies">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.finance.transactions.Receipts.ReceiptsFromCreditCardCompaniesTransaction"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-<!--                &lt;!&ndash; Payments !&ndash;&gt;-->
+                <!-- Payments !-->
 <!--    <test name="Payments- Payments to Parties">-->
 <!--        <classes>-->
 <!--            <class name="menuItems.finance.transactions.Payments.PaymentToPartiesTransaction"/>-->
@@ -59,36 +59,36 @@
 <!--        </classes>-->
 <!--    </test>-->
                 <!-- Banking !-->
-<!--    <test name="Banking - Cash Deposits and Withdrawls">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.finance.transactions.Banking.CashDepositsAndWithdrawlsTransaction"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="Banking - Cash Deposits and Withdrawls">
+        <classes>
+            <class name="menuItems.finance.transactions.Banking.CashDepositsAndWithdrawlsTransaction"/>
+        </classes>
+    </test>
 
-<!--    <test name="Banking - Inter Bank Fund Transfer">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.finance.transactions.Banking.InterBankFundTransferTransaction"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="Banking - Inter Bank Fund Transfer">
+        <classes>
+            <class name="menuItems.finance.transactions.Banking.InterBankFundTransferTransaction"/>
+        </classes>
+    </test>
 
-<!--    <test name="Banking - Bank Reconciliation">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.finance.transactions.Banking.BankReconciliationTransaction"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="Banking - Bank Reconciliation">
+        <classes>
+            <class name="menuItems.finance.transactions.Banking.BankReconciliationTransaction"/>
+        </classes>
+    </test>
 
-<!--    <test name="Banking - Deposit Post Dated Cheques">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.finance.transactions.Banking.DepositPostDatedChequesTransaction"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="Banking - Deposit Post Dated Cheques">
+        <classes>
+            <class name="menuItems.finance.transactions.Banking.DepositPostDatedChequesTransaction"/>
+        </classes>
+    </test>
 
-<!--    <test name="Banking - Opening Uncleared Bank Entries">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.finance.transactions.Banking.OpeningUnclearedBankEntriesTransaction"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-<!--                &lt;!&ndash; Party Adjustments !&ndash;&gt;-->
+    <test name="Banking - Opening Uncleared Bank Entries">
+        <classes>
+            <class name="menuItems.finance.transactions.Banking.OpeningUnclearedBankEntriesTransaction"/>
+        </classes>
+    </test>
+                <!-- Party Adjustments !-->
 <!--    <test name="Party Adjustments- Adjust Party Bills">-->
 <!--        <classes>-->
 <!--            <class name="menuItems.finance.transactions.PartyAdjustments.AdjustPartyBillsTransaction"/>-->
@@ -130,7 +130,7 @@
 <!--            <class name="menuItems.finance.transactions.PartyAdjustments.DebitNoteFromSuppliersTransaction"/>-->
 <!--        </classes>-->
 <!--    </test>-->
-<!--            &lt;!&ndash; Journals !&ndash;&gt;-->
+            <!-- Journals !-->
 <!--    <test name="Journals - Journal Entires">-->
 <!--        <classes>-->
 <!--            <class name="menuItems.finance.transactions.Journals.JournalEntriesTransaction"/>-->
@@ -148,7 +148,7 @@
 <!--            <class name="menuItems.finance.transactions.Journals.BookExpensesOrPayablesTransaction"/>-->
 <!--        </classes>-->
 <!--    </test>-->
-<!--            &lt;!&ndash; Opening Balances !&ndash;&gt;-->
+            <!-- Opening Balances !-->
 <!--    <test name="Opening Balances - Party Opening Balances">-->
 <!--        <classes>-->
 <!--            <class name="menuItems.finance.transactions.OpeningBalances.PartyOpeningBalancesTransaction"/>-->
