@@ -1,7 +1,7 @@
 package menuItems.finance.masters.ChartOfAccounts.Assests;
 
 import com.wings.pages.AppLogin;
-import com.wings.pages.finance.masters.ChartOfAccounts.SundryDebtorsMaster;
+import com.wings.pages.finance.masters.ChartOfAccounts.Assests.SundryDebtorsMaster;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;

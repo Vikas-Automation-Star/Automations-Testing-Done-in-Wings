@@ -3,6 +3,8 @@ package com.wings.pages.finance.reports.Balances;
 import io.appium.java_client.windows.WindowsDriver;
 import com.wings.pages.Report;
 import com.wings.utils.Common;
+import io.qameta.allure.Allure;
+
 import java.awt.*;
 
 public class CustomerBalances extends Report {
@@ -24,6 +26,7 @@ public class CustomerBalances extends Report {
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
 //        Thread.sleep(1500);
 //        super.bulkVerifyReport("ILT 1");
+        Allure.step("Validating Customer balances report");
         closeReport("Customer Balances");
     }
 }

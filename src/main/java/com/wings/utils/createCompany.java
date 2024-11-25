@@ -9,7 +9,7 @@ import java.net.URL;
 
 public class createCompany {
     WindowsDriver driver,logindriver;
-    public static String CompanyName="WingsAutomation03", Password="Wings@123";
+    public static String CompanyName="Dup_Company", Password="Wings@123";
     public void login() throws IOException, InterruptedException {
         DesiredCapabilities capabilities=new DesiredCapabilities();
         capabilities.setCapability("app","C:\\Program Files (x86)\\Wings Infonet\\Wings Accounting 24DNP\\Wings.exe");
