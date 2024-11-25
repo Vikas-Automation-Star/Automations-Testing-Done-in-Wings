@@ -3,6 +3,7 @@ package com.wings.pages.purchase.reports;
 import com.wings.pages.Report;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
+import io.qameta.allure.Allure;
 
 public class PendingMaterialReceipts extends Report {
     WindowsDriver driver;
@@ -23,5 +24,7 @@ public class PendingMaterialReceipts extends Report {
         common.clickElement("xpath", "//Button[@Name='Submit']");
         super.bulkVerifyReport("");
         super.closeReport("Pending Material Receipts");
+        Allure.step("Validating PendingMaterialReceipts Report");
+
     }
 }

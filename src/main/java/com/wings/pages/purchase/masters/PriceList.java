@@ -3,6 +3,7 @@ package com.wings.pages.purchase.masters;
 import com.wings.pages.Masters;;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
+import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;;
 
 import java.awt.*;
@@ -31,5 +32,6 @@ public class PriceList extends Masters {
         super.inputTextWithValidation("xpath","//Edit[@Name='Description']", common.getData(dataFile,"description"));
         super.saveAfterMasterCreate();
         super.closeMaster("Purchase Price Lists");
+        Allure.step("PriceList");
     }
 }

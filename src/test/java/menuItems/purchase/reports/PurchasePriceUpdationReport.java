@@ -3,6 +3,7 @@ package menuItems.purchase.reports;
 import com.wings.pages.purchase.reports.PurchasePriceUpdations;
 import com.wings.pages.AppLogin;
 import io.appium.java_client.windows.WindowsDriver;
+import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -19,6 +20,8 @@ public class PurchasePriceUpdationReport {
     public void beforeTest() throws IOException, InterruptedException, ParseException {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
+        Allure.step("Before Test PurchasePriceUpdations Report");
+
     }
 
     @Test
@@ -30,5 +33,7 @@ public class PurchasePriceUpdationReport {
     @AfterTest
     public void afterTest(){
         appLogin.logout();
+        Allure.step("After Test PurchasePriceUpdations Report");
+
     }
 }

@@ -3,6 +3,7 @@ package com.wings.pages.purchase.reports;
 import com.wings.pages.Report;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
+import io.qameta.allure.Allure;
 
 import java.awt.*;
 
@@ -25,5 +26,7 @@ public class PurchaseOrders extends Report {
         common.clickElement("xpath", "//Button[@Name='Submit']");
         super.bulkVerifyReport("");
         super.closeReport("Purchase Orders");
+        Allure.step("Validating PurchaseOrders Report");
+
     }
 }

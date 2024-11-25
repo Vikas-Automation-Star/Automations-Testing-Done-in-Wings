@@ -3,6 +3,7 @@ package com.wings.pages.purchase.masters;
 import com.wings.pages.Masters;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
+import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -159,5 +160,6 @@ public class Supplier extends Masters {
     common.clickElement("xpath","//Button[@Name='Ok']");
     saveAfterMasterCreate();
     closeMaster("Suppliers");
+    Allure.step("Supplier");
   }
 }

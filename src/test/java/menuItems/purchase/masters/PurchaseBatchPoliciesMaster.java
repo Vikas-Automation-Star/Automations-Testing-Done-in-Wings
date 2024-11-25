@@ -3,6 +3,7 @@ package menuItems.purchase.masters;;
 import com.wings.pages.purchase.masters.PurchaseBatchPolicies;
 import com.wings.pages.AppLogin;
 import io.appium.java_client.windows.WindowsDriver;
+import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -19,7 +20,8 @@ public class PurchaseBatchPoliciesMaster {
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
         driver=appLogin.launchSingleUserApp();
-        appLogin.singleUserLogin();;
+        appLogin.singleUserLogin();
+        Allure.step("Before Test Purchase Batch policies");
     }
 
     @Test
@@ -32,5 +34,6 @@ public class PurchaseBatchPoliciesMaster {
     @AfterTest
     public void afterTest(){
         appLogin.logout();
+        Allure.step("After Test Purchase Batch policies");
     }
 }

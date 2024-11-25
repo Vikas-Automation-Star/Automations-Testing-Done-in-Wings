@@ -3,6 +3,7 @@ package com.wings.pages.purchase.transactions;
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
+import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -61,5 +62,7 @@ public class PurchasePrice extends Transaction {
         Thread.sleep(1500);
         super.closeTransaction("Purchase Prices");
         Thread.sleep(2000);
+        Allure.step("PurchasePrices Transaction");
+
     }
 }

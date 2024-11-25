@@ -3,6 +3,7 @@ package com.wings.pages.purchase.transactions;
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
+import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
@@ -78,10 +79,12 @@ public class PurchaseVoucher extends Transaction {
         common.inputText("xpath","//Edit[@Name='Unit Rate Row 0, Not sorted.']", common.getData(dataFile,"unitRate"));
         common.clickElement("xpath","//Edit[@Name='Editable Gross Amount Row 0, Not sorted.']");
         super.sliderHandle();
-//        super.saveTransaction();
-//        Thread.sleep(1500);
-//        super.newTransaction();
-//        super.closeTransaction("Purchase Vouchers");
-//        Thread.sleep(3000);
+        super.saveTransaction();
+        Thread.sleep(1500);
+        super.newTransaction();
+        super.closeTransaction("Purchase Vouchers");
+        Thread.sleep(3000);
+        Allure.step("PurchaseVouchers Transaction");
+
     }
 }
