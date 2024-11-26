@@ -1,6 +1,7 @@
 package com.wings.utils;
 
 import io.appium.java_client.windows.WindowsDriver;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import java.awt.*;
 import java.io.IOException;
@@ -24,16 +25,16 @@ public class AttachCompany {
             Thread.sleep(3000);
             driver.findElementByXPath("//Edit[@Name='Company Name']").sendKeys("Dup_Company");
             driver.findElementByXPath("//Button[@Name=' ....']").click();
-            driver.findElementByXPath("//ListItem[@Name='Dup_Company.mdf']").click();
-            Thread.sleep(1500);
-            driver.findElementByXPath("//Button[@Name='Open']/ancestor::Dialog[@Name='Open']").click();
+//            driver.findElementByXPath("//ListItem[@Name='Dup_Company.mdf']").click();
+            Thread.sleep(3000);
+            driver.getKeyboard().sendKeys("Dup_Company.mdf");
+            driver.getKeyboard().sendKeys(Keys.ENTER);
+//            driver.findElementByXPath("//Dialog[@Name='Open']/Button[@Name='Open']").sendKeys(Keys.ENTER);
 //            driver.findElementByXPath("//Edit[@Name='Database File Path']").sendKeys("C:\\Program Files\\Microsoft SQL Server\\MSSQL16.MSSQLSERVER\\MSSQL\\DATA\\Dup_Company.mdf");
             driver.findElementByXPath("//Button[@Name='Next >']").click();
             driver.findElementByXPath("//Button[@Name='Finish']").click();
         }
 
-
-        //
         public static void main (String[]args) throws IOException, InterruptedException, AWTException {
             AttachCompany attachCompany=new AttachCompany();
             attachCompany.attachCompany();
