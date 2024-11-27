@@ -242,6 +242,53 @@
         </classes>
     </test>
 
+    <test name="Checking MonthWisePurchaseByQuantity Report" description="description forMonthWisePurchaseByQuantity Report"  testID="WOW 40">
+        <classes>
+            <class name="menuItems.purchase.reports.analysis.party.MonthWisePurchaseByQuantityReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking MonthWisePurchaseByValue Report" description="description for MonthWisePurchaseByValue Report"  testID="WOW 41">
+        <classes>
+            <class name="menuItems.purchase.reports.analysis.party.MonthWisePurchaseByValueReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking YearWisePurchaseByQuantity Report" description="description for YearWisePurchaseByQuantity Report"  testID="WOW 42">
+        <classes>
+            <class name="menuItems.purchase.reports.analysis.party.YearWisePurchaseByQuantityReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking YearWisePurchaseByValue Report" description="description for YearWisePurchaseByValue Report"  testID="WOW 43">
+        <classes>
+            <class name="menuItems.purchase.reports.analysis.party.YearWisePurchaseByValueReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking MonthWisePurchaseByQuantity Report" description="description for MonthWisePurchaseByQuantity Report"  testID="WOW 44">
+        <classes>
+            <class name="menuItems.purchase.reports.analysis.product.MonthWisePurchaseByQuantityReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking MonthWisePurchaseByValue Report" description="description for MonthWisePurchaseByValue Report"  testID="WOW 45">
+        <classes>
+            <class name="menuItems.purchase.reports.analysis.product.MonthWisePurchaseByValueReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking YearWisePurchaseByQuantity Report" description="description for YearWisePurchaseByQuantity Report"  testID="WOW 46">
+        <classes>
+            <class name="menuItems.purchase.reports.analysis.product.YearWisePurchaseByQuantityReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking YearWisePurchaseByValue Report" description="description for YearWisePurchaseByValue Report"  testID="WOW 47">
+        <classes>
+            <class name="menuItems.purchase.reports.analysis.product.YearWisePurchaseByValueReport"></class>
+        </classes>
+    </test>
     <!-- CheckingReports of purchase menu completed 21-->
 
 </suite>

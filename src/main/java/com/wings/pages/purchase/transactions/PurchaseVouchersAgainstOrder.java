@@ -21,10 +21,7 @@ public class PurchaseVouchersAgainstOrder extends Transaction {
     }
 
     public void purchaseVouchersAgainstOrder() throws InterruptedException, IOException, ParseException {
-
-        common.clickElement("name", "Purchase");
-        common.clickElement("name", "Invoices");
-        common.clickElement("xpath", "//MenuItem[@Name='Purchase Vouchers against Orders']");
+        navigateToPurchaseVouchersAgainstOrders();
         Thread.sleep(3000);
         super.oldTTransaction();
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");

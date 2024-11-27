@@ -21,10 +21,7 @@ public class MaterialReceipt extends Transaction {
     }
 
     public void materialReceipt() throws InterruptedException, IOException, ParseException {
-
-        common.clickElement("name", "Purchase");
-        common.clickElement("name", "Receipts");
-        common.clickElement("xpath", "//MenuItem[@Name='Material Receipts']");
+        navigateToMaterialReceipts();
         Thread.sleep(3000);
         super.oldTTransaction();
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");

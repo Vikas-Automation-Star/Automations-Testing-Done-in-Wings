@@ -383,6 +383,127 @@ public abstract class Transaction {
     }
 
 
+    public void navigateToPurchaseEnquiries(){
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Enquiries");
+        common.clickElement("xpath", "//Menu[@Name='Enquiries']/MenuItem[@Name='Purchase Enquiries']");
+        String validate=common.findWebElement("xpath","//Text[@Name='Purchase Enquiries']").getText();
+        System.out.println(validate);
+        Assert.assertEquals("Purchase Enquiries",validate);
+    }
+    public void navigateToPurchaseEnquiriesCancellation(){
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Enquiries");
+        common.clickElement("xpath", "//MenuItem[@Name='Purchase Enquiries Cancellation']");
+        String validate=common.findWebElement("xpath","//Text[@Name='Purchase Enquiries Cancellation']").getText();
+        System.out.println(validate);
+        Assert.assertEquals("Purchase Enquiries Cancellation",validate);
+    }
+    public void navigateToPurchaseQuotations(){
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Quotations");
+        common.clickElement("xpath", "//MenuItem[@Name='Purchase Quotations']");
+        String validate=common.findWebElement("xpath","//Text[@Name='Purchase Quotations']").getText();
+        System.out.println(validate);
+        Assert.assertEquals("Purchase Quotations",validate);
+    }
+    public void navigateToPurchaseQuotationsAgainstEnquiries(){
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Quotations");
+        common.clickElement("xpath", "//MenuItem[@Name='Purchase Quotations against Enquiries']");
+        String validate=common.findWebElement("xpath","//Text[@Name='Purchase Quotations against Enquiries']").getText();
+        System.out.println(validate);
+        Assert.assertEquals("Purchase Quotations against Enquiries",validate);
+    }
+    public void navigateToPurchaseOrdersAgainstQuotations(){
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Orders");
+        common.clickElement("xpath", "//MenuItem[@Name='Purchase Orders against Quotations']");
+        String validate=common.findWebElement("xpath","//Text[@Name='Purchase Orders against Quotations']").getText();
+        System.out.println(validate);
+        Assert.assertEquals("Purchase Orders against Quotations",validate);
+    }
+    public void navigateToPurchaseOrders(){
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Orders");
+        common.clickElement("xpath", "//MenuItem[@Name='Purchase Orders']");
+        String validate=common.findWebElement("xpath","//Text[@Name='Purchase Orders']").getText();
+        System.out.println(validate);
+        Assert.assertEquals("Purchase Orders",validate);
+    }
+    public void navigateToPurchaseOrdersaCancellation(){
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Orders");
+        common.clickElement("xpath", "//MenuItem[@Name='Purchase Orders Cancellation']");
+        String validate=common.findWebElement("xpath","//Text[@Name='Purchase Orders Cancellation']").getText();
+        System.out.println(validate);
+        Assert.assertEquals("Purchase Orders Cancellation",validate);
+    }
+    public void navigateToMaterialReceipts(){
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Receipts");
+        common.clickElement("xpath", "//MenuItem[@Name='Material Receipts']");
+        String validate=common.findWebElement("xpath","//Text[@Name='Material Receipts']").getText();
+        System.out.println(validate);
+        Assert.assertEquals("Material Receipts",validate);
+    }
+    public void navigateToMaterialReceiptsAgainstOrders(){
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Receipts");
+        common.clickElement("xpath", "//MenuItem[@Name='Material Receipts against Orders']");
+        String validate=common.findWebElement("xpath","//Text[@Name='Material Receipts against Orders']").getText();
+        System.out.println(validate);
+        Assert.assertEquals("Material Receipts against Orders",validate);
+    }
+    public void navigateToMaterialReturns(){
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Receipts");
+        common.clickElement("xpath", "//MenuItem[@Name='Material Returns']");
+        String validate=common.findWebElement("xpath","//Text[@Name='Material Returns']").getText();
+        System.out.println(validate);
+        Assert.assertEquals("Material Returns",validate);
+    }
+    public void navigateToPurchasePrice(){
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Price");
+        common.clickElement("xpath", "//MenuItem[@Name='Purchase Prices']");
+        String validate=common.findWebElement("xpath","//Text[@Name='Purchase Prices']").getText();
+        System.out.println(validate);
+        Assert.assertEquals("Purchase Prices",validate);
+    }
+    public void navigateToPurchaseVouchers(){
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Invoices");
+        common.clickElement("xpath", "//MenuItem[@Name='Purchase Vouchers']");
+        String validate=common.findWebElement("xpath","//Text[@Name='Purchase Vouchers']").getText();
+        System.out.println(validate);
+        Assert.assertEquals("Purchase Vouchers",validate);
+    }
+    public void navigateToPurchaseVouchersAgainstOrders(){
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Invoices");
+        common.clickElement("xpath", "//MenuItem[@Name='Purchase Vouchers against Orders']");
+        String validate=common.findWebElement("xpath","//Text[@Name='Purchase Vouchers against Orders']").getText();
+        System.out.println(validate);
+        Assert.assertEquals("Purchase Vouchers against Orders",validate);
+    }
+    public void navigateToPurchaseVouchersAgainstReceipts(){
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Invoices");
+        common.clickElement("xpath", "//MenuItem[@Name='Purchase Vouchers against Receipts']");
+        String validate=common.findWebElement("xpath","//Text[@Name='Purchase Vouchers against Receipts']").getText();
+        System.out.println(validate);
+        Assert.assertEquals("Purchase Vouchers against Receipts",validate);
+    }
+    public void navigateToPurchaseVouchersWithInvoicesReference(){
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Invoices");
+        common.clickElement("xpath", "//MenuItem[@Name='Purchase Returns with Invoice Reference']");
+        String validate=common.findWebElement("xpath","//Text[@Name='Purchase Returns with Invoice Reference']").getText();
+        System.out.println(validate);
+        Assert.assertEquals("Purchase Returns with Invoice Reference",validate);
+    }
+
 
 
 
