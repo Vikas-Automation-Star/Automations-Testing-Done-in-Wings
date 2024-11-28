@@ -139,8 +139,8 @@ public class listener implements ITestListener,ISuiteListener,IExecutionListener
         Reporter.log(suite.getXmlSuite().getParameters().toString());
         System.out.println("On suite start");
         try {
-//            FileUtils.deleteDirectory(new File("./allure-results"));
             FileUtils.moveDirectory(new File("./allure-results"),new File("./backup"));
+            FileUtils.deleteDirectory(new File("./allure-results"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
