@@ -21,10 +21,7 @@ public class MaterialReturn extends Transaction {
     }
 
     public void materialReturn() throws InterruptedException, IOException, ParseException {
-
-        common.clickElement("name", "Purchase");
-        common.clickElement("name", "Receipts");
-        common.clickElement("xpath", "//MenuItem[@Name='Material Returns']");
+        navigateToMaterialReturns();
         Thread.sleep(3000);
         super.oldTTransaction();
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");

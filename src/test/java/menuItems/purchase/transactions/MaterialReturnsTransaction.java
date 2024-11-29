@@ -21,7 +21,6 @@ public class MaterialReturnsTransaction {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
         Allure.step("Before Test MaterialReturns Transaction");
-
     }
 
     @Test
@@ -34,6 +33,5 @@ public class MaterialReturnsTransaction {
     public void afterTest(){
         appLogin.logout();
         Allure.step("After Test MaterialReturns Transaction");
-
     }
 }

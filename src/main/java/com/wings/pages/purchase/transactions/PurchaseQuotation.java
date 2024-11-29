@@ -21,11 +21,9 @@ public class PurchaseQuotation extends Transaction {
     }
 
     public void purchaseQuotation() throws InterruptedException, IOException, ParseException {
-        common.clickElement("name", "Purchase");
-        common.clickElement("name", "Quotations");
-        common.clickElement("xpath", "//MenuItem[@Name='Purchase Quotations']");
-        Thread.sleep(3000);
-        super.oldTTransaction();
+        navigateToPurchaseQuotations();
+        Thread.sleep(2000);
+        oldTTransaction();
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");
         super.selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']" );
         common.clickElement("xpath", "//Edit[@Name='Branch *']");

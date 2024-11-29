@@ -21,9 +21,7 @@ public class PurchaseEnquiriesCancellation extends Transaction {
     }
 
     public void purchaseEnquiriesCancellation() throws InterruptedException, IOException, ParseException {
-        common.clickElement("name", "Purchase");
-        common.clickElement("name", "Enquiries");
-        common.clickElement("xpath", "//MenuItem[@Name='Purchase Enquiries Cancellation']");
+        navigateToPurchaseEnquiriesCancellation();
         Thread.sleep(3000);
         super.oldTTransaction();
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");

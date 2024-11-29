@@ -23,9 +23,7 @@ public class PurchaseOrder extends Transaction {
     }
 
     public void purchaseOrder() throws InterruptedException, IOException, ParseException {
-        common.clickElement("name", "Purchase");
-        common.clickElement("name", "Orders");
-        common.clickElement("xpath", "//MenuItem[@Name='Purchase Orders']");
+        navigateToPurchaseOrders();
         Thread.sleep(3000);
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");
         super.selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']" );
