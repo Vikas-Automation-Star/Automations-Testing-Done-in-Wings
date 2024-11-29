@@ -5,11 +5,11 @@ import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+
 import java.util.List;
 import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 
 public class TC_01 extends Transaction {
@@ -119,6 +119,34 @@ public class TC_01 extends Transaction {
         super.enterData("xpath", "//Edit[@Name='Maximum Rate * Row 2, Not sorted.']", dataFile, "maximumRate");
 //        common.clickElement("xpath", "//Edit[@Name='Unit Rate Row 2, Not sorted.']");
         super.enterData("xpath", "//Edit[@Name='Unit Rate Row 2, Not sorted.']", dataFile, "unitRate");
+
+        //verifying data not present in tabs
+            //navigate to CGST
+        common.clickElement("xpath","//TabItem[@Name='  F8 CGST  ']");
+       WebElement tax=common.findWebElement("xpath","//Edit[@Name='Tax Amount Row 0, Not sorted.']");
+       String value=tax.getText();
+       if (!(value==(null) || "(null)".equals(value))){
+           Assert.fail("GST field is not empty");
+
+       }
+
+        common.clickElement("xpath","//TabItem[@Name='  F9 SGST  ']");
+        WebElement tax1 =common.findWebElement("xpath","//Edit[@Name='Tax Amount Row 0, Not sorted.']");
+        String value1= tax1.getText();
+        if (!(value1==(null) || "(null)".equals(value1))){
+            Assert.fail("GST field is not empty");
+
+        }
+
+        common.clickElement("xpath","//TabItem[@Name='  F11 IGST  ']");
+        WebElement IGSTtax =common.findWebElement("xpath","//Edit[@Name='Tax Amount Row 0, Not sorted.']");
+        String value2= IGSTtax.getText();
+        if (!(value2==(null) || "(null)".equals(value2))){
+            Assert.fail("GST field is not empty");
+
+        }
+
+
 
         //save
 //        transactionSave();
