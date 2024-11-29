@@ -1,4 +1,4 @@
-<suite name="Finance Reports">
+<suite name="Finance Masters Suite">
 
     <listeners>
         <listener class-name="com.wings.utils.listener"/>

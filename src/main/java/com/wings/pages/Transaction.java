@@ -990,14 +990,6 @@ public abstract class Transaction {
         System.out.println(validate);
         Assert.assertEquals("Purchase Returns with Invoice Reference",validate);
     }
-    public void navigateToSalesInvoices(){
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Invoices");
-        common.clickElement("xpath", "//MenuItem[@Name='Sales Invoices']");
-        String validate=common.findWebElement("xpath","//Text[@Name='Sales Invoices']").getText();
-        System.out.println(validate);
-        Assert.assertEquals("Sales Invoices",validate);
-    }
 
 
 
