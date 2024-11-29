@@ -990,6 +990,14 @@ public abstract class Transaction {
         System.out.println(validate);
         Assert.assertEquals("Purchase Returns with Invoice Reference",validate);
     }
+    public void navigateToSalesInvoices(){
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Invoices");
+        common.clickElement("xpath", "//MenuItem[@Name='Sales Invoices']");
+        String validate=common.findWebElement("xpath","//Text[@Name='Sales Invoices']").getText();
+        System.out.println(validate);
+        Assert.assertEquals("Sales Invoices",validate);
+    }
 
 
 
@@ -1022,8 +1030,8 @@ public abstract class Transaction {
         List<WebElement> elementList = common.findWebElements("xpath", "//Table[@Name='Lookup']/*/*[contains(@Name,'Master Row')]");
         System.out.println("Size :" + elementList.size());
         for (WebElement j : elementList) {
+            System.out.println(j.getText());
             if (j.getText().contains(transaction)) {
-                System.out.println(j.getText());
                 j.click();
                 j.sendKeys(Keys.ENTER);
             }
