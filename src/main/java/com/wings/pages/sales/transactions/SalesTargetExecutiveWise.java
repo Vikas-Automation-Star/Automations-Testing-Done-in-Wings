@@ -2,11 +2,8 @@ package com.wings.pages.sales.transactions;
 
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
-
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
@@ -24,9 +21,7 @@ public class SalesTargetExecutiveWise extends Transaction {
     }
 
     public void salesTarget() throws InterruptedException, IOException, ParseException, AWTException {
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Targets");
-        common.clickElement("name", "Define Sales Targets-Executive Wise");
+        navigateToSalesTargetExecutiveWiseMenu();
         Thread.sleep(1000);
         lastTransactionName();
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");

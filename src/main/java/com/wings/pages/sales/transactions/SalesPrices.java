@@ -22,9 +22,7 @@ public class SalesPrices extends Transaction {
     }
 
     public void salesPrices() throws InterruptedException, IOException, ParseException {
-        common.clickElement("name","Sales");
-        common.clickElement("xpath","//MenuItem[@Name='Prices and Discounts'][2]");
-        common.clickElement("name","Sales Prices");
+        navigateToSalesPricesMenu();
         Thread.sleep(1000);
         lastTransactionName();
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");

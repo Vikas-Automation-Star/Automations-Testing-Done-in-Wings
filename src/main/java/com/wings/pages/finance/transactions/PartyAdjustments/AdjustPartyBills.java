@@ -22,28 +22,26 @@ public class AdjustPartyBills extends Transaction {
 
     public void executeAdjustPartyBills() throws InterruptedException, IOException, ParseException {
         System.out.println("-----Party Bills Start--------");
-        common.clickElement("name", "Finance");
-        common.clickElement("name", "Party Adjustments");
-        common.clickElement("xpath", "//MenuItem[@Name='Adjust Party Bills']");
-        super.lastTransactionName();
+        navigateToAdjustPartyBills();
+        lastTransactionName();
         Thread.sleep(1000);
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        super.selectAndValidateData(common.getData(dataFile, "branch"),"xpath", "//Edit[@Name='Branch *']");
+        selectAndValidateData(common.getData(dataFile, "branch"),"xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
-        super.selectAndValidateData(common.getData(dataFile, "transaction"),"xpath", "//Edit[@Name='Trans Currency *']");
+        selectAndValidateData(common.getData(dataFile, "transaction"),"xpath", "//Edit[@Name='Trans Currency *']");
         common.clickElement("xpath", "//Edit[@Name='Party Code']");
-        super.selectAndValidateData(common.getData(dataFile, "partyCode"),"xpath", "//Edit[@Name='Party Code']");
+        selectAndValidateData(common.getData(dataFile, "partyCode"),"xpath", "//Edit[@Name='Party Code']");
         common.clickElement("xpath", "//Edit[@Name='Party Account *']");
         Thread.sleep(1000);
         common.clickElement("xpath", "//Edit[@Name='Executive *']");
-        super.selectAndValidateData(common.getData(dataFile, "executive"),"xpath", "//Edit[@Name='Executive *']");
+        selectAndValidateData(common.getData(dataFile, "executive"),"xpath", "//Edit[@Name='Executive *']");
         Thread.sleep(2000);
         //f3- Receivables
-        common.clickElement("xpath", "//TabItem[@Name='  F3 Receivables  ']");
-        super.checkBoxSelection("xpath", "//Table[@Name='BillsReceivable']/*[starts-with(@Name,'Row')]", "//Edit[starts-with(@Name,'Towards VNo *')]", "//CheckBox[starts-with(@Name,'Adjust Row')]");
+        navigateToBillsReceivablesTab();
+        checkBoxSelection("xpath", "//Table[@Name='BillsReceivable']/*[starts-with(@Name,'Row')]", "//Edit[starts-with(@Name,'Towards VNo *')]", "//CheckBox[starts-with(@Name,'Adjust Row')]");
         //f5- Payable
-        common.clickElement("xpath", "//TabItem[@Name='  F5 Bills Payable  ']");
-        super.checkBoxSelection("xpath", "//Table[@Name='BillsPayable']/*[starts-with(@Name,'Row')]", "//Edit[starts-with(@Name,'Towards VNo *')]", "//CheckBox[starts-with(@Name,'Adjust Row')]");
+        navigateToBillsPayablesTab();
+        checkBoxSelection("xpath", "//Table[@Name='BillsPayable']/*[starts-with(@Name,'Row')]", "//Edit[starts-with(@Name,'Towards VNo *')]", "//CheckBox[starts-with(@Name,'Adjust Row')]");
         //f8- summary
         common.clickElement("xpath", "//TabItem[@Name='  F8 Summary  ']");
         WebElement receivable = common.findWebElement("xpath", "//Edit[@Name='Receivables Adj *']");
@@ -53,10 +51,8 @@ public class AdjustPartyBills extends Transaction {
             Assert.fail("pls check the amount");
         }
         //save
-        super.transactionSave();
-        super.lastTransactionName();
+        transactionSave();
+        lastTransactionName();
         System.out.println("------Party Bills End--------");
-//        super.transactionClose("Adjust Party Bills");
-
     }
 }

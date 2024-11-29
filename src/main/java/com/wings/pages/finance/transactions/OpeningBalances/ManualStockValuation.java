@@ -21,9 +21,7 @@ public class ManualStockValuation extends Transaction {
     }
 
     public void manualStockValuation() throws InterruptedException, IOException, ParseException, AWTException {
-        common.clickElement("name", "Finance");
-        common.clickElement("name", "Opening Balances");
-        common.clickElement("xpath", "//MenuItem[@Name='Manual Stock Valuation']");
+        navigateToManulStockVerificationMenu();
         Thread.sleep(1000);
         lastTransactionName();
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");

@@ -21,9 +21,7 @@ public class SalesOrdersAgainstQuotations extends SalesOrdersBaseClass {
     }
 
     public void salesOrderAgnstQuote() throws InterruptedException, IOException, ParseException {
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Orders");
-        common.clickElement("xpath", "//MenuItem[@Name='Sales Orders against Quotations']");
+        navigateToSalesOrderAgainstQuotationsMenu();
         Thread.sleep(1000);
          lastTransactionName();
          voucherType();

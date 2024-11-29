@@ -21,9 +21,7 @@ public class SalesQuotationAgainstEnquiry extends Transaction {
     }
 
     public void quotationAgainstEnquiry() throws InterruptedException, IOException, ParseException {
-        common.clickElement("name","Sales");
-        common.clickElement("name","Quotations");
-        common.clickElement("xpath","//MenuItem[@Name='Sales Quotations against Enquiries']");
+       navigateToSalesQuotationAgainstEnquiryMenu();
         Thread.sleep(2000);
         lastTransactionName();
         //data

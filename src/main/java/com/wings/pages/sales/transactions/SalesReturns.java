@@ -19,9 +19,7 @@ public class SalesReturns extends Transaction {
     }
 
     public void salesReturns() throws InterruptedException, IOException, ParseException {
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Invoices");
-        common.clickElement("xpath", "//MenuItem[@Name='Sales Returns']");
+        navigateToSalesReturnMenu();
         Thread.sleep(3000);
         lastTransactionName();
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");

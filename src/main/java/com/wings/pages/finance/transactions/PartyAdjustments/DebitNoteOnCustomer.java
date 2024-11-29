@@ -22,9 +22,7 @@ public class DebitNoteOnCustomer extends Transaction {
         }
 
         public void debitNoteOnCustomer() throws InterruptedException, IOException, ParseException, AWTException {
-            common.clickElement("name", "Finance");
-            common.clickElement("name", "Party Adjustments");
-            common.clickElement("xpath", "//MenuItem[@Name='Debit Note on Customers']");
+            navigateToDebitNoteOnCustomerMenu();
             Thread.sleep(1000);
             lastTransactionName();
             common.clickElement("xpath","//Edit[@Name='Voucher Type']");

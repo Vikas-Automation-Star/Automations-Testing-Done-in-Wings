@@ -21,9 +21,7 @@ public class TransferIncomesandExpensestoPL extends Transaction {
     }
 
     public void incomeAndExpenses() throws InterruptedException, IOException, ParseException, AWTException {
-        common.clickElement("name", "Finance");
-        common.clickElement("name", "Opening Balances");
-        common.clickElement("xpath", "//MenuItem[@Name='Transfer Incomes and Expenses to PL']");
+        navigateToTransferIncomesAndExpensesToPLMenu();
         Thread.sleep(1000);
         lastTransactionName();
         common.clickElement("xpath", "//Edit[@Name='Branch *']");

@@ -21,9 +21,7 @@ public class DepositPostDatedCheques extends Transaction {
     }
 
     public void postDatedChques() throws InterruptedException, IOException, ParseException, AWTException {
-        common.clickElement("name", "Finance");
-        common.clickElement("name", "Banking");
-        common.clickElement("xpath", "//MenuItem[@Name='Deposit Post Dated Cheques']");
+        navigateToDepositPostDatedChequesMenu();
         Thread.sleep(1000);
         lastTransactionName();
         //enter data

@@ -24,9 +24,7 @@ public class BankPayment extends Transaction {
         }
 
         public void bankPayment() throws InterruptedException, IOException, ParseException, AWTException {
-            common.clickElement("name", "Finance");
-            common.clickElement("name", "Payments");
-            common.clickElement("xpath", "//MenuItem[@Name='Bank Payments']");
+            navigateToBankPaymentMenu();
             Thread.sleep(1000);
             lastTransactionName();
             //enter data

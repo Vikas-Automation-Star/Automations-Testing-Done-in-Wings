@@ -22,9 +22,7 @@ public class SalesEnquiryCancellation extends Transaction {
     }
 
     public void enquiryCancel() throws InterruptedException, IOException, ParseException, AWTException {
-        common.clickElement("name","Sales");
-        common.clickElement("name","Enquiries");
-        common.clickElement("xpath","//MenuItem[@Name='Sales Enquiries Cancellation']");
+        navigateToSalesEnquiryCancellationMenu();
         Thread.sleep(2000);
         lastTransactionName();
         //data

@@ -20,9 +20,7 @@ public class SalesQuotations extends Transaction {
     }
 
     public void salesQuotation() throws InterruptedException, IOException, ParseException {
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Quotations");
-        common.clickElement("xpath", "//MenuItem[@Name='Sales Quotations']");
+        navigateToSalesQuotationsMenu();
         Thread.sleep(1000);
         lastTransactionName();
         //enter data

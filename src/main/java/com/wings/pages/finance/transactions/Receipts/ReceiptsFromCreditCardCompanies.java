@@ -22,9 +22,7 @@ public class ReceiptsFromCreditCardCompanies extends Transaction {
     }
 
     public void creditCardCompanyReceipt() throws InterruptedException, IOException, ParseException, AWTException {
-        common.clickElement("name", "Finance");
-        common.clickElement("name", "Receipts");
-        common.clickElement("xpath", "//MenuItem[@Name='Receipts from Credit Card Companies']");
+        navigateToReceiptsFromCreditCardCompanyMenu();
         Thread.sleep(1000);
         lastTransactionName();
         //enter data

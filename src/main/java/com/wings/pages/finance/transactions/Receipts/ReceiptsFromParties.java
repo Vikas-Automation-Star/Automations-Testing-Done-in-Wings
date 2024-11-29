@@ -25,9 +25,7 @@ public class ReceiptsFromParties extends Transaction {
     }
 
     public void receiptFromParty() throws InterruptedException, IOException, ParseException, AWTException {
-        common.clickElement("name", "Finance");
-        common.clickElement("name", "Receipts");
-        common.clickElement("xpath", "//MenuItem[@Name='Receipts from Parties']");
+        navigateToReceiptsFromPartiesMenu();
         Thread.sleep(1000);
         lastTransactionName();
         //enter data

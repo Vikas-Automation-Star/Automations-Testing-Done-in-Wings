@@ -18,10 +18,8 @@ public class DeliveriesAgainstOrders extends Transaction {
         dataFile = file;
     }
 
-    public void deliveriesAgainstOrders() throws InterruptedException, IOException, ParseException, IOException, ParseException {
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Deliveries");
-        common.clickElement("xpath", "//MenuItem[@Name='Deliveries against Orders']");
+    public void deliveriesAgainstOrders() throws InterruptedException, IOException, ParseException {
+        navigateToDeliveriesAgainstOrdersMenu();
         Thread.sleep(3000);
         lastTransactionName();
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");

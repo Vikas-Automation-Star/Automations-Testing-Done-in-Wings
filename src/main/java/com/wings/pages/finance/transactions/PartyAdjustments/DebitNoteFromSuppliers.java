@@ -25,10 +25,8 @@ public class DebitNoteFromSuppliers extends Transaction {
             dataFile = file;
         }
 
-        public void creditNoteFromSupplier() throws InterruptedException, IOException, ParseException, AWTException {
-            common.clickElement("name", "Finance");
-            common.clickElement("name", "Party Adjustments");
-            common.clickElement("xpath", "//MenuItem[@Name='Debit Note from Suppliers']");
+        public void debitNoteFromSupplier() throws InterruptedException, IOException, ParseException, AWTException {
+            navigateToDebitNoteFromSupplierMenu();
             Thread.sleep(1000);
             lastTransactionName();
             common.clickElement("xpath","//Edit[@Name='Voucher Type']");

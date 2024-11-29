@@ -21,9 +21,7 @@ public class CashDepositsAndWithdrawls extends Transaction {
         }
 
         public void depositAndWithdrawal() throws InterruptedException, IOException, ParseException, AWTException {
-            common.clickElement("name", "Finance");
-            common.clickElement("name", "Banking");
-            common.clickElement("xpath", "//MenuItem[@Name='Cash Deposits and withdrawals']");
+            navigateToCashDepositsAndWithdrawalsMenu();
             Thread.sleep(1000);
             lastTransactionName();
             //enter data

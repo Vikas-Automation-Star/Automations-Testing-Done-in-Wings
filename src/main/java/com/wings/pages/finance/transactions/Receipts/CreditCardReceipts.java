@@ -25,9 +25,7 @@ public class CreditCardReceipts extends Transaction {
     }
 
     public void creditCardReceipt() throws InterruptedException, IOException, ParseException, AWTException {
-        common.clickElement("name", "Finance");
-        common.clickElement("name", "Receipts");
-        common.clickElement("xpath", "//MenuItem[@Name='Credit Card Receipts']");
+        navigateToCreditCardReceiptsMenu();
         Thread.sleep(1000);
         lastTransactionName();
         //enter data
