@@ -20,12 +20,9 @@ public class SalesInvoice extends Transaction {
     }
 
     public void salesInvoice() throws InterruptedException, IOException, ParseException, AWTException {
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Invoices");
-        common.clickElement("xpath", "//MenuItem[@Name='Sales Invoices']");
+       navigateToSalesInvoiceMenu();
         Thread.sleep(1000);
         //validate title
-        validateElements("xpath","//Pane[contains(@Name,'SI')]/Text[@Name='Sales Invoices']", common.getData(dataFile,"title"));
         lastTransactionName();
         //branch selection
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");

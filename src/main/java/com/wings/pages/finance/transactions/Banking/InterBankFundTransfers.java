@@ -21,9 +21,7 @@ public class InterBankFundTransfers extends Transaction {
     }
 
     public void bankFundTransfer() throws InterruptedException, IOException, ParseException, AWTException {
-        common.clickElement("name", "Finance");
-        common.clickElement("name", "Banking");
-        common.clickElement("xpath", "//MenuItem[@Name='Inter Bank Fund Transfers']");
+        navigateToInterBankFundTransferMenu();
         Thread.sleep(1000);
         lastTransactionName();
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");

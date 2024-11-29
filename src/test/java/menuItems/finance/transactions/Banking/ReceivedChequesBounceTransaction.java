@@ -2,12 +2,12 @@ package menuItems.finance.transactions.Banking;
 
 import com.wings.pages.finance.transactions.Banking.ReceivedChequesBounce;
 import io.appium.java_client.windows.WindowsDriver;
+import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.wings.pages.AppLogin;
-
 import java.awt.*;
 import java.io.IOException;
 
@@ -20,6 +20,7 @@ public class ReceivedChequesBounceTransaction {
     public void beforeTest() throws IOException, ParseException, InterruptedException {
         driver=appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
+        Allure.step("Before Test - Received Cheques Bounce");
     }
 
     @Test
@@ -30,7 +31,7 @@ public class ReceivedChequesBounceTransaction {
 
     @AfterTest
     public void afterTest(){
-
+        appLogin.logout();
+        Allure.step("After Test - Received Cheques Bounce");
     }
 }
-

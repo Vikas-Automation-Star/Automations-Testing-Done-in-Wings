@@ -21,8 +21,7 @@ public class OpeningStock extends Transaction {
         }
 
         public void stockOpen() throws InterruptedException, AWTException, IOException, ParseException {
-            common.clickElement("name", "Inventory");
-            common.clickElement("name","Opening Stock");
+            navigateToOpeningStockMenu();
             lastTransactionName();
             common.clickElement("xpath", "//Edit[@Name='Branch *']");
             selectAndValidateData(common.getData(dataFile,"branch"), "xpath", "//Edit[@Name='Branch *']");

@@ -20,9 +20,7 @@ public class JournalEntries extends Transaction {
     }
 
     public void journalEntires() throws InterruptedException, IOException, ParseException, AWTException {
-        common.clickElement("name", "Finance");
-        common.clickElement("name", "Journals");
-        common.clickElement("xpath", "//MenuItem[@Name='Journal Entries']");
+        navigateToJournalEntriesMenu();
         Thread.sleep(1000);
         lastTransactionName();
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");

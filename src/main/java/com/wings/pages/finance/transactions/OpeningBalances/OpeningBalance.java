@@ -21,9 +21,7 @@ public class OpeningBalance extends Transaction {
     }
 
     public void openingBalance() throws InterruptedException, IOException, ParseException, AWTException {
-        common.clickElement("name", "Finance");
-        common.clickElement("name", "Opening Balances");
-        common.clickElement("xpath", "//MenuItem[@Name='Opening Balances']");
+        navigateToOpeningBalancesMenu();
         Thread.sleep(1000);
         lastTransactionName();
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");

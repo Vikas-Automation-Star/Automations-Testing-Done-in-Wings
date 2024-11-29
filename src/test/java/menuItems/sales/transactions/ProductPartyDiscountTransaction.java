@@ -1,6 +1,7 @@
 package menuItems.sales.transactions;
 
 import io.appium.java_client.windows.WindowsDriver;
+import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -19,6 +20,7 @@ public class ProductPartyDiscountTransaction {
     public void beforeTest() throws IOException, InterruptedException, ParseException {
         driver=login.launchSingleUserApp();
         login.singleUserLogin();
+        Allure.step("Before Test Product and Party wise Discounts");
     }
 
     @Test
@@ -30,5 +32,6 @@ public class ProductPartyDiscountTransaction {
     @AfterTest
     public void afterTest(){
         login.logout();
+        Allure.step("After test Product and Party wise Discounts");
     }
 }

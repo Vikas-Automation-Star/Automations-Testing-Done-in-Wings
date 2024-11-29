@@ -19,9 +19,7 @@ public class ProformaSalesInvoice extends Transaction {
     }
 
     public void salesProforma() throws InterruptedException, IOException, ParseException {
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Invoices");
-        common.clickElement("xpath", "//MenuItem[@Name='Proforma Sales Invoices']");
+        navigateToProformaSalesInvoiceMenu();
         Thread.sleep(1000);
         lastTransactionName();
         //enter data

@@ -23,7 +23,6 @@ public class PurchasePrice extends Transaction {
     }
 
     public void purchasePrice() throws InterruptedException, IOException, ParseException {
-
         common.clickElement("name", "Purchase");
         common.clickElement("name", "Price");
         common.clickElement("xpath", "//MenuItem[@Name='Purchase Prices']");
@@ -63,6 +62,5 @@ public class PurchasePrice extends Transaction {
         super.closeTransaction("Purchase Prices");
         Thread.sleep(2000);
         Allure.step("PurchasePrices Transaction");
-
     }
 }

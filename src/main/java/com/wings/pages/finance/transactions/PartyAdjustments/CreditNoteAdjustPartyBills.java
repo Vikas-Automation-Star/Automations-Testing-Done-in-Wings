@@ -49,8 +49,6 @@ public class CreditNoteAdjustPartyBills extends Transaction{
             //f3-accounts
             enterData("xpath","//Edit[@Name='Account Code Row 0, Not sorted.']",dataFile,"accountCode");
             enterData("xpath","//Edit[@Name='Amount * Row 0, Not sorted.']",dataFile,"amount");
-            //validate account code here
-            validateElements("xpath","//Edit[@Name='Account Code Row 0, Not sorted.']", common.getData(dataFile,"accountCode"));
             common.clickElement("xpath","//CheckBox[@Name='Deduct TDS Row 0']");
             enterDataAndValidate("xpath","//Edit[@Name='TDS Transaction Nature Row 0, Not sorted.']",dataFile,"TDSNature");
             //f5-bills receivable

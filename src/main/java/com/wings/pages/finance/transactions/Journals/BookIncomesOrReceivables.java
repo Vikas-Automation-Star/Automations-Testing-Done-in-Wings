@@ -24,9 +24,7 @@ public class BookIncomesOrReceivables extends Transaction {
     }
 
     public void receivables() throws InterruptedException, IOException, ParseException, AWTException {
-        common.clickElement("name", "Finance");
-        common.clickElement("name", "Journals");
-        common.clickElement("xpath", "//MenuItem[@Name='Book Incomes or Receivables']");
+        navigateToBookIncomesOrReceivablesMenu();
         Thread.sleep(1000);
         lastTransactionName();
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");
@@ -40,15 +38,6 @@ public class BookIncomesOrReceivables extends Transaction {
         common.clickElement("xpath","//Edit[@Name='Account *']");
         Thread.sleep(2500);
         gstTransactionType("Registered Dealers");
-//        List<WebElement> elementList = common.findWebElements("xpath", "//Table/*[@Name='Data Panel']/*/*[contains(@Name,'GST Transaction Type row')]");
-//        System.out.println("Size :" + elementList.size());
-//        for (WebElement i : elementList) {
-//            System.out.println(i.getText());
-//            if (i.getText().contains("Registered Dealers")) {
-//                i.click();
-//                i.sendKeys(Keys.LEFT, Keys.SPACE,Keys.ENTER,Keys.ENTER);
-//            }
-//        }
         Thread.sleep(2500);
         common.clickElement("xpath","//Edit[@Name='Invoice Type']/Button[@Name='Open']");
         selectDropDown(common.getData(dataFile,"invoiceType"));

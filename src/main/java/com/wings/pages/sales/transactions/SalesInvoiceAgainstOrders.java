@@ -20,9 +20,7 @@ public class SalesInvoiceAgainstOrders extends Transaction {
     }
 
     public void salesInvoicesAgainstOrders() throws InterruptedException, IOException, ParseException {
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Invoices");
-        common.clickElement("xpath", "//MenuItem[@Name='Sales Invoices against Orders']");
+        navigateToSalesInvoiceAgainstOrdersMenu();
         lastTransactionName();
         Thread.sleep(3000);
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");

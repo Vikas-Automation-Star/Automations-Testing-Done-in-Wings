@@ -4,6 +4,7 @@ import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import org.testng.Assert;
 
 import java.io.IOException;
 
@@ -20,9 +21,7 @@ public class SalesEnquiry extends Transaction {
     }
 
     public void salesEnquiry() throws InterruptedException, IOException, ParseException {
-        common.clickElement("name","Sales");
-        common.clickElement("name","Enquiries");
-        common.clickElement("xpath","//Menu[@Name='Enquiries']/MenuItem[@Name='Sales Enquiries']");
+        navigateToSalesEnquiryMenu();
         Thread.sleep(2000);
         lastTransactionName();
         //enter data

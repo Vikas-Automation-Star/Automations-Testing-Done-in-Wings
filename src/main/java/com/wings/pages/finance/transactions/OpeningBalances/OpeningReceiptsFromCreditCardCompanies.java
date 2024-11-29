@@ -21,9 +21,7 @@ public class OpeningReceiptsFromCreditCardCompanies extends Transaction{
         }
 
         public void openingReceipts() throws InterruptedException, IOException, ParseException, AWTException {
-            common.clickElement("name", "Finance");
-            common.clickElement("name", "Opening Balances");
-            common.clickElement("xpath", "//MenuItem[@Name='Opening Receipts from Credit Card Companies']");
+            navigateToOpeningReceiptsFromCreditCardCompanyMenu();
             Thread.sleep(1000);
             lastTransactionName();
             common.clickElement("xpath","//Edit[@Name='Voucher Type']");

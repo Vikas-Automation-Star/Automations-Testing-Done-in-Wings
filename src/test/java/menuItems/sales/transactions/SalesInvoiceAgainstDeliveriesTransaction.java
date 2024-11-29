@@ -1,6 +1,7 @@
 package menuItems.sales.transactions;
 
 import io.appium.java_client.windows.WindowsDriver;
+import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -19,16 +20,18 @@ public class SalesInvoiceAgainstDeliveriesTransaction {
     public void beforeTest() throws IOException, InterruptedException, ParseException {
         driver=login.launchSingleUserApp();
         login.singleUserLogin();
-
+        Allure.step("Before Test Sales Invoice Against Deliveries");
     }
+
     @Test
     public void salesInvoiceAgainstDeliveries() throws IOException, ParseException, InterruptedException, AWTException {
         SalesInvoiceAgainstDeliveries invoiceAgainstDeliveries=new SalesInvoiceAgainstDeliveries(driver,dataFile);
         invoiceAgainstDeliveries.salesInvoicesAgainstDeliveries();
-
     }
+
     @AfterTest
     public void afterTest(){
         login.logout();
+        Allure.step("After Test Sales Invoice Against Deliveries");
     }
 }

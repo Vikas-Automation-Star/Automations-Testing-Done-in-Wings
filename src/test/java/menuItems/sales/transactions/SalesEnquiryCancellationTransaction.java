@@ -1,6 +1,7 @@
 package menuItems.sales.transactions;
 
 import io.appium.java_client.windows.WindowsDriver;
+import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -20,7 +21,7 @@ public class SalesEnquiryCancellationTransaction {
     public void beforeTest() throws IOException, InterruptedException, ParseException {
         driver=login.launchSingleUserApp();
         login.singleUserLogin();
-
+        Allure.step("Before Test Sales Enquiry Cancellation");
     }
 
     @Test
@@ -31,5 +32,6 @@ public class SalesEnquiryCancellationTransaction {
     @AfterTest
     public void afterTest(){
         login.logout();
+        Allure.step("Before Test Sales Enquiry Cancellation");
     }
 }

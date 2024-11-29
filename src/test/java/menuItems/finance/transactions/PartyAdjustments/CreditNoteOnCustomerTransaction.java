@@ -1,6 +1,7 @@
 package menuItems.finance.transactions.PartyAdjustments;
 
 import io.appium.java_client.windows.WindowsDriver;
+import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -19,6 +20,7 @@ public class CreditNoteOnCustomerTransaction {
     public void beforeTest() throws InterruptedException, IOException, ParseException {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
+        Allure.step("Before Test - Credit Note On Customer");
     }
 
     @Test
@@ -30,5 +32,6 @@ public class CreditNoteOnCustomerTransaction {
     @AfterTest
     public void afterTest(){
         appLogin.logout();
+        Allure.step("After Test - Credit Note On Customer");
     }
 }

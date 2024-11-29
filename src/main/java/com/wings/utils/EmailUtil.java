@@ -38,11 +38,11 @@ public class EmailUtil {
             msg.addHeader("format", "flowed");
             msg.addHeader("Content-Transfer-Encoding", "8bit");
 
-            msg.setFrom(new InternetAddress("QA@wingsinfo.net", "NoReply-QA"));
+            msg.setFrom(new InternetAddress("productupdates@wingsinfo.net", "NoReply-QA"));
 
             //msg.setReplyTo(InternetAddress.parse("no_reply@example.com", false));
 
-            msg.setSubject("Sales suite execution reports", "UTF-8");
+            msg.setSubject("Finance Masters suite execution reports", "UTF-8");
 
             //msg.setText(body, "UTF-8");
             msg.setContent(multipart);

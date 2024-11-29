@@ -21,8 +21,7 @@ public class StockConsumption extends Transaction {
     }
 
     public void stockConsumption() throws InterruptedException, AWTException, IOException, ParseException {
-        common.clickElement("name", "Inventory");
-        common.clickElement("xpath", "//MenuItem[@Name='Stock Consumption']");
+        navigateToStockConsumptionMenu();
         lastTransactionName();
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");
         selectOptionalMaster(common.getData(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']");

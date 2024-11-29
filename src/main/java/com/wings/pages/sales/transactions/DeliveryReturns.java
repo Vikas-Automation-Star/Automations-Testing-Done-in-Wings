@@ -20,9 +20,7 @@ public class DeliveryReturns extends Transaction {
     }
 
     public void deliveryreturns() throws InterruptedException, IOException, ParseException, IOException, ParseException {
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Deliveries");
-        common.clickElement("xpath", "//MenuItem[@Name='Delivery Returns']");
+       navigateToDeliveryReturnsMenu();
         Thread.sleep(3000);
         lastTransactionName();
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");
