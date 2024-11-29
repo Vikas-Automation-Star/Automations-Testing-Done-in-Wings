@@ -1,0 +1,15 @@
+{
+  "branch": "Hyderabad",
+  "location": "Hyderabad Default Location",
+  "transaction": "INR",
+  "partyCode":20012,
+  "priceList": "exlusivePriceList",
+  "executive": "Executive3",
+  "quantity": 100,
+  "Pcode": "Bikes",
+  "amount": 550,
+  "cheque": 585,
+  "chequeDate": 10,
+  "drawnOn": "checks",
+  "close": "Sales Orders"
+}

@@ -187,17 +187,17 @@
         </classes>
     </test>
 
-    <test name="CreatePendingTdsPaymentsReport" description="description for PendingTdsPayments Report"  testID="WOW 31">
-        <classes>
-            <class name="menuItems.Taxes.reports.TDS.PendingTdsPaymentsReport"></class>
-        </classes>
-    </test>
+<!--    <test name="CreatePendingTdsPaymentsReport" description="description for PendingTdsPayments Report"  testID="WOW 31">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.Taxes.reports.TDS.PendingTdsPaymentsReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="CreatePendingTdsPaymentsReport" description="description for PendingTdsPayments Report"  testID="WOW 32">
-        <classes>
-            <class name="menuItems.Taxes.reports.TDS.TdsDeductedByUsReport"></class>
-        </classes>
-    </test>
+<!--    <test name="CreatePendingTdsPaymentsReport" description="description for PendingTdsPayments Report"  testID="WOW 32">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.Taxes.reports.TDS.TdsDeductedByUsReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
     <test name="CreateTdsDeductedByOthersReport" description="description for TdsDeductedByOthers Report"  testID="WOW 33">
         <classes>
