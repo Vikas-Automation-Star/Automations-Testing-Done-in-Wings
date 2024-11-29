@@ -123,6 +123,7 @@ public class XMLUtil {
                         skippedTests++;
                         break;
                 }
+
                 if (common.getProperty("failedtcreport").equals("true") && status.equals("FAIL")){
                     testDetails.append(testRowAppend(testDetailsMap.get("testID"), testDetailsMap.get("name"), testDetailsMap.get("description"), status,duration));
                 }
