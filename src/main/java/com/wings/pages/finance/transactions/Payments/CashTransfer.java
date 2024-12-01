@@ -20,9 +20,7 @@ public class CashTransfer extends Transaction {
     }
 
     public void cashTransfer() throws InterruptedException, IOException, ParseException, AWTException {
-        common.clickElement("name", "Finance");
-        common.clickElement("name", "Payments");
-        common.clickElement("xpath", "//MenuItem[@Name='Cash Transfers']");
+        navigateToCashTransfersMenu();
         Thread.sleep(1000);
         lastTransactionName();
         //enter data

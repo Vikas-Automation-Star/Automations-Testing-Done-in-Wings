@@ -26,9 +26,7 @@ public class PaymentToParties extends Transaction {
     }
 
     public void paymentToParty() throws InterruptedException, IOException, ParseException, AWTException {
-        common.clickElement("name", "Finance");
-        common.clickElement("name", "Payments");
-        common.clickElement("xpath", "//MenuItem[@Name='Payments to Parties']");
+        navigateToPaymentToPartiesMenu();
         Thread.sleep(1000);
         lastTransactionName();
         //enter data

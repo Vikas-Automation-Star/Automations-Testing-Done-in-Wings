@@ -22,9 +22,7 @@ public class PurchaseEnquiries extends Transaction {
     }
 
     public void PurchaseEnquires() throws InterruptedException, IOException, ParseException {
-        common.clickElement("name", "Purchase");
-        common.clickElement("name", "Enquiries");
-        common.clickElement("xpath", "//MenuItem[@Name='Purchase Enquiries']");
+        navigateToPurchaseEnquiries();
         Thread.sleep(3000);
         super.oldTTransaction();
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");

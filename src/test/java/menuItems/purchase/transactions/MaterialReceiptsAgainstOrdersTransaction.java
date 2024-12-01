@@ -21,20 +21,17 @@ public class MaterialReceiptsAgainstOrdersTransaction {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
         Allure.step("Before Test PurchaseReceiptsAgainstOrders Transaction");
-
     }
 
     @Test
     public void MeterialReceiptsAgainstOrders() throws IOException, ParseException, InterruptedException {
         MaterialReceiptsAgainstOrder mrao=new MaterialReceiptsAgainstOrder(driver,file);
         mrao.meterialReceiptsAgainstOrder();
-
     }
 
     @AfterTest
     public void afterTest(){
         appLogin.logout();
         Allure.step("After Test PurchaseReceiptsAgainstOrders Transaction");
-
     }
 }

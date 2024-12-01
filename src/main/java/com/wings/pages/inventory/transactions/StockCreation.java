@@ -20,8 +20,7 @@ public class StockCreation extends Transaction {
     }
 
     public void stockCreation() throws InterruptedException, AWTException, IOException, ParseException {
-        common.clickElement("name", "Inventory");
-        common.clickElement("name", "Stock Creation");
+        navigateToStockCreationMenu();
         lastTransactionName();
         Thread.sleep(1500);
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");

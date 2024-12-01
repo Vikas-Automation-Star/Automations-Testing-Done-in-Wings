@@ -24,9 +24,7 @@ public class CashPayments extends Transaction {
         }
 
         public void cashPayment() throws InterruptedException, IOException, ParseException, AWTException {
-            common.clickElement("name", "Finance");
-            common.clickElement("name", "Payments");
-            common.clickElement("xpath", "//MenuItem[@Name='Cash Payments']");
+            navigateToCashPaymentsMenu();
             Thread.sleep(1000);
             lastTransactionName();
             //enter data

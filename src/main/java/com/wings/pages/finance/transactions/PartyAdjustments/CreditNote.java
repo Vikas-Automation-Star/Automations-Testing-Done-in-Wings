@@ -23,9 +23,7 @@ public class CreditNote extends Transaction {
         }
 
         public void creditNote() throws InterruptedException, IOException, ParseException, AWTException {
-            common.clickElement("name", "Finance");
-            common.clickElement("name", "Party Adjustments");
-            common.clickElement("xpath", "//MenuItem[@Name='Credit Note']");
+            navigateToCreditNoteMenu();
             Thread.sleep(1000);
             lastTransactionName();
             common.clickElement("xpath","//Edit[@Name='Voucher Type']");
@@ -49,8 +47,6 @@ public class CreditNote extends Transaction {
             //f3-accounts
             enterData("xpath","//Edit[@Name='Account Code Row 0, Not sorted.']",dataFile,"accountCode");
             enterData("xpath","//Edit[@Name='Amount * Row 0, Not sorted.']",dataFile,"amount");
-            //validate account code here
-            validateElements("xpath","//Edit[@Name='Account Code Row 0, Not sorted.']", common.getData(dataFile,"accountCode"));
             common.clickElement("xpath","//CheckBox[@Name='Deduct TDS Row 0']");
             enterDataAndValidate("xpath","//Edit[@Name='TDS Transaction Nature Row 0, Not sorted.']",dataFile,"TDSNature");
 

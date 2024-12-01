@@ -25,9 +25,7 @@ public class CashReceipts extends Transaction {
     }
 
     public void cashReceipt() throws InterruptedException, IOException, ParseException, AWTException {
-        common.clickElement("name", "Finance");
-        common.clickElement("name", "Receipts");
-        common.clickElement("xpath", "//MenuItem[@Name='Cash Receipts']");
+        navigateToCashReceiptsMenu();
         Thread.sleep(1000);
         lastTransactionName();
         //enter data

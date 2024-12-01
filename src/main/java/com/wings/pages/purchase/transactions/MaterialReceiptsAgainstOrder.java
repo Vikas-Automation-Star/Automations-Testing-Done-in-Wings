@@ -22,10 +22,7 @@ public class MaterialReceiptsAgainstOrder extends Transaction {
     }
 
     public void meterialReceiptsAgainstOrder() throws InterruptedException, IOException, ParseException {
-
-        common.clickElement("name", "Purchase");
-        common.clickElement("name", "Receipts");
-        common.clickElement("xpath", "//MenuItem[@Name='Material Receipts against Orders']");
+        navigateToMaterialReceiptsAgainstOrders();
         Thread.sleep(3000);
         super.oldTTransaction();
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");

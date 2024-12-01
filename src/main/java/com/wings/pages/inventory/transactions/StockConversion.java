@@ -20,8 +20,7 @@ public class StockConversion extends Transaction {
     }
 
     public void stockConversion() throws InterruptedException, AWTException, IOException, ParseException {
-        common.clickElement("name", "Inventory");
-        common.clickElement("xpath", "//MenuItem[@Name='Stock Conversion']");
+        navigateToStockConversionMenu();
         lastTransactionName();
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");
         selectOptionalMaster(common.getData(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']");

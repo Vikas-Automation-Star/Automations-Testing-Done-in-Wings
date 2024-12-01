@@ -24,9 +24,7 @@ public class BookExpensesOrPayables extends Transaction {
     }
 
     public void payables() throws InterruptedException, IOException, ParseException, AWTException {
-        common.clickElement("name", "Finance");
-        common.clickElement("name", "Journals");
-        common.clickElement("xpath", "//MenuItem[@Name='Book Expenses or Payables']");
+        navigateToBookExpensesOrPayablesMenu();
         Thread.sleep(1000);
         lastTransactionName();
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");

@@ -26,9 +26,7 @@ public class CreditNoteFromSupplier extends Transaction {
         }
 
         public void creditNoteFromSupplier() throws InterruptedException, IOException, ParseException {
-            common.clickElement("name", "Finance");
-            common.clickElement("name", "Party Adjustments");
-            common.clickElement("xpath", "//MenuItem[@Name='Credit Note from Suppliers']");
+            navigateToCreditNoteFromSupplierMenu();
             Thread.sleep(1000);
             lastTransactionName();
             common.clickElement("xpath","//Edit[@Name='Voucher Type']");

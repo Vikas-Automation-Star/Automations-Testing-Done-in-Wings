@@ -21,9 +21,7 @@ public class OpeningUnclearedBankEntries extends Transaction {
         }
 
         public void unclearedBankEntries() throws InterruptedException, IOException, ParseException, AWTException {
-            common.clickElement("name", "Finance");
-            common.clickElement("name", "Banking");
-            common.clickElement("xpath", "//MenuItem[@Name='Opening Uncleared Bank Entries']");
+            navigateToOpeningUnclearedBankEntriesMenu();
             Thread.sleep(1000);
             lastTransactionName();
             //enter data

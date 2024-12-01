@@ -27,9 +27,7 @@ public class SalesOrder extends SalesOrdersBaseClass {
     }
 
     public void salesOrder() throws InterruptedException, IOException, ParseException {
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Orders");
-        common.clickElement("xpath", "//MenuItem[@Name='Sales Orders']");
+        navigateToSalesOrderMenu();
         Thread.sleep(1000);
         lastTransactionName();
         voucherType();

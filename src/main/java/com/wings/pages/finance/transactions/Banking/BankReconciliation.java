@@ -22,9 +22,7 @@ public class BankReconciliation extends Transaction {
     }
 
     public void bankReconciliation() throws InterruptedException, IOException, ParseException, AWTException {
-        common.clickElement("name", "Finance");
-        common.clickElement("name", "Banking");
-        common.clickElement("xpath", "//MenuItem[@Name='Bank Reconciliation']");
+        navigateToBankReconciliationMenu();
         Thread.sleep(1000);
         lastTransactionName();
         //enter data

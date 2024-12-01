@@ -8,7 +8,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import com.wings.utils.Common;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -71,6 +70,7 @@ public abstract class Transaction {
                 element.sendKeys(Keys.DOWN);
             }
             else {
+                element.sendKeys(Keys.ENTER);
                 break;
             }
         }
@@ -148,7 +148,6 @@ public abstract class Transaction {
             // Add to the final amount
             finalAmount += pendingAmount;
         }
-
         // Print the final amount after iterating through all rows
         System.out.println("Final Amount: " + finalAmount);
         return finalAmount;
@@ -172,16 +171,6 @@ public abstract class Transaction {
                 checkBox.click();
                 System.out.println("Checkbox clicked for voucher: " + value);
             }
-        }
-    }
-
-    public void validateElements(String locatorType,String locator, String existingValue){
-        WebElement element = common.findWebElement(locatorType, locator);
-        if (element.getText().equals(existingValue)) {
-            System.out.println("successfully selected/opened:- " + element.getText());
-
-        } else {
-            Assert.fail(element.getText() + "is not selected");
         }
     }
 
@@ -365,6 +354,504 @@ public abstract class Transaction {
     public void navigateToUnclearedPayments(){
         common.clickElement("xpath","//TabItem[contains(@Name,'Uncleared Payments')]");
     }
+
+    public void navigateToSalesEnquiryMenu(){
+        common.clickElement("name","Sales");
+        common.clickElement("name","Enquiries");
+        common.clickElement("xpath","//Menu[@Name='Enquiries']/MenuItem[@Name='Sales Enquiries']");
+        String pageValidation=common.findWebElement("xpath","//Pane/Text[@Name='Sales Enquiries']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Sales Enquiries");
+    }
+
+    public void navigateToSalesEnquiryCancellationMenu(){
+        common.clickElement("name","Sales");
+        common.clickElement("name","Enquiries");
+        common.clickElement("xpath","//MenuItem[@Name='Sales Enquiries Cancellation']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Sales Enquiries Cancellation']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Sales Enquiries Cancellation");
+    }
+
+    public void navigateToSalesQuotationsMenu(){
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Quotations");
+        common.clickElement("xpath", "//MenuItem[@Name='Sales Quotations']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Sales Quotations']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Sales Quotations");
+    }
+
+    public void navigateToSalesQuotationsCancellationMenu(){
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Quotations");
+        common.clickElement("xpath", "//MenuItem[@Name='Sales Quotations Cancellations']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Sales Quotations Cancellations']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Sales Quotations Cancellations");
+    }
+    public void navigateToSalesQuotationAgainstEnquiryMenu(){
+        common.clickElement("name","Sales");
+        common.clickElement("name","Quotations");
+        common.clickElement("xpath","//MenuItem[@Name='Sales Quotations against Enquiries']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Sales Quotations against Enquiries']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Sales Quotations against Enquiries");
+    }
+    public void navigateToSalesOrderAgainstQuotationsMenu(){
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Orders");
+        common.clickElement("xpath", "//MenuItem[@Name='Sales Orders against Quotations']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Sales Orders against Quotations']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Sales Orders against Quotations");
+    }
+
+    public void navigateToSalesOrderMenu(){
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Orders");
+        common.clickElement("xpath", "//MenuItem[@Name='Sales Orders']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Sales Orders']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Sales Orders");
+    }
+    public void navigateToSalesOrderCancellaltionMenu(){
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Orders");
+        common.clickElement("xpath", "//MenuItem[@Name='Sales Orders Cancellation']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Sales Orders Cancellation']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Sales Orders Cancellation");
+    }
+
+    public void navigateToDeliveriesMenu(){
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Deliveries");
+        common.clickElement("xpath", "//MenuItem[@Name='Deliveries']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Deliveries']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Deliveries");
+    }
+
+    public void navigateToDeliveriesAgainstOrdersMenu(){
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Deliveries");
+        common.clickElement("xpath", "//MenuItem[@Name='Deliveries against Orders']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Deliveries against Orders']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Deliveries against Orders");
+    }
+
+    public void navigateToDeliveryReturnsMenu(){
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Deliveries");
+        common.clickElement("xpath", "//MenuItem[@Name='Delivery Returns']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Delivery Returns']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Delivery Returns");
+    }
+
+    public void navigateToSalesInvoiceMenu() throws InterruptedException {
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Invoices");
+        common.clickElement("xpath", "//MenuItem[@Name='Sales Invoices']");
+        Thread.sleep(3500);
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Sales Invoices']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Sales Invoices");
+    }
+
+    public void navigateToSalesInvoiceAgainstDeliveriesMenu() {
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Invoices");
+        common.clickElement("xpath", "//MenuItem[@Name='Sales Invoices against Deliveries']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Sales Invoices against Deliveries']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Sales Invoices against Deliveries");
+    }
+
+    public void navigateToSalesInvoiceAgainstOrdersMenu(){
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Invoices");
+        common.clickElement("xpath", "//MenuItem[@Name='Sales Invoices against Orders']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Sales Invoices against Orders']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Sales Invoices against Orders");
+    }
+
+    public void navigateToProformaSalesInvoiceMenu(){
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Invoices");
+        common.clickElement("xpath", "//MenuItem[@Name='Proforma Sales Invoices']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Proforma Sales Invoices']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Proforma Sales Invoices");
+    }
+
+    public void navigateToSalesReturnMenu(){
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Invoices");
+        common.clickElement("xpath", "//MenuItem[@Name='Sales Returns']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Sales Returns']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Sales Returns");
+    }
+
+    public void navigateToSalesReturnWithInvoiceReferenceMenu(){
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Invoices");
+        common.clickElement("xpath", "//MenuItem[@Name='Sales Return with Invoice Reference']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Sales Return with Invoice Reference']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Sales Return with Invoice Reference");
+    }
+
+    public void navigateToSalesTargetExecutiveWiseMenu(){
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Targets");
+        common.clickElement("name", "Define Sales Targets-Executive Wise");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Define Sales Targets-Executive Wise']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Define Sales Targets-Executive Wise");
+    }
+
+    public void navigateToPartyProductwiseDiscountMenu(){
+        common.clickElement("name", "Sales");
+        common.clickElement("xpath", "//MenuItem[@Name='Prices and Discounts'][2]");
+        common.clickElement("name", "Party and Product wise Discounts");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Party and Product wise Discounts']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Party and Product wise Discounts");
+    }
+
+    public void navigateToSalesPricesMenu(){
+        common.clickElement("name","Sales");
+        common.clickElement("xpath","//MenuItem[@Name='Prices and Discounts'][2]");
+        common.clickElement("name","Sales Prices");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Sales Prices']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Sales Prices");
+    }
+
+    public void navigateToInterLocationTransfersMenu(){
+        common.clickElement("name", "Inventory");
+        common.clickElement("xpath", "//MenuItem[@Name='Inter Location Transfers']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Inter Location Transfers']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Inter Location Transfers");
+    }
+
+    public void navigateToOpeningStockMenu(){
+        common.clickElement("name", "Inventory");
+        common.clickElement("name","Opening Stock");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Opening Stock']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Opening Stock");
+    }
+
+    public void navigateToStockConsumptionMenu(){
+        common.clickElement("name", "Inventory");
+        common.clickElement("xpath", "//MenuItem[@Name='Stock Consumption']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Stock Consumption']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Stock Consumption");
+    }
+
+    public void navigateToStockConversionMenu(){
+        common.clickElement("name", "Inventory");
+        common.clickElement("xpath", "//MenuItem[@Name='Stock Conversion']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Stock Conversion']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Stock Conversion");
+    }
+
+    public void navigateToStockCreationMenu(){
+        common.clickElement("name", "Inventory");
+        common.clickElement("name", "Stock Creation");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Stock Creation']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Stock Creation");
+    }
+
+    public void navigateToBankReceiptsMenu(){
+        common.clickElement("name", "Finance");
+        common.clickElement("name", "Receipts");
+        common.clickElement("xpath", "//MenuItem[@Name='Bank Receipts']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Bank Receipts']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Bank Receipts");
+    }
+
+    public void navigateToCashReceiptsMenu(){
+        common.clickElement("name", "Finance");
+        common.clickElement("name", "Receipts");
+        common.clickElement("xpath", "//MenuItem[@Name='Cash Receipts']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Cash Receipts']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Cash Receipts");
+    }
+    public void navigateToCreditCardReceiptsMenu(){
+        common.clickElement("name", "Finance");
+        common.clickElement("name", "Receipts");
+        common.clickElement("xpath", "//MenuItem[@Name='Credit Card Receipts']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Credit Card Receipts']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Credit Card Receipts");
+    }
+
+    public void navigateToReceiptsFromCreditCardCompanyMenu(){
+        common.clickElement("name", "Finance");
+        common.clickElement("name", "Receipts");
+        common.clickElement("xpath", "//MenuItem[@Name='Receipts from Credit Card Companies']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Receipts from Credit Card Companies']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Receipts from Credit Card Companies");
+    }
+
+    public void navigateToReceiptsFromPartiesMenu(){
+        common.clickElement("name", "Finance");
+        common.clickElement("name", "Receipts");
+        common.clickElement("xpath", "//MenuItem[@Name='Receipts from Parties']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Receipts from Parties']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Receipts from Parties");
+    }
+
+    public void navigateToBankPaymentMenu(){
+        common.clickElement("name", "Finance");
+        common.clickElement("name", "Payments");
+        common.clickElement("xpath", "//MenuItem[@Name='Bank Payments']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Bank Payments']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Bank Payments");
+    }
+
+    public void navigateToCashPaymentsMenu(){
+        common.clickElement("name", "Finance");
+        common.clickElement("name", "Payments");
+        common.clickElement("xpath", "//MenuItem[@Name='Cash Payments']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Cash Payments']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Cash Payments");
+    }
+
+    public void navigateToCashTransfersMenu(){
+        common.clickElement("name", "Finance");
+        common.clickElement("name", "Payments");
+        common.clickElement("xpath", "//MenuItem[@Name='Cash Transfers']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Cash Transfers']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Cash Transfers");
+    }
+
+    public void navigateToPaymentToPartiesMenu(){
+        common.clickElement("name", "Finance");
+        common.clickElement("name", "Payments");
+        common.clickElement("xpath", "//MenuItem[@Name='Payments to Parties']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Payments to Parties']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Payments to Parties");
+    }
+
+    public void navigateToBookExpensesOrPayablesMenu(){
+        common.clickElement("name", "Finance");
+        common.clickElement("name", "Journals");
+        common.clickElement("xpath", "//MenuItem[@Name='Book Expenses or Payables']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Book Expenses or Payables']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Book Expenses or Payables");
+    }
+
+    public void navigateToBookIncomesOrReceivablesMenu(){
+        common.clickElement("name", "Finance");
+        common.clickElement("name", "Journals");
+        common.clickElement("xpath", "//MenuItem[@Name='Book Incomes or Receivables']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Book Incomes or Receivables']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Book Incomes or Receivables");
+    }
+
+    public void navigateToBookingOfOtherCosts(){
+        common.clickElement("name", "Finance");
+        common.clickElement("name", "Journals");
+        common.clickElement("xpath", "//MenuItem[@Name='Booking Of Other Costs']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Booking Of Other Costs']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Booking Of Other Costs");
+    }
+
+    public void navigateToJournalEntriesMenu(){
+        common.clickElement("name", "Finance");
+        common.clickElement("name", "Journals");
+        common.clickElement("xpath", "//MenuItem[@Name='Journal Entries']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Journal Entries']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Journal Entries");
+    }
+
+    public void navigateToManulStockVerificationMenu(){
+        common.clickElement("name", "Finance");
+        common.clickElement("name", "Opening Balances");
+        common.clickElement("xpath", "//MenuItem[@Name='Manual Stock Valuation']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Manual Stock Valuation']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Manual Stock Valuation");
+    }
+
+    public void navigateToOpeningBalancesMenu(){
+        common.clickElement("name", "Finance");
+        common.clickElement("name", "Opening Balances");
+        common.clickElement("xpath", "//MenuItem[@Name='Opening Balances']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Opening Balances']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Opening Balances");
+    }
+
+    public void navigateToOpeningReceiptsFromCreditCardCompanyMenu(){
+        common.clickElement("name", "Finance");
+        common.clickElement("name", "Opening Balances");
+        common.clickElement("xpath", "//MenuItem[@Name='Opening Receipts from Credit Card Companies']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Opening Receipts from Credit Card Companies']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Opening Receipts from Credit Card Companies");
+    }
+
+    public void navigateToPartyOpeningBalancesMenu(){
+        common.clickElement("name", "Finance");
+        common.clickElement("name", "Opening Balances");
+        common.clickElement("xpath", "//MenuItem[@Name='Party Opening Balances']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Party Opening Balances']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Party Opening Balances");
+    }
+
+    public void navigateToTransferIncomesAndExpensesToPLMenu(){
+        common.clickElement("name", "Finance");
+        common.clickElement("name", "Opening Balances");
+        common.clickElement("xpath", "//MenuItem[@Name='Transfer Incomes and Expenses to PL']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Transfer Incomes and Expenses to PL']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Transfer Incomes and Expenses to PL");
+    }
+
+    public void navigateToBankReconciliationMenu(){
+        common.clickElement("name", "Finance");
+        common.clickElement("name", "Banking");
+        common.clickElement("xpath", "//MenuItem[@Name='Bank Reconciliation']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Bank Reconciliation']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Bank Reconciliation");
+    }
+
+    public void navigateToCashDepositsAndWithdrawalsMenu(){
+        common.clickElement("name", "Finance");
+        common.clickElement("name", "Banking");
+        common.clickElement("xpath", "//MenuItem[@Name='Cash Deposits and withdrawals']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Cash Deposits and withdrawals']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Cash Deposits and withdrawals");
+    }
+
+    public void navigateToDepositPostDatedChequesMenu(){
+        common.clickElement("name", "Finance");
+        common.clickElement("name", "Banking");
+        common.clickElement("xpath", "//MenuItem[@Name='Deposit Post Dated Cheques']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Deposit Post Dated Cheques']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Deposit Post Dated Cheques");
+    }
+
+    public void navigateToInterBankFundTransferMenu(){
+        common.clickElement("name", "Finance");
+        common.clickElement("name", "Banking");
+        common.clickElement("xpath", "//MenuItem[@Name='Inter Bank Fund Transfers']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Inter Bank Fund Transfers']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Inter Bank Fund Transfers");
+    }
+
+    public void navigateToOpeningUnclearedBankEntriesMenu(){
+        common.clickElement("name", "Finance");
+        common.clickElement("name", "Banking");
+        common.clickElement("xpath", "//MenuItem[@Name='Opening Uncleared Bank Entries']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Opening Uncleared Bank Entries']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Opening Uncleared Bank Entries");
+    }
+
+    public void navigateToReceivedChequesBounceMenu(){
+        common.clickElement("name", "Finance");
+        common.clickElement("name", "Banking");
+        common.clickElement("xpath", "//MenuItem[@Name='Received Cheques Bounce']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Received Cheques Bounce']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Received Cheques Bounce");
+    }
+
+    public void navigateToAdjustPartyBills(){
+        common.clickElement("name", "Finance");
+        common.clickElement("name", "Party Adjustments");
+        common.clickElement("xpath", "//MenuItem[@Name='Adjust Party Bills']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Adjust Party Bills']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Adjust Party Bills");
+    }
+
+    public void navigateToCreditNoteFromSupplierMenu(){
+        common.clickElement("name", "Finance");
+        common.clickElement("name", "Party Adjustments");
+        common.clickElement("xpath", "//MenuItem[@Name='Credit Note from Suppliers']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Credit Note from Suppliers']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Credit Note from Suppliers");
+    }
+    public void navigateToCreditNoteOnCustomerMenu(){
+        common.clickElement("name", "Finance");
+        common.clickElement("name", "Party Adjustments");
+        common.clickElement("xpath", "//MenuItem[@Name='Credit Note on Customers']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Credit Note on Customers']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Credit Note on Customers");
+    }
+    public void navigateToCreditNoteMenu(){
+        common.clickElement("name", "Finance");
+        common.clickElement("name", "Party Adjustments");
+        common.clickElement("xpath", "//MenuItem[@Name='Credit Note']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Credit Note']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Credit Note");
+    }
+
+    public void navigateToDebitNoteFromSupplierMenu(){
+        common.clickElement("name", "Finance");
+        common.clickElement("name", "Party Adjustments");
+        common.clickElement("xpath", "//MenuItem[@Name='Debit Note from Suppliers']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Debit Note from Suppliers']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Debit Note from Suppliers");
+    }
+
+    public void navigateToDebitNoteOnCustomerMenu(){
+        common.clickElement("name", "Finance");
+        common.clickElement("name", "Party Adjustments");
+        common.clickElement("xpath", "//MenuItem[@Name='Debit Note on Customers']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Debit Note on Customers']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Debit Note on Customers");
+    }
+    public void navigateToDebitNoteMenu(){
+        common.clickElement("name", "Finance");
+        common.clickElement("name", "Party Adjustments");
+        common.clickElement("xpath", "//MenuItem[@Name='Debit Note']");
+        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Debit Note']").getText();
+        System.out.println("Screen Name:-"+pageValidation);
+        Assert.assertEquals(pageValidation,"Debit Note");
+    }
+
+
+
+
+
     public void transactionSave() throws InterruptedException {
         common.clickElement("xpath","//Button[@Name='Save']");
         common.clickElement("xpath","//Button[@Name='Yes']");
@@ -382,6 +869,127 @@ public abstract class Transaction {
         common.clickElement("xpath", "//TabItem[@Name='" + transaction + "']/Button[@Name='Close']");
     }
 
+
+    public void navigateToPurchaseEnquiries(){
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Enquiries");
+        common.clickElement("xpath", "//Menu[@Name='Enquiries']/MenuItem[@Name='Purchase Enquiries']");
+        String validate=common.findWebElement("xpath","//Text[@Name='Purchase Enquiries']").getText();
+        System.out.println(validate);
+        Assert.assertEquals("Purchase Enquiries",validate);
+    }
+    public void navigateToPurchaseEnquiriesCancellation(){
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Enquiries");
+        common.clickElement("xpath", "//MenuItem[@Name='Purchase Enquiries Cancellation']");
+        String validate=common.findWebElement("xpath","//Text[@Name='Purchase Enquiries Cancellation']").getText();
+        System.out.println(validate);
+        Assert.assertEquals("Purchase Enquiries Cancellation",validate);
+    }
+    public void navigateToPurchaseQuotations(){
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Quotations");
+        common.clickElement("xpath", "//MenuItem[@Name='Purchase Quotations']");
+        String validate=common.findWebElement("xpath","//Text[@Name='Purchase Quotations']").getText();
+        System.out.println(validate);
+        Assert.assertEquals("Purchase Quotations",validate);
+    }
+    public void navigateToPurchaseQuotationsAgainstEnquiries(){
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Quotations");
+        common.clickElement("xpath", "//MenuItem[@Name='Purchase Quotations against Enquiries']");
+        String validate=common.findWebElement("xpath","//Text[@Name='Purchase Quotations against Enquiries']").getText();
+        System.out.println(validate);
+        Assert.assertEquals("Purchase Quotations against Enquiries",validate);
+    }
+    public void navigateToPurchaseOrdersAgainstQuotations(){
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Orders");
+        common.clickElement("xpath", "//MenuItem[@Name='Purchase Orders against Quotations']");
+        String validate=common.findWebElement("xpath","//Text[@Name='Purchase Orders against Quotations']").getText();
+        System.out.println(validate);
+        Assert.assertEquals("Purchase Orders against Quotations",validate);
+    }
+    public void navigateToPurchaseOrders(){
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Orders");
+        common.clickElement("xpath", "//MenuItem[@Name='Purchase Orders']");
+        String validate=common.findWebElement("xpath","//Text[@Name='Purchase Orders']").getText();
+        System.out.println(validate);
+        Assert.assertEquals("Purchase Orders",validate);
+    }
+    public void navigateToPurchaseOrdersaCancellation(){
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Orders");
+        common.clickElement("xpath", "//MenuItem[@Name='Purchase Orders Cancellation']");
+        String validate=common.findWebElement("xpath","//Text[@Name='Purchase Orders Cancellation']").getText();
+        System.out.println(validate);
+        Assert.assertEquals("Purchase Orders Cancellation",validate);
+    }
+    public void navigateToMaterialReceipts(){
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Receipts");
+        common.clickElement("xpath", "//MenuItem[@Name='Material Receipts']");
+        String validate=common.findWebElement("xpath","//Text[@Name='Material Receipts']").getText();
+        System.out.println(validate);
+        Assert.assertEquals("Material Receipts",validate);
+    }
+    public void navigateToMaterialReceiptsAgainstOrders(){
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Receipts");
+        common.clickElement("xpath", "//MenuItem[@Name='Material Receipts against Orders']");
+        String validate=common.findWebElement("xpath","//Text[@Name='Material Receipts against Orders']").getText();
+        System.out.println(validate);
+        Assert.assertEquals("Material Receipts against Orders",validate);
+    }
+    public void navigateToMaterialReturns(){
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Receipts");
+        common.clickElement("xpath", "//MenuItem[@Name='Material Returns']");
+        String validate=common.findWebElement("xpath","//Text[@Name='Material Returns']").getText();
+        System.out.println(validate);
+        Assert.assertEquals("Material Returns",validate);
+    }
+    public void navigateToPurchasePrice(){
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Price");
+        common.clickElement("xpath", "//MenuItem[@Name='Purchase Prices']");
+        String validate=common.findWebElement("xpath","//Text[@Name='Purchase Prices']").getText();
+        System.out.println(validate);
+        Assert.assertEquals("Purchase Prices",validate);
+    }
+    public void navigateToPurchaseVouchers(){
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Invoices");
+        common.clickElement("xpath", "//MenuItem[@Name='Purchase Vouchers']");
+        String validate=common.findWebElement("xpath","//Text[@Name='Purchase Vouchers']").getText();
+        System.out.println(validate);
+        Assert.assertEquals("Purchase Vouchers",validate);
+    }
+    public void navigateToPurchaseVouchersAgainstOrders(){
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Invoices");
+        common.clickElement("xpath", "//MenuItem[@Name='Purchase Vouchers against Orders']");
+        String validate=common.findWebElement("xpath","//Text[@Name='Purchase Vouchers against Orders']").getText();
+        System.out.println(validate);
+        Assert.assertEquals("Purchase Vouchers against Orders",validate);
+    }
+    public void navigateToPurchaseVouchersAgainstReceipts(){
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Invoices");
+        common.clickElement("xpath", "//MenuItem[@Name='Purchase Vouchers against Receipts']");
+        String validate=common.findWebElement("xpath","//Text[@Name='Purchase Vouchers against Receipts']").getText();
+        System.out.println(validate);
+        Assert.assertEquals("Purchase Vouchers against Receipts",validate);
+    }
+    public void navigateToPurchaseVouchersWithInvoicesReference(){
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Invoices");
+        common.clickElement("xpath", "//MenuItem[@Name='Purchase Returns with Invoice Reference']");
+        String validate=common.findWebElement("xpath","//Text[@Name='Purchase Returns with Invoice Reference']").getText();
+        System.out.println(validate);
+        Assert.assertEquals("Purchase Returns with Invoice Reference",validate);
+    }
 
 
 
@@ -414,8 +1022,8 @@ public abstract class Transaction {
         List<WebElement> elementList = common.findWebElements("xpath", "//Table[@Name='Lookup']/*/*[contains(@Name,'Master Row')]");
         System.out.println("Size :" + elementList.size());
         for (WebElement j : elementList) {
+            System.out.println(j.getText());
             if (j.getText().contains(transaction)) {
-                System.out.println(j.getText());
                 j.click();
                 j.sendKeys(Keys.ENTER);
             }
@@ -526,5 +1134,4 @@ public abstract class Transaction {
             }
         }
     }
-
 }

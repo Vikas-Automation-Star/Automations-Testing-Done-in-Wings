@@ -19,9 +19,7 @@ public class SalesOrderPostDatedCheques extends Transaction {
     }
 
     public void salesOrder() throws InterruptedException, IOException, ParseException {
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Orders");
-        common.clickElement("xpath", "//MenuItem[@Name='Sales Orders']");
+        navigateToSalesOrderMenu();
         Thread.sleep(1000);
         super.lastTransactionName();
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");

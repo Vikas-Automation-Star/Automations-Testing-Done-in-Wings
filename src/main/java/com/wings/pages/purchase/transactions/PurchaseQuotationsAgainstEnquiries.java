@@ -21,10 +21,7 @@ public class PurchaseQuotationsAgainstEnquiries extends Transaction {
     }
 
     public void purchaseQuotationsAgainstEnquiry() throws InterruptedException, IOException, ParseException {
-
-        common.clickElement("name", "Purchase");
-        common.clickElement("name", "Quotations");
-        common.clickElement("xpath", "//MenuItem[@Name='Purchase Quotations against Enquiries']");
+        navigateToPurchaseQuotationsAgainstEnquiries();
         Thread.sleep(3000);
         super.oldTTransaction();
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");

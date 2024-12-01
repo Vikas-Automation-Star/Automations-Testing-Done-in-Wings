@@ -5,6 +5,8 @@ import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import com.wings.utils.Common;
+import org.testng.Assert;
+
 import java.io.IOException;
 
 public class AppLogin {
@@ -51,6 +53,9 @@ public class AppLogin {
         Thread.sleep(2500);
         common.clickElement("name","OK");
         System.out.println("Super User Login for "+common.getData(fileData,"companyName")+" company is successful " +new String(Character.toChars(0x2705)));
+//        String title=driver.getTitle();
+//        System.out.println(title);
+//        Assert.assertEquals("Wings Accounting 24DNP - PRO [ Wings InfoNet ; 01-04-2024 To 31-03-2025 ; Super User ]",title);
     }
 
     public WindowsDriver launchSingleUserApp() throws IOException, InterruptedException {

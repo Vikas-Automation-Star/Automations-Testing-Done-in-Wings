@@ -22,8 +22,7 @@ public class InterLocationTransfers extends Transaction {
         dataFile = file;
     }
     public void locationTransfer() throws InterruptedException, AWTException, IOException, ParseException {
-        common.clickElement("name", "Inventory");
-        common.clickElement("xpath", "//MenuItem[@Name='Inter Location Transfers']");
+        navigateToInterLocationTransfersMenu();
         lastTransactionName();
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");
         selectOptionalMaster(common.getData(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']");

@@ -18,9 +18,7 @@ public class SalesOrderCancellation extends SalesOrdersBaseClass {
             dataFile=file;
         }
         public void salesOrderCancellations() throws InterruptedException, IOException, ParseException, IOException, ParseException {
-            common.clickElement("name", "Sales");
-            common.clickElement("name", "Orders");
-            common.clickElement("xpath", "//MenuItem[@Name='Sales Orders Cancellation']");
+            navigateToSalesOrderCancellaltionMenu();
             lastTransactionName();
             Thread.sleep(3000);
             voucherType();

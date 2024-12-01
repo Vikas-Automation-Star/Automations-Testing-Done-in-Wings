@@ -20,9 +20,7 @@ public class ProductndPartyDiscount extends Transaction {
     }
 
     public void productDiscount() throws InterruptedException, IOException, ParseException {
-        common.clickElement("name", "Sales");
-        common.clickElement("xpath", "//MenuItem[@Name='Prices and Discounts'][2]");
-        common.clickElement("name", "Party and Product wise Discounts");
+        navigateToPartyProductwiseDiscountMenu();
         Thread.sleep(1000);
         lastTransactionName();
         common.clickElement("xpath", "//Edit[@Name='Branch *']");

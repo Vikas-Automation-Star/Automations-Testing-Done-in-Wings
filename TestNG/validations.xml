@@ -1,0 +1,10 @@
+<suite name="Sample suite">
+    <listeners>
+        <listener class-name="com.wings.utils.listener"/>
+    </listeners>
+    <test name="Test 1"  description="Test 1 description"  testID="WOW 1">
+        <classes>
+            <class name="util.SampleTest1"/>
+        </classes>
+    </test>
+</suite>

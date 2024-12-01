@@ -25,11 +25,7 @@ public class ReceivedChequesBounce extends Transaction {
     }
 
     public void receivedCheckBounce() throws InterruptedException, IOException, ParseException {
-
-        common.clickElement("name", "Finance");
-        common.clickElement("name", "Banking");
-        common.clickElement("xpath", "//MenuItem[@Name='Received Cheques Bounce']");
-
+        navigateToReceivedChequesBounceMenu();
         Thread.sleep(3000);
         super.oldTTransaction();
         common.clickElement("xpath", "//Edit[@Name='Branch *']");

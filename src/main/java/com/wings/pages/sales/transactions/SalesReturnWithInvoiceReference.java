@@ -21,9 +21,7 @@ public class SalesReturnWithInvoiceReference extends Transaction {
     }
 
     public void salesReturnWithInvoiceReference() throws InterruptedException, IOException, ParseException, IOException, ParseException {
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Invoices");
-        common.clickElement("xpath", "//MenuItem[@Name='Sales Return with Invoice Reference']");
+        navigateToSalesReturnWithInvoiceReferenceMenu();
         Thread.sleep(3000);
         lastTransactionName();
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");

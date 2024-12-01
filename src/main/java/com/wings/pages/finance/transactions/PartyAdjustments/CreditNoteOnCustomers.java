@@ -22,9 +22,7 @@ public class CreditNoteOnCustomers extends Transaction {
         }
 
         public void creditNoteOnCustomer() throws InterruptedException, IOException, ParseException, AWTException {
-            common.clickElement("name", "Finance");
-            common.clickElement("name", "Party Adjustments");
-            common.clickElement("xpath", "//MenuItem[@Name='Credit Note on Customers']");
+            navigateToCreditNoteOnCustomerMenu();
             Thread.sleep(1000);
             lastTransactionName();
             common.clickElement("xpath","//Edit[@Name='Voucher Type']");
