@@ -178,7 +178,7 @@
 
 
             <suiteXmlFiles>
-              <suiteXmlFile>TestNG/MenuItems/financeReportsSuite.xml</suiteXmlFile>
+              <suiteXmlFile>${TestNGFile}</suiteXmlFile>
             </suiteXmlFiles>
 
           </configuration>
