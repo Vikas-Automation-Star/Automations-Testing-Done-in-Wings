@@ -7,5 +7,5 @@ if exist allure-results (
     rmdir /s /q allure-results
 )
 
-call mvn clean install
+call mvn clean install -DTestNGFile=TestNG/sampleSuite.xml
 call mvn compile exec:java

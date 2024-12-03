@@ -79,10 +79,10 @@ public class TC_01 extends Transaction {
             // for multibatch
         super.enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 1, Not sorted.']",dataFile, "multiBatch");
         common.clickElement("xpath","//Button[@Name='Stock Details Row 1']");
-        Thread.sleep(10000);
+        Thread.sleep(3000);
 
         //* click on check-box through stock in quantity
-//        WebElement stock=common.findWebElement("xpath","//Window[@Name='Batch Details']/Pane/Pane/Table[@Name='Batch Details']/*[@Name='Data Panel']/ListItem/Item[@Name='Expiry Date row 1']");
+        WebElement stock=common.findWebElement("xpath","/*[@Name='Data Panel']/ListItem/Item[@Name='Expiry Date row 1']");
 //        stock.click();
 //        stock.sendKeys(Keys.TAB,Keys.TAB,Keys.SPACE);
 

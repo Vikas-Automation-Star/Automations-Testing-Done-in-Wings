@@ -26,7 +26,6 @@ public class SupplierBalances extends Report {
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
 //        Thread.sleep(1500);
 //        super.bulkVerifyReport("ILT 1");
-        Allure.step("Validating Supplier balances report");
         closeReport("Supplier Balances");
         Allure.step("Verify Supplier balance report");
     }
