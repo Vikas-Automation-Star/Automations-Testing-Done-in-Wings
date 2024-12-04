@@ -30,7 +30,7 @@ public class TestCase_01 {
 
         @AfterTest
         public void afterTest(){
-//            appLogin.logout();
+            appLogin.logout();
             Allure.step("After Test TestCase 01");
         }
     }

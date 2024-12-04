@@ -1,0 +1,26 @@
+<suite name="Wings Automation Testing">
+    <listeners>
+        <listener class-name="com.wings.utils.listener"/>
+    </listeners>
+
+    <suite-files>
+        <suite-file path="MenuItems/auditSuite.xml"/>
+    </suite-files>
+
+    <suite-files>
+        <suite-file path="MenuItems/financeMastersSuite.xml"/>
+    </suite-files>
+
+    <suite-files>
+        <suite-file path="MenuItems/financeReportsSuite.xml"/>
+    </suite-files>
+
+    <suite-files>
+        <suite-file path="MenuItems/inventorySuite.xml"/>
+    </suite-files>
+
+    <suite-files>
+        <suite-file path="MenuItems/salesSuite.xml"/>
+    </suite-files>
+
+</suite>

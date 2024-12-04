@@ -23,6 +23,6 @@ public class SalesInvoiceAgainstDeliveriesReportCode extends Report {
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         super.bulkVerifyReport("SIAD 2");
         Thread.sleep(3000);
-        super.closeReport("Sales Invoices against Deliveries");
+//        super.closeReport("Sales Invoices against Deliveries");
     }
 }

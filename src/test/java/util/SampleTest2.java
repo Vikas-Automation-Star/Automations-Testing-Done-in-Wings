@@ -5,6 +5,7 @@ import com.wings.pages.finance.reports.Balances.CustomerBalances;
 import io.appium.java_client.windows.WindowsDriver;
 import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -26,6 +27,7 @@ public class SampleTest2 {
     public void customerBalance() throws InterruptedException,  AWTException {
         CustomerBalances customerBalances=new CustomerBalances(driver);
         customerBalances.customerBalanceReport();
+        Assert.assertEquals("hia","bfye");
     }
 
     @AfterTest

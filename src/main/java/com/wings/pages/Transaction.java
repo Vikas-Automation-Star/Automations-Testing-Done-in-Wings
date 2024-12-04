@@ -456,9 +456,9 @@ public abstract class Transaction {
         common.clickElement("name", "Invoices");
         common.clickElement("xpath", "//MenuItem[@Name='Sales Invoices']");
         Thread.sleep(3500);
-        String pageValidation =common.findWebElement("xpath","//Pane/Text[@Name='Sales Invoices']").getText();
-        System.out.println("Screen Name:-"+pageValidation);
-        Assert.assertEquals(pageValidation,"Sales Invoices");
+        String validate=common.findWebElement("xpath","//Text[@Name='Sales Invoices']").getText();
+        System.out.println("Screen Name:-"+validate);
+        Assert.assertEquals(validate,"Sales Invoices");
     }
 
     public void navigateToSalesInvoiceAgainstDeliveriesMenu() {

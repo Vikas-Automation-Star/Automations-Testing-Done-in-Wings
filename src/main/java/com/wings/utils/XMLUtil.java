@@ -1,6 +1,5 @@
 package com.wings.utils;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.appium.java_client.windows.WindowsDriver;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -55,10 +54,10 @@ public class XMLUtil {
 
     public String testRowAppend(String testID,String name,String status, String description,double duration){
         return "<tr style='text-align: center; vertical-align: middle;'> <td align=\"center\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \"> <a href=\"https://wingsinfo.atlassian.net/browse/"+testID+"\">"+testID+"</a></td>" +
-                        "<td align=\"left\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">"+name+"</td>" +
-                        "<td  align=\"left\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">"+status+"</td>" +
-                        "<td align=\"center\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">"+description+"</td>" +
-                        "<td align=\"left\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">"+duration+ "s" +"</td></tr>";
+                "<td align=\"left\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">"+name+"</td>" +
+                "<td  align=\"left\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">"+status+"</td>" +
+                "<td align=\"center\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">"+description+"</td>" +
+                "<td align=\"left\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">"+duration+ "s" +"</td></tr>";
 
     }
 
@@ -98,7 +97,6 @@ public class XMLUtil {
             Date end = sdf.parse(executionEndTime);
             executionTimeMillis = end.getTime() - start.getTime();
         }
-
         NodeList testList = document.getElementsByTagName("test");
         for (int i = 0; i < testList.getLength(); i++) {
             Element testElement = (Element) testList.item(i);
@@ -106,78 +104,91 @@ public class XMLUtil {
             double duration = Double.parseDouble(testElement.getAttribute("duration-ms")) / 1000;
 
             NodeList testMethodTags = testElement.getElementsByTagName("test-method");
-            int middleIndex = testMethodTags.getLength() / 2;
             if (testMethodTags.getLength() > 0) {
-                Element testMethodElement = (Element) testMethodTags.item(middleIndex);
-                String status = testMethodElement.getAttribute("status");
-                Map<String, String> testDetailsMap = testDetailsList.get(i);
-                switch (status) {
-                    case "PASS":
-                        passedTests++;
+                Element requiredTestMethod = null;
+
+                // Start from the last test-method element
+                for (int j = testMethodTags.getLength() - 1; j >= 0; j--) {
+                    Element testMethodElement = (Element) testMethodTags.item(j);
+                    String signature = testMethodElement.getAttribute("signature");
+                    System.out.println(signature + " signature for example");
+
+                    if (!signature.contains("afterTest()")) {
+                        requiredTestMethod = testMethodElement;
                         break;
-                    case "FAIL":
-                        failedTests++;
-                        break;
-                    case "SKIP":
-                        skippedTests++;
-                        break;
+                    }
                 }
 
-                if (common.getProperty("failedtcreport").equals("true") && status.equals("FAIL")){
-                    testDetails.append(testRowAppend(testDetailsMap.get("testID"), testDetailsMap.get("name"), testDetailsMap.get("description"), status,duration));
-                }
-                else if(common.getProperty("failedtcreport").equals("false")){
-                    testDetails.append(testRowAppend(testDetailsMap.get("testID"), testDetailsMap.get("name"), testDetailsMap.get("description"), status, duration));
+                if (requiredTestMethod != null) {
+                    String status = requiredTestMethod.getAttribute("status");
+                    Map<String, String> testDetailsMap = testDetailsList.get(i);
+
+                    switch (status) {
+                        case "PASS":
+                            passedTests++;
+                            break;
+                        case "FAIL":
+                            failedTests++;
+                            break;
+                        case "SKIP":
+                            skippedTests++;
+                            break;
+                    }
+                    if (common.getProperty("failedtcreport").equals("true") && status.equals("FAIL")) {
+                        testDetails.append(testRowAppend(testDetailsMap.get("testID"), testDetailsMap.get("name"), testDetailsMap.get("description"), status, duration));
+                    } else if (common.getProperty("failedtcreport").equals("false")) {
+                        testDetails.append(testRowAppend(testDetailsMap.get("testID"), testDetailsMap.get("name"), testDetailsMap.get("description"), status, duration));
+                    }
                 }
             }
         }
-
         totalTests = passedTests + failedTests + skippedTests;
         passRate = (totalTests > 0) ? (passedTests / (double) totalTests) * 100 : 0;
-        // Format execution time
+
         String executionTimeFormatted = String.format("%02d:%02d:%02d",
                 (executionTimeMillis / (1000 * 60 * 60)) % 24,
                 (executionTimeMillis / (1000 * 60)) % 60,
                 (executionTimeMillis / 1000) % 60);
 
+
         // Read and update HTML template
-        String htmlTemplate = new String(Files.readAllBytes(Paths.get("mailTemplates/executiontemplate.html")), "UTF-8");
-        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#ExecutionMachine#"), executionMachine);
-        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#SuiteName#"), suiteName1);
-        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#TestPassRate#"), String.format("%.2f%%", passRate));
-        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#PassedTests#"), Integer.toString(passedTests));
-        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#FailedTests#"), Integer.toString(failedTests));
-        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#SkippedTests#"), Integer.toString(skippedTests));
-        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#ExecutionStartTime#"), executionStartTime);
-        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#ExecutionEndTime#"), executionEndTime);
-        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#ExecutionTime#"), executionTimeFormatted);
-        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#TotalTests#"), String.valueOf(totalTests));
-        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#OS#"), os);
-        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#URL#"), common.getData(dataFile,"app"));
-        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#CompanyDetails#"), common.getData(dataFile,"companyName"));
-        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#row#"), testDetails.toString());
-        Files.write(toFile, htmlTemplate.getBytes("UTF-8"));
+            String htmlTemplate = new String(Files.readAllBytes(Paths.get("mailTemplates/executiontemplate.html")), "UTF-8");
+            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#ExecutionMachine#"), executionMachine);
+            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#SuiteName#"), suiteName1);
+            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#TestPassRate#"), String.format("%.2f%%", passRate));
+            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#PassedTests#"), Integer.toString(passedTests));
+            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#FailedTests#"), Integer.toString(failedTests));
+            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#SkippedTests#"), Integer.toString(skippedTests));
+            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#ExecutionStartTime#"), executionStartTime);
+            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#ExecutionEndTime#"), executionEndTime);
+            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#ExecutionTime#"), executionTimeFormatted);
+            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#TotalTests#"), String.valueOf(totalTests));
+            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#OS#"), os);
+            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#URL#"), common.getData(dataFile, "app"));
+            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#CompanyDetails#"), common.getData(dataFile, "companyName"));
+            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#row#"), testDetails.toString());
+            Files.write(toFile, htmlTemplate.getBytes("UTF-8"));
 
-        // Send email with report attached
-        final String fromEmail = "productupdates@wingsinfo.net";
-        final String password = "Zuy97283";
-        final String toEmail = "vikas.empuluri@wingsinfo.net";
+            // Send email with report attached
+            final String fromEmail = "productupdates@wingsinfo.net";
+            final String password = "Zuy97283";
+            final String toEmail = "madhuri.matta@wingsinfo.net,manoj.c@wingsinfo.net";
 
-        Properties props = new Properties();
-        props.put("mail.smtp.host", "smtp.office365.com");
-        props.put("mail.smtp.port", "587");
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
+            Properties props = new Properties();
+            props.put("mail.smtp.host", "smtp.office365.com");
+            props.put("mail.smtp.port", "587");
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.starttls.enable", "true");
 
-        Authenticator auth = new Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(fromEmail, password);
-            }
-        };
-        Session session = Session.getInstance(props, auth);
-        EmailUtil.sendEmail(session, toEmail, String.valueOf(toFile));
-        System.out.println("Report generated and email sent successfully!");
-    }
+            Authenticator auth = new Authenticator() {
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(fromEmail, password);
+                }
+            };
+            Session session = Session.getInstance(props, auth);
+            EmailUtil.sendEmail(session, toEmail, String.valueOf(toFile));
+            System.out.println("Report generated and email sent successfully!");
+        }
 
     public static void main(String[] args) {
         XMLUtil xmlUtil = new XMLUtil();
