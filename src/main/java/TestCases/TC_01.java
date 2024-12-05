@@ -60,19 +60,27 @@ public class TC_01 extends Transaction {
         selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
 //        //F3-Items
                 //for product (EXCLUSIVE TAX)
-        super.enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']",dataFile, "product");
-        common.clickElement("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']");
-        super.enterData("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']", dataFile, "ProductQuantity");
+        for (int i = 0; i < Integer.parseInt(common.getData(dataFile,"rows")); i++) {
+            super.enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']", dataFile, "product" + i);
+            if (common.getData(dataFile, "productType0").equals("generalProduct")) {
+                common.clickElement("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']");
+                super.enterData("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']", dataFile, "ProductQuantity");
+            } else if (common.getData(dataFile, "productType0").equals("multiBatch")) {
+
+            } else if (common.getData(dataFile, "productType0").equals("serialNum")) {
+
+            }
 //        common.clickElement("xpath", "//Edit[@Name='MRP Row 0, Not sorted.']");
-        super.enterData("xpath", "//Edit[@Name='MRP Row 0, Not sorted.']", dataFile, "productMRP");
-        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']",500,0);
+            super.enterData("xpath", "//Edit[@Name='MRP Row 0, Not sorted.']", dataFile, "productMRP");
+            common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 500, 0);
 //        common.clickElement("xpath", "//Edit[@Name='Minimum Rate * Row 0, Not sorted.']");
-        super.enterData("xpath", "//Edit[@Name='Minimum Rate * Row 0, Not sorted.']", dataFile, "minumumRate");
+            super.enterData("xpath", "//Edit[@Name='Minimum Rate * Row 0, Not sorted.']", dataFile, "minumumRate");
 //        common.clickElement("xpath", "//Edit[@Name='Maximum Rate * Row 0, Not sorted.']");
-        Thread.sleep(2500);
-        super.enterData("xpath", "//Edit[@Name='Maximum Rate * Row 0, Not sorted.']", dataFile, "maximumRate");
+            Thread.sleep(2500);
+            super.enterData("xpath", "//Edit[@Name='Maximum Rate * Row 0, Not sorted.']", dataFile, "maximumRate");
 //        common.clickElement("xpath", "//Edit[@Name='Unit Rate Row 0, Not sorted.']");
-        super.enterData("xpath", "//Edit[@Name='Unit Rate Row 0, Not sorted.']", dataFile, "unitRate");
+            super.enterData("xpath", "//Edit[@Name='Unit Rate Row 0, Not sorted.']", dataFile, "unitRate");
+        }
 
             // for multibatch
         super.enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 1, Not sorted.']",dataFile, "multiBatch");
