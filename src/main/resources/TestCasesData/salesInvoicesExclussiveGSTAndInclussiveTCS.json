@@ -1,0 +1,16 @@
+{
+  "rows": "1",
+  "branch": "AT_Branch 4_Reg_Inter",
+  "partyCode": "AT_Cus_Reg_Inter",
+  "salesAccountCode": "AT_Sales  Acc 1",
+  "tcsNature": "AT_TCS Transaction Nature 1",
+  "priceList": "AT_Exclusive Sales Price List 1",
+
+  "generalProduct": "AT_Product 1",
+  "ProductQuantity":"5",
+
+  "multiBatch": "AT_Multi batch Product 1",
+  "multiBatchQuantity": "1",
+
+  "serialBatch": "AT_Product With SN 1"
+}
