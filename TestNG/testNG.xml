@@ -14,6 +14,7 @@
 <suite name="SuiteName">
     <listeners>
         <listener class-name="com.wings.utils.listener"/>
+        <listener class-name="util.AnnotationTransformer"/>
     </listeners>
     <test name="Test 1">
         <classes>

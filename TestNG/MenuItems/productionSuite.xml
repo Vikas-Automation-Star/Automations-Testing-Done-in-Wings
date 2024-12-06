@@ -3,7 +3,7 @@
     <listeners>
         <listener class-name="com.wings.utils.listener"></listener>
     </listeners>
-
+    <!-- masters of Production menu -->
     <test name="Create BillOfMaterialsMaster" description="description for BillOfMaterialsMaster"  testID="WOW 1">
         <classes>
             <class name="menuItems.Production.masters.BillOfMaterialsMater"></class>
@@ -15,7 +15,7 @@
             <class name="menuItems.Production.masters.ProductionBatchPoliciesMaster"></class>
         </classes>
     </test>
-<!-- masters of Production menu completed-->
+
     <test name="Performing Assign StandardRates Transaction" description="description for AssignStandardRatesTransaction"  testID="WOW 3">
         <classes>
             <class name="menuItems.Production.transactions.AssignStandardRatesTransaction"></class>
