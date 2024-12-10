@@ -94,5 +94,5 @@ public class CreateCompany {
         CreateCompany launch=new CreateCompany();
         launch.login();
         launch.logout();
-    }
+    }}
 }
