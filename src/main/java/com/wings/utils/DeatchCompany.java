@@ -45,7 +45,6 @@ public class DeatchCompany {
         Assert.assertEquals("Error",errorMessage);
         driver.findElementByXPath("//Button[@Name='OK']").click();
         driver.findElementByXPath("//Button[@Name='Close']");
-//        driver.quit();
     }
 
     public static void main(String args[]) throws MalformedURLException, InterruptedException, AWTException {
