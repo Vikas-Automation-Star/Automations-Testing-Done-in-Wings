@@ -4,19 +4,15 @@ import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-//import com.wings.pages.Master;
 import com.wings.utils.Common;
-
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
-import java.util.Random;
 
 public class Customer {
     WindowsDriver driver;
     Common common;
     String dataFile;
-    Random random=new Random();
 
     public Customer(WindowsDriver driver,String file){
         this.driver=driver;
