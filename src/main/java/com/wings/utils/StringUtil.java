@@ -2,6 +2,16 @@ package com.wings.utils;
 
 public class StringUtil {
 
+    /***
+     *  Return -1 if no number is found(implementation below in calling class)
+     *  if (extractedNumber != -1) {
+     *      System.out.println("Extracted number: " + extractedNumber);
+     *  } else {
+     *      System.out.println("No number found in the input string.");
+     *  }
+     * @param input
+     * @return
+     */
     public static double extractNumber(String input) {
 
         String regex = "\\d+(\\.\\d+)?"; // Matches integers or decimals
@@ -13,12 +23,6 @@ public class StringUtil {
             return Double.parseDouble(number); // Convert to double
         }
 
-        // Return -1 if no number is found(implementation below in calling class)
-        //        if (extractedNumber != -1) {
-        //            System.out.println("Extracted number: " + extractedNumber);
-        //        } else {
-        //            System.out.println("No number found in the input string.");
-        //        }
         return -1;
     }
 
