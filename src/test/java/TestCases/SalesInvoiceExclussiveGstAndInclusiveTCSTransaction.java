@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.io.IOException;
 
-public class SalesInvoiceExclussiveGstAndInclusiveTcsTransaction {
+public class SalesInvoiceExclussiveGstAndInclusiveTCSTransaction {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
     String dataFile = "./src/main/resources/TestCasesData/salesInvoicesExclussiveGSTAndInclussiveTCS.json";
@@ -25,7 +25,7 @@ public class SalesInvoiceExclussiveGstAndInclusiveTcsTransaction {
 
     @Test
     public void testcase1() throws IOException, ParseException, InterruptedException, AWTException {
-        SalesInvoiceExclussiveGstAndInclusiveTcs si=new SalesInvoiceExclussiveGstAndInclusiveTcs(driver,dataFile);
+        SalesInvoiceExclussiveGstAndInclusiveTCS si=new SalesInvoiceExclussiveGstAndInclusiveTCS(driver,dataFile);
         si.salesInvoiceExclussiveGstAndInclusiveTcs();
     }
 

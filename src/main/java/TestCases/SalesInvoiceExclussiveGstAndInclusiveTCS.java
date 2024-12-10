@@ -4,22 +4,18 @@ import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.io.IOException;
-import java.util.List;
 
-public class SalesInvoiceExclussiveGstAndInclusiveTcs extends Transaction {
+public class SalesInvoiceExclussiveGstAndInclusiveTCS extends Transaction {
     WindowsDriver driver;
     Common common;
     String dataFile;
 
-    public SalesInvoiceExclussiveGstAndInclusiveTcs(WindowsDriver driver, String file) {
+    public SalesInvoiceExclussiveGstAndInclusiveTCS(WindowsDriver driver, String file) {
         super(driver);
         this.driver = driver;
         common = new Common(this.driver);
@@ -46,13 +42,7 @@ public class SalesInvoiceExclussiveGstAndInclusiveTcs extends Transaction {
         selectAndValidateData(common.getData(dataFile, "tcsNature"), "xpath", "//Edit[@Name='TCS Trans Nature']");
         Thread.sleep(2000);
         common.sliderHandling("xpath", "//ScrollBar[@Name='Horizontal']/Thumb[@Name='Position']", 500, 0);
-        common.clickElement("xpath", "//Edit[@Name='Invoice Type']");
-        Thread.sleep(1000);
-        Robot robot = new Robot();
-        robot.keyPress(KeyEvent.VK_DOWN);
-        robot.keyRelease(KeyEvent.VK_DOWN);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
+        invoiceType();
         common.clickElement("xpath", "//Edit[@Name='Price List']");
         selectAndValidateData(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
         common.clickElement("xpath", "//Edit[@Name='Port Code']");
@@ -63,13 +53,13 @@ public class SalesInvoiceExclussiveGstAndInclusiveTcs extends Transaction {
         //for product (EXCLUSIVE GST)
         for (int i = 0; i <Integer.parseInt(common.getData(dataFile,"rows")); i++) {
             if ( common.getData(dataFile,"generalProduct").equals("AT_Product 1")) {
-                generalProduct(dataFile);
+                generalProduct(dataFile,"generalProduct","ProductQuantity");
             }
             if (common.getData(dataFile,"multiBatch").equals("AT_Multi batch Product 1")) {
-                multiBatchProduct(dataFile);
+                multiBatchProduct(dataFile,"multiBatch","multiBatchQuantity");
             }
             if (common.getData(dataFile,"serialBatch").equals("AT_Product With SN 1")) {
-                serialNumberProduct(dataFile);
+                serialNumberProduct(dataFile,"serialBatch");
             }
         }
         //verifying data not present in tabs
@@ -117,7 +107,6 @@ public class SalesInvoiceExclussiveGstAndInclusiveTcs extends Transaction {
             Assert.fail("Receivable Amount field is empty");
         }
 
-        //save
 //        transactionSave();
 //        lastTransactionName();
     }

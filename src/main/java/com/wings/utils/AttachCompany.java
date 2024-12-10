@@ -25,7 +25,6 @@ public class AttachCompany {
             Thread.sleep(3000);
             driver.findElementByXPath("//Edit[@Name='Company Name']").sendKeys("Dup_Company");
             driver.findElementByXPath("//Button[@Name=' ....']").click();
-//            driver.findElementByXPath("//ListItem[@Name='Dup_Company.mdf']").click();
             Thread.sleep(3000);
             driver.getKeyboard().sendKeys("Dup_Company.mdf");
             driver.getKeyboard().sendKeys(Keys.ENTER);
