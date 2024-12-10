@@ -4,22 +4,18 @@ import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.io.IOException;
-import java.util.List;
 
-public class SalesInvoiceExclussiveGstAndInclusiveTcs extends Transaction {
+public class SalesInvoiceExclussiveGstAndInclusiveTCS extends Transaction {
     WindowsDriver driver;
     Common common;
     String dataFile;
 
-    public SalesInvoiceExclussiveGstAndInclusiveTcs(WindowsDriver driver, String file) {
+    public SalesInvoiceExclussiveGstAndInclusiveTCS(WindowsDriver driver, String file) {
         super(driver);
         this.driver = driver;
         common = new Common(this.driver);
@@ -110,6 +106,7 @@ public class SalesInvoiceExclussiveGstAndInclusiveTcs extends Transaction {
         if (receivableAmountText == (null) || "(null)".equals(receivableAmountText)) {
             Assert.fail("Receivable Amount field is empty");
         }
+
 //        transactionSave();
 //        lastTransactionName();
     }

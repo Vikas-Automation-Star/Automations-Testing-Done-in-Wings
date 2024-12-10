@@ -7,7 +7,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.io.IOException;
 import java.net.URL;
 
-public class createCompany {
+public class CreateCompany {
     WindowsDriver driver,logindriver;
     public static String CompanyName="Dup_Company", Password="Wings@123";
     public void login() throws IOException, InterruptedException {
@@ -84,14 +84,14 @@ public class createCompany {
         logindriver.findElement(By.name("Purchase")).click();
         Thread.sleep(2000);
         System.out.println("Overall Company creation test script ran successfully without any issues! "+new String(Character.toChars(0x1F349)));
-  }
-  public void logout(){
+    }
+    public void logout(){
         logindriver.findElementByName("Close").click();
         logindriver.findElementByName("Yes").click();
-  }
+    }
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        createCompany launch=new createCompany();
+        CreateCompany launch=new CreateCompany();
         launch.login();
         launch.logout();
     }
