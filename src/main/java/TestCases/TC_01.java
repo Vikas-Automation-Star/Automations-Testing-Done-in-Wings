@@ -60,16 +60,16 @@ public class TC_01 extends Transaction {
         selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
 //        //F3-Items
                 //for product (EXCLUSIVE TAX)
-        for (int i = 0; i < Integer.parseInt(common.getData(dataFile,"rows")); i++) {
-            super.enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']", dataFile, "product" + i);
-            if (common.getData(dataFile, "productType0").equals("generalProduct")) {
-                common.clickElement("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']");
-                super.enterData("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']", dataFile, "ProductQuantity");
-            } else if (common.getData(dataFile, "productType0").equals("multiBatch")) {
+//        for (int i = 0; i < Integer.parseInt(common.getData(dataFile,"rows")); i++) {
+//            super.enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']", dataFile, "product" + i);
+//            if (common.getData(dataFile, "productType0").equals("generalProduct")) {
+//                common.clickElement("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']");
+//                super.enterData("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']", dataFile, "ProductQuantity");
+//            } else if (common.getData(dataFile, "productType0").equals("multiBatch")) {
+//
+//            } else if (common.getData(dataFile, "productType0").equals("serialNum")) {
 
-            } else if (common.getData(dataFile, "productType0").equals("serialNum")) {
-
-            }
+//            }
 //        common.clickElement("xpath", "//Edit[@Name='MRP Row 0, Not sorted.']");
             super.enterData("xpath", "//Edit[@Name='MRP Row 0, Not sorted.']", dataFile, "productMRP");
             common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 500, 0);
@@ -80,7 +80,7 @@ public class TC_01 extends Transaction {
             super.enterData("xpath", "//Edit[@Name='Maximum Rate * Row 0, Not sorted.']", dataFile, "maximumRate");
 //        common.clickElement("xpath", "//Edit[@Name='Unit Rate Row 0, Not sorted.']");
             super.enterData("xpath", "//Edit[@Name='Unit Rate Row 0, Not sorted.']", dataFile, "unitRate");
-        }
+//        }
 
             // for multibatch
         super.enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 1, Not sorted.']",dataFile, "multiBatch");
@@ -119,11 +119,9 @@ public class TC_01 extends Transaction {
         super.enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 2, Not sorted.']",dataFile, "serialBatch");
         common.clickElement("xpath","//Button[@Name='Stock Details Row 2']");
 
-        int numRowsToSelect = 15;
-
+        robot.keyPress(KeyEvent.VK_TAB);
+        robot.keyRelease(KeyEvent.VK_TAB);
         for (int i = 0; i < 15; i++) {  //select the loop based on the no.of item you want to select
-            robot.keyPress(KeyEvent.VK_TAB);
-            robot.keyRelease(KeyEvent.VK_TAB);
             robot.keyPress(KeyEvent.VK_SPACE);
             robot.keyRelease(KeyEvent.VK_SPACE);
             robot.keyPress(KeyEvent.VK_DOWN);

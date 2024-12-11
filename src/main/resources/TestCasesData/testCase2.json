@@ -1,0 +1,17 @@
+{
+  "product":"02",
+  "ProductQuantity": 10,
+  "productMRP": 1000,
+  "minumumRate": 10,
+  "maximumRate": 1000,
+  "unitRate":250,
+  "multiBatch":53,
+  "multiBatchQuantity": 15,
+  "serialBatch": 32,
+  "branch": "AT_Branch4_Reg_Inter",
+  "partyCode": "23",
+  "invoice": "Regular",
+  "salesAccountCode": 55,
+  "priceList": "AT_Exclusive Sales Price List 1",
+  "executive": "AT_Executive1"
+}

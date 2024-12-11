@@ -53,7 +53,7 @@ public class AppLaunch {
 
     @Test
     public void test(){
-        logindriver.findElement(By.xpath("//MenuItem[@Name='FileUtil']")).click();
+        logindriver.findElement(By.xpath("//MenuItem[@Name='File']")).click();
         WebElement exit=logindriver.findElement(By.name("Exit"));
         Assert.assertTrue(exit.isDisplayed(),"Exit is not displayed");
 

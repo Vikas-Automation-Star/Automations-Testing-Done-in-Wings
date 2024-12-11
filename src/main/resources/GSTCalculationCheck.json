@@ -1,0 +1,11 @@
+{
+  "Quantity": 100,
+  "productCode": "1707",
+  "title": "Sales Invoices",
+  "branch": "Hyderabad",
+  "partyCode": 153,
+  "invoice": "Regular",
+  "voucherDiscount":5,
+  "partyDiscount":10,
+  "priceList": "Inclusive SalesPriceList"
+}
