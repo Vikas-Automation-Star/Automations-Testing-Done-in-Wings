@@ -52,14 +52,14 @@ public class SalesInvoiceExclussiveGstAndInclusiveTCS extends Transaction {
 //        //F3-Items
         //for product (EXCLUSIVE GST)
         for (int i = 0; i <Integer.parseInt(common.getData(dataFile,"rows")); i++) {
-            if ( common.getData(dataFile,"generalProduct").equals("AT_Product 1")) {
-                generalProduct(dataFile,"generalProduct","ProductQuantity");
+            if ( common.getData(dataFile,"addProduct").equals("AT_Product 1")) {
+                generalProduct(dataFile,"addProduct","ProductQuantity",i);
             }
             if (common.getData(dataFile,"multiBatch").equals("AT_Multi batch Product 1")) {
-                multiBatchProduct(dataFile,"multiBatch","multiBatchQuantity");
+                multiBatchProduct(dataFile,"multiBatch","multiBatchQuantity",i);
             }
             if (common.getData(dataFile,"serialBatch").equals("AT_Product With SN 1")) {
-                serialNumberProduct(dataFile,"serialBatch");
+                serialNumberProduct(dataFile,"serialBatch",i);
             }
         }
         //verifying data not present in tabs

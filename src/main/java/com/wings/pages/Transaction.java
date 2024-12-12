@@ -1054,33 +1054,37 @@ public abstract class Transaction {
         Assert.assertEquals("Purchase Returns with Invoice Reference",validate);
     }
 
-    public void generalProduct(String filname,String product,String quantity) throws IOException, ParseException {
-        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']", filname, product);
-        common.clickElement("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']");
-        enterData("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']", filname, quantity);
+    public void generalProduct(String filname,String product,String quantity,int i) throws IOException, ParseException {
+        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row "+i+", Not sorted.']", filname, product);
+        common.clickElement("xpath", "//Edit[@Name='Quantity Row "+i+", Not sorted.']");
+        enterData("xpath", "//Edit[@Name='Quantity Row "+i+", Not sorted.']", filname, quantity);
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 500, 0);
+
     }
-    public void multiBatchProduct(String filename,String product,String quantity) throws IOException, ParseException, InterruptedException {
-        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 1, Not sorted.']", filename, product);
-        common.clickElement("xpath", "//Button[@Name='Stock Details Row 1']");
+
+    public void multiBatchProduct(String filename,String product,String quantity,int i) throws IOException, ParseException, InterruptedException {
+        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row "+i+", Not sorted.']", filename, product);
+        common.clickElement("xpath", "//Button[@Name='Stock Details Row "+i+"']");
         Thread.sleep(3000);
         List<WebElement> rows = common.findWebElements("xpath", "//Table[@Name='Batch Details']/*[@Name='Data Panel']/*[@Name='Row 1']/*[@Name='Quantity row 1']");
         System.out.println("Row count: " + rows.size());
         for (WebElement k : rows) {
             k.click();
+            k.sendKeys(Keys.CONTROL + "a"); // Select all text
+            k.sendKeys(Keys.DELETE); // Delete it
             k.sendKeys(common.getData(filename, quantity));
         }
         common.clickElement("xpath", "//Button[@Name='OK']");
-        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 500, 0);
+//        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 400, 0);
     }
 
-    public void serialNumberProduct(String filename,String product) throws IOException, ParseException, InterruptedException, AWTException {
-        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 2, Not sorted.']", filename,product );
-        common.clickElement("xpath", "//Button[@Name='Stock Details Row 2']");
-        List<WebElement> rowss = common.findWebElements("xpath", "//Table[@Name='Serial Numbers List']/*[@Name='Data Panel']/*[contains(@Name,'Row')]/*[contains(@Name,'Select row')]");
-        System.out.println("Row count: " + rowss.size());
-        for (int z = 0; z < 20; z++) {
-            Robot robot=new Robot();
+    public void serialNumberProduct(String filename,String product,int i) throws IOException, ParseException, InterruptedException, AWTException {
+        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row "+i+", Not sorted.']", filename,product );
+        common.clickElement("xpath", "//Button[@Name='Stock Details Row "+i+"']");
+        List<WebElement> rows = common.findWebElements("xpath", "//Table[@Name='Serial Numbers List']/*[@Name='Data Panel']/*[contains(@Name,'Row')]/*[contains(@Name,'Select row')]");
+        System.out.println("Row count: " + rows.size());
+        Robot robot=new Robot();
+        for (int j = 0; j <= Integer.parseInt(common.getData(filename,"quantity"+i)); j++) {
             robot.keyPress(KeyEvent.VK_TAB);
             robot.keyRelease(KeyEvent.VK_TAB);
             robot.keyPress(KeyEvent.VK_SPACE);
@@ -1088,7 +1092,7 @@ public abstract class Transaction {
             Thread.sleep(1000);
         }
         common.clickElement("xpath", "//Button[@Name='OK']");
-        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 500, 0);
+//        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 500, 0);
     }
 
     public void invoiceType() throws InterruptedException, AWTException {

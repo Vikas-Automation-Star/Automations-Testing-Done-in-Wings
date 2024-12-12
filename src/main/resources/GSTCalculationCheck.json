@@ -1,11 +1,29 @@
 {
-  "Quantity": 100,
-  "productCode": "1707",
   "title": "Sales Invoices",
-  "branch": "Hyderabad",
-  "partyCode": 153,
+  "branch": "AT_Branch4_Reg_Inter",
+  "partyCode": 23,
   "invoice": "Regular",
-  "voucherDiscount":5,
-  "partyDiscount":10,
-  "priceList": "Inclusive SalesPriceList"
+  "priceList": "Inclusive SalesPriceList",
+
+  "productCount": 3,
+  "HSNCode": "AT_HSN Code 2",
+  "productType0": "general",
+  "quantity0": 100,
+  "productCode0": "02",
+  "voucherDiscount0":2,
+  "partyDiscount0":5,
+
+  "productType1": "multiBatch",
+  "quantity1": 10,
+  "productCode1": 53,
+  "voucherDiscount1":2,
+  "partyDiscount1":9,
+
+  "productType2": "serial",
+  "quantity2": 5,
+  "productCode2": 32,
+  "voucherDiscount2":4,
+  "partyDiscount2":7
+
+
 }

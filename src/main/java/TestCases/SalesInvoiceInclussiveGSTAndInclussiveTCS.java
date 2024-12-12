@@ -49,20 +49,20 @@ public class SalesInvoiceInclussiveGSTAndInclussiveTCS extends Transaction {
 //        //F3-Items
         //for product (EXCLUSIVE GST)
         for (int i = 0; i <Integer.parseInt(common.getData(dataFile,"rows")); i++) {
-            if ( common.getData(dataFile,"generalProduct").equals("AT_Product 1")) {
-                generalProduct(dataFile,"generalProduct","ProductQuantity");
+            if ( common.getData(dataFile,"addProduct").equals("AT_Product 1")) {
+                generalProduct(dataFile,"addProduct","ProductQuantity",i);
                 common.clickElement("xpath","//Edit[@Name='HSN Row 0, Not sorted.']");
                 Thread.sleep(1000);
                 selectMaster("hsnCodeForInclussive");
             }
             if (common.getData(dataFile,"multiBatch").equals("AT_Multi batch Product 1")) {
-                multiBatchProduct(dataFile,"multiBatch","multiBatchQuantity");
+                multiBatchProduct(dataFile,"multiBatch","multiBatchQuantity",i);
                 common.clickElement("xpath","//Edit[@Name='HSN Row 1, Not sorted.']");
                 Thread.sleep(1000);
                 selectMaster("hsnCodeForInclussive");
             }
             if (common.getData(dataFile,"serialBatch").equals("AT_Product With SN 1")) {
-                serialNumberProduct(dataFile,"serialBatch");
+                serialNumberProduct(dataFile,"serialBatch",i);
                 Thread.sleep(1000);
                 common.clickElement("xpath","//Edit[@Name='HSN Row 2, Not sorted.']");
                 selectMaster("hsnCodeForInclussive");

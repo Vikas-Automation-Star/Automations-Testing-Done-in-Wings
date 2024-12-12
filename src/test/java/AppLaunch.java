@@ -2,6 +2,8 @@ import io.appium.java_client.windows.WindowsDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -11,6 +13,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class AppLaunch {
+    private static final Logger log = LoggerFactory.getLogger(AppLaunch.class);
     WindowsDriver driver,rootdriver,logindriver;
 
     @BeforeTest
@@ -47,7 +50,7 @@ public class AppLaunch {
         logindriver.findElement(By.xpath("//Edit[@Name='Password']")).sendKeys("Wings@123");
         logindriver.findElement(By.name("Submit")).click();
         Thread.sleep(20000);
-//        logindriver.findElement(By.name("OK")).click();
+        logindriver.findElement(By.name("OK")).click();
         Thread.sleep(5000);
     }
 
@@ -124,7 +127,8 @@ public class AppLaunch {
     @AfterTest
     public void afterTest(){
         //close the window
-        logindriver.findElement(By.xpath("//Button[@Name='Close']")).click();
+        logindriver.findElementByXPath("//MenuItem[@Name='File']").click();
+        logindriver.findElementByXPath("//MenuItem[@Name='Exit']").click();
         logindriver.findElement(By.xpath("//Button[@Name='Yes']")).click();
         driver.quit();
         logindriver.quit();
