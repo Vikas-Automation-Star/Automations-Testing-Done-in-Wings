@@ -277,19 +277,18 @@ public abstract class Transaction {
         }
     }
 
-    public void validateTcsAmount(){
+    public void validateTCSAmount(double tcsAssesibleValue,double tcsRate){
+        common.clickElement("xpath","//TabItem[contains(@Name,'TCS')]");
         common.clickElement("xpath","//TabItem[contains(@Name,'TCS')]");
         WebElement assessibleValueAmount =common.findWebElement("xpath","//Edit[@Name='Assessable Value']");
-        String tcsAmount = assessibleValueAmount.getText().trim().replace(",","");
-        // Calculate the expected TCS amount (5% of transaction amount)
-        double expectedTCS = Double.parseDouble(tcsAmount) * 0.05;
-        Assert.assertTrue(true);
-//        try {
-//            Assert.assertEquals(tcsAmount, expectedTCS, "TCS amount is incorrect!");
-//            System.out.println("TCS validation passed! Calculated TCS: " + expectedTCS + ", Actual TCS: " + tcsAmount);
-//        } catch (AssertionError e) {
-//            System.err.println("TCS validation failed! Calculated TCS: " + expectedTCS + ", Actual TCS: " + tcsAmount);
-//        }
+        tcsAssesibleValue = Double.parseDouble(assessibleValueAmount.getText().trim().replace(",",""));
+        WebElement tcsPercent =common.findWebElement("xpath","//Edit[@Name='TCS Rate']");
+        tcsRate = Double.parseDouble(tcsPercent.getText().trim());
+        WebElement tcsCompanyCurrency =common.findWebElement("xpath","//Edit[@Name='TCS Amount In Company Currency']");
+        double tcsAmountInCompnayCurrency = Double.parseDouble(tcsCompanyCurrency.getText().trim());
+        double expectedTCS = tcsAssesibleValue*tcsRate/100;
+        System.out.println("ActualAmount"+tcsAmountInCompnayCurrency+"ExpectedAmount"+expectedTCS);
+        Assert.assertEquals(tcsAmountInCompnayCurrency,expectedTCS,"Calculations mismatch");
     }
 
     public void validateCGSTAmountTabWhenNull(){
@@ -325,7 +324,6 @@ public abstract class Transaction {
             Assert.fail("CESS field is not empty");
         }
     }
-
 
     public void navigateToBillsPayablesTab(){
         common.clickElement("xpath","//TabItem[contains(@Name,'Bills Payable')]");
@@ -1054,15 +1052,16 @@ public abstract class Transaction {
         Assert.assertEquals("Purchase Returns with Invoice Reference",validate);
     }
 
-    public void generalProduct(String filname,String product,String quantity) throws IOException, ParseException {
-        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']", filname, product);
-        common.clickElement("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']");
-        enterData("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']", filname, quantity);
+    public void generalProduct(String filname,String product,String quantity,int i) throws IOException, ParseException {
+        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row "+i+", Not sorted.']", filname, product);
+        common.clickElement("xpath", "//Edit[@Name='Quantity Row "+i+", Not sorted.']");
+        enterData("xpath", "//Edit[@Name='Quantity Row "+i+", Not sorted.']", filname, quantity);
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 500, 0);
     }
-    public void multiBatchProduct(String filename,String product,String quantity) throws IOException, ParseException, InterruptedException {
-        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 1, Not sorted.']", filename, product);
-        common.clickElement("xpath", "//Button[@Name='Stock Details Row 1']");
+    public void
+    multiBatchProduct(String filename,String product,String quantity,int i) throws IOException, ParseException, InterruptedException {
+        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row "+i+", Not sorted.']", filename, product);
+        common.clickElement("xpath", "//Button[@Name='Stock Details Row "+i+"']");
         Thread.sleep(3000);
         List<WebElement> rows = common.findWebElements("xpath", "//Table[@Name='Batch Details']/*[@Name='Data Panel']/*[@Name='Row 1']/*[@Name='Quantity row 1']");
         System.out.println("Row count: " + rows.size());
@@ -1074,9 +1073,9 @@ public abstract class Transaction {
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 500, 0);
     }
 
-    public void serialNumberProduct(String filename,String product) throws IOException, ParseException, InterruptedException, AWTException {
-        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 2, Not sorted.']", filename,product );
-        common.clickElement("xpath", "//Button[@Name='Stock Details Row 2']");
+    public void serialNumberProduct(String filename,String product,int i) throws IOException, ParseException, InterruptedException, AWTException {
+        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row "+i+", Not sorted.']", filename,product );
+        common.clickElement("xpath", "//Button[@Name='Stock Details Row "+i+"']");
         List<WebElement> rowss = common.findWebElements("xpath", "//Table[@Name='Serial Numbers List']/*[@Name='Data Panel']/*[contains(@Name,'Row')]/*[contains(@Name,'Select row')]");
         System.out.println("Row count: " + rowss.size());
         for (int z = 0; z < 20; z++) {
