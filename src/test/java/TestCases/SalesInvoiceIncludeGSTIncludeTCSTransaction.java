@@ -11,10 +11,10 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.io.IOException;
 
-public class SalesInvoiceInclussiveGSTAndInclussiveTCSTransaction {
+public class SalesInvoiceIncludeGSTIncludeTCSTransaction {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String dataFile = "./src/main/resources/TestCasesData/salesInvoicesInclussiveGSTAndExclussiveTCS.json";
+    String dataFile = "./src/main/resources/TestCasesData/salesInvoicesIncludeGSTAndExcludeTCS.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
@@ -25,8 +25,8 @@ public class SalesInvoiceInclussiveGSTAndInclussiveTCSTransaction {
 
     @Test
     public void testcase1() throws IOException, ParseException, InterruptedException, AWTException {
-       SalesInvoiceInclussiveGSTAndInclussiveTCS siTax=new SalesInvoiceInclussiveGSTAndInclussiveTCS(driver,dataFile);
-       siTax.salesInvoiceInclussiveGSTAndInclussiveTax();
+      SalesInvoiceIncludeGSTIncludeTCS siigst=new SalesInvoiceIncludeGSTIncludeTCS(driver,dataFile);
+      siigst.salesInvoiceIncludeGSTAndIncludeTax();
     }
     @AfterTest
     public void afterTest(){

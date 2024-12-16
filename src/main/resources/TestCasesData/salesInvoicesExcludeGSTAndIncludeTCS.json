@@ -4,18 +4,22 @@
   "branch": "AT_Branch 4_Reg_Inter",
   "partyCode": "AT_Cus_Reg_Inter",
   "priceList": "AT_Exclusive Sales Price List 1",
+  "salesAccountCode": "AT_Sales  Acc 1",
+  "tcsNature": "AT_TCS Transaction Nature 1",
+  "portCode": "225588",
 
   "productCount": 3,
+
   "HSNCode": "AT_HSN Code 1",
   "productType0": "general",
-  "quantity0": 5,
   "productCode0": 332211,
+  "quantity0": 5,
   "voucherDiscount0":2,
   "partyDiscount0":5,
 
   "productType1": "multiBatch",
-  "quantity1": 1,
   "productCode1": 6302258,
+  "quantity1": 10,
   "voucherDiscount1":2,
   "partyDiscount1":9,
 
