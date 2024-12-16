@@ -68,6 +68,5 @@ public class ReceiptsFromParties extends Transaction {
         //save
         transactionSave();
         lastTransactionName();
-        transactionClose(common.getData(dataFile,"close"));
     }
 }

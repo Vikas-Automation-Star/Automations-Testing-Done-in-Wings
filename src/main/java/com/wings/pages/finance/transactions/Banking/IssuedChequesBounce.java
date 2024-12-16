@@ -72,9 +72,7 @@ public class IssuedChequesBounce extends Transaction {
             System.out.println("Exception Handled");
             System.out.println("Adjusted amount is greater than or equals to payable amount..now you can save the transaction");
         }
-        super.transactionSave();
-        super.transactionClose("Issued Cheques Bounce");
+        transactionSave();
         Thread.sleep(2000);
-
     }
 }

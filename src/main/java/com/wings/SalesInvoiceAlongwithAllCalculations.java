@@ -8,7 +8,6 @@ import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
@@ -17,7 +16,8 @@ public class SalesInvoiceAlongwithAllCalculations extends Transaction {
         Common common;
         String dataFile;
         double quantity;
-        double mrp,grossAmount,unitRate,voucherDiscountValue,partyDiscountValue,netAmount,grossMinusDiscount,gstValue,cessValue,taxableValue,taxableAmountCalculated;
+    boolean gstAmountClicked = false;
+    double mrp,grossAmount,unitRate,voucherDiscountValue,partyDiscountValue,netAmount,grossMinusDiscount,gstValue,cessValue,taxableValue,taxableAmountCalculated;
 
         public SalesInvoiceAlongwithAllCalculations(WindowsDriver driver, String file) {
             super(driver);
@@ -43,16 +43,17 @@ public class SalesInvoiceAlongwithAllCalculations extends Transaction {
             common.clickElement("xpath", "//Edit[@Name='Sales Account']");
 //        common.clickElement("xpath", "//CheckBox[@Name='Apply TCS']");
 //        common.clickElement("xpath", "//Edit[@Name='TCS Trans Nature']");
+            invoiceType();
 
-            common.inputText("xpath", "//Edit[@Name='Invoice Type']", common.getData(dataFile,"invoice"));
-            Thread.sleep(1000);
-            Robot robot = new Robot();
-            robot.keyPress(KeyEvent.VK_DOWN);
-            robot.keyRelease(KeyEvent.VK_DOWN);
-            robot.keyPress(KeyEvent.VK_DOWN);
-            robot.keyRelease(KeyEvent.VK_DOWN);
-            robot.keyPress(KeyEvent.VK_ENTER);
-            robot.keyRelease(KeyEvent.VK_ENTER);
+//            common.inputText("xpath", "//Edit[@Name='Invoice Type']", common.getData(dataFile,"invoice"));
+//            Thread.sleep(1000);
+//            Robot robot = new Robot();
+//            robot.keyPress(KeyEvent.VK_DOWN);
+//            robot.keyRelease(KeyEvent.VK_DOWN);
+//            robot.keyPress(KeyEvent.VK_DOWN);
+//            robot.keyRelease(KeyEvent.VK_DOWN);
+//            robot.keyPress(KeyEvent.VK_ENTER);
+//            robot.keyRelease(KeyEvent.VK_ENTER);
 //        super.validateElements("xpath","//Edit[@Name='Invoice Type']", common.getData(dataFile,"invoice"));
             common.clickElement("xpath", "//Edit[@Name='Price List']");
             selectAndValidateData(common.getData(dataFile,"priceList"),"xpath", "//Edit[@Name='Price List']");
@@ -60,6 +61,8 @@ public class SalesInvoiceAlongwithAllCalculations extends Transaction {
             selectOptionalMaster(common.getData(dataFile,"portCode"),"xpath","//Edit[@Name='Port Code']");
             common.clickElement("xpath","//Edit[@Name='Remarks']");
             selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
+
+
             //F3-Items
             for (int i = 0; i < Integer.parseInt(common.getData(dataFile,"productCount")); i++) {
                 addProduct(i);
@@ -67,8 +70,6 @@ public class SalesInvoiceAlongwithAllCalculations extends Transaction {
         }
 
         public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException{
-//            super.enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']",dataFile, "productCode"+i);
-//        common.inputText("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']", common.getData(dataFile, "productCode"));
             if ( common.getData(dataFile,"productType"+i).equals("general")) {
                 generalProduct(dataFile,"productCode"+i,"quantity"+i,i);
             }
@@ -85,7 +86,8 @@ public class SalesInvoiceAlongwithAllCalculations extends Transaction {
             quantity= Double.parseDouble(common.findWebElement("xpath","//Edit[@Name='Quantity Row "+i+", Not sorted.']").getText());
 
             WebElement element= common.findWebElement("xpath","//Edit[@Name='MRP Row "+i+", Not sorted.']");
-            mrp= Double.parseDouble(element.getText());
+            String mrpGivenAmount= element.getText().replace(",","");
+            mrp= Double.parseDouble(mrpGivenAmount);
             System.out.println("mrp:-"+mrp);
 
             WebElement mrpAmount = common.findWebElement("xpath", "//Edit[@Name='MRP Amount Row "+i+", Not sorted.']");
@@ -130,45 +132,58 @@ public class SalesInvoiceAlongwithAllCalculations extends Transaction {
 
             common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']",offset,0);
 
-
             grossMinusDiscount=(grossAmount-(voucherDiscountValue+partyDiscountValue));
 
             System.out.println("gross-disc is: " + grossMinusDiscount);
-
-            WebElement net = common.findWebElement("xpath", "//Edit[@Name='Net Amount Row "+i+", Not sorted.']");
-            String netAmountText = net.getText().replace(",", "");
-            netAmount = Double.parseDouble(netAmountText);
-            System.out.println("Net Amount:- "+ netAmount);
-            Assert.assertEquals(grossMinusDiscount,netAmount);
+            if(common.getData(dataFile,"priceList").contains("Inclusive")) {
+                netAmount = Double.parseDouble((common.findWebElement("xpath", "//Edit[@Name='Net Amount Row " + i + ", Not sorted.']").getText().replace(",","")));
+                System.out.println("Net Amount:- " + netAmount);
+                Assert.assertEquals(grossMinusDiscount, netAmount);
+            }
+            else {
+                taxableValue=grossMinusDiscount;
+                System.out.println("taxable value for exclusive is:"+ taxableValue);
+                taxableAmountCalculated= Double.parseDouble((common.findWebElement("xpath","//Edit[@Name='Taxable Value Row "+i+", Not sorted.']").getText().replace(",","")));
+                System.out.println("taxable: "+taxableAmountCalculated);
+                Assert.assertEquals(grossMinusDiscount,taxableValue);
+            }
 
             //GST
             WebElement gst= common.findWebElement("xpath","//Edit[@Name='GST Product Category Row "+i+", Not sorted.']");
             gstValue=StringUtil.extractNumber(gst.getText());
             System.out.println("gst percentage:- "+gstValue);
 
-
-
             WebElement cess= common.findWebElement("xpath","//Edit[@Name='CESS Product Category Row "+i+", Not sorted.']");
             cessValue= StringUtil.extractNumber(cess.getText());
             System.out.println("cess percentage:- "+cessValue);
 
-            DecimalFormat decimalFormat = new DecimalFormat("#.##");
+            DecimalFormat decimalFormat = new DecimalFormat("#.###");
 
             double totalValue=gstValue+cessValue;
             System.out.println("total:-"+ totalValue);
 
-            common.clickElement("xpath","//Header[@Name='GST%']");
-
+            if (!gstAmountClicked) {
+                common.clickElement("xpath", "//Header[@Name='GST Amount']");
+                gstAmountClicked = true; // Set the flag to true after clicking
+            }
 
             double expectedIGST = Double.parseDouble(decimalFormat.format((taxableValue*gstValue)/100));
-            WebElement igst= common.findWebElement("xpath","//Edit[@Name='IGST Row 0, Not sorted.']");
-            String igstAmount=igst.getText().replace(",","");
-            double actualIGST=Double.parseDouble(igstAmount);
+            double actualIGST= Double.parseDouble((common.findWebElement("xpath","//Edit[@Name='IGST Row "+i+", Not sorted.']").getText().replace(",","")));
             System.out.println("Actual IGST: "+actualIGST);
+            System.out.println("Expected IGST: "+expectedIGST);
             Assert.assertEquals(actualIGST,expectedIGST);
 
+            double expectedCESS = Double.parseDouble(decimalFormat.format((taxableValue*cessValue)/100));
+            double actualCESS= Double.parseDouble((common.findWebElement("xpath","//Edit[@Name='CESS Row "+i+", Not sorted.']").getText().replace(",","")));
+            System.out.println("Actual CESS: "+ actualCESS);
+            System.out.println("Expected CESS: "+expectedCESS);
+            Assert.assertEquals(actualCESS,expectedCESS);
 
-
+            double expectedGSTAmount= expectedIGST+expectedCESS;
+            double actualGSTAmount= Double.parseDouble(common.findWebElement("xpath","//Edit[@Name='GST Amount Row "+i+", Not sorted.']").getText().replace(",",""));
+            System.out.println("expected GST Amount: "+decimalFormat.format(expectedGSTAmount));
+            System.out.println("Actual GST Amount: "+decimalFormat.format(actualGSTAmount));
+            Assert.assertEquals(decimalFormat.format(actualGSTAmount),decimalFormat.format(expectedGSTAmount));
 
 //            taxableValue=(grossMinusDiscount/(100+totalValue))*100;
 //            taxableValue= Double.parseDouble(decimalFormat.format(taxableValue));
@@ -196,4 +211,5 @@ public class SalesInvoiceAlongwithAllCalculations extends Transaction {
 
         }
     }
+
 
