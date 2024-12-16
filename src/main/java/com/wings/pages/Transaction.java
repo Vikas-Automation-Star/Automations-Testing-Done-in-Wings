@@ -275,42 +275,6 @@ public abstract class Transaction {
             robot.keyPress(KeyEvent.VK_RIGHT);
             robot.keyRelease(KeyEvent.VK_RIGHT);
         }
-        WebElement Quantity = common.findWebElement("xpath", "//Edit[@Name='Quantity']");
-//        String quantityText = Quantity.getText();
-//        if ((quantityText == (null) || "(null)".equals(quantityText))) {
-//            Assert.fail("Quantity field is empty");
-//        }
-//
-//        WebElement grossAmount = common.findWebElement("xpath", "//Edit[@Name='Gross Amount']");
-//        String grossAmoun = grossAmount.getText();
-//        if ((grossAmoun == (null) || "(null)".equals(grossAmoun))) {
-//            Assert.fail("grossAmount field is empty");
-//        }
-//
-//        WebElement netAmount = common.findWebElement("xpath", "//Edit[@Name='Net Amount']");
-//        String netAmountText1 = netAmount.getText();
-//        if ((netAmountText1 == (null) || "(null)".equals(netAmountText1))) {
-//            Assert.fail("netAmount field is empty");
-//        }
-//
-//        WebElement totalValuee = common.findWebElement("xpath", "//Edit[@Name='Total Value']");
-//        String totalValueText = totalValuee.getText();;
-//        if (totalValueText == (null) || "(null)".equals(totalValueText)) {
-//            Assert.fail("Total value field is Empty");
-//        }
-//
-//        WebElement totalValueCompanyCurreny = common.findWebElement("xpath", "//Edit[@Name='Total Value In Company Currency']");
-//        String totalValuecurrencyText = totalValueCompanyCurreny.getText();
-//        if (totalValuecurrencyText == (null) || "(null)".equals(totalValuecurrencyText)) {
-//            Assert.fail("Total value in Company Curreny field is Empty");
-//        }
-//
-//        WebElement receivableAmount = common.findWebElement("xpath", "//Edit[@Name='Receivable Amount']");
-//        String receivableAmountText = receivableAmount.getText();
-//        if (receivableAmountText == (null) || "(null)".equals(receivableAmountText)) {
-//            Assert.fail("Receivable Amount field is empty");
-//        }
-
     }
 
     public void validateTCSAmount(double tcsAssesibleValue,double tcsRate){
@@ -947,8 +911,6 @@ public abstract class Transaction {
 
 
 
-
-
     public void transactionSave() throws InterruptedException {
         common.clickElement("xpath","//Button[@Name='Save']");
         common.clickElement("xpath","//Button[@Name='Yes']");
@@ -957,10 +919,6 @@ public abstract class Transaction {
     }
     public void lastTransactionName(){
         System.out.println(common.findWebElement("xpath","//Text[@Name='Last Saved :']/following-sibling::Text").getAttribute("Name"));
-    }
-    public void transactionClose(String screenName){
-        common.clickElement("xpath", "//TabItem[@Name='"+ screenName +"']/Button[@Name='Close']");
-
     }
     public void closeTransaction (String transaction ){
         common.clickElement("xpath", "//TabItem[@Name='" + transaction + "']/Button[@Name='Close']");
@@ -1088,15 +1046,13 @@ public abstract class Transaction {
         Assert.assertEquals("Purchase Returns with Invoice Reference",validate);
     }
 
-    public void generalProduct(String filname,String product,String quantity,int i) throws IOException, ParseException, InterruptedException {
-        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row "+i+", Not sorted.']", filname, product);
+    public void generalProduct(String filename,String product,String quantity,int i) throws IOException, ParseException {
+        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row "+i+", Not sorted.']", filename, product);
         common.clickElement("xpath", "//Edit[@Name='Quantity Row "+i+", Not sorted.']");
-        enterData("xpath", "//Edit[@Name='Quantity Row "+i+", Not sorted.']", filname, quantity);
-        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 1000, 0);
-        Thread.sleep(1500);
-        common.clickElement("xpath","//Header[@Name='GST Amount']");
+        enterData("xpath", "//Edit[@Name='Quantity Row "+i+", Not sorted.']", filename, quantity);
+        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 500, 0);
     }
-    public void multiBatchProduct(String filename,String product,String quantity,int i) throws IOException, ParseException, InterruptedException, AWTException {
+    public void multiBatchProduct(String filename,String product,String quantity,int i) throws IOException, ParseException, InterruptedException {
         enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row "+i+", Not sorted.']", filename, product);
         common.clickElement("xpath", "//Button[@Name='Stock Details Row "+i+"']");
         Thread.sleep(3000);
@@ -1104,18 +1060,11 @@ public abstract class Transaction {
         System.out.println("Row count: " + rows.size());
         for (WebElement k : rows) {
             k.click();
-            Thread.sleep(1000);
-            Robot robot = new Robot();
-            robot.keyPress(KeyEvent.VK_CONTROL);
-            robot.keyPress(KeyEvent.VK_A);
-            robot.keyRelease(KeyEvent.VK_A);
-            robot.keyRelease(KeyEvent.VK_CONTROL);
-            robot.keyRelease(KeyEvent.VK_DELETE);
-            robot.keyRelease(KeyEvent.VK_DELETE);
+            k.sendKeys(Keys.CONTROL+"a");
+            k.sendKeys(Keys.DELETE);
             k.sendKeys(common.getData(filename, quantity));
         }
         common.clickElement("xpath", "//Button[@Name='OK']");
-        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 500, 0);
     }
 
     public void serialNumberProduct(String filename,String product,int i) throws IOException, ParseException, InterruptedException, AWTException {
@@ -1132,7 +1081,6 @@ public abstract class Transaction {
             Thread.sleep(1000);
         }
         common.clickElement("xpath", "//Button[@Name='OK']");
-        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 500, 0);
     }
 
     public void invoiceType() throws InterruptedException, AWTException {
@@ -1141,18 +1089,37 @@ public abstract class Transaction {
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_DOWN);
         robot.keyRelease(KeyEvent.VK_DOWN);
+//        robot.keyPress(KeyEvent.VK_DOWN);
+//        robot.keyRelease(KeyEvent.VK_DOWN);
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
     }
 
+    public void chargesAndDeductionsCalculations(String dataFile,String type,String accCode,String amount) throws IOException, ParseException {
+        enterData("xpath", "//Edit[@Name='Charges Or Deductions * Row 0, Not sorted.']", dataFile, type);
+        enterData("xpath", "//Edit[@Name='Account Code Row 0, Not sorted.']", dataFile, accCode);
+        enterData("xpath", "//Edit[@Name='Amount * Row 0, Not sorted.']", dataFile, amount);
 
+        // Fetch values of Charges and Deductions fields
+        String chargesValue = common.findWebElement("xpath", "//Edit[@Name='Charges Row 0, Not sorted.']").getText();
+        String deductionsValue = common.findWebElement("xpath", "//Edit[@Name='Deductions Row 0, Not sorted.']").getText();
 
-
-
-
-
-
-
+        if (type.equalsIgnoreCase("Charges")) {
+            if (chargesValue.equals(amount) && (deductionsValue.equals("0.000") || deductionsValue.isEmpty())) {
+                System.out.println("Validation Passed: Amount correctly added to Charges field.");
+            } else {
+                Assert.fail("Validation Failed: Charges field or Deductions field has incorrect data.");
+            }
+        } else if (type.equalsIgnoreCase("Deductions")) {
+            if (deductionsValue.equals(amount) && (chargesValue.equals("0.000") || chargesValue.isEmpty())) {
+                System.out.println("Validation Passed: Amount correctly added to Deductions field.");
+            } else {
+                Assert.fail("Validation Failed: Deductions field or Charges field has incorrect data.");
+            }
+        } else {
+            System.out.println("Invalid type provided: " + type);
+        }
+    }
 
 
 

@@ -172,7 +172,7 @@ public class XMLUtil {
             // Send email with report attached
             final String fromEmail = "productupdates@wingsinfo.net";
             final String password = "Zuy97283";
-            final String toEmail = "madhuri.matta@wingsinfo.net,manoj.c@wingsinfo.net,venkatarathaiah.m@wingsinfo.net,ashokreddy.rs@wingsinfo.net";
+            final String toEmail = "madhuri.matta@wingsinfo.net,manoj.c@wingsinfo.net,venkatarathaiah.m@wingsinfo.net,ashokreddy.rs@wingsinfo.net,vikas.empuluri@wingsinfo.net";
 
             Properties props = new Properties();
             props.put("mail.smtp.host", "smtp.office365.com");

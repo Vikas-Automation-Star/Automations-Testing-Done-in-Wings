@@ -3,7 +3,7 @@
   "branch": "AT_Branch4_Reg_Inter",
   "partyCode": 23,
   "invoice": "Regular",
-  "priceList": "Inclusive SalesPriceList",
+  "priceList": "AT_Exclusive Sales Price List 1",
 
   "productCount": 3,
   "HSNCode": "AT_HSN Code 2",

@@ -60,6 +60,7 @@ public class SalesInvoiceIncludingGST_TC02 extends Transaction {
             selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
 //        //F3-Items
             //for product (EXCLUSIVE TAX)
+
             super.enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']",dataFile, "product");
             common.clickElement("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']");
             super.enterData("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']", dataFile, "ProductQuantity");
@@ -88,10 +89,6 @@ public class SalesInvoiceIncludingGST_TC02 extends Transaction {
             robot.keyRelease(KeyEvent.VK_SPACE);
 
 
-            //* click on check-box through stock in quantity
-//        WebElement stock=common.findWebElement("xpath","//Window[@Name='Batch Details']/Table[@Name='Batch Details']/*[@Name='Data Panel']/ListItem[@Name='Row 1']/Item[@Name='Batch Name row 1']");
-//        stock.click();
-//        stock.sendKeys(Keys.TAB,Keys.TAB,Keys.SPACE);
 
             common.clickElement("xpath","//Button[@Name='OK']");
 //        common.clickElement("xpath", "//Edit[@Name='MRP Row 1, Not sorted.']");
@@ -149,14 +146,14 @@ public class SalesInvoiceIncludingGST_TC02 extends Transaction {
             WebElement tax1 =common.findWebElement("xpath","//Edit[@Name='Tax Amount Row 0, Not sorted.']");
             String value1= tax1.getText();
             if ((value1==(null) || "(null)".equals(value1))){
-                Assert.fail("SGST field is not empty");
+                Assert.fail("SGST field is  empty");
 
             }
             common.clickElement("xpath","//TabItem[@Name='  F11 IGST  ']");
             WebElement IGSTtax =common.findWebElement("xpath","//Edit[@Name='Tax Amount Row 0, Not sorted.']");
             String value2= IGSTtax.getText();
             if ((value2==(null) || "(null)".equals(value2))){
-                Assert.fail("IGST field is not empty");
+                Assert.fail("IGST field is  empty");
             }
 
             //verify all the fields in summary are fetching data
