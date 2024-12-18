@@ -291,37 +291,65 @@ public abstract class Transaction {
         Assert.assertEquals(tcsAmountInCompnayCurrency,expectedTCS,"Calculations mismatch");
     }
 
-    public void validateCGSTAmountTabWhenNull(){
+    public void validateCGSTAmountTabIsEmpty(){
         common.clickElement("xpath","//TabItem[contains(@Name,'CGST')]");
-        WebElement tax=common.findWebElement("xpath","//Edit[@Name='Tax Amount Row 0, Not sorted.']");
-        String value=tax.getText();
+        String value=common.findWebElement("xpath","//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
         if (!(value==(null) || "(null)".equals(value))){
             Assert.fail("CGST field is not empty");
         }
     }
-    public void validateSGSTAmountTabWhenNull(){
+    public void validateSGSTAmountTabIsEmpty(){
         common.clickElement("xpath", "//TabItem[contains(@Name,'SGST')]");
-        WebElement tax1 = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']");
-        String value1 = tax1.getText();
+        String value1 = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
         if (!(value1 == (null) || "(null)".equals(value1))) {
             Assert.fail("SGST field is not empty");
         }
     }
-    public void validateIGSTAmountTabWhenNull(){
+    public void validateIGSTAmountTabIsEmpty(){
         common.clickElement("xpath", "//TabItem[contains(@Name,'IGST')]");
-        WebElement IGSTtax = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']");
-        String value2 = IGSTtax.getText();
+        String value2 = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
         if (!(value2 == (null) || "(null)".equals(value2))) {
             Assert.fail("IGST field is not empty");
         }
     }
 
-    public void validateToCESSAmountTabWhenNull(){
+    public void validateCESSAmountTabIsEmpty(){
         common.clickElement("xpath","//TabItem[contains(@Name,'CESS')]");
-        WebElement tax=common.findWebElement("xpath","//Edit[@Name='Tax Amount Row 0, Not sorted.']");
-        String value=tax.getText();
+        String value=common.findWebElement("xpath","//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
         if (!(value==(null) || "(null)".equals(value))){
             Assert.fail("CESS field is not empty");
+        }
+    }
+
+    public void validateCGSTAmountTabIsNotEmpty(){
+        common.clickElement("xpath", "//TabItem[@Name='  F8 CGST  ']");
+        String value = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
+        if (value == (null) || "(null)".equals(value)) {
+            Assert.fail("CGST field is  empty");
+        }
+    }
+
+    public void validateSGSTAmountTabIsNotEmpty(){
+        common.clickElement("xpath", "//TabItem[@Name='  F9 SGST  ']");
+        String value1 = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
+        if (value1 == (null) || "(null)".equals(value1)) {
+            Assert.fail("SGST field is empty");
+        }
+    }
+
+    public void validateIGSTAmountTabIsNotEmpty(){
+        common.clickElement("xpath", "//TabItem[@Name='  F11 IGST  ']");
+        String value2 = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
+        if (value2 == (null) || "(null)".equals(value2)) {
+            Assert.fail("IGST field is empty");
+        }
+    }
+
+    public void validateCESSAmountTabIsNotEmpty(){
+        common.clickElement("xpath","//TabItem[contains(@Name,'CESS')]");
+        String value=common.findWebElement("xpath","//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
+        if (value==(null) || "(null)".equals(value)){
+            Assert.fail("CESS field is empty");
         }
     }
 
@@ -339,6 +367,9 @@ public abstract class Transaction {
     }
     public void navigateToTDSTab(){
         common.clickElement("xpath","//TabItem[contains(@Name,'TDS')]");
+    }
+    public void navigateToTCSTab(){
+        common.clickElement("xpath","//TabItem[contains(@Name,'TCS')]");
     }
     public void navigateToBillingAdressTab(){
         common.clickElement("xpath","//TabItem[contains(@Name,'Billing Address')]");
@@ -1095,29 +1126,66 @@ public abstract class Transaction {
         robot.keyRelease(KeyEvent.VK_ENTER);
     }
 
-    public void chargesAndDeductionsCalculations(String dataFile,String type,String accCode,String amount) throws IOException, ParseException {
-        enterData("xpath", "//Edit[@Name='Charges Or Deductions * Row 0, Not sorted.']", dataFile, type);
-        enterData("xpath", "//Edit[@Name='Account Code Row 0, Not sorted.']", dataFile, accCode);
-        enterData("xpath", "//Edit[@Name='Amount * Row 0, Not sorted.']", dataFile, amount);
+    public void chargesAndDeductionsCalculations(String dataFile,String type,String accCode,String amount,String iterations) throws IOException, ParseException {
+        for (int i = 0; i < Integer.parseInt(common.getData(dataFile, iterations)); i++) {
+            enterData("xpath", "//Edit[@Name='Charges Or Deductions * Row " + i + ", Not sorted.']", dataFile, type);
+            enterData("xpath", "//Edit[@Name='Account Code Row " + i + ", Not sorted.']", dataFile, accCode);
+            enterData("xpath", "//Edit[@Name='Amount * Row " + i + ", Not sorted.']", dataFile, amount);
 
-        // Fetch values of Charges and Deductions fields
-        String chargesValue = common.findWebElement("xpath", "//Edit[@Name='Charges Row 0, Not sorted.']").getText();
-        String deductionsValue = common.findWebElement("xpath", "//Edit[@Name='Deductions Row 0, Not sorted.']").getText();
+            // Fetch values of Charges and Deductions fields
+            String chargesValue = common.findWebElement("xpath", "//Edit[@Name='Charges Row " + i + ", Not sorted.']").getText();
+            String deductionsValue = common.findWebElement("xpath", "//Edit[@Name='Deductions Row " + i + ", Not sorted.']").getText();
 
-        if (type.equalsIgnoreCase("Charges")) {
-            if (chargesValue.equals(amount) && (deductionsValue.equals("0.000") || deductionsValue.isEmpty())) {
-                System.out.println("Validation Passed: Amount correctly added to Charges field.");
-            } else {
-                Assert.fail("Validation Failed: Charges field or Deductions field has incorrect data.");
+            if (type.equalsIgnoreCase("Charges")) {
+                if (chargesValue.equals(amount) && (deductionsValue.equals("0.000") || deductionsValue.isEmpty())) {
+                    System.out.println("Validation Passed: Amount correctly added to Charges field.");
+                } else {
+                    Assert.fail("Validation Failed: Charges field or Deductions field has incorrect data.");
+                }
+            } else if (type.equalsIgnoreCase("Deductions")) {
+                if (deductionsValue.equals(amount) && (chargesValue.equals("0.000") || chargesValue.isEmpty())) {
+                    System.out.println("Validation Passed: Amount correctly added to Deductions field.");
+                } else {
+                    Assert.fail("Validation Failed: Deductions field or Charges field has incorrect data.");
+                }
             }
-        } else if (type.equalsIgnoreCase("Deductions")) {
-            if (deductionsValue.equals(amount) && (chargesValue.equals("0.000") || chargesValue.isEmpty())) {
-                System.out.println("Validation Passed: Amount correctly added to Deductions field.");
-            } else {
-                Assert.fail("Validation Failed: Deductions field or Charges field has incorrect data.");
-            }
-        } else {
-            System.out.println("Invalid type provided: " + type);
+        }
+    }
+
+    public void tcsCalculations(String dataFile,String accCode,String amount,String iterations,double itemsNetValue) throws IOException, ParseException {
+        double exchangeRate= Double.parseDouble(common.findWebElement("xpath","//Edit[@Name='Exchange Rate *']").getText());
+//        double itemsNetValue= Double.parseDouble(common.findWebElement("xpath","//Edit[@AutomationId='NetAmount']").getText().replace(",",""));
+        navigateToOtherChargesTab();
+        //other charges Calculations
+        String amountText=common.findWebElement("xpath","//Edit[@Name='Amount * Row 0, Not sorted.']").getText();
+        double otherChargesNetValue=0.0;
+        if("(null)".equals(amountText) || amountText == (null)) {
+            System.out.println("Other Charges not Available");
+        }
+        else {
+            OtherChargesCalculations(dataFile, accCode, amount, iterations);
+            otherChargesNetValue=Double.parseDouble(common.findWebElement("xpath","//Edit[@AutomationId='NetAmount']").getText().replace(",",""));
+        }
+        double totalNetValue=itemsNetValue+otherChargesNetValue;
+        navigateToTCSTab();
+        double tcsAssessbleValue =Double.parseDouble(common.findWebElement("xpath","//Edit[@Name='Assessable Value']").getText().replace(",",""));
+        Assert.assertEquals(totalNetValue,tcsAssessbleValue,"Net Amount and Assessable value should be a match");
+        double tcsRate = Double.parseDouble(common.findWebElement("xpath","//Edit[@Name='TCS Rate']").getText());
+        double expectedTCSAmount = tcsAssessbleValue * tcsRate / 100;
+        double actualTCSAmount= Double.parseDouble(common.findWebElement("xpath","//Edit[@Name='TCS Amount']").getText().replace(",",""));
+        Assert.assertEquals(actualTCSAmount,expectedTCSAmount,"TCS amounts are not equal");
+        double actualTCSCompanyCurrency =Double.parseDouble(common.findWebElement("xpath","//Edit[@Name='TCS Amount']").getText().replace(",",""));
+        double expectedTCSCompanyCurrency=actualTCSAmount*exchangeRate;
+        System.out.println("Actual Currency"+actualTCSCompanyCurrency+"Expected Currency"+expectedTCSCompanyCurrency);
+        Assert.assertEquals(actualTCSCompanyCurrency,expectedTCSCompanyCurrency,"Company Currency isn't matching");
+    }
+
+    public void OtherChargesCalculations(String dataFile,String accCode,String amount,String iterations) throws IOException, ParseException {
+        navigateToOtherChargesTab();
+        for (int i = 0; i < Integer.parseInt(common.getData(dataFile, iterations)); i++) {
+            enterData("xpath", "//Edit[@Name='Account Code Row " + i + ", Not sorted.']", dataFile, accCode);
+            enterData("xpath", "//Edit[@Name='Amount * Row " + i + ", Not sorted.']", dataFile, amount);
+            //add GST calculations and validations here
         }
     }
 
@@ -1211,7 +1279,7 @@ public abstract class Transaction {
         actions.clickAndHold(slider).moveByOffset(offset, 0).release().perform();
     }
 
-    public void genaralInfoNegativeSliderHandle () {
+    public void generalInfoNegativeSliderHandle () {
         int offset = -500;
         WebElement slider = common.findWebElement("xpath", "//ScrollBar[@Name='Horizontal']/Thumb[@Name='Position']");
         Actions actions = new Actions(driver);
