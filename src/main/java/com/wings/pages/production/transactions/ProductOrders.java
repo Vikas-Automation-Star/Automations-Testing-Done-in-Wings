@@ -40,7 +40,7 @@ public class ProductOrders extends Transaction {
         super.inputTextWithValidation("xpath","//Edit[@Name='Order Quantity *']", common.getData(dataFile,"quantity"));
         common.clickElement("xpath","//Edit[@Name='Executive *']");
         super.selectMasterWithValidation(common.getData(dataFile,"Executive"), "xpath","//Edit[@Name='Executive *']");
-        super.saveTransaction();
+        transactionSave();
         Thread.sleep(1000);
         super.newTransaction();
         super.closeTransaction("Production Orders");

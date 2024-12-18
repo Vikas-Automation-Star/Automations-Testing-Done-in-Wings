@@ -39,7 +39,7 @@ public class Gstr1MonthEnd extends Transaction {
         common.clickElement("xpath","//Edit[@Name='Remarks']");
         super.selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"remarks"), "xpath","//Edit[@Name='Remarks']");
         common.clickElement("xpath","//Edit[@Name='GSTIN / UIN of Recipient * Row 0, Not sorted.']");
-        super.saveTransaction();
+        transactionSave();
         Thread.sleep(1000);
 //        super.closeTransaction("GSTR1 Month End");
 //        Thread.sleep(2000);

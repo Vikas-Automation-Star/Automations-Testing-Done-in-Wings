@@ -70,6 +70,7 @@ public class SalesInvoiceIncludeGSTIncludeTCS extends Transaction {
         double expectedTCS = tcsAssesibleValue * tcsRate / 100;
         System.out.println("ActualAmount"+tcsCompanyCurrency+"ExpectedAmount"+expectedTCS);
         Assert.assertEquals(tcsCompanyCurrency,expectedTCS,"Calculations mismatch");
+
         //discount
 //        super.enterData("xpath","//Edit[@Name='Voucher Disc % Row "+i+", Not sorted.']", dataFile,"voucherDiscount");
 //

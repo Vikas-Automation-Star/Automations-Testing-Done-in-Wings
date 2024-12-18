@@ -59,7 +59,7 @@ public class MaterialReceipt extends Transaction {
         common.clickElement("xpath","//Edit[@Name='GST Product Category Row 0, Not sorted.']");
         Thread.sleep(1000);
         common.clickElement("xpath","//TabItem[@Name='  Ctrl-F8 Summary  ']");
-        super.saveTransaction();
+        transactionSave();
         Thread.sleep(1500);
         super.newTransaction();
         super.closeTransaction("Material Receipts");

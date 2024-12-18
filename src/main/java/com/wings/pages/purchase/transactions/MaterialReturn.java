@@ -44,7 +44,7 @@ public class MaterialReturn extends Transaction {
         common.clickElement("xpath","//Edit[@Name='MRP Row 0, Not sorted.']");
         Thread.sleep(1500);
         common.clickElement("xpath","//TabItem[@Name='  Ctrl-F5 Summary  ']");
-        super.saveTransaction();
+        transactionSave();
         Thread.sleep(1500);
         super.newTransaction();
         super.closeTransaction("Material Returns");

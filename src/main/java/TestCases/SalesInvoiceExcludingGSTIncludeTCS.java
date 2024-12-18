@@ -125,9 +125,9 @@ public class SalesInvoiceExcludingGSTIncludeTCS extends Transaction {
 
 
         //verifying data not present in tabs
-        validateCGSTAmountTabWhenNull();
-        validateSGSTAmountTabWhenNull();
-        validateToCESSAmountTabWhenNull();
+        validateCGSTAmountTabIsEmpty();
+        validateSGSTAmountTabIsEmpty();
+        validateCESSAmountTabIsEmpty();
         //Tcs calculations
         common.clickElement("xpath","//TabItem[contains(@Name,'TCS')]");
         common.clickElement("xpath","//TabItem[contains(@Name,'TCS')]");

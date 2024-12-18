@@ -42,7 +42,7 @@ public class PurchaseEnquiriesCancellation extends Transaction {
         super.selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"remarks"), "xpath","//Edit[@Name='Remarks']");
         common.clickElement("xpath","//Edit[@Name='Quantity * Row 0, Not sorted.']");
         common.inputText("xpath","//Edit[@Name='Quantity * Row 0, Not sorted.']", common.getData(dataFile,"quantity"));
-        super.saveTransaction();
+        transactionSave();
         Thread.sleep(1500);
         super.newTransaction();
         super.closeTransaction("Purchase Enquiries Cancellation");

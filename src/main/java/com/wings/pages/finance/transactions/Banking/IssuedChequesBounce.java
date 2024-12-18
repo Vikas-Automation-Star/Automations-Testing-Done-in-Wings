@@ -39,12 +39,12 @@ public class IssuedChequesBounce extends Transaction {
         super.selectMasterWithValidation(common.getData(dataFile,"accountCode"),"xpath","//Edit[@Name='Account Code']");
         common.clickElement("xpath","//Edit[@Name='Account *']");
         Thread.sleep(4000);
-        super.partyCodeGstSelection();
+        gstTransactionType("Registered Dealers");
         common.clickElement("xpath","//Edit[@Name='Cheque/EFT No *']");
         common.inputText("xpath","//Edit[@Name='Cheque/EFT No *']",common.getData(dataFile,"chequeNo"));
         common.clickElement("xpath","//Edit[@Name='Drawn On Bank *']");
         super.selectMasterWithValidation(common.getData(dataFile,"drawnOnBank"),"xpath","//Edit[@Name='Drawn On Bank *']");
-        super.generalInfoSliderHandle();
+        super.generalInfoSliderHandle(800);
         common.clickElement("xpath","//Edit[@Name='Executive *']");
         super.selectMasterWithValidation(common.getData(dataFile,"executive"),"xpath","//Edit[@Name='Executive *']");
         Thread.sleep(3000);
@@ -55,7 +55,7 @@ public class IssuedChequesBounce extends Transaction {
         adjustedAmount.click();
         System.out.println("Adjusted Amount :"+adjustedAmount.getText());
         Thread.sleep(2000);
-        super.genaralInfoNegativeSliderHandle();
+        generalInfoSliderHandle(-500);
         Thread.sleep(2000);
         WebElement amount=common.findWebElement("xpath","//Edit[@Name='Amount *']");
         amount.click();

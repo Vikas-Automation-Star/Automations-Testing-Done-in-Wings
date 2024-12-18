@@ -76,7 +76,7 @@ public class PurchaseVoucher extends Transaction {
         common.inputText("xpath","//Edit[@Name='Unit Rate Row 0, Not sorted.']", common.getData(dataFile,"unitRate"));
         common.clickElement("xpath","//Edit[@Name='Editable Gross Amount Row 0, Not sorted.']");
         super.sliderHandle();
-        super.saveTransaction();
+        transactionSave();
         Thread.sleep(1500);
         super.newTransaction();
         super.closeTransaction("Purchase Vouchers");

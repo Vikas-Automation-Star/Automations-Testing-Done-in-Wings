@@ -55,7 +55,7 @@ public class PurchaseReturnsWithInvoicesReference extends Transaction {
         Thread.sleep(1000);
         common.findWebElements("xpath", "//Edit[@Name='MRP Row 0, Not sorted.']");
         super.sliderHandle();
-        super.saveTransaction();
+        transactionSave();
         Thread.sleep(1500);
         super.newTransaction();
         super.closeTransaction("Purchase Returns with Invoice Reference");

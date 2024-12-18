@@ -37,7 +37,7 @@ public class AssignStandardRates extends Transaction {
         WebElement uRate= common.findWebElement("xpath","//Edit[@Name='Rate * Row 0, Not sorted.']");
         uRate.click();
         uRate.sendKeys(common.getData(dataFile,"urate"),Keys.ENTER);
-        super.saveTransaction();
+        transactionSave();
         Thread.sleep(1000);
         super.newTransaction();
         super.closeTransaction("Assign Standard Rates");

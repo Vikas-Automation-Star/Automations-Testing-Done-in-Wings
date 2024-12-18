@@ -1176,7 +1176,7 @@ public abstract class Transaction {
         Assert.assertEquals(actualTCSAmount,expectedTCSAmount,"TCS amounts are not equal");
         double actualTCSCompanyCurrency =Double.parseDouble(common.findWebElement("xpath","//Edit[@Name='TCS Amount']").getText().replace(",",""));
         double expectedTCSCompanyCurrency=actualTCSAmount*exchangeRate;
-        System.out.println("Actual Currency"+actualTCSCompanyCurrency+"Expected Currency"+expectedTCSCompanyCurrency);
+        System.out.println("Actual Currency: " + actualTCSCompanyCurrency + " Expected Currency: "+ expectedTCSCompanyCurrency);
         Assert.assertEquals(actualTCSCompanyCurrency,expectedTCSCompanyCurrency,"Company Currency isn't matching");
     }
 
@@ -1201,13 +1201,6 @@ public abstract class Transaction {
     }
     public void newTransaction () {
         System.out.println("New Transaction ID  :" + common.findWebElement("xpath", "//Text[@Name='Last Saved :']/following-sibling::Text").getAttribute("Name"));
-    }
-
-    public void saveTransaction () throws InterruptedException {
-        common.clickElement("xpath", "//Button[@Name='Save']");
-        common.clickElement("xpath", "//Button[@Name='Yes']");
-        Thread.sleep(2000);
-        common.clickElement("xpath", "//Button[@Name='OK']");
     }
 
     public void selectMasterWithValidation(String transaction, String locatorType, String locator) {
@@ -1259,28 +1252,7 @@ public abstract class Transaction {
         }
     }
 
-    public void partyCodeGstSelection () {
-        List<WebElement> elementList1 = common.findWebElements("xpath", "//Table/*[@Name='Data Panel']/*/*[contains(@Name,'GST Transaction Type row')]");
-        System.out.println("Size :" + elementList1.size());
-        for (WebElement j : elementList1) {
-            System.out.println(j.getText());
-            if (j.getText().contains("Registered Dealers")) {
-                j.click();
-                j.sendKeys(Keys.LEFT, Keys.SPACE, Keys.ENTER, Keys.ENTER);
-                break;
-            }
-        }
-    }
-
-    public void generalInfoSliderHandle () {
-        int offset = 800;
-        WebElement slider = common.findWebElement("xpath", "//ScrollBar[@Name='Horizontal']/Thumb[@Name='Position']");
-        Actions actions = new Actions(driver);
-        actions.clickAndHold(slider).moveByOffset(offset, 0).release().perform();
-    }
-
-    public void generalInfoNegativeSliderHandle () {
-        int offset = -500;
+    public void generalInfoSliderHandle (int offset) {
         WebElement slider = common.findWebElement("xpath", "//ScrollBar[@Name='Horizontal']/Thumb[@Name='Position']");
         Actions actions = new Actions(driver);
         actions.clickAndHold(slider).moveByOffset(offset, 0).release().perform();

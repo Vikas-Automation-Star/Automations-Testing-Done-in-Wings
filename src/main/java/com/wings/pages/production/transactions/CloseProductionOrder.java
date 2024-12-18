@@ -59,7 +59,7 @@ public class CloseProductionOrder extends Transaction {
             j.sendKeys(common.getData(dataFile, "F5quantity"));
         }
         common.clickElement("xpath","//CheckBox[@Name='Cancel * Row 0']");
-        super.saveTransaction();
+        transactionSave();
         Thread.sleep(1000);
         super.newTransaction();
         super.closeTransaction("Close Production Order");

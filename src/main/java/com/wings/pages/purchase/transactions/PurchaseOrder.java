@@ -56,7 +56,7 @@ public class PurchaseOrder extends Transaction {
         common.clickElement("xpath","//Edit[@Name='GST Product Category Row 0, Not sorted.']");
         Thread.sleep(1500);
         common.clickElement("xpath","//TabItem[@Name='  Ctrl-F11 Summary  ']");
-        saveTransaction();
+        transactionSave();
         Thread.sleep(1500);
         newTransaction();
         closeTransaction("Purchase Orders");

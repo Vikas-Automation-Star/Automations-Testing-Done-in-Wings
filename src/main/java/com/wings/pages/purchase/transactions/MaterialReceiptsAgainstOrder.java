@@ -56,7 +56,7 @@ public class MaterialReceiptsAgainstOrder extends Transaction {
         common.clickElement("xpath","//Edit[@Name='MRP Row 0, Not sorted.']");
         Thread.sleep(2000);
         common.clickElement("xpath","//TabItem[@Name='  Ctrl-F8 Summary  ']");
-        super.saveTransaction();
+        transactionSave();
         Thread.sleep(1500);
         super.newTransaction();
         super.closeTransaction("Material Receipts against Orders");

@@ -42,7 +42,7 @@ public class EwayBillOffline extends Transaction {
         super.selectMaster(common.getData(dataFile, "executive"));
         common.clickElement("xpath","//Edit[@Name='Remarks']");
         super.selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"remarks"), "xpath","//Edit[@Name='Remarks']");
-        super.saveTransaction();
+        transactionSave();
         Thread.sleep(1000);
         super.closeTransaction("E-Way Bill Offline");
         Thread.sleep(2000);

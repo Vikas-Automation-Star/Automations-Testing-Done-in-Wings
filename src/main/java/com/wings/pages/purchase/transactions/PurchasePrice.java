@@ -48,12 +48,8 @@ public class PurchasePrice extends Transaction {
         common.clickElement("xpath","//Edit[@Name='MRP Row 2, Not sorted.']");
         common.inputText("xpath","//Edit[@Name='MRP Row 2, Not sorted.']", common.getData(dataFile,"mrp"));
         Thread.sleep(2000);
-        WebElement rightclick= common.findWebElement("xpath","//Edit[@Name=' Row 0, Not sorted.']");
-        rightclick.click();
-        Actions actions=new Actions(driver);
-        actions.contextClick(rightclick).perform();
-        common.clickElement("xpath","//MenuItem[@Name='Delete Invalid Rows']");
-        super.saveTransaction();
+        common.deleteInvalidRows();
+        transactionSave();
         Thread.sleep(1500);
         super.oldTTransaction();
         Thread.sleep(1500);
