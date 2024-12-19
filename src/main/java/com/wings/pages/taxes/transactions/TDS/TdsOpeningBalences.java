@@ -33,7 +33,7 @@ public class TdsOpeningBalences extends Transaction {
         common.clickElement("xpath","//Edit[@Name='Transaction Currency *']");
         common.clickElement("xpath","//Edit[@Name='Control Account *']");
         common.clickElement("xpath","//Edit[@Name='Executive *']");
-        super.selectMaster(common.getData(dataFile,"executive"));
+        super.selectAndValidateDataNew(common.getData(dataFile,"executive"),"xpath","//Edit[@Name='Executive *']");
         common.clickElement("xpath","//Edit[@Name='Remarks']");
         super.selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"remarks"), "xpath","//Edit[@Name='Remarks']");
         common.clickElement("xpath","//Edit[@Name='Account Code Row 0, Not sorted.']");

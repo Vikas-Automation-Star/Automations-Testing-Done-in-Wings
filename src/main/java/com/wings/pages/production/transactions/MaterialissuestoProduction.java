@@ -34,7 +34,7 @@ public class MaterialissuestoProduction extends Transaction {
         common.clickElement("xpath", "//Edit[@Name='Transaction Currency *']");
         super.selectMasterWithValidation(common.getData(dataFile,"currency"),"xpath", "//Edit[@Name='Transaction Currency *']");
         common.clickElement("xpath", "//Edit[@Name='Finished Product Code']");
-        super.selectMasterWithValidation(common.getData(dataFile,"fProduct"),"xpath", "//Edit[@Name='Finished Product Code']");
+        super.selectAndValidateDataNew(common.getData(dataFile,"fProduct"),"xpath", "//Edit[@Name='Finished Product Code']");
         common.clickElement("xpath", "//Edit[@Name='Finished Product *']");
 //        List<WebElement> clickCheckbox=common.findWebElements("xpath","//Window[@Name='Open Transactions']/Pane/Table/*[contains(@Name,'Row')]/*[contains(@Name,'Select Row')]");
 //        System.out.println("Size :-"+clickCheckbox.size());
@@ -49,7 +49,7 @@ public class MaterialissuestoProduction extends Transaction {
         common.clickElement("xpath","//Edit[@Name='Executive *']");
         super.selectMasterWithValidation(common.getData(dataFile,"executive"),"xpath","//Edit[@Name='Executive *']" );
         common.clickElement("xpath","//Edit[@Name='Department']");
-        super.selectMaster(common.getData(dataFile,"department"));
+        selectAndValidateDataNew(common.getData(dataFile,"department"),"xpath","//Edit[@Name='Department']");
         common.clickElement("xpath","//Edit[@Name='Quantity * Row 0, Not sorted.']");
         common.inputText("xpath","//Edit[@Name='Quantity * Row 0, Not sorted.']", common.getData(dataFile,"quantity"));
         super.saveTransaction();

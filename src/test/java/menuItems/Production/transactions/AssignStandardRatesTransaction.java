@@ -20,6 +20,7 @@ public class AssignStandardRatesTransaction {
     public void beforeTest() throws IOException, InterruptedException, ParseException {
         driver=appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
+
     }
 
     @Test

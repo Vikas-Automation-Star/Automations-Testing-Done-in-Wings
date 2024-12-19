@@ -26,11 +26,11 @@ public class SalesInvoiceIncludeGSTIncludeTCSTransaction {
     @Test
     public void testcase1() throws IOException, ParseException, InterruptedException, AWTException {
       SalesInvoiceIncludeGSTIncludeTCS siigst=new SalesInvoiceIncludeGSTIncludeTCS(driver,dataFile);
-      siigst.salesInvoiceIncludeGSTAndIncludeTax();
+      siigst.salesInvoiceIncludeGSTAndIncludeTCS();
     }
     @AfterTest
     public void afterTest(){
-//        appLogin.logout();
+        appLogin.logout();
         Allure.step("After Test TestCase 01");
     }
 }

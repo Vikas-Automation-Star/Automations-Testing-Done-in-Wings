@@ -55,7 +55,7 @@ public class IssuedChequesBounce extends Transaction {
         adjustedAmount.click();
         System.out.println("Adjusted Amount :"+adjustedAmount.getText());
         Thread.sleep(2000);
-        super.genaralInfoNegativeSliderHandle();
+//        super.genaralInfoNegativeSliderHandle();
         Thread.sleep(2000);
         WebElement amount=common.findWebElement("xpath","//Edit[@Name='Amount *']");
         amount.click();

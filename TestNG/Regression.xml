@@ -76,342 +76,21 @@
             <class name="menuItems.company.masters.ExecutiveMaster"></class>
         </classes>
     </test>
-    <!-- Sales Masters -->
+    <!-- company completed-->
 
-    <test name="Customers Master" description="Test 1 description" testID="1">
-        <classes>
-            <class name="menuItems.sales.masters.CustomerMaster"/>
-        </classes>
-    </test>
-
-    <test name="Types of Customers Master" description="Test 2 description" testID="2">
-        <classes>
-            <class name="menuItems.sales.masters.TypeOfCustomerMaster"/>
-        </classes>
-    </test>
-
-    <test name="Price and Discount - Sales Price Lists Master" description="Test 3 description" testID="3">
-        <classes>
-            <class name="menuItems.sales.masters.SalesPriceListMaster"/>
-        </classes>
-    </test>
-
-    <test name="Price and Discount - Party Discount Group Master" description="Test 4 description" testID="4">
-        <classes>
-            <class name="menuItems.sales.masters.PartyDiscountGroupMaster"/>
-        </classes>
-    </test>
-
-    <test name="Price and Discount - Product Discount Group Master" description="Test 5 description" testID="5">
-        <classes>
-            <class name="menuItems.sales.masters.ProductDiscountMaster"/>
-        </classes>
-    </test>
-
-    <test name="Sales Target -Product Sales Target Groups Master" description="Test 6 description" testID="6">
-        <classes>
-            <class name="menuItems.sales.masters.SalesTargetGroupMaster"/>
-        </classes>
-    </test>
-
-    <!-- Sales Transactions -->
-    <test name="Sales Enquiries Transaction" description="Test 7 description" testID="7">
-        <classes>
-            <class name="menuItems.sales.transactions.SalesEnquiryTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Sales Enquiries Cancellation Transaction" description="Test 8 description" testID="8">
-        <classes>
-            <class name="menuItems.sales.transactions.SalesEnquiryCancellationTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Sales Quotations Transaction" description="Test 9 description" testID="9">
-        <classes>
-            <class name="menuItems.sales.transactions.SalesQuotationTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Sales Quotations against Enquiry Transaction" description="Test 10 description" testID="10">
-        <classes>
-            <class name="menuItems.sales.transactions.SalesQuotationAgainstEnquiryTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Sales Quotation Cancellation Transaction" description="Test 11 description" testID="11">
-        <classes>
-            <class name="menuItems.sales.transactions.SalesQuotationsCancellationTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Sales Order against Quotations Transaction" description="Test 12 description" testID="12">
-        <classes>
-            <class name="menuItems.sales.transactions.SalesOrdersAgainstQuotationsTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Sales Order Transaction" description="Test 13 description" testID="13">
-        <classes>
-            <class name="menuItems.sales.transactions.SalesOrderTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Sales Order Cancellation Transaction" description="Test 14 description" testID="14">
-        <classes>
-            <class name="menuItems.sales.transactions.SalesOrderTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Sales Deliveries Transaction" description="Test 15 description" testID="15">
-        <classes>
-            <class name="menuItems.sales.transactions.DeliveriesTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Sales Deliveries against Orders Transaction" description="Test 16 description" testID="16">
-        <classes>
-            <class name="menuItems.sales.transactions.DeliveriesAgainstOrdersTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Delivery Returns Transaction" description="Test 17 description" testID="17">
-        <classes>
-            <class name="menuItems.sales.transactions.DeliveryReturnsTransactions"/>
-        </classes>
-    </test>
-
-    <test name="Sales Invoice Transaction" description="Test 18 description" testID="18">
-        <classes>
-            <class name="menuItems.sales.transactions.SalesInvoiceTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Sales Invoice against Orders Transaction" description="Test 19 description" testID="19">
-        <classes>
-            <class name="menuItems.sales.transactions.SalesInvoiceAgainstOrdersTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Sales Invoice against Deliveries Transaction" description="Test 20 description" testID="20">
-        <classes>
-            <class name="menuItems.sales.transactions.SalesInvoiceAgainstDeliveriesTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Invoice - Proforma sales Invoice Transaction" description="Test 21 description" testID="21">
-        <classes>
-            <class name="menuItems.sales.transactions.ProformaSalesInvoiceTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Sales Return Transaction" description="Test 22 description" testID="22">
-        <classes>
-            <class name="menuItems.sales.transactions.SalesReturnTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Sales Return with Invoice NO Transaction" description="Test 23 description" testID="23">
-        <classes>
-            <class name="menuItems.sales.transactions.SalesReturnWithInvoiceReferenceTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Prices and Discounts-Sales Price Transaction" description="Test 24 description" testID="24">
-        <classes>
-            <class name="menuItems.sales.transactions.SalesPriceTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Prices and Discounts-Party and Product wise discounts Transaction" description="Test 25 description" testID="25">
-        <classes>
-            <class name="menuItems.sales.transactions.ProductPartyDiscountTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Targets - Define Sales Targets Executive wise Transaction" description="Test 26 description" testID="26">
-        <classes>
-            <class name="menuItems.sales.transactions.SalesTargetExectiveWiseTransaction"/>
-        </classes>
-    </test>
-
-    <!-- Sales Reports -->
-    <test name="Reports - Sales Enquiry" description="Test 27 description" testID="27">
-        <classes>
-            <class name="menuItems.sales.reports.salesEnquiryReport"/>
-        </classes>
-    </test>
-
-    <test name="Reports - Pending Sales Enquiry" description="Test 28 description" testID="28">
-        <classes>
-            <class name="menuItems.sales.reports.PendingSaleEnquiryReport"/>
-        </classes>
-    </test>
-
-    <test name="Reports - Sales Enquiry Cancellation" description="Test 29 description" testID="29">
-        <classes>
-            <class name="menuItems.sales.reports.SalesEnquiryCancellationReport"/>
-        </classes>
-    </test>
-
-    <test name="Reports - Sales Quotations" description="Test 30 description" testID="30">
-        <classes>
-            <class name="menuItems.sales.reports.SalesQuotationReport"/>
-        </classes>
-    </test>
-
-    <test name="Reports - Pending sales Quotation" description="Test 31 description" testID="31">
-        <classes>
-            <class name="menuItems.sales.reports.PendingSalesQuotationsReport"/>
-        </classes>
-    </test>
-
-    <test name="Reports - Sales Quotation against Enquiry" description="Test 32 description" testID="32">
-        <classes>
-            <class name="menuItems.sales.reports.SalesQuotationAgnstEnquiryReport"/>
-        </classes>
-    </test>
-
-    <test name="Reports - Sales Quotations Cancellations" description="Test 33 description" testID="33">
-        <classes>
-            <class name="menuItems.sales.reports.SalesQuotationCancellationReport"/>
-        </classes>
-    </test>
-
-    <test name="Reports - Sales Order against Quotation" description="Test 34 description" testID="34">
-        <classes>
-            <class name="menuItems.sales.reports.SalesOrdrAgainstQuotationReport"/>
-        </classes>
-    </test>
-
-    <test name="Reports - Sales Order" description="Test 35 description" testID="35">
-        <classes>
-            <class name="menuItems.sales.reports.SalesOrderReport"/>
-        </classes>
-    </test>
-    <test name="Reports - Pending Sales Order" description="Test 36 description" testID="36">
-        <classes>
-            <class name="menuItems.sales.reports.PendingSalesOrderReport"/>
-        </classes>
-    </test>
-    <test name="Reports - Sales Order Status Details" description="Test 37 description" testID="37">
-        <classes>
-            <class name="menuItems.sales.reports.SalesOrderStatusDetailsReport"/>
-        </classes>
-    </test>
-
-    <test name="Reports - Sales Order Cancellation" description="Test 38 description" testID="38">
-        <classes>
-            <class name="menuItems.sales.reports.SalesOrderCancellationReport"/>
-        </classes>
-    </test>
-
-    <test name="Reports - Deliveries" description="Test 39 description" testID="39">
-        <classes>
-            <class name="menuItems.sales.reports.DeliveryReport"/>
-        </classes>
-    </test>
-
-    <test name="Reports - PendingDeliveries" description="Test 40 description" testID="40">
-        <classes>
-            <class name="menuItems.sales.reports.PendingDeliveriesReport"/>
-        </classes>
-    </test>
-
-    <test name="Reports - Pending sales orders with deliveries" description="Test 41 description" testID="41">
-        <classes>
-            <class name="menuItems.sales.reports.PendingSalesOrderWithDeliveriesReport"/>
-        </classes>
-    </test>
-
-
-
-    <test name="Reports - Delivery returns" description="Test 42 description" testID="42">
-        <classes>
-            <class name="menuItems.sales.reports.DeliveryReturnReport"/>
-        </classes>
-    </test>
-
-
-    <test name="Reports - Sales Book" description="Test 43 description" testID="43">
-        <classes>
-            <class name="menuItems.sales.reports.SalesBookReport"/>
-        </classes>
-    </test>
-
-    <test name="Reports - Sales Detailed with product batch" description="Test 44 description" testID="44">
-        <classes>
-            <class name="menuItems.sales.reports.SalesDetailsWithProductBatchReport"/>
-        </classes>
-    </test>
-
-    <test name="Reports - Sales Invoice against Orders" description="Test 45 description" testID="45">
-        <classes>
-            <class name="menuItems.sales.reports.SalesInvoiceAgainstOrdersReport"/>
-        </classes>
-    </test>
-
-    <test name="Reports - Sales Price Updation" description="Test 46 description" testID="46">
-        <classes>
-            <class name="menuItems.sales.reports.SalesPriceUpdationReport"/>
-        </classes>
-    </test>
-
-    <test name="Reports - Sales invoice against Deliveries" description="Test 47 description" testID="47">
-        <classes>
-            <class name="menuItems.sales.reports.SalesInvoiceAgainstDeliveriesReport"/>
-        </classes>
-    </test>
-
-    <test name="Reports - Proforma sales invoice" description="Test 48 description" testID="48">
-        <classes>
-            <class name="menuItems.sales.reports.ProformaSalesInvoiceReport"/>
-        </classes>
-    </test>
-
-    <test name="Reports - Sales Return" description="Test 49 description" testID="49">
-        <classes>
-            <class name="menuItems.sales.reports.SalesReturnReport"/>
-        </classes>
-    </test>
-
-    <test name="Reports - sales return with serial no" description="Test 50 description" testID="50">
-        <classes>
-            <class name="menuItems.sales.reports.SalesReturnWithSerialNoReport"/>
-        </classes>
-    </test>
-
-    <test name="Reports - sales return with invoice ref no" description="Test 51 description" testID="51">
-        <classes>
-            <class name="menuItems.sales.reports.SalesReturnWithInvoiceReferenceReport"/>
-        </classes>
-    </test>
-
-    <test name="Reports - Define sales targets-executive wise" description="Test 52 description" testID="52">
-        <classes>
-            <class name="menuItems.sales.reports.SaleTargetExecutiveWiseReport"/>
-        </classes>
-    </test>
-
-    <test name="Reports - Target variance report executive wise" description="Test 53 description" testID="53">
-        <classes>
-            <class name="menuItems.sales.reports.TargetVarianceReportExecutiveWise"/>
-        </classes>
-    </test>
-
-    <test name="Creating SupplierMaster" description="description for Supplier Master"  testID="WOW 1">
+    <test name="Creating SupplierMaster" description="description for Supplier Master"  testID="WOW 13">
         <classes>
             <class name="menuItems.purchase.masters.SuppliersMaster"></class>
         </classes>
     </test>
 
-    <test name="Creating PurchaseBatchPoliciesMaster" description="description for PurchaseBatchPolicies Master"  testID="WOW 2">
+    <test name="Creating PurchaseBatchPoliciesMaster" description="description for PurchaseBatchPolicies Master"  testID="WOW 14">
         <classes>
             <class name="menuItems.purchase.masters.PurchaseBatchPoliciesMaster"></class>
         </classes>
     </test>
 
-    <test name="Creating PriceListMaster" description="description for PriceList Master"  testID="WOW 3">
+    <test name="Creating PriceListMaster" description="description for PriceList Master"  testID="WOW 15">
         <classes>
             <class name="menuItems.purchase.masters.PriceListMaster"></class>
         </classes>
@@ -419,91 +98,91 @@
 
     <!-- Masters of purchase menu completed 3 -->
 
-    <test name="Performing PurchaseEnquiries Transaction" description="description for PurchaseEnquiries Transaction"  testID="WOW 4">
+    <test name="Performing PurchaseEnquiries Transaction" description="description for PurchaseEnquiries Transaction"  testID="WOW 16">
         <classes>
             <class name="menuItems.purchase.transactions.PurchaseEnquiriesTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing PurchaseEnquiriesCancellation Transaction" description="description for PurchaseEnquiriesCancellation Transaction"  testID="WOW 5">
+    <test name="Performing PurchaseEnquiriesCancellation Transaction" description="description for PurchaseEnquiriesCancellation Transaction"  testID="WOW 17">
         <classes>
             <class name="menuItems.purchase.transactions.PurchaseEnquiriesCancellationTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing PurchaseQuotations Transaction" description="description for PurchaseQuotations Transaction"  testID="WOW 6">
+    <test name="Performing PurchaseQuotations Transaction" description="description for PurchaseQuotations Transaction"  testID="WOW 18">
         <classes>
             <class name="menuItems.purchase.transactions.PurchaseQuotationsTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing PurchaseQuotationsAgainstEnquiries Transaction" description="description for PurchaseQuotationsAgainstEnquiries Transaction"  testID="WOW 7">
+    <test name="Performing PurchaseQuotationsAgainstEnquiries Transaction" description="description for PurchaseQuotationsAgainstEnquiries Transaction"  testID="WOW 19">
         <classes>
             <class name="menuItems.purchase.transactions.PurchaseQuotationsAgainstEnquiriesTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing PurchaseOrdersAgainstQuotations Transaction" description="description for PurchaseOrdersAgainstQuotations Transaction"  testID="WOW 8">
+    <test name="Performing PurchaseOrdersAgainstQuotations Transaction" description="description for PurchaseOrdersAgainstQuotations Transaction"  testID="WOW 20">
         <classes>
             <class name="menuItems.purchase.transactions.PurchaseOrdersAgainstQuotationsTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing PurchaseOrders Transaction" description="description for PurchaseOrders Transaction"  testID="WOW 9">
+    <test name="Performing PurchaseOrders Transaction" description="description for PurchaseOrders Transaction"  testID="WOW 21">
         <classes>
             <class name="menuItems.purchase.transactions.PurchaseOrdersTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing PurchaseOrdersCancellation Transaction" description="description for PurchaseOrdersCancellation Transaction"  testID="WOW 10">
+    <test name="Performing PurchaseOrdersCancellation Transaction" description="description for PurchaseOrdersCancellation Transaction"  testID="WOW 22">
         <classes>
             <class name="menuItems.purchase.transactions.PurchaseOrderCancellationTransaction" ></class>
         </classes>
     </test>
 
-    <test name="Performing MaterialReceipts Transaction" description="descriptionM for MaterialReceipts Transaction"  testID="WOW 11">
+    <test name="Performing MaterialReceipts Transaction" description="descriptionM for MaterialReceipts Transaction"  testID="WOW 23">
         <classes>
             <class name="menuItems.purchase.transactions.MaterialReceiptsTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing MaterialReceiptsAgainstOrders Transaction" description="description for MaterialReceiptsAgainstOrders Transaction"  testID="WOW 12">
+    <test name="Performing MaterialReceiptsAgainstOrders Transaction" description="description for MaterialReceiptsAgainstOrders Transaction"  testID="WOW 24">
         <classes>
             <class name="menuItems.purchase.transactions.MaterialReceiptsAgainstOrdersTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing MaterialReturns Transaction" description="description for MaterialReturns Transaction"  testID="WOW 13">
+    <test name="Performing MaterialReturns Transaction" description="description for MaterialReturns Transaction"  testID="WOW 25">
         <classes>
             <class name="menuItems.purchase.transactions.MaterialReturnsTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing  PurchaseVouchers Transaction" description="description for PurchaseVouchers Transaction"  testID="WOW 14">
+    <test name="Performing  PurchaseVouchers Transaction" description="description for PurchaseVouchers Transaction"  testID="WOW 26">
         <classes>
             <class name="menuItems.purchase.transactions.PurchaseVouchersTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing PurchaseVouchersAgainstOrders Transaction" description="description for PurchaseVouchersAgainstOrders Transaction"  testID="WOW 15">
+    <test name="Performing PurchaseVouchersAgainstOrders Transaction" description="description for PurchaseVouchersAgainstOrders Transaction"  testID="WOW 27">
         <classes>
             <class name="menuItems.purchase.transactions.PurchaseVouchersAgainstOrdersTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing PurchaseVouchersAgainstReceipts Transaction" description="description for PurchaseVouchersAgainstReceipts Transaction"  testID="WOW 16">
+    <test name="Performing PurchaseVouchersAgainstReceipts Transaction" description="description for PurchaseVouchersAgainstReceipts Transaction"  testID="WOW 28">
         <classes>
             <class name="menuItems.purchase.transactions.PurchaseVouchersAgainstReceiptsTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing PurchaseReturnsWithInvoicesReferences Transaction" description="description for PurchaseReturnsWithInvoiceReference Transaction"  testID="WOW 17">
+    <test name="Performing PurchaseReturnsWithInvoicesReferences Transaction" description="description for PurchaseReturnsWithInvoiceReference Transaction"  testID="WOW 29">
         <classes>
             <class name="menuItems.purchase.transactions.PurchaseReturnsWithInvoicesReferencesTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing PurchasePrices Transaction" description="description for PurchasePrices Transaction"  testID="WOW 18">
+    <test name="Performing PurchasePrices Transaction" description="description for PurchasePrices Transaction"  testID="WOW 30">
         <classes>
             <class name="menuItems.purchase.transactions.PurchasePricesTransaction"></class>
         </classes>
@@ -511,1228 +190,535 @@
 
     <!-- Transactions of purchase menu completed 15-->
 
-    <test name="Checking PurchaseEnquiries Report" description="description for PurchaseEnquiries Report"  testID="WOW 19">
+    <test name="Checking PurchaseEnquiries Report" description="description for PurchaseEnquiries Report"  testID="WOW 31">
         <classes>
             <class name="menuItems.purchase.reports.PurchaseEnquiriesReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PendingPurchaseEnquiries Report" description="description for PendingPurchaseEnquiries Report"  testID="WOW 20">
+    <test name="Checking PendingPurchaseEnquiries Report" description="description for PendingPurchaseEnquiries Report"  testID="WOW 32">
         <classes>
             <class name="menuItems.purchase.reports.PendingPurchaseEnquiriesReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PurchaseEnquiriesCancellation Report" description="description for PurchaseEnquiriesCancellation Report"  testID="WOW 21">
+    <test name="Checking PurchaseEnquiriesCancellation Report" description="description for PurchaseEnquiriesCancellation Report"  testID="WOW 33">
         <classes>
             <class name="menuItems.purchase.reports.PurchaseEnquiriesCancellationsReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PurchaseQuotations Report" description="description for PurchaseQuotations Report"  testID="WOW 22">
+    <test name="Checking PurchaseQuotations Report" description="description for PurchaseQuotations Report"  testID="WOW 34">
         <classes>
             <class name="menuItems.purchase.reports.PurchaseQuotationsReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PendingPurchaseQuotations Report" description="description for PendingPurchaseQuotations Report"  testID="WOW 23">
+    <test name="Checking PendingPurchaseQuotations Report" description="description for PendingPurchaseQuotations Report"  testID="WOW 35">
         <classes>
             <class name="menuItems.purchase.reports.PendingPurchaseQuotationsReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PurchaseQuotationsAgainstEnquiries Report" description="description for PurchaseQuotationsAgainstEnquiries Report"  testID="WOW 24">
+    <test name="Checking PurchaseQuotationsAgainstEnquiries Report" description="description for PurchaseQuotationsAgainstEnquiries Report"  testID="WOW 36">
         <classes>
             <class name="menuItems.purchase.reports.PurchaseQuotationsAgainstEnquiriesReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PurchaseOrdersAgainstQuotations Report" description="description for PurchaseOrdersAgainstQuotations Report"  testID="WOW 25">
+    <test name="Checking PurchaseOrdersAgainstQuotations Report" description="description for PurchaseOrdersAgainstQuotations Report"  testID="WOW 37">
         <classes>
             <class name="menuItems.purchase.reports.PurchaseOrdersAgainstQuotationsReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PurchaseOrders Report" description="description for PurchaseOrders Report"  testID="WOW 26">
+    <test name="Checking PurchaseOrders Report" description="description for PurchaseOrders Report"  testID="WOW 38">
         <classes>
             <class name="menuItems.purchase.reports.PurchaseOrdersReport"></class>
         </classes>
     </test>
-    <test name="Checking PendingPurchaseOrders Report" description="description for PendingPurchaseOrders Report"  testID="WOW 27">
+    <test name="Checking PendingPurchaseOrders Report" description="description for PendingPurchaseOrders Report"  testID="WOW 39">
         <classes>
             <class name="menuItems.purchase.reports.PendingPurchaseOrdersReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PurchaseOrderStatusDetails Report" description="description for PurchaseOrderStatusDetails Report"  testID="WOW 28">
+    <test name="Checking PurchaseOrderStatusDetails Report" description="description for PurchaseOrderStatusDetails Report"  testID="WOW 40">
         <classes>
             <class name="menuItems.purchase.reports.PurchaseOrderStatusDetailsReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PurchaseOrdersCancellations Report" description="description for PurchaseOrdersCancellations Report"  testID="WOW 29">
+    <test name="Checking PurchaseOrdersCancellations Report" description="description for PurchaseOrdersCancellations Report"  testID="WOW 41">
         <classes>
             <class name="menuItems.purchase.reports.PurchaseOrdersCancellationsReport"></class>
         </classes>
     </test>
 
-    <test name="Checking MaterialReceipts Report" description="description for MaterialReceipts Report"  testID="WOW 30">
+    <test name="Checking MaterialReceipts Report" description="description for MaterialReceipts Report"  testID="WOW 42">
         <classes>
             <class name="menuItems.purchase.reports.MaterialReceiptsReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PendingMaterialReceipts Report" description="description for PendingMaterialReceipts Report"  testID="WOW 31">
+    <test name="Checking PendingMaterialReceipts Report" description="description for PendingMaterialReceipts Report"  testID="WOW 43">
         <classes>
             <class name="menuItems.purchase.reports.PendingMaterialReceiptsReport"></class>
         </classes>
     </test>
 
-    <test name="Checking MaterialReceiptsAgainstOrders Report" description="description for MaterialReceiptsAgainstOrders Report"  testID="WOW 32">
+    <test name="Checking MaterialReceiptsAgainstOrders Report" description="description for MaterialReceiptsAgainstOrders Report"  testID="WOW 44">
         <classes>
             <class name="menuItems.purchase.reports.MaterialReceiptsAgainstOrdersReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PendingPurchaseOrdersWithReceipts Report" description="description for PendingPurchaseOrdersWithReceipts Report"  testID="WOW 32">
+    <test name="Checking PendingPurchaseOrdersWithReceipts Report" description="description for PendingPurchaseOrdersWithReceipts Report"  testID="WOW 45">
         <classes>
             <class name="menuItems.purchase.reports.PendingPurchaseOrdersWithReceiptsReport"></class>
         </classes>
     </test>
 
-    <test name="Checking MaterialReturns Report" description="description for MaterialReturns Report"  testID="WOW 34">
+    <test name="Checking MaterialReturns Report" description="description for MaterialReturns Report"  testID="WOW 46">
         <classes>
             <class name="menuItems.purchase.reports.MaterialReturnsReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PurchaseBooks Report" description="description for PurchaseBooks Report"  testID="WOW 35">
+    <test name="Checking PurchaseBooks Report" description="description for PurchaseBooks Report"  testID="WOW 47">
         <classes>
             <class name="menuItems.purchase.reports.PurchaseBooksReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PurchaseVouchersAgainstOrders Report" description="description for PurchaseVouchersAgainstOrders Report"  testID="WOW 36">
+    <test name="Checking PurchaseVouchersAgainstOrders Report" description="description for PurchaseVouchersAgainstOrders Report"  testID="WOW 48">
         <classes>
             <class name="menuItems.purchase.reports.PurchaseVouchersAgainstOrdersReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PurchaseVouchersAgainstReceiptsReport Report" description="description for PurchaseVouchersAgainstReceipts Report"  testID="WOW 37">
+    <test name="Checking PurchaseVouchersAgainstReceiptsReport Report" description="description for PurchaseVouchersAgainstReceipts Report"  testID="WOW 49">
         <classes>
             <class name="menuItems.purchase.reports.PurchaseVouchersAgainstReceiptsReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PurchaseReturnsWithInvoiceReferences Report" description="description for PurchaseReturnsWithInvoiceReferences Report"  testID="WOW 38">
+    <test name="Checking PurchaseReturnsWithInvoiceReferences Report" description="description for PurchaseReturnsWithInvoiceReferences Report"  testID="WOW 50">
         <classes>
             <class name="menuItems.purchase.reports.PurchaseReturnsWithInvoiceReferencesReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PurchasePriceUpdations Report" description="description for PurchasePriceUpdations Report"  testID="WOW 39">
+    <test name="Checking PurchasePriceUpdations Report" description="description for PurchasePriceUpdations Report"  testID="WOW 51">
         <classes>
             <class name="menuItems.purchase.reports.PurchasePriceUpdationReport"></class>
         </classes>
     </test>
 
-    <test name="Checking MonthWisePurchaseByQuantity1 Report" description="description forMonthWisePurchaseByQuantity Report"  testID="WOW 40">
-        <classes>
-            <class name="menuItems.purchase.reports.analysis.party.MonthWisePurchaseByQuantityReport"></class>
-        </classes>
-    </test>
-
-    <test name="Checking MonthWisePurchaseByValue1 Report" description="description for MonthWisePurchaseByValue Report"  testID="WOW 41">
-        <classes>
-            <class name="menuItems.purchase.reports.analysis.party.MonthWisePurchaseByValueReport"></class>
-        </classes>
-    </test>
-
-    <test name="Checking YearWisePurchaseByQuantity1 Report" description="description for YearWisePurchaseByQuantity Report"  testID="WOW 42">
-        <classes>
-            <class name="menuItems.purchase.reports.analysis.party.YearWisePurchaseByQuantityReport"></class>
-        </classes>
-    </test>
-
-    <test name="Checking YearWisePurchaseByValue1 Report" description="description for YearWisePurchaseByValue Report"  testID="WOW 43">
-        <classes>
-            <class name="menuItems.purchase.reports.analysis.party.YearWisePurchaseByValueReport"></class>
-        </classes>
-    </test>
-
-    <test name="Checking MonthWisePurchaseByQuantity2 Report" description="description for MonthWisePurchaseByQuantity Report"  testID="WOW 44">
-        <classes>
-            <class name="menuItems.purchase.reports.analysis.product.MonthWisePurchaseByQuantityReport"></class>
-        </classes>
-    </test>
-
-    <test name="Checking MonthWisePurchaseByValue2 Report" description="description for MonthWisePurchaseByValue Report"  testID="WOW 45">
-        <classes>
-            <class name="menuItems.purchase.reports.analysis.product.MonthWisePurchaseByValueReport"></class>
-        </classes>
-    </test>
-
-    <test name="Checking YearWisePurchaseByQuantity2 Report" description="description for YearWisePurchaseByQuantity Report"  testID="WOW 46">
-        <classes>
-            <class name="menuItems.purchase.reports.analysis.product.YearWisePurchaseByQuantityReport"></class>
-        </classes>
-    </test>
-
-    <test name="Checking YearWisePurchaseByValue2 Report" description="description for YearWisePurchaseByValue Report"  testID="WOW 47">
-        <classes>
-            <class name="menuItems.purchase.reports.analysis.product.YearWisePurchaseByValueReport"></class>
-        </classes>
-    </test>
-
-    <test name="Location Master" description="Test 1 description" testID="1">
-        <classes>
-            <class name="menuItems.inventory.masters.product.Location"/>
-        </classes>
-    </test>
-
-    <test name="Non-Inventory Items Master" description="Test 2 description" testID="2">
-        <classes>
-            <class name="menuItems.inventory.masters.product.NonInventoryItem"/>
-        </classes>
-    </test>
-
-    <test name="Products Master" description="Test 3 description" testID="3">
-        <classes>
-            <class name="menuItems.inventory.masters.product.Product"/>
-        </classes>
-    </test>
-
-    <test name="Services Master" description="Test 4 description" testID="4">
-        <classes>
-            <class name="menuItems.inventory.masters.product.Service"/>
-        </classes>
-    </test>
-
-    <test name="Storage Bins Master" description="Test 5 description" testID="5">
-        <classes>
-            <class name="menuItems.inventory.masters.product.StorageBin"/>
-        </classes>
-    </test>
-
-    <test name="Units Of Measure Master" description="Test 6 description" testID="6">
-        <classes>
-            <class name="menuItems.inventory.masters.product.UnitOfMeasure"/>
-        </classes>
-    </test>
-
-    <test name="Product Batch Master" description="Test 7 description" testID="7">
-        <classes>
-            <class name="menuItems.inventory.masters.product.batches.ProductBatche"/>
-        </classes>
-    </test>
-
-    <test name="Product Batch-serial No Master" description="Test 8 description" testID="8">
-        <classes>
-            <class name="menuItems.inventory.masters.product.batches.ProductBatchesSerialNo"/>
-        </classes>
-    </test>
-
-    <test name="Product Batch-Multi Batch Master" description="Test 9 description" testID="9">
-        <classes>
-            <class name="menuItems.inventory.masters.product.batches.ProductsMultiBatch"/>
-        </classes>
-    </test>
-
-    <test name="Opening Stock Transaction" description="Test 10 description" testID="10">
-        <classes>
-            <class name="menuItems.inventory.transactions.OpeningStockTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Opening Stock Report" description="Test 11 description" testID="11">
-        <classes>
-            <class name="menuItems.inventory.reports.OpeningStockReport"/>
-        </classes>
-    </test>
-
-    <test name="Stock Creation Transaction" description="Test 12 description" testID="12">
-        <classes>
-            <class name="menuItems.inventory.transactions.StockCreationTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Stock Creation Report" description="Test 13 description" testID="13">
-        <classes>
-            <class name="menuItems.inventory.reports.StockCreationReport"/>
-        </classes>
-    </test>
-
-    <test name="Stock Consumption Transaction" description="Test 14 description" testID="14">
-        <classes>
-            <class name="menuItems.inventory.transactions.StockConsumptionTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Stock Consumption Report" description="Test 15 description" testID="15">
-        <classes>
-            <class name="menuItems.inventory.reports.StockConsumptionReport"/>
-        </classes>
-    </test>
-
-    <test name="Stock Conversion Transaction" description="Test 16 description" testID="16">
-        <classes>
-            <class name="menuItems.inventory.transactions.StockConversionTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Stock Conversion Report" description="Test 17 description" testID="17">
-        <classes>
-            <class name="menuItems.inventory.reports.StockConversionReport"/>
-        </classes>
-    </test>
-
-    <test name="Inter Location Transfer Transaction" description="Test 18 description" testID="18">
-        <classes>
-            <class name="menuItems.inventory.transactions.InterLocatonTransfersTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Inter Location Transfer Report" description="Test 19 description" testID="19">
-        <classes>
-            <class name="menuItems.inventory.reports.InterLocationTransfers"/>
-        </classes>
-    </test>
-    <!---->
-    <test name="Master Info-Product with GST Detail Report" description="Test 20 description" testID="20">
-        <classes>
-            <class name="menuItems.inventory.reports.masterInfo.ProductWithGSTDetail"/>
-        </classes>
-    </test>
-
-    <test name="Master Info- Master Detail Report" description="Test 21 description" testID="21">
-        <classes>
-            <class name="menuItems.inventory.reports.masterInfo.MasterDetail"/>
-        </classes>
-    </test>
-
-    <test name="Master Info-Product Alternate UOM Detail Report" description="Test 22 description" testID="22">
-        <classes>
-            <class name="menuItems.inventory.reports.masterInfo.ProductAlternateUOMDetail"/>
-        </classes>
-    </test>
-
-    <test name="Master Info-Product Batch Report" description="Test 23 description" testID="23">
-        <classes>
-            <class name="menuItems.inventory.reports.masterInfo.ProductBatch"/>
-        </classes>
-    </test>
-
-
-    <test name="Stock- Stock Ledger Report" description="Test 24 description" testID="24">
-        <classes>
-            <class name="menuItems.inventory.reports.stock.StockLedgerReport"/>
-        </classes>
-    </test>
-
-    <test name="Stock - Stock List Report" description="Test 25 description" testID="25">
-        <classes>
-            <class name="menuItems.inventory.reports.stock.StockListReport"/>
-        </classes>
-    </test>
-
-    <test name="Stock - Stock Balance Report" description="Test 26 description" testID="26">
-        <classes>
-            <class name="menuItems.inventory.reports.stock.StockBalanceReport"/>
-        </classes>
-    </test>
-
-    <test name="Stock - Stock Valuation Report" description="Test 27 description" testID="27">
-        <classes>
-            <class name="menuItems.inventory.reports.stock.StockValuationReport"/>
-        </classes>
-    </test>
-
-    <test name="Stock- stock ageing Report" description="Test 28 description" testID="28">
-        <classes>
-            <class name="menuItems.inventory.reports.stock.StockAgeingReport"/>
-        </classes>
-    </test>
-
-    <test name="Stock - Stock Transaction Analysis Report" description="Test 29 description" testID="29">
-        <classes>
-            <class name="menuItems.inventory.reports.stock.StockTransactionAnalysisReport"/>
-        </classes>
-    </test>
-
-    <test name="Stock- company wise recorder level Report" description="Test 30 description" testID="30">
-        <classes>
-            <class name="menuItems.inventory.reports.stock.CompanyWiseReorderLevelReport"/>
-        </classes>
-    </test>
-
-    <test name="Stock - Stock List with alternate UOM Report" description="Test 31 description" testID="31">
-        <classes>
-            <class name="menuItems.inventory.reports.stock.StockListWithAlternatUOM"/>
-        </classes>
-    </test>
-
-    <test name="Stock- Serial No history Report" description="Test 32 description" testID="32">
-        <classes>
-            <class name="menuItems.inventory.reports.stock.SerialNoHistoryReport"/>
-        </classes>
-    </test>
-
-    <test name="Stock - Material Issues and Stock consumption Report" description="Test 33 description" testID="33">
-        <classes>
-            <class name="menuItems.inventory.reports.stock.MaterialIssueAndStockConsumption"/>
-        </classes>
-    </test>
-
-    <test name="Chart of Accounts - Bank" description="Bank Master Description" testID="1">
-        <classes>
-            <class name="menuItems.finance.masters.ChartOfAccounts.Assests.Bank"/>
-        </classes>
-    </test>
-
-    <test name="Chart of Accounts - Cash" description="Cash Master Description" testID="2">
-        <classes>
-            <class name="menuItems.finance.masters.ChartOfAccounts.Assests.Cash"/>
-        </classes>
-    </test>
-
-    <test name="Chart of Accounts - FixedAssests" description="FixedAssests Master Description" testID="3">
-        <classes>
-            <class name="menuItems.finance.masters.ChartOfAccounts.Assests.FixedAssests"/>
-        </classes>
-    </test>
-
-    <test name="Chart of Accounts - Inventories" description="Inventories Master Description" testID="4">
-        <classes>
-            <class name="menuItems.finance.masters.ChartOfAccounts.Assests.Inventories"/>
-        </classes>
-    </test>
-
-    <test name="Chart of Accounts - Investments" description="Investments Master Description" testID="5">
-        <classes>
-            <class name="menuItems.finance.masters.ChartOfAccounts.Assests.Investments"/>
-        </classes>
-    </test>
-
-    <test name="Chart of Accounts - MiscellaneousAssests" description="MiscellaneousAssests Master Description" testID="6">
-        <classes>
-            <class name="menuItems.finance.masters.ChartOfAccounts.Assests.MiscellaneousAssests"/>
-        </classes>
-    </test>
-
-    <test name="Chart of Accounts - SundryDebtors" description="SundryDebtors Master Description" testID="7">
-        <classes>
-            <class name="menuItems.finance.masters.ChartOfAccounts.Assests.SundryDebtors"/>
-        </classes>
-    </test>
-
-    <test name="Chart of Accounts - CaptialShareHoldersFunds" description="CaptialShareHoldersFunds Master Description" testID="8">
-        <classes>
-            <class name="menuItems.finance.masters.ChartOfAccounts.Liabilities.CaptialShareHoldersFunds"/>
-        </classes>
-    </test>
-
-    <test name="Chart of Accounts - OtherCurrentLiabilities" description="OtherCurrentLiabilities Master Description" testID="9">
-        <classes>
-            <class name="menuItems.finance.masters.ChartOfAccounts.Liabilities.OtherCurrentLiabilities"/>
-        </classes>
-    </test>
-
-    <test name="Chart of Accounts - Provisions" description="Provisions Master Description" testID="10">
-        <classes>
-            <class name="menuItems.finance.masters.ChartOfAccounts.Liabilities.Provisions"/>
-        </classes>
-    </test>
-
-    <test name="Chart of Accounts - ReservesAndSurplus" description="ReservesAndSurplus Master Description" testID="11">
-        <classes>
-            <class name="menuItems.finance.masters.ChartOfAccounts.Liabilities.ReservesAndSurplus"/>
-        </classes>
-    </test>
-
-    <test name="Chart of Accounts - SecuredLoans" description="SecuredLoans Master Description" testID="12">
-        <classes>
-            <class name="menuItems.finance.masters.ChartOfAccounts.Liabilities.SecuredLoans"/>
-        </classes>
-    </test>
-
-    <test name="Chart of Accounts - SundryCreditiorsSuppliers" description="SundryCreditiorsSuppliers Master Description" testID="13">
-        <classes>
-            <class name="menuItems.finance.masters.ChartOfAccounts.Liabilities.SundryCreditiorsSuppliers"/>
-        </classes>
-    </test>
-
-    <test name="Chart of Accounts - Unsecured Loans" description="UnsecuredLoans Master Description" testID="14">
-        <classes>
-            <class name="menuItems.finance.masters.ChartOfAccounts.Liabilities.UnsecuredLoans"/>
-        </classes>
-    </test>
-
-    <test name="Chart of Accounts - AdministrativeExpenses" description="AdministrativeExpenses Master Description" testID="15">
-        <classes>
-            <class name="menuItems.finance.masters.ChartOfAccounts.ProfitAndLoss.AdministrativeExpenses"/>
-        </classes>
-    </test>
-
-    <test name="Chart of Accounts - Appropriations" description="Appropriations Master Description" testID="16">
-        <classes>
-            <class name="menuItems.finance.masters.ChartOfAccounts.ProfitAndLoss.Appropriations"/>
-        </classes>
-    </test>
-
-    <test name="Chart of Accounts - Depreciation" description="Depreciation Master Description" testID="17">
-        <classes>
-            <class name="menuItems.finance.masters.ChartOfAccounts.ProfitAndLoss.Depreciation"/>
-        </classes>
-    </test>
-
-    <test name="Chart of Accounts - Finance Expenses" description="FinanceExpenses Master Description" testID="18">
-        <classes>
-            <class name="menuItems.finance.masters.ChartOfAccounts.ProfitAndLoss.FinanceExpenses"/>
-        </classes>
-    </test>
-
-    <test name="Chart of Accounts - Opening And ClosingStock" description="OpeningAndClosingStock Master Description" testID="19">
-        <classes>
-            <class name="menuItems.finance.masters.ChartOfAccounts.ProfitAndLoss.OpeningAndClosingStock"/>
-        </classes>
-    </test>
-
-    <test name="Chart of Accounts - Other Incomes" description="OtherIncomes Master Description" testID="20">
-        <classes>
-            <class name="menuItems.finance.masters.ChartOfAccounts.ProfitAndLoss.OtherIncomes"/>
-        </classes>
-    </test>
-
-    <test name="Chart of Accounts - Purchases" description="Purchases Master Description" testID="21">
-        <classes>
-            <class name="menuItems.finance.masters.ChartOfAccounts.ProfitAndLoss.Purchases"/>
-        </classes>
-    </test>
-
-    <test name="Chart of Accounts - Sales" description="Sales Master Description" testID="22">
-        <classes>
-            <class name="menuItems.finance.masters.ChartOfAccounts.ProfitAndLoss.Sales"/>
-        </classes>
-    </test>
-
-    <test name="Chart of Accounts - Selling And Distribution Expenses" description="SellingAndDistributionExpenses Master Description" testID="23">
-        <classes>
-            <class name="menuItems.finance.masters.ChartOfAccounts.ProfitAndLoss.SellingAndDistributionExpenses"/>
-        </classes>
-    </test>
-
-    <test name="Chart of Accounts - Taxes And Other Charges" description="TaxesAndOtherCharges Master Description" testID="24">
-        <classes>
-            <class name="menuItems.finance.masters.ChartOfAccounts.ProfitAndLoss.TaxesAndOtherCharges"/>
-        </classes>
-    </test>
-
-    <test name="Credit Cards - Swipe Machine Type" description="Swipe Machine Type Master Description" testID="25">
-        <classes>
-            <class name="menuItems.finance.masters.CreditCards.SwipeMachineTypeMaster"/>
-        </classes>
-    </test>
-
-    <test name="Credit Cards - Swipe Type" description="Swipe Type Master Description" testID="26">
-        <classes>
-            <class name="menuItems.finance.masters.CreditCards.SwipeTypeMaster"/>
-        </classes>
-    </test>
-
-    <test name="Manage Currencies - Manage Currencies" description="Manage Currency Master Description" testID="27">
-        <classes>
-            <class name="menuItems.finance.masters.ManageCurrencies.ManageCurrencyMaster"/>
-        </classes>
-    </test>
-
-    <test name="Drawn On Bank" description="Drawn On Master Description" testID="28">
-        <classes>
-            <class name="menuItems.finance.masters.DrawnOnBanksMaster"/>
-        </classes>
-    </test>
-
-    <test name="Analysis - Transaction Analysis" description="Test 1 description" testID="1">
-        <classes>
-            <class name="menuItems.finance.reports.Analysis.TransactionAnalysisReport"/>
-        </classes>
-    </test>
-
-    <test name="Analysis - Trend Analysis" description="Test 2 description" testID="2">
-        <classes>
-            <class name="menuItems.finance.reports.Analysis.TrendAnalysisReport"/>
-        </classes>
-    </test>
-
-    <test name="Balances - Customer Balances" description="Test 3 description" testID="3">
-        <classes>
-            <class name="menuItems.finance.reports.Balances.CustomerBalancesReport"/>
-        </classes>
-    </test>
-
-    <test name="Balances - Supplier Balances" description="Test 4 description" testID="4">
-        <classes>
-            <class name="menuItems.finance.reports.Balances.SupplierBalancesReport"/>
-        </classes>
-    </test>
-
-    <test name="Balances - Account Balances" description="Test 5 description" testID="5">
-        <classes>
-            <class name="menuItems.finance.reports.Balances.AccountBalancesReport"/>
-        </classes>
-    </test>
-
-    <test name="Pending Bills - For Customer" description="Test 6 description" testID="6">
-        <classes>
-            <class name="menuItems.finance.reports.PendingBills.PendingBillsForCustomerReport"/>
-        </classes>
-    </test>
-
-    <test name="Pending Bills - For Customers" description="Test 7 description" testID="7">
-        <classes>
-            <class name="menuItems.finance.reports.PendingBills.PendingBillsForCustomersReport"/>
-        </classes>
-    </test>
-
-    <test name="Pending Bills - For Supplier" description="Test 8 description" testID="8">
-        <classes>
-            <class name="menuItems.finance.reports.PendingBills.PendingBillsForSupplierReport"/>
-        </classes>
-    </test>
-
-    <test name="Pending Bills - For Suppliers" description="Test 9 description" testID="9">
-        <classes>
-            <class name="menuItems.finance.reports.PendingBills.PendingBillsForSuppliersReport"/>
-        </classes>
-    </test>
-
-    <test name="Financial Statements - Trial Balance" description="Test 10 description" testID="10">
-        <classes>
-            <class name="menuItems.finance.reports.FinancialStatements.TrialBalanceReport"/>
-        </classes>
-    </test>
-
-    <test name="Financial Statements - Profit and Loss" description="Test 11 description" testID="11">
-        <classes>
-            <class name="menuItems.finance.reports.FinancialStatements.ProfitAndLossReport"/>
-        </classes>
-    </test>
-
-    <test name="Financial Statements - Balance Sheet" description="Test 12 description" testID="12">
-        <classes>
-            <class name="menuItems.finance.reports.FinancialStatements.BalanceSheetReport"/>
-        </classes>
-    </test>
-
-    <test name="Financial Statements - Profit and Loss T-form" description="Test 13 description" testID="13">
-        <classes>
-            <class name="menuItems.finance.reports.FinancialStatements.ProfitandLossTformReport"/>
-        </classes>
-    </test>
-
-    <test name="Financial Statements - Balance Sheet T-form" description="Test 14 description" testID="14">
-        <classes>
-            <class name="menuItems.finance.reports.FinancialStatements.BalanceSheetTFormReport"/>
-        </classes>
-    </test>
-
-    <test name="Financial Statements - Cash Flow" description="Test 15 description" testID="15">
-        <classes>
-            <class name="menuItems.finance.reports.FinancialStatements.CashFlowReport"/>
-        </classes>
-    </test>
-
-    <test name="Financial Statements - Funds Flow" description="Test 16 description" testID="16">
-        <classes>
-            <class name="menuItems.finance.reports.FinancialStatements.FundsFlowReport"/>
-        </classes>
-    </test>
-
-    <test name="Financial Statements - Profit and Loss Manual Stock" description="Test 17 description" testID="17">
-        <classes>
-            <class name="menuItems.finance.reports.FinancialStatements.ProfitandLossManualStockReport"/>
-        </classes>
-    </test>
-
-    <test name="Financial Statements - Balance Sheet Manual Stock" description="Test 18 description" testID="18">
-        <classes>
-            <class name="menuItems.finance.reports.FinancialStatements.BalanceSheetManualStockReport"/>
-        </classes>
-    </test>
-
-    <test name="Books - Cash Book[Day Balance]" description="Test 19 description" testID="19">
-        <classes>
-            <class name="menuItems.finance.reports.Books.CashBookDayBalanceReport"/>
-        </classes>
-    </test>
-
-    <test name="Books - Bank Book[Day Balance]" description="Test 20 description" testID="20">
-        <classes>
-            <class name="menuItems.finance.reports.Books.BankBookDayBalanceReport"/>
-        </classes>
-    </test>
-
-    <test name="Books - Day Book" description="Test 21 description" testID="21">
-        <classes>
-            <class name="menuItems.finance.reports.Books.DayBookReport"/>
-        </classes>
-    </test>
-
-    <test name="Master info - Party billing adress with GST" description="Test 22 description" testID="22">
-        <classes>
-            <class name="menuItems.finance.reports.MasterInfo.PartyBillingAddresswithGSTRegDetailsReport"/>
-        </classes>
-    </test>
-
-    <test name="Master info - Chart of Accounts" description="Test 23 description" testID="23">
-        <classes>
-            <class name="menuItems.finance.reports.MasterInfo.ChartofAccountsReport"/>
-        </classes>
-    </test>
-
-    <test name="Master info - Customers" description="Test 24 description" testID="24">
-        <classes>
-            <class name="menuItems.finance.reports.MasterInfo.CustomersReport"/>
-        </classes>
-    </test>
-
-    <test name="Master info - Suppliers" description="Test 25 description" testID="25">
-        <classes>
-            <class name="menuItems.finance.reports.MasterInfo.SuppliersReport"/>
-        </classes>
-    </test>
-
-    <test name="Ledger - ledger" description="Test 26 description" testID="26">
-        <classes>
-            <class name="menuItems.finance.reports.Ledger.LedgerReport"/>
-        </classes>
-    </test>
-    <!-- receipts -->
-    <test name="Receipts - Receipts from Parties" description="TestReceiptsFromPartiesTransaction" testID="1">
-        <classes>
-            <class name="menuItems.finance.transactions.Receipts.ReceiptsFromPartiesTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Receipts - Cash Receipts" description="Test CashReceiptTransaction" testID="2">
-        <classes>
-            <class name="menuItems.finance.transactions.Receipts.CashReceiptTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Receipts - Bank Receipts" description="Test BankReceiptsTransaction" testID="23">
-        <classes>
-            <class name="menuItems.finance.transactions.Receipts.BankReceiptsTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Receipts - Credit Card Receipts" description="Test CreditCardReceiptTransaction" testID="4">
-        <classes>
-            <class name="menuItems.finance.transactions.Receipts.CreditCardReceiptTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Receipts - Receipts from credit card companies" description="TestReceiptsFromCreditCardCompaniesTransaction" testID="5">
-        <classes>
-            <class name="menuItems.finance.transactions.Receipts.ReceiptsFromCreditCardCompaniesTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Payments- Payments to Parties" description="Test PaymentToPartiesTransaction" testID="6">
-        <classes>
-            <class name="menuItems.finance.transactions.Payments.PaymentToPartiesTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Payments- Cash Payments" description="TestCashPaymentsTransaction" testID="7">
-        <classes>
-            <class name="menuItems.finance.transactions.Payments.CashPaymentsTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Payments- Bank Payments" description="Test BankPaymentsTransaction" testID="8">
-        <classes>
-            <class name="menuItems.finance.transactions.Payments.BankPaymentsTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Payments- Cash Transfers" description="TestCashTransferTransaction" testID="9">
-        <classes>
-            <class name="menuItems.finance.transactions.Payments.CashTransferTransaction"/>
-        </classes>
-    </test>
-    <!-- Banking !-->
-    <test name="Banking - Cash Deposits and Withdrawls" description="Test CashDepositsAndWithdrawlsTransaction" testID="10">
-        <classes>
-            <class name="menuItems.finance.transactions.Banking.CashDepositsAndWithdrawlsTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Banking - Inter Bank Fund Transfer" description="Test InterBankFundTransferTransaction" testID="11">
-        <classes>
-            <class name="menuItems.finance.transactions.Banking.InterBankFundTransferTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Banking - Bank Reconciliation" description="Test BankReconciliationTransaction" testID="12">
-        <classes>
-            <class name="menuItems.finance.transactions.Banking.BankReconciliationTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Banking - Deposit Post Dated Cheques" description="TestDepositPostDatedChequesTransaction" testID="13">
-        <classes>
-            <class name="menuItems.finance.transactions.Banking.DepositPostDatedChequesTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Banking - Opening Uncleared Bank Entries" description="Test OpeningUnclearedBankEntriesTransaction" testID="14">
-        <classes>
-            <class name="menuItems.finance.transactions.Banking.OpeningUnclearedBankEntriesTransaction"/>
-        </classes>
-    </test>
-    <!-- Party Adjustments !-->
-    <test name="Party Adjustments- Adjust Party Bills" description="Test AdjustPartyBillsTransaction" testID="15">
-        <classes>
-            <class name="menuItems.finance.transactions.PartyAdjustments.AdjustPartyBillsTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Party Adjustments- Debit Note" description="Test DebitNoteTransaction" testID="16">
-        <classes>
-            <class name="menuItems.finance.transactions.PartyAdjustments.DebitNoteTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Party Adjustments- Credit Note" description="Test CreditNoteTransaction" testID="17">
-        <classes>
-            <class name="menuItems.finance.transactions.PartyAdjustments.CreditNoteTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Party Adjustments- Debit Note on Customers" description="Test DebitNoteOnCustomersTransaction" testID="18">
-        <classes>
-            <class name="menuItems.finance.transactions.PartyAdjustments.DebitNoteOnCustomersTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Party Adjustments- Credit Note on Customer" description="Test CreditNoteOnCustomerTransaction" testID="19">
-        <classes>
-            <class name="menuItems.finance.transactions.PartyAdjustments.CreditNoteOnCustomerTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Party Adjustments- Credit Note from Suppliers" description="Test CreditNoteFromSupplierTransaction" testID="20">
-        <classes>
-            <class name="menuItems.finance.transactions.PartyAdjustments.CreditNoteFromSupplierTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Party Adjustments- Debit Note from Suppliers" description="Test DebitNoteFromSuppliersTransaction" testID="21">
-        <classes>
-            <class name="menuItems.finance.transactions.PartyAdjustments.DebitNoteFromSuppliersTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Journals - Journal Entires" description="TestJournalEntriesTransaction" testID="22">
-        <classes>
-            <class name="menuItems.finance.transactions.Journals.JournalEntriesTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Journals - Book Income or Receivables" description="Test BookIncomeOrReceivablesTransaction" testID="23">
-        <classes>
-            <class name="menuItems.finance.transactions.Journals.BookIncomeOrReceivablesTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Journals - Book Expenses or Payables" description="Test BookExpensesOrPayablesTransaction" testID="24">
-        <classes>
-            <class name="menuItems.finance.transactions.Journals.BookExpensesOrPayablesTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Opening Balances - Party Opening Balances" description="Test PartyOpeningBalancesTransaction" testID="25">
-        <classes>
-            <class name="menuItems.finance.transactions.OpeningBalances.PartyOpeningBalancesTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Opening Balances -  Opening Balances" description="Test OpeningBalancesTransaction" testID="26">
-        <classes>
-            <class name="menuItems.finance.transactions.OpeningBalances.OpeningBalancesTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Opening Balances -  Opening Balances from Credit Card Companies" description="Test OpeningReceiptsFromCreditCardCompaniesTransaction" testID="27">
-        <classes>
-            <class name="menuItems.finance.transactions.OpeningBalances.OpeningReceiptsFromCreditCardCompaniesTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Opening Balances - Manual Stock Valuation" description="Test ManualStockValuationTransaction " testID="28">
-        <classes>
-            <class name="menuItems.finance.transactions.OpeningBalances.ManualStockValuationTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Opening Balances - Transfer Income and Expenses to PL" description="Test TransferIncomesandExpensestoPLTransaction " testID="29">
-        <classes>
-            <class name="menuItems.finance.transactions.OpeningBalances.TransferIncomesandExpensestoPLTransaction"/>
-        </classes>
-    </test>
-
-    <!-- masters of Production menu -->
-    <test name="Create BillOfMaterialsMaster" description="description for BillOfMaterialsMaster"  testID="WOW 1">
+<!--    <test name="Checking MonthWisePurchaseByQuantity1 Report" description="description forMonthWisePurchaseByQuantity Report"  testID="WOW 52">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.analysis.party.MonthWisePurchaseByQuantityReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+<!--    <test name="Checking MonthWisePurchaseByValue1 Report" description="description for MonthWisePurchaseByValue Report"  testID="WOW 53">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.analysis.party.MonthWisePurchaseByValueReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+<!--    <test name="Checking YearWisePurchaseByQuantity1 Report" description="description for YearWisePurchaseByQuantity Report"  testID="WOW 54">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.analysis.party.YearWisePurchaseByQuantityReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+<!--    <test name="Checking YearWisePurchaseByValue1 Report" description="description for YearWisePurchaseByValue Report"  testID="WOW 55">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.analysis.party.YearWisePurchaseByValueReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+<!--    <test name="Checking MonthWisePurchaseByQuantity2 Report" description="description for MonthWisePurchaseByQuantity Report"  testID="WOW 56">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.analysis.product.MonthWisePurchaseByQuantityReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+<!--    <test name="Checking MonthWisePurchaseByValue2 Report" description="description for MonthWisePurchaseByValue Report"  testID="WOW 57">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.analysis.product.MonthWisePurchaseByValueReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+<!--    <test name="Checking YearWisePurchaseByQuantity2 Report" description="description for YearWisePurchaseByQuantity Report"  testID="WOW 58">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.analysis.product.YearWisePurchaseByQuantityReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+<!--    <test name="Checking YearWisePurchaseByValue2 Report" description="description for YearWisePurchaseByValue Report"  testID="WOW 59">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.analysis.product.YearWisePurchaseByValueReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+    <!-- purchase completed-->
+
+    <test name="Create BillOfMaterialsMaster" description="description for BillOfMaterialsMaster"  testID="WOW 60">
         <classes>
             <class name="menuItems.Production.masters.BillOfMaterialsMater"></class>
         </classes>
     </test>
 
-    <test name="Create ProductionBatchPoliciesMaster" description="description for BillOfMaterialsMaster"  testID="WOW 2">
+    <test name="Create ProductionBatchPoliciesMaster" description="description for BillOfMaterialsMaster"  testID="WOW 61">
         <classes>
             <class name="menuItems.Production.masters.ProductionBatchPoliciesMaster"></class>
         </classes>
     </test>
 
-    <test name="Performing Assign StandardRates Transaction" description="description for AssignStandardRatesTransaction"  testID="WOW 3">
+    <test name="Performing Assign StandardRates Transaction" description="description for AssignStandardRatesTransaction"  testID="WOW 62">
         <classes>
             <class name="menuItems.Production.transactions.AssignStandardRatesTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing ProductionOrder Transaction" description="description for ProductionOrderTransaction"  testID="WOW 4">
+    <test name="Performing ProductionOrder Transaction" description="description for ProductionOrderTransaction"  testID="WOW 63">
         <classes>
             <class name="menuItems.Production.transactions.ProductionOrdersTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing MaterialIssuesToProduction Transaction" description="description for MaterialIssuesToProductionTransaction"  testID="WOW 5">
+    <test name="Performing MaterialIssuesToProduction Transaction" description="description for MaterialIssuesToProductionTransaction"  testID="WOW 64">
         <classes>
             <class name="menuItems.Production.transactions.MaterialIssuesToProductionTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing MaterialReturnsFromProduction Transaction" description="description for MaterialReturnsFromProductionTransaction"  testID="WOW 6">
+    <test name="Performing MaterialReturnsFromProduction Transaction" description="description for MaterialReturnsFromProductionTransaction"  testID="WOW 65">
         <classes>
             <class name="menuItems.Production.transactions.MaterialReturnsFromProductionTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing MaterialReceiptsFrom Production Transaction" description="description for MaterialReceiptsFromProductionTransaction"  testID="WOW 7">
+    <test name="Performing MaterialReceiptsFrom Production Transaction" description="description for MaterialReceiptsFromProductionTransaction"  testID="WOW 66">
         <classes>
             <class name="menuItems.Production.transactions.MaterialReceiptFromProductionTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing CloseProductionOrder Transaction" description="description for CloseProductionOrderTransaction"  testID="WOW 8">
+    <test name="Performing CloseProductionOrder Transaction" description="description for CloseProductionOrderTransaction"  testID="WOW 67">
         <classes>
             <class name="menuItems.Production.transactions.CloseProductionOrderTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing MaterialIssuesAndReceiptsFromProduction Transaction " description="description for MaterialIssuesAndReceiptsFromProductionTransaction"  testID="WOW 9">
+    <test name="Performing MaterialIssuesAndReceiptsFromProduction Transaction " description="description for MaterialIssuesAndReceiptsFromProductionTransaction"  testID="WOW 68">
         <classes>
             <class name="menuItems.Production.transactions.MaterialIssuesAndReceiptsFromProductionTransaction"></class>
         </classes>
     </test>
     <!-- Transactions of production menu completed-->
 
-    <test name="Checking BillOfMaterialsReport" description="description for BillOfMaterials Report"  testID="WOW 10">
+    <test name="Checking BillOfMaterialsReport" description="description for BillOfMaterials Report"  testID="WOW 69">
         <classes>
             <class name="menuItems.Production.reports.BillOfMaterials"></class>
         </classes>
     </test>
 
-    <test name="Checking AssignStandardRateReport" description="description for AssignStandardRate Report"  testID="WOW 11">
+    <test name="Checking AssignStandardRateReport" description="description for AssignStandardRate Report"  testID="WOW 70">
         <classes>
             <class name="menuItems.Production.reports.AssignStandardRatesReport"></class>
         </classes>
     </test>
 
-    <test name="Checking ProductionOrderReport" description="description for ProductionOrder Report"  testID="WOW 12">
+    <test name="Checking ProductionOrderReport" description="description for ProductionOrder Report"  testID="WOW 71">
         <classes>
             <class name="menuItems.Production.reports.ProductionOrdersReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PendingProductionOrderReport" description="description for PendingProductionOrder Report"  testID="WOW 13">
+    <test name="Checking PendingProductionOrderReport" description="description for PendingProductionOrder Report"  testID="WOW 72">
         <classes>
             <class name="menuItems.Production.reports.PendingProductionOrderReport"></class>
         </classes>
     </test>
 
-    <test name="Checking MaterialIssuesToProductionReport" description="description for MaterialIssuesToProduction Report"  testID="WOW 14">
+    <test name="Checking MaterialIssuesToProductionReport" description="description for MaterialIssuesToProduction Report"  testID="WOW 73">
         <classes>
             <class name="menuItems.Production.reports.MaterialIssuesToProductionReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PendingMaterialIssuesToProductionReport" description="description for PendingMaterialIssuesToProduction Report"  testID="WOW 15">
+    <test name="Checking PendingMaterialIssuesToProductionReport" description="description for PendingMaterialIssuesToProduction Report"  testID="WOW 74">
         <classes>
             <class name="menuItems.Production.reports.PendingMaterialIssuesToProductionReport"></class>
         </classes>
     </test>
 
-    <test name="Checking MaterialReturnsFromProductionReport " description="description for MaterialReturnsFromProduction Report"  testID="WOW 16">
+    <test name="Checking MaterialReturnsFromProductionReport " description="description for MaterialReturnsFromProduction Report"  testID="WOW 75">
         <classes>
             <class name="menuItems.Production.reports.MaterialReturnsFromProductionReport"></class>
         </classes>
     </test>
 
-    <test name="Checking MaterialReceiptsFromProductionReport " description="description for MaterialReceiptsFromProduction Report"  testID="WOW 17">
+    <test name="Checking MaterialReceiptsFromProductionReport " description="description for MaterialReceiptsFromProduction Report"  testID="WOW 76">
         <classes>
             <class name="menuItems.Production.reports.MaterialReceiptsFromProductionReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PendingMaterialReceiptsFromProductionReport " description="description for PendingMaterialReceiptsFromProduction Report"  testID="WOW 18">
+    <test name="Checking PendingMaterialReceiptsFromProductionReport " description="description for PendingMaterialReceiptsFromProduction Report"  testID="WOW 77">
         <classes>
             <class name="menuItems.Production.reports.PendingMaterialReceiptsFromProductionReport"></class>
         </classes>
     </test>
 
-    <test name="Checking CloseProductionOrderReport " description="description for CloseProductionOrderReport"  testID="WOW 19">
+    <test name="Checking CloseProductionOrderReport " description="description for CloseProductionOrderReport"  testID="WOW 78">
         <classes>
             <class name="menuItems.Production.reports.CloseProductionOrderReport"></class>
         </classes>
     </test>
 
-    <test name="Checking MaterialIssuesAndReceiptsFromProductionReport " description="description for MaterialIssuesAndReceiptsFromProduction Report"  testID="WOW 20">
+    <test name="Checking MaterialIssuesAndReceiptsFromProductionReport " description="description for MaterialIssuesAndReceiptsFromProduction Report"  testID="WOW 79">
         <classes>
             <class name="menuItems.Production.reports.MaterialIssuesAndReceiptsFromProductionReport"></class>
         </classes>
     </test>
 
-    <!-- masters completed -->
-    <test name="Create HsnCodesMaster" description="description for HsnCodesMaster"  testID="WOW 1">
+    <!-- production completed-->
+
+    <test name="Create HsnCodesMaster" description="description for HsnCodesMaster"  testID="WOW 80">
         <classes>
             <class name="menuItems.Taxes.masters.GST.HsnCodesMaster"></class>
         </classes>
     </test>
 
-    <test name="Create GstRegistrationMaster" description="description for GstRegistrationMaster"  testID="WOW 2">
+    <test name="Create GstRegistrationMaster" description="description for GstRegistrationMaster"  testID="WOW 81">
         <classes>
             <class name="menuItems.Taxes.masters.GST.GstRegistrationMaster"></class>
         </classes>
     </test>
 
-    <test name="Create ConsignerMaster" description="description for ConsignerMaster"  testID="WOW 3">
+    <test name="Create ConsignerMaster" description="description for ConsignerMaster"  testID="WOW 82">
         <classes>
             <class name="menuItems.Taxes.masters.GST.ConsignerMaster"></class>
         </classes>
     </test>
 
-    <test name="Create EcommerceOperatorMaster" description="description for EcommerceOperatorMaster"  testID="WOW 4">
+    <test name="Create EcommerceOperatorMaster" description="description for EcommerceOperatorMaster"  testID="WOW 83">
         <classes>
             <class name="menuItems.Taxes.masters.GST.EcommerceOperatorMaster"></class>
         </classes>
     </test>
 
-    <test name="Create TdsAssesseTypesMaster" description="description for TdsAssesseTypesMaster"  testID="WOW 5">
+    <test name="Create TdsAssesseTypesMaster" description="description for TdsAssesseTypesMaster"  testID="WOW 84">
         <classes>
             <class name="menuItems.Taxes.masters.TDS.TdsAssesseeTypesMaster"></class>
         </classes>
     </test>
 
-    <test name="Create TdsSubTypesMaster" description="description for TdsSubTypesMaster"  testID="WOW 6">
+    <test name="Create TdsSubTypesMaster" description="description for TdsSubTypesMaster"  testID="WOW 85">
         <classes>
             <class name="menuItems.Taxes.masters.TDS.TdsSubTypesMaster"></class>
         </classes>
     </test>
 
-    <test name="Create TdsTransactionNaturesMaster" description="description for TdsTransactionNaturesMaster"  testID="WOW 7">
+    <test name="Create TdsTransactionNaturesMaster" description="description for TdsTransactionNaturesMaster"  testID="WOW 86">
         <classes>
             <class name="menuItems.Taxes.masters.TDS.TdsTransactionNaturesMaster"></class>
         </classes>
     </test>
 
-    <test name="Create TcsAssesseeTypesMaster" description="description for TcsAssesseeTypesMaster"  testID="WOW 8">
+    <test name="Create TcsAssesseeTypesMaster" description="description for TcsAssesseeTypesMaster"  testID="WOW 87">
         <classes>
             <class name="menuItems.Taxes.masters.TCS.TcsAssesseeTypesMaster"></class>
         </classes>
     </test>
 
-    <test name="Create TcsSubTypesMaster" description="description for TcsSubTypesMaster"  testID="WOW 9">
+    <test name="Create TcsSubTypesMaster" description="description for TcsSubTypesMaster"  testID="WOW 88">
         <classes>
             <class name="menuItems.Taxes.masters.TCS.TcsSubTypesMaster"></class>
         </classes>
     </test>
 
-    <test name="Create TcsTransactionNatureMaster" description="description for TcsTransactionNatureMaster"  testID="WOW 10">
+    <test name="Create TcsTransactionNatureMaster" description="description for TcsTransactionNatureMaster"  testID="WOW 89">
         <classes>
             <class name="menuItems.Taxes.masters.TCS.TcsTransactionNatureMaster"></class>
         </classes>
     </test>
 
+    <!-- masters completed -->
 
-    <test name="Performing Gstr1MonthEndTransaction" description="description for Gstr1MonthEndTransaction"  testID="WOW 11">
+    <test name="Performing Gstr1MonthEndTransaction" description="description for Gstr1MonthEndTransaction"  testID="WOW 90">
         <classes>
             <class name="menuItems.Taxes.transactions.GST.Gstr1MonthEndTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing TdsOpeningBalencesTransaction" description="description for TdsOpeningBalancesTransaction"  testID="WOW 12">
+    <test name="Performing TdsOpeningBalencesTransaction" description="description for TdsOpeningBalancesTransaction"  testID="WOW 91">
         <classes>
             <class name="menuItems.Taxes.transactions.TDS.TdsOpeningBalencesTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing TdsPaymentsTransaction" description="description for TdsPaymentsTransaction"  testID="WOW 13">
+    <test name="Performing TdsPaymentsTransaction" description="description for TdsPaymentsTransaction"  testID="WOW 92">
         <classes>
             <class name="menuItems.Taxes.transactions.TDS.TdsPaymentsTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing TcsOpeningBalancesTransaction" description="description for TcsOpeningBalancesTransaction"  testID="WOW 14">
+    <test name="Performing TcsOpeningBalancesTransaction" description="description for TcsOpeningBalancesTransaction"  testID="WOW 93">
         <classes>
             <class name="menuItems.Taxes.transactions.TCS.TcsOpeningBalancesTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing TcsPaymentsTransaction" description="description for TcsPaymentsTransaction"  testID="WOW 15">
+    <test name="Performing TcsPaymentsTransaction" description="description for TcsPaymentsTransaction"  testID="WOW 94">
         <classes>
             <class name="menuItems.Taxes.transactions.TCS.TcsPaymentsTransaction"></class>
         </classes>
     </test>
 
     <!-- Transactions complete -->
-    <test name="Checking Gstr1MonthEndTransactionReport" description="description for CreateGstr1MonthEndTransaction Report"  testID="WOW 16">
+    <test name="Checking Gstr1MonthEndTransactionReport" description="description for CreateGstr1MonthEndTransaction Report"  testID="WOW 95">
         <classes>
             <class name="menuItems.Taxes.reports.GST.Gstr1MonthEndTransactionReport"></class>
         </classes>
     </test>
 
-    <test name="Checking Gstr1B2BReport" description="description for CreateGstr1B2B Report"  testID="WOW 17">
+    <test name="Checking Gstr1B2BReport" description="description for CreateGstr1B2B Report"  testID="WOW 96">
         <classes>
             <class name="menuItems.Taxes.reports.GST.Gstr1B2BReport"></class>
         </classes>
     </test>
 
-    <test name="Checking Gstr1B2CLReport" description="description for CreateGstr1B2CL Report"  testID="WOW 18">
+    <test name="Checking Gstr1B2CLReport" description="description for CreateGstr1B2CL Report"  testID="WOW 97">
         <classes>
             <class name="menuItems.Taxes.reports.GST.Gstr1B2CLReport"></class>
         </classes>
     </test>
 
-    <test name="Checking Gstr1B2CSReport" description="description for CreateGstr1B2CS Report"  testID="WOW 19">
+    <test name="Checking Gstr1B2CSReport" description="description for CreateGstr1B2CS Report"  testID="WOW 98">
         <classes>
             <class name="menuItems.Taxes.reports.GST.Gstr1B2CSReport"></class>
         </classes>
     </test>
 
-    <test name="Checking Gstr1CDNRReport" description="description for CreateGstr1CDNR Report"  testID="WOW 20">
+    <test name="Checking Gstr1CDNRReport" description="description for CreateGstr1CDNR Report"  testID="WOW 99">
         <classes>
             <class name="menuItems.Taxes.reports.GST.Gstr1CDNRReport"></class>
         </classes>
     </test>
 
-    <test name="Checking Gstr1CDNURReport" description="description for CreateGstr1CDNUR Report"  testID="WOW 21">
+    <test name="Checking Gstr1CDNURReport" description="description for CreateGstr1CDNUR Report"  testID="WOW 100">
         <classes>
             <class name="menuItems.Taxes.reports.GST.Gstr1CDNURReport"></class>
         </classes>
     </test>
 
-    <test name="Checking Gstr1EXPReport" description="description for CreateGstr1EXP Report"  testID="WOW 22">
+    <test name="Checking Gstr1EXPReport" description="description for CreateGstr1EXP Report"  testID="WOW 101">
         <classes>
             <class name="menuItems.Taxes.reports.GST.Gstr1EXPReport"></class>
         </classes>
     </test>
 
-    <test name="Checking Gstr1EXEMPReport" description="description for CreateGstr1EXEMP Report"  testID="WOW 23">
+    <test name="Checking Gstr1EXEMPReport" description="description for CreateGstr1EXEMP Report"  testID="WOW 102">
         <classes>
             <class name="menuItems.Taxes.reports.GST.Gstr1EXEMPReport"></class>
         </classes>
     </test>
 
-    <test name="Checking Gstr1HSNReport" description="description for Gstr1HSN Report"  testID="WOW 24">
+    <test name="Checking Gstr1HSNReport" description="description for Gstr1HSN Report"  testID="WOW 103">
         <classes>
             <class name="menuItems.Taxes.reports.GST.Gstr1HSNReport"></class>
         </classes>
     </test>
 
-    <test name="Checking Gstr1DOCSReport" description="description for Gstr1DOCS Report"  testID="WOW 25">
+    <test name="Checking Gstr1DOCSReport" description="description for Gstr1DOCS Report"  testID="WOW 104">
         <classes>
             <class name="menuItems.Taxes.reports.GST.Gstr1DOCSReport"></class>
         </classes>
     </test>
 
-    <test name="Checking GstOutPutReport" description="description for GstOutPut Report"  testID="WOW 26">
+    <test name="Checking GstOutPutReport" description="description for GstOutPut Report"  testID="WOW 105">
         <classes>
             <class name="menuItems.Taxes.reports.GST.GstOutPutReport"></class>
         </classes>
     </test>
 
-    <test name="Checking GstInputReport" description="description for GstInput Report"  testID="WOW 27">
+    <test name="Checking GstInputReport" description="description for GstInput Report"  testID="WOW 106">
         <classes>
             <class name="menuItems.Taxes.reports.GST.GstInputReport"></class>
         </classes>
     </test>
 
-    <test name="Checking Gst3BReport" description="description for Gst3B Report"  testID="WOW 28">
+    <test name="Checking Gst3BReport" description="description for Gst3B Report"  testID="WOW 107">
         <classes>
             <class name="menuItems.Taxes.reports.GST.Gst3BReport"></class>
         </classes>
     </test>
 
-    <test name="Checking TdsOpeningBalencesReport" description="description for TdsOpeningBalences Report"  testID="WOW 29">
+    <test name="Checking TdsOpeningBalencesReport" description="description for TdsOpeningBalences Report"  testID="WOW 108">
         <classes>
             <class name="menuItems.Taxes.reports.TDS.TdsOpeningBalencesReport"></class>
         </classes>
     </test>
 
-    <test name="Checking TdsPaymentsReport" description="description for TdsPayments Report"  testID="WOW 30">
+    <test name="Checking TdsPaymentsReport" description="description for TdsPayments Report"  testID="WOW 109">
         <classes>
             <class name="menuItems.Taxes.reports.TDS.TdsPaymentsReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PendingTdsPaymentsReport" description="description for PendingTdsPayments Report"  testID="WOW 31">
+    <test name="Checking PendingTdsPaymentsReport" description="description for PendingTdsPayments Report"  testID="WOW 110">
         <classes>
             <class name="menuItems.Taxes.reports.TDS.PendingTdsPaymentsReport"></class>
         </classes>
     </test>
 
-    <test name="Checking TdsDeductedByUsReport" description="description for TdsDeductedByUs Report"  testID="WOW 32">
+    <test name="Checking TdsDeductedByUsReport" description="description for TdsDeductedByUs Report"  testID="WOW 111">
         <classes>
             <class name="menuItems.Taxes.reports.TDS.TdsDeductedByUsReport"></class>
         </classes>
     </test>
 
-    <test name="Checking TdsDeductedByOthersReport" description="description for TdsDeductedByOthers Report"  testID="WOW 33">
+    <test name="Checking TdsDeductedByOthersReport" description="description for TdsDeductedByOthers Report"  testID="WOW 112">
         <classes>
             <class name="menuItems.Taxes.reports.TDS.TdsDeductedByOthersReport"></class>
         </classes>
     </test>
 
-    <test name="Checking TcsOpeningBalancesReport" description="description for TcsOpeningBalances Report"  testID="WOW 34">
+    <test name="Checking TcsOpeningBalancesReport" description="description for TcsOpeningBalances Report"  testID="WOW 113">
         <classes>
             <class name="menuItems.Taxes.reports.TCS.TcsOpeningBalancesReport"></class>
         </classes>
     </test>
 
-    <test name="Checking TcsPaymentsReport" description="description for TcsPayments Report"  testID="WOW 35">
+    <test name="Checking TcsPaymentsReport" description="description for TcsPayments Report"  testID="WOW 114">
         <classes>
             <class name="menuItems.Taxes.reports.TCS.TcsPaymentsReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PendingTcsPaymentsReports" description="description for PendingTcsPayments Report"  testID="WOW 36">
+    <test name="Checking PendingTcsPaymentsReports" description="description for PendingTcsPayments Report"  testID="WOW 115">
         <classes>
             <class name="menuItems.Taxes.reports.TCS.PendingTcsPaymentsReports"></class>
         </classes>
     </test>
 
-    <test name="Checking TcsPurchaseReport" description="description for TcsPurchaseReport"  testID="WOW 37">
+    <test name="Checking TcsPurchaseReport" description="description for TcsPurchaseReport"  testID="WOW 116">
         <classes>
             <class name="menuItems.Taxes.reports.TCS.TcsPurchaseReport"></class>
         </classes>
     </test>
 
-    <test name="Checking TcsSalesReport" description="description for TcsSalesReport"  testID="WOW 38">
+    <test name="Checking TcsSalesReport" description="description for TcsSalesReport"  testID="WOW 117">
         <classes>
             <class name="menuItems.Taxes.reports.TCS.TcsSalesReport"></class>
         </classes>
     </test>
+    <!-- Reports completed -->
     <!-- Reports completed -->
    <!-- mvn clean install "-DTestNGFile=TestNG/Regression.xml" -->
 

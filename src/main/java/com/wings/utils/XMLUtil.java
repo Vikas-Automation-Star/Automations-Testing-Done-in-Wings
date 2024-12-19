@@ -102,7 +102,6 @@ public class XMLUtil {
             Element testElement = (Element) testList.item(i);
             String name = testElement.getAttribute("name");
             double duration = Double.parseDouble(testElement.getAttribute("duration-ms")) / 1000;
-
             NodeList testMethodTags = testElement.getElementsByTagName("test-method");
             if (testMethodTags.getLength() > 0) {
                 Element requiredTestMethod = null;
@@ -121,6 +120,7 @@ public class XMLUtil {
 
                 if (requiredTestMethod != null) {
                     String status = requiredTestMethod.getAttribute("status");
+                    System.out.println("Test Details List size: " + testDetailsList.size());
                     Map<String, String> testDetailsMap = testDetailsList.get(i);
 
                     switch (status) {
@@ -152,51 +152,52 @@ public class XMLUtil {
 
 
         // Read and update HTML template
-            String htmlTemplate = new String(Files.readAllBytes(Paths.get("mailTemplates/executiontemplate.html")), "UTF-8");
-            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#ExecutionMachine#"), executionMachine);
-            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#SuiteName#"), suiteName1);
-            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#TestPassRate#"), String.format("%.2f%%", passRate));
-            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#PassedTests#"), Integer.toString(passedTests));
-            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#FailedTests#"), Integer.toString(failedTests));
-            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#SkippedTests#"), Integer.toString(skippedTests));
-            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#ExecutionStartTime#"), executionStartTime);
-            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#ExecutionEndTime#"), executionEndTime);
-            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#ExecutionTime#"), executionTimeFormatted);
-            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#TotalTests#"), String.valueOf(totalTests));
-            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#OS#"), os);
-            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#URL#"), common.getData(dataFile, "app"));
-            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#CompanyDetails#"), common.getData(dataFile, "companyName"));
-            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#row#"), testDetails.toString());
-            Files.write(toFile, htmlTemplate.getBytes("UTF-8"));
+        String htmlTemplate = new String(Files.readAllBytes(Paths.get("mailTemplates/executiontemplate.html")), "UTF-8");
+        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#ExecutionMachine#"), executionMachine);
+        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#SuiteName#"), suiteName1);
+        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#TestPassRate#"), String.format("%.2f%%", passRate));
+        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#PassedTests#"), Integer.toString(passedTests));
+        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#FailedTests#"), Integer.toString(failedTests));
+        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#SkippedTests#"), Integer.toString(skippedTests));
+        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#ExecutionStartTime#"), executionStartTime);
+        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#ExecutionEndTime#"), executionEndTime);
+        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#ExecutionTime#"), executionTimeFormatted);
+        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#TotalTests#"), String.valueOf(totalTests));
+        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#OS#"), os);
+        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#URL#"), common.getData(dataFile, "app"));
+        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#CompanyDetails#"), common.getData(dataFile, "companyName"));
+        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#row#"), testDetails.toString());
+        Files.write(toFile, htmlTemplate.getBytes("UTF-8"));
 
-            // Send email with report attached
-            final String fromEmail = "productupdates@wingsinfo.net";
-            final String password = "Zuy97283";
-            final String toEmail = "madhuri.matta@wingsinfo.net,manoj.c@wingsinfo.net,venkatarathaiah.m@wingsinfo.net,ashokreddy.rs@wingsinfo.net,vikas.empuluri@wingsinfo.net";
+        // Send email with report attached
+        final String fromEmail = "productupdates@wingsinfo.net";
+        final String password = "Zuy97283";
+        final String toEmail = "madhuri.matta@wingsinfo.net,manoj.c@wingsinfo.net,venkatarathaiah.m@wingsinfo.net,ashokreddy.rs@wingsinfo.net,vikas.empuluri@wingsinfo.net";
 
-            Properties props = new Properties();
-            props.put("mail.smtp.host", "smtp.office365.com");
-            props.put("mail.smtp.port", "587");
-            props.put("mail.smtp.auth", "true");
-            props.put("mail.smtp.starttls.enable", "true");
+        Properties props = new Properties();
+        props.put("mail.smtp.host", "smtp.office365.com");
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
 
-            Authenticator auth = new Authenticator() {
-                protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication(fromEmail, password);
-                }
-            };
-            Session session = Session.getInstance(props, auth);
-            EmailUtil.sendEmail(session, toEmail, String.valueOf(toFile));
-            System.out.println("Report generated and email sent successfully!");
-        }
+        Authenticator auth = new Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(fromEmail, password);
+            }
+        };
+        Session session = Session.getInstance(props, auth);
+        EmailUtil.sendEmail(session, toEmail, String.valueOf(toFile));
+        System.out.println("Report generated and email sent successfully!");
+    }
 
     public static void main(String[] args) {
         XMLUtil xmlUtil = new XMLUtil();
         try {
-            xmlUtil.readTestNG("./TestNG/sampleSuite.xml");// Parse both sampleSuite.xml and testng-results.xml
+            xmlUtil.readTestNG("./TestNG/Regression.xml");// Parse both sampleSuite.xml and testng-results.xml
             xmlUtil.readTestNGResults("./target/surefire-reports/testng-results.xml"); // Process test results and send email
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 }
+

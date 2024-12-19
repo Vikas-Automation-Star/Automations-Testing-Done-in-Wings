@@ -1126,7 +1126,10 @@ public abstract class Transaction {
         robot.keyRelease(KeyEvent.VK_ENTER);
     }
 
-    public void chargesAndDeductionsCalculations(String dataFile,String type,String accCode,String amount,String iterations) throws IOException, ParseException {
+
+
+
+    public void chargesAndDeductionsCalculations(String dataFile,String type,String accCode,String amount,String iterations) throws IOException, ParseException,NumberFormatException{
         for (int i = 0; i < Integer.parseInt(common.getData(dataFile, iterations)); i++) {
             enterData("xpath", "//Edit[@Name='Charges Or Deductions * Row " + i + ", Not sorted.']", dataFile, type);
             enterData("xpath", "//Edit[@Name='Account Code Row " + i + ", Not sorted.']", dataFile, accCode);
@@ -1152,9 +1155,12 @@ public abstract class Transaction {
         }
     }
 
-    public void tcsCalculations(String dataFile,String accCode,String amount,String iterations,double itemsNetValue) throws IOException, ParseException {
+
+
+
+    public void tcsCalculations(String dataFile,String accCode,String amount,String iterations) throws IOException, ParseException {
+        double itemsNetValue= Double.parseDouble(common.findWebElement("xpath","//Edit[@AutomationId='NetAmount']").getText().replace(",",""));
         double exchangeRate= Double.parseDouble(common.findWebElement("xpath","//Edit[@Name='Exchange Rate *']").getText());
-//        double itemsNetValue= Double.parseDouble(common.findWebElement("xpath","//Edit[@AutomationId='NetAmount']").getText().replace(",",""));
         navigateToOtherChargesTab();
         //other charges Calculations
         String amountText=common.findWebElement("xpath","//Edit[@Name='Amount * Row 0, Not sorted.']").getText();
@@ -1215,7 +1221,7 @@ public abstract class Transaction {
         System.out.println("Size :" + elementList.size());
         for (WebElement j : elementList) {
             System.out.println(j.getText());
-            if (j.getText().contains(transaction)) {
+            if (j.getText().equals(transaction)) {
                 j.click();
                 j.sendKeys(Keys.ENTER);
             }
@@ -1274,13 +1280,6 @@ public abstract class Transaction {
 
     public void generalInfoSliderHandle () {
         int offset = 800;
-        WebElement slider = common.findWebElement("xpath", "//ScrollBar[@Name='Horizontal']/Thumb[@Name='Position']");
-        Actions actions = new Actions(driver);
-        actions.clickAndHold(slider).moveByOffset(offset, 0).release().perform();
-    }
-
-    public void generalInfoNegativeSliderHandle () {
-        int offset = -500;
         WebElement slider = common.findWebElement("xpath", "//ScrollBar[@Name='Horizontal']/Thumb[@Name='Position']");
         Actions actions = new Actions(driver);
         actions.clickAndHold(slider).moveByOffset(offset, 0).release().perform();
