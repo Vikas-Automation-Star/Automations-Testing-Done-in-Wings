@@ -60,7 +60,7 @@ public class PurchaseVouchersAgainstReceipt extends Transaction {
         common.inputText("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']", common.getData(dataFile,"quantity"));
         common.findWebElements("xpath", "//Edit[@Name='MRP Row 0, Not sorted.']");
         super.sliderHandle();
-        super.saveTransaction();
+        transactionSave();
         Thread.sleep(1500);
         super.newTransaction();
         super.closeTransaction("Purchase Vouchers against Receipts");

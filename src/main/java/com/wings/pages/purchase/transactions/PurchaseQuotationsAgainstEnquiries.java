@@ -50,7 +50,7 @@ public class PurchaseQuotationsAgainstEnquiries extends Transaction {
         common.inputText("xpath","//Edit[@Name='Unit Rate Row 0, Not sorted.']", common.getData(dataFile,"unitRate"));
         super.sliderHandle();
         Thread.sleep(1000);
-        super.saveTransaction();
+        transactionSave();
         Thread.sleep(1500);
         super.newTransaction();
         super.closeTransaction("Purchase Quotations against Enquiries");

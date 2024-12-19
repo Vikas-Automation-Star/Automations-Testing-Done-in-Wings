@@ -44,7 +44,7 @@ public class MaterialReturnsFromProduction extends Transaction {
             j.sendKeys(common.getData(dataFile, "quantity"));
         }
         common.clickElement("xpath", "//Edit[@Name='Unit Rate Row 0, Not sorted.']");
-        super.saveTransaction();
+        transactionSave();
         Thread.sleep(1000);
         super.newTransaction();
         super.closeTransaction("Material Returns from Production");

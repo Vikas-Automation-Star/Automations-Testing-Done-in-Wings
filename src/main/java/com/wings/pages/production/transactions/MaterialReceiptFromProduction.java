@@ -60,7 +60,7 @@ public class MaterialReceiptFromProduction extends Transaction {
 //        common.clickElement("xpath","//Edit[@Name='Unit Rate Row 0, Not sorted.");
 //        common.inputText("xpath","//Edit[@Name='Unit Rate Row 0, Not sorted.",common.getData(dataFile, "unitRate"));
         common.clickElement("xpath", "//Edit[@Name='Gross Amount Row 0, Not sorted.']");
-        super.saveTransaction();
+        transactionSave();
         Thread.sleep(1000);
         super.newTransaction();
         super.closeTransaction("Material Receipts from Production");

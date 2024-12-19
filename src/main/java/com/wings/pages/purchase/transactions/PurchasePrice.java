@@ -39,7 +39,7 @@ public class PurchasePrice extends Transaction {
         common.clickElement("xpath", "//Edit[@Name='Price List *']");
         super.selectMasterWithValidation(common.getData(dataFile,"pricelist"),"xpath", "//Edit[@Name='Price List *']");
         common.clickElement("xpath", "//Edit[@Name='Executive *']");
-        super.selectAndValidateDataNew(common.getData(dataFile,"executive"),"xpath", "//Edit[@Name='Executive *']");
+        super.selectMasterWithValidation(common.getData(dataFile,"executive"),"xpath", "//Edit[@Name='Executive *']");
         Thread.sleep(1000);
         common.clickElement("xpath","//Edit[@Name='Remarks']");
         super.selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"remarks"), "xpath","//Edit[@Name='Remarks']");
@@ -49,7 +49,7 @@ public class PurchasePrice extends Transaction {
         common.inputText("xpath","//Edit[@Name='MRP Row 2, Not sorted.']", common.getData(dataFile,"mrp"));
         Thread.sleep(2000);
         common.deleteInvalidRows();
-        super.saveTransaction();
+        transactionSave();
         Thread.sleep(1500);
         super.oldTTransaction();
         Thread.sleep(1500);

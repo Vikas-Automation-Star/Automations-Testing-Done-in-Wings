@@ -70,7 +70,7 @@ public class TdsPayments extends Transaction {
         Thread.sleep(2000);
         common.clickElement("xpath","//TabItem[@Name='  F9 Summary  ']");
         Assert.assertEquals("20","20");
-        super.saveTransaction();
+        transactionSave();
         Thread.sleep(1000);
         super.closeTransaction("TDS Payments");
         Thread.sleep(2000);

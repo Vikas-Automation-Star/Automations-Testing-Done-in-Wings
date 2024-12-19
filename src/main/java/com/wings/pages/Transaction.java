@@ -1126,10 +1126,7 @@ public abstract class Transaction {
         robot.keyRelease(KeyEvent.VK_ENTER);
     }
 
-
-
-
-    public void chargesAndDeductionsCalculations(String dataFile,String type,String accCode,String amount,String iterations) throws IOException, ParseException,NumberFormatException{
+    public void chargesAndDeductionsCalculations(String dataFile,String type,String accCode,String amount,String iterations) throws IOException, ParseException {
         for (int i = 0; i < Integer.parseInt(common.getData(dataFile, iterations)); i++) {
             enterData("xpath", "//Edit[@Name='Charges Or Deductions * Row " + i + ", Not sorted.']", dataFile, type);
             enterData("xpath", "//Edit[@Name='Account Code Row " + i + ", Not sorted.']", dataFile, accCode);
@@ -1155,12 +1152,9 @@ public abstract class Transaction {
         }
     }
 
-
-
-
-    public void tcsCalculations(String dataFile,String accCode,String amount,String iterations) throws IOException, ParseException {
-        double itemsNetValue= Double.parseDouble(common.findWebElement("xpath","//Edit[@AutomationId='NetAmount']").getText().replace(",",""));
+    public void tcsCalculations(String dataFile,String accCode,String amount,String iterations,double itemsNetValue) throws IOException, ParseException {
         double exchangeRate= Double.parseDouble(common.findWebElement("xpath","//Edit[@Name='Exchange Rate *']").getText());
+//        double itemsNetValue= Double.parseDouble(common.findWebElement("xpath","//Edit[@AutomationId='NetAmount']").getText().replace(",",""));
         navigateToOtherChargesTab();
         //other charges Calculations
         String amountText=common.findWebElement("xpath","//Edit[@Name='Amount * Row 0, Not sorted.']").getText();
@@ -1182,7 +1176,7 @@ public abstract class Transaction {
         Assert.assertEquals(actualTCSAmount,expectedTCSAmount,"TCS amounts are not equal");
         double actualTCSCompanyCurrency =Double.parseDouble(common.findWebElement("xpath","//Edit[@Name='TCS Amount']").getText().replace(",",""));
         double expectedTCSCompanyCurrency=actualTCSAmount*exchangeRate;
-        System.out.println("Actual Currency"+actualTCSCompanyCurrency+"Expected Currency"+expectedTCSCompanyCurrency);
+        System.out.println("Actual Currency: " + actualTCSCompanyCurrency + " Expected Currency: "+ expectedTCSCompanyCurrency);
         Assert.assertEquals(actualTCSCompanyCurrency,expectedTCSCompanyCurrency,"Company Currency isn't matching");
     }
 
@@ -1209,19 +1203,12 @@ public abstract class Transaction {
         System.out.println("New Transaction ID  :" + common.findWebElement("xpath", "//Text[@Name='Last Saved :']/following-sibling::Text").getAttribute("Name"));
     }
 
-    public void saveTransaction () throws InterruptedException {
-        common.clickElement("xpath", "//Button[@Name='Save']");
-        common.clickElement("xpath", "//Button[@Name='Yes']");
-        Thread.sleep(2000);
-        common.clickElement("xpath", "//Button[@Name='OK']");
-    }
-
     public void selectMasterWithValidation(String transaction, String locatorType, String locator) {
         List<WebElement> elementList = common.findWebElements("xpath", "//Table[@Name='Lookup']/*/*[contains(@Name,'Master Row')]");
         System.out.println("Size :" + elementList.size());
         for (WebElement j : elementList) {
             System.out.println(j.getText());
-            if (j.getText().equals(transaction)) {
+            if (j.getText().contains(transaction)) {
                 j.click();
                 j.sendKeys(Keys.ENTER);
             }
@@ -1265,21 +1252,7 @@ public abstract class Transaction {
         }
     }
 
-    public void partyCodeGstSelection () {
-        List<WebElement> elementList1 = common.findWebElements("xpath", "//Table/*[@Name='Data Panel']/*/*[contains(@Name,'GST Transaction Type row')]");
-        System.out.println("Size :" + elementList1.size());
-        for (WebElement j : elementList1) {
-            System.out.println(j.getText());
-            if (j.getText().contains("Registered Dealers")) {
-                j.click();
-                j.sendKeys(Keys.LEFT, Keys.SPACE, Keys.ENTER, Keys.ENTER);
-                break;
-            }
-        }
-    }
-
-    public void generalInfoSliderHandle () {
-        int offset = 800;
+    public void generalInfoSliderHandle (int offset) {
         WebElement slider = common.findWebElement("xpath", "//ScrollBar[@Name='Horizontal']/Thumb[@Name='Position']");
         Actions actions = new Actions(driver);
         actions.clickAndHold(slider).moveByOffset(offset, 0).release().perform();

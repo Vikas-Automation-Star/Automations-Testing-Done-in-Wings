@@ -46,7 +46,7 @@ public class PurchaseOrderCancellation extends Transaction {
         common.clickElement("xpath","//Edit[@Name='Unit Rate Row 0, Not sorted.']");
         Thread.sleep(1000);
         common.clickElement("xpath","//TabItem[@Name='  F7 Summary  ']");
-        super.saveTransaction();
+        transactionSave();
         Thread.sleep(1500);
         super.newTransaction();
         super.closeTransaction("Purchase Orders Cancellation");

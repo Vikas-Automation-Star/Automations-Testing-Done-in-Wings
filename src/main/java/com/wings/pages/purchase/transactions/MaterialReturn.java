@@ -34,7 +34,7 @@ public class MaterialReturn extends Transaction {
         super.inputTextWithValidation("xpath","//Edit[@Name='Receipt No']", common.getData(dataFile,"ReceiptNo"));
         common.clickElement("xpath", "//Edit[@Name='Party Account *']");
         common.clickElement("xpath","//Edit[@Name='Executive *']");
-        super.selectAndValidateData(common.getData(dataFile,"executive"),"xpath", "//Edit[@Name='Executive *']");
+        super.selectMasterWithValidation(common.getData(dataFile,"executive"),"xpath", "//Edit[@Name='Executive *']");
         Thread.sleep(500);
         common.clickElement("xpath","//Edit[@Name='Remarks']");
         super.selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"remarks"), "xpath","//Edit[@Name='Remarks']");
@@ -44,8 +44,7 @@ public class MaterialReturn extends Transaction {
         common.clickElement("xpath","//Edit[@Name='MRP Row 0, Not sorted.']");
         Thread.sleep(1500);
         common.clickElement("xpath","//TabItem[@Name='  Ctrl-F5 Summary  ']");
-        super.saveTransaction();
-        saveTransaction();
+        transactionSave();
         Thread.sleep(1500);
         super.newTransaction();
         super.closeTransaction("Material Returns");

@@ -63,7 +63,7 @@ public class TcsPayments extends Transaction {
         common.clickElement("xpath", "//Edit[@Name='Cheque Date * Row 0, Not sorted.']");
         Thread.sleep(2000);
         common.clickElement("xpath", "//TabItem[@Name='  F9 Summary  ']");
-        super.saveTransaction();
+        transactionSave();
         Thread.sleep(1000);
         super.closeTransaction("TCS Payments");
         Thread.sleep(2000);

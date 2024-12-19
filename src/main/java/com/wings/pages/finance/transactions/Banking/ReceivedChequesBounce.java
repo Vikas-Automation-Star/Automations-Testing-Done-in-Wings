@@ -53,11 +53,8 @@ public class ReceivedChequesBounce extends Transaction {
         } catch (StaleElementReferenceException e) {
             System.out.println("exceptionHandled");
         }
-        super.partyCodeGstSelection();
-        int offset = 800;
-        WebElement slider = common.findWebElement("xpath", "//ScrollBar[@Name='Horizontal']/Thumb[@Name='Position']");
-        Actions actions = new Actions(driver);
-        actions.clickAndHold(slider).moveByOffset(offset, 0).release().perform();
+        gstTransactionType("Registered Dealers");
+        common.sliderHandling("xpath","//ScrollBar[@Name='Horizontal']/Thumb[@Name='Position']",800,0);
 
         common.clickElement("xpath", "//Edit[@Name='Supplier Bill No *']");
         common.inputText("xpath", "//Edit[@Name='Supplier Bill No *']", common.getData(dataFile,"supllierBillNo"));

@@ -25,8 +25,8 @@ public class SalesInvoiceExclussiveGSTInclussiveTCSTransaction {
 
     @Test
     public void testcase1() throws IOException, ParseException, InterruptedException, AWTException {
-        SalesInvoiceExclussiveGstAndInclusiveTCS si=new SalesInvoiceExclussiveGstAndInclusiveTCS(driver,dataFile);
-        si.salesInvoiceExclussiveGstAndInclusiveTcs();
+        SalesInvoiceExcludingGSTIncludeTCS si=new SalesInvoiceExcludingGSTIncludeTCS(driver,dataFile);
+        si.salesInvoiceExcludeGstAndIncludeTcs();
     }
 
     @AfterTest
