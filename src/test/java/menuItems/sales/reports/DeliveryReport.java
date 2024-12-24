@@ -1,5 +1,6 @@
 package menuItems.sales.reports;
 
+import com.wings.utils.SalesEnquiriesDemo;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
@@ -8,6 +9,7 @@ import org.testng.annotations.Test;
 import com.wings.pages.AppLogin;
 import com.wings.pages.sales.reports.DeliveriesReportCode;
 import java.io.IOException;
+
 
 public class DeliveryReport {
     WindowsDriver driver;
@@ -27,6 +29,6 @@ public class DeliveryReport {
 
     @AfterTest
     public void afterTest(){
-        appLogin.logout();
+//        appLogin.logout();
     }
 }

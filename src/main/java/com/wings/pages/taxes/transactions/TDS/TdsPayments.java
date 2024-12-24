@@ -47,7 +47,7 @@ public class TdsPayments extends Transaction {
         common.inputText("xpath","//Edit[@Name='Bank Challan No']", common.getData(dataFile,"challanNo"));
         common.inputText("xpath","//Edit[@Name='BSR Code']", common.getData(dataFile,"bsrCode"));
         common.clickElement("xpath","//Edit[@Name='Executive *']");
-        super.selectMaster(common.getData(dataFile,"executive"));
+        super.selectAndValidateDataNew(common.getData(dataFile,"executive"),"xpath","//Edit[@Name='Executive *']");
         common.clickElement("xpath","//Edit[@Name='Remarks']");
         super.selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"remarks"), "xpath","//Edit[@Name='Remarks']");
         Thread.sleep(2000);

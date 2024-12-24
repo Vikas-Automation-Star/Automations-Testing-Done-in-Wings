@@ -35,12 +35,12 @@ public class CloseProductionOrder extends Transaction {
         super.selectMasterWithValidation(common.getData(dataFile,"currency"), "xpath", "//Edit[@Name='Transaction Currency *']");
         WebElement code = common.findWebElement("xpath", "//Edit[@Name='Finished Product Code']");
         code.click();
-        super.selectMasterWithValidation(common.getData(dataFile,"finishedProductCode"),"xpath", "//Edit[@Name='Finished Product Code']");
+        super.selectAndValidateDataNew(common.getData(dataFile,"finishedProductCode"),"xpath", "//Edit[@Name='Finished Product Code']");
         common.clickElement("xpath", "//Edit[@Name='Finished Product *']");
         common.clickElement("xpath", "//CheckBox[@Name='Select Row 3']");
         common.clickElement("xpath", "//Window[@Name='Open Transactions']/Pane/Button[@Name='Ok']");
         common.clickElement("xpath","//Edit[@Name='Executive *']");
-        super.selectMasterWithValidation(common.getData(dataFile,"executive"),"xpath","//Edit[@Name='Executive *']");
+        super.selectAndValidateDataNew(common.getData(dataFile,"executive"),"xpath","//Edit[@Name='Executive *']");
 
         List<WebElement> elementList = common.findWebElements("xpath", "//Edit[@Name='Quantity * Row 0, Not sorted.']");
         System.out.println("Size :" + elementList.size());

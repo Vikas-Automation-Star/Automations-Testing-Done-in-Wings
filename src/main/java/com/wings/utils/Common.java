@@ -100,6 +100,10 @@ public class Common {
         WebElement element=findWebElement(locatorType,locator);
         element.sendKeys(inputText,Keys.TAB);
     }
+    public void getText(String locatorType,String locator){
+        WebElement element=findWebElement(locatorType,locator);
+        element.getText();
+    }
 
     public void inputAndVerify(String locatorType,String locator,String inputText){
         WebElement element=findWebElement(locatorType,locator);

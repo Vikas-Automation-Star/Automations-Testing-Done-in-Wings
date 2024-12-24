@@ -30,7 +30,7 @@ public class Gst3B extends Report {
         common.inputText("xpath","//Edit[@Name='Month']", common.getData(datFile,"month"));
         common.inputText("xpath","//Edit[@Name='Year']", common.getData(datFile,"year"));
         common.clickElement("xpath", "//Button[@Name='View Report']");
-        Thread.sleep(5000);
+        Thread.sleep(7000);
 //        common.clickElement("xpath", "//Button[@Name='Submit']");
         super.bulkVerifyReport("");
         super.closeReport("GSTR 3B");

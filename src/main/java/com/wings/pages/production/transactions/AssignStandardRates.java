@@ -31,9 +31,9 @@ public class AssignStandardRates extends Transaction {
         super.selectMasterWithValidation(common.getData(dataFile, "branch"),"xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Transaction Currency *']");
         common.clickElement("xpath","//Edit[@Name='Executive *']");
-        super.selectMasterWithValidation(common.getData(dataFile,"executive"),"xpath","//Edit[@Name='Executive *']");
+        super.selectAndValidateDataNew(common.getData(dataFile,"executive"),"xpath","//Edit[@Name='Executive *']");
         common.clickElement("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']");
-        super.selectMaster(common.getData(dataFile,"pCode"));
+        super.enterData("xpath","//Edit[@Name='Product Code Row 0, Not sorted.']",dataFile,"pCode");
         WebElement uRate= common.findWebElement("xpath","//Edit[@Name='Rate * Row 0, Not sorted.']");
         uRate.click();
         uRate.sendKeys(common.getData(dataFile,"urate"),Keys.ENTER);

@@ -34,7 +34,7 @@ public class MaterialIssuesAndReceiptsFromProduction extends Transaction {
         super.selectMasterWithValidation(common.getData(dataFile,"currency"), "xpath", "//Edit[@Name='Trans Currency *']");
         WebElement code = common.findWebElement("xpath", "//Edit[@Name='Finished Product Code']");
         code.click();
-        super.selectMasterWithValidation(common.getData(dataFile,"finishedProductCode"),"xpath", "//Edit[@Name='Finished Product Code']");
+        super.selectAndValidateDataNew(common.getData(dataFile,"finishedProductCode"),"xpath", "//Edit[@Name='Finished Product Code']");
         common.clickElement("xpath", "//Edit[@Name='Finished Product *']");
         common.clickElement("xpath","//Edit[@Name='Bill Of Material']");
         common.clickElement("xpath","//Edit[@Name='Bill Of Material']");
@@ -44,9 +44,9 @@ public class MaterialIssuesAndReceiptsFromProduction extends Transaction {
         super.inputTextWithValidation("xpath", "//Edit[@Name='Quantity *']", common.getData(dataFile,"quantity"));
         super.inputTextWithValidation("xpath","//Edit[@Name='Standard Rate *']", common.getData(dataFile,"standardRate") );
         common.clickElement("xpath","//Edit[@Name='Executive *']");
-        super.selectMasterWithValidation(common.getData(dataFile,"executive"),"xpath","//Edit[@Name='Executive *']");
+        super.selectAndValidateDataNew(common.getData(dataFile,"executive"),"xpath","//Edit[@Name='Executive *']");
         common.clickElement("xpath","//Edit[@Name='Department']");
-        super.selectMasterWithValidation(common.getData(dataFile,"department"),"xpath","//Edit[@Name='Department']");
+        super.selectAndValidateDataNew(common.getData(dataFile,"department"),"xpath","//Edit[@Name='Department']");
 
         common.clickElement("xpath","//TabItem[@Name='  F5 Receipts From Production  ']");
         common.clickElement("xpath","//Edit[@Name='Finished Product Quantity * Row 0, Not sorted.']");
