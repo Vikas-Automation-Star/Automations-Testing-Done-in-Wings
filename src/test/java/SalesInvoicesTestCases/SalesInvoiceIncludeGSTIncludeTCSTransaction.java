@@ -26,7 +26,7 @@ public class SalesInvoiceIncludeGSTIncludeTCSTransaction {
     @Test
     public void testcase1() throws IOException, ParseException, InterruptedException, AWTException {
       SalesInvoiceIncludeGSTIncludeTCS siigst=new SalesInvoiceIncludeGSTIncludeTCS(driver,dataFile);
-      siigst.salesInvoiceIncludeGSTAndIncludeTCS();
+      siigst.salesInvoiceIncludeGSTAndIncludeTax();
     }
     @AfterTest
     public void afterTest(){

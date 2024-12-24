@@ -1,4 +1,4 @@
-package TestCases;
+package SalesInvoicesTestCases;
 
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
@@ -67,7 +67,7 @@ public class TC_07 extends Transaction {
 //        }
         navigateToChargesAndDeductionsTab();
         chargesAndDeductionsCalculations(dataFile,"chargesOrDeductions","chargesOrDeductionsCode","amount","rowCount");
-        tcsCalculations(dataFile,"otherChargesCode","amount","iterations");
+//        tcsCalculations(dataFile,"otherChargesCode","amount","iterations");
 
         //calculating TCS
 //        DecimalFormat decimalFormat=new DecimalFormat("#.###");

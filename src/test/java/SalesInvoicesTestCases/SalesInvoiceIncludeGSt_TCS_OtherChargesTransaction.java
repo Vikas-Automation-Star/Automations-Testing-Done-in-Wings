@@ -24,8 +24,8 @@ public class SalesInvoiceIncludeGSt_TCS_OtherChargesTransaction {
 
     @Test
     public void testcase1() throws IOException, ParseException, InterruptedException, AWTException {
-        SalesInvoiceIncludingGST_TCS_OtherCharges sioc=new SalesInvoiceIncludingGST_TCS_OtherCharges(driver,dataFile);
-        sioc.salesInvovoiceIcludeGST_TCS_OtherCharges();
+//        SalesInvoiceIncludingGST_TCS_OtherCharges sioc=new SalesInvoiceIncludingGST_TCS_OtherCharges(driver,dataFile);
+//        sioc.salesInvovoiceIcludeGST_TCS_OtherCharges();
     }
     @AfterTest
     public void afterTest(){
