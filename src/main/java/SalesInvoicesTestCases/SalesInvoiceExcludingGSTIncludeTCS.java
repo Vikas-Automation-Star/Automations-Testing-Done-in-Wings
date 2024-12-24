@@ -1,4 +1,4 @@
-package TestCases;
+package SalesInvoicesTestCases;
 
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;

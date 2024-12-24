@@ -14,7 +14,7 @@ import java.io.IOException;
 public class DebitNoteTransaction {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String dataFile="./src/main/resources/menuItems/finance/transaction/creditNoteOnCustomerReport.json";
+    String dataFile="./src/main/resources/menuItems/finance/transaction/debitNote.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException, IOException, ParseException {
@@ -31,7 +31,7 @@ public class DebitNoteTransaction {
 
     @AfterTest
     public void afterTest(){
-        appLogin.logout();
+//        appLogin.logout();
         Allure.step("After Test - Debit Note");
     }
 }

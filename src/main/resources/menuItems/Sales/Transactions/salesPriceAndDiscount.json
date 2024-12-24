@@ -6,6 +6,7 @@
   "MRP": "500",
   "branch": "Hyderabad",
   "close": "Sales Prices",
+  "basis": "Value",
   "executive": "HYDExec",
   "transaction": "INR",
   "priceList": "Inclusive SalesPriceList"

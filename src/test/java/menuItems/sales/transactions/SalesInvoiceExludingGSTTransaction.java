@@ -1,7 +1,7 @@
 package menuItems.sales.transactions;
 
 import com.wings.pages.AppLogin;
-import TestCases.SalesInvoicesExcludingGST;
+import SalesInvoicesTestCases.SalesInvoicesExcludingGST;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;

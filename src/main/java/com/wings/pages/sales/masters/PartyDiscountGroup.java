@@ -30,6 +30,8 @@ public class PartyDiscountGroup {
         Actions actions = new Actions(driver);
         actions.contextClick(allPartyDiscount).perform();
         common.clickElement("name", "New Master");
+        Thread.sleep(2500);
+        common.clickElement("xpath","//Edit[@Name='New Party Discount Group *']");
         common.inputText("xpath", "//Edit[@Name='New Party Discount Group *']", common.getData(dataFile, "partyGroup") + common.getRandom());
         common.inputAndVerify("xpath", "//Edit[@Name='Description']",common.getData(dataFile, "description"));
         common.clickElement("xpath","//Text[@Name='Applicable Party Nodes']/following-sibling::Button[@Name='...']");

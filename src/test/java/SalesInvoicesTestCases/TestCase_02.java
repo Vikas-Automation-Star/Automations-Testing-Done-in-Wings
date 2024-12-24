@@ -1,4 +1,4 @@
-package TestCases;
+package SalesInvoicesTestCases;
 
 import com.wings.pages.AppLogin;
 import io.appium.java_client.windows.WindowsDriver;
@@ -25,7 +25,7 @@ public class TestCase_02 {
 
         @Test
         public void testcase2() throws IOException, ParseException, InterruptedException, AWTException {
-           SalesInvoiceIncludingGST_TC02 tc02=new SalesInvoiceIncludingGST_TC02(driver,dataFile);
+           InterStateIncludingGST_02 tc02=new InterStateIncludingGST_02(driver,dataFile);
            tc02.testCase2();
         }
 

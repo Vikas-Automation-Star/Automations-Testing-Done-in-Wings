@@ -1,8 +1,7 @@
-package TestCases;
+package SalesInvoicesTestCases;
 
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
-import com.wings.utils.StringUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
@@ -10,17 +9,14 @@ import org.testng.Assert;
 import java.awt.event.KeyEvent;
 import java.awt.*;
 import java.io.IOException;
-import java.text.DecimalFormat;
 
-public class TC_01 extends Transaction {
+public class InterStateExcludingGST_01 extends Transaction {
     WindowsDriver driver;
     Common common;
     String dataFile;
-    double quantity;
-    double mrp, grossAmount, unitRate, voucherDiscountValue, partyDiscountValue, netAmount, grossMinusDiscount, gstValue, cessValue, taxableValue, taxableAmountCalculated;
+    double mrp,quantity, grossAmount, unitRate, voucherDiscountValue, partyDiscountValue, netAmount, grossMinusDiscount;
 
-
-    public TC_01(WindowsDriver driver, String file) {
+    public InterStateExcludingGST_01(WindowsDriver driver, String file) {
         super(driver);
         this.driver = driver;
         common = new Common(this.driver);
@@ -66,27 +62,11 @@ public class TC_01 extends Transaction {
         for (int i = 0; i < Integer.parseInt(common.getData(dataFile, "productCount")); i++) {
             addProduct(i);
         }
-
-        common.clickElement("xpath", "//TabItem[@Name='  F8 CGST  ']");
-        WebElement tax = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']");
-        String value = tax.getText();
-        if (!(value == (null) || "(null)".equals(value))) {
-            Assert.fail("CGST field is not empty");
-
-        }
-        common.clickElement("xpath", "//TabItem[@Name='  F9 SGST  ']");
-        WebElement tax1 = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']");
-        String value1 = tax1.getText();
-        if (!(value1 == (null) || "(null)".equals(value1))) {
-            Assert.fail("SGST field is not empty");
-
-        }
-        common.clickElement("xpath", "//TabItem[@Name='  F11 IGST  ']");
-        WebElement IGSTtax = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']");
-        String value2 = IGSTtax.getText();
-        if (!(value2 == (null) || "(null)".equals(value2))) {
-            Assert.fail("IGST field is not empty");
-        }
+        validateCGSTAmountTabIsEmpty();
+        validateSGSTAmountTabIsEmpty();
+        validateIGSTAmountTabIsEmpty();
+        validateCESSAmountTabIsEmpty();
+        navigateToBatchDetailsTab();
 
         //verify all the fields in summary are fetching data
         navigateToOtherInfoTab();
@@ -94,43 +74,13 @@ public class TC_01 extends Transaction {
             robot.keyPress(KeyEvent.VK_RIGHT);
             robot.keyRelease(KeyEvent.VK_RIGHT);
         }
-
-        WebElement Quantity = common.findWebElement("xpath", "//Edit[@Name='Quantity']");
-        String quantityText = Quantity.getText();
-        if ((quantityText == (null) || "(null)".equals(quantityText))) {
-            Assert.fail("Quantity field is empty");
-        }
-
-        WebElement grossAmount = common.findWebElement("xpath", "//Edit[@Name='Gross Amount']");
-        String grossAmountText1 = grossAmount.getText();
-        if ((grossAmountText1 == (null) || "(null)".equals(grossAmountText1))) {
-            Assert.fail("grossAmount field is empty");
-        }
-
-        WebElement netAmount = common.findWebElement("xpath", "//Edit[@Name='Net Amount']");
-        String netAmountText1 = netAmount.getText();
-        if ((netAmountText1 == (null) || "(null)".equals(netAmountText1))) {
-            Assert.fail("netAmount field is empty");
-        }
-
-        WebElement totalValue = common.findWebElement("xpath", "//Edit[@Name='Total Value']");
-        String totalValueText = totalValue.getText();
-        if (totalValueText == (null) || "(null)".equals(totalValueText)) {
-            Assert.fail("Total value field is Empty");
-        }
-
-        WebElement totalValueCompanyCurreny = common.findWebElement("xpath", "//Edit[@Name='Total Value In Company Currency']");
-        String totalValuecurrencyText = totalValueCompanyCurreny.getText();
-        if (totalValuecurrencyText == (null) || "(null)".equals(totalValuecurrencyText)) {
-            Assert.fail("Total value in Company Curreny field is Empty");
-        }
-
-        WebElement receivableAmount = common.findWebElement("xpath", "//Edit[@Name='Receivable Amount']");
-        String receivableAmountText = receivableAmount.getText();
-        if (receivableAmountText == (null) || "(null)".equals(receivableAmountText)) {
-            Assert.fail("Receivable Amount field is empty");
-        }
-
+        quantityPresentInSummary();
+        grossAmountPresentInSummary();
+        grossMinusDiscountPresentInSummary();
+        netAmountPresentInSummary();
+        totalValuePresentInSummary();
+        totalValueInCompanyCurrenyPresentInSummary();
+        receivableAmountPresentInSummary();
     }
 
     public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {
@@ -266,8 +216,7 @@ public class TC_01 extends Transaction {
         System.out.println("actual:- " + actualMrpAmount + " -expectedMrp-" + expectedMrpAmount);
         Assert.assertEquals(actualMrpAmount, expectedMrpAmount, "Mismatch in MRP Amount");
 
-        int offset = 450;
-        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", offset, 0);
+        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 450, 0);
 
         unitRate = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='Unit Rate Row " + i + ", Not sorted.']").getText());
         System.out.println("unitRate:-" + unitRate);
@@ -296,15 +245,11 @@ public class TC_01 extends Transaction {
         partyDiscountValue = Double.parseDouble(partyDiscText);
         System.out.println("party Discount Value: - " + partyDiscountValue);
 
-        enterDataAndValidate("xpath", "//Edit[@Name='HSN Row " + i + ", Not sorted.']", dataFile, "HSNCode");
-
-        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", offset, 0);
-
+        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 450, 0);
 
         grossMinusDiscount = (grossAmount - (voucherDiscountValue + partyDiscountValue));
 
         System.out.println("gross-disc is: " + grossMinusDiscount);
-
 
         WebElement net = common.findWebElement("xpath", "//Edit[@Name='Net Amount Row " + i + ", Not sorted.']");
         String netAmountText = net.getText().replace(",", "");
@@ -313,8 +258,6 @@ public class TC_01 extends Transaction {
         Assert.assertEquals(grossMinusDiscount, netAmount);
     }
 }
-
-
         //save
 //        transactionSave();
 //        lastTransactionName();

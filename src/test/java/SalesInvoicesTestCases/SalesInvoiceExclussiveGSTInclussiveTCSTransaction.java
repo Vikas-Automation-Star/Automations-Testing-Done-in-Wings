@@ -1,4 +1,4 @@
-package TestCases;
+package SalesInvoicesTestCases;
 
 import com.wings.pages.AppLogin;
 import io.appium.java_client.windows.WindowsDriver;
@@ -11,10 +11,10 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.io.IOException;
 
-public class SalesInvoiceIncludeGSTIncludeTCSTransaction {
+public class SalesInvoiceExclussiveGSTInclussiveTCSTransaction {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String dataFile = "./src/main/resources/TestCasesData/salesInvoicesIncludeGSTAndExcludeTCS.json";
+    String dataFile = "./src/main/resources/TestCasesData/salesInvoicesExclussiveGSTAndInclussiveTCS.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
@@ -25,9 +25,10 @@ public class SalesInvoiceIncludeGSTIncludeTCSTransaction {
 
     @Test
     public void testcase1() throws IOException, ParseException, InterruptedException, AWTException {
-      SalesInvoiceIncludeGSTIncludeTCS siigst=new SalesInvoiceIncludeGSTIncludeTCS(driver,dataFile);
-      siigst.salesInvoiceIncludeGSTAndIncludeTax();
+        SalesInvoiceExcludingGSTIncludeTCS si=new SalesInvoiceExcludingGSTIncludeTCS(driver,dataFile);
+        si.salesInvoiceExcludeGstAndIncludeTcs();
     }
+
     @AfterTest
     public void afterTest(){
 //        appLogin.logout();

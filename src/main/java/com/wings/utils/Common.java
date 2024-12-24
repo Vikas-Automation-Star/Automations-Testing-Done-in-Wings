@@ -133,7 +133,6 @@ public class Common {
     }
 
     public void sliderHandling(String locatorType,String locator,int xOffset,int yOffset){
-//        int offset = 500; // Change this value as needed
         WebElement slider = findWebElement(locatorType,locator);
         Actions actions = new Actions(driver);
         actions.clickAndHold(slider).moveByOffset(xOffset,yOffset).release().perform();

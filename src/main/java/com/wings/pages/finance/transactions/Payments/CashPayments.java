@@ -61,6 +61,5 @@ public class CashPayments extends Transaction {
             //save
             transactionSave();
             lastTransactionName();
-//            transactionClose(common.getData(dataFile,"close"));
         }
     }

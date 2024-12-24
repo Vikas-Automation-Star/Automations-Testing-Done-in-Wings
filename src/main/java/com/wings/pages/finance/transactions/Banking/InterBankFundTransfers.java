@@ -46,7 +46,7 @@ public class InterBankFundTransfers extends Transaction {
         selectAndValidateData(common.getData(dataFile,"executive"),"xpath", "//Edit[@Name='Executive *']");
         common.clickElement("xpath","//Edit[@Name='Remarks']");
         selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         navigateToSummaryTab();
         //save
         transactionSave();

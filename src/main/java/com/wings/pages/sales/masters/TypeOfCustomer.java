@@ -28,6 +28,7 @@ public class TypeOfCustomer {
         Actions actions = new Actions(driver);
         actions.contextClick(AllBranch).perform();
         common.clickElement("name", "New Master");
+        common.clickElement("xpath","//Edit[@Name='New Type Of Customer *']");
         common.inputText("xpath","//Edit[@Name='New Type Of Customer *']", common.getData(file,"newCust")+common.getRandom());
         common.inputAndVerify("xpath","//Edit[@Name='Prefix *']", common.getData(file,"prefix"));
         common.inputAndVerify("xpath","//Edit[@Name='No Of Digits *']", common.getData(file,"noOfDigits"));
