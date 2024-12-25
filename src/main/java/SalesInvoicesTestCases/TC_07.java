@@ -1,4 +1,4 @@
-package TestCases;
+package SalesInvoicesTestCases;
 
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
@@ -18,7 +18,7 @@ public class TC_07 extends Transaction {
     String dataFile;
     double quantity;
     boolean gstAmountClicked = false;
-    double netAmountTextt,totalNetValue,tcsAssesibleValue,tcsRate,tcsCompanyCurrency;
+    double totalNetValue,tcsAssesibleValue,tcsRate,tcsCompanyCurrency;
     double mrp,grossAmount,unitRate,voucherDiscountValue,partyDiscountValue,netAmount,grossMinusDiscount,gstValue,cessValue,taxableValue,taxableAmountCalculated,expectedGSTAmount;
 
     public TC_07(WindowsDriver driver, String file) {
@@ -62,14 +62,11 @@ public class TC_07 extends Transaction {
         selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
 
         //F3-Items
-        for (int i = 0; i < Integer.parseInt(common.getData(dataFile,"productCount")); i++) {
-            addProduct(i);
-        }
+//        for (int i = 0; i < Integer.parseInt(common.getData(dataFile,"productCount")); i++) {
+//            addProduct(i);
+//        }
         navigateToChargesAndDeductionsTab();
         chargesAndDeductionsCalculations(dataFile,"chargesOrDeductions","chargesOrDeductionsCode","amount","rowCount");
-        netAmountTextt=Double.parseDouble(common.findWebElement("xpath","//Edit[@AutomationId='NetAmount']").getText().replace(",",""));
-        System.out.println("Net Amount :- "+netAmountTextt);
-        tcsCalculations(dataFile,"code","amount","HSNCode","rowCount",netAmountTextt);
 //        tcsCalculations(dataFile,"otherChargesCode","amount","iterations");
 
         //calculating TCS

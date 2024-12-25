@@ -1,4 +1,4 @@
-package TestCases;
+package SalesInvoicesTestCases;
 
 import com.wings.pages.AppLogin;
 import io.appium.java_client.windows.WindowsDriver;

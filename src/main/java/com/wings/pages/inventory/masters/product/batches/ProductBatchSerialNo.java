@@ -41,6 +41,7 @@ public class ProductBatchSerialNo extends Masters {
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
         Thread.sleep(1000);
+        common.sliderHandling("xpath","//Thumb[@Name='Position']",0,300);
         common.clickElement("xpath", "//Edit[@Name='Sales Account']/Button[@Name='Open']");
         robot.keyPress(KeyEvent.VK_DOWN);
         robot.keyRelease(KeyEvent.VK_DOWN);

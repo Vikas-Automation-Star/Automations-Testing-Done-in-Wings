@@ -1,9 +1,9 @@
 {
   "branch": "Hyderabad",
   "transaction": "INR",
-  "fromBank": "Bank Account",
+  "fromBank": 321,
   "executive": "HYDExec",
-  "toBank": "State Bank",
+  "toBank": 123,
   "amount": "3500",
   "close": "Inter Bank Fund Transfers",
   "cheque": "777",

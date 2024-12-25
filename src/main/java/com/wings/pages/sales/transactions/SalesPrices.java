@@ -32,18 +32,20 @@ public class SalesPrices extends Transaction {
         common.clickElement("xpath", "//Edit[@Name='Transaction Currency *']");
         selectAndValidateData(common.getData(dataFile, "transaction"),"xpath","//Edit[@Name='Transaction Currency *']");
         common.clickElement("xpath", "//Edit[@Name='Master Type']");
-        selectAndValidateData(common.getData(dataFile, "MasterType"),"xpath","//Edit[@Name='Master Type']");
+        selectAndValidateDataNew(common.getData(dataFile, "MasterType"),"xpath","//Edit[@Name='Master Type']");
         common.clickElement("xpath", "//Edit[@Name='Price List *']");
         selectAndValidateData(common.getData(dataFile,"priceList"),"xpath", "//Edit[@Name='Price List *']");
+        common.clickElement("xpath","//Edit[@Name='Basis']");
+        selectAndValidateDataNew(common.getData(dataFile,"basis"),"xpath","//Edit[@Name='Basis']" );
         common.clickElement("xpath", "//Edit[@Name='Executive *']");
         selectAndValidateData(common.getData(dataFile,"executive"),"xpath", "//Edit[@Name='Executive *']");
         common.clickElement("xpath","//Edit[@Name='Remarks']");
         selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
         //product-1
-        enterData("xpath","//Edit[@Name='Minimum Rate * Row 0, Not sorted.']",dataFile,"minimum");
-        enterData("xpath","//Edit[@Name='Maximum Rate * Row 0, Not sorted.']",dataFile,"maximum");
-        enterData("xpath","//Edit[@Name='Rate * Row 0, Not sorted.']",dataFile,"rate");
-        enterData("xpath","//Edit[@Name='MRP Row 0, Not sorted.']",dataFile,"MRP");
+        enterData("xpath","//Edit[@Name='Minimum Rate * Row 1, Not sorted.']",dataFile,"minimum");
+        enterData("xpath","//Edit[@Name='Maximum Rate * Row 1, Not sorted.']",dataFile,"maximum");
+        enterData("xpath","//Edit[@Name='Rate * Row 1, Not sorted.']",dataFile,"rate");
+        enterData("xpath","//Edit[@Name='MRP Row 1, Not sorted.']",dataFile,"MRP");
         Thread.sleep(1500);
         common.deleteInvalidRows();
         //save

@@ -1,17 +1,29 @@
 {
-  "product":"02",
-  "ProductQuantity": 10,
-  "productMRP": 1000,
-  "minumumRate": 10,
-  "maximumRate": 1000,
-  "unitRate":250,
-  "multiBatch":53,
-  "multiBatchQuantity": 15,
-  "serialBatch": 32,
+
+  "title": "Sales Invoices",
   "branch": "AT_Branch4_Reg_Inter",
-  "partyCode": "23",
+  "partyCode": 23,
   "invoice": "Regular",
-  "salesAccountCode": 55,
   "priceList": "AT_Exclusive Sales Price List 1",
-  "executive": "AT_Executive1"
+  "salesAccountCode": 55,
+  "HSNCode": "AT_HSN Code 2",
+
+  "productCount": 3,
+  "productType0": "general",
+  "quantity0": 5,
+  "productCode0": "02",
+  "voucherDiscount0":2,
+  "partyDiscount0":5,
+
+  "productType1": "multiBatch",
+  "quantity1": 10,
+  "productCode1": 53,
+  "voucherDiscount1":2,
+  "partyDiscount1":9,
+
+  "productType2": "serial",
+  "quantity2": 7,
+  "productCode2": 32,
+  "voucherDiscount2":4,
+  "partyDiscount2":7
 }

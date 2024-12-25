@@ -26,7 +26,6 @@ public class ProductDiscountMaster {
     public void productDiscount() throws InterruptedException, IOException, ParseException, AWTException {
         ProductDiscountGroup productDiscountGroup=new ProductDiscountGroup(driver,file);
         productDiscountGroup.productGroup();
-
     }
 
     @AfterTest

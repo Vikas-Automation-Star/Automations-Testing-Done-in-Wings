@@ -30,6 +30,8 @@ public class ProductDiscountGroup {
         Actions actions = new Actions(driver);
         actions.contextClick(allProductDiscount).perform();
         common.clickElement("name", "New Master");
+        Thread.sleep(2500);
+        common.clickElement("xpath","//Edit[@Name='New Product Discount Group *']");
         common.inputText("xpath", "//Edit[@Name='New Product Discount Group *']", common.getData(dataFile, "productGroup") + common.getRandom());
         common.inputAndVerify("xpath", "//Edit[@Name='Description']",common.getData(dataFile, "description"));
         common.clickElement("xpath","//Text[@Name='Applicable Product Nodes']/following-sibling::Button[@Name='...']");
@@ -37,10 +39,10 @@ public class ProductDiscountGroup {
         Robot robot=new Robot();
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
+        Thread.sleep(2500);
         common.inputText("xpath","//Edit[@Name='Applicable Node Row 0, Not sorted.']",common.getData(dataFile,"applicable"));
-        Robot robot1 =new Robot();
-        robot1.keyPress(KeyEvent.VK_ENTER);
-        robot1.keyRelease(KeyEvent.VK_ENTER);
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
         common.clickElement("name","Ok");
         common.clickElement("xpath", "//Pane/Button[@Name='Save']");
         Thread.sleep(1000);

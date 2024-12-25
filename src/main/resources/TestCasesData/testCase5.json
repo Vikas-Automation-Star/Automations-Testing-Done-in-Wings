@@ -6,6 +6,12 @@
   "invoice": "Regular",
   "priceList": "AT_Exclusive Sales Price List 1",
   "salesAccountCode": 55,
+  "HSNCode": "AT_HSN Code 2",
+  "amount": 250,
+  "accountCode": 567,
+  "type": "Deductions",
+  "rowCount": 2,
+  "otherChargesCount": 2,
 
   "productCount": 3,
   "productType0": "general",

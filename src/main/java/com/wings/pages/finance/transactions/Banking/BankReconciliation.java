@@ -41,7 +41,7 @@ public class BankReconciliation extends Transaction {
         common.clickElement("xpath","//Edit[@Name='Remarks']");
         selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
         Thread.sleep(3000);
-        common.sliderHandling("xpath","//Thumb[@Name='Position']",0,-150);
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,-280);
         //f3-accounts
         common.clickElement("xpath","//CheckBox[@Name='Clearing Status * Row 0']");
         common.deleteInvalidRows();

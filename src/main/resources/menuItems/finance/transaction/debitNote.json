@@ -5,7 +5,7 @@
   "accountCode": 567,
   "partyCode": 17,
   "amount": 1000,
-  "TDSNature": "TDS Transaction Nature",
+  "TDSNature": "TDS Transaction Nature 1",
   "TDSAccount": "TDS Paid Account",
   "TDSAmount": 150,
   "close": "Debit Note"

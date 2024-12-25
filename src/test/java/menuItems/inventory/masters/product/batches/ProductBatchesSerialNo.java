@@ -30,6 +30,6 @@ public class ProductBatchesSerialNo {
 
     @AfterTest
     public void afterTest() {
-        appLogin.logout();
+//        appLogin.logout();
     }
 }
