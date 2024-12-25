@@ -6,7 +6,6 @@ import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
 import java.awt.*;
 import java.io.IOException;
 
@@ -26,6 +25,7 @@ public class TestCase_07 {
      TC_07 tc=new TC_07(driver,dataFile);
      tc.testCase_07();
     }
+
     @AfterTest
     public void afterTest(){
 //        appLogin.logout();

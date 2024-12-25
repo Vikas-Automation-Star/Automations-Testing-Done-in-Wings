@@ -38,7 +38,7 @@ public class PurchaseVouchersTransaction  {
 
     @AfterTest
     public void afterTest(){
-        appLogin.logout();
+//        appLogin.logout();
         Allure.step("After Test PurchaseVouchers Transaction");
 
 

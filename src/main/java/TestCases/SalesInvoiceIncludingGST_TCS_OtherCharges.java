@@ -18,7 +18,7 @@ public class SalesInvoiceIncludingGST_TCS_OtherCharges extends Transaction {
     String dataFile;
     double quantity;
     boolean gstAmountClicked = false;
-    double totalNetValue,tcsAssesibleValue,tcsRate,tcsCompanyCurrency;
+    double netAmountTextt,tcsAssesibleValue,tcsRate,tcsCompanyCurrency;
     double mrp,grossAmount,unitRate,voucherDiscountValue,partyDiscountValue,netAmount,grossMinusDiscount,gstValue,cessValue,taxableValue,taxableAmountCalculated,expectedGSTAmount;
 
     public SalesInvoiceIncludingGST_TCS_OtherCharges(WindowsDriver driver, String file) {
@@ -65,20 +65,23 @@ public class SalesInvoiceIncludingGST_TCS_OtherCharges extends Transaction {
         for (int i = 0; i < Integer.parseInt(common.getData(dataFile,"productCount")); i++) {
             addProduct(i);
         }
+        netAmountTextt=Double.parseDouble(common.findWebElement("xpath","//Edit[@AutomationId='NetAmount']").getText().replace(",",""));
+        System.out.println("Net Amount :- "+netAmountTextt);
+        tcsCalculations(dataFile,"code","amount","HSNCode","rowCount",netAmountTextt);
 
         //calculating TCS
-        DecimalFormat decimalFormat=new DecimalFormat("#.###");
-        totalNetValue= Double.parseDouble(common.findWebElement("xpath","//Edit[@AutomationId='NetAmount']").getText().replace(",",""));
-        System.out.println("totalNetAmount :- "+totalNetValue);
-        common.clickElement("xpath","//TabItem[contains(@Name,'TCS')]");
-        tcsAssesibleValue =Double.parseDouble(common.findWebElement("xpath","//Edit[@Name='Assessable Value']").getText().replace(",",""));
-        System.out.println("assesibleValue :- "+tcsAssesibleValue);
-        Assert.assertEquals(tcsAssesibleValue,totalNetValue,"should be match");
-
-        tcsRate = Double.parseDouble(common.findWebElement("xpath","//Edit[@Name='TCS Rate']").getText());
-        tcsCompanyCurrency =Double.parseDouble(common.findWebElement("xpath","//Edit[@Name='TCS Amount']").getText());
-        double expectedTCS = tcsAssesibleValue * tcsRate / 100;
-        System.out.println("ActualAmount :- "+tcsCompanyCurrency+" ExpectedAmount :- "+decimalFormat.format(expectedTCS));
+//        DecimalFormat decimalFormat=new DecimalFormat("#.###");
+//        totalNetValue= Double.parseDouble(common.findWebElement("xpath","//Edit[@AutomationId='NetAmount']").getText().replace(",",""));
+//        System.out.println("totalNetAmount :- "+totalNetValue);
+//        common.clickElement("xpath","//TabItem[contains(@Name,'TCS')]");
+//        tcsAssesibleValue =Double.parseDouble(common.findWebElement("xpath","//Edit[@Name='Assessable Value']").getText().replace(",",""));
+//        System.out.println("assesibleValue :- "+tcsAssesibleValue);
+//        Assert.assertEquals(tcsAssesibleValue,totalNetValue,"should be match");
+//
+//        tcsRate = Double.parseDouble(common.findWebElement("xpath","//Edit[@Name='TCS Rate']").getText());
+//        tcsCompanyCurrency =Double.parseDouble(common.findWebElement("xpath","//Edit[@Name='TCS Amount']").getText());
+//        double expectedTCS = tcsAssesibleValue * tcsRate / 100;
+//        System.out.println("ActualAmount :- "+tcsCompanyCurrency+" ExpectedAmount :- "+decimalFormat.format(expectedTCS));
 //        Assert.assertEquals(decimalFormat.format(tcsCompanyCurrency),decimalFormat.format(expectedTCS),"Calculations mismatch");
     }
 

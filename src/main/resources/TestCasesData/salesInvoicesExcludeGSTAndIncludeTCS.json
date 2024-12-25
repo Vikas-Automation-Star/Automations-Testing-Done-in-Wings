@@ -27,5 +27,10 @@
   "quantity2": 5,
   "productCode2": 123456,
   "voucherDiscount2":4,
-  "partyDiscount2":7
+  "partyDiscount2":7,
+
+  "rowCount": 1,
+  "code": "AT_Sales  Acc 1",
+  "amount": 200
+
 }

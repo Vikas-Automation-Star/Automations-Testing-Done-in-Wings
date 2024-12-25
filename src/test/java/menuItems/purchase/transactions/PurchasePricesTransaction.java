@@ -32,7 +32,7 @@ public class PurchasePricesTransaction {
 
     @AfterTest
     public void afterTest(){
-        appLogin.logout();
+//        appLogin.logout();
         Allure.step("After Test PurchasePrices Transaction");
 
     }

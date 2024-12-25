@@ -5,7 +5,6 @@
   "salesAccountCode": "AT_Sales  Acc 1",
   "tcsNature": "AT_TCS Transaction Nature 1",
   "portCode": "225588",
-
   "productCount": 3,
 
   "HSNCode": "AT_HSN Code 2",
@@ -27,10 +26,10 @@
   "voucherDiscount2":4,
   "partyDiscount2":7,
 
-  "rowCount": "2",
+  "rowCount":2,
   "chargesOrDeductions": "Charges",
   "chargesOrDeductionsCode":"AT_Sales Acc 1",
-  "amount": "500",
+  "amount":500,
   "otherChargesCode": "AT_Sales Acc 1"
 
 }

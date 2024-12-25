@@ -4,6 +4,7 @@ import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
+import org.openqa.selenium.WebElement;
 
 import java.io.IOException;
 
@@ -35,9 +36,10 @@ public class ProductOrders extends Transaction {
         super.selectMasterWithValidation(common.getData(dataFile,"fProduct"),"xpath", "//Edit[@Name='Finished Product *']");
         common.clickElement("xpath","//Edit[@Name='SKU *']");
         common.clickElement("xpath","//Edit[@Name='BOM *']");
-        super.selectMasterWithValidation(common.getData(dataFile,"New Bill of Material61"),"xpath","//Edit[@Name='BOM *']");
-        common.clickElement("xpath","//Edit[@Name='Order Quantity *']");
-        super.inputTextWithValidation("xpath","//Edit[@Name='Order Quantity *']", common.getData(dataFile,"quantity"));
+        super.selectMasterWithValidation(common.getData(dataFile,"NewBillofMaterial"),"xpath","//Edit[@Name='BOM *']");
+        WebElement clear=common.findWebElement("xpath","//Edit[@Name='Order Quantity *']");
+        clear.clear();
+        super.enterData("xpath","//Edit[@Name='Order Quantity *']", dataFile,"quantity");
         common.clickElement("xpath","//Edit[@Name='Executive *']");
         super.selectMasterWithValidation(common.getData(dataFile,"Executive"), "xpath","//Edit[@Name='Executive *']");
         transactionSave();

@@ -33,7 +33,7 @@ public class PurchasePrice extends Transaction {
         common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
         super.selectMasterWithValidation(common.getData(dataFile,"currency"),"xpath", "//Edit[@Name='Trans Currency *']");
         common.clickElement("xpath", "//Edit[@Name='Master Type']");
-        super.selectMasterWithValidation(common.getData(dataFile,"masterType"),"xpath", "//Edit[@Name='Master Type']") ;
+        super.selectAndValidateDataNew(common.getData(dataFile,"masterType"),"xpath", "//Edit[@Name='Master Type']"); ;
         common.clickElement("xpath", "//Edit[@Name='Node']");
         Thread.sleep(1000);
         common.clickElement("xpath", "//Edit[@Name='Price List *']");

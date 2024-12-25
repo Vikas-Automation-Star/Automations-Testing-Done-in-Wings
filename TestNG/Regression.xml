@@ -315,53 +315,55 @@
         </classes>
     </test>
 
-<!--    <test name="Checking MonthWisePurchaseByQuantity1 Report" description="description forMonthWisePurchaseByQuantity Report"  testID="WOW 52">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.purchase.reports.analysis.party.MonthWisePurchaseByQuantityReport"></class>-->
-<!--        </classes>-->
-<!--    </test>-->
 
-<!--    <test name="Checking MonthWisePurchaseByValue1 Report" description="description for MonthWisePurchaseByValue Report"  testID="WOW 53">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.purchase.reports.analysis.party.MonthWisePurchaseByValueReport"></class>-->
-<!--        </classes>-->
-<!--    </test>-->
 
-<!--    <test name="Checking YearWisePurchaseByQuantity1 Report" description="description for YearWisePurchaseByQuantity Report"  testID="WOW 54">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.purchase.reports.analysis.party.YearWisePurchaseByQuantityReport"></class>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="Checking MonthWisePurchaseByQuantity1 Report" description="description forMonthWisePurchaseByQuantity Report"  testID="WOW 52">
+        <classes>
+            <class name="menuItems.purchase.reports.analysis.party.MonthWisePurchaseByQuantityReport"></class>
+        </classes>
+    </test>
 
-<!--    <test name="Checking YearWisePurchaseByValue1 Report" description="description for YearWisePurchaseByValue Report"  testID="WOW 55">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.purchase.reports.analysis.party.YearWisePurchaseByValueReport"></class>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="Checking MonthWisePurchaseByValue1 Report" description="description for MonthWisePurchaseByValue Report"  testID="WOW 53">
+        <classes>
+            <class name="menuItems.purchase.reports.analysis.party.MonthWisePurchaseByValueReport"></class>
+        </classes>
+    </test>
 
-<!--    <test name="Checking MonthWisePurchaseByQuantity2 Report" description="description for MonthWisePurchaseByQuantity Report"  testID="WOW 56">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.purchase.reports.analysis.product.MonthWisePurchaseByQuantityReport"></class>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="Checking YearWisePurchaseByQuantity1 Report" description="description for YearWisePurchaseByQuantity Report"  testID="WOW 54">
+        <classes>
+            <class name="menuItems.purchase.reports.analysis.party.YearWisePurchaseByQuantityReport"></class>
+        </classes>
+    </test>
 
-<!--    <test name="Checking MonthWisePurchaseByValue2 Report" description="description for MonthWisePurchaseByValue Report"  testID="WOW 57">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.purchase.reports.analysis.product.MonthWisePurchaseByValueReport"></class>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="Checking YearWisePurchaseByValue1 Report" description="description for YearWisePurchaseByValue Report"  testID="WOW 55">
+        <classes>
+            <class name="menuItems.purchase.reports.analysis.party.YearWisePurchaseByValueReport"></class>
+        </classes>
+    </test>
 
-<!--    <test name="Checking YearWisePurchaseByQuantity2 Report" description="description for YearWisePurchaseByQuantity Report"  testID="WOW 58">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.purchase.reports.analysis.product.YearWisePurchaseByQuantityReport"></class>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="Checking MonthWisePurchaseByQuantity2 Report" description="description for MonthWisePurchaseByQuantity Report"  testID="WOW 56">
+        <classes>
+            <class name="menuItems.purchase.reports.analysis.product.MonthWisePurchaseByQuantityReport"></class>
+        </classes>
+    </test>
 
-<!--    <test name="Checking YearWisePurchaseByValue2 Report" description="description for YearWisePurchaseByValue Report"  testID="WOW 59">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.purchase.reports.analysis.product.YearWisePurchaseByValueReport"></class>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="Checking MonthWisePurchaseByValue2 Report" description="description for MonthWisePurchaseByValue Report"  testID="WOW 57">
+        <classes>
+            <class name="menuItems.purchase.reports.analysis.product.MonthWisePurchaseByValueReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking YearWisePurchaseByQuantity2 Report" description="description for YearWisePurchaseByQuantity Report"  testID="WOW 58">
+        <classes>
+            <class name="menuItems.purchase.reports.analysis.product.YearWisePurchaseByQuantityReport"></class>
+        </classes>
+    </test>
+
+    <test name="Checking YearWisePurchaseByValue2 Report" description="description for YearWisePurchaseByValue Report"  testID="WOW 59">
+        <classes>
+            <class name="menuItems.purchase.reports.analysis.product.YearWisePurchaseByValueReport"></class>
+        </classes>
+    </test>
 
     <!-- purchase completed-->
 

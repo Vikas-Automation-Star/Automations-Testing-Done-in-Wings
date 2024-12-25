@@ -29,6 +29,6 @@ public class TcsPaymentsTransaction {
 
     @AfterTest
     public void afterTest(){
-        appLogin.logout();
+//        appLogin.logout();
     }
 }
