@@ -269,13 +269,13 @@ public abstract class Transaction {
     }
 
     public void navigateToSummaryTab() throws AWTException {
+        navigateToOtherInfoTab();
+        for (int j = 0; j < 4; j++) {
+            Robot robot=new Robot();
+            robot.keyPress(KeyEvent.VK_RIGHT);
+            robot.keyRelease(KeyEvent.VK_RIGHT);
+        }
         common.clickElement("xpath", "//TabItem[contains(@Name,'Summary')]");
-//        navigateToOtherInfoTab();
-//        for (int j = 0; j < 4; j++) {
-//            Robot robot=new Robot();
-//            robot.keyPress(KeyEvent.VK_RIGHT);
-//            robot.keyRelease(KeyEvent.VK_RIGHT);
-//        }
     }
 
     public void validateTCSAmount(double tcsAssesibleValue, double tcsRate) {
@@ -406,6 +406,36 @@ public abstract class Transaction {
 
     public void grossMinusDiscountPresentInSummary() {
         WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='Gross - Disc']");
+        String grossMinusDiscountAmount = grossDiscountAmount.getText();
+        if ((grossMinusDiscountAmount == (null) || "(null)".equals(grossMinusDiscountAmount))) {
+            Assert.fail("grossDiscountAmount field is empty");
+        }
+    }
+
+    public void iGSTPresentInSummary() {
+        WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='IGST']");
+        String grossMinusDiscountAmount = grossDiscountAmount.getText();
+        if ((grossMinusDiscountAmount == (null) || "(null)".equals(grossMinusDiscountAmount))) {
+            Assert.fail("grossDiscountAmount field is empty");
+        }
+    }
+
+    public void cessPresentInSummary() {
+        WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='CESS']");
+        String grossMinusDiscountAmount = grossDiscountAmount.getText();
+        if ((grossMinusDiscountAmount == (null) || "(null)".equals(grossMinusDiscountAmount))) {
+            Assert.fail("grossDiscountAmount field is empty");
+        }
+    }
+    public void otherChargesCESSPresentInSummary() {
+        WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='Other Charges CESS']");
+        String grossMinusDiscountAmount = grossDiscountAmount.getText();
+        if ((grossMinusDiscountAmount == (null) || "(null)".equals(grossMinusDiscountAmount))) {
+            Assert.fail("grossDiscountAmount field is empty");
+        }
+    }
+    public void otherChargesIGSTPresentInSummary() {
+        WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='Other Charges IGST']");
         String grossMinusDiscountAmount = grossDiscountAmount.getText();
         if ((grossMinusDiscountAmount == (null) || "(null)".equals(grossMinusDiscountAmount))) {
             Assert.fail("grossDiscountAmount field is empty");
@@ -1211,7 +1241,7 @@ public abstract class Transaction {
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_TAB);
         robot.keyRelease(KeyEvent.VK_TAB);
-        for (int z = 0; z < 11; z++) {
+        for (int z = 0; z < 15; z++) {
             robot.keyPress(KeyEvent.VK_SPACE);
             robot.keyRelease(KeyEvent.VK_SPACE);
             robot.keyPress(KeyEvent.VK_DOWN);
@@ -1221,7 +1251,7 @@ public abstract class Transaction {
         common.clickElement("xpath", "//Button[@Name='OK']");
     }
 
-    public void invoiceType() throws InterruptedException, AWTException {
+    public void invoiceTypeWhenRegister() throws InterruptedException, AWTException {
         common.clickElement("xpath", "//Edit[@Name='Invoice Type']");
         Thread.sleep(1000);
         Robot robot = new Robot();
@@ -1259,8 +1289,9 @@ public abstract class Transaction {
         }
     }
 
-    public void tcsCalculations(String dataFile, String accCode, String amount, String iterations, double itemsNetValue) throws IOException, ParseException {
+    public void tcsCalculations(String dataFile, String accCode, String amount,String iterations, double itemsNetValue) throws IOException, ParseException {
         double exchangeRate = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='Exchange Rate *']").getText());
+        System.out.println("exchangeRate :- "+exchangeRate);
 //        double itemsNetValue= Double.parseDouble(common.findWebElement("xpath","//Edit[@AutomationId='NetAmount']").getText().replace(",",""));
         navigateToOtherChargesTab();
         //other charges Calculations
@@ -1269,7 +1300,7 @@ public abstract class Transaction {
         if ("(null)".equals(amountText) || amountText == (null)) {
             System.out.println("Other Charges not Available");
         } else {
-            OtherChargesCalculations(dataFile, accCode, amount, iterations);
+            OtherChargesCalculations(dataFile, accCode, amount,iterations);
             otherChargesNetValue = Double.parseDouble(common.findWebElement("xpath", "//Edit[@AutomationId='NetAmount']").getText().replace(",", ""));
         }
         double totalNetValue = itemsNetValue + otherChargesNetValue;
@@ -1293,6 +1324,8 @@ public abstract class Transaction {
             // Enter Account Code and Amount
             enterData("xpath", "//Edit[@Name='Account Code Row " + i + ", Not sorted.']", dataFile, accCode);
             enterData("xpath", "//Edit[@Name='Amount * Row " + i + ", Not sorted.']", dataFile, amount);
+            enterData("xpath", "//Edit[@Name='HSN Row "+ i +", Not sorted.']",dataFile,"HSNCode");
+
             WebElement gstElement = common.findWebElement("xpath", "//Edit[@Name='GST Product Category Row " + i + ", Not sorted.']");
             double gstValue = StringUtil.extractNumber(gstElement.getText());
             System.out.println("GST Percentage: " + gstValue);
@@ -1380,13 +1413,21 @@ public abstract class Transaction {
                 System.out.println("taxable: " + taxableValue);
                 // Exclusive Tax Calculations
                 double calculatedGSTAmount = taxableValue * (totalTaxRate / 100);
+                System.out.println("taxable: " + calculatedGSTAmount);
                 double calculatedNetAmount = taxableValue + calculatedGSTAmount;
+                System.out.println("taxable: " + calculatedNetAmount);
+
                 // Format values for consistency
                 String formattedGSTAmount = decimalFormat.format(calculatedGSTAmount);
+                System.out.println("formatted GST Amount :-"+formattedGSTAmount);
                 String formattedNetAmount = decimalFormat.format(calculatedNetAmount);
+                System.out.println("formatted net Amount :-"+formattedNetAmount);
+
                 // Fetch values from UI
                 String actualGSTAmount = common.findWebElement("xpath", "//Edit[@Name='GST Amount Row " + i + ", Not sorted.']").getText();
+                System.out.println("actual GST Amount :-"+formattedGSTAmount);
                 String actualNetAmount = common.findWebElement("xpath", "//Edit[@Name='Net Amount Row " + i + ", Not sorted.']").getText();
+                System.out.println("actual net Amount :-"+formattedGSTAmount);
                 // Validate GST Amount and Net Amount
                 Assert.assertEquals(actualGSTAmount, formattedGSTAmount, "GST Amount mismatch for row " + i);
                 Assert.assertEquals(actualNetAmount, formattedNetAmount, "Net Amount mismatch for row " + i);
@@ -1396,7 +1437,15 @@ public abstract class Transaction {
         }
     }
 
-
+    public void OtherChargesWithoutGST(String dataFile,String accCode,String amount,String hsnCode,String iterations) throws IOException, ParseException {
+        navigateToOtherChargesTab();
+        for (int i = 0; i < Integer.parseInt(common.getData(dataFile, iterations)); i++) {
+            // Enter Account Code and Amount
+            enterData("xpath", "//Edit[@Name='Account Code Row " + i + ", Not sorted.']", dataFile, accCode);
+            enterData("xpath", "//Edit[@Name='Amount * Row " + i + ", Not sorted.']", dataFile, amount);
+            enterData("xpath", "//Edit[@Name='HSN Row "+i+", Not sorted.']", dataFile, hsnCode);
+        }
+    }
 
 
     public void oldTTransaction () {

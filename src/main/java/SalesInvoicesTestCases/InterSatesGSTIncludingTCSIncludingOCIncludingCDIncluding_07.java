@@ -12,22 +12,22 @@ import java.awt.*;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
-public class SalesInvoiceIncludingGST_TCS_OtherCharges extends Transaction {
+public class InterSatesGSTIncludingTCSIncludingOCIncludingCDIncluding_07 extends Transaction {
     WindowsDriver driver;
     Common common;
     String dataFile;
     double quantity;
     boolean gstAmountClicked = false;
-    double netAmountTextt,tcsAssesibleValue,tcsRate,tcsCompanyCurrency;
+    double totalNetValue,tcsAssesibleValue,tcsRate,tcsCompanyCurrency;
     double mrp,grossAmount,unitRate,voucherDiscountValue,partyDiscountValue,netAmount,grossMinusDiscount,gstValue,cessValue,taxableValue,taxableAmountCalculated,expectedGSTAmount;
 
-    public SalesInvoiceIncludingGST_TCS_OtherCharges(WindowsDriver driver, String file) {
+    public InterSatesGSTIncludingTCSIncludingOCIncludingCDIncluding_07(WindowsDriver driver, String file) {
         super(driver);
         common = new Common(this.driver = driver);
         dataFile = file;
     }
 
-    public void salesInvovoiceIcludeGST_TCS_OtherCharges() throws InterruptedException, IOException, ParseException, AWTException {
+    public void testCase_07() throws InterruptedException, IOException, ParseException, AWTException {
         navigateToSalesInvoiceMenu();
         Thread.sleep(1000);
         lastTransactionName();
@@ -47,7 +47,7 @@ public class SalesInvoiceIncludingGST_TCS_OtherCharges extends Transaction {
         selectAndValidateData(common.getData(dataFile, "tcsNature"), "xpath", "//Edit[@Name='TCS Trans Nature']");
         Thread.sleep(2000);
         common.sliderHandling("xpath", "//ScrollBar[@Name='Horizontal']/Thumb[@Name='Position']", 500, 0);
-        invoiceType();
+        invoiceTypeWhenRegister();
         common.clickElement("xpath", "//Edit[@Name='Price List']");
         selectAndValidateData(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
         common.clickElement("xpath", "//Edit[@Name='Port Code']");
@@ -62,12 +62,12 @@ public class SalesInvoiceIncludingGST_TCS_OtherCharges extends Transaction {
         selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
 
         //F3-Items
-        for (int i = 0; i < Integer.parseInt(common.getData(dataFile,"productCount")); i++) {
-            addProduct(i);
-        }
-        netAmountTextt=Double.parseDouble(common.findWebElement("xpath","//Edit[@AutomationId='NetAmount']").getText().replace(",",""));
-        System.out.println("Net Amount :- "+netAmountTextt);
-        tcsCalculations(dataFile,"code","amount","HSNCode","rowCount",netAmountTextt);
+//        for (int i = 0; i < Integer.parseInt(common.getData(dataFile,"productCount")); i++) {
+//            addProduct(i);
+//        }
+        navigateToChargesAndDeductionsTab();
+        chargesAndDeductionsCalculations(dataFile,"chargesOrDeductions","chargesOrDeductionsCode","amount","rowCount");
+//        tcsCalculations(dataFile,"otherChargesCode","amount","iterations");
 
         //calculating TCS
 //        DecimalFormat decimalFormat=new DecimalFormat("#.###");

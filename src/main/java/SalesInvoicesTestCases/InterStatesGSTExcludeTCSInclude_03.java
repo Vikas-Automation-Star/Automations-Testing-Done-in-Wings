@@ -10,14 +10,14 @@ import org.testng.Assert;
 import java.awt.*;
 import java.io.IOException;
 
-public class SalesInvoiceExcludingGSTIncludeTCS extends Transaction {
+public class InterStatesGSTExcludeTCSInclude_03 extends Transaction {
     WindowsDriver driver;
     Common common;
     String dataFile;
     double exchangeRate,tcsAssesibleValue,tcsRate,netAmountTextt;
     double quantity,mrp,unitRate,grossAmount,partyDiscountValue,voucherDiscountValue,grossMinusDiscount,netAmount,gstValue,cessValue,taxableValue,taxableAmountCalculated;
 
-    public SalesInvoiceExcludingGSTIncludeTCS(WindowsDriver driver, String file) {
+    public InterStatesGSTExcludeTCSInclude_03(WindowsDriver driver, String file) {
         super(driver);
         this.driver = driver;
         common = new Common(this.driver);
@@ -44,7 +44,7 @@ public class SalesInvoiceExcludingGSTIncludeTCS extends Transaction {
         selectAndValidateData(common.getData(dataFile, "tcsNature"), "xpath", "//Edit[@Name='TCS Trans Nature']");
         Thread.sleep(2000);
         common.sliderHandling("xpath", "//ScrollBar[@Name='Horizontal']/Thumb[@Name='Position']", 500, 0);
-        invoiceType();
+        invoiceTypeWhenRegister();
         common.clickElement("xpath", "//Edit[@Name='Price List']");
         selectAndValidateData(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
         common.clickElement("xpath", "//Edit[@Name='Port Code']");
@@ -63,7 +63,7 @@ public class SalesInvoiceExcludingGSTIncludeTCS extends Transaction {
         validateIGSTAmountTabIsEmpty();
         validateCESSAmountTabIsEmpty();
         //Tcs calculations
-        tcsCalculations(dataFile,"code","amount","HSNcode","rowCount",netAmountTextt);
+        tcsCalculations(dataFile,"code","amount","rowCount",netAmountTextt);
 
 
 //        common.clickElement("xpath","//TabItem[contains(@Name,'TCS')]");

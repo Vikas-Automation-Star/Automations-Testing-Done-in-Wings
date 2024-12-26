@@ -80,13 +80,6 @@ public class InterStateIncludingGSTIncludingTCSIncludingCD_05 extends Transactio
 
             //calculate TCS
             navigateToTCSTab();
-//            double tcsAssessbleValue =Double.parseDouble(common.findWebElement("xpath","//Edit[@Name='Assessable Value']").getText().replace(",",""));
-//            Assert.assertEquals(totalNetValue,tcsAssessbleValue,"should be match");
-//            tcsRate = Double.parseDouble(common.findWebElement("xpath","//Edit[@Name='TCS Rate']").getText());
-//            tcsCompanyCurrency =Double.parseDouble(common.findWebElement("xpath","//Edit[@Name='TCS Amount']").getText());
-//            double expectedTCS = tcsAssesibleValue * tcsRate / 100;
-//            System.out.println("ActualAmount"+tcsCompanyCurrency+"ExpectedAmount"+expectedTCS);
-//            Assert.assertEquals(tcsCompanyCurrency,expectedTCS,"Calculations mismatch");
             validateCGSTAmountTabIsEmpty();
             validateSGSTAmountTabIsEmpty();
             validateIGSTAmountTabIsNotEmpty();

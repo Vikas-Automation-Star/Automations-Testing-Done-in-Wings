@@ -12,7 +12,7 @@ import java.io.IOException;
 public class TestCase_07 {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String dataFile = "./src/main/resources/TestCasesData/SalesInvoiceIncludeGST_TC_OtherCharges.json";
+    String dataFile = "./src/main/resources/TestCasesData/testCase_07.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
@@ -22,7 +22,7 @@ public class TestCase_07 {
 
     @Test
     public void testCase_07() throws IOException, ParseException, InterruptedException, AWTException {
-     TC_07 tc=new TC_07(driver,dataFile);
+     InterSatesGSTIncludingTCSIncludingOCIncludingCDIncluding_07 tc=new InterSatesGSTIncludingTCSIncludingOCIncludingCDIncluding_07(driver,dataFile);
      tc.testCase_07();
     }
 

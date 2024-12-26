@@ -12,22 +12,22 @@ import java.awt.*;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
-public class TC_07 extends Transaction {
+public class InterStatesGSTIncludingTCSIncludingOC_06 extends Transaction {
     WindowsDriver driver;
     Common common;
     String dataFile;
     double quantity;
     boolean gstAmountClicked = false;
-    double totalNetValue,tcsAssesibleValue,tcsRate,tcsCompanyCurrency;
+    double netAmountTextt,tcsAssesibleValue,tcsRate,tcsCompanyCurrency;
     double mrp,grossAmount,unitRate,voucherDiscountValue,partyDiscountValue,netAmount,grossMinusDiscount,gstValue,cessValue,taxableValue,taxableAmountCalculated,expectedGSTAmount;
 
-    public TC_07(WindowsDriver driver, String file) {
+    public InterStatesGSTIncludingTCSIncludingOC_06(WindowsDriver driver, String file) {
         super(driver);
         common = new Common(this.driver = driver);
         dataFile = file;
     }
 
-    public void testCase_07() throws InterruptedException, IOException, ParseException, AWTException {
+    public void salesInvoiceIcludeGST_TCS_OtherCharges() throws InterruptedException, IOException, ParseException, AWTException {
         navigateToSalesInvoiceMenu();
         Thread.sleep(1000);
         lastTransactionName();
@@ -47,27 +47,21 @@ public class TC_07 extends Transaction {
         selectAndValidateData(common.getData(dataFile, "tcsNature"), "xpath", "//Edit[@Name='TCS Trans Nature']");
         Thread.sleep(2000);
         common.sliderHandling("xpath", "//ScrollBar[@Name='Horizontal']/Thumb[@Name='Position']", 500, 0);
-        invoiceType();
+        invoiceTypeWhenRegister();
         common.clickElement("xpath", "//Edit[@Name='Price List']");
         selectAndValidateData(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
-        common.clickElement("xpath", "//Edit[@Name='Port Code']");
-        inputTextWithValidation( "xpath", "//Edit[@Name='Port Code']", common.getData(dataFile,"portCode"));
-        common.clickElement("xpath", "//Edit[@Name='Remarks']");
-        selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
-        common.clickElement("xpath", "//Edit[@Name='Price List']");
-        selectAndValidateData(common.getData(dataFile,"priceList"),"xpath", "//Edit[@Name='Price List']");
         common.clickElement("xpath","//Edit[@Name='Port Code']");
         selectOptionalMaster(common.getData(dataFile,"portCode"),"xpath","//Edit[@Name='Port Code']");
         common.clickElement("xpath","//Edit[@Name='Remarks']");
         selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
 
         //F3-Items
-//        for (int i = 0; i < Integer.parseInt(common.getData(dataFile,"productCount")); i++) {
-//            addProduct(i);
-//        }
-        navigateToChargesAndDeductionsTab();
-        chargesAndDeductionsCalculations(dataFile,"chargesOrDeductions","chargesOrDeductionsCode","amount","rowCount");
-//        tcsCalculations(dataFile,"otherChargesCode","amount","iterations");
+        for (int i = 0; i < Integer.parseInt(common.getData(dataFile,"productCount")); i++) {
+            addProduct(i);
+        }
+        netAmountTextt=Double.parseDouble(common.findWebElement("xpath","//Edit[@AutomationId='NetAmount']").getText().replace(",",""));
+        System.out.println("Net Amount :- "+netAmountTextt);
+        tcsCalculations(dataFile,"code","amount","rowCount",netAmountTextt);
 
         //calculating TCS
 //        DecimalFormat decimalFormat=new DecimalFormat("#.###");

@@ -12,7 +12,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
-public class SalesInvoiceIncludeGSTIncludeTCS extends Transaction {
+public class InterStatesGSTIncludingTCSIncluding_04 extends Transaction {
     WindowsDriver driver;
     Common common;
     String dataFile;
@@ -21,7 +21,7 @@ public class SalesInvoiceIncludeGSTIncludeTCS extends Transaction {
             gstPercentage,cessPrecentage,totalNetValue,tcsCompanyCurrency,expectedIGST,expectedCESS,totalGST,actualGST,netAmountText;
 
 
-    public SalesInvoiceIncludeGSTIncludeTCS(WindowsDriver driver, String file) {
+    public InterStatesGSTIncludingTCSIncluding_04(WindowsDriver driver, String file) {
         super(driver);
         this.driver = driver;
         common = new Common(this.driver);
@@ -47,7 +47,7 @@ public class SalesInvoiceIncludeGSTIncludeTCS extends Transaction {
         selectAndValidateData(common.getData(dataFile, "tcsNature"), "xpath", "//Edit[@Name='TCS Trans Nature']");
         Thread.sleep(2000);
         common.sliderHandling("xpath", "//ScrollBar[@Name='Horizontal']/Thumb[@Name='Position']", 500, 0);
-        invoiceType();
+        invoiceTypeWhenRegister();
         common.clickElement("xpath", "//Edit[@Name='Price List']");
         selectAndValidateData(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
         common.clickElement("xpath", "//Edit[@Name='Port Code']");
@@ -61,7 +61,7 @@ public class SalesInvoiceIncludeGSTIncludeTCS extends Transaction {
         }
         netAmountTextt=Double.parseDouble(common.findWebElement("xpath","//Edit[@AutomationId='NetAmount']").getText().replace(",",""));
         System.out.println("Net Amount :- "+netAmountTextt);
-        tcsCalculations(dataFile,"code","amount","HSNCode","rowCount",netAmountTextt);
+        tcsCalculations(dataFile,"code","amount","rowCount",netAmountTextt);
 
 //        totalNetValue= Double.parseDouble(common.findWebElement("xpath","//Edit[@AutomationId='NetAmount']").getText().replace(",",""));
 //        common.clickElement("xpath","//TabItem[contains(@Name,'TCS')]");
