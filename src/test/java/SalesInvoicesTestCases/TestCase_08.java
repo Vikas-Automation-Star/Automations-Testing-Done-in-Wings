@@ -21,7 +21,7 @@ public class TestCase_08 {
 
     }
     @Test
-    public void interStatesGSTExcludingCDIncludingOCIncluding_08() throws IOException, ParseException, InterruptedException, AWTException {
+    public void testCase08() throws IOException, ParseException, InterruptedException, AWTException {
         InterStatesGSTExcludingCDIncludingOCIncluding_08 tc8=new InterStatesGSTExcludingCDIncludingOCIncluding_08(driver,dataFile);
         tc8.interStatesGSTExcludingCDIncludingOCIncluding_08();
     }

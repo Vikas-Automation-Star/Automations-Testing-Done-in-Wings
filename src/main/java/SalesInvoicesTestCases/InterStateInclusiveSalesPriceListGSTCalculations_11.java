@@ -13,21 +13,21 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
-public class InterStateInclusiveSalesPriceLIstGSTCalculations_11 extends Transaction {
+public class InterStateInclusiveSalesPriceListGSTCalculations_11 extends Transaction {
     Common common;
     String dataFile;
     boolean gstAmountClicked = false;
     double mrp, grossAmount, unitRate,quantity, voucherDiscountValue, partyDiscountValue, netAmount, grossMinusDiscount, gstValue, cessValue, taxableValue, taxableAmountCalculated;
 
 
-    public InterStateInclusiveSalesPriceLIstGSTCalculations_11(WindowsDriver driver, String file) {
+    public InterStateInclusiveSalesPriceListGSTCalculations_11(WindowsDriver driver, String file) {
         super(driver);
         this.driver = driver;
         common = new Common(this.driver);
         dataFile = file;
     }
 
-    public void interStateExclusiveSalesPriceLIstGSTCalculations_11() throws InterruptedException, IOException, ParseException, AWTException {
+    public void interStateExclusiveSalesPriceListGSTCalculations_11() throws InterruptedException, IOException, ParseException, AWTException {
         navigateToSalesInvoiceMenu();
         Thread.sleep(1000);
         lastTransactionName();

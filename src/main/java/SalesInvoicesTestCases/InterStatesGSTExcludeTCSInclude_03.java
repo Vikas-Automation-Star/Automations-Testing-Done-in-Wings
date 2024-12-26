@@ -24,7 +24,7 @@ public class InterStatesGSTExcludeTCSInclude_03 extends Transaction {
         dataFile = file;
     }
 
-    public void salesInvoiceExcludeGstAndIncludeTcs() throws InterruptedException, IOException, ParseException, AWTException,NumberFormatException {
+    public void interStatesGSTExcludeTCSInclude_03() throws InterruptedException, IOException, ParseException, AWTException,NumberFormatException {
         navigateToSalesInvoiceMenu();
         Thread.sleep(1000);
         lastTransactionName();

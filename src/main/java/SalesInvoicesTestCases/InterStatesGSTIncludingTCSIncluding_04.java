@@ -27,7 +27,7 @@ public class InterStatesGSTIncludingTCSIncluding_04 extends Transaction {
         common = new Common(this.driver);
         dataFile = file;
     }
-    public void salesInvoiceIncludeGSTAndIncludeTax() throws InterruptedException, IOException, ParseException, AWTException {
+    public void interStatesGSTIncludingTCSIncluding_04() throws InterruptedException, IOException, ParseException, AWTException {
         navigateToSalesInvoiceMenu();
         Thread.sleep(1000);
         lastTransactionName();

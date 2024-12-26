@@ -22,8 +22,9 @@ public class TestCase_06 {
     }
 
     @Test
-    public void testcase1() throws IOException, ParseException, InterruptedException, AWTException {
+    public void testCase06() throws IOException, ParseException, InterruptedException, AWTException {
     InterStatesGSTIncludingTCSIncludingOC_06 tc=new InterStatesGSTIncludingTCSIncludingOC_06(driver,dataFile);
+    tc.interStatesGSTIncludingTCSIncludingOC_06();
     }
     @AfterTest
     public void afterTest(){

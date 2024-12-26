@@ -18,7 +18,7 @@ public class InterStatesGSTIncludingTCSIncludingOC_06 extends Transaction {
     String dataFile;
     double quantity;
     boolean gstAmountClicked = false;
-    double netAmountTextt,tcsAssesibleValue,tcsRate,tcsCompanyCurrency;
+    double netAmountTextt;
     double mrp,grossAmount,unitRate,voucherDiscountValue,partyDiscountValue,netAmount,grossMinusDiscount,gstValue,cessValue,taxableValue,taxableAmountCalculated,expectedGSTAmount;
 
     public InterStatesGSTIncludingTCSIncludingOC_06(WindowsDriver driver, String file) {
@@ -27,7 +27,7 @@ public class InterStatesGSTIncludingTCSIncludingOC_06 extends Transaction {
         dataFile = file;
     }
 
-    public void salesInvoiceIcludeGST_TCS_OtherCharges() throws InterruptedException, IOException, ParseException, AWTException {
+    public void interStatesGSTIncludingTCSIncludingOC_06() throws InterruptedException, IOException, ParseException, AWTException {
         navigateToSalesInvoiceMenu();
         Thread.sleep(1000);
         lastTransactionName();

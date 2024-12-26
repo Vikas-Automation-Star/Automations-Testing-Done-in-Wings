@@ -24,9 +24,9 @@ public class TestCase_03 {
     }
 
     @Test
-    public void testcase1() throws IOException, ParseException, InterruptedException, AWTException {
+    public void testCase03() throws IOException, ParseException, InterruptedException, AWTException {
         InterStatesGSTExcludeTCSInclude_03 si=new InterStatesGSTExcludeTCSInclude_03(driver,dataFile);
-        si.salesInvoiceExcludeGstAndIncludeTcs();
+        si.interStatesGSTExcludeTCSInclude_03();
     }
 
     @AfterTest

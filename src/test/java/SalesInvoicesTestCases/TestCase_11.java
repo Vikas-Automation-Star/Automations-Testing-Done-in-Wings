@@ -22,9 +22,9 @@ public class TestCase_11 {
     }
 
     @Test
-    public void testCase13() throws IOException, ParseException, InterruptedException, AWTException {
-       InterStateInclusiveSalesPriceLIstGSTCalculations_11 inclusive=new InterStateInclusiveSalesPriceLIstGSTCalculations_11(driver,dataFile);
-       inclusive.interStateExclusiveSalesPriceLIstGSTCalculations_11();
+    public void testCase11() throws IOException, ParseException, InterruptedException, AWTException {
+       InterStateInclusiveSalesPriceListGSTCalculations_11 inclusive=new InterStateInclusiveSalesPriceListGSTCalculations_11(driver,dataFile);
+       inclusive.interStateExclusiveSalesPriceListGSTCalculations_11();
     }
 
     @AfterTest

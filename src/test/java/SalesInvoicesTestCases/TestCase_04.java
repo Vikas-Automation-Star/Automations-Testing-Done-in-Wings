@@ -24,10 +24,11 @@ public class TestCase_04 {
     }
 
     @Test
-    public void testcase1() throws IOException, ParseException, InterruptedException, AWTException {
-      InterStatesGSTIncludingTCSIncluding_04 siigst=new InterStatesGSTIncludingTCSIncluding_04(driver,dataFile);
-      siigst.salesInvoiceIncludeGSTAndIncludeTax();
+    public void testCase04() throws IOException, ParseException, InterruptedException, AWTException {
+      InterStatesGSTIncludingTCSIncluding_04 si =new InterStatesGSTIncludingTCSIncluding_04(driver,dataFile);
+      si.interStatesGSTIncludingTCSIncluding_04();
     }
+
     @AfterTest
     public void afterTest(){
         appLogin.logout();

@@ -22,7 +22,7 @@ public class TestCase_10 {
     }
 
     @Test
-    public void testCase13() throws IOException, ParseException, InterruptedException, AWTException {
+    public void tesCase10() throws IOException, ParseException, InterruptedException, AWTException {
        InterStateExclusiveSalesPriceLIstGSTCalculations_10 exclusive=new InterStateExclusiveSalesPriceLIstGSTCalculations_10(driver,dataFile);
        exclusive.interStateExclusiveSalesPriceLIstGSTCalculations_10();
     }
