@@ -10,11 +10,10 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-
 public class PurchaseEnquiriesTransaction {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String file = "./src/main/resources/MenuItems/purchase/transactions/purchaseEnquiries.json";
+    String file = "./src/main/resources/menuItems/purchase/transactions/purchaseEnquiries.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
@@ -24,10 +23,9 @@ public class PurchaseEnquiriesTransaction {
     }
 
     @Test
-    public void purchaseEnquories() throws IOException, ParseException, InterruptedException {
+    public void purchaseEnquiries() throws IOException, ParseException, InterruptedException {
         PurchaseEnquiries pe=new PurchaseEnquiries(driver,file);
         pe.PurchaseEnquires();
-
     }
     @AfterTest
     public void afterTest(){
