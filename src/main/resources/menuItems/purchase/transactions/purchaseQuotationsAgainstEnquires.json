@@ -1,9 +1,10 @@
 {
-  "branch": "Hyderabad",
+  "branch": "AT_Branch 1_Reg",
   "currency": "INR",
-  "partyCode": "200138",
-  "executive": "Executive3",
-  "quantity": "10",
+  "partyCode": "AT_Sup_Reg_Intra",
+  "priceList": "AT_Exclusive Purchase price list 1",
+  "executive": "AT_Executive 1",
+  "quantity": "900",
   "mrp": "50",
   "unitRate": "100"
 }

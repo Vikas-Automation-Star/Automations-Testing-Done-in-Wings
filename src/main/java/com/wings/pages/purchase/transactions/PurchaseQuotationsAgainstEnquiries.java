@@ -31,12 +31,16 @@ public class PurchaseQuotationsAgainstEnquiries extends Transaction {
         common.clickElement("xpath", "//Edit[@Name='Transaction Currency *']");
         super.selectMasterWithValidation(common.getData(dataFile,"currency"),"xpath", "//Edit[@Name='Transaction Currency *']");
         common.clickElement("xpath", "//Edit[@Name='Party Code']");
-        super.selectMasterWithValidation(common.getData(dataFile,"partyCode"),"xpath", "//Edit[@Name='Party Code']");
+        super.selectAndValidateDataNew(common.getData(dataFile,"partyCode"),"xpath", "//Edit[@Name='Party Code']");
         Thread.sleep(1000);
         super.gstSelectionWhenBothRegisteredDealers();
         Thread.sleep(2000);
         common.clickElement("xpath","//CheckBox[@Name='Select Row 0']");
         common.clickElement("xpath","//Button[@Name='Ok']");
+
+        common.clickElement("xpath","//Edit[@Name='Price List']");
+        super.selectMasterWithValidation(common.getData(dataFile,"priceList"),"xpath", "//Edit[@Name='Price List']");
+
         common.clickElement("xpath","//Edit[@Name='Executive *']");
         super.selectMasterWithValidation(common.getData(dataFile,"executive"),"xpath", "//Edit[@Name='Executive *']");
         Thread.sleep(500);
@@ -46,8 +50,8 @@ public class PurchaseQuotationsAgainstEnquiries extends Transaction {
         common.inputText("xpath","//Edit[@Name='Quantity * Row 0, Not sorted.']", common.getData(dataFile,"quantity"));
         common.clickElement("xpath","//Edit[@Name='MRP Row 0, Not sorted.']");
         common.inputText("xpath","//Edit[@Name='Quantity * Row 0, Not sorted.']", common.getData(dataFile,"mrp"));
-        common.clickElement("xpath","//Edit[@Name='Unit Rate Row 0, Not sorted.']");
-        common.inputText("xpath","//Edit[@Name='Unit Rate Row 0, Not sorted.']", common.getData(dataFile,"unitRate"));
+//        common.clickElement("xpath","//Edit[@Name='Unit Rate Row 0, Not sorted.']");
+//        common.inputText("xpath","//Edit[@Name='Unit Rate Row 0, Not sorted.']", common.getData(dataFile,"unitRate"));
         super.sliderHandle();
         Thread.sleep(1000);
         transactionSave();
@@ -55,7 +59,7 @@ public class PurchaseQuotationsAgainstEnquiries extends Transaction {
         super.newTransaction();
         super.closeTransaction("Purchase Quotations against Enquiries");
         Thread.sleep(2000);
-        Allure.step("PurchaseQuotationsAgainstEnquiries Transation");
+//        Allure.step("PurchaseQuotationsAgainstEnquiries Transation");
 
 
     }

@@ -31,10 +31,14 @@ public class PurchaseEnquiriesCancellation extends Transaction {
         common.clickElement("xpath", "//Edit[@Name='Transaction Currency *']");
         super.selectMasterWithValidation(common.getData(dataFile,"currency"),"xpath", "//Edit[@Name='Transaction Currency *']");
         common.clickElement("xpath", "//Edit[@Name='Party Code']");
-        super.selectMasterWithValidation(common.getData(dataFile,"partyCode"),"xpath", "//Edit[@Name='Party Code']");
+        super.selectAndValidateDataNew(common.getData(dataFile,"partyCode"),"xpath", "//Edit[@Name='Party Code']");
         Thread.sleep(1000);
         common.clickElement("xpath","//CheckBox[@Name='Select Row 0']");
         common.clickElement("xpath","//Button[@Name='Ok']");
+
+        common.clickElement("xpath","//Edit[@Name='Price List']");
+        super.selectMasterWithValidation(common.getData(dataFile,"priceList"),"xpath", "//Edit[@Name='Price List']");
+
         common.clickElement("xpath","//Edit[@Name='Executive *']");
         super.selectMasterWithValidation(common.getData(dataFile,"executive"),"xpath", "//Edit[@Name='Executive *']");
         Thread.sleep(500);

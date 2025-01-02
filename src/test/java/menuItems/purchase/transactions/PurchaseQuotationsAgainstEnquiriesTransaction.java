@@ -21,19 +21,17 @@ public class PurchaseQuotationsAgainstEnquiriesTransaction {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
         Allure.step("Before Test PurchaseQuotationsAgainstEnquiry Transaction");
-
     }
 
     @Test
     public void purchaseQuotationsAgainstEnquiries() throws IOException, ParseException, InterruptedException {
         PurchaseQuotationsAgainstEnquiries pqae=new PurchaseQuotationsAgainstEnquiries(driver,file);
         pqae.purchaseQuotationsAgainstEnquiry();
-
     }
+
     @AfterTest
     public void afterTest(){
         appLogin.logout();
         Allure.step("After Test PurchaseQuotationsAgainstEnquiry Transaction");
-
     }
 }
