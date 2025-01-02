@@ -30,7 +30,8 @@ public class IntraStateIncludingGSTIncludingTCSIncludingOCIncludingCD_19 extends
         public void testCase19() throws InterruptedException, IOException, ParseException, AWTException {
             navigateToSalesInvoiceMenu();
             Thread.sleep(1000);
-            lastTransactionName();
+//            lastTransactionName();
+            oldTTransaction();
             //branch selection
             common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
             selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
@@ -72,14 +73,14 @@ public class IntraStateIncludingGSTIncludingTCSIncludingOCIncludingCD_19 extends
             }
             double itemsNetValue= Double.parseDouble(common.findWebElement("xpath","//Edit[@AutomationId='NetAmount']").getText().replace(",",""));
 
+
+            navigateToChargesAndDeductionsTab();
+            chargesAndDeductionsCalculations(dataFile,"type","accountCode","amount","rowCount");
+
             //other charges calculations
             OtherChargesCalculations(dataFile,"accountCode","amount","otherChargesCount");
 
             tcsCalculations(dataFile,"accountCode","amount","otherChargesCount",itemsNetValue);
-
-            //charges and deductions
-            navigateToChargesAndDeductionsTab();
-            chargesAndDeductionsCalculations(dataFile,"type","accountCode","amount","rowCount");
 
             //calculate TCS
             navigateToTCSTab();
@@ -101,7 +102,13 @@ public class IntraStateIncludingGSTIncludingTCSIncludingOCIncludingCD_19 extends
             totalValuePresentInSummary();
             totalValueInCompanyCurrenyPresentInSummary();
             receivableAmountPresentInSummary();
+
+            //save
+            transactionSave();
+            newTransaction();
+//            lastTransactionName();
         }
+
 
         public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {
             if (common.getData(dataFile, "productType" + i).equals("general")) {
@@ -241,4 +248,6 @@ public class IntraStateIncludingGSTIncludingTCSIncludingOCIncludingCD_19 extends
                 throw new IllegalArgumentException("Invalid GST Trans Type: " + gstTransType);
             }
         }
+
+
     }

@@ -1,5 +1,4 @@
 {
-
   "title": "Sales Invoices",
   "branch": "AT_Branch4_Reg_Inter",
   "partyCode": 120,
@@ -10,7 +9,7 @@
   "amount": 250,
   "accountCode": 567,
   "type": "Charges",
-  "rowCount": 4,
+  "rowCount": 2,
   "otherChargesCount": 2,
   "TaxType": "Exclusive",
 

@@ -30,7 +30,8 @@ public class IntraStateIncludingGSTIncludingTCSIncludingOtherCharges_18 extends 
         public void testCase18() throws InterruptedException, IOException, ParseException, AWTException {
             navigateToSalesInvoiceMenu();
             Thread.sleep(1000);
-            lastTransactionName();
+//            lastTransactionName();
+            oldTTransaction();
             //branch selection
             common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
             selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
@@ -97,7 +98,13 @@ public class IntraStateIncludingGSTIncludingTCSIncludingOtherCharges_18 extends 
             totalValuePresentInSummary();
             totalValueInCompanyCurrenyPresentInSummary();
             receivableAmountPresentInSummary();
+
+            //save
+            transactionSave();
+            newTransaction();
+//            lastTransactionName();
         }
+
 
         public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {
             if (common.getData(dataFile, "productType" + i).equals("general")) {
@@ -237,4 +244,6 @@ public class IntraStateIncludingGSTIncludingTCSIncludingOtherCharges_18 extends 
                 throw new IllegalArgumentException("Invalid GST Trans Type: " + gstTransType);
             }
         }
+
+
     }
