@@ -12,7 +12,7 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
-public class IntraStateIncludingGSTIncludingTCSIncludingOtherCharges_18 extends Transaction {
+public class IntraStateIncludingGSTIncludingTCSIncludingOCIncludingCD_19 extends Transaction{
         WindowsDriver driver;
         Common common;
         String dataFile;
@@ -20,14 +20,14 @@ public class IntraStateIncludingGSTIncludingTCSIncludingOtherCharges_18 extends 
         double mrp, grossAmount, unitRate,quantity, voucherDiscountValue, partyDiscountValue, netAmount, grossMinusDiscount, gstValue, cessValue, taxableValue, taxableAmountCalculated;
 
 
-        public IntraStateIncludingGSTIncludingTCSIncludingOtherCharges_18(WindowsDriver driver, String file) {
+        public IntraStateIncludingGSTIncludingTCSIncludingOCIncludingCD_19(WindowsDriver driver, String file) {
             super(driver);
             this.driver = driver;
             common = new Common(this.driver);
             dataFile = file;
         }
 
-        public void testCase18() throws InterruptedException, IOException, ParseException, AWTException {
+        public void testCase19() throws InterruptedException, IOException, ParseException, AWTException {
             navigateToSalesInvoiceMenu();
             Thread.sleep(1000);
             lastTransactionName();
@@ -76,6 +76,10 @@ public class IntraStateIncludingGSTIncludingTCSIncludingOtherCharges_18 extends 
             OtherChargesCalculations(dataFile,"accountCode","amount","otherChargesCount");
 
             tcsCalculations(dataFile,"accountCode","amount","otherChargesCount",itemsNetValue);
+
+            //charges and deductions
+            navigateToChargesAndDeductionsTab();
+            chargesAndDeductionsCalculations(dataFile,"type","accountCode","amount","rowCount");
 
             //calculate TCS
             navigateToTCSTab();

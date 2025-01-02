@@ -1251,6 +1251,19 @@ public abstract class Transaction {
         common.clickElement("xpath", "//Button[@Name='OK']");
     }
 
+    public void invoiceType() throws InterruptedException, AWTException {
+        common.clickElement("xpath", "//Edit[@Name='Invoice Type']");
+        Thread.sleep(1000);
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_DOWN);
+        robot.keyRelease(KeyEvent.VK_DOWN);
+//        robot.keyPress(KeyEvent.VK_DOWN);
+//        robot.keyRelease(KeyEvent.VK_DOWN);
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
+
+    }
+
     public void invoiceTypeWhenRegister() throws InterruptedException, AWTException {
         common.clickElement("xpath", "//Edit[@Name='Invoice Type']");
         Thread.sleep(1000);
