@@ -21,7 +21,6 @@ public class MaterialReceiptsTransaction {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
         Allure.step("Before Test MaterialReceipts Transaction");
-
     }
 
     @Test

@@ -18,7 +18,7 @@ public class InterSatesGSTIncludingTCSIncludingOCIncludingCDIncluding_07 extends
     String dataFile;
     double quantity;
     boolean gstAmountClicked = false;
-    double mrp,grossAmount,unitRate,voucherDiscountValue,partyDiscountValue,netAmount,grossMinusDiscount,gstValue,cessValue,taxableValue,taxableAmountCalculated,expectedGSTAmount;
+    double mrp,grossAmount,unitRate,voucherDiscountValue,partyDiscountValue,netAmount,grossMinusDiscount,gstValue,cessValue,taxableValue,taxableAmountCalculated,expectedGSTAmount,itemValue;
 
     public InterSatesGSTIncludingTCSIncludingOCIncludingCDIncluding_07(WindowsDriver driver, String file) {
         super(driver);
@@ -61,12 +61,15 @@ public class InterSatesGSTIncludingTCSIncludingOCIncludingCDIncluding_07 extends
         selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
 
         //F3-Items
-//        for (int i = 0; i < Integer.parseInt(common.getData(dataFile,"productCount")); i++) {
-//            addProduct(i);
-//        }
+        for (int i = 0; i < Integer.parseInt(common.getData(dataFile,"productCount")); i++) {
+            addProduct(i);
+        }
         navigateToChargesAndDeductionsTab();
         chargesAndDeductionsCalculations(dataFile,"chargesOrDeductions","chargesOrDeductionsCode","amount","rowCount");
-//        tcsCalculations(dataFile,"otherChargesCode","amount","iterations");
+        itemValue=Double.parseDouble(common.findWebElement("xpath","//Edit[@AutomationId='NetAmount']").getText().replace(",",""));
+        System.out.println("Net Amount :- "+itemValue);
+
+        tcsCalculations(dataFile,"otherChargesCode","amount","iterations",itemValue);
 
         //calculating TCS
 //        DecimalFormat decimalFormat=new DecimalFormat("#.###");

@@ -40,7 +40,7 @@ public class BookIncomesOrReceivables extends Transaction {
         gstTransactionType("Registered Dealers");
         Thread.sleep(2500);
         common.clickElement("xpath","//Edit[@Name='Invoice Type']/Button[@Name='Open']");
-        selectDropDown(common.getData(dataFile,"invoiceType"));
+        selectDropDown(common.getData(dataFile,"invoiceTypeWhenRegister"));
         Thread.sleep(10000);
         common.clickElement("xpath", "//Edit[@Name='Executive *']");
         selectAndValidateData(common.getData(dataFile, "executive"),"xpath", "//Edit[@Name='Executive *']");

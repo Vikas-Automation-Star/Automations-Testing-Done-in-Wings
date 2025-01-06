@@ -1,11 +1,10 @@
 {
-  "branch": "Hyderabad",
-  "location": "Hyderabad Default Location",
+  "branch": "AT_Branch 1_Reg",
+  "location": "AT_Branch 1_Reg Default Location",
   "currency": "INR",
-  "partyCode": "200138",
-  "executive": "Executive3",
-  "product": "Tractors",
-  "quantity": "1000",
-  "mrp": "50",
-  "unitRate":"100"
+  "partyCode": "AT_Sup_Reg_Intra",
+  "priceList":"AT_Exclusive Purchase price list 1",
+  "executive": "AT_Executive 1",
+  "product": "P1",
+  "quantity": "1000"
 }

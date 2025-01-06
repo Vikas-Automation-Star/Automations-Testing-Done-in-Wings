@@ -1,14 +1,14 @@
 {
-  "branch": "Hyderabad",
+  "branch": "AT_Branch 1_Reg",
   "currency": "INR",
-  "PartyCode": "200138",
-  "purchase A/C Code": "Purchase Account",
+  "location": "AT_Branch 1_Reg Default Location",
+  "PartyCode":"AT_Sup_Reg_Intra",
+  "purchase A/C Code": "AT_Purchase  Acc 1",
   "billNo": "8521",
   "billDate": "16-10-2024",
-  "pricelist": "purchase pricelist",
-  "executive": "Executive3",
+  "priceList": "AT_Exclusive Purchase price list 1",
+  "executive": "AT_Executive 1",
   "billNo": "56123",
   "billDate": "24-09-2024",
-  "quantity": "1",
-  "uniRate": "100"
+  "quantity": "5"
 }
