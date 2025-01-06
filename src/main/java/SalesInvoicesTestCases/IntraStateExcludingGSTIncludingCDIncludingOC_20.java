@@ -68,10 +68,10 @@ public class IntraStateExcludingGSTIncludingCDIncludingOC_20 extends Transaction
             navigateToChargesAndDeductionsTab();
             chargesAndDeductionsCalculations(dataFile,"type","accountCode","amount","rowCount");
 
-            validateCGSTAmountTabIsEmpty();
-            validateSGSTAmountTabIsEmpty();
+            validateCGSTAmountTabIsNotEmpty();
+            validateSGSTAmountTabIsNotEmpty();
             validateIGSTAmountTabIsEmpty();
-            validateCESSAmountTabIsEmpty();
+            validateCESSAmountTabIsNotEmpty();
 
             navigateToBatchDetailsTab();
 

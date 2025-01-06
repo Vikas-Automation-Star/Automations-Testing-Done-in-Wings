@@ -30,7 +30,8 @@ public class SalesQuotationAgainstEnquiryTransaction {
     }
 
     @AfterTest
-    public void afterTest(){
+    public void afterTest() throws InterruptedException {
+        login.deleteSingleTransaction();
         login.logout();
         Allure.step("After Test Sales Quotations against Enquiry");
     }

@@ -9,7 +9,7 @@ import java.net.URL;
 
 public class CreateCompany {
     WindowsDriver driver,logindriver;
-    public static String CompanyName="Dup_Company", Password="Welcome@123";
+    public static String CompanyName="Dup_Company_1234", Password="Welcome@123";
     public void login() throws IOException, InterruptedException {
         DesiredCapabilities capabilities=new DesiredCapabilities();
         capabilities.setCapability("app","C:\\Program Files (x86)\\Wings Infonet\\Wings Accounting 24DNP\\Wings.exe");
@@ -39,7 +39,7 @@ public class CreateCompany {
         driver.findElementByXPath("//Button[@Name='Next']").click();
         driver.findElementByName("OK").click();
         Thread.sleep(1500);
-        driver.findElementByXPath("//Edit[@Name='Database ServerRequestFunctions']").sendKeys("Vikas");
+        driver.findElementByXPath("//Edit[@Name='Database ServerRequestFunctions']").sendKeys("Madhuri");
 
         //Legacy Accessible State :1
         //Legacy Accessible State :3145728

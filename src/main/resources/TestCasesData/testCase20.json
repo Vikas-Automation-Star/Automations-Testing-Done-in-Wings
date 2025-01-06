@@ -1,5 +1,4 @@
 {
-
   "title": "Sales Invoices",
   "branch": "AT_Branch4_Reg_Inter",
   "partyCode": 120,
@@ -7,6 +6,7 @@
   "priceList": "AT_Exclusive Sales Price List 1",
   "salesAccountCode": 55,
   "amount": 250,
+  "HSNCode": "AT_HSN Code 2",
   "accountCode": 567,
   "type": "Charges",
   "rowCount": 4,

@@ -28,6 +28,6 @@ public class TestCase_20 {
 
         @AfterTest
         public void afterTest(){
-            appLogin.logout();
+//            appLogin.logout();
         }
     }

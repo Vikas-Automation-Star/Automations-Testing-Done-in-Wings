@@ -1,11 +1,11 @@
 {
-  "branch": "Hyderabad",
-  "partyCode": 153,
+  "branch": "AT_Branch 1_Reg",
+  "partyCode": "AT_Cus_Reg_Inter",
   "transaction": "INR",
   "gstType": "Registered",
-  "executive": "HYDExec",
-  "productCode": "1707",
+  "executive": "AT_Executive 1",
+  "productCode": "P1",
   "Quantity": "500",
-  "priceList": "Inclusive SalesPriceList",
+  "priceList": "AT_Inclusive Sales Price List 1",
   "close": "Sales Enquiries"
 }
