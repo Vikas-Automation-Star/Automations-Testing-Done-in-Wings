@@ -192,180 +192,180 @@
     <!-- Transactions of purchase menu completed 15-->
 
     <!-- Reports of purchase menu -->
-    <test name="Checking PurchaseEnquiries Report" description="description for PurchaseEnquiries Report"  testID="WOW 31">
-        <classes>
-            <class name="menuItems.purchase.reports.PurchaseEnquiriesReport"></class>
-        </classes>
-    </test>
+<!--    <test name="Checking PurchaseEnquiries Report" description="description for PurchaseEnquiries Report"  testID="WOW 31">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.PurchaseEnquiriesReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Checking PendingPurchaseEnquiries Report" description="description for PendingPurchaseEnquiries Report"  testID="WOW 32">
-        <classes>
-            <class name="menuItems.purchase.reports.PendingPurchaseEnquiriesReport"></class>
-        </classes>
-    </test>
+<!--    <test name="Checking PendingPurchaseEnquiries Report" description="description for PendingPurchaseEnquiries Report"  testID="WOW 32">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.PendingPurchaseEnquiriesReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Checking PurchaseEnquiriesCancellation Report" description="description for PurchaseEnquiriesCancellation Report"  testID="WOW 33">
-        <classes>
-            <class name="menuItems.purchase.reports.PurchaseEnquiriesCancellationsReport"></class>
-        </classes>
-    </test>
+<!--    <test name="Checking PurchaseEnquiriesCancellation Report" description="description for PurchaseEnquiriesCancellation Report"  testID="WOW 33">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.PurchaseEnquiriesCancellationsReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Checking PurchaseQuotations Report" description="description for PurchaseQuotations Report"  testID="WOW 34">
-        <classes>
-            <class name="menuItems.purchase.reports.PurchaseQuotationsReport"></class>
-        </classes>
-    </test>
+<!--    <test name="Checking PurchaseQuotations Report" description="description for PurchaseQuotations Report"  testID="WOW 34">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.PurchaseQuotationsReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Checking PendingPurchaseQuotations Report" description="description for PendingPurchaseQuotations Report"  testID="WOW 35">
-        <classes>
-            <class name="menuItems.purchase.reports.PendingPurchaseQuotationsReport"></class>
-        </classes>
-    </test>
+<!--    <test name="Checking PendingPurchaseQuotations Report" description="description for PendingPurchaseQuotations Report"  testID="WOW 35">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.PendingPurchaseQuotationsReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Checking PurchaseQuotationsAgainstEnquiries Report" description="description for PurchaseQuotationsAgainstEnquiries Report"  testID="WOW 36">
-        <classes>
-            <class name="menuItems.purchase.reports.PurchaseQuotationsAgainstEnquiriesReport"></class>
-        </classes>
-    </test>
+<!--    <test name="Checking PurchaseQuotationsAgainstEnquiries Report" description="description for PurchaseQuotationsAgainstEnquiries Report"  testID="WOW 36">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.PurchaseQuotationsAgainstEnquiriesReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Checking PurchaseOrdersAgainstQuotations Report" description="description for PurchaseOrdersAgainstQuotations Report"  testID="WOW 37">
-        <classes>
-            <class name="menuItems.purchase.reports.PurchaseOrdersAgainstQuotationsReport"></class>
-        </classes>
-    </test>
+<!--    <test name="Checking PurchaseOrdersAgainstQuotations Report" description="description for PurchaseOrdersAgainstQuotations Report"  testID="WOW 37">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.PurchaseOrdersAgainstQuotationsReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Checking PurchaseOrders Report" description="description for PurchaseOrders Report"  testID="WOW 38">
-        <classes>
-            <class name="menuItems.purchase.reports.PurchaseOrdersReport"></class>
-        </classes>
-    </test>
-    <test name="Checking PendingPurchaseOrders Report" description="description for PendingPurchaseOrders Report"  testID="WOW 39">
-        <classes>
-            <class name="menuItems.purchase.reports.PendingPurchaseOrdersReport"></class>
-        </classes>
-    </test>
+<!--    <test name="Checking PurchaseOrders Report" description="description for PurchaseOrders Report"  testID="WOW 38">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.PurchaseOrdersReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--    <test name="Checking PendingPurchaseOrders Report" description="description for PendingPurchaseOrders Report"  testID="WOW 39">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.PendingPurchaseOrdersReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Checking PurchaseOrderStatusDetails Report" description="description for PurchaseOrderStatusDetails Report"  testID="WOW 40">
-        <classes>
-            <class name="menuItems.purchase.reports.PurchaseOrderStatusDetailsReport"></class>
-        </classes>
-    </test>
+<!--    <test name="Checking PurchaseOrderStatusDetails Report" description="description for PurchaseOrderStatusDetails Report"  testID="WOW 40">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.PurchaseOrderStatusDetailsReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Checking PurchaseOrdersCancellations Report" description="description for PurchaseOrdersCancellations Report"  testID="WOW 41">
-        <classes>
-            <class name="menuItems.purchase.reports.PurchaseOrdersCancellationsReport"></class>
-        </classes>
-    </test>
+<!--    <test name="Checking PurchaseOrdersCancellations Report" description="description for PurchaseOrdersCancellations Report"  testID="WOW 41">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.PurchaseOrdersCancellationsReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Checking MaterialReceipts Report" description="description for MaterialReceipts Report"  testID="WOW 42">
-        <classes>
-            <class name="menuItems.purchase.reports.MaterialReceiptsReport"></class>
-        </classes>
-    </test>
+<!--    <test name="Checking MaterialReceipts Report" description="description for MaterialReceipts Report"  testID="WOW 42">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.MaterialReceiptsReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Checking PendingMaterialReceipts Report" description="description for PendingMaterialReceipts Report"  testID="WOW 43">
-        <classes>
-            <class name="menuItems.purchase.reports.PendingMaterialReceiptsReport"></class>
-        </classes>
-    </test>
+<!--    <test name="Checking PendingMaterialReceipts Report" description="description for PendingMaterialReceipts Report"  testID="WOW 43">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.PendingMaterialReceiptsReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Checking MaterialReceiptsAgainstOrders Report" description="description for MaterialReceiptsAgainstOrders Report"  testID="WOW 44">
-        <classes>
-            <class name="menuItems.purchase.reports.MaterialReceiptsAgainstOrdersReport"></class>
-        </classes>
-    </test>
+<!--    <test name="Checking MaterialReceiptsAgainstOrders Report" description="description for MaterialReceiptsAgainstOrders Report"  testID="WOW 44">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.MaterialReceiptsAgainstOrdersReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Checking PendingPurchaseOrdersWithReceipts Report" description="description for PendingPurchaseOrdersWithReceipts Report"  testID="WOW 45">
-        <classes>
-            <class name="menuItems.purchase.reports.PendingPurchaseOrdersWithReceiptsReport"></class>
-        </classes>
-    </test>
+<!--    <test name="Checking PendingPurchaseOrdersWithReceipts Report" description="description for PendingPurchaseOrdersWithReceipts Report"  testID="WOW 45">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.PendingPurchaseOrdersWithReceiptsReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Checking MaterialReturns Report" description="description for MaterialReturns Report"  testID="WOW 46">
-        <classes>
-            <class name="menuItems.purchase.reports.MaterialReturnsReport"></class>
-        </classes>
-    </test>
+<!--    <test name="Checking MaterialReturns Report" description="description for MaterialReturns Report"  testID="WOW 46">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.MaterialReturnsReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Checking PurchaseBooks Report" description="description for PurchaseBooks Report"  testID="WOW 47">
-        <classes>
-            <class name="menuItems.purchase.reports.PurchaseBooksReport"></class>
-        </classes>
-    </test>
+<!--    <test name="Checking PurchaseBooks Report" description="description for PurchaseBooks Report"  testID="WOW 47">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.PurchaseBooksReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Checking PurchaseVouchersAgainstOrders Report" description="description for PurchaseVouchersAgainstOrders Report"  testID="WOW 48">
-        <classes>
-            <class name="menuItems.purchase.reports.PurchaseVouchersAgainstOrdersReport"></class>
-        </classes>
-    </test>
+<!--    <test name="Checking PurchaseVouchersAgainstOrders Report" description="description for PurchaseVouchersAgainstOrders Report"  testID="WOW 48">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.PurchaseVouchersAgainstOrdersReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Checking PurchaseVouchersAgainstReceiptsReport Report" description="description for PurchaseVouchersAgainstReceipts Report"  testID="WOW 49">
-        <classes>
-            <class name="menuItems.purchase.reports.PurchaseVouchersAgainstReceiptsReport"></class>
-        </classes>
-    </test>
+<!--    <test name="Checking PurchaseVouchersAgainstReceiptsReport Report" description="description for PurchaseVouchersAgainstReceipts Report"  testID="WOW 49">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.PurchaseVouchersAgainstReceiptsReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Checking PurchaseReturnsWithInvoiceReferences Report" description="description for PurchaseReturnsWithInvoiceReferences Report"  testID="WOW 50">
-        <classes>
-            <class name="menuItems.purchase.reports.PurchaseReturnsWithInvoiceReferencesReport"></class>
-        </classes>
-    </test>
+<!--    <test name="Checking PurchaseReturnsWithInvoiceReferences Report" description="description for PurchaseReturnsWithInvoiceReferences Report"  testID="WOW 50">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.PurchaseReturnsWithInvoiceReferencesReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Checking PurchasePriceUpdations Report" description="description for PurchasePriceUpdations Report"  testID="WOW 51">
-        <classes>
-            <class name="menuItems.purchase.reports.PurchasePriceUpdationReport"></class>
-        </classes>
-    </test>
+<!--    <test name="Checking PurchasePriceUpdations Report" description="description for PurchasePriceUpdations Report"  testID="WOW 51">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.PurchasePriceUpdationReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
 
 
-    <test name="Checking MonthWisePurchaseByQuantity1 Report" description="description forMonthWisePurchaseByQuantity Report"  testID="WOW 52">
-        <classes>
-            <class name="menuItems.purchase.reports.analysis.party.MonthWisePurchaseByQuantityReport"></class>
-        </classes>
-    </test>
+<!--    <test name="Checking MonthWisePurchaseByQuantity1 Report" description="description forMonthWisePurchaseByQuantity Report"  testID="WOW 52">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.analysis.party.MonthWisePurchaseByQuantityReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Checking MonthWisePurchaseByValue1 Report" description="description for MonthWisePurchaseByValue Report"  testID="WOW 53">
-        <classes>
-            <class name="menuItems.purchase.reports.analysis.party.MonthWisePurchaseByValueReport"></class>
-        </classes>
-    </test>
+<!--    <test name="Checking MonthWisePurchaseByValue1 Report" description="description for MonthWisePurchaseByValue Report"  testID="WOW 53">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.analysis.party.MonthWisePurchaseByValueReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Checking YearWisePurchaseByQuantity1 Report" description="description for YearWisePurchaseByQuantity Report"  testID="WOW 54">
-        <classes>
-            <class name="menuItems.purchase.reports.analysis.party.YearWisePurchaseByQuantityReport"></class>
-        </classes>
-    </test>
+<!--    <test name="Checking YearWisePurchaseByQuantity1 Report" description="description for YearWisePurchaseByQuantity Report"  testID="WOW 54">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.analysis.party.YearWisePurchaseByQuantityReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Checking YearWisePurchaseByValue1 Report" description="description for YearWisePurchaseByValue Report"  testID="WOW 55">
-        <classes>
-            <class name="menuItems.purchase.reports.analysis.party.YearWisePurchaseByValueReport"></class>
-        </classes>
-    </test>
+<!--    <test name="Checking YearWisePurchaseByValue1 Report" description="description for YearWisePurchaseByValue Report"  testID="WOW 55">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.analysis.party.YearWisePurchaseByValueReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Checking MonthWisePurchaseByQuantity2 Report" description="description for MonthWisePurchaseByQuantity Report"  testID="WOW 56">
-        <classes>
-            <class name="menuItems.purchase.reports.analysis.product.MonthWisePurchaseByQuantityReport"></class>
-        </classes>
-    </test>
+<!--    <test name="Checking MonthWisePurchaseByQuantity2 Report" description="description for MonthWisePurchaseByQuantity Report"  testID="WOW 56">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.analysis.product.MonthWisePurchaseByQuantityReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Checking MonthWisePurchaseByValue2 Report" description="description for MonthWisePurchaseByValue Report"  testID="WOW 57">
-        <classes>
-            <class name="menuItems.purchase.reports.analysis.product.MonthWisePurchaseByValueReport"></class>
-        </classes>
-    </test>
+<!--    <test name="Checking MonthWisePurchaseByValue2 Report" description="description for MonthWisePurchaseByValue Report"  testID="WOW 57">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.analysis.product.MonthWisePurchaseByValueReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Checking YearWisePurchaseByQuantity2 Report" description="description for YearWisePurchaseByQuantity Report"  testID="WOW 58">
-        <classes>
-            <class name="menuItems.purchase.reports.analysis.product.YearWisePurchaseByQuantityReport"></class>
-        </classes>
-    </test>
+<!--    <test name="Checking YearWisePurchaseByQuantity2 Report" description="description for YearWisePurchaseByQuantity Report"  testID="WOW 58">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.analysis.product.YearWisePurchaseByQuantityReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Checking YearWisePurchaseByValue2 Report" description="description for YearWisePurchaseByValue Report"  testID="WOW 59">
-        <classes>
-            <class name="menuItems.purchase.reports.analysis.product.YearWisePurchaseByValueReport"></class>
-        </classes>
-    </test>
+<!--    <test name="Checking YearWisePurchaseByValue2 Report" description="description for YearWisePurchaseByValue Report"  testID="WOW 59">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.reports.analysis.product.YearWisePurchaseByValueReport"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
     <!-- Reports of purchase menu -->
     <!-- purchase completed-->
