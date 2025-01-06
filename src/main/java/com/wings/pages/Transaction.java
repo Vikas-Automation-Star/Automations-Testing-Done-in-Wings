@@ -99,7 +99,6 @@ public abstract class Transaction {
             i.sendKeys(common.getData(fileName, key), Keys.TAB);
         }
     }
-
     public void enterDataAndValidate(String locatorType, String locator, String fileName, String key) throws IOException, ParseException {
         List<WebElement> elementList = common.findWebElements(locatorType, locator);
         System.out.println("Size :" + elementList.size());
@@ -1544,6 +1543,23 @@ public abstract class Transaction {
             }
         }
     }
+
+    public void billsPayable(String locatorType,String locator,String fileName,String key) throws IOException, ParseException, InterruptedException {
+        navigateToBillsPayablesTab();
+        List<WebElement> elementList = common.findWebElements(locatorType, locator);
+        System.out.println("Size :" + elementList.size());
+        for (WebElement i : elementList) {
+            i.click();
+            i.sendKeys(common.getData(fileName, key), Keys.TAB);
+            break;
+        }
+        Thread.sleep(1000);
+        common.clickElement("xpath","//Table[@Name='BillsPayable']/*[@Name='Row 0']/Edit[@Name=' Row 0, Not sorted.']");
+        WebElement rightClick=common.findWebElement("xpath","//Table[@Name='BillsPayable']/*[@Name='Row 0']/Edit[@Name=' Row 0, Not sorted.']");
+        Actions actions=new Actions(driver);
+        actions.contextClick(rightClick).sendKeys(Keys.DOWN,Keys.DOWN,Keys.ENTER).perform();
+    }
+
     public void checkBoxSelectionBillsPayable (String locatorType, String rowLocator, String voucherLocator, String checkBoxLocator){
         List<WebElement> rows = common.findWebElements(locatorType, rowLocator);
         System.out.println("Row count :" + rows.size());

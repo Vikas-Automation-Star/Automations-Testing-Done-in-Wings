@@ -29,10 +29,11 @@ public class PurchaseVouchersAgainstReceipt extends Transaction {
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
         selectMasterWithValidation(common.getData(dataFile,"branch"),"xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Location *']");
-        selectOptionalMaster(common.getData(dataFile,"location"), "xpath", "//Edit[@Name='Location *']");         common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
+        selectOptionalMaster(common.getData(dataFile,"location"), "xpath", "//Edit[@Name='Location *']");
+        common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
         selectMasterWithValidation(common.getData(dataFile,"currency"),"xpath", "//Edit[@Name='Trans Currency *']");
         common.clickElement("xpath", "//Edit[@Name='Party Code']");
-        selectMasterWithValidation(common.getData(dataFile,"PartyCode"),"xpath", "//Edit[@Name='Party Code']");
+        selectAndValidateDataNew(common.getData(dataFile,"PartyCode"),"xpath", "//Edit[@Name='Party Code']");
         gstSelectionWhenBothRegisteredDealers();
         Thread.sleep(1500);
         common.clickElement("xpath", "//CheckBox[@Name='Select Row 0']");
