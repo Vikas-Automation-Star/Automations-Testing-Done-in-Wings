@@ -22,6 +22,6 @@ public class SalesOrderReportCode extends Report {
         Thread.sleep(2000);
         common.clickElement("xpath", "//CheckBox[@Name='Detailed']");
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
-        super.bulkVerifyReport("SO 8");
+        super.bulkVerifyReport("SO 1");
     }
 }

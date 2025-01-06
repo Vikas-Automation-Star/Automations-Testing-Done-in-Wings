@@ -21,7 +21,7 @@ public class SalesOrderStatusDetailsReportCode extends Report {
         Thread.sleep(1500);
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1000);
-        super.bulkVerifyReport("SO 8");
+        super.bulkVerifyReport("SO 1");
         super.closeReport("Sales Order Status Details");
     }
 }

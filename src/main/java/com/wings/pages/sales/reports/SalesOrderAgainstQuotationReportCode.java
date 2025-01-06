@@ -20,7 +20,7 @@ public class SalesOrderAgainstQuotationReportCode extends Report {
         Thread.sleep(1000);
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1000);
-        super.bulkVerifyReport("SOAQ 5");
+        super.bulkVerifyReport("SOAQ 1");
         super.closeReport("Sales Orders against Quotations");
     }
 }
