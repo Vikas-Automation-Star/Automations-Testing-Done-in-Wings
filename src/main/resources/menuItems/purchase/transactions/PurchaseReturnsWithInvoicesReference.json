@@ -1,10 +1,14 @@
 {
-  "branch": "Hyderabad",
+  "branch": "AT_Branch 1_Reg",
   "currency": "INR",
-  "purchaseVoucherNo": "PV 4",
-  "consigner": "NEW CONSIGNOR",
-  "PurchaseReturnA/cCode": "Purchase Returns Account",
-  "pricelist": "purchase pricelist",
-  "executive": "Executive3",
-  "quantity": "1"
+  "location": "AT_Branch 1_Reg Default Location",
+  "purchaseVoucherNo": "PV 1",
+  "consignor": "AT_Consignor 1_Reg",
+  "PurchaseReturnA/cCode": "PRA1",
+  "billNo": "8521",
+  "billDate": "16-10-2024",
+  "priceList": "AT_Exclusive Purchase price list 1",
+  "executive": "AT_Executive 1",
+  "quantity": "5",
+  "billsPayableAmount": "500"
 }
