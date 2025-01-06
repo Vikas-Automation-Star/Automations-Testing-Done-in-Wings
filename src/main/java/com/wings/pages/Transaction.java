@@ -1251,6 +1251,19 @@ public abstract class Transaction {
         common.clickElement("xpath", "//Button[@Name='OK']");
     }
 
+    public void invoiceType() throws InterruptedException, AWTException {
+        common.clickElement("xpath", "//Edit[@Name='Invoice Type']");
+        Thread.sleep(1000);
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_DOWN);
+        robot.keyRelease(KeyEvent.VK_DOWN);
+//        robot.keyPress(KeyEvent.VK_DOWN);
+//        robot.keyRelease(KeyEvent.VK_DOWN);
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
+
+    }
+
     public void invoiceTypeWhenRegister() throws InterruptedException, AWTException {
         common.clickElement("xpath", "//Edit[@Name='Invoice Type']");
         Thread.sleep(1000);
@@ -1264,6 +1277,7 @@ public abstract class Transaction {
     }
 
     public void chargesAndDeductionsCalculations(String dataFile, String type, String accCode, String amount, String iterations) throws IOException, ParseException {
+
         for (int i = 0; i < Integer.parseInt(common.getData(dataFile, iterations)); i++) {
             enterData("xpath", "//Edit[@Name='Charges Or Deductions * Row " + i + ", Not sorted.']", dataFile, type);
             enterData("xpath", "//Edit[@Name='Account Code Row " + i + ", Not sorted.']", dataFile, accCode);
@@ -1300,7 +1314,7 @@ public abstract class Transaction {
         if ("(null)".equals(amountText) || amountText == (null)) {
             System.out.println("Other Charges not Available");
         } else {
-            OtherChargesCalculations(dataFile, accCode, amount,iterations);
+//            OtherChargesCalculations(dataFile, accCode, amount,iterations);
             otherChargesNetValue = Double.parseDouble(common.findWebElement("xpath", "//Edit[@AutomationId='NetAmount']").getText().replace(",", ""));
         }
         double totalNetValue = itemsNetValue + otherChargesNetValue;
@@ -1418,15 +1432,15 @@ public abstract class Transaction {
                 System.out.println("taxable: " + calculatedNetAmount);
 
                 // Format values for consistency
-                String formattedGSTAmount = decimalFormat.format(calculatedGSTAmount);
+                double formattedGSTAmount = Double.parseDouble(decimalFormat.format(calculatedGSTAmount));
                 System.out.println("formatted GST Amount :-"+formattedGSTAmount);
-                String formattedNetAmount = decimalFormat.format(calculatedNetAmount);
+                double formattedNetAmount = Double.parseDouble(decimalFormat.format(calculatedNetAmount));
                 System.out.println("formatted net Amount :-"+formattedNetAmount);
 
                 // Fetch values from UI
-                String actualGSTAmount = common.findWebElement("xpath", "//Edit[@Name='GST Amount Row " + i + ", Not sorted.']").getText();
+                double actualGSTAmount = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='GST Amount Row " + i + ", Not sorted.']").getText());
                 System.out.println("actual GST Amount :-"+formattedGSTAmount);
-                String actualNetAmount = common.findWebElement("xpath", "//Edit[@Name='Net Amount Row " + i + ", Not sorted.']").getText();
+                double actualNetAmount = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='Net Amount Row " + i + ", Not sorted.']").getText());
                 System.out.println("actual net Amount :-"+formattedGSTAmount);
                 // Validate GST Amount and Net Amount
                 Assert.assertEquals(actualGSTAmount, formattedGSTAmount, "GST Amount mismatch for row " + i);
