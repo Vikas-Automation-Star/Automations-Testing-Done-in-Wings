@@ -36,13 +36,8 @@ public class MaterialReturnsFromProduction extends Transaction {
         WebElement code = common.findWebElement("xpath", "//Edit[@Name='Material Issue No']");
         code.click();
         code.sendKeys(common.getData(dataFile, "MaterialIssueNo"));
-        List<WebElement> elementList = common.findWebElements("xpath", "//Edit[@Name='Quantity * Row 0, Not sorted.']");
-        System.out.println("Size :" + elementList.size());
-        for (WebElement j : elementList) {
-            System.out.println(j.getText());
-            j.click();
-            j.sendKeys(common.getData(dataFile, "quantity"));
-        }
+//
+        enterData("xpath","//Edit[@Name='Quantity * Row 0, Not sorted.']",dataFile,"quantity");
         common.clickElement("xpath", "//Edit[@Name='Unit Rate Row 0, Not sorted.']");
         transactionSave();
         Thread.sleep(1000);

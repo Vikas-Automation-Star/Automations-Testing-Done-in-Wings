@@ -21,25 +21,25 @@ public class PurchaseVouchersAgainstReceipt extends Transaction {
     }
 
     public void purchaseVouchersAgainstReceipt() throws InterruptedException, IOException, ParseException {
-       navigateToPurchaseVouchersAgainstReceipts();
+        navigateToPurchaseVouchersAgainstReceipts();
         Thread.sleep(3000);
-        super.oldTTransaction();
-        common.clickElement("xpath","//Edit[@Name='Voucher Type']");
-        super.selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']" );
+        oldTTransaction();
+//        common.clickElement("xpath","//Edit[@Name='Voucher Type']");
+//        selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']" );
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        super.selectMasterWithValidation(common.getData(dataFile,"branch"),"xpath", "//Edit[@Name='Branch *']");
+        selectMasterWithValidation(common.getData(dataFile,"branch"),"xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Location *']");
-        common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
-        super.selectMasterWithValidation(common.getData(dataFile,"currency"),"xpath", "//Edit[@Name='Trans Currency *']");
+        selectOptionalMaster(common.getData(dataFile,"location"), "xpath", "//Edit[@Name='Location *']");         common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
+        selectMasterWithValidation(common.getData(dataFile,"currency"),"xpath", "//Edit[@Name='Trans Currency *']");
         common.clickElement("xpath", "//Edit[@Name='Party Code']");
-        super.selectMasterWithValidation(common.getData(dataFile,"PartyCode"),"xpath", "//Edit[@Name='Party Code']");
-        super.gstSelectionWhenBothRegisteredDealers();
+        selectMasterWithValidation(common.getData(dataFile,"PartyCode"),"xpath", "//Edit[@Name='Party Code']");
+        gstSelectionWhenBothRegisteredDealers();
         Thread.sleep(1500);
         common.clickElement("xpath", "//CheckBox[@Name='Select Row 0']");
         common.clickElement("xpath", "//Pane/Button[@Name='Ok']");
         Thread.sleep(1000);
         common.clickElement("xpath", "//Edit[@Name='Purchase A/C Code']");
-        super.selectMasterWithValidation(common.getData(dataFile,"purchase A/C Code"),"xpath", "//Edit[@Name='Purchase A/C Code']");
+        selectMasterWithValidation(common.getData(dataFile,"purchase A/C Code"),"xpath", "//Edit[@Name='Purchase A/C Code']");
         common.clickElement("xpath", "//Edit[@Name='Purchase Account']");
         Thread.sleep(500);
         common.clickElement("xpath","//Edit[@Name='Supplier Bill No *']");
@@ -48,22 +48,20 @@ public class PurchaseVouchersAgainstReceipt extends Transaction {
         common.inputText("xpath", "//Edit[@Name='Supplier Bill Date *']", common.getData(dataFile, "billDate"));
 
         common.clickElement("xpath", "//Edit[@Name='Price List']");
-        super.selectMasterWithValidation(common.getData(dataFile,"pricelist"),"xpath", "//Edit[@Name='Price List']");
+        selectMasterWithValidation(common.getData(dataFile,"priceList"),"xpath", "//Edit[@Name='Price List']");
         common.clickElement("xpath", "//Edit[@Name='Executive *']");
-        super.selectMasterWithValidation(common.getData(dataFile,"executive"),"xpath", "//Edit[@Name='Executive *']");
+        selectMasterWithValidation(common.getData(dataFile,"executive"),"xpath", "//Edit[@Name='Executive *']");
         Thread.sleep(1000);
-        common.clickElement("xpath","//Edit[@Name='Remarks']");
-        super.selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"remarks"), "xpath","//Edit[@Name='Remarks']");
-        super.sliderHandle();
+//        common.clickElement("xpath","//Edit[@Name='Remarks']");
+//        super.selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"remarks"), "xpath","//Edit[@Name='Remarks']");
+        sliderHandle();
         Thread.sleep(500);
-        common.clickElement("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']");
-        common.inputText("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']", common.getData(dataFile,"quantity"));
-        common.findWebElements("xpath", "//Edit[@Name='MRP Row 0, Not sorted.']");
-        super.sliderHandle();
+        enterData("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']",dataFile,"quantity");
+        sliderHandle();
         transactionSave();
         Thread.sleep(1500);
-        super.newTransaction();
-        super.closeTransaction("Purchase Vouchers against Receipts");
+        newTransaction();
+        closeTransaction("Purchase Vouchers against Receipts");
         Thread.sleep(2000);
         Allure.step("PurchaseVouchersAgainstReceipts Transaction");
 

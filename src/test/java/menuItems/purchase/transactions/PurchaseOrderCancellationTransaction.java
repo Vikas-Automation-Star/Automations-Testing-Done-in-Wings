@@ -34,6 +34,5 @@ public class PurchaseOrderCancellationTransaction {
     public void afterTest(){
         appLogin.logout();
         Allure.step("After Test PurchaseOrderCancellation Transaction");
-
     }
 }

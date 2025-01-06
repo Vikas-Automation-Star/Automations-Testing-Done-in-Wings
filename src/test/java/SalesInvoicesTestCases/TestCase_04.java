@@ -14,7 +14,7 @@ import java.io.IOException;
 public class TestCase_04 {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String dataFile = "./src/main/resources/TestCasesData/testCase_04.json";
+    String dataFile = "./src/main/resources/TestCasesData/testCase04.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
@@ -31,7 +31,7 @@ public class TestCase_04 {
 
     @AfterTest
     public void afterTest(){
-        appLogin.logout();
+//        appLogin.logout();
         Allure.step("After Test TestCase 01");
     }
 }

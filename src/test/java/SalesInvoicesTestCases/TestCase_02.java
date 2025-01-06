@@ -14,7 +14,7 @@ public class TestCase_02 {
 
         WindowsDriver driver;
         AppLogin appLogin = new AppLogin();
-        String dataFile = "./src/main/resources/TestCasesData/testCase_02.json";
+        String dataFile = "./src/main/resources/TestCasesData/testCase02.json";
 
         @BeforeTest
         public void beforeTest() throws IOException, InterruptedException, ParseException {
