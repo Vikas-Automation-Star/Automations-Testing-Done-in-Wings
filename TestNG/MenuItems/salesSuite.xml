@@ -191,11 +191,11 @@
 <!--        </classes>-->
 <!--    </test>-->
 
-<!--    <test name="Reports - Sales Quotations" description="Test 30 description" testID="30">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.sales.reports.SalesQuotationReport"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="Reports - Sales Quotations" description="Test 30 description" testID="30">
+        <classes>
+            <class name="menuItems.sales.reports.SalesQuotationReport"/>
+        </classes>
+    </test>
 
 <!--    <test name="Reports - Pending sales Quotation" description="Test 31 description" testID="31">-->
 <!--        <classes>-->

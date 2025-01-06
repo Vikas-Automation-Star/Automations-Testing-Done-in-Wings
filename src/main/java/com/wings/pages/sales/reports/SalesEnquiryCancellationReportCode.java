@@ -20,7 +20,7 @@ public class SalesEnquiryCancellationReportCode extends Report {
         Thread.sleep(1000);
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1000);
-        super.bulkVerifyReport("SEC 7");
+        super.bulkVerifyReport("SEC 1");
         super.closeReport("Sales Enquiry Cancellations");
     }
 }
