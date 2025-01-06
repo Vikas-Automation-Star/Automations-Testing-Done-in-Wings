@@ -95,7 +95,6 @@ public abstract class Transaction {
         List<WebElement> elementList = common.findWebElements(locatorType, locator);
         System.out.println("Size :" + elementList.size());
         for (WebElement i : elementList) {
-//            System.out.println(i.getText());
             i.click();
             i.sendKeys(common.getData(fileName, key), Keys.TAB);
         }
@@ -269,8 +268,9 @@ public abstract class Transaction {
     }
 
     public void navigateToSummaryTab() throws AWTException {
-        navigateToOtherInfoTab();
-        for (int j = 0; j < 4; j++) {
+//        navigateToOtherInfoTab();
+        navigateToPaytymTab();
+        for (int j = 0; j < 6; j++) {
             Robot robot=new Robot();
             robot.keyPress(KeyEvent.VK_RIGHT);
             robot.keyRelease(KeyEvent.VK_RIGHT);
@@ -393,6 +393,22 @@ public abstract class Transaction {
         String receivableAmountText = receivableAmount.getText();
         if (receivableAmountText == (null) || "(null)".equals(receivableAmountText)) {
             Assert.fail("Receivable Amount field is empty");
+        }
+    }
+
+    public void tcsTaxableValuePresentInSummary() {
+        WebElement netAmount = common.findWebElement("xpath", "//Edit[@Name='TCS Taxable Value']");
+        String netAmountText1 = netAmount.getText();
+        if ((netAmountText1 == (null) || "(null)".equals(netAmountText1))) {
+            Assert.fail(" tcsTaxableValuePresentInSummary field is empty");
+        }
+    }
+
+    public void tcsAmountPresentInSummary() {
+        WebElement netAmount = common.findWebElement("xpath", "//Edit[@Name='TCS Amount']");
+        String netAmountText1 = netAmount.getText();
+        if ((netAmountText1 == (null) || "(null)".equals(netAmountText1))) {
+            Assert.fail("TCS Amount field is empty");
         }
     }
 
@@ -1211,7 +1227,7 @@ public abstract class Transaction {
     }
 
     public void generalProduct(String filename, String product, String quantity, int i) throws IOException, ParseException {
-        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, product);
+        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row "+i+", Not sorted.']", filename, product);
         common.clickElement("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']");
         enterData("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']", filename, quantity);
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 500, 0);
@@ -1226,9 +1242,7 @@ public abstract class Transaction {
         for (WebElement k : rows) {
             k.click();
             k.sendKeys(Keys.CONTROL + "a", Keys.DELETE);
-//            k.sendKeys(Keys.DELETE);
             k.sendKeys(common.getData(filename, quantity), Keys.TAB);
-
         }
         common.clickElement("xpath", "//Button[@Name='OK']");
     }
@@ -1251,19 +1265,6 @@ public abstract class Transaction {
         common.clickElement("xpath", "//Button[@Name='OK']");
     }
 
-    public void invoiceType() throws InterruptedException, AWTException {
-        common.clickElement("xpath", "//Edit[@Name='Invoice Type']");
-        Thread.sleep(1000);
-        Robot robot = new Robot();
-        robot.keyPress(KeyEvent.VK_DOWN);
-        robot.keyRelease(KeyEvent.VK_DOWN);
-//        robot.keyPress(KeyEvent.VK_DOWN);
-//        robot.keyRelease(KeyEvent.VK_DOWN);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-
-    }
-
     public void invoiceTypeWhenRegister() throws InterruptedException, AWTException {
         common.clickElement("xpath", "//Edit[@Name='Invoice Type']");
         Thread.sleep(1000);
@@ -1277,7 +1278,6 @@ public abstract class Transaction {
     }
 
     public void chargesAndDeductionsCalculations(String dataFile, String type, String accCode, String amount, String iterations) throws IOException, ParseException {
-
         for (int i = 0; i < Integer.parseInt(common.getData(dataFile, iterations)); i++) {
             enterData("xpath", "//Edit[@Name='Charges Or Deductions * Row " + i + ", Not sorted.']", dataFile, type);
             enterData("xpath", "//Edit[@Name='Account Code Row " + i + ", Not sorted.']", dataFile, accCode);
@@ -1432,15 +1432,15 @@ public abstract class Transaction {
                 System.out.println("taxable: " + calculatedNetAmount);
 
                 // Format values for consistency
-                double formattedGSTAmount = Double.parseDouble(decimalFormat.format(calculatedGSTAmount));
+                String formattedGSTAmount = decimalFormat.format(calculatedGSTAmount);
                 System.out.println("formatted GST Amount :-"+formattedGSTAmount);
-                double formattedNetAmount = Double.parseDouble(decimalFormat.format(calculatedNetAmount));
+                String formattedNetAmount = decimalFormat.format(calculatedNetAmount);
                 System.out.println("formatted net Amount :-"+formattedNetAmount);
 
                 // Fetch values from UI
-                double actualGSTAmount = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='GST Amount Row " + i + ", Not sorted.']").getText());
+                String actualGSTAmount = common.findWebElement("xpath", "//Edit[@Name='GST Amount Row " + i + ", Not sorted.']").getText();
                 System.out.println("actual GST Amount :-"+formattedGSTAmount);
-                double actualNetAmount = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='Net Amount Row " + i + ", Not sorted.']").getText());
+                String actualNetAmount = common.findWebElement("xpath", "//Edit[@Name='Net Amount Row " + i + ", Not sorted.']").getText();
                 System.out.println("actual net Amount :-"+formattedGSTAmount);
                 // Validate GST Amount and Net Amount
                 Assert.assertEquals(actualGSTAmount, formattedGSTAmount, "GST Amount mismatch for row " + i);
@@ -1499,7 +1499,7 @@ public abstract class Transaction {
     }
 
     public void sliderHandle () {
-        int offset = 550;
+        int offset = 350;
         WebElement slider = common.findWebElement("xpath", "//Table[@Name='Items']/ScrollBar[@Name='Horizontal']/Thumb[@Name='Position']");
         Actions actions = new Actions(driver);
         actions.clickAndHold(slider).moveByOffset(offset, 0).release().perform();
