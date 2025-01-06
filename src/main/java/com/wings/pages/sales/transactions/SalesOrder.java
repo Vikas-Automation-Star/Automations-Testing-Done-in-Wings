@@ -49,7 +49,7 @@ public class SalesOrder extends SalesOrdersBaseClass {
 //            common.clickElement("xpath", "//Edit[@Name='Party Account *']");
         Thread.sleep(2000);
         gstTransactionType("Registered");
-        Thread.sleep(1000);
+
         common.clickElement("xpath","//Edit[@Name='Customer Email']");
         selectOptionalMaster(common.getData(dataFile,"CustEmail"),"xpath","//Edit[@Name='Customer Email']");
         common.clickElement("xpath","//Edit[@Name='Customer Mobile Number']");
@@ -57,6 +57,8 @@ public class SalesOrder extends SalesOrdersBaseClass {
         priceList_baseClass();
         executives();
         remarks_baseClass();
+        common.clickElement("xpath","//CheckBox[@Name='Advance Receipts']");
+
 //            common.clickElement("xpath", "//Edit[@Name='Price List']");
 //            super.selectAndValidateData(common.getData(dataFile,"priceList"),"xpath", "//Edit[@Name='Price List']");
 //            common.clickElement("xpath", "//Edit[@Name='Executive *']");
@@ -64,8 +66,10 @@ public class SalesOrder extends SalesOrdersBaseClass {
 //            common.clickElement("xpath","//Edit[@Name='Remarks']");
 //            super.selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
         //f3-items
-        common.clickElement("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']");
-        selectAndValidateData(common.getData(dataFile,"productCode"),"xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']");
+        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']",dataFile, "productCode");
+
+//        common.clickElement("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']");
+//        selectAndValidateDataNew(common.getData(dataFile,"productCode"),"xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']");
         enterData("xpath", "//Edit[@Name='Quantity * Row 0, Not sorted.']",dataFile,"quantity");
         //save
         transactionSave();

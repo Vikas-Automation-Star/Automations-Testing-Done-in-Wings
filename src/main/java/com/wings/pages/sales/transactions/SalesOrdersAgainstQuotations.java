@@ -40,7 +40,7 @@ public class SalesOrdersAgainstQuotations extends SalesOrdersBaseClass {
         Thread.sleep(3500);
         gstTransactionType(common.getData(dataFile,"gstType"));
         Thread.sleep(2000);
-        common.clickElement("xpath","//CheckBox[@Name='Select Row 5']");
+        common.clickElement("xpath","//CheckBox[@Name='Select Row 1']");
         common.clickElement("name","Ok");
         remarks_baseClass();
 //        common.clickElement("xpath","//Edit[@Name='Remarks']");

@@ -5,7 +5,7 @@
   "partyCode":"AT_Cus_Reg_Inter",
   "priceList": "AT_Inclusive Sales Price List 1",
   "executive": "AT_Executive 1",
-  "productCode": "P1",
+  "productCode": "AT_Product 1",
   "quantity": 150,
   "amount": 550,
   "close": "Sales Orders"
