@@ -36,14 +36,12 @@ public class PurchaseEnquiriesCancellation extends Transaction {
         common.clickElement("xpath","//CheckBox[@Name='Select Row 0']");
         common.clickElement("xpath","//Button[@Name='Ok']");
 
-        common.clickElement("xpath","//Edit[@Name='Price List']");
-        super.selectMasterWithValidation(common.getData(dataFile,"priceList"),"xpath", "//Edit[@Name='Price List']");
-
         common.clickElement("xpath","//Edit[@Name='Executive *']");
         super.selectMasterWithValidation(common.getData(dataFile,"executive"),"xpath", "//Edit[@Name='Executive *']");
         Thread.sleep(500);
         common.clickElement("xpath","//Edit[@Name='Remarks']");
         super.selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"remarks"), "xpath","//Edit[@Name='Remarks']");
+
         common.clickElement("xpath","//Edit[@Name='Quantity * Row 0, Not sorted.']");
         common.inputText("xpath","//Edit[@Name='Quantity * Row 0, Not sorted.']", common.getData(dataFile,"quantity"));
         transactionSave();
@@ -51,7 +49,7 @@ public class PurchaseEnquiriesCancellation extends Transaction {
         super.newTransaction();
         super.closeTransaction("Purchase Enquiries Cancellation");
         Thread.sleep(2000);
-        Allure.step("PurchaseEnquiriescancellation Transation");
+        Allure.step("Purchase Enquiries Cancellation Transaction");
 
     }
 }

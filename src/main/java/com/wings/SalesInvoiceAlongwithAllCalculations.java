@@ -43,7 +43,7 @@ public class SalesInvoiceAlongwithAllCalculations extends Transaction {
             common.clickElement("xpath", "//Edit[@Name='Sales Account']");
 //        common.clickElement("xpath", "//CheckBox[@Name='Apply TCS']");
 //        common.clickElement("xpath", "//Edit[@Name='TCS Trans Nature']");
-            invoiceType();
+            invoiceTypeWhenRegister();
 
 //            common.inputText("xpath", "//Edit[@Name='Invoice Type']", common.getData(dataFile,"invoice"));
 //            Thread.sleep(1000);
