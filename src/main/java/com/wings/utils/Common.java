@@ -22,6 +22,7 @@ public class Common {
 
     WindowsDriver driver;
     Time time=new Time();
+    Process process;
 
     public Common(WindowsDriver remotedriver){
         driver=remotedriver;
@@ -29,6 +30,7 @@ public class Common {
 
 
     public WindowsDriver initializeDriver(String app) throws IOException {
+        initiateWinAppServer();
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("app",app);
         capabilities.setCapability("platformName", getProperty("platformName"));
@@ -266,5 +268,15 @@ public class Common {
 
     public void quit(){
         driver.quit();
+    }
+
+    public void initiateWinAppServer() throws IOException {
+        String wadServerPath = "C:\\Program Files (x86)\\Windows Application Driver\\WinAppDriver.exe";
+        ProcessBuilder builder = new ProcessBuilder(wadServerPath).inheritIO();
+        process = builder.start(); // your winappdriver code
+    }
+
+    public void quitWinAppServer(){
+        process.destroy();
     }
 }

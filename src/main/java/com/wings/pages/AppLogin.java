@@ -70,5 +70,13 @@ public class AppLogin {
         common.clickElement("xpath","//MenuItem[@Name='File']");
         common.clickElement("name","Exit");
         common.clickElement("name","Yes");
+        common.quitWinAppServer();
+    }
+
+    public void deleteSingleTransaction() throws InterruptedException {
+        common.clickElement("xpath", "//Text[@Name='Last Saved :']/following-sibling::Text");
+        common.clickElement("xpath","//Button[@Name='View']");
+        Thread.sleep(2500);
+        common.clickElement("xpath","//Button[@Name='Tools']");
     }
 }

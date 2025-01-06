@@ -1,9 +1,9 @@
 {
-  "branch": "Hyderabad",
-  "location": "hyderabad114",
+  "branch": "AT_Branch 1_Reg",
+  "location": "AT_Branch 1_Location 1",
   "transaction": "INR",
   "gstType" :"Registered",
   "close": "Sales Return with Invoice Reference",
   "quantity": 1,
-  "invoiceNo": "SI 24"
+  "invoiceNo": "SI 30"
 }

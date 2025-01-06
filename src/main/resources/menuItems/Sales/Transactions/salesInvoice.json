@@ -1,9 +1,9 @@
 {
-  "productCode": "1707",
+  "productCode": "P1",
   "Quantity": 200.00,
   "title": "Sales Invoices",
-  "branch": "Hyderabad",
-  "partyCode": 153,
+  "branch": "AT_Branch 1_Reg",
+  "partyCode": "AT_Cus_Reg_Inter",
   "invoice": "Regular",
-  "priceList": "Inclusive SalesPriceList"
+  "priceList": "AT_Inclusive Sales Price List 1"
 }

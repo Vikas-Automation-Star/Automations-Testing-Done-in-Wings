@@ -1,7 +1,7 @@
 {
-  "branch": "Hyderabad",
+  "branch": "AT_Branch 1_Reg",
   "transaction": "INR",
-  "partyCode": "153",
+  "partyCode": "AT_Cus_Reg_Inter",
   "Quantity": 1,
   "close": "Sales Quotations Cancellations"
 }

@@ -19,7 +19,6 @@ public class IntraStateIncludingGSTIncludingTCSIncludingOCIncludingCD_19 extends
         boolean gstAmountClicked = false;
         double mrp, grossAmount, unitRate,quantity, voucherDiscountValue, partyDiscountValue, netAmount, grossMinusDiscount, gstValue, cessValue, taxableValue, taxableAmountCalculated;
 
-
         public IntraStateIncludingGSTIncludingTCSIncludingOCIncludingCD_19(WindowsDriver driver, String file) {
             super(driver);
             this.driver = driver;
@@ -73,7 +72,6 @@ public class IntraStateIncludingGSTIncludingTCSIncludingOCIncludingCD_19 extends
             }
             double itemsNetValue= Double.parseDouble(common.findWebElement("xpath","//Edit[@AutomationId='NetAmount']").getText().replace(",",""));
 
-
             navigateToChargesAndDeductionsTab();
             chargesAndDeductionsCalculations(dataFile,"type","accountCode","amount","rowCount");
 
@@ -106,9 +104,7 @@ public class IntraStateIncludingGSTIncludingTCSIncludingOCIncludingCD_19 extends
             //save
             transactionSave();
             newTransaction();
-//            lastTransactionName();
         }
-
 
         public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {
             if (common.getData(dataFile, "productType" + i).equals("general")) {
@@ -248,6 +244,4 @@ public class IntraStateIncludingGSTIncludingTCSIncludingOCIncludingCD_19 extends
                 throw new IllegalArgumentException("Invalid GST Trans Type: " + gstTransType);
             }
         }
-
-
     }
