@@ -80,9 +80,9 @@ public class AppLogin {
 
     public void deleteSingleTransaction() throws InterruptedException {
 //        common.clickElement("xpath", "//Text[@Name='Last Saved :']/following-sibling::Text//*[contains(@ControlType, 'Hyperlink')]");
-// Find the parent Text element
+
         WebElement parent = common.findWebElement("xpath", "//Text[@Name='Last Saved :']/following-sibling::Text");
-// Traverse to the Hyperlink
+
         WebElement hyperlink = parent.findElement(By.xpath("//*[contains(@ControlType, 'Hyperlink')]"));
         hyperlink.click();
 
