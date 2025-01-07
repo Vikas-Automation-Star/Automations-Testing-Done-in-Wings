@@ -27,10 +27,10 @@ public class EwayBillOffline extends Transaction {
         common.clickElement("name", "E-Way Bill");
         common.clickElement("name", "E-Way Bill Offline");
         Thread.sleep(1000);
-        common.clickElement("xpath","//Edit[@Name='Voucher Type']");
-        super.selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']" );
+//        common.clickElement("xpath","//Edit[@Name='Voucher Type']");
+//        selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']" );
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        super.selectMaster(common.getData(dataFile, "branch"));
+        selectMaster(common.getData(dataFile, "branch"));
         common.clickElement("xpath", "//Edit[@Name='Vehicle Type']");
         Thread.sleep(2000);
         Robot robot=new Robot();
@@ -39,12 +39,12 @@ public class EwayBillOffline extends Transaction {
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
         common.clickElement("xpath", "//Edit[@Name='Executive']");
-        super.selectMaster(common.getData(dataFile, "executive"));
-        common.clickElement("xpath","//Edit[@Name='Remarks']");
-        super.selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"remarks"), "xpath","//Edit[@Name='Remarks']");
+        selectMaster(common.getData(dataFile, "executive"));
+//        common.clickElement("xpath","//Edit[@Name='Remarks']");
+//        selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"remarks"), "xpath","//Edit[@Name='Remarks']");
         transactionSave();
         Thread.sleep(1000);
-        super.closeTransaction("E-Way Bill Offline");
+        closeTransaction("E-Way Bill Offline");
         Thread.sleep(2000);
     }
 }

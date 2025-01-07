@@ -27,7 +27,7 @@ public class TestCase_06 {
     tc.interStatesGSTIncludingTCSIncludingOC_06();
     }
     @AfterTest
-    public void afterTest(){
+    public void afterTest() throws IOException{
 //        appLogin.logout();
     }
 }

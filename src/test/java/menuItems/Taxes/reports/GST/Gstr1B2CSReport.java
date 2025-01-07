@@ -28,7 +28,7 @@ public class Gstr1B2CSReport {
     }
 
     @AfterTest
-    public void afterTest(){
+    public void afterTest() throws IOException{
         appLogin.logout();
     }
 }

@@ -125,7 +125,7 @@ public class AppLaunch {
     }
 
     @AfterTest
-    public void afterTest(){
+    public void afterTest()  {
         //close the window
         logindriver.findElementByXPath("//MenuItem[@Name='File']").click();
         logindriver.findElementByXPath("//MenuItem[@Name='Exit']").click();

@@ -30,7 +30,7 @@ public class JournalEntriesTransaction {
     }
 
     @AfterTest
-    public void atferTest(){
+    public void afterTest() throws IOException{
         appLogin.logout();
         Allure.step("After Test - Journal Entries");
     }

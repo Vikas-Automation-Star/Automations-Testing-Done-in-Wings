@@ -26,7 +26,7 @@ public class PendingTdsPaymentsReport {
         ptp.pendigTdsPayments();
     }
     @AfterTest
-    public void afterTest(){
+    public void afterTest() throws IOException{
         appLogin.logout();
     }
 }

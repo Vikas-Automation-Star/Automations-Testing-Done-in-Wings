@@ -28,7 +28,7 @@ public class AdministrativeExpenses {
         }
 
         @AfterTest
-        public void afterTest(){
+        public void afterTest() throws IOException{
             login.logout();
         }
     }

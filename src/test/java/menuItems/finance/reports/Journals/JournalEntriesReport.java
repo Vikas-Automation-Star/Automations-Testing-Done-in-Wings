@@ -27,7 +27,7 @@ public class JournalEntriesReport {
     }
 
     @AfterTest
-    public void atferTest(){
+    public void afterTest() throws IOException{
         appLogin.logout();
     }
 

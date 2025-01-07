@@ -6,17 +6,19 @@
 
     <test name="Test 1"  description="Test 1 description"  testID="WOW 1">
         <classes>
-            <class name="util.SampleTest1"/>
+            <class name="menuItems.purchase.transactions.PurchaseEnquiriesTransaction"/>
         </classes>
     </test>
+
     <test name="Test 2"  description="Test 2 description"  testID="WOW 2">
         <classes>
-            <class name="util.SampleTest2"/>
+            <class name="menuItems.purchase.transactions.PurchaseEnquiriesCancellationTransaction"/>
         </classes>
     </test>
+
     <test name="Test 3"  description="Test 3 description"  testID="WOW 3">
         <classes>
-            <class name="util.SampleTest3"/>
+            <class name="menuItems.purchase.transactions.PurchaseQuotationsAgainstEnquiriesTransaction"/>
         </classes>
     </test>
 </suite>

@@ -31,7 +31,7 @@ public class SampleTest1 {
     }
 
     @AfterTest
-    public void afterTest(){
+    public void afterTest() throws IOException{
         appLogin.logout();
         Allure.step("After test Sample Test 1");
     }

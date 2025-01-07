@@ -32,7 +32,7 @@ public class Demo {
     }
 
     @AfterTest
-    public void afterTest(){
+    public void afterTest() throws IOException{
         System.out.println("After locationMaster");
         landingPage.quit();
     }

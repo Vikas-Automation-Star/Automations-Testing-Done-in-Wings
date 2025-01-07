@@ -27,7 +27,7 @@ public class Demo1 {
     }
 
     @AfterTest
-    public void afterTest() {
+    public void afterTest() throws IOException {
         System.out.println("After locationMaster 2 ");
         landingPage.quit();
     }

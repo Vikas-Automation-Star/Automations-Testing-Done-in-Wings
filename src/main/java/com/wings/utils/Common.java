@@ -276,7 +276,9 @@ public class Common {
         process = builder.start(); // your winappdriver code
     }
 
-    public void quitWinAppServer(){
-        process.destroy();
+    public void quitWinAppServer() throws IOException {
+//        process.destroy();
+        String command="taskkill /IM \"WinAppDriver.exe\" /F";
+        Process p = Runtime.getRuntime().exec(command);
     }
 }
