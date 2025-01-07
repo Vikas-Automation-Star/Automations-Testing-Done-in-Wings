@@ -60,10 +60,10 @@ public class SalesInvoice extends Transaction {
        common.clickElement("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']");
         enterData("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']", dataFile, "Quantity");
 
+        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']",700,0);
+
         enterDataAndValidate("xpath", "//Edit[@Name='HSN Row 0, Not sorted.']", dataFile, "HSNCode");
 
-        int offset = 700;
-        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']",offset,0);
         //save
         transactionSave();
         lastTransactionName();

@@ -30,7 +30,7 @@ public class SalesReturnTransaction {
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         login.logout();
         Allure.step("After Test Sales Return");
     }
