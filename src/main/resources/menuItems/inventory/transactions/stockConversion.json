@@ -1,10 +1,11 @@
 {
-  "quantity": "30",
-  "branch": "Hyderabad",
-  "priceList": "APpriceList",
-  "executive": "HYDExec",
-  "productCode": "1707",
-  "fromLocation": "hyderabad114",
-  "quantity1": "20",
+  "quantity": "2",
+  "branch": "AT_Branch 1_Reg",
+  "priceList": "AT_Inclusive purchase price List 1",
+  "batchPolicy": "AT-Purchase Batch Policy_CNA",
+  "executive": "AT_Executive 1",
+  "productCode": "AT_Product 1",
+  "fromLocation": "AT_Branch 1_Location 1",
+  "quantity1": "3",
   "close": "Stock Conversion"
 }

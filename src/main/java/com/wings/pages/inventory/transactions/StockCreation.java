@@ -32,6 +32,8 @@ public class StockCreation extends Transaction {
         Thread.sleep(10000);
         common.clickElement("xpath", "//Edit[@Name='Stock Account *']");
         selectAndValidateDataNew(common.getData(dataFile, "stockAcc"), "xpath", "//Edit[@Name='Stock Account *']");
+        common.clickElement("xpath","//Edit[@Name='Batch Policy']");
+        selectMasterWithValidation(common.getData(dataFile,"batchPolicy"),"xpath", "//Edit[@Name='Batch Policy']");
         common.clickElement("xpath", "//Edit[@Name='Price List']");
         selectAndValidateData(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
         common.clickElement("xpath", "//Edit[@Name='Executive *']");
