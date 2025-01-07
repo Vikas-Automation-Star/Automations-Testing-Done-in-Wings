@@ -28,16 +28,18 @@ public class TcsPayments extends Transaction {
         common.clickElement("name", "TCS");
         common.clickElement("name", "TCS Payments");
         Thread.sleep(1000);
-        common.clickElement("xpath","//Edit[@Name='Voucher Type']");
-        super.selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']" );
+//        common.clickElement("xpath","//Edit[@Name='Voucher Type']");
+//        super.selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']" );
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        super.selectMaster(common.getData(dataFile, "branch"));
+        selectMaster(common.getData(dataFile, "branch"));
         WebElement startingYear = common.findWebElement("xpath", "//Edit[@Name='From Year And Month *']");
         startingYear.clear();
         startingYear.sendKeys(common.getData(dataFile, "startingYear"));
+
         WebElement endingYear = common.findWebElement("xpath", "//Edit[@Name='To Year And Month *']");
         endingYear.clear();
         endingYear.sendKeys(common.getData(dataFile, "endingYear"));
+
         WebElement element1=common.findWebElement("xpath", "//Edit[@Name='TCS Sub Type *']");
         element1.click();
         common.clickElement("xpath","//Edit[@Name='TCS Account *']");
@@ -47,8 +49,8 @@ public class TcsPayments extends Transaction {
         common.inputText("xpath", "//Edit[@Name='BSR Code']", common.getData(dataFile, "bsrCode"));
         common.clickElement("xpath", "//Edit[@Name='Executive *']");
         super.selectAndValidateDataNew(common.getData(dataFile, "executive"),"xpath","//Edit[@Name='Executive *']");
-        common.clickElement("xpath","//Edit[@Name='Remarks']");
-        super.selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"remarks"), "xpath","//Edit[@Name='Remarks']");
+//        common.clickElement("xpath","//Edit[@Name='Remarks']");
+//        selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"remarks"), "xpath","//Edit[@Name='Remarks']");
         Thread.sleep(2000);
         common.clickElement("xpath","//CheckBox[@Name='TCS Paid Row 0']");
         common.clickElement("xpath","//CheckBox[@Name='TCS Sale Return Row 0']");
@@ -65,7 +67,7 @@ public class TcsPayments extends Transaction {
         common.clickElement("xpath", "//TabItem[@Name='  F9 Summary  ']");
         transactionSave();
         Thread.sleep(1000);
-        super.closeTransaction("TCS Payments");
+        closeTransaction("TCS Payments");
         Thread.sleep(2000);
     }
 }

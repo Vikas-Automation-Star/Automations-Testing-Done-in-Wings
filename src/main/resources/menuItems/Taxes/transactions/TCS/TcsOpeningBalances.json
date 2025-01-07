@@ -1,15 +1,13 @@
 {
-  "branch": "Hyderabad",
+  "branch": "AT_Branch 1_Reg",
   "currency": "INR",
-  "executive": "Executive3",
-  "Pcode": "20012",
-  "tcsAsseseeType": "New TaxCollectedSource38",
-  "tcsTransNature": "New TaxCollectedSource Transaction Nature",
-  "tcsSubType": "New Sub TaxCollectedSource1",
-  "tcsAccount": "TCS Collected Account",
+  "executive": "AT_Executive 1",
+  "PCode": "AT_Sup_Reg_Intra",
+  "controlAccount":"Opening Balance Control Account",
+  "tcsAssesType": "AT_TCS Assessee Type 1",
+  "tcsTransNature": "AT_TCS Transaction Nature 1",
+  "tcsSubType": "AT_TCS Sub type 1",
+  "tcsAccount": "AT_TCS Collected Acc 1",
   "tcsAssesableValue": "5000",
-  "TcsRate": "5",
-  "amount": "1000"
-
-
+  "TcsRate": "5"
 }

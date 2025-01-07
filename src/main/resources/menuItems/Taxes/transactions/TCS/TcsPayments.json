@@ -1,13 +1,13 @@
 {
-  "branch": "Hyderabad",
-  "startingYear": "202301",
-  "endingYear": "202409",
-  "New Sub TaxCollectedSource1": "New Sub TaxCollectedSource1",
+  "branch": "AT_Branch 1_Reg",
+  "startingYear": "202401",
+  "endingYear": "202512",
+  "Subtype": "AT_TCS Sub type 1",
   "TCS Collected Account": "TCS Collected Account",
   "challanNo": "3212",
   "bsrCode": "1234",
-  "executive": "Executive3",
+  "executive": "AT_Executive 1",
   "bankCode": "Bank Account",
-  "amount": "250",
+  "amount": "20",
   "checkNO":"998921449"
 }

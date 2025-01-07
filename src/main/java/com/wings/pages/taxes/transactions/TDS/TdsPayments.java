@@ -28,10 +28,10 @@ public class TdsPayments extends Transaction {
         common.clickElement("name", "TDS");
         common.clickElement("name", "TDS Payments");
         Thread.sleep(1000);
-        common.clickElement("xpath","//Edit[@Name='Voucher Type']");
-        super.selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']" );
+//        common.clickElement("xpath","//Edit[@Name='Voucher Type']");
+//        selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']" );
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        super.selectMaster(common.getData(dataFile, "branch"));
+        selectMaster(common.getData(dataFile, "branch"));
         common.clickElement("xpath", "//Edit[@Name='Transaction Currency *']");
         WebElement startingYear= common.findWebElement("xpath","//Edit[@Name='From Year And Month *']");
         startingYear.clear();
@@ -40,16 +40,16 @@ public class TdsPayments extends Transaction {
         endingYear.clear();
         endingYear.sendKeys(common.getData(dataFile,"endingYear"));
         common.clickElement("xpath", "//Edit[@Name='TDS Sub Type *']");
-        super.selectMaster(common.getData(dataFile,"New Sub TaxDeductedSource38"));
+        selectMaster(common.getData(dataFile,"Subtype"));
         common.clickElement("xpath","//Edit[@Name='TDS Account *']");
-        super.selectMaster(common.getData(dataFile,"TDS Collected Account"));
+        selectMaster(common.getData(dataFile,"TDSAccount"));
         Thread.sleep(2000);
         common.inputText("xpath","//Edit[@Name='Bank Challan No']", common.getData(dataFile,"challanNo"));
         common.inputText("xpath","//Edit[@Name='BSR Code']", common.getData(dataFile,"bsrCode"));
         common.clickElement("xpath","//Edit[@Name='Executive *']");
-        super.selectAndValidateDataNew(common.getData(dataFile,"executive"),"xpath","//Edit[@Name='Executive *']");
-        common.clickElement("xpath","//Edit[@Name='Remarks']");
-        super.selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"remarks"), "xpath","//Edit[@Name='Remarks']");
+        selectAndValidateDataNew(common.getData(dataFile,"executive"),"xpath","//Edit[@Name='Executive *']");
+//        common.clickElement("xpath","//Edit[@Name='Remarks']");
+//        selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"remarks"), "xpath","//Edit[@Name='Remarks']");
         Thread.sleep(2000);
 
         List<WebElement> checkbox=common.findWebElements("xpath","//Table[@Name='TDSDetails']/*[contains(@Name,'Row')]/CheckBox[contains(@Name,'TDS Paid * Row')]");
@@ -72,7 +72,7 @@ public class TdsPayments extends Transaction {
         Assert.assertEquals("20","20");
         transactionSave();
         Thread.sleep(1000);
-        super.closeTransaction("TDS Payments");
+        closeTransaction("TDS Payments");
         Thread.sleep(2000);
     }
 }

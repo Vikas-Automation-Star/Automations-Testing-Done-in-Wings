@@ -1,13 +1,12 @@
 {
-  "branch": "Hyderabad",
-  "executive": "Executive3",
-  "Pcode": "20012",
-  "tdsAssesseType": "New TaxDeductedSource69",
-  "TdsTransactionNature": "TaxDeductionNature89",
-  "tdsSubType": "New Sub TaxDeductedSource38",
-  "tdsAccount": "TDS Collected Account",
-  "tdsAssesableValue":"1000",
-  "TdsRate": "2",
-  "amount": "1000"
-
+  "branch": "AT_Branch 1_Reg",
+  "executive": "AT_Executive 1",
+  "PCode": "AT_Sup_Reg_Inter",
+  "controlAccount":"Opening Balance Control Account",
+  "TDSAssessType": "AT_TDS Assessee Type 1",
+  "TdsTransactionNature": "AT_TDS Transaction Nature 1",
+  "tdsSubType": "AT_TDS Sub type 1",
+  "tdsAccount": "AT_TDS Collected Acc 1",
+  "tdsAssesbleValue":"1000",
+  "TdsRate": "2"
 }
