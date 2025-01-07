@@ -2,6 +2,7 @@ package menuItems.purchase.transactions;
 
 import com.wings.pages.AppLogin;
 import com.wings.pages.purchase.transactions.PurchaseEnquiries;
+import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
@@ -30,7 +31,9 @@ public class PurchaseEnquiriesTransaction {
     @AfterTest
     public void afterTest() throws IOException {
         appLogin.logout();
-        Allure.step("After Test PurchaseEnquiries Transaction");
+//        Common common=new Common(driver);
+//        common.quitWinAppServer();
+//        Allure.step("After Test PurchaseEnquiries Transaction");
 
     }
 }

@@ -41,16 +41,20 @@ public class SalesReturns extends Transaction {
         common.clickElement("xpath", "//Edit[@Name='Sales Return A/c']");
         common.clickElement("xpath", "//CheckBox[@Name='Apply TCS']");
         common.clickElement("xpath","//Edit[@Name='Batch Policy']");
-        selectOptionalMaster(common.getData(dataFile,"batchPolicy"),"xpath","//Edit[@Name='Batch Policy']");
+        selectAndValidateData(common.getData(dataFile,"batchPolicy"),"xpath","//Edit[@Name='Batch Policy']");
+        Thread.sleep(3000);
         common.clickElement("xpath", "//Edit[@Name='Price List']");
         selectAndValidateData(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
         common.clickElement("xpath","//Edit[@Name='Remarks']");
         selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
         //items
-        common.clickElement("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']");
-        selectAndValidateData(common.getData(dataFile, "productCode"), "xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']");
+        enterDataAndValidate("xpath","//Edit[@Name='Product Code Row 0, Not sorted.']",dataFile,"productCode");
         enterData("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']", dataFile, "quantity");
-//        common.sliderHandling();
+        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']",700,0);
+        enterDataAndValidate("xpath", "//Edit[@Name='HSN Row 0, Not sorted.']", dataFile, "HSNCode");
+        navigateToBillsReceivablesTab();
+        common.deleteInvalidRows();
+        //save
         transactionSave();
         lastTransactionName();
     }

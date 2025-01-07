@@ -21,6 +21,6 @@ public class SalesInvoiceAgainstOrdersReportCode extends Report {
         Thread.sleep(1500);
         common.clickElement("xpath","//CheckBox[@Name='Detailed']");
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
-        super.bulkVerifyReport("SIAO 2");
+        super.bulkVerifyReport("SIAO 1");
     }
 }

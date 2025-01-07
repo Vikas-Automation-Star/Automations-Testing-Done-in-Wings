@@ -41,7 +41,14 @@ public class SalesInvoiceAgainstDeliveries extends Transaction {
         common.clickElement("xpath","//Edit[@Name='Customer Mobile Number']");
         selectOptionalMaster(common.getData(dataFile,"mobileNum"),"xpath","//Edit[@Name='Customer Mobile Number']");
         common.clickElement("xpath", "//Edit[@Name='Sales A/c Code']");
-        common.clickElement("xpath", "//Edit[@Name='TCS Trans Nature']");
+//        common.clickElement("xpath", "//Edit[@Name='TCS Trans Nature']");
+
+        common.clickElement("xpath", "//CheckBox[@Name='Apply TCS']"); //to uncheck if its checked
+
+        common.clickElement("xpath", "//Edit[@Name='Price List']");
+        selectAndValidateData(common.getData(dataFile,"priceList"),"xpath", "//Edit[@Name='Price List']");
+        common.clickElement("xpath", "//Edit[@Name='Executive *']");
+        selectAndValidateData(common.getData(dataFile,"executive"),"xpath", "//Edit[@Name='Executive *']");
         common.clickElement("xpath","//Edit[@Name='Remarks']");
         selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
         //items --optional

@@ -20,7 +20,7 @@ public class SalesReturnWithInvoiceReference extends Transaction {
         dataFile = file;
     }
 
-    public void salesReturnWithInvoiceReference() throws InterruptedException, IOException, ParseException, IOException, ParseException {
+    public void salesReturnWithInvoiceReference() throws InterruptedException, IOException, ParseException {
         navigateToSalesReturnWithInvoiceReferenceMenu();
         Thread.sleep(3000);
         lastTransactionName();

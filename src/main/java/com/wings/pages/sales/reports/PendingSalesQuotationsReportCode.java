@@ -21,7 +21,7 @@ public class PendingSalesQuotationsReportCode extends Report {
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1000);
 
-        super.bulkVerifyReport("SQAE 4");
+        super.bulkVerifyReport("SQAE 1");
         super.closeReport("Pending Sales Quotations");
     }
 }
