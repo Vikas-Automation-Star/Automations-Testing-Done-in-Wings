@@ -35,8 +35,8 @@ public class SalesInvoiceAgainstOrders extends Transaction {
         selectMaster(common.getData(dataFile, "partyCode"));
         gstTransactionType(common.getData(dataFile, "gstType"));
         Thread.sleep(1500);
-        common.clickElement("xpath", "//CheckBox[@Name='Select Row 1']");
-        common.clickElement("xpath", "//Button[@Name='Ok']");
+//        common.clickElement("xpath", "//CheckBox[@Name='Select Row 1']");
+//        common.clickElement("xpath", "//Button[@Name='Ok']");
         common.clickElement("xpath","//Edit[@Name='Customer Email']");
         selectOptionalMaster(common.getData(dataFile,"CustEmail"),"xpath","//Edit[@Name='Customer Email']");
         common.clickElement("xpath","//Edit[@Name='Customer Mobile Number']");

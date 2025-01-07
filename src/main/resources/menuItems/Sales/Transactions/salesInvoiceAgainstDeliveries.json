@@ -4,5 +4,7 @@
   "gstType": "Registered",
   "transaction": "INR",
   "partyCode": "AT_Cus_Reg_Inter",
+  "executive": "AT_Executive 1",
+  "priceList": "AT_Inclusive Sales Price List 1",
   "close": "Sales Invoices against Deliveries"
 }

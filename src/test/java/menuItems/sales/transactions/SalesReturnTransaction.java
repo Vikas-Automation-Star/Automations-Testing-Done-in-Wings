@@ -31,7 +31,7 @@ public class SalesReturnTransaction {
 
     @AfterTest
     public void afterTest(){
-        login.logout();
+//        login.logout();
         Allure.step("After Test Sales Return");
     }
 }

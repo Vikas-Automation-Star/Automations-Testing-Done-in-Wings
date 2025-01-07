@@ -41,7 +41,8 @@ public class SalesReturns extends Transaction {
         common.clickElement("xpath", "//Edit[@Name='Sales Return A/c']");
         common.clickElement("xpath", "//CheckBox[@Name='Apply TCS']");
         common.clickElement("xpath","//Edit[@Name='Batch Policy']");
-        selectOptionalMaster(common.getData(dataFile,"batchPolicy"),"xpath","//Edit[@Name='Batch Policy']");
+        selectAndValidateData(common.getData(dataFile,"batchPolicy"),"xpath","//Edit[@Name='Batch Policy']");
+        Thread.sleep(3000);
         common.clickElement("xpath", "//Edit[@Name='Price List']");
         selectAndValidateData(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
         common.clickElement("xpath","//Edit[@Name='Remarks']");
