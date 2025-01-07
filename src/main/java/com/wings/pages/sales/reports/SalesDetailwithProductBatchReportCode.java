@@ -21,7 +21,7 @@ public class SalesDetailwithProductBatchReportCode extends Report {
         Thread.sleep(1000);
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(500);
-        super.bulkVerifyReport("SI 3");
+        super.bulkVerifyReport("SI 1");
         super.closeReport("Sales Detailed with Product Batch");
     }
 

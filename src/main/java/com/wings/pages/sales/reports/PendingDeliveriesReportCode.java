@@ -20,7 +20,7 @@ public class PendingDeliveriesReportCode extends Report {
         common.clickElement("xpath", "//MenuItem[@Name='Pending Deliveries']");
         Thread.sleep(1000);
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
-        super.bulkVerifyReport("SO 8");
+        super.bulkVerifyReport("SO 1");
         super.closeReport("Pending Deliveries");
     }
 }

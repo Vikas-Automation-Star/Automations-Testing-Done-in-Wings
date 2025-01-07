@@ -21,7 +21,7 @@ public class PendingSalesOrderWithDeliveriesReportCode extends Report {
         Thread.sleep(1000);
         common.clickElement("xpath","//CheckBox[@Name='Detailed']");
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
-        super.bulkVerifyReport("SO 8");
+        super.bulkVerifyReport("SO 1");
         super.closeReport("Pending Sales Orders with Deliveries");
     }
 }
