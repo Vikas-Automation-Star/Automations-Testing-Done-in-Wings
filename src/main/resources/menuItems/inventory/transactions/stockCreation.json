@@ -1,11 +1,12 @@
 {
-  "branch": "Hyderabad",
-  "priceList": "APpriceList",
-  "executive": "HYDExec",
-  "stockAcc": "Purchase Account",
-  "productCode": "1707",
-  "Location": "hyderabad114",
+  "branch": "AT_Branch 1_Reg",
+  "priceList": "AT_Inclusive purchase price List 1",
+  "executive": "AT_Executive 1",
+  "stockAcc": "AT_Charges  Acc 1",
+  "batchPolicy": "AT-Purchase Batch Policy_CNA",
+  "productCode": "AT_Product 1",
+  "Location": "AT_Branch 1_Location 1",
   "Quantity": "200",
-  "goods": "purchase",
+  "goods": "AT_Purchase  Acc 1",
   "close": "Stock Creation"
 }

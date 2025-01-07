@@ -1,11 +1,11 @@
 {
-  "branch": "Hyderabad",
-  "Location": "hyderabad114",
-  "executive": "HYDExec",
-  "priceList": "APpriceList",
-  "stockAsset": "Opening Stock [Asset]",
-  "stockAccount": "Opening Stock [Expense]",
-  "productCode": "1707",
+  "branch": "AT_Branch 1_Reg",
+  "Location": "AT_Branch 1_Location 1",
+  "executive": "AT_Executive 1",
+  "priceList": "AT_Inclusive purchase price List 1",
+  "stockAsset": "AT_opening Stock[assets] Acc 1",
+  "stockAccount": "AT_Opening Stock[Expences]Acc 1",
+  "productCode": "AT_Product 1",
   "Quantity": "500",
   "close": "Opening Stock"
 }

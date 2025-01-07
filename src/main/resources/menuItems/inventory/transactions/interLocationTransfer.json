@@ -3,8 +3,9 @@
   "toLocation": "AT_Branch 1_Location 2",
   "branch": "AT_Branch 1_Reg",
   "executive": "AT_Executive 1",
-  "productCode": "P1",
+  "productCode": "AT_Product 1",
+  "priceList": "AT_Inclusive purchase price List 1",
   "transaction": "INR",
-  "quantity": "20",
+  "quantity": 10,
   "close": "Inter Location Transfers"
 }
