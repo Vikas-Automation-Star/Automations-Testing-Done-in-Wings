@@ -30,7 +30,7 @@ public class PartyOpeningBalancesTransaction {
     }
 
     @AfterTest
-    public void afterTest(){
+    public void afterTest() throws IOException{
         appLogin.logout();
         Allure.step("After Test - Party Opening Balances");
     }

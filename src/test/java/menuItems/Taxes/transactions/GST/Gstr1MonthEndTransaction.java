@@ -29,7 +29,7 @@ public class Gstr1MonthEndTransaction {
     }
 
     @AfterTest
-    public void afterTest(){
-//        appLogin.logout();
+    public void afterTest() throws IOException {
+        appLogin.logout();
     }
 }

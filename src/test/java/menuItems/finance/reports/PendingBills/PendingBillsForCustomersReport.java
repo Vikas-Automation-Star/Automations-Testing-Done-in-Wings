@@ -27,7 +27,7 @@ public class PendingBillsForCustomersReport {
     }
 
     @AfterTest
-    public void atferTest(){
+    public void afterTest() throws IOException{
         appLogin.logout();
     }
 }

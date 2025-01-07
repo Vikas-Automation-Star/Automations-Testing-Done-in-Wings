@@ -30,7 +30,7 @@ public class SalesPriceTransaction {
     }
 
     @AfterTest
-    public void afterTest(){
+    public void afterTest() throws IOException{
         login.logout();
         Allure.step("After Test Sales Price");
     }

@@ -30,7 +30,7 @@ public class TcsSubTypesMaster {
     }
 
     @AfterTest
-    public void afterTest() throws IOException {
+    public void afterTest() throws IOException{
         appLogin.logout();
     }
 }

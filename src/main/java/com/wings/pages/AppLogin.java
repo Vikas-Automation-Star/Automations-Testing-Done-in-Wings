@@ -71,9 +71,9 @@ public class AppLogin {
             common.clickElement("xpath", "//MenuItem[@Name='File']");
             common.clickElement("name", "Exit");
             common.clickElement("name", "Yes");
-        }catch (Exception exception){
+        } catch (Exception exception) {
             exception.printStackTrace();
-        }finally {
+        } finally {
             common.quitWinAppServer();
         }
     }

@@ -33,7 +33,7 @@ public class Company {
         }
 
     @AfterTest
-    public void afterTest(){
+    public void afterTest() throws IOException{
         landingPage.quit();
     }
 }

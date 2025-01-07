@@ -189,6 +189,7 @@
             <class name="menuItems.purchase.transactions.PurchasePricesTransaction"></class>
         </classes>
     </test>
+
     <!-- Transactions of purchase menu completed 15-->
 
     <!-- Reports of purchase menu -->

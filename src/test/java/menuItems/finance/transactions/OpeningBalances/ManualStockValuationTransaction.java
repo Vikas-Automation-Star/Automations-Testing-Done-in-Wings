@@ -30,7 +30,7 @@ public class ManualStockValuationTransaction {
     }
 
     @AfterTest
-    public void afterTest(){
+    public void afterTest() throws IOException{
         appLogin.logout();
         Allure.step("After Test - Manual Stock Verification");
     }

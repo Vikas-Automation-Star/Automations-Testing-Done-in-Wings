@@ -29,7 +29,7 @@ public class Validations {
         }
 
         @AfterTest
-        public void afterTest(){
+        public void afterTest() throws IOException{
 //            appLogin.logout();
             Allure.step("After Test");
         }

@@ -28,7 +28,7 @@ public class Depreciation {
         }
 
         @AfterTest
-        public void afterTest(){
+        public void afterTest() throws IOException{
             login.logout();
         }
     }

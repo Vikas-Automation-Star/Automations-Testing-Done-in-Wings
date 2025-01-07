@@ -113,7 +113,7 @@ public class XMLUtil {
                     String signature = testMethodElement.getAttribute("signature");
                     System.out.println(signature + " signature for example");
 
-                    if (!signature.contains("afterTest()")) {
+                    if (!signature.contains("afterTest() throws IOException")) {
                         requiredTestMethod = testMethodElement;
                         break;
                     }

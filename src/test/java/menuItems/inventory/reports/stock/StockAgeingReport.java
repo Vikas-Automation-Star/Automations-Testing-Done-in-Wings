@@ -27,7 +27,7 @@ public class StockAgeingReport {
     }
 
     @AfterTest
-    public void afterTest(){
+    public void afterTest() throws IOException{
         appLogin.logout();
     }
 }

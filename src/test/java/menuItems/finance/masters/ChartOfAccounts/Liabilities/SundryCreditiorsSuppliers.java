@@ -29,7 +29,7 @@ public class SundryCreditiorsSuppliers {
         }
 
         @AfterTest
-        public void afterTest(){
+        public void afterTest() throws IOException{
             login.logout();
         }
     }

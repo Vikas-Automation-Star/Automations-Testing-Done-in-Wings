@@ -30,7 +30,7 @@ public class ProductPartyDiscountTransaction {
     }
 
     @AfterTest
-    public void afterTest(){
+    public void afterTest() throws IOException{
         login.logout();
         Allure.step("After test Product and Party wise Discounts");
     }

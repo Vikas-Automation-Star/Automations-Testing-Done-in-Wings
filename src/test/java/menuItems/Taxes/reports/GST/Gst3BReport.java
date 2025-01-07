@@ -28,7 +28,7 @@ public class Gst3BReport {
     }
 
     @AfterTest
-    public void afterTest(){
+    public void afterTest() throws IOException{
         appLogin.logout();
     }
 }

@@ -78,7 +78,7 @@ at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
             </line>
           </reporter-output>
         </test-method> <!-- accountBalance -->
-        <test-method is-config="true" signature="afterTest()[pri:0, instance:util.SampleTest1@27f74733]" started-at="2024-11-20T13:01:42 IST" name="afterTest" finished-at="2024-11-20T13:01:45 IST" duration-ms="2738" status="FAIL">
+        <test-method is-config="true" signature="afterTest() throws IOException[pri:0, instance:util.SampleTest1@27f74733]" started-at="2024-11-20T13:01:42 IST" name="afterTest" finished-at="2024-11-20T13:01:45 IST" duration-ms="2738" status="FAIL">
           <exception class="java.lang.NullPointerException">
             <full-stacktrace>
               <![CDATA[java.lang.NullPointerException
