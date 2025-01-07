@@ -42,11 +42,11 @@
 <!--    </test>-->
 
         <!-- Sales Transactions -->
-    <test name="Sales Enquiries Transaction" description="Test 7 description" testID="7">
-        <classes>
-            <class name="menuItems.sales.transactions.SalesEnquiryTransaction"/>
-        </classes>
-    </test>
+<!--    <test name="Sales Enquiries Transaction" description="Test 7 description" testID="7">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.sales.transactions.SalesEnquiryTransaction"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
 <!--    <test name="Sales Enquiries Cancellation Transaction" description="Test 8 description" testID="8">-->
 <!--        <classes>-->
@@ -108,41 +108,41 @@
 <!--        </classes>-->
 <!--    </test>-->
 
-<!--    <test name="Sales Invoice Transaction" description="Test 18 description" testID="18">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.sales.transactions.SalesInvoiceTransaction"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="Sales Invoice Transaction" description="Test 18 description" testID="18">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesInvoiceTransaction"/>
+        </classes>
+    </test>
 
-<!--    <test name="Sales Invoice against Orders Transaction" description="Test 19 description" testID="19">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.sales.transactions.SalesInvoiceAgainstOrdersTransaction"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="Sales Invoice against Orders Transaction" description="Test 19 description" testID="19">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesInvoiceAgainstOrdersTransaction"/>
+        </classes>
+    </test>
 
-<!--    <test name="Sales Invoice against Deliveries Transaction" description="Test 20 description" testID="20">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.sales.transactions.SalesInvoiceAgainstDeliveriesTransaction"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="Sales Invoice against Deliveries Transaction" description="Test 20 description" testID="20">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesInvoiceAgainstDeliveriesTransaction"/>
+        </classes>
+    </test>
 
-<!--    <test name="Invoice - Proforma sales Invoice Transaction" description="Test 21 description" testID="21">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.sales.transactions.ProformaSalesInvoiceTransaction"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="Invoice - Proforma sales Invoice Transaction" description="Test 21 description" testID="21">
+        <classes>
+            <class name="menuItems.sales.transactions.ProformaSalesInvoiceTransaction"/>
+        </classes>
+    </test>
 
-<!--    <test name="Sales Return Transaction" description="Test 22 description" testID="22">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.sales.transactions.SalesReturnTransaction"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="Sales Return Transaction" description="Test 22 description" testID="22">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesReturnTransaction"/>
+        </classes>
+    </test>
 
-<!--    <test name="Sales Return with Invoice NO Transaction" description="Test 23 description" testID="23">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.sales.transactions.SalesReturnWithInvoiceReferenceTransaction"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="Sales Return with Invoice NO Transaction" description="Test 23 description" testID="23">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesReturnWithInvoiceReferenceTransaction"/>
+        </classes>
+    </test>
 
 <!--    <test name="Prices and Discounts-Sales Price Transaction" description="Test 24 description" testID="24">-->
 <!--        <classes>-->
@@ -191,11 +191,11 @@
 <!--        </classes>-->
 <!--    </test>-->
 
-    <test name="Reports - Sales Quotations" description="Test 30 description" testID="30">
-        <classes>
-            <class name="menuItems.sales.reports.SalesQuotationReport"/>
-        </classes>
-    </test>
+<!--    <test name="Reports - Sales Quotations" description="Test 30 description" testID="30">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.sales.reports.SalesQuotationReport"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
 <!--    <test name="Reports - Pending sales Quotation" description="Test 31 description" testID="31">-->
 <!--        <classes>-->

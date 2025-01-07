@@ -47,9 +47,9 @@ public abstract class Transaction {
 
     public void selectAndValidateData(String transaction, String locatorType, String locator) {
         List<WebElement> elementList = common.findWebElements("xpath", "//Table[@Name='Lookup']/*/*[contains(@Name,'Master Row')]");
-        System.out.println("Size :" + elementList.size());
+//        System.out.println("Size :" + elementList.size());
         for (WebElement element : elementList) {
-            System.out.println(element.getText());
+//            System.out.println(element.getText());
             if (element.getText().contains(transaction)) {
                 element.click();
                 element.sendKeys(Keys.TAB);
@@ -57,7 +57,7 @@ public abstract class Transaction {
         }
         WebElement element = common.findWebElement(locatorType, locator);
         if (element.getText().equals(transaction)) {
-            System.out.println("successfully selected/opened:- " + element.getText());
+//            System.out.println("successfully selected/opened:- " + element.getText());
 
         } else {
             Assert.fail(element.getText() + " is not selected " + transaction);
@@ -66,12 +66,12 @@ public abstract class Transaction {
 
     public void selectAndValidateDataNew(String transaction, String locatorType, String locator) {
         List<WebElement> elementList = common.findWebElements("xpath", "//Table[@Name='Lookup']/*/*[contains(@Name,'Master Row')]");
-        System.out.println("Size :" + elementList.size());
+//        System.out.println("Size :" + elementList.size());
         for (WebElement element : elementList) {
-            System.out.println("focused element:- " + element.getText());
+//            System.out.println("focused element:- " + element.getText());
             WebElement element1 = common.findWebElement(locatorType, locator);
             if (!element1.getText().equals(transaction)) {
-                System.out.println("successfully selected/opened:- " + element1.getText());
+//                System.out.println("successfully selected/opened:- " + element1.getText());
                 element.sendKeys(Keys.DOWN);
             } else {
                 element.sendKeys(Keys.ENTER);
@@ -93,7 +93,7 @@ public abstract class Transaction {
 
     public void enterData(String locatorType, String locator, String fileName, String key) throws IOException, ParseException {
         List<WebElement> elementList = common.findWebElements(locatorType, locator);
-        System.out.println("Size :" + elementList.size());
+//        System.out.println("Size :" + elementList.size());
         for (WebElement i : elementList) {
             i.click();
             i.sendKeys(common.getData(fileName, key), Keys.TAB);
@@ -101,7 +101,7 @@ public abstract class Transaction {
     }
     public void enterDataAndValidate(String locatorType, String locator, String fileName, String key) throws IOException, ParseException {
         List<WebElement> elementList = common.findWebElements(locatorType, locator);
-        System.out.println("Size :" + elementList.size());
+//        System.out.println("Size :" + elementList.size());
         for (WebElement i : elementList) {
 //            System.out.println(i.getText());
             i.click();
@@ -109,7 +109,7 @@ public abstract class Transaction {
         }
         WebElement element = common.findWebElement(locatorType, locator);
         if (element.getText().equals(common.getData(fileName, key))) {
-            System.out.println("successfully selected/opened:- " + element.getText());
+//            System.out.println("successfully selected/opened:- " + element.getText());
 
         } else {
             Assert.fail(element.getText() + "is not selected");

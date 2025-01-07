@@ -1,9 +1,10 @@
 {
   "productCode": "P1",
-  "Quantity": 200.00,
+  "Quantity": 200,
   "title": "Sales Invoices",
   "branch": "AT_Branch 1_Reg",
   "partyCode": "AT_Cus_Reg_Inter",
   "invoice": "Regular",
+  "HSNCode": "AT_HSN Code 2",
   "priceList": "AT_Inclusive Sales Price List 1"
 }

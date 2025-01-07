@@ -22,7 +22,6 @@ public class SalesInvoice extends Transaction {
     public void salesInvoice() throws InterruptedException, IOException, ParseException, AWTException {
        navigateToSalesInvoiceMenu();
         Thread.sleep(1000);
-        //validate title
         lastTransactionName();
         //branch selection
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");
@@ -36,7 +35,7 @@ public class SalesInvoice extends Transaction {
         gstTransactionType("Registered Dealers");
         common.clickElement("xpath", "//Edit[@Name='Sales A/c Code']");
         common.clickElement("xpath", "//Edit[@Name='Sales Account']");
-//        common.clickElement("xpath", "//CheckBox[@Name='Apply TCS']");
+        common.clickElement("xpath", "//CheckBox[@Name='Apply TCS']");
 //        common.clickElement("xpath", "//Edit[@Name='TCS Trans Nature']");
 
         common.inputText("xpath", "//Edit[@Name='Invoice Type']", common.getData(dataFile,"invoice"));
@@ -56,10 +55,13 @@ public class SalesInvoice extends Transaction {
         common.clickElement("xpath","//Edit[@Name='Remarks']");
         selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
         //F3-Items
-        super.enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']",dataFile, "productCode");
+        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']",dataFile, "productCode");
 //        common.inputText("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']", common.getData(dataFile, "productCode"));
        common.clickElement("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']");
-        super.enterData("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']", dataFile, "Quantity");
+        enterData("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']", dataFile, "Quantity");
+
+        enterDataAndValidate("xpath", "//Edit[@Name='HSN Row 0, Not sorted.']", dataFile, "HSNCode");
+
         int offset = 700;
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']",offset,0);
         //save
