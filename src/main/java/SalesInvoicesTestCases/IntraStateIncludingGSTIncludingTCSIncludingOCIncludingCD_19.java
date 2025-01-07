@@ -12,22 +12,21 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
-public class IntraStateIncludingGSTIncludingTCSIncludingOtherCharges_18 extends Transaction {
+public class IntraStateIncludingGSTIncludingTCSIncludingOCIncludingCD_19 extends Transaction{
         WindowsDriver driver;
         Common common;
         String dataFile;
         boolean gstAmountClicked = false;
         double mrp, grossAmount, unitRate,quantity, voucherDiscountValue, partyDiscountValue, netAmount, grossMinusDiscount, gstValue, cessValue, taxableValue, taxableAmountCalculated;
 
-
-        public IntraStateIncludingGSTIncludingTCSIncludingOtherCharges_18(WindowsDriver driver, String file) {
+        public IntraStateIncludingGSTIncludingTCSIncludingOCIncludingCD_19(WindowsDriver driver, String file) {
             super(driver);
             this.driver = driver;
             common = new Common(this.driver);
             dataFile = file;
         }
 
-        public void testCase18() throws InterruptedException, IOException, ParseException, AWTException {
+        public void testCase19() throws InterruptedException, IOException, ParseException, AWTException {
             navigateToSalesInvoiceMenu();
             Thread.sleep(1000);
 //            lastTransactionName();
@@ -73,6 +72,9 @@ public class IntraStateIncludingGSTIncludingTCSIncludingOtherCharges_18 extends 
             }
             double itemsNetValue= Double.parseDouble(common.findWebElement("xpath","//Edit[@AutomationId='NetAmount']").getText().replace(",",""));
 
+            navigateToChargesAndDeductionsTab();
+            chargesAndDeductionsCalculations(dataFile,"type","accountCode","amount","rowCount");
+
             //other charges calculations
             OtherChargesCalculations(dataFile,"accountCode","amount","otherChargesCount");
 
@@ -102,9 +104,7 @@ public class IntraStateIncludingGSTIncludingTCSIncludingOtherCharges_18 extends 
             //save
             transactionSave();
             newTransaction();
-//            lastTransactionName();
         }
-
 
         public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {
             if (common.getData(dataFile, "productType" + i).equals("general")) {
@@ -244,6 +244,4 @@ public class IntraStateIncludingGSTIncludingTCSIncludingOtherCharges_18 extends 
                 throw new IllegalArgumentException("Invalid GST Trans Type: " + gstTransType);
             }
         }
-
-
     }

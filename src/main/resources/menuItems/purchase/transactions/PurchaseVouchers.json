@@ -1,18 +1,18 @@
 {
-  "branch": "Hyderabad",
+  "branch": "AT_Branch 1_Reg",
   "currency": "INR",
-  "partyCode":"200138",
-  "Consignor": "NEW CONSIGNOR",
-  "PurchaseA/cCode": "Purchase Account",
+  "location": "AT_Branch 1_Reg Default Location",
+  "partyCode":"AT_Sup_Reg_Intra",
+  "Consignor": "AT_Consignor 1_Reg",
+  "PurchaseA/cCode": "AT_Purchase  Acc 1",
   "billNo": "12456",
- "billDate": "23-09-2024",
-  "batchPolicy": "AT-Purchase Batch Policy 1",
-  "tcsTranNature": "TCS Transaction Nature 1",
-  "tdsTranNature": "TDS transaction nature 1",
-  "priceList": "purchase pricelist",
-  "executive": "Executive3",
-  "productCode": "Tractors",
-  "quantity": "1000",
-  "mrpRate":"50",
-  "unitRate": "100"
+  "billDate": "23-09-2024",
+  "batchPolicy": "AT-Purchase Batch Policy_CIDNE",
+  "tcsTranNature": "",
+  "tdsTranNature": "",
+  "priceList": "AT_Exclusive Purchase price list 1",
+  "executive": "AT_Executive 1",
+  "productCode": "P1",
+  "quantity": "1000"
+
 }

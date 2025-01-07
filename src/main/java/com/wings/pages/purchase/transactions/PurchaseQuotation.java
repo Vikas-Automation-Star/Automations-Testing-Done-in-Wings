@@ -25,40 +25,34 @@ public class PurchaseQuotation extends Transaction {
         Thread.sleep(2000);
         oldTTransaction();
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");
-        super.selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']" );
+        selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']" );
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        super.selectMasterWithValidation(common.getData(dataFile,"branch"),"xpath", "//Edit[@Name='Branch *']");
+        selectMasterWithValidation(common.getData(dataFile,"branch"),"xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Transaction Currency *']");
-        super.selectMasterWithValidation(common.getData(dataFile,"currency"),"xpath", "//Edit[@Name='Transaction Currency *']");
+        selectMasterWithValidation(common.getData(dataFile,"currency"),"xpath", "//Edit[@Name='Transaction Currency *']");
         common.clickElement("xpath", "//Edit[@Name='Party Code']");
-        super.selectMasterWithValidation(common.getData(dataFile,"partyCode"),"xpath", "//Edit[@Name='Party Code']");
+        selectAndValidateDataNew(common.getData(dataFile,"partyCode"),"xpath", "//Edit[@Name='Party Code']");
         common.clickElement("xpath","//Edit[@Name='Party Account *']");
-        super.gstSelectionWhenBothRegisteredDealers();
+        gstSelectionWhenBothRegisteredDealers();
         common.clickElement("xpath","//Edit[@Name='Price List']");
-        super.selectMasterWithValidation(common.getData(dataFile,"priceList"),"xpath","//Edit[@Name='Price List']");
+        selectMasterWithValidation(common.getData(dataFile,"priceList"),"xpath","//Edit[@Name='Price List']");
         Thread.sleep(2000);
         common.clickElement("xpath","//Edit[@Name='Executive *']");
-        super.selectMasterWithValidation(common.getData(dataFile,"executive"),"xpath", "//Edit[@Name='Executive *']");
+        selectMasterWithValidation(common.getData(dataFile,"executive"),"xpath", "//Edit[@Name='Executive *']");
         Thread.sleep(1000);
         common.clickElement("xpath","//Edit[@Name='Remarks']");
-        super.selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"remarks"), "xpath","//Edit[@Name='Remarks']");
+        selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"remarks"), "xpath","//Edit[@Name='Remarks']");
         common.clickElement("xpath","//Edit[@Name='Product Code Row 0, Not sorted.']");
         Thread.sleep(2000);
-        super.selectAndValidateDataNew(common.getData(dataFile,"product"),"xpath","//Edit[@Name='Product Code Row 0, Not sorted.']");
+        enterData("xpath","//Edit[@Name='Product Code Row 0, Not sorted.']",dataFile,"product");
         common.clickElement("xpath","//Edit[@Name='Quantity * Row 0, Not sorted.']");
         common.inputText("xpath","//Edit[@Name='Quantity * Row 0, Not sorted.']", common.getData(dataFile,"quantity"));
-        common.clickElement("xpath","//Edit[@Name='MRP Row 0, Not sorted.']");
-        common.inputText("xpath","//Edit[@Name='Quantity * Row 0, Not sorted.']", common.getData(dataFile,"mrp"));
-        common.clickElement("xpath","//Edit[@Name='Unit Rate Row 0, Not sorted.']");
-        common.inputText("xpath","//Edit[@Name='Unit Rate Row 0, Not sorted.']", common.getData(dataFile,"unitRate"));
         Thread.sleep(1000);
         transactionSave();
         Thread.sleep(1500);
-        super.newTransaction();
-        super.closeTransaction("Purchase Quotations");
+        newTransaction();
+        closeTransaction("Purchase Quotations");
         Thread.sleep(2000);
-        Allure.step("PurchaseQuotations Transation");
-
-
+        Allure.step("PurchaseQuotations Transaction");
     }
 }

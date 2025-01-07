@@ -31,8 +31,8 @@ public class PurchasePricesTransaction {
     }
 
     @AfterTest
-    public void afterTest(){
-//        appLogin.logout();
+    public void afterTest() throws IOException {
+        appLogin.logout();
         Allure.step("After Test PurchasePrices Transaction");
 
     }

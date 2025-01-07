@@ -4,10 +4,10 @@
   "maximum": "500",
   "rate": "200",
   "MRP": "500",
-  "branch": "Hyderabad",
+  "branch": "AT_Branch 1_Reg",
   "close": "Sales Prices",
   "basis": "Value",
-  "executive": "HYDExec",
+  "executive": "AT_Executive 1",
   "transaction": "INR",
-  "priceList": "Inclusive SalesPriceList"
+  "priceList": "AT_Inclusive Sales Price List 1"
 }

@@ -28,13 +28,11 @@ public class PurchaseEnquiriesCancellationTransaction {
     public void purchaseEnquiriesCancellation() throws IOException, ParseException, InterruptedException {
         PurchaseEnquiriesCancellation pec=new PurchaseEnquiriesCancellation(driver,file);
         pec.purchaseEnquiriesCancellation();
-
     }
 
     @AfterTest
-    public void afterTest(){
+    public void afterTest() throws IOException {
         appLogin.logout();
         Allure.step("After Test PurchaseEnquiriescancellation Transation");
-
     }
 }

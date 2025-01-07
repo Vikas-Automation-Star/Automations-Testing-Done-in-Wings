@@ -21,7 +21,7 @@ public class SalesQuotationReportCode extends Report {
         Thread.sleep(1000);
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(3000);
-        super.bulkVerifyReport("SQ 3");
+        super.bulkVerifyReport("SQ 1");
         super.closeReport("Sales Quotations");
     }
 }

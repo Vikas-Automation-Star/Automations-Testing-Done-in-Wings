@@ -1,10 +1,11 @@
 {
-  "branch": "Hyderabad",
+  "branch": "AT_Branch 1_Reg",
   "currency": "INR",
+  "location": "AT_Branch 1_Reg Default Location",
   "masterType": "Products",
-  "pricelist": "purchase pricelist",
-  "executive": "Executive3",
-  "Urate": "5",
+  "priceList": "AT_Exclusive Purchase price list 1",
+  "executive": "AT_Executive 1",
+  "URate": "5",
   "ProductCode": "9989",
   "rate": "5",
   "mrp": "50"

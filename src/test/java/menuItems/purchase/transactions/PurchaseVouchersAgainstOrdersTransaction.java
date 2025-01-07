@@ -21,7 +21,6 @@ public class PurchaseVouchersAgainstOrdersTransaction {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
         Allure.step("Before Test PurchaseVouchersAgainstOrders Transaction");
-
     }
 
     @Test
@@ -31,9 +30,8 @@ public class PurchaseVouchersAgainstOrdersTransaction {
     }
 
     @AfterTest
-    public void afterTest(){
+    public void afterTest() throws IOException {
         appLogin.logout();
         Allure.step("After Test PurchaseVouchersAgainstOrders Transaction");
-
     }
 }

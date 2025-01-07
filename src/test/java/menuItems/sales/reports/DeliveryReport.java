@@ -1,6 +1,5 @@
 package menuItems.sales.reports;
 
-//import com.wings.utils.SalesEnquiriesDemo;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;

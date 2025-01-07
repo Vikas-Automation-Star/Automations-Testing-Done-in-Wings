@@ -17,7 +17,7 @@ public class SalesOrderCancellation extends SalesOrdersBaseClass {
             common=new Common(driver);
             dataFile=file;
         }
-        public void salesOrderCancellations() throws InterruptedException, IOException, ParseException, IOException, ParseException {
+        public void salesOrderCancellations() throws InterruptedException, IOException, ParseException {
             navigateToSalesOrderCancellaltionMenu();
             lastTransactionName();
             Thread.sleep(3000);

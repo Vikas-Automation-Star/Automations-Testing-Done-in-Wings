@@ -20,7 +20,7 @@ public class SalesQuotationCancellationReportCode extends Report {
         common.clickElement("xpath","//MenuItem[@Name='Sales Quotations Cancellations'][2]");
         Thread.sleep(1000);
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
-        super.bulkVerifyReport("SQC 3");
+        super.bulkVerifyReport("SQC 1");
         super.closeReport("Sales Quotations Cancellations");
     }
 }

@@ -1,12 +1,12 @@
 {
-  "close": "Deliveries",
   "gstType": "Registered",
-  "location": "hyderabad114",
-  "partyCode": 153,
+  "location": "AT_Branch 1_Location 1",
+  "partyCode": "AT_Cus_Reg_Inter",
   "transaction": "INR",
-  "branch": "Hyderabad",
-  "priceList": "Inclusive SalesPriceList",
-  "executive": "HYDExec",
+  "branch": "AT_Branch 1_Reg",
+  "priceList": "AT_Inclusive Sales Price List 1",
+  "executive": "AT_Executive 1",
   "quantity": 10,
-  "productCode": 1707
+  "productCode": "P1",
+  "close": "Deliveries"
 }

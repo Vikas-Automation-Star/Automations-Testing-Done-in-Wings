@@ -1,9 +1,9 @@
 {
-  "fromLocation": "Hyderabad Default Location",
-  "toLocation": "hyderabad114",
-  "branch": "Hyderabad",
-  "executive": "HYDExec",
-  "productCode": "1707",
+  "fromLocation": "AT_Branch 1_Location 1",
+  "toLocation": "AT_Branch 1_Location 2",
+  "branch": "AT_Branch 1_Reg",
+  "executive": "AT_Executive 1",
+  "productCode": "P1",
   "transaction": "INR",
   "quantity": "20",
   "close": "Inter Location Transfers"

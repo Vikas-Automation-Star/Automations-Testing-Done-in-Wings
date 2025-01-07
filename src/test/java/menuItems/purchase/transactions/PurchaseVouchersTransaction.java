@@ -23,25 +23,21 @@ public class PurchaseVouchersTransaction  {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
         Allure.step("Before Test PurchaseVouchers Transaction");
-
     }
 
     @Test
     public void purchaseVouchers() throws IOException, ParseException, InterruptedException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         PurchaseVoucher po=new PurchaseVoucher(driver,file);
         po.purchaseVoucher();
-
 //        Method method = po.getClass().getMethod("purchaseVoucher");
 //        String callerMethodName = method.getName();
 //        System.out.println("Caller method: " + callerMethodName);
     }
 
     @AfterTest
-    public void afterTest(){
-//        appLogin.logout();
+    public void afterTest() throws IOException {
+        appLogin.logout();
         Allure.step("After Test PurchaseVouchers Transaction");
-
-
     }
 
 }

@@ -45,8 +45,8 @@ public class Deliveries extends Transaction {
         common.clickElement("xpath","//Edit[@Name='Remarks']");
         selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
         //items
-        common.clickElement("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']");
-        selectAndValidateData(common.getData(dataFile,"productCode"),"xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']");
+//        common.clickElement("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']");
+        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']",dataFile,"productCode");
         enterData("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']",dataFile,"quantity");
         common.sliderHandling("name","Position",300,0);
         //save

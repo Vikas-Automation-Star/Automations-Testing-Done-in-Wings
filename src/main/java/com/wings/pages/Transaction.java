@@ -95,12 +95,10 @@ public abstract class Transaction {
         List<WebElement> elementList = common.findWebElements(locatorType, locator);
         System.out.println("Size :" + elementList.size());
         for (WebElement i : elementList) {
-//            System.out.println(i.getText());
             i.click();
             i.sendKeys(common.getData(fileName, key), Keys.TAB);
         }
     }
-
     public void enterDataAndValidate(String locatorType, String locator, String fileName, String key) throws IOException, ParseException {
         List<WebElement> elementList = common.findWebElements(locatorType, locator);
         System.out.println("Size :" + elementList.size());
@@ -269,8 +267,9 @@ public abstract class Transaction {
     }
 
     public void navigateToSummaryTab() throws AWTException {
-        navigateToOtherInfoTab();
-        for (int j = 0; j < 4; j++) {
+//        navigateToOtherInfoTab();
+        navigateToPaytymTab();
+        for (int j = 0; j < 6; j++) {
             Robot robot=new Robot();
             robot.keyPress(KeyEvent.VK_RIGHT);
             robot.keyRelease(KeyEvent.VK_RIGHT);
@@ -393,6 +392,22 @@ public abstract class Transaction {
         String receivableAmountText = receivableAmount.getText();
         if (receivableAmountText == (null) || "(null)".equals(receivableAmountText)) {
             Assert.fail("Receivable Amount field is empty");
+        }
+    }
+
+    public void tcsTaxableValuePresentInSummary() {
+        WebElement netAmount = common.findWebElement("xpath", "//Edit[@Name='TCS Taxable Value']");
+        String netAmountText1 = netAmount.getText();
+        if ((netAmountText1 == (null) || "(null)".equals(netAmountText1))) {
+            Assert.fail(" tcsTaxableValuePresentInSummary field is empty");
+        }
+    }
+
+    public void tcsAmountPresentInSummary() {
+        WebElement netAmount = common.findWebElement("xpath", "//Edit[@Name='TCS Amount']");
+        String netAmountText1 = netAmount.getText();
+        if ((netAmountText1 == (null) || "(null)".equals(netAmountText1))) {
+            Assert.fail("TCS Amount field is empty");
         }
     }
 
@@ -1211,7 +1226,7 @@ public abstract class Transaction {
     }
 
     public void generalProduct(String filename, String product, String quantity, int i) throws IOException, ParseException {
-        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, product);
+        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row "+i+", Not sorted.']", filename, product);
         common.clickElement("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']");
         enterData("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']", filename, quantity);
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 500, 0);
@@ -1226,9 +1241,7 @@ public abstract class Transaction {
         for (WebElement k : rows) {
             k.click();
             k.sendKeys(Keys.CONTROL + "a", Keys.DELETE);
-//            k.sendKeys(Keys.DELETE);
             k.sendKeys(common.getData(filename, quantity), Keys.TAB);
-
         }
         common.clickElement("xpath", "//Button[@Name='OK']");
     }
@@ -1300,7 +1313,7 @@ public abstract class Transaction {
         if ("(null)".equals(amountText) || amountText == (null)) {
             System.out.println("Other Charges not Available");
         } else {
-            OtherChargesCalculations(dataFile, accCode, amount,iterations);
+//            OtherChargesCalculations(dataFile, accCode, amount,iterations);
             otherChargesNetValue = Double.parseDouble(common.findWebElement("xpath", "//Edit[@AutomationId='NetAmount']").getText().replace(",", ""));
         }
         double totalNetValue = itemsNetValue + otherChargesNetValue;
@@ -1485,7 +1498,7 @@ public abstract class Transaction {
     }
 
     public void sliderHandle () {
-        int offset = 550;
+        int offset = 350;
         WebElement slider = common.findWebElement("xpath", "//Table[@Name='Items']/ScrollBar[@Name='Horizontal']/Thumb[@Name='Position']");
         Actions actions = new Actions(driver);
         actions.clickAndHold(slider).moveByOffset(offset, 0).release().perform();
@@ -1530,6 +1543,23 @@ public abstract class Transaction {
             }
         }
     }
+
+    public void billsPayable(String locatorType,String locator,String fileName,String key) throws IOException, ParseException, InterruptedException {
+        navigateToBillsPayablesTab();
+        List<WebElement> elementList = common.findWebElements(locatorType, locator);
+        System.out.println("Size :" + elementList.size());
+        for (WebElement i : elementList) {
+            i.click();
+            i.sendKeys(common.getData(fileName, key), Keys.TAB);
+            break;
+        }
+        Thread.sleep(1000);
+        common.clickElement("xpath","//Table[@Name='BillsPayable']/*[@Name='Row 0']/Edit[@Name=' Row 0, Not sorted.']");
+        WebElement rightClick=common.findWebElement("xpath","//Table[@Name='BillsPayable']/*[@Name='Row 0']/Edit[@Name=' Row 0, Not sorted.']");
+        Actions actions=new Actions(driver);
+        actions.contextClick(rightClick).sendKeys(Keys.DOWN,Keys.DOWN,Keys.ENTER).perform();
+    }
+
     public void checkBoxSelectionBillsPayable (String locatorType, String rowLocator, String voucherLocator, String checkBoxLocator){
         List<WebElement> rows = common.findWebElements(locatorType, rowLocator);
         System.out.println("Row count :" + rows.size());

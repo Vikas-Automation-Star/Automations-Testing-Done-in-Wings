@@ -30,7 +30,7 @@ public class MaterialReceiptsAgainstOrdersTransaction {
     }
 
     @AfterTest
-    public void afterTest(){
+    public void afterTest() throws IOException {
         appLogin.logout();
         Allure.step("After Test PurchaseReceiptsAgainstOrders Transaction");
     }

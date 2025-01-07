@@ -1,16 +1,12 @@
 {
-  "branch": "Hyderabad",
-  "location": "hyderabad114",
+  "branch": "AT_Branch 1_Reg",
+  "location": "AT_Branch 1_Location 1",
   "transaction": "INR",
-  "partyCode":153,
-  "priceList": "Inclusive SalesPriceList",
-  "executive": "HYDExec",
-  "productCode": 1707,
+  "partyCode":"AT_Cus_Reg_Inter",
+  "priceList": "AT_Inclusive Sales Price List 1",
+  "executive": "AT_Executive 1",
+  "productCode": "AT_Product 1",
   "quantity": 150,
-  "pdcAccount": "Cheques In Hand",
   "amount": 550,
-  "cheque": 585,
-  "chequeDate": 10,
-  "drawnOn": "checks",
   "close": "Sales Orders"
 }

@@ -21,7 +21,7 @@ public class SalesQuotationAgainstEnquiryReportCode extends Report {
         Thread.sleep(1000);
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
         Thread.sleep(1000);
-        super.bulkVerifyReport("SQAE 4");
+        super.bulkVerifyReport("SQAE 1");
         super.closeReport("Sales Quotations against Enquiries");
     }
 }

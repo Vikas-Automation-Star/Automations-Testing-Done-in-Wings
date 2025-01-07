@@ -13,6 +13,7 @@ public class PurchaseEnquiries extends Transaction {
     Common common;
     String dataFile;
 
+
     public PurchaseEnquiries(WindowsDriver driver, String file) {
         super(driver);
         this.driver = driver;
@@ -40,8 +41,7 @@ public class PurchaseEnquiries extends Transaction {
         common.clickElement("xpath","//Edit[@Name='Remarks']");
         super.selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"remarks"), "xpath","//Edit[@Name='Remarks']");
         Thread.sleep(2000);
-//        super.selectMaster(common.getData(dataFile,"partyCode"));
-        enterData("xpath","//Edit[@Name='Product Code Row 0, Not sorted.']",dataFile,"productCode");
+        super.selectMaster(common.getData(dataFile,"partyCode"));
         common.clickElement("xpath","//Edit[@Name='Quantity * Row 0, Not sorted.']");
         common.inputText("xpath","//Edit[@Name='Quantity * Row 0, Not sorted.']", common.getData(dataFile,"quantity"));
         common.clickElement("xpath","//Edit[@Name='Unit Rate Row 0, Not sorted.']");

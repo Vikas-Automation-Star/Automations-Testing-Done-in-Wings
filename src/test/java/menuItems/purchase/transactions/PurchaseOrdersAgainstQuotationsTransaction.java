@@ -14,7 +14,6 @@ import java.io.IOException;
 public class PurchaseOrdersAgainstQuotationsTransaction {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-
     String file = "./src/main/resources/MenuItems/purchase/transactions/PurchaseOrdersAgainstQuotation.json";
 
     @BeforeTest
@@ -32,7 +31,7 @@ public class PurchaseOrdersAgainstQuotationsTransaction {
     }
 
     @AfterTest
-    public void afterTest(){
+    public void afterTest() throws IOException {
         appLogin.logout();
         Allure.step("After Test PurchaseOrderAgainstQuotations Transaction");
     }

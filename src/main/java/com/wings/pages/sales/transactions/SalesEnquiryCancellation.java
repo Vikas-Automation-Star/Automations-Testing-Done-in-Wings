@@ -33,7 +33,7 @@ public class SalesEnquiryCancellation extends Transaction {
         common.clickElement("xpath","//Edit[@Name='Trans Currency *']");
         selectAndValidateData(common.getData(dataFile,"transaction"), "xpath","//Edit[@Name='Trans Currency *']");
         common.clickElement("xpath","//Edit[@Name='Party Code']");
-        selectAndValidateData(common.getData(dataFile,"partyCode"),"xpath","//Edit[@Name='Party Code']" );
+        selectAndValidateDataNew(common.getData(dataFile,"partyCode"),"xpath","//Edit[@Name='Party Code']" );
         common.clickElement("xpath","//Edit[@Name='Party Account *']");
         Thread.sleep(3500);
         common.clickElement("xpath","//CheckBox[@Name='Select Row 0']");

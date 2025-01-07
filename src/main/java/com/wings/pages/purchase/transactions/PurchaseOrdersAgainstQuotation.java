@@ -38,7 +38,6 @@ public class PurchaseOrdersAgainstQuotation extends Transaction {
         Thread.sleep(2000);
         common.clickElement("xpath","//CheckBox[@Name='Select Row 1']");
         common.clickElement("xpath","//Button[@Name='Ok']");
-
         common.clickElement("xpath","//Edit[@Name='Executive *']");
         super.selectMasterWithValidation(common.getData(dataFile,"executive"),"xpath", "//Edit[@Name='Executive *']");
         Thread.sleep(500);

@@ -5,11 +5,11 @@
   "invoice": "Regular",
   "priceList": "AT_Exclusive Sales Price List 1",
   "salesAccountCode": 55,
-  "HSNCode": "AT_HSN Code 2",
   "amount": 250,
+  "HSNCode": "AT_HSN Code 2",
   "accountCode": 567,
   "type": "Charges",
-  "rowCount": 2,
+  "rowCount": 4,
   "otherChargesCount": 2,
   "TaxType": "Exclusive",
 
