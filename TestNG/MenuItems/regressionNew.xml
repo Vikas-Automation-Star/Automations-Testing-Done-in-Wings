@@ -438,4 +438,32 @@
         </classes>
     </test>
 
+    <!--- taxes Transaction-->
+
+    <test name="Performing TdsOpeningBalencesTransaction" description="description for TdsOpeningBalancesTransaction"  testID="WOW 12">
+        <classes>
+            <class name="menuItems.Taxes.transactions.TDS.TdsOpeningBalencesTransaction"></class>
+        </classes>
+    </test>
+
+    <test name="Performing TdsPaymentsTransaction" description="description for TdsPaymentsTransaction"  testID="WOW 13">
+        <classes>
+            <class name="menuItems.Taxes.transactions.TDS.TdsPaymentsTransaction"></class>
+        </classes>
+    </test>
+
+    <test name="Performing TcsOpeningBalancesTransaction" description="description for TcsOpeningBalancesTransaction"  testID="WOW 14">
+        <classes>
+            <class name="menuItems.Taxes.transactions.TCS.TcsOpeningBalancesTransaction"></class>
+        </classes>
+    </test>
+
+    <test name="Performing TcsPaymentsTransaction" description="description for TcsPaymentsTransaction"  testID="WOW 15">
+        <classes>
+            <class name="menuItems.Taxes.transactions.TCS.TcsPaymentsTransaction"></class>
+        </classes>
+    </test>
+
+    <!-- taxes Transactions completed-->
+
 </suite>
