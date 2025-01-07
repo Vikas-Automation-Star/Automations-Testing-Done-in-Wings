@@ -26,22 +26,24 @@ public class Gstr1MonthEnd extends Transaction {
         common.clickElement("name", "GSTR1");
         common.clickElement("name", "GSTR1 Month End");
         Thread.sleep(1000);
-        common.clickElement("xpath","//Edit[@Name='Voucher Type']");
-        super.selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']" );
+//        common.clickElement("xpath","//Edit[@Name='Voucher Type']");
+//        selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']" );
+        WebElement date=common.findWebElement("xpath","//Edit[@Name='Date *']");
+        date.clear();
+        date.sendKeys(common.getData(dataFile,"date"));
         common.clickElement("xpath","//Edit[@Name='GST Registration *']");
-        super.selectMaster(common.getData(dataFile,"branch"));
+        selectMaster(common.getData(dataFile,"branch"));
         common.clickElement("xpath","//Edit[@Name='GSTIN *']");
         WebElement element=driver.findElement("xpath","//Edit[@Name='Year And Month *']");
         element.clear();
-        element.sendKeys(common.getData(dataFile,"yearANDmonth"));
+        element.sendKeys(common.getData(dataFile,"yearAndMonth"));
         common.clickElement("xpath","//Edit[@Name='Month']");
         Thread.sleep(2000);
-        common.clickElement("xpath","//Edit[@Name='Remarks']");
-        super.selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"remarks"), "xpath","//Edit[@Name='Remarks']");
+//        common.clickElement("xpath","//Edit[@Name='Remarks']");
+//        selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"remarks"), "xpath","//Edit[@Name='Remarks']");
         common.clickElement("xpath","//Edit[@Name='GSTIN / UIN of Recipient * Row 0, Not sorted.']");
         transactionSave();
         Thread.sleep(1000);
-//        super.closeTransaction("GSTR1 Month End");
-//        Thread.sleep(2000);
+        super.closeTransaction("GSTR1 Month End");
     }
 }

@@ -99,6 +99,7 @@ public abstract class Transaction {
             i.sendKeys(common.getData(fileName, key), Keys.TAB);
         }
     }
+
     public void enterDataAndValidate(String locatorType, String locator, String fileName, String key) throws IOException, ParseException {
         List<WebElement> elementList = common.findWebElements(locatorType, locator);
 //        System.out.println("Size :" + elementList.size());
