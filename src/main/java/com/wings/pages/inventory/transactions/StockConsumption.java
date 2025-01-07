@@ -46,6 +46,7 @@ public class StockConsumption extends Transaction {
         selectAndValidateData(common.getData(dataFile, "productCode"), "xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']");
         enterData("xpath", "//Edit[@Name='Quantity * Row 0, Not sorted.']", dataFile, "Quantity");
         common.sliderHandling("name", "Position", 500, 0);
+        enterDataAndValidate("xpath", "//Edit[@Name='HSN Row 0, Not sorted.']", dataFile, "HSNCode");
         //save
         transactionSave();
         lastTransactionName();

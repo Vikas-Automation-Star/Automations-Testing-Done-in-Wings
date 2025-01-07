@@ -1,10 +1,11 @@
 {
-  "Quantity": "50",
-  "branch": "Hyderabad",
-  "consumptionAccount": "Purchase Account",
-  "priceList": "Inclusive SalesPriceList",
-  "executive": "HYDExec",
+  "Quantity": "10",
+  "branch": "AT_Branch 1_Reg",
+  "consumptionAccount": "AT_Charges  Acc 1",
+  "priceList": "AT_Inclusive Sales Price List 1",
+  "executive": "AT_Executive 1",
   "gstType": "Registered",
-  "productCode": "1707",
+  "HSNCode": "AT_HSN Code 2",
+  "productCode": "AT_Product 1",
   "close": "Stock Consumption"
 }

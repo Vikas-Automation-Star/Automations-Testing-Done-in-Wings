@@ -34,6 +34,8 @@ public class InterLocationTransfers extends Transaction {
         selectAndValidateData(common.getData(dataFile,"fromLocation"),"xpath", "//Edit[@Name='Location *']");
         common.clickElement("xpath","//Edit[@Name='To Location *']");
         selectAndValidateData(common.getData(dataFile,"toLocation"),"xpath","//Edit[@Name='To Location *']");
+        common.clickElement("xpath", "//Edit[@Name='Price List']");
+        selectAndValidateData(common.getData(dataFile,"priceList"),"xpath", "//Edit[@Name='Price List']");
         common.clickElement("xpath", "//Edit[@Name='Executive *']");
         selectAndValidateData(common.getData(dataFile, "executive"),"xpath", "//Edit[@Name='Executive *']");
         common.clickElement("xpath","//Edit[@Name='Remarks']");

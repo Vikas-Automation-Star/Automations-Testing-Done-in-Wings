@@ -20,7 +20,7 @@ public class OpeningStock extends Transaction {
             dataFile=file;
         }
 
-        public void stockOpen() throws InterruptedException, AWTException, IOException, ParseException {
+        public void stockOpen() throws InterruptedException, IOException, ParseException {
             navigateToOpeningStockMenu();
             lastTransactionName();
             common.clickElement("xpath", "//Edit[@Name='Branch *']");

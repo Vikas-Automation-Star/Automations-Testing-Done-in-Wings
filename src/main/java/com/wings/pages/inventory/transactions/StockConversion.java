@@ -29,7 +29,7 @@ public class StockConversion extends Transaction {
         common.clickElement("xpath", "//Edit[@Name='Location *']");
         selectAndValidateData(common.getData(dataFile,"fromLocation"),"xpath", "//Edit[@Name='Location *']");
         common.clickElement("xpath","//Edit[@Name='Batch Policy']");
-        selectOptionalMaster(common.getData(dataFile,"batchPolicy"),"xpath","//Edit[@Name='Batch Policy']");
+        selectAndValidateData(common.getData(dataFile,"batchPolicy"),"xpath","//Edit[@Name='Batch Policy']");
         common.clickElement("xpath", "//Edit[@Name='Price List']");
         selectAndValidateData(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
         common.clickElement("xpath", "//Edit[@Name='Executive *']");
