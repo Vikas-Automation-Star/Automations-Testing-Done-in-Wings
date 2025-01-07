@@ -29,7 +29,7 @@ public class SalesEnquiryTransaction {
     }
 
     @AfterTest
-    public void afterTest() throws InterruptedException {
+    public void afterTest() throws IOException   {
 //        appLogin.deleteSingleTransaction();
         appLogin.logout();
         Allure.step("After Test Sales Enquiry");

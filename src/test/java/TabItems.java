@@ -38,7 +38,7 @@ public class TabItems {
     }
 
     @AfterTest
-    public void afterTest(){
+    public void afterTest() throws IOException {
         common.clickElement("xpath", "//Button[@Name='Close']");
         common.clickElement("xpath","//Button[@Name='Yes']");
     }

@@ -29,7 +29,7 @@ public class ProductDiscountMaster {
     }
 
     @AfterTest
-    public void afterTest(){
+    public void afterTest() throws IOException{
         appLogin.logout();
     }
 }

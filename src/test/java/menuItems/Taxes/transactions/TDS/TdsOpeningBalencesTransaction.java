@@ -29,7 +29,7 @@ public class TdsOpeningBalencesTransaction {
     }
 
     @AfterTest
-    public void afterTest(){
+    public void afterTest() throws IOException{
         appLogin.logout();
     }
 }

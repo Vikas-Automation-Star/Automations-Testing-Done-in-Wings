@@ -27,7 +27,7 @@ public class LoginStatusReport {
     }
 
     @AfterTest
-    public void afterTest(){
+    public void afterTest() throws IOException{
         appLogin.logout();
     }
 }

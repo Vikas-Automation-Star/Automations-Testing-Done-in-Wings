@@ -66,11 +66,16 @@ public class AppLogin {
         return driver;
     }
 
-    public void logout(){
-        common.clickElement("xpath","//MenuItem[@Name='File']");
-        common.clickElement("name","Exit");
-        common.clickElement("name","Yes");
-        common.quitWinAppServer();
+    public void logout() throws IOException {
+        try {
+            common.clickElement("xpath", "//MenuItem[@Name='File']");
+            common.clickElement("name", "Exit");
+            common.clickElement("name", "Yes");
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        } finally {
+            common.quitWinAppServer();
+        }
     }
 
     public void deleteSingleTransaction() throws InterruptedException {

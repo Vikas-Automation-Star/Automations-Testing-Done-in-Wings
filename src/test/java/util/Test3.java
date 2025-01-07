@@ -18,7 +18,7 @@ public class Test3 {
     }
 
     @AfterTest
-    public void afterTest(){
+    public void afterTest()  {
         System.out.println("After locationMaster method 3");
     }
 }

@@ -30,7 +30,7 @@ public class TransferIncomesandExpensestoPLTransaction {
     }
 
     @AfterTest
-    public void afterTest(){
+    public void afterTest() throws IOException{
         appLogin.logout();
         Allure.step("After Test - Transfer Incomes and Expenses to PL");
     }

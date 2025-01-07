@@ -30,7 +30,7 @@ public class SalesEnquiryCancellationTransaction {
         cancellation.enquiryCancel();
     }
     @AfterTest
-    public void afterTest(){
+    public void afterTest() throws IOException{
         login.logout();
         Allure.step("Before Test Sales Enquiry Cancellation");
     }

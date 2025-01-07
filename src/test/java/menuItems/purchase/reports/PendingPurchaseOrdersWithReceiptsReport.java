@@ -32,7 +32,7 @@ public class PendingPurchaseOrdersWithReceiptsReport {
     }
 
     @AfterTest
-    public void afterTest(){
+    public void afterTest() throws IOException{
         appLogin.logout();
         Allure.step("after Test PendingPurchaseOrdersWithReceipts Report");
 

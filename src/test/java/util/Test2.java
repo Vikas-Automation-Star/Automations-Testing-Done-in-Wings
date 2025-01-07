@@ -5,6 +5,8 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+
 public class Test2 {
     @BeforeTest
     public void beforeTest(){
@@ -19,7 +21,7 @@ public class Test2 {
     }
 
     @AfterTest
-    public void afterTest(){
+    public void afterTest() throws IOException {
         System.out.println("After locationMaster method 2");
     }
 }

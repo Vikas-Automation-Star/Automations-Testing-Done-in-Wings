@@ -27,7 +27,7 @@ public class TestCase_17 {
     }
 
     @AfterTest
-    public void afterTest(){
+    public void afterTest() throws IOException{
 //        appLogin.logout();
     }
 }

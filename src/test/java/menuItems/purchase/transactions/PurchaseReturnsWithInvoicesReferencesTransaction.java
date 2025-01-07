@@ -21,7 +21,6 @@ public class PurchaseReturnsWithInvoicesReferencesTransaction {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
         Allure.step("Before Test PurchaseReturnsWithInvoicesReferences Transaction");
-
     }
 
     @Test
@@ -29,11 +28,9 @@ public class PurchaseReturnsWithInvoicesReferencesTransaction {
         PurchaseReturnsWithInvoicesReference prwir=new PurchaseReturnsWithInvoicesReference(driver,file);
         prwir.purchaseReturnsWithInvoicesReference();
     }
-
     @AfterTest
-    public void afterTest(){
+    public void afterTest() throws IOException {
         appLogin.logout();
         Allure.step("After Test PurchaseReturnsWithInvoicesReferences Transaction");
-
     }
 }
