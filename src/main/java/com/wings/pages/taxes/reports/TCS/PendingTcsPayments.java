@@ -23,7 +23,7 @@ public class PendingTcsPayments extends Report {
         common.clickElement("xpath", "//MenuItem[@Name='Pending TCS Payments']");
         Thread.sleep(2000);
         common.clickElement("xpath", "//Button[@Name='Submit']");
-        super.bulkVerifyReport("SI 8");
+        super.bulkVerifyReport("");
         super.closeReport("Pending TCS Payments");
     }
 }

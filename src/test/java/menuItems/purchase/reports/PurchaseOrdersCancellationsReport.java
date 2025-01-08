@@ -21,7 +21,6 @@ public class PurchaseOrdersCancellationsReport {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
         Allure.step("Before Test PurchaseOrderCancellation Report");
-
     }
 
     @Test
@@ -34,6 +33,5 @@ public class PurchaseOrdersCancellationsReport {
     public void afterTest() throws IOException{
         appLogin.logout();
         Allure.step("After Test PurchaseOrderCancellation Report");
-
     }
 }

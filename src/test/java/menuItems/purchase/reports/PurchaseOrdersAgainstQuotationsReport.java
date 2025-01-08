@@ -21,7 +21,6 @@ public class PurchaseOrdersAgainstQuotationsReport {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
         Allure.step("Before Test PurchaseOrdersAgainstQuotations Report");
-
     }
 
     @Test
@@ -34,6 +33,5 @@ public class PurchaseOrdersAgainstQuotationsReport {
     public void afterTest() throws IOException{
         appLogin.logout();
         Allure.step("After Test PurchaseOrdersAgainstQuotations Report");
-
     }
 }

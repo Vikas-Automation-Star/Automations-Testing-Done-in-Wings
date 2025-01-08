@@ -21,9 +21,8 @@ public class PurchaseOrderStatusDetails extends Report {
         common.clickElement("name", "Purchase Order Status Details");
         Thread.sleep(1000);
         common.clickElement("xpath","//Pane/Button[@Name='Submit']");
-        super.bulkVerifyReport("PO 2");
+        super.bulkVerifyReport("");
         super.closeReport("Purchase Order Status Details");
         Allure.step("Validating PurchaseOrdersStatusDetails Report");
-
     }
 }

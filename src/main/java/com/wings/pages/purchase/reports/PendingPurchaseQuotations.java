@@ -18,7 +18,6 @@ public class PendingPurchaseQuotations extends Report {
     }
 
     public void pendingPurchaseQuotation() throws InterruptedException, AWTException {
-
         common.clickElement("name", "Purchase");
         common.clickElement("name", "Quotations");
         common.clickElement("xpath", "//MenuItem[@Name='Pending Purchase Quotations']");
@@ -27,6 +26,5 @@ public class PendingPurchaseQuotations extends Report {
         super.bulkVerifyReport("");
         super.closeReport("Pending Purchase Quotations");
         Allure.step("Validating PurchaseQuotations Report");
-
     }
 }

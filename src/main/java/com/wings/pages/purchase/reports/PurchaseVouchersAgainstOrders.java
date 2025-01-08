@@ -18,7 +18,6 @@ public class PurchaseVouchersAgainstOrders extends Report {
     }
 
     public void purchaseVouchersAgainstOrder() throws InterruptedException, AWTException {
-
         common.clickElement("name", "Purchase");
         common.clickElement("name", "Invoices");
         common.clickElement("xpath", "//MenuItem[@Name='Purchase Vouchers against Orders'][2]");
@@ -28,6 +27,5 @@ public class PurchaseVouchersAgainstOrders extends Report {
         super.closeReport("Purchase Vouchers against Orders");
         Thread.sleep(1000);
         Allure.step("Validating PurchaseVouchersAgainstOrders Report");
-
     }
 }

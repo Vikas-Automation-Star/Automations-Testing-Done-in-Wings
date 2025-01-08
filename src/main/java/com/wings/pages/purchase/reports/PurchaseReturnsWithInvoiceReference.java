@@ -18,7 +18,6 @@ public class PurchaseReturnsWithInvoiceReference extends Report {
     }
 
     public void purchaseReturnsWithInvoiceReference() throws InterruptedException, AWTException {
-
         common.clickElement("name", "Purchase");
         common.clickElement("name", "Invoices");
         common.clickElement("xpath", "//MenuItem[@Name='Purchase Returns with Invoice Reference'][2]");
@@ -27,7 +26,6 @@ public class PurchaseReturnsWithInvoiceReference extends Report {
         super.bulkVerifyReport("");
         super.closeReport("Purchase Returns with Invoice Reference");
         Allure.step("Validating PurchaseReturnsWithInvoiceReferences Report");
-
     }
 
 }

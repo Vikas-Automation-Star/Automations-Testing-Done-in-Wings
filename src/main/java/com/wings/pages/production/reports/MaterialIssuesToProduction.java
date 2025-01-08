@@ -15,13 +15,12 @@ public class MaterialIssuesToProduction extends Report {
     }
 
     public void MaterialIssuesToProduction() throws InterruptedException {
-
         common.clickElement("name", "Production");
         common.clickElement("name", "Standard");
         common.clickElement("xpath", "//MenuItem[@Name='Material Issues to Production'][2]");
         Thread.sleep(1500);
         common.clickElement("xpath", "//Button[@Name='Submit']");
-        super.bulkVerifyReport("MITP 1");
+        super.bulkVerifyReport("");
         super.closeReport("Material Issues to Production");
         Thread.sleep(2000);
     }

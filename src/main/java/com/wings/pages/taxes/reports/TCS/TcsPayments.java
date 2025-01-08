@@ -23,7 +23,7 @@ public class TcsPayments extends Report {
         common.clickElement("xpath", "//MenuItem[@Name='TCS Payments'][2]");
         Thread.sleep(2000);
         common.clickElement("xpath", "//Button[@Name='Submit']");
-        super.bulkVerifyReport("TCS 1");
+        super.bulkVerifyReport("");
         super.closeReport("TCS Payments");
     }
 }

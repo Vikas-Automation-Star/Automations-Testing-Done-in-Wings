@@ -20,7 +20,6 @@ public class MaterialReceiptsAgainstOrdersReport {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
         Allure.step("Before Test MaterialReceiptsAgainstOrders Report");
-
     }
 
     @Test
@@ -33,6 +32,5 @@ public class MaterialReceiptsAgainstOrdersReport {
     public void afterTest() throws IOException{
         appLogin.logout();
         Allure.step("After Test MaterialReceiptsAgainstOrders Report");
-
     }
 }

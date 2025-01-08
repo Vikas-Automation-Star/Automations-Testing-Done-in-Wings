@@ -24,7 +24,7 @@ public class TdsOpeningBalences extends Report {
         common.clickElement("xpath", "//MenuItem[@Name='TDS Opening Balances'][2]");
         Thread.sleep(2000);
         common.clickElement("xpath", "//Button[@Name='Submit']");
-        super.bulkVerifyReport("TOP 2");
+        super.bulkVerifyReport("");
         super.closeReport("TDS Opening Balances");
     }
 }

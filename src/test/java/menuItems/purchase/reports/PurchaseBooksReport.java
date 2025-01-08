@@ -21,7 +21,6 @@ public class PurchaseBooksReport {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
         Allure.step("Before Test PurchaseBook Report");
-
     }
 
     @Test
@@ -34,7 +33,6 @@ public class PurchaseBooksReport {
     public void afterTest() throws IOException{
         appLogin.logout();
         Allure.step("After Test PurchaseBook Report");
-
     }
 
 }

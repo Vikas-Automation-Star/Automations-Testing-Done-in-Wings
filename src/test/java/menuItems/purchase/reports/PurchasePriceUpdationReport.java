@@ -21,7 +21,6 @@ public class PurchasePriceUpdationReport {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
         Allure.step("Before Test PurchasePriceUpdations Report");
-
     }
 
     @Test
@@ -34,6 +33,5 @@ public class PurchasePriceUpdationReport {
     public void afterTest() throws IOException{
         appLogin.logout();
         Allure.step("After Test PurchasePriceUpdations Report");
-
     }
 }

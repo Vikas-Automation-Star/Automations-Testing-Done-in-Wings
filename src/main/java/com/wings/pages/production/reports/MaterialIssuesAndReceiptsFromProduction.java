@@ -15,7 +15,6 @@ public class MaterialIssuesAndReceiptsFromProduction extends Report {
     }
 
     public void materialIssuesAndReceiptsFromProduction() throws InterruptedException {
-
         common.clickElement("name", "Production");
         common.clickElement("name", "Simple");
         common.clickElement("xpath", "//MenuItem[@Name='Material Issues and Receipts from Production'][2]");

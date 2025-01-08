@@ -73,9 +73,10 @@ public class AppLogin {
             common.clickElement("name", "Yes");
         } catch (Exception exception) {
             exception.printStackTrace();
-        } finally {
-//            common.quitWinAppServer();
         }
+//        } finally {
+//            common.quitWinAppServer();
+//        }
     }
 
     public void deleteSingleTransaction() throws InterruptedException {

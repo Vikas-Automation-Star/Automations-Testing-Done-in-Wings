@@ -21,20 +21,17 @@ public class PendingPurchaseEnquiriesReport {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
         Allure.step("Before Test PendingPurchaseEnquiries Reports");
-
     }
 
     @Test
     public void pendingPurchaseEnquiriesReport() throws InterruptedException, AWTException {
         PendingPurchaseEnquiries ppe=new PendingPurchaseEnquiries(driver);
         ppe.pendingPurchaseEnquiry();
-
     }
 
     @AfterTest
     public void afterTest() throws IOException{
         appLogin.logout();
         Allure.step("After Test PendingPurchaseEnquiries Reports");
-
     }
 }
