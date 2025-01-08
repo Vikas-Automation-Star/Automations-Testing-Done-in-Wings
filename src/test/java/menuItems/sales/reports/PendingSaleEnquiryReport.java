@@ -30,5 +30,4 @@ public class PendingSaleEnquiryReport {
     public void afterTest() throws IOException{
         appLogin.logout();
     }
-
 }
