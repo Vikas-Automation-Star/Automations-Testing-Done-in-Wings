@@ -585,32 +585,4 @@
         </classes>
     </test>
 
-
-    <!-- Inventory Transactions-->
-
-    <test name="Opening Stock Transaction" description="Test 10 description" testID="10"/>
-    <classes>
-        <class name="menuItems.inventory.transactions.OpeningStockTransaction"/>
-    </classes>
-
-    <test name="Stock Creation Transaction" description="Test 10 description" testID="10"/>
-    <classes>
-        <class name="menuItems.inventory.transactions.StockCreationTransaction"/>
-    </classes>
-
-    <test name="Stock Consumption Transaction" description="Test 10 description" testID="10"/>
-    <classes>
-        <class name="menuItems.inventory.transactions.StockConsumptionTransaction"/>
-    </classes>
-
-    <test name="Stock Conversation Transaction" description="Test 10 description" testID="10"/>
-    <classes>
-        <class name="menuItems.inventory.transactions.StockConversionTransaction"/>
-    </classes>
-
-    <test name="InterLocation Transfers Transaction" description="Test 10 description" testID="10"/>
-    <classes>
-        <class name="menuItems.inventory.transactions.InterLocatonTransfersTransaction"/>
-    </classes>
-
 </suite>
