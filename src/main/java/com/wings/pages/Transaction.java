@@ -1469,6 +1469,11 @@ public abstract class Transaction {
         System.out.println("New Transaction ID  :" + common.findWebElement("xpath", "//Text[@Name='Last Saved :']/following-sibling::Text").getAttribute("Name"));
     }
 
+    public String getNewTransactionId() {
+        String transactionId = common.findWebElement("xpath", "//Text[@Name='Last Saved :']/following-sibling::Text").getAttribute("Name");
+        return transactionId;
+    }
+
     public void selectMasterWithValidation(String transaction, String locatorType, String locator) {
         List<WebElement> elementList = common.findWebElements("xpath", "//Table[@Name='Lookup']/*/*[contains(@Name,'Master Row')]");
         System.out.println("Size :" + elementList.size());
