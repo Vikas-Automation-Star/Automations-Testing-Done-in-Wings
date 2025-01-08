@@ -31,6 +31,7 @@ public class Common {
 
     public WindowsDriver initializeDriver(String app) throws IOException {
 //        initiateWinAppServer();
+
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("app",app);
         capabilities.setCapability("platformName", getProperty("platformName"));
