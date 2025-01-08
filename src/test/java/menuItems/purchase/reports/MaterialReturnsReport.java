@@ -21,7 +21,6 @@ public class MaterialReturnsReport {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
         Allure.step("Before Test MaterialReturns Report");
-
     }
 
     @Test
@@ -34,6 +33,5 @@ public class MaterialReturnsReport {
     public void afterTest() throws IOException{
         appLogin.logout();
         Allure.step("After Test MaterialReturns Report");
-
     }
 }

@@ -18,7 +18,6 @@ public class PurchaseQuotationsAgainstEnquiries extends Report {
     }
 
     public void purchaseQuotationsAgainstEnquiry() throws InterruptedException, AWTException {
-
         common.clickElement("name", "Purchase");
         common.clickElement("name", "Quotations");
         common.clickElement("xpath", "//MenuItem[@Name='Purchase Quotations against Enquiries'][2]");
@@ -27,7 +26,5 @@ public class PurchaseQuotationsAgainstEnquiries extends Report {
         super.bulkVerifyReport("");
         super.closeReport("Purchase Quotations against Enquiries");
         Allure.step("Validating PurchaseQuotationsAgainstEnquiries Report");
-
     }
-
 }

@@ -23,7 +23,7 @@ public class TcsOpeningBalances extends Report {
         common.clickElement("xpath", "//MenuItem[@Name='TCS Opening Balances'][2]");
         Thread.sleep(2000);
         common.clickElement("xpath", "//Button[@Name='Submit']");
-        super.bulkVerifyReport("TCSOP 1");
+        super.bulkVerifyReport("");
         super.closeReport("TCS Opening Balances");
     }
 }

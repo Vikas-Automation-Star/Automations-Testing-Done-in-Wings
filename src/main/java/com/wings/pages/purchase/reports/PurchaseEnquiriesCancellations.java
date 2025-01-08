@@ -26,6 +26,5 @@ public class PurchaseEnquiriesCancellations extends Report {
         super.bulkVerifyReport("");
         super.closeReport("Purchase Enquiries Cancellation");
         Allure.step("Validating PurchaseEnquiriesCancellation Report");
-
     }
 }

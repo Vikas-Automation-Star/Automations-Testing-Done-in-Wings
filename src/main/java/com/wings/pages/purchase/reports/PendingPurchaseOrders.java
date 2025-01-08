@@ -18,7 +18,6 @@ public class PendingPurchaseOrders extends Report {
     }
 
     public void pendingPurchaseOrder() throws InterruptedException{
-
         common.clickElement("name", "Purchase");
         common.clickElement("name", "Orders");
         common.clickElement("xpath", "//MenuItem[@Name='Pending Purchase Orders']");
@@ -27,6 +26,5 @@ public class PendingPurchaseOrders extends Report {
         super.bulkVerifyReport("");
         super.closeReport("Pending Purchase Orders");
         Allure.step("Validating PendingPurchaseOrders Report");
-
     }
 }

@@ -1,8 +1,9 @@
 {
-  "branch": "Hyderabad",
+  "branch": "AT_Branch 1_Reg",
   "cuurency": "INR",
-  "fProduct": "Bikes",
-  "NewBillofMaterial": "New Bill of Material61",
-  "Executive": "Executive3",
+  "location": "AT_Branch 1_Reg Default Location",
+  "fProduct": "AT_Product 1",
+  "BillOfMaterial": "AT_Bill Of Material 3",
+  "Executive": "AT_Executive 1",
   "quantity": "100"
 }

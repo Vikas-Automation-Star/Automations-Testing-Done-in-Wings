@@ -15,13 +15,12 @@ public class MaterialReturnsFromProduction extends Report {
     }
 
     public void materialReturnsFromProduction() throws InterruptedException {
-
         common.clickElement("name", "Production");
         common.clickElement("name", "Standard");
         common.clickElement("xpath", "//MenuItem[@Name='Material Returns from Production'][2]");
         Thread.sleep(1500);
         common.clickElement("xpath", "//Button[@Name='Submit']");
-        super.bulkVerifyReport("MRTFP 5");
+        super.bulkVerifyReport("");
         super.closeReport("Material Returns from Production");
         Thread.sleep(2000);
     }

@@ -21,7 +21,6 @@ public class PendingMaterialReceiptsReport {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
         Allure.step("Before Test PendingMaterialReceipts Report");
-
     }
 
     @Test
@@ -34,6 +33,5 @@ public class PendingMaterialReceiptsReport {
     public void afterTest() throws IOException{
         appLogin.logout();
         Allure.step("After Test PendingMaterialReceipts Report");
-
     }
 }

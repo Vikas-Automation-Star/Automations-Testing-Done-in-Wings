@@ -23,7 +23,7 @@ public class TcsPurchaseRepo extends Report {
         common.clickElement("xpath", "//MenuItem[@Name='TCS Purchases Report']");
         Thread.sleep(2000);
         common.clickElement("xpath", "//Button[@Name='Submit']");
-        super.bulkVerifyReport("SI 8");
+        super.bulkVerifyReport("");
         super.closeReport("TCS Purchases Report");
     }
 }

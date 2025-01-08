@@ -17,13 +17,11 @@ public class AssignStandardRates extends Report {
        }
 
     public void assignStandardRatesReport() throws InterruptedException {
-
         common.clickElement("name", "Production");
         common.clickElement("xpath", "//MenuItem[@Name='Assign Standard Rates'][2]");
         Thread.sleep(1500);
         common.clickElement("xpath", "//Button[@Name='Submit']");
-        super.bulkVerifyReport("ASR 1");
+        super.bulkVerifyReport("");
         super.closeReport("Assign Standard Rates");
     }
-
 }

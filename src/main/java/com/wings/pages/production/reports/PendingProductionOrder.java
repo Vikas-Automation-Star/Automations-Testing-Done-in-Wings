@@ -15,13 +15,12 @@ public class PendingProductionOrder extends Report {
     }
 
     public void pendingProductionOrder() throws InterruptedException {
-
         common.clickElement("name", "Production");
         common.clickElement("name", "Standard");
         common.clickElement("xpath", "//MenuItem[@Name='Pending Production Order']");
         Thread.sleep(1500);
         common.clickElement("xpath", "//Button[@Name='Submit']");
-        super.bulkVerifyReport("PRO 3");
+        super.bulkVerifyReport("");
         super.closeReport("Pending Production Order");
     }
 }

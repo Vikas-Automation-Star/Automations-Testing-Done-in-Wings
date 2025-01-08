@@ -24,7 +24,7 @@ public class TdsDeductedByUs extends Report {
         common.clickElement("xpath", "//MenuItem[@Name='TDS Deducted By Us']");
         Thread.sleep(2000);
         common.clickElement("xpath", "//Button[@Name='Submit']");
-        super.bulkVerifyReport("TOP 2");
+        super.bulkVerifyReport("");
         super.closeReport("TDS Deducted By Us");
     }
 }

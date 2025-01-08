@@ -18,7 +18,6 @@ public class PurchaseEnquiries extends Report {
     }
 
     public void purchaseEnquiry() throws InterruptedException, AWTException {
-
         common.clickElement("name", "Purchase");
         common.clickElement("name", "Enquiries");
         common.clickElement("xpath", "//MenuItem[@Name='Purchase Enquiries'][2]");
@@ -27,6 +26,5 @@ public class PurchaseEnquiries extends Report {
         super.bulkVerifyReport("");
         super.closeReport("Purchase Enquiries");
         Allure.step("Validating PurchaseEnquiries report");
-
     }
 }

@@ -25,7 +25,6 @@ public class MaterialReturns extends Report {
         super.bulkVerifyReport("");
         super.closeReport("Material Returns");
         Allure.step("Validating MaterialReturns Report");
-
     }
 
 }

@@ -21,31 +21,30 @@ public class ProductOrders extends Transaction {
     }
 
     public void productOrders() throws InterruptedException, IOException, ParseException {
-
         common.clickElement("name", "Production");
         common.clickElement("name", "Standard");
         common.clickElement("name", "Production Orders");
         Thread.sleep(3000);
-        super.oldTTransaction();
+        oldTTransaction();
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        super.selectMasterWithValidation(common.getData(dataFile,"branch"), "xpath", "//Edit[@Name='Branch *']");
+        selectAndValidateData(common.getData(dataFile,"branch"), "xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Location *']");
+        selectAndValidateData(common.getData(dataFile,"location"),"xpath", "//Edit[@Name='Location *']");
         common.clickElement("xpath", "//Edit[@Name='Transaction Currency *']");
-        super.selectMasterWithValidation(common.getData(dataFile,"cuurency"),"xpath", "//Edit[@Name='Transaction Currency *']");
+        selectMasterWithValidation(common.getData(dataFile,"cuurency"),"xpath", "//Edit[@Name='Transaction Currency *']");
         common.clickElement("xpath", "//Edit[@Name='Finished Product *']");
-        super.selectMasterWithValidation(common.getData(dataFile,"fProduct"),"xpath", "//Edit[@Name='Finished Product *']");
-        common.clickElement("xpath","//Edit[@Name='SKU *']");
+        selectMasterWithValidation(common.getData(dataFile,"fProduct"),"xpath", "//Edit[@Name='Finished Product *']");
         common.clickElement("xpath","//Edit[@Name='BOM *']");
-        super.selectMasterWithValidation(common.getData(dataFile,"NewBillofMaterial"),"xpath","//Edit[@Name='BOM *']");
+        selectAndValidateData(common.getData(dataFile,"BillOfMaterial"),"xpath","//Edit[@Name='BOM *']");
         WebElement clear=common.findWebElement("xpath","//Edit[@Name='Order Quantity *']");
         clear.clear();
-        super.enterData("xpath","//Edit[@Name='Order Quantity *']", dataFile,"quantity");
+        clear.sendKeys(common.getData(dataFile,"quantity"));
         common.clickElement("xpath","//Edit[@Name='Executive *']");
-        super.selectMasterWithValidation(common.getData(dataFile,"Executive"), "xpath","//Edit[@Name='Executive *']");
+        selectMasterWithValidation(common.getData(dataFile,"Executive"), "xpath","//Edit[@Name='Executive *']");
         transactionSave();
         Thread.sleep(1000);
-        super.newTransaction();
-        super.closeTransaction("Production Orders");
+        newTransaction();
+        closeTransaction("Production Orders");
         Thread.sleep(2000);
 
     }

@@ -21,7 +21,6 @@ public class PendingPurchaseOrdersReport {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
         Allure.step("Before Test Pending PurchaseOrders Report");
-
     }
 
     @Test
@@ -34,6 +33,5 @@ public class PendingPurchaseOrdersReport {
     public void afterTest() throws IOException{
         appLogin.logout();
         Allure.step("After Test Pending PurchaseOrders Report");
-
     }
 }

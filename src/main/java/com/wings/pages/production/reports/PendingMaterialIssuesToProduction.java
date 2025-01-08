@@ -15,13 +15,12 @@ public class PendingMaterialIssuesToProduction extends Report {
     }
 
     public void pendingMaterialIssuesToProduction() throws InterruptedException {
-
         common.clickElement("name", "Production");
         common.clickElement("name", "Standard");
         common.clickElement("xpath", "//MenuItem[@Name='Pending Material Issues to Production']");
         Thread.sleep(1500);
         common.clickElement("xpath", "//Button[@Name='Submit']");
-        super.bulkVerifyReport("PRO 3");
+        super.bulkVerifyReport("");
         super.closeReport("Pending Material Issues to Production");
     }
 }

@@ -18,15 +18,13 @@ public class PurchaseOrderCancellations extends Report {
     }
 
     public void purchaseOrderCancellation() throws InterruptedException, AWTException {
-
         common.clickElement("name", "Purchase");
         common.clickElement("name", "Orders");
         common.clickElement("xpath", "//MenuItem[@Name='Purchase Orders Cancellation'][2]");
         Thread.sleep(1500);
         common.clickElement("xpath", "//Button[@Name='Submit']");
-        super.bulkVerifyReport("POC 1");
+        super.bulkVerifyReport("");
         super.closeReport("Purchase Orders Cancellation");
         Allure.step("validating PurchaseOrderCancellation Report");
-
     }
 }

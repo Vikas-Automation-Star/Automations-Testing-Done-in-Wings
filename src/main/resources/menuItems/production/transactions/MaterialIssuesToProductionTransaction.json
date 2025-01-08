@@ -1,9 +1,10 @@
 {
-  "branch": "Hyderabad",
+  "branch": "AT_Branch 1_Reg",
   "currency": "INR",
-  "fProduct": "Bikes",
-  "executive": "Executive3",
-  "department": "NelloreDept",
+  "location": "AT_Branch 1_Reg Default Location",
+  "fProduct": "AT_Product 1",
+  "executive": "AT_Executive 1",
+  "department": "AT_Department 1",
   "quantity": "100"
 
 }

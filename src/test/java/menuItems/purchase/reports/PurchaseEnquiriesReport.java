@@ -21,20 +21,17 @@ public class PurchaseEnquiriesReport {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
         Allure.step("Before test PurchaseEnquiries report");
-
     }
 
     @Test
     public void purchaseEnquiries() throws InterruptedException, AWTException {
         PurchaseEnquiries pe=new PurchaseEnquiries(driver);
         pe.purchaseEnquiry();
-
     }
 
     @AfterTest
     public void afterTest() throws IOException{
         appLogin.logout();
         Allure.step("After test PurchaseEnquiries report");
-
     }
 }

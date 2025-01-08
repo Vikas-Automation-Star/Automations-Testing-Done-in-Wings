@@ -15,15 +15,13 @@ public class MaterialReceiptsFromProduction extends Report {
     }
 
     public void materialReceiptsFromProduction() throws InterruptedException {
-
         common.clickElement("name", "Production");
         common.clickElement("name", "Standard");
         common.clickElement("xpath", "//MenuItem[@Name='Material Receipts from Production'][2]");
         Thread.sleep(1500);
         common.clickElement("xpath", "//CheckBox[@Name='Detailed']");
-
         common.clickElement("xpath", "//Button[@Name='Submit']");
-        super.bulkVerifyReport("MRFP 1");
+        super.bulkVerifyReport("");
         super.closeReport("Material Receipts from Production");
     }
 }
