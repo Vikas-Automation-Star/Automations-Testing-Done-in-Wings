@@ -584,5 +584,6 @@
             <class name="menuItems.sales.transactions.SalesTargetExectiveWiseTransaction"/>
         </classes>
     </test>
+    <!-- Sales Module Completed-->
 
 </suite>
