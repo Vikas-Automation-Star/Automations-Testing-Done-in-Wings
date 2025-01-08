@@ -53,7 +53,7 @@ public class XMLUtil {
     }
 
     public String testRowAppend(String testID,String name,String status, String description,double duration){
-        return "<tr style='text-align: center; vertical-align: middle;'> <td align=\"center\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \"> <a href=\"https://wingsinfo.atlassian.net/browse/"+testID+"\">"+testID+"</a></td>" +
+        return "<tr style='text-align: center; vertical-align: middle;'> <td align=\"center\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">"+testID+"</td>" +
                 "<td align=\"left\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">"+name+"</td>" +
                 "<td  align=\"left\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">"+status+"</td>" +
                 "<td align=\"center\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">"+description+"</td>" +
@@ -193,7 +193,7 @@ public class XMLUtil {
     public static void main(String[] args) {
         XMLUtil xmlUtil = new XMLUtil();
         try {
-            xmlUtil.readTestNG("./TestNG/Regression.xml");// Parse both sampleSuite.xml and testng-results.xml
+            xmlUtil.readTestNG("./TestNG/MenuItems/salesSuite.xml");// Parse both sampleSuite.xml and testng-results.xml
             xmlUtil.readTestNGResults("./target/surefire-reports/testng-results.xml"); // Process test results and send email
         } catch (Exception e) {
             e.printStackTrace();

@@ -21,7 +21,7 @@ public class salesEnquiryReport {
     }
 
     @Test
-    public void newSalesEnquiryTrsncn() throws IOException, ParseException, InterruptedException {
+    public void newSalesEnquiryTrsncn() throws InterruptedException {
         salesEnquiryReportCode sales = new salesEnquiryReportCode(driver);
         sales.enquiryReport();
     }
