@@ -74,7 +74,7 @@ public class AppLogin {
         } catch (Exception exception) {
             exception.printStackTrace();
         } finally {
-            common.quitWinAppServer();
+//            common.quitWinAppServer();
         }
     }
 
