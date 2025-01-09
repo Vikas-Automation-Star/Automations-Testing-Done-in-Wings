@@ -13,18 +13,18 @@ import java.io.IOException;
 
 public class EwayBillOfflineTransaction {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
-    String file ="./src/main/resources/MenuItems/Taxes/transactions/EwayBill/EwayBillOfflineTransaction.json";
+    AppLogin appLogin = new AppLogin();
+    String file = "./src/main/resources/MenuItems/Taxes/transactions/EwayBill/EwayBillOfflineTransaction.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
-    public  void ewayBillOfflineTransaction() throws InterruptedException, IOException, ParseException, AWTException {
-        EwayBillOffline ewbo=new EwayBillOffline(driver,file);
+    public void ewayBillOfflineTransaction() throws InterruptedException, IOException, ParseException, AWTException {
+        EwayBillOffline ewbo = new EwayBillOffline(driver, file);
         ewbo.ewayBillOffline();
     }
 

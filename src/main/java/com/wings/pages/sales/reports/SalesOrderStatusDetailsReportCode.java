@@ -1,10 +1,10 @@
 package com.wings.pages.sales.reports;
 
-import io.appium.java_client.windows.WindowsDriver;
-import com.wings.pages.Report;
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
 
-public class SalesOrderStatusDetailsReportCode extends Report {
+public class SalesOrderStatusDetailsReportCode extends Transaction {
     WindowsDriver driver;
     Common common;
 
@@ -19,7 +19,7 @@ public class SalesOrderStatusDetailsReportCode extends Report {
         common.clickElement("name", "Orders");
         common.clickElement("xpath", "//MenuItem[@Name='Sales Order Status Details']");
         Thread.sleep(1500);
-        common.clickElement("xpath","//Pane/Button[@Name='Submit']");
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1000);
         super.bulkVerifyReport("SO 1");
         super.closeReport("Sales Order Status Details");

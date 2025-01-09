@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.wings.pages.AppLogin;
 import com.wings.pages.finance.reports.FinancialStatements.BalanceSheetReportCode;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -22,13 +23,13 @@ public class BalanceSheetReport {
 
     @Test
     public void balanceSheet() throws InterruptedException, AWTException {
-        BalanceSheetReportCode balanceSheetReportCode=new BalanceSheetReportCode(driver);
+        BalanceSheetReportCode balanceSheetReportCode = new BalanceSheetReportCode(driver);
         balanceSheetReportCode.balanceSheet();
 
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

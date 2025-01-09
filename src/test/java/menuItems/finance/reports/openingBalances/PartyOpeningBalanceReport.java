@@ -1,12 +1,13 @@
 package menuItems.finance.reports.openingBalances;
 
+import com.wings.pages.AppLogin;
+import com.wings.pages.finance.reports.OpeningBalance.PartyOpeningBalanceReportCode;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import com.wings.pages.AppLogin;
-import com.wings.pages.finance.reports.OpeningBalance.PartyOpeningBalanceReportCode;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -21,14 +22,14 @@ public class PartyOpeningBalanceReport {
     }
 
     @Test
-    public void partyBalance() throws  InterruptedException, AWTException {
-        PartyOpeningBalanceReportCode balanceReportCode=new PartyOpeningBalanceReportCode(driver);
+    public void partyBalance() throws InterruptedException, AWTException {
+        PartyOpeningBalanceReportCode balanceReportCode = new PartyOpeningBalanceReportCode(driver);
         balanceReportCode.partyBalanceReport();
 
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 

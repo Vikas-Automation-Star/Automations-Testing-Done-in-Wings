@@ -1,12 +1,13 @@
 package menuItems.finance.reports.partyAdjustments;
 
+import com.wings.pages.AppLogin;
+import com.wings.pages.finance.reports.partyAdjustments.CreditNoteReportCode;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import com.wings.pages.AppLogin;
-import com.wings.pages.finance.reports.partyAdjustments.CreditNoteReportCode;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -21,14 +22,14 @@ public class CreditNoteReport {
     }
 
     @Test
-    public void creditNote() throws  InterruptedException, AWTException {
-        CreditNoteReportCode noteReportCode=new CreditNoteReportCode(driver);
+    public void creditNote() throws InterruptedException, AWTException {
+        CreditNoteReportCode noteReportCode = new CreditNoteReportCode(driver);
         noteReportCode.creditNoteReport();
 
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

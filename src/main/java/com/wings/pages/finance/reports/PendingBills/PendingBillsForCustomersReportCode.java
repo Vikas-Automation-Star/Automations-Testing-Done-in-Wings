@@ -1,11 +1,12 @@
 package com.wings.pages.finance.reports.PendingBills;
 
-import io.appium.java_client.windows.WindowsDriver;
-import com.wings.pages.Report;
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
+
 import java.awt.*;
 
-public class PendingBillsForCustomersReportCode extends Report {
+public class PendingBillsForCustomersReportCode extends Transaction {
     WindowsDriver driver;
     Common common;
 
@@ -18,11 +19,11 @@ public class PendingBillsForCustomersReportCode extends Report {
     public void pendingBillsForCustomers() throws InterruptedException, AWTException {
         common.clickElement("name", "Finance");
         common.clickElement("name", "Pending Bills");
-        common.clickElement("xpath","//MenuItem[@Name='Pending Bills For Customers']");
+        common.clickElement("xpath", "//MenuItem[@Name='Pending Bills For Customers']");
         Thread.sleep(1000);
-        common.clickElement("xpath","//CheckBox[@Name='Detailed']");
+        common.clickElement("xpath", "//CheckBox[@Name='Detailed']");
         Thread.sleep(1000);
-        common.clickElement("xpath","//Pane/Button[@Name='Submit']");
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1000);
 //        super.bulkVerifyReport("JE 3");
         closeReport("Pending Bills For Customers");

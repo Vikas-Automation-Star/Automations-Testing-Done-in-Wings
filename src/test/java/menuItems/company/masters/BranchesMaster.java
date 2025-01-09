@@ -14,23 +14,23 @@ import java.io.IOException;
 
 public class BranchesMaster {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
-    String file="./src/main/resources/MenuItems/Company/Masters/BranchData.json";
+    AppLogin appLogin = new AppLogin();
+    String file = "./src/main/resources/MenuItems/Company/Masters/BranchData.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
     public void branches() throws IOException, ParseException, InterruptedException, AWTException {
-        Branches newBranch=new Branches(driver,file);
+        Branches newBranch = new Branches(driver, file);
         newBranch.branch();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
-       appLogin.logout();
+    public void afterTest() throws IOException {
+        appLogin.logout();
     }
 }

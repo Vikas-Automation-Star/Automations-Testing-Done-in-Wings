@@ -1,1 +1,18 @@
-{"Tests":[{"Status":"SUCCESS","TestName":"transactionAnalys","ExecutionEndTime":"2024-11-06 17:23:34","ExeTime":"26970","ExecutionStartTime":"2024-11-06 17:23:07"},{"Status":"SUCCESS","TestName":"trendAnalys","ExecutionEndTime":"2024-11-06 17:24:21","ExeTime":"23804","ExecutionStartTime":"2024-11-06 17:23:57"}]}
+{
+  "Tests": [
+    {
+      "Status": "SUCCESS",
+      "TestName": "transactionAnalys",
+      "ExecutionEndTime": "2024-11-06 17:23:34",
+      "ExeTime": "26970",
+      "ExecutionStartTime": "2024-11-06 17:23:07"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "trendAnalys",
+      "ExecutionEndTime": "2024-11-06 17:24:21",
+      "ExeTime": "23804",
+      "ExecutionStartTime": "2024-11-06 17:23:57"
+    }
+  ]
+}

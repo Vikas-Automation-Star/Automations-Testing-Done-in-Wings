@@ -1,9 +1,10 @@
 package com.wings.pages.inventory.masters.product.batches;
 
-import io.appium.java_client.windows.WindowsDriver;
-import org.json.simple.parser.ParseException;
 import com.wings.pages.Masters;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
+import org.json.simple.parser.ParseException;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
@@ -24,8 +25,8 @@ public class ProductBatchSerialNo extends Masters {
         common.clickElement("name", "Inventory");
         common.clickElement("name", "Product");
         common.clickElement("name", "Batches");
-        common.clickElement("name","Products - Batches and Serial No");
-        super.actionsMaster("xpath","//TreeItem[@Name='Products - Batches and Serial No']/TreeItem[@Name='All Products - Batches and Serial No']","//MenuItem[@Name='New Master']");
+        common.clickElement("name", "Products - Batches and Serial No");
+        super.actionsMaster("xpath", "//TreeItem[@Name='Products - Batches and Serial No']/TreeItem[@Name='All Products - Batches and Serial No']", "//MenuItem[@Name='New Master']");
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='Serial No Product *']", common.getData(filepath, "product") + common.getRandom());
         common.inputText("xpath", "//Edit[@Name='Product Code']", String.valueOf(common.getRandom()));
@@ -41,7 +42,7 @@ public class ProductBatchSerialNo extends Masters {
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
         Thread.sleep(1000);
-        common.sliderHandling("xpath","//Thumb[@Name='Position']",0,300);
+        common.sliderHandling("xpath", "//Thumb[@Name='Position']", 0, 300);
         common.clickElement("xpath", "//Edit[@Name='Sales Account']/Button[@Name='Open']");
         robot.keyPress(KeyEvent.VK_DOWN);
         robot.keyRelease(KeyEvent.VK_DOWN);

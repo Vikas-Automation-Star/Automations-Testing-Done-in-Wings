@@ -1,13 +1,12 @@
 {
-  "branch": "Hyderabad",
+  "branch": "AT_Branch 1_Reg",
   "currency": "INR",
-  "finishedProductCode": "Bikes",
-  "billOfMaterial": "New Bill of Material61",
-  "batchPolicy": "New Production Batch Policy2",
+  "location": "AT_Branch 1_Reg Default Location",
+  "finishedProductCode": "AT_Product 1",
+  "billOfMaterial": "AT_Bill Of Material 3",
+  "batchPolicy": "AT_Production Batch Policy_CIDNE",
   "quantity": "300",
-  "standardRate": "10",
-  "executive":"Executive3",
-  "department": "NelloreDept63",
-  "finishedProductquantity": "300",
-  "unitRate": "100"
+  "executive": "AT_Executive 1",
+  "department": "AT_Department 1",
+  "finishedProductquantity": "300"
 }

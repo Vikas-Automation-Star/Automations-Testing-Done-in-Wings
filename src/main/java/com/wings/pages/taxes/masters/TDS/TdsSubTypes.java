@@ -34,8 +34,8 @@ public class TdsSubTypes extends Masters {
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='New TDS Sub Type *']", common.getData(dataFile, "newTdsSubType") + common.getRandom());
         common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "desription"));
-        common.clickElement("xpath","//Edit[@Name='TDS Paid Account']/Button[@Name='Open']");
-        common.clickElement("xpath","//Edit[@Name='TDS Collected Account']/Button[@Name='Open']");
+        common.clickElement("xpath", "//Edit[@Name='TDS Paid Account']/Button[@Name='Open']");
+        common.clickElement("xpath", "//Edit[@Name='TDS Collected Account']/Button[@Name='Open']");
 
         common.clickElement("xpath", "//Button[@Name='Save']");
         common.clickElement("xpath", "//Button[@Name='OK']");

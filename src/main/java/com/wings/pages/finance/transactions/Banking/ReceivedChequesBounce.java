@@ -29,14 +29,14 @@ public class ReceivedChequesBounce extends Transaction {
         Thread.sleep(3000);
         super.oldTTransaction();
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        super.selectMasterWithValidation(common.getData(dataFile, "branch"),"xpath", "//Edit[@Name='Branch *']");
+        super.selectMasterWithValidation(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
-        common.clickElement("xpath","//Edit[@Name='Bank Code']");
-        super.selectMasterWithValidation(common.getData(dataFile,"bankCode"),"xpath","//Edit[@Name='Bank Code']");
-        common.clickElement("xpath","//Edit[@Name='Bank Account *']");
-        common.clickElement("xpath","//Edit[@Name='Account Code']");
-        super.selectMasterWithValidation(common.getData(dataFile,"accountCode"),"xpath","//Edit[@Name='Account Code']");
-        common.clickElement("xpath","//Edit[@Name='Account *']");
+        common.clickElement("xpath", "//Edit[@Name='Bank Code']");
+        super.selectMasterWithValidation(common.getData(dataFile, "bankCode"), "xpath", "//Edit[@Name='Bank Code']");
+        common.clickElement("xpath", "//Edit[@Name='Bank Account *']");
+        common.clickElement("xpath", "//Edit[@Name='Account Code']");
+        super.selectMasterWithValidation(common.getData(dataFile, "accountCode"), "xpath", "//Edit[@Name='Account Code']");
+        common.clickElement("xpath", "//Edit[@Name='Account *']");
         Thread.sleep(4000);
 
         List<WebElement> elementList = common.findWebElements("xpath", "//Window[@Name='Cheque Details']/Table/*[@Name='Data Panel']/ListItem[contains(@Name,'Row')]");
@@ -46,7 +46,7 @@ public class ReceivedChequesBounce extends Transaction {
                 System.out.println(j.getText());
                 if (j.getText().contains("SI 17")) {
                     j.click();
-                    j.sendKeys(Keys.LEFT,Keys.LEFT,Keys.LEFT,Keys.SPACE, Keys.ENTER, Keys.ENTER);
+                    j.sendKeys(Keys.LEFT, Keys.LEFT, Keys.LEFT, Keys.SPACE, Keys.ENTER, Keys.ENTER);
                     break;
                 }
             }
@@ -54,17 +54,17 @@ public class ReceivedChequesBounce extends Transaction {
             System.out.println("exceptionHandled");
         }
         gstTransactionType("Registered Dealers");
-        common.sliderHandling("xpath","//ScrollBar[@Name='Horizontal']/Thumb[@Name='Position']",800,0);
+        common.sliderHandling("xpath", "//ScrollBar[@Name='Horizontal']/Thumb[@Name='Position']", 800, 0);
 
         common.clickElement("xpath", "//Edit[@Name='Supplier Bill No *']");
-        common.inputText("xpath", "//Edit[@Name='Supplier Bill No *']", common.getData(dataFile,"supllierBillNo"));
+        common.inputText("xpath", "//Edit[@Name='Supplier Bill No *']", common.getData(dataFile, "supllierBillNo"));
         common.clickElement("xpath", "//Edit[@Name='Supplier Bill Date *']");
-        common.inputText("xpath", "//Edit[@Name='Supplier Bill Date *']", common.getData(dataFile,"supllierBillDate"));
-        common.clickElement("xpath","//Edit[@Name='Executive *']");
-        selectMasterWithValidation(common.getData(dataFile,"executive"),"xpath","//Edit[@Name='Executive *']");
+        common.inputText("xpath", "//Edit[@Name='Supplier Bill Date *']", common.getData(dataFile, "supllierBillDate"));
+        common.clickElement("xpath", "//Edit[@Name='Executive *']");
+        selectMasterWithValidation(common.getData(dataFile, "executive"), "xpath", "//Edit[@Name='Executive *']");
         Thread.sleep(3000);
-        super.checkBoxSelectionBillsPayable("xpath","//Table[@Name='BillsPayable']/*[starts-with(@Name,'Row')]","//Edit[starts-with(@Name,'Voucherentity No * Row')]","//CheckBox[starts-with(@Name,'Adjust Row')]");
-       //save
+        super.checkBoxSelectionBillsPayable("xpath", "//Table[@Name='BillsPayable']/*[starts-with(@Name,'Row')]", "//Edit[starts-with(@Name,'Voucherentity No * Row')]", "//CheckBox[starts-with(@Name,'Adjust Row')]");
+        //save
         transactionSave();
         lastTransactionName();
     }

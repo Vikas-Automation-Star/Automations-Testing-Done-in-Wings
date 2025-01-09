@@ -13,23 +13,23 @@ import java.io.IOException;
 
 public class TcsAssesseeTypesMaster {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
-    String file ="./src/main/resources/MenuItems/Taxes/masters/TCS/TcsAssesseeTypes.json";
+    AppLogin appLogin = new AppLogin();
+    String file = "./src/main/resources/MenuItems/Taxes/masters/TCS/TcsAssesseeTypes.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
     public void tcsAssesseeTypesMaster() throws InterruptedException, IOException, ParseException, AWTException {
-        TcsAssesseeTypes tst=new TcsAssesseeTypes(driver,file);
+        TcsAssesseeTypes tst = new TcsAssesseeTypes(driver, file);
         tst.tcsAssesseeTypes();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

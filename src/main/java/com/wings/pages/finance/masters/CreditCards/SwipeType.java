@@ -13,11 +13,12 @@ public class SwipeType {
     Common common;
     String dataFile;
 
-    public SwipeType(WindowsDriver driver, String file){
-        this.driver=driver;
-        common=new Common(this.driver);
-        dataFile=file;
+    public SwipeType(WindowsDriver driver, String file) {
+        this.driver = driver;
+        common = new Common(this.driver);
+        dataFile = file;
     }
+
     public void createSwipeType() throws InterruptedException, IOException, ParseException {
         common.clickElement("name", "Finance");
         common.clickElement("name", "Credit Cards");
@@ -28,7 +29,7 @@ public class SwipeType {
         actions.contextClick(AllBranch).perform();
         common.clickElement("name", "New Master");
         Thread.sleep(1000);
-        common.inputText("xpath", "//Edit[@Name='New Swipe Type *']", common.getData(dataFile, "name")+common.getRandom());
+        common.inputText("xpath", "//Edit[@Name='New Swipe Type *']", common.getData(dataFile, "name") + common.getRandom());
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
         Thread.sleep(1000);
@@ -41,4 +42,4 @@ public class SwipeType {
         common.clickElement("xpath", "//TabItem[@Name='Swipe Types']/Button[@Name='Close']");
     }
 
-    }
+}

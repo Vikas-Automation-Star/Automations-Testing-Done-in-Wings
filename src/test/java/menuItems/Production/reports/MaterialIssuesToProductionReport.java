@@ -12,22 +12,22 @@ import java.io.IOException;
 
 public class MaterialIssuesToProductionReport {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
+    AppLogin appLogin = new AppLogin();
 
     @BeforeTest
     public void MaterialIssuesToProductionReport() throws IOException, InterruptedException, ParseException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
     public void materialIssuesToProductionReport() throws IOException, ParseException, InterruptedException {
-        MaterialIssuesToProduction mitp=new MaterialIssuesToProduction(driver);
+        MaterialIssuesToProduction mitp = new MaterialIssuesToProduction(driver);
         mitp.MaterialIssuesToProduction();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

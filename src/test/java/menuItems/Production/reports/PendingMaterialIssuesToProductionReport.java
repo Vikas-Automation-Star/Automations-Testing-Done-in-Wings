@@ -12,22 +12,22 @@ import java.io.IOException;
 
 public class PendingMaterialIssuesToProductionReport {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
+    AppLogin appLogin = new AppLogin();
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
     public void pendingMaterialIssuesToProductionReport() throws IOException, ParseException, InterruptedException {
-        PendingMaterialIssuesToProduction pmitp=new PendingMaterialIssuesToProduction(driver);
+        PendingMaterialIssuesToProduction pmitp = new PendingMaterialIssuesToProduction(driver);
         pmitp.pendingMaterialIssuesToProduction();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

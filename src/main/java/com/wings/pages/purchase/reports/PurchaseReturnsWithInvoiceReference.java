@@ -1,13 +1,13 @@
 package com.wings.pages.purchase.reports;
 
-import com.wings.pages.Report;
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import io.qameta.allure.Allure;
 
 import java.awt.*;
 
-public class PurchaseReturnsWithInvoiceReference extends Report {
+public class PurchaseReturnsWithInvoiceReference extends Transaction {
     WindowsDriver driver;
     Common common;
 
@@ -18,7 +18,6 @@ public class PurchaseReturnsWithInvoiceReference extends Report {
     }
 
     public void purchaseReturnsWithInvoiceReference() throws InterruptedException, AWTException {
-
         common.clickElement("name", "Purchase");
         common.clickElement("name", "Invoices");
         common.clickElement("xpath", "//MenuItem[@Name='Purchase Returns with Invoice Reference'][2]");
@@ -27,7 +26,6 @@ public class PurchaseReturnsWithInvoiceReference extends Report {
         super.bulkVerifyReport("");
         super.closeReport("Purchase Returns with Invoice Reference");
         Allure.step("Validating PurchaseReturnsWithInvoiceReferences Report");
-
     }
 
 }

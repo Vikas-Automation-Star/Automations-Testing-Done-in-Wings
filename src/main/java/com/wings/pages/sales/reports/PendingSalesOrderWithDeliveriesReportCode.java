@@ -1,10 +1,10 @@
 package com.wings.pages.sales.reports;
 
-import io.appium.java_client.windows.WindowsDriver;
-import com.wings.pages.Report;
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
 
-public class PendingSalesOrderWithDeliveriesReportCode extends Report {
+public class PendingSalesOrderWithDeliveriesReportCode extends Transaction {
     WindowsDriver driver;
     Common common;
 
@@ -19,8 +19,8 @@ public class PendingSalesOrderWithDeliveriesReportCode extends Report {
         common.clickElement("name", "Deliveries");
         common.clickElement("xpath", "//MenuItem[@Name='Pending Sales Orders with Deliveries']");
         Thread.sleep(1000);
-        common.clickElement("xpath","//CheckBox[@Name='Detailed']");
-        common.clickElement("xpath","//Pane/Button[@Name='Submit']");
+        common.clickElement("xpath", "//CheckBox[@Name='Detailed']");
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         super.bulkVerifyReport("SO 1");
         super.closeReport("Pending Sales Orders with Deliveries");
     }

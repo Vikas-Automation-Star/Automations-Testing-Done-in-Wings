@@ -12,22 +12,22 @@ import java.io.IOException;
 
 public class PendingProductionOrderReport {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
+    AppLogin appLogin = new AppLogin();
 
     @BeforeTest
     public void PendingProductionOrderReport() throws IOException, InterruptedException, ParseException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
-    public void pendingProductionOrderReport() throws  InterruptedException {
-        PendingProductionOrder ppo=new PendingProductionOrder(driver);
+    public void pendingProductionOrderReport() throws InterruptedException {
+        PendingProductionOrder ppo = new PendingProductionOrder(driver);
         ppo.pendingProductionOrder();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

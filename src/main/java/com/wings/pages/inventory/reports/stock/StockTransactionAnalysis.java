@@ -1,12 +1,12 @@
 package com.wings.pages.inventory.reports.stock;
 
-import io.appium.java_client.windows.WindowsDriver;
-import com.wings.pages.Report;
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
 
 import java.awt.*;
 
-public class StockTransactionAnalysis extends Report {
+public class StockTransactionAnalysis extends Transaction {
     WindowsDriver driver;
     Common common;
 
@@ -19,9 +19,9 @@ public class StockTransactionAnalysis extends Report {
     public void stckTransactionAnalysis() throws InterruptedException, AWTException {
         common.clickElement("name", "Inventory");
         common.clickElement("name", "Stock");
-        common.clickElement("name","Stock Transaction Analysis");
+        common.clickElement("name", "Stock Transaction Analysis");
         Thread.sleep(1000);
-        common.clickElement("xpath","//Pane/Button[@Name='Submit']");
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
 //        Thread.sleep(1500);
 //        super.bulkVerifyReport("SI 3");
         super.closeReport("Stock Transaction Analysis");

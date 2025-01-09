@@ -1,12 +1,13 @@
 package menuItems.finance.reports.Banking;
 
+import com.wings.pages.AppLogin;
+import com.wings.pages.finance.reports.Banking.InterBankFundTransfersReportCode;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import com.wings.pages.AppLogin;
-import com.wings.pages.finance.reports.Banking.InterBankFundTransfersReportCode;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -21,14 +22,14 @@ public class InterBankFundTransfersReport {
     }
 
     @Test
-    public void interBankFund() throws  InterruptedException, AWTException {
-        InterBankFundTransfersReportCode transfersReportCode=new InterBankFundTransfersReportCode(driver);
+    public void interBankFund() throws InterruptedException, AWTException {
+        InterBankFundTransfersReportCode transfersReportCode = new InterBankFundTransfersReportCode(driver);
         transfersReportCode.bankFundTransfer();
 
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

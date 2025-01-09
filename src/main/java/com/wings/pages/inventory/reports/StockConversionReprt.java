@@ -1,11 +1,12 @@
 package com.wings.pages.inventory.reports;
 
-import io.appium.java_client.windows.WindowsDriver;
-import com.wings.pages.Report;
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
+
 import java.awt.*;
 
-public class StockConversionReprt extends Report {
+public class StockConversionReprt extends Transaction {
     WindowsDriver driver;
     Common common;
 
@@ -19,8 +20,8 @@ public class StockConversionReprt extends Report {
         common.clickElement("name", "Inventory");
         common.clickElement("xpath", "//MenuItem[@Name='Stock Conversion'][2]");
         Thread.sleep(1000);
-        common.clickElement("xpath","//CheckBox[@Name='Detailed']");
-        common.clickElement("xpath","//Pane/Button[@Name='Submit']");
+        common.clickElement("xpath", "//CheckBox[@Name='Detailed']");
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
 //        Thread.sleep(1500);
         super.bulkVerifyReport("SC 7");
         super.closeReport("Stock Conversion");

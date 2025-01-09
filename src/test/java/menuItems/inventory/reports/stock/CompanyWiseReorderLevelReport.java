@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.wings.pages.AppLogin;
 import com.wings.pages.inventory.reports.stock.CompanyWiseReorderLevel;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -22,12 +23,12 @@ public class CompanyWiseReorderLevelReport {
 
     @Test
     public void companyWiseRecorderLevel() throws IOException, ParseException, InterruptedException, AWTException {
-        CompanyWiseReorderLevel reorderLevel=new CompanyWiseReorderLevel(driver);
+        CompanyWiseReorderLevel reorderLevel = new CompanyWiseReorderLevel(driver);
         reorderLevel.companyWise();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

@@ -1,12 +1,12 @@
 package com.wings.pages.purchase.reports;
 
 
-import com.wings.pages.Report;
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import io.qameta.allure.Allure;
 
-public class MaterialReturns extends Report {
+public class MaterialReturns extends Transaction {
     WindowsDriver driver;
     Common common;
 
@@ -25,7 +25,6 @@ public class MaterialReturns extends Report {
         super.bulkVerifyReport("");
         super.closeReport("Material Returns");
         Allure.step("Validating MaterialReturns Report");
-
     }
 
 }

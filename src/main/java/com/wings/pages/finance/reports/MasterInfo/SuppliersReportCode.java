@@ -1,10 +1,10 @@
 package com.wings.pages.finance.reports.MasterInfo;
 
-import io.appium.java_client.windows.WindowsDriver;
-import com.wings.pages.Report;
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
 
-public class SuppliersReportCode extends Report {
+public class SuppliersReportCode extends Transaction {
     WindowsDriver driver;
     Common common;
 
@@ -17,9 +17,9 @@ public class SuppliersReportCode extends Report {
     public void supplierReport() throws InterruptedException {
         common.clickElement("name", "Finance");
         common.clickElement("name", "Master Info");
-        common.clickElement("xpath","//MenuItem[@Name='Suppliers']");
+        common.clickElement("xpath", "//MenuItem[@Name='Suppliers']");
         Thread.sleep(1200);
-        common.clickElement("xpath","//Pane/Button[@Name='Submit']");
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
 //        super.bulkVerifyReport("ORFCC 2");
         closeReport("Suppliers");

@@ -13,23 +13,23 @@ import java.io.IOException;
 
 public class ConsignerMaster {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
-    String file="./src/main/resources/MenuItems/Taxes/masters/gst/Consigner.json";
+    AppLogin appLogin = new AppLogin();
+    String file = "./src/main/resources/MenuItems/Taxes/masters/gst/Consigner.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
     public void consignerReport() throws InterruptedException, IOException, ParseException, AWTException {
-        Consigner consigner=new Consigner(driver,file);
+        Consigner consigner = new Consigner(driver, file);
         consigner.consigner();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

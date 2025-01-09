@@ -1,9 +1,10 @@
 package com.wings.pages.finance.transactions.OpeningBalances;
 
-import io.appium.java_client.windows.WindowsDriver;
-import org.json.simple.parser.ParseException;
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
+import org.json.simple.parser.ParseException;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -25,11 +26,11 @@ public class TransferIncomesandExpensestoPL extends Transaction {
         Thread.sleep(1000);
         lastTransactionName();
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        selectAndValidateData(common.getData(dataFile, "branch"),"xpath", "//Edit[@Name='Branch *']");
+        selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Reserves And Surplus Account *']");
-        selectAndValidateData(common.getData(dataFile, "reserves"),"xpath", "//Edit[@Name='Reserves And Surplus Account *']");
-        common.clickElement("xpath","//Edit[@Name='Remarks']");
-        selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
+        selectAndValidateData(common.getData(dataFile, "reserves"), "xpath", "//Edit[@Name='Reserves And Surplus Account *']");
+        common.clickElement("xpath", "//Edit[@Name='Remarks']");
+        selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
         //f5 - incomes
         navigateToIncomesTab();
         //f8 summary

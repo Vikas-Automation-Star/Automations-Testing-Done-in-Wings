@@ -10,10 +10,10 @@ public class Driver {
 
 
     public void initiateDriver() throws MalformedURLException {
-        DesiredCapabilities capabilities=new DesiredCapabilities();
-        capabilities.setCapability("app","C:\\Program Files (x86)\\Wings Infonet\\Wings Books 24D\\Wings.exe");
-        capabilities.setCapability("platformName","Windows");
-        capabilities.setCapability("deviceName","WindowsPC");
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("app", "C:\\Program Files (x86)\\Wings Infonet\\Wings Books 24D\\Wings.exe");
+        capabilities.setCapability("platformName", "Windows");
+        capabilities.setCapability("deviceName", "WindowsPC");
         WindowsDriver driver = new WindowsDriver(new URL("http://127.0.0.1:4723"), capabilities);
 
         driver.manage().window().maximize();

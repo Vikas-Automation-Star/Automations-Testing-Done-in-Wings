@@ -1,10 +1,10 @@
 package com.wings.pages.sales.reports;
 
-import io.appium.java_client.windows.WindowsDriver;
-import com.wings.pages.Report;
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
 
-public class SalesOrderReportCode extends Report {
+public class SalesOrderReportCode extends Transaction {
     WindowsDriver driver;
     Common common;
 

@@ -1,12 +1,12 @@
 package com.wings.pages.finance.reports.FinancialStatements;
 
-import io.appium.java_client.windows.WindowsDriver;
-import com.wings.pages.Report;
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
 
 import java.awt.*;
 
-public class BalanceSheetManualStockReportCode extends Report {
+public class BalanceSheetManualStockReportCode extends Transaction {
     WindowsDriver driver;
     Common common;
 
@@ -19,10 +19,10 @@ public class BalanceSheetManualStockReportCode extends Report {
     public void balanceSheetManualStock() throws InterruptedException, AWTException {
         common.clickElement("name", "Finance");
         common.clickElement("name", "Financial Statements");
-        common.clickElement("xpath","//MenuItem[@Name='Balance Sheet Manual Stock']");
+        common.clickElement("xpath", "//MenuItem[@Name='Balance Sheet Manual Stock']");
         Thread.sleep(1200);
-        common.clickElement("xpath","//CheckBox[@Name='Show Zero Balances Account']");
-        common.clickElement("xpath","//Pane/Button[@Name='Submit']");
+        common.clickElement("xpath", "//CheckBox[@Name='Show Zero Balances Account']");
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
 //        super.bulkVerifyReport("ORFCC 2");
         closeReport("Balance Sheet Manual Stock");

@@ -44,13 +44,13 @@ public class TcsTransactionNature extends Masters {
         element2.sendKeys(common.getData(dataFile, "subTcsTax"), Keys.ENTER);
         common.inputText("xpath", "//Edit[@Name='Level Row 0, Not sorted.']", common.getData(dataFile, "level"));
         common.clickElement("xpath", "//Edit[@Name='TCS Rate Row 0, Not sorted.']");
-        WebElement tcsRate=common.findWebElement("xpath", "//Edit[@Name='TCS Rate Row 0, Not sorted.']");
+        WebElement tcsRate = common.findWebElement("xpath", "//Edit[@Name='TCS Rate Row 0, Not sorted.']");
         tcsRate.clear();
         tcsRate.sendKeys(common.getData(dataFile, "tcsRate"));
-        WebElement minValue= common.findWebElement("xpath","//Edit[@Name='Minimum Value * Row 0, Not sorted.']");
+        WebElement minValue = common.findWebElement("xpath", "//Edit[@Name='Minimum Value * Row 0, Not sorted.']");
         minValue.click();
         minValue.clear();
-        minValue.sendKeys(common.getData(dataFile,"minValue"));
+        minValue.sendKeys(common.getData(dataFile, "minValue"));
         common.clickElement("xpath", "//Button[@Name='Ok']");
 
         common.clickElement("xpath", "//Button[@Name='Save']");

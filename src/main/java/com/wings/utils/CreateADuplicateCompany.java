@@ -2,6 +2,7 @@ package com.wings.utils;
 
 import io.appium.java_client.windows.WindowsDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+
 import java.io.IOException;
 import java.net.URL;
 
@@ -48,7 +49,7 @@ public class CreateADuplicateCompany {
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        CreateADuplicateCompany duplicateCompany=new CreateADuplicateCompany();
+        CreateADuplicateCompany duplicateCompany = new CreateADuplicateCompany();
         duplicateCompany.login();
 
     }

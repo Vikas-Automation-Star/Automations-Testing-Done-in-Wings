@@ -1,12 +1,13 @@
 package menuItems.finance.reports.openingBalances;
 
+import com.wings.pages.AppLogin;
+import com.wings.pages.finance.reports.OpeningBalance.ManualStockValuationReportCode;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import com.wings.pages.AppLogin;
-import com.wings.pages.finance.reports.OpeningBalance.ManualStockValuationReportCode;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -21,13 +22,13 @@ public class ManualStockValuationReport {
     }
 
     @Test
-    public void manualStockValuation() throws  InterruptedException, AWTException {
-        ManualStockValuationReportCode stockValuationReportCode=new ManualStockValuationReportCode(driver);
+    public void manualStockValuation() throws InterruptedException, AWTException {
+        ManualStockValuationReportCode stockValuationReportCode = new ManualStockValuationReportCode(driver);
         stockValuationReportCode.manualStockValuationReport();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

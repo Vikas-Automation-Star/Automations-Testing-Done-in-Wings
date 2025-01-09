@@ -1,12 +1,8 @@
 package com.wings.pages.sales.transactions;
 
+import com.wings.pages.SalesOrdersBaseClass;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import com.wings.pages.SalesOrdersBaseClass;
-import com.wings.pages.Transaction;
-import com.wings.utils.Common;
 
 import java.io.IOException;
 
@@ -39,7 +35,7 @@ public class SalesOrder extends SalesOrdersBaseClass {
 //            common.clickElement("xpath", "//Edit[@Name='Branch *']");
 //            super.selectAndValidateData(common.getData(dataFile, "branch"),"xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Location *']");
-        selectAndValidateData(common.getData(dataFile, "location"),"xpath", "//Edit[@Name='Location *']");
+        selectAndValidateData(common.getData(dataFile, "location"), "xpath", "//Edit[@Name='Location *']");
         transCurrency();
         partyCodes();
 //            common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
@@ -50,14 +46,14 @@ public class SalesOrder extends SalesOrdersBaseClass {
         Thread.sleep(2000);
         gstTransactionType("Registered");
 
-        common.clickElement("xpath","//Edit[@Name='Customer Email']");
-        selectOptionalMaster(common.getData(dataFile,"CustEmail"),"xpath","//Edit[@Name='Customer Email']");
-        common.clickElement("xpath","//Edit[@Name='Customer Mobile Number']");
-        selectOptionalMaster(common.getData(dataFile,"mobileNum"),"xpath","//Edit[@Name='Customer Mobile Number']");
+        common.clickElement("xpath", "//Edit[@Name='Customer Email']");
+        selectOptionalMaster(common.getData(dataFile, "CustEmail"), "xpath", "//Edit[@Name='Customer Email']");
+        common.clickElement("xpath", "//Edit[@Name='Customer Mobile Number']");
+        selectOptionalMaster(common.getData(dataFile, "mobileNum"), "xpath", "//Edit[@Name='Customer Mobile Number']");
         priceList_baseClass();
         executives();
         remarks_baseClass();
-        common.clickElement("xpath","//CheckBox[@Name='Advance Receipts']");
+        common.clickElement("xpath", "//CheckBox[@Name='Advance Receipts']");
 
 //            common.clickElement("xpath", "//Edit[@Name='Price List']");
 //            super.selectAndValidateData(common.getData(dataFile,"priceList"),"xpath", "//Edit[@Name='Price List']");
@@ -66,11 +62,11 @@ public class SalesOrder extends SalesOrdersBaseClass {
 //            common.clickElement("xpath","//Edit[@Name='Remarks']");
 //            super.selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
         //f3-items
-        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']",dataFile, "productCode");
+        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']", dataFile, "productCode");
 
 //        common.clickElement("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']");
 //        selectAndValidateDataNew(common.getData(dataFile,"productCode"),"xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']");
-        enterData("xpath", "//Edit[@Name='Quantity * Row 0, Not sorted.']",dataFile,"quantity");
+        enterData("xpath", "//Edit[@Name='Quantity * Row 0, Not sorted.']", dataFile, "quantity");
         //save
         transactionSave();
         lastTransactionName();

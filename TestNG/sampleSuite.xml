@@ -4,19 +4,19 @@
         <listener class-name="util.AnnotationTransformer"/>
     </listeners>
 
-    <test name="Test 1"  description="Test 1 description"  testID="WOW 1">
+    <test name="Test 1" description="Test 1 description" testID="WOW 1">
         <classes>
             <class name="menuItems.purchase.transactions.PurchaseEnquiriesTransaction"/>
         </classes>
     </test>
 
-    <test name="Test 2"  description="Test 2 description"  testID="WOW 2">
+    <test name="Test 2" description="Test 2 description" testID="WOW 2">
         <classes>
             <class name="menuItems.purchase.transactions.PurchaseEnquiriesCancellationTransaction"/>
         </classes>
     </test>
 
-    <test name="Test 3"  description="Test 3 description"  testID="WOW 3">
+    <test name="Test 3" description="Test 3 description" testID="WOW 3">
         <classes>
             <class name="menuItems.purchase.transactions.PurchaseQuotationsAgainstEnquiriesTransaction"/>
         </classes>

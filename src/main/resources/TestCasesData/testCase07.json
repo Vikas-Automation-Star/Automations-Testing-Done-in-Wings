@@ -7,32 +7,25 @@
   "tcsNature": "AT_TCS Transaction Nature 1",
   "executive": "AT_Executive 1",
   "portCode": "225588",
-
   "productCount": 3,
-
   "HSNCode": "AT_HSN Code 2",
-
   "productType0": "general",
   "productCode0": "P1",
   "quantity0": 5,
-  "voucherDiscount0":2,
-  "partyDiscount0":5,
-
+  "voucherDiscount0": 2,
+  "partyDiscount0": 5,
   "productType1": "multiBatch",
-  "productCode1":"MBP1",
+  "productCode1": "MBP1",
   "quantity1": 10,
-  "voucherDiscount1":2,
-  "partyDiscount1":9,
-
+  "voucherDiscount1": 2,
+  "partyDiscount1": 9,
   "productType2": "serial",
   "productCode2": "PSN1",
-  "voucherDiscount2":4,
-  "partyDiscount2":7,
-
-  "rowCount":2,
+  "voucherDiscount2": 4,
+  "partyDiscount2": 7,
+  "rowCount": 2,
   "chargesOrDeductions": "Charges",
-  "chargesOrDeductionsCode":"AT_Sales Acc 1",
-  "amount":500,
+  "chargesOrDeductionsCode": "AT_Sales Acc 1",
+  "amount": 500,
   "otherChargesCode": "AT_Sales Acc 1"
-
 }

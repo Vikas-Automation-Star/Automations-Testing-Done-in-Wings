@@ -1,10 +1,10 @@
 package com.wings.pages.taxes.reports.GST;
 
-import com.wings.pages.Report;
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 
-public class Gstr1B2B extends Report {
+public class Gstr1B2B extends Transaction {
     WindowsDriver driver;
     Common common;
 

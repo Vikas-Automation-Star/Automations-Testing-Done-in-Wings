@@ -13,24 +13,24 @@ import java.io.IOException;
 
 public class TdsTransactionNaturesMaster {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
-    String file ="./src/main/resources/MenuItems/Taxes/masters/TDS/TdsTransactionNatures.json";
+    AppLogin appLogin = new AppLogin();
+    String file = "./src/main/resources/MenuItems/Taxes/masters/TDS/TdsTransactionNatures.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
     public void tdsTransactionNaturesMaster() throws InterruptedException, IOException, ParseException, AWTException {
-        TdsTransactionNatures ttn=new TdsTransactionNatures(driver,file);
+        TdsTransactionNatures ttn = new TdsTransactionNatures(driver, file);
         ttn.tdsTransactionNatures();
 
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

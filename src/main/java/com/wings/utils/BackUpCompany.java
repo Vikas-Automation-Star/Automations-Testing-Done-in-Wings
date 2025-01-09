@@ -3,6 +3,7 @@ package com.wings.utils;
 import io.appium.java_client.windows.WindowsDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -83,9 +84,9 @@ public class BackUpCompany {
         }
     }
 
-        public static void main (String[]args) throws IOException, InterruptedException, AWTException {
-            BackUpCompany backUpCompany=new BackUpCompany();
-            backUpCompany.backUp();
-        }
+    public static void main(String[] args) throws IOException, InterruptedException, AWTException {
+        BackUpCompany backUpCompany = new BackUpCompany();
+        backUpCompany.backUp();
     }
+}
 

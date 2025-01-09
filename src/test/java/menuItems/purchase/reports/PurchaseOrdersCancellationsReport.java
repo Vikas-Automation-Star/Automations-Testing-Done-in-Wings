@@ -1,7 +1,7 @@
 package menuItems.purchase.reports;
 
-import com.wings.pages.purchase.reports.PurchaseOrderCancellations;
 import com.wings.pages.AppLogin;
+import com.wings.pages.purchase.reports.PurchaseOrderCancellations;
 import io.appium.java_client.windows.WindowsDriver;
 import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
@@ -21,19 +21,17 @@ public class PurchaseOrdersCancellationsReport {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
         Allure.step("Before Test PurchaseOrderCancellation Report");
-
     }
 
     @Test
-    public void purchaseOrderCancellations() throws  InterruptedException, AWTException {
-       PurchaseOrderCancellations poc=new PurchaseOrderCancellations(driver);
-       poc.purchaseOrderCancellation();
+    public void purchaseOrderCancellations() throws InterruptedException, AWTException {
+        PurchaseOrderCancellations poc = new PurchaseOrderCancellations(driver);
+        poc.purchaseOrderCancellation();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
         Allure.step("After Test PurchaseOrderCancellation Report");
-
     }
 }

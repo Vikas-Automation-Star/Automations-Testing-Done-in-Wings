@@ -14,20 +14,21 @@ public class Departments extends Masters {
     Common common;
     String dataFile;
 
-    public Departments(WindowsDriver driver, String file){
+    public Departments(WindowsDriver driver, String file) {
         super(driver);
-        this.driver=driver;
-        common=new Common(this.driver);
-        dataFile=file;
+        this.driver = driver;
+        common = new Common(this.driver);
+        dataFile = file;
     }
+
     public void departments() throws InterruptedException, IOException, ParseException {
         common.clickElement("name", "Company");
         common.clickElement("name", "Departments");
         Thread.sleep(1000);
-        super.createMaster("xpath","//TreeItem[@Name='Departments']/TreeItem[@Name='All Departments']");
+        super.createMaster("xpath", "//TreeItem[@Name='Departments']/TreeItem[@Name='All Departments']");
         Thread.sleep(1500);
-        common.inputText("xpath","//Edit[@Name='New Department *']",common.getData(dataFile,"newDepartment")+common.getRandom());
-        common.inputText("xpath","//Edit[@Name='Description']",common.getData(dataFile,"description"));
+        common.inputText("xpath", "//Edit[@Name='New Department *']", common.getData(dataFile, "newDepartment") + common.getRandom());
+        common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
         super.saveAfterMasterCreate();
         super.closeMaster("Departments");
         Thread.sleep(2000);

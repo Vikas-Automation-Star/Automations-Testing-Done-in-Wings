@@ -1,12 +1,13 @@
 package menuItems.finance.reports.Banking;
 
+import com.wings.pages.AppLogin;
+import com.wings.pages.finance.reports.Banking.CashDepositAndWithdrawlsReportCode;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import com.wings.pages.AppLogin;
-import com.wings.pages.finance.reports.Banking.CashDepositAndWithdrawlsReportCode;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -21,13 +22,13 @@ public class CashDepositAndWithdrawlsReport {
     }
 
     @Test
-    public void cashDepositAdnWithdrawl() throws  InterruptedException, AWTException {
-        CashDepositAndWithdrawlsReportCode withdrawlsReportCode=new CashDepositAndWithdrawlsReportCode(driver);
+    public void cashDepositAdnWithdrawl() throws InterruptedException, AWTException {
+        CashDepositAndWithdrawlsReportCode withdrawlsReportCode = new CashDepositAndWithdrawlsReportCode(driver);
         withdrawlsReportCode.cashDeposit();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

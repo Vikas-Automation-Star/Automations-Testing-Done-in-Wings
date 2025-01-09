@@ -1,5 +1,5 @@
 {
-"MasterType":"Products",
+  "MasterType": "Products",
   "minimum": "100",
   "maximum": "750",
   "rate": "500",

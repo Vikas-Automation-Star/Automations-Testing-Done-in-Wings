@@ -12,23 +12,23 @@ import java.io.IOException;
 
 public class RoutesMaster {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
-    String file="./src/main/resources/MenuItems/Company/Masters/RoutesMasterData.json";
+    AppLogin appLogin = new AppLogin();
+    String file = "./src/main/resources/MenuItems/Company/Masters/RoutesMasterData.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
     public void routesMaster() throws IOException, ParseException, InterruptedException {
-        Routes routes=new Routes(driver,file);
+        Routes routes = new Routes(driver, file);
         routes.createRoutes();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 

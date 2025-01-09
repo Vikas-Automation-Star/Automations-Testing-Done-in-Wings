@@ -1,33 +1,35 @@
 package com.wings.pages.sales.transactions;
 
-import io.appium.java_client.windows.WindowsDriver;
-import org.json.simple.parser.ParseException;
 import com.wings.pages.SalesOrdersBaseClass;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
+import org.json.simple.parser.ParseException;
+
 import java.io.IOException;
 
 public class SalesOrderCancellation extends SalesOrdersBaseClass {
-        WindowsDriver driver;
-        Common common;
-        String dataFile;
+    WindowsDriver driver;
+    Common common;
+    String dataFile;
 
-        public SalesOrderCancellation(WindowsDriver driver,String file){
-            super(driver,file);
-            this.driver=driver;
-            common=new Common(driver);
-            dataFile=file;
-        }
-        public void salesOrderCancellations() throws InterruptedException, IOException, ParseException {
-            navigateToSalesOrderCancellaltionMenu();
-            lastTransactionName();
-            Thread.sleep(3000);
-            voucherType();
-            branch_baseClass();
-            transCurrency();
-            partyCodes();
-            common.clickElement("xpath","//CheckBox[@Name='Select Row 1']");
-            common.clickElement("xpath","//Button[@Name='Ok']");
-            remarks_baseClass();
+    public SalesOrderCancellation(WindowsDriver driver, String file) {
+        super(driver, file);
+        this.driver = driver;
+        common = new Common(driver);
+        dataFile = file;
+    }
+
+    public void salesOrderCancellations() throws InterruptedException, IOException, ParseException {
+        navigateToSalesOrderCancellaltionMenu();
+        lastTransactionName();
+        Thread.sleep(3000);
+        voucherType();
+        branch_baseClass();
+        transCurrency();
+        partyCodes();
+        common.clickElement("xpath", "//CheckBox[@Name='Select Row 1']");
+        common.clickElement("xpath", "//Button[@Name='Ok']");
+        remarks_baseClass();
 
 //            common.clickElement("xpath","//Edit[@Name='Voucher Type']");
 //            super.selectOptionalMaster(common.getData(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']");
@@ -42,9 +44,9 @@ public class SalesOrderCancellation extends SalesOrdersBaseClass {
 //            common.clickElement("xpath","//Edit[@Name='Remarks']");
 //            super.selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
 //            //items
-            enterData("xpath","//Edit[@Name='Quantity * Row 0, Not sorted.']",dataFile,"quantity");
+        enterData("xpath", "//Edit[@Name='Quantity * Row 0, Not sorted.']", dataFile, "quantity");
 //            //save
-            transactionSave();
-            lastTransactionName();
-        }
+        transactionSave();
+        lastTransactionName();
     }
+}

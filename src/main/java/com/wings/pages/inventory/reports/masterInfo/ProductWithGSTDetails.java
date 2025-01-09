@@ -1,11 +1,12 @@
 package com.wings.pages.inventory.reports.masterInfo;
 
-import io.appium.java_client.windows.WindowsDriver;
-import com.wings.pages.Report;
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
+
 import java.awt.*;
 
-public class ProductWithGSTDetails extends Report {
+public class ProductWithGSTDetails extends Transaction {
     WindowsDriver driver;
     Common common;
 
@@ -18,9 +19,9 @@ public class ProductWithGSTDetails extends Report {
     public void productGST() throws InterruptedException, AWTException {
         common.clickElement("name", "Inventory");
         common.clickElement("name", "Master Info");
-        common.clickElement("name","Product with GST Details");
+        common.clickElement("name", "Product with GST Details");
         Thread.sleep(1000);
-        common.clickElement("xpath","//Pane/Button[@Name='Submit']");
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
 //        Thread.sleep(1500);
 //        super.bulkVerifyReport("SI 3");
         super.closeReport("Product with GST Details");

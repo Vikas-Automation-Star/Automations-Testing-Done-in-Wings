@@ -13,22 +13,22 @@ import java.io.IOException;
 
 public class BillOfMaterials {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
+    AppLogin appLogin = new AppLogin();
 
     @BeforeTest
     public void BillOfMaterials() throws IOException, InterruptedException, ParseException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
     public void billOfMaterials() throws IOException, ParseException, InterruptedException, AWTException {
-       BillOfMaterial bom=new BillOfMaterial(driver);
-       bom.billOfMaterial();
+        BillOfMaterial bom = new BillOfMaterial(driver);
+        bom.billOfMaterial();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

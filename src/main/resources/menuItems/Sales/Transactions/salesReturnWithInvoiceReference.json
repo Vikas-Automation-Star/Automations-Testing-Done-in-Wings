@@ -2,7 +2,7 @@
   "branch": "AT_Branch 1_Reg",
   "location": "AT_Branch 1_Location 1",
   "transaction": "INR",
-  "gstType" :"Registered",
+  "gstType": "Registered",
   "close": "Sales Return with Invoice Reference",
   "quantity": 1,
   "invoiceNo": "SI 1"

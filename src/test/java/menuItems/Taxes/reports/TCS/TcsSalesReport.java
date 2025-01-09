@@ -12,22 +12,22 @@ import java.io.IOException;
 
 public class TcsSalesReport {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
+    AppLogin appLogin = new AppLogin();
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
     public void tcsSalesReport() throws InterruptedException, IOException, ParseException {
-        TcsSalesRepo tsr=new TcsSalesRepo(driver);
+        TcsSalesRepo tsr = new TcsSalesRepo(driver);
         tsr.tcsSalesRepo();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

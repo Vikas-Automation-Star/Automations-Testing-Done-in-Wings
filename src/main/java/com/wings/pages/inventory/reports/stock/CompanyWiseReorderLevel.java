@@ -1,11 +1,12 @@
 package com.wings.pages.inventory.reports.stock;
 
-import io.appium.java_client.windows.WindowsDriver;
-import com.wings.pages.Report;
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
+
 import java.awt.*;
 
-public class CompanyWiseReorderLevel extends Report {
+public class CompanyWiseReorderLevel extends Transaction {
     WindowsDriver driver;
     Common common;
 
@@ -18,9 +19,9 @@ public class CompanyWiseReorderLevel extends Report {
     public void companyWise() throws InterruptedException, AWTException {
         common.clickElement("name", "Inventory");
         common.clickElement("name", "Stock");
-        common.clickElement("name","Company wise Reorder Level");
+        common.clickElement("name", "Company wise Reorder Level");
         Thread.sleep(1000);
-        common.clickElement("xpath","//Pane/Button[@Name='Submit']");
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
 //        Thread.sleep(1500);
 //        super.bulkVerifyReport("SI 3");
         super.closeReport("Company wise Reorder Level");

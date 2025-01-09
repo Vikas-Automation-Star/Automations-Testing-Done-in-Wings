@@ -1,11 +1,12 @@
 package com.wings.pages.finance.reports.Analysis;
 
-import io.appium.java_client.windows.WindowsDriver;
-import com.wings.pages.Report;
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
+
 import java.awt.*;
 
-public class TrendAnalysis extends Report {
+public class TrendAnalysis extends Transaction {
     WindowsDriver driver;
     Common common;
 
@@ -17,10 +18,10 @@ public class TrendAnalysis extends Report {
 
     public void trendingAnalysis() throws InterruptedException, AWTException {
         common.clickElement("name", "Finance");
-        common.clickElement("name","Analysis");
-        common.clickElement("name","Trend Analysis");
+        common.clickElement("name", "Analysis");
+        common.clickElement("name", "Trend Analysis");
         Thread.sleep(1000);
-        common.clickElement("xpath","//Pane/Button[@Name='Submit']");
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
 //        Thread.sleep(1500);
 //        super.bulkVerifyReport("ILT 1");
         closeReport("Trend Analysis");

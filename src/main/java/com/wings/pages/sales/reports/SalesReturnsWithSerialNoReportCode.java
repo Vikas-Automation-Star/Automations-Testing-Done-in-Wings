@@ -1,10 +1,10 @@
 package com.wings.pages.sales.reports;
 
-import io.appium.java_client.windows.WindowsDriver;
-import com.wings.pages.Report;
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
 
-public class SalesReturnsWithSerialNoReportCode extends Report {
+public class SalesReturnsWithSerialNoReportCode extends Transaction {
     WindowsDriver driver;
     Common common;
 
@@ -19,7 +19,7 @@ public class SalesReturnsWithSerialNoReportCode extends Report {
         common.clickElement("name", "Invoices");
         common.clickElement("xpath", "//MenuItem[@Name='Sale Returns with SerialNo']");
         Thread.sleep(1500);
-        common.clickElement("xpath","//Pane/Button[@Name='Submit']");
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         super.bulkVerifyReport("SRT 1");
         super.closeReport("Sale Returns with SerialNo");
     }

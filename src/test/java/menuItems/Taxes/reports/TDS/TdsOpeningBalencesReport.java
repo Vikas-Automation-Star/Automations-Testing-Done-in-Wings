@@ -12,22 +12,22 @@ import java.io.IOException;
 
 public class TdsOpeningBalencesReport {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
+    AppLogin appLogin = new AppLogin();
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
     public void tdsOpeningBalencesReport() throws InterruptedException, IOException, ParseException {
-        TdsOpeningBalences tobr=new TdsOpeningBalences(driver);
+        TdsOpeningBalences tobr = new TdsOpeningBalences(driver);
         tobr.tdsOpeningBalences();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

@@ -1,12 +1,12 @@
 package com.wings.pages.finance.reports.Banking;
 
-import io.appium.java_client.windows.WindowsDriver;
-import com.wings.pages.Report;
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
 
 import java.awt.*;
 
-public class ReceivedChequesBounceReportCode extends Report {
+public class ReceivedChequesBounceReportCode extends Transaction {
     WindowsDriver driver;
     Common common;
 
@@ -19,9 +19,9 @@ public class ReceivedChequesBounceReportCode extends Report {
     public void chequeBounce() throws InterruptedException, AWTException {
         common.clickElement("name", "Finance");
         common.clickElement("name", "Banking");
-        common.clickElement("xpath","//MenuItem[@Name='Received Cheques Bounce'][2]");
+        common.clickElement("xpath", "//MenuItem[@Name='Received Cheques Bounce'][2]");
         Thread.sleep(1000);
-        common.clickElement("xpath","//Pane/Button[@Name='Submit']");
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
 //        super.bulkVerifyReport("PREC 2");
         closeReport("Received Cheques Bounce");

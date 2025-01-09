@@ -6,6 +6,7 @@ import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -22,12 +23,12 @@ public class TestCase_07 {
 
     @Test
     public void testCase07() throws IOException, ParseException, InterruptedException, AWTException {
-     InterSatesGSTIncludingTCSIncludingOCIncludingCDIncluding_07 tc=new InterSatesGSTIncludingTCSIncludingOCIncludingCDIncluding_07(driver,dataFile);
-     tc.interSatesGSTIncludingTCSIncludingOCIncludingCDIncluding_07();
+        InterSatesGSTIncludingTCSIncludingOCIncludingCDIncluding_07 tc = new InterSatesGSTIncludingTCSIncludingOCIncludingCDIncluding_07(driver, dataFile);
+        tc.interSatesGSTIncludingTCSIncludingOCIncludingCDIncluding_07();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
 //        appLogin.logout();
     }
 }

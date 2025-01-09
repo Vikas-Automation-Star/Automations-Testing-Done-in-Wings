@@ -23,12 +23,12 @@ public class SerialNoHistoryReport {
 
     @Test
     public void serialNoHistory() throws IOException, ParseException, InterruptedException, AWTException {
-        SerialNoHistory history=new SerialNoHistory(driver);
+        SerialNoHistory history = new SerialNoHistory(driver);
         history.serialNoHistory();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

@@ -1,13 +1,13 @@
 package com.wings.pages.purchase.reports;
 
-import com.wings.pages.Report;
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import io.qameta.allure.Allure;
 
 import java.awt.*;
 
-public class PurchaseOrders extends Report {
+public class PurchaseOrders extends Transaction {
     WindowsDriver driver;
     Common common;
 
@@ -18,7 +18,6 @@ public class PurchaseOrders extends Report {
     }
 
     public void purchaseOrder() throws InterruptedException, AWTException {
-
         common.clickElement("name", "Purchase");
         common.clickElement("name", "Orders");
         common.clickElement("xpath", "//MenuItem[@Name='Purchase Orders'][2]");
@@ -27,6 +26,5 @@ public class PurchaseOrders extends Report {
         super.bulkVerifyReport("");
         super.closeReport("Purchase Orders");
         Allure.step("Validating PurchaseOrders Report");
-
     }
 }

@@ -1,10 +1,11 @@
 package com.wings.pages.inventory.transactions;
 
+import com.wings.pages.Transaction;
+import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
-import com.wings.pages.Transaction;
-import com.wings.utils.Common;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -23,12 +24,12 @@ public class StockConsumption extends Transaction {
     public void stockConsumption() throws InterruptedException, AWTException, IOException, ParseException {
         navigateToStockConsumptionMenu();
         lastTransactionName();
-        common.clickElement("xpath","//Edit[@Name='Voucher Type']");
-        selectOptionalMaster(common.getData(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']");
+        common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
+        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        selectAndValidateData(common.getData(dataFile, "branch"),"xpath", "//Edit[@Name='Branch *']");
+        selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
         Thread.sleep(5000);
-        WebElement gst= common.findWebElement("xpath","//Window[@Name='GST Transaction Type']");
+        WebElement gst = common.findWebElement("xpath", "//Window[@Name='GST Transaction Type']");
         gst.click();
         gstTransactionTypeNew("Registered");
         Thread.sleep(2000);
@@ -39,8 +40,8 @@ public class StockConsumption extends Transaction {
         selectAndValidateData(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
         common.clickElement("xpath", "//Edit[@Name='Executive *']");
         selectAndValidateData(common.getData(dataFile, "executive"), "xpath", "//Edit[@Name='Executive *']");
-        common.clickElement("xpath","//Edit[@Name='Remarks']");
-        selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
+        common.clickElement("xpath", "//Edit[@Name='Remarks']");
+        selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
         //F3-Items
         common.clickElement("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']");
         selectAndValidateData(common.getData(dataFile, "productCode"), "xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']");

@@ -1,7 +1,7 @@
 package menuItems.purchase.reports;
 
-import com.wings.pages.purchase.reports.MaterialReturns;
 import com.wings.pages.AppLogin;
+import com.wings.pages.purchase.reports.MaterialReturns;
 import io.appium.java_client.windows.WindowsDriver;
 import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
@@ -21,19 +21,17 @@ public class MaterialReturnsReport {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
         Allure.step("Before Test MaterialReturns Report");
-
     }
 
     @Test
-    public void materialReturn() throws  InterruptedException, AWTException {
-        MaterialReturns mr=new MaterialReturns(driver);
+    public void materialReturn() throws InterruptedException, AWTException {
+        MaterialReturns mr = new MaterialReturns(driver);
         mr.materialReturn();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
         Allure.step("After Test MaterialReturns Report");
-
     }
 }

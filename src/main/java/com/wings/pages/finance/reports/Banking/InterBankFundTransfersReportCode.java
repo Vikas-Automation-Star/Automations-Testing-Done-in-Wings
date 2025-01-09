@@ -1,12 +1,12 @@
 package com.wings.pages.finance.reports.Banking;
 
-import io.appium.java_client.windows.WindowsDriver;
-import com.wings.pages.Report;
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
 
 import java.awt.*;
 
-public class InterBankFundTransfersReportCode extends Report {
+public class InterBankFundTransfersReportCode extends Transaction {
     WindowsDriver driver;
     Common common;
 
@@ -19,9 +19,9 @@ public class InterBankFundTransfersReportCode extends Report {
     public void bankFundTransfer() throws InterruptedException, AWTException {
         common.clickElement("name", "Finance");
         common.clickElement("name", "Banking");
-        common.clickElement("xpath","//MenuItem[@Name='Inter Bank Fund Transfers'][2]");
+        common.clickElement("xpath", "//MenuItem[@Name='Inter Bank Fund Transfers'][2]");
         Thread.sleep(1000);
-        common.clickElement("xpath","//Pane/Button[@Name='Submit']");
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
         bulkVerifyReport("BFT 2");
         closeReport("Inter Bank Fund Transfers");

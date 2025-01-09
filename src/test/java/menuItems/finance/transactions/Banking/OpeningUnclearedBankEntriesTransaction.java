@@ -8,29 +8,30 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.wings.pages.AppLogin;
 import com.wings.pages.finance.transactions.Banking.OpeningUnclearedBankEntries;
+
 import java.awt.*;
 import java.io.IOException;
 
 public class OpeningUnclearedBankEntriesTransaction {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
-    String dataFile="./src/main/resources/menuItems/finance/transaction/unclearedBankEntries.json";
+    AppLogin appLogin = new AppLogin();
+    String dataFile = "./src/main/resources/menuItems/finance/transaction/unclearedBankEntries.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, ParseException, InterruptedException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
         Allure.step("Before Test - Opening Uncleared Bank Entries");
     }
 
     @Test
     public void openingUnclearedBankEntries() throws IOException, ParseException, InterruptedException, AWTException {
-        OpeningUnclearedBankEntries unclearedBankEntries=new OpeningUnclearedBankEntries(driver,dataFile);
+        OpeningUnclearedBankEntries unclearedBankEntries = new OpeningUnclearedBankEntries(driver, dataFile);
         unclearedBankEntries.unclearedBankEntries();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
         Allure.step("After Test - Opening Uncleared Bank Entries");
     }

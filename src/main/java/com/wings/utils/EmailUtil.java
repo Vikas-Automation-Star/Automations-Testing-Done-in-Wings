@@ -2,29 +2,29 @@ package com.wings.utils;
 
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
-import javax.activation.FileDataSource; //used to handle the attachments
+import javax.activation.FileDataSource;
 import javax.mail.Message;
 import javax.mail.Multipart;
 import javax.mail.Session;
-import javax.mail.Transport; //helps in constructing and sending the email
+import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
-import java.util.Date; //set the sending date
+import java.util.Date;
 
 public class EmailUtil {
 
     /**
      * Utility method to send simple HTML email
+     *
      * @param session
      * @param toEmail
      * @param path
      */
 
-    public static void sendEmail(Session session, String toEmail,  String path){
-        try
-        {
+    public static void sendEmail(Session session, String toEmail, String path) {
+        try {
             Multipart multipart = new MimeMultipart();
             MimeBodyPart messageBodyPart = new MimeBodyPart();
             DataSource source = new FileDataSource(path);
@@ -54,8 +54,7 @@ public class EmailUtil {
             Transport.send(msg);
 
             System.out.println("EMail Sent Successfully!!");
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

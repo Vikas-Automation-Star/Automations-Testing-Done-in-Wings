@@ -1,7 +1,7 @@
 package menuItems.purchase.reports;
 
-import com.wings.pages.purchase.reports.PurchaseOrderStatusDetails;
 import com.wings.pages.AppLogin;
+import com.wings.pages.purchase.reports.PurchaseOrderStatusDetails;
 import io.appium.java_client.windows.WindowsDriver;
 import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
@@ -21,19 +21,17 @@ public class PurchaseOrderStatusDetailsReport {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
         Allure.step("Before Test PurchaseOrdersStatusDetails Report");
-
     }
 
     @Test
     public void purchaseOrderStatusDetails() throws InterruptedException, AWTException {
-        PurchaseOrderStatusDetails posd=new PurchaseOrderStatusDetails(driver);
+        PurchaseOrderStatusDetails posd = new PurchaseOrderStatusDetails(driver);
         posd.purchaseOrderStatusReport();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
         Allure.step("After Test PurchaseOrdersStatusDetails Report");
-
     }
 }

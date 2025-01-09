@@ -1,5 +1,6 @@
 package com.wings.pages;
 
+import com.wings.utils.Common;
 import com.wings.utils.StringUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
@@ -8,8 +9,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
-import com.wings.utils.Common;
-
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
@@ -100,15 +99,23 @@ public abstract class Transaction {
         }
     }
 
+    public void enterInput(String locatorType, String locator, String fileName, String key) throws IOException, ParseException {
+        List<WebElement> elementList = common.findWebElements(locatorType, locator);
+        for (WebElement i : elementList) {
+            i.click();
+            i.clear();
+            i.sendKeys(common.getData(fileName, key), Keys.TAB);
+            break;
+        }
+    }
+
     public void enterDataAndValidate(String locatorType, String locator, String fileName, String key) throws IOException, ParseException {
         List<WebElement> elementList = common.findWebElements(locatorType, locator);
 //        System.out.println("Size :" + elementList.size());
         for (WebElement i : elementList) {
 //            System.out.println(i.getText());
             i.click();
-            i.clear();
             i.sendKeys(common.getData(fileName, key), Keys.TAB);
-            break;
         }
         WebElement element = common.findWebElement(locatorType, locator);
         if (element.getText().equals(common.getData(fileName, key))) {
@@ -273,7 +280,7 @@ public abstract class Transaction {
 //        navigateToOtherInfoTab();
         navigateToPaytymTab();
         for (int j = 0; j < 6; j++) {
-            Robot robot=new Robot();
+            Robot robot = new Robot();
             robot.keyPress(KeyEvent.VK_RIGHT);
             robot.keyRelease(KeyEvent.VK_RIGHT);
         }
@@ -445,6 +452,7 @@ public abstract class Transaction {
             Assert.fail("grossDiscountAmount field is empty");
         }
     }
+
     public void otherChargesCESSPresentInSummary() {
         WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='Other Charges CESS']");
         String grossMinusDiscountAmount = grossDiscountAmount.getText();
@@ -452,6 +460,7 @@ public abstract class Transaction {
             Assert.fail("grossDiscountAmount field is empty");
         }
     }
+
     public void otherChargesIGSTPresentInSummary() {
         WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='Other Charges IGST']");
         String grossMinusDiscountAmount = grossDiscountAmount.getText();
@@ -1229,7 +1238,7 @@ public abstract class Transaction {
     }
 
     public void generalProduct(String filename, String product, String quantity, int i) throws IOException, ParseException {
-        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row "+i+", Not sorted.']", filename, product);
+        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, product);
         common.clickElement("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']");
         enterData("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']", filename, quantity);
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 500, 0);
@@ -1305,9 +1314,9 @@ public abstract class Transaction {
         }
     }
 
-    public void tcsCalculations(String dataFile, String accCode, String amount,String iterations, double itemsNetValue) throws IOException, ParseException {
+    public void tcsCalculations(String dataFile, String accCode, String amount, String iterations, double itemsNetValue) throws IOException, ParseException {
         double exchangeRate = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='Exchange Rate *']").getText());
-        System.out.println("exchangeRate :- "+exchangeRate);
+        System.out.println("exchangeRate :- " + exchangeRate);
 //        double itemsNetValue= Double.parseDouble(common.findWebElement("xpath","//Edit[@AutomationId='NetAmount']").getText().replace(",",""));
         navigateToOtherChargesTab();
         //other charges Calculations
@@ -1340,7 +1349,7 @@ public abstract class Transaction {
             // Enter Account Code and Amount
             enterData("xpath", "//Edit[@Name='Account Code Row " + i + ", Not sorted.']", dataFile, accCode);
             enterData("xpath", "//Edit[@Name='Amount * Row " + i + ", Not sorted.']", dataFile, amount);
-            enterData("xpath", "//Edit[@Name='HSN Row "+ i +", Not sorted.']",dataFile,"HSNCode");
+            enterData("xpath", "//Edit[@Name='HSN Row " + i + ", Not sorted.']", dataFile, "HSNCode");
 
             WebElement gstElement = common.findWebElement("xpath", "//Edit[@Name='GST Product Category Row " + i + ", Not sorted.']");
             double gstValue = StringUtil.extractNumber(gstElement.getText());
@@ -1363,7 +1372,7 @@ public abstract class Transaction {
 
             if (taxType.equalsIgnoreCase("Inclusive")) {
                 common.clickElement("xpath", "//CheckBox[@Name='Inclusive Tax Row " + i + "']");
-                double taxableValue = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='Taxable Value Row "+i+", Not sorted.']").getText());
+                double taxableValue = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='Taxable Value Row " + i + ", Not sorted.']").getText());
                 System.out.println("taxable: " + taxableValue);
                 String gstTransType = common.findWebElement("xpath", "//Edit[@Name='GST Trans Type *']").getText().trim();
                 if (gstTransType.equalsIgnoreCase("Inter State Sales to Registered Dealers")) {
@@ -1425,7 +1434,7 @@ public abstract class Transaction {
 //                Assert.assertEquals(actualGSTAmount, formattedGSTAmount, "GST Amount mismatch for row " + i);
             // Click GST Amount column header (if required)
             else if (taxType.equalsIgnoreCase("Exclusive")) {
-                double taxableValue = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='Taxable Value Row "+i+", Not sorted.']").getText());
+                double taxableValue = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='Taxable Value Row " + i + ", Not sorted.']").getText());
                 System.out.println("taxable: " + taxableValue);
                 // Exclusive Tax Calculations
                 double calculatedGSTAmount = taxableValue * (totalTaxRate / 100);
@@ -1435,15 +1444,15 @@ public abstract class Transaction {
 
                 // Format values for consistency
                 String formattedGSTAmount = decimalFormat.format(calculatedGSTAmount);
-                System.out.println("formatted GST Amount :-"+formattedGSTAmount);
+                System.out.println("formatted GST Amount :-" + formattedGSTAmount);
                 String formattedNetAmount = decimalFormat.format(calculatedNetAmount);
-                System.out.println("formatted net Amount :-"+formattedNetAmount);
+                System.out.println("formatted net Amount :-" + formattedNetAmount);
 
                 // Fetch values from UI
                 String actualGSTAmount = common.findWebElement("xpath", "//Edit[@Name='GST Amount Row " + i + ", Not sorted.']").getText();
-                System.out.println("actual GST Amount :-"+formattedGSTAmount);
+                System.out.println("actual GST Amount :-" + formattedGSTAmount);
                 String actualNetAmount = common.findWebElement("xpath", "//Edit[@Name='Net Amount Row " + i + ", Not sorted.']").getText();
-                System.out.println("actual net Amount :-"+formattedGSTAmount);
+                System.out.println("actual net Amount :-" + formattedGSTAmount);
                 // Validate GST Amount and Net Amount
                 Assert.assertEquals(actualGSTAmount, formattedGSTAmount, "GST Amount mismatch for row " + i);
                 Assert.assertEquals(actualNetAmount, formattedNetAmount, "Net Amount mismatch for row " + i);
@@ -1453,28 +1462,28 @@ public abstract class Transaction {
         }
     }
 
-    public void OtherChargesWithoutGST(String dataFile,String accCode,String amount,String hsnCode,String iterations) throws IOException, ParseException {
+    public void OtherChargesWithoutGST(String dataFile, String accCode, String amount, String hsnCode, String iterations) throws IOException, ParseException {
         navigateToOtherChargesTab();
         for (int i = 0; i < Integer.parseInt(common.getData(dataFile, iterations)); i++) {
             // Enter Account Code and Amount
             enterData("xpath", "//Edit[@Name='Account Code Row " + i + ", Not sorted.']", dataFile, accCode);
             enterData("xpath", "//Edit[@Name='Amount * Row " + i + ", Not sorted.']", dataFile, amount);
-            enterData("xpath", "//Edit[@Name='HSN Row "+i+", Not sorted.']", dataFile, hsnCode);
+            enterData("xpath", "//Edit[@Name='HSN Row " + i + ", Not sorted.']", dataFile, hsnCode);
         }
     }
 
 
-    public void oldTTransaction () {
+    public void oldTTransaction() {
         System.out.println("Recent Transaction Id :" + common.findWebElement("xpath", "//Text[@Name='Last Saved :']/following-sibling::Text").getAttribute("Name"));
     }
-    public void newTransaction () {
+
+    public void newTransaction() {
         System.out.println("New Transaction ID  :" + common.findWebElement("xpath", "//Text[@Name='Last Saved :']/following-sibling::Text").getAttribute("Name"));
     }
 
-    public void waitForElement() throws InterruptedException {
-        for (int i = 0; i < 600; i++) {
-            Thread.sleep(700);  //7 mnts
-        }
+    public String getNewTransactionId() {
+        String transactionId = common.findWebElement("xpath", "//Text[@Name='Last Saved :']/following-sibling::Text").getAttribute("Name");
+        return transactionId;
     }
 
     public void selectMasterWithValidation(String transaction, String locatorType, String locator) {
@@ -1495,7 +1504,7 @@ public abstract class Transaction {
         }
     }
 
-    public void inputTextWithValidation(String locatorType,String locator,String inputText) {
+    public void inputTextWithValidation(String locatorType, String locator, String inputText) {
         WebElement element = common.findWebElement(locatorType, locator);
         element.sendKeys(inputText);
         System.out.println(element.getText());
@@ -1506,7 +1515,7 @@ public abstract class Transaction {
         }
     }
 
-    public void sliderHandle () {
+    public void sliderHandle() {
         int offset = 350;
         WebElement slider = common.findWebElement("xpath", "//Table[@Name='Items']/ScrollBar[@Name='Horizontal']/Thumb[@Name='Position']");
         Actions actions = new Actions(driver);
@@ -1526,13 +1535,13 @@ public abstract class Transaction {
         }
     }
 
-    public void generalInfoSliderHandle (int offset) {
+    public void generalInfoSliderHandle(int offset) {
         WebElement slider = common.findWebElement("xpath", "//ScrollBar[@Name='Horizontal']/Thumb[@Name='Position']");
         Actions actions = new Actions(driver);
         actions.clickAndHold(slider).moveByOffset(offset, 0).release().perform();
     }
 
-    public void checkBoxSelectionBillsReceivables (String locatorType, String rowLocator, String voucherLocator, String checkBoxLocator){
+    public void checkBoxSelectionBillsReceivables(String locatorType, String rowLocator, String voucherLocator, String checkBoxLocator) {
         List<WebElement> rows = common.findWebElements(locatorType, rowLocator);
         System.out.println("Row count :" + rows.size());
         for (WebElement row : rows) {
@@ -1553,7 +1562,7 @@ public abstract class Transaction {
         }
     }
 
-    public void billsPayable(String locatorType,String locator,String fileName,String key) throws IOException, ParseException, InterruptedException {
+    public void billsPayable(String locatorType, String locator, String fileName, String key) throws IOException, ParseException, InterruptedException {
         navigateToBillsPayablesTab();
         List<WebElement> elementList = common.findWebElements(locatorType, locator);
         System.out.println("Size :" + elementList.size());
@@ -1563,13 +1572,13 @@ public abstract class Transaction {
             break;
         }
         Thread.sleep(1000);
-        common.clickElement("xpath","//Table[@Name='BillsPayable']/*[@Name='Row 0']/Edit[@Name=' Row 0, Not sorted.']");
-        WebElement rightClick=common.findWebElement("xpath","//Table[@Name='BillsPayable']/*[@Name='Row 0']/Edit[@Name=' Row 0, Not sorted.']");
-        Actions actions=new Actions(driver);
-        actions.contextClick(rightClick).sendKeys(Keys.DOWN,Keys.DOWN,Keys.ENTER).perform();
+        common.clickElement("xpath", "//Table[@Name='BillsPayable']/*[@Name='Row 0']/Edit[@Name=' Row 0, Not sorted.']");
+        WebElement rightClick = common.findWebElement("xpath", "//Table[@Name='BillsPayable']/*[@Name='Row 0']/Edit[@Name=' Row 0, Not sorted.']");
+        Actions actions = new Actions(driver);
+        actions.contextClick(rightClick).sendKeys(Keys.DOWN, Keys.DOWN, Keys.ENTER).perform();
     }
 
-    public void checkBoxSelectionBillsPayable (String locatorType, String rowLocator, String voucherLocator, String checkBoxLocator){
+    public void checkBoxSelectionBillsPayable(String locatorType, String rowLocator, String voucherLocator, String checkBoxLocator) {
         List<WebElement> rows = common.findWebElements(locatorType, rowLocator);
         System.out.println("Row count :" + rows.size());
         for (WebElement row : rows) {
@@ -1588,5 +1597,47 @@ public abstract class Transaction {
                 System.out.println("Checkbox clicked for voucher: " + value);
             }
         }
+    }
+
+
+//ONLY REPORTS
+
+    public void bulkVerifyReport(String transaction) {
+        List<WebElement> elementList = common.findWebElements("xpath", "//Table/*[@Name='Data Panel']/ListItem[contains(@Name,'Row')]");
+        System.out.println("Size :" + elementList.size());
+        for (WebElement i : elementList) {
+            System.out.println(i.getText());
+            if (i.getText().contains(transaction)) {
+                Assert.assertTrue(true);
+            }
+        }
+    }
+
+    public void verifyReport(String transaction, String dataFile) throws IOException, ParseException {
+        List<WebElement> elementList = common.findWebElements("xpath", "//Table/*[@Name='Data Panel']/ListItem[contains(@Name,'Row')]");
+        System.out.println("Size :" + elementList.size());
+        for (WebElement i : elementList) {
+            if (i.getText().contains(transaction)) {
+                bulkVerifyReportData(i.getText(), dataFile);
+            }
+        }
+    }
+
+
+    public void bulkVerifyReportData(String text, String dataFile) throws IOException, ParseException {
+        String[] columns = text.split(";");
+        for (int i = 0; i < columns.length; i++) {
+            if (i > 2 && !common.getData(dataFile, "column" + (i + 1)).equals("")) {
+//                                System.out.println(columns[i]);
+//                                System.out.println(common.getData(dataFile,"column"+(i+1)));
+                Assert.assertEquals(columns[i], common.getData(dataFile, "column" + (i + 1)));
+            }
+            System.out.println(columns[i]);
+        }
+    }
+
+
+    public void closeReport(String reportName) {
+        common.clickElement("xpath", "//TabItem[@Name='" + reportName + "']/Button[@Name='Close']");
     }
 }

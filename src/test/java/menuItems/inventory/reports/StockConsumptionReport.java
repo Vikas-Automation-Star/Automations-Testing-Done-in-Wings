@@ -22,13 +22,13 @@ public class StockConsumptionReport {
     }
 
     @Test
-    public void stockConsumption() throws  InterruptedException, AWTException {
-        StockConsumptionReprt consumptionReprt=new StockConsumptionReprt(driver);
+    public void stockConsumption() throws InterruptedException, AWTException {
+        StockConsumptionReprt consumptionReprt = new StockConsumptionReprt(driver);
         consumptionReprt.stockConsumption();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

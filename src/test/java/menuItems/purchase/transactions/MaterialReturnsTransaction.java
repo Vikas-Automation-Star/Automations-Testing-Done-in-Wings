@@ -1,7 +1,7 @@
 package menuItems.purchase.transactions;
 
-import com.wings.pages.purchase.transactions.MaterialReturn;
 import com.wings.pages.AppLogin;
+import com.wings.pages.purchase.transactions.MaterialReturn;
 import io.appium.java_client.windows.WindowsDriver;
 import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
@@ -25,7 +25,7 @@ public class MaterialReturnsTransaction {
 
     @Test
     public void materialReturns() throws IOException, ParseException, InterruptedException {
-        MaterialReturn mr=new MaterialReturn(driver,file);
+        MaterialReturn mr = new MaterialReturn(driver, file);
         mr.materialReturn();
     }
 

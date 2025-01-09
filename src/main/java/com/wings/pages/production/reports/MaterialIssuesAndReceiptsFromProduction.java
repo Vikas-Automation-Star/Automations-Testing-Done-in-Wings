@@ -1,10 +1,10 @@
 package com.wings.pages.production.reports;
 
-import com.wings.pages.Report;
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 
-public class MaterialIssuesAndReceiptsFromProduction extends Report {
+public class MaterialIssuesAndReceiptsFromProduction extends Transaction {
     WindowsDriver driver;
     Common common;
 
@@ -15,7 +15,6 @@ public class MaterialIssuesAndReceiptsFromProduction extends Report {
     }
 
     public void materialIssuesAndReceiptsFromProduction() throws InterruptedException {
-
         common.clickElement("name", "Production");
         common.clickElement("name", "Simple");
         common.clickElement("xpath", "//MenuItem[@Name='Material Issues and Receipts from Production'][2]");

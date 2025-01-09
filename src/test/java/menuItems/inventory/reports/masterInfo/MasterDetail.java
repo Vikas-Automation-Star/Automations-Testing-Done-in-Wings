@@ -22,14 +22,14 @@ public class MasterDetail {
     }
 
     @Test
-    public void masterDetail() throws  InterruptedException, AWTException {
-        MasterDetails details=new MasterDetails(driver);
+    public void masterDetail() throws InterruptedException, AWTException {
+        MasterDetails details = new MasterDetails(driver);
         details.masterDetails();
 
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

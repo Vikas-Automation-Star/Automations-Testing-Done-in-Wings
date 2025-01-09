@@ -8,29 +8,30 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.wings.pages.AppLogin;
 import com.wings.pages.finance.transactions.Receipts.ReceiptsFromParties;
+
 import java.awt.*;
 import java.io.IOException;
 
 public class ReceiptsFromPartiesTransaction {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
-    String dataFile="./src/main/resources/menuItems/finance/transaction/receiptFromParty.json";
+    AppLogin appLogin = new AppLogin();
+    String dataFile = "./src/main/resources/menuItems/finance/transaction/receiptFromParty.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, ParseException, InterruptedException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
         Allure.step("Before Test - Receipts from Parties");
     }
 
     @Test
     public void receiptFromParty() throws IOException, ParseException, InterruptedException, AWTException {
-        ReceiptsFromParties fromParties=new ReceiptsFromParties(driver,dataFile);
+        ReceiptsFromParties fromParties = new ReceiptsFromParties(driver, dataFile);
         fromParties.receiptFromParty();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
         Allure.step("After Test - Receipts from Parties");
     }

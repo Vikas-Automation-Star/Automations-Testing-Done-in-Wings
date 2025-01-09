@@ -8,6 +8,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.wings.pages.AppLogin;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -18,19 +19,19 @@ public class ReceivedChequesBounceTransaction {
 
     @BeforeTest
     public void beforeTest() throws IOException, ParseException, InterruptedException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
         Allure.step("Before Test - Received Cheques Bounce");
     }
 
     @Test
     public void chequesBounce() throws IOException, ParseException, InterruptedException, AWTException {
-        ReceivedChequesBounce chequesBounce=new ReceivedChequesBounce(driver,dataFile);
+        ReceivedChequesBounce chequesBounce = new ReceivedChequesBounce(driver, dataFile);
         chequesBounce.receivedCheckBounce();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
         Allure.step("After Test - Received Cheques Bounce");
     }

@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.wings.pages.AppLogin;
 import com.wings.pages.finance.reports.FinancialStatements.ProfitandLossManualStockReportCode;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -23,12 +24,12 @@ public class ProfitandLossManualStockReport {
 
     @Test
     public void profitAndLossManualStock() throws InterruptedException, AWTException {
-        ProfitandLossManualStockReportCode manualStockReportCode=new ProfitandLossManualStockReportCode(driver);
+        ProfitandLossManualStockReportCode manualStockReportCode = new ProfitandLossManualStockReportCode(driver);
         manualStockReportCode.profitLossManualStock();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 

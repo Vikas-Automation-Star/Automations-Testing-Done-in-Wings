@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.wings.pages.AppLogin;
 import com.wings.pages.inventory.reports.masterInfo.ProductBatches;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -21,13 +22,13 @@ public class ProductBatch {
     }
 
     @Test
-    public void productBatchMasterinfo() throws  InterruptedException, AWTException {
-        ProductBatches batches=new ProductBatches(driver);
+    public void productBatchMasterinfo() throws InterruptedException, AWTException {
+        ProductBatches batches = new ProductBatches(driver);
         batches.productBatch();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

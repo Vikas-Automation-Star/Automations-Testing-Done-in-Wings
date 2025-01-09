@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.wings.pages.AppLogin;
 import com.wings.pages.finance.reports.partyAdjustments.CreditNoteFromSuppliersReportCode;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -15,19 +16,19 @@ public class CreditNoteFromSuppliersReport {
     AppLogin appLogin = new AppLogin();
 
     @BeforeTest
-    public void beforeTest() throws  InterruptedException, IOException, ParseException {
+    public void beforeTest() throws InterruptedException, IOException, ParseException {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
     public void creditNoteFromSupplierReport() throws InterruptedException, AWTException {
-        CreditNoteFromSuppliersReportCode noteFromSuppliersReportCode=new CreditNoteFromSuppliersReportCode(driver);
+        CreditNoteFromSuppliersReportCode noteFromSuppliersReportCode = new CreditNoteFromSuppliersReportCode(driver);
         noteFromSuppliersReportCode.creditNotefromSupplierReport();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

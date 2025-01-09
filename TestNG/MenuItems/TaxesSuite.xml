@@ -4,235 +4,246 @@
         <listener class-name="com.wings.utils.listener"></listener>
     </listeners>
 
-    <test name="Create HsnCodesMaster" description="description for HsnCodesMaster"  testID="WOW 1">
+    <test name="Create HsnCodesMaster" description="description for HsnCodesMaster" testID="WOW 1">
         <classes>
             <class name="menuItems.Taxes.masters.GST.HsnCodesMaster"></class>
         </classes>
     </test>
 
-    <test name="Create GstRegistrationMaster" description="description for GstRegistrationMaster"  testID="WOW 2">
+    <test name="Create GstRegistrationMaster" description="description for GstRegistrationMaster" testID="WOW 2">
         <classes>
             <class name="menuItems.Taxes.masters.GST.GstRegistrationMaster"></class>
         </classes>
     </test>
 
-    <test name="Create ConsignerMaster" description="description for ConsignerMaster"  testID="WOW 3">
+    <test name="Create ConsignerMaster" description="description for ConsignerMaster" testID="WOW 3">
         <classes>
             <class name="menuItems.Taxes.masters.GST.ConsignerMaster"></class>
         </classes>
     </test>
 
-    <test name="Create EcommerceOperatorMaster" description="description for EcommerceOperatorMaster"  testID="WOW 4">
+    <test name="Create EcommerceOperatorMaster" description="description for EcommerceOperatorMaster" testID="WOW 4">
         <classes>
             <class name="menuItems.Taxes.masters.GST.EcommerceOperatorMaster"></class>
         </classes>
     </test>
 
-    <test name="Create TdsAssesseTypesMaster" description="description for TdsAssesseTypesMaster"  testID="WOW 5">
+    <test name="Create TdsAssesseTypesMaster" description="description for TdsAssesseTypesMaster" testID="WOW 5">
         <classes>
             <class name="menuItems.Taxes.masters.TDS.TdsAssesseeTypesMaster"></class>
         </classes>
     </test>
 
-    <test name="Create TdsSubTypesMaster" description="description for TdsSubTypesMaster"  testID="WOW 6">
+    <test name="Create TdsSubTypesMaster" description="description for TdsSubTypesMaster" testID="WOW 6">
         <classes>
             <class name="menuItems.Taxes.masters.TDS.TdsSubTypesMaster"></class>
         </classes>
     </test>
 
-    <test name="Create TdsTransactionNaturesMaster" description="description for TdsTransactionNaturesMaster"  testID="WOW 7">
+    <test name="Create TdsTransactionNaturesMaster" description="description for TdsTransactionNaturesMaster"
+          testID="WOW 7">
         <classes>
             <class name="menuItems.Taxes.masters.TDS.TdsTransactionNaturesMaster"></class>
         </classes>
     </test>
 
-    <test name="Create TcsAssesseeTypesMaster" description="description for TcsAssesseeTypesMaster"  testID="WOW 8">
+    <test name="Create TcsAssesseeTypesMaster" description="description for TcsAssesseeTypesMaster" testID="WOW 8">
         <classes>
             <class name="menuItems.Taxes.masters.TCS.TcsAssesseeTypesMaster"></class>
         </classes>
     </test>
 
-    <test name="Create TcsSubTypesMaster" description="description for TcsSubTypesMaster"  testID="WOW 9">
+    <test name="Create TcsSubTypesMaster" description="description for TcsSubTypesMaster" testID="WOW 9">
         <classes>
             <class name="menuItems.Taxes.masters.TCS.TcsSubTypesMaster"></class>
         </classes>
     </test>
 
-        <test name="Create TcsTransactionNatureMaster" description="description for TcsTransactionNatureMaster"  testID="WOW 10">
-            <classes>
-                <class name="menuItems.Taxes.masters.TCS.TcsTransactionNatureMaster"></class>
-            </classes>
-        </test>
+    <test name="Create TcsTransactionNatureMaster" description="description for TcsTransactionNatureMaster"
+          testID="WOW 10">
+        <classes>
+            <class name="menuItems.Taxes.masters.TCS.TcsTransactionNatureMaster"></class>
+        </classes>
+    </test>
 
-<!-- masters completed -->
+    <!-- masters completed -->
 
-    <test name="Performing Gstr1MonthEndTransaction" description="description for Gstr1MonthEndTransaction"  testID="WOW 11">
+    <test name="Performing Gstr1MonthEndTransaction" description="description for Gstr1MonthEndTransaction"
+          testID="WOW 11">
         <classes>
             <class name="menuItems.Taxes.transactions.GST.Gstr1MonthEndTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing TdsOpeningBalencesTransaction" description="description for TdsOpeningBalancesTransaction"  testID="WOW 12">
+    <test name="Performing TdsOpeningBalencesTransaction" description="description for TdsOpeningBalancesTransaction"
+          testID="WOW 12">
         <classes>
             <class name="menuItems.Taxes.transactions.TDS.TdsOpeningBalencesTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing TdsPaymentsTransaction" description="description for TdsPaymentsTransaction"  testID="WOW 13">
+    <test name="Performing TdsPaymentsTransaction" description="description for TdsPaymentsTransaction" testID="WOW 13">
         <classes>
             <class name="menuItems.Taxes.transactions.TDS.TdsPaymentsTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing TcsOpeningBalancesTransaction" description="description for TcsOpeningBalancesTransaction"  testID="WOW 14">
+    <test name="Performing TcsOpeningBalancesTransaction" description="description for TcsOpeningBalancesTransaction"
+          testID="WOW 14">
         <classes>
             <class name="menuItems.Taxes.transactions.TCS.TcsOpeningBalancesTransaction"></class>
         </classes>
     </test>
 
-    <test name="Performing TcsPaymentsTransaction" description="description for TcsPaymentsTransaction"  testID="WOW 15">
+    <test name="Performing TcsPaymentsTransaction" description="description for TcsPaymentsTransaction" testID="WOW 15">
         <classes>
             <class name="menuItems.Taxes.transactions.TCS.TcsPaymentsTransaction"></class>
         </classes>
     </test>
 
     <!-- Transactions complete -->
-    <test name="Checking Gstr1MonthEndTransactionReport" description="description for CreateGstr1MonthEndTransaction Report"  testID="WOW 16">
+    <test name="Checking Gstr1MonthEndTransactionReport"
+          description="description for CreateGstr1MonthEndTransaction Report" testID="WOW 16">
         <classes>
             <class name="menuItems.Taxes.reports.GST.Gstr1MonthEndTransactionReport"></class>
         </classes>
     </test>
 
-    <test name="Checking Gstr1B2BReport" description="description for CreateGstr1B2B Report"  testID="WOW 17">
+    <test name="Checking Gstr1B2BReport" description="description for CreateGstr1B2B Report" testID="WOW 17">
         <classes>
             <class name="menuItems.Taxes.reports.GST.Gstr1B2BReport"></class>
         </classes>
     </test>
 
-    <test name="Checking Gstr1B2CLReport" description="description for CreateGstr1B2CL Report"  testID="WOW 18">
+    <test name="Checking Gstr1B2CLReport" description="description for CreateGstr1B2CL Report" testID="WOW 18">
         <classes>
             <class name="menuItems.Taxes.reports.GST.Gstr1B2CLReport"></class>
         </classes>
     </test>
 
-    <test name="Checking Gstr1B2CSReport" description="description for CreateGstr1B2CS Report"  testID="WOW 19">
+    <test name="Checking Gstr1B2CSReport" description="description for CreateGstr1B2CS Report" testID="WOW 19">
         <classes>
             <class name="menuItems.Taxes.reports.GST.Gstr1B2CSReport"></class>
         </classes>
     </test>
 
-    <test name="Checking Gstr1CDNRReport" description="description for CreateGstr1CDNR Report"  testID="WOW 20">
+    <test name="Checking Gstr1CDNRReport" description="description for CreateGstr1CDNR Report" testID="WOW 20">
         <classes>
             <class name="menuItems.Taxes.reports.GST.Gstr1CDNRReport"></class>
         </classes>
     </test>
 
-    <test name="Checking Gstr1CDNURReport" description="description for CreateGstr1CDNUR Report"  testID="WOW 21">
+    <test name="Checking Gstr1CDNURReport" description="description for CreateGstr1CDNUR Report" testID="WOW 21">
         <classes>
             <class name="menuItems.Taxes.reports.GST.Gstr1CDNURReport"></class>
         </classes>
     </test>
 
-    <test name="Checking Gstr1EXPReport" description="description for CreateGstr1EXP Report"  testID="WOW 22">
+    <test name="Checking Gstr1EXPReport" description="description for CreateGstr1EXP Report" testID="WOW 22">
         <classes>
             <class name="menuItems.Taxes.reports.GST.Gstr1EXPReport"></class>
         </classes>
     </test>
 
-    <test name="Checking Gstr1EXEMPReport" description="description for CreateGstr1EXEMP Report"  testID="WOW 23">
+    <test name="Checking Gstr1EXEMPReport" description="description for CreateGstr1EXEMP Report" testID="WOW 23">
         <classes>
             <class name="menuItems.Taxes.reports.GST.Gstr1EXEMPReport"></class>
         </classes>
     </test>
 
-    <test name="Checking Gstr1HSNReport" description="description for Gstr1HSN Report"  testID="WOW 24">
+    <test name="Checking Gstr1HSNReport" description="description for Gstr1HSN Report" testID="WOW 24">
         <classes>
             <class name="menuItems.Taxes.reports.GST.Gstr1HSNReport"></class>
         </classes>
     </test>
 
-    <test name="Checking Gstr1DOCSReport" description="description for Gstr1DOCS Report"  testID="WOW 25">
+    <test name="Checking Gstr1DOCSReport" description="description for Gstr1DOCS Report" testID="WOW 25">
         <classes>
             <class name="menuItems.Taxes.reports.GST.Gstr1DOCSReport"></class>
         </classes>
     </test>
 
-    <test name="Checking GstOutPutReport" description="description for GstOutPut Report"  testID="WOW 26">
+    <test name="Checking GstOutPutReport" description="description for GstOutPut Report" testID="WOW 26">
         <classes>
             <class name="menuItems.Taxes.reports.GST.GstOutPutReport"></class>
         </classes>
     </test>
 
-    <test name="Checking GstInputReport" description="description for GstInput Report"  testID="WOW 27">
+    <test name="Checking GstInputReport" description="description for GstInput Report" testID="WOW 27">
         <classes>
             <class name="menuItems.Taxes.reports.GST.GstInputReport"></class>
         </classes>
     </test>
 
-    <test name="Checking Gst3BReport" description="description for Gst3B Report"  testID="WOW 28">
+    <test name="Checking Gst3BReport" description="description for Gst3B Report" testID="WOW 28">
         <classes>
             <class name="menuItems.Taxes.reports.GST.Gst3BReport"></class>
         </classes>
     </test>
 
-    <test name="Checking TdsOpeningBalencesReport" description="description for TdsOpeningBalences Report"  testID="WOW 29">
+    <test name="Checking TdsOpeningBalances Report" description="description for TdsOpeningBalences Report"
+          testID="WOW 29">
         <classes>
             <class name="menuItems.Taxes.reports.TDS.TdsOpeningBalencesReport"></class>
         </classes>
     </test>
 
-    <test name="Checking TdsPaymentsReport" description="description for TdsPayments Report"  testID="WOW 30">
+    <test name="Checking TdsPaymentsReport" description="description for TdsPayments Report" testID="WOW 30">
         <classes>
             <class name="menuItems.Taxes.reports.TDS.TdsPaymentsReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PendingTdsPaymentsReport" description="description for PendingTdsPayments Report"  testID="WOW 31">
+    <test name="Checking PendingTdsPaymentsReport" description="description for PendingTdsPayments Report"
+          testID="WOW 31">
         <classes>
             <class name="menuItems.Taxes.reports.TDS.PendingTdsPaymentsReport"></class>
         </classes>
     </test>
 
-    <test name="Checking TdsDeductedByUsReport" description="description for TdsDeductedByUs Report"  testID="WOW 32">
+    <test name="Checking TdsDeductedByUsReport" description="description for TdsDeductedByUs Report" testID="WOW 32">
         <classes>
             <class name="menuItems.Taxes.reports.TDS.TdsDeductedByUsReport"></class>
         </classes>
     </test>
 
-    <test name="Checking TdsDeductedByOthersReport" description="description for TdsDeductedByOthers Report"  testID="WOW 33">
+    <test name="Checking TdsDeductedByOthersReport" description="description for TdsDeductedByOthers Report"
+          testID="WOW 33">
         <classes>
             <class name="menuItems.Taxes.reports.TDS.TdsDeductedByOthersReport"></class>
         </classes>
     </test>
 
-    <test name="Checking TcsOpeningBalancesReport" description="description for TcsOpeningBalances Report"  testID="WOW 34">
+    <test name="Checking TcsOpeningBalancesReport" description="description for TcsOpeningBalances Report"
+          testID="WOW 34">
         <classes>
             <class name="menuItems.Taxes.reports.TCS.TcsOpeningBalancesReport"></class>
         </classes>
     </test>
 
-    <test name="Checking TcsPaymentsReport" description="description for TcsPayments Report"  testID="WOW 35">
+    <test name="Checking TcsPaymentsReport" description="description for TcsPayments Report" testID="WOW 35">
         <classes>
             <class name="menuItems.Taxes.reports.TCS.TcsPaymentsReport"></class>
         </classes>
     </test>
 
-    <test name="Checking PendingTcsPaymentsReports" description="description for PendingTcsPayments Report"  testID="WOW 36">
+    <test name="Checking PendingTcsPaymentsReports" description="description for PendingTcsPayments Report"
+          testID="WOW 36">
         <classes>
             <class name="menuItems.Taxes.reports.TCS.PendingTcsPaymentsReports"></class>
         </classes>
     </test>
 
-    <test name="Checking TcsPurchaseReport" description="description for TcsPurchaseReport"  testID="WOW 37">
+    <test name="Checking TcsPurchaseReport" description="description for TcsPurchaseReport" testID="WOW 37">
         <classes>
             <class name="menuItems.Taxes.reports.TCS.TcsPurchaseReport"></class>
         </classes>
     </test>
 
-    <test name="Checking TcsSalesReport" description="description for TcsSalesReport"  testID="WOW 38">
+    <test name="Checking TcsSalesReport" description="description for TcsSalesReport" testID="WOW 38">
         <classes>
             <class name="menuItems.Taxes.reports.TCS.TcsSalesReport"></class>
         </classes>
     </test>
-<!-- Reports completed -->
+    <!-- Reports completed -->
 </suite>

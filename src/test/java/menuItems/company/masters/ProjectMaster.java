@@ -13,24 +13,24 @@ import java.io.IOException;
 
 public class ProjectMaster {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
+    AppLogin appLogin = new AppLogin();
     Projects project;
-    String file="./src/main/resources/MenuItems/Company/Masters/ProjectData.json";
+    String file = "./src/main/resources/MenuItems/Company/Masters/ProjectData.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
     public void createCostMaster() throws IOException, ParseException, InterruptedException, AWTException {
-        project =new Projects(driver,file);
+        project = new Projects(driver, file);
         project.project();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 

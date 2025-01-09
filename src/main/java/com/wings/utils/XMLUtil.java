@@ -5,6 +5,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
@@ -27,7 +28,7 @@ public class XMLUtil {
     long executionTimeMillis = 0;
     String executionMachine = "";
     String executionStartTime = "";
-    String suiteName1="";
+    String suiteName1 = "";
     String executionEndTime = "";
     String os = System.getProperty("os.name");
     static final Path toFile = Paths.get("mailTemplates/to.html");
@@ -36,13 +37,13 @@ public class XMLUtil {
     int skippedTests = 0;
     int totalTests = 0;
     double passRate = 0;
-    String name="";
-    String description="";
-    String testID="";
+    String name = "";
+    String description = "";
+    String testID = "";
     final List<Map<String, String>> testDetailsList = new ArrayList<>();
-    String dataFile="src/main/resources/XMLdata.json";
+    String dataFile = "src/main/resources/XMLdata.json";
     WindowsDriver driver;
-    Common common=new Common(driver);
+    Common common = new Common(driver);
     StringBuilder testDetails = new StringBuilder();
 
     public void readXMLFile(String pathOfFile) throws ParserConfigurationException, IOException, SAXException {
@@ -52,23 +53,23 @@ public class XMLUtil {
         document.getDocumentElement().normalize();
     }
 
-    public String testRowAppend(String testID,String name,String status, String description,double duration){
-        return "<tr style='text-align: center; vertical-align: middle;'> <td align=\"center\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">"+testID+"</td>" +
-                "<td align=\"left\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">"+name+"</td>" +
-                "<td  align=\"left\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">"+status+"</td>" +
-                "<td align=\"center\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">"+description+"</td>" +
-                "<td align=\"left\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">"+duration+ "s" +"</td></tr>";
+    public String testRowAppend(String testID, String name, String status, String description, double duration) {
+        return "<tr style='text-align: center; vertical-align: middle;'> <td align=\"center\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">" + testID + "</td>" +
+                "<td align=\"left\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">" + name + "</td>" +
+                "<td  align=\"left\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">" + status + "</td>" +
+                "<td align=\"center\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">" + description + "</td>" +
+                "<td align=\"left\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">" + duration + "s" + "</td></tr>";
 
     }
 
     public void readTestNG(String TestNGFile) throws ParserConfigurationException, IOException, SAXException {
         readXMLFile(TestNGFile);
-        NodeList childList=document.getElementsByTagName("test");
+        NodeList childList = document.getElementsByTagName("test");
         for (int i = 0; i < childList.getLength(); i++) {
-            Element testElement= (Element) childList.item(i);
-            name=testElement.getAttribute("name");
-            description=testElement.getAttribute("description");
-            testID=testElement.getAttribute("testID");
+            Element testElement = (Element) childList.item(i);
+            name = testElement.getAttribute("name");
+            description = testElement.getAttribute("description");
+            testID = testElement.getAttribute("testID");
 
             Map<String, String> testData = new HashMap<>();
             testData.put("name", name);
@@ -152,43 +153,43 @@ public class XMLUtil {
 
 
         // Read and update HTML template
-            String htmlTemplate = new String(Files.readAllBytes(Paths.get("mailTemplates/executiontemplate.html")), "UTF-8");
-            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#ExecutionMachine#"), executionMachine);
-            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#SuiteName#"), suiteName1);
-            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#TestPassRate#"), String.format("%.2f%%", passRate));
-            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#PassedTests#"), Integer.toString(passedTests));
-            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#FailedTests#"), Integer.toString(failedTests));
-            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#SkippedTests#"), Integer.toString(skippedTests));
-            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#ExecutionStartTime#"), executionStartTime);
-            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#ExecutionEndTime#"), executionEndTime);
-            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#ExecutionTime#"), executionTimeFormatted);
-            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#TotalTests#"), String.valueOf(totalTests));
-            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#OS#"), os);
-            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#URL#"), common.getData(dataFile, "app"));
-            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#CompanyDetails#"), common.getData(dataFile, "companyName"));
-            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#row#"), testDetails.toString());
-            Files.write(toFile, htmlTemplate.getBytes("UTF-8"));
+        String htmlTemplate = new String(Files.readAllBytes(Paths.get("mailTemplates/executiontemplate.html")), "UTF-8");
+        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#ExecutionMachine#"), executionMachine);
+        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#SuiteName#"), suiteName1);
+        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#TestPassRate#"), String.format("%.2f%%", passRate));
+        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#PassedTests#"), Integer.toString(passedTests));
+        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#FailedTests#"), Integer.toString(failedTests));
+        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#SkippedTests#"), Integer.toString(skippedTests));
+        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#ExecutionStartTime#"), executionStartTime);
+        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#ExecutionEndTime#"), executionEndTime);
+        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#ExecutionTime#"), executionTimeFormatted);
+        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#TotalTests#"), String.valueOf(totalTests));
+        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#OS#"), os);
+        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#URL#"), common.getData(dataFile, "app"));
+        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#CompanyDetails#"), common.getData(dataFile, "companyName"));
+        htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#row#"), testDetails.toString());
+        Files.write(toFile, htmlTemplate.getBytes("UTF-8"));
 
-            // Send email with report attached
-            final String fromEmail = "productupdates@wingsinfo.net";
-            final String password = "Zuy97283";
-            final String toEmail = "madhuri.matta@wingsinfo.net,manoj.c@wingsinfo.net,venkatarathaiah.m@wingsinfo.net,ashokreddy.rs@wingsinfo.net,vikas.empuluri@wingsinfo.net";
+        // Send email with report attached
+        final String fromEmail = "productupdates@wingsinfo.net";
+        final String password = "Zuy97283";
+        final String toEmail = "madhuri.matta@wingsinfo.net,manoj.c@wingsinfo.net,venkatarathaiah.m@wingsinfo.net,ashokreddy.rs@wingsinfo.net,vikas.empuluri@wingsinfo.net";
 
-            Properties props = new Properties();
-            props.put("mail.smtp.host", "smtp.office365.com");
-            props.put("mail.smtp.port", "587");
-            props.put("mail.smtp.auth", "true");
-            props.put("mail.smtp.starttls.enable", "true");
+        Properties props = new Properties();
+        props.put("mail.smtp.host", "smtp.office365.com");
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
 
-            Authenticator auth = new Authenticator() {
-                protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication(fromEmail, password);
-                }
-            };
-            Session session = Session.getInstance(props, auth);
-            EmailUtil.sendEmail(session, toEmail, String.valueOf(toFile));
-            System.out.println("Report generated and email sent successfully!");
-        }
+        Authenticator auth = new Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(fromEmail, password);
+            }
+        };
+        Session session = Session.getInstance(props, auth);
+        EmailUtil.sendEmail(session, toEmail, String.valueOf(toFile));
+        System.out.println("Report generated and email sent successfully!");
+    }
 
     public static void main(String[] args) {
         XMLUtil xmlUtil = new XMLUtil();

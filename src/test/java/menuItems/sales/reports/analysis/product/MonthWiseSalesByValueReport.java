@@ -19,14 +19,15 @@ public class MonthWiseSalesByValueReport {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
+
     @Test
     public void monthWiseSalesByValue() throws InterruptedException {
-      MonthWiseSalesByValue mwsbv=new MonthWiseSalesByValue(driver);
+        MonthWiseSalesByValue mwsbv = new MonthWiseSalesByValue(driver);
         mwsbv.monthWiseSalesByValue();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

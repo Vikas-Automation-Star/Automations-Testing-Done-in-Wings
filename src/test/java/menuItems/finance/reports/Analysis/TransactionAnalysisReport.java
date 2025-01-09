@@ -1,12 +1,13 @@
 package menuItems.finance.reports.Analysis;
 
+import com.wings.pages.AppLogin;
+import com.wings.pages.finance.reports.Analysis.TransactionAnalysis;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import com.wings.pages.AppLogin;
-import com.wings.pages.finance.reports.Analysis.TransactionAnalysis;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -21,13 +22,13 @@ public class TransactionAnalysisReport {
     }
 
     @Test
-    public void transactionAnalys() throws  InterruptedException, AWTException {
-        TransactionAnalysis analysis=new TransactionAnalysis(driver);
+    public void transactionAnalys() throws InterruptedException, AWTException {
+        TransactionAnalysis analysis = new TransactionAnalysis(driver);
         analysis.transactionAnalysis();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 

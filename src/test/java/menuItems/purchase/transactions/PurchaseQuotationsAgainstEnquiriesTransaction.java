@@ -1,7 +1,7 @@
 package menuItems.purchase.transactions;
 
-import com.wings.pages.purchase.transactions.PurchaseQuotationsAgainstEnquiries;
 import com.wings.pages.AppLogin;
+import com.wings.pages.purchase.transactions.PurchaseQuotationsAgainstEnquiries;
 import io.appium.java_client.windows.WindowsDriver;
 import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
@@ -25,7 +25,7 @@ public class PurchaseQuotationsAgainstEnquiriesTransaction {
 
     @Test
     public void purchaseQuotationsAgainstEnquiries() throws IOException, ParseException, InterruptedException {
-        PurchaseQuotationsAgainstEnquiries pqae=new PurchaseQuotationsAgainstEnquiries(driver,file);
+        PurchaseQuotationsAgainstEnquiries pqae = new PurchaseQuotationsAgainstEnquiries(driver, file);
         pqae.purchaseQuotationsAgainstEnquiry();
     }
 

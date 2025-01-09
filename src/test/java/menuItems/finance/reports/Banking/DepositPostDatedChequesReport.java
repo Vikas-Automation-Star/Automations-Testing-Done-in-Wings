@@ -1,12 +1,13 @@
 package menuItems.finance.reports.Banking;
 
+import com.wings.pages.AppLogin;
+import com.wings.pages.finance.reports.Banking.DepositPostDatedChequesReportCode;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import com.wings.pages.AppLogin;
-import com.wings.pages.finance.reports.Banking.DepositPostDatedChequesReportCode;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -21,13 +22,13 @@ public class DepositPostDatedChequesReport {
     }
 
     @Test
-    public void depositPostDateCheck() throws  InterruptedException, AWTException {
-        DepositPostDatedChequesReportCode postDatedCheques=new DepositPostDatedChequesReportCode(driver);
+    public void depositPostDateCheck() throws InterruptedException, AWTException {
+        DepositPostDatedChequesReportCode postDatedCheques = new DepositPostDatedChequesReportCode(driver);
         postDatedCheques.postDateCheques();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

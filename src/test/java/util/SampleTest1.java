@@ -9,6 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -24,14 +25,14 @@ public class SampleTest1 {
     }
 
     @Test
-    public void accountBalance() throws  InterruptedException, AWTException {
-        AccountBalances accountBalances=new AccountBalances(driver);
+    public void accountBalance() throws InterruptedException, AWTException {
+        AccountBalances accountBalances = new AccountBalances(driver);
         accountBalances.accountBalanceReport();
-        Assert.assertEquals("hi","bye");
+        Assert.assertEquals("hi", "bye");
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
         Allure.step("After test Sample Test 1");
     }

@@ -1,11 +1,12 @@
 package com.wings.pages.finance.reports.OpeningBalance;
 
-import io.appium.java_client.windows.WindowsDriver;
-import com.wings.pages.Report;
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
+
 import java.awt.*;
 
-public class TransferIncomesandExpensestoPLListingReportCode extends Report {
+public class TransferIncomesandExpensestoPLListingReportCode extends Transaction {
     WindowsDriver driver;
     Common common;
 
@@ -18,9 +19,9 @@ public class TransferIncomesandExpensestoPLListingReportCode extends Report {
     public void incomeAndExpenseListing() throws InterruptedException, AWTException {
         common.clickElement("name", "Finance");
         common.clickElement("name", "Opening Balances");
-        common.clickElement("xpath","//MenuItem[@Name='Transfer Incomes and Expenses to PL Listing']");
+        common.clickElement("xpath", "//MenuItem[@Name='Transfer Incomes and Expenses to PL Listing']");
         Thread.sleep(1000);
-        common.clickElement("xpath","//Pane/Button[@Name='Submit']");
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
 //        super.bulkVerifyReport("TIE 1");
         closeReport("Transfer Incomes and Expenses to PL Listing");

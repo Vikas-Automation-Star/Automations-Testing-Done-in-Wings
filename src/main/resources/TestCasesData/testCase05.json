@@ -1,5 +1,4 @@
 {
-
   "title": "Sales Invoices",
   "branch": "AT_Branch4_Reg_Inter",
   "partyCode": 23,
@@ -12,23 +11,20 @@
   "type": "Deductions",
   "rowCount": 2,
   "otherChargesCount": 2,
-
   "productCount": 3,
   "productType0": "general",
   "quantity0": 10,
   "productCode0": "02",
-  "voucherDiscount0":2,
-  "partyDiscount0":5,
-
+  "voucherDiscount0": 2,
+  "partyDiscount0": 5,
   "productType1": "multiBatch",
   "quantity1": 15,
   "productCode1": 53,
-  "voucherDiscount1":2,
-  "partyDiscount1":9,
-
+  "voucherDiscount1": 2,
+  "partyDiscount1": 9,
   "productType2": "serial",
   "quantity2": 7,
   "productCode2": 32,
-  "voucherDiscount2":4,
-  "partyDiscount2":7
+  "voucherDiscount2": 4,
+  "partyDiscount2": 7
 }

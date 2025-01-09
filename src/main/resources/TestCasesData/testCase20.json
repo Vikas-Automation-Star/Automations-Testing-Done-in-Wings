@@ -12,23 +12,20 @@
   "rowCount": 4,
   "otherChargesCount": 2,
   "TaxType": "Exclusive",
-
   "productCount": 3,
   "productType0": "general",
   "quantity0": 5,
   "productCode0": "02",
-  "voucherDiscount0":2,
-  "partyDiscount0":5,
-
+  "voucherDiscount0": 2,
+  "partyDiscount0": 5,
   "productType1": "multiBatch",
   "quantity1": 7,
   "productCode1": 53,
-  "voucherDiscount1":2,
-  "partyDiscount1":9,
-
+  "voucherDiscount1": 2,
+  "partyDiscount1": 9,
   "productType2": "serial",
   "quantity2": 9,
   "productCode2": 32,
-  "voucherDiscount2":4,
-  "partyDiscount2":7
+  "voucherDiscount2": 4,
+  "partyDiscount2": 7
 }

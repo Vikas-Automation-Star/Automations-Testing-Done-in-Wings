@@ -34,7 +34,8 @@
         </classes>
     </test>
 
-    <test name="Chart of Accounts - MiscellaneousAssests" description="MiscellaneousAssests Master Description" testID="6">
+    <test name="Chart of Accounts - MiscellaneousAssests" description="MiscellaneousAssests Master Description"
+          testID="6">
         <classes>
             <class name="menuItems.finance.masters.ChartOfAccounts.Assests.MiscellaneousAssests"/>
         </classes>
@@ -46,13 +47,15 @@
         </classes>
     </test>
 
-    <test name="Chart of Accounts - CaptialShareHoldersFunds" description="CaptialShareHoldersFunds Master Description" testID="8">
+    <test name="Chart of Accounts - CaptialShareHoldersFunds" description="CaptialShareHoldersFunds Master Description"
+          testID="8">
         <classes>
             <class name="menuItems.finance.masters.ChartOfAccounts.Liabilities.CaptialShareHoldersFunds"/>
         </classes>
     </test>
 
-    <test name="Chart of Accounts - OtherCurrentLiabilities" description="OtherCurrentLiabilities Master Description" testID="9">
+    <test name="Chart of Accounts - OtherCurrentLiabilities" description="OtherCurrentLiabilities Master Description"
+          testID="9">
         <classes>
             <class name="menuItems.finance.masters.ChartOfAccounts.Liabilities.OtherCurrentLiabilities"/>
         </classes>
@@ -76,7 +79,8 @@
         </classes>
     </test>
 
-    <test name="Chart of Accounts - SundryCreditiorsSuppliers" description="SundryCreditiorsSuppliers Master Description" testID="13">
+    <test name="Chart of Accounts - SundryCreditiorsSuppliers"
+          description="SundryCreditiorsSuppliers Master Description" testID="13">
         <classes>
             <class name="menuItems.finance.masters.ChartOfAccounts.Liabilities.SundryCreditiorsSuppliers"/>
         </classes>
@@ -88,7 +92,8 @@
         </classes>
     </test>
 
-    <test name="Chart of Accounts - AdministrativeExpenses" description="AdministrativeExpenses Master Description" testID="15">
+    <test name="Chart of Accounts - AdministrativeExpenses" description="AdministrativeExpenses Master Description"
+          testID="15">
         <classes>
             <class name="menuItems.finance.masters.ChartOfAccounts.ProfitAndLoss.AdministrativeExpenses"/>
         </classes>
@@ -112,7 +117,8 @@
         </classes>
     </test>
 
-    <test name="Chart of Accounts - Opening And ClosingStock" description="OpeningAndClosingStock Master Description" testID="19">
+    <test name="Chart of Accounts - Opening And ClosingStock" description="OpeningAndClosingStock Master Description"
+          testID="19">
         <classes>
             <class name="menuItems.finance.masters.ChartOfAccounts.ProfitAndLoss.OpeningAndClosingStock"/>
         </classes>
@@ -136,13 +142,15 @@
         </classes>
     </test>
 
-    <test name="Chart of Accounts - Selling And Distribution Expenses" description="SellingAndDistributionExpenses Master Description" testID="23">
+    <test name="Chart of Accounts - Selling And Distribution Expenses"
+          description="SellingAndDistributionExpenses Master Description" testID="23">
         <classes>
             <class name="menuItems.finance.masters.ChartOfAccounts.ProfitAndLoss.SellingAndDistributionExpenses"/>
         </classes>
     </test>
 
-    <test name="Chart of Accounts - Taxes And Other Charges" description="TaxesAndOtherCharges Master Description" testID="24">
+    <test name="Chart of Accounts - Taxes And Other Charges" description="TaxesAndOtherCharges Master Description"
+          testID="24">
         <classes>
             <class name="menuItems.finance.masters.ChartOfAccounts.ProfitAndLoss.TaxesAndOtherCharges"/>
         </classes>
@@ -171,7 +179,6 @@
             <class name="menuItems.finance.masters.DrawnOnBanksMaster"/>
         </classes>
     </test>
-
 
 
 </suite>

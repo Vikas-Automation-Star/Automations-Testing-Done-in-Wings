@@ -13,23 +13,23 @@ import java.io.IOException;
 
 public class TermsMaster {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
-    String file="./src/main/resources/MenuItems/Company/Masters/TermsData.json";
+    AppLogin appLogin = new AppLogin();
+    String file = "./src/main/resources/MenuItems/Company/Masters/TermsData.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
     public void terms() throws IOException, ParseException, InterruptedException, AWTException {
-        Terms terms=new Terms(driver,file);
+        Terms terms = new Terms(driver, file);
         terms.terms();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

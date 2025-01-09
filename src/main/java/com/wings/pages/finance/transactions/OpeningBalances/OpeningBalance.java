@@ -1,9 +1,10 @@
 package com.wings.pages.finance.transactions.OpeningBalances;
 
-import io.appium.java_client.windows.WindowsDriver;
-import org.json.simple.parser.ParseException;
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
+import org.json.simple.parser.ParseException;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -24,16 +25,16 @@ public class OpeningBalance extends Transaction {
         navigateToOpeningBalancesMenu();
         Thread.sleep(1000);
         lastTransactionName();
-        common.clickElement("xpath","//Edit[@Name='Voucher Type']");
-        selectOptionalMaster(common.getData(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']");
+        common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
+        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
         selectMaster(common.getData(dataFile, "branch"));
         common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
         selectMaster(common.getData(dataFile, "transaction"));
         common.clickElement("xpath", "//Edit[@Name='Executive *']");
         selectMaster(common.getData(dataFile, "executive"));
-        common.clickElement("xpath","//Edit[@Name='Remarks']");
-        selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
+        common.clickElement("xpath", "//Edit[@Name='Remarks']");
+        selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
 
         //can select any1- based on scenario
 
@@ -51,7 +52,7 @@ public class OpeningBalance extends Transaction {
 
         //f3-cash
         navigateToCashTab();
-        enterData("xpath","//Edit[@Name='Cash Account Code Row 0, Not sorted.']",dataFile,"cashAccount");
+        enterData("xpath", "//Edit[@Name='Cash Account Code Row 0, Not sorted.']", dataFile, "cashAccount");
 //        common.inputText("xpath", "//Edit[@Name='Cash Account Code Row 0, Not sorted.']", common.getData(dataFile, "cashAccount"));
         enterData("xpath", "//Edit[@Name='Amount * Row 0, Not sorted.']", dataFile, "cashAmount");
 

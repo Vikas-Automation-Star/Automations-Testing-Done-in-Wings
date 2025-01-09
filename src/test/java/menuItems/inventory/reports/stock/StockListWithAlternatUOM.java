@@ -22,13 +22,13 @@ public class StockListWithAlternatUOM {
     }
 
     @Test
-    public void stocklistUOM() throws  InterruptedException, AWTException {
-        StockListWithAlternateUOM alternateUOM=new StockListWithAlternateUOM(driver);
+    public void stocklistUOM() throws InterruptedException, AWTException {
+        StockListWithAlternateUOM alternateUOM = new StockListWithAlternateUOM(driver);
         alternateUOM.stockListWithUOM();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

@@ -1,12 +1,12 @@
 package menuItems.audit.reports;
 
+import com.wings.pages.AppLogin;
+import com.wings.pages.audit.reports.VoidTransactionesReportCode;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import com.wings.pages.AppLogin;
-import com.wings.pages.audit.reports.VoidTransactionesReportCode;
 
 import java.awt.*;
 import java.io.IOException;
@@ -22,13 +22,13 @@ public class VoidTransactionesReport {
     }
 
     @Test
-    public void voidTransaction() throws  InterruptedException, AWTException {
-        VoidTransactionesReportCode voidTransactionesReportCode=new VoidTransactionesReportCode(driver);
+    public void voidTransaction() throws InterruptedException, AWTException {
+        VoidTransactionesReportCode voidTransactionesReportCode = new VoidTransactionesReportCode(driver);
         voidTransactionesReportCode.voidTransactions();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

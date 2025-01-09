@@ -4,9 +4,9 @@
   "location": "AT_Branch 1_Reg Default Location",
   "partyCode": "AT_Sup_Reg_Intra",
   "consignor": "AT_Consignor 1_Reg",
-  "priceList":"AT_Exclusive Purchase price list 1",
+  "priceList": "AT_Exclusive Purchase price list 1",
   "batchPolicy": "AT-Purchase Batch Policy_CIDNE",
   "executive": "AT_Executive 1",
-  "Product":"P1",
+  "Product": "P1",
   "quantity": 10
 }

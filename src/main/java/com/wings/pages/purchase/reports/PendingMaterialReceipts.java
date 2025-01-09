@@ -1,11 +1,11 @@
 package com.wings.pages.purchase.reports;
 
-import com.wings.pages.Report;
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import io.qameta.allure.Allure;
 
-public class PendingMaterialReceipts extends Report {
+public class PendingMaterialReceipts extends Transaction {
     WindowsDriver driver;
     Common common;
 
@@ -16,7 +16,6 @@ public class PendingMaterialReceipts extends Report {
     }
 
     public void pendingMaterialReceipt() throws InterruptedException {
-
         common.clickElement("name", "Purchase");
         common.clickElement("name", "Receipts");
         common.clickElement("xpath", "//MenuItem[@Name='Pending Material Receipts']");
@@ -25,6 +24,5 @@ public class PendingMaterialReceipts extends Report {
         super.bulkVerifyReport("");
         super.closeReport("Pending Material Receipts");
         Allure.step("Validating PendingMaterialReceipts Report");
-
     }
 }

@@ -18,20 +18,20 @@ public class Routes extends Masters {
 
     public Routes(WindowsDriver driver, String file) {
         super(driver);
-        this.driver=driver;
-        common=new Common(this.driver);
-        dataFile=file;
+        this.driver = driver;
+        common = new Common(this.driver);
+        dataFile = file;
     }
 
     public void createRoutes() throws InterruptedException, IOException, ParseException {
-        common.clickElement("name","Company");
-        common.clickElement("name","Routes");
+        common.clickElement("name", "Company");
+        common.clickElement("name", "Routes");
         Thread.sleep(1000);
-        super.createMaster("xpath","//TreeItem[@Name='Routes']/TreeItem[@Name='All Routes']");
+        super.createMaster("xpath", "//TreeItem[@Name='Routes']/TreeItem[@Name='All Routes']");
         Thread.sleep(1000);
-        common.inputText("xpath","//Edit[@Name='New Route *']",common.getData(dataFile,"route")+common.getRandom());
+        common.inputText("xpath", "//Edit[@Name='New Route *']", common.getData(dataFile, "route") + common.getRandom());
         Thread.sleep(2000);
-        common.inputText("xpath","//Edit[@Name='Description']", common.getData(dataFile,"description"));
+        common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
         super.saveAfterMasterCreate();
         super.closeMaster("Routes");
         Thread.sleep(1500);

@@ -13,23 +13,23 @@ import java.io.IOException;
 
 public class TdsPaymentsTransaction {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
-    String file ="./src/main/resources/MenuItems/Taxes/transactions/TDS/TdsPayments.json";
+    AppLogin appLogin = new AppLogin();
+    String file = "./src/main/resources/MenuItems/Taxes/transactions/TDS/TdsPayments.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
     public void tdsPaymentsTransaction() throws InterruptedException, IOException, ParseException, AWTException {
-        TdsPayments tp=new TdsPayments(driver,file);
+        TdsPayments tp = new TdsPayments(driver, file);
         tp.tdsPayments();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

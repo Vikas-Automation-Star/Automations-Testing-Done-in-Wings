@@ -1,12 +1,10 @@
 package com.wings.pages.inventory.masters.product;
 
+import com.wings.pages.Masters;
+import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import com.wings.pages.Masters;
-import com.wings.pages.Transaction;
-import com.wings.utils.Common;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
@@ -28,7 +26,7 @@ public class Services extends Masters {
         common.clickElement("name", "Inventory");
         common.clickElement("name", "Product");
         common.clickElement("name", "Services");
-        super.actionsMaster("xpath","//TreeItem[@Name='Services']/TreeItem[@Name='All Services']","//MenuItem[@Name='New Master']");
+        super.actionsMaster("xpath", "//TreeItem[@Name='Services']/TreeItem[@Name='All Services']", "//MenuItem[@Name='New Master']");
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='New Service *']", common.getData(filepath, "service") + common.getRandom());
         common.inputText("xpath", "//Edit[@Name='Service Code']", String.valueOf(common.getRandom()));
@@ -49,7 +47,7 @@ public class Services extends Masters {
         robot.keyRelease(KeyEvent.VK_DOWN);
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
-       super.saveMaster();
+        super.saveMaster();
         super.closeMaster("Services");
         System.out.println("Services created successfully");
     }

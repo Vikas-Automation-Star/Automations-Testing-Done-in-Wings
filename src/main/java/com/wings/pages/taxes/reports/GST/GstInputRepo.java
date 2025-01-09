@@ -1,10 +1,10 @@
 package com.wings.pages.taxes.reports.GST;
 
-import com.wings.pages.Report;
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 
-public class GstInputRepo extends Report {
+public class GstInputRepo extends Transaction {
     WindowsDriver driver;
     Common common;
 
@@ -13,6 +13,7 @@ public class GstInputRepo extends Report {
         this.driver = driver;
         common = new Common(this.driver);
     }
+
     public void gstInputRepo() throws InterruptedException {
         common.clickElement("name", "Taxes");
         common.clickElement("name", "GST");

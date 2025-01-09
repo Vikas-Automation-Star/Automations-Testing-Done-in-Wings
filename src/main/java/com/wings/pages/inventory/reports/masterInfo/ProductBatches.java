@@ -1,12 +1,12 @@
 package com.wings.pages.inventory.reports.masterInfo;
 
-import io.appium.java_client.windows.WindowsDriver;
-import com.wings.pages.Report;
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
 
 import java.awt.*;
 
-public class ProductBatches extends Report {
+public class ProductBatches extends Transaction {
     WindowsDriver driver;
     Common common;
 
@@ -19,9 +19,9 @@ public class ProductBatches extends Report {
     public void productBatch() throws InterruptedException, AWTException {
         common.clickElement("name", "Inventory");
         common.clickElement("name", "Master Info");
-        common.clickElement("name","Product Batches");
+        common.clickElement("name", "Product Batches");
         Thread.sleep(1000);
-        common.clickElement("xpath","//Pane/Button[@Name='Submit']");
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
 //        Thread.sleep(1500);
         super.bulkVerifyReport("Product Batch246");
         super.closeReport("Product Batches");

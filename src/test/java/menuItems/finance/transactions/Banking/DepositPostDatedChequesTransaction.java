@@ -14,29 +14,29 @@ import java.awt.*;
 import java.io.IOException;
 
 public class DepositPostDatedChequesTransaction {
-        WindowsDriver driver;
-        AppLogin appLogin=new AppLogin();
-        String dataFile="./src/main/resources/menuItems/finance/transaction/depositPostDatedCheques.json";
-        String orderFile="./src/main/resources/menuItems/Sales/Transactions/salesOrder.json";
+    WindowsDriver driver;
+    AppLogin appLogin = new AppLogin();
+    String dataFile = "./src/main/resources/menuItems/finance/transaction/depositPostDatedCheques.json";
+    String orderFile = "./src/main/resources/menuItems/Sales/Transactions/salesOrder.json";
 
-        @BeforeTest
-        public void beforeTest() throws IOException, ParseException, InterruptedException {
-            driver = appLogin.launchSingleUserApp();
-            appLogin.singleUserLogin();
-            Allure.step("Before Test - Deposit Post Dated Cheques");
+    @BeforeTest
+    public void beforeTest() throws IOException, ParseException, InterruptedException {
+        driver = appLogin.launchSingleUserApp();
+        appLogin.singleUserLogin();
+        Allure.step("Before Test - Deposit Post Dated Cheques");
 //            SalesOrderPostDatedCheques orderPostDatedCheques=new SalesOrderPostDatedCheques(driver,orderFile);
 //            orderPostDatedCheques.salesOrder();
-        }
-
-        @Test
-        public void postDatedCheques() throws IOException, ParseException, InterruptedException, AWTException {
-            DepositPostDatedCheques postDatedCheques=new DepositPostDatedCheques(driver,dataFile);
-            postDatedCheques.postDatedChques();
-        }
-
-        @AfterTest
-        public void afterTest() throws IOException{
-            appLogin.logout();
-            Allure.step("After Test - Deposit Post Dated Cheques");
-        }
     }
+
+    @Test
+    public void postDatedCheques() throws IOException, ParseException, InterruptedException, AWTException {
+        DepositPostDatedCheques postDatedCheques = new DepositPostDatedCheques(driver, dataFile);
+        postDatedCheques.postDatedChques();
+    }
+
+    @AfterTest
+    public void afterTest() throws IOException {
+        appLogin.logout();
+        Allure.step("After Test - Deposit Post Dated Cheques");
+    }
+}

@@ -1,18 +1,17 @@
 package com.wings.driverManager;
 
-import java.util.Properties;
-
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
+import java.util.Properties;
 
 public class TLSEmail {
 
     /**
-     Outgoing Mail (SMTP) Server
-     requires TLS or SSL: smtp host (use authentication)
-     Use Authentication: Yes
-     Port for TLS/STARTTLS: 587
+     * Outgoing Mail (SMTP) Server
+     * requires TLS or SSL: smtp host (use authentication)
+     * Use Authentication: Yes
+     * Port for TLS/STARTTLS: 587
      */
     public static void main(String[] args) {
         final String fromEmail = "QA@wingsinfo.net"; //requires valid gmail id

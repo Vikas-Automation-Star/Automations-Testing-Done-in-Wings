@@ -1,7 +1,7 @@
 package menuItems.company.masters;
 
-import com.wings.pages.company.masters.CompanyProperties;
 import com.wings.pages.AppLogin;
+import com.wings.pages.company.masters.CompanyProperties;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
@@ -15,24 +15,24 @@ public class CompanyPropertiesMaster {
 
 
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
+    AppLogin appLogin = new AppLogin();
     CompanyProperties companyProperties;
-    String file="./src/main/resources/MenuItems/Company/Masters/CompanyPropertiesData.json";
+    String file = "./src/main/resources/MenuItems/Company/Masters/CompanyPropertiesData.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
     public void companyProperties() throws IOException, ParseException, InterruptedException, AWTException {
-        companyProperties =new CompanyProperties(driver,file);
+        companyProperties = new CompanyProperties(driver, file);
         companyProperties.companyProperty();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
-     appLogin.logout();
+    public void afterTest() throws IOException {
+        appLogin.logout();
     }
 }

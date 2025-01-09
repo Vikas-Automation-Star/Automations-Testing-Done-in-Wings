@@ -1,20 +1,21 @@
 package menuItems.finance.transactions.PartyAdjustments;
 
+import com.wings.pages.AppLogin;
+import com.wings.pages.finance.transactions.PartyAdjustments.DebitNoteFromSuppliers;
 import io.appium.java_client.windows.WindowsDriver;
 import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import com.wings.pages.AppLogin;
-import com.wings.pages.finance.transactions.PartyAdjustments.DebitNoteFromSuppliers;
+
 import java.awt.*;
 import java.io.IOException;
 
 public class DebitNoteFromSuppliersTransaction {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String dataFile="./src/main/resources/menuItems/finance/transaction/debitNoteFromSupplier.json";
+    String dataFile = "./src/main/resources/menuItems/finance/transaction/debitNoteFromSupplier.json";
 
     @BeforeTest
     public void beforeTest() throws InterruptedException, IOException, ParseException {
@@ -25,12 +26,12 @@ public class DebitNoteFromSuppliersTransaction {
 
     @Test
     public void debitNoteFromSupplier() throws InterruptedException, AWTException, IOException, ParseException {
-        DebitNoteFromSuppliers noteFromSuppliers=new DebitNoteFromSuppliers(driver,dataFile);
+        DebitNoteFromSuppliers noteFromSuppliers = new DebitNoteFromSuppliers(driver, dataFile);
         noteFromSuppliers.debitNoteFromSupplier();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
         Allure.step("After Test - Debit Note From Supplier");
     }

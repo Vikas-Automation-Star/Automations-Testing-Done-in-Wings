@@ -1,11 +1,12 @@
 package com.wings.pages.finance.reports.partyAdjustments;
 
-import io.appium.java_client.windows.WindowsDriver;
-import com.wings.pages.Report;
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
+
 import java.awt.*;
 
-public class DebitNoteFromSuppliersReportCode extends Report {
+public class DebitNoteFromSuppliersReportCode extends Transaction {
     WindowsDriver driver;
     Common common;
 
@@ -18,11 +19,11 @@ public class DebitNoteFromSuppliersReportCode extends Report {
     public void debitNotefromSupplierReport() throws InterruptedException, AWTException {
         common.clickElement("name", "Finance");
         common.clickElement("name", "Party Adjustments");
-        common.clickElement("xpath","//MenuItem[@Name='Debit Note from Suppliers'][2]");
+        common.clickElement("xpath", "//MenuItem[@Name='Debit Note from Suppliers'][2]");
         Thread.sleep(1000);
-        common.clickElement("xpath","//CheckBox[@Name='Detailed']");
+        common.clickElement("xpath", "//CheckBox[@Name='Detailed']");
         Thread.sleep(1000);
-        common.clickElement("xpath","//Pane/Button[@Name='Submit']");
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
         bulkVerifyReport("DNFS 1");
         closeReport("Debit Note from Suppliers");

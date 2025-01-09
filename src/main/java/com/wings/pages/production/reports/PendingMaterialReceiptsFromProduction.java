@@ -1,10 +1,10 @@
 package com.wings.pages.production.reports;
 
-import com.wings.pages.Report;
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 
-public class PendingMaterialReceiptsFromProduction extends Report {
+public class PendingMaterialReceiptsFromProduction extends Transaction {
     WindowsDriver driver;
     Common common;
 
@@ -15,14 +15,13 @@ public class PendingMaterialReceiptsFromProduction extends Report {
     }
 
     public void pendingMaterialReceiptsFromProduction() throws InterruptedException {
-
         common.clickElement("name", "Production");
         common.clickElement("name", "Standard");
         common.clickElement("xpath", "//MenuItem[@Name='Pending Material Receipts from Production']");
         Thread.sleep(1500);
 //        common.clickElement("xpath", "//CheckBox[@Name='Detailed']");
         common.clickElement("xpath", "//Button[@Name='Submit']");
-        super.bulkVerifyReport("PRO 3");
+        super.bulkVerifyReport("");
         super.closeReport("Pending Material Receipts from Production");
     }
 }

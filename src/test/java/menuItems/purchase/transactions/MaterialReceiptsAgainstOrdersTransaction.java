@@ -25,7 +25,7 @@ public class MaterialReceiptsAgainstOrdersTransaction {
 
     @Test
     public void MeterialReceiptsAgainstOrders() throws IOException, ParseException, InterruptedException {
-        MaterialReceiptsAgainstOrder mrao=new MaterialReceiptsAgainstOrder(driver,file);
+        MaterialReceiptsAgainstOrder mrao = new MaterialReceiptsAgainstOrder(driver, file);
         mrao.meterialReceiptsAgainstOrder();
     }
 

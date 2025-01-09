@@ -43,7 +43,7 @@ public class GstRegistration extends Masters {
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
         common.inputText("xpath", "//Edit[@Name='GSTIN']", common.getData(dataFile, "GstNo"));
-        common.clickElement("xpath","//Edit[@Name='PAN']");
+        common.clickElement("xpath", "//Edit[@Name='PAN']");
         common.inputText("xpath", "//Edit[@Name='Legal Name *']", common.getData(dataFile, "legalName"));
         common.inputText("xpath", "//Edit[@Name='GST User Name *']", common.getData(dataFile, "GstUserName"));
 

@@ -1,11 +1,12 @@
 package com.wings.pages.inventory.reports;
 
-import io.appium.java_client.windows.WindowsDriver;
-import com.wings.pages.Report;
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
+
 import java.awt.*;
 
-public class OpeningStockReprt extends Report {
+public class OpeningStockReprt extends Transaction {
     WindowsDriver driver;
     Common common;
 

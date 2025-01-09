@@ -1,11 +1,12 @@
 package com.wings.pages;
 
+import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
-import com.wings.utils.Common;
+
 import java.util.List;
 
 public class Masters {
@@ -16,6 +17,7 @@ public class Masters {
         this.driver = driver;
         common = new Common(this.driver);
     }
+
     public void selectMasterItem(String transaction) {
         List<WebElement> elementList = common.findWebElements("xpath", "//Table/*[@Name='Data Panel']/ListItem[contains(@Name,'Row')]");
         System.out.println("Size :" + elementList.size());
@@ -28,7 +30,7 @@ public class Masters {
         }
     }
 
-    public void verifyMaster(String locatorType,String locator, String existingValue){
+    public void verifyMaster(String locatorType, String locator, String existingValue) {
         WebElement element = common.findWebElement(locatorType, locator);
         if (element.getText().equals(existingValue)) {
             System.out.println("successfully selected/opened:- " + element.getText());
@@ -50,26 +52,26 @@ public class Masters {
         }
     }
 
-    public void clickMaster(String item){
+    public void clickMaster(String item) {
         List<WebElement> elementList = common.findWebElements("xpath", "//Table[@Name='Company Currency']/*[@Name='Data Panel']/ListItem[contains(@Name,'Row')]");
         System.out.println("Size :" + elementList.size());
         for (WebElement i : elementList) {
             System.out.println(i.getText());
             if (i.getText().contains(item)) {
                 i.click();
-                i.sendKeys(Keys.TAB,Keys.SPACE);
+                i.sendKeys(Keys.TAB, Keys.SPACE);
             }
         }
     }
 
-    public void actionsMaster(String locatorType,String itemsLocator,String masterLocator){
-        WebElement Allitems = common.findWebElement(locatorType,itemsLocator);
+    public void actionsMaster(String locatorType, String itemsLocator, String masterLocator) {
+        WebElement Allitems = common.findWebElement(locatorType, itemsLocator);
         Actions actions = new Actions(driver);
         actions.contextClick(Allitems).perform();
-        common.clickElement(locatorType,masterLocator);
+        common.clickElement(locatorType, masterLocator);
     }
 
-    public void selectFromLookup(String master){
+    public void selectFromLookup(String master) {
         List<WebElement> elementList = common.findWebElements("xpath", "//Table[@Name='Lookup']/*/*[contains(@Name,'Master Row')]");
         System.out.println("Size :" + elementList.size());
         for (WebElement i : elementList) {
@@ -79,6 +81,7 @@ public class Masters {
             }
         }
     }
+
     public void saveMaster() throws InterruptedException {
         common.clickElement("name", "Save");
         Thread.sleep(2000);
@@ -91,7 +94,7 @@ public class Masters {
     }
 
 
-    public void inputTextWithValidation(String locatorType,String locator,String inputText) {
+    public void inputTextWithValidation(String locatorType, String locator, String inputText) {
         WebElement element = common.findWebElement(locatorType, locator);
         element.sendKeys(inputText);
         System.out.println(element.getText());
@@ -102,20 +105,21 @@ public class Masters {
         }
     }
 
-    public void createMaster(String locatorType, String locator){
-        WebElement element = common.findWebElement(locatorType,locator);
+    public void createMaster(String locatorType, String locator) {
+        WebElement element = common.findWebElement(locatorType, locator);
         Actions actions = new Actions(driver);
         actions.contextClick(element).perform();
         common.clickElement("name", "New Master");
     }
+
     public void saveAfterMasterCreate() throws InterruptedException {
         common.clickElement("xpath", "//Button[@Name='Save']");
-        common.clickElement("xpath","//Button[@Name='OK']");
+        common.clickElement("xpath", "//Button[@Name='OK']");
         Thread.sleep(2000);
         common.clickElement("xpath", "//Button[@Name='Close']");
     }
 
-    public void vericleSliderHandle(){
+    public void vericleSliderHandle() {
         int offset = 400;
         WebElement slider = common.findWebElement("xpath", "//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']");
         Actions actions = new Actions(driver);

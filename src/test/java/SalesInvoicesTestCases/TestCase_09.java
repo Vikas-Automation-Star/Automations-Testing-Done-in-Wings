@@ -12,18 +12,18 @@ import java.io.IOException;
 
 public class TestCase_09 {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
-    String dataFile="./src/main/resources/TestCasesData/testCase09.json";
+    AppLogin appLogin = new AppLogin();
+    String dataFile = "./src/main/resources/TestCasesData/testCase09.json";
 
     @BeforeTest
     public void befortest() throws IOException, InterruptedException, ParseException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
     public void testCase09() throws IOException, ParseException, InterruptedException, AWTException {
-        SalesInvoiceBatchDetailsFetching_09 si=new SalesInvoiceBatchDetailsFetching_09(driver,dataFile);
+        SalesInvoiceBatchDetailsFetching_09 si = new SalesInvoiceBatchDetailsFetching_09(driver, dataFile);
         si.SalesInvoiceBatchDetailsFetching_09();
     }
 

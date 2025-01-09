@@ -19,4 +19,4 @@ public class SaleOrder {
         WindowsDriver driver = new WindowsDriver(new URL("http://127.0.0.1:4723"), capabilities);
     }
 
-    }
+}

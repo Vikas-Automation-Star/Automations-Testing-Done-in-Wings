@@ -15,7 +15,7 @@ public class ExecutiveMaster {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
     Executive newExecutive;
-    String file="./src/main/resources/MenuItems/Company/Masters/ExecutiveData.json";
+    String file = "./src/main/resources/MenuItems/Company/Masters/ExecutiveData.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
@@ -25,12 +25,12 @@ public class ExecutiveMaster {
 
     @Test
     public void createExecutive() throws IOException, ParseException, InterruptedException, AWTException {
-        newExecutive=new Executive(driver,file);
+        newExecutive = new Executive(driver, file);
         newExecutive.Executive();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 

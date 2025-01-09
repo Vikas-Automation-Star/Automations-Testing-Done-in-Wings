@@ -15,13 +15,13 @@ import java.util.zip.ZipInputStream;
 public class FileUtil {
 
 
-    Time time=new Time();
-    String timeStamp= time.timeStamp();
+    Time time = new Time();
+    String timeStamp = time.timeStamp();
 
-    public static void unzip1(String zipFilePath, String destDir) throws Exception{
+    public static void unzip1(String zipFilePath, String destDir) throws Exception {
         File dir = new File(destDir);
         // create output directory if it doesn't exist
-        if(!dir.exists()) dir.mkdirs();
+        if (!dir.exists()) dir.mkdirs();
         FileInputStream fis;
         //buffer for read and write data to file
         byte[] buffer = new byte[1024];
@@ -29,10 +29,10 @@ public class FileUtil {
             fis = new FileInputStream(zipFilePath);
             ZipInputStream zis = new ZipInputStream(fis);
             ZipEntry ze = zis.getNextEntry();
-            while(ze != null){
+            while (ze != null) {
                 String fileName = ze.getName();
                 File newFile = new File(destDir + File.separator + fileName);
-                System.out.println("Unzipping to "+newFile.getAbsolutePath());
+                System.out.println("Unzipping to " + newFile.getAbsolutePath());
                 //create directories for sub directories in zip
                 new File(newFile.getAbsolutePath()).mkdirs();
                 FileOutputStream fos = new FileOutputStream(newFile);
@@ -76,7 +76,7 @@ public class FileUtil {
         }
     }
 
-    public static void copyFile(File cfgFilePath,String strTarget) throws IOException {
+    public static void copyFile(File cfgFilePath, String strTarget) throws IOException {
         Path from = cfgFilePath.toPath(); //convert from File to Path
         Path to = Paths.get(strTarget); //convert from String to Path
         Files.copy(from, to, StandardCopyOption.REPLACE_EXISTING);
@@ -91,9 +91,9 @@ public class FileUtil {
         Object obj = parser.parse(reader);
         JSONObject jsonObject = (JSONObject) obj;
         Object value = jsonObject.get(key);
-        if(value ==null ){
+        if (value == null) {
             return null;
-        } else if(value instanceof String) {
+        } else if (value instanceof String) {
             return (String) value;
         } else if (value instanceof Long) {
             return Long.toString((Long) value);
@@ -106,19 +106,17 @@ public class FileUtil {
         }
     }
 
-    public void createJson(JSONObject object){
+    public void createJson(JSONObject object) {
         try {
-            String filename = String.format("./results/json/jsonresult_%s.json",timeStamp);
+            String filename = String.format("./results/json/jsonresult_%s.json", timeStamp);
 
             FileWriter fileWriter = new FileWriter(filename);
             fileWriter.write(object.toJSONString());
             fileWriter.close();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 
 
 }

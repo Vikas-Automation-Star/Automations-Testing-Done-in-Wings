@@ -1,1 +1,1033 @@
-{"Tests":[{"Status":"SUCCESS","TestName":"deletedTransaction","ExecutionEndTime":"2024-12-03 14:01:28","ExeTime":"10604","ExecutionStartTime":"2024-12-03 14:01:17"},{"Status":"SUCCESS","TestName":"voucherStatistics","ExecutionEndTime":"2024-12-03 14:02:02","ExeTime":"12284","ExecutionStartTime":"2024-12-03 14:01:50"},{"Status":"SUCCESS","TestName":"loginStatus","ExecutionEndTime":"2024-12-03 14:02:30","ExeTime":"5791","ExecutionStartTime":"2024-12-03 14:02:24"},{"Status":"SUCCESS","TestName":"transactionActivityLog","ExecutionEndTime":"2024-12-03 14:03:09","ExeTime":"17532","ExecutionStartTime":"2024-12-03 14:02:52"},{"Status":"SUCCESS","TestName":"deletedTransaction","ExecutionEndTime":"2024-12-03 14:03:41","ExeTime":"9782","ExecutionStartTime":"2024-12-03 14:03:32"},{"Status":"SUCCESS","TestName":"voidTransaction","ExecutionEndTime":"2024-12-03 14:04:14","ExeTime":"10411","ExecutionStartTime":"2024-12-03 14:04:04"},{"Status":"SUCCESS","TestName":"voucherHistory","ExecutionEndTime":"2024-12-03 14:04:52","ExeTime":"15347","ExecutionStartTime":"2024-12-03 14:04:36"},{"Status":"FAILED","TestName":"bankMaster","ExecutionEndTime":"2024-12-03 14:07:19","ExeTime":"125126","ExecutionStartTime":"2024-12-03 14:05:14"},{"Status":"SUCCESS","TestName":"cashMaster","ExecutionEndTime":"2024-12-03 14:09:08","ExeTime":"82143","ExecutionStartTime":"2024-12-03 14:07:46"},{"Status":"SUCCESS","TestName":"fixedAssetMaster","ExecutionEndTime":"2024-12-03 14:10:12","ExeTime":"41284","ExecutionStartTime":"2024-12-03 14:09:31"},{"Status":"SUCCESS","TestName":"inventoriesMaster","ExecutionEndTime":"2024-12-03 14:11:22","ExeTime":"47345","ExecutionStartTime":"2024-12-03 14:10:35"},{"Status":"SUCCESS","TestName":"investmentsMaster","ExecutionEndTime":"2024-12-03 14:12:27","ExeTime":"41449","ExecutionStartTime":"2024-12-03 14:11:45"},{"Status":"SUCCESS","TestName":"miscellaneousAssest","ExecutionEndTime":"2024-12-03 14:13:35","ExeTime":"45759","ExecutionStartTime":"2024-12-03 14:12:50"},{"Status":"SUCCESS","TestName":"sundryDebtors","ExecutionEndTime":"2024-12-03 14:15:20","ExeTime":"81075","ExecutionStartTime":"2024-12-03 14:13:59"},{"Status":"SUCCESS","TestName":"shareHolders","ExecutionEndTime":"2024-12-03 14:16:23","ExeTime":"40664","ExecutionStartTime":"2024-12-03 14:15:43"},{"Status":"SUCCESS","TestName":"otherCurrentLiabilities","ExecutionEndTime":"2024-12-03 14:18:07","ExeTime":"80115","ExecutionStartTime":"2024-12-03 14:16:46"},{"Status":"SUCCESS","TestName":"provisions","ExecutionEndTime":"2024-12-03 14:19:14","ExeTime":"44164","ExecutionStartTime":"2024-12-03 14:18:30"},{"Status":"SUCCESS","TestName":"reservesAndSurplus","ExecutionEndTime":"2024-12-03 14:20:17","ExeTime":"40566","ExecutionStartTime":"2024-12-03 14:19:37"},{"Status":"SUCCESS","TestName":"securedLoans","ExecutionEndTime":"2024-12-03 14:21:53","ExeTime":"72896","ExecutionStartTime":"2024-12-03 14:20:40"},{"Status":"SUCCESS","TestName":"sundryCreditors","ExecutionEndTime":"2024-12-03 14:23:05","ExeTime":"49461","ExecutionStartTime":"2024-12-03 14:22:16"},{"Status":"SUCCESS","TestName":"UnsecuredLoans","ExecutionEndTime":"2024-12-03 14:24:42","ExeTime":"74358","ExecutionStartTime":"2024-12-03 14:23:28"},{"Status":"FAILED","TestName":"administrativeExpenses","ExecutionEndTime":"2024-12-03 14:25:46","ExeTime":"40063","ExecutionStartTime":"2024-12-03 14:25:06"},{"Status":"SUCCESS","TestName":"appropriations","ExecutionEndTime":"2024-12-03 14:26:55","ExeTime":"44370","ExecutionStartTime":"2024-12-03 14:26:11"},{"Status":"SUCCESS","TestName":"depreciations","ExecutionEndTime":"2024-12-03 14:28:02","ExeTime":"44341","ExecutionStartTime":"2024-12-03 14:27:18"},{"Status":"SUCCESS","TestName":"openingClosingStocks","ExecutionEndTime":"2024-12-03 14:29:14","ExeTime":"48989","ExecutionStartTime":"2024-12-03 14:28:26"},{"Status":"SUCCESS","TestName":"openingClosingStocks","ExecutionEndTime":"2024-12-03 14:30:27","ExeTime":"49015","ExecutionStartTime":"2024-12-03 14:29:38"},{"Status":"SUCCESS","TestName":"openingClosingStocks","ExecutionEndTime":"2024-12-03 14:31:39","ExeTime":"48932","ExecutionStartTime":"2024-12-03 14:30:50"},{"Status":"SUCCESS","TestName":"purchases","ExecutionEndTime":"2024-12-03 14:32:45","ExeTime":"42877","ExecutionStartTime":"2024-12-03 14:32:02"},{"Status":"SUCCESS","TestName":"salesMaster","ExecutionEndTime":"2024-12-03 14:33:50","ExeTime":"42428","ExecutionStartTime":"2024-12-03 14:33:08"},{"Status":"SUCCESS","TestName":"sellingAndDistribution","ExecutionEndTime":"2024-12-03 14:35:04","ExeTime":"50517","ExecutionStartTime":"2024-12-03 14:34:14"},{"Status":"FAILED","TestName":"taxesAndOtherCharges","ExecutionEndTime":"2024-12-03 14:36:12","ExeTime":"44536","ExecutionStartTime":"2024-12-03 14:35:28"},{"Status":"SUCCESS","TestName":"bankMaster","ExecutionEndTime":"2024-12-03 14:37:33","ExeTime":"55819","ExecutionStartTime":"2024-12-03 14:36:37"},{"Status":"SUCCESS","TestName":"bankMaster","ExecutionEndTime":"2024-12-03 14:38:31","ExeTime":"35565","ExecutionStartTime":"2024-12-03 14:37:56"},{"Status":"SUCCESS","TestName":"manageCurrency","ExecutionEndTime":"2024-12-03 14:39:03","ExeTime":"9021","ExecutionStartTime":"2024-12-03 14:38:54"},{"Status":"SUCCESS","TestName":"bankDrawnMaster","ExecutionEndTime":"2024-12-03 14:40:01","ExeTime":"35220","ExecutionStartTime":"2024-12-03 14:39:26"},{"Status":"SUCCESS","TestName":"transactionAnalys","ExecutionEndTime":"2024-12-03 14:40:50","ExeTime":"26547","ExecutionStartTime":"2024-12-03 14:40:24"},{"Status":"SUCCESS","TestName":"trendAnalys","ExecutionEndTime":"2024-12-03 14:41:36","ExeTime":"23294","ExecutionStartTime":"2024-12-03 14:41:13"},{"Status":"SUCCESS","TestName":"customerBalance","ExecutionEndTime":"2024-12-03 14:42:16","ExeTime":"17915","ExecutionStartTime":"2024-12-03 14:41:59"},{"Status":"SUCCESS","TestName":"supplierBalance","ExecutionEndTime":"2024-12-03 14:42:53","ExeTime":"14641","ExecutionStartTime":"2024-12-03 14:42:39"},{"Status":"SUCCESS","TestName":"accountBalance","ExecutionEndTime":"2024-12-03 14:43:35","ExeTime":"19401","ExecutionStartTime":"2024-12-03 14:43:16"},{"Status":"SUCCESS","TestName":"pendingBillsForCustomer","ExecutionEndTime":"2024-12-03 14:44:16","ExeTime":"18558","ExecutionStartTime":"2024-12-03 14:43:58"},{"Status":"SUCCESS","TestName":"pendingBillsForCustomer","ExecutionEndTime":"2024-12-03 14:44:57","ExeTime":"18069","ExecutionStartTime":"2024-12-03 14:44:39"},{"Status":"SUCCESS","TestName":"pendingBillsForSupplier","ExecutionEndTime":"2024-12-03 14:45:39","ExeTime":"19132","ExecutionStartTime":"2024-12-03 14:45:19"},{"Status":"SUCCESS","TestName":"pendingBillsForSupplier","ExecutionEndTime":"2024-12-03 14:46:29","ExeTime":"28313","ExecutionStartTime":"2024-12-03 14:46:01"},{"Status":"SUCCESS","TestName":"trialBalance","ExecutionEndTime":"2024-12-03 14:47:10","ExeTime":"18310","ExecutionStartTime":"2024-12-03 14:46:52"},{"Status":"SUCCESS","TestName":"profitAndLoss","ExecutionEndTime":"2024-12-03 14:47:51","ExeTime":"18155","ExecutionStartTime":"2024-12-03 14:47:33"},{"Status":"SUCCESS","TestName":"balanceSheet","ExecutionEndTime":"2024-12-03 14:48:32","ExeTime":"18165","ExecutionStartTime":"2024-12-03 14:48:13"},{"Status":"SUCCESS","TestName":"profitAndLossTform","ExecutionEndTime":"2024-12-03 14:49:11","ExeTime":"16445","ExecutionStartTime":"2024-12-03 14:48:54"},{"Status":"SUCCESS","TestName":"balanceSheetTform","ExecutionEndTime":"2024-12-03 14:49:49","ExeTime":"16219","ExecutionStartTime":"2024-12-03 14:49:33"},{"Status":"SUCCESS","TestName":"cashFlow","ExecutionEndTime":"2024-12-03 14:50:29","ExeTime":"17144","ExecutionStartTime":"2024-12-03 14:50:12"},{"Status":"SUCCESS","TestName":"fundsFlow","ExecutionEndTime":"2024-12-03 14:51:11","ExeTime":"19712","ExecutionStartTime":"2024-12-03 14:50:51"},{"Status":"SUCCESS","TestName":"profitAndLossManualStock","ExecutionEndTime":"2024-12-03 14:51:52","ExeTime":"18195","ExecutionStartTime":"2024-12-03 14:51:34"},{"Status":"SUCCESS","TestName":"balanceSheetManualStock","ExecutionEndTime":"2024-12-03 14:52:32","ExeTime":"17867","ExecutionStartTime":"2024-12-03 14:52:14"},{"Status":"SUCCESS","TestName":"cashBookDayBalanceReport","ExecutionEndTime":"2024-12-03 14:53:12","ExeTime":"17621","ExecutionStartTime":"2024-12-03 14:52:55"},{"Status":"SUCCESS","TestName":"bankBookDayBalanceReport","ExecutionEndTime":"2024-12-03 14:53:52","ExeTime":"17441","ExecutionStartTime":"2024-12-03 14:53:35"},{"Status":"SUCCESS","TestName":"dayBookReport","ExecutionEndTime":"2024-12-03 14:54:40","ExeTime":"25771","ExecutionStartTime":"2024-12-03 14:54:15"},{"Status":"SUCCESS","TestName":"billingAddressGST","ExecutionEndTime":"2024-12-03 14:55:22","ExeTime":"18981","ExecutionStartTime":"2024-12-03 14:55:03"},{"Status":"SUCCESS","TestName":"chartOfAccount","ExecutionEndTime":"2024-12-03 14:56:00","ExeTime":"15835","ExecutionStartTime":"2024-12-03 14:55:44"},{"Status":"SUCCESS","TestName":"customerReport","ExecutionEndTime":"2024-12-03 14:56:37","ExeTime":"15130","ExecutionStartTime":"2024-12-03 14:56:22"},{"Status":"SUCCESS","TestName":"suppliersReport","ExecutionEndTime":"2024-12-03 14:57:13","ExeTime":"13329","ExecutionStartTime":"2024-12-03 14:57:00"},{"Status":"SUCCESS","TestName":"ledgerReport","ExecutionEndTime":"2024-12-03 14:58:12","ExeTime":"36044","ExecutionStartTime":"2024-12-03 14:57:36"},{"Status":"SUCCESS","TestName":"locationMaster","ExecutionEndTime":"2024-12-03 15:01:50","ExeTime":"195333","ExecutionStartTime":"2024-12-03 14:58:34"},{"Status":"SUCCESS","TestName":"nonInventoryItems","ExecutionEndTime":"2024-12-03 15:03:02","ExeTime":"49162","ExecutionStartTime":"2024-12-03 15:02:13"},{"Status":"SUCCESS","TestName":"productMaster","ExecutionEndTime":"2024-12-03 15:04:15","ExeTime":"50696","ExecutionStartTime":"2024-12-03 15:03:25"},{"Status":"SUCCESS","TestName":"serviceMaster","ExecutionEndTime":"2024-12-03 15:05:26","ExeTime":"47920","ExecutionStartTime":"2024-12-03 15:04:38"},{"Status":"SUCCESS","TestName":"storageBin","ExecutionEndTime":"2024-12-03 15:06:31","ExeTime":"42242","ExecutionStartTime":"2024-12-03 15:05:48"},{"Status":"SUCCESS","TestName":"unitsOfMeasure","ExecutionEndTime":"2024-12-03 15:07:27","ExeTime":"33337","ExecutionStartTime":"2024-12-03 15:06:53"},{"Status":"SUCCESS","TestName":"productBatch","ExecutionEndTime":"2024-12-03 15:08:27","ExeTime":"37104","ExecutionStartTime":"2024-12-03 15:07:50"},{"Status":"SUCCESS","TestName":"productBatchSerialNo","ExecutionEndTime":"2024-12-03 15:09:39","ExeTime":"49909","ExecutionStartTime":"2024-12-03 15:08:49"},{"Status":"SUCCESS","TestName":"productMultiBatch","ExecutionEndTime":"2024-12-03 15:10:50","ExeTime":"48733","ExecutionStartTime":"2024-12-03 15:10:02"},{"Status":"SUCCESS","TestName":"openStock","ExecutionEndTime":"2024-12-03 15:13:29","ExeTime":"136282","ExecutionStartTime":"2024-12-03 15:11:13"},{"Status":"SUCCESS","TestName":"openingStock","ExecutionEndTime":"2024-12-03 15:14:29","ExeTime":"35412","ExecutionStartTime":"2024-12-03 15:13:54"},{"Status":"FAILED","TestName":"stockCreation","ExecutionEndTime":"2024-12-03 15:21:30","ExeTime":"398057","ExecutionStartTime":"2024-12-03 15:14:52"},{"Status":"SUCCESS","TestName":"stockCreation","ExecutionEndTime":"2024-12-03 15:22:32","ExeTime":"36473","ExecutionStartTime":"2024-12-03 15:21:56"},{"Status":"FAILED","TestName":"stockConsumption","ExecutionEndTime":"2024-12-03 15:29:56","ExeTime":"421049","ExecutionStartTime":"2024-12-03 15:22:55"},{"Status":"SUCCESS","TestName":"stockConsumption","ExecutionEndTime":"2024-12-03 15:30:59","ExeTime":"36258","ExecutionStartTime":"2024-12-03 15:30:23"},{"Status":"FAILED","TestName":"stockConversion","ExecutionEndTime":"2024-12-03 15:32:56","ExeTime":"94290","ExecutionStartTime":"2024-12-03 15:31:22"},{"Status":"SUCCESS","TestName":"stockConversion","ExecutionEndTime":"2024-12-03 15:34:04","ExeTime":"40815","ExecutionStartTime":"2024-12-03 15:33:24"},{"Status":"FAILED","TestName":"interLocationTransfer","ExecutionEndTime":"2024-12-03 15:36:05","ExeTime":"97861","ExecutionStartTime":"2024-12-03 15:34:27"},{"Status":"SUCCESS","TestName":"interLocationTransfer","ExecutionEndTime":"2024-12-03 15:37:00","ExeTime":"29678","ExecutionStartTime":"2024-12-03 15:36:31"},{"Status":"SUCCESS","TestName":"productGSTdetails","ExecutionEndTime":"2024-12-03 15:37:38","ExeTime":"15609","ExecutionStartTime":"2024-12-03 15:37:23"},{"Status":"SUCCESS","TestName":"masterDetail","ExecutionEndTime":"2024-12-03 15:38:11","ExeTime":"10153","ExecutionStartTime":"2024-12-03 15:38:01"},{"Status":"SUCCESS","TestName":"productUOMDetails","ExecutionEndTime":"2024-12-03 15:38:50","ExeTime":"16235","ExecutionStartTime":"2024-12-03 15:38:33"},{"Status":"SUCCESS","TestName":"productBatchMasterinfo","ExecutionEndTime":"2024-12-03 15:39:38","ExeTime":"26167","ExecutionStartTime":"2024-12-03 15:39:12"},{"Status":"SUCCESS","TestName":"stockLedger","ExecutionEndTime":"2024-12-03 15:40:19","ExeTime":"18048","ExecutionStartTime":"2024-12-03 15:40:01"},{"Status":"SUCCESS","TestName":"stockListing","ExecutionEndTime":"2024-12-03 15:41:03","ExeTime":"21145","ExecutionStartTime":"2024-12-03 15:40:41"},{"Status":"SUCCESS","TestName":"stockBalance","ExecutionEndTime":"2024-12-03 15:41:49","ExeTime":"24588","ExecutionStartTime":"2024-12-03 15:41:25"},{"Status":"SUCCESS","TestName":"stockValuation","ExecutionEndTime":"2024-12-03 15:42:27","ExeTime":"14836","ExecutionStartTime":"2024-12-03 15:42:12"},{"Status":"SUCCESS","TestName":"stockAgeing","ExecutionEndTime":"2024-12-03 15:43:01","ExeTime":"11672","ExecutionStartTime":"2024-12-03 15:42:49"},{"Status":"SUCCESS","TestName":"stockTransactionAnalysis","ExecutionEndTime":"2024-12-03 15:43:39","ExeTime":"15126","ExecutionStartTime":"2024-12-03 15:43:24"},{"Status":"SUCCESS","TestName":"companyWiseRecorderLevel","ExecutionEndTime":"2024-12-03 15:44:13","ExeTime":"11346","ExecutionStartTime":"2024-12-03 15:44:02"},{"Status":"SUCCESS","TestName":"stocklistUOM","ExecutionEndTime":"2024-12-03 15:44:47","ExeTime":"11015","ExecutionStartTime":"2024-12-03 15:44:36"},{"Status":"SUCCESS","TestName":"serialNoHistory","ExecutionEndTime":"2024-12-03 15:45:19","ExeTime":"10348","ExecutionStartTime":"2024-12-03 15:45:09"},{"Status":"SUCCESS","TestName":"materialIssues","ExecutionEndTime":"2024-12-03 15:45:58","ExeTime":"16690","ExecutionStartTime":"2024-12-03 15:45:42"},{"Status":"SUCCESS","TestName":"Customer","ExecutionEndTime":"2024-12-03 15:51:29","ExeTime":"307975","ExecutionStartTime":"2024-12-03 15:46:21"},{"Status":"FAILED","TestName":"newtypeofCust","ExecutionEndTime":"2024-12-03 15:51:45","ExeTime":"0","ExecutionStartTime":"2024-12-03 15:51:45"},{"Status":"SUCCESS","TestName":"newPriceList","ExecutionEndTime":"2024-12-03 15:52:43","ExeTime":"38790","ExecutionStartTime":"2024-12-03 15:52:04"},{"Status":"SUCCESS","TestName":"partyDiscount","ExecutionEndTime":"2024-12-03 15:53:51","ExeTime":"45951","ExecutionStartTime":"2024-12-03 15:53:05"},{"Status":"SUCCESS","TestName":"productDiscount","ExecutionEndTime":"2024-12-03 15:55:04","ExeTime":"51511","ExecutionStartTime":"2024-12-03 15:54:13"},{"Status":"SUCCESS","TestName":"salesTarget","ExecutionEndTime":"2024-12-03 15:56:07","ExeTime":"40084","ExecutionStartTime":"2024-12-03 15:55:27"},{"Status":"SUCCESS","TestName":"SalesEnquiryTransaction","ExecutionEndTime":"2024-12-03 15:59:12","ExeTime":"162176","ExecutionStartTime":"2024-12-03 15:56:29"},{"Status":"SUCCESS","TestName":"salesEnquiryCancellation","ExecutionEndTime":"2024-12-03 16:01:26","ExeTime":"109128","ExecutionStartTime":"2024-12-03 15:59:36"},{"Status":"SUCCESS","TestName":"salesquotation","ExecutionEndTime":"2024-12-03 16:04:26","ExeTime":"156396","ExecutionStartTime":"2024-12-03 16:01:50"},{"Status":"SUCCESS","TestName":"salesQuotationAgainstEnquiry","ExecutionEndTime":"2024-12-03 16:07:00","ExeTime":"129533","ExecutionStartTime":"2024-12-03 16:04:51"},{"Status":"SUCCESS","TestName":"salesQuoteCancel","ExecutionEndTime":"2024-12-03 16:09:07","ExeTime":"102809","ExecutionStartTime":"2024-12-03 16:07:25"},{"Status":"SUCCESS","TestName":"salesOrderAgainstQuotations","ExecutionEndTime":"2024-12-03 16:11:42","ExeTime":"130234","ExecutionStartTime":"2024-12-03 16:09:32"},{"Status":"FAILED","TestName":"salesOrder","ExecutionEndTime":"2024-12-03 16:14:53","ExeTime":"166662","ExecutionStartTime":"2024-12-03 16:12:07"},{"Status":"FAILED","TestName":"salesOrder","ExecutionEndTime":"2024-12-03 16:18:07","ExeTime":"165155","ExecutionStartTime":"2024-12-03 16:15:22"},{"Status":"FAILED","TestName":"deliveries","ExecutionEndTime":"2024-12-03 16:21:13","ExeTime":"159314","ExecutionStartTime":"2024-12-03 16:18:34"},{"Status":"SUCCESS","TestName":"deliveriesAgainstOrders","ExecutionEndTime":"2024-12-03 16:24:00","ExeTime":"140359","ExecutionStartTime":"2024-12-03 16:21:40"},{"Status":"SUCCESS","TestName":"deliveryReturns","ExecutionEndTime":"2024-12-03 16:26:32","ExeTime":"126741","ExecutionStartTime":"2024-12-03 16:24:25"},{"Status":"SUCCESS","TestName":"salesInvoiceTransaction","ExecutionEndTime":"2024-12-03 16:30:19","ExeTime":"202345","ExecutionStartTime":"2024-12-03 16:26:57"},{"Status":"SUCCESS","TestName":"salesInvoiceAgainstOrders","ExecutionEndTime":"2024-12-03 16:33:53","ExeTime":"187277","ExecutionStartTime":"2024-12-03 16:30:45"},{"Status":"SUCCESS","TestName":"salesInvoiceAgainstDeliveries","ExecutionEndTime":"2024-12-03 16:37:29","ExeTime":"190228","ExecutionStartTime":"2024-12-03 16:34:18"},{"Status":"SUCCESS","TestName":"proformaSalesInvoice","ExecutionEndTime":"2024-12-03 16:40:52","ExeTime":"177019","ExecutionStartTime":"2024-12-03 16:37:55"},{"Status":"FAILED","TestName":"salesReturns","ExecutionEndTime":"2024-12-03 16:44:12","ExeTime":"175654","ExecutionStartTime":"2024-12-03 16:41:17"},{"Status":"FAILED","TestName":"salesReturnsWithInvoiceReference","ExecutionEndTime":"2024-12-03 16:47:08","ExeTime":"148478","ExecutionStartTime":"2024-12-03 16:44:40"},{"Status":"SUCCESS","TestName":"salesPrice","ExecutionEndTime":"2024-12-03 16:49:54","ExeTime":"139254","ExecutionStartTime":"2024-12-03 16:47:34"},{"Status":"SUCCESS","TestName":"partyDsicount","ExecutionEndTime":"2024-12-03 16:51:19","ExeTime":"60839","ExecutionStartTime":"2024-12-03 16:50:18"},{"Status":"SUCCESS","TestName":"salesTarget","ExecutionEndTime":"2024-12-03 16:53:02","ExeTime":"80367","ExecutionStartTime":"2024-12-03 16:51:42"},{"Status":"SUCCESS","TestName":"newSalesEnquiryTrsncn","ExecutionEndTime":"2024-12-03 16:54:15","ExeTime":"49323","ExecutionStartTime":"2024-12-03 16:53:26"},{"Status":"SUCCESS","TestName":"pendingSalesEnquiryReport","ExecutionEndTime":"2024-12-03 16:55:09","ExeTime":"30721","ExecutionStartTime":"2024-12-03 16:54:38"},{"Status":"SUCCESS","TestName":"quotation","ExecutionEndTime":"2024-12-03 16:56:07","ExeTime":"36273","ExecutionStartTime":"2024-12-03 16:55:31"},{"Status":"SUCCESS","TestName":"quotation","ExecutionEndTime":"2024-12-03 16:57:12","ExeTime":"41751","ExecutionStartTime":"2024-12-03 16:56:30"},{"Status":"SUCCESS","TestName":"pendingSalesQuotation","ExecutionEndTime":"2024-12-03 16:58:05","ExeTime":"30194","ExecutionStartTime":"2024-12-03 16:57:34"},{"Status":"SUCCESS","TestName":"quotationAgainstEnquiry","ExecutionEndTime":"2024-12-03 16:59:05","ExeTime":"37202","ExecutionStartTime":"2024-12-03 16:58:27"},{"Status":"SUCCESS","TestName":"quotation","ExecutionEndTime":"2024-12-03 17:00:00","ExeTime":"32747","ExecutionStartTime":"2024-12-03 16:59:28"},{"Status":"SUCCESS","TestName":"quotationAgainstEnquiry","ExecutionEndTime":"2024-12-03 17:01:05","ExeTime":"41907","ExecutionStartTime":"2024-12-03 17:00:23"},{"Status":"SUCCESS","TestName":"salesOrder","ExecutionEndTime":"2024-12-03 17:02:09","ExeTime":"41420","ExecutionStartTime":"2024-12-03 17:01:28"},{"Status":"SUCCESS","TestName":"pendingSalesOrder","ExecutionEndTime":"2024-12-03 17:03:19","ExeTime":"30643","ExecutionStartTime":"2024-12-03 17:02:49"},{"Status":"SUCCESS","TestName":"salesOrderStatusDetails","ExecutionEndTime":"2024-12-03 17:04:25","ExeTime":"43553","ExecutionStartTime":"2024-12-03 17:03:42"},{"Status":"SUCCESS","TestName":"salesOrderCancellation","ExecutionEndTime":"2024-12-03 17:05:07","ExeTime":"18828","ExecutionStartTime":"2024-12-03 17:04:48"},{"Status":"SUCCESS","TestName":"deliveries","ExecutionEndTime":"2024-12-03 17:06:10","ExeTime":"40317","ExecutionStartTime":"2024-12-03 17:05:30"},{"Status":"SUCCESS","TestName":"pendingDeliveries","ExecutionEndTime":"2024-12-03 17:07:13","ExeTime":"24132","ExecutionStartTime":"2024-12-03 17:06:49"},{"Status":"SUCCESS","TestName":"pendingSalesOrderWithDeliveries","ExecutionEndTime":"2024-12-03 17:08:15","ExeTime":"39879","ExecutionStartTime":"2024-12-03 17:07:36"},{"Status":"SUCCESS","TestName":"deliveryReturns","ExecutionEndTime":"2024-12-03 17:09:16","ExeTime":"38591","ExecutionStartTime":"2024-12-03 17:08:38"},{"Status":"SUCCESS","TestName":"salesBook","ExecutionEndTime":"2024-12-03 17:10:30","ExeTime":"51338","ExecutionStartTime":"2024-12-03 17:09:39"},{"Status":"SUCCESS","TestName":"salesDetailwithProductBatch","ExecutionEndTime":"2024-12-03 17:11:45","ExeTime":"52537","ExecutionStartTime":"2024-12-03 17:10:53"},{"Status":"SUCCESS","TestName":"salesInvoiceAgainstOrders","ExecutionEndTime":"2024-12-03 17:12:46","ExeTime":"38627","ExecutionStartTime":"2024-12-03 17:12:08"},{"Status":"SUCCESS","TestName":"salesUpdation","ExecutionEndTime":"2024-12-03 17:13:57","ExeTime":"30759","ExecutionStartTime":"2024-12-03 17:13:27"},{"Status":"FAILED","TestName":"salesInvoiceAgainstDeliveries","ExecutionEndTime":"2024-12-03 17:15:02","ExeTime":"42223","ExecutionStartTime":"2024-12-03 17:14:20"},{"Status":"SUCCESS","TestName":"pfSalesReport","ExecutionEndTime":"2024-12-03 17:16:19","ExeTime":"36266","ExecutionStartTime":"2024-12-03 17:15:43"},{"Status":"SUCCESS","TestName":"salesReturn","ExecutionEndTime":"2024-12-03 17:17:21","ExeTime":"39545","ExecutionStartTime":"2024-12-03 17:16:42"},{"Status":"SUCCESS","TestName":"salesReturnWithSerialNo","ExecutionEndTime":"2024-12-03 17:18:33","ExeTime":"49429","ExecutionStartTime":"2024-12-03 17:17:44"},{"Status":"SUCCESS","TestName":"salesReturnWithInvoiceReference","ExecutionEndTime":"2024-12-03 17:19:32","ExeTime":"36746","ExecutionStartTime":"2024-12-03 17:18:56"},{"Status":"SUCCESS","TestName":"salesTargetExecWise","ExecutionEndTime":"2024-12-03 17:20:20","ExeTime":"25200","ExecutionStartTime":"2024-12-03 17:19:55"},{"Status":"SUCCESS","TestName":"salesTarget","ExecutionEndTime":"2024-12-03 17:21:00","ExeTime":"16961","ExecutionStartTime":"2024-12-03 17:20:43"}]}
+{
+  "Tests": [
+    {
+      "Status": "SUCCESS",
+      "TestName": "deletedTransaction",
+      "ExecutionEndTime": "2024-12-03 14:01:28",
+      "ExeTime": "10604",
+      "ExecutionStartTime": "2024-12-03 14:01:17"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "voucherStatistics",
+      "ExecutionEndTime": "2024-12-03 14:02:02",
+      "ExeTime": "12284",
+      "ExecutionStartTime": "2024-12-03 14:01:50"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "loginStatus",
+      "ExecutionEndTime": "2024-12-03 14:02:30",
+      "ExeTime": "5791",
+      "ExecutionStartTime": "2024-12-03 14:02:24"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "transactionActivityLog",
+      "ExecutionEndTime": "2024-12-03 14:03:09",
+      "ExeTime": "17532",
+      "ExecutionStartTime": "2024-12-03 14:02:52"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "deletedTransaction",
+      "ExecutionEndTime": "2024-12-03 14:03:41",
+      "ExeTime": "9782",
+      "ExecutionStartTime": "2024-12-03 14:03:32"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "voidTransaction",
+      "ExecutionEndTime": "2024-12-03 14:04:14",
+      "ExeTime": "10411",
+      "ExecutionStartTime": "2024-12-03 14:04:04"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "voucherHistory",
+      "ExecutionEndTime": "2024-12-03 14:04:52",
+      "ExeTime": "15347",
+      "ExecutionStartTime": "2024-12-03 14:04:36"
+    },
+    {
+      "Status": "FAILED",
+      "TestName": "bankMaster",
+      "ExecutionEndTime": "2024-12-03 14:07:19",
+      "ExeTime": "125126",
+      "ExecutionStartTime": "2024-12-03 14:05:14"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "cashMaster",
+      "ExecutionEndTime": "2024-12-03 14:09:08",
+      "ExeTime": "82143",
+      "ExecutionStartTime": "2024-12-03 14:07:46"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "fixedAssetMaster",
+      "ExecutionEndTime": "2024-12-03 14:10:12",
+      "ExeTime": "41284",
+      "ExecutionStartTime": "2024-12-03 14:09:31"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "inventoriesMaster",
+      "ExecutionEndTime": "2024-12-03 14:11:22",
+      "ExeTime": "47345",
+      "ExecutionStartTime": "2024-12-03 14:10:35"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "investmentsMaster",
+      "ExecutionEndTime": "2024-12-03 14:12:27",
+      "ExeTime": "41449",
+      "ExecutionStartTime": "2024-12-03 14:11:45"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "miscellaneousAssest",
+      "ExecutionEndTime": "2024-12-03 14:13:35",
+      "ExeTime": "45759",
+      "ExecutionStartTime": "2024-12-03 14:12:50"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "sundryDebtors",
+      "ExecutionEndTime": "2024-12-03 14:15:20",
+      "ExeTime": "81075",
+      "ExecutionStartTime": "2024-12-03 14:13:59"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "shareHolders",
+      "ExecutionEndTime": "2024-12-03 14:16:23",
+      "ExeTime": "40664",
+      "ExecutionStartTime": "2024-12-03 14:15:43"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "otherCurrentLiabilities",
+      "ExecutionEndTime": "2024-12-03 14:18:07",
+      "ExeTime": "80115",
+      "ExecutionStartTime": "2024-12-03 14:16:46"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "provisions",
+      "ExecutionEndTime": "2024-12-03 14:19:14",
+      "ExeTime": "44164",
+      "ExecutionStartTime": "2024-12-03 14:18:30"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "reservesAndSurplus",
+      "ExecutionEndTime": "2024-12-03 14:20:17",
+      "ExeTime": "40566",
+      "ExecutionStartTime": "2024-12-03 14:19:37"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "securedLoans",
+      "ExecutionEndTime": "2024-12-03 14:21:53",
+      "ExeTime": "72896",
+      "ExecutionStartTime": "2024-12-03 14:20:40"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "sundryCreditors",
+      "ExecutionEndTime": "2024-12-03 14:23:05",
+      "ExeTime": "49461",
+      "ExecutionStartTime": "2024-12-03 14:22:16"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "UnsecuredLoans",
+      "ExecutionEndTime": "2024-12-03 14:24:42",
+      "ExeTime": "74358",
+      "ExecutionStartTime": "2024-12-03 14:23:28"
+    },
+    {
+      "Status": "FAILED",
+      "TestName": "administrativeExpenses",
+      "ExecutionEndTime": "2024-12-03 14:25:46",
+      "ExeTime": "40063",
+      "ExecutionStartTime": "2024-12-03 14:25:06"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "appropriations",
+      "ExecutionEndTime": "2024-12-03 14:26:55",
+      "ExeTime": "44370",
+      "ExecutionStartTime": "2024-12-03 14:26:11"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "depreciations",
+      "ExecutionEndTime": "2024-12-03 14:28:02",
+      "ExeTime": "44341",
+      "ExecutionStartTime": "2024-12-03 14:27:18"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "openingClosingStocks",
+      "ExecutionEndTime": "2024-12-03 14:29:14",
+      "ExeTime": "48989",
+      "ExecutionStartTime": "2024-12-03 14:28:26"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "openingClosingStocks",
+      "ExecutionEndTime": "2024-12-03 14:30:27",
+      "ExeTime": "49015",
+      "ExecutionStartTime": "2024-12-03 14:29:38"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "openingClosingStocks",
+      "ExecutionEndTime": "2024-12-03 14:31:39",
+      "ExeTime": "48932",
+      "ExecutionStartTime": "2024-12-03 14:30:50"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "purchases",
+      "ExecutionEndTime": "2024-12-03 14:32:45",
+      "ExeTime": "42877",
+      "ExecutionStartTime": "2024-12-03 14:32:02"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "salesMaster",
+      "ExecutionEndTime": "2024-12-03 14:33:50",
+      "ExeTime": "42428",
+      "ExecutionStartTime": "2024-12-03 14:33:08"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "sellingAndDistribution",
+      "ExecutionEndTime": "2024-12-03 14:35:04",
+      "ExeTime": "50517",
+      "ExecutionStartTime": "2024-12-03 14:34:14"
+    },
+    {
+      "Status": "FAILED",
+      "TestName": "taxesAndOtherCharges",
+      "ExecutionEndTime": "2024-12-03 14:36:12",
+      "ExeTime": "44536",
+      "ExecutionStartTime": "2024-12-03 14:35:28"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "bankMaster",
+      "ExecutionEndTime": "2024-12-03 14:37:33",
+      "ExeTime": "55819",
+      "ExecutionStartTime": "2024-12-03 14:36:37"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "bankMaster",
+      "ExecutionEndTime": "2024-12-03 14:38:31",
+      "ExeTime": "35565",
+      "ExecutionStartTime": "2024-12-03 14:37:56"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "manageCurrency",
+      "ExecutionEndTime": "2024-12-03 14:39:03",
+      "ExeTime": "9021",
+      "ExecutionStartTime": "2024-12-03 14:38:54"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "bankDrawnMaster",
+      "ExecutionEndTime": "2024-12-03 14:40:01",
+      "ExeTime": "35220",
+      "ExecutionStartTime": "2024-12-03 14:39:26"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "transactionAnalys",
+      "ExecutionEndTime": "2024-12-03 14:40:50",
+      "ExeTime": "26547",
+      "ExecutionStartTime": "2024-12-03 14:40:24"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "trendAnalys",
+      "ExecutionEndTime": "2024-12-03 14:41:36",
+      "ExeTime": "23294",
+      "ExecutionStartTime": "2024-12-03 14:41:13"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "customerBalance",
+      "ExecutionEndTime": "2024-12-03 14:42:16",
+      "ExeTime": "17915",
+      "ExecutionStartTime": "2024-12-03 14:41:59"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "supplierBalance",
+      "ExecutionEndTime": "2024-12-03 14:42:53",
+      "ExeTime": "14641",
+      "ExecutionStartTime": "2024-12-03 14:42:39"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "accountBalance",
+      "ExecutionEndTime": "2024-12-03 14:43:35",
+      "ExeTime": "19401",
+      "ExecutionStartTime": "2024-12-03 14:43:16"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "pendingBillsForCustomer",
+      "ExecutionEndTime": "2024-12-03 14:44:16",
+      "ExeTime": "18558",
+      "ExecutionStartTime": "2024-12-03 14:43:58"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "pendingBillsForCustomer",
+      "ExecutionEndTime": "2024-12-03 14:44:57",
+      "ExeTime": "18069",
+      "ExecutionStartTime": "2024-12-03 14:44:39"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "pendingBillsForSupplier",
+      "ExecutionEndTime": "2024-12-03 14:45:39",
+      "ExeTime": "19132",
+      "ExecutionStartTime": "2024-12-03 14:45:19"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "pendingBillsForSupplier",
+      "ExecutionEndTime": "2024-12-03 14:46:29",
+      "ExeTime": "28313",
+      "ExecutionStartTime": "2024-12-03 14:46:01"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "trialBalance",
+      "ExecutionEndTime": "2024-12-03 14:47:10",
+      "ExeTime": "18310",
+      "ExecutionStartTime": "2024-12-03 14:46:52"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "profitAndLoss",
+      "ExecutionEndTime": "2024-12-03 14:47:51",
+      "ExeTime": "18155",
+      "ExecutionStartTime": "2024-12-03 14:47:33"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "balanceSheet",
+      "ExecutionEndTime": "2024-12-03 14:48:32",
+      "ExeTime": "18165",
+      "ExecutionStartTime": "2024-12-03 14:48:13"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "profitAndLossTform",
+      "ExecutionEndTime": "2024-12-03 14:49:11",
+      "ExeTime": "16445",
+      "ExecutionStartTime": "2024-12-03 14:48:54"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "balanceSheetTform",
+      "ExecutionEndTime": "2024-12-03 14:49:49",
+      "ExeTime": "16219",
+      "ExecutionStartTime": "2024-12-03 14:49:33"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "cashFlow",
+      "ExecutionEndTime": "2024-12-03 14:50:29",
+      "ExeTime": "17144",
+      "ExecutionStartTime": "2024-12-03 14:50:12"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "fundsFlow",
+      "ExecutionEndTime": "2024-12-03 14:51:11",
+      "ExeTime": "19712",
+      "ExecutionStartTime": "2024-12-03 14:50:51"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "profitAndLossManualStock",
+      "ExecutionEndTime": "2024-12-03 14:51:52",
+      "ExeTime": "18195",
+      "ExecutionStartTime": "2024-12-03 14:51:34"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "balanceSheetManualStock",
+      "ExecutionEndTime": "2024-12-03 14:52:32",
+      "ExeTime": "17867",
+      "ExecutionStartTime": "2024-12-03 14:52:14"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "cashBookDayBalanceReport",
+      "ExecutionEndTime": "2024-12-03 14:53:12",
+      "ExeTime": "17621",
+      "ExecutionStartTime": "2024-12-03 14:52:55"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "bankBookDayBalanceReport",
+      "ExecutionEndTime": "2024-12-03 14:53:52",
+      "ExeTime": "17441",
+      "ExecutionStartTime": "2024-12-03 14:53:35"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "dayBookReport",
+      "ExecutionEndTime": "2024-12-03 14:54:40",
+      "ExeTime": "25771",
+      "ExecutionStartTime": "2024-12-03 14:54:15"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "billingAddressGST",
+      "ExecutionEndTime": "2024-12-03 14:55:22",
+      "ExeTime": "18981",
+      "ExecutionStartTime": "2024-12-03 14:55:03"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "chartOfAccount",
+      "ExecutionEndTime": "2024-12-03 14:56:00",
+      "ExeTime": "15835",
+      "ExecutionStartTime": "2024-12-03 14:55:44"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "customerReport",
+      "ExecutionEndTime": "2024-12-03 14:56:37",
+      "ExeTime": "15130",
+      "ExecutionStartTime": "2024-12-03 14:56:22"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "suppliersReport",
+      "ExecutionEndTime": "2024-12-03 14:57:13",
+      "ExeTime": "13329",
+      "ExecutionStartTime": "2024-12-03 14:57:00"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "ledgerReport",
+      "ExecutionEndTime": "2024-12-03 14:58:12",
+      "ExeTime": "36044",
+      "ExecutionStartTime": "2024-12-03 14:57:36"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "locationMaster",
+      "ExecutionEndTime": "2024-12-03 15:01:50",
+      "ExeTime": "195333",
+      "ExecutionStartTime": "2024-12-03 14:58:34"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "nonInventoryItems",
+      "ExecutionEndTime": "2024-12-03 15:03:02",
+      "ExeTime": "49162",
+      "ExecutionStartTime": "2024-12-03 15:02:13"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "productMaster",
+      "ExecutionEndTime": "2024-12-03 15:04:15",
+      "ExeTime": "50696",
+      "ExecutionStartTime": "2024-12-03 15:03:25"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "serviceMaster",
+      "ExecutionEndTime": "2024-12-03 15:05:26",
+      "ExeTime": "47920",
+      "ExecutionStartTime": "2024-12-03 15:04:38"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "storageBin",
+      "ExecutionEndTime": "2024-12-03 15:06:31",
+      "ExeTime": "42242",
+      "ExecutionStartTime": "2024-12-03 15:05:48"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "unitsOfMeasure",
+      "ExecutionEndTime": "2024-12-03 15:07:27",
+      "ExeTime": "33337",
+      "ExecutionStartTime": "2024-12-03 15:06:53"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "productBatch",
+      "ExecutionEndTime": "2024-12-03 15:08:27",
+      "ExeTime": "37104",
+      "ExecutionStartTime": "2024-12-03 15:07:50"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "productBatchSerialNo",
+      "ExecutionEndTime": "2024-12-03 15:09:39",
+      "ExeTime": "49909",
+      "ExecutionStartTime": "2024-12-03 15:08:49"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "productMultiBatch",
+      "ExecutionEndTime": "2024-12-03 15:10:50",
+      "ExeTime": "48733",
+      "ExecutionStartTime": "2024-12-03 15:10:02"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "openStock",
+      "ExecutionEndTime": "2024-12-03 15:13:29",
+      "ExeTime": "136282",
+      "ExecutionStartTime": "2024-12-03 15:11:13"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "openingStock",
+      "ExecutionEndTime": "2024-12-03 15:14:29",
+      "ExeTime": "35412",
+      "ExecutionStartTime": "2024-12-03 15:13:54"
+    },
+    {
+      "Status": "FAILED",
+      "TestName": "stockCreation",
+      "ExecutionEndTime": "2024-12-03 15:21:30",
+      "ExeTime": "398057",
+      "ExecutionStartTime": "2024-12-03 15:14:52"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "stockCreation",
+      "ExecutionEndTime": "2024-12-03 15:22:32",
+      "ExeTime": "36473",
+      "ExecutionStartTime": "2024-12-03 15:21:56"
+    },
+    {
+      "Status": "FAILED",
+      "TestName": "stockConsumption",
+      "ExecutionEndTime": "2024-12-03 15:29:56",
+      "ExeTime": "421049",
+      "ExecutionStartTime": "2024-12-03 15:22:55"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "stockConsumption",
+      "ExecutionEndTime": "2024-12-03 15:30:59",
+      "ExeTime": "36258",
+      "ExecutionStartTime": "2024-12-03 15:30:23"
+    },
+    {
+      "Status": "FAILED",
+      "TestName": "stockConversion",
+      "ExecutionEndTime": "2024-12-03 15:32:56",
+      "ExeTime": "94290",
+      "ExecutionStartTime": "2024-12-03 15:31:22"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "stockConversion",
+      "ExecutionEndTime": "2024-12-03 15:34:04",
+      "ExeTime": "40815",
+      "ExecutionStartTime": "2024-12-03 15:33:24"
+    },
+    {
+      "Status": "FAILED",
+      "TestName": "interLocationTransfer",
+      "ExecutionEndTime": "2024-12-03 15:36:05",
+      "ExeTime": "97861",
+      "ExecutionStartTime": "2024-12-03 15:34:27"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "interLocationTransfer",
+      "ExecutionEndTime": "2024-12-03 15:37:00",
+      "ExeTime": "29678",
+      "ExecutionStartTime": "2024-12-03 15:36:31"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "productGSTdetails",
+      "ExecutionEndTime": "2024-12-03 15:37:38",
+      "ExeTime": "15609",
+      "ExecutionStartTime": "2024-12-03 15:37:23"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "masterDetail",
+      "ExecutionEndTime": "2024-12-03 15:38:11",
+      "ExeTime": "10153",
+      "ExecutionStartTime": "2024-12-03 15:38:01"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "productUOMDetails",
+      "ExecutionEndTime": "2024-12-03 15:38:50",
+      "ExeTime": "16235",
+      "ExecutionStartTime": "2024-12-03 15:38:33"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "productBatchMasterinfo",
+      "ExecutionEndTime": "2024-12-03 15:39:38",
+      "ExeTime": "26167",
+      "ExecutionStartTime": "2024-12-03 15:39:12"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "stockLedger",
+      "ExecutionEndTime": "2024-12-03 15:40:19",
+      "ExeTime": "18048",
+      "ExecutionStartTime": "2024-12-03 15:40:01"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "stockListing",
+      "ExecutionEndTime": "2024-12-03 15:41:03",
+      "ExeTime": "21145",
+      "ExecutionStartTime": "2024-12-03 15:40:41"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "stockBalance",
+      "ExecutionEndTime": "2024-12-03 15:41:49",
+      "ExeTime": "24588",
+      "ExecutionStartTime": "2024-12-03 15:41:25"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "stockValuation",
+      "ExecutionEndTime": "2024-12-03 15:42:27",
+      "ExeTime": "14836",
+      "ExecutionStartTime": "2024-12-03 15:42:12"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "stockAgeing",
+      "ExecutionEndTime": "2024-12-03 15:43:01",
+      "ExeTime": "11672",
+      "ExecutionStartTime": "2024-12-03 15:42:49"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "stockTransactionAnalysis",
+      "ExecutionEndTime": "2024-12-03 15:43:39",
+      "ExeTime": "15126",
+      "ExecutionStartTime": "2024-12-03 15:43:24"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "companyWiseRecorderLevel",
+      "ExecutionEndTime": "2024-12-03 15:44:13",
+      "ExeTime": "11346",
+      "ExecutionStartTime": "2024-12-03 15:44:02"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "stocklistUOM",
+      "ExecutionEndTime": "2024-12-03 15:44:47",
+      "ExeTime": "11015",
+      "ExecutionStartTime": "2024-12-03 15:44:36"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "serialNoHistory",
+      "ExecutionEndTime": "2024-12-03 15:45:19",
+      "ExeTime": "10348",
+      "ExecutionStartTime": "2024-12-03 15:45:09"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "materialIssues",
+      "ExecutionEndTime": "2024-12-03 15:45:58",
+      "ExeTime": "16690",
+      "ExecutionStartTime": "2024-12-03 15:45:42"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "Customer",
+      "ExecutionEndTime": "2024-12-03 15:51:29",
+      "ExeTime": "307975",
+      "ExecutionStartTime": "2024-12-03 15:46:21"
+    },
+    {
+      "Status": "FAILED",
+      "TestName": "newtypeofCust",
+      "ExecutionEndTime": "2024-12-03 15:51:45",
+      "ExeTime": "0",
+      "ExecutionStartTime": "2024-12-03 15:51:45"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "newPriceList",
+      "ExecutionEndTime": "2024-12-03 15:52:43",
+      "ExeTime": "38790",
+      "ExecutionStartTime": "2024-12-03 15:52:04"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "partyDiscount",
+      "ExecutionEndTime": "2024-12-03 15:53:51",
+      "ExeTime": "45951",
+      "ExecutionStartTime": "2024-12-03 15:53:05"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "productDiscount",
+      "ExecutionEndTime": "2024-12-03 15:55:04",
+      "ExeTime": "51511",
+      "ExecutionStartTime": "2024-12-03 15:54:13"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "salesTarget",
+      "ExecutionEndTime": "2024-12-03 15:56:07",
+      "ExeTime": "40084",
+      "ExecutionStartTime": "2024-12-03 15:55:27"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "SalesEnquiryTransaction",
+      "ExecutionEndTime": "2024-12-03 15:59:12",
+      "ExeTime": "162176",
+      "ExecutionStartTime": "2024-12-03 15:56:29"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "salesEnquiryCancellation",
+      "ExecutionEndTime": "2024-12-03 16:01:26",
+      "ExeTime": "109128",
+      "ExecutionStartTime": "2024-12-03 15:59:36"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "salesquotation",
+      "ExecutionEndTime": "2024-12-03 16:04:26",
+      "ExeTime": "156396",
+      "ExecutionStartTime": "2024-12-03 16:01:50"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "salesQuotationAgainstEnquiry",
+      "ExecutionEndTime": "2024-12-03 16:07:00",
+      "ExeTime": "129533",
+      "ExecutionStartTime": "2024-12-03 16:04:51"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "salesQuoteCancel",
+      "ExecutionEndTime": "2024-12-03 16:09:07",
+      "ExeTime": "102809",
+      "ExecutionStartTime": "2024-12-03 16:07:25"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "salesOrderAgainstQuotations",
+      "ExecutionEndTime": "2024-12-03 16:11:42",
+      "ExeTime": "130234",
+      "ExecutionStartTime": "2024-12-03 16:09:32"
+    },
+    {
+      "Status": "FAILED",
+      "TestName": "salesOrder",
+      "ExecutionEndTime": "2024-12-03 16:14:53",
+      "ExeTime": "166662",
+      "ExecutionStartTime": "2024-12-03 16:12:07"
+    },
+    {
+      "Status": "FAILED",
+      "TestName": "salesOrder",
+      "ExecutionEndTime": "2024-12-03 16:18:07",
+      "ExeTime": "165155",
+      "ExecutionStartTime": "2024-12-03 16:15:22"
+    },
+    {
+      "Status": "FAILED",
+      "TestName": "deliveries",
+      "ExecutionEndTime": "2024-12-03 16:21:13",
+      "ExeTime": "159314",
+      "ExecutionStartTime": "2024-12-03 16:18:34"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "deliveriesAgainstOrders",
+      "ExecutionEndTime": "2024-12-03 16:24:00",
+      "ExeTime": "140359",
+      "ExecutionStartTime": "2024-12-03 16:21:40"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "deliveryReturns",
+      "ExecutionEndTime": "2024-12-03 16:26:32",
+      "ExeTime": "126741",
+      "ExecutionStartTime": "2024-12-03 16:24:25"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "salesInvoiceTransaction",
+      "ExecutionEndTime": "2024-12-03 16:30:19",
+      "ExeTime": "202345",
+      "ExecutionStartTime": "2024-12-03 16:26:57"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "salesInvoiceAgainstOrders",
+      "ExecutionEndTime": "2024-12-03 16:33:53",
+      "ExeTime": "187277",
+      "ExecutionStartTime": "2024-12-03 16:30:45"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "salesInvoiceAgainstDeliveries",
+      "ExecutionEndTime": "2024-12-03 16:37:29",
+      "ExeTime": "190228",
+      "ExecutionStartTime": "2024-12-03 16:34:18"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "proformaSalesInvoice",
+      "ExecutionEndTime": "2024-12-03 16:40:52",
+      "ExeTime": "177019",
+      "ExecutionStartTime": "2024-12-03 16:37:55"
+    },
+    {
+      "Status": "FAILED",
+      "TestName": "salesReturns",
+      "ExecutionEndTime": "2024-12-03 16:44:12",
+      "ExeTime": "175654",
+      "ExecutionStartTime": "2024-12-03 16:41:17"
+    },
+    {
+      "Status": "FAILED",
+      "TestName": "salesReturnsWithInvoiceReference",
+      "ExecutionEndTime": "2024-12-03 16:47:08",
+      "ExeTime": "148478",
+      "ExecutionStartTime": "2024-12-03 16:44:40"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "salesPrice",
+      "ExecutionEndTime": "2024-12-03 16:49:54",
+      "ExeTime": "139254",
+      "ExecutionStartTime": "2024-12-03 16:47:34"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "partyDsicount",
+      "ExecutionEndTime": "2024-12-03 16:51:19",
+      "ExeTime": "60839",
+      "ExecutionStartTime": "2024-12-03 16:50:18"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "salesTarget",
+      "ExecutionEndTime": "2024-12-03 16:53:02",
+      "ExeTime": "80367",
+      "ExecutionStartTime": "2024-12-03 16:51:42"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "newSalesEnquiryTrsncn",
+      "ExecutionEndTime": "2024-12-03 16:54:15",
+      "ExeTime": "49323",
+      "ExecutionStartTime": "2024-12-03 16:53:26"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "pendingSalesEnquiryReport",
+      "ExecutionEndTime": "2024-12-03 16:55:09",
+      "ExeTime": "30721",
+      "ExecutionStartTime": "2024-12-03 16:54:38"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "quotation",
+      "ExecutionEndTime": "2024-12-03 16:56:07",
+      "ExeTime": "36273",
+      "ExecutionStartTime": "2024-12-03 16:55:31"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "quotation",
+      "ExecutionEndTime": "2024-12-03 16:57:12",
+      "ExeTime": "41751",
+      "ExecutionStartTime": "2024-12-03 16:56:30"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "pendingSalesQuotation",
+      "ExecutionEndTime": "2024-12-03 16:58:05",
+      "ExeTime": "30194",
+      "ExecutionStartTime": "2024-12-03 16:57:34"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "quotationAgainstEnquiry",
+      "ExecutionEndTime": "2024-12-03 16:59:05",
+      "ExeTime": "37202",
+      "ExecutionStartTime": "2024-12-03 16:58:27"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "quotation",
+      "ExecutionEndTime": "2024-12-03 17:00:00",
+      "ExeTime": "32747",
+      "ExecutionStartTime": "2024-12-03 16:59:28"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "quotationAgainstEnquiry",
+      "ExecutionEndTime": "2024-12-03 17:01:05",
+      "ExeTime": "41907",
+      "ExecutionStartTime": "2024-12-03 17:00:23"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "salesOrder",
+      "ExecutionEndTime": "2024-12-03 17:02:09",
+      "ExeTime": "41420",
+      "ExecutionStartTime": "2024-12-03 17:01:28"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "pendingSalesOrder",
+      "ExecutionEndTime": "2024-12-03 17:03:19",
+      "ExeTime": "30643",
+      "ExecutionStartTime": "2024-12-03 17:02:49"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "salesOrderStatusDetails",
+      "ExecutionEndTime": "2024-12-03 17:04:25",
+      "ExeTime": "43553",
+      "ExecutionStartTime": "2024-12-03 17:03:42"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "salesOrderCancellation",
+      "ExecutionEndTime": "2024-12-03 17:05:07",
+      "ExeTime": "18828",
+      "ExecutionStartTime": "2024-12-03 17:04:48"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "deliveries",
+      "ExecutionEndTime": "2024-12-03 17:06:10",
+      "ExeTime": "40317",
+      "ExecutionStartTime": "2024-12-03 17:05:30"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "pendingDeliveries",
+      "ExecutionEndTime": "2024-12-03 17:07:13",
+      "ExeTime": "24132",
+      "ExecutionStartTime": "2024-12-03 17:06:49"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "pendingSalesOrderWithDeliveries",
+      "ExecutionEndTime": "2024-12-03 17:08:15",
+      "ExeTime": "39879",
+      "ExecutionStartTime": "2024-12-03 17:07:36"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "deliveryReturns",
+      "ExecutionEndTime": "2024-12-03 17:09:16",
+      "ExeTime": "38591",
+      "ExecutionStartTime": "2024-12-03 17:08:38"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "salesBook",
+      "ExecutionEndTime": "2024-12-03 17:10:30",
+      "ExeTime": "51338",
+      "ExecutionStartTime": "2024-12-03 17:09:39"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "salesDetailwithProductBatch",
+      "ExecutionEndTime": "2024-12-03 17:11:45",
+      "ExeTime": "52537",
+      "ExecutionStartTime": "2024-12-03 17:10:53"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "salesInvoiceAgainstOrders",
+      "ExecutionEndTime": "2024-12-03 17:12:46",
+      "ExeTime": "38627",
+      "ExecutionStartTime": "2024-12-03 17:12:08"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "salesUpdation",
+      "ExecutionEndTime": "2024-12-03 17:13:57",
+      "ExeTime": "30759",
+      "ExecutionStartTime": "2024-12-03 17:13:27"
+    },
+    {
+      "Status": "FAILED",
+      "TestName": "salesInvoiceAgainstDeliveries",
+      "ExecutionEndTime": "2024-12-03 17:15:02",
+      "ExeTime": "42223",
+      "ExecutionStartTime": "2024-12-03 17:14:20"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "pfSalesReport",
+      "ExecutionEndTime": "2024-12-03 17:16:19",
+      "ExeTime": "36266",
+      "ExecutionStartTime": "2024-12-03 17:15:43"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "salesReturn",
+      "ExecutionEndTime": "2024-12-03 17:17:21",
+      "ExeTime": "39545",
+      "ExecutionStartTime": "2024-12-03 17:16:42"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "salesReturnWithSerialNo",
+      "ExecutionEndTime": "2024-12-03 17:18:33",
+      "ExeTime": "49429",
+      "ExecutionStartTime": "2024-12-03 17:17:44"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "salesReturnWithInvoiceReference",
+      "ExecutionEndTime": "2024-12-03 17:19:32",
+      "ExeTime": "36746",
+      "ExecutionStartTime": "2024-12-03 17:18:56"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "salesTargetExecWise",
+      "ExecutionEndTime": "2024-12-03 17:20:20",
+      "ExeTime": "25200",
+      "ExecutionStartTime": "2024-12-03 17:19:55"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "salesTarget",
+      "ExecutionEndTime": "2024-12-03 17:21:00",
+      "ExeTime": "16961",
+      "ExecutionStartTime": "2024-12-03 17:20:43"
+    }
+  ]
+}

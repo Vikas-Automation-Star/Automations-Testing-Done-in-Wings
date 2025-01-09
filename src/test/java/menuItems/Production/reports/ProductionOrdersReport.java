@@ -12,23 +12,23 @@ import java.io.IOException;
 
 public class ProductionOrdersReport {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
+    AppLogin appLogin = new AppLogin();
 
     @BeforeTest
     public void ProductionOrdersReport() throws IOException, InterruptedException, ParseException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         Thread.sleep(1500);
         appLogin.singleUserLogin();
     }
 
     @Test
     public void productionOrdersReport() throws InterruptedException {
-        ProductionOrders po=new ProductionOrders(driver);
+        ProductionOrders po = new ProductionOrders(driver);
         po.productionOrders();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

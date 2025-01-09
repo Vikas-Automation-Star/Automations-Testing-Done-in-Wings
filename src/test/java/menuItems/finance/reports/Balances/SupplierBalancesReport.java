@@ -1,12 +1,12 @@
 package menuItems.finance.reports.Balances;
 
+import com.wings.pages.AppLogin;
+import com.wings.pages.finance.reports.Balances.SupplierBalances;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import com.wings.pages.AppLogin;
-import com.wings.pages.finance.reports.Balances.SupplierBalances;
 
 import java.awt.*;
 import java.io.IOException;
@@ -22,14 +22,14 @@ public class SupplierBalancesReport {
     }
 
     @Test
-    public void supplierBalance() throws  InterruptedException, AWTException {
-        SupplierBalances supplierBalances=new SupplierBalances(driver);
+    public void supplierBalance() throws InterruptedException, AWTException {
+        SupplierBalances supplierBalances = new SupplierBalances(driver);
         supplierBalances.supplierBalanceReport();
 
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

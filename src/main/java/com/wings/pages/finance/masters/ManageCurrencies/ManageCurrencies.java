@@ -1,9 +1,8 @@
 package com.wings.pages.finance.masters.ManageCurrencies;
 
+import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
-import com.wings.pages.Masters;
-import com.wings.utils.Common;
 
 import java.io.IOException;
 
@@ -28,7 +27,7 @@ public class ManageCurrencies {
 
 //        super.clickMaster(common.getData(dataFile,"currency"));
 
-        common.clickElement("name","Submit");
-        common.clickElement("name","OK");
+        common.clickElement("name", "Submit");
+        common.clickElement("name", "OK");
     }
 }

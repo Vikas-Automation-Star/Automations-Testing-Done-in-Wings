@@ -1,7 +1,7 @@
 package menuItems.purchase.reports;
 
-import com.wings.pages.purchase.reports.PurchaseBooks;
 import com.wings.pages.AppLogin;
+import com.wings.pages.purchase.reports.PurchaseBooks;
 import io.appium.java_client.windows.WindowsDriver;
 import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
@@ -21,20 +21,18 @@ public class PurchaseBooksReport {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
         Allure.step("Before Test PurchaseBook Report");
-
     }
 
     @Test
     public void purchaseBooks() throws InterruptedException, AWTException {
-        PurchaseBooks pb=new PurchaseBooks(driver);
+        PurchaseBooks pb = new PurchaseBooks(driver);
         pb.purchaseBooks();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
         Allure.step("After Test PurchaseBook Report");
-
     }
 
 }

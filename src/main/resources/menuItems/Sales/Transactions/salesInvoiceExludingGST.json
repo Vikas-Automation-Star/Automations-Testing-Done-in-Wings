@@ -2,7 +2,7 @@
   "branch": "AT_Branch 1_Reg",
   "location": "AT_Branch 1_Location 1",
   "transaction": "INR",
-  "partyCode":20012,
+  "partyCode": 20012,
   "priceList": "AT_Exclusive Sales Price List 1",
   "executive": "AT_Executive 2",
   "quantity": 100,

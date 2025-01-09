@@ -20,19 +20,17 @@ public class MaterialReceiptsAgainstOrdersReport {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
         Allure.step("Before Test MaterialReceiptsAgainstOrders Report");
-
     }
 
     @Test
-    public void materialReceiptsAgainstOrders() throws  InterruptedException {
-        MaterialReceiptsAgainstOrders mrao=new MaterialReceiptsAgainstOrders(driver);
+    public void materialReceiptsAgainstOrders() throws InterruptedException {
+        MaterialReceiptsAgainstOrders mrao = new MaterialReceiptsAgainstOrders(driver);
         mrao.materialReceiptsAgainstOrder();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
         Allure.step("After Test MaterialReceiptsAgainstOrders Report");
-
     }
 }

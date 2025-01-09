@@ -1,11 +1,12 @@
 package com.wings.pages.finance.reports.OpeningBalance;
 
-import io.appium.java_client.windows.WindowsDriver;
-import com.wings.pages.Report;
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
+
 import java.awt.*;
 
-public class OpeningReceiptsfromCreditCardCompaniesReportCode extends Report {
+public class OpeningReceiptsfromCreditCardCompaniesReportCode extends Transaction {
     WindowsDriver driver;
     Common common;
 
@@ -18,10 +19,10 @@ public class OpeningReceiptsfromCreditCardCompaniesReportCode extends Report {
     public void openingReceiptsfromCreditCardCompany() throws InterruptedException, AWTException {
         common.clickElement("name", "Finance");
         common.clickElement("name", "Opening Balances");
-        common.clickElement("xpath","//MenuItem[@Name='Opening Receipts from Credit Card Companies'][2]");
+        common.clickElement("xpath", "//MenuItem[@Name='Opening Receipts from Credit Card Companies'][2]");
         Thread.sleep(1000);
-        common.clickElement("xpath","//CheckBox[@Name='Detailed']");
-        common.clickElement("xpath","//Pane/Button[@Name='Submit']");
+        common.clickElement("xpath", "//CheckBox[@Name='Detailed']");
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
         bulkVerifyReport("ORFCC 2");
         closeReport("Opening Receipts from Credit Card Companies");

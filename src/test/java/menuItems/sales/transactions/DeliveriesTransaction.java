@@ -1,13 +1,14 @@
 package menuItems.sales.transactions;
 
+import com.wings.pages.AppLogin;
+import com.wings.pages.sales.transactions.Deliveries;
 import io.appium.java_client.windows.WindowsDriver;
 import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import com.wings.pages.AppLogin;
-import com.wings.pages.sales.transactions.Deliveries;
+
 import java.io.IOException;
 
 public class DeliveriesTransaction {

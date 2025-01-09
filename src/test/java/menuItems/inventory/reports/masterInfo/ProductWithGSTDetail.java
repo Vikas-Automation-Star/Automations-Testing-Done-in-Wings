@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.wings.pages.AppLogin;
 import com.wings.pages.inventory.reports.masterInfo.ProductWithGSTDetails;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -21,13 +22,13 @@ public class ProductWithGSTDetail {
     }
 
     @Test
-    public void productGSTdetails() throws  InterruptedException, AWTException {
-        ProductWithGSTDetails gstDetails=new ProductWithGSTDetails(driver);
+    public void productGSTdetails() throws InterruptedException, AWTException {
+        ProductWithGSTDetails gstDetails = new ProductWithGSTDetails(driver);
         gstDetails.productGST();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

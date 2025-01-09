@@ -8,41 +8,40 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 
 public class ReservesAndSurplusMaster {
-        WindowsDriver driver;
-        Common common;
-        String dataFile;
+    WindowsDriver driver;
+    Common common;
+    String dataFile;
 
-        public ReservesAndSurplusMaster(WindowsDriver driver, String file) {
-            this.driver = driver;
-            common = new Common(this.driver);
-            dataFile = file;
-        }
-
-        public void reservesAndSurplus() throws InterruptedException, IOException, ParseException, AWTException {
-            common.clickElement("name", "Finance");
-            common.clickElement("name", "Chart of Accounts");
-            WebElement assets = common.findWebElement("xpath", "//TreeItem[@Name='Balance Sheet']/TreeItem[@Name='Liabilities']");
-            assets.click();
-            assets.sendKeys(Keys.ARROW_RIGHT);
-            WebElement AllBranch = common.findWebElement("xpath", "//TreeItem[@Name='Reserves and Surplus']");
-            Actions actions = new Actions(driver);
-            actions.contextClick(AllBranch).perform();
-            common.clickElement("name", "New Master");
-            Thread.sleep(1500);
-            common.inputText("xpath", "//Edit[@Name='New Account *']", common.getData(dataFile, "name") + common.getRandom());
-            Thread.sleep(1500);
-            common.inputText("xpath", "//Edit[@Name='Account Code']", String.valueOf(common.getRandom()));
-            common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
-            common.clickElement("xpath", "//Button[@Name='Save  Show Properties']");
-            Thread.sleep(500);
-            common.clickElement("name", "Save");
-            Thread.sleep(800);
-            common.clickElement("name", "Yes");
-            common.clickElement("name", "OK");
-            common.clickElement("xpath", "//Button[@Name='Close']");
-        }
+    public ReservesAndSurplusMaster(WindowsDriver driver, String file) {
+        this.driver = driver;
+        common = new Common(this.driver);
+        dataFile = file;
     }
+
+    public void reservesAndSurplus() throws InterruptedException, IOException, ParseException, AWTException {
+        common.clickElement("name", "Finance");
+        common.clickElement("name", "Chart of Accounts");
+        WebElement assets = common.findWebElement("xpath", "//TreeItem[@Name='Balance Sheet']/TreeItem[@Name='Liabilities']");
+        assets.click();
+        assets.sendKeys(Keys.ARROW_RIGHT);
+        WebElement AllBranch = common.findWebElement("xpath", "//TreeItem[@Name='Reserves and Surplus']");
+        Actions actions = new Actions(driver);
+        actions.contextClick(AllBranch).perform();
+        common.clickElement("name", "New Master");
+        Thread.sleep(1500);
+        common.inputText("xpath", "//Edit[@Name='New Account *']", common.getData(dataFile, "name") + common.getRandom());
+        Thread.sleep(1500);
+        common.inputText("xpath", "//Edit[@Name='Account Code']", String.valueOf(common.getRandom()));
+        common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
+        common.clickElement("xpath", "//Button[@Name='Save  Show Properties']");
+        Thread.sleep(500);
+        common.clickElement("name", "Save");
+        Thread.sleep(800);
+        common.clickElement("name", "Yes");
+        common.clickElement("name", "OK");
+        common.clickElement("xpath", "//Button[@Name='Close']");
+    }
+}

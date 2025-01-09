@@ -8,13 +8,14 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.wings.pages.AppLogin;
 import com.wings.pages.finance.transactions.Receipts.CreditCardReceipts;
+
 import java.awt.*;
 import java.io.IOException;
 
 public class CreditCardReceiptTransaction {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String dataFile="./src/main/resources/menuItems/finance/transaction/creditCardReceipt.json";
+    String dataFile = "./src/main/resources/menuItems/finance/transaction/creditCardReceipt.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
@@ -25,12 +26,12 @@ public class CreditCardReceiptTransaction {
 
     @Test
     public void creditCardReceipt() throws InterruptedException, AWTException, IOException, ParseException {
-        CreditCardReceipts creditCardReceipts=new CreditCardReceipts(driver,dataFile);
+        CreditCardReceipts creditCardReceipts = new CreditCardReceipts(driver, dataFile);
         creditCardReceipts.creditCardReceipt();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
         Allure.step("After Test - Credit Card Receipts");
     }

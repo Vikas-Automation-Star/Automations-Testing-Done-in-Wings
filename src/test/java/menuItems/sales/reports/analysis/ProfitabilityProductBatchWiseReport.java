@@ -1,7 +1,6 @@
 package menuItems.sales.reports.analysis;
 
 import com.wings.pages.AppLogin;
-import com.wings.pages.sales.reports.analysis.Profitability;
 import com.wings.pages.sales.reports.analysis.ProfitabilityProductBatchWise;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
@@ -23,12 +22,12 @@ public class ProfitabilityProductBatchWiseReport {
 
     @Test
     public void profitabilityProductBatchWiseReport() throws InterruptedException {
-        ProfitabilityProductBatchWise ppbw=new ProfitabilityProductBatchWise(driver);
+        ProfitabilityProductBatchWise ppbw = new ProfitabilityProductBatchWise(driver);
         ppbw.profitabilityProductBatchWise();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

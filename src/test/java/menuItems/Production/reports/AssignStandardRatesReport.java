@@ -10,24 +10,24 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class AssignStandardRatesReport  {
+public class AssignStandardRatesReport {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
+    AppLogin appLogin = new AppLogin();
 
     @BeforeTest
     public void AssignStandardRates() throws IOException, InterruptedException, ParseException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
     public void assignStandardRates() throws IOException, ParseException, InterruptedException {
-        AssignStandardRates asr=new AssignStandardRates(driver);
+        AssignStandardRates asr = new AssignStandardRates(driver);
         asr.assignStandardRatesReport();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

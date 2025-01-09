@@ -1,12 +1,13 @@
 package menuItems.audit.reports;
 
+import com.wings.pages.AppLogin;
+import com.wings.pages.audit.reports.VoucherStatisticsReportCode;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import com.wings.pages.AppLogin;
-import com.wings.pages.audit.reports.VoucherStatisticsReportCode;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -21,14 +22,14 @@ public class VoucherStatisticsReport {
     }
 
     @Test
-    public void voucherStatistics() throws  InterruptedException, AWTException {
-        VoucherStatisticsReportCode statisticsReportCode=new VoucherStatisticsReportCode(driver);
+    public void voucherStatistics() throws InterruptedException, AWTException {
+        VoucherStatisticsReportCode statisticsReportCode = new VoucherStatisticsReportCode(driver);
         statisticsReportCode.voucherstatistics();
 
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

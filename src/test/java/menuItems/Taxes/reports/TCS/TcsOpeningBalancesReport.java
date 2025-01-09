@@ -1,4 +1,4 @@
-package  menuItems.Taxes.reports.TCS;
+package menuItems.Taxes.reports.TCS;
 
 import com.wings.pages.AppLogin;
 import com.wings.pages.taxes.reports.TCS.TcsOpeningBalances;
@@ -12,22 +12,22 @@ import java.io.IOException;
 
 public class TcsOpeningBalancesReport {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
+    AppLogin appLogin = new AppLogin();
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
     public void TcsOpeningBalancesReport() throws InterruptedException, IOException, ParseException {
-        TcsOpeningBalances tob=new TcsOpeningBalances(driver);
+        TcsOpeningBalances tob = new TcsOpeningBalances(driver);
         tob.tcsOpeningBalences();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

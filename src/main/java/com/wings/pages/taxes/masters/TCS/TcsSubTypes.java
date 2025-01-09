@@ -1,7 +1,6 @@
 package com.wings.pages.taxes.masters.TCS;
 
 import com.wings.pages.Masters;
-import com.wings.pages.Report;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
@@ -35,8 +34,8 @@ public class TcsSubTypes extends Masters {
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='NewTCS Sub Type *']", common.getData(dataFile, "newTcsSubType") + common.getRandom());
         common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "desription"));
-        common.clickElement("xpath","//Edit[@Name='TCS Paid Account']/Button[@Name='Open']");
-        common.clickElement("xpath","//Edit[@Name='TCS Collected Account']/Button[@Name='Open']");
+        common.clickElement("xpath", "//Edit[@Name='TCS Paid Account']/Button[@Name='Open']");
+        common.clickElement("xpath", "//Edit[@Name='TCS Collected Account']/Button[@Name='Open']");
 
         common.clickElement("xpath", "//Button[@Name='Save']");
         common.clickElement("xpath", "//Button[@Name='OK']");

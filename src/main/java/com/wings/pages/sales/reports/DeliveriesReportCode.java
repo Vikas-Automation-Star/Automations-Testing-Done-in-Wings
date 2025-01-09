@@ -1,10 +1,10 @@
 package com.wings.pages.sales.reports;
 
-import io.appium.java_client.windows.WindowsDriver;
-import com.wings.pages.Report;
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
 
-public class DeliveriesReportCode extends Report {
+public class DeliveriesReportCode extends Transaction {
     WindowsDriver driver;
     Common common;
 
@@ -19,8 +19,8 @@ public class DeliveriesReportCode extends Report {
         common.clickElement("name", "Deliveries");
         common.clickElement("xpath", "//MenuItem[@Name='Deliveries'][2]");
         Thread.sleep(4000);
-        common.clickElement("xpath","//CheckBox[@Name='Detailed']");
-        common.clickElement("xpath","//Pane/Button[@Name='Submit']");
+        common.clickElement("xpath", "//CheckBox[@Name='Detailed']");
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         super.bulkVerifyReport("DELO 1");
     }
 }

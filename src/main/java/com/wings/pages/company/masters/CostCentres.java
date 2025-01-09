@@ -24,7 +24,7 @@ public class CostCentres extends Masters {
         common.clickElement("name", "Company");
         common.clickElement("name", "Cost Centres");
         Thread.sleep(1000);
-        super.createMaster("xpath","//TreeItem[@Name='Cost Centres']/TreeItem[@Name='All Cost Centres']");
+        super.createMaster("xpath", "//TreeItem[@Name='Cost Centres']/TreeItem[@Name='All Cost Centres']");
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='New Cost Centre *']", common.getData(dataFile, "newCostCentres") + common.getRandom());
         common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));

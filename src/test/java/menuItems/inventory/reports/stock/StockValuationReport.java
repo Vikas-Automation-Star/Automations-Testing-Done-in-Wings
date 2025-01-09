@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.wings.pages.AppLogin;
 import com.wings.pages.inventory.reports.stock.StockValuation;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -22,12 +23,12 @@ public class StockValuationReport {
 
     @Test
     public void stockValuation() throws IOException, ParseException, InterruptedException, AWTException {
-        StockValuation valuation=new StockValuation(driver);
+        StockValuation valuation = new StockValuation(driver);
         valuation.stckValuation();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

@@ -13,23 +13,23 @@ import java.io.IOException;
 
 public class CustomerMaster {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
-    String file="./src/main/resources/menuItems/Sales/Masters/customer.json";
+    AppLogin appLogin = new AppLogin();
+    String file = "./src/main/resources/menuItems/Sales/Masters/customer.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
     public void Customer() throws InterruptedException, IOException, ParseException, AWTException {
-       Customer customer=new Customer(driver,file);
+        Customer customer = new Customer(driver, file);
         customer.newCustomer();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

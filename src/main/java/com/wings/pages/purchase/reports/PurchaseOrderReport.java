@@ -1,10 +1,10 @@
 package com.wings.pages.purchase.reports;
 
-import io.appium.java_client.windows.WindowsDriver;
-import com.wings.pages.Report;
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
 
-public class PurchaseOrderReport extends Report {
+public class PurchaseOrderReport extends Transaction {
     WindowsDriver driver;
     Common common;
 
@@ -19,7 +19,7 @@ public class PurchaseOrderReport extends Report {
         common.clickElement("name", "Orders");
         common.clickElement("xpath", "//Menu[@Name='Orders']/MenuItem[@Name='Purchase Orders'][2]");
         Thread.sleep(1000);
-        common.clickElement("xpath","//Pane/Button[@Name='Submit']");
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         super.bulkVerifyReport("PO 2");
         super.closeReport("Purchase Orders");
     }

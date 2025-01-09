@@ -1,8 +1,8 @@
 {
-  "branch": "Hyderabad",
+  "branch": "AT_Branch 1_Reg",
   "currency": "INR",
-  "finishedProductCode": "Bikes",
-  "quantity": "100",
-  "unitRate": "100",
-  "executive": "Executive3"
+  "location": "AT_Branch 1_Reg Default Location",
+  "finishedProductCode": "AT_Product 1",
+  "quantity": "5",
+  "executive": "AT_Executive 1"
 }

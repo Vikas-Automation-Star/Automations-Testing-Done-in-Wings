@@ -7,12 +7,13 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.wings.pages.AppLogin;
 import com.wings.pages.sales.masters.SalesTargetGroup;
+
 import java.io.IOException;
 
 public class SalesTargetGroupMaster {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String file="./src/main/resources/menuItems/Sales/Masters/salesTarget.json";
+    String file = "./src/main/resources/menuItems/Sales/Masters/salesTarget.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
@@ -22,13 +23,13 @@ public class SalesTargetGroupMaster {
 
     @Test
     public void salesTarget() throws InterruptedException, IOException, ParseException {
-        SalesTargetGroup targetGroup=new SalesTargetGroup(driver,file);
+        SalesTargetGroup targetGroup = new SalesTargetGroup(driver, file);
         targetGroup.salesTarget();
 
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

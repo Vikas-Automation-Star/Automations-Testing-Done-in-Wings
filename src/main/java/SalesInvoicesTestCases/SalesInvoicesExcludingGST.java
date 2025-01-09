@@ -4,6 +4,7 @@ import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
@@ -52,11 +53,11 @@ public class SalesInvoicesExcludingGST extends Transaction {
         common.clickElement("xpath", "//Edit[@Name='Remarks']");
         selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
         //F3-Items
-        common.clickElement("xpath","//Edit[@Name='Product Code Row 0, Not sorted.']");
-        super.selectMaster(common.getData(dataFile,"Pcode"));
+        common.clickElement("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']");
+        super.selectMaster(common.getData(dataFile, "Pcode"));
 //        common.inputText("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']", common.getData(dataFile, "productCode"));
         common.clickElement("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']");
-        common.inputText("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']", common.getData(dataFile,"quantity"));
+        common.inputText("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']", common.getData(dataFile, "quantity"));
         int offset = 700;
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", offset, 0);
         //save
