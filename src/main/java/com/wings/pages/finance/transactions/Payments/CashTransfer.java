@@ -31,20 +31,20 @@ public class CashTransfer extends Transaction {
         common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
         selectAndValidateData(common.getData(dataFile, "transaction"),"xpath", "//Edit[@Name='Trans Currency *']");
         common.clickElement("xpath", "//Edit[@Name='Cash A/c Code']");
-        selectMaster(common.getData(dataFile, "to"));
+        selectMaster(common.getData(dataFile, "from"));
         common.clickElement("xpath", "//Edit[@Name='Executive *']");
         selectAndValidateData(common.getData(dataFile, "executive"),"xpath", "//Edit[@Name='Executive *']");
         common.clickElement("xpath","//Edit[@Name='Remarks']");
         selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
         //f3-items
-        Thread.sleep(5000);
-        enterData("xpath", "//Edit[@Name='Cash A/c Code Row 0, Not sorted.']", dataFile, "from");
+        Thread.sleep(1000);
+        enterData("xpath", "//Edit[@Name='Cash A/c Code Row 0, Not sorted.']", dataFile, "to");
         Thread.sleep(1000);
         common.inputText("xpath", "//Edit[@Name='Amount * Row 0, Not sorted.']", common.getData(dataFile, "amount"));
         Thread.sleep(1000);
-        common.clickElement("xpath","//Edit[@Name='Department Row 0, Not sorted.']");
+//        common.clickElement("xpath","//Edit[@Name='Department Row 0, Not sorted.']");
         //navigate to Summary
-        navigateToSummaryTab();
+        common.clickElement("xpath", "//TabItem[contains(@Name,'Summary')]");
        //save
         transactionSave();
         lastTransactionName();

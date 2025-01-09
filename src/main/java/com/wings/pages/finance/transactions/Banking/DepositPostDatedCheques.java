@@ -34,7 +34,9 @@ public class DepositPostDatedCheques extends Transaction {
         common.clickElement("xpath", "//Edit[@Name='Bank Code']");
         selectAndValidateData(common.getData(dataFile,"bankCode"),"xpath", "//Edit[@Name='Bank Code']" );
         common.clickElement("xpath", "//Edit[@Name='Cheques Received Account *']");
-        selectAndValidateData(common.getData(dataFile,"cheques"),"xpath", "//Edit[@Name='Cheques Received Account *']" );
+        selectAndValidateDataNew(common.getData(dataFile,"cheques"), "xpath", "//Edit[@Name='Cheques Received Account *']");
+//        enterDataAndValidate("xpath", "//Edit[@Name='Cheques Received Account *']",dataFile,"cheques");
+        Thread.sleep(1500);
         common.clickElement("xpath","//CheckBox[@Name='Select Row 0']");
         common.clickElement("xpath","//Button[@Name='Ok']");
         common.clickElement("xpath", "//Edit[@Name='Executive *']");
@@ -44,7 +46,8 @@ public class DepositPostDatedCheques extends Transaction {
         //f3-accounts
         common.clickElement("xpath","//CheckBox[@Name='Deposited * Row 0']");
         //f7 summary
-        navigateToSummaryTab();
+
+        common.clickElement("xpath", "//TabItem[contains(@Name,'Summary')]");
         //save
         transactionSave();
         lastTransactionName();

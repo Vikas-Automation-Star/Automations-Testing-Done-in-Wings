@@ -35,10 +35,14 @@ public class CreditCardReceipts extends Transaction {
         selectAndValidateData(common.getData(dataFile, "branch"),"xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
         selectAndValidateData(common.getData(dataFile, "transaction"),"xpath", "//Edit[@Name='Trans Currency *']");
+
         common.clickElement("xpath", "//Edit[@Name='Swipe Machine Type *']");
+        selectAndValidateData(common.getData(dataFile, "swipeMachineType"),"xpath", "//Edit[@Name='Swipe Machine Type *']");
         common.clickElement("xpath", "//Edit[@Name='Swipe Type *']");
+        selectAndValidateData(common.getData(dataFile, "swipeType"),"xpath", "//Edit[@Name='Swipe Type *']");
         common.clickElement("xpath","//Edit[@Name='Discount Account']");
         selectOptionalMaster(common.getData(dataFile,"discountAccount"),"xpath","//Edit[@Name='Discount Account']");
+
         common.clickElement("xpath", "//Edit[@Name='Executive *']");
         selectAndValidateData(common.getData(dataFile, "executive"),"xpath", "//Edit[@Name='Executive *']");
         common.clickElement("xpath","//Edit[@Name='Remarks']");
@@ -46,27 +50,37 @@ public class CreditCardReceipts extends Transaction {
         //f3-items
         Thread.sleep(5000);
         enterDataAndValidate("xpath", "//Edit[@Name='Party Code Row 0, Not sorted.']",dataFile, "partyCode");
-        enterDataAndValidate("xpath", "//Edit[@Name='Approval No * Row 0, Not sorted.']", dataFile, "approvalNo");
+
+        List<WebElement> approval = common.findWebElements("xpath", "//Edit[@Name='Approval No * Row 0, Not sorted.']");
+        for (WebElement i : approval) {
+            i.click();
+            i.sendKeys(String.valueOf(common.getRandom()), Keys.TAB);
+        }
         //check for bills receivable
         Thread.sleep(5000);
         navigateToBillsReceivablesTab();
-        finalAmount=singleCheckBoxSelection("xpath","//Table[@Name='BillsReceivable']/*[starts-with(@Name,'Row')]","//Edit[starts-with(@Name,'Towards VNo *')]");
-        //enter amount
+//        finalAmount=singleCheckBoxSelection("xpath","//Table[@Name='BillsReceivable']/*[starts-with(@Name,'Row')]","//Edit[starts-with(@Name,'Towards VNo *')]");
+
+
+        enterData("xpath","//Edit[@Name='Amount Adjusted * Row 0, Not sorted.']",dataFile,"adjustedAmount");
+        common.deleteInvalidRows();
+//        finalAmount=singleCheckBoxSelection("xpath","//Table[@Name='BillsReceivable']/*[starts-with(@Name,'Row')]","//Edit[starts-with(@Name,'Towards VNo *')]");
+        //navigate back to f3-items and enter approval
+        Thread.sleep(2000);
         navigateToPartiesTab();
         List<WebElement> amount = common.findWebElements("xpath", "//Edit[@Name='Amount * Row 0, Not sorted.']");
         System.out.println("Size :" + amount.size());
         for (WebElement i : amount) {
             i.click();
-            i.sendKeys(String.valueOf(finalAmount), Keys.TAB);
+            i.sendKeys(common.getData(dataFile,"adjustedAmount"), Keys.TAB);
         }
+
         //here, if u want u can add company charges also, based on the scenario
 
-
         //check summary
-        navigateToSummaryTab();
+        common.clickElement("xpath", "//TabItem[contains(@Name,'Summary')]");
         //save
         transactionSave();
         lastTransactionName();
-//        transactionClose(common.getData(dataFile,"close"));
     }
 }

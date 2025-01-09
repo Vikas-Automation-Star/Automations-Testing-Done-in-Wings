@@ -24,7 +24,7 @@ public class InterBankFundTransferTransaction {
     }
 
     @Test
-    public void bankFundTransfer() throws IOException, ParseException, InterruptedException, AWTException {
+    public void bankFundTransfer() throws IOException, ParseException, InterruptedException {
         InterBankFundTransfers bankFundTransfers=new InterBankFundTransfers(driver,dataFile);
         bankFundTransfers.bankFundTransfer();
     }

@@ -4,7 +4,11 @@ import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+
 import java.awt.*;
+import java.util.List;
 import java.io.IOException;
 
 public class CashDepositsAndWithdrawls extends Transaction {
@@ -32,27 +36,32 @@ public class CashDepositsAndWithdrawls extends Transaction {
             common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
             selectAndValidateData(common.getData(dataFile, "transaction"),"xpath", "//Edit[@Name='Trans Currency *']");
             common.clickElement("xpath", "//Edit[@Name='Bank A/c Code']");
+            selectAndValidateData(common.getData(dataFile, "bankCode"),"xpath", "//Edit[@Name='Bank A/c Code']");
             common.clickElement("xpath", "//Edit[@Name='Bank Account *']");
             common.clickElement("xpath", "//Edit[@Name='Executive *']");
             selectAndValidateData(common.getData(dataFile,"executive"),"xpath", "//Edit[@Name='Executive *']");
             common.clickElement("xpath","//Edit[@Name='Remarks']");
             selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
             //f3-deposits
-            Thread.sleep(5000);
+            Thread.sleep(1500);
             enterData("xpath","//Edit[@Name='Cash Account * Row 0, Not sorted.']",dataFile,"deposit");
-            Thread.sleep(5000);
+            Thread.sleep(1500);
             enterData("xpath","//Edit[@Name='Amount * Row 0, Not sorted.']",dataFile,"credit");
             Thread.sleep(1200);
             //check for withdrawl
-            Thread.sleep(5000);
-//            navigateToWithdrawalsTab();
+            Thread.sleep(1500);
+            common.clickElement("xpath","//TabItem[@Name='  F5 Withdrawal  ']");
             enterData("xpath","//Edit[@Name='Cash Account * Row 0, Not sorted.']",dataFile,"withdraw");
-            Thread.sleep(5000);
+            Thread.sleep(1500);
             enterData("xpath","//Edit[@Name='Amount * Row 0, Not sorted.']",dataFile,"debit");
             Thread.sleep(1200);
-            enterData("xpath","//Edit[@Name='Cheque/EFT No * Row 0, Not sorted.']",dataFile,"cheque");
+            List<WebElement> elementList = common.findWebElements("xpath","//Edit[@Name='Cheque/EFT No * Row 0, Not sorted.']");
+            for (WebElement i : elementList) {
+                i.click();
+                i.sendKeys(String.valueOf(common.getRandom()), Keys.TAB);
+            }
             //check summary
-            navigateToSummaryTab();
+            common.clickElement("xpath", "//TabItem[contains(@Name,'Summary')]");
             //save
             transactionSave();
             lastTransactionName();

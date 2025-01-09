@@ -47,12 +47,20 @@ public class BankReceipts extends Transaction {
         Thread.sleep(5000);
         enterDataAndValidate("xpath", "//Edit[@Name='Party Code Row 0, Not sorted.']",dataFile, "partyCode");
         Thread.sleep(2500);
-        enterDataAndValidate("xpath", "//Edit[@Name='Cheque/EFT No * Row 0, Not sorted.']", dataFile, "cheque");
+
+        List<WebElement> elementList = common.findWebElements("xpath","//Edit[@Name='Cheque/EFT No * Row 0, Not sorted.']");
+        for (WebElement i : elementList) {
+            i.click();
+            i.sendKeys(String.valueOf(common.getRandom()), Keys.TAB);
+        }
+
         enterDataAndValidate("xpath", "//Edit[@Name='Drawn On Bank * Row 0, Not sorted.']", dataFile, "drawnOn");
         //check for bills receivable
         Thread.sleep(2500);
         navigateToBillsReceivablesTab();
-        finalAmount=singleCheckBoxSelection("xpath","//Table[@Name='BillsReceivable']/*[starts-with(@Name,'Row')]","//Edit[starts-with(@Name,'Towards VNo *')]");
+        enterData("xpath","//Edit[@Name='Amount Adjusted * Row 0, Not sorted.']",dataFile,"adjustedAmount");
+        common.deleteInvalidRows();
+//        finalAmount=singleCheckBoxSelection("xpath","//Table[@Name='BillsReceivable']/*[starts-with(@Name,'Row')]","//Edit[starts-with(@Name,'Towards VNo *')]");
         //navigate back to f3-items and enter amount
         Thread.sleep(2000);
         navigateToPartiesTab();
@@ -60,13 +68,12 @@ public class BankReceipts extends Transaction {
             System.out.println("Size :" + amount.size());
         for (WebElement i : amount) {
             i.click();
-            i.sendKeys(String.valueOf(finalAmount), Keys.TAB);
+            i.sendKeys(common.getData(dataFile,"adjustedAmount"), Keys.TAB);
         }
         //check summary
-        navigateToSummaryTab();
+        common.clickElement("xpath", "//TabItem[contains(@Name,'Summary')]");
         //save
         transactionSave();
         lastTransactionName();
-//        transactionClose(common.getData(dataFile,"close"));
     }
 }

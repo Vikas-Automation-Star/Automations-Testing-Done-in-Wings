@@ -11,7 +11,7 @@ import com.wings.pages.finance.transactions.Banking.CashDepositsAndWithdrawls;
 import java.awt.*;
 import java.io.IOException;
 
-public class CashDepositsAndWithdrawlsTransaction {
+public class CashDepositsAndWithdrawalsTransaction {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
     String dataFile="./src/main/resources/menuItems/finance/transaction/cashDepositAndWithdrawl.json";

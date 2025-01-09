@@ -1,9 +1,15 @@
 {
-  "branch": "Hyderabad",
+  "branch": "AT_Branch 1_Reg",
   "transaction": "INR",
-  "cashAccount": "Cash Account",
-  "partyCode": 153,
+  "cashAccount": "AT_Cash Acc 1",
+  "partyCode": "AT_Cus_Reg_Inter",
   "gstType": "Registered",
-  "executive": "HYDExec",
+  "executive": "AT_Executive 1",
+  "bankAccount": "AT_Bank Acc 1",
+  "drawnOn": "AT_Drawn On Bank 1",
+  "PDCAccount": "AT_Cheques In Hand Acc 1",
+  "swipeMachineType": "AT_Swipe Machine Type 1",
+  "swipeType": "AT_Swipe Type 1",
+  "chargesAccount": "AT_Charges  Acc 1",
   "close": "Receipts from Parties"
 }

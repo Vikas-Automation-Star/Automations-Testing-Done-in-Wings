@@ -33,29 +33,38 @@ public class BankPayment extends Transaction {
             common.clickElement("xpath","//Edit[@Name='Trans Currency *']");
             selectAndValidateData(common.getData(dataFile,"transaction"),"xpath","//Edit[@Name='Trans Currency *']");
             common.clickElement("xpath", "//Edit[@Name='Bank A/c Code']");
+            selectAndValidateData(common.getData(dataFile,"bankAccount"),"xpath","//Edit[@Name='Bank A/c Code']");
+            common.clickElement("xpath","//Edit[@Name='Discount Account']");
+            selectOptionalMaster(common.getData(dataFile,"discountAccount"),"xpath","//Edit[@Name='Discount Account']");
             common.clickElement("xpath", "//Edit[@Name='Executive *']");
-            selectAndValidateData(common.getData(dataFile,"executive"),"xpath", "//Edit[@Name='Executive *']");
-            //f3-items
+            selectMaster(common.getData(dataFile,"executive"));
+            //parties
             Thread.sleep(5000);
             enterData("xpath","//Edit[@Name='Account Code Row 0, Not sorted.']",dataFile,"accountCode");
             Thread.sleep(1000);
-            enterData("xpath","//Edit[@Name='Cheque/EFT No * Row 0, Not sorted.']",dataFile,"cheque");
+            List<WebElement> elementList = common.findWebElements("xpath","//Edit[@Name='Cheque/EFT No * Row 0, Not sorted.']");
+            for (WebElement i : elementList) {
+                i.click();
+                i.sendKeys(String.valueOf(common.getRandom()), Keys.TAB);
+            }
             Thread.sleep(1000);
             //check for bills receivable
             navigateToBillsPayablesTab();
-            finalAmount=singleCheckBoxSelection("xpath","//Table[@Name='BillsPayable']/*[starts-with(@Name,'Row')]","//Edit[starts-with(@Name,'Towards VNo *')]");
+            enterData("xpath","//Edit[@Name='Amount Adjusted * Row 0, Not sorted.']",dataFile,"adjustedAmount");
+            common.deleteInvalidRows();
+
+//            finalAmount=singleCheckBoxSelection("xpath","//Table[@Name='BillsPayable']/*[starts-with(@Name,'Row')]","//Edit[starts-with(@Name,'Towards VNo *')]");
             //navigate back to parties
             navigateToPartiesTab();
             List<WebElement> amount = common.findWebElements("xpath", "//Edit[@Name='Amount * Row 0, Not sorted.']");
             for (WebElement i : amount) {
                 i.click();
-                i.sendKeys(String.valueOf(finalAmount), Keys.TAB);
+                i.sendKeys(common.getData(dataFile,"adjustedAmount"), Keys.TAB);
             }
-            //check summary
-            navigateToSummaryTab();
+
+            common.clickElement("xpath", "//TabItem[contains(@Name,'Summary')]");
             //save
             transactionSave();
             lastTransactionName();
-//            transactionClose(common.getData(dataFile,"close"));
         }
     }

@@ -8,5 +8,10 @@
   "productCode": "AT_Product 1",
   "quantity": 150,
   "amount": 550,
-  "close": "Sales Orders"
+  "close": "Sales Orders",
+  "drawnOn": "AT_Drawn On Bank 1",
+  "chequeDate": "09",
+  "pdcAmount": 150,
+  "pdcAccount": "AT_Cheques In Hand Acc 1"
+
 }

@@ -49,22 +49,28 @@ public class PaymentToParties extends Transaction {
         enterDataAndValidate("xpath","//Edit[@Name='Cash Account * Row 0, Not sorted.']",dataFile,"cashAccount");
         Thread.sleep(1000);
         common.clickElement("xpath", "//CheckBox[@Name='Inclusive Tax Row 0']");
+        enterData("xpath","//Edit[@Name='HSN Row 0, Not sorted.']",dataFile,"hsn");
         //bills payable
         Thread.sleep(1500);
         navigateToBillsPayablesTab();
-        finalAmount=singleCheckBoxSelection("xpath","//Table[@Name='BillsPayable']/*[starts-with(@Name,'Row')]","//Edit[starts-with(@Name,'Towards VNo *')]");
-        System.out.println(finalAmount);
+        enterData("xpath","//Edit[@Name='Amount Adjusted * Row 0, Not sorted.']",dataFile,"adjustedAmount");
+        common.deleteInvalidRows();
+
+//        finalAmount=singleCheckBoxSelection("xpath","//Table[@Name='BillsPayable']/*[starts-with(@Name,'Row')]","//Edit[starts-with(@Name,'Towards VNo *')]");
+//        System.out.println(finalAmount);
         //navigate back to f3-items and enter amount
         Thread.sleep(2000);
         navigateToCashTab();
         List<WebElement> amount = common.findWebElements("xpath", "//Edit[@Name='Amount * Row 0, Not sorted.']");
         for (WebElement i : amount) {
             i.click();
-            i.sendKeys(String.valueOf(finalAmount), Keys.TAB);
+            i.sendKeys(common.getData(dataFile,"adjustedAmount"), Keys.TAB);
         }
+
+        common.clickElement("xpath", "//TabItem[contains(@Name,'Summary')]");
+
         //save
         transactionSave();
         lastTransactionName();
-//        transactionClose(common.getData(dataFile,"close"));
     }
 }

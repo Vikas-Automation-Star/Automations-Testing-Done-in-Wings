@@ -50,7 +50,7 @@ public class AppLogin {
         Thread.sleep(3000);
         common.inputText("xpath","//Edit[@Name='Password']", common.getData(fileData,"password"));
         common.clickElement("xpath","//Button[@Name='Submit']");
-        Thread.sleep(2500);
+        Thread.sleep(20000);
         common.clickElement("name","OK");
         System.out.println("Super User Login for "+common.getData(fileData,"companyName")+" company is successful " +new String(Character.toChars(0x2705)));
         String title=driver.getTitle();

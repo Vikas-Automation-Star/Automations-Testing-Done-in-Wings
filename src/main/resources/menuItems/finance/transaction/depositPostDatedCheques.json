@@ -1,8 +1,8 @@
 {
-  "branch": "Hyderabad",
-  "executive": "HYDExec",
+  "branch": "AT_Branch 1_Reg",
+  "executive": "AT_Executive 1",
   "transaction": "INR",
-  "bankCode": 123,
-  "cheques": "Cheques In Hand",
+  "bankCode": "AT_Bank Acc 1",
+  "cheques": "AT_Cheques In Hand Acc 1",
   "close": "Deposit Post Dated Cheques"
 }

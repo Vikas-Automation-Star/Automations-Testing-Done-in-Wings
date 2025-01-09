@@ -1,13 +1,13 @@
 {
-  "branch": "Hyderabad",
+  "branch": "AT_Branch 1_Reg",
   "transaction": "INR",
-  "fromBank": 321,
-  "executive": "HYDExec",
-  "toBank": 123,
-  "amount": "3500",
+  "fromBank": "AT_Bank Acc 1",
+  "executive": "AT_Executive 1",
+  "toBank": "AT_Bank Acc 2",
+  "amount": 250,
+  "date": "09",
+  "chargesAccount": "AT_Charges  Acc 1",
+  "hsn": "AT_HSN Code 2",
   "close": "Inter Bank Fund Transfers",
-  "cheque": "777",
-  "charges": "50",
-  "supplier Bill": "753",
-  "supplierDate": "01-10-2024"
+  "charges": "10"
 }

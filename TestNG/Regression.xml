@@ -2,7 +2,6 @@
 
     <listeners>
         <listener class-name="com.wings.utils.listener"/>
-        <listener class-name="util.AnnotationTransformer"/>
     </listeners>
 
     <test name="Creating BranchMaster" description="description for BranchMaster"  testID="WOW 1">
@@ -669,55 +668,55 @@
 
     <test name="Checking TdsPaymentsReport" description="description for TdsPayments Report"  testID="WOW 109">
         <classes>
-            <class name="menuItems.Taxes.reports.TDS.TdsPaymentsReport"></class>
+            <class name="menuItems.Taxes.reports.TDS.TdsPaymentsReport"/>
         </classes>
     </test>
 
     <test name="Checking PendingTdsPaymentsReport" description="description for PendingTdsPayments Report"  testID="WOW 110">
         <classes>
-            <class name="menuItems.Taxes.reports.TDS.PendingTdsPaymentsReport"></class>
+            <class name="menuItems.Taxes.reports.TDS.PendingTdsPaymentsReport"/>
         </classes>
     </test>
 
     <test name="Checking TdsDeductedByUsReport" description="description for TdsDeductedByUs Report"  testID="WOW 111">
         <classes>
-            <class name="menuItems.Taxes.reports.TDS.TdsDeductedByUsReport"></class>
+            <class name="menuItems.Taxes.reports.TDS.TdsDeductedByUsReport"/>
         </classes>
     </test>
 
     <test name="Checking TdsDeductedByOthersReport" description="description for TdsDeductedByOthers Report"  testID="WOW 112">
         <classes>
-            <class name="menuItems.Taxes.reports.TDS.TdsDeductedByOthersReport"></class>
+            <class name="menuItems.Taxes.reports.TDS.TdsDeductedByOthersReport"/>
         </classes>
     </test>
 
     <test name="Checking TcsOpeningBalancesReport" description="description for TcsOpeningBalances Report"  testID="WOW 113">
         <classes>
-            <class name="menuItems.Taxes.reports.TCS.TcsOpeningBalancesReport"></class>
+            <class name="menuItems.Taxes.reports.TCS.TcsOpeningBalancesReport"/>
         </classes>
     </test>
 
     <test name="Checking TcsPaymentsReport" description="description for TcsPayments Report"  testID="WOW 114">
         <classes>
-            <class name="menuItems.Taxes.reports.TCS.TcsPaymentsReport"></class>
+            <class name="menuItems.Taxes.reports.TCS.TcsPaymentsReport"/>
         </classes>
     </test>
 
     <test name="Checking PendingTcsPaymentsReports" description="description for PendingTcsPayments Report"  testID="WOW 115">
         <classes>
-            <class name="menuItems.Taxes.reports.TCS.PendingTcsPaymentsReports"></class>
+            <class name="menuItems.Taxes.reports.TCS.PendingTcsPaymentsReports"/>
         </classes>
     </test>
 
     <test name="Checking TcsPurchaseReport" description="description for TcsPurchaseReport"  testID="WOW 116">
         <classes>
-            <class name="menuItems.Taxes.reports.TCS.TcsPurchaseReport"></class>
+            <class name="menuItems.Taxes.reports.TCS.TcsPurchaseReport"/>
         </classes>
     </test>
 
     <test name="Checking TcsSalesReport" description="description for TcsSalesReport"  testID="WOW 117">
         <classes>
-            <class name="menuItems.Taxes.reports.TCS.TcsSalesReport"></class>
+            <class name="menuItems.Taxes.reports.TCS.TcsSalesReport"/>
         </classes>
     </test>
     <!-- Reports completed -->

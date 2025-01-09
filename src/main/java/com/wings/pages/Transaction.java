@@ -106,7 +106,9 @@ public abstract class Transaction {
         for (WebElement i : elementList) {
 //            System.out.println(i.getText());
             i.click();
+            i.clear();
             i.sendKeys(common.getData(fileName, key), Keys.TAB);
+            break;
         }
         WebElement element = common.findWebElement(locatorType, locator);
         if (element.getText().equals(common.getData(fileName, key))) {
@@ -1467,6 +1469,12 @@ public abstract class Transaction {
     }
     public void newTransaction () {
         System.out.println("New Transaction ID  :" + common.findWebElement("xpath", "//Text[@Name='Last Saved :']/following-sibling::Text").getAttribute("Name"));
+    }
+
+    public void waitForElement() throws InterruptedException {
+        for (int i = 0; i < 600; i++) {
+            Thread.sleep(700);  //7 mnts
+        }
     }
 
     public void selectMasterWithValidation(String transaction, String locatorType, String locator) {

@@ -1,6 +1,6 @@
 {
-  "branch": "Hyderabad",
+  "branch": "AT_Branch 1_Reg",
   "transaction": "INR",
-  "bankCode": 123,
-  "executive": "HYDExec"
+  "bankCode": "AT_Bank Acc 1",
+  "executive": "AT_Executive 1"
 }

@@ -1,9 +1,11 @@
 {
-  "branch": "Hyderabad",
+  "branch": "AT_Branch 1_Reg",
   "transaction": "INR",
-  "PartyCode": "153",
-  "executive": "HYDExec",
-  "cashAccount": "Cash Account",
-  "amount": "3500",
+  "PartyCode": "AT_Cus_Reg_Inter",
+  "executive": "AT_Executive 1",
+  "cashAccount": "AT_Cash Acc 1",
+  "adjustedAmount": 100,
+  "discount": "AT_Discount  Acc 1",
+  "hsn": "AT_HSN Code 2",
   "close": "Payments to Parties"
 }

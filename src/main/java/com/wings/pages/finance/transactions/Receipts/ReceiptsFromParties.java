@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.List;
 
@@ -48,6 +49,8 @@ public class ReceiptsFromParties extends Transaction {
         selectAndValidateData(common.getData(dataFile, "executive"),"xpath", "//Edit[@Name='Executive *']");
         common.clickElement("xpath","//Edit[@Name='Remarks']");
         selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
+        common.clickElement("xpath","//CheckBox[@Name='Advance Receipts']");
+
         //f3-items
         Thread.sleep(4000);
         enterDataAndValidate("xpath", "//Edit[@Name='Cash Account * Row 0, Not sorted.']",dataFile,"cashAccount");
@@ -64,7 +67,12 @@ public class ReceiptsFromParties extends Transaction {
             i.sendKeys(String.valueOf(finalAmount), Keys.TAB);
         }
         //check summary
-        navigateToSummaryTab();
+        navigateToOtherInfoTab();
+        for (int j = 0; j < 1; j++) {
+            Robot robot=new Robot();
+            robot.keyPress(KeyEvent.VK_RIGHT);
+            robot.keyRelease(KeyEvent.VK_RIGHT);
+        }
         //save
         transactionSave();
         lastTransactionName();

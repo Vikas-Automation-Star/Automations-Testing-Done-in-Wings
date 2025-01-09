@@ -20,7 +20,7 @@ public class InterBankFundTransfers extends Transaction {
         dataFile = file;
     }
 
-    public void bankFundTransfer() throws InterruptedException, IOException, ParseException, AWTException {
+    public void bankFundTransfer() throws InterruptedException, IOException, ParseException {
         navigateToInterBankFundTransferMenu();
         Thread.sleep(1000);
         lastTransactionName();
@@ -34,20 +34,23 @@ public class InterBankFundTransfers extends Transaction {
         selectAndValidateData(common.getData(dataFile, "fromBank"),"xpath", "//Edit[@Name='From Bank Code']");
         common.clickElement("xpath", "//Edit[@Name='To Bank Code']");
         selectAndValidateData(common.getData(dataFile, "toBank"),"xpath", "//Edit[@Name='To Bank Code']");
+        gstSelectionWhenBothRegisteredDealers();
         common.inputText("xpath","//Edit[@Name='Amount *']", common.getData(dataFile,"amount"));
-        common.inputText("xpath","//Edit[@Name='Cheque/EFT No *']", common.getData(dataFile,"cheque"));
+        common.inputText("xpath","//Edit[@Name='Cheque/EFT No *']", String.valueOf(common.getRandom()));
         common.clickElement("xpath","//Edit[@Name='Charges Account Code']");
+        selectAndValidateData(common.getData(dataFile,"chargesAccount"),"xpath","//Edit[@Name='Charges Account Code']");
         common.inputText("xpath","//Edit[@Name='Transfered Charges']", common.getData(dataFile,"charges"));
+        common.inputText("xpath","//Edit[@Name='HSN']",common.getData(dataFile,"hsn"));
         //slider
         common.sliderHandling("xpath","//Thumb[@Name='Position']", 550,0);
-        common.inputText("xpath","//Edit[@Name='Supplier Bill No *']", common.getData(dataFile,"supplier Bill"));
-        common.inputText("xpath","//Edit[@Name='Supplier Bill Date *']", common.getData(dataFile,"supplierDate"));
+        common.inputText("xpath","//Edit[@Name='Supplier Bill No *']", String.valueOf(common.getRandom()));
+        common.inputText("xpath","//Edit[@Name='Supplier Bill Date *']", common.getData(dataFile,"date"));
         common.clickElement("xpath", "//Edit[@Name='Executive *']");
         selectAndValidateData(common.getData(dataFile,"executive"),"xpath", "//Edit[@Name='Executive *']");
         common.clickElement("xpath","//Edit[@Name='Remarks']");
         selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
         Thread.sleep(2000);
-        navigateToSummaryTab();
+        common.clickElement("xpath", "//TabItem[contains(@Name,'Summary')]");
         //save
         transactionSave();
         lastTransactionName();

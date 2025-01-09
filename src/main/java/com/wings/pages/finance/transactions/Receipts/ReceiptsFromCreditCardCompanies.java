@@ -2,8 +2,6 @@ package com.wings.pages.finance.transactions.Receipts;
 
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import java.awt.*;
@@ -43,6 +41,7 @@ public class ReceiptsFromCreditCardCompanies extends Transaction {
         Thread.sleep(1000);
         common.inputAndVerify("xpath","//Edit[@Name='Cheque/EFT No *']", common.getData(dataFile,"cheque"));
         common.clickElement("xpath", "//Edit[@Name='Drawn On Bank *']");
+        selectAndValidateData(common.getData(dataFile,"drawnOn"), "xpath","//Edit[@Name='Drawn On Bank *']");
         common.clickElement("xpath","//Edit[@Name='Drawn On Bank Branch']");
         selectOptionalMaster(common.getData(dataFile,"Drawn On Bank Branch"),"xpath","//Edit[@Name='Drawn On Bank Branch']");
         common.clickElement("xpath", "//Edit[@Name='Executive *']");

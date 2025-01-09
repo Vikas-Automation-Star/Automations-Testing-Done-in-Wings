@@ -34,7 +34,7 @@
         </classes>
     </test>
 
-                 Payments !
+                 <!--Payments !-->
     <test name="Payments- Payments to Parties">
         <classes>
             <class name="menuItems.finance.transactions.Payments.PaymentToPartiesTransaction"/>
@@ -59,9 +59,9 @@
         </classes>
     </test>
                 <!-- Banking !-->
-    <test name="Banking - Cash Deposits and Withdrawls">
+    <test name="Banking - Cash Deposits and Withdrawals">
         <classes>
-            <class name="menuItems.finance.transactions.Banking.CashDepositsAndWithdrawlsTransaction"/>
+            <class name="menuItems.finance.transactions.Banking.CashDepositsAndWithdrawalsTransaction"/>
         </classes>
     </test>
 
@@ -131,7 +131,7 @@
         </classes>
     </test>
              Journals !
-    <test name="Journals - Journal Entires">
+    <test name="Journals - Journal Entries">
         <classes>
             <class name="menuItems.finance.transactions.Journals.JournalEntriesTransaction"/>
         </classes>
@@ -143,9 +143,9 @@
         </classes>
     </test>
 
-    <test name="Journals - Book Expenses or Payables">
+    <test name="Journals - Book Expenses or Payable">
         <classes>
-            <class name="menuItems.finance.transactions.Journals.BookExpensesOrPayablesTransaction"/>
+            <class name="menuItems.finance.transactions.Journals.BookExpensesOrPayblesTransaction"/>
         </classes>
     </test>
              Opening Balances !
