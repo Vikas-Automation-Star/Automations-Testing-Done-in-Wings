@@ -1,9 +1,8 @@
 package com.wings.pages.sales.reports;
 
 import com.wings.pages.Transaction;
-import io.appium.java_client.windows.WindowsDriver;
-import com.wings.pages.Report;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
 
 public class SalesTargetExecutiveWiseReportCode extends Transaction {
     WindowsDriver driver;
@@ -20,7 +19,7 @@ public class SalesTargetExecutiveWiseReportCode extends Transaction {
         common.clickElement("name", "Targets");
         common.clickElement("xpath", "//MenuItem[@Name='Define Sales Targets-Executive Wise'][2]");
         Thread.sleep(1000);
-        common.clickElement("xpath","//Pane/Button[@Name='Submit']");
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1000);
         super.bulkVerifyReport("ST 1");
         super.closeReport("Define Sales Targets-Executive Wise");

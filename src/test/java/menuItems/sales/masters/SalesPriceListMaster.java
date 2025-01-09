@@ -13,7 +13,7 @@ import java.io.IOException;
 public class SalesPriceListMaster {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String file="./src/main/resources/menuItems/Sales/Masters/salesPriceList.json";
+    String file = "./src/main/resources/menuItems/Sales/Masters/salesPriceList.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
@@ -23,12 +23,12 @@ public class SalesPriceListMaster {
 
     @Test
     public void newPriceList() throws InterruptedException, IOException, ParseException {
-        PriceList priceList=new PriceList(driver,file);
+        PriceList priceList = new PriceList(driver, file);
         priceList.priceList();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

@@ -1,7 +1,7 @@
 package menuItems.purchase.transactions;
 
-import com.wings.pages.purchase.transactions.PurchaseVoucher;
 import com.wings.pages.AppLogin;
+import com.wings.pages.purchase.transactions.PurchaseVoucher;
 import io.appium.java_client.windows.WindowsDriver;
 import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
@@ -11,9 +11,8 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
-public class PurchaseVouchersTransaction  {
+public class PurchaseVouchersTransaction {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
     String file = "./src/main/resources/MenuItems/purchase/transactions/PurchaseVouchers.json";
@@ -27,7 +26,7 @@ public class PurchaseVouchersTransaction  {
 
     @Test
     public void purchaseVouchers() throws IOException, ParseException, InterruptedException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        PurchaseVoucher po=new PurchaseVoucher(driver,file);
+        PurchaseVoucher po = new PurchaseVoucher(driver, file);
         po.purchaseVoucher();
 //        Method method = po.getClass().getMethod("purchaseVoucher");
 //        String callerMethodName = method.getName();

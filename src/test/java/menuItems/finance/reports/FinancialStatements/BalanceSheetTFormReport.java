@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.wings.pages.AppLogin;
 import com.wings.pages.finance.reports.FinancialStatements.BalanceSheetTFormReportCode;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -22,13 +23,13 @@ public class BalanceSheetTFormReport {
 
     @Test
     public void balanceSheetTform() throws InterruptedException, AWTException {
-        BalanceSheetTFormReportCode tFormReportCode=new BalanceSheetTFormReportCode(driver);
+        BalanceSheetTFormReportCode tFormReportCode = new BalanceSheetTFormReportCode(driver);
         tFormReportCode.balanceSheetTform();
 
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.wings.pages.AppLogin;
 import com.wings.pages.finance.reports.FinancialStatements.CashFlowReportCode;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -22,13 +23,13 @@ public class CashFlowReport {
 
     @Test
     public void cashFlow() throws InterruptedException, AWTException {
-        CashFlowReportCode flowReportCode=new CashFlowReportCode(driver);
+        CashFlowReportCode flowReportCode = new CashFlowReportCode(driver);
         flowReportCode.cashFlow();
 
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

@@ -1,7 +1,7 @@
 package menuItems.purchase.reports;
 
-import com.wings.pages.purchase.reports.PurchaseOrders;
 import com.wings.pages.AppLogin;
+import com.wings.pages.purchase.reports.PurchaseOrders;
 import io.appium.java_client.windows.WindowsDriver;
 import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
@@ -25,12 +25,12 @@ public class PurchaseOrdersReport {
 
     @Test
     public void purchaseOrders() throws InterruptedException, AWTException {
-        PurchaseOrders po=new PurchaseOrders(driver);
+        PurchaseOrders po = new PurchaseOrders(driver);
         po.purchaseOrder();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
         Allure.step("After Test PurchaseOrders Report");
     }

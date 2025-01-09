@@ -8,13 +8,14 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.wings.pages.AppLogin;
 import com.wings.pages.finance.transactions.Payments.CashTransfer;
+
 import java.awt.*;
 import java.io.IOException;
 
 public class CashTransferTransaction {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String dataFile="./src/main/resources/menuItems/finance/transaction/cashTransfer.json";
+    String dataFile = "./src/main/resources/menuItems/finance/transaction/cashTransfer.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
@@ -25,12 +26,12 @@ public class CashTransferTransaction {
 
     @Test
     public void cashTransfer() throws InterruptedException, AWTException, IOException, ParseException {
-        CashTransfer cashTransfer=new CashTransfer(driver,dataFile);
+        CashTransfer cashTransfer = new CashTransfer(driver, dataFile);
         cashTransfer.cashTransfer();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
         Allure.step("After Test - Cash Transfer");
     }

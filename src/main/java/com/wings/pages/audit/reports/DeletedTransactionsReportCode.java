@@ -1,9 +1,9 @@
 package com.wings.pages.audit.reports;
 
 import com.wings.pages.Transaction;
-import io.appium.java_client.windows.WindowsDriver;
-import com.wings.pages.Report;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
+
 import java.awt.*;
 
 public class DeletedTransactionsReportCode extends Transaction {
@@ -20,7 +20,7 @@ public class DeletedTransactionsReportCode extends Transaction {
         common.clickElement("name", "Audit");
         common.clickElement("name", "Deleted Transactions");
         Thread.sleep(1000);
-        common.clickElement("xpath","//Pane/Button[@Name='Submit']");
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
 //        super.bulkVerifyReport("MSV 1");
         super.closeReport("Deleted Transactions");

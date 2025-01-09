@@ -1,9 +1,8 @@
 package com.wings.pages.sales.reports;
 
 import com.wings.pages.Transaction;
-import io.appium.java_client.windows.WindowsDriver;
-import com.wings.pages.Report;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
 
 public class SalesQuotationReportCode extends Transaction {
     WindowsDriver driver;
@@ -17,10 +16,10 @@ public class SalesQuotationReportCode extends Transaction {
 
     public void quotationReport() throws InterruptedException {
         common.clickElement("name", "Sales");
-        common.clickElement("name","Quotations");
-        common.clickElement("xpath","//MenuItem[@Name='Sales Quotations'][2]");
+        common.clickElement("name", "Quotations");
+        common.clickElement("xpath", "//MenuItem[@Name='Sales Quotations'][2]");
         Thread.sleep(1000);
-        common.clickElement("xpath","//Pane/Button[@Name='Submit']");
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(3000);
         super.bulkVerifyReport("SQ 1");
         super.closeReport("Sales Quotations");

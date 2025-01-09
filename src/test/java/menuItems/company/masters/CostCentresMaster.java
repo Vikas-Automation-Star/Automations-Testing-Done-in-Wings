@@ -1,7 +1,7 @@
 package menuItems.company.masters;
 
-import com.wings.pages.company.masters.CostCentres;
 import com.wings.pages.AppLogin;
+import com.wings.pages.company.masters.CostCentres;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
@@ -25,12 +25,12 @@ public class CostCentresMaster {
 
     @Test
     public void costCentres() throws IOException, ParseException, InterruptedException, AWTException {
-        costCentres=new CostCentres(driver,file);
+        costCentres = new CostCentres(driver, file);
         costCentres.costCentres();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

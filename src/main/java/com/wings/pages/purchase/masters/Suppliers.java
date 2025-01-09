@@ -1,10 +1,11 @@
 package com.wings.pages.purchase.masters;
 
+import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import com.wings.utils.Common;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -13,31 +14,32 @@ public class Suppliers {
     Common common;
     String dataFile;
 
-    public Suppliers(WindowsDriver driver,String file){
-        this.driver=driver;
-        common=new Common(this.driver);
-        dataFile=file;
+    public Suppliers(WindowsDriver driver, String file) {
+        this.driver = driver;
+        common = new Common(this.driver);
+        dataFile = file;
     }
 
     public void suppliers() throws InterruptedException {
-        common.clickElement("name","Purchase");
-        common.clickElement("name","Suppliers");
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Suppliers");
         WebElement allCustomer = common.findWebElement("xpath", "//TreeItem[@Name='Suppliers']/TreeItem[@Name='All Suppliers']");
         Actions actions = new Actions(driver);
         actions.contextClick(allCustomer).perform();
         common.clickElement("name", "New Master");
     }
-        public void newSupplier() throws IOException, ParseException, AWTException, InterruptedException {
-            common.inputText("xpath","//Edit[@Name='New Supplier *']", common.getData(dataFile,"newSupplier")+common.getRandom());
-            common.inputText("xpath","//Edit[@Name='Supplier Code']",""+common.getRandom());
-            common.inputText("xpath","//Edit[@Name='Description']", common.getData(dataFile,"description"));
-            common.clickElement("xpath","//Pane[@Name='BankMaster Details']/Button[@Name='...']");
-            //manageCurrency details
-            common.inputText("xpath","//Edit[@Name='Account No']", common.getData(dataFile,"AccNo"));
-            common.inputText("xpath","//Edit[@Name='BankMaster']", common.getData(dataFile,"BankMaster"));
-            common.inputText("xpath","//Edit[@Name='BankMaster Branch']", common.getData(dataFile,"BankBranch"));
-            common.inputText("xpath","//Edit[@Name='IFSC Code']", common.getData(dataFile,"IFSC"));
-            common.clickElement("name","Ok");
+
+    public void newSupplier() throws IOException, ParseException, AWTException, InterruptedException {
+        common.inputText("xpath", "//Edit[@Name='New Supplier *']", common.getData(dataFile, "newSupplier") + common.getRandom());
+        common.inputText("xpath", "//Edit[@Name='Supplier Code']", "" + common.getRandom());
+        common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
+        common.clickElement("xpath", "//Pane[@Name='BankMaster Details']/Button[@Name='...']");
+        //manageCurrency details
+        common.inputText("xpath", "//Edit[@Name='Account No']", common.getData(dataFile, "AccNo"));
+        common.inputText("xpath", "//Edit[@Name='BankMaster']", common.getData(dataFile, "BankMaster"));
+        common.inputText("xpath", "//Edit[@Name='BankMaster Branch']", common.getData(dataFile, "BankBranch"));
+        common.inputText("xpath", "//Edit[@Name='IFSC Code']", common.getData(dataFile, "IFSC"));
+        common.clickElement("name", "Ok");
 
 
 //            common.clickElement("xpath","//Edit[@Name='Transport']/Button[@Name='Open'  ]");

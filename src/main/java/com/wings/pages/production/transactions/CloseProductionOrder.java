@@ -29,19 +29,19 @@ public class CloseProductionOrder extends Transaction {
         Thread.sleep(3000);
         oldTTransaction();
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        selectMasterWithValidation(common.getData(dataFile,"branch"),"xpath", "//Edit[@Name='Branch *']");
+        selectMasterWithValidation(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Location *']");
-        selectAndValidateData(common.getData(dataFile,"location"),"xpath", "//Edit[@Name='Location *']");
+        selectAndValidateData(common.getData(dataFile, "location"), "xpath", "//Edit[@Name='Location *']");
         common.clickElement("xpath", "//Edit[@Name='Transaction Currency *']");
-        selectMasterWithValidation(common.getData(dataFile,"currency"), "xpath", "//Edit[@Name='Transaction Currency *']");
+        selectMasterWithValidation(common.getData(dataFile, "currency"), "xpath", "//Edit[@Name='Transaction Currency *']");
         WebElement code = common.findWebElement("xpath", "//Edit[@Name='Finished Product Code']");
         code.click();
-        selectAndValidateDataNew(common.getData(dataFile,"finishedProductCode"),"xpath", "//Edit[@Name='Finished Product Code']");
+        selectAndValidateDataNew(common.getData(dataFile, "finishedProductCode"), "xpath", "//Edit[@Name='Finished Product Code']");
         common.clickElement("xpath", "//Edit[@Name='Finished Product *']");
         common.clickElement("xpath", "//CheckBox[@Name='Select Row 1']");
         common.clickElement("xpath", "//Window[@Name='Open Transactions']/Pane/Button[@Name='Ok']");
-        common.clickElement("xpath","//Edit[@Name='Executive *']");
-        selectAndValidateDataNew(common.getData(dataFile,"executive"),"xpath","//Edit[@Name='Executive *']");
+        common.clickElement("xpath", "//Edit[@Name='Executive *']");
+        selectAndValidateDataNew(common.getData(dataFile, "executive"), "xpath", "//Edit[@Name='Executive *']");
 
         List<WebElement> elementList = common.findWebElements("xpath", "//Edit[@Name='Quantity * Row 0, Not sorted.']");
         System.out.println("Size :" + elementList.size());
@@ -50,8 +50,8 @@ public class CloseProductionOrder extends Transaction {
             j.click();
             j.sendKeys(common.getData(dataFile, "F3quantity"));
         }
-        common.clickElement("xpath","//CheckBox[@Name='Cancel * Row 0']");
-        common.clickElement("xpath","//TabItem[@Name='  F5 Pending Stock To Be Received From Production  ']");
+        common.clickElement("xpath", "//CheckBox[@Name='Cancel * Row 0']");
+        common.clickElement("xpath", "//TabItem[@Name='  F5 Pending Stock To Be Received From Production  ']");
         List<WebElement> elementList1 = common.findWebElements("xpath", "//Edit[@Name='Quantity * Row 0, Not sorted.']");
         System.out.println("Size :" + elementList1.size());
         for (WebElement j : elementList1) {
@@ -59,7 +59,7 @@ public class CloseProductionOrder extends Transaction {
             j.click();
             j.sendKeys(common.getData(dataFile, "F5quantity"));
         }
-        common.clickElement("xpath","//CheckBox[@Name='Cancel * Row 0']");
+        common.clickElement("xpath", "//CheckBox[@Name='Cancel * Row 0']");
         transactionSave();
         Thread.sleep(1000);
         newTransaction();

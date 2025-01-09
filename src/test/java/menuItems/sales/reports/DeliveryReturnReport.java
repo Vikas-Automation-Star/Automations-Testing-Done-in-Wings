@@ -1,12 +1,13 @@
 package menuItems.sales.reports;
 
+import com.wings.pages.AppLogin;
+import com.wings.pages.sales.reports.DeliveryReturnReportCode;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import com.wings.pages.AppLogin;
-import com.wings.pages.sales.reports.DeliveryReturnReportCode;
+
 import java.io.IOException;
 
 public class DeliveryReturnReport {
@@ -21,12 +22,12 @@ public class DeliveryReturnReport {
 
     @Test
     public void deliveryReturns() throws InterruptedException {
-        DeliveryReturnReportCode reportCode=new DeliveryReturnReportCode(driver);
+        DeliveryReturnReportCode reportCode = new DeliveryReturnReportCode(driver);
         reportCode.DeliveryReturns();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

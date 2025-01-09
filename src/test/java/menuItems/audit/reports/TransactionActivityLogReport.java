@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.wings.pages.AppLogin;
 import com.wings.pages.audit.reports.TransactionActivityLogReportCode;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -21,13 +22,13 @@ public class TransactionActivityLogReport {
     }
 
     @Test
-    public void transactionActivityLog() throws  InterruptedException, AWTException {
-        TransactionActivityLogReportCode activityLogReportCode=new TransactionActivityLogReportCode(driver);
+    public void transactionActivityLog() throws InterruptedException, AWTException {
+        TransactionActivityLogReportCode activityLogReportCode = new TransactionActivityLogReportCode(driver);
         activityLogReportCode.transactionActivitylog();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

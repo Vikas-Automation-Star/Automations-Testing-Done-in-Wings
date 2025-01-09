@@ -1,7 +1,6 @@
 package com.wings.pages.purchase.reports;
 
 
-import com.wings.pages.Report;
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;

@@ -7,6 +7,7 @@ import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
@@ -190,13 +191,13 @@ public class IntraStateIncludingGST_14 extends Transaction {
             Assert.assertEquals(decimalFormat.format(actualGSTAmount), decimalFormat.format(expectedGSTAmount));
 
         } else if (gstTransType.equalsIgnoreCase("Intra State Sales to Registered Dealers")) {
-            double expectedCGST = Double.parseDouble(decimalFormat.format(((taxableValue * gstValue)/100) / 2));
-            double actualCGST = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='CGST Row "+i+", Not sorted.']").getText().replace(",", ""));
+            double expectedCGST = Double.parseDouble(decimalFormat.format(((taxableValue * gstValue) / 100) / 2));
+            double actualCGST = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='CGST Row " + i + ", Not sorted.']").getText().replace(",", ""));
             System.out.println("Actual CGST: " + actualCGST);
             System.out.println("Expected CGST: " + expectedCGST);
             Assert.assertEquals(actualCGST, expectedCGST);
 
-            double expectedSGST = Double.parseDouble(decimalFormat.format(((taxableValue * gstValue)/100) / 2));
+            double expectedSGST = Double.parseDouble(decimalFormat.format(((taxableValue * gstValue) / 100) / 2));
             double actualSGST = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='SGST Row " + i + ", Not sorted.']").getText().replace(",", ""));
             System.out.println("Actual SGST: " + actualSGST);
             System.out.println("Expected SGST: " + expectedSGST);

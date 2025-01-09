@@ -1,4 +1,4 @@
-package menuItems.Taxes.reports.GST;;
+package menuItems.Taxes.reports.GST;
 
 import com.wings.pages.AppLogin;
 import com.wings.pages.taxes.reports.GST.Gstr1EXP;
@@ -10,24 +10,26 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
+;
+
 public class Gstr1EXPReport {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
+    AppLogin appLogin = new AppLogin();
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
-    public void gstr1EXPReport() throws  InterruptedException {
-        Gstr1EXP report=new Gstr1EXP(driver);
+    public void gstr1EXPReport() throws InterruptedException {
+        Gstr1EXP report = new Gstr1EXP(driver);
         report.gstr1EXP();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

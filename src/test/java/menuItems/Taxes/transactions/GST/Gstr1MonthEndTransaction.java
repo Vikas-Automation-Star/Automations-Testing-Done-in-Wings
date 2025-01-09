@@ -13,18 +13,19 @@ import java.io.IOException;
 
 public class Gstr1MonthEndTransaction {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
-    String file="./src/main/resources/MenuItems/Taxes/transactions/GST/Gstr1MonthEnd.json";
+    AppLogin appLogin = new AppLogin();
+    String file = "./src/main/resources/MenuItems/Taxes/transactions/GST/Gstr1MonthEnd.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        driver=appLogin.launchSingleUserApp();
-        appLogin.singleUserLogin();;
+        driver = appLogin.launchSingleUserApp();
+        appLogin.singleUserLogin();
+        ;
     }
 
     @Test
     public void Gstr1MonthEndTransaction() throws InterruptedException, IOException, ParseException, AWTException {
-        Gstr1MonthEnd gstr1MonthEnd=new Gstr1MonthEnd(driver,file);
+        Gstr1MonthEnd gstr1MonthEnd = new Gstr1MonthEnd(driver, file);
         gstr1MonthEnd.Gstr1MonthEnd();
     }
 

@@ -1,11 +1,12 @@
 package com.wings.pages.finance.transactions.PartyAdjustments;
 
+import com.wings.pages.Transaction;
+import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import com.wings.pages.Transaction;
-import com.wings.utils.Common;
+
 import java.io.IOException;
 
 public class AdjustPartyBills extends Transaction {
@@ -26,15 +27,15 @@ public class AdjustPartyBills extends Transaction {
         lastTransactionName();
         Thread.sleep(1000);
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        selectAndValidateData(common.getData(dataFile, "branch"),"xpath", "//Edit[@Name='Branch *']");
+        selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
-        selectAndValidateData(common.getData(dataFile, "transaction"),"xpath", "//Edit[@Name='Trans Currency *']");
+        selectAndValidateData(common.getData(dataFile, "transaction"), "xpath", "//Edit[@Name='Trans Currency *']");
         common.clickElement("xpath", "//Edit[@Name='Party Code']");
-        selectAndValidateData(common.getData(dataFile, "partyCode"),"xpath", "//Edit[@Name='Party Code']");
+        selectAndValidateData(common.getData(dataFile, "partyCode"), "xpath", "//Edit[@Name='Party Code']");
         common.clickElement("xpath", "//Edit[@Name='Party Account *']");
         Thread.sleep(1000);
         common.clickElement("xpath", "//Edit[@Name='Executive *']");
-        selectAndValidateData(common.getData(dataFile, "executive"),"xpath", "//Edit[@Name='Executive *']");
+        selectAndValidateData(common.getData(dataFile, "executive"), "xpath", "//Edit[@Name='Executive *']");
         Thread.sleep(2000);
         //f3- Receivables
         navigateToBillsReceivablesTab();

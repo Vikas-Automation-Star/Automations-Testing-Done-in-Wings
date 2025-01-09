@@ -19,14 +19,15 @@ public class YearWiseSalesByQuantityReports {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
+
     @Test
     public void yearWiseSalesByQuantity() throws InterruptedException {
-        YearWiseSalesByQuantity ywsbv=new YearWiseSalesByQuantity(driver);
+        YearWiseSalesByQuantity ywsbv = new YearWiseSalesByQuantity(driver);
         ywsbv.yearWiseSalesByQuantity();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

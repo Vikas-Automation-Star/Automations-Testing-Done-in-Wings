@@ -1,12 +1,13 @@
 package menuItems.finance.reports.partyAdjustments;
 
+import com.wings.pages.AppLogin;
+import com.wings.pages.finance.reports.partyAdjustments.DebitNoteOnCustomersReportCode;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import com.wings.pages.AppLogin;
-import com.wings.pages.finance.reports.partyAdjustments.DebitNoteOnCustomersReportCode;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -21,14 +22,14 @@ public class DebitNoteOnCustomersReport {
     }
 
     @Test
-    public void debitNoteOnCustomerReport() throws  InterruptedException, AWTException {
-        DebitNoteOnCustomersReportCode noteOnCustomersReportCode=new DebitNoteOnCustomersReportCode(driver);
+    public void debitNoteOnCustomerReport() throws InterruptedException, AWTException {
+        DebitNoteOnCustomersReportCode noteOnCustomersReportCode = new DebitNoteOnCustomersReportCode(driver);
         noteOnCustomersReportCode.debitNoteonCustomerReport();
 
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

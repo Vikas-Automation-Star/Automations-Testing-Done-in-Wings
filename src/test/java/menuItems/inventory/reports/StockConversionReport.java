@@ -22,13 +22,13 @@ public class StockConversionReport {
     }
 
     @Test
-    public void stockConversion() throws  InterruptedException, AWTException {
-        StockConversionReprt conversionReprt=new StockConversionReprt(driver);
+    public void stockConversion() throws InterruptedException, AWTException {
+        StockConversionReprt conversionReprt = new StockConversionReprt(driver);
         conversionReprt.stockConversion();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

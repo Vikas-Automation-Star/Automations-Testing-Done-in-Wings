@@ -1,7 +1,7 @@
 package menuItems.purchase.transactions;
 
-import com.wings.pages.purchase.transactions.PurchaseReturnsWithInvoicesReference;
 import com.wings.pages.AppLogin;
+import com.wings.pages.purchase.transactions.PurchaseReturnsWithInvoicesReference;
 import io.appium.java_client.windows.WindowsDriver;
 import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
@@ -25,9 +25,10 @@ public class PurchaseReturnsWithInvoicesReferencesTransaction {
 
     @Test
     public void purchaseReturnsWithInvoicesReferences() throws IOException, ParseException, InterruptedException {
-        PurchaseReturnsWithInvoicesReference prwir=new PurchaseReturnsWithInvoicesReference(driver,file);
+        PurchaseReturnsWithInvoicesReference prwir = new PurchaseReturnsWithInvoicesReference(driver, file);
         prwir.purchaseReturnsWithInvoicesReference();
     }
+
     @AfterTest
     public void afterTest() throws IOException {
         appLogin.logout();

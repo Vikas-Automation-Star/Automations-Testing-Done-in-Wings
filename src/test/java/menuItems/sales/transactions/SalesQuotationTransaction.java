@@ -1,20 +1,20 @@
 package menuItems.sales.transactions;
 
+import com.wings.pages.AppLogin;
+import com.wings.pages.sales.transactions.SalesQuotations;
 import io.appium.java_client.windows.WindowsDriver;
 import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import com.wings.pages.AppLogin;
-import com.wings.pages.sales.transactions.SalesQuotations;
 
 import java.io.IOException;
 
 public class SalesQuotationTransaction {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String file="./src/main/resources/MenuItems/Sales/Transactions/salesQuotation.json";
+    String file = "./src/main/resources/MenuItems/Sales/Transactions/salesQuotation.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
@@ -25,12 +25,12 @@ public class SalesQuotationTransaction {
 
     @Test
     public void salesquotation() throws IOException, ParseException, InterruptedException {
-        SalesQuotations quotations=new SalesQuotations(driver,file);
+        SalesQuotations quotations = new SalesQuotations(driver, file);
         quotations.salesQuotation();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
         Allure.step("After Test Sales Quotations");
     }

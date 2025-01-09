@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.wings.pages.AppLogin;
 import com.wings.pages.inventory.reports.stock.MaterialIssuesAndStockConsumption;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -21,13 +22,13 @@ public class MaterialIssueAndStockConsumption {
     }
 
     @Test
-    public void materialIssues() throws  InterruptedException, AWTException {
-        MaterialIssuesAndStockConsumption stockConsumption=new MaterialIssuesAndStockConsumption(driver);
+    public void materialIssues() throws InterruptedException, AWTException {
+        MaterialIssuesAndStockConsumption stockConsumption = new MaterialIssuesAndStockConsumption(driver);
         stockConsumption.materialConsumption();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

@@ -13,21 +13,21 @@ public class ProfitCentres extends Masters {
     Common common;
     String dataFile;
 
-    public ProfitCentres(WindowsDriver driver, String file){
+    public ProfitCentres(WindowsDriver driver, String file) {
         super(driver);
-        this.driver=driver;
-        common=new Common(this.driver);
-        dataFile=file;
+        this.driver = driver;
+        common = new Common(this.driver);
+        dataFile = file;
     }
 
     public void profitCentres() throws InterruptedException, IOException, ParseException {
         common.clickElement("name", "Company");
         common.clickElement("name", "Profit Centres");
         Thread.sleep(1000);
-        super.createMaster("xpath","//TreeItem[@Name='Profit Centres']/TreeItem[@Name='All Profit Centres']");
+        super.createMaster("xpath", "//TreeItem[@Name='Profit Centres']/TreeItem[@Name='All Profit Centres']");
         Thread.sleep(2000);
-        common.inputText("xpath","//Edit[@Name='New Profit Centre *']",common.getData(dataFile,"newProfitCentres")+common.getRandom());
-        common.inputText("xpath","//Edit[@Name='Description']",common.getData(dataFile,"description"));
+        common.inputText("xpath", "//Edit[@Name='New Profit Centre *']", common.getData(dataFile, "newProfitCentres") + common.getRandom());
+        common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
         super.saveAfterMasterCreate();
         super.closeMaster("Profit Centres");
         Thread.sleep(1500);

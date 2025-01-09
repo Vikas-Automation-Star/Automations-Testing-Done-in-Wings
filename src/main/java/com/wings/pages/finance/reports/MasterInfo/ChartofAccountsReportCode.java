@@ -1,9 +1,9 @@
 package com.wings.pages.finance.reports.MasterInfo;
 
 import com.wings.pages.Transaction;
-import io.appium.java_client.windows.WindowsDriver;
-import com.wings.pages.Report;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
+
 import java.awt.*;
 
 public class ChartofAccountsReportCode extends Transaction {
@@ -19,7 +19,7 @@ public class ChartofAccountsReportCode extends Transaction {
     public void chartOfAccountsReport() throws InterruptedException, AWTException {
         common.clickElement("name", "Finance");
         common.clickElement("name", "Master Info");
-        common.clickElement("xpath","//MenuItem[@Name='Chart of Accounts']");
+        common.clickElement("xpath", "//MenuItem[@Name='Chart of Accounts']");
         Thread.sleep(1500);
 //        super.bulkVerifyReport("ORFCC 2");
         closeReport("Chart of Accounts");

@@ -1,9 +1,9 @@
 package com.wings.pages.finance.reports.Journals;
 
 import com.wings.pages.Transaction;
-import io.appium.java_client.windows.WindowsDriver;
-import com.wings.pages.Report;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
+
 import java.awt.*;
 
 public class BookIncomesOrReceivablesReportCode extends Transaction {
@@ -19,10 +19,10 @@ public class BookIncomesOrReceivablesReportCode extends Transaction {
     public void receivablesReport() throws InterruptedException, AWTException {
         common.clickElement("name", "Finance");
         common.clickElement("name", "Journals");
-        common.clickElement("xpath","//MenuItem[@Name='Book Incomes or Receivables'][2]");
+        common.clickElement("xpath", "//MenuItem[@Name='Book Incomes or Receivables'][2]");
         Thread.sleep(1000);
-        common.clickElement("xpath","//CheckBox[@Name='Detailed']");
-        common.clickElement("xpath","//Pane/Button[@Name='Submit']");
+        common.clickElement("xpath", "//CheckBox[@Name='Detailed']");
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1000);
         bulkVerifyReport("BIR 1");
         closeReport("Book Incomes or Receivables");

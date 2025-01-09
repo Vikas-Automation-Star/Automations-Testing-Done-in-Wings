@@ -1,12 +1,13 @@
 package menuItems.inventory.reports.stock;
 
+import com.wings.pages.AppLogin;
+import com.wings.pages.inventory.reports.stock.StockList;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import com.wings.pages.AppLogin;
-import com.wings.pages.inventory.reports.stock.StockList;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -22,12 +23,12 @@ public class StockListReport {
 
     @Test
     public void stockListing() throws IOException, ParseException, InterruptedException, AWTException {
-        StockList stockList=new StockList(driver);
+        StockList stockList = new StockList(driver);
         stockList.stckList();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

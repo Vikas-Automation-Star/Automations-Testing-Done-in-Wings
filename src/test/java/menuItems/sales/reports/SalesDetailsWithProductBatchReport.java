@@ -1,12 +1,13 @@
 package menuItems.sales.reports;
 
+import com.wings.pages.AppLogin;
+import com.wings.pages.sales.reports.SalesDetailwithProductBatchReportCode;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import com.wings.pages.AppLogin;
-import com.wings.pages.sales.reports.SalesDetailwithProductBatchReportCode;
+
 import java.io.IOException;
 
 public class SalesDetailsWithProductBatchReport {
@@ -21,12 +22,12 @@ public class SalesDetailsWithProductBatchReport {
 
     @Test
     public void salesDetailwithProductBatch() throws InterruptedException {
-        SalesDetailwithProductBatchReportCode productBatchReportCode=new SalesDetailwithProductBatchReportCode(driver);
+        SalesDetailwithProductBatchReportCode productBatchReportCode = new SalesDetailwithProductBatchReportCode(driver);
         productBatchReportCode.salesDetail();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 

@@ -1,7 +1,7 @@
 package menuItems.purchase.transactions;
 
-import com.wings.pages.purchase.transactions.PurchaseVouchersAgainstReceipt;
 import com.wings.pages.AppLogin;
+import com.wings.pages.purchase.transactions.PurchaseVouchersAgainstReceipt;
 import io.appium.java_client.windows.WindowsDriver;
 import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
@@ -25,7 +25,7 @@ public class PurchaseVouchersAgainstReceiptsTransaction {
 
     @Test
     public void PurchaseVouchersAgainstReceipts() throws IOException, ParseException, InterruptedException {
-        PurchaseVouchersAgainstReceipt poar=new PurchaseVouchersAgainstReceipt(driver,file);
+        PurchaseVouchersAgainstReceipt poar = new PurchaseVouchersAgainstReceipt(driver, file);
         poar.purchaseVouchersAgainstReceipt();
     }
 

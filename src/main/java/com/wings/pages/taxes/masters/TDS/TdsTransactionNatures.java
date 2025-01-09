@@ -35,17 +35,17 @@ public class TdsTransactionNatures extends Masters {
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='New TDS Transaction Nature *']", common.getData(dataFile, "newTdsTransactionNature") + common.getRandom());
         common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "desription"));
-        common.clickElement("xpath","//Text[@Name='TDS Transaction Nature']/following-sibling::Button[@Name='...']");
+        common.clickElement("xpath", "//Text[@Name='TDS Transaction Nature']/following-sibling::Button[@Name='...']");
         Thread.sleep(2000);
-        common.clickElement("xpath","//Edit[@Name='TDS Assessee Type * Row 0, Not sorted.']");
-        WebElement element1=common.findWebElement("xpath","//Edit[@Name='TDS Assessee Type * Row 0, Not sorted.']");
-        element1.sendKeys(common.getData(dataFile,"tdsAssesseType"), Keys.ENTER);
-        WebElement element2 =common.findWebElement("xpath","//Edit[@Name='TDS Sub Type * Row 0, Not sorted.']");
-        element2.sendKeys(common.getData(dataFile,"subTdsTax"), Keys.ENTER);
-        common.inputText("xpath","//Edit[@Name='Level * Row 0, Not sorted.']", common.getData(dataFile,"level"));
-        common.clickElement("xpath","//Edit[@Name='TDS Rate Row 0, Not sorted.']");
-        common.inputText("xpath","//Edit[@Name='TDS Rate Row 0, Not sorted.']", common.getData(dataFile,"tdsRate"));
-        common.clickElement("xpath","//Button[@Name='Ok']");
+        common.clickElement("xpath", "//Edit[@Name='TDS Assessee Type * Row 0, Not sorted.']");
+        WebElement element1 = common.findWebElement("xpath", "//Edit[@Name='TDS Assessee Type * Row 0, Not sorted.']");
+        element1.sendKeys(common.getData(dataFile, "tdsAssesseType"), Keys.ENTER);
+        WebElement element2 = common.findWebElement("xpath", "//Edit[@Name='TDS Sub Type * Row 0, Not sorted.']");
+        element2.sendKeys(common.getData(dataFile, "subTdsTax"), Keys.ENTER);
+        common.inputText("xpath", "//Edit[@Name='Level * Row 0, Not sorted.']", common.getData(dataFile, "level"));
+        common.clickElement("xpath", "//Edit[@Name='TDS Rate Row 0, Not sorted.']");
+        common.inputText("xpath", "//Edit[@Name='TDS Rate Row 0, Not sorted.']", common.getData(dataFile, "tdsRate"));
+        common.clickElement("xpath", "//Button[@Name='Ok']");
 
         common.clickElement("xpath", "//Button[@Name='Save']");
         common.clickElement("xpath", "//Button[@Name='OK']");

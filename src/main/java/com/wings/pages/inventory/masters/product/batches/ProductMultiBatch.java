@@ -1,9 +1,10 @@
 package com.wings.pages.inventory.masters.product.batches;
 
-import io.appium.java_client.windows.WindowsDriver;
-import org.json.simple.parser.ParseException;
 import com.wings.pages.Masters;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
+import org.json.simple.parser.ParseException;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
@@ -24,8 +25,8 @@ public class ProductMultiBatch extends Masters {
         common.clickElement("name", "Inventory");
         common.clickElement("name", "Product");
         common.clickElement("name", "Batches");
-        common.clickElement("name","Products - MultiBatch");
-        super.actionsMaster("xpath","//TreeItem[@Name='Products - MultiBatch']/TreeItem[@Name='All Products - MultiBatch']","//MenuItem[@Name='New Master']");
+        common.clickElement("name", "Products - MultiBatch");
+        super.actionsMaster("xpath", "//TreeItem[@Name='Products - MultiBatch']/TreeItem[@Name='All Products - MultiBatch']", "//MenuItem[@Name='New Master']");
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='New Product *']", common.getData(filepath, "product") + common.getRandom());
         common.inputText("xpath", "//Edit[@Name='Product Code']", String.valueOf(common.getRandom()));

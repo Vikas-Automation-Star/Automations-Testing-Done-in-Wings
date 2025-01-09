@@ -1,8 +1,8 @@
 {
-"newPurchaseBatchPolice": "New Purchase Batch Policy",
+  "newPurchaseBatchPolice": "New Purchase Batch Policy",
   "batchPolicyType": "Create New Always",
   "separator": "separator",
-  "description":"description given for Purchase Batch Policy",
+  "description": "description given for Purchase Batch Policy",
   "includeOption": "Include Date",
   "policySequence": "2",
   "policyOptionFormate": "DD-MM-YY"

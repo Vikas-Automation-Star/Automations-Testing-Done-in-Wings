@@ -32,7 +32,7 @@ public class TdsAssesseeTypes extends Masters {
         actions.contextClick(element).perform();
         common.clickElement("name", "New Master");
         Thread.sleep(2000);
-        common.inputText("xpath", "//Edit[@Name='New TDS Assessee Type *']", common.getData(dataFile, "newTdsType")+common.getRandom());
+        common.inputText("xpath", "//Edit[@Name='New TDS Assessee Type *']", common.getData(dataFile, "newTdsType") + common.getRandom());
         common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "desription"));
 
 

@@ -31,9 +31,9 @@ public class BillOfMaterial extends Masters {
 
         super.createMaster("xpath", "//TreeItem[@Name='Bill Of Material']/TreeItem[@Name='All Bill Of Material']");
         Thread.sleep(2000);
-        common.inputText("xpath","//Edit[@Name='New Bill Of Material *']", common.getData(dataFile,"newBillMaterial")+common.getRandom());
-        common.clickElement("xpath","//Edit[@Name='Output Product *']/Button[@Name='Open']");
-        Robot robot=new Robot();
+        common.inputText("xpath", "//Edit[@Name='New Bill Of Material *']", common.getData(dataFile, "newBillMaterial") + common.getRandom());
+        common.clickElement("xpath", "//Edit[@Name='Output Product *']/Button[@Name='Open']");
+        Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_DOWN);
         robot.keyRelease(KeyEvent.VK_DOWN);
         robot.keyPress(KeyEvent.VK_DOWN);
@@ -48,18 +48,18 @@ public class BillOfMaterial extends Masters {
         robot.keyRelease(KeyEvent.VK_DOWN);
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
-        super.inputTextWithValidation("xpath","//Edit[@Name='Quantity']", common.getData(dataFile,"quantity"));
-        super.inputTextWithValidation("xpath","//Edit[@Name='Description']", common.getData(dataFile,"desciption"));
-        common.clickElement("xpath","//Text[@Name='Applicable Inputs']/following-sibling::Button[@Name='...']");
+        super.inputTextWithValidation("xpath", "//Edit[@Name='Quantity']", common.getData(dataFile, "quantity"));
+        super.inputTextWithValidation("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "desciption"));
+        common.clickElement("xpath", "//Text[@Name='Applicable Inputs']/following-sibling::Button[@Name='...']");
         Thread.sleep(2000);
 
-        WebElement element1= common.findWebElement("xpath","//Edit[@Name='Product Code Row 0, Not sorted.']");
+        WebElement element1 = common.findWebElement("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']");
         element1.click();
-        element1.sendKeys(common.getData(dataFile,"pCode"), Keys.ENTER);
-        WebElement element2 = common.findWebElement("xpath","//Edit[@Name='Quantity * Row 0, Not sorted.']");
+        element1.sendKeys(common.getData(dataFile, "pCode"), Keys.ENTER);
+        WebElement element2 = common.findWebElement("xpath", "//Edit[@Name='Quantity * Row 0, Not sorted.']");
         element2.click();
-        element2.sendKeys(common.getData(dataFile,"quantity"));
-        common.clickElement("xpath","//Button[@Name='Ok']");
+        element2.sendKeys(common.getData(dataFile, "quantity"));
+        common.clickElement("xpath", "//Button[@Name='Ok']");
         super.saveAfterMasterCreate();
         super.closeMaster("Bill Of Material");
         Thread.sleep(2000);

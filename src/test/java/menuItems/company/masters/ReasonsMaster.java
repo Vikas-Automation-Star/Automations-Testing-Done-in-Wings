@@ -14,24 +14,24 @@ import java.io.IOException;
 
 public class ReasonsMaster {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
+    AppLogin appLogin = new AppLogin();
     ProfitCentres profitCentres;
-    String file="./src/main/resources/MenuItems/Company/Masters/ReasonsData.json";
+    String file = "./src/main/resources/MenuItems/Company/Masters/ReasonsData.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
     public void createReasons() throws IOException, ParseException, InterruptedException, AWTException {
-        Reasons reasons=new Reasons(driver,file);
+        Reasons reasons = new Reasons(driver, file);
         reasons.createTransporters();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

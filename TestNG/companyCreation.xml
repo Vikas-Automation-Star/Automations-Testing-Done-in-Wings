@@ -2,9 +2,9 @@
     <listeners>
         <listener class-name="com.wings.utils.listener"/>
     </listeners>
-<test name="Company Creation">
-    <classes>
-        <class name="Company"/>
-    </classes>
-</test>
+    <test name="Company Creation">
+        <classes>
+            <class name="Company"/>
+        </classes>
+    </test>
 </suite>

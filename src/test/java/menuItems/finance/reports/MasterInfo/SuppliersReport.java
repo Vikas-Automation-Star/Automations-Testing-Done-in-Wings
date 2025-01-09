@@ -1,13 +1,12 @@
 package menuItems.finance.reports.MasterInfo;
 
+import com.wings.pages.AppLogin;
+import com.wings.pages.finance.reports.MasterInfo.SuppliersReportCode;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import com.wings.pages.AppLogin;
-import com.wings.pages.finance.reports.MasterInfo.CustomersReportCode;
-import com.wings.pages.finance.reports.MasterInfo.SuppliersReportCode;
 
 import java.awt.*;
 import java.io.IOException;
@@ -23,13 +22,13 @@ public class SuppliersReport {
     }
 
     @Test
-    public void suppliersReport() throws  InterruptedException, AWTException {
-        SuppliersReportCode reportCode=new SuppliersReportCode(driver);
+    public void suppliersReport() throws InterruptedException, AWTException {
+        SuppliersReportCode reportCode = new SuppliersReportCode(driver);
         reportCode.supplierReport();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

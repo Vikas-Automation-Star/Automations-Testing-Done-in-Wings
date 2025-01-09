@@ -1,25 +1,25 @@
 package com.wings.pages.sales.reports;
 
 import com.wings.pages.Transaction;
-import io.appium.java_client.windows.WindowsDriver;
-import com.wings.pages.Report;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
 
 public class SalesPriceUpdationReportCode extends Transaction {
     WindowsDriver driver;
     Common common;
 
-    public SalesPriceUpdationReportCode(WindowsDriver driver){
+    public SalesPriceUpdationReportCode(WindowsDriver driver) {
         super(driver);
         this.driver = driver;
         common = new Common(this.driver);
     }
+
     public void salesPrice() throws InterruptedException {
         common.clickElement("name", "Sales");
-        common.clickElement("xpath","//MenuItem[@Name='Prices and Discounts'][2]");
-        common.clickElement("name","Sales Price Updation");
+        common.clickElement("xpath", "//MenuItem[@Name='Prices and Discounts'][2]");
+        common.clickElement("name", "Sales Price Updation");
         Thread.sleep(1000);
-        common.clickElement("xpath","//Pane/Button[@Name='Submit']");
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
 
         super.bulkVerifyReport("SU 1");
         super.closeReport("Sales Price Updation");

@@ -1,10 +1,10 @@
 package com.wings.pages.sales.transactions;
 
+import com.wings.pages.Transaction;
+import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
-import com.wings.pages.Transaction;
-import com.wings.utils.Common;
 
 import java.io.IOException;
 
@@ -24,19 +24,19 @@ public class ProductndPartyDiscount extends Transaction {
         Thread.sleep(1000);
         lastTransactionName();
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        selectAndValidateData(common.getData(dataFile,"branch"), "xpath", "//Edit[@Name='Branch *']");
-        common.clickElement("xpath","//Edit[@Name='Remarks']");
-        selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
+        selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
+        common.clickElement("xpath", "//Edit[@Name='Remarks']");
+        selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
         //f3-items
-        WebElement partyDiscount =common.findWebElement("xpath","//Edit[@Name='Party Discount Group * Row 0, Not sorted.']");
+        WebElement partyDiscount = common.findWebElement("xpath", "//Edit[@Name='Party Discount Group * Row 0, Not sorted.']");
         partyDiscount.click();
-        common.inputAndVerify("xpath","//Edit[@Name='Party Discount Group * Row 0, Not sorted.']", common.getData(dataFile,"partyDiscount"));
-        WebElement element=common.findWebElement("name","Product Discount Group * Row 0, Not sorted.");
+        common.inputAndVerify("xpath", "//Edit[@Name='Party Discount Group * Row 0, Not sorted.']", common.getData(dataFile, "partyDiscount"));
+        WebElement element = common.findWebElement("name", "Product Discount Group * Row 0, Not sorted.");
         element.click();
-        common.inputAndVerify("name","Product Discount Group * Row 0, Not sorted.", common.getData(dataFile,"productDiscount"));
+        common.inputAndVerify("name", "Product Discount Group * Row 0, Not sorted.", common.getData(dataFile, "productDiscount"));
         Thread.sleep(1000);
-        common.inputText("name","Disc % * Row 0, Not sorted.", common.getData(dataFile,"discount"));
-        common.clickElement("name","With Effect From * Row 0, Not sorted.");
+        common.inputText("name", "Disc % * Row 0, Not sorted.", common.getData(dataFile, "discount"));
+        common.clickElement("name", "With Effect From * Row 0, Not sorted.");
         //save
         transactionSave();
         lastTransactionName();

@@ -23,12 +23,12 @@ public class StockTransactionAnalysisReport {
 
     @Test
     public void stockTransactionAnalysis() throws IOException, ParseException, InterruptedException, AWTException {
-        StockTransactionAnalysis transactionAnalysis=new StockTransactionAnalysis(driver);
+        StockTransactionAnalysis transactionAnalysis = new StockTransactionAnalysis(driver);
         transactionAnalysis.stckTransactionAnalysis();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

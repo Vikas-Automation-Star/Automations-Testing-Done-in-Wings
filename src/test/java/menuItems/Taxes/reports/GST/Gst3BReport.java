@@ -12,23 +12,23 @@ import java.io.IOException;
 
 public class Gst3BReport {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
-    String file ="./src/main/resources/MenuItems/Taxes/reports/GST/Gst3B.json";
+    AppLogin appLogin = new AppLogin();
+    String file = "./src/main/resources/MenuItems/Taxes/reports/GST/Gst3B.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
     public void gst3BReport() throws InterruptedException, IOException, ParseException {
-        Gst3B report=new Gst3B(driver, file);
+        Gst3B report = new Gst3B(driver, file);
         report.gst3B();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

@@ -2,7 +2,6 @@
   "branch": "AT_Branch 1_Reg",
   "currency": "INR",
   "location": "AT_Branch 1_Reg Default Location",
-
-  "MaterialIssueNo":"MITP1",
+  "MaterialIssueNo": "MITP1",
   "quantity": "5"
 }

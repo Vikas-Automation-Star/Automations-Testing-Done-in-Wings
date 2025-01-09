@@ -1,11 +1,10 @@
 package com.wings.pages.sales.masters;
 
+import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import com.wings.utils.Common;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -21,6 +20,7 @@ public class PartyDiscountGroup {
         common = new Common(this.driver);
         dataFile = file;
     }
+
     public void partyGroup() throws InterruptedException, IOException, ParseException, AWTException {
         common.clickElement("name", "Sales");
         common.clickElement("name", "Prices and Discounts");
@@ -31,17 +31,17 @@ public class PartyDiscountGroup {
         actions.contextClick(allPartyDiscount).perform();
         common.clickElement("name", "New Master");
         Thread.sleep(2500);
-        common.clickElement("xpath","//Edit[@Name='New Party Discount Group *']");
+        common.clickElement("xpath", "//Edit[@Name='New Party Discount Group *']");
         common.inputText("xpath", "//Edit[@Name='New Party Discount Group *']", common.getData(dataFile, "partyGroup") + common.getRandom());
-        common.inputAndVerify("xpath", "//Edit[@Name='Description']",common.getData(dataFile, "description"));
-        common.clickElement("xpath","//Text[@Name='Applicable Party Nodes']/following-sibling::Button[@Name='...']");
-        common.inputText("xpath","//Edit[@Name='Applicable Node Row 0, Not sorted.']",common.getData(dataFile,"applicable"));
-        Robot robot=new Robot();
+        common.inputAndVerify("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
+        common.clickElement("xpath", "//Text[@Name='Applicable Party Nodes']/following-sibling::Button[@Name='...']");
+        common.inputText("xpath", "//Edit[@Name='Applicable Node Row 0, Not sorted.']", common.getData(dataFile, "applicable"));
+        Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_DOWN);
         robot.keyRelease(KeyEvent.VK_DOWN);
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
-        common.clickElement("name","Ok");
+        common.clickElement("name", "Ok");
         common.clickElement("xpath", "//Pane/Button[@Name='Save']");
         Thread.sleep(500);
         common.clickElement("xpath", "//Window/Button[@Name='OK']");

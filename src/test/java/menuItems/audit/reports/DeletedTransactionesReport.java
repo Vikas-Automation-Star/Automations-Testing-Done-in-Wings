@@ -1,12 +1,13 @@
 package menuItems.audit.reports;
 
+import com.wings.pages.AppLogin;
+import com.wings.pages.audit.reports.DeletedTransactionesReportCode;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import com.wings.pages.AppLogin;
-import com.wings.pages.audit.reports.DeletedTransactionesReportCode;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -21,14 +22,14 @@ public class DeletedTransactionesReport {
     }
 
     @Test
-    public void deletedTransaction() throws  InterruptedException, AWTException {
-        DeletedTransactionesReportCode transactionesReportCode=new DeletedTransactionesReportCode(driver);
+    public void deletedTransaction() throws InterruptedException, AWTException {
+        DeletedTransactionesReportCode transactionesReportCode = new DeletedTransactionesReportCode(driver);
         transactionesReportCode.deletedTransactions();
 
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

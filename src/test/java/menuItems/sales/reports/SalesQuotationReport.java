@@ -1,12 +1,12 @@
 package menuItems.sales.reports;
 
+import com.wings.pages.AppLogin;
+import com.wings.pages.sales.reports.SalesQuotationReportCode;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import com.wings.pages.AppLogin;
-import com.wings.pages.sales.reports.SalesQuotationReportCode;
 
 import java.io.IOException;
 
@@ -21,13 +21,13 @@ public class SalesQuotationReport {
     }
 
     @Test
-    public void quotation() throws  InterruptedException {
-        SalesQuotationReportCode reports=new SalesQuotationReportCode(driver);
+    public void quotation() throws InterruptedException {
+        SalesQuotationReportCode reports = new SalesQuotationReportCode(driver);
         reports.quotationReport();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

@@ -1,1 +1,18 @@
-{"Tests":[{"Status":"FAILED","TestName":"test","ExecutionEndTime":"2024-11-04 09:59:46","ExeTime":"12","ExecutionStartTime":"2024-11-04 09:59:46"},{"Status":"FAILED","TestName":"setup","ExecutionEndTime":"2024-11-04 09:59:47","ExeTime":"971","ExecutionStartTime":"2024-11-04 09:59:46"}]}
+{
+  "Tests": [
+    {
+      "Status": "FAILED",
+      "TestName": "test",
+      "ExecutionEndTime": "2024-11-04 09:59:46",
+      "ExeTime": "12",
+      "ExecutionStartTime": "2024-11-04 09:59:46"
+    },
+    {
+      "Status": "FAILED",
+      "TestName": "setup",
+      "ExecutionEndTime": "2024-11-04 09:59:47",
+      "ExeTime": "971",
+      "ExecutionStartTime": "2024-11-04 09:59:46"
+    }
+  ]
+}

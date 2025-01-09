@@ -1,9 +1,9 @@
 package com.wings.pages.sales.transactions;
 
-import io.appium.java_client.windows.WindowsDriver;
-import org.json.simple.parser.ParseException;
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
+import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 
@@ -22,8 +22,8 @@ public class SalesOrderPostDatedCheques extends Transaction {
         navigateToSalesOrderMenu();
         Thread.sleep(1000);
         super.lastTransactionName();
-        common.clickElement("xpath","//Edit[@Name='Voucher Type']");
-        super.selectOptionalMaster(common.getData(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']");
+        common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
+        super.selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
         super.selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Location *']");
@@ -36,16 +36,16 @@ public class SalesOrderPostDatedCheques extends Transaction {
         Thread.sleep(2000);
         super.gstTransactionType("Registered");
         Thread.sleep(1000);
-        common.clickElement("xpath","//Edit[@Name='Customer Email']");
-        super.selectOptionalMaster(common.getData(dataFile,"CustEmail"),"xpath","//Edit[@Name='Customer Email']");
-        common.clickElement("xpath","//Edit[@Name='Customer Mobile Number']");
-        super.selectOptionalMaster(common.getData(dataFile,"mobileNum"),"xpath","//Edit[@Name='Customer Mobile Number']");
+        common.clickElement("xpath", "//Edit[@Name='Customer Email']");
+        super.selectOptionalMaster(common.getData(dataFile, "CustEmail"), "xpath", "//Edit[@Name='Customer Email']");
+        common.clickElement("xpath", "//Edit[@Name='Customer Mobile Number']");
+        super.selectOptionalMaster(common.getData(dataFile, "mobileNum"), "xpath", "//Edit[@Name='Customer Mobile Number']");
         common.clickElement("xpath", "//Edit[@Name='Price List']");
         super.selectAndValidateData(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
         common.clickElement("xpath", "//Edit[@Name='Executive *']");
         super.selectAndValidateData(common.getData(dataFile, "executive"), "xpath", "//Edit[@Name='Executive *']");
-        common.clickElement("xpath","//Edit[@Name='Remarks']");
-        super.selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
+        common.clickElement("xpath", "//Edit[@Name='Remarks']");
+        super.selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
         //f3-items
         common.clickElement("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']");
         super.selectAndValidateData(common.getData(dataFile, "productCode"), "xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']");

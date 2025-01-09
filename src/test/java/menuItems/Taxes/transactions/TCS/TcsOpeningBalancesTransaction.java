@@ -13,18 +13,18 @@ import java.io.IOException;
 
 public class TcsOpeningBalancesTransaction {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
-    String file ="./src/main/resources/MenuItems/Taxes/transactions/TCS/TcsOpeningBalances.json";
+    AppLogin appLogin = new AppLogin();
+    String file = "./src/main/resources/MenuItems/Taxes/transactions/TCS/TcsOpeningBalances.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
     public void tcsOpeningBalancesTransactions() throws InterruptedException, IOException, ParseException, AWTException {
-        TcsOpeningBalances tob=new TcsOpeningBalances(driver,file);
+        TcsOpeningBalances tob = new TcsOpeningBalances(driver, file);
         tob.tcsOpeningBalances();
     }
 

@@ -22,13 +22,13 @@ public class InterLocationTransfers {
     }
 
     @Test
-    public void interLocationTransfer() throws  InterruptedException, AWTException {
-        InterLocationTransfer locationTransfer=new InterLocationTransfer(driver);
+    public void interLocationTransfer() throws InterruptedException, AWTException {
+        InterLocationTransfer locationTransfer = new InterLocationTransfer(driver);
         locationTransfer.intrLocationTransfer();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

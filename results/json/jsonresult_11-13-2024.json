@@ -1,1 +1,39 @@
-{"Tests":[{"Status":"SUCCESS","TestName":"cashDepositandWithdrawl","ExecutionEndTime":"2024-11-13 17:08:35","ExeTime":"133826","ExecutionStartTime":"2024-11-13 17:06:22"},{"Status":"FAILED","TestName":"bankFundTransfer","ExecutionEndTime":"2024-11-13 17:11:37","ExeTime":"156739","ExecutionStartTime":"2024-11-13 17:09:00"},{"Status":"FAILED","TestName":"bankReconciliation","ExecutionEndTime":"2024-11-13 17:13:51","ExeTime":"104984","ExecutionStartTime":"2024-11-13 17:12:06"},{"Status":"SUCCESS","TestName":"postDatedCheques","ExecutionEndTime":"2024-11-13 17:16:21","ExeTime":"121999","ExecutionStartTime":"2024-11-13 17:14:19"},{"Status":"SUCCESS","TestName":"openingUnclearedBankEntries","ExecutionEndTime":"2024-11-13 17:19:19","ExeTime":"151833","ExecutionStartTime":"2024-11-13 17:16:47"}]}
+{
+  "Tests": [
+    {
+      "Status": "SUCCESS",
+      "TestName": "cashDepositandWithdrawl",
+      "ExecutionEndTime": "2024-11-13 17:08:35",
+      "ExeTime": "133826",
+      "ExecutionStartTime": "2024-11-13 17:06:22"
+    },
+    {
+      "Status": "FAILED",
+      "TestName": "bankFundTransfer",
+      "ExecutionEndTime": "2024-11-13 17:11:37",
+      "ExeTime": "156739",
+      "ExecutionStartTime": "2024-11-13 17:09:00"
+    },
+    {
+      "Status": "FAILED",
+      "TestName": "bankReconciliation",
+      "ExecutionEndTime": "2024-11-13 17:13:51",
+      "ExeTime": "104984",
+      "ExecutionStartTime": "2024-11-13 17:12:06"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "postDatedCheques",
+      "ExecutionEndTime": "2024-11-13 17:16:21",
+      "ExeTime": "121999",
+      "ExecutionStartTime": "2024-11-13 17:14:19"
+    },
+    {
+      "Status": "SUCCESS",
+      "TestName": "openingUnclearedBankEntries",
+      "ExecutionEndTime": "2024-11-13 17:19:19",
+      "ExeTime": "151833",
+      "ExecutionStartTime": "2024-11-13 17:16:47"
+    }
+  ]
+}

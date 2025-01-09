@@ -1,12 +1,13 @@
 package menuItems.sales.reports;
 
+import com.wings.pages.AppLogin;
+import com.wings.pages.sales.reports.PendingSalesOrderWithDeliveriesReportCode;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import com.wings.pages.AppLogin;
-import com.wings.pages.sales.reports.PendingSalesOrderWithDeliveriesReportCode;
+
 import java.io.IOException;
 
 public class PendingSalesOrderWithDeliveriesReport {
@@ -21,12 +22,12 @@ public class PendingSalesOrderWithDeliveriesReport {
 
     @Test
     public void pendingSalesOrderWithDeliveries() throws InterruptedException {
-        PendingSalesOrderWithDeliveriesReportCode deliveriesReportCode=new PendingSalesOrderWithDeliveriesReportCode(driver);
+        PendingSalesOrderWithDeliveriesReportCode deliveriesReportCode = new PendingSalesOrderWithDeliveriesReportCode(driver);
         deliveriesReportCode.pendingSalesDeliveries();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

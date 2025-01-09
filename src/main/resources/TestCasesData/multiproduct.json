@@ -1,18 +1,17 @@
 {
   "rows": 3,
-  "product0":"02",
+  "product0": "02",
   "productType0": "generalProduct",
   "ProductQuantity0": 10,
   "productMRP0": 1000,
   "minumumRate0": 10,
   "maximumRate0": 1000,
-  "unitRate0":250,
-
-  "product1":"53",
+  "unitRate0": 250,
+  "product1": "53",
   "productType1": "multiBatch",
   "ProductQuantity1": 10,
   "productMRP1": 1000,
   "minumumRate1": 10,
   "maximumRate1": 1000,
-  "unitRate1":250
+  "unitRate1": 250
 }

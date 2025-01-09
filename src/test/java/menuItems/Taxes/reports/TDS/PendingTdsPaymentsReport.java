@@ -12,21 +12,22 @@ import java.io.IOException;
 
 public class PendingTdsPaymentsReport {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
+    AppLogin appLogin = new AppLogin();
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
     public void pendingTdsPaymentsReport() throws InterruptedException, IOException, ParseException {
-        PendigTdsPayments ptp=new PendigTdsPayments(driver);
+        PendigTdsPayments ptp = new PendigTdsPayments(driver);
         ptp.pendigTdsPayments();
     }
+
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

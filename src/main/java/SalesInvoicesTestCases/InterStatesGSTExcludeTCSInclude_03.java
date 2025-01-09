@@ -15,7 +15,7 @@ public class InterStatesGSTExcludeTCSInclude_03 extends Transaction {
     Common common;
     String dataFile;
     double netAmountTextt;
-    double quantity,mrp,unitRate,grossAmount,partyDiscountValue,voucherDiscountValue,grossMinusDiscount,netAmount,gstValue,cessValue,taxableValue,taxableAmountCalculated;
+    double quantity, mrp, unitRate, grossAmount, partyDiscountValue, voucherDiscountValue, grossMinusDiscount, netAmount, gstValue, cessValue, taxableValue, taxableAmountCalculated;
 
     public InterStatesGSTExcludeTCSInclude_03(WindowsDriver driver, String file) {
         super(driver);
@@ -24,7 +24,7 @@ public class InterStatesGSTExcludeTCSInclude_03 extends Transaction {
         dataFile = file;
     }
 
-    public void interStatesGSTExcludeTCSInclude_03() throws InterruptedException, IOException, ParseException, AWTException,NumberFormatException {
+    public void interStatesGSTExcludeTCSInclude_03() throws InterruptedException, IOException, ParseException, AWTException, NumberFormatException {
         navigateToSalesInvoiceMenu();
         Thread.sleep(1000);
         lastTransactionName();
@@ -32,8 +32,8 @@ public class InterStatesGSTExcludeTCSInclude_03 extends Transaction {
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
         selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Location *']");
-        selectAndValidateData(common.getData( dataFile,"location"),"xpath","//Edit[@Name='Location *']");
-        enterInput("xpath","//Edit[@Name='Cash/Party Code']",dataFile,"partyCode");
+        selectAndValidateData(common.getData(dataFile, "location"), "xpath", "//Edit[@Name='Location *']");
+        enterInput("xpath", "//Edit[@Name='Cash/Party Code']", dataFile, "partyCode");
 //        common.clickElement("xpath", "//Edit[@Name='Cash/Party Code']");
 //        selectAndValidateDataNew(common.getData(dataFile, "partyCode"), "xpath", "//Edit[@Name='Cash/Party Code']");
         Thread.sleep(2500);
@@ -50,10 +50,10 @@ public class InterStatesGSTExcludeTCSInclude_03 extends Transaction {
 
         common.clickElement("xpath", "//Edit[@Name='Price List']");
         selectAndValidateData(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
-        common.clickElement("xpath","//Edit[@Name='Executive *']");
-        selectAndValidateData(common.getData(dataFile,"executive"),"xpath","//Edit[@Name='Executive *']" );
+        common.clickElement("xpath", "//Edit[@Name='Executive *']");
+        selectAndValidateData(common.getData(dataFile, "executive"), "xpath", "//Edit[@Name='Executive *']");
         common.clickElement("xpath", "//Edit[@Name='Port Code']");
-        inputTextWithValidation( "xpath", "//Edit[@Name='Port Code']", common.getData(dataFile,"portCode"));
+        inputTextWithValidation("xpath", "//Edit[@Name='Port Code']", common.getData(dataFile, "portCode"));
 //        common.clickElement("xpath", "//Edit[@Name='Remarks']");
 //        selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
 
@@ -61,12 +61,12 @@ public class InterStatesGSTExcludeTCSInclude_03 extends Transaction {
         for (int i = 0; i < Integer.parseInt(common.getData(dataFile, "productCount")); i++) {
             addProduct(i);
         }
-        netAmountTextt=Double.parseDouble(common.findWebElement("xpath","//Edit[@AutomationId='NetAmount']").getText().replace(",",""));
-        System.out.println("Net Amount :- "+netAmountTextt);
+        netAmountTextt = Double.parseDouble(common.findWebElement("xpath", "//Edit[@AutomationId='NetAmount']").getText().replace(",", ""));
+        System.out.println("Net Amount :- " + netAmountTextt);
         validateIGSTAmountTabIsEmpty();
         validateCESSAmountTabIsEmpty();
         //Tcs calculations
-        tcsCalculations(dataFile,"code","amount","rowCount",netAmountTextt);
+        tcsCalculations(dataFile, "code", "amount", "rowCount", netAmountTextt);
         navigateToBillsPayablesTab();
         common.deleteInvalidRows();
         navigateToSummaryTab();
@@ -80,49 +80,49 @@ public class InterStatesGSTExcludeTCSInclude_03 extends Transaction {
         totalValueInCompanyCurrenyPresentInSummary();
         receivableAmountPresentInSummary();
         transactionSave();
-        String transactionId=getNewTransactionId();
+        String transactionId = getNewTransactionId();
 
 
-        System.out.println("new Transaction ID : "+transactionId);
-        common.clickElement("xpath","//Text[@Name='SI  3']/Link[@Name='SI  3']");
+        System.out.println("new Transaction ID : " + transactionId);
+        common.clickElement("xpath", "//Text[@Name='SI  3']/Link[@Name='SI  3']");
     }
 
     public void addProduct(int i) throws IOException, ParseException, InterruptedException, AWTException {
         if (common.getData(dataFile, "productType" + i).equals("general")) {
-            generalProduct(dataFile, "productCode" + i, "quantity" + i,i);
+            generalProduct(dataFile, "productCode" + i, "quantity" + i, i);
         } else if (common.getData(dataFile, "productType" + i).equals("multiBatch")) {
-            multiBatchProduct(dataFile, "productCode" + i, "quantity" + i,i);
+            multiBatchProduct(dataFile, "productCode" + i, "quantity" + i, i);
         } else if (common.getData(dataFile, "productType" + i).equals("serial")) {
-            serialNumberProduct(dataFile, "productCode" + i,i );
+            serialNumberProduct(dataFile, "productCode" + i, i);
         }
 
-        quantity= Double.parseDouble(common.findWebElement("xpath","//Edit[@Name='Quantity Row "+i+", Not sorted.']").getText());
+        quantity = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']").getText());
 
-        mrp=Double.parseDouble(common.findWebElement("xpath","//Edit[@Name='MRP Row "+i+", Not sorted.']").getText().replace(",",""));
-        System.out.println("mrp:-"+mrp);
+        mrp = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='MRP Row " + i + ", Not sorted.']").getText().replace(",", ""));
+        System.out.println("mrp:-" + mrp);
 
-        WebElement mrpAmount = common.findWebElement("xpath", "//Edit[@Name='MRP Amount Row "+i+", Not sorted.']");
+        WebElement mrpAmount = common.findWebElement("xpath", "//Edit[@Name='MRP Amount Row " + i + ", Not sorted.']");
         String actualMrpAmountText = mrpAmount.getText().replace(",", "");
         double actualMrpAmount = Double.parseDouble(actualMrpAmountText);
 
         double expectedMrpAmount = quantity * mrp;
-        System.out.println("actual:- "+actualMrpAmount+" -expectedMrp-"+expectedMrpAmount);
+        System.out.println("actual:- " + actualMrpAmount + " -expectedMrp-" + expectedMrpAmount);
         Assert.assertEquals(actualMrpAmount, expectedMrpAmount, "Mismatch in MRP Amount");
-        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']",500,0);
+        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 500, 0);
 
-        unitRate= Double.parseDouble(common.findWebElement("xpath","//Edit[@Name='Unit Rate Row "+i+", Not sorted.']").getText());
-        System.out.println("unitRate:-"+unitRate);
+        unitRate = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='Unit Rate Row " + i + ", Not sorted.']").getText());
+        System.out.println("unitRate:-" + unitRate);
 
-        grossAmount = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='Gross Amount Row "+i+", Not sorted.']").getText().replace(",", ""));
-        System.out.println("gross Amount:- "+ grossAmount);
+        grossAmount = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='Gross Amount Row " + i + ", Not sorted.']").getText().replace(",", ""));
+        System.out.println("gross Amount:- " + grossAmount);
 
-        double grossExpected=unitRate * quantity;
-        System.out.println("gross expected:-"+grossExpected);
-        Assert.assertEquals(grossAmount,grossExpected,"Mismatch in Gross Amount");
+        double grossExpected = unitRate * quantity;
+        System.out.println("gross expected:-" + grossExpected);
+        Assert.assertEquals(grossAmount, grossExpected, "Mismatch in Gross Amount");
 
-        netAmount = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='Net Amount Row "+i+", Not sorted.']").getText().replace(",", ""));
-        System.out.println("Net Amount:- "+ netAmount);
-        Assert.assertEquals(grossAmount,netAmount);
+        netAmount = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='Net Amount Row " + i + ", Not sorted.']").getText().replace(",", ""));
+        System.out.println("Net Amount:- " + netAmount);
+        Assert.assertEquals(grossAmount, netAmount);
         sliderHandle();
     }
 }

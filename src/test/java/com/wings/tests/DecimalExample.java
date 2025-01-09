@@ -13,9 +13,9 @@ public class DecimalExample {
         System.out.println("double : " + df.format(input));
         //3.14
 //         DecimalFormat, default is RoundingMode.HALF_EVEN
-         df.setRoundingMode(RoundingMode.DOWN);
-           System.out.println("\ndouble (RoundingMode.DOWN) : " + df.format(input));  //3.14
-           df.setRoundingMode(RoundingMode.UP);
-           System.out.println("double (RoundingMode.UP)  : " + df.format(input));    //3.15
-           }
+        df.setRoundingMode(RoundingMode.DOWN);
+        System.out.println("\ndouble (RoundingMode.DOWN) : " + df.format(input));  //3.14
+        df.setRoundingMode(RoundingMode.UP);
+        System.out.println("double (RoundingMode.UP)  : " + df.format(input));    //3.15
+    }
 }

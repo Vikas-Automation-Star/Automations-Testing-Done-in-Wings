@@ -1,9 +1,10 @@
 package com.wings.pages.sales.transactions;
 
-import io.appium.java_client.windows.WindowsDriver;
-import org.json.simple.parser.ParseException;
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
+import org.json.simple.parser.ParseException;
+
 import java.io.IOException;
 
 public class DeliveriesAgainstOrders extends Transaction {
@@ -22,8 +23,8 @@ public class DeliveriesAgainstOrders extends Transaction {
         navigateToDeliveriesAgainstOrdersMenu();
         Thread.sleep(3000);
         lastTransactionName();
-        common.clickElement("xpath","//Edit[@Name='Voucher Type']");
-        selectOptionalMaster(common.getData(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']");
+        common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
+        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
         selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Location *']");
@@ -36,8 +37,8 @@ public class DeliveriesAgainstOrders extends Transaction {
         Thread.sleep(1500);
         common.clickElement("xpath", "//CheckBox[@Name='Select Row 1']");
         common.clickElement("xpath", "//Button[@Name='Ok']");
-        common.clickElement("xpath","//Edit[@Name='Remarks']");
-        selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
+        common.clickElement("xpath", "//Edit[@Name='Remarks']");
+        selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
 
         //items --optional
 //        super.enterData("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']", dataFile, "quantity");

@@ -14,7 +14,7 @@ import java.io.IOException;
 public class ProductDiscountMaster {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String file="./src/main/resources/menuItems/Sales/Masters/productDiscountGroup.json";
+    String file = "./src/main/resources/menuItems/Sales/Masters/productDiscountGroup.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
@@ -24,12 +24,12 @@ public class ProductDiscountMaster {
 
     @Test
     public void productDiscount() throws InterruptedException, IOException, ParseException, AWTException {
-        ProductDiscountGroup productDiscountGroup=new ProductDiscountGroup(driver,file);
+        ProductDiscountGroup productDiscountGroup = new ProductDiscountGroup(driver, file);
         productDiscountGroup.productGroup();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

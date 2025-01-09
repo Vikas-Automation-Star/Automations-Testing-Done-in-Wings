@@ -19,14 +19,15 @@ public class MonthWisePurchaseByQuantityReport {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
+
     @Test
     public void monthWiseSalesByQuantity() throws InterruptedException {
-        MonthWisePurchaseByQuantity mwpbv=new MonthWisePurchaseByQuantity(driver);
+        MonthWisePurchaseByQuantity mwpbv = new MonthWisePurchaseByQuantity(driver);
         mwpbv.monthWisePurchaseByQuantity();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

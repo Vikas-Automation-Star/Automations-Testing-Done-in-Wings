@@ -25,12 +25,12 @@ public class TestCase_03 {
 
     @Test
     public void testCase03() throws IOException, ParseException, InterruptedException, AWTException {
-        InterStatesGSTExcludeTCSInclude_03 si=new InterStatesGSTExcludeTCSInclude_03(driver,dataFile);
+        InterStatesGSTExcludeTCSInclude_03 si = new InterStatesGSTExcludeTCSInclude_03(driver, dataFile);
         si.interStatesGSTExcludeTCSInclude_03();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
 //        appLogin.logout();
         Allure.step("After Test TestCase 01");
     }

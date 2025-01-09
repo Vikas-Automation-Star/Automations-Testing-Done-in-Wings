@@ -1,10 +1,10 @@
 package com.wings.pages.purchase.masters;
 
+import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import com.wings.utils.Common;
 
 import java.io.IOException;
 

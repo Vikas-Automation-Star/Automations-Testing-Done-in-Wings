@@ -6,15 +6,16 @@ import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import java.awt.event.KeyEvent;
+
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 
 public class InterStateExcludingGST_01 extends Transaction {
     WindowsDriver driver;
     Common common;
     String dataFile;
-    double mrp,quantity, grossAmount, unitRate, voucherDiscountValue, partyDiscountValue, netAmount, grossMinusDiscount;
+    double mrp, quantity, grossAmount, unitRate, voucherDiscountValue, partyDiscountValue, netAmount, grossMinusDiscount;
 
     public InterStateExcludingGST_01(WindowsDriver driver, String file) {
         super(driver);
@@ -205,7 +206,7 @@ public class InterStateExcludingGST_01 extends Transaction {
         quantity = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']").getText());
 
         WebElement element = common.findWebElement("xpath", "//Edit[@Name='MRP Row " + i + ", Not sorted.']");
-        mrp = Double.parseDouble(element.getText().replace(",",""));
+        mrp = Double.parseDouble(element.getText().replace(",", ""));
         System.out.println("mrp:-" + mrp);
 
         WebElement mrpAmount = common.findWebElement("xpath", "//Edit[@Name='MRP Amount Row " + i + ", Not sorted.']");
@@ -258,7 +259,7 @@ public class InterStateExcludingGST_01 extends Transaction {
         Assert.assertEquals(grossMinusDiscount, netAmount);
     }
 }
-        //save
+//save
 //        transactionSave();
 //        lastTransactionName();
 

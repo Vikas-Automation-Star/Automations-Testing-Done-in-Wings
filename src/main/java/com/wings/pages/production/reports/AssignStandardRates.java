@@ -5,14 +5,14 @@ import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 
 public class AssignStandardRates extends Transaction {
-        WindowsDriver driver;
-        Common common;
+    WindowsDriver driver;
+    Common common;
 
-       public AssignStandardRates(WindowsDriver driver) {
+    public AssignStandardRates(WindowsDriver driver) {
         super(driver);
         this.driver = driver;
         common = new Common(this.driver);
-       }
+    }
 
     public void assignStandardRatesReport() throws InterruptedException {
         common.clickElement("name", "Production");

@@ -1,7 +1,6 @@
 package menuItems.purchase.reports.analysis.product;
 
 import com.wings.pages.AppLogin;
-import com.wings.pages.purchase.reports.analysis.party.MonthWisePurchaseByQuantity;
 import com.wings.pages.purchase.reports.analysis.product.YearWisePurchaseByQuantity;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
@@ -20,14 +19,15 @@ public class YearWisePurchaseByQuantityReport {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
+
     @Test
     public void monthWiseSalesByQuantity() throws InterruptedException {
-        YearWisePurchaseByQuantity ywpbq=new YearWisePurchaseByQuantity(driver);
+        YearWisePurchaseByQuantity ywpbq = new YearWisePurchaseByQuantity(driver);
         ywpbq.yearWisePurchaseByQuantity();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

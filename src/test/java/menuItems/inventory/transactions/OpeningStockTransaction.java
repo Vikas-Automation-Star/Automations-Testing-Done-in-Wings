@@ -8,13 +8,14 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.wings.pages.AppLogin;
 import com.wings.pages.inventory.transactions.OpeningStock;
+
 import java.awt.*;
 import java.io.IOException;
 
 public class OpeningStockTransaction {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String file="./src/main/resources/menuItems/inventory/transactions/openingStock.json";
+    String file = "./src/main/resources/menuItems/inventory/transactions/openingStock.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
@@ -25,12 +26,12 @@ public class OpeningStockTransaction {
 
     @Test
     public void openStock() throws InterruptedException, AWTException, IOException, ParseException {
-        OpeningStock stockTrans=new OpeningStock(driver,file);
+        OpeningStock stockTrans = new OpeningStock(driver, file);
         stockTrans.stockOpen();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
         Allure.step("After Test - Opening Stock");
     }

@@ -8,8 +8,8 @@ import java.sql.SQLException;
 /**
  * This program demonstrates how to establish database connection to Microsoft
  * SQL Server.
- * @author www.codejava.net
  *
+ * @author www.codejava.net
  */
 public class JdbcSQLServerConnection {
 

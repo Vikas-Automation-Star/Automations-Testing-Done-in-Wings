@@ -4,24 +4,27 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-import java.net.InetAddress;
-import java.nio.file.*;
-import java.util.Map;
-import java.util.Properties;
-import java.util.regex.*;
+
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
+import java.net.InetAddress;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
+import java.util.Properties;
+import java.util.regex.Pattern;
 
 
 public class XMLparser {
 
-    static Path toFile= Paths.get("mailTemplates/to.html");
+    static Path toFile = Paths.get("mailTemplates/to.html");
 
     public static String testDraft(String testCaseId, String scriptName, String description, String status, String duration) {
         // Generates an HTML row for each test case with its ID, script name, description, status, and duration
@@ -136,7 +139,7 @@ public class XMLparser {
             htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#TotalTests#"), String.valueOf(totalTests));
             htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#OS#"), os);
             htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#URL#"), jsonMap.get("app").toString());
-            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#CompanyDetails#"),jsonMap.get("companyName").toString());
+            htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#CompanyDetails#"), jsonMap.get("companyName").toString());
             htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#row#"), testDetails.toString());
 
             // Write output to HTML file

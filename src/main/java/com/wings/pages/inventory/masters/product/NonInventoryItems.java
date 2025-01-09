@@ -28,7 +28,7 @@ public class NonInventoryItems extends Masters {
         common.clickElement("name", "Inventory");
         common.clickElement("name", "Product");
         common.clickElement("name", "Non Inventory Items");
-        super.actionsMaster("xpath","//TreeItem[@Name='Non Inventory Items']/TreeItem[@Name='All Non Inventory Items']","//MenuItem[@Name='New Master']");
+        super.actionsMaster("xpath", "//TreeItem[@Name='Non Inventory Items']/TreeItem[@Name='All Non Inventory Items']", "//MenuItem[@Name='New Master']");
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='New Non Inventory Item *']", common.getData(filepath, "item") + common.getRandom());
         common.inputText("xpath", "//Edit[@Name='Non Inventory Item Code']", String.valueOf(common.getRandom()));

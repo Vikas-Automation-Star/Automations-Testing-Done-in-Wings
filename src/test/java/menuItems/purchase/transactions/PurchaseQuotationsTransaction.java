@@ -1,7 +1,7 @@
 package menuItems.purchase.transactions;
 
-import com.wings.pages.purchase.transactions.PurchaseQuotation;
 import com.wings.pages.AppLogin;
+import com.wings.pages.purchase.transactions.PurchaseQuotation;
 import io.appium.java_client.windows.WindowsDriver;
 import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
@@ -26,10 +26,11 @@ public class PurchaseQuotationsTransaction {
 
     @Test
     public void purchaseQuotations() throws IOException, ParseException, InterruptedException {
-        PurchaseQuotation pq=new PurchaseQuotation(driver,file);
+        PurchaseQuotation pq = new PurchaseQuotation(driver, file);
         pq.purchaseQuotation();
 
     }
+
     @AfterTest
     public void afterTest() throws IOException {
         appLogin.logout();

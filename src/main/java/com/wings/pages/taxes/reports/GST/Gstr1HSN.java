@@ -1,6 +1,5 @@
 package com.wings.pages.taxes.reports.GST;
 
-import com.wings.pages.Report;
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
@@ -14,6 +13,7 @@ public class Gstr1HSN extends Transaction {
         this.driver = driver;
         common = new Common(this.driver);
     }
+
     public void gstr1HSN() throws InterruptedException {
         common.clickElement("name", "Taxes");
         common.clickElement("name", "GST");

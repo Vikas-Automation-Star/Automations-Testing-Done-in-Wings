@@ -1,12 +1,13 @@
 package menuItems.finance.reports.receipts;
 
+import com.wings.pages.AppLogin;
+import com.wings.pages.finance.reports.receipts.CashReceiptsReportCode;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import com.wings.pages.AppLogin;
-import com.wings.pages.finance.reports.receipts.CashReceiptsReportCode;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -21,13 +22,13 @@ public class CashReceiptsReport {
     }
 
     @Test
-    public void cashRecipts() throws  InterruptedException, AWTException {
-        CashReceiptsReportCode receiptsReportCode=new CashReceiptsReportCode(driver);
+    public void cashRecipts() throws InterruptedException, AWTException {
+        CashReceiptsReportCode receiptsReportCode = new CashReceiptsReportCode(driver);
         receiptsReportCode.cashReport();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

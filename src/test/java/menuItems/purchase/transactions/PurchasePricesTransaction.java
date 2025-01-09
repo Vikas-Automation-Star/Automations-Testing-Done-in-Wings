@@ -1,7 +1,7 @@
 package menuItems.purchase.transactions;
 
-import com.wings.pages.purchase.transactions.PurchasePrice;
 import com.wings.pages.AppLogin;
+import com.wings.pages.purchase.transactions.PurchasePrice;
 import io.appium.java_client.windows.WindowsDriver;
 import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
@@ -26,7 +26,7 @@ public class PurchasePricesTransaction {
 
     @Test
     public void PurchasePrices() throws IOException, ParseException, InterruptedException {
-        PurchasePrice pp=new PurchasePrice(driver,file);
+        PurchasePrice pp = new PurchasePrice(driver, file);
         pp.purchasePrice();
     }
 

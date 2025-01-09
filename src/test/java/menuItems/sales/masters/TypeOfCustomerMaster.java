@@ -14,7 +14,7 @@ import java.io.IOException;
 public class TypeOfCustomerMaster {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String dataFile="./src/main/resources/MenuItems/Sales/Masters/typeOfCustomer.json";
+    String dataFile = "./src/main/resources/MenuItems/Sales/Masters/typeOfCustomer.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
@@ -24,12 +24,12 @@ public class TypeOfCustomerMaster {
 
     @Test
     public void newtypeofCust() throws InterruptedException, IOException, ParseException, AWTException {
-        TypeOfCustomer customer = new TypeOfCustomer(driver,dataFile);
+        TypeOfCustomer customer = new TypeOfCustomer(driver, dataFile);
         customer.typecust();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

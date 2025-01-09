@@ -1,9 +1,8 @@
 package com.wings.pages.inventory.reports.stock;
 
 import com.wings.pages.Transaction;
-import io.appium.java_client.windows.WindowsDriver;
-import com.wings.pages.Report;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
 
 import java.awt.*;
 
@@ -20,9 +19,9 @@ public class SerialNoHistory extends Transaction {
     public void serialNoHistory() throws InterruptedException, AWTException {
         common.clickElement("name", "Inventory");
         common.clickElement("name", "Stock");
-        common.clickElement("name","Serial No History");
+        common.clickElement("name", "Serial No History");
         Thread.sleep(1000);
-        common.clickElement("xpath","//Pane/Button[@Name='Submit']");
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
 //        Thread.sleep(1500);
 //        super.bulkVerifyReport("SI 3");
         super.closeReport("Serial No History");

@@ -13,13 +13,14 @@ public class MonthWiseSalesByValue extends Transaction {
         this.driver = driver;
         common = new Common(this.driver);
     }
+
     public void monthWiseSalesByValue() throws InterruptedException {
         common.clickElement("name", "Sales");
         common.clickElement("name", "Analysis");
         common.clickElement("xpath", "//MenuItem[@Name='Executive']");
         common.clickElement("xpath", "//MenuItem[@Name='Month Wise Sales By value']");
         Thread.sleep(2000);
-        common.clickElement("xpath","//Pane/Button[@Name='Submit']");
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         super.bulkVerifyReport("");
         super.closeReport("Month Wise Sales By value");
     }

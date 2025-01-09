@@ -1,7 +1,7 @@
 package menuItems.purchase.reports;
 
-import com.wings.pages.purchase.reports.PurchaseReturnsWithInvoiceReference;
 import com.wings.pages.AppLogin;
+import com.wings.pages.purchase.reports.PurchaseReturnsWithInvoiceReference;
 import io.appium.java_client.windows.WindowsDriver;
 import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
@@ -25,12 +25,12 @@ public class PurchaseReturnsWithInvoiceReferencesReport {
 
     @Test
     public void purchaseReturnsWithInvoiceReferences() throws InterruptedException, AWTException {
-        PurchaseReturnsWithInvoiceReference prwir=new PurchaseReturnsWithInvoiceReference(driver);
+        PurchaseReturnsWithInvoiceReference prwir = new PurchaseReturnsWithInvoiceReference(driver);
         prwir.purchaseReturnsWithInvoiceReference();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
         Allure.step("After Test  PurchaseReturnsWithInvoiceReferences Report");
     }

@@ -15,17 +15,16 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 import java.util.Properties;
-import java.io.File;
 import java.util.Random;
 
 public class Common {
 
     WindowsDriver driver;
-    Time time=new Time();
+    Time time = new Time();
     Process process;
 
-    public Common(WindowsDriver remotedriver){
-        driver=remotedriver;
+    public Common(WindowsDriver remotedriver) {
+        driver = remotedriver;
     }
 
 
@@ -33,11 +32,11 @@ public class Common {
 //        initiateWinAppServer();
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("app",app);
+        capabilities.setCapability("app", app);
         capabilities.setCapability("platformName", getProperty("platformName"));
         capabilities.setCapability("deviceName", getProperty("deviceName"));
         WindowsDriver newdriver = new WindowsDriver<>(new URL("http://127.0.0.1:4723/"), capabilities);
-        driver=newdriver;
+        driver = newdriver;
         return newdriver;
     }
 
@@ -51,31 +50,14 @@ public class Common {
 
     public WebElement findWebElement(String locatorType, String locator) {
         By by = null;
-        WebElement element=null;
+        WebElement element = null;
         try {
             if (locatorType.equals("xpath")) {
                 by = By.xpath(locator);
             } else if (locatorType.equals("name")) {
                 by = By.name(locator);
             }
-            element=this.driver.findElement(by);
-        } catch (Exception e) {
-            e.printStackTrace();
-            screnShot();
-        }
-            return element;
-
-    }
-    public List<WebElement> findWebElements(String locatorType, String locator) {
-        By by = null;
-        List<WebElement> element=null;
-        try {
-            if (locatorType.equals("xpath")) {
-                by = By.xpath(locator);
-            } else if (locatorType.equals("name")) {
-                by = By.name(locator);
-            }
-             element=this.driver.findElements(by);
+            element = this.driver.findElement(by);
         } catch (Exception e) {
             e.printStackTrace();
             screnShot();
@@ -84,33 +66,52 @@ public class Common {
 
     }
 
-    public void clickElement(String locatorType, String locator){
-        WebElement element=findWebElement(locatorType,locator);
+    public List<WebElement> findWebElements(String locatorType, String locator) {
+        By by = null;
+        List<WebElement> element = null;
+        try {
+            if (locatorType.equals("xpath")) {
+                by = By.xpath(locator);
+            } else if (locatorType.equals("name")) {
+                by = By.name(locator);
+            }
+            element = this.driver.findElements(by);
+        } catch (Exception e) {
+            e.printStackTrace();
+            screnShot();
+        }
+        return element;
+
+    }
+
+    public void clickElement(String locatorType, String locator) {
+        WebElement element = findWebElement(locatorType, locator);
         element.click();
     }
 
-    public boolean isDisplayed(String locatorType, String locator){
-        boolean displayed=findWebElement(locatorType,locator).isDisplayed();
+    public boolean isDisplayed(String locatorType, String locator) {
+        boolean displayed = findWebElement(locatorType, locator).isDisplayed();
         return displayed;
     }
 
-    public boolean isEnabled(String locatorType, String locator){
-        boolean enabled =findWebElement(locatorType,locator).isEnabled();
+    public boolean isEnabled(String locatorType, String locator) {
+        boolean enabled = findWebElement(locatorType, locator).isEnabled();
         return enabled;
     }
 
-    public void inputText(String locatorType,String locator,String inputText){
-        WebElement element=findWebElement(locatorType,locator);
-        element.sendKeys(inputText,Keys.TAB);
+    public void inputText(String locatorType, String locator, String inputText) {
+        WebElement element = findWebElement(locatorType, locator);
+        element.sendKeys(inputText, Keys.TAB);
     }
-    public void getText(String locatorType,String locator){
-        WebElement element=findWebElement(locatorType,locator);
+
+    public void getText(String locatorType, String locator) {
+        WebElement element = findWebElement(locatorType, locator);
         element.getText();
     }
 
-    public void inputAndVerify(String locatorType,String locator,String inputText){
-        WebElement element=findWebElement(locatorType,locator);
-        element.sendKeys(inputText,Keys.TAB);
+    public void inputAndVerify(String locatorType, String locator, String inputText) {
+        WebElement element = findWebElement(locatorType, locator);
+        element.sendKeys(inputText, Keys.TAB);
 //        Thread.sleep(1000);
 //        WebElement element = common.findWebElement(locatorType, locator);
         if (element.getText().equals(inputText)) {
@@ -122,7 +123,7 @@ public class Common {
     }
 
     public void rowDropDown(String dataToBeSelected) {
-        List<WebElement> elementList =findWebElements("xpath", "//Table/*[@Name='Data Panel']/*[contains(@Name,'Row')]");
+        List<WebElement> elementList = findWebElements("xpath", "//Table/*[@Name='Data Panel']/*[contains(@Name,'Row')]");
         System.out.println("Size :" + elementList.size());
         for (WebElement i : elementList) {
 //            System.out.println(i.getText());
@@ -139,20 +140,21 @@ public class Common {
         }
     }
 
-    public void sliderHandling(String locatorType,String locator,int xOffset,int yOffset){
-        WebElement slider = findWebElement(locatorType,locator);
+    public void sliderHandling(String locatorType, String locator, int xOffset, int yOffset) {
+        WebElement slider = findWebElement(locatorType, locator);
         Actions actions = new Actions(driver);
-        actions.clickAndHold(slider).moveByOffset(xOffset,yOffset).release().perform();
+        actions.clickAndHold(slider).moveByOffset(xOffset, yOffset).release().perform();
     }
 
-    public void deleteInvalidRows(){
-        WebElement element= findWebElement("xpath","//Edit[@Name=' Row 0, Not sorted.']");
-        Actions actions=new Actions(driver);
+    public void deleteInvalidRows() {
+        WebElement element = findWebElement("xpath", "//Edit[@Name=' Row 0, Not sorted.']");
+        Actions actions = new Actions(driver);
         actions.contextClick(element).perform();
-        clickElement("xpath","//MenuItem[@Name='Delete Invalid Rows']");
+        clickElement("xpath", "//MenuItem[@Name='Delete Invalid Rows']");
     }
-    public String getTagName(String locatorType,String locator){
-        WebElement element=findWebElement(locatorType,locator);
+
+    public String getTagName(String locatorType, String locator) {
+        WebElement element = findWebElement(locatorType, locator);
         return element.getTagName();
     }
 
@@ -163,15 +165,15 @@ public class Common {
         return prop.getProperty(key);
     }
 
-    public String getData(String fileName,String key) throws IOException, ParseException {
+    public String getData(String fileName, String key) throws IOException, ParseException {
         JSONParser parser = new JSONParser();
         FileReader reader = new FileReader(fileName);
         Object obj = parser.parse(reader);
         JSONObject jsonObject = (JSONObject) obj;
         Object value = jsonObject.get(key);
-        if(value ==null ){
+        if (value == null) {
             return null;
-        } else if(value instanceof String) {
+        } else if (value instanceof String) {
             return (String) value;
         } else if (value instanceof Long) {
             return Long.toString((Long) value);
@@ -209,19 +211,19 @@ public class Common {
 //        }
 //    }
 
-    public int getRandom(){
+    public int getRandom() {
         Random rand = new Random();
         int randomNumber = 1000 + rand.nextInt(9000);
         return randomNumber;
     }
 
 
-    public void screnShot(){
+    public void screnShot() {
         try {
-            TakesScreenshot screenshot= (TakesScreenshot) driver;
-            File temp= screenshot.getScreenshotAs(OutputType.FILE);
-            File perm=new File("./results/screenshots/failure"+time.timeStamp()+".png");
-            FileHandler.copy(temp,perm);
+            TakesScreenshot screenshot = (TakesScreenshot) driver;
+            File temp = screenshot.getScreenshotAs(OutputType.FILE);
+            File perm = new File("./results/screenshots/failure" + time.timeStamp() + ".png");
+            FileHandler.copy(temp, perm);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -267,7 +269,7 @@ public class Common {
         return null; // Return null in case o
     }
 
-    public void quit(){
+    public void quit() {
         driver.quit();
     }
 
@@ -279,7 +281,7 @@ public class Common {
 
     public void quitWinAppServer() throws IOException {
 //        process.destroy();
-        String command="taskkill /IM \"WinAppDriver.exe\" /F";
+        String command = "taskkill /IM \"WinAppDriver.exe\" /F";
         Process p = Runtime.getRuntime().exec(command);
     }
 }

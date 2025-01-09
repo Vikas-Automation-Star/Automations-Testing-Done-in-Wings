@@ -13,24 +13,24 @@ import java.io.IOException;
 
 public class TdsSubTypesMaster {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
-    String file ="./src/main/resources/MenuItems/Taxes/masters/TDS/TdsSubTypes.json";
+    AppLogin appLogin = new AppLogin();
+    String file = "./src/main/resources/MenuItems/Taxes/masters/TDS/TdsSubTypes.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
     public void tdsSubTypesMaster() throws InterruptedException, IOException, ParseException, AWTException {
-        TdsSubTypes tst=new TdsSubTypes(driver,file);
+        TdsSubTypes tst = new TdsSubTypes(driver, file);
         tst.tdsSubTypes();
 
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.wings.pages.AppLogin;
 import com.wings.pages.finance.reports.partyAdjustments.DebitNoteFromSuppliersReportCode;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -15,20 +16,20 @@ public class DebitNoteFromSuppliersReport {
     AppLogin appLogin = new AppLogin();
 
     @BeforeTest
-    public void beforeTest() throws  InterruptedException, IOException, ParseException {
+    public void beforeTest() throws InterruptedException, IOException, ParseException {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
     public void debitNoteFromSupplierReport() throws InterruptedException, AWTException {
-        DebitNoteFromSuppliersReportCode noteFromSuppliersReportCode=new DebitNoteFromSuppliersReportCode(driver);
+        DebitNoteFromSuppliersReportCode noteFromSuppliersReportCode = new DebitNoteFromSuppliersReportCode(driver);
         noteFromSuppliersReportCode.debitNotefromSupplierReport();
 
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 

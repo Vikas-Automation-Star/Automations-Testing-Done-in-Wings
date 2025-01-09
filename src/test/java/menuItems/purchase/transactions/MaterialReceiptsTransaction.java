@@ -1,7 +1,7 @@
 package menuItems.purchase.transactions;
 
-import com.wings.pages.purchase.transactions.MaterialReceipt;
 import com.wings.pages.AppLogin;
+import com.wings.pages.purchase.transactions.MaterialReceipt;
 import io.appium.java_client.windows.WindowsDriver;
 import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
@@ -25,7 +25,7 @@ public class MaterialReceiptsTransaction {
 
     @Test
     public void MaterialReceipts() throws IOException, ParseException, InterruptedException {
-        MaterialReceipt mr=new MaterialReceipt(driver,file);
+        MaterialReceipt mr = new MaterialReceipt(driver, file);
         mr.materialReceipt();
     }
 

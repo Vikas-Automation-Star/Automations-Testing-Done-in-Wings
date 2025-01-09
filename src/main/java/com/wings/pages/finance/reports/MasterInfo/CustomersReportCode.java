@@ -1,9 +1,8 @@
 package com.wings.pages.finance.reports.MasterInfo;
 
 import com.wings.pages.Transaction;
-import io.appium.java_client.windows.WindowsDriver;
-import com.wings.pages.Report;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
 
 public class CustomersReportCode extends Transaction {
     WindowsDriver driver;
@@ -18,9 +17,9 @@ public class CustomersReportCode extends Transaction {
     public void customerReport() throws InterruptedException {
         common.clickElement("name", "Finance");
         common.clickElement("name", "Master Info");
-        common.clickElement("xpath","//MenuItem[@Name='Customers']");
+        common.clickElement("xpath", "//MenuItem[@Name='Customers']");
         Thread.sleep(1200);
-        common.clickElement("xpath","//Pane/Button[@Name='Submit']");
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
 //        super.bulkVerifyReport("ORFCC 2");
         closeReport("Customers");

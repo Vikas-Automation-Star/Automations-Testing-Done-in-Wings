@@ -1,9 +1,9 @@
 package com.wings.pages.sales.transactions;
 
-import io.appium.java_client.windows.WindowsDriver;
-import org.json.simple.parser.ParseException;
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
+import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 
@@ -20,11 +20,11 @@ public class DeliveryReturns extends Transaction {
     }
 
     public void deliveryreturns() throws InterruptedException, IOException, ParseException, IOException, ParseException {
-       navigateToDeliveryReturnsMenu();
+        navigateToDeliveryReturnsMenu();
         Thread.sleep(3000);
         lastTransactionName();
-        common.clickElement("xpath","//Edit[@Name='Voucher Type']");
-        selectOptionalMaster(common.getData(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']");
+        common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
+        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
         selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
@@ -35,10 +35,10 @@ public class DeliveryReturns extends Transaction {
         Thread.sleep(1500);
         common.clickElement("xpath", "//CheckBox[@Name='Select Row 1']");
         common.clickElement("xpath", "//Button[@Name='Ok']");
-        common.clickElement("xpath","//Edit[@Name='Remarks']");
-        selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
+        common.clickElement("xpath", "//Edit[@Name='Remarks']");
+        selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
         //items
-        common.sliderHandling("name","Position",200,0);
+        common.sliderHandling("name", "Position", 200, 0);
         enterData("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']", dataFile, "quantity");
         //save
         transactionSave();

@@ -1,9 +1,9 @@
 package com.wings.pages.finance.reports.OpeningBalance;
 
 import com.wings.pages.Transaction;
-import io.appium.java_client.windows.WindowsDriver;
-import com.wings.pages.Report;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
+
 import java.awt.*;
 
 public class ManualStockValuationReportCode extends Transaction {
@@ -19,9 +19,9 @@ public class ManualStockValuationReportCode extends Transaction {
     public void manualStockValuationReport() throws InterruptedException, AWTException {
         common.clickElement("name", "Finance");
         common.clickElement("name", "Opening Balances");
-        common.clickElement("xpath","//MenuItem[@Name='Manual Stock Valuation'][2]");
+        common.clickElement("xpath", "//MenuItem[@Name='Manual Stock Valuation'][2]");
         Thread.sleep(1000);
-        common.clickElement("xpath","//Pane/Button[@Name='Submit']");
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
         bulkVerifyReport("MSV 1");
         closeReport("Manual Stock Valuation");

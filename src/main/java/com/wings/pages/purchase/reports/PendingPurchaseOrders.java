@@ -1,12 +1,9 @@
 package com.wings.pages.purchase.reports;
 
-import com.wings.pages.Report;
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import io.qameta.allure.Allure;
-
-import java.awt.*;
 
 public class PendingPurchaseOrders extends Transaction {
     WindowsDriver driver;
@@ -18,7 +15,7 @@ public class PendingPurchaseOrders extends Transaction {
         common = new Common(this.driver);
     }
 
-    public void pendingPurchaseOrder() throws InterruptedException{
+    public void pendingPurchaseOrder() throws InterruptedException {
         common.clickElement("name", "Purchase");
         common.clickElement("name", "Orders");
         common.clickElement("xpath", "//MenuItem[@Name='Pending Purchase Orders']");

@@ -12,23 +12,23 @@ import java.io.IOException;
 
 public class TestCase_10 {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
-    String dataFile="./src/main/resources/TestCasesData/testCase10.json";
+    AppLogin appLogin = new AppLogin();
+    String dataFile = "./src/main/resources/TestCasesData/testCase10.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, ParseException, InterruptedException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
     public void tesCase10() throws IOException, ParseException, InterruptedException, AWTException {
-       InterStateExclusiveSalesPriceLIstGSTCalculations_10 exclusive=new InterStateExclusiveSalesPriceLIstGSTCalculations_10(driver,dataFile);
-       exclusive.interStateExclusiveSalesPriceLIstGSTCalculations_10();
+        InterStateExclusiveSalesPriceLIstGSTCalculations_10 exclusive = new InterStateExclusiveSalesPriceLIstGSTCalculations_10(driver, dataFile);
+        exclusive.interStateExclusiveSalesPriceLIstGSTCalculations_10();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
 //        appLogin.logout();
     }
 }

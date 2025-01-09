@@ -23,14 +23,14 @@ public class BalanceSheetManualStockReport {
 
     @Test
     public void balanceSheetManualStock() throws InterruptedException, AWTException {
-        BalanceSheetManualStockReportCode manualStockReportCode=new BalanceSheetManualStockReportCode(driver);
+        BalanceSheetManualStockReportCode manualStockReportCode = new BalanceSheetManualStockReportCode(driver);
         manualStockReportCode.balanceSheetManualStock();
 
 
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

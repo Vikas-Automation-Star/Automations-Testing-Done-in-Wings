@@ -1,6 +1,7 @@
 package menuItems.Taxes.masters.TDS;//package menuItems.Taxes.masters.TDS;
 
 //import com.wings.pages.taxes.TDS.TdsAssesseeTypes;
+
 import com.wings.pages.AppLogin;
 import com.wings.pages.taxes.masters.TDS.TdsAssesseeTypes;
 import io.appium.java_client.windows.WindowsDriver;
@@ -14,23 +15,23 @@ import java.io.IOException;
 
 public class TdsAssesseeTypesMaster {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
-    String file ="./src/main/resources/MenuItems/Taxes/masters/TDS/TdsAssesseeTypes.json";
+    AppLogin appLogin = new AppLogin();
+    String file = "./src/main/resources/MenuItems/Taxes/masters/TDS/TdsAssesseeTypes.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
     public void TdsAssesseeTypesMaster() throws InterruptedException, IOException, ParseException, AWTException {
-        TdsAssesseeTypes tat=new TdsAssesseeTypes(driver,file);
+        TdsAssesseeTypes tat = new TdsAssesseeTypes(driver, file);
         tat.tdsAssesseeTypes();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

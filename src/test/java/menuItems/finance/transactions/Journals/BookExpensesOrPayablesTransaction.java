@@ -8,29 +8,30 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.wings.pages.AppLogin;
 import com.wings.pages.finance.transactions.Journals.BookExpensesOrPayables;
+
 import java.awt.*;
 import java.io.IOException;
 
 public class BookExpensesOrPayablesTransaction {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
-    String dataFile="./src/main/resources/menuItems/finance/transaction/bookExpenses.json";
+    AppLogin appLogin = new AppLogin();
+    String dataFile = "./src/main/resources/menuItems/finance/transaction/bookExpenses.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, ParseException, InterruptedException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
         Allure.step("Before Test - Book Expenses or Payables");
     }
 
     @Test
     public void payables() throws IOException, ParseException, InterruptedException, AWTException {
-        BookExpensesOrPayables expensesOrPayables=new BookExpensesOrPayables(driver,dataFile);
+        BookExpensesOrPayables expensesOrPayables = new BookExpensesOrPayables(driver, dataFile);
         expensesOrPayables.payables();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
         Allure.step("After Test - Book Expenses or Payables");
     }

@@ -1,7 +1,7 @@
 package menuItems.company.masters;
 
-import com.wings.pages.company.masters.Departments;
 import com.wings.pages.AppLogin;
+import com.wings.pages.company.masters.Departments;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
@@ -25,12 +25,12 @@ public class DepartmentsMaster {
 
     @Test
     public void departments() throws IOException, ParseException, InterruptedException, AWTException {
-        departments=new Departments(driver,file);
+        departments = new Departments(driver, file);
         departments.departments();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 

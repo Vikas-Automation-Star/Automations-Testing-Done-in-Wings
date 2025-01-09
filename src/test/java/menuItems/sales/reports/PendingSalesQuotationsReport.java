@@ -1,15 +1,16 @@
 package menuItems.sales.reports;
 
+import com.wings.pages.AppLogin;
+import com.wings.pages.sales.reports.PendingSalesQuotationsReportCode;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import com.wings.pages.AppLogin;
-import com.wings.pages.sales.reports.PendingSalesQuotationsReportCode;
+
 import java.io.IOException;
 
-public class PendingSalesQuotationsReport  {
+public class PendingSalesQuotationsReport {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
 
@@ -22,12 +23,12 @@ public class PendingSalesQuotationsReport  {
 
     @Test
     public void pendingSalesQuotation() throws InterruptedException {
-        PendingSalesQuotationsReportCode pendingQuotations=new PendingSalesQuotationsReportCode(driver);
+        PendingSalesQuotationsReportCode pendingQuotations = new PendingSalesQuotationsReportCode(driver);
         pendingQuotations.pendingQuotationReport();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 

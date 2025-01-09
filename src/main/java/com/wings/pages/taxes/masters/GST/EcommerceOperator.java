@@ -37,7 +37,7 @@ public class EcommerceOperator extends Masters {
         common.clickElement("xpath", "//Pane[@Name='ECommerce Operator Details']/Button[@Name='...']");
         common.inputText("xpath", "//Edit[@Name='E-Commerce Operator GSTIN *']", common.getData(dataFile, "EcommerceOperatorGSTIN"));
         Thread.sleep(2000);
-        common.clickElement("xpath","//Button[@Name='Ok']");
+        common.clickElement("xpath", "//Button[@Name='Ok']");
         common.clickElement("xpath", "//Button[@Name='Save']");
         common.clickElement("xpath", "//Button[@Name='OK']");
         common.clickElement("xpath", "//Button[@Name='Close']");

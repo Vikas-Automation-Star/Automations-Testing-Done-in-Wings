@@ -3,7 +3,7 @@
     <listeners>
         <listener class-name="com.wings.utils.listener"/>
     </listeners>
-                  <!-- receipts -->
+    <!-- receipts -->
     <test name="Receipts - Receipts from Parties">
         <classes>
             <class name="menuItems.finance.transactions.Receipts.ReceiptsFromPartiesTransaction"/>
@@ -34,7 +34,7 @@
         </classes>
     </test>
 
-                 Payments !
+    Payments !
     <test name="Payments- Payments to Parties">
         <classes>
             <class name="menuItems.finance.transactions.Payments.PaymentToPartiesTransaction"/>
@@ -58,7 +58,7 @@
             <class name="menuItems.finance.transactions.Payments.CashTransferTransaction"/>
         </classes>
     </test>
-                <!-- Banking !-->
+    <!-- Banking !-->
     <test name="Banking - Cash Deposits and Withdrawls">
         <classes>
             <class name="menuItems.finance.transactions.Banking.CashDepositsAndWithdrawlsTransaction"/>
@@ -88,7 +88,7 @@
             <class name="menuItems.finance.transactions.Banking.OpeningUnclearedBankEntriesTransaction"/>
         </classes>
     </test>
-                <!-- Party Adjustments !-->
+    <!-- Party Adjustments !-->
     <test name="Party Adjustments- Adjust Party Bills">
         <classes>
             <class name="menuItems.finance.transactions.PartyAdjustments.AdjustPartyBillsTransaction"/>
@@ -130,7 +130,7 @@
             <class name="menuItems.finance.transactions.PartyAdjustments.DebitNoteFromSuppliersTransaction"/>
         </classes>
     </test>
-             Journals !
+    Journals !
     <test name="Journals - Journal Entires">
         <classes>
             <class name="menuItems.finance.transactions.Journals.JournalEntriesTransaction"/>
@@ -148,7 +148,7 @@
             <class name="menuItems.finance.transactions.Journals.BookExpensesOrPayablesTransaction"/>
         </classes>
     </test>
-             Opening Balances !
+    Opening Balances !
     <test name="Opening Balances - Party Opening Balances">
         <classes>
             <class name="menuItems.finance.transactions.OpeningBalances.PartyOpeningBalancesTransaction"/>

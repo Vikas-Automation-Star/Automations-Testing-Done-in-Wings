@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.wings.pages.AppLogin;
 import com.wings.pages.finance.reports.FinancialStatements.ProfitAndLossReportCode;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -22,7 +23,7 @@ public class ProfitAndLossReport {
 
     @Test
     public void profitAndLoss() throws InterruptedException, AWTException {
-        ProfitAndLossReportCode lossReportCode=new ProfitAndLossReportCode(driver);
+        ProfitAndLossReportCode lossReportCode = new ProfitAndLossReportCode(driver);
         lossReportCode.profitLoss();
 
     }

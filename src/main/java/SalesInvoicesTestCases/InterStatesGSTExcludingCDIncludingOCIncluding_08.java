@@ -15,7 +15,7 @@ public class InterStatesGSTExcludingCDIncludingOCIncluding_08 extends Transactio
     WindowsDriver driver;
     Common common;
     String dataFile;
-    double mrp,quantity, grossAmount, unitRate, voucherDiscountValue, partyDiscountValue, netAmount, grossMinusDiscount;
+    double mrp, quantity, grossAmount, unitRate, voucherDiscountValue, partyDiscountValue, netAmount, grossMinusDiscount;
 
     public InterStatesGSTExcludingCDIncludingOCIncluding_08(WindowsDriver driver, String file) {
         super(driver);
@@ -52,12 +52,12 @@ public class InterStatesGSTExcludingCDIncludingOCIncluding_08 extends Transactio
         for (int i = 0; i < Integer.parseInt(common.getData(dataFile, "productCount")); i++) {
             addProduct(i);
         }
-        double itemsNetValue= Double.parseDouble(common.findWebElement("xpath","//Edit[@AutomationId='NetAmount']").getText().replace(",",""));
-        System.out.println("Items NetAmount :- "+itemsNetValue);
+        double itemsNetValue = Double.parseDouble(common.findWebElement("xpath", "//Edit[@AutomationId='NetAmount']").getText().replace(",", ""));
+        System.out.println("Items NetAmount :- " + itemsNetValue);
         navigateToChargesAndDeductionsTab();
-        chargesAndDeductionsCalculations(dataFile,"chargesOrDeductions","chargesOrDeductionsCode","amount","rowCount");
+        chargesAndDeductionsCalculations(dataFile, "chargesOrDeductions", "chargesOrDeductionsCode", "amount", "rowCount");
 //        OtherChargesWithoutGST(dataFile,"otherChargesCode","amount","HSNCode","amount");
-        OtherChargesCalculations(dataFile,"otherChargesCode","amount","rowCount");
+        OtherChargesCalculations(dataFile, "otherChargesCode", "amount", "rowCount");
 
         validateCGSTAmountTabIsEmpty();
         validateSGSTAmountTabIsEmpty();
@@ -66,7 +66,7 @@ public class InterStatesGSTExcludingCDIncludingOCIncluding_08 extends Transactio
         navigateToSummaryTab();
         navigateToOtherInfoTab();
         for (int j = 0; j < 4; j++) {
-            Robot robot=new Robot();
+            Robot robot = new Robot();
             robot.keyPress(KeyEvent.VK_RIGHT);
             robot.keyRelease(KeyEvent.VK_RIGHT);
         }
@@ -92,7 +92,7 @@ public class InterStatesGSTExcludingCDIncludingOCIncluding_08 extends Transactio
         quantity = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']").getText());
 
         WebElement element = common.findWebElement("xpath", "//Edit[@Name='MRP Row " + i + ", Not sorted.']");
-        mrp = Double.parseDouble(element.getText().replace(",",""));
+        mrp = Double.parseDouble(element.getText().replace(",", ""));
         System.out.println("mrp:-" + mrp);
 
         WebElement mrpAmount = common.findWebElement("xpath", "//Edit[@Name='MRP Amount Row " + i + ", Not sorted.']");
@@ -139,6 +139,6 @@ public class InterStatesGSTExcludingCDIncludingOCIncluding_08 extends Transactio
         String netAmountText = net.getText().replace(",", "");
         netAmount = Double.parseDouble(netAmountText);
         System.out.println("Net Amount:- " + netAmount);
-        Assert.assertEquals(grossAmount, netAmount,"calculations MisMatch");
+        Assert.assertEquals(grossAmount, netAmount, "calculations MisMatch");
     }
 }

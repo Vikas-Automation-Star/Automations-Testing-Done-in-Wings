@@ -1,5 +1,5 @@
 {
-"newTdsTransactionNature": "TaxDeductionNature",
+  "newTdsTransactionNature": "TaxDeductionNature",
   "desription": "Description Given for TaxDeduction Nature",
   "tdsAssesseType": "New TaxDeductedSource69",
   "subTdsTax": "New Sub TaxDeductedSource38",

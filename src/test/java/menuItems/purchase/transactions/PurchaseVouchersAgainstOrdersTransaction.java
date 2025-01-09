@@ -1,7 +1,7 @@
 package menuItems.purchase.transactions;
 
-import com.wings.pages.purchase.transactions.PurchaseVouchersAgainstOrder;
 import com.wings.pages.AppLogin;
+import com.wings.pages.purchase.transactions.PurchaseVouchersAgainstOrder;
 import io.appium.java_client.windows.WindowsDriver;
 import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
@@ -25,7 +25,7 @@ public class PurchaseVouchersAgainstOrdersTransaction {
 
     @Test
     public void purchaseVouchersAgainstOrders() throws IOException, ParseException, InterruptedException {
-        PurchaseVouchersAgainstOrder poao=new PurchaseVouchersAgainstOrder(driver,file);
+        PurchaseVouchersAgainstOrder poao = new PurchaseVouchersAgainstOrder(driver, file);
         poao.purchaseVouchersAgainstOrder();
     }
 

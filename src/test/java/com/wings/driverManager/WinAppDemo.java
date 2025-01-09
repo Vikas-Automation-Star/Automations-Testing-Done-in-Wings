@@ -8,44 +8,43 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Set;
 
 
 public class WinAppDemo {
 
     public static void main(String[] args) throws MalformedURLException, InterruptedException {
 
-        DesiredCapabilities capabilities=new DesiredCapabilities();
-        capabilities.setCapability("app","C:\\Program Files (x86)\\Wings Infonet Pvt Ltd\\Wings 24D Launcher\\WLauncher24D.exe");
-        capabilities.setCapability("platformName","Windows");
-        capabilities.setCapability("deviceName","WindowsPC");
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("app", "C:\\Program Files (x86)\\Wings Infonet Pvt Ltd\\Wings 24D Launcher\\WLauncher24D.exe");
+        capabilities.setCapability("platformName", "Windows");
+        capabilities.setCapability("deviceName", "WindowsPC");
 
         WindowsDriver driver = new WindowsDriver(new URL("http://127.0.0.1:4723"), capabilities);
         driver.manage().window().maximize();
-        String currentwindowHandle=driver.getWindowHandle();
-        System.out.println("Window 1 -"+currentwindowHandle);
+        String currentwindowHandle = driver.getWindowHandle();
+        System.out.println("Window 1 -" + currentwindowHandle);
         driver.findElementByName("24DBooksFin").click();
         Thread.sleep(12000);
 
-        DesiredCapabilities rootCapabilities=new DesiredCapabilities();
-        rootCapabilities.setCapability("app","Root");
-        rootCapabilities.setCapability("platformName","Windows");
-        rootCapabilities.setCapability("deviceName","WindowsPC");
+        DesiredCapabilities rootCapabilities = new DesiredCapabilities();
+        rootCapabilities.setCapability("app", "Root");
+        rootCapabilities.setCapability("platformName", "Windows");
+        rootCapabilities.setCapability("deviceName", "WindowsPC");
         WindowsDriver rootdriver = new WindowsDriver(new URL("http://127.0.0.1:4723"), rootCapabilities);
 
-        WebElement loginWindow= rootdriver.findElement(By.name("Wings 24 - Web Client"));
-        String nativeloginWindow=loginWindow.getAttribute("NativeWindowHandle");
-        String hexloginWindow=Integer.toHexString(Integer.parseInt(nativeloginWindow));
-        System.out.println("Login window - "+hexloginWindow);
+        WebElement loginWindow = rootdriver.findElement(By.name("Wings 24 - Web Client"));
+        String nativeloginWindow = loginWindow.getAttribute("NativeWindowHandle");
+        String hexloginWindow = Integer.toHexString(Integer.parseInt(nativeloginWindow));
+        System.out.println("Login window - " + hexloginWindow);
 
-        DesiredCapabilities webClientCapabilities=new DesiredCapabilities();
-        webClientCapabilities.setCapability("ms:waitforAppLaunch",15);
-        webClientCapabilities.setCapability("appTopLevelWindow",hexloginWindow);
+        DesiredCapabilities webClientCapabilities = new DesiredCapabilities();
+        webClientCapabilities.setCapability("ms:waitforAppLaunch", 15);
+        webClientCapabilities.setCapability("appTopLevelWindow", hexloginWindow);
         WindowsDriver logindriver = new WindowsDriver(new URL("http://127.0.0.1:4723"), webClientCapabilities);
         logindriver.findElement(By.name("Login")).click();
         //logindriver.findElement(By.xpath("//*[@name='Login']"));
         logindriver.findElement(By.xpath("//Edit[@Name='Password']")).sendKeys("Wings@123");
-        System.out.println("Password Tag Name"+ logindriver.findElement(By.name("Password")).getTagName());
+        System.out.println("Password Tag Name" + logindriver.findElement(By.name("Password")).getTagName());
         logindriver.findElement(By.name("Submit")).click();
         //driver.findElementByXPath("//window[@name='Wings 24 - Web Client']//pane[@name='Login']//edit[@name='Password']").sendKeys("Wings@123");
         Thread.sleep(10000);
@@ -59,11 +58,11 @@ public class WinAppDemo {
         logindriver.findElement(By.xpath("//MenuItem[@Name='Suppliers']")).click();
         Thread.sleep(3000);
         //logindriver.findElement(By.name("All Suppliers")).click();
-        WebElement allSuppliers=logindriver.findElement(By.xpath("//TreeItem[@Name='All Suppliers']"));
+        WebElement allSuppliers = logindriver.findElement(By.xpath("//TreeItem[@Name='All Suppliers']"));
         allSuppliers.click();
 
         Thread.sleep(2000);
-        Actions actions=new Actions(logindriver);
+        Actions actions = new Actions(logindriver);
         actions.contextClick(allSuppliers).perform();
         Thread.sleep(2000);
         logindriver.findElement(By.xpath("//MenuItem[@Name='New Master']")).click();
@@ -71,7 +70,7 @@ public class WinAppDemo {
         //logindriver.findElement(By.name("  New ")).click();
         //Thread.sleep(2000);
         //logindriver.findElement(By.name("New Master")).click();
-       // logindriver.findElement(By.xpath("//Button[@Name='New Master']")).click();
+        // logindriver.findElement(By.xpath("//Button[@Name='New Master']")).click();
         Thread.sleep(3000);
         logindriver.findElement(By.xpath("//Edit[@Name='New Supplier *']")).sendKeys("WingsDemo");
         logindriver.findElement(By.xpath("//Edit[@Name='Supplier Code']")).sendKeys("2024");
@@ -108,10 +107,9 @@ public class WinAppDemo {
 
         //logindriver.close();
         //driver.quit();
-       // rootdriver.quit();
+        // rootdriver.quit();
         //logindriver.quit();
     }
-
 
 
 }

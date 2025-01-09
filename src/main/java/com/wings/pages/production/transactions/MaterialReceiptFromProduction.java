@@ -7,7 +7,6 @@ import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
 
 import java.io.IOException;
-import java.util.List;
 
 public class MaterialReceiptFromProduction extends Transaction {
     WindowsDriver driver;
@@ -28,21 +27,21 @@ public class MaterialReceiptFromProduction extends Transaction {
         Thread.sleep(3000);
         oldTTransaction();
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        selectMasterWithValidation(common.getData(dataFile,"branch"),"xpath", "//Edit[@Name='Branch *']");
+        selectMasterWithValidation(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Location *']");
-        selectAndValidateData(common.getData(dataFile,"location"),"xpath", "//Edit[@Name='Location *']");
+        selectAndValidateData(common.getData(dataFile, "location"), "xpath", "//Edit[@Name='Location *']");
         common.clickElement("xpath", "//Edit[@Name='Transaction Currency *']");
-        selectMasterWithValidation(common.getData(dataFile,"currency"),"xpath", "//Edit[@Name='Transaction Currency *']" );
+        selectMasterWithValidation(common.getData(dataFile, "currency"), "xpath", "//Edit[@Name='Transaction Currency *']");
         WebElement code = common.findWebElement("xpath", "//Edit[@Name='Finished Product Code']");
         code.click();
-        selectAndValidateDataNew(common.getData(dataFile,"finishedProductCode"),"xpath", "//Edit[@Name='Finished Product Code']");
+        selectAndValidateDataNew(common.getData(dataFile, "finishedProductCode"), "xpath", "//Edit[@Name='Finished Product Code']");
         common.clickElement("xpath", "//Edit[@Name='Finished Product *']");
         common.clickElement("xpath", "//CheckBox[@Name='Select Row 0']");
         common.clickElement("xpath", "//Window[@Name='Open Transactions']/Pane/Button[@Name='Ok']");
-        common.clickElement("xpath","//Edit[@Name='Executive *']");
-        selectAndValidateDataNew(common.getData(dataFile,"executive"),"xpath","//Edit[@Name='Executive *']");
+        common.clickElement("xpath", "//Edit[@Name='Executive *']");
+        selectAndValidateDataNew(common.getData(dataFile, "executive"), "xpath", "//Edit[@Name='Executive *']");
         sliderHandle();
-        enterData("xpath","//Edit[@Name='Quantity * Row 0, Not sorted.']",dataFile,"quantity");
+        enterData("xpath", "//Edit[@Name='Quantity * Row 0, Not sorted.']", dataFile, "quantity");
         common.clickElement("xpath", "//Edit[@Name='Gross Amount Row 0, Not sorted.']");
         transactionSave();
         Thread.sleep(1000);

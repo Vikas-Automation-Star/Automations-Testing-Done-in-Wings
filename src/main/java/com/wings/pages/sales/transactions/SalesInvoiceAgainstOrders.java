@@ -1,9 +1,9 @@
 package com.wings.pages.sales.transactions;
 
-import io.appium.java_client.windows.WindowsDriver;
-import org.json.simple.parser.ParseException;
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
+import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 
@@ -23,8 +23,8 @@ public class SalesInvoiceAgainstOrders extends Transaction {
         navigateToSalesInvoiceAgainstOrdersMenu();
         lastTransactionName();
         Thread.sleep(3000);
-        common.clickElement("xpath","//Edit[@Name='Voucher Type']");
-        selectOptionalMaster(common.getData(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']");
+        common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
+        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
         selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Location *']");
@@ -37,14 +37,14 @@ public class SalesInvoiceAgainstOrders extends Transaction {
         Thread.sleep(1500);
 //        common.clickElement("xpath", "//CheckBox[@Name='Select Row 1']");
 //        common.clickElement("xpath", "//Button[@Name='Ok']");
-        common.clickElement("xpath","//Edit[@Name='Customer Email']");
-        selectOptionalMaster(common.getData(dataFile,"CustEmail"),"xpath","//Edit[@Name='Customer Email']");
-        common.clickElement("xpath","//Edit[@Name='Customer Mobile Number']");
-        selectOptionalMaster(common.getData(dataFile,"mobileNum"),"xpath","//Edit[@Name='Customer Mobile Number']");
-        common.clickElement("xpath","//Edit[@Name='Sales A/c Code']");
-        common.clickElement("xpath","//CheckBox[@Name='Apply TCS']");
-        common.clickElement("xpath","//Edit[@Name='Remarks']");
-        selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
+        common.clickElement("xpath", "//Edit[@Name='Customer Email']");
+        selectOptionalMaster(common.getData(dataFile, "CustEmail"), "xpath", "//Edit[@Name='Customer Email']");
+        common.clickElement("xpath", "//Edit[@Name='Customer Mobile Number']");
+        selectOptionalMaster(common.getData(dataFile, "mobileNum"), "xpath", "//Edit[@Name='Customer Mobile Number']");
+        common.clickElement("xpath", "//Edit[@Name='Sales A/c Code']");
+        common.clickElement("xpath", "//CheckBox[@Name='Apply TCS']");
+        common.clickElement("xpath", "//Edit[@Name='Remarks']");
+        selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
         //items --optional
 
 //        super.enterData("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']", dataFile, "quantity");

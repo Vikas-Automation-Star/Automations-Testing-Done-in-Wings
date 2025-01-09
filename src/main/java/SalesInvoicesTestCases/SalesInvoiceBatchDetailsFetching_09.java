@@ -18,9 +18,9 @@ public class SalesInvoiceBatchDetailsFetching_09 extends Transaction {
     Common common;
     String dataFile;
     boolean gstAmountClicked = false;
-    double mrp, grossAmount, unitRate,quantity, voucherDiscountValue, partyDiscountValue, netAmount, grossMinusDiscount, gstValue, cessValue, taxableValue, taxableAmountCalculated;
+    double mrp, grossAmount, unitRate, quantity, voucherDiscountValue, partyDiscountValue, netAmount, grossMinusDiscount, gstValue, cessValue, taxableValue, taxableAmountCalculated;
 
-    public SalesInvoiceBatchDetailsFetching_09(WindowsDriver driver,String file) {
+    public SalesInvoiceBatchDetailsFetching_09(WindowsDriver driver, String file) {
         super(driver);
         this.driver = driver;
         dataFile = file;
@@ -43,7 +43,7 @@ public class SalesInvoiceBatchDetailsFetching_09 extends Transaction {
         Thread.sleep(1000);
         common.clickElement("xpath", "//Edit[@Name='Sales A/c Code']");
         selectAndValidateData(common.getData(dataFile, "salesAccountCode"), "xpath", "//Edit[@Name='Sales A/c Code']");
-        common.clickElement("xpath","//CheckBox[@Name='Apply TCS']");
+        common.clickElement("xpath", "//CheckBox[@Name='Apply TCS']");
 //        common.clickElement("xpath","//Edit[@Name='TCS Trans Nature']");
         invoiceTypeWhenRegister();
         generalInfoSliderHandle(800);
@@ -59,28 +59,27 @@ public class SalesInvoiceBatchDetailsFetching_09 extends Transaction {
         for (int i = 0; i < Integer.parseInt(common.getData(dataFile, "productCount")); i++) {
             addProduct(i);
         }
-        String productBatch= common.findWebElement("xpath","//Edit[@Name='Product * Row 0, Not sorted.']").getText();
-        System.out.println("ProductBatchNameInItemsTab :- "+productBatch);
+        String productBatch = common.findWebElement("xpath", "//Edit[@Name='Product * Row 0, Not sorted.']").getText();
+        System.out.println("ProductBatchNameInItemsTab :- " + productBatch);
         Thread.sleep(2000);
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", -400, 0);
 
-        common.clickElement("xpath","//Button[@Name='Stock Details Row 1']");
-        String multiBatch =common.findWebElement("xpath","//ListItem[@Name='Row 1']/Item[@Name='Product Batch row 1']").getText();
-        System.out.println("MultiBatchNameInBatchDetails :- "+ multiBatch);
+        common.clickElement("xpath", "//Button[@Name='Stock Details Row 1']");
+        String multiBatch = common.findWebElement("xpath", "//ListItem[@Name='Row 1']/Item[@Name='Product Batch row 1']").getText();
+        System.out.println("MultiBatchNameInBatchDetails :- " + multiBatch);
         navigateToBatchDetailsTab();
-        List<WebElement> list=common.findWebElements("xpath","//Pane/Table[@Name='BatchDetails']/*/*[contains(@Name,'Product * Row')]");
-        System.out.println("Size :- "+list.size());
-        for (WebElement listItems:list){
-            System.out.println("all Batches :- "+listItems.getText());
-            if(listItems.getText().equalsIgnoreCase("AT_Product 1")){
-                String productBatchInBatchDetails =common.findWebElement("xpath","//Edit[@Name='Batch * Row 0, Not sorted.']").getText();
-                System.out.println("ProductBatchNameInBatchDetails :- "+ productBatchInBatchDetails);
-                Assert.assertEquals(productBatch,productBatchInBatchDetails,"Batches MisMatch");
-            }
-            else if(listItems.getText().equalsIgnoreCase("AT_Multi batch Product 1")){
-                String multiBatchInBatchDetails=common.findWebElement("xpath","//Edit[@Name='Batch * Row 1, Not sorted.']").getText();
-                System.out.println("MultiBatchNameInBatchDetails :- "+multiBatchInBatchDetails);
-                Assert.assertEquals(multiBatch,multiBatchInBatchDetails,"Batches MisMatch");
+        List<WebElement> list = common.findWebElements("xpath", "//Pane/Table[@Name='BatchDetails']/*/*[contains(@Name,'Product * Row')]");
+        System.out.println("Size :- " + list.size());
+        for (WebElement listItems : list) {
+            System.out.println("all Batches :- " + listItems.getText());
+            if (listItems.getText().equalsIgnoreCase("AT_Product 1")) {
+                String productBatchInBatchDetails = common.findWebElement("xpath", "//Edit[@Name='Batch * Row 0, Not sorted.']").getText();
+                System.out.println("ProductBatchNameInBatchDetails :- " + productBatchInBatchDetails);
+                Assert.assertEquals(productBatch, productBatchInBatchDetails, "Batches MisMatch");
+            } else if (listItems.getText().equalsIgnoreCase("AT_Multi batch Product 1")) {
+                String multiBatchInBatchDetails = common.findWebElement("xpath", "//Edit[@Name='Batch * Row 1, Not sorted.']").getText();
+                System.out.println("MultiBatchNameInBatchDetails :- " + multiBatchInBatchDetails);
+                Assert.assertEquals(multiBatch, multiBatchInBatchDetails, "Batches MisMatch");
 
             } else if (listItems.getText().equalsIgnoreCase("AT_Product With SN 1")) {
 
@@ -114,7 +113,7 @@ public class SalesInvoiceBatchDetailsFetching_09 extends Transaction {
         quantity = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']").getText());
 
         WebElement element = common.findWebElement("xpath", "//Edit[@Name='MRP Row " + i + ", Not sorted.']");
-        mrp = Double.parseDouble(element.getText().replace(",",""));
+        mrp = Double.parseDouble(element.getText().replace(",", ""));
         System.out.println("mrp:-" + mrp);
 
         WebElement mrpAmount = common.findWebElement("xpath", "//Edit[@Name='MRP Amount Row " + i + ", Not sorted.']");
@@ -137,21 +136,21 @@ public class SalesInvoiceBatchDetailsFetching_09 extends Transaction {
         double grossExpected = unitRate * quantity;
         System.out.println("gross expected:-" + grossExpected);
         Assert.assertEquals(grossAmount, grossExpected, "Mismatch in Gross Amount");
-        enterData("xpath","//Edit[@Name='HSN Row "+i+", Not sorted.']",dataFile,"HSNCode");
+        enterData("xpath", "//Edit[@Name='HSN Row " + i + ", Not sorted.']", dataFile, "HSNCode");
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 350, 0);
         Thread.sleep(5000);
 //        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", -350, 0);
 
         //GST
-        WebElement gst= common.findWebElement("xpath","//Edit[@Name='GST Product Category Row "+i+", Not sorted.']");
-        gstValue= StringUtil.extractNumber(gst.getText());
-        System.out.println("gst percentage:- "+gstValue);
+        WebElement gst = common.findWebElement("xpath", "//Edit[@Name='GST Product Category Row " + i + ", Not sorted.']");
+        gstValue = StringUtil.extractNumber(gst.getText());
+        System.out.println("gst percentage:- " + gstValue);
 
-        WebElement cess= common.findWebElement("xpath","//Edit[@Name='CESS Product Category Row "+i+", Not sorted.']");
-        cessValue= StringUtil.extractNumber(cess.getText());
-        System.out.println("cess percentage:- "+cessValue);
-        double totalValue=gstValue+cessValue;
-        System.out.println("total:-"+ totalValue);
+        WebElement cess = common.findWebElement("xpath", "//Edit[@Name='CESS Product Category Row " + i + ", Not sorted.']");
+        cessValue = StringUtil.extractNumber(cess.getText());
+        System.out.println("cess percentage:- " + cessValue);
+        double totalValue = gstValue + cessValue;
+        System.out.println("total:-" + totalValue);
 
         DecimalFormat decimalFormat = new DecimalFormat("#.###");
 
@@ -167,31 +166,31 @@ public class SalesInvoiceBatchDetailsFetching_09 extends Transaction {
             System.out.println("Actual IGST: " + actualIGST);
             double actualCESS = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='CESS Row " + i + ", Not sorted.']").getText().replace(",", ""));
             System.out.println("Actual CESS: " + actualCESS);
-            double totalGSTAmount=actualIGST+actualCESS;
-            double inclisiveTaxibleValue= Double.parseDouble(decimalFormat.format(grossAmount-totalGSTAmount));
-            System.out.println("inclusive Taxible Value :- "+inclisiveTaxibleValue);
+            double totalGSTAmount = actualIGST + actualCESS;
+            double inclisiveTaxibleValue = Double.parseDouble(decimalFormat.format(grossAmount - totalGSTAmount));
+            System.out.println("inclusive Taxible Value :- " + inclisiveTaxibleValue);
 
             double expectedIGST = Double.parseDouble(decimalFormat.format((inclisiveTaxibleValue * gstValue) / 100));
             System.out.println("Expected IGST: " + expectedIGST);
-            Assert.assertEquals(actualIGST, expectedIGST,"calculations MisMatch");
+            Assert.assertEquals(actualIGST, expectedIGST, "calculations MisMatch");
             double expectedCESS = Double.parseDouble(decimalFormat.format((inclisiveTaxibleValue * cessValue) / 100));
             System.out.println("Expected CESS: " + expectedCESS);
-            Assert.assertEquals(actualCESS, expectedCESS,"calculations MisMatch");
+            Assert.assertEquals(actualCESS, expectedCESS, "calculations MisMatch");
 
             double expectedGSTAmount = expectedIGST + expectedCESS;
             double actualGSTAmount = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='GST Amount Row " + i + ", Not sorted.']").getText().replace(",", ""));
             System.out.println("Expected GST Amount: " + decimalFormat.format(expectedGSTAmount));
             System.out.println("Actual GST Amount: " + decimalFormat.format(actualGSTAmount));
-            Assert.assertEquals(decimalFormat.format(actualGSTAmount), decimalFormat.format(expectedGSTAmount),"calculations MisMatch");
+            Assert.assertEquals(decimalFormat.format(actualGSTAmount), decimalFormat.format(expectedGSTAmount), "calculations MisMatch");
 
         } else if (gstTransType.equalsIgnoreCase("Intra State Sales to Registered Dealers")) {
-            double expectedCGST = Double.parseDouble(decimalFormat.format(((taxableValue * gstValue)/100) / 2));
+            double expectedCGST = Double.parseDouble(decimalFormat.format(((taxableValue * gstValue) / 100) / 2));
             double actualCGST = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='CGST Row " + i + ", Not sorted.']").getText().replace(",", ""));
             System.out.println("Actual CGST: " + actualCGST);
             System.out.println("Expected CGST: " + expectedCGST);
             Assert.assertEquals(actualCGST, expectedCGST);
 
-            double expectedSGST = Double.parseDouble(decimalFormat.format(((taxableValue * gstValue)/100) / 2));
+            double expectedSGST = Double.parseDouble(decimalFormat.format(((taxableValue * gstValue) / 100) / 2));
             double actualSGST = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='SGST Row " + i + ", Not sorted.']").getText().replace(",", ""));
             System.out.println("Actual SGST: " + actualSGST);
             System.out.println("Expected SGST: " + expectedSGST);
@@ -213,17 +212,16 @@ public class SalesInvoiceBatchDetailsFetching_09 extends Transaction {
         }
 
 
-        if(common.getData(dataFile,"priceList").contains("Inclusive")) {
-            netAmount = Double.parseDouble((common.findWebElement("xpath", "//Edit[@Name='Net Amount Row " + i + ", Not sorted.']").getText().replace(",","")));
+        if (common.getData(dataFile, "priceList").contains("Inclusive")) {
+            netAmount = Double.parseDouble((common.findWebElement("xpath", "//Edit[@Name='Net Amount Row " + i + ", Not sorted.']").getText().replace(",", "")));
             System.out.println("Net Amount:- " + netAmount);
-            Assert.assertEquals(netAmount, grossAmount,"calculations mismatch");
-        }
-        else if(common.getData(dataFile,"priceList").contains("Exclusive")){
-            taxableValue=grossAmount;
-            System.out.println("taxable value for exclusive is:"+ taxableValue);
-            taxableAmountCalculated= Double.parseDouble((common.findWebElement("xpath","//Edit[@Name='Taxable Value Row "+i+", Not sorted.']").getText().replace(",","")));
-            System.out.println("taxable: "+taxableAmountCalculated);
-            Assert.assertEquals(taxableAmountCalculated,taxableValue);
+            Assert.assertEquals(netAmount, grossAmount, "calculations mismatch");
+        } else if (common.getData(dataFile, "priceList").contains("Exclusive")) {
+            taxableValue = grossAmount;
+            System.out.println("taxable value for exclusive is:" + taxableValue);
+            taxableAmountCalculated = Double.parseDouble((common.findWebElement("xpath", "//Edit[@Name='Taxable Value Row " + i + ", Not sorted.']").getText().replace(",", "")));
+            System.out.println("taxable: " + taxableAmountCalculated);
+            Assert.assertEquals(taxableAmountCalculated, taxableValue);
         }
 
     }

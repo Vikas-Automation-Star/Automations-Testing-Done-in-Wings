@@ -22,12 +22,12 @@ public class ProfitabilityReport {
 
     @Test
     public void profitability() throws InterruptedException {
-        Profitability profitability=new Profitability(driver);
+        Profitability profitability = new Profitability(driver);
         profitability.profitabilityReport();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

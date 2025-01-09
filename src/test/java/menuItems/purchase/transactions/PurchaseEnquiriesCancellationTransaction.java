@@ -1,7 +1,7 @@
 package menuItems.purchase.transactions;
 
-import com.wings.pages.purchase.transactions.PurchaseEnquiriesCancellation;
 import com.wings.pages.AppLogin;
+import com.wings.pages.purchase.transactions.PurchaseEnquiriesCancellation;
 import io.appium.java_client.windows.WindowsDriver;
 import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
@@ -26,7 +26,7 @@ public class PurchaseEnquiriesCancellationTransaction {
 
     @Test
     public void purchaseEnquiriesCancellation() throws IOException, ParseException, InterruptedException {
-        PurchaseEnquiriesCancellation pec=new PurchaseEnquiriesCancellation(driver,file);
+        PurchaseEnquiriesCancellation pec = new PurchaseEnquiriesCancellation(driver, file);
         pec.purchaseEnquiriesCancellation();
     }
 

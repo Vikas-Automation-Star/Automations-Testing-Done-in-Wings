@@ -1,12 +1,13 @@
 package menuItems.finance.reports.openingBalances;
 
+import com.wings.pages.AppLogin;
+import com.wings.pages.finance.reports.OpeningBalance.TransferIncomesandExpensestoPLListingReportCode;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import com.wings.pages.AppLogin;
-import com.wings.pages.finance.reports.OpeningBalance.TransferIncomesandExpensestoPLListingReportCode;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -21,13 +22,13 @@ public class TransferIncomesandExpensestoPLListingReport {
     }
 
     @Test
-    public void transferIncomeandExpenses() throws  InterruptedException, AWTException {
-        TransferIncomesandExpensestoPLListingReportCode plListingReportCode=new TransferIncomesandExpensestoPLListingReportCode(driver);
+    public void transferIncomeandExpenses() throws InterruptedException, AWTException {
+        TransferIncomesandExpensestoPLListingReportCode plListingReportCode = new TransferIncomesandExpensestoPLListingReportCode(driver);
         plListingReportCode.incomeAndExpenseListing();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

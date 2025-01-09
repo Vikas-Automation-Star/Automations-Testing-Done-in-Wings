@@ -1,18 +1,19 @@
 {
-  "dataset" : "emp1",
+  "dataset": "emp1",
   "data": [
-    { "firstName" : "John",
-      "lastName"  : "Doe",
-      "age"       : 23 ,
-      "dept"      : "QA",
-      "salary"   :10000
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "age": 23,
+      "dept": "QA",
+      "salary": 10000
     },
-
-    { "firstName" : "Mary",
-      "lastName"  : "Smith",
-      "age"      : 32 ,
-      "dept"      : "QA",
-      "salary"   :15000
+    {
+      "firstName": "Mary",
+      "lastName": "Smith",
+      "age": 32,
+      "dept": "QA",
+      "salary": 15000
     }
   ]
 }

@@ -13,24 +13,24 @@ import java.io.IOException;
 
 public class ProductionBatchPoliciesMaster {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
-    String file="./src/main/resources/MenuItems/production/masters/ProductionBatchPolicies.json";
+    AppLogin appLogin = new AppLogin();
+    String file = "./src/main/resources/MenuItems/production/masters/ProductionBatchPolicies.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
     public void ProductionBatchPolicies() throws IOException, ParseException, InterruptedException, AWTException {
-        ProductionBatchPolicie pbp=new ProductionBatchPolicie(driver,file);
+        ProductionBatchPolicie pbp = new ProductionBatchPolicie(driver, file);
         pbp.productionBatchPolicie();
 
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

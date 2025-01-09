@@ -3,7 +3,7 @@
   "currency": "INR",
   "executive": "AT_Executive 1",
   "PCode": "AT_Sup_Reg_Intra",
-  "controlAccount":"Opening Balance Control Account",
+  "controlAccount": "Opening Balance Control Account",
   "tcsAssesType": "AT_TCS Assessee Type 1",
   "tcsTransNature": "AT_TCS Transaction Nature 1",
   "tcsSubType": "AT_TCS Sub type 1",

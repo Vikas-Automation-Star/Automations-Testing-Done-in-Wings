@@ -8,29 +8,30 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.wings.pages.AppLogin;
 import com.wings.pages.finance.transactions.Banking.InterBankFundTransfers;
+
 import java.awt.*;
 import java.io.IOException;
 
 public class InterBankFundTransferTransaction {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
-    String dataFile="./src/main/resources/menuItems/finance/transaction/bankFundTransfer.json";
+    AppLogin appLogin = new AppLogin();
+    String dataFile = "./src/main/resources/menuItems/finance/transaction/bankFundTransfer.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, ParseException, InterruptedException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
         Allure.step("Before Test - Inter Bank Fund Transfer");
     }
 
     @Test
     public void bankFundTransfer() throws IOException, ParseException, InterruptedException, AWTException {
-        InterBankFundTransfers bankFundTransfers=new InterBankFundTransfers(driver,dataFile);
+        InterBankFundTransfers bankFundTransfers = new InterBankFundTransfers(driver, dataFile);
         bankFundTransfers.bankFundTransfer();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
         Allure.step("After Test - Inter Bank Fund Transfer");
     }

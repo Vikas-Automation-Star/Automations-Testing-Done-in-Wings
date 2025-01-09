@@ -19,14 +19,15 @@ public class SalesAggregateTurnoverReport {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
+
     @Test
     public void yearWiseSalesByValue() throws InterruptedException {
-       SalesAggregateTurnover sator=new SalesAggregateTurnover(driver);
-       sator.salesAggregateTurnover();
+        SalesAggregateTurnover sator = new SalesAggregateTurnover(driver);
+        sator.salesAggregateTurnover();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

@@ -1,12 +1,12 @@
 package com.wings.pages.audit.reports;
 
 import com.wings.pages.Transaction;
-import io.appium.java_client.windows.WindowsDriver;
-import com.wings.pages.Report;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
+
 import java.awt.*;
 
-public class VoucherStatisticsReportCode  extends Transaction {
+public class VoucherStatisticsReportCode extends Transaction {
     WindowsDriver driver;
     Common common;
 
@@ -20,7 +20,7 @@ public class VoucherStatisticsReportCode  extends Transaction {
         common.clickElement("name", "Audit");
         common.clickElement("name", "Voucher Statistics");
         Thread.sleep(1000);
-        common.clickElement("xpath","//Pane/Button[@Name='Submit']");
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
 //        super.bulkVerifyReport("MSV 1");
         super.closeReport("Voucher Statistics");

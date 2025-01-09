@@ -1,22 +1,22 @@
 package com.wings.utils;
 
+import org.apache.commons.io.FileUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.testng.*;
-import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
 
-public class listener implements ITestListener,ISuiteListener,IExecutionListener {
+public class listener implements ITestListener, ISuiteListener, IExecutionListener {
     int totalTest, passed, failed, skipped = 0;
-    int suiteTotalTest=0;
-    int suitePassed=0;
-    int suiteFailed=0;
-    int suiteSkipped=0;
-    ITestContext tc=null;
-    ISuiteListener suiteResults =null;
-    JSONArray results=new JSONArray();
+    int suiteTotalTest = 0;
+    int suitePassed = 0;
+    int suiteFailed = 0;
+    int suiteSkipped = 0;
+    ITestContext tc = null;
+    ISuiteListener suiteResults = null;
+    JSONArray results = new JSONArray();
 
 
     @Override
@@ -32,27 +32,27 @@ public class listener implements ITestListener,ISuiteListener,IExecutionListener
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        Time time=new Time();
-        testScript ts=new testScript();
-        JSONObject jsonObject=new JSONObject();
+        Time time = new Time();
+        testScript ts = new testScript();
+        JSONObject jsonObject = new JSONObject();
         if (result.getStatus() == ITestResult.SUCCESS) {
             ts.setTestName(result.getName());
             ts.setStatus("SUCCESS");
             ts.setExecutionStartTime(time.getLocalDateTime(result.getStartMillis()));
             ts.setExecutionEndTime(time.getLocalDateTime(result.getEndMillis()));
-            ts.setExetime(String.valueOf(result.getEndMillis()-result.getStartMillis()));
+            ts.setExetime(String.valueOf(result.getEndMillis() - result.getStartMillis()));
 
-            jsonObject.put("TestName",result.getName());
-            jsonObject.put("Status",ts.status);
-            jsonObject.put("ExecutionStartTime",time.getLocalDateTime(result.getStartMillis()));
-            jsonObject.put("ExecutionEndTime",time.getLocalDateTime(result.getEndMillis()));
-            jsonObject.put("ExeTime",String.valueOf(result.getEndMillis()-result.getStartMillis()));
+            jsonObject.put("TestName", result.getName());
+            jsonObject.put("Status", ts.status);
+            jsonObject.put("ExecutionStartTime", time.getLocalDateTime(result.getStartMillis()));
+            jsonObject.put("ExecutionEndTime", time.getLocalDateTime(result.getEndMillis()));
+            jsonObject.put("ExeTime", String.valueOf(result.getEndMillis() - result.getStartMillis()));
 
             results.add(jsonObject);
 
-            System.out.println("start milli: "+ time.getLocalDateTime(result.getStartMillis()));
-            System.out.println("End millis: "+time.getLocalDateTime(result.getEndMillis()));
-            System.out.println("exec time: "+ (result.getEndMillis()-result.getStartMillis()));
+            System.out.println("start milli: " + time.getLocalDateTime(result.getStartMillis()));
+            System.out.println("End millis: " + time.getLocalDateTime(result.getEndMillis()));
+            System.out.println("exec time: " + (result.getEndMillis() - result.getStartMillis()));
             Reporter.log("Status code: " + result.getStatus(), true);
             Reporter.log("Test execution is success:-" + result.getName(), true);
         }
@@ -61,27 +61,27 @@ public class listener implements ITestListener,ISuiteListener,IExecutionListener
 
     @Override
     public void onTestFailure(ITestResult result) {
-        Time time=new Time();
-        testScript ts=new testScript();
-        JSONObject jsonObject=new JSONObject();
+        Time time = new Time();
+        testScript ts = new testScript();
+        JSONObject jsonObject = new JSONObject();
         if (result.getStatus() == ITestResult.FAILURE) {
             ts.setTestName(result.getName());
             ts.setStatus("FAILED");
             ts.setExecutionStartTime(time.getLocalDateTime(result.getStartMillis()));
             ts.setExecutionEndTime(time.getLocalDateTime(result.getEndMillis()));
-            ts.setExetime(String.valueOf(result.getEndMillis()-result.getStartMillis()));
+            ts.setExetime(String.valueOf(result.getEndMillis() - result.getStartMillis()));
 
-            jsonObject.put("TestName",result.getName());
-            jsonObject.put("Status",ts.status);
-            jsonObject.put("ExecutionStartTime",time.getLocalDateTime(result.getStartMillis()));
-            jsonObject.put("ExecutionEndTime",time.getLocalDateTime(result.getEndMillis()));
-            jsonObject.put("ExeTime",String.valueOf(result.getEndMillis()-result.getStartMillis()));
+            jsonObject.put("TestName", result.getName());
+            jsonObject.put("Status", ts.status);
+            jsonObject.put("ExecutionStartTime", time.getLocalDateTime(result.getStartMillis()));
+            jsonObject.put("ExecutionEndTime", time.getLocalDateTime(result.getEndMillis()));
+            jsonObject.put("ExeTime", String.valueOf(result.getEndMillis() - result.getStartMillis()));
 
             results.add(jsonObject);
 
-            System.out.println("start milli: "+ time.getLocalDateTime(result.getStartMillis()));
-            System.out.println("End millis: "+time.getLocalDateTime(result.getEndMillis()));
-            System.out.println("exec time: "+ (result.getEndMillis()-result.getStartMillis()));
+            System.out.println("start milli: " + time.getLocalDateTime(result.getStartMillis()));
+            System.out.println("End millis: " + time.getLocalDateTime(result.getEndMillis()));
+            System.out.println("exec time: " + (result.getEndMillis() - result.getStartMillis()));
             Reporter.log("Status code: " + result.getStatus(), true);
             Reporter.log("Test execution is success:-" + result.getName(), true);
         }
@@ -90,27 +90,27 @@ public class listener implements ITestListener,ISuiteListener,IExecutionListener
 
     @Override
     public void onTestSkipped(ITestResult result) {
-        Time time=new Time();
-        testScript ts=new testScript();
-        JSONObject jsonObject=new JSONObject();
+        Time time = new Time();
+        testScript ts = new testScript();
+        JSONObject jsonObject = new JSONObject();
         if (result.getStatus() == ITestResult.SKIP) {
             ts.setTestName(result.getName());
             ts.setStatus("FAILED");
             ts.setExecutionStartTime(time.getLocalDateTime(result.getStartMillis()));
             ts.setExecutionEndTime(time.getLocalDateTime(result.getEndMillis()));
-            ts.setExetime(String.valueOf(result.getEndMillis()-result.getStartMillis()));
+            ts.setExetime(String.valueOf(result.getEndMillis() - result.getStartMillis()));
 
-            jsonObject.put("TestName",result.getName());
-            jsonObject.put("Status",ts.status);
-            jsonObject.put("ExecutionStartTime",time.getLocalDateTime(result.getStartMillis()));
-            jsonObject.put("ExecutionEndTime",time.getLocalDateTime(result.getEndMillis()));
-            jsonObject.put("ExeTime",String.valueOf(result.getEndMillis()-result.getStartMillis()));
+            jsonObject.put("TestName", result.getName());
+            jsonObject.put("Status", ts.status);
+            jsonObject.put("ExecutionStartTime", time.getLocalDateTime(result.getStartMillis()));
+            jsonObject.put("ExecutionEndTime", time.getLocalDateTime(result.getEndMillis()));
+            jsonObject.put("ExeTime", String.valueOf(result.getEndMillis() - result.getStartMillis()));
 
             results.add(jsonObject);
 
-            System.out.println("start milli: "+ time.getLocalDateTime(result.getStartMillis()));
-            System.out.println("End millis: "+time.getLocalDateTime(result.getEndMillis()));
-            System.out.println("exec time: "+ (result.getEndMillis()-result.getStartMillis()));
+            System.out.println("start milli: " + time.getLocalDateTime(result.getStartMillis()));
+            System.out.println("End millis: " + time.getLocalDateTime(result.getEndMillis()));
+            System.out.println("exec time: " + (result.getEndMillis() - result.getStartMillis()));
             Reporter.log("Status code: " + result.getStatus(), true);
             Reporter.log("Test execution is success:-" + result.getName(), true);
         }
@@ -138,23 +138,23 @@ public class listener implements ITestListener,ISuiteListener,IExecutionListener
     public void onStart(ISuite suite) {
         Reporter.log(suite.getXmlSuite().getParameters().toString());
         System.out.println("On suite start");
-            try {
-                // Check if the backup directory already exists, and delete it if it does
-                File backupDir = new File("./backup");
-                if (backupDir.exists()) {
-                    FileUtils.deleteDirectory(backupDir);  // Delete the existing backup directory
-                }
-
-                // Now, move the allure-results directory to backup
-                File allureResultsDir = new File("./allure-results");
-                if (allureResultsDir.exists()) {
-                    FileUtils.moveDirectory(allureResultsDir, backupDir);
-                }
-
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+        try {
+            // Check if the backup directory already exists, and delete it if it does
+            File backupDir = new File("./backup");
+            if (backupDir.exists()) {
+                FileUtils.deleteDirectory(backupDir);  // Delete the existing backup directory
             }
+
+            // Now, move the allure-results directory to backup
+            File allureResultsDir = new File("./allure-results");
+            if (allureResultsDir.exists()) {
+                FileUtils.moveDirectory(allureResultsDir, backupDir);
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+    }
 
     @Override
     public void onFinish(ISuite suite) {
@@ -163,16 +163,16 @@ public class listener implements ITestListener,ISuiteListener,IExecutionListener
 
         for (ISuiteResult sr : suite.getResults().values()) {
             tc = sr.getTestContext();
-            suiteFailed+=tc.getFailedTests().getAllResults().size();
-            suitePassed+=tc.getPassedTests().getAllResults().size();
-            suiteSkipped+=tc.getSkippedTests().getAllResults().size();
-            suiteTotalTest=suiteFailed+suitePassed+suiteSkipped;
+            suiteFailed += tc.getFailedTests().getAllResults().size();
+            suitePassed += tc.getPassedTests().getAllResults().size();
+            suiteSkipped += tc.getSkippedTests().getAllResults().size();
+            suiteTotalTest = suiteFailed + suitePassed + suiteSkipped;
         }
-        JSONObject obj=new JSONObject();
-        obj.put("Tests",results);
+        JSONObject obj = new JSONObject();
+        obj.put("Tests", results);
 
 
-        FileUtil file=new FileUtil();
+        FileUtil file = new FileUtil();
         file.createJson(obj);
 
         System.out.println("On suite finish");

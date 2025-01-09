@@ -1,12 +1,12 @@
 package menuItems.finance.reports.Ledger;
 
+import com.wings.pages.AppLogin;
+import com.wings.pages.finance.reports.Ledger.LedgerReportCode;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import com.wings.pages.AppLogin;
-import com.wings.pages.finance.reports.Ledger.LedgerReportCode;
 
 import java.awt.*;
 import java.io.IOException;
@@ -22,14 +22,14 @@ public class LedgerReport {
     }
 
     @Test
-    public void ledgerReport() throws  InterruptedException, AWTException {
-        LedgerReportCode reportCode=new LedgerReportCode(driver);
+    public void ledgerReport() throws InterruptedException, AWTException {
+        LedgerReportCode reportCode = new LedgerReportCode(driver);
         reportCode.ledgerReport();
 
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

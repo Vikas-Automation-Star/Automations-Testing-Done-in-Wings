@@ -8,20 +8,20 @@ public class Util {
 
     WindowsDriver driver;
 
-    public Util(WindowsDriver logindriver){
-        driver=logindriver;
+    public Util(WindowsDriver logindriver) {
+        driver = logindriver;
     }
 
-    public void clickElement(String locatorType, String locator){
-        findElement(locatorType,locator).click();
+    public void clickElement(String locatorType, String locator) {
+        findElement(locatorType, locator).click();
     }
 
-    public WebElement findElement(String locatorType, String locator){
+    public WebElement findElement(String locatorType, String locator) {
         By by = null;
         if (locatorType.equals("xpath")) {
-            by=By.xpath(locator);
+            by = By.xpath(locator);
         } else if (locatorType.equals("name")) {
-            by=By.name(locator);
+            by = By.name(locator);
         }
         return driver.findElement(by);
     }

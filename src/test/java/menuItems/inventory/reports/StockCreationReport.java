@@ -22,14 +22,14 @@ public class StockCreationReport {
     }
 
     @Test
-    public void stockCreation() throws  InterruptedException, AWTException {
-        StockCreationReprt creationReprt=new StockCreationReprt(driver);
+    public void stockCreation() throws InterruptedException, AWTException {
+        StockCreationReprt creationReprt = new StockCreationReprt(driver);
         creationReprt.stockCreationReport();
 
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }

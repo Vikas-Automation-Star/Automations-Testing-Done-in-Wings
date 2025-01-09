@@ -1,12 +1,13 @@
 package menuItems.finance.reports.Analysis;
 
+import com.wings.pages.AppLogin;
+import com.wings.pages.finance.reports.Analysis.TrendAnalysis;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import com.wings.pages.AppLogin;
-import com.wings.pages.finance.reports.Analysis.TrendAnalysis;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -21,14 +22,14 @@ public class TrendAnalysisReport {
     }
 
     @Test
-    public void trendAnalys() throws  InterruptedException, AWTException {
-        TrendAnalysis analysis=new TrendAnalysis(driver);
+    public void trendAnalys() throws InterruptedException, AWTException {
+        TrendAnalysis analysis = new TrendAnalysis(driver);
         analysis.trendingAnalysis();
 
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 

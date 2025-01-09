@@ -10,7 +10,6 @@
 <!--</suite>-->
 
 
-
 <suite name="SuiteName">
     <listeners>
         <listener class-name="com.wings.utils.listener"/>

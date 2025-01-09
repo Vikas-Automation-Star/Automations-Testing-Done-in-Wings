@@ -1,9 +1,8 @@
 package com.wings.pages.sales.reports;
 
 import com.wings.pages.Transaction;
-import io.appium.java_client.windows.WindowsDriver;
-import com.wings.pages.Report;
 import com.wings.utils.Common;
+import io.appium.java_client.windows.WindowsDriver;
 
 public class SalesInvoiceAgainstOrdersReportCode extends Transaction {
     WindowsDriver driver;
@@ -20,8 +19,8 @@ public class SalesInvoiceAgainstOrdersReportCode extends Transaction {
         common.clickElement("name", "Invoices");
         common.clickElement("xpath", "//MenuItem[@Name='Sales Invoices against Orders'][2]");
         Thread.sleep(1500);
-        common.clickElement("xpath","//CheckBox[@Name='Detailed']");
-        common.clickElement("xpath","//Pane/Button[@Name='Submit']");
+        common.clickElement("xpath", "//CheckBox[@Name='Detailed']");
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         super.bulkVerifyReport("SIAO 1");
     }
 }

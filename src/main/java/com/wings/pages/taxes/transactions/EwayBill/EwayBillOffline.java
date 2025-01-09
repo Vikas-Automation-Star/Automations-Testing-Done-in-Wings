@@ -33,7 +33,7 @@ public class EwayBillOffline extends Transaction {
         selectMaster(common.getData(dataFile, "branch"));
         common.clickElement("xpath", "//Edit[@Name='Vehicle Type']");
         Thread.sleep(2000);
-        Robot robot=new Robot();
+        Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_DOWN);
         robot.keyRelease(KeyEvent.VK_DOWN);
         robot.keyPress(KeyEvent.VK_ENTER);

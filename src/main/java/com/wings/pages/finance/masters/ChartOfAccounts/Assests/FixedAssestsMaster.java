@@ -11,39 +11,39 @@ import java.awt.*;
 import java.io.IOException;
 
 public class FixedAssestsMaster {
-        WindowsDriver driver;
-        Common common;
-        String dataFile;
+    WindowsDriver driver;
+    Common common;
+    String dataFile;
 
 
-        public FixedAssestsMaster(WindowsDriver driver, String file) {
-            this.driver = driver;
-            common = new Common(this.driver);
-            dataFile = file;
-        }
-
-        public void fixedAsset() throws InterruptedException, IOException, ParseException, AWTException {
-            common.clickElement("name", "Finance");
-            common.clickElement("name", "Chart of Accounts");
-            WebElement assets= common.findWebElement("xpath","//TreeItem[@Name='Balance Sheet']/TreeItem[@Name='Assets']");
-            assets.click();
-            assets.sendKeys(Keys.ARROW_RIGHT);
-            WebElement AllBranch = common.findWebElement("xpath", "//TreeItem[@Name='Fixed Assets']");
-            Actions actions = new Actions(driver);
-            actions.contextClick(AllBranch).perform();
-            common.clickElement("name", "New Master");
-            Thread.sleep(1500);
-            common.inputText("xpath","//Edit[@Name='New Account *']", common.getData(dataFile,"accountName")+common.getRandom());
-            Thread.sleep(1500);
-            common.inputText("xpath","//Edit[@Name='Account Code']", String.valueOf(common.getRandom()));
-            common.clickElement("xpath","//Button[@Name='Save  Show Properties']");
-            Thread.sleep(1200);
-            common.inputText("xpath","//Edit[@Name='Description']", common.getData(dataFile,"description"));
-            //save
-            common.clickElement("name", "Save");
-            Thread.sleep(2000);
-            common.clickElement("name","Yes");
-            common.clickElement("name", "OK");
-            common.clickElement("xpath", "//Button[@Name='Close']");
-        }
+    public FixedAssestsMaster(WindowsDriver driver, String file) {
+        this.driver = driver;
+        common = new Common(this.driver);
+        dataFile = file;
     }
+
+    public void fixedAsset() throws InterruptedException, IOException, ParseException, AWTException {
+        common.clickElement("name", "Finance");
+        common.clickElement("name", "Chart of Accounts");
+        WebElement assets = common.findWebElement("xpath", "//TreeItem[@Name='Balance Sheet']/TreeItem[@Name='Assets']");
+        assets.click();
+        assets.sendKeys(Keys.ARROW_RIGHT);
+        WebElement AllBranch = common.findWebElement("xpath", "//TreeItem[@Name='Fixed Assets']");
+        Actions actions = new Actions(driver);
+        actions.contextClick(AllBranch).perform();
+        common.clickElement("name", "New Master");
+        Thread.sleep(1500);
+        common.inputText("xpath", "//Edit[@Name='New Account *']", common.getData(dataFile, "accountName") + common.getRandom());
+        Thread.sleep(1500);
+        common.inputText("xpath", "//Edit[@Name='Account Code']", String.valueOf(common.getRandom()));
+        common.clickElement("xpath", "//Button[@Name='Save  Show Properties']");
+        Thread.sleep(1200);
+        common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
+        //save
+        common.clickElement("name", "Save");
+        Thread.sleep(2000);
+        common.clickElement("name", "Yes");
+        common.clickElement("name", "OK");
+        common.clickElement("xpath", "//Button[@Name='Close']");
+    }
+}

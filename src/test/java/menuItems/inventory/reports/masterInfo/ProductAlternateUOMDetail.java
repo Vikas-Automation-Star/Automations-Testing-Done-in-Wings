@@ -22,13 +22,13 @@ public class ProductAlternateUOMDetail {
     }
 
     @Test
-    public void productUOMDetails() throws  InterruptedException, AWTException {
-        ProductAlternateUOMDetails uomDetails=new ProductAlternateUOMDetails(driver);
+    public void productUOMDetails() throws InterruptedException, AWTException {
+        ProductAlternateUOMDetails uomDetails = new ProductAlternateUOMDetails(driver);
         uomDetails.masterDetails();
     }
 
     @AfterTest
-    public void afterTest() throws IOException{
+    public void afterTest() throws IOException {
         appLogin.logout();
     }
 }
