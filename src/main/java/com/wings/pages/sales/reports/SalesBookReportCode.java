@@ -24,7 +24,7 @@ public class SalesBookReportCode extends Transaction {
         Thread.sleep(1000);
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
-        super.bulkVerifyReport(transaction, dataFile);
+        super.verifyReport(transaction, dataFile);
         super.closeReport("Sales Book");
     }
 }

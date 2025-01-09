@@ -9,7 +9,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
-
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
@@ -1609,18 +1608,16 @@ public abstract class Transaction {
         for (WebElement i : elementList) {
             System.out.println(i.getText());
             if (i.getText().contains(transaction)) {
-                junit.framework.Assert.assertTrue(true);
+                Assert.assertTrue(true);
             }
         }
     }
 
-    public void bulkVerifyReport(String transaction, String dataFile) throws IOException, ParseException {
+    public void verifyReport(String transaction, String dataFile) throws IOException, ParseException {
         List<WebElement> elementList = common.findWebElements("xpath", "//Table/*[@Name='Data Panel']/ListItem[contains(@Name,'Row')]");
         System.out.println("Size :" + elementList.size());
         for (WebElement i : elementList) {
-            System.out.println(i.getText());
             if (i.getText().contains(transaction)) {
-                junit.framework.Assert.assertTrue(true);
                 bulkVerifyReportData(i.getText(), dataFile);
             }
         }
@@ -1630,10 +1627,10 @@ public abstract class Transaction {
     public void bulkVerifyReportData(String text, String dataFile) throws IOException, ParseException {
         String[] columns = text.split(";");
         for (int i = 0; i < columns.length; i++) {
-            if (i > 1 && !common.getData(dataFile, "column" + (i + 1)).equals("")) {
-                //                System.out.println(columns[i]);
-                //                System.out.println(common.getData(dataFile,"column"+(i+1)));
-                junit.framework.Assert.assertEquals(columns[i], common.getData(dataFile, "column" + (i + 1)));
+            if (i > 2 && !common.getData(dataFile, "column" + (i + 1)).equals("")) {
+//                                System.out.println(columns[i]);
+//                                System.out.println(common.getData(dataFile,"column"+(i+1)));
+                Assert.assertEquals(columns[i], common.getData(dataFile, "column" + (i + 1)));
             }
             System.out.println(columns[i]);
         }
