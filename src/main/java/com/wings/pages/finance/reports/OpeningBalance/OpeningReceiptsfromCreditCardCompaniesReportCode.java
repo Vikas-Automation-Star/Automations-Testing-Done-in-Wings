@@ -1,11 +1,12 @@
 package com.wings.pages.finance.reports.OpeningBalance;
 
+import com.wings.pages.Transaction;
 import io.appium.java_client.windows.WindowsDriver;
 import com.wings.pages.Report;
 import com.wings.utils.Common;
 import java.awt.*;
 
-public class OpeningReceiptsfromCreditCardCompaniesReportCode extends Report {
+public class OpeningReceiptsfromCreditCardCompaniesReportCode extends Transaction {
     WindowsDriver driver;
     Common common;
 

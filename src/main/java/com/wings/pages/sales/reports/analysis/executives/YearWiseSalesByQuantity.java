@@ -1,10 +1,10 @@
 package com.wings.pages.sales.reports.analysis.executives;
 
-import com.wings.pages.Report;
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 
-public class YearWiseSalesByQuantity extends Report {
+public class YearWiseSalesByQuantity extends Transaction {
     WindowsDriver driver;
     Common common;
 

@@ -1,12 +1,13 @@
 package com.wings.pages.finance.reports.FinancialStatements;
 
+import com.wings.pages.Transaction;
 import io.appium.java_client.windows.WindowsDriver;
 import com.wings.pages.Report;
 import com.wings.utils.Common;
 
 import java.awt.*;
 
-public class TrialBalanceReportCode  extends Report {
+public class TrialBalanceReportCode  extends Transaction {
     WindowsDriver driver;
     Common common;
 

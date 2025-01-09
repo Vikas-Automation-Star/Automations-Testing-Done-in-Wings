@@ -1,10 +1,11 @@
 package com.wings.pages.purchase.reports;
 
+import com.wings.pages.Transaction;
 import io.appium.java_client.windows.WindowsDriver;
 import com.wings.pages.Report;
 import com.wings.utils.Common;
 
-public class PurchaseEnquryReport extends Report {
+public class PurchaseEnquryReport extends Transaction {
     WindowsDriver driver;
     Common common;
 

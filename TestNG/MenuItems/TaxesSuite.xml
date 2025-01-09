@@ -175,7 +175,7 @@
         </classes>
     </test>
 
-    <test name="Checking TdsOpeningBalencesReport" description="description for TdsOpeningBalences Report"  testID="WOW 29">
+    <test name="Checking TdsOpeningBalances Report" description="description for TdsOpeningBalences Report"  testID="WOW 29">
         <classes>
             <class name="menuItems.Taxes.reports.TDS.TdsOpeningBalencesReport"></class>
         </classes>

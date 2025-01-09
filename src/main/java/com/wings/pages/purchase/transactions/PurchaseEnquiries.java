@@ -24,24 +24,23 @@ public class PurchaseEnquiries extends Transaction {
     public void PurchaseEnquires() throws InterruptedException, IOException, ParseException {
         navigateToPurchaseEnquiries();
         Thread.sleep(3000);
-        super.oldTTransaction();
-        common.clickElement("xpath","//Edit[@Name='Voucher Type']");
-        super.selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']" );
+        oldTTransaction();
+//        common.clickElement("xpath","//Edit[@Name='Voucher Type']");
+//        selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']" );
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        super.selectMasterWithValidation(common.getData(dataFile,"branch"),"xpath", "//Edit[@Name='Branch *']");
+        selectMasterWithValidation(common.getData(dataFile,"branch"),"xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Transaction Currency *']");
-        super.selectMasterWithValidation(common.getData(dataFile,"currency"),"xpath", "//Edit[@Name='Transaction Currency *']");
+        selectMasterWithValidation(common.getData(dataFile,"currency"),"xpath", "//Edit[@Name='Transaction Currency *']");
+//        enterData("xpath","//Edit[@Name='Party Code']",dataFile,"partyCode");
         common.clickElement("xpath", "//Edit[@Name='Party Code']");
         selectAndValidateDataNew(common.getData(dataFile,"partyCode"),"xpath","//Edit[@Name='Party Code']" );
         common.clickElement("xpath","//Edit[@Name='Price List']");
-        super.selectMasterWithValidation(common.getData(dataFile,"priceList"),"xpath", "//Edit[@Name='Price List']");
+        selectMasterWithValidation(common.getData(dataFile,"priceList"),"xpath", "//Edit[@Name='Price List']");
         common.clickElement("xpath","//Edit[@Name='Executive *']");
-        super.selectMasterWithValidation(common.getData(dataFile,"executive"),"xpath", "//Edit[@Name='Executive *']");
-        common.clickElement("xpath","//Edit[@Name='Product Code Row 0, Not sorted.']");
-        common.clickElement("xpath","//Edit[@Name='Remarks']");
-        super.selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"remarks"), "xpath","//Edit[@Name='Remarks']");
-        Thread.sleep(2000);
-        super.selectMaster(common.getData(dataFile,"partyCode"));
+        selectMasterWithValidation(common.getData(dataFile,"executive"),"xpath", "//Edit[@Name='Executive *']");
+//        common.clickElement("xpath","//Edit[@Name='Remarks']");
+//        selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"remarks"), "xpath","//Edit[@Name='Remarks']");
+        enterData("xpath","//Edit[@Name='Product Code Row 0, Not sorted.']",dataFile,"productCode");
         common.clickElement("xpath","//Edit[@Name='Quantity * Row 0, Not sorted.']");
         common.inputText("xpath","//Edit[@Name='Quantity * Row 0, Not sorted.']", common.getData(dataFile,"quantity"));
         common.clickElement("xpath","//Edit[@Name='Unit Rate Row 0, Not sorted.']");
@@ -49,8 +48,10 @@ public class PurchaseEnquiries extends Transaction {
         Thread.sleep(2000);
         transactionSave();
         Thread.sleep(1500);
-        super.newTransaction();
-        super.closeTransaction("Purchase Enquiries");
+        String transactionId = getNewTransactionId();
+        common.clickElement("xpath","//Text[@Name='Last Saved :']/Link");
+        System.out.println("New Transaction ID: " + transactionId);
+        closeTransaction("Purchase Enquiries");
         Thread.sleep(2000);
         Allure.step("Purchase Enquiries Transation");
 

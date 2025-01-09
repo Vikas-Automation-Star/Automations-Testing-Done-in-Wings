@@ -1,5 +1,6 @@
 package com.wings.pages.finance.reports.Balances;
 
+import com.wings.pages.Transaction;
 import io.appium.java_client.windows.WindowsDriver;
 import com.wings.pages.Report;
 import com.wings.utils.Common;
@@ -7,7 +8,7 @@ import io.qameta.allure.Allure;
 
 import java.awt.*;
 
-public class AccountBalances extends Report {
+public class AccountBalances extends Transaction {
     WindowsDriver driver;
     Common common;
 

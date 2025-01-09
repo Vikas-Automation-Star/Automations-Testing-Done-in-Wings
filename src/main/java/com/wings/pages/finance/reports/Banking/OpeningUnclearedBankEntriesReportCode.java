@@ -1,10 +1,11 @@
 package com.wings.pages.finance.reports.Banking;
 
+import com.wings.pages.Transaction;
 import io.appium.java_client.windows.WindowsDriver;
 import com.wings.pages.Report;
 import com.wings.utils.Common;
 
-public class OpeningUnclearedBankEntriesReportCode extends Report {
+public class OpeningUnclearedBankEntriesReportCode extends Transaction {
     WindowsDriver driver;
     Common common;
 

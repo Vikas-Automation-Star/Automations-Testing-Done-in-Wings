@@ -3,7 +3,7 @@
   "location": "AT_Branch 1_Reg Default Location",
   "partyCode": "AT_Cus_Reg_Inter",
   "priceList": "AT_Exclusive Sales Price List 1",
-  "salesAccountCode": "AT_Sales  Acc 1",
+  "salesAccountCode": "SA1",
   "tcsNature": "AT_TCS Transaction Nature 1",
   "executive": "AT_Executive 1",
   "portCode": "225588",

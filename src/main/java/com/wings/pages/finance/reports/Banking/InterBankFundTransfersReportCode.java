@@ -1,12 +1,13 @@
 package com.wings.pages.finance.reports.Banking;
 
+import com.wings.pages.Transaction;
 import io.appium.java_client.windows.WindowsDriver;
 import com.wings.pages.Report;
 import com.wings.utils.Common;
 
 import java.awt.*;
 
-public class InterBankFundTransfersReportCode extends Report {
+public class InterBankFundTransfersReportCode extends Transaction {
     WindowsDriver driver;
     Common common;
 

@@ -1,10 +1,11 @@
 package com.wings.pages.purchase.reports.analysis.party;
 
 import com.wings.pages.Report;
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 
-public class YearWisePurchaseByValue extends Report {
+public class YearWisePurchaseByValue extends Transaction {
     WindowsDriver driver;
     Common common;
 

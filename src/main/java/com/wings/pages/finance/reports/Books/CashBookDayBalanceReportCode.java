@@ -1,5 +1,6 @@
 package com.wings.pages.finance.reports.Books;
 
+import com.wings.pages.Transaction;
 import io.appium.java_client.windows.WindowsDriver;
 import com.wings.pages.Report;
 import com.wings.utils.Common;
@@ -7,7 +8,7 @@ import com.wings.utils.Common;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-public class CashBookDayBalanceReportCode extends Report {
+public class CashBookDayBalanceReportCode extends Transaction {
     WindowsDriver driver;
     Common common;
 

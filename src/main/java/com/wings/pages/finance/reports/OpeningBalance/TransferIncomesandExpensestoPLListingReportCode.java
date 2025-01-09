@@ -1,11 +1,12 @@
 package com.wings.pages.finance.reports.OpeningBalance;
 
+import com.wings.pages.Transaction;
 import io.appium.java_client.windows.WindowsDriver;
 import com.wings.pages.Report;
 import com.wings.utils.Common;
 import java.awt.*;
 
-public class TransferIncomesandExpensestoPLListingReportCode extends Report {
+public class TransferIncomesandExpensestoPLListingReportCode extends Transaction {
     WindowsDriver driver;
     Common common;
 

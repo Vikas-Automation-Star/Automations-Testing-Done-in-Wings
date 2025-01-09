@@ -1,12 +1,13 @@
 package com.wings.pages.inventory.reports.stock;
 
+import com.wings.pages.Transaction;
 import io.appium.java_client.windows.WindowsDriver;
 import com.wings.pages.Report;
 import com.wings.utils.Common;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-public class StockLedger extends Report {
+public class StockLedger extends Transaction {
     WindowsDriver driver;
     Common common;
 

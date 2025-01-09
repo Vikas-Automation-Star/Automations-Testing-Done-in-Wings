@@ -1,5 +1,6 @@
 package com.wings.pages.finance.reports.Ledger;
 
+import com.wings.pages.Transaction;
 import io.appium.java_client.windows.WindowsDriver;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -8,7 +9,7 @@ import com.wings.utils.Common;
 
 import java.util.List;
 
-public class LedgerReportCode extends Report {
+public class LedgerReportCode extends Transaction {
     WindowsDriver driver;
     Common common;
 

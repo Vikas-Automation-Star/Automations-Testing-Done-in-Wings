@@ -1,13 +1,14 @@
 package com.wings.pages.taxes.reports.TCS;
 
 import com.wings.pages.Report;
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 
-public class TcsOpeningBalances extends Report {
+public class TcsOpeningBalances extends Transaction {
     WindowsDriver driver;
     Common common;
 

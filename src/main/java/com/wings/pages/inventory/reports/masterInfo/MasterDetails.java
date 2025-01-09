@@ -1,12 +1,13 @@
 package com.wings.pages.inventory.reports.masterInfo;
 
+import com.wings.pages.Transaction;
 import io.appium.java_client.windows.WindowsDriver;
 import com.wings.pages.Report;
 import com.wings.utils.Common;
 
 import java.awt.*;
 
-public class MasterDetails extends Report {
+public class MasterDetails extends Transaction {
     WindowsDriver driver;
     Common common;
 

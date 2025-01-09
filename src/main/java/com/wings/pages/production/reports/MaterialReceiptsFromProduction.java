@@ -1,10 +1,11 @@
 package com.wings.pages.production.reports;
 
 import com.wings.pages.Report;
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 
-public class MaterialReceiptsFromProduction extends Report {
+public class MaterialReceiptsFromProduction extends Transaction {
     WindowsDriver driver;
     Common common;
 

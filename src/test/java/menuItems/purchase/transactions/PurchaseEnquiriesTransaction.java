@@ -15,14 +15,12 @@ public class PurchaseEnquiriesTransaction {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
     String file = "./src/main/resources/menuItems/purchase/transactions/purchaseEnquiries.json";
-
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
         Allure.step("Before Test PurchaseEnquiries Transaction");
     }
-
     @Test
     public void purchaseEnquiries() throws IOException, ParseException, InterruptedException {
         PurchaseEnquiries pe=new PurchaseEnquiries(driver,file);

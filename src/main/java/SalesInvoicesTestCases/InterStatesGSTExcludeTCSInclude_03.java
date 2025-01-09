@@ -28,13 +28,14 @@ public class InterStatesGSTExcludeTCSInclude_03 extends Transaction {
         navigateToSalesInvoiceMenu();
         Thread.sleep(1000);
         lastTransactionName();
-//        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
+//        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");]
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
         selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Location *']");
         selectAndValidateData(common.getData( dataFile,"location"),"xpath","//Edit[@Name='Location *']");
-        common.clickElement("xpath", "//Edit[@Name='Cash/Party Code']");
-        selectAndValidateDataNew(common.getData(dataFile, "partyCode"), "xpath", "//Edit[@Name='Cash/Party Code']");
+        enterInput("xpath","//Edit[@Name='Cash/Party Code']",dataFile,"partyCode");
+//        common.clickElement("xpath", "//Edit[@Name='Cash/Party Code']");
+//        selectAndValidateDataNew(common.getData(dataFile, "partyCode"), "xpath", "//Edit[@Name='Cash/Party Code']");
         Thread.sleep(2500);
         gstTransactionType("Registered Dealers");
         Thread.sleep(1000);
@@ -43,13 +44,14 @@ public class InterStatesGSTExcludeTCSInclude_03 extends Transaction {
 //        common.clickElement("xpath", "//CheckBox[@Name='Apply TCS']");
         common.clickElement("xpath", "//Edit[@Name='TCS Trans Nature']");
         selectAndValidateData(common.getData(dataFile, "tcsNature"), "xpath", "//Edit[@Name='TCS Trans Nature']");
-        Thread.sleep(2000);
         common.sliderHandling("xpath", "//ScrollBar[@Name='Horizontal']/Thumb[@Name='Position']", 500, 0);
+        Thread.sleep(2000);
         invoiceTypeWhenRegister();
+
         common.clickElement("xpath", "//Edit[@Name='Price List']");
+        selectAndValidateData(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
         common.clickElement("xpath","//Edit[@Name='Executive *']");
         selectAndValidateData(common.getData(dataFile,"executive"),"xpath","//Edit[@Name='Executive *']" );
-        selectAndValidateData(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
         common.clickElement("xpath", "//Edit[@Name='Port Code']");
         inputTextWithValidation( "xpath", "//Edit[@Name='Port Code']", common.getData(dataFile,"portCode"));
 //        common.clickElement("xpath", "//Edit[@Name='Remarks']");
@@ -59,12 +61,14 @@ public class InterStatesGSTExcludeTCSInclude_03 extends Transaction {
         for (int i = 0; i < Integer.parseInt(common.getData(dataFile, "productCount")); i++) {
             addProduct(i);
         }
-        validateIGSTAmountTabIsEmpty();
-        validateCESSAmountTabIsEmpty();
         netAmountTextt=Double.parseDouble(common.findWebElement("xpath","//Edit[@AutomationId='NetAmount']").getText().replace(",",""));
         System.out.println("Net Amount :- "+netAmountTextt);
+        validateIGSTAmountTabIsEmpty();
+        validateCESSAmountTabIsEmpty();
         //Tcs calculations
         tcsCalculations(dataFile,"code","amount","rowCount",netAmountTextt);
+        navigateToBillsPayablesTab();
+        common.deleteInvalidRows();
         navigateToSummaryTab();
         quantityPresentInSummary();
         grossAmountPresentInSummary();
@@ -75,6 +79,12 @@ public class InterStatesGSTExcludeTCSInclude_03 extends Transaction {
         totalValuePresentInSummary();
         totalValueInCompanyCurrenyPresentInSummary();
         receivableAmountPresentInSummary();
+        transactionSave();
+        String transactionId=getNewTransactionId();
+
+
+        System.out.println("new Transaction ID : "+transactionId);
+        common.clickElement("xpath","//Text[@Name='SI  3']/Link[@Name='SI  3']");
     }
 
     public void addProduct(int i) throws IOException, ParseException, InterruptedException, AWTException {
@@ -114,7 +124,5 @@ public class InterStatesGSTExcludeTCSInclude_03 extends Transaction {
         System.out.println("Net Amount:- "+ netAmount);
         Assert.assertEquals(grossAmount,netAmount);
         sliderHandle();
-
     }
-
 }

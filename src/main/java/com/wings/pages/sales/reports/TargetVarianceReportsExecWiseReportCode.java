@@ -1,12 +1,13 @@
 package com.wings.pages.sales.reports;
 
+import com.wings.pages.Transaction;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import com.wings.pages.Report;
 import com.wings.utils.Common;
 import java.io.IOException;
 
-public class TargetVarianceReportsExecWiseReportCode extends Report {
+public class TargetVarianceReportsExecWiseReportCode extends Transaction {
     WindowsDriver driver;
     Common common;
     String dataFile;

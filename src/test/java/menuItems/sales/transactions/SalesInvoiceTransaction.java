@@ -17,7 +17,6 @@ public class SalesInvoiceTransaction {
     AppLogin appLogin = new AppLogin();
     String dataFile="./src/main/resources/menuItems/Sales/Transactions/salesInvoice.json";
 
-
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
         driver = appLogin.launchSingleUserApp();

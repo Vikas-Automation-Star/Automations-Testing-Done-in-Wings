@@ -12,6 +12,7 @@ public class SalesInvoice extends Transaction {
     WindowsDriver driver;
     Common common;
     String dataFile;
+    String transactionID=getNewTransactionId();
 
     public SalesInvoice(WindowsDriver driver, String file) {
         super(driver);
@@ -66,6 +67,10 @@ public class SalesInvoice extends Transaction {
 
         //save
         transactionSave();
+
+        String transactionID=getNewTransactionId();
+        System.out.println("TransactionID: "+transactionID);
+
         lastTransactionName();
     }
 }

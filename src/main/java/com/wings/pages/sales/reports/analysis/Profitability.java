@@ -1,10 +1,11 @@
 package com.wings.pages.sales.reports.analysis;
 
 import com.wings.pages.Report;
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 
-public class Profitability extends Report {
+public class Profitability extends Transaction {
     WindowsDriver driver;
     Common common;
 
