@@ -8,7 +8,6 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.wings.pages.AppLogin;
 import com.wings.pages.finance.transactions.Banking.OpeningUnclearedBankEntries;
-
 import java.awt.*;
 import java.io.IOException;
 

@@ -51,7 +51,7 @@ public class OpeningUnclearedBankEntries extends Transaction {
         enterDataAndValidate("xpath", "//Edit[@Name='Drawn On Bank * Row 0, Not sorted.']", dataFile, "drawnOnBank");
         enterData("xpath", "//Edit[@Name='Issued Amount * Row 0, Not sorted.']", dataFile, "issued");
         //f7 summary
-        navigateToSummaryTab();
+        common.clickElement("xpath", "//TabItem[contains(@Name,'Summary')]");
         //save
         transactionSave();
         lastTransactionName();
