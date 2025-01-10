@@ -1636,7 +1636,6 @@ public abstract class Transaction {
         }
     }
 
-
     public void closeReport(String reportName) {
         common.clickElement("xpath", "//TabItem[@Name='" + reportName + "']/Button[@Name='Close']");
     }

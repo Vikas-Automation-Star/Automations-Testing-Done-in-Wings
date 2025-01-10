@@ -7,6 +7,6 @@ if exist allure-results (
     rmdir /s /q allure-results
 )
  
-call mvn clean install -DTestNGFile=TestNG/Regression.xml
+mvn clean install "-DTestNGFile=TestNG/MenuItems/regressionNew.xml"
 call mvn compile exec:java
  
