@@ -4,9 +4,9 @@
   "executive": "AT_Executive 1",
   "transaction": "INR",
   "accountCode": "AT_Cash Acc 1",
-  "bankAccount": "",
-  "bankDebit": 50,
-  "cashAccount": "",
+  "bankAccount": "AT_Bank Acc 1",
+  "bankDebit": 5,
+  "cashAccount": "AT_Cash Acc 1",
   "cashAmount": 1250,
   "close": "Opening Balances"
 }

@@ -7,6 +7,7 @@
   "executive": "AT_Executive 1",
   "bankAccount": "AT_Bank Acc 1",
   "drawnOn": "AT_Drawn On Bank 1",
+  "adjustedAmount": 100,
   "PDCAccount": "AT_Cheques In Hand Acc 1",
   "swipeMachineType": "AT_Swipe Machine Type 1",
   "swipeType": "AT_Swipe Type 1",

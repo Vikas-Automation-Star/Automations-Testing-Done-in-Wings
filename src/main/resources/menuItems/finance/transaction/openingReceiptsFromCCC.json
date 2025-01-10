@@ -1,11 +1,10 @@
 {
-  "branch": "Hyderabad",
+  "branch": "AT_Branch 1_Reg",
   "transaction": "INR",
-  "executive": "HYDExec",
-  "accountCode": 926,
-  "swipeMachineType": "Traditional POS",
-  "swipeType": "Magnetic stripe",
+  "executive": "AT_Executive 1",
+  "accountCode": "BA1",
+  "swipeMachineType": "AT_Swipe Machine Type 1",
+  "swipeType": "AT_Swipe Type 1",
   "amount": 1550,
-  "approvalNo": 8527,
   "close": "Opening Receipts from Credit Card Companies"
 }

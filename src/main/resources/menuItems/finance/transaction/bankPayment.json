@@ -4,7 +4,7 @@
   "accountCode": "AT_Cus_Reg_Inter",
   "executive": "AT_Executive 1",
   "cheque": "8965",
-  "adjustedAmount": 50,
+  "adjustedAmount": 10,
   "discountAccount": "AT_Discount  Acc 1",
   "bankAccount": "AT_Bank Acc 1",
   "close": "Bank Payments"

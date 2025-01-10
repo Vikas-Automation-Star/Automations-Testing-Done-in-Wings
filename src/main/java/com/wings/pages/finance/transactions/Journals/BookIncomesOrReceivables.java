@@ -34,14 +34,15 @@ public class BookIncomesOrReceivables extends Transaction {
         selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
         selectAndValidateData(common.getData(dataFile, "transaction"), "xpath", "//Edit[@Name='Trans Currency *']");
-        common.clickElement("xpath", "//Edit[@Name='Account Code']");
-        selectAndValidateData(common.getData(dataFile, "accountCode"), "xpath", "//Edit[@Name='Account Code']");
+        enterInput("xpath", "//Edit[@Name='Account Code']",dataFile,"accountCode");
         common.clickElement("xpath", "//Edit[@Name='Account *']");
         Thread.sleep(2500);
         gstTransactionType("Registered Dealers");
-        Thread.sleep(2500);
         common.clickElement("xpath", "//Edit[@Name='Invoice Type']/Button[@Name='Open']");
-        selectDropDown(common.getData(dataFile, "invoiceTypeWhenRegister"));
+        intraGSTRegistration("Intra State Sales to Registered Dealers");
+        common.clickElement("xpath", "//Edit[@Name='Invoice Type']/Button[@Name='Open']");
+
+        selectDropDown(common.getData(dataFile, "invoiceType"));
         Thread.sleep(10000);
         common.clickElement("xpath", "//Edit[@Name='Executive *']");
         selectAndValidateData(common.getData(dataFile, "executive"), "xpath", "//Edit[@Name='Executive *']");
@@ -53,15 +54,18 @@ public class BookIncomesOrReceivables extends Transaction {
         enterData("xpath", "//Edit[@Name='Account Code Row 0, Not sorted.']", dataFile, "accountCode2");
         //f12-bills Payable
         navigateToBillsPayablesTab();
-        finalAmount = singleCheckBoxSelection("xpath", "//Table[@Name='BillsPayable']/*[starts-with(@Name,'Row')]", "//Edit[starts-with(@Name,'Towards VNo *')]");
+        enterData("xpath","//Edit[@Name='Amount Adjusted * Row 0, Not sorted.']",dataFile,"adjustedAmount");
+        common.deleteInvalidRows();
+
+//        finalAmount = singleCheckBoxSelection("xpath", "//Table[@Name='BillsPayable']/*[starts-with(@Name,'Row')]", "//Edit[starts-with(@Name,'Towards VNo *')]");
         //navigate back to accounts and enter data
         navigateToAccountsTab();
         List<WebElement> amount = common.findWebElements("xpath", "//Edit[@Name='Amount * Row 0, Not sorted.']");
-        System.out.println("Size :" + amount.size());
         for (WebElement i : amount) {
             i.click();
-            i.sendKeys(String.valueOf(finalAmount), Keys.TAB);
+            i.sendKeys(common.getData(dataFile,"adjustedAmount"), Keys.TAB);
         }
+        enterData("xpath","//Edit[@Name='HSN Row 0, Not sorted.']",dataFile,"hsn");
         //summary
         common.clickElement("xpath", "//TabItem[contains(@Name,'Summary')]");
         //save

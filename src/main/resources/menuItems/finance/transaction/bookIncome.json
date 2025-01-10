@@ -1,9 +1,11 @@
 {
   "branch": "AT_Branch 1_Reg",
   "transaction": "INR",
-  "accountCode": ,
+  "accountCode": "CRI1",
   "invoiceType": "Regular",
+  "adjustedAmount":200,
+  "hsn": "AT_HSN Code 2",
   "executive": "AT_Executive 1",
-  "accountCode2": ,
+  "accountCode2": "AT_Credit Account",
   "close": "Book Incomes or Receivables"
 }
