@@ -1623,7 +1623,6 @@ public abstract class Transaction {
         }
     }
 
-
     public void bulkVerifyReportData(String text, String dataFile) throws IOException, ParseException {
         String[] columns = text.split(";");
         for (int i = 0; i < columns.length; i++) {
