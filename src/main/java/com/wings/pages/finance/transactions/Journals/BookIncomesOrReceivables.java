@@ -63,7 +63,7 @@ public class BookIncomesOrReceivables extends Transaction {
             i.sendKeys(String.valueOf(finalAmount), Keys.TAB);
         }
         //summary
-        navigateToSummaryTab();
+        common.clickElement("xpath", "//TabItem[contains(@Name,'Summary')]");
         //save
         transactionSave();
         lastTransactionName();

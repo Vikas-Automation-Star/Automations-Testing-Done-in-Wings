@@ -3,167 +3,166 @@
     <listeners>
         <listener class-name="com.wings.utils.listener"/>
     </listeners>
-    <!-- Sales Masters -->
+        <!-- Sales Masters -->
 
-    <!--    <test name="Customers Master" description="Test 1 description" testID="1">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.masters.CustomerMaster"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Customers Master" description="Test 1 description" testID="1">
+        <classes>
+            <class name="menuItems.sales.masters.CustomerMaster"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Types of Customers Master" description="Test 2 description" testID="2">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.masters.TypeOfCustomerMaster"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Types of Customers Master" description="Test 2 description" testID="2">
+        <classes>
+            <class name="menuItems.sales.masters.TypeOfCustomerMaster"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Price and Discount - Sales Price Lists Master" description="Test 3 description" testID="3">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.masters.SalesPriceListMaster"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Price and Discount - Sales Price Lists Master" description="Test 3 description" testID="3">
+        <classes>
+            <class name="menuItems.sales.masters.SalesPriceListMaster"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Price and Discount - Party Discount Group Master" description="Test 4 description" testID="4">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.masters.PartyDiscountGroupMaster"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Price and Discount - Party Discount Group Master" description="Test 4 description" testID="4">
+        <classes>
+            <class name="menuItems.sales.masters.PartyDiscountGroupMaster"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Price and Discount - Product Discount Group Master" description="Test 5 description" testID="5">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.masters.ProductDiscountMaster"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Price and Discount - Product Discount Group Master" description="Test 5 description" testID="5">
+        <classes>
+            <class name="menuItems.sales.masters.ProductDiscountMaster"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Sales Target -Product Sales Target Groups Master" description="Test 6 description" testID="6">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.masters.SalesTargetGroupMaster"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Sales Target -Product Sales Target Groups Master" description="Test 6 description" testID="6">
+        <classes>
+            <class name="menuItems.sales.masters.SalesTargetGroupMaster"/>
+        </classes>
+    </test>
 
-    <!-- Sales Transactions -->
-    <!--    <test name="Sales Enquiries Transaction" description="Test 7 description" testID="7">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.transactions.SalesEnquiryTransaction"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+<!--         Sales Transactions -->
+    <test name="Sales Enquiries Transaction" description="Test 7 description" testID="7">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesEnquiryTransaction"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Sales Enquiries Cancellation Transaction" description="Test 8 description" testID="8">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.transactions.SalesEnquiryCancellationTransaction"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Sales Enquiries Cancellation Transaction" description="Test 8 description" testID="8">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesEnquiryCancellationTransaction"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Sales Quotations Transaction" description="Test 9 description" testID="9">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.transactions.SalesQuotationTransaction"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Sales Quotations Transaction" description="Test 9 description" testID="9">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesQuotationTransaction"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Sales Quotations against Enquiry Transaction" description="Test 10 description" testID="10">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.transactions.SalesQuotationAgainstEnquiryTransaction"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Sales Quotations against Enquiry Transaction" description="Test 10 description" testID="10">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesQuotationAgainstEnquiryTransaction"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Sales Quotation Cancellation Transaction" description="Test 11 description" testID="11">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.transactions.SalesQuotationsCancellationTransaction"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Sales Quotation Cancellation Transaction" description="Test 11 description" testID="11">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesQuotationsCancellationTransaction"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Sales Order against Quotations Transaction" description="Test 12 description" testID="12">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.transactions.SalesOrdersAgainstQuotationsTransaction"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Sales Order against Quotations Transaction" description="Test 12 description" testID="12">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesOrdersAgainstQuotationsTransaction"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Sales Order Transaction" description="Test 13 description" testID="13">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.transactions.SalesOrderTransaction"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Sales Order Transaction" description="Test 13 description" testID="13">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesOrderTransaction"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Sales Order Cancellation Transaction" description="Test 14 description" testID="14">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.transactions.SalesOrderTransaction"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Sales Order Cancellation Transaction" description="Test 14 description" testID="14">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesOrderTransaction"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Sales Deliveries Transaction" description="Test 15 description" testID="15">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.transactions.DeliveriesTransaction"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Sales Deliveries Transaction" description="Test 15 description" testID="15">
+        <classes>
+            <class name="menuItems.sales.transactions.DeliveriesTransaction"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Sales Deliveries against Orders Transaction" description="Test 16 description" testID="16">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.transactions.DeliveriesAgainstOrdersTransaction"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Sales Deliveries against Orders Transaction" description="Test 16 description" testID="16">
+        <classes>
+            <class name="menuItems.sales.transactions.DeliveriesAgainstOrdersTransaction"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Delivery Returns Transaction" description="Test 17 description" testID="17">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.transactions.DeliveryReturnsTransactions"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Delivery Returns Transaction" description="Test 17 description" testID="17">
+        <classes>
+            <class name="menuItems.sales.transactions.DeliveryReturnsTransactions"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Sales Invoice Transaction" description="Test 18 description" testID="18">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.transactions.SalesInvoiceTransaction"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Sales Invoice Transaction" description="Test 18 description" testID="18">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesInvoiceTransaction"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Sales Invoice against Orders Transaction" description="Test 19 description" testID="19">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.transactions.SalesInvoiceAgainstOrdersTransaction"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Sales Invoice against Orders Transaction" description="Test 19 description" testID="19">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesInvoiceAgainstOrdersTransaction"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Sales Invoice against Deliveries Transaction" description="Test 20 description" testID="20">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.transactions.SalesInvoiceAgainstDeliveriesTransaction"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Sales Invoice against Deliveries Transaction" description="Test 20 description" testID="20">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesInvoiceAgainstDeliveriesTransaction"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Invoice - Proforma sales Invoice Transaction" description="Test 21 description" testID="21">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.transactions.ProformaSalesInvoiceTransaction"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Invoice - Proforma sales Invoice Transaction" description="Test 21 description" testID="21">
+        <classes>
+            <class name="menuItems.sales.transactions.ProformaSalesInvoiceTransaction"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Sales Return Transaction" description="Test 22 description" testID="22">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.transactions.SalesReturnTransaction"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Sales Return Transaction" description="Test 22 description" testID="22">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesReturnTransaction"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Sales Return with Invoice NO Transaction" description="Test 23 description" testID="23">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.transactions.SalesReturnWithInvoiceReferenceTransaction"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Sales Return with Invoice NO Transaction" description="Test 23 description" testID="23">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesReturnWithInvoiceReferenceTransaction"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Prices and Discounts-Sales Price Transaction" description="Test 24 description" testID="24">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.transactions.SalesPriceTransaction"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Prices and Discounts-Sales Price Transaction" description="Test 24 description" testID="24">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesPriceTransaction"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Prices and Discounts-Party and Product wise discounts Transaction" description="Test 25 description" testID="25">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.transactions.ProductPartyDiscountTransaction"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Prices and Discounts-Party and Product wise discounts Transaction" description="Test 25 description" testID="25">
+        <classes>
+            <class name="menuItems.sales.transactions.ProductPartyDiscountTransaction"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Targets - Define Sales Targets Executive wise Transaction" description="Test 26 description" testID="26">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.transactions.SalesTargetExectiveWiseTransaction"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Targets - Define Sales Targets Executive wise Transaction" description="Test 26 description" testID="26">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesTargetExectiveWiseTransaction"/>
+        </classes>
+    </test>
 
-
-    <!-- Sales Reports -->
+                <!-- Sales Reports -->
     <test name="Reports - Sales Enquiry" description="Test 27 description" testID="27">
         <classes>
             <class name="menuItems.sales.reports.salesEnquiryReport"/>
@@ -182,147 +181,348 @@
         </classes>
     </test>
 
-    <!--    <test name="Reports - Sales Quotations" description="Test 30 description" testID="30">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.reports.SalesQuotationReport"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Reports - Sales Quotations" description="Test 30 description" testID="30">
+        <classes>
+            <class name="menuItems.sales.reports.SalesQuotationReport"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Reports - Pending sales Quotation" description="Test 31 description" testID="31">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.reports.PendingSalesQuotationsReport"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Reports - Pending sales Quotation" description="Test 31 description" testID="31">
+        <classes>
+            <class name="menuItems.sales.reports.PendingSalesQuotationsReport"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Reports - Sales Quotation against Enquiry" description="Test 32 description" testID="32">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.reports.SalesQuotationAgnstEnquiryReport"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Reports - Sales Quotation against Enquiry" description="Test 32 description" testID="32">
+        <classes>
+            <class name="menuItems.sales.reports.SalesQuotationAgnstEnquiryReport"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Reports - Sales Quotations Cancellations" description="Test 33 description" testID="33">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.reports.SalesQuotationCancellationReport"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Reports - Sales Quotations Cancellations" description="Test 33 description" testID="33">
+        <classes>
+            <class name="menuItems.sales.reports.SalesQuotationCancellationReport"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Reports - Sales Order against Quotation" description="Test 34 description" testID="34">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.reports.SalesOrdrAgainstQuotationReport"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Reports - Sales Order against Quotation" description="Test 34 description" testID="34">
+        <classes>
+            <class name="menuItems.sales.reports.SalesOrdrAgainstQuotationReport"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Reports - Sales Order" description="Test 35 description" testID="35">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.reports.SalesOrderReport"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-    <!--    <test name="Reports - Pending Sales Order" description="Test 36 description" testID="36">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.reports.PendingSalesOrderReport"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-    <!--    <test name="Reports - Sales Order Status Details" description="Test 37 description" testID="37">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.reports.SalesOrderStatusDetailsReport"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Reports - Sales Order" description="Test 35 description" testID="35">
+        <classes>
+            <class name="menuItems.sales.reports.SalesOrderReport"/>
+        </classes>
+    </test>
+    <test name="Reports - Pending Sales Order" description="Test 36 description" testID="36">
+        <classes>
+            <class name="menuItems.sales.reports.PendingSalesOrderReport"/>
+        </classes>
+    </test>
+    <test name="Reports - Sales Order Status Details" description="Test 37 description" testID="37">
+        <classes>
+            <class name="menuItems.sales.reports.SalesOrderStatusDetailsReport"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Reports - Sales Order Cancellation" description="Test 38 description" testID="38">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.reports.SalesOrderCancellationReport"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Reports - Sales Order Cancellation" description="Test 38 description" testID="38">
+        <classes>
+            <class name="menuItems.sales.reports.SalesOrderCancellationReport"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Reports - Deliveries" description="Test 39 description" testID="39">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.reports.DeliveryReport"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Reports - Deliveries" description="Test 39 description" testID="39">
+        <classes>
+            <class name="menuItems.sales.reports.DeliveryReport"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Reports - PendingDeliveries" description="Test 40 description" testID="40">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.reports.PendingDeliveriesReport"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Reports - PendingDeliveries" description="Test 40 description" testID="40">
+        <classes>
+            <class name="menuItems.sales.reports.PendingDeliveriesReport"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Reports - Pending sales orders with deliveries" description="Test 41 description" testID="41">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.reports.PendingSalesOrderWithDeliveriesReport"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Reports - Pending sales orders with deliveries" description="Test 41 description" testID="41">
+        <classes>
+            <class name="menuItems.sales.reports.PendingSalesOrderWithDeliveriesReport"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Reports - Delivery returns" description="Test 42 description" testID="42">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.reports.DeliveryReturnReport"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Reports - Delivery returns" description="Test 42 description" testID="42">
+        <classes>
+            <class name="menuItems.sales.reports.DeliveryReturnReport"/>
+        </classes>
+    </test>
 
 
-    <!--    <test name="Reports - Sales Book" description="Test 43 description" testID="43">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.reports.SalesBookReport"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Reports - Sales Book" description="Test 43 description" testID="43">
+        <classes>
+            <class name="menuItems.sales.reports.SalesBookReport"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Reports - Sales Detailed with product batch" description="Test 44 description" testID="44">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.reports.SalesDetailsWithProductBatchReport"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Reports - Sales Detailed with product batch" description="Test 44 description" testID="44">
+        <classes>
+            <class name="menuItems.sales.reports.SalesDetailsWithProductBatchReport"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Reports - Sales Invoice against Orders" description="Test 45 description" testID="45">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.reports.SalesInvoiceAgainstOrdersReport"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Reports - Sales Invoice against Orders" description="Test 45 description" testID="45">
+        <classes>
+            <class name="menuItems.sales.reports.SalesInvoiceAgainstOrdersReport"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Reports - Sales Price Updation" description="Test 46 description" testID="46">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.reports.SalesPriceUpdationReport"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Reports - Sales Price Updation" description="Test 46 description" testID="46">
+        <classes>
+            <class name="menuItems.sales.reports.SalesPriceUpdationReport"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Reports - Sales invoice against Deliveries" description="Test 47 description" testID="47">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.reports.SalesInvoiceAgainstDeliveriesReport"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Reports - Sales invoice against Deliveries" description="Test 47 description" testID="47">
+        <classes>
+            <class name="menuItems.sales.reports.SalesInvoiceAgainstDeliveriesReport"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Reports - Proforma sales invoice" description="Test 48 description" testID="48">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.reports.ProformaSalesInvoiceReport"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Reports - Proforma sales invoice" description="Test 48 description" testID="48">
+        <classes>
+            <class name="menuItems.sales.reports.ProformaSalesInvoiceReport"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Reports - Sales Return" description="Test 49 description" testID="49">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.reports.SalesReturnReport"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Reports - Sales Return" description="Test 49 description" testID="49">
+        <classes>
+            <class name="menuItems.sales.reports.SalesReturnReport"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Reports - sales return with serial no" description="Test 50 description" testID="50">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.reports.SalesReturnWithSerialNoReport"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Reports - sales return with serial no" description="Test 50 description" testID="50">
+        <classes>
+            <class name="menuItems.sales.reports.SalesReturnWithSerialNoReport"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Reports - sales return with invoice ref no" description="Test 51 description" testID="51">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.reports.SalesReturnWithInvoiceReferenceReport"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Reports - sales return with invoice ref no" description="Test 51 description" testID="51">
+        <classes>
+            <class name="menuItems.sales.reports.SalesReturnWithInvoiceReferenceReport"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Reports - Define sales targets-executive wise" description="Test 52 description" testID="52">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.reports.SaleTargetExecutiveWiseReport"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Reports - Define sales targets-executive wise" description="Test 52 description" testID="52">
+        <classes>
+            <class name="menuItems.sales.reports.SaleTargetExecutiveWiseReport"/>
+        </classes>
+    </test>
 
-    <!--    <test name="Reports - Target variance report executive wise" description="Test 53 description" testID="53">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.sales.reports.TargetVarianceReportExecutiveWise"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Reports - Target variance report executive wise" description="Test 53 description" testID="53">
+        <classes>
+            <class name="menuItems.sales.reports.TargetVarianceReportExecutiveWise"/>
+        </classes>
+    </test>
+
+    <test name="Location Master" description="Test 1 description" testID="1">
+        <classes>
+            <class name="menuItems.inventory.masters.product.Location"/>
+        </classes>
+    </test>
+
+    <test name="Non-Inventory Items Master" description="Test 2 description" testID="2">
+        <classes>
+            <class name="menuItems.inventory.masters.product.NonInventoryItem"/>
+        </classes>
+    </test>
+
+    <test name="Products Master" description="Test 3 description" testID="3">
+        <classes>
+            <class name="menuItems.inventory.masters.product.Product"/>
+        </classes>
+    </test>
+
+    <test name="Services Master" description="Test 4 description" testID="4">
+        <classes>
+            <class name="menuItems.inventory.masters.product.Service"/>
+        </classes>
+    </test>
+
+    <test name="Storage Bins Master" description="Test 5 description" testID="5">
+        <classes>
+            <class name="menuItems.inventory.masters.product.StorageBin"/>
+        </classes>
+    </test>
+
+    <test name="Units Of Measure Master" description="Test 6 description" testID="6">
+        <classes>
+            <class name="menuItems.inventory.masters.product.UnitOfMeasure"/>
+        </classes>
+    </test>
+
+    <test name="Product Batch Master" description="Test 7 description" testID="7">
+        <classes>
+            <class name="menuItems.inventory.masters.product.batches.ProductBatche"/>
+        </classes>
+    </test>
+
+    <test name="Product Batch-serial No Master" description="Test 8 description" testID="8">
+        <classes>
+            <class name="menuItems.inventory.masters.product.batches.ProductBatchesSerialNo"/>
+        </classes>
+    </test>
+
+    <test name="Product Batch-Multi Batch Master" description="Test 9 description" testID="9">
+        <classes>
+            <class name="menuItems.inventory.masters.product.batches.ProductsMultiBatch"/>
+        </classes>
+    </test>
+
+    <test name="Opening Stock Transaction" description="Test 10 description" testID="10">
+        <classes>
+            <class name="menuItems.inventory.transactions.OpeningStockTransaction"/>
+        </classes>
+    </test>
+
+    <test name="Opening Stock Report" description="Test 11 description" testID="11">
+        <classes>
+            <class name="menuItems.inventory.reports.OpeningStockReport"/>
+        </classes>
+    </test>
+
+    <test name="Stock Creation Transaction" description="Test 12 description" testID="12">
+        <classes>
+            <class name="menuItems.inventory.transactions.StockCreationTransaction"/>
+        </classes>
+    </test>
+
+    <test name="Stock Creation Report" description="Test 13 description" testID="13">
+        <classes>
+            <class name="menuItems.inventory.reports.StockCreationReport"/>
+        </classes>
+    </test>
+
+    <test name="Stock Consumption Transaction" description="Test 14 description" testID="14">
+        <classes>
+            <class name="menuItems.inventory.transactions.StockConsumptionTransaction"/>
+        </classes>
+    </test>
+
+    <test name="Stock Consumption Report" description="Test 15 description" testID="15">
+        <classes>
+            <class name="menuItems.inventory.reports.StockConsumptionReport"/>
+        </classes>
+    </test>
+
+    <test name="Stock Conversion Transaction" description="Test 16 description" testID="16">
+        <classes>
+            <class name="menuItems.inventory.transactions.StockConversionTransaction"/>
+        </classes>
+    </test>
+
+    <test name="Stock Conversion Report" description="Test 17 description" testID="17">
+        <classes>
+            <class name="menuItems.inventory.reports.StockConversionReport"/>
+        </classes>
+    </test>
+
+    <test name="Inter Location Transfer Transaction" description="Test 18 description" testID="18">
+        <classes>
+            <class name="menuItems.inventory.transactions.InterLocatonTransfersTransaction"/>
+        </classes>
+    </test>
+
+    <test name="Inter Location Transfer Report" description="Test 19 description" testID="19">
+        <classes>
+            <class name="menuItems.inventory.reports.InterLocationTransfers"/>
+        </classes>
+    </test>
+    <!---->
+    <test name="Master Info-Product with GST Detail Report" description="Test 20 description" testID="20">
+        <classes>
+            <class name="menuItems.inventory.reports.masterInfo.ProductWithGSTDetail"/>
+        </classes>
+    </test>
+
+    <test name="Master Info- Master Detail Report" description="Test 21 description" testID="21">
+        <classes>
+            <class name="menuItems.inventory.reports.masterInfo.MasterDetail"/>
+        </classes>
+    </test>
+
+    <test name="Master Info-Product Alternate UOM Detail Report" description="Test 22 description" testID="22">
+        <classes>
+            <class name="menuItems.inventory.reports.masterInfo.ProductAlternateUOMDetail"/>
+        </classes>
+    </test>
+
+    <test name="Master Info-Product Batch Report" description="Test 23 description" testID="23">
+        <classes>
+            <class name="menuItems.inventory.reports.masterInfo.ProductBatch"/>
+        </classes>
+    </test>
+
+
+    <test name="Stock- Stock Ledger Report" description="Test 24 description" testID="24">
+        <classes>
+            <class name="menuItems.inventory.reports.stock.StockLedgerReport"/>
+        </classes>
+    </test>
+
+    <test name="Stock - Stock List Report" description="Test 25 description" testID="25">
+        <classes>
+            <class name="menuItems.inventory.reports.stock.StockListReport"/>
+        </classes>
+    </test>
+
+    <test name="Stock - Stock Balance Report" description="Test 26 description" testID="26">
+        <classes>
+            <class name="menuItems.inventory.reports.stock.StockBalanceReport"/>
+        </classes>
+    </test>
+
+    <test name="Stock - Stock Valuation Report" description="Test 27 description" testID="27">
+        <classes>
+            <class name="menuItems.inventory.reports.stock.StockValuationReport"/>
+        </classes>
+    </test>
+
+    <test name="Stock- stock ageing Report" description="Test 28 description" testID="28">
+        <classes>
+            <class name="menuItems.inventory.reports.stock.StockAgeingReport"/>
+        </classes>
+    </test>
+
+    <test name="Stock - Stock Transaction Analysis Report" description="Test 29 description" testID="29">
+        <classes>
+            <class name="menuItems.inventory.reports.stock.StockTransactionAnalysisReport"/>
+        </classes>
+    </test>
+
+    <test name="Stock- company wise recorder level Report" description="Test 30 description" testID="30">
+        <classes>
+            <class name="menuItems.inventory.reports.stock.CompanyWiseReorderLevelReport"/>
+        </classes>
+    </test>
+
+    <test name="Stock - Stock List with alternate UOM Report" description="Test 31 description" testID="31">
+        <classes>
+            <class name="menuItems.inventory.reports.stock.StockListWithAlternatUOM"/>
+        </classes>
+    </test>
+
+    <test name="Stock- Serial No history Report" description="Test 32 description" testID="32">
+        <classes>
+            <class name="menuItems.inventory.reports.stock.SerialNoHistoryReport"/>
+        </classes>
+    </test>
+
+    <test name="Stock - Material Issues and Stock consumption Report" description="Test 33 description" testID="33">
+        <classes>
+            <class name="menuItems.inventory.reports.stock.MaterialIssueAndStockConsumption"/>
+        </classes>
+    </test>
+
+
 
 </suite>

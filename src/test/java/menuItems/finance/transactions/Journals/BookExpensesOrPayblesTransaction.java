@@ -12,7 +12,7 @@ import com.wings.pages.finance.transactions.Journals.BookExpensesOrPayables;
 import java.awt.*;
 import java.io.IOException;
 
-public class BookExpensesOrPayablesTransaction {
+public class BookExpensesOrPayblesTransaction {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
     String dataFile = "./src/main/resources/menuItems/finance/transaction/bookExpenses.json";

@@ -1,12 +1,11 @@
 {
-  "branch": "Hyderabad",
+  "branch": "AT_Branch 1_Reg",
   "transaction": "INR",
-  "PartyCode": "77",
-  "executive": "HYDExec",
-  "deposit": "Cash Account No 2",
-  "credit": "3500",
+  "bankCode": "AT_Bank Acc 1",
+  "executive": "AT_Executive 1",
+  "deposit": "AT_Cash Acc 1",
+  "credit": "5000",
   "close": "Cash Deposits and withdrawals",
-  "cheque": "222",
-  "withdraw": "Cash Account",
+  "withdraw": "AT_Cash Acc 2",
   "debit": "50"
 }

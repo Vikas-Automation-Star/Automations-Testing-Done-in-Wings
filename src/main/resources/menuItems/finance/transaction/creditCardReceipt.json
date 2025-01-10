@@ -1,9 +1,12 @@
 {
-  "branch": "Hyderabad",
+  "branch": "AT_Branch 1_Reg",
   "transaction": "INR",
-  "executive": "HYDExec",
-  "partyCode": 153,
+  "executive": "AT_Executive 1",
+  "partyCode": "AT_Cus_Reg_Inter",
   "approvalNo": 89665,
-  "drawnOn": "checks",
+  "swipeMachineType": "AT_Swipe Machine Type 1",
+  "swipeType": "AT_Swipe Type 1",
+  "discountAccount": "AT_Discount  Acc 1",
+  "adjustedAmount": 100,
   "close": "Credit Card Receipts"
 }
