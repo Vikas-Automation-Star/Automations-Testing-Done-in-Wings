@@ -27,7 +27,7 @@ public class InterStatesGSTExcludeTCSInclude_03 extends Transaction {
     public void interStatesGSTExcludeTCSInclude_03() throws InterruptedException, IOException, ParseException, AWTException, NumberFormatException {
         navigateToSalesInvoiceMenu();
         Thread.sleep(1000);
-        lastTransactionName();
+        oldTTransaction();
 //        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");]
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
         selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
@@ -80,10 +80,7 @@ public class InterStatesGSTExcludeTCSInclude_03 extends Transaction {
         totalValueInCompanyCurrenyPresentInSummary();
         receivableAmountPresentInSummary();
         transactionSave();
-        String transactionId = getNewTransactionId();
-
-
-        System.out.println("new Transaction ID : " + transactionId);
+        newTransaction();
         common.clickElement("xpath", "//Text[@Name='SI  3']/Link[@Name='SI  3']");
     }
 

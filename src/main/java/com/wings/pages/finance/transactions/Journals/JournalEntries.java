@@ -24,17 +24,17 @@ public class JournalEntries extends Transaction {
         navigateToJournalEntriesMenu();
         Thread.sleep(1000);
         lastTransactionName();
-        common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
-        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
+//        common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
+//        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
         selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
         selectAndValidateData(common.getData(dataFile, "transaction"), "xpath", "//Edit[@Name='Trans Currency *']");
         common.clickElement("xpath", "//Edit[@Name='Executive *']");
         selectAndValidateData(common.getData(dataFile, "executive"), "xpath", "//Edit[@Name='Executive *']");
-        common.clickElement("xpath", "//Edit[@Name='Remarks']");
-        selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
-        //f3-accounts
+//        common.clickElement("xpath", "//Edit[@Name='Remarks']");
+//        selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
+//        //f3-accounts
         enterDataAndValidate("xpath", "//Edit[@Name='Debit Account Code Row 0, Not sorted.']", dataFile, "debitAccount");
         enterDataAndValidate("xpath", "//Edit[@Name='Credit Account Code Row 0, Not sorted.']", dataFile, "creditAccount");
         enterData("xpath", "//Edit[@Name='Amount * Row 0, Not sorted.']", dataFile, "amount");

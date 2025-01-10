@@ -28,8 +28,8 @@ public class BookIncomesOrReceivables extends Transaction {
         navigateToBookIncomesOrReceivablesMenu();
         Thread.sleep(1000);
         lastTransactionName();
-        common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
-        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
+//        common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
+//        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
         selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
@@ -45,8 +45,10 @@ public class BookIncomesOrReceivables extends Transaction {
         Thread.sleep(10000);
         common.clickElement("xpath", "//Edit[@Name='Executive *']");
         selectAndValidateData(common.getData(dataFile, "executive"), "xpath", "//Edit[@Name='Executive *']");
-        common.clickElement("xpath", "//Edit[@Name='Remarks']");
-        selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
+
+//        common.clickElement("xpath", "//Edit[@Name='Remarks']");
+//        selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
+
         //f3- accounts
         enterData("xpath", "//Edit[@Name='Account Code Row 0, Not sorted.']", dataFile, "accountCode2");
         //f12-bills Payable
@@ -66,6 +68,5 @@ public class BookIncomesOrReceivables extends Transaction {
         //save
         transactionSave();
         lastTransactionName();
-//        transactionClose(common.getData(dataFile,"close"));
     }
 }

@@ -173,7 +173,7 @@ public class XMLUtil {
         // Send email with report attached
         final String fromEmail = "productupdates@wingsinfo.net";
         final String password = "Zuy97283";
-        final String toEmail = "madhuri.matta@wingsinfo.net,manoj.c@wingsinfo.net,venkatarathaiah.m@wingsinfo.net,ashokreddy.rs@wingsinfo.net,vikas.empuluri@wingsinfo.net";
+        final String toEmail = "vikas.empuluri@wingsinfo.net";//madhuri.matta@wingsinfo.net,manoj.c@wingsinfo.net,venkatarathaiah.m@wingsinfo.net,ashokreddy.rs@wingsinfo.net,,sudheer.s@wingsinfo.net";
 
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.office365.com");
@@ -194,7 +194,7 @@ public class XMLUtil {
     public static void main(String[] args) {
         XMLUtil xmlUtil = new XMLUtil();
         try {
-            xmlUtil.readTestNG("./TestNG/MenuItems/salesSuite.xml");// Parse both sampleSuite.xml and testng-results.xml
+            xmlUtil.readTestNG("./TestNG/MenuItems/regressionNew.xml");// Parse both sampleSuite.xml and testng-results.xml
             xmlUtil.readTestNGResults("./target/surefire-reports/testng-results.xml"); // Process test results and send email
         } catch (Exception e) {
             e.printStackTrace();
