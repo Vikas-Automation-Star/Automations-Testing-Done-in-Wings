@@ -14,9 +14,7 @@ public class InterStatesGSTExcludeTCSInclude_03 extends Transaction {
     WindowsDriver driver;
     Common common;
     String dataFile;
-    double netAmountTextt;
-    double quantity, mrp, unitRate, grossAmount, partyDiscountValue, voucherDiscountValue, grossMinusDiscount, netAmount, gstValue, cessValue, taxableValue, taxableAmountCalculated;
-
+    double quantity, mrp, unitRate, grossAmount,netAmount,netAmountTextt;
     public InterStatesGSTExcludeTCSInclude_03(WindowsDriver driver, String file) {
         super(driver);
         this.driver = driver;
@@ -27,7 +25,8 @@ public class InterStatesGSTExcludeTCSInclude_03 extends Transaction {
     public void interStatesGSTExcludeTCSInclude_03() throws InterruptedException, IOException, ParseException, AWTException, NumberFormatException {
         navigateToSalesInvoiceMenu();
         Thread.sleep(1000);
-        oldTTransaction();
+        String oldVoucherID =oldTTransactionID();
+        System.out.println("oldID: "+ oldVoucherID);
 //        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");]
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
         selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
@@ -80,8 +79,18 @@ public class InterStatesGSTExcludeTCSInclude_03 extends Transaction {
         totalValueInCompanyCurrenyPresentInSummary();
         receivableAmountPresentInSummary();
         transactionSave();
-        newTransaction();
-        common.clickElement("xpath", "//Text[@Name='SI  3']/Link[@Name='SI  3']");
+        String newVoucherID =newTransactionID(oldVoucherID).replace(" ","");
+        System.out.println("newID: "+newVoucherID);
+        Assert.assertNotEquals(newVoucherID, oldVoucherID,"both ID's should not Equal when we perform transaction");
+        Thread.sleep(1000);
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Invoices");
+        common.clickElement("name", "Sales Book");
+        Thread.sleep(1000);
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
+        Thread.sleep(1500);
+        verifyReport(newVoucherID,dataFile);
+//        common.clickElement("xpath", "//Text[@Name='SI  3']/Link[@Name='SI  3']");
     }
 
     public void addProduct(int i) throws IOException, ParseException, InterruptedException, AWTException {

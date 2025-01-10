@@ -25,5 +25,37 @@
   "partyDiscount2": 7,
   "rowCount": 1,
   "code": "AT_Sales  Acc 1",
-  "amount": 200
+  "amount": 200,
+
+
+
+
+  "column4": "AT_Branch 1_Reg",
+  "column5": "INR",
+  "column6": "1.00",
+  "column7": "AT_Cus_Reg_Inter",
+  "column8": "AT_Cus_Reg_Inter",
+  "column9": "",
+  "column10": "Sales Invoices",
+  "column11": "30.00",
+  "column12": "0.00",
+  "column13": "18,250.00",
+  "column14": "0.00",
+  "column15": "18,250.00",
+  "column16": "0.00",
+  "column17": "0.00",
+  "column18": "0.00",
+  "column19": "0.00",
+  "column20": "0.00",
+  "column21": "0.00",
+  "column22": "18,250.00",
+  "column23": "18,250.00",
+  "column24": "0.00",
+  "column25": "0.00",
+  "column26": "0.00",
+  "column27": "912.50",
+  "column28": "0.50",
+  "column29": "19,163.00",
+  "column30": "19,163.00",
+  "column31": "AT_Executive 1"
 }

@@ -17,7 +17,7 @@ public class InterStatesGSTIncludingTCSIncluding_04 extends Transaction {
     Common common;
     String dataFile;
     boolean gstAmountClicked = false;
-    double quantity, mrp, unitRate, grossAmount, calculateNet, partyDiscountValue, voucherDiscountValue, grossMinusDiscount, netAmountTextt, netAmount, gstValue, cessValue, taxableValue, taxableAmountCalculated,
+    double quantity, mrp, unitRate, grossAmount, calculateNet, netAmountTextt, netAmount, gstValue, cessValue, taxableValue, taxableAmountCalculated,
             expectedIGST, cessPrecentage, gstPercentage, expectedCESS, totalGST, actualGST;
 
 
@@ -31,8 +31,9 @@ public class InterStatesGSTIncludingTCSIncluding_04 extends Transaction {
     public void interStatesGSTIncludingTCSIncluding_04() throws InterruptedException, IOException, ParseException, AWTException {
         navigateToSalesInvoiceMenu();
         Thread.sleep(1000);
-        lastTransactionName();
-//        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
+        String oldVoucherID =oldTTransactionID();
+        System.out.println("oldID: "+ oldVoucherID);
+        //        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
         selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Location *']");
@@ -64,6 +65,8 @@ public class InterStatesGSTIncludingTCSIncluding_04 extends Transaction {
         netAmountTextt = Double.parseDouble(common.findWebElement("xpath", "//Edit[@AutomationId='NetAmount']").getText().replace(",", ""));
         System.out.println("Net Amount :- " + netAmountTextt);
         tcsCalculations(dataFile, "code", "amount", "rowCount", netAmountTextt);
+        navigateToBillsPayablesTab();
+        common.deleteInvalidRows();
         navigateToSummaryTab();
         Thread.sleep(2000);
         quantityPresentInSummary();
@@ -75,6 +78,19 @@ public class InterStatesGSTIncludingTCSIncluding_04 extends Transaction {
         totalValuePresentInSummary();
         totalValueInCompanyCurrenyPresentInSummary();
         receivableAmountPresentInSummary();
+        transactionSave();
+        String newVoucherID =newTransactionID(oldVoucherID).replace(" ","");
+        System.out.println("newID: "+newVoucherID);
+        Assert.assertNotEquals(newVoucherID, oldVoucherID,"both ID's should not Equal when we perform transaction");
+        Thread.sleep(1000);
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Invoices");
+        common.clickElement("name", "Sales Book");
+        Thread.sleep(1000);
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
+        Thread.sleep(1500);
+        verifyReport(newVoucherID,dataFile);
+
     }
 
     public void addProduct(int i) throws IOException, ParseException, InterruptedException, AWTException {

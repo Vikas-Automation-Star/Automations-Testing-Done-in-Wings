@@ -1,5 +1,6 @@
 package com.wings.pages;
 
+import com.beust.ah.A;
 import com.wings.utils.Common;
 import com.wings.utils.StringUtil;
 import io.appium.java_client.windows.WindowsDriver;
@@ -1474,6 +1475,16 @@ public abstract class Transaction {
     }
 
 
+    public String oldTTransactionID() {
+        String oldID=common.findWebElement("xpath", "//Text[@Name='Last Saved :']/following-sibling::Text").getAttribute("Name");
+        return oldID;
+    }
+
+    public String newTransactionID(String oldID) {
+        String newID=common.findWebElement("xpath", "//Text[@Name='Last Saved :']/following-sibling::Text").getAttribute("Name");
+        return  newID;
+    }
+
     public void oldTTransaction() {
         System.out.println("Recent Transaction Id :" + common.findWebElement("xpath", "//Text[@Name='Last Saved :']/following-sibling::Text").getAttribute("Name"));
     }
@@ -1618,7 +1629,9 @@ public abstract class Transaction {
         List<WebElement> elementList = common.findWebElements("xpath", "//Table/*[@Name='Data Panel']/ListItem[contains(@Name,'Row')]");
         System.out.println("Size :" + elementList.size());
         for (WebElement i : elementList) {
+            System.out.println("text :"+i.getText());
             if (i.getText().contains(transaction)) {
+                System.out.println("verifyingRow :");
                 bulkVerifyReportData(i.getText(), dataFile);
             }
         }
