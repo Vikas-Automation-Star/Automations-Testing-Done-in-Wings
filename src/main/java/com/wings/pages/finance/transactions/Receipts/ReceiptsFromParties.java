@@ -57,15 +57,19 @@ public class ReceiptsFromParties extends Transaction {
         //check for bills receivable
         Thread.sleep(2500);
         navigateToBillsReceivablesTab();
-        finalAmount=super.singleCheckBoxSelection("xpath","//Table[@Name='BillsReceivable']/*[starts-with(@Name,'Row')]","//Edit[starts-with(@Name,'Towards VNo *')]");
+        enterData("xpath","//Edit[@Name='Amount Adjusted * Row 0, Not sorted.']",dataFile,"adjustedAmount");
+        common.deleteInvalidRows();
+//        finalAmount=super.singleCheckBoxSelection("xpath","//Table[@Name='BillsReceivable']/*[starts-with(@Name,'Row')]","//Edit[starts-with(@Name,'Towards VNo *')]");
         //enter into amount in f3
         navigateToCashTab();
         List<WebElement> amount = common.findWebElements("xpath", "//Edit[@Name='Amount * Row 0, Not sorted.']");
         System.out.println("Size :" + amount.size());
         for (WebElement i : amount) {
             i.click();
-            i.sendKeys(String.valueOf(finalAmount), Keys.TAB);
+            i.sendKeys(common.getData(dataFile,"adjustedAmount"), Keys.TAB);
         }
+        //check summary
+        common.clickElement("xpath", "//TabItem[contains(@Name,'Summary')]");
         //check summary
         navigateToOtherInfoTab();
         for (int j = 0; j < 1; j++) {

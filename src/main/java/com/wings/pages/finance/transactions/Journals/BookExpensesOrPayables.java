@@ -34,8 +34,7 @@ public class BookExpensesOrPayables extends Transaction {
         selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
         selectAndValidateData(common.getData(dataFile, "transaction"), "xpath", "//Edit[@Name='Trans Currency *']");
-        common.clickElement("xpath", "//Edit[@Name='Account Code']");
-        selectAndValidateData(common.getData(dataFile, "accountCode"), "xpath", "//Edit[@Name='Account Code']");
+        enterInput("xpath", "//Edit[@Name='Account Code']",dataFile,"accountCode");
         common.clickElement("xpath", "//Edit[@Name='Account *']");
         common.inputText("xpath", "//Edit[@Name='Supplier Bill No *']", String.valueOf(common.getRandom()));
         common.inputText("xpath", "//Edit[@Name='Supplier Bill Date *']", common.getData(dataFile, "billDate"));
@@ -47,17 +46,19 @@ public class BookExpensesOrPayables extends Transaction {
         enterData("xpath", "//Edit[@Name='Account Code Row 0, Not sorted.']", dataFile, "accountCode2");
         //f12-bills Payable
         navigateToBillsReceivablesTab();
-        finalAmount = singleCheckBoxSelection("xpath", "//Table[@Name='BillsReceivable']/*[starts-with(@Name,'Row')]", "//Edit[starts-with(@Name,'Towards VNo *')]");
+        enterData("xpath","//Edit[@Name='Amount Adjusted * Row 0, Not sorted.']",dataFile,"adjustedAmount");
+        common.deleteInvalidRows();
+//        finalAmount = singleCheckBoxSelection("xpath", "//Table[@Name='BillsReceivable']/*[starts-with(@Name,'Row')]", "//Edit[starts-with(@Name,'Towards VNo *')]");
         //navigate back to accounts and enter data
         navigateToAccountsTab();
         List<WebElement> amount = common.findWebElements("xpath", "//Edit[@Name='Amount * Row 0, Not sorted.']");
-        System.out.println("Size :" + amount.size());
         for (WebElement i : amount) {
             i.click();
-            i.sendKeys(String.valueOf(finalAmount), Keys.TAB);
+            i.sendKeys(common.getData(dataFile,"adjustedAmount"), Keys.TAB);
         }
+        enterData("xpath","//Edit[@Name='HSN Row 0, Not sorted.']",dataFile,"hsn");
         //summary
-        navigateToSummaryTab();
+        common.clickElement("xpath", "//TabItem[contains(@Name,'Summary')]");
         //save
         transactionSave();
         lastTransactionName();

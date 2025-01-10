@@ -104,7 +104,8 @@ public abstract class Transaction {
         List<WebElement> elementList = common.findWebElements(locatorType, locator);
         for (WebElement i : elementList) {
             i.click();
-            i.clear();
+            i.sendKeys(Keys.CONTROL + "a");
+            i.sendKeys(Keys.BACK_SPACE);
             i.sendKeys(common.getData(fileName, key), Keys.TAB);
             break;
         }

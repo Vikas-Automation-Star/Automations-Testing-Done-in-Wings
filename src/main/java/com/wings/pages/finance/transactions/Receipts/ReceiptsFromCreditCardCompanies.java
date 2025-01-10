@@ -32,14 +32,15 @@ public class ReceiptsFromCreditCardCompanies extends Transaction {
         selectAndValidateData(common.getData(dataFile, "transaction"),"xpath", "//Edit[@Name='Trans Currency *']");
         common.clickElement("xpath", "//Edit[@Name='Credit Card Company *']");
         selectAndValidateData(common.getData(dataFile,"ccc"),"xpath", "//Edit[@Name='Credit Card Company *']" );
-        intraGSTRegistration(common.getData(dataFile,"gstType"));
+        common.clickElement("xpath","//Edit[@Name='Party Reg Type *']");
+        intraGSTRegistration("Intra State Purchase from Registered Dealers");
         Thread.sleep(2500);
         common.clickElement("xpath","//CheckBox[@Name='Select Row 0']");
         common.clickElement("name","Ok");
         Thread.sleep(1000);
         common.clickElement("xpath", "//Edit[@Name='Bank Account *']");
         Thread.sleep(1000);
-        common.inputAndVerify("xpath","//Edit[@Name='Cheque/EFT No *']", common.getData(dataFile,"cheque"));
+        common.inputAndVerify("xpath","//Edit[@Name='Cheque/EFT No *']", String.valueOf(common.getRandom()));
         common.clickElement("xpath", "//Edit[@Name='Drawn On Bank *']");
         selectAndValidateData(common.getData(dataFile,"drawnOn"), "xpath","//Edit[@Name='Drawn On Bank *']");
         common.clickElement("xpath","//Edit[@Name='Drawn On Bank Branch']");
@@ -56,7 +57,8 @@ public class ReceiptsFromCreditCardCompanies extends Transaction {
         enterDataAndValidate("xpath","//Edit[@Name='Account Code Row 0, Not sorted.']",dataFile,"accountCode");
         enterData("xpath","//Edit[@Name='Amount * Row 0, Not sorted.']",dataFile,"amount");
         //summary
-        navigateToSummaryTab();
+
+        common.clickElement("xpath", "//TabItem[contains(@Name,'Summary')]");
         //save
         transactionSave();
         lastTransactionName();

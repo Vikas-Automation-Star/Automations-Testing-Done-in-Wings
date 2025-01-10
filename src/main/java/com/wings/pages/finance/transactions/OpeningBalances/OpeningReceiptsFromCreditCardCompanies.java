@@ -43,7 +43,8 @@ public class OpeningReceiptsFromCreditCardCompanies extends Transaction {
         enterDataAndValidate("xpath", "//Edit[@Name='Swipe Machine Type * Row 0, Not sorted.']", dataFile, "swipeMachineType");
         enterDataAndValidate("xpath", "//Edit[@Name='Swipe Type * Row 0, Not sorted.']", dataFile, "swipeType");
         enterData("xpath", "//Edit[@Name='Amount * Row 0, Not sorted.']", dataFile, "amount");
-        enterData("xpath", "//Edit[@Name='Approval No * Row 0, Not sorted.']", dataFile, "approvalNo");
+        common.clickElement("xpath","//Edit[@Name='Approval No * Row 0, Not sorted.']");
+        common.inputText("xpath", "//Edit[@Name='Approval No * Row 0, Not sorted.']", String.valueOf(common.getRandom()));
         //save
         transactionSave();
         lastTransactionName();

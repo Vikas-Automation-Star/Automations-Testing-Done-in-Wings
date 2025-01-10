@@ -24,8 +24,8 @@ public class DepositPostDatedChequesTransaction {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
         Allure.step("Before Test - Deposit Post Dated Cheques");
-//            SalesOrderPostDatedCheques orderPostDatedCheques=new SalesOrderPostDatedCheques(driver,orderFile);
-//            orderPostDatedCheques.salesOrder();
+            SalesOrderPostDatedCheques orderPostDatedCheques=new SalesOrderPostDatedCheques(driver,orderFile);
+            orderPostDatedCheques.salesOrder();
     }
 
     @Test

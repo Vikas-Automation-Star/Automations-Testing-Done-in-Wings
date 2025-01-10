@@ -38,9 +38,10 @@ public class BookIncomesOrReceivables extends Transaction {
         common.clickElement("xpath", "//Edit[@Name='Account *']");
         Thread.sleep(2500);
         gstTransactionType("Registered Dealers");
-        Thread.sleep(2500);
-        gstTransactionType("Registered Dealers");
         common.clickElement("xpath", "//Edit[@Name='Invoice Type']/Button[@Name='Open']");
+        intraGSTRegistration("Intra State Sales to Registered Dealers");
+        common.clickElement("xpath", "//Edit[@Name='Invoice Type']/Button[@Name='Open']");
+
         selectDropDown(common.getData(dataFile, "invoiceType"));
         Thread.sleep(10000);
         common.clickElement("xpath", "//Edit[@Name='Executive *']");
@@ -54,6 +55,7 @@ public class BookIncomesOrReceivables extends Transaction {
         //f12-bills Payable
         navigateToBillsPayablesTab();
         enterData("xpath","//Edit[@Name='Amount Adjusted * Row 0, Not sorted.']",dataFile,"adjustedAmount");
+        common.deleteInvalidRows();
 
 //        finalAmount = singleCheckBoxSelection("xpath", "//Table[@Name='BillsPayable']/*[starts-with(@Name,'Row')]", "//Edit[starts-with(@Name,'Towards VNo *')]");
         //navigate back to accounts and enter data
@@ -63,6 +65,7 @@ public class BookIncomesOrReceivables extends Transaction {
             i.click();
             i.sendKeys(common.getData(dataFile,"adjustedAmount"), Keys.TAB);
         }
+        enterData("xpath","//Edit[@Name='HSN Row 0, Not sorted.']",dataFile,"hsn");
         //summary
         common.clickElement("xpath", "//TabItem[contains(@Name,'Summary')]");
         //save

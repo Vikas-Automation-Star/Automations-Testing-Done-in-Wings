@@ -37,6 +37,7 @@ public class CashReceipts extends Transaction {
         selectAndValidateData(common.getData(dataFile, "transaction"),"xpath", "//Edit[@Name='Trans Currency *']");
         common.clickElement("xpath", "//Edit[@Name='Cash A/c Code']");
         common.clickElement("xpath", "//Edit[@Name='Cash Account *']");
+        Thread.sleep(1500);
         common.clickElement("xpath","//Edit[@Name='Discount Account']");
         selectOptionalMaster(common.getData(dataFile,"discountAccount"),"xpath","//Edit[@Name='Discount Account']");
         common.clickElement("xpath", "//Edit[@Name='Executive *']");
