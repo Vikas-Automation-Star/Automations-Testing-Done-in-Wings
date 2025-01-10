@@ -96,6 +96,7 @@ public abstract class Transaction {
         for (WebElement i : elementList) {
             i.click();
             i.sendKeys(common.getData(fileName, key), Keys.TAB);
+            break;
         }
     }
 
@@ -1634,6 +1635,7 @@ public abstract class Transaction {
             System.out.println(columns[i]);
         }
     }
+
 
     public void closeReport(String reportName) {
         common.clickElement("xpath", "//TabItem[@Name='" + reportName + "']/Button[@Name='Close']");
