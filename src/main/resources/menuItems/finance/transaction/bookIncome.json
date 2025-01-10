@@ -1,9 +1,10 @@
 {
-  "branch": "Hyderabad",
+  "branch": "AT_Branch 1_Reg",
   "transaction": "INR",
-  "accountCode": 153,
+  "accountCode": "AT_Cus_Reg_Inter",
   "invoiceType": "Regular",
-  "executive": "HYDExec",
-  "accountCode2": 567,
+  "adjustedAmount":200,
+  "executive": "AT_Executive 1",
+  "accountCode2": "AT_Credit Account",
   "close": "Book Incomes or Receivables"
 }
