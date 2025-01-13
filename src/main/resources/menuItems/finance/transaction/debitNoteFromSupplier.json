@@ -1,13 +1,13 @@
 {
-  "branch": "Hyderabad",
-  "executive": "HYDExec",
+  "branch": "AT_Branch 1_Reg",
+  "executive": "AT_Executive 1",
   "transaction": "INR",
-  "accountCode": 567,
-  "partyCode": 153,
+  "accountCode": "CA11",
+  "partyCode": "CRI1",
   "reason": "07-Others",
-  "voucherNo": "PV 2",
-  "supplierDate": 9,
-  "supplierBill": 36,
-  "voucherDate": 9,
+  "voucherNo": "PVAO 2",
+  "supplierDate": 10,
+  "adjustedAmount": 150,
+  "voucherDate": 10,
   "close": "Debit Note from Suppliers"
 }

@@ -40,7 +40,7 @@ public class CreditNoteFromSupplier extends Transaction {
         common.inputText("xpath", "//Edit[@Name='Voucher Date *']", common.getData(dataFile, "voucherDate"));
         common.clickElement("xpath", "//Edit[@Name='Party Code']");
         selectAndValidateData(common.getData(dataFile, "partyCode"), "xpath", "//Edit[@Name='Party Code']");
-        common.inputText("xpath", "//Edit[@Name='Supplier Bill No *']", common.getData(dataFile, "supplierBill"));
+        common.inputText("xpath", "//Edit[@Name='Supplier Bill No *']", String.valueOf(common.getRandom()));
         common.inputText("xpath", "//Edit[@Name='Supplier Bill Date *']", common.getData(dataFile, "supplierDate"));
 //            Thread.sleep(20000);
         common.clickElement("xpath", "//Edit[@Name='Reason For Issuing Document']/Button[@Name='Open']");
@@ -56,18 +56,18 @@ public class CreditNoteFromSupplier extends Transaction {
         common.clickElement("xpath", "//CheckBox[@Name='Inclusive Tax Row 0']");
         //f5-bills payable
         navigateToBillsPayablesTab();
-        finalAmount = super.billsReceivable("xpath", "//Table[@Name='BillsPayable']/*[starts-with(@Name,'Row')]", "//Edit[starts-with(@Name,'Towards VNo *')]", "//CheckBox[starts-with(@Name,'Adjust Row')]", "//Edit[starts-with(@Name,'Pending Amount * Row')]");
+        enterData("xpath","//Edit[@Name='Amount Adjusted * Row 0, Not sorted.']",dataFile,"adjustedAmount");
+        common.deleteInvalidRows();
         //navigate back to accounts and enter amount
         navigateToAccountsTab();
         List<WebElement> amount = common.findWebElements("xpath", "//Edit[@Name='Amount * Row 0, Not sorted.']");
         System.out.println("Size :" + amount.size());
         for (WebElement i : amount) {
             i.click();
-            i.sendKeys(String.valueOf(finalAmount), Keys.TAB);
+            i.sendKeys(common.getData(dataFile,"adjustedAmount"), Keys.TAB);
         }
-
-        //f8- summary
-        navigateToSummaryTab();
+        //check summary
+        common.clickElement("xpath", "//TabItem[contains(@Name,'Summary')]");
         //check net and payable amount --net>payable
         WebElement netAmount = common.findWebElement("xpath", "//Edit[@Name='Net Amount']");
         String net = netAmount.getText();
