@@ -23,7 +23,7 @@ public class TestCase_06 {
 
     @Test
     public void testCase06() throws IOException, ParseException, InterruptedException, AWTException {
-        InterStatesGSTIncludingTCSIncludingOCIncluding_06 tc = new InterStatesGSTIncludingTCSIncludingOCIncluding_06(driver, dataFile);
+        InterStatesGSTIncludingTCSIncludingOC_06 tc = new InterStatesGSTIncludingTCSIncludingOC_06(driver, dataFile);
         tc.interStatesGSTIncludingTCSIncludingOC_06();
     }
 
