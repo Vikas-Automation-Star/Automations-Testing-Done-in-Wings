@@ -64,7 +64,7 @@ public class InterStatesGSTIncludingTCSIncluding_04 extends Transaction {
         }
         netAmountTextt = Double.parseDouble(common.findWebElement("xpath", "//Edit[@AutomationId='NetAmount']").getText().replace(",", ""));
         System.out.println("Net Amount :- " + netAmountTextt);
-        tcsCalculations(dataFile, "code", "amount", "rowCount", netAmountTextt);
+        tcsCalculations(netAmountTextt);
         navigateToBillsPayablesTab();
         common.deleteInvalidRows();
         navigateToSummaryTab();

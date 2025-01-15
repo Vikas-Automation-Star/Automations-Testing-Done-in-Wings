@@ -178,25 +178,6 @@ public class InterStateIncludingGST_02 extends Transaction {
             common.clickElement("xpath", "//Header[@Name='GST Amount']");
             gstAmountClicked = true;
         }
-//            double expectedIGST = Double.parseDouble(decimalFormat.format((taxableValue*gstValue)/100));
-//            double actualIGST= Double.parseDouble((common.findWebElement("xpath","//Edit[@Name='IGST Row "+i+", Not sorted.']").getText().replace(",","")));
-//            System.out.println("Actual IGST: "+actualIGST);
-//            System.out.println("Expected IGST: "+expectedIGST);
-//            Assert.assertEquals(actualIGST,expectedIGST);
-//
-//            double expectedCESS = Double.parseDouble(decimalFormat.format((taxableValue*cessValue)/100));
-//            double actualCESS= Double.parseDouble((common.findWebElement("xpath","//Edit[@Name='CESS Row "+i+", Not sorted.']").getText().replace(",","")));
-//            System.out.println("Actual CESS: "+ actualCESS);
-//            System.out.println("Expected CESS: "+expectedCESS);
-//            Assert.assertEquals(actualCESS,expectedCESS);
-//
-//            double expectedGSTAmount= expectedIGST+expectedCESS;
-//            double actualGSTAmount= Double.parseDouble(common.findWebElement("xpath","//Edit[@Name='GST Amount Row "+i+", Not sorted.']").getText().replace(",",""));
-//            System.out.println("expected GST Amount: "+decimalFormat.format(expectedGSTAmount));
-//            System.out.println("Actual GST Amount: "+decimalFormat.format(actualGSTAmount));
-//            Assert.assertEquals(decimalFormat.format(actualGSTAmount),decimalFormat.format(expectedGSTAmount));
-
-        // Fetch the GST Trans type
         String gstTransType = common.findWebElement("xpath", "//Edit[@Name='GST Trans Type *']").getText().trim();
 
         if (gstTransType.equalsIgnoreCase("Inter State Sales to Registered Dealers")) {
@@ -245,85 +226,5 @@ public class InterStateIncludingGST_02 extends Transaction {
         } else {
             throw new IllegalArgumentException("Invalid GST Trans Type: " + gstTransType);
         }
-//            enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']",dataFile, "product");
-//            common.clickElement("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']");
-//            enterData("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']", dataFile, "ProductQuantity");
-////        common.clickElement("xpath", "//Edit[@Name='MRP Row 0, Not sorted.']");
-//            super.enterData("xpath", "//Edit[@Name='MRP Row 0, Not sorted.']", dataFile, "productMRP");
-//            common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']",500,0);
-////        common.clickElement("xpath", "//Edit[@Name='Minimum Rate * Row 0, Not sorted.']");
-//            super.enterData("xpath", "//Edit[@Name='Minimum Rate * Row 0, Not sorted.']", dataFile, "minumumRate");
-////        common.clickElement("xpath", "//Edit[@Name='Maximum Rate * Row 0, Not sorted.']");
-//            Thread.sleep(2500);
-//            super.enterData("xpath", "//Edit[@Name='Maximum Rate * Row 0, Not sorted.']", dataFile, "maximumRate");
-////        common.clickElement("xpath", "//Edit[@Name='Unit Rate Row 0, Not sorted.']");
-//            super.enterData("xpath", "//Edit[@Name='Unit Rate Row 0, Not sorted.']", dataFile, "unitRate");
-//
-//            // for multibatch
-//            super.enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 1, Not sorted.']",dataFile, "multiBatch");
-//            common.clickElement("xpath","//Button[@Name='Stock Details Row 1']");
-//            Thread.sleep(3000);
-//
-//            //click on stockDetails
-//            for (int i = 0; i < 9; i++) {
-//                robot.keyPress(KeyEvent.VK_TAB);
-//                robot.keyRelease(KeyEvent.VK_TAB);
-//            }
-//            robot.keyPress(KeyEvent.VK_SPACE);
-//            robot.keyRelease(KeyEvent.VK_SPACE);
-//
-//
-//
-//            common.clickElement("xpath","//Button[@Name='OK']");
-////        common.clickElement("xpath", "//Edit[@Name='MRP Row 1, Not sorted.']");
-//            super.enterData("xpath", "//Edit[@Name='MRP Row 1, Not sorted.']", dataFile, "productMRP");
-//            common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']",500,0);
-////        common.clickElement("xpath", "//Edit[@Name='Minimum Rate * Row 1, Not sorted.']");
-//            super.enterData("xpath", "//Edit[@Name='Minimum Rate * Row 1, Not sorted.']", dataFile, "minumumRate");
-////        common.clickElement("xpath", "//Edit[@Name='Maximum Rate * Row 1, Not sorted.']");
-//            super.enterData("xpath", "//Edit[@Name='Maximum Rate * Row 1, Not sorted.']", dataFile, "maximumRate");
-////        common.clickElement("xpath", "//Edit[@Name='Unit Rate Row 1, Not sorted.']");
-//            super.enterData("xpath", "//Edit[@Name='Unit Rate Row 1, Not sorted.']", dataFile, "unitRate");
-//            //for serialNo
-//            super.enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 2, Not sorted.']",dataFile, "serialBatch");
-//            common.clickElement("xpath","//Button[@Name='Stock Details Row 2']");
-//
-//            int numRowsToSelect = 15;
-//
-//            for (int i = 0; i < 15; i++) {  //select the loop based on the no.of item you want to select
-//                robot.keyPress(KeyEvent.VK_TAB);
-//                robot.keyRelease(KeyEvent.VK_TAB);
-//                robot.keyPress(KeyEvent.VK_SPACE);
-//                robot.keyRelease(KeyEvent.VK_SPACE);
-//                robot.keyPress(KeyEvent.VK_DOWN);
-//                robot.keyRelease(KeyEvent.VK_DOWN);
-//            }
-//            common.clickElement("xpath","//Button[@Name='OK']");
-//
-////        List<WebElement> rows = common.findWebElements("xpath", "//Table[@Name='Serial Numbers List']/*[@Name='Data Panel']/ListItem[contains(@Name,'Row')]");
-////        System.out.println("Row count: " + rows.size());
-////        int rowsToIterate = Math.min(numRowsToSelect, rows.size());
-////        for (int i = 0; i < rowsToIterate; i++) {
-////            WebElement row = rows.get(i); // Get the i-th row in the list
-////                WebElement checkBox = row.findElement(By.xpath("//Item[contains(@Name,'Select row')])"));
-////                checkBox.click();
-////            }
-////        common.clickElement("xpath", "//Edit[@Name='MRP Row 2, Not sorted.']");
-//            super.enterData("xpath", "//Edit[@Name='MRP Row 2, Not sorted.']", dataFile, "productMRP");
-//            common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']",500,0);
-////        common.clickElement("xpath", "//Edit[@Name='Minimum Rate * Row 2, Not sorted.']");
-//            super.enterData("xpath", "//Edit[@Name='Minimum Rate * Row 2, Not sorted.']", dataFile, "minumumRate");
-////        common.clickElement("xpath", "//Edit[@Name='Maximum Rate * Row 2, Not sorted.']");
-//            super.enterData("xpath", "//Edit[@Name='Maximum Rate * Row 2, Not sorted.']", dataFile, "maximumRate");
-////        common.clickElement("xpath", "//Edit[@Name='Unit Rate Row 2, Not sorted.']");
-//            super.enterData("xpath", "//Edit[@Name='Unit Rate Row 2, Not sorted.']", dataFile, "unitRate");
-
-        //verifying data not present in GST tabs
-
-
-        //save
-//        transactionSave();
-//        lastTransactionName();
     }
 }
-

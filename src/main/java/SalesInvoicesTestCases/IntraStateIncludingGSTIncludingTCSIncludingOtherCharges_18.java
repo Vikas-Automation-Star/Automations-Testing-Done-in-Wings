@@ -77,7 +77,7 @@ public class IntraStateIncludingGSTIncludingTCSIncludingOtherCharges_18 extends 
         //other charges calculations
         OtherChargesCalculations(dataFile, "accountCode", "amount", "otherChargesCount");
 
-        tcsCalculations(dataFile, "accountCode", "amount", "otherChargesCount", itemsNetValue);
+        tcsCalculations(itemsNetValue);
 
         //calculate TCS
         navigateToTCSTab();

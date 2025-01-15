@@ -65,7 +65,7 @@ public class InterStatesGSTExcludeTCSInclude_03 extends Transaction {
         validateIGSTAmountTabIsEmpty();
         validateCESSAmountTabIsEmpty();
         //Tcs calculations
-        tcsCalculations(dataFile, "code", "amount", "rowCount", netAmountTextt);
+        tcsCalculations(netAmountTextt);
         navigateToBillsPayablesTab();
         common.deleteInvalidRows();
         navigateToSummaryTab();

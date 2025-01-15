@@ -54,7 +54,7 @@ public class InterStatesGSTExcludingCDIncludingOCIncluding_08 extends Transactio
         }
         double itemsNetValue = Double.parseDouble(common.findWebElement("xpath", "//Edit[@AutomationId='NetAmount']").getText().replace(",", ""));
         System.out.println("Items NetAmount :- " + itemsNetValue);
-        navigateToChargesAndDeductionsTab();
+//        navigateToChargesAndDeductionsTab();
         chargesAndDeductionsCalculations(dataFile, "chargesOrDeductions", "chargesOrDeductionsCode", "amount", "rowCount");
 //        OtherChargesWithoutGST(dataFile,"otherChargesCode","amount","HSNCode","amount");
         OtherChargesCalculations(dataFile, "otherChargesCode", "amount", "rowCount");
