@@ -13,7 +13,7 @@ import java.io.IOException;
 public class TestCase_07 {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String dataFile = "./src/main/resources/TestCasesData/interSatesGSTIncludingTCSIncludingOCIncludingCDIncluding_07.json";
+    String dataFile = "./src/main/resources/TestCasesData/testCase07.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {

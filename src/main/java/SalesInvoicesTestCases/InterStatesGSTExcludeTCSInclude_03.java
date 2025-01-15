@@ -33,8 +33,8 @@ public class InterStatesGSTExcludeTCSInclude_03 extends Transaction {
         common.clickElement("xpath", "//Edit[@Name='Location *']");
         selectAndValidateData(common.getData(dataFile, "location"), "xpath", "//Edit[@Name='Location *']");
         enterInput("xpath", "//Edit[@Name='Cash/Party Code']", dataFile, "partyCode");
-//        common.clickElement("xpath", "//Edit[@Name='Cash/Party Code']");
-//        selectAndValidateDataNew(common.getData(dataFile, "partyCode"), "xpath", "//Edit[@Name='Cash/Party Code']");
+        common.clickElement("xpath", "//Edit[@Name='Cash/Party Code']");
+        selectAndValidateDataNew(common.getData(dataFile, "partyCode"), "xpath", "//Edit[@Name='Cash/Party Code']");
         Thread.sleep(2500);
         gstTransactionType("Registered Dealers");
         Thread.sleep(1000);
