@@ -30,13 +30,15 @@ public class InterStateInclusiveSalesPriceListGSTCalculations_11 extends Transac
     public void interStateExclusiveSalesPriceListGSTCalculations_11() throws InterruptedException, IOException, ParseException, AWTException {
         navigateToSalesInvoiceMenu();
         Thread.sleep(1000);
-        lastTransactionName();
+        String oldVoucherID =oldTTransactionID();
+        System.out.println("oldID: "+ oldVoucherID);
         //branch selection
 //        common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
-        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
+//        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
         selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Location *']");
+        selectAndValidateData(common.getData(dataFile,"location"),"xpath","//Edit[@Name='Location *']" );
         common.clickElement("xpath", "//Edit[@Name='Cash/Party Code']");
         selectAndValidateDataNew(common.getData(dataFile, "partyCode"), "xpath", "//Edit[@Name='Cash/Party Code']");
         Thread.sleep(2500);
@@ -60,21 +62,35 @@ public class InterStateInclusiveSalesPriceListGSTCalculations_11 extends Transac
         for (int i = 0; i < Integer.parseInt(common.getData(dataFile, "productCount")); i++) {
             addProduct(i);
         }
+        validateCGSTAmountTabIsEmpty();
+        validateSGSTAmountTabIsEmpty();
         validateIGSTAmountTabIsNotEmpty();
         validateCESSAmountTabIsNotEmpty();
         //verify all the fields in summary are fetching data
-        navigateToOtherInfoTab();
-        for (int j = 0; j < 4; j++) {
-            Robot robot = new Robot();
-            robot.keyPress(KeyEvent.VK_RIGHT);
-            robot.keyRelease(KeyEvent.VK_RIGHT);
-        }
+        navigateToBillsPayablesTab();
+        common.deleteInvalidRows();
+        navigateToSummaryTab();
+        Thread.sleep(2000);
         quantityPresentInSummary();
         grossAmountPresentInSummary();
+        grossMinusDiscountPresentInSummary();
         netAmountPresentInSummary();
         totalValuePresentInSummary();
         totalValueInCompanyCurrenyPresentInSummary();
         receivableAmountPresentInSummary();
+        transactionSave();
+        String newVoucherID =newTransactionID(oldVoucherID).replace(" ","");
+        System.out.println("newID: "+newVoucherID);
+        Assert.assertNotEquals(newVoucherID, oldVoucherID,"both ID's should not Equal when we perform transaction");
+        Thread.sleep(1000);
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Invoices");
+        common.clickElement("name", "Sales Book");
+        Thread.sleep(1000);
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
+        Thread.sleep(1500);
+        verifyReport(newVoucherID,dataFile);
+        closeReport("Sales Book");
     }
 
     public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {
@@ -99,7 +115,7 @@ public class InterStateInclusiveSalesPriceListGSTCalculations_11 extends Transac
         double expectedMrpAmount = quantity * mrp;
         System.out.println("actual:- " + actualMrpAmount + " -expectedMrp-" + expectedMrpAmount);
         Assert.assertEquals(actualMrpAmount, expectedMrpAmount, "Mismatch in MRP Amount");
-        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 400, 0);
+        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 800, 0);
 
         unitRate = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='Unit Rate Row " + i + ", Not sorted.']").getText());
         System.out.println("unitRate:-" + unitRate);
@@ -131,7 +147,6 @@ public class InterStateInclusiveSalesPriceListGSTCalculations_11 extends Transac
             common.clickElement("xpath", "//Header[@Name='GST Amount']");
             gstAmountClicked = true;
         }
-
 
         String gstTransType = common.findWebElement("xpath", "//Edit[@Name='GST Trans Type *']").getText().trim();
         if (gstTransType.equalsIgnoreCase("Inter State Sales to Registered Dealers")) {

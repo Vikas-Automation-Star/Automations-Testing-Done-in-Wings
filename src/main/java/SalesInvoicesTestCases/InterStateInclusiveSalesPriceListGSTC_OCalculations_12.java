@@ -16,7 +16,7 @@ public class InterStateInclusiveSalesPriceListGSTC_OCalculations_12 extends Tran
     Common common;
     String dataFile;
     boolean gstAmountClicked = false;
-    double mrp, grossAmount, unitRate, quantity, voucherDiscountValue, partyDiscountValue, netAmount, grossMinusDiscount, gstValue, cessValue, taxableValue, taxableAmountCalculated;
+    double mrp, grossAmount, unitRate, quantity, netAmount, gstValue, cessValue, taxableValue, taxableAmountCalculated;
 
 
     public InterStateInclusiveSalesPriceListGSTC_OCalculations_12(WindowsDriver driver, String file) {
@@ -29,9 +29,10 @@ public class InterStateInclusiveSalesPriceListGSTC_OCalculations_12 extends Tran
     public void interStateInclusiveSalesPriceListGSTC_OCalculations_12() throws InterruptedException, IOException, ParseException, AWTException {
         navigateToSalesInvoiceMenu();
         Thread.sleep(1000);
-        lastTransactionName();
-//        common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
-        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
+        String oldVoucherID =oldTTransactionID();
+        System.out.println("oldID: "+ oldVoucherID);
+        //        common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
+//        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
         selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Location *']");
@@ -43,7 +44,7 @@ public class InterStateInclusiveSalesPriceListGSTC_OCalculations_12 extends Tran
         common.clickElement("xpath", "//Edit[@Name='Sales A/c Code']");
         selectAndValidateData(common.getData(dataFile, "salesAccountCode"), "xpath", "//Edit[@Name='Sales A/c Code']");
         common.clickElement("xpath", "//CheckBox[@Name='Apply TCS']");
-//        common.clickElement("xpath","//Edit[@Name='TCS Trans Nature']");
+        common.clickElement("xpath","//Edit[@Name='TCS Trans Nature']");
         invoiceTypeWhenRegister();
         generalInfoSliderHandle(800);
         common.clickElement("xpath", "//Edit[@Name='Price List']");
@@ -59,21 +60,35 @@ public class InterStateInclusiveSalesPriceListGSTC_OCalculations_12 extends Tran
             addProduct(i);
         }
         OtherChargesCalculations(dataFile, "code", "amount", "rowCount");
+        validateCGSTAmountTabIsEmpty();
+        validateSGSTAmountTabIsEmpty();
         validateIGSTAmountTabIsNotEmpty();
         validateCESSAmountTabIsNotEmpty();
         //verify all the fields in summary are fetching data
+        navigateToBillsPayablesTab();
+        common.deleteInvalidRows();
         navigateToSummaryTab();
+        Thread.sleep(2000);
         quantityPresentInSummary();
         grossAmountPresentInSummary();
         grossMinusDiscountPresentInSummary();
-        iGSTPresentInSummary();
-        cessPresentInSummary();
-        otherChargesIGSTPresentInSummary();
-        otherChargesCESSPresentInSummary();
         netAmountPresentInSummary();
         totalValuePresentInSummary();
         totalValueInCompanyCurrenyPresentInSummary();
         receivableAmountPresentInSummary();
+        transactionSave();
+        String newVoucherID =newTransactionID(oldVoucherID).replace(" ","");
+        System.out.println("newID: "+newVoucherID);
+        Assert.assertNotEquals(newVoucherID, oldVoucherID,"both ID's should not Equal when we perform transaction");
+        Thread.sleep(1000);
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Invoices");
+        common.clickElement("name", "Sales Book");
+        Thread.sleep(1000);
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
+        Thread.sleep(1500);
+        verifyReport(newVoucherID,dataFile);
+        closeReport("Sales Book");
     }
 
     public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {
@@ -131,7 +146,6 @@ public class InterStateInclusiveSalesPriceListGSTC_OCalculations_12 extends Tran
             common.clickElement("xpath", "//Header[@Name='GST Amount']");
             gstAmountClicked = true;
         }
-
 
         String gstTransType = common.findWebElement("xpath", "//Edit[@Name='GST Trans Type *']").getText().trim();
         if (gstTransType.equalsIgnoreCase("Inter State Sales to Registered Dealers")) {

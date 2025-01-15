@@ -17,7 +17,7 @@ public class InterStateExclusiveSalesPriceLIstGSTCalculations_10 extends Transac
     Common common;
     String dataFile;
     boolean gstAmountClicked = false;
-    double mrp, grossAmount, unitRate, quantity, voucherDiscountValue, partyDiscountValue, netAmount, grossMinusDiscount, gstValue, cessValue, taxableValue, taxableAmountCalculated;
+    double mrp, grossAmount, unitRate, quantity, netAmount,gstValue, cessValue, taxableValue, taxableAmountCalculated;
 
 
     public InterStateExclusiveSalesPriceLIstGSTCalculations_10(WindowsDriver driver, String file) {
@@ -30,13 +30,15 @@ public class InterStateExclusiveSalesPriceLIstGSTCalculations_10 extends Transac
     public void interStateExclusiveSalesPriceLIstGSTCalculations_10() throws InterruptedException, IOException, ParseException, AWTException {
         navigateToSalesInvoiceMenu();
         Thread.sleep(1000);
-        lastTransactionName();
+        String oldVoucherID =oldTTransactionID();
+        System.out.println("oldID: "+ oldVoucherID);
         //branch selection
-//        common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
-        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
+//common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
+//        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
         selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Location *']");
+        selectAndValidateData(common.getData(dataFile,"location"),"xpath","//Edit[@Name='Location *']" );
         common.clickElement("xpath", "//Edit[@Name='Cash/Party Code']");
         selectAndValidateDataNew(common.getData(dataFile, "partyCode"), "xpath", "//Edit[@Name='Cash/Party Code']");
         Thread.sleep(2500);
@@ -44,7 +46,7 @@ public class InterStateExclusiveSalesPriceLIstGSTCalculations_10 extends Transac
         Thread.sleep(1000);
         common.clickElement("xpath", "//Edit[@Name='Sales A/c Code']");
         selectAndValidateData(common.getData(dataFile, "salesAccountCode"), "xpath", "//Edit[@Name='Sales A/c Code']");
-//        common.clickElement("xpath","//CheckBox[@Name='Apply TCS']");
+        common.clickElement("xpath","//CheckBox[@Name='Apply TCS']");
 //        common.clickElement("xpath","//Edit[@Name='TCS Trans Nature']");
         invoiceTypeWhenRegister();
         common.clickElement("xpath", "//Edit[@Name='Price List']");
@@ -61,24 +63,36 @@ public class InterStateExclusiveSalesPriceLIstGSTCalculations_10 extends Transac
             addProduct(i);
         }
         //calculate TCS
-        navigateToTCSTab();
         validateCGSTAmountTabIsEmpty();
         validateSGSTAmountTabIsEmpty();
         validateIGSTAmountTabIsNotEmpty();
         validateCESSAmountTabIsNotEmpty();
         //verify all the fields in summary are fetching data
         navigateToOtherInfoTab();
-        for (int j = 0; j < 4; j++) {
-            Robot robot = new Robot();
-            robot.keyPress(KeyEvent.VK_RIGHT);
-            robot.keyRelease(KeyEvent.VK_RIGHT);
-        }
+        navigateToBillsPayablesTab();
+        common.deleteInvalidRows();
+        navigateToSummaryTab();
+        Thread.sleep(2000);
         quantityPresentInSummary();
         grossAmountPresentInSummary();
+        grossMinusDiscountPresentInSummary();
         netAmountPresentInSummary();
         totalValuePresentInSummary();
         totalValueInCompanyCurrenyPresentInSummary();
         receivableAmountPresentInSummary();
+        transactionSave();
+        String newVoucherID =newTransactionID(oldVoucherID).replace(" ","");
+        System.out.println("newID: "+newVoucherID);
+        Assert.assertNotEquals(newVoucherID, oldVoucherID,"both ID's should not Equal when we perform transaction");
+        Thread.sleep(1000);
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Invoices");
+        common.clickElement("name", "Sales Book");
+        Thread.sleep(1000);
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
+        Thread.sleep(1500);
+        verifyReport(newVoucherID,dataFile);
+        closeReport("Sales Book");
     }
 
     public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {
@@ -103,7 +117,7 @@ public class InterStateExclusiveSalesPriceLIstGSTCalculations_10 extends Transac
         double expectedMrpAmount = quantity * mrp;
         System.out.println("actual:- " + actualMrpAmount + " -expectedMrp-" + expectedMrpAmount);
         Assert.assertEquals(actualMrpAmount, expectedMrpAmount, "Mismatch in MRP Amount");
-        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 400, 0);
+        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 800, 0);
 
         unitRate = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='Unit Rate Row " + i + ", Not sorted.']").getText());
         System.out.println("unitRate:-" + unitRate);
@@ -118,6 +132,11 @@ public class InterStateExclusiveSalesPriceLIstGSTCalculations_10 extends Transac
         Assert.assertEquals(grossAmount, grossExpected, "Mismatch in Gross Amount");
         enterData("xpath", "//Edit[@Name='HSN Row " + i + ", Not sorted.']", dataFile, "HSNCode");
 
+        if (!gstAmountClicked) {
+            common.clickElement("xpath", "//Header[@Name='GST Amount']");
+            gstAmountClicked = true;
+        }
+
         //GST
         WebElement gst = common.findWebElement("xpath", "//Edit[@Name='GST Product Category Row " + i + ", Not sorted.']");
         gstValue = StringUtil.extractNumber(gst.getText());
@@ -130,11 +149,6 @@ public class InterStateExclusiveSalesPriceLIstGSTCalculations_10 extends Transac
         System.out.println("total:-" + totalValue);
 
         DecimalFormat decimalFormat = new DecimalFormat("#.###");
-
-        if (!gstAmountClicked) {
-            common.clickElement("xpath", "//Header[@Name='GST Amount']");
-            gstAmountClicked = true;
-        }
 
         if (common.getData(dataFile, "priceList").contains("Inclusive")) {
             netAmount = Double.parseDouble((common.findWebElement("xpath", "//Edit[@Name='Net Amount Row " + i + ", Not sorted.']").getText().replace(",", "")));
@@ -199,6 +213,35 @@ public class InterStateExclusiveSalesPriceLIstGSTCalculations_10 extends Transac
 
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //discount
