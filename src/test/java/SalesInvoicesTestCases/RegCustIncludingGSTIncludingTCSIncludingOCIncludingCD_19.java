@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.io.IOException;
 
-public class TestCase_19 {
+public class RegCustIncludingGSTIncludingTCSIncludingOCIncludingCD_19 {
 
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();

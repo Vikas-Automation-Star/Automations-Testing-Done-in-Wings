@@ -7,7 +7,6 @@ import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
@@ -30,22 +29,21 @@ public class IntraStateIncludingGSTIncludingTCSIncludingOCIncludingCD_19 extends
     public void testCase19() throws InterruptedException, IOException, ParseException, AWTException {
         navigateToSalesInvoiceMenu();
         Thread.sleep(1000);
-//            lastTransactionName();
-        oldTTransaction();
+        String oldVoucherID =oldTTransactionID();
+        System.out.println("oldID: "+ oldVoucherID);
         //branch selection
         common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
         selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
         selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Location *']");
-        common.clickElement("xpath", "//Edit[@Name='Cash/Party Code']");
-        selectAndValidateDataNew(common.getData(dataFile, "partyCode"), "xpath", "//Edit[@Name='Cash/Party Code']");
+        enterInput("xpath", "//Edit[@Name='Cash/Party Code']",dataFile, "partyCode");
         Thread.sleep(2500);
         gstTransactionType("Registered Dealers");
         Thread.sleep(1000);
         common.clickElement("xpath", "//Edit[@Name='Sales A/c Code']");
         selectAndValidateData(common.getData(dataFile, "salesAccountCode"), "xpath", "//Edit[@Name='Sales A/c Code']");
-        common.clickElement("xpath", "//CheckBox[@Name='Apply TCS']");
+//        common.clickElement("xpath", "//CheckBox[@Name='Apply TCS']");
         common.clickElement("xpath", "//Edit[@Name='TCS Trans Nature']");
 
         common.inputText("xpath", "//Edit[@Name='Invoice Type']", common.getData(dataFile, "invoice"));
@@ -73,15 +71,13 @@ public class IntraStateIncludingGSTIncludingTCSIncludingOCIncludingCD_19 extends
         }
         double itemsNetValue = Double.parseDouble(common.findWebElement("xpath", "//Edit[@AutomationId='NetAmount']").getText().replace(",", ""));
 
-        chargesAndDeductionsCalculations(dataFile, "type", "accountCode", "amount", "rowCount");
-
+        chargesAndDeductionsCalculations(dataFile, "type", "deductionsAcc", "amount", "deductionsrowCount");
         //other charges calculations
-        OtherChargesCalculations(dataFile, "accountCode", "amount", "otherChargesCount");
-
+        OtherChargesCalculations(dataFile, "otherChargesAcc", "amount", "otherChargesCount");
         tcsCalculations(itemsNetValue);
 
-        //calculate TCS
-        navigateToTCSTab();
+        navigateToBillsPayablesTab();
+        common.deleteInvalidRows();
 
         validateCGSTAmountTabIsNotEmpty();
         validateSGSTAmountTabIsNotEmpty();
@@ -103,7 +99,17 @@ public class IntraStateIncludingGSTIncludingTCSIncludingOCIncludingCD_19 extends
 
         //save
         transactionSave();
-        newTransaction();
+        String newVoucherID =newTransactionID(oldVoucherID).replace(" ","");
+        System.out.println("newID: "+newVoucherID);
+        Assert.assertNotEquals(newVoucherID, oldVoucherID,"No New Transactions found");
+        Thread.sleep(1000);
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Invoices");
+        common.clickElement("name", "Sales Book");
+        Thread.sleep(1000);
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
+        Thread.sleep(15000);
+        verifyReport(newVoucherID,dataFile);
     }
 
     public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {
@@ -143,14 +149,14 @@ public class IntraStateIncludingGSTIncludingTCSIncludingOCIncludingCD_19 extends
         Assert.assertEquals(grossAmount, grossExpected, "Mismatch in Gross Amount");
 
         //discount
-        super.enterData("xpath", "//Edit[@Name='Voucher Disc % Row " + i + ", Not sorted.']", dataFile, "voucherDiscount" + i);
+        enterData("xpath", "//Edit[@Name='Voucher Disc % Row " + i + ", Not sorted.']", dataFile, "voucherDiscount" + i);
 
         WebElement voucher = common.findWebElement("xpath", "//Edit[@Name='Voucher Disc Row " + i + ", Not sorted.']");
         String voucherText = voucher.getText().replace(",", "");
         voucherDiscountValue = Double.parseDouble(voucherText);
         System.out.println("voucher Amount Value:- " + voucherDiscountValue);
 
-        super.enterData("xpath", "//Edit[@Name='Party Disc % Row " + i + ", Not sorted.']", dataFile, "partyDiscount" + i);
+        enterData("xpath", "//Edit[@Name='Party Disc % Row " + i + ", Not sorted.']", dataFile, "partyDiscount" + i);
 
         WebElement partyDisc = common.findWebElement("xpath", "//Edit[@Name='Party Disc Row " + i + ", Not sorted.']");
         String partyDiscText = partyDisc.getText().replace(",", "");

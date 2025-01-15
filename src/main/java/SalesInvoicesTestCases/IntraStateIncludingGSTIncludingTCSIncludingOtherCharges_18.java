@@ -7,7 +7,6 @@ import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
@@ -31,8 +30,8 @@ public class IntraStateIncludingGSTIncludingTCSIncludingOtherCharges_18 extends 
     public void testCase18() throws InterruptedException, IOException, ParseException, AWTException {
         navigateToSalesInvoiceMenu();
         Thread.sleep(1000);
-//            lastTransactionName();
-        oldTTransaction();
+        String oldVoucherID =oldTTransactionID();
+        System.out.println("oldID: "+ oldVoucherID);
         //branch selection
         common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
         selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
@@ -75,12 +74,14 @@ public class IntraStateIncludingGSTIncludingTCSIncludingOtherCharges_18 extends 
         double itemsNetValue = Double.parseDouble(common.findWebElement("xpath", "//Edit[@AutomationId='NetAmount']").getText().replace(",", ""));
 
         //other charges calculations
-        OtherChargesCalculations(dataFile, "accountCode", "amount", "otherChargesCount");
-
-        tcsCalculations(itemsNetValue);
+        OtherChargesCalculations(dataFile, "chargesAccCode", "amount", "otherChargesCount");
 
         //calculate TCS
-        navigateToTCSTab();
+        tcsCalculations(itemsNetValue);
+
+        navigateToBillsPayablesTab();
+        common.deleteInvalidRows();
+
 
         validateCGSTAmountTabIsNotEmpty();
         validateSGSTAmountTabIsNotEmpty();
@@ -102,8 +103,17 @@ public class IntraStateIncludingGSTIncludingTCSIncludingOtherCharges_18 extends 
 
         //save
         transactionSave();
-        newTransaction();
-//            lastTransactionName();
+        String newVoucherID =newTransactionID(oldVoucherID).replace(" ","");
+        System.out.println("newID: "+newVoucherID);
+        Assert.assertNotEquals(newVoucherID, oldVoucherID,"No New Transactions found");
+        Thread.sleep(1000);
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Invoices");
+        common.clickElement("name", "Sales Book");
+        Thread.sleep(1000);
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
+        Thread.sleep(15000);
+        verifyReport(newVoucherID,dataFile);
     }
 
 
@@ -144,14 +154,14 @@ public class IntraStateIncludingGSTIncludingTCSIncludingOtherCharges_18 extends 
         Assert.assertEquals(grossAmount, grossExpected, "Mismatch in Gross Amount");
 
         //discount
-        super.enterData("xpath", "//Edit[@Name='Voucher Disc % Row " + i + ", Not sorted.']", dataFile, "voucherDiscount" + i);
+        enterData("xpath", "//Edit[@Name='Voucher Disc % Row " + i + ", Not sorted.']", dataFile, "voucherDiscount" + i);
 
         WebElement voucher = common.findWebElement("xpath", "//Edit[@Name='Voucher Disc Row " + i + ", Not sorted.']");
         String voucherText = voucher.getText().replace(",", "");
         voucherDiscountValue = Double.parseDouble(voucherText);
         System.out.println("voucher Amount Value:- " + voucherDiscountValue);
 
-        super.enterData("xpath", "//Edit[@Name='Party Disc % Row " + i + ", Not sorted.']", dataFile, "partyDiscount" + i);
+        enterData("xpath", "//Edit[@Name='Party Disc % Row " + i + ", Not sorted.']", dataFile, "partyDiscount" + i);
 
         WebElement partyDisc = common.findWebElement("xpath", "//Edit[@Name='Party Disc Row " + i + ", Not sorted.']");
         String partyDiscText = partyDisc.getText().replace(",", "");
@@ -161,7 +171,6 @@ public class IntraStateIncludingGSTIncludingTCSIncludingOtherCharges_18 extends 
         enterDataAndValidate("xpath", "//Edit[@Name='HSN Row " + i + ", Not sorted.']", dataFile, "HSNCode");
 
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 400, 0);
-
 
         grossMinusDiscount = (grossAmount - (voucherDiscountValue + partyDiscountValue));
         System.out.println("gross-disc is: " + grossMinusDiscount);
@@ -244,6 +253,4 @@ public class IntraStateIncludingGSTIncludingTCSIncludingOtherCharges_18 extends 
             throw new IllegalArgumentException("Invalid GST Trans Type: " + gstTransType);
         }
     }
-
-
 }

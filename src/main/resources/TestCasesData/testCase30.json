@@ -10,6 +10,8 @@
   "type": "Charges",
   "amount": 10,
   "rowCount": 2,
+  "HSNCode": "AT_HSN Code 2",
+  "TaxType": "Exclusive",
 
   "salesAccountCode": "SA1",
   "productCount": 3,
