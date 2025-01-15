@@ -68,7 +68,7 @@ public class IntraStateIncludingGSTIncludingTCS_16 extends Transaction {
             addProduct(i);
         }
         double itemsNetValue = Double.parseDouble(common.findWebElement("xpath", "//Edit[@AutomationId='NetAmount']").getText().replace(",", ""));
-        tcsCalculations(dataFile, "accountCode", "amount", "otherChargesCount", itemsNetValue);
+        tcsCalculations(itemsNetValue);
 
         validateCGSTAmountTabIsNotEmpty();
         validateSGSTAmountTabIsNotEmpty();

@@ -24,6 +24,6 @@ public class OpeningStockReprt extends Transaction {
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(2500);
 //        super.bulkVerifyReport("OS 6");
-        super.closeReport("Opening Stock");
+//        super.closeReport("Opening Stock");
     }
 }

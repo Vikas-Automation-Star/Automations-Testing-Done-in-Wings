@@ -36,6 +36,12 @@ public class OpeningStock extends Transaction {
         selectAndValidateData(common.getData(dataFile, "executive"), "xpath", "//Edit[@Name='Executive *']");
         //F3-Items
         enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']", dataFile, "productCode");
+//        System.out.println("attribute" + common.findWebElement("xpath","//Edit[@Name='Storage Bin * Row 0, Not sorted.']").getAttribute("value"));
+//        System.out.println("text" + common.findWebElement("xpath","//Edit[@Name='Storage Bin * Row 0, Not sorted.']").getText());
+
+        if(common.findWebElement("xpath","//Edit[@Name='Storage Bin * Row 0, Not sorted.']").getText().equals("(null)")){
+            enterInput("xpath","//Edit[@Name='Storage Bin * Row 0, Not sorted.']",dataFile,"storageBin");
+        }
         enterData("xpath", "//Edit[@Name='Quantity * Row 0, Not sorted.']", dataFile, "Quantity");
         common.clickElement("xpath", "//CheckBox[@Name='Apply Price List Row 0']");
         //save

@@ -64,12 +64,11 @@ public class InterSatesGSTIncludingTCSIncludingOCIncludingCDIncluding_07 extends
         for (int i = 0; i < Integer.parseInt(common.getData(dataFile, "productCount")); i++) {
             addProduct(i);
         }
-        navigateToChargesAndDeductionsTab();
         chargesAndDeductionsCalculations(dataFile, "chargesOrDeductions", "chargesOrDeductionsCode", "amount", "rowCount");
         itemValue = Double.parseDouble(common.findWebElement("xpath", "//Edit[@AutomationId='NetAmount']").getText().replace(",", ""));
         System.out.println("Net Amount :- " + itemValue);
 
-        tcsCalculations(dataFile, "otherChargesCode", "amount", "iterations", itemValue);
+        tcsCalculations(itemValue);
 
         //calculating TCS
 //        DecimalFormat decimalFormat=new DecimalFormat("#.###");

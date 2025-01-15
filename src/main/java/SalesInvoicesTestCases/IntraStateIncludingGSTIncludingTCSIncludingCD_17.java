@@ -74,10 +74,9 @@ public class IntraStateIncludingGSTIncludingTCSIncludingCD_17 extends Transactio
         }
         double itemsNetValue = Double.parseDouble(common.findWebElement("xpath", "//Edit[@AutomationId='NetAmount']").getText().replace(",", ""));
 
-        navigateToChargesAndDeductionsTab();
         chargesAndDeductionsCalculations(dataFile, "type", "accountCode", "amount", "rowCount");
 
-        tcsCalculations(dataFile, "accountCode", "amount", "otherChargesCount", itemsNetValue);
+        tcsCalculations(itemsNetValue);
 
         //calculate TCS
         navigateToTCSTab();

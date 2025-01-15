@@ -61,7 +61,7 @@ public class InterStatesGSTIncludingTCSIncludingOC_06 extends Transaction {
         }
         netAmountTextt = Double.parseDouble(common.findWebElement("xpath", "//Edit[@AutomationId='NetAmount']").getText().replace(",", ""));
         System.out.println("Net Amount :- " + netAmountTextt);
-        tcsCalculations(dataFile, "code", "amount", "rowCount", netAmountTextt);
+        tcsCalculations(netAmountTextt);
 
         //calculating TCS
 //        DecimalFormat decimalFormat=new DecimalFormat("#.###");

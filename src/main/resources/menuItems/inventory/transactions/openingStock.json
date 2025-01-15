@@ -6,6 +6,7 @@
   "stockAsset": "AT_opening Stock[assets] Acc 1",
   "stockAccount": "AT_Opening Stock[Expences]Acc 1",
   "productCode": "AT_Product 1",
-  "Quantity": "500",
+  "Quantity": 500,
+  "storageBin": "AT_Branch 1_Location 1 Default Bin",
   "close": "Opening Stock"
 }
