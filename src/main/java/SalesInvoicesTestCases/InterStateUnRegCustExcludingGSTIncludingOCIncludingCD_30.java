@@ -36,7 +36,7 @@ public class InterStateUnRegCustExcludingGSTIncludingOCIncludingCD_30 extends Tr
 //        common.clickElement("xpath", "//Edit[@Name='Cash/Party Code']");
             enterInput("xpath", "//Edit[@Name='Cash/Party Code']",dataFile, "partyCode");
             Thread.sleep(2500);
-            gstTransactionType("Registered Dealers");
+            gstTransactionType("Unregistered Dealers");
             Thread.sleep(1000);
             common.clickElement("xpath", "//Edit[@Name='Sales A/c Code']");
             selectAndValidateData(common.getData(dataFile, "salesAccountCode"), "xpath", "//Edit[@Name='Sales A/c Code']");
