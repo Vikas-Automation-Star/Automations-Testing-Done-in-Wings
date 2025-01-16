@@ -151,9 +151,7 @@ public class InterStateUnRegCustExcludingGST_23 extends Transaction {
             common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 450, 0);
 
             grossMinusDiscount = (grossAmount - (voucherDiscountValue + partyDiscountValue));
-
             System.out.println("gross-disc is: " + grossMinusDiscount);
-
             WebElement net = common.findWebElement("xpath", "//Edit[@Name='Net Amount Row " + i + ", Not sorted.']");
             String netAmountText = net.getText().replace(",", "");
             netAmount = Double.parseDouble(netAmountText);

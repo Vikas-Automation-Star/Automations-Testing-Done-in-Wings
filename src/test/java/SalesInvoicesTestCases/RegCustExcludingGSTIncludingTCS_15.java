@@ -10,10 +10,10 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.io.IOException;
 
-public class TestCase_13 {
+public class RegCustExcludingGSTIncludingTCS_15 {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String dataFile = "./src/main/resources/TestCasesData/testCase13.json";
+    String dataFile = "./src/main/resources/TestCasesData/testCase15.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, ParseException, InterruptedException {
@@ -22,9 +22,9 @@ public class TestCase_13 {
     }
 
     @Test
-    public void testCase13() throws IOException, ParseException, InterruptedException, AWTException {
-        IntraStateExcludingGST_13 tc13 = new IntraStateExcludingGST_13(driver, dataFile);
-        tc13.testCase13();
+    public void testCase15() throws IOException, ParseException, InterruptedException, AWTException {
+        IntraStateExcludingGSTIncludingTCS_15 excludingGSTIncludingTCS = new IntraStateExcludingGSTIncludingTCS_15(driver, dataFile);
+        excludingGSTIncludingTCS.testCase15();
     }
 
     @AfterTest

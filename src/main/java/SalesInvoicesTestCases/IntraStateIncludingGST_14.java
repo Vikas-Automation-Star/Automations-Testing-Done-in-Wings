@@ -30,20 +30,21 @@ public class IntraStateIncludingGST_14 extends Transaction {
     public void testCase14() throws InterruptedException, IOException, ParseException, AWTException {
         navigateToSalesInvoiceMenu();
         Thread.sleep(1000);
-        lastTransactionName();
+        String oldVoucherID =oldTTransactionID();
+        System.out.println("oldID: "+ oldVoucherID);
         //branch selection
         common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
         selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
         selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Location *']");
-        common.clickElement("xpath", "//Edit[@Name='Cash/Party Code']");
-        selectAndValidateDataNew(common.getData(dataFile, "partyCode"), "xpath", "//Edit[@Name='Cash/Party Code']");
+        enterInput("xpath", "//Edit[@Name='Cash/Party Code']",dataFile, "partyCode");
         Thread.sleep(2500);
         gstTransactionType("Registered Dealers");
         Thread.sleep(1000);
         common.clickElement("xpath", "//Edit[@Name='Sales A/c Code']");
         selectAndValidateData(common.getData(dataFile, "salesAccountCode"), "xpath", "//Edit[@Name='Sales A/c Code']");
+        common.clickElement("xpath", "//CheckBox[@Name='Apply TCS']");
 
         common.inputText("xpath", "//Edit[@Name='Invoice Type']", common.getData(dataFile, "invoice"));
         Thread.sleep(1000);
@@ -73,9 +74,11 @@ public class IntraStateIncludingGST_14 extends Transaction {
         validateCESSAmountTabIsNotEmpty();
 
         navigateToBatchDetailsTab();
+        navigateToBillsPayablesTab();
+        common.deleteInvalidRows();
 
-        navigateToOtherInfoTab();
-        for (int j = 0; j < 4; j++) {
+        navigateToPaytymTab();
+        for (int j = 0; j < 6; j++) {
             robot.keyPress(KeyEvent.VK_RIGHT);
             robot.keyRelease(KeyEvent.VK_RIGHT);
         }
@@ -86,6 +89,19 @@ public class IntraStateIncludingGST_14 extends Transaction {
         totalValuePresentInSummary();
         totalValueInCompanyCurrenyPresentInSummary();
         receivableAmountPresentInSummary();
+        //save
+        transactionSave();
+        String newVoucherID =newTransactionID(oldVoucherID).replace(" ","");
+        System.out.println("newID: "+newVoucherID);
+        Assert.assertNotEquals(newVoucherID, oldVoucherID,"No New Transactions found");
+        Thread.sleep(1000);
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Invoices");
+        common.clickElement("name", "Sales Book");
+        Thread.sleep(1000);
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
+        Thread.sleep(15000);
+        verifyReport(newVoucherID,dataFile);
     }
 
     public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {
