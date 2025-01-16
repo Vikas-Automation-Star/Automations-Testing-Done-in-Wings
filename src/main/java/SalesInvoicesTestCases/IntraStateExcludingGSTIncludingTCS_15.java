@@ -27,7 +27,8 @@ public class IntraStateExcludingGSTIncludingTCS_15 extends Transaction {
     public void testCase15() throws InterruptedException, IOException, ParseException, AWTException {
         navigateToSalesInvoiceMenu();
         Thread.sleep(1000);
-        lastTransactionName();
+        String oldVoucherID =oldTTransactionID();
+        System.out.println("oldID: "+ oldVoucherID);
         //branch selection
         common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
         selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
@@ -41,7 +42,7 @@ public class IntraStateExcludingGSTIncludingTCS_15 extends Transaction {
         Thread.sleep(1000);
         common.clickElement("xpath", "//Edit[@Name='Sales A/c Code']");
         selectAndValidateData(common.getData(dataFile, "salesAccountCode"), "xpath", "//Edit[@Name='Sales A/c Code']");
-        common.clickElement("xpath", "//CheckBox[@Name='Apply TCS']");
+//        common.clickElement("xpath", "//CheckBox[@Name='Apply TCS']");
         common.clickElement("xpath", "//Edit[@Name='TCS Trans Nature']");
         common.inputText("xpath", "//Edit[@Name='Invoice Type']", common.getData(dataFile, "invoice"));
         Thread.sleep(1000);
@@ -74,8 +75,11 @@ public class IntraStateExcludingGSTIncludingTCS_15 extends Transaction {
         validateCESSAmountTabIsEmpty();
         navigateToBatchDetailsTab();
 
-        navigateToOtherInfoTab();
-        for (int j = 0; j < 4; j++) {
+        navigateToBillsPayablesTab();
+        common.deleteInvalidRows();
+
+        navigateToPaytymTab();
+        for (int j = 0; j < 6; j++) {
             robot.keyPress(KeyEvent.VK_RIGHT);
             robot.keyRelease(KeyEvent.VK_RIGHT);
         }
@@ -86,6 +90,20 @@ public class IntraStateExcludingGSTIncludingTCS_15 extends Transaction {
         totalValuePresentInSummary();
         totalValueInCompanyCurrenyPresentInSummary();
         receivableAmountPresentInSummary();
+
+        //save
+        transactionSave();
+        String newVoucherID =newTransactionID(oldVoucherID).replace(" ","");
+        System.out.println("newID: "+newVoucherID);
+        Assert.assertNotEquals(newVoucherID, oldVoucherID,"No New Transactions found");
+        Thread.sleep(1000);
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Invoices");
+        common.clickElement("name", "Sales Book");
+        Thread.sleep(1000);
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
+        Thread.sleep(15000);
+        verifyReport(newVoucherID,dataFile);
     }
 
     public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {
@@ -141,10 +159,7 @@ public class IntraStateExcludingGSTIncludingTCS_15 extends Transaction {
         partyDiscountValue = Double.parseDouble(partyDiscText);
         System.out.println("party Discount Value: - " + partyDiscountValue);
 
-//            enterDataAndValidate("xpath", "//Edit[@Name='HSN Row " + i + ", Not sorted.']", dataFile, "HSNCode");
-
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", offset, 0);
-
 
         grossMinusDiscount = (grossAmount - (voucherDiscountValue + partyDiscountValue));
         System.out.println("gross-disc is: " + grossMinusDiscount);
@@ -161,4 +176,3 @@ public class IntraStateExcludingGSTIncludingTCS_15 extends Transaction {
         }
     }
 }
-

@@ -30,21 +30,21 @@ public class IntraStateIncludingGSTIncludingTCS_16 extends Transaction {
     public void testCase16() throws InterruptedException, IOException, ParseException, AWTException {
         navigateToSalesInvoiceMenu();
         Thread.sleep(1000);
-        lastTransactionName();
+        String oldVoucherID =oldTTransactionID();
+        System.out.println("oldID: "+ oldVoucherID);
         //branch selection
         common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
         selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
         selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Location *']");
-        common.clickElement("xpath", "//Edit[@Name='Cash/Party Code']");
-        selectAndValidateDataNew(common.getData(dataFile, "partyCode"), "xpath", "//Edit[@Name='Cash/Party Code']");
+        enterInput("xpath", "//Edit[@Name='Cash/Party Code']",dataFile, "partyCode");
         Thread.sleep(2500);
         gstTransactionType("Registered Dealers");
         Thread.sleep(1000);
         common.clickElement("xpath", "//Edit[@Name='Sales A/c Code']");
         selectAndValidateData(common.getData(dataFile, "salesAccountCode"), "xpath", "//Edit[@Name='Sales A/c Code']");
-        common.clickElement("xpath", "//CheckBox[@Name='Apply TCS']");
+//        common.clickElement("xpath", "//CheckBox[@Name='Apply TCS']");
         common.clickElement("xpath", "//Edit[@Name='TCS Trans Nature']");
         common.inputText("xpath", "//Edit[@Name='Invoice Type']", common.getData(dataFile, "invoice"));
         Thread.sleep(1000);
@@ -76,8 +76,11 @@ public class IntraStateIncludingGSTIncludingTCS_16 extends Transaction {
         validateCESSAmountTabIsNotEmpty();
         navigateToBatchDetailsTab();
 
-        navigateToOtherInfoTab();
-        for (int j = 0; j < 4; j++) {
+        navigateToBillsPayablesTab();
+        common.deleteInvalidRows();
+
+        navigateToPaytymTab();
+        for (int j = 0; j < 6; j++) {
             robot.keyPress(KeyEvent.VK_RIGHT);
             robot.keyRelease(KeyEvent.VK_RIGHT);
         }
@@ -88,6 +91,19 @@ public class IntraStateIncludingGSTIncludingTCS_16 extends Transaction {
         totalValuePresentInSummary();
         totalValueInCompanyCurrenyPresentInSummary();
         receivableAmountPresentInSummary();
+
+        transactionSave();
+        String newVoucherID =newTransactionID(oldVoucherID).replace(" ","");
+        System.out.println("newID: "+newVoucherID);
+        Assert.assertNotEquals(newVoucherID, oldVoucherID,"No New Transactions found");
+        Thread.sleep(1000);
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Invoices");
+        common.clickElement("name", "Sales Book");
+        Thread.sleep(1000);
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
+        Thread.sleep(15000);
+        verifyReport(newVoucherID,dataFile);
     }
 
     public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {
@@ -180,23 +196,6 @@ public class IntraStateIncludingGSTIncludingTCS_16 extends Transaction {
             common.clickElement("xpath", "//Header[@Name='GST Amount']");
             gstAmountClicked = true;
         }
-//            double expectedIGST = Double.parseDouble(decimalFormat.format((taxableValue*gstValue)/100));
-//            double actualIGST= Double.parseDouble((common.findWebElement("xpath","//Edit[@Name='IGST Row "+i+", Not sorted.']").getText().replace(",","")));
-//            System.out.println("Actual IGST: "+actualIGST);
-//            System.out.println("Expected IGST: "+expectedIGST);
-//            Assert.assertEquals(actualIGST,expectedIGST);
-//
-//            double expectedCESS = Double.parseDouble(decimalFormat.format((taxableValue*cessValue)/100));
-//            double actualCESS= Double.parseDouble((common.findWebElement("xpath","//Edit[@Name='CESS Row "+i+", Not sorted.']").getText().replace(",","")));
-//            System.out.println("Actual CESS: "+ actualCESS);
-//            System.out.println("Expected CESS: "+expectedCESS);
-//            Assert.assertEquals(actualCESS,expectedCESS);
-//
-//            double expectedGSTAmount= expectedIGST+expectedCESS;
-//            double actualGSTAmount= Double.parseDouble(common.findWebElement("xpath","//Edit[@Name='GST Amount Row "+i+", Not sorted.']").getText().replace(",",""));
-//            System.out.println("expected GST Amount: "+decimalFormat.format(expectedGSTAmount));
-//            System.out.println("Actual GST Amount: "+decimalFormat.format(actualGSTAmount));
-//            Assert.assertEquals(decimalFormat.format(actualGSTAmount),decimalFormat.format(expectedGSTAmount));
 
         // Fetch the GST Trans type
         String gstTransType = common.findWebElement("xpath", "//Edit[@Name='GST Trans Type *']").getText().trim();
