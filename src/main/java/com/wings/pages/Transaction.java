@@ -1662,6 +1662,14 @@ public abstract class Transaction {
     }
 
     public void deleteSingleTransaction() throws InterruptedException {
-
+        common.clickElement("xpath","//Pane/*/Text[starts-with(@Name,'SI')]/*[starts-with(@Name,'SI')]");
+        common.clickElement("xpath","//Button[@Name='View']");
+        Thread.sleep(2500);
+        common.clickElement("xpath","//Button[@Name='Tools']");
+        common.clickElement("xpath","//Button[@Name='Delete']");
+        common.clickElement("xpath","//Button[@Name='Yes']");
+        common.clickElement("xpath","//Button[@Name='OK']");
+        common.clickElement("xpath","//Window[@Name='Close']/Button[@Name='Yes']");
+        closeTransaction("Sales Invoices");
     }
 }
