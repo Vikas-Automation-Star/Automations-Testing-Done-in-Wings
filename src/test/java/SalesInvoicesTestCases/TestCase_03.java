@@ -31,7 +31,6 @@ public class TestCase_03 {
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
-        Allure.step("After Test TestCase 01");
+        appLogin.logout();
     }
 }

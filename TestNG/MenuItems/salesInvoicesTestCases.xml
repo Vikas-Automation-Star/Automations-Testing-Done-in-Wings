@@ -1,0 +1,20 @@
+<suite name="SalesInvoices Transactions Suite">
+
+    <listeners>
+        <listener class-name="com.wings.utils.listener"/>
+        <listener class-name="util.AnnotationTransformer"/>
+    </listeners>
+
+    <test name="InterSatesGSTIncludingTCSIncludingOCIncludingCDIncluding" description="description of InterSatesGSTIncludingTCSIncludingOCIncludingCDIncluding" testID="1">
+        <classes>
+            <class name="SalesInvoicesTestCases.TestCase_03"/>
+        </classes>
+    </test>
+
+    <test name="InterStatesGSTExcludeTCSInclude" description="description for InterStatesGSTExcludeTCSInclude" testID="2">
+        <classes>
+            <class name="SalesInvoicesTestCases.TestCase_07"/>
+        </classes>
+    </test>
+
+</suite>

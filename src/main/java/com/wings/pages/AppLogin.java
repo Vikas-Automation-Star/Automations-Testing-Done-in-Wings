@@ -78,16 +78,5 @@ public class AppLogin {
 //        }
     }
 
-    public void deleteSingleTransaction() throws InterruptedException {
-//        common.clickElement("xpath", "//Text[@Name='Last Saved :']/following-sibling::Text//*[contains(@ControlType, 'Hyperlink')]");
 
-        WebElement parent = common.findWebElement("xpath", "//Text[@Name='Last Saved :']/following-sibling::Text");
-
-        WebElement hyperlink = parent.findElement(By.xpath("//*[contains(@ControlType, 'Hyperlink')]"));
-        hyperlink.click();
-
-        common.clickElement("xpath", "//Button[@Name='View']");
-        Thread.sleep(2500);
-        common.clickElement("xpath", "//Button[@Name='Tools']");
-    }
 }

@@ -433,6 +433,22 @@ public abstract class Transaction {
         }
     }
 
+    public void chargesPresentInSummary() {
+        WebElement netAmount = common.findWebElement("xpath", "//Edit[@Name='Charges']");
+        String netAmountText1 = netAmount.getText();
+        if ((netAmountText1 == (null) || "(null)".equals(netAmountText1))) {
+            Assert.fail("netAmount field is empty");
+        }
+    }
+
+    public void otherChargesPresentInSummary() {
+        WebElement netAmount = common.findWebElement("xpath", "//Edit[@Name='Other Charges']");
+        String netAmountText1 = netAmount.getText();
+        if ((netAmountText1 == (null) || "(null)".equals(netAmountText1))) {
+            Assert.fail("netAmount field is empty");
+        }
+    }
+
     public void grossMinusDiscountPresentInSummary() {
         WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='Gross - Disc']");
         String grossMinusDiscountAmount = grossDiscountAmount.getText();
@@ -1637,10 +1653,15 @@ public abstract class Transaction {
             }
             System.out.println(columns[i]);
         }
+        System.out.println("Report verified Successfully");
     }
 
 
     public void closeReport(String reportName) {
         common.clickElement("xpath", "//TabItem[@Name='" + reportName + "']/Button[@Name='Close']");
+    }
+
+    public void deleteSingleTransaction() throws InterruptedException {
+
     }
 }

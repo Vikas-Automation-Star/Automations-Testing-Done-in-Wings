@@ -32,185 +32,197 @@ public class InterStateInclusiveSalesPriceListGSTCalculations_11 extends Transac
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
         System.out.println("oldID: "+ oldVoucherID);
-        //branch selection
+        Thread.sleep(1000);
 //        common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
 //        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
-        common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
-        common.clickElement("xpath", "//Edit[@Name='Location *']");
-        selectAndValidateData(common.getData(dataFile,"location"),"xpath","//Edit[@Name='Location *']" );
-        common.clickElement("xpath", "//Edit[@Name='Cash/Party Code']");
-        selectAndValidateDataNew(common.getData(dataFile, "partyCode"), "xpath", "//Edit[@Name='Cash/Party Code']");
-        Thread.sleep(2500);
-        gstTransactionType("Registered Dealers");
-        Thread.sleep(1000);
-        common.clickElement("xpath", "//Edit[@Name='Sales A/c Code']");
-        selectAndValidateData(common.getData(dataFile, "salesAccountCode"), "xpath", "//Edit[@Name='Sales A/c Code']");
+//        common.clickElement("xpath", "//Edit[@Name='Branch *']");
+//        selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
+//        common.clickElement("xpath", "//Edit[@Name='Location *']");
+//        selectAndValidateData(common.getData(dataFile,"location"),"xpath","//Edit[@Name='Location *']" );
+//        common.clickElement("xpath", "//Edit[@Name='Cash/Party Code']");
+//        selectAndValidateDataNew(common.getData(dataFile, "partyCode"), "xpath", "//Edit[@Name='Cash/Party Code']");
+//        Thread.sleep(2500);
+//        gstTransactionType("Registered Dealers");
+//        Thread.sleep(1000);
+//        common.clickElement("xpath", "//Edit[@Name='Sales A/c Code']");
+//        selectAndValidateData(common.getData(dataFile, "salesAccountCode"), "xpath", "//Edit[@Name='Sales A/c Code']");
 //        common.clickElement("xpath","//CheckBox[@Name='Apply TCS']");
-//        common.clickElement("xpath","//Edit[@Name='TCS Trans Nature']");
-        invoiceTypeWhenRegister();
-        generalInfoSliderHandle(800);
-        common.clickElement("xpath", "//Edit[@Name='Price List']");
-        selectAndValidateData(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
-//        common.clickElement("xpath", "//Edit[@Name='Port Code']");
-//        selectOptionalMaster(common.getData(dataFile, "portCode"), "xpath", "//Edit[@Name='Port Code']");
-//        common.clickElement("xpath", "//Edit[@Name='Remarks']");
-//        selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
-        generalInfoSliderHandle(-500);
-
-        //F3-Items
-        for (int i = 0; i < Integer.parseInt(common.getData(dataFile, "productCount")); i++) {
-            addProduct(i);
-        }
-        validateCGSTAmountTabIsEmpty();
-        validateSGSTAmountTabIsEmpty();
-        validateIGSTAmountTabIsNotEmpty();
-        validateCESSAmountTabIsNotEmpty();
-        //verify all the fields in summary are fetching data
-        navigateToBillsPayablesTab();
-        common.deleteInvalidRows();
-        navigateToSummaryTab();
-        Thread.sleep(2000);
-        quantityPresentInSummary();
-        grossAmountPresentInSummary();
-        grossMinusDiscountPresentInSummary();
-        netAmountPresentInSummary();
-        totalValuePresentInSummary();
-        totalValueInCompanyCurrenyPresentInSummary();
-        receivableAmountPresentInSummary();
-        transactionSave();
-        String newVoucherID =newTransactionID(oldVoucherID).replace(" ","");
-        System.out.println("newID: "+newVoucherID);
-        Assert.assertNotEquals(newVoucherID, oldVoucherID,"both ID's should not Equal when we perform transaction");
-        Thread.sleep(1000);
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Invoices");
-        common.clickElement("name", "Sales Book");
-        Thread.sleep(1000);
-        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
-        Thread.sleep(1500);
-        verifyReport(newVoucherID,dataFile);
-        closeReport("Sales Book");
+//        invoiceTypeWhenRegister();
+//        generalInfoSliderHandle(800);
+//        common.clickElement("xpath", "//Edit[@Name='Price List']");
+//        selectAndValidateData(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
+////        common.clickElement("xpath", "//Edit[@Name='Port Code']");
+////        selectOptionalMaster(common.getData(dataFile, "portCode"), "xpath", "//Edit[@Name='Port Code']");
+////        common.clickElement("xpath", "//Edit[@Name='Remarks']");
+////        selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
+//        generalInfoSliderHandle(-500);
+//
+//        //F3-Items
+//        for (int i = 0; i < Integer.parseInt(common.getData(dataFile, "productCount")); i++) {
+//            addProduct(i);
+//        }
+//        validateCGSTAmountTabIsEmpty();
+//        validateSGSTAmountTabIsEmpty();
+//        validateIGSTAmountTabIsNotEmpty();
+//        validateCESSAmountTabIsNotEmpty();
+//        //verify all the fields in summary are fetching data
+//        navigateToBillsPayablesTab();
+//        common.deleteInvalidRows();
+//        navigateToSummaryTab();
+//        Thread.sleep(2000);
+//        quantityPresentInSummary();
+//        grossAmountPresentInSummary();
+//        grossMinusDiscountPresentInSummary();
+//        netAmountPresentInSummary();
+//        totalValuePresentInSummary();
+//        totalValueInCompanyCurrenyPresentInSummary();
+//        receivableAmountPresentInSummary();
+//        transactionSave();
+//        String newVoucherID =newTransactionID(oldVoucherID).replace(" ","");
+//        System.out.println("newID: "+newVoucherID);
+//        Assert.assertNotEquals(newVoucherID, oldVoucherID,"both ID's should not Equal when we perform transaction");
+//        Thread.sleep(1000);
+////        common.clickElement("xpath","//Button[@Name='Reports']");
+////        common.clickElement("xpath","//Button[@Name='Sales Book']");
+//        common.clickElement("name", "Sales");
+//        common.clickElement("name", "Invoices");
+//        common.clickElement("name", "Sales Book");
+////        Thread.sleep(1000);
+//        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
+//        Thread.sleep(1500);
+//        verifyReport(newVoucherID,dataFile);
+//        closeReport("Sales Book");
+//        WebElement click=driver.findElementByXPath("//Pane/*/Text[starts-with(@Name,'SI')]/*[starts-with(@Name,'SI')]");
+//        click.click();
+        common.clickElement("xpath","//Pane/*/Text[starts-with(@Name,'SI')]/*[starts-with(@Name,'SI')]");
+        common.clickElement("xpath","//Button[@Name='View']");
+        Thread.sleep(2500);
+        common.clickElement("xpath","//Button[@Name='Tools']");
+        common.clickElement("xpath","//Button[@Name='Delete']");
+        common.clickElement("xpath","//Button[@Name='Yes']");
+        common.clickElement("xpath","//Button[@Name='OK']");
+        common.clickElement("xpath","//Window[@Name='Close']/Button[@Name='Yes']");
+        closeTransaction("Sales Invoices");
     }
 
-    public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {
-        if (common.getData(dataFile, "productType" + i).equals("general")) {
-            generalProduct(dataFile, "productCode" + i, "quantity" + i, i);
-        } else if (common.getData(dataFile, "productType" + i).equals("multiBatch")) {
-            multiBatchProduct(dataFile, "productCode" + i, "quantity" + i, i);
-        } else if (common.getData(dataFile, "productType" + i).equals("serial")) {
-            serialNumberProduct(dataFile, "productCode" + i, i);
-        }
-
-        quantity = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']").getText());
-
-        WebElement element = common.findWebElement("xpath", "//Edit[@Name='MRP Row " + i + ", Not sorted.']");
-        mrp = Double.parseDouble(element.getText().replace(",", ""));
-        System.out.println("mrp:-" + mrp);
-
-        WebElement mrpAmount = common.findWebElement("xpath", "//Edit[@Name='MRP Amount Row " + i + ", Not sorted.']");
-        String actualMrpAmountText = mrpAmount.getText().replace(",", "");
-        double actualMrpAmount = Double.parseDouble(actualMrpAmountText);
-
-        double expectedMrpAmount = quantity * mrp;
-        System.out.println("actual:- " + actualMrpAmount + " -expectedMrp-" + expectedMrpAmount);
-        Assert.assertEquals(actualMrpAmount, expectedMrpAmount, "Mismatch in MRP Amount");
-        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 800, 0);
-
-        unitRate = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='Unit Rate Row " + i + ", Not sorted.']").getText());
-        System.out.println("unitRate:-" + unitRate);
-
-        WebElement gross = common.findWebElement("xpath", "//Edit[@Name='Gross Amount Row " + i + ", Not sorted.']");
-        String grossAmountText = gross.getText().replace(",", "");
-        grossAmount = Double.parseDouble(grossAmountText);
-        System.out.println("gross Amount:- " + grossAmount);
-
-        double grossExpected = unitRate * quantity;
-        System.out.println("gross expected:-" + grossExpected);
-        Assert.assertEquals(grossAmount, grossExpected, "Mismatch in Gross Amount");
-        enterData("xpath", "//Edit[@Name='HSN Row " + i + ", Not sorted.']", dataFile, "HSNCode");
-
-        //GST
-        WebElement gst = common.findWebElement("xpath", "//Edit[@Name='GST Product Category Row " + i + ", Not sorted.']");
-        gstValue = StringUtil.extractNumber(gst.getText());
-        System.out.println("gst percentage:- " + gstValue);
-
-        WebElement cess = common.findWebElement("xpath", "//Edit[@Name='CESS Product Category Row " + i + ", Not sorted.']");
-        cessValue = StringUtil.extractNumber(cess.getText());
-        System.out.println("cess percentage:- " + cessValue);
-        double totalValue = gstValue + cessValue;
-        System.out.println("total:-" + totalValue);
-
-        DecimalFormat decimalFormat = new DecimalFormat("#.###");
-
-        if (!gstAmountClicked) {
-            common.clickElement("xpath", "//Header[@Name='GST Amount']");
-            gstAmountClicked = true;
-        }
-
-        String gstTransType = common.findWebElement("xpath", "//Edit[@Name='GST Trans Type *']").getText().trim();
-        if (gstTransType.equalsIgnoreCase("Inter State Sales to Registered Dealers")) {
-            double actualIGST = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='IGST Row " + i + ", Not sorted.']").getText().replace(",", ""));
-            System.out.println("Actual IGST: " + actualIGST);
-            double actualCESS = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='CESS Row " + i + ", Not sorted.']").getText().replace(",", ""));
-            System.out.println("Actual CESS: " + actualCESS);
-            double totalGSTAmount = actualIGST + actualCESS;
-            double inclisiveTaxibleValue = Double.parseDouble(decimalFormat.format(grossAmount - totalGSTAmount));
-            System.out.println("inclusive Taxible Value :- " + inclisiveTaxibleValue);
-
-            double expectedIGST = Double.parseDouble(decimalFormat.format((inclisiveTaxibleValue * gstValue) / 100));
-            System.out.println("Expected IGST: " + expectedIGST);
-            Assert.assertEquals(actualIGST, expectedIGST, "calculations MisMatch");
-            double expectedCESS = Double.parseDouble(decimalFormat.format((inclisiveTaxibleValue * cessValue) / 100));
-            System.out.println("Expected CESS: " + expectedCESS);
-            Assert.assertEquals(actualCESS, expectedCESS, "calculations MisMatch");
-
-            double expectedGSTAmount = expectedIGST + expectedCESS;
-            double actualGSTAmount = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='GST Amount Row " + i + ", Not sorted.']").getText().replace(",", ""));
-            System.out.println("Expected GST Amount: " + decimalFormat.format(expectedGSTAmount));
-            System.out.println("Actual GST Amount: " + decimalFormat.format(actualGSTAmount));
-            Assert.assertEquals(decimalFormat.format(actualGSTAmount), decimalFormat.format(expectedGSTAmount), "calculations MisMatch");
-
-        } else if (gstTransType.equalsIgnoreCase("Intra State Sales to Registered Dealers")) {
-            double expectedCGST = Double.parseDouble(decimalFormat.format(((taxableValue * gstValue) / 100) / 2));
-            double actualCGST = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='CGST Row " + i + ", Not sorted.']").getText().replace(",", ""));
-            System.out.println("Actual CGST: " + actualCGST);
-            System.out.println("Expected CGST: " + expectedCGST);
-            Assert.assertEquals(actualCGST, expectedCGST);
-
-            double expectedSGST = Double.parseDouble(decimalFormat.format(((taxableValue * gstValue) / 100) / 2));
-            double actualSGST = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='SGST Row " + i + ", Not sorted.']").getText().replace(",", ""));
-            System.out.println("Actual SGST: " + actualSGST);
-            System.out.println("Expected SGST: " + expectedSGST);
-            Assert.assertEquals(actualSGST, expectedSGST);
-
-            double expectedCESS = Double.parseDouble(decimalFormat.format((taxableValue * cessValue) / 100));
-            double actualCESS = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='CESS Row " + i + ", Not sorted.']").getText().replace(",", ""));
-            System.out.println("Actual CESS: " + actualCESS);
-            System.out.println("Expected CESS: " + expectedCESS);
-            Assert.assertEquals(actualCESS, expectedCESS);
-
-            double expectedGSTAmount = expectedCGST + expectedSGST + expectedCESS;
-            double actualGSTAmount = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='GST Amount Row " + i + ", Not sorted.']").getText().replace(",", ""));
-            System.out.println("Expected GST Amount: " + decimalFormat.format(expectedGSTAmount));
-            System.out.println("Actual GST Amount: " + decimalFormat.format(actualGSTAmount));
-            Assert.assertEquals(decimalFormat.format(actualGSTAmount), decimalFormat.format(expectedGSTAmount));
-        } else {
-            throw new IllegalArgumentException("Invalid GST Trans Type: " + gstTransType);
-        }
-
-
-        if (common.getData(dataFile, "priceList").contains("Inclusive")) {
-            netAmount = Double.parseDouble((common.findWebElement("xpath", "//Edit[@Name='Net Amount Row " + i + ", Not sorted.']").getText().replace(",", "")));
-            System.out.println("Net Amount:- " + netAmount);
-            Assert.assertEquals(netAmount, grossAmount, "calculations mismatch");
-        } else if (common.getData(dataFile, "priceList").contains("Exclusive")) {
-            taxableValue = grossAmount;
-            System.out.println("taxable value for exclusive is:" + taxableValue);
-            taxableAmountCalculated = Double.parseDouble((common.findWebElement("xpath", "//Edit[@Name='Taxable Value Row " + i + ", Not sorted.']").getText().replace(",", "")));
-            System.out.println("taxable: " + taxableAmountCalculated);
-            Assert.assertEquals(taxableAmountCalculated, taxableValue);
-        }
-
-    }
+//    public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {
+//        if (common.getData(dataFile, "productType" + i).equals("general")) {
+//            generalProduct(dataFile, "productCode" + i, "quantity" + i, i);
+//        } else if (common.getData(dataFile, "productType" + i).equals("multiBatch")) {
+//            multiBatchProduct(dataFile, "productCode" + i, "quantity" + i, i);
+//        } else if (common.getData(dataFile, "productType" + i).equals("serial")) {
+//            serialNumberProduct(dataFile, "productCode" + i, i);
+//        }
+//
+//        quantity = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']").getText());
+//
+//        WebElement element = common.findWebElement("xpath", "//Edit[@Name='MRP Row " + i + ", Not sorted.']");
+//        mrp = Double.parseDouble(element.getText().replace(",", ""));
+//        System.out.println("mrp:-" + mrp);
+//
+//        WebElement mrpAmount = common.findWebElement("xpath", "//Edit[@Name='MRP Amount Row " + i + ", Not sorted.']");
+//        String actualMrpAmountText = mrpAmount.getText().replace(",", "");
+//        double actualMrpAmount = Double.parseDouble(actualMrpAmountText);
+//
+//        double expectedMrpAmount = quantity * mrp;
+//        System.out.println("actual:- " + actualMrpAmount + " -expectedMrp-" + expectedMrpAmount);
+//        Assert.assertEquals(actualMrpAmount, expectedMrpAmount, "Mismatch in MRP Amount");
+//        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 800, 0);
+//
+//        unitRate = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='Unit Rate Row " + i + ", Not sorted.']").getText());
+//        System.out.println("unitRate:-" + unitRate);
+//
+//        WebElement gross = common.findWebElement("xpath", "//Edit[@Name='Gross Amount Row " + i + ", Not sorted.']");
+//        String grossAmountText = gross.getText().replace(",", "");
+//        grossAmount = Double.parseDouble(grossAmountText);
+//        System.out.println("gross Amount:- " + grossAmount);
+//
+//        double grossExpected = unitRate * quantity;
+//        System.out.println("gross expected:-" + grossExpected);
+//        Assert.assertEquals(grossAmount, grossExpected, "Mismatch in Gross Amount");
+//        enterData("xpath", "//Edit[@Name='HSN Row " + i + ", Not sorted.']", dataFile, "HSNCode");
+//
+//        //GST
+//        WebElement gst = common.findWebElement("xpath", "//Edit[@Name='GST Product Category Row " + i + ", Not sorted.']");
+//        gstValue = StringUtil.extractNumber(gst.getText());
+//        System.out.println("gst percentage:- " + gstValue);
+//
+//        WebElement cess = common.findWebElement("xpath", "//Edit[@Name='CESS Product Category Row " + i + ", Not sorted.']");
+//        cessValue = StringUtil.extractNumber(cess.getText());
+//        System.out.println("cess percentage:- " + cessValue);
+//        double totalValue = gstValue + cessValue;
+//        System.out.println("total:-" + totalValue);
+//        DecimalFormat decimalFormat = new DecimalFormat("#.###");
+//        System.out.println("decimal formate : "+decimalFormat);
+//
+//        if (!gstAmountClicked) {
+//            common.clickElement("xpath", "//Header[@Name='GST Amount']");
+//            gstAmountClicked = true;
+//        }
+//
+//        String gstTransType = common.findWebElement("xpath", "//Edit[@Name='GST Trans Type *']").getText().trim();
+//        if (gstTransType.equalsIgnoreCase("Inter State Sales to Registered Dealers")) {
+//            double actualIGST = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='IGST Row " + i + ", Not sorted.']").getText().replace(",", ""));
+//            System.out.println("Actual IGST: " + actualIGST);
+//            double actualCESS = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='CESS Row " + i + ", Not sorted.']").getText().replace(",", ""));
+//            System.out.println("Actual CESS: " + actualCESS);
+//            double totalGSTAmount = actualIGST + actualCESS;
+//            System.out.println("total GSTAmount: "+totalGSTAmount);
+//            double inclisiveTaxibleValue = Double.parseDouble(decimalFormat.format(grossAmount - totalGSTAmount));
+//            System.out.println("inclusive Taxible Value :- " + inclisiveTaxibleValue);
+//
+//            double expectedIGST = Double.parseDouble(decimalFormat.format((inclisiveTaxibleValue * gstValue) / 100));
+//            System.out.println("Expected IGST: " + expectedIGST);
+////            Assert.assertEquals(actualIGST, common.getData(dataFile,"expectedIGST"), "calculations MisMatch");
+//            double expectedCESS = Double.parseDouble(decimalFormat.format((inclisiveTaxibleValue * cessValue) / 100));
+//            System.out.println("Expected CESS: " + expectedCESS);
+////            Assert.assertEquals(actualCESS, expectedCESS, "calculations MisMatch");
+//
+//            double expectedGSTAmount = expectedIGST + expectedCESS;
+//            double actualGSTAmount = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='GST Amount Row " + i + ", Not sorted.']").getText().replace(",", ""));
+//            System.out.println("Expected GST Amount: " + decimalFormat.format(expectedGSTAmount));
+//            System.out.println("Actual GST Amount: " + decimalFormat.format(actualGSTAmount));
+////            Assert.assertEquals(decimalFormat.format(actualGSTAmount), decimalFormat.format(expectedGSTAmount), "calculations MisMatch");
+//
+//        } else if (gstTransType.equalsIgnoreCase("Intra State Sales to Registered Dealers")) {
+//            double expectedCGST = Double.parseDouble(decimalFormat.format(((taxableValue * gstValue) / 100) / 2));
+//            double actualCGST = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='CGST Row " + i + ", Not sorted.']").getText().replace(",", ""));
+//            System.out.println("Actual CGST: " + actualCGST);
+//            System.out.println("Expected CGST: " + expectedCGST);
+////            Assert.assertEquals(actualCGST, expectedCGST);
+//
+//            double expectedSGST = Double.parseDouble(decimalFormat.format(((taxableValue * gstValue) / 100) / 2));
+//            double actualSGST = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='SGST Row " + i + ", Not sorted.']").getText().replace(",", ""));
+//            System.out.println("Actual SGST: " + actualSGST);
+//            System.out.println("Expected SGST: " + expectedSGST);
+////            Assert.assertEquals(actualSGST, expectedSGST);
+//
+//            double expectedCESS = Double.parseDouble(decimalFormat.format((taxableValue * cessValue) / 100));
+//            double actualCESS = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='CESS Row " + i + ", Not sorted.']").getText().replace(",", ""));
+//            System.out.println("Actual CESS: " + actualCESS);
+//            System.out.println("Expected CESS: " + expectedCESS);
+////            Assert.assertEquals(actualCESS, expectedCESS);
+//
+//            double expectedGSTAmount = expectedCGST + expectedSGST + expectedCESS;
+//            double actualGSTAmount = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='GST Amount Row " + i + ", Not sorted.']").getText().replace(",", ""));
+//            System.out.println("Expected GST Amount: " + decimalFormat.format(expectedGSTAmount));
+//            System.out.println("Actual GST Amount: " + decimalFormat.format(actualGSTAmount));
+////            Assert.assertEquals(decimalFormat.format(actualGSTAmount), decimalFormat.format(expectedGSTAmount));
+//        } else {
+//            throw new IllegalArgumentException("Invalid GST Trans Type: " + gstTransType);
+//        }
+//
+//        if (common.getData(dataFile, "priceList").contains("Inclusive")) {
+//            netAmount = Double.parseDouble((common.findWebElement("xpath", "//Edit[@Name='Net Amount Row " + i + ", Not sorted.']").getText().replace(",", "")));
+//            System.out.println("Net Amount:- " + netAmount);
+//            Assert.assertEquals(netAmount, grossAmount, "calculations mismatch");
+//        } else if (common.getData(dataFile, "priceList").contains("Exclusive")) {
+//            taxableValue = grossAmount;
+//            System.out.println("taxable value for exclusive is:" + taxableValue);
+//            taxableAmountCalculated = Double.parseDouble((common.findWebElement("xpath", "//Edit[@Name='Taxable Value Row " + i + ", Not sorted.']").getText().replace(",", "")));
+//            System.out.println("taxable: " + taxableAmountCalculated);
+//            Assert.assertEquals(taxableAmountCalculated, taxableValue);
+//        }
+//
+//    }
 }

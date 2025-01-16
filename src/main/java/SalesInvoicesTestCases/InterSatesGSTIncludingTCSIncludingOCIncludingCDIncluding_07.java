@@ -16,9 +16,8 @@ public class InterSatesGSTIncludingTCSIncludingOCIncludingCDIncluding_07 extends
     WindowsDriver driver;
     Common common;
     String dataFile;
-    double quantity;
     boolean gstAmountClicked = false;
-    double mrp, grossAmount, unitRate, voucherDiscountValue, partyDiscountValue, netAmount, grossMinusDiscount, gstValue, cessValue, taxableValue, taxableAmountCalculated, expectedGSTAmount, itemValue;
+    double quantity,mrp, grossAmount, unitRate, voucherDiscountValue, partyDiscountValue, netAmount, grossMinusDiscount, gstValue, cessValue, taxableValue, taxableAmountCalculated, expectedGSTAmount, itemValue;
 
     public InterSatesGSTIncludingTCSIncludingOCIncludingCDIncluding_07(WindowsDriver driver, String file) {
         super(driver);
@@ -31,13 +30,14 @@ public class InterSatesGSTIncludingTCSIncludingOCIncludingCDIncluding_07 extends
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
         System.out.println("oldID: "+ oldVoucherID);
-//        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
+        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
         selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Location *']");
         selectAndValidateData(common.getData(dataFile,"location"),"xpath","//Edit[@Name='Location *']" );
-        common.clickElement("xpath", "//Edit[@Name='Cash/Party Code']");
-        selectAndValidateDataNew(common.getData(dataFile, "partyCode"), "xpath", "//Edit[@Name='Cash/Party Code']");
+        enterInput("xpath","//Edit[@Name='Cash/Party Code']",dataFile,"partyCode");
+//        common.clickElement("xpath", "//Edit[@Name='Cash/Party Code']");
+//        selectAndValidateDataNew(common.getData(dataFile, "partyCode"), "xpath", "//Edit[@Name='Cash/Party Code']");
         Thread.sleep(2500);
         gstTransactionType("Registered Dealers");
         Thread.sleep(1000);
@@ -55,12 +55,6 @@ public class InterSatesGSTIncludingTCSIncludingOCIncludingCDIncluding_07 extends
         inputTextWithValidation("xpath", "//Edit[@Name='Port Code']", common.getData(dataFile, "portCode"));
         common.clickElement("xpath", "//Edit[@Name='Remarks']");
         selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
-        common.clickElement("xpath", "//Edit[@Name='Price List']");
-        selectAndValidateData(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
-//        common.clickElement("xpath", "//Edit[@Name='Port Code']");
-//        selectOptionalMaster(common.getData(dataFile, "portCode"), "xpath", "//Edit[@Name='Port Code']");
-//        common.clickElement("xpath", "//Edit[@Name='Remarks']");
-//        selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
 
         //F3-Items
         for (int i = 0; i < Integer.parseInt(common.getData(dataFile, "productCount")); i++) {
@@ -74,13 +68,19 @@ public class InterSatesGSTIncludingTCSIncludingOCIncludingCDIncluding_07 extends
         navigateToBillsPayablesTab();
         common.deleteInvalidRows();
         navigateToSummaryTab();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         quantityPresentInSummary();
         grossAmountPresentInSummary();
         grossMinusDiscountPresentInSummary();
+        iGSTPresentInSummary();
+        cessPresentInSummary();
+        netAmountPresentInSummary();
+        chargesPresentInSummary();
+        otherChargesPresentInSummary();
+        otherChargesIGSTPresentInSummary();
+        otherChargesCESSPresentInSummary();
         tcsTaxableValuePresentInSummary();
         tcsAmountPresentInSummary();
-        netAmountPresentInSummary();
         totalValuePresentInSummary();
         totalValueInCompanyCurrenyPresentInSummary();
         receivableAmountPresentInSummary();
@@ -97,6 +97,16 @@ public class InterSatesGSTIncludingTCSIncludingOCIncludingCDIncluding_07 extends
         Thread.sleep(1500);
         verifyReport(newVoucherID,dataFile);
         closeReport("Sales Book");
+
+        common.clickElement("xpath","//Pane/*/Text[starts-with(@Name,'SI')]/*[starts-with(@Name,'SI')]");
+        common.clickElement("xpath","//Button[@Name='View']");
+        Thread.sleep(2500);
+        common.clickElement("xpath","//Button[@Name='Tools']");
+        common.clickElement("xpath","//Button[@Name='Delete']");
+        common.clickElement("xpath","//Button[@Name='Yes']");
+        common.clickElement("xpath","//Button[@Name='OK']");
+        common.clickElement("xpath","//Window[@Name='Close']/Button[@Name='Yes']");
+        closeTransaction("Sales Invoices");
     }
 
     public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {
@@ -123,8 +133,7 @@ public class InterSatesGSTIncludingTCSIncludingOCIncludingCDIncluding_07 extends
         System.out.println("actual:- " + actualMrpAmount + " -expectedMrp-" + expectedMrpAmount);
         Assert.assertEquals(actualMrpAmount, expectedMrpAmount, "Mismatch in MRP Amount");
 
-        int offset = 450;
-        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", offset, 0);
+        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 450, 0);
 
         unitRate = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='Unit Rate Row " + i + ", Not sorted.']").getText());
         System.out.println("unitRate:-" + unitRate);
@@ -154,11 +163,9 @@ public class InterSatesGSTIncludingTCSIncludingOCIncludingCDIncluding_07 extends
         System.out.println("party Discount Value: - " + partyDiscountValue);
 
         enterDataAndValidate("xpath", "//Edit[@Name='HSN Row " + i + ", Not sorted.']", dataFile, "HSNCode");
-
-        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", offset, 0);
+        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 450, 0);
 
         grossMinusDiscount = (grossAmount - (voucherDiscountValue + partyDiscountValue));
-
         System.out.println("gross-disc is: " + grossMinusDiscount);
         if (common.getData(dataFile, "priceList").contains("Inclusive")) {
             netAmount = Double.parseDouble((common.findWebElement("xpath", "//Edit[@Name='Net Amount Row " + i + ", Not sorted.']").getText().replace(",", "")));
