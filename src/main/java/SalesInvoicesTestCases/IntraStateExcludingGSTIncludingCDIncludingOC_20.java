@@ -65,9 +65,9 @@ public class IntraStateExcludingGSTIncludingCDIncludingOC_20 extends Transaction
             addProduct(i);
         }
 
-        OtherChargesCalculations(dataFile, "accountCode", "amount", "otherChargesCount");
+        OtherChargesCalculations(dataFile, "otherChargersAcc", "amount", "otherChargesCount");
         //charges and deductions
-        chargesAndDeductionsCalculations(dataFile, "type", "accountCode", "amount", "rowCount");
+        chargesAndDeductionsCalculations(dataFile, "type", "chargesAcc", "amount", "ChargesRowCount");
 
         validateCGSTAmountTabIsNotEmpty();
         validateSGSTAmountTabIsNotEmpty();
