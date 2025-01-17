@@ -2,7 +2,6 @@ package SalesInvoicesTestCases;
 
 import com.wings.pages.AppLogin;
 import io.appium.java_client.windows.WindowsDriver;
-import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -11,27 +10,26 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.io.IOException;
 
-public class TestCase_04 {
+public class RegCusInterStatesGSTExcludeCDIncludeOCInclude_08 {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String dataFile = "./src/main/resources/TestCasesData/testCase04.json";
+    String dataFile = "src/main/resources/TestCasesData/testCase08.json";
 
     @BeforeTest
-    public void beforeTest() throws IOException, InterruptedException, ParseException {
+    public void beforeTest() throws IOException, ParseException, InterruptedException {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
-        Allure.step("Before Test TestCase01");
+
     }
 
     @Test
-    public void testCase04() throws IOException, ParseException, InterruptedException, AWTException {
-        InterStatesGSTIncludingTCSIncluding_04 si = new InterStatesGSTIncludingTCSIncluding_04(driver, dataFile);
-        si.interStatesGSTIncludingTCSIncluding_04();
+    public void testCase08() throws IOException, ParseException, InterruptedException, AWTException {
+        InterStatesGSTExcludingCDIncludingOCIncluding_08 tc8 = new InterStatesGSTExcludingCDIncludingOCIncluding_08(driver, dataFile);
+        tc8.interStatesGSTExcludingCDIncludingOCIncluding_08();
     }
 
     @AfterTest
     public void afterTest() throws IOException {
 //        appLogin.logout();
-        Allure.step("After Test TestCase 01");
     }
 }

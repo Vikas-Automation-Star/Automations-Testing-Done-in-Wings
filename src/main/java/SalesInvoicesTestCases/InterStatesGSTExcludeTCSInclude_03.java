@@ -28,32 +28,24 @@ public class InterStatesGSTExcludeTCSInclude_03 extends Transaction {
         String oldVoucherID =oldTTransactionID();
         System.out.println("oldID: "+ oldVoucherID);
         selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
-        common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
-        common.clickElement("xpath", "//Edit[@Name='Location *']");
-        selectAndValidateData(common.getData(dataFile, "location"), "xpath", "//Edit[@Name='Location *']");
+        enterInput("xpath","//Edit[@Name='Branch *']",dataFile,"branch");
+        enterInput("xpath","//Edit[@Name='Location *']",dataFile,"location");
         enterInput("xpath","//Edit[@Name='Cash/Party Code']",dataFile,"partyCode");
-        common.clickElement("xpath", "//Edit[@Name='Cash/Party Code']");
-        selectAndValidateDataNew(common.getData(dataFile, "partyCode"), "xpath", "//Edit[@Name='Cash/Party Code']");
         Thread.sleep(2500);
         gstTransactionType("Registered Dealers");
         Thread.sleep(1000);
-        common.clickElement("xpath", "//Edit[@Name='Sales A/c Code']");
-        selectAndValidateData(common.getData(dataFile, "salesAccountCode"), "xpath", "//Edit[@Name='Sales A/c Code']");
+        enterInput("xpath","//Edit[@Name='Sales A/c Code']",dataFile,"salesAccountCode");
 //        common.clickElement("xpath", "//CheckBox[@Name='Apply TCS']");
-        common.clickElement("xpath", "//Edit[@Name='TCS Trans Nature']");
-        selectAndValidateData(common.getData(dataFile, "tcsNature"), "xpath", "//Edit[@Name='TCS Trans Nature']");
+        enterInput("xpath","//Edit[@Name='TCS Trans Nature']",dataFile,"tcsNature");
         common.sliderHandling("xpath", "//ScrollBar[@Name='Horizontal']/Thumb[@Name='Position']", 500, 0);
         Thread.sleep(2000);
         invoiceTypeWhenRegister();
-        common.clickElement("xpath", "//Edit[@Name='Price List']");
-        selectAndValidateData(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
-        common.clickElement("xpath", "//Edit[@Name='Executive *']");
-        selectAndValidateData(common.getData(dataFile, "executive"), "xpath", "//Edit[@Name='Executive *']");
-        common.clickElement("xpath", "//Edit[@Name='Port Code']");
-        inputTextWithValidation("xpath", "//Edit[@Name='Port Code']", common.getData(dataFile, "portCode"));
+        enterInput("xpath","//Edit[@Name='Price List']",dataFile,"priceList");
+        enterInput("xpath","//Edit[@Name='Executive *']",dataFile,"executive");
+        enterInput("xpath","//Edit[@Name='Port Code']",dataFile,"portCode");
         common.clickElement("xpath", "//Edit[@Name='Remarks']");
         selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
+
 
 //        //F3-Items
         for (int i = 0; i < Integer.parseInt(common.getData(dataFile, "productCount")); i++) {
@@ -63,7 +55,6 @@ public class InterStatesGSTExcludeTCSInclude_03 extends Transaction {
         System.out.println("Net Amount :- " + netAmountTextt);
         validateIGSTAmountTabIsEmpty();
         validateCESSAmountTabIsEmpty();
-        //Tcs calculations
         tcsCalculations(netAmountTextt);
         navigateToBillsPayablesTab();
         common.deleteInvalidRows();
@@ -90,16 +81,8 @@ public class InterStatesGSTExcludeTCSInclude_03 extends Transaction {
         Thread.sleep(1500);
         verifyReport(newVoucherID,dataFile);
         closeReport("Sales Book");
+        deleteTransaction("xpath","//Pane/*/Text[starts-with(@Name,'SI')]/*[starts-with(@Name,'SI')]","Sales Invoices");
 
-        common.clickElement("xpath","//Pane/*/Text[starts-with(@Name,'SI')]/*[starts-with(@Name,'SI')]");
-        common.clickElement("xpath","//Button[@Name='View']");
-        Thread.sleep(2500);
-        common.clickElement("xpath","//Button[@Name='Tools']");
-        common.clickElement("xpath","//Button[@Name='Delete']");
-        common.clickElement("xpath","//Button[@Name='Yes']");
-        common.clickElement("xpath","//Button[@Name='OK']");
-        common.clickElement("xpath","//Window[@Name='Close']/Button[@Name='Yes']");
-        closeTransaction("Sales Invoices");
     }
 
     public void addProduct(int i) throws IOException, ParseException, InterruptedException, AWTException {

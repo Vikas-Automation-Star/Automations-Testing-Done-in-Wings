@@ -10,26 +10,25 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.io.IOException;
 
-public class TestCase_08 {
+public class RegCusVerifyBatchDetails_09 {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String dataFile = "src/main/resources/TestCasesData/testCase08.json";
+    String dataFile = "./src/main/resources/TestCasesData/testCase09.json";
 
     @BeforeTest
-    public void beforeTest() throws IOException, ParseException, InterruptedException {
+    public void befortest() throws IOException, InterruptedException, ParseException {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
-
     }
 
     @Test
-    public void testCase08() throws IOException, ParseException, InterruptedException, AWTException {
-        InterStatesGSTExcludingCDIncludingOCIncluding_08 tc8 = new InterStatesGSTExcludingCDIncludingOCIncluding_08(driver, dataFile);
-        tc8.interStatesGSTExcludingCDIncludingOCIncluding_08();
+    public void testCase09() throws IOException, ParseException, InterruptedException, AWTException {
+        SalesInvoiceBatchDetailsFetching_09 si = new SalesInvoiceBatchDetailsFetching_09(driver, dataFile);
+        si.SalesInvoiceBatchDetailsFetching_09();
     }
 
     @AfterTest
-    public void afterTest() throws IOException {
+    public void afterTest() throws IOException, InterruptedException {
 //        appLogin.logout();
     }
 }
