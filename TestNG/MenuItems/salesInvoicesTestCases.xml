@@ -22,13 +22,13 @@
         </classes>
     </test>
 
-    <test name="Inter state - Including GST, TCS" description="Register Customer- Including GST,TCS" testID="4">
+    <test name="Inter states - Including GST, TCS" description="Register Customer- Including GST,TCS" testID="4">
         <classes>
             <class name="SalesInvoicesTestCases.RegCusInterStatesGSTIncludeTCSInclude_04"/>
         </classes>
     </test>
 
-    <test name="Inter state - Including GST,TCS,CD" description="Register Customer - Including CD ,TCS, GST" testID="5">
+    <test name="Inter states - Including GST,TCS,CD" description="Register Customer - Including CD ,TCS, GST" testID="5">
         <classes>
             <class name="SalesInvoicesTestCases.RegCustIncludeGSTIncludeTCSIncludeCD_05"/>
         </classes>
@@ -53,115 +53,115 @@
     </test>
 
 
-    <test name="Inter state - Including GST" description="Register Customer - Including GST" testID="10">
+    <test name="Inter state -Exclusive Sales Price List Exclude GST" description="Register Customer - Exclude GST" testID="9">
         <classes>
             <class name="SalesInvoicesTestCases.RegCusInterStateExclusiveSalesPriceLIstGSTInclude_10"/>
         </classes>
     </test>
 
-    <test name="Inter state - Including GST" description="Register Customer - Including GST - Inclusive Sales Price List" testID="11">
+    <test name="Inter state -Inclusive Sales Price List Including GST" description="Register Customer - Including GST" testID="10">
         <classes>
             <class name="SalesInvoicesTestCases.RegCustInterStateGSTCalculations_11"/>
         </classes>
     </test>
 
-    <test name="Intra state - Including GST, OC" description="Register Customer-Including GST, OC - Inclusive Sales Price List" testID="12">
+    <test name="Intra state - Including GST, OC" description="Register Customer-Including GST, OC - Inclusive Sales Price List" testID="11">
         <classes>
             <class name="SalesInvoicesTestCases.RegCustInterStateGSTAndOCCalculations_12"/>
         </classes>
     </test>
 
-    <test name="Intra state - Excluding GST" description="Register Customer - Excluding GST" testID="13">
+    <test name="Intra state - Excluding GST" description="Register Customer - Excluding GST" testID="12">
         <classes>
             <class name="SalesInvoicesTestCases.RegCustExcludingGST_13"/>
         </classes>
     </test>
 
-    <test name="Intra state - Including GST" description="Register Customer - Including GST" testID="14">
+    <test name="Intra state - Including GST" description="Register Customer - Including GST" testID="13">
         <classes>
             <class name="SalesInvoicesTestCases.RegCustIncludingGST_14"/>
         </classes>
     </test>
 
-    <test name="Intra state - Excluding GST Including TCS" description="Register Customer - Excluding GST Including TCS" testID="15">
+    <test name="Intra state - Excluding GST Including TCS" description="Register Customer - Excluding GST Including TCS" testID="14">
         <classes>
             <class name="SalesInvoicesTestCases.RegCustExcludingGSTIncludingTCS_15"/>
         </classes>
     </test>
 
-    <test name="Intra state - Including GST, TCS" description="Register Customer- Including GST,TCS" testID="16">
+    <test name="Intra state - Including GST, TCS" description="Register Customer- Including GST,TCS" testID="15">
         <classes>
             <class name="SalesInvoicesTestCases.RegCustIncludingGSTIncludingTCS_16"/>
         </classes>
     </test>
 
-    <test name="Intra state - Including -GST,TCS,CD" description="Register Customer- Including TCS,GST,CD" testID="17">
+    <test name="Intra states - Including -GST,TCS,CD" description="Register Customer- Including TCS,GST,CD" testID="16">
         <classes>
             <class name="SalesInvoicesTestCases.RegCustIncludingGSTIncludingTCSIncludingCD_17"/>
         </classes>
     </test>
 
-    <test name="Intra state - Including GST,TCS,OC" description="Register Customer- Including GST,TCS,OC" testID="18">
+    <test name="Intra state - Including GST,TCS,OC" description="Register Customer- Including GST,TCS,OC" testID="17">
         <classes>
             <class name="SalesInvoicesTestCases.RegCustIncludeGSTIncludeTCSIncludeOC_18"/>
         </classes>
     </test>
 
-    <test name="Intra state - Including - GST,TCS,OC,CD" description="Register Customer- Including -GST,TCS,OC,CD" testID="19">
+    <test name="Intra state - Including - GST,TCS,OC,CD" description="Register Customer- Including -GST,TCS,OC,CD" testID="18">
         <classes>
             <class name="SalesInvoicesTestCases.RegCustIncludingGSTIncludingTCSIncludingOCIncludingCD_19"/>
         </classes>
     </test>
 
-    <test name="Intra state - Excluding GST Including -CD,OC" description="Register Customer Intra state - Excluding GST Including -CD,OC" testID="20">
+    <test name="Intra state - Excluding GST Including -CD,OC" description="Register Customer Intra state - Excluding GST Including -CD,OC" testID="19">
         <classes>
             <class name="SalesInvoicesTestCases.RegCustExcludingGSTIncludingCDIncludingOC_20"/>
         </classes>
     </test>
 
-    <test name="Inter state - Excluding GST" description="UnRegister Customer- Excluding GST" testID="21">
+    <test name="Inter states - Excluding GST" description="UnRegister Customer- Excluding GST" testID="20">
         <classes>
             <class name="SalesInvoicesTestCases.UnRegCustExcludingGST_23"/>
         </classes>
     </test>
 
-    <test name="Inter state - Including GST" description="UnRegister Customer- Including GST" testID="22">
+    <test name="Inter states - Including GST" description="UnRegister Customer- Including GST" testID="21">
         <classes>
             <class name="SalesInvoicesTestCases.UnRegCustIncludingGST_24"/>
         </classes>
     </test>
 
-    <test name="Inter state - Excluidng GST Including TCS" description="UnRegister Customer -Excluding GST Including TCS" testID="23">
+    <test name="Inter state - Excluidng GST Including TCS" description="UnRegister Customer -Excluding GST Including TCS" testID="22">
         <classes>
             <class name="SalesInvoicesTestCases.UnRegCustExludingGSTIncludingTCS_25"/>
         </classes>
     </test>
 
-    <test name="Inter state - Including GST, TCS" description="Register Customer- Including GST,TCS," testID="24">
+    <test name="Inter state - Including GST, TCS" description="Register Customer- Including GST,TCS," testID="23">
         <classes>
             <class name="SalesInvoicesTestCases.UnRegCustIncludingGSTIncludingTCS_26"/>
         </classes>
     </test>
 
-    <test name="Inter state - Including GST,TCS,CD" description="UnRegister Customer Inter state - Including GST,TCS,CD" testID="25">
+    <test name="Inter state - Including GST,TCS,CD" description="UnRegister Customer Inter state - Including GST,TCS,CD" testID="24">
         <classes>
             <class name="SalesInvoicesTestCases.UnRegCustIncludingGSTIncludingTCSIncludingCD_27"/>
         </classes>
     </test>
 
-    <test name="Inter state - Including GST,TCS,OC,CD" description="UnRegister Customer - Including GST,TCS,OC,CD" testID="26">
+    <test name="Inter state - Including GST,TCS,OC,CD" description="UnRegister Customer - Including GST,TCS,OC,CD" testID="25">
         <classes>
             <class name="SalesInvoicesTestCases.UnRegCustIncludingGSTIncludingTCSIncludingCDIncludingOC_28"/>
         </classes>
     </test>
 
-    <test name="Inter state - Including - GST,TCS,OC" description="UnRegister Customer - Including - GST,TCS,OC" testID="27">
+    <test name="Inter state - Including - GST,TCS,OC" description="UnRegister Customer - Including - GST,TCS,OC" testID="26">
         <classes>
             <class name="SalesInvoicesTestCases.UnRegCustIncludingGSTIncludingTCSIncludingOC_29"/>
         </classes>
     </test>
 
-    <test name="Inter state - Excluding GST, Including - CD,OC" description="UnRegister Customer - Excluding GST, Including - CD,OC" testID="28">
+    <test name="Inter state - Excluding GST, Including - CD,OC" description="UnRegister Customer - Excluding GST, Including - CD,OC" testID="27">
         <classes>
             <class name="SalesInvoicesTestCases.UnRegCustExcludingGSTIncludingCDIncludingOC_30"/>
         </classes>
