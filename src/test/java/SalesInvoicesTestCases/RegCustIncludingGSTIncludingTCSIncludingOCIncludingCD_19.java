@@ -30,6 +30,6 @@ public class RegCustIncludingGSTIncludingTCSIncludingOCIncludingCD_19 {
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 }

@@ -82,7 +82,7 @@ public class IntraStateIncludingGSTIncludingTCSIncludingOtherCharges_18 extends 
 
         //verify all the fields in summary are fetching data
         navigateToPaytymTab();
-        for (int j = 0; j < 7; j++) {
+        for (int j = 0; j < 6; j++) {
             robot.keyPress(KeyEvent.VK_RIGHT);
             robot.keyRelease(KeyEvent.VK_RIGHT);
         }
