@@ -12,46 +12,40 @@ import java.awt.*;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
-public class InterStatesGSTIncludingTCSIncludingOC_06 extends Transaction {
+public class InterStatesGSTIncludingTCSIncludingOCIncluding_06 extends Transaction {
     WindowsDriver driver;
     Common common;
     String dataFile;
-    double quantity;
     boolean gstAmountClicked = false;
-    double netAmountTextt;
-    double mrp, grossAmount, unitRate, voucherDiscountValue, partyDiscountValue, netAmount, grossMinusDiscount, gstValue, cessValue, taxableValue, taxableAmountCalculated, expectedGSTAmount;
+    double quantity,mrp, grossAmount, unitRate, voucherDiscountValue, partyDiscountValue, netAmount, grossMinusDiscount, gstValue, cessValue, taxableValue, taxableAmountCalculated, expectedGSTAmount,netAmountTextt;
 
-    public InterStatesGSTIncludingTCSIncludingOC_06(WindowsDriver driver, String file) {
+    public InterStatesGSTIncludingTCSIncludingOCIncluding_06(WindowsDriver driver, String file) {
         super(driver);
         common = new Common(this.driver = driver);
         dataFile = file;
     }
 
-    public void interStatesGSTIncludingTCSIncludingOC_06() throws InterruptedException, IOException, ParseException, AWTException {
+    public void interStatesGSTIncludingTCSIncludingOC_06() throws InterruptedException, IOException, ParseException, AWTException, IOException, ParseException, AWTException {
         navigateToSalesInvoiceMenu();
         Thread.sleep(1000);
-        lastTransactionName();
+        String oldVoucherID =oldTTransactionID();
+        System.out.println("oldID: "+ oldVoucherID);
         selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
-        common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
-        common.clickElement("xpath", "//Edit[@Name='Location *']");
-        common.clickElement("xpath", "//Edit[@Name='Cash/Party Code']");
-        selectAndValidateDataNew(common.getData(dataFile, "partyCode"), "xpath", "//Edit[@Name='Cash/Party Code']");
+        enterInput("xpath","//Edit[@Name='Branch *']",dataFile,"branch");
+        enterInput("xpath","//Edit[@Name='Location *']",dataFile,"location");
+        enterInput("xpath","//Edit[@Name='Cash/Party Code']",dataFile,"partyCode");
         Thread.sleep(2500);
         gstTransactionType("Registered Dealers");
         Thread.sleep(1000);
-        common.clickElement("xpath", "//Edit[@Name='Sales A/c Code']");
-        selectAndValidateData(common.getData(dataFile, "salesAccountCode"), "xpath", "//Edit[@Name='Sales A/c Code']");
+        enterInput("xpath","//Edit[@Name='Sales A/c Code']",dataFile,"salesAccountCode");
 //        common.clickElement("xpath", "//CheckBox[@Name='Apply TCS']");
-        common.clickElement("xpath", "//Edit[@Name='TCS Trans Nature']");
-        selectAndValidateData(common.getData(dataFile, "tcsNature"), "xpath", "//Edit[@Name='TCS Trans Nature']");
-        Thread.sleep(2000);
+        enterInput("xpath","//Edit[@Name='TCS Trans Nature']",dataFile,"tcsNature");
         common.sliderHandling("xpath", "//ScrollBar[@Name='Horizontal']/Thumb[@Name='Position']", 500, 0);
+        Thread.sleep(2000);
         invoiceTypeWhenRegister();
-        common.clickElement("xpath", "//Edit[@Name='Price List']");
-        selectAndValidateData(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
-        common.clickElement("xpath", "//Edit[@Name='Port Code']");
-        selectOptionalMaster(common.getData(dataFile, "portCode"), "xpath", "//Edit[@Name='Port Code']");
+        enterInput("xpath","//Edit[@Name='Price List']",dataFile,"priceList");
+        enterInput("xpath","//Edit[@Name='Executive *']",dataFile,"executive");
+        enterInput("xpath","//Edit[@Name='Port Code']",dataFile,"portCode");
         common.clickElement("xpath", "//Edit[@Name='Remarks']");
         selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
 
@@ -61,22 +55,35 @@ public class InterStatesGSTIncludingTCSIncludingOC_06 extends Transaction {
         }
         netAmountTextt = Double.parseDouble(common.findWebElement("xpath", "//Edit[@AutomationId='NetAmount']").getText().replace(",", ""));
         System.out.println("Net Amount :- " + netAmountTextt);
-        tcsCalculations(dataFile, "code", "amount", "rowCount", netAmountTextt);
-
-        //calculating TCS
-//        DecimalFormat decimalFormat=new DecimalFormat("#.###");
-//        totalNetValue= Double.parseDouble(common.findWebElement("xpath","//Edit[@AutomationId='NetAmount']").getText().replace(",",""));
-//        System.out.println("totalNetAmount :- "+totalNetValue);
-//        common.clickElement("xpath","//TabItem[contains(@Name,'TCS')]");
-//        tcsAssesibleValue =Double.parseDouble(common.findWebElement("xpath","//Edit[@Name='Assessable Value']").getText().replace(",",""));
-//        System.out.println("assesibleValue :- "+tcsAssesibleValue);
-//        Assert.assertEquals(tcsAssesibleValue,totalNetValue,"should be match");
-//
-//        tcsRate = Double.parseDouble(common.findWebElement("xpath","//Edit[@Name='TCS Rate']").getText());
-//        tcsCompanyCurrency =Double.parseDouble(common.findWebElement("xpath","//Edit[@Name='TCS Amount']").getText());
-//        double expectedTCS = tcsAssesibleValue * tcsRate / 100;
-//        System.out.println("ActualAmount :- "+tcsCompanyCurrency+" ExpectedAmount :- "+decimalFormat.format(expectedTCS));
-//        Assert.assertEquals(decimalFormat.format(tcsCompanyCurrency),decimalFormat.format(expectedTCS),"Calculations mismatch");
+        tcsCalculations( netAmountTextt);
+        navigateToBillsPayablesTab();
+        common.deleteInvalidRows();
+        navigateToSummaryTab();
+        Thread.sleep(2000);
+        quantityPresentInSummary();
+        grossAmountPresentInSummary();
+        grossMinusDiscountPresentInSummary();
+        tcsTaxableValuePresentInSummary();
+        tcsAmountPresentInSummary();
+        netAmountPresentInSummary();
+        totalValuePresentInSummary();
+        totalValueInCompanyCurrenyPresentInSummary();
+        receivableAmountPresentInSummary();
+        transactionSave();
+        String newVoucherID =newTransactionID(oldVoucherID).replace(" ","");
+        System.out.println("newID: "+newVoucherID);
+        Assert.assertNotEquals(newVoucherID, oldVoucherID,"both ID's should not Equal when we perform transaction");
+        Thread.sleep(1000);
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Invoices");
+        common.clickElement("name", "Sales Book");
+        Thread.sleep(1000);
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
+        Thread.sleep(1500);
+        verifyReport(newVoucherID,dataFile);
+        deleteSingleTransaction(newVoucherID);
+        closeReport("Sales Book");
+        closeTransaction("Sales Invoices");
     }
 
     public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {
@@ -103,8 +110,7 @@ public class InterStatesGSTIncludingTCSIncludingOC_06 extends Transaction {
         System.out.println("actual:- " + actualMrpAmount + " -expectedMrp-" + expectedMrpAmount);
         Assert.assertEquals(actualMrpAmount, expectedMrpAmount, "Mismatch in MRP Amount");
 
-        int offset = 450;
-        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", offset, 0);
+        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 450, 0);
 
         unitRate = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='Unit Rate Row " + i + ", Not sorted.']").getText());
         System.out.println("unitRate:-" + unitRate);
@@ -135,7 +141,7 @@ public class InterStatesGSTIncludingTCSIncludingOC_06 extends Transaction {
 
         enterDataAndValidate("xpath", "//Edit[@Name='HSN Row " + i + ", Not sorted.']", dataFile, "HSNCode");
 
-        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", offset, 0);
+        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 250, 0);
 
         grossMinusDiscount = (grossAmount - (voucherDiscountValue + partyDiscountValue));
 

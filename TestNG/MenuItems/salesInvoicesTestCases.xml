@@ -5,16 +5,35 @@
         <listener class-name="util.AnnotationTransformer"/>
     </listeners>
 
-    <test name="InterSatesGSTIncludingTCSIncludingOCIncludingCDIncluding" description="description of InterSatesGSTIncludingTCSIncludingOCIncludingCDIncluding" testID="1">
+    <test name="InterSatesGSTIncludingTCSIncludingOCIncludingCDIncluding" description="InterSatesGSTIncludingTCSIncludingOCIncludingCDIncluding" testID="">
         <classes>
             <class name="SalesInvoicesTestCases.RegCusInterStatesGSTExcludeTCSInclude_03"/>
         </classes>
     </test>
 
-    <test name="InterStatesGSTExcludeTCSInclude" description="description for InterStatesGSTExcludeTCSInclude" testID="2">
+    <test name="RegCusInterStatesGSTIncludeTCSInclude" description="RegCusInterStatesGSTIncludeTCSInclude" testID="">
+        <classes>
+            <class name="SalesInvoicesTestCases.InterStatesGSTIncludingTCSIncluding_04"/>
+        </classes>
+    </test>
+
+    <test name="RegCusInterStatesGSTIncludeTCSIncludeOCInclude" description="description of RegCusInterStatesGSTIncludeTCSIncludeOCInclude_06" testID="">
+        <classes>
+            <class name="SalesInvoicesTestCases.RegCusInterStatesGSTIncludeTCSIncludeOCInclude_06"/>
+        </classes>
+    </test>
+
+    <test name="InterStatesGSTExcludeTCSInclude" description="description for InterStatesGSTExcludeTCSInclude" testID="">
         <classes>
             <class name="SalesInvoicesTestCases.RegCusInterSatesGSTIncludeTCSIncludeOCIncludeCDInclude_07"/>
         </classes>
     </test>
+
+    <test name="RegCusInterStatesGSTExcludeCDIncludeOCInclude" description="description for RegCusInterStatesGSTExcludeCDIncludeOCInclude" testID="">
+        <classes>
+            <class name="SalesInvoicesTestCases.RegCusInterStatesGSTExcludeCDIncludeOCInclude_08"/>
+        </classes>
+    </test>
+
 
 </suite>

@@ -5,6 +5,7 @@
   "invoice": "Regular",
   "priceList": "AT_Exclusive Sales Price List 1",
   "salesAccountCode": "AT_Sales  Acc 1",
+  "executive": "AT_Executive 1",
   "tcsNature": "AT_TCS Transaction Nature 1",
   "portCode": "225588",
   "productCount": 3,
@@ -56,10 +57,10 @@
   "column24": "1,000.00",
   "column25": "0.00",
   "column26": "1,000.00",
-  "column27": "0.00",
-  "column28": "0.00",
-  "column29": "13,530.00",
-  "column30": "13,530.00",
+  "column27": "626.50",
+  "column28": "0.50",
+  "column29": "14,157.00",
+  "column30": "14,157.00",
   "column31": "AT_Executive 1"
 
 }

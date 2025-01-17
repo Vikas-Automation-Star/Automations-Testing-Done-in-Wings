@@ -5,6 +5,7 @@
   "invoice": "Regular",
   "priceList": "AT_Inclusive Sales Price List 1",
   "salesAccountCode": "AT_Sales  Acc 1",
+  "executive": "AT_Executive 1",
   "tcsNature": "AT_TCS Transaction Nature 1",
   "portCode": "225588",
   "productCount": 3,

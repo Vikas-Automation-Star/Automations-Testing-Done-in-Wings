@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.io.IOException;
 
-public class TestCase_12 {
+public class InterStatesInclusiveSalesPriceListGSTAndOCCalculations_12 {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
     String dataFile = "./src/main/resources/TestCasesData/testCase12.json";
@@ -29,7 +29,7 @@ public class TestCase_12 {
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 
 }

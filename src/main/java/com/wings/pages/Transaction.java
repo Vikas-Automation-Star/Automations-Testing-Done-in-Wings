@@ -1369,7 +1369,7 @@ public abstract class Transaction {
             // Enter Account Code and Amount
             enterData("xpath", "//Edit[@Name='Account Code Row " + i + ", Not sorted.']", dataFile, accCode);
             enterData("xpath", "//Edit[@Name='Amount * Row " + i + ", Not sorted.']", dataFile, amount);
-            enterData("xpath", "//Edit[@Name='HSN Row " + i + ", Not sorted.']", dataFile, "HSNCode");
+            enterData("xpath", "//Edit[@Name='HSN Row " + i + ", Not sorted.']", dataFile, "HsnCode");
 
             WebElement gstElement = common.findWebElement("xpath", "//Edit[@Name='GST Product Category Row " + i + ", Not sorted.']");
             double gstValue = StringUtil.extractNumber(gstElement.getText());
@@ -1661,7 +1661,7 @@ public abstract class Transaction {
                 element.click();
                 Actions actions=new Actions(driver);
                 actions.contextClick(element).perform();
-               break;
+                break;
             }
         }
         common.clickElement("xpath","//MenuItem[@Name='View Transaction']");
@@ -1680,8 +1680,9 @@ public abstract class Transaction {
                 Assert.fail("New Transaction isn't deleted");
             }
         }
-        System.out.println("Transaction Deleted Successfully");
+        System.out.println("Transaction is Deleted Successfully");
     }
+
     public void deleteTransaction(String locator,String voucherLocatorType,String closeTransaction) throws InterruptedException {
         common.clickElement(locator,voucherLocatorType);
         common.clickElement("xpath","//Button[@Name='View']");
