@@ -42,7 +42,7 @@ public class IntraStateExcludingGSTIncludingTCS_15 extends Transaction {
         Thread.sleep(1000);
         common.clickElement("xpath", "//Edit[@Name='Sales A/c Code']");
         selectAndValidateData(common.getData(dataFile, "salesAccountCode"), "xpath", "//Edit[@Name='Sales A/c Code']");
-//        common.clickElement("xpath", "//CheckBox[@Name='Apply TCS']");
+
         common.clickElement("xpath", "//Edit[@Name='TCS Trans Nature']");
         common.inputText("xpath", "//Edit[@Name='Invoice Type']", common.getData(dataFile, "invoice"));
         Thread.sleep(1000);
@@ -87,6 +87,8 @@ public class IntraStateExcludingGSTIncludingTCS_15 extends Transaction {
         quantityPresentInSummary();
         grossAmountPresentInSummary();
         grossMinusDiscountPresentInSummary();
+        tcsAmountPresentInSummary();
+        tcsTaxableValuePresentInSummary();
         totalValuePresentInSummary();
         totalValueInCompanyCurrenyPresentInSummary();
         receivableAmountPresentInSummary();
@@ -104,6 +106,7 @@ public class IntraStateExcludingGSTIncludingTCS_15 extends Transaction {
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(15000);
         verifyReport(newVoucherID,dataFile);
+        deleteSingleTransaction(newVoucherID);
     }
 
     public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {

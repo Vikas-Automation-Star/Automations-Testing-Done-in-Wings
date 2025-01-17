@@ -89,6 +89,10 @@ public class IntraStateIncludingGSTIncludingTCSIncludingOtherCharges_18 extends 
         quantityPresentInSummary();
         grossAmountPresentInSummary();
         netAmountPresentInSummary();
+        tcsAmountPresentInSummary();
+        tcsTaxableValuePresentInSummary();
+        otherChargesPresentInSummary();
+        otherChargesCESSPresentInSummary();
         totalValuePresentInSummary();
         totalValueInCompanyCurrenyPresentInSummary();
         receivableAmountPresentInSummary();
@@ -106,6 +110,7 @@ public class IntraStateIncludingGSTIncludingTCSIncludingOtherCharges_18 extends 
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(15000);
         verifyReport(newVoucherID,dataFile);
+        deleteSingleTransaction(newVoucherID);
     }
 
 

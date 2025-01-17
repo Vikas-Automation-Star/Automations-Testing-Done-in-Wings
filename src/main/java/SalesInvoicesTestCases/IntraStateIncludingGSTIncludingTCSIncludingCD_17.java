@@ -93,10 +93,13 @@ public class IntraStateIncludingGSTIncludingTCSIncludingCD_17 extends Transactio
         quantityPresentInSummary();
         grossAmountPresentInSummary();
         netAmountPresentInSummary();
+        tcsAmountPresentInSummary();
+        tcsTaxableValuePresentInSummary();
+        cessPresentInSummary();
         totalValuePresentInSummary();
         totalValueInCompanyCurrenyPresentInSummary();
         receivableAmountPresentInSummary();
-
+        //save
         transactionSave();
         String newVoucherID =newTransactionID(oldVoucherID).replace(" ","");
         System.out.println("newID: "+newVoucherID);
@@ -109,6 +112,7 @@ public class IntraStateIncludingGSTIncludingTCSIncludingCD_17 extends Transactio
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(15000);
         verifyReport(newVoucherID,dataFile);
+        deleteSingleTransaction(newVoucherID);
     }
 
     public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {
@@ -148,14 +152,12 @@ public class IntraStateIncludingGSTIncludingTCSIncludingCD_17 extends Transactio
         Assert.assertEquals(grossAmount, grossExpected, "Mismatch in Gross Amount");
 
         //discount
-        super.enterData("xpath", "//Edit[@Name='Voucher Disc % Row " + i + ", Not sorted.']", dataFile, "voucherDiscount" + i);
-
+        enterData("xpath", "//Edit[@Name='Voucher Disc % Row " + i + ", Not sorted.']", dataFile, "voucherDiscount" + i);
         WebElement voucher = common.findWebElement("xpath", "//Edit[@Name='Voucher Disc Row " + i + ", Not sorted.']");
         String voucherText = voucher.getText().replace(",", "");
         voucherDiscountValue = Double.parseDouble(voucherText);
         System.out.println("voucher Amount Value:- " + voucherDiscountValue);
-
-        super.enterData("xpath", "//Edit[@Name='Party Disc % Row " + i + ", Not sorted.']", dataFile, "partyDiscount" + i);
+        enterData("xpath", "//Edit[@Name='Party Disc % Row " + i + ", Not sorted.']", dataFile, "partyDiscount" + i);
 
         WebElement partyDisc = common.findWebElement("xpath", "//Edit[@Name='Party Disc Row " + i + ", Not sorted.']");
         String partyDiscText = partyDisc.getText().replace(",", "");
@@ -163,9 +165,7 @@ public class IntraStateIncludingGSTIncludingTCSIncludingCD_17 extends Transactio
         System.out.println("party Discount Value: - " + partyDiscountValue);
 
         enterDataAndValidate("xpath", "//Edit[@Name='HSN Row " + i + ", Not sorted.']", dataFile, "HSNCode");
-
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 400, 0);
-
 
         grossMinusDiscount = (grossAmount - (voucherDiscountValue + partyDiscountValue));
         System.out.println("gross-disc is: " + grossMinusDiscount);
