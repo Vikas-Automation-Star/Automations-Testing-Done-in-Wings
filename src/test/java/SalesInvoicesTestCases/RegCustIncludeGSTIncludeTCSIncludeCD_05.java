@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.io.IOException;
 
-public class TestCase_05 {
+public class RegCustIncludeGSTIncludeTCSIncludeCD_05 {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
     String dataFile = "./src/main/resources/TestCasesData/testCase05.json";
