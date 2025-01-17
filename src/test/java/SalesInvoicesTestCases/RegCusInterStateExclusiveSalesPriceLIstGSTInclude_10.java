@@ -10,25 +10,25 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.io.IOException;
 
-public class TestCase_07 {
+public class RegCusInterStateExclusiveSalesPriceLIstGSTInclude_10 {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String dataFile = "./src/main/resources/TestCasesData/testCase07.json";
+    String dataFile = "./src/main/resources/TestCasesData/testCase10.json";
 
     @BeforeTest
-    public void beforeTest() throws IOException, InterruptedException, ParseException {
+    public void beforeTest() throws IOException, ParseException, InterruptedException {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
-    public void testCase07() throws IOException, ParseException, InterruptedException, AWTException {
-        InterSatesGSTIncludingTCSIncludingOCIncludingCDIncluding_07 tc = new InterSatesGSTIncludingTCSIncludingOCIncludingCDIncluding_07(driver, dataFile);
-        tc.interSatesGSTIncludingTCSIncludingOCIncludingCDIncluding_07();
+    public void tesCase10() throws IOException, ParseException, InterruptedException, AWTException {
+        InterStateExclusiveSalesPriceLIstGSTCalculations_10 exclusive = new InterStateExclusiveSalesPriceLIstGSTCalculations_10(driver, dataFile);
+        exclusive.interStateExclusiveSalesPriceLIstGSTCalculations_10();
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-        appLogin.logout();
+//        appLogin.logout();
     }
 }

@@ -10,21 +10,21 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.io.IOException;
 
-public class TestCase_10 {
+public class RegCusInterStatesGSTIncludeTCSIncludeOCInclude_06 {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String dataFile = "./src/main/resources/TestCasesData/testCase10.json";
+    String dataFile = "./src/main/resources/TestCasesData/testCase06.json";
 
     @BeforeTest
-    public void beforeTest() throws IOException, ParseException, InterruptedException {
+    public void beforeTest() throws IOException, InterruptedException, ParseException {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
-    public void tesCase10() throws IOException, ParseException, InterruptedException, AWTException {
-        InterStateExclusiveSalesPriceLIstGSTCalculations_10 exclusive = new InterStateExclusiveSalesPriceLIstGSTCalculations_10(driver, dataFile);
-        exclusive.interStateExclusiveSalesPriceLIstGSTCalculations_10();
+    public void testCase06() throws IOException, ParseException, InterruptedException, AWTException {
+        InterStatesGSTIncludingTCSIncludingOC_06 tc = new InterStatesGSTIncludingTCSIncludingOC_06(driver, dataFile);
+        tc.interStatesGSTIncludingTCSIncludingOC_06();
     }
 
     @AfterTest
