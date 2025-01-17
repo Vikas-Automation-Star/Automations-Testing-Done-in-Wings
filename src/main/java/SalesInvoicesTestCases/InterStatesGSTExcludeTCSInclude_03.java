@@ -81,7 +81,8 @@ public class InterStatesGSTExcludeTCSInclude_03 extends Transaction {
         Thread.sleep(1500);
         verifyReport(newVoucherID,dataFile);
         closeReport("Sales Book");
-        deleteTransaction("xpath","//Pane/*/Text[starts-with(@Name,'SI')]/*[starts-with(@Name,'SI')]","Sales Invoices");
+        deleteSingleTransaction(newVoucherID);
+//        deleteTransaction("xpath","//Pane/*/Text[starts-with(@Name,'SI')]/*[starts-with(@Name,'SI')]","Sales Invoices");
 
     }
 

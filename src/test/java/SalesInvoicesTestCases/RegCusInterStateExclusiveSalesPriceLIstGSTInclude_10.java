@@ -29,6 +29,6 @@ public class RegCusInterStateExclusiveSalesPriceLIstGSTInclude_10 {
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 }

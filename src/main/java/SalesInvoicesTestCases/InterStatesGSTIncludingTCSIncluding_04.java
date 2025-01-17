@@ -92,8 +92,9 @@ public class InterStatesGSTIncludingTCSIncluding_04 extends Transaction {
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
         verifyReport(newVoucherID,dataFile);
+        deleteSingleTransaction(newVoucherID);
         closeReport("Sales Book");
-        deleteTransaction("xpath","//Pane/*/Text[starts-with(@Name,'SI')]/*[starts-with(@Name,'SI')]","Sales Invoices");
+//        deleteTransaction("xpath","//Pane/*/Text[starts-with(@Name,'SI')]/*[starts-with(@Name,'SI')]","Sales Invoices");
 
     }
 

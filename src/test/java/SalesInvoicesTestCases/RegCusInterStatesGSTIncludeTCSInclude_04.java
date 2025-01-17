@@ -30,6 +30,6 @@ public class RegCusInterStatesGSTIncludeTCSInclude_04 {
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 }

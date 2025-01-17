@@ -10,10 +10,10 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.io.IOException;
 
-public class TestCase_11 {
+public class RegCustInterStateGSTAndOCCalculations_12 {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String dataFile = "./src/main/resources/TestCasesData/testCase11.json";
+    String dataFile = "./src/main/resources/TestCasesData/testCase12.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, ParseException, InterruptedException {
@@ -22,13 +22,14 @@ public class TestCase_11 {
     }
 
     @Test
-    public void testCase11() throws IOException, ParseException, InterruptedException, AWTException {
-        InterStateInclusiveSalesPriceListGSTCalculations_11 inclusive = new InterStateInclusiveSalesPriceListGSTCalculations_11(driver, dataFile);
-        inclusive.interStateExclusiveSalesPriceListGSTCalculations_11();
+    public void testCase12() throws IOException, ParseException, InterruptedException, AWTException {
+        InterStateInclusiveSalesPriceListGSTC_OCalculations_12 inclusive = new InterStateInclusiveSalesPriceListGSTC_OCalculations_12(driver, dataFile);
+        inclusive.interStateInclusiveSalesPriceListGSTC_OCalculations_12();
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
+
 }
