@@ -1450,12 +1450,6 @@ public abstract class Transaction {
                 double calculatedNetAmount = taxableValue + calculatedGSTAmount;
                 System.out.println("calculated Net: " + calculatedNetAmount);
 
-                // Format values for consistency
-//                String formattedGSTAmount = decimalFormat.format(calculatedGSTAmount);
-//                System.out.println("formatted GST Amount :-" + formattedGSTAmount);
-//                String formattedNetAmount = decimalFormat.format(calculatedNetAmount);
-//                System.out.println("formatted net Amount :-" + formattedNetAmount);
-
                 // Fetch values from UI
                 double actualGSTAmount = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='GST Amount Row " + i + ", Not sorted.']").getText());
                 System.out.println("actual GST Amount :-" + actualGSTAmount);
@@ -1647,8 +1641,6 @@ public abstract class Transaction {
         String[] columns = text.split(";");
         for (int i = 0; i < columns.length; i++) {
             if (i > 2 && !common.getData(dataFile, "column" + (i + 1)).equals("")) {
-//                                System.out.println(columns[i]);
-//                                System.out.println(common.getData(dataFile,"column"+(i+1)));
                 Assert.assertEquals(columns[i], common.getData(dataFile, "column" + (i + 1)));
             }
             System.out.println(columns[i]);
@@ -1661,16 +1653,34 @@ public abstract class Transaction {
         common.clickElement("xpath", "//TabItem[@Name='" + reportName + "']/Button[@Name='Close']");
     }
 
-    public void deleteSingleTransaction() throws InterruptedException {
-        common.clickElement("xpath","//Pane/*/Text[starts-with(@Name,'SI')]/*[starts-with(@Name,'SI')]");
-        common.clickElement("xpath","//Button[@Name='View']");
-        Thread.sleep(2500);
+    public void deleteSingleTransaction(String voucherID) throws InterruptedException {
+        List<WebElement> elementList = common.findWebElements("xpath", "//Table/*[@Name='Data Panel']/ListItem[contains(@Name,'Row')]");
+        for (WebElement i : elementList){
+            if (i.getText().contains(voucherID)){
+                WebElement element=i.findElement(By.xpath("//DataItem[contains(@Name,'Voucher No row')]"));
+                element.click();
+                Actions actions=new Actions(driver);
+                actions.contextClick(element).perform();
+               break;
+            }
+        }
+        common.clickElement("xpath","//MenuItem[@Name='View Transaction']");
+        Thread.sleep(10000);
         common.clickElement("xpath","//Button[@Name='Tools']");
         common.clickElement("xpath","//Button[@Name='Delete']");
         common.clickElement("xpath","//Button[@Name='Yes']");
         common.clickElement("xpath","//Button[@Name='OK']");
         common.clickElement("xpath","//Window[@Name='Close']/Button[@Name='Yes']");
-        closeTransaction("Sales Invoices");
+        //validate
+        common.clickElement("xpath","//ToolBar/Button[@Name='Refresh']");
+        Thread.sleep(1500);
+        List<WebElement> voucherList = common.findWebElements("xpath", "//Table/*[@Name='Data Panel']/ListItem[contains(@Name,'Row')]");
+        for (WebElement i : voucherList){
+            if (i.getText().contains(voucherID)){
+                Assert.fail("New Transaction isn't deleted");
+            }
+        }
+        System.out.println("Transaction Deleted Successfully");
     }
     public void deleteTransaction(String locator,String voucherLocatorType,String closeTransaction) throws InterruptedException {
         common.clickElement(locator,voucherLocatorType);
