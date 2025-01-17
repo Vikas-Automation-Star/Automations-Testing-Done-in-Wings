@@ -98,6 +98,7 @@ public class IntraStateExcludingGST_13 extends Transaction {
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(15000);
         verifyReport(newVoucherID,dataFile);
+        deleteSingleTransaction(newVoucherID);
 
     }
 

@@ -50,13 +50,14 @@ public class InterStateUnRegCustExcludingGST_23 extends Transaction {
             robot.keyRelease(KeyEvent.VK_DOWN);
             robot.keyPress(KeyEvent.VK_ENTER);
             robot.keyRelease(KeyEvent.VK_ENTER);
-//        super.validateElements("xpath","//Edit[@Name='Invoice Type']", common.getData(dataFile,"invoice"));
             common.clickElement("xpath", "//Edit[@Name='Price List']");
             selectAndValidateData(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
+            generalInfoSliderHandle(800);
             common.clickElement("xpath", "//Edit[@Name='Port Code']");
             selectOptionalMaster(common.getData(dataFile, "portCode"), "xpath", "//Edit[@Name='Port Code']");
             common.clickElement("xpath", "//Edit[@Name='Remarks']");
             selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
+            generalInfoSliderHandle(-500);
             //F3-Items
             for (int i = 0; i < Integer.parseInt(common.getData(dataFile, "productCount")); i++) {
                 addProduct(i);
@@ -94,6 +95,7 @@ public class InterStateUnRegCustExcludingGST_23 extends Transaction {
             common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
             Thread.sleep(15000);
             verifyReport(newVoucherID,dataFile);
+            deleteSingleTransaction(newVoucherID);
         }
 
         public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {
@@ -134,14 +136,12 @@ public class InterStateUnRegCustExcludingGST_23 extends Transaction {
             Assert.assertEquals(grossAmount, grossExpected, "Mismatch in Gross Amount");
 
             //discount
-            super.enterData("xpath", "//Edit[@Name='Voucher Disc % Row " + i + ", Not sorted.']", dataFile, "voucherDiscount" + i);
-
+            enterData("xpath", "//Edit[@Name='Voucher Disc % Row " + i + ", Not sorted.']", dataFile, "voucherDiscount" + i);
             WebElement voucher = common.findWebElement("xpath", "//Edit[@Name='Voucher Disc Row " + i + ", Not sorted.']");
             String voucherText = voucher.getText().replace(",", "");
             voucherDiscountValue = Double.parseDouble(voucherText);
             System.out.println("voucher Amount Value:- " + voucherDiscountValue);
-
-            super.enterData("xpath", "//Edit[@Name='Party Disc % Row " + i + ", Not sorted.']", dataFile, "partyDiscount" + i);
+            enterData("xpath", "//Edit[@Name='Party Disc % Row " + i + ", Not sorted.']", dataFile, "partyDiscount" + i);
 
             WebElement partyDisc = common.findWebElement("xpath", "//Edit[@Name='Party Disc Row " + i + ", Not sorted.']");
             String partyDiscText = partyDisc.getText().replace(",", "");

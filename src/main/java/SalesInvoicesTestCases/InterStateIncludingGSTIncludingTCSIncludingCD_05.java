@@ -31,7 +31,8 @@ public class InterStateIncludingGSTIncludingTCSIncludingCD_05 extends Transactio
     public void interStateIncludingGSTIncludingTCSIncludingCD_05() throws InterruptedException, IOException, ParseException, AWTException {
         navigateToSalesInvoiceMenu();
         Thread.sleep(1000);
-        lastTransactionName();
+        String oldVoucherID =oldTTransactionID();
+        System.out.println("oldID: "+ oldVoucherID);
         //branch selection
         common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
         selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
@@ -39,13 +40,13 @@ public class InterStateIncludingGSTIncludingTCSIncludingCD_05 extends Transactio
         selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Location *']");
         common.clickElement("xpath", "//Edit[@Name='Cash/Party Code']");
-        selectAndValidateDataNew(common.getData(dataFile, "partyCode"), "xpath", "//Edit[@Name='Cash/Party Code']");
+        enterInput("xpath", "//Edit[@Name='Cash/Party Code']",dataFile, "partyCode");
         Thread.sleep(2500);
         gstTransactionType("Registered Dealers");
         Thread.sleep(1000);
         common.clickElement("xpath", "//Edit[@Name='Sales A/c Code']");
         selectAndValidateData(common.getData(dataFile, "salesAccountCode"), "xpath", "//Edit[@Name='Sales A/c Code']");
-        common.clickElement("xpath", "//CheckBox[@Name='Apply TCS']");
+
         common.clickElement("xpath", "//Edit[@Name='TCS Trans Nature']");
 
         common.inputText("xpath", "//Edit[@Name='Invoice Type']", common.getData(dataFile, "invoice"));
@@ -73,23 +74,19 @@ public class InterStateIncludingGSTIncludingTCSIncludingCD_05 extends Transactio
             addProduct(i);
         }
         double itemsNetValue = Double.parseDouble(common.findWebElement("xpath", "//Edit[@AutomationId='NetAmount']").getText().replace(",", ""));
-
-//        navigateToChargesAndDeductionsTab();
-        chargesAndDeductionsCalculations(dataFile, "type", "accountCode", "amount", "rowCount");
-
+        chargesAndDeductionsCalculations(dataFile, "type", "chargesAccCode", "charges", "chargesRowCount");
         tcsCalculations(itemsNetValue);
 
-        //calculate TCS
-        navigateToTCSTab();
         validateCGSTAmountTabIsEmpty();
         validateSGSTAmountTabIsEmpty();
         validateIGSTAmountTabIsNotEmpty();
         validateCESSAmountTabIsNotEmpty();
-
-
+        navigateToBatchDetailsTab();
+        navigateToBillsPayablesTab();
+        common.deleteInvalidRows();
         //verify all the fields in summary are fetching data
-        navigateToOtherInfoTab();
-        for (int j = 0; j < 4; j++) {
+        navigateToPaytymTab();
+        for (int j = 0; j < 6; j++) {
             robot.keyPress(KeyEvent.VK_RIGHT);
             robot.keyRelease(KeyEvent.VK_RIGHT);
         }
@@ -99,6 +96,25 @@ public class InterStateIncludingGSTIncludingTCSIncludingCD_05 extends Transactio
         totalValuePresentInSummary();
         totalValueInCompanyCurrenyPresentInSummary();
         receivableAmountPresentInSummary();
+        cessPresentInSummary();
+        iGSTPresentInSummary();
+        tcsAmountPresentInSummary();
+        tcsTaxableValuePresentInSummary();
+        chargesPresentInSummary();
+        //save
+        transactionSave();
+        String newVoucherID =newTransactionID(oldVoucherID).replace(" ","");
+        System.out.println("newID: "+newVoucherID);
+        Assert.assertNotEquals(newVoucherID, oldVoucherID,"both ID's should not Equal when we perform transaction");
+        Thread.sleep(1000);
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Invoices");
+        common.clickElement("name", "Sales Book");
+        Thread.sleep(1000);
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
+        Thread.sleep(1500);
+        verifyReport(newVoucherID,dataFile);
+        deleteSingleTransaction(newVoucherID);
     }
 
     public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {

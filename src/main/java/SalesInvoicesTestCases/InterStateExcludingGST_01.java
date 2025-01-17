@@ -6,7 +6,6 @@ import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
@@ -27,22 +26,21 @@ public class InterStateExcludingGST_01 extends Transaction {
     public void testCase1() throws InterruptedException, IOException, ParseException, AWTException {
         navigateToSalesInvoiceMenu();
         Thread.sleep(1000);
-        lastTransactionName();
+        String oldVoucherID =oldTTransactionID();
+        System.out.println("oldID: "+ oldVoucherID);
         //branch selection
         common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
         selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
         selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Location *']");
-        common.clickElement("xpath", "//Edit[@Name='Cash/Party Code']");
-        selectAndValidateDataNew(common.getData(dataFile, "partyCode"), "xpath", "//Edit[@Name='Cash/Party Code']");
+        enterInput("xpath", "//Edit[@Name='Cash/Party Code']",dataFile, "partyCode");
         Thread.sleep(2500);
         gstTransactionType("Registered Dealers");
         Thread.sleep(1000);
         common.clickElement("xpath", "//Edit[@Name='Sales A/c Code']");
         selectAndValidateData(common.getData(dataFile, "salesAccountCode"), "xpath", "//Edit[@Name='Sales A/c Code']");
-
-
+        common.clickElement("xpath","//CheckBox[@Name='Apply TCS']");
         common.inputText("xpath", "//Edit[@Name='Invoice Type']", common.getData(dataFile, "invoice"));
         Thread.sleep(1000);
         Robot robot = new Robot();
@@ -52,13 +50,14 @@ public class InterStateExcludingGST_01 extends Transaction {
         robot.keyRelease(KeyEvent.VK_DOWN);
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
-//        super.validateElements("xpath","//Edit[@Name='Invoice Type']", common.getData(dataFile,"invoice"));
         common.clickElement("xpath", "//Edit[@Name='Price List']");
         selectAndValidateData(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
+        generalInfoSliderHandle(800);
         common.clickElement("xpath", "//Edit[@Name='Port Code']");
         selectOptionalMaster(common.getData(dataFile, "portCode"), "xpath", "//Edit[@Name='Port Code']");
         common.clickElement("xpath", "//Edit[@Name='Remarks']");
         selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
+        generalInfoSliderHandle(-500);
         //F3-Items
         for (int i = 0; i < Integer.parseInt(common.getData(dataFile, "productCount")); i++) {
             addProduct(i);
@@ -68,10 +67,12 @@ public class InterStateExcludingGST_01 extends Transaction {
         validateIGSTAmountTabIsEmpty();
         validateCESSAmountTabIsEmpty();
         navigateToBatchDetailsTab();
+        navigateToBillsPayablesTab();
+        common.deleteInvalidRows();
 
         //verify all the fields in summary are fetching data
-        navigateToOtherInfoTab();
-        for (int j = 0; j < 4; j++) {
+        navigateToPaytymTab();
+        for (int j = 0; j < 6; j++) {
             robot.keyPress(KeyEvent.VK_RIGHT);
             robot.keyRelease(KeyEvent.VK_RIGHT);
         }
@@ -82,6 +83,20 @@ public class InterStateExcludingGST_01 extends Transaction {
         totalValuePresentInSummary();
         totalValueInCompanyCurrenyPresentInSummary();
         receivableAmountPresentInSummary();
+        //save
+        transactionSave();
+        String newVoucherID =newTransactionID(oldVoucherID).replace(" ","");
+        System.out.println("newID: "+newVoucherID);
+        Assert.assertNotEquals(newVoucherID, oldVoucherID,"both ID's should not Equal when we perform transaction");
+        Thread.sleep(1000);
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Invoices");
+        common.clickElement("name", "Sales Book");
+        Thread.sleep(1000);
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
+        Thread.sleep(1500);
+        verifyReport(newVoucherID,dataFile);
+        deleteSingleTransaction(newVoucherID);
     }
 
     public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {
@@ -122,15 +137,12 @@ public class InterStateExcludingGST_01 extends Transaction {
         Assert.assertEquals(grossAmount, grossExpected, "Mismatch in Gross Amount");
 
         //discount
-        super.enterData("xpath", "//Edit[@Name='Voucher Disc % Row " + i + ", Not sorted.']", dataFile, "voucherDiscount" + i);
-
+        enterData("xpath", "//Edit[@Name='Voucher Disc % Row " + i + ", Not sorted.']", dataFile, "voucherDiscount" + i);
         WebElement voucher = common.findWebElement("xpath", "//Edit[@Name='Voucher Disc Row " + i + ", Not sorted.']");
         String voucherText = voucher.getText().replace(",", "");
         voucherDiscountValue = Double.parseDouble(voucherText);
         System.out.println("voucher Amount Value:- " + voucherDiscountValue);
-
-        super.enterData("xpath", "//Edit[@Name='Party Disc % Row " + i + ", Not sorted.']", dataFile, "partyDiscount" + i);
-
+        enterData("xpath", "//Edit[@Name='Party Disc % Row " + i + ", Not sorted.']", dataFile, "partyDiscount" + i);
         WebElement partyDisc = common.findWebElement("xpath", "//Edit[@Name='Party Disc Row " + i + ", Not sorted.']");
         String partyDiscText = partyDisc.getText().replace(",", "");
         partyDiscountValue = Double.parseDouble(partyDiscText);
@@ -139,7 +151,6 @@ public class InterStateExcludingGST_01 extends Transaction {
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 450, 0);
 
         grossMinusDiscount = (grossAmount - (voucherDiscountValue + partyDiscountValue));
-
         System.out.println("gross-disc is: " + grossMinusDiscount);
 
         WebElement net = common.findWebElement("xpath", "//Edit[@Name='Net Amount Row " + i + ", Not sorted.']");
@@ -149,7 +160,3 @@ public class InterStateExcludingGST_01 extends Transaction {
         Assert.assertEquals(grossMinusDiscount, netAmount);
     }
 }
-//save
-//        transactionSave();
-//        lastTransactionName();
-

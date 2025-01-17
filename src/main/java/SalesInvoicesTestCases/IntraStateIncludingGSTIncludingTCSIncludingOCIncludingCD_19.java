@@ -85,8 +85,8 @@ public class IntraStateIncludingGSTIncludingTCSIncludingOCIncludingCD_19 extends
         validateCESSAmountTabIsNotEmpty();
 
         //verify all the fields in summary are fetching data
-        navigateToOtherInfoTab();
-        for (int j = 0; j < 4; j++) {
+        navigateToPaytymTab();
+        for (int j = 0; j < 6; j++) {
             robot.keyPress(KeyEvent.VK_RIGHT);
             robot.keyRelease(KeyEvent.VK_RIGHT);
         }
@@ -110,6 +110,7 @@ public class IntraStateIncludingGSTIncludingTCSIncludingOCIncludingCD_19 extends
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(15000);
         verifyReport(newVoucherID,dataFile);
+        deleteSingleTransaction(newVoucherID);
     }
 
     public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {

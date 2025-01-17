@@ -53,20 +53,19 @@ public class InterStateUnRegCustIncludingGSTIncludingTCSIncludingCD_27 extends T
             robot.keyRelease(KeyEvent.VK_DOWN);
             robot.keyPress(KeyEvent.VK_ENTER);
             robot.keyRelease(KeyEvent.VK_ENTER);
-//        super.validateElements("xpath","//Edit[@Name='Invoice Type']", common.getData(dataFile,"invoice"));
             common.clickElement("xpath", "//Edit[@Name='Price List']");
             selectAndValidateData(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
+            generalInfoSliderHandle(800);
             common.clickElement("xpath", "//Edit[@Name='Port Code']");
             selectOptionalMaster(common.getData(dataFile, "portCode"), "xpath", "//Edit[@Name='Port Code']");
             common.clickElement("xpath", "//Edit[@Name='Remarks']");
             selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
+            generalInfoSliderHandle(-500);
             //F3-Items
             for (int i = 0; i < Integer.parseInt(common.getData(dataFile, "productCount")); i++) {
                 addProduct(i);
             }
-
             double itemsNetValue = Double.parseDouble(common.findWebElement("xpath", "//Edit[@AutomationId='NetAmount']").getText().replace(",", ""));
-
             chargesAndDeductionsCalculations(dataFile,"type","accountCode","amount","otherChargesCount");
             tcsCalculations(itemsNetValue);
 
@@ -106,6 +105,7 @@ public class InterStateUnRegCustIncludingGSTIncludingTCSIncludingCD_27 extends T
             common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
             Thread.sleep(15000);
             verifyReport(newVoucherID,dataFile);
+            deleteSingleTransaction(newVoucherID);
         }
 
         public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {

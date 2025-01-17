@@ -33,7 +33,6 @@ public class InterStateUnRegCustExcludingGSTIncludingOCIncludingCD_30 extends Tr
             common.clickElement("xpath", "//Edit[@Name='Branch *']");
             selectAndValidateDataNew(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
             common.clickElement("xpath", "//Edit[@Name='Location *']");
-//        common.clickElement("xpath", "//Edit[@Name='Cash/Party Code']");
             enterInput("xpath", "//Edit[@Name='Cash/Party Code']",dataFile, "partyCode");
             Thread.sleep(2500);
             gstTransactionType("Unregistered Dealers");
@@ -66,7 +65,6 @@ public class InterStateUnRegCustExcludingGSTIncludingOCIncludingCD_30 extends Tr
 
             OtherChargesCalculations(dataFile, "accountCode", "amount", "otherChargesCount");
             //charges and deductions
-//            navigateToChargesAndDeductionsTab();
             chargesAndDeductionsCalculations(dataFile, "type", "accountCode", "amount", "rowCount");
 
             validateCGSTAmountTabIsEmpty();
@@ -104,6 +102,7 @@ public class InterStateUnRegCustExcludingGSTIncludingOCIncludingCD_30 extends Tr
             common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
             Thread.sleep(15000);
             verifyReport(newVoucherID,dataFile);
+            deleteSingleTransaction(newVoucherID);
         }
 
         public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {

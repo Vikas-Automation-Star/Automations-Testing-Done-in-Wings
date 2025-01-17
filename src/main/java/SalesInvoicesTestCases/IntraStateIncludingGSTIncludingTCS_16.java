@@ -88,10 +88,12 @@ public class IntraStateIncludingGSTIncludingTCS_16 extends Transaction {
         quantityPresentInSummary();
         grossAmountPresentInSummary();
         grossMinusDiscountPresentInSummary();
+        tcsAmountPresentInSummary();
+        tcsTaxableValuePresentInSummary();
         totalValuePresentInSummary();
         totalValueInCompanyCurrenyPresentInSummary();
         receivableAmountPresentInSummary();
-
+        //save
         transactionSave();
         String newVoucherID =newTransactionID(oldVoucherID).replace(" ","");
         System.out.println("newID: "+newVoucherID);
@@ -104,6 +106,7 @@ public class IntraStateIncludingGSTIncludingTCS_16 extends Transaction {
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(15000);
         verifyReport(newVoucherID,dataFile);
+        deleteSingleTransaction(newVoucherID);
     }
 
     public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {

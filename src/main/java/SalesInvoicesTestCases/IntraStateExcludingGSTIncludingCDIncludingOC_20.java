@@ -6,7 +6,6 @@ import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
@@ -64,7 +63,6 @@ public class IntraStateExcludingGSTIncludingCDIncludingOC_20 extends Transaction
         for (int i = 0; i < Integer.parseInt(common.getData(dataFile, "productCount")); i++) {
             addProduct(i);
         }
-
         OtherChargesCalculations(dataFile, "otherChargersAcc", "amount", "otherChargesCount");
         //charges and deductions
         chargesAndDeductionsCalculations(dataFile, "type", "chargesAcc", "amount", "ChargesRowCount");
@@ -104,6 +102,7 @@ public class IntraStateExcludingGSTIncludingCDIncludingOC_20 extends Transaction
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(15000);
         verifyReport(newVoucherID,dataFile);
+        deleteSingleTransaction(newVoucherID);
     }
 
     public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {
