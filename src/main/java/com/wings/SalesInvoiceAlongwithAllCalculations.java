@@ -23,7 +23,7 @@ public class SalesInvoiceAlongwithAllCalculations extends Transaction {
     public SalesInvoiceAlongwithAllCalculations(WindowsDriver driver, String file) {
         super(driver);
         common = new Common(this.driver = driver);
-        dataFile = file;
+        dataFile =  file;
     }
 
     public void salesInvoice1() throws InterruptedException, IOException, ParseException, AWTException {
