@@ -1664,6 +1664,7 @@ public abstract class Transaction {
                 break;
             }
         }
+        Thread.sleep(1000);
         common.clickElement("xpath","//MenuItem[@Name='View Transaction']");
         Thread.sleep(10000);
         common.clickElement("xpath","//Button[@Name='Tools']");
