@@ -13,8 +13,7 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 
 public class PieChartGenerator {
-
-    public static void main(String[] args) {
+    public String generatePieChart(int passedCount, int failedCount, int skippedCount) {
         // Define variables for pie chart data
         String[] categories = {"Failed", "Skipped", "Passed"};
         double[] values = {17, 13, 170};
@@ -57,6 +56,7 @@ public class PieChartGenerator {
         for (int i = 0; i < categories.length; i++) {
             plot.setSectionPaint(categories[i], colors[i]);
         }
+        String filePath="PieChartWithHTMLColors.png";
 
         // Save the pie chart as an image
         try {
@@ -66,5 +66,6 @@ public class PieChartGenerator {
         } catch (IOException e) {
             System.err.println("Error saving pie chart image: " + e.getMessage());
         }
+        return filePath;
     }
 }

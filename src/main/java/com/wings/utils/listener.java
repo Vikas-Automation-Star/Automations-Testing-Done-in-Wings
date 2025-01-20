@@ -171,6 +171,9 @@ public class listener implements ITestListener, ISuiteListener, IExecutionListen
         JSONObject obj = new JSONObject();
         obj.put("Tests", results);
 
+        PieChartGenerator chartGenerator=new PieChartGenerator();
+        chartGenerator.generatePieChart(suitePassed,suiteFailed,suiteSkipped);
+
 
         FileUtil file = new FileUtil();
         file.createJson(obj);
