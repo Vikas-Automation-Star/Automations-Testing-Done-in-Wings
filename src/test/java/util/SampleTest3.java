@@ -28,7 +28,7 @@ public class SampleTest3 {
     public void supplierBalance() throws InterruptedException, AWTException {
         SupplierBalances supplierBalances = new SupplierBalances(driver);
         supplierBalances.supplierBalanceReport();
-        Assert.assertEquals("hi", "bye");
+        Assert.assertEquals("hi", "hijikol");
     }
 
     @AfterTest

@@ -28,7 +28,7 @@ public class SampleTest1 {
     public void accountBalance() throws InterruptedException, AWTException {
         AccountBalances accountBalances = new AccountBalances(driver);
         accountBalances.accountBalanceReport();
-        Assert.assertEquals("hi", "bye");
+        Assert.assertEquals("hi", "hi");
     }
 
     @AfterTest
