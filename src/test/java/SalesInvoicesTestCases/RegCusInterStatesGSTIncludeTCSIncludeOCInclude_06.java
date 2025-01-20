@@ -23,8 +23,8 @@ public class RegCusInterStatesGSTIncludeTCSIncludeOCInclude_06 {
 
     @Test
     public void testCase06() throws IOException, ParseException, InterruptedException, AWTException {
-        InterStatesGSTIncludingTCSIncludingOCIncluding_06 tc = new InterStatesGSTIncludingTCSIncludingOCIncluding_06(driver, dataFile);
-        tc.interStatesGSTIncludingTCSIncludingOC_06();
+        InterStatesGSTIncludingTCSIncludingOC_06  si=new InterStatesGSTIncludingTCSIncludingOC_06(driver,dataFile);
+        si.interStatesGSTIncludingTCSIncludingOC_06();
     }
 
     @AfterTest
