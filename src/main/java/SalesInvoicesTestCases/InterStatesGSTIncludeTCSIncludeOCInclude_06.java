@@ -12,14 +12,14 @@ import java.awt.*;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
-public class InterStatesGSTIncludingTCSIncludingOCIncluding_06 extends Transaction {
+public class InterStatesGSTIncludeTCSIncludeOCInclude_06 extends Transaction {
     WindowsDriver driver;
     Common common;
     String dataFile;
     boolean gstAmountClicked = false;
     double quantity,mrp, grossAmount, unitRate, voucherDiscountValue, partyDiscountValue, netAmount, grossMinusDiscount, gstValue, cessValue, taxableValue, taxableAmountCalculated, expectedGSTAmount,netAmountTextt;
 
-    public InterStatesGSTIncludingTCSIncludingOCIncluding_06(WindowsDriver driver, String file) {
+    public InterStatesGSTIncludeTCSIncludeOCInclude_06(WindowsDriver driver, String file) {
         super(driver);
         common = new Common(this.driver = driver);
         dataFile = file;
