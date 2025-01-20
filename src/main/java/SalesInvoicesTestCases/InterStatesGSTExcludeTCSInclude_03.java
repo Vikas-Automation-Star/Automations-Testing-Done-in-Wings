@@ -80,8 +80,9 @@ public class InterStatesGSTExcludeTCSInclude_03 extends Transaction {
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
         verifyReport(newVoucherID,dataFile);
-        closeReport("Sales Book");
         deleteSingleTransaction(newVoucherID);
+        closeReport("Sales Book");
+        closeTransaction("Sales Invoices");
 //        deleteTransaction("xpath","//Pane/*/Text[starts-with(@Name,'SI')]/*[starts-with(@Name,'SI')]","Sales Invoices");
 
     }

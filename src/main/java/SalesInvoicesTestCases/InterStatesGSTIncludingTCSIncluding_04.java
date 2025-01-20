@@ -94,6 +94,7 @@ public class InterStatesGSTIncludingTCSIncluding_04 extends Transaction {
         verifyReport(newVoucherID,dataFile);
         deleteSingleTransaction(newVoucherID);
         closeReport("Sales Book");
+        closeTransaction("Sales Invoices");
 //        deleteTransaction("xpath","//Pane/*/Text[starts-with(@Name,'SI')]/*[starts-with(@Name,'SI')]","Sales Invoices");
 
     }
