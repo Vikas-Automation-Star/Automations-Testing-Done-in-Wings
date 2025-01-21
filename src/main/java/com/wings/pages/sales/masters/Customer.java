@@ -59,6 +59,7 @@ public class Customer {
         Thread.sleep(1200);
         common.clickElement("xpath", "//Edit[@Name='Type Of Customer']/Button[@Name='Open']");
         common.rowDropDown("Type of Customer");
+        common.sliderHandling("xpath","//Table[@Name='Items']/*/Thumb[@Name='Position']",0,250);
         Thread.sleep(1000);
         common.inputAndVerify("xpath", "//Edit[@Name='Aadhaar No']", common.getData(dataFile, "aadhar"));
         common.clickElement("xpath", "//Pane[@Name='Registration']/Button[@Name='...']");

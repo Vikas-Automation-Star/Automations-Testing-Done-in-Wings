@@ -1,6 +1,6 @@
 <suite name="Sample suite">
     <listeners>
-        <listener class-name="com.wings.utils.listener"/>
+        <listener class-name="com.wings.utils.Listener"/>
         <listener class-name="util.AnnotationTransformer"/>
     </listeners>
 

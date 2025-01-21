@@ -1,7 +1,7 @@
 <suite name="Wings Automation Testing">
 
     <listeners>
-        <listener class-name="com.wings.utils.listener"/>
+        <listener class-name="com.wings.utils.Listener"/>
     </listeners>
 
     <test name="Creating BranchMaster" description="description for BranchMaster" testID="WOW 1">

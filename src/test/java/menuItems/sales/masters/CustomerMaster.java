@@ -23,7 +23,7 @@ public class CustomerMaster {
     }
 
     @Test
-    public void Customer() throws InterruptedException, IOException, ParseException, AWTException {
+    public void customer() throws InterruptedException, IOException, ParseException, AWTException {
         Customer customer = new Customer(driver, file);
         customer.newCustomer();
     }

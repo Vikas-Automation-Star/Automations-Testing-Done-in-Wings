@@ -1,7 +1,7 @@
 <suite name="Production Masters Transactions and Reports">
 
     <listeners>
-        <listener class-name="com.wings.utils.listener"></listener>
+        <listener class-name="com.wings.utils.Listener"></listener>
     </listeners>
     <!-- masters of Production menu -->
     <test name="Create BillOfMaterialsMaster" description="description for BillOfMaterialsMaster" testID="WOW 1">

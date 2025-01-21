@@ -1,7 +1,7 @@
 <suite name="Finance Transactions">
 
     <listeners>
-        <listener class-name="com.wings.utils.listener"/>
+        <listener class-name="com.wings.utils.Listener"/>
     </listeners>
                   <!-- receipts -->
     <test name="Receipts - Receipts from Parties">

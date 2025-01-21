@@ -1,7 +1,7 @@
 <suite name="SalesInvoices Transactions Suite">
 
     <listeners>
-        <listener class-name="com.wings.utils.listener"/>
+        <listener class-name="com.wings.utils.Listener"/>
     </listeners>
 
     <test name="Inter state - Excluding GST" description="Register Customer - Excluding GST" testID="1">

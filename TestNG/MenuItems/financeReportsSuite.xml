@@ -1,7 +1,7 @@
 <suite name="Finance Reports">
 
     <listeners>
-        <listener class-name="com.wings.utils.listener"/>
+        <listener class-name="com.wings.utils.Listener"/>
     </listeners>
 
     <test name="Analysis - Transaction Analysis" description="Test 1 description" testID="1">

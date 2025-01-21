@@ -1,7 +1,7 @@
 <suite name="Taxes Masters Transactions and Reports Suite">
 
     <listeners>
-        <listener class-name="com.wings.utils.listener"></listener>
+        <listener class-name="com.wings.utils.Listener"></listener>
     </listeners>
 
     <test name="Create HsnCodesMaster" description="description for HsnCodesMaster" testID="WOW 1">

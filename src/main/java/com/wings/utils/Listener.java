@@ -8,7 +8,7 @@ import org.testng.*;
 import java.io.File;
 import java.io.IOException;
 
-public class listener implements ITestListener, ISuiteListener, IExecutionListener {
+public class Listener implements ITestListener, ISuiteListener, IExecutionListener {
     int totalTest, passed, failed, skipped = 0;
     int suiteTotalTest = 0;
     int suitePassed = 0;
@@ -33,7 +33,7 @@ public class listener implements ITestListener, ISuiteListener, IExecutionListen
     @Override
     public void onTestSuccess(ITestResult result) {
         Time time = new Time();
-        testScript ts = new testScript();
+        TestScript ts = new TestScript();
         JSONObject jsonObject = new JSONObject();
         if (result.getStatus() == ITestResult.SUCCESS) {
             ts.setTestName(result.getName());
@@ -62,7 +62,7 @@ public class listener implements ITestListener, ISuiteListener, IExecutionListen
     @Override
     public void onTestFailure(ITestResult result) {
         Time time = new Time();
-        testScript ts = new testScript();
+        TestScript ts = new TestScript();
         JSONObject jsonObject = new JSONObject();
         if (result.getStatus() == ITestResult.FAILURE) {
             ts.setTestName(result.getName());
@@ -91,7 +91,7 @@ public class listener implements ITestListener, ISuiteListener, IExecutionListen
     @Override
     public void onTestSkipped(ITestResult result) {
         Time time = new Time();
-        testScript ts = new testScript();
+        TestScript ts = new TestScript();
         JSONObject jsonObject = new JSONObject();
         if (result.getStatus() == ITestResult.SKIP) {
             ts.setTestName(result.getName());

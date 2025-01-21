@@ -1,6 +1,6 @@
 <suite name="SuiteName">
     <listeners>
-        <listener class-name="com.wings.utils.listener"/>
+        <listener class-name="com.wings.utils.Listener"/>
     </listeners>
     <test name="Company Creation">
         <classes>
