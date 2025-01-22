@@ -56,6 +56,7 @@ public class Listener implements ITestListener, ISuiteListener, IExecutionListen
             Reporter.log("Status code: " + result.getStatus(), true);
             Reporter.log("Test execution is success:-" + result.getName(), true);
         }
+
         passed++;
     }
 
