@@ -1,7 +1,7 @@
 <suite name="Creating all masters of Company module">
 
     <listeners>
-        <listener class-name="com.wings.utils.listener"></listener>
+        <listener class-name="com.wings.utils.Listener"></listener>
     </listeners>
 
     <test name="Creating BranchMaster" description="description for BranchMaster" testID="WOW 1">

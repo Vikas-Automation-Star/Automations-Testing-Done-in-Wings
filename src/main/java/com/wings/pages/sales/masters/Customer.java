@@ -59,8 +59,7 @@ public class Customer {
         Thread.sleep(1200);
         common.clickElement("xpath", "//Edit[@Name='Type Of Customer']/Button[@Name='Open']");
         common.rowDropDown("Type of Customer");
-        Thread.sleep(1000);
-        common.inputAndVerify("xpath", "//Edit[@Name='Aadhaar No']", common.getData(dataFile, "aadhar"));
+        common.sliderHandling("xpath","//*/Thumb[@Name='Position']",0,190);
         common.clickElement("xpath", "//Pane[@Name='Registration']/Button[@Name='...']");
         Thread.sleep(2500);
         common.inputText("xpath", "//Window[@Name='Registration']/Pane/Pane/Edit[@Name='Party Reg Type *']", "registered");
@@ -80,7 +79,7 @@ public class Customer {
         common.clickElement("name", "Ok");
         Thread.sleep(3000);
         //scroll down
-        common.sliderHandling("name", "Position", 0, 250);
+        common.sliderHandling("name", "Position", 0, 450);
         common.clickElement("xpath", "//Pane/Pane[@Name='Contact Details']/Button[@Name='...']");
         common.inputAndVerify("xpath", "//Edit[@Name='Telephones 1']", common.getData(dataFile, "tel1"));
         common.inputAndVerify("xpath", "//Edit[@Name='Telephones 2']", common.getData(dataFile, "tel2"));

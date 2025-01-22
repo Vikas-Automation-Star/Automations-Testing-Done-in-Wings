@@ -1,7 +1,7 @@
 <suite name="Finance Masters Suite">
 
     <listeners>
-        <listener class-name="com.wings.utils.listener"/>
+        <listener class-name="com.wings.utils.Listener"/>
     </listeners>
 
     <test name="Chart of Accounts - Bank" description="Bank Master Description" testID="1">

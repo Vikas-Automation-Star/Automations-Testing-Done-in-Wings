@@ -1,6 +1,6 @@
 package com.wings.utils;
 
-public class testScript {
+public class TestScript {
     String testName;
     String status;
     String executionStartTime;

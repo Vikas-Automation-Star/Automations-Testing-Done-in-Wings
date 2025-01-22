@@ -1,7 +1,7 @@
 <suite name="Creating all masters of Company module">
 
     <listeners>
-        <listener class-name="com.wings.utils.listener"></listener>
+        <listener class-name="com.wings.utils.Listener"></listener>
         <listener class-name="util.AnnotationTransformer"/>
     </listeners>
 

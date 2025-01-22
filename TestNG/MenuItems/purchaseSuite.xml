@@ -2,7 +2,7 @@
 
 
     <listeners>
-        <listener class-name="com.wings.utils.listener"></listener>
+        <listener class-name="com.wings.utils.Listener"></listener>
     </listeners>
 
     <test name="Creating SupplierMaster" description="description for Supplier Master" testID="WOW 1">
