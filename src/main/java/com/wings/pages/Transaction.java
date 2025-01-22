@@ -708,7 +708,7 @@ public abstract class Transaction {
         common.clickElement("name", "Sales");
         common.clickElement("name", "Invoices");
         common.clickElement("xpath", "//MenuItem[@Name='Sales Invoices']");
-        Thread.sleep(4000);
+        Thread.sleep(3000);
         String validate = common.findWebElement("xpath", "//Text[@Name='Sales Invoices']").getText();
         System.out.println("Screen Name:-" + validate);
         Assert.assertEquals(validate, "Sales Invoices");

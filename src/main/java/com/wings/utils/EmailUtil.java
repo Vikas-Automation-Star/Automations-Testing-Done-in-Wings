@@ -29,8 +29,15 @@ public class EmailUtil {
             MimeBodyPart messageBodyPart = new MimeBodyPart();
             DataSource source = new FileDataSource(path);
             messageBodyPart.setDataHandler(new DataHandler(source));
-            //messageBodyPart.setFileName(attachmentName);
+//            messageBodyPart.setFileName("./PieChartWithHTMLColors.png");
             multipart.addBodyPart(messageBodyPart);
+            MimeBodyPart attachmentBodyPart = new MimeBodyPart();
+
+            DataSource source1 = new FileDataSource("./PieChartWithHTMLColors.png");
+            attachmentBodyPart.setDataHandler(new DataHandler(source1));
+            attachmentBodyPart.setFileName("PieChartWithHTMLColors.png");
+            multipart.addBodyPart(attachmentBodyPart);
+
 
             MimeMessage msg = new MimeMessage(session);
             //set message headers
@@ -39,11 +46,10 @@ public class EmailUtil {
             msg.addHeader("Content-Transfer-Encoding", "8bit");
 
             msg.setFrom(new InternetAddress("productupdates@wingsinfo.net", "NoReply-QA"));
-
             //msg.setReplyTo(InternetAddress.parse("no_reply@example.com", false));
 
-            msg.setSubject("Wings Test Automation Reports", "UTF-8");
-
+            msg.setSubject("few TestCases are Skipped because WindowsDriver connection refused", "UTF-8");
+            //Wings Test Automation Reports
             //msg.setText(body, "UTF-8");
             msg.setContent(multipart);
 
