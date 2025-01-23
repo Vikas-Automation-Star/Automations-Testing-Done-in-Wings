@@ -9,8 +9,7 @@
   "tcsNature": "AT_TCS Transaction Nature 1",
   "portCode": "225588",
   "productCount": 3,
-  "HSNCode": "AT_HSN Code 1",
-  "HsnCode": "AT_HSN Code 2",
+  "HSNCode": "AT_HSN Code 2",
   "productType0": "general",
   "productCode0": "P1",
   "quantity0": 5,
@@ -62,5 +61,4 @@
   "column29": "14,157.00",
   "column30": "14,157.00",
   "column31": "AT_Executive 1"
-
 }

@@ -19,7 +19,6 @@ public class RegCusInterStatesGSTExcludeCDIncludeOCInclude_08 {
     public void beforeTest() throws IOException, ParseException, InterruptedException {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
-
     }
 
     @Test
