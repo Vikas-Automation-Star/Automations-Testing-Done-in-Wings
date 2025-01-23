@@ -1683,16 +1683,4 @@ public abstract class Transaction {
         }
         System.out.println("Transaction is Deleted Successfully");
     }
-
-    public void deleteTransaction(String locator,String voucherLocatorType,String closeTransaction) throws InterruptedException {
-        common.clickElement(locator,voucherLocatorType);
-        common.clickElement("xpath","//Button[@Name='View']");
-        Thread.sleep(2500);
-        common.clickElement("xpath","//Button[@Name='Tools']");
-        common.clickElement("xpath","//Button[@Name='Delete']");
-        common.clickElement("xpath","//Button[@Name='Yes']");
-        common.clickElement("xpath","//Button[@Name='OK']");
-        common.clickElement("xpath","//Window[@Name='Close']/Button[@Name='Yes']");
-        closeTransaction(closeTransaction);
-    }
 }

@@ -16,7 +16,7 @@ public class PieChartGenerator {
     public String generatePieChart(int passedCount, int failedCount, int skippedCount) {
         // Define variables for pie chart data
         String[] categories = {"Failed", "Skipped", "Passed"};
-        double[] values = {17, 13, 170};
+        double[] values = {failedCount, skippedCount, passedCount};
 
         // Define HTML color codes for each category
         String[] htmlColors = {"#FF5733", "#FFC300", "#39A544"};
