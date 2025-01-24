@@ -2,14 +2,17 @@ package com.wings.utils;
 
 import io.appium.java_client.windows.WindowsDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.Assert;
 
 import java.io.IOException;
 import java.net.URL;
 
 public class CreateCompany {
     WindowsDriver driver, logindriver;
-    public static String CompanyName = "Dup_Company_1234", Password = "Welcome@123";
+    public static String CompanyName = "DummyCompany", Password = "Wings@123",currencyText,stockValuationText,registrationNum = "998921", panNum = "AEKPE1471P";
 
     public void login() throws IOException, InterruptedException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -40,15 +43,18 @@ public class CreateCompany {
         driver.findElementByXPath("//Button[@Name='Next']").click();
         driver.findElementByName("OK").click();
         Thread.sleep(1500);
-        driver.findElementByXPath("//Edit[@Name='Database ServerRequestFunctions']").sendKeys("Madhuri");
-
-        //Legacy Accessible State :1
-        //Legacy Accessible State :3145728
+        driver.findElementByXPath("//Edit[@Name='Database ServerRequestFunctions']").sendKeys("Vikas");
         driver.findElementByXPath("//Button[@Name='Next']").click();
 
         Thread.sleep(240000);
+        WebElement currency = driver.findElementByXPath("//Group[@Name='Specify Country and Currency Prefix']/Pane/Pane/Edit[@Name='Company Currency']");
+        currencyText = currency.getText();
+        System.out.println("currencyText :- "+currencyText);
         driver.findElementByXPath("//Button[@Name='Next']").click();
         Thread.sleep(3000);
+        WebElement stockValuation = driver.findElementByXPath("//ComboBox[@Name='Stock Valuation Method']");
+        stockValuationText = stockValuation.getText();
+        System.out.println("StockValuationTest :- "+stockValuationText);
         System.out.println("DB creation successful for " + CompanyName + " Company");
         Thread.sleep(3000);
         driver.findElementByXPath("//Button[@Name='Next']").click();
@@ -76,20 +82,51 @@ public class CreateCompany {
         System.out.println("Super User Login for " + CompanyName + " company is successful " + new String(Character.toChars(0x2705)));
 
 
-        logindriver.findElement(By.name("File")).click();
         logindriver.findElement(By.name("Company")).click();
-        logindriver.findElement(By.name("Sales")).click();
-        logindriver.findElement(By.xpath("//TabItem[@Name='Configure']")).click();
+        logindriver.findElementByXPath("//MenuItem[@Name='Company Properties']").click();
         Thread.sleep(2000);
-        System.out.println("Menu navigation for Super User is successful for company: " + CompanyName);
-        logindriver.findElement(By.name("Purchase")).click();
-        Thread.sleep(2000);
+        logindriver.findElementByXPath("//Edit[@Name='Registration Certificate No']").sendKeys(registrationNum);
+        logindriver.findElementByXPath("//Edit[@Name='PAN No']").sendKeys(panNum);
+        logindriver.findElementByXPath("//Button[@Name='...']").click();
+        Thread.sleep(1000);
+        logindriver.findElementByXPath("//Edit[@Name='Company']").sendKeys(CompanyName);
+        logindriver.findElementByXPath("//Edit[@Name='Address 1']").sendKeys("HimayathNagar");
+        logindriver.findElementByXPath("//Edit[@Name='Address 2']").sendKeys("PaigaPlaza");
+        logindriver.findElementByXPath("//Edit[@Name='Address 3']").sendKeys("BasheerBagh");
+        logindriver.findElementByXPath("//Edit[@Name='City']").sendKeys("Hyderabad");
+        WebElement country = logindriver.findElementByXPath("//Edit[@Name='Country']/Button[@Name='Open']");
+        country.click();
+        country.sendKeys("india", Keys.ENTER);
+        logindriver.findElementByXPath("//Edit[@Name='Zip']").sendKeys("500001");
+        logindriver.findElementByXPath("//Edit[@Name='Telephones 1']").sendKeys("9989211079");
+        logindriver.findElementByXPath("//Edit[@Name='Telephones 2']").sendKeys("7968768787");
+        logindriver.findElementByXPath("//Edit[@Name='Telephones 3']").sendKeys("9654123458");
+        logindriver.findElementByXPath("//Edit[@Name='Telephones 4']").sendKeys("9632145874");
+        logindriver.findElementByXPath("//Edit[@Name='Fax']").sendKeys("QuickFax");
+        logindriver.findElementByXPath("//Edit[@Name='Email']").sendKeys("Wingsinfo.net@gmail.com");
+        logindriver.findElementByXPath("//Edit[@Name='Website']").sendKeys("https://www.wingsinfo.net/", Keys.TAB, Keys.ENTER);
+        Thread.sleep(1000);
+//        logindriver.findElementByXPath("//Button[@Name='Ok']");
+        WebElement currency1 = logindriver.findElementByXPath("//Edit[@Name='Currency']");
+        String currency2 = currency1.getText();
+        Assert.assertEquals(currency2, currencyText, "both currencies must be match if not validation failed");
+        System.out.println("Currency verified");
+        Thread.sleep(1000);
+        WebElement stock1 = logindriver.findElementByXPath("//Edit[@Name='Stock Valuation Method']");
+        String stock2 = stock1.getText();
+        Assert.assertEquals(stock2, stockValuationText, "both stock valuation must be match if not validation failed");
+        System.out.println("Stock valuation Method verified");
+
+        logindriver.findElementByXPath("//Edit[@Name='Short Code']").sendKeys("998921");
+        logindriver.findElementByXPath("//Button[@Name='Save']").click();
+        logindriver.findElementByXPath("//Button[@Name='OK']").click();
         System.out.println("Overall Company creation test script ran successfully without any issues! " + new String(Character.toChars(0x1F349)));
     }
 
     public void logout() {
-        logindriver.findElementByName("Close").click();
-        logindriver.findElementByName("Yes").click();
+        logindriver.findElementByXPath("//MenuItem[@Name='File']").click();
+        logindriver.findElementByXPath("//MenuItem[@Name='Exit']").click();
+        logindriver.findElementByXPath("//Button[@Name='Yes']").click();
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
