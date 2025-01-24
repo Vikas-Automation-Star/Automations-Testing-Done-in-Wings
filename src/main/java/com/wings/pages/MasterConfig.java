@@ -3,6 +3,7 @@ package com.wings.pages;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
@@ -107,7 +108,6 @@ public class MasterConfig {
 
         return common.getData(dataFile, "newAccount");
     }
-
     public void customerRename(String customerName) throws InterruptedException, IOException, ParseException, AWTException {
         common.clickElement("name", "Sales");
         common.clickElement("name", "Customers");
@@ -333,4 +333,138 @@ public class MasterConfig {
         }
     }
 
+    public void createNode() throws InterruptedException, IOException, ParseException {
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Customers");
+        Thread.sleep(2500);
+        WebElement allCustomer = common.findWebElement("xpath", "//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
+        Actions actions = new Actions(driver);
+        actions.contextClick(allCustomer).perform();
+        common.clickElement("name", "New Node");
+        Thread.sleep(1000);
+        common.clickElement("xpath","//Pane[@Name='GeneralInformation']/*[@Name='New Node *']/Edit[@Name='New Node *']");
+        common.inputText("xpath","//Pane[@Name='GeneralInformation']/*[@Name='New Node *']/Edit[@Name='New Node *']",common.getData(dataFile,"node"));
+        common.clickElement("xpath", "//Button[@Name='Save']");
+        common.clickElement("xpath", "//Button[@Name='Yes']");
+        WebElement enter=common.findWebElement("xpath", "//Button[@Name='Yes']");
+        enter.sendKeys(Keys.ENTER,Keys.ENTER,Keys.ESCAPE);
+        Thread.sleep(1000);
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Customers");
+        common.clickElement("xpath", "//TreeItem[@Name='Customers']");
+        common.clickElement("xpath", "//TreeItem[@Name='All Customers']");
+        List<WebElement> listElements = common.findWebElements("xpath", "//Pane[@Name='Customers']/Pane/Pane/Pane/Pane/Pane/List/ListItem");
+        System.out.println("Size of elements and List: " + listElements.size());
+        for (int i = 0; i < listElements.size(); i++) {
+            WebElement element1= listElements.get(i);
+            System.out.println("Element Text: " + element1.getText());
+            String newnode=element1.getText();
+            // Check if the new name matches
+            if (element1.getText().equals(newnode)) {
+                System.out.println("Node Created Successfully  :"+common.getData(dataFile,"node"));
+                common.clickElement("xpath","//TabItem[@Name='Customers']/Button[@Name='Close']");
+                break;
+            }
+        }
+    }
+
+    public void renameNode() throws IOException, ParseException, InterruptedException {
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Customers");
+        Thread.sleep(1500);
+        common.clickElement("xpath", "//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
+        List<WebElement> listElements1 = common.findWebElements("xpath", "//Pane[@Name='Customers']/Pane/Pane/Pane/Pane/Pane/List/ListItem");
+        System.out.println("Size of elements and List: " + listElements1.size());
+        for (int i = 0; i < listElements1.size(); i++) {
+            WebElement element2 = listElements1.get(i);
+            System.out.println("Element Text: " + element2.getText());
+            // Check if the new name matches
+            if (element2.getText().equals(common.getData(dataFile, "node"))) {
+                System.out.println("offToRenamingNode :"+common.getData(dataFile,"node"));
+                element2.click();
+                Actions actions1 = new Actions(driver);
+                actions1.contextClick(element2).perform();
+                common.clickElement("xpath","//MenuItem[@Name='Rename']");
+                common.clickElement("xpath","//Edit[@Name='New Name']");
+                common.inputText("xpath","//Edit[@Name='New Name']", common.getData(dataFile,"rename"));
+                common.clickElement("xpath","//Button[@Name='OK']");
+                common.clickElement("xpath","//Window/Button[@Name='OK']");
+                System.out.println("Node is Renamed");
+                common.clickElement("xpath","//TabItem[@Name='Customers']/Button[@Name='Close']");
+                break;
+            }
+        }
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Customers");
+        common.clickElement("xpath", "//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
+        Thread.sleep(1500);
+        List<WebElement> listElements2 = common.findWebElements("xpath", "//Pane[@Name='Customers']/Pane/Pane/Pane/Pane/Pane/List/ListItem");
+        System.out.println("Size of elements and List: " + listElements2.size());
+        for (int i = 0; i < listElements2.size(); i++) {
+            WebElement element3 = listElements2.get(i);
+            System.out.println("Element Text: " + element3.getText());
+            String renameNode=element3.getText();
+            // Check if the new name matches
+            if (element3.getText().equalsIgnoreCase(renameNode)){
+                System.out.println("Renamed Node Successfully : "+common.getData(dataFile,"renamedNode"));
+                common.clickElement("xpath","//TabItem[@Name='Customers']/Button[@Name='Close']");
+                break;
+            }
+        }
+    }
+
+    public void moveAsSubNodeAndMainNode() throws InterruptedException, IOException, ParseException {
+        Thread.sleep(2000);
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Customers");
+        Thread.sleep(1500);
+        common.clickElement("xpath", "//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
+        List<WebElement> listElements3 = common.findWebElements("xpath", "//Pane[@Name='Customers']/Pane/Pane/Pane/Pane/Pane/List/ListItem");
+        System.out.println("Size of elements and List: " + listElements3.size());
+        for (int i = 0; i < listElements3.size(); i++) {
+            WebElement element3 = listElements3.get(i);
+            System.out.println("Element Text: " + element3.getText());
+            String moveToSubNode= element3.getText();
+            if (element3.getText().equals(moveToSubNode)) {
+                element3.click();
+                Actions actions1 = new Actions(driver);
+                actions1.contextClick(element3).perform();
+                common.clickElement("xpath","//MenuItem[@Name='Move As Sub-Node']");
+                Thread.sleep(1500);
+                common.clickElement("xpath","//Button[@Name='Save']");
+                common.clickElement("xpath","//Window[@Name='Transaction']/*/Button[@Name='Yes']");
+                WebElement enter=common.findWebElement("xpath", "//Window[@Name='Transaction']/*/Button[@Name='Yes']");
+                enter.sendKeys(Keys.ENTER,Keys.ENTER,Keys.ESCAPE);
+                common.clickElement("xpath","//TabItem[@Name='Customers']/Button[@Name='Close']");
+                Thread.sleep(1000);
+                common.clickElement("name", "Sales");
+                common.clickElement("name", "Customers");
+                common.clickElement("xpath", "//TreeItem[@Name='All Customers']");
+                Thread.sleep(1000);
+                WebElement right=common.findWebElement("xpath","//TreeItem[@Name='All Customers']");
+                right.sendKeys(Keys.ARROW_RIGHT,Keys.ARROW_RIGHT);
+                WebElement readText=common.findWebElement("xpath","//TreeItem[@Name='All Customers']/TreeItem[@Name='NewNodeRename']");
+                String movedNode=readText.getText();
+                System.out.println("MovedNode Text :"+movedNode);
+                if(readText.getText().equalsIgnoreCase(moveToSubNode)) {
+                    System.out.println("node moved Successfully");
+                }
+                Thread.sleep(1000);
+                Actions actions=new Actions(driver);
+                actions.contextClick(readText).perform();
+                common.clickElement("xpath","//MenuItem[@Name='Move As Main Node']");
+                common.clickElement("xpath","//Button[@Name='OK']");
+                System.out.println("Node moved to Main Node");
+                List<WebElement> mainNode=common.findWebElements("xpath","//Tree/TreeItem[@Name='Customers']/*[contains(@Name,'NewNodeRename')]");
+                System.out.println("allNodesText :"+mainNode.size());
+                for (WebElement v:mainNode){
+                    System.out.println("printing all MainNodes :"+v.getText());
+                    if(v.getText().equalsIgnoreCase(movedNode)){
+                        System.out.println("Great subNode is MovedToMainNode");
+                    }
+                }
+                break;
+            }
+        }
+    }
 }

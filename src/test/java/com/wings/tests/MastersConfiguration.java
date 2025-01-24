@@ -24,10 +24,13 @@ public class MastersConfiguration {
         @Test
         public void newNode() throws InterruptedException, IOException, ParseException, AWTException {
             MasterConfig config =new MasterConfig(driver,dataFile);
-//            String createdCustomer=config.newCustomer();
-//            config.customerRename(createdCustomer);
-//            config.masterInactive("At_Cus_Reg_Intra");
-//            config.searchMaster("code");
+            String createdCustomer=config.newCustomer();
+            config.customerRename(createdCustomer);
+            config.masterInactive("At_Cus_Reg_Intra");
+            config.searchMaster("code");
+            config.createNode();
+            config.renameNode();
+            config.moveAsSubNodeAndMainNode();
         }
 
         @AfterTest
