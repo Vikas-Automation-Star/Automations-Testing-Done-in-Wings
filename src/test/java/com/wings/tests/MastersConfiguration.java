@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.io.IOException;
 
-public class NodeCreationExec {
+public class MastersConfiguration {
         WindowsDriver driver;
         AppLogin appLogin = new AppLogin();
         String dataFile="./src/main/resources/masterConfig.json";
@@ -24,8 +24,11 @@ public class NodeCreationExec {
         @Test
         public void newNode() throws InterruptedException, IOException, ParseException, AWTException {
             MasterConfig config =new MasterConfig(driver,dataFile);
-            String createdCustomer=config.newCustomer();
-            config.customerRename(createdCustomer);
+//            String createdCustomer=config.newCustomer();
+//            config.customerRename(createdCustomer);
+//            config.masterInactive("At_Cus_Reg_Intra");
+//            config.searchMaster("code");
+            config.companyUnits();
         }
 
         @AfterTest

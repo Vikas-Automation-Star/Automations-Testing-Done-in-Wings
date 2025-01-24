@@ -3,20 +3,24 @@ package com.wings.pages;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
 
-public class MasterConfig {
-    WindowsDriver driver;
+public class MasterConfig extends Transaction {
+    WindowsDriver driver, rootdriver;
     Common common;
     String dataFile;
 
     public MasterConfig(WindowsDriver driver, String file) {
+        super(driver);
         this.driver = driver;
         common = new Common(this.driver);
         dataFile = file;
@@ -108,7 +112,7 @@ public class MasterConfig {
         return common.getData(dataFile, "newAccount");
     }
 
-    public void customerRename(String customerName) throws InterruptedException, IOException, ParseException, AWTException {
+    public void customerRename(String customerName) throws InterruptedException, IOException, ParseException {
         common.clickElement("name", "Sales");
         common.clickElement("name", "Customers");
         Thread.sleep(2500);
@@ -166,7 +170,186 @@ public class MasterConfig {
         }
     }
 
-    public void masterActive(){
+    public void masterInactive(String masterName) throws InterruptedException, IOException, ParseException {
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Customers");
+        Thread.sleep(2500);
+        common.clickElement("xpath", "//TreeItem[@Name='All Customers']");
+        WebElement element = common.findWebElement("xpath", "//Text[@Name='" + masterName + "']");
+        String master = element.getText();
+        Actions actions = new Actions(driver);
+        actions.contextClick(element).perform();
+        //click on active
+        common.clickElement("xpath", "//MenuItem[@Name='Inactivate']");
+        common.clickElement("name", "OK");
+        //search in inactive
+        common.clickElement("xpath", "//Button[@Name='  Options  ']");
+        Thread.sleep(5000);     //for now click manually
+//        common.clickElement("xpath","//Pane[@Name='Desktop 1']/*/Menu/*[@Name='Show Inactive']");
+        List<WebElement> listElements = common.findWebElements("xpath", "//Pane[@Name='Customers']/Pane/Pane/Pane/Pane/Pane/List/ListItem");
+        System.out.println("Size of elements under List: " + listElements.size());
+        boolean customerFound = false;
+        for (int i = 0; i < listElements.size(); i++) {
+            WebElement element1 = listElements.get(i);
+            System.out.println("Element Text: " + element1.getText());
+            if (element1.getText().equals(master)) {
+                element1.click();
+                System.out.println("Master is inactivated succesfully");
+                customerFound = true;
+                break;
+            }
+        }
+        for (int i = 0; i < listElements.size(); i++) {
+            WebElement element1 = listElements.get(i);
+            if (element1.getText().equals(master)) {
+                Actions actions1 = new Actions(driver);
+                actions1.contextClick(element1).perform();
+                common.clickElement("xpath", "//MenuItem[@Name='Active']");
+            }
+        }
+        if (!customerFound) {
+            Assert.fail("Inactivated Master is not present");
+        }
+        common.clickElement("xpath", "//TabItem[@Name='Customers']/Button[@Name='Close']");
+
+        //validate activate master
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Customers");
+        Thread.sleep(2500);
+        common.clickElement("xpath", "//TreeItem[@Name='All Customers']");
+        List<WebElement> activeElements = common.findWebElements("xpath", "//Pane[@Name='Customers']/Pane/Pane/Pane/Pane/Pane/List/ListItem");
+        System.out.println("Size of active elements: " + activeElements.size());
+        boolean customerActivate = false;
+        for (int i = 0; i < activeElements.size(); i++) {
+            WebElement activeElement = activeElements.get(i);
+            System.out.println("Active Element Text: " + activeElement.getText());
+            if (activeElement.getText().equals(master)) {
+                activeElement.click();
+                System.out.println("Master is activated succesfully");
+                customerActivate = true;
+                break;
+            }
+        }
+        if (!customerActivate) {
+            Assert.fail("Activated Master is not present");
+        }
+//        common.clickElement("name", "Sales");
+//        common.clickElement("name", "Customers");
+//        Thread.sleep(2500);
+//        common.clickElement("xpath", "//TreeItem[@Name='All Customers']");
+//        WebElement element = common.findWebElement("xpath", "//Text[@Name='" + masterName + "']");
+//        String master = element.getText();
+//        Actions actions = new Actions(driver);
+//        actions.contextClick(element).perform();
+//        //click on active
+//        common.clickElement("xpath", "//MenuItem[@Name='Inactivate']");
+//        common.clickElement("name", "OK");
+//        //search in inactive
+//        common.clickElement("xpath", "//Button[@Name='  Options  ']");
+//        Thread.sleep(5000);
+//
+//
+//        DesiredCapabilities rootcapabilities = new DesiredCapabilities();
+//        rootcapabilities.setCapability("app", "Root");
+//        rootcapabilities.setCapability("deviceName", "WindowsPC");
+//        rootdriver = new WindowsDriver<>(new URL("http://127.0.0.1:4723/"), rootcapabilities);
+//        Thread.sleep(10000);
+//        WebElement login = rootdriver.findElement(By.name("Wings Accounting 24DNP - PRO [ WingsAutomtionTesting1 ; 01-04-2024 To 31-03-2025 ; Super User ]"));
+//        //the windowHandle which we receive is integer, so we need to convert it into hexadecimal string
+//        String nativeWindow = login.getAttribute("NativeWindowHandle");
+//        String hexloginid = Integer.toHexString(Integer.parseInt(nativeWindow));
+//        System.out.println("window id: " + hexloginid);
+//        rootdriver.findElementByXPath("//CheckBox[@Name='Show Inactive']").click();
+//
+//        DesiredCapabilities webClientCapabilities = new DesiredCapabilities();
+//        webClientCapabilities.setCapability("ms:waitforAppLaunch", 15); //wait for 15seconds( mention time in secs)
+//        //appTopLevelWindow- it helps us to take control of specific window which we want to handle
+//        webClientCapabilities.setCapability("appTopLevelWindow", hexloginid);
+//        driver = new WindowsDriver(new URL("http://127.0.0.1:4723"), webClientCapabilities);
+//        List<WebElement> listElements = common.findWebElements("xpath", "//Pane[@Name='Customers']/Pane/Pane/Pane/Pane/Pane/List/ListItem");
+//        System.out.println("Size of elements under List: " + listElements.size());
+//        boolean customerFound = false;
+//        for (int i = 0; i < listElements.size(); i++) {
+//            WebElement element1 = listElements.get(i);
+//            System.out.println("Element Text: " + element1.getText());
+//            if (element1.getText().equals(master)) {
+//                element1.click();
+//                System.out.println("Master is inactivated succesfully");
+//                customerFound = true;
+//                break;
+//            }
+//        }
+//        for (int i = 0; i < listElements.size(); i++) {
+//            WebElement element1 = listElements.get(i);
+//            if (element1.getText().equals(master)) {
+//                Actions actions1 = new Actions(driver);
+//                actions1.contextClick(element1).perform();
+//                driver.findElementByXPath("//MenuItem[@Name='Active']");
+//            }
+//        }
+//        if (!customerFound) {
+//            Assert.fail("Inactivated Master is not present");
+//        }
+//        common.clickElement("xpath", "//TabItem[@Name='Customers']/Button[@Name='Close']");
+//        //validate activate master
+//        common.clickElement("name", "Sales");
+//        common.clickElement("name", "Customers");
+//        Thread.sleep(2500);
+//        common.clickElement("xpath", "//TreeItem[@Name='All Customers']");
+//        List<WebElement> activeElements = common.findWebElements("xpath", "//Pane[@Name='Customers']/Pane/Pane/Pane/Pane/Pane/List/ListItem");
+//        System.out.println("Size of active elements: " + activeElements.size());
+//        boolean customerActivate = false;
+//        for (int i = 0; i < activeElements.size(); i++) {
+//            WebElement activeElement = activeElements.get(i);
+//            System.out.println("Active Element Text: " + activeElement.getText());
+//            if (activeElement.getText().equals(master)){
+//                activeElement.click();
+//                System.out.println("Master is activated succesfully");
+//                customerActivate = true;
+//                break;
+//            }
+//        }
+//        if (!customerActivate) {
+//            Assert.fail("Activated Master is not present");
+//        }
+    }
+
+
+    public void searchMaster(String searchType) throws IOException, ParseException {
+        common.clickElement("xpath", "//MenuItem[@Name='Tools']");
+        common.clickElement("xpath", "//MenuItem[@Name='Search Masters']");
+        if (searchType.equals("name")) {
+            common.clickElement("xpath", "//RadioButton[@Name='Master Name']");
+            common.inputText("xpath", "//Edit[@AutomationId='searchTextBox']", common.getData(dataFile, "masterName"));
+            common.clickElement("xpath", "//Button[@Name='Search']");
+            String master = common.findWebElement("xpath", "//DataItem[@Name='Master Name row 1']").getText();
+            System.out.println("Searched master:- " + common.getData(dataFile, "masterName"));
+            Assert.assertEquals(common.getData(dataFile, "masterName"), master, "Master you searched for is not Found");
+            System.out.println("Found master:- " + master);
+            System.out.println("Master is successfully found");
+        } else if (searchType.equals("code")) {
+            common.clickElement("xpath", "//RadioButton[@Name='Master Code']");
+            common.inputText("xpath", "//Edit[@AutomationId='searchTextBox']", common.getData(dataFile, "masterCode"));
+            common.clickElement("xpath", "//Button[@Name='Search']");
+            String code = common.findWebElement("xpath", "//DataItem[@Name='Master Code row 1']").getText();
+            System.out.println("Searched master:- " + common.getData(dataFile, "masterCode"));
+            Assert.assertEquals(common.getData(dataFile, "masterCode"), code, "Master you searched for is not Found");
+            System.out.println("Found master:- " + code);
+            System.out.println("Master is successfully found");
+        } else {
+            Assert.fail("Please enter correct input");
+        }
+    }
+
+    public void companyUnits() throws InterruptedException {
+        common.clickElement("xpath","//TabItem[@Name='Configure']");
+        Thread.sleep(1000);
+        common.clickElement("xpath","//Text[@Name='Company Units']/Link[@Name='Company Units']");
+        List<WebElement> companyUnits = common.findWebElements("xpath", "//Window[@Name='Company Units']/Text/Pane/Pane/Pane/Pane/Pane");
+        for (int i = 0; i < companyUnits.size(); i++) {
+            System.out.println("size:-"+companyUnits.size());
+
+        }
 
     }
 }
