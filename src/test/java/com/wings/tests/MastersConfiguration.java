@@ -28,7 +28,6 @@ public class MastersConfiguration {
 //            config.customerRename(createdCustomer);
 //            config.masterInactive("At_Cus_Reg_Intra");
 //            config.searchMaster("code");
-            config.companyUnits();
         }
 
         @AfterTest
