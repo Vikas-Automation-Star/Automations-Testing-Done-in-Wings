@@ -49,7 +49,6 @@ public class PurchaseEnquiries extends Transaction {
         transactionSave();
         Thread.sleep(1500);
         String transactionId = getNewTransactionId();
-        common.clickElement("xpath", "//Text[@Name='Last Saved :']/Link");
         System.out.println("New Transaction ID: " + transactionId);
         closeTransaction("Purchase Enquiries");
         Thread.sleep(2000);

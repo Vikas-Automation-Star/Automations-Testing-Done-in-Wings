@@ -32,9 +32,5 @@ public class PurchaseEnquiriesTransaction {
     @AfterTest
     public void afterTest() throws IOException {
         appLogin.logout();
-//        Common common=new Common(driver);
-//        common.quitWinAppServer();
-//        Allure.step("After Test PurchaseEnquiries Transaction");
-
     }
 }

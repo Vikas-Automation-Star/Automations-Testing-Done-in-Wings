@@ -10,26 +10,31 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.io.IOException;
 
+
 public class NodeCreationExec {
-        WindowsDriver driver;
-        AppLogin appLogin = new AppLogin();
-        String dataFile="./src/main/resources/masterConfig.json";
+    WindowsDriver driver;
+    AppLogin appLogin = new AppLogin();
+    String dataFile="./src/main/resources/masterConfig.json";
 
-        @BeforeTest
-        public void beforeTest() throws IOException, InterruptedException, ParseException {
-            driver = appLogin.launchSingleUserApp();
-            appLogin.singleUserLogin();
-        }
-
-        @Test
-        public void newNode() throws InterruptedException, IOException, ParseException, AWTException {
-            MasterConfig config =new MasterConfig(driver,dataFile);
-            String createdCustomer=config.newCustomer();
-            config.customerRename(createdCustomer);
-        }
-
-        @AfterTest
-        public void afterTest() throws IOException {
-            appLogin.logout();
-        }
+    @BeforeTest
+    public void beforeTest() throws IOException, InterruptedException, ParseException {
+        driver = appLogin.launchSingleUserApp();
+        appLogin.singleUserLogin();
     }
+
+    @Test
+    public void newNode() throws InterruptedException, IOException, ParseException, AWTException {
+        MasterConfig config =new MasterConfig(driver,dataFile);
+//            String createdCustomer=config.newCustomer();
+//            config.customerRename(createdCustomer);
+//        config.createNode();
+//        config.renameNode();
+        config.movingNodeAsSubNode();
+    }
+
+    @AfterTest
+    public void afterTest() throws IOException {
+//        appLogin.logout();
+    }
+}
+

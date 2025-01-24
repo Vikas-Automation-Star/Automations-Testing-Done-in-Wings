@@ -29,6 +29,6 @@ public class RegCusInterStatesGSTExcludeCDIncludeOCInclude_08 {
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 }

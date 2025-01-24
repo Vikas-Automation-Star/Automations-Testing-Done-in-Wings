@@ -27,5 +27,10 @@
   "cptn": "0864525224",
   "cpmn": "7993133081",
   "cpe": "madhu@gmail.com",
-  "close": "Customers"
+  "close": "Customers",
+
+  "node": "NewNode",
+  "rename": "Rename",
+  "renamedNode":"NewNodeRename"
+
 }
