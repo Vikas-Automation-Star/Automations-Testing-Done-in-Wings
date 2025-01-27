@@ -1683,4 +1683,17 @@ public abstract class Transaction {
         }
         System.out.println("Transaction is Deleted Successfully");
     }
+
+    public void configureCheckboxSelection(String locatorXpath ){
+        WebElement element = driver.findElementByXPath(locatorXpath);
+        String closeTransactionToggleState = element.getAttribute("Toggle.ToggleState");
+        System.out.println("Close Transaction Toggle state:-" + closeTransactionToggleState);
+        if (closeTransactionToggleState.equals("0")) {
+            element.click();
+            System.out.println("Close Transaction Checkbox was unchecked, now checked.");
+        } else if (closeTransactionToggleState.equals("1")){
+            System.out.println("Close Transaction Checkbox is already checked, no action needed.");
+        }
+        else Assert.fail("Element Not Found");
+    }
 }
