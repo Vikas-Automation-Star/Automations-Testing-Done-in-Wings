@@ -11,30 +11,34 @@ import java.awt.*;
 import java.io.IOException;
 
 public class MastersConfiguration {
-        WindowsDriver driver;
-        AppLogin appLogin = new AppLogin();
-        String dataFile="./src/main/resources/masterConfig.json";
+    WindowsDriver driver;
+    AppLogin appLogin = new AppLogin();
+    String dataFile="./src/main/resources/masterConfig.json";
 
-        @BeforeTest
-        public void beforeTest() throws IOException, InterruptedException, ParseException {
-            driver = appLogin.launchSingleUserApp();
-            appLogin.singleUserLogin();
-        }
+    @BeforeTest
 
-        @Test
-        public void newNode() throws InterruptedException, IOException, ParseException, AWTException {
-            MasterConfig config =new MasterConfig(driver,dataFile);
-            String createdCustomer=config.newCustomer();
-            config.customerRename(createdCustomer);
-            config.masterInactive("At_Cus_Reg_Intra");
-            config.searchMaster("code");
-            config.createNode();
-            config.renameNode();
-            config.moveAsSubNodeAndMainNode();
-        }
-
-        @AfterTest
-        public void afterTest() throws IOException {
-            appLogin.logout();
-        }
+    public void beforeTest() throws IOException, InterruptedException, ParseException {
+        driver = appLogin.launchSingleUserApp();
+        appLogin.singleUserLogin();
     }
+
+    @Test
+    public void newNode() throws InterruptedException, IOException, ParseException, AWTException {
+        MasterConfig config =new MasterConfig(driver,dataFile);
+//            String createdCustomer=config.newCustomer();
+//            config.customerRename(createdCustomer);
+//            config.masterInactive("At_Cus_Reg_Intra");
+////            config.searchMaster("code");
+
+//            config.createNode();
+//            config.renameNode();
+//            config.moveAsSubNodeAndMainNode();
+//        config.movingMastersBetweenNodes();
+        config.SalesModuleConfiguration();
+    }
+
+    @AfterTest
+    public void afterTest() throws IOException {
+//            appLogin.logout();
+    }
+}

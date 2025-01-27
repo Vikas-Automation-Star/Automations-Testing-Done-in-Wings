@@ -12,12 +12,13 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.List;
 
-public class MasterConfig {
+public class MasterConfig extends Transaction{
     WindowsDriver driver;
     Common common;
     String dataFile;
 
     public MasterConfig(WindowsDriver driver, String file) {
+        super(driver);
         this.driver = driver;
         common = new Common(this.driver);
         dataFile = file;
@@ -178,7 +179,9 @@ public class MasterConfig {
         common.clickElement("xpath", "//MenuItem[@Name='Inactivate']");
         common.clickElement("name", "OK");
         //search in inactive
-        common.clickElement("xpath", "//Button[@Name='  Options  ']");
+     WebElement clickDown=   common.findWebElement("xpath", "//Button[@Name='  Options  ']");
+     clickDown.click();
+     clickDown.sendKeys(Keys.DOWN,Keys.ENTER);
         Thread.sleep(5000);     //for now click manually
 //        common.clickElement("xpath","//Pane[@Name='Desktop 1']/*/Menu/*[@Name='Show Inactive']");
         List<WebElement> listElements = common.findWebElements("xpath", "//Pane[@Name='Customers']/Pane/Pane/Pane/Pane/Pane/List/ListItem");
@@ -333,6 +336,154 @@ public class MasterConfig {
         }
     }
 
+
+
+    public void SalesModuleConfiguration() throws InterruptedException {
+        common.clickElement("xpath","//TabItem[@Name='Configure']");
+        common.clickElement("xpath","//Text[@Name='Sales']/*[@Name='Sales']");
+        common.clickElement("xpath","//Button[@Name='Work Flow']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Sales Enquiries']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Sales Quotations']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Sales Orders']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Deliveries']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Sales Invoices']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Proforma Sales']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Sales Returns']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable with invoice reference']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable without invoice reference']");
+        common.clickElement("xpath","//Button[@Name='Save']");
+        common.clickElement("xpath","//Button[@Name='OK']");
+        common.clickElement("xpath","//Button[@Name='OK']");
+        System.out.println(" SALES WORKFLOW CHECKBOX SELECTION DONE  :-"+new String(Character.toChars(0x1F600)));
+        common.clickElement("xpath","//Button[@Name='Module Settings']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable product wise discounts in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Discount 1']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Discount 2']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Discount 3']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Voucher Discount']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Party and Produt wise Discount']");
+        Thread.sleep(500);
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable product wise accounts in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Sales Account']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Sales Return Account']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable product wise columns.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Product History']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Number of Packs']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Delivery Date']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable cost of goods sold in sales return transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable auto fill quantity in sales invoices against deliveries transactions.']");
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/*[@Name='Position']",0,72);
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable collections in sales transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Cash']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Cheque']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Post Dated Cheques']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Cheques [PDC]']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Credit Card']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Batches']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable batches and serial number pop up in sales transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable stock details in sales transactions UOM.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable landed cost in batch pop up.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable batch text in batch pop up.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable auto fill quantity in material issues to production.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable product batches based on expiry date.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable Routes.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable lock customer.']");
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/*[@Name='Position']",0,71);
+        Thread.sleep(1500);
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable sales targets-executive wise.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable material dispatch address details in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable line wise additional info in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Info 1']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Info 2']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Info 3']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Info 4']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Info 5']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable line wise additional values in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Value 1']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Value 2']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Value 3']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Value 4']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Value 5']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable line wise additional dates in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Date 1']");
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/*[@Name='Position']",0,73);
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Date 2']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Date 3']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable line wise additional bools in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Bool 1']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Bool 2']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Bool 3']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable header additional info in all transactions.']");
+        Thread.sleep(1000);
+//        configureCheckboxSelection("//Pane//CheckBox[@Name='Info 1']");
+//        configureCheckboxSelection("//Pane//CheckBox[@Name='Info 2']");
+//        configureCheckboxSelection("//Pane//CheckBox[@Name='Info 3']");
+//        configureCheckboxSelection("//Pane//CheckBox[@Name='Info 4']");
+//        configureCheckboxSelection("//Pane//CheckBox[@Name='Info 5']");
+        common.clickElement("xpath","//Pane/*/*[@Name='Info 1']");
+        common.clickElement("xpath","//Pane/*/*[@Name='Info 2']");
+        common.clickElement("xpath","//Pane/*/*[@Name='Info 3']");
+        common.clickElement("xpath","//Pane/*/*[@Name='Info 4']");
+        common.clickElement("xpath","//Pane/*/*[@Name='Info 5']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable header additional values in all transactions.']");
+//        configureCheckboxSelection("//Pane//CheckBox[@Name='Value 1']");
+//        configureCheckboxSelection("//Pane//CheckBox[@Name='Value 2']");
+//        configureCheckboxSelection("//Pane//CheckBox[@Name='Value 3']");
+//        configureCheckboxSelection("//Pane//CheckBox[@Name='Value 4']");
+//        configureCheckboxSelection("//Pane//CheckBox[@Name='Value 5']");
+        common.clickElement("xpath","//Pane/*/*[@Name='Value 1']");
+        common.clickElement("xpath","//Pane/*/*[@Name='Value 2']");
+        common.clickElement("xpath","//Pane/*/*[@Name='Value 3']");
+        common.clickElement("xpath","//Pane/*/*[@Name='Value 4']");
+        common.clickElement("xpath","//Pane/*/*[@Name='Value 5']");
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/*[@Name='Position']",0,70);
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable header additional dates in all transactions.']");
+//        configureCheckboxSelection("//Pane//CheckBox[@Name='Date 1']");
+//        configureCheckboxSelection("//Pane//CheckBox[@Name='Date 2']");
+//        configureCheckboxSelection("//Pane//CheckBox[@Name='Date 3']");
+        common.clickElement("xpath","//Pane/*/*[@Name='Date 1']");
+        common.clickElement("xpath","//Pane/*/*[@Name='Date 2']");
+        common.clickElement("xpath","//Pane/*/*[@Name='Date 3']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable header additional bools in all transactions.']");
+//        configureCheckboxSelection("//Pane//CheckBox[@Name='Bool 1']");
+//        configureCheckboxSelection("//Pane//CheckBox[@Name='Bool 2']");
+//        configureCheckboxSelection("//Pane//CheckBox[@Name='Bool 3']");
+        common.clickElement("xpath","//Pane/*/*[@Name='Bool 1']");
+        common.clickElement("xpath","//Pane/*/*[@Name='Bool 2']");
+        common.clickElement("xpath","//Pane/*/*[@Name='Bool 3']");
+        common.clickElement("xpath","//Button[@Name='Save']");
+        common.clickElement("xpath","//Button[@Name='OK']");
+        Thread.sleep(500);
+        common.clickElement("xpath","//Window/Button[@Name='OK']");
+        System.out.println("SALES MODULE FLOW CHECKBOX SELECTION DONE  :-"+new String(Character.toChars(0x1F601)));
+        common.clickElement("xpath","//Button[@Name='Policies']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Pricing']");
+        common.clickElement("xpath","//Pane/RadioButton[@Name='Enable standard sales price in all transactions.']");
+//        common.clickElement("xpath","//Pane/RadioButton[@Name='Enable sales price list in all transactions.']");
+        configureCheckboxSelection("//Pane/CheckBox[@Name='Enable party default sales price list in all transactions.']");
+        configureCheckboxSelection("//Pane/CheckBox[@Name='Enable existing sales price in all transactions.']");
+        configureCheckboxSelection("//Pane/CheckBox[@Name='Enable last sales price']");
+        configureCheckboxSelection("//Pane/CheckBox[@Name='Sales rate not less than last puchase rate in all sales transactions.']");
+        configureCheckboxSelection("//Pane/CheckBox[@Name='Enable minimum rate and maximum rate alerts']");
+        configureCheckboxSelection("//Pane/CheckBox[@Name='Override minimum rate and maximum rate alerts']");
+        common.clickElement("xpath","//Button[@Name='Save']");
+        common.clickElement("xpath","//Button[@Name='OK']");
+        Thread.sleep(500);
+        common.clickElement("xpath","//Window/Button[@Name='OK']");
+        common.clickElement("xpath","//TitleBar/Button[@Name='Close']");
+        System.out.println("SALES MODULE CONFIGURATION COMPLETED  :-"+new String(Character.toChars(0x1F60D)));
+        System.out.println(new String(Character.toChars(0x1F981)));
+
+    }
+
+
+
+
+
+
+
+
+
     public void createNode() throws InterruptedException, IOException, ParseException {
         common.clickElement("name", "Sales");
         common.clickElement("name", "Customers");
@@ -348,6 +499,7 @@ public class MasterConfig {
         common.clickElement("xpath", "//Button[@Name='Yes']");
         WebElement enter=common.findWebElement("xpath", "//Button[@Name='Yes']");
         enter.sendKeys(Keys.ENTER,Keys.ENTER,Keys.ESCAPE);
+        common.clickElement("xpath","//TabItem[@Name='Customers']/Button[@Name='Close']");
         Thread.sleep(1000);
         common.clickElement("name", "Sales");
         common.clickElement("name", "Customers");
@@ -367,7 +519,6 @@ public class MasterConfig {
             }
         }
     }
-
     public void renameNode() throws IOException, ParseException, InterruptedException {
         common.clickElement("name", "Sales");
         common.clickElement("name", "Customers");
@@ -412,7 +563,6 @@ public class MasterConfig {
             }
         }
     }
-
     public void moveAsSubNodeAndMainNode() throws InterruptedException, IOException, ParseException {
         Thread.sleep(2000);
         common.clickElement("name", "Sales");
@@ -447,7 +597,7 @@ public class MasterConfig {
                 String movedNode=readText.getText();
                 System.out.println("MovedNode Text :"+movedNode);
                 if(readText.getText().equalsIgnoreCase(moveToSubNode)) {
-                    System.out.println("node moved Successfully");
+                    System.out.println("node moved Successfully :"+moveToSubNode);
                 }
                 Thread.sleep(1000);
                 Actions actions=new Actions(driver);
@@ -460,11 +610,47 @@ public class MasterConfig {
                 for (WebElement v:mainNode){
                     System.out.println("printing all MainNodes :"+v.getText());
                     if(v.getText().equalsIgnoreCase(movedNode)){
-                        System.out.println("Great subNode is MovedToMainNode");
+                        System.out.println("Great subNode is MovedToMainNode :"+movedNode);
                     }
                 }
                 break;
             }
         }
+    }
+    public void movingMastersBetweenNodes() throws InterruptedException {
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Customers");
+        Thread.sleep(1500);
+        common.clickElement("xpath", "//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
+        WebElement selectingMaster= common.findWebElement("xpath","//ListItem[@Name='AT_Cus_Reg_Inter']/Text[@Name='AT_Cus_Reg_Inter']");
+        String selectMasterTomoveAnotherNode=selectingMaster.getText();
+        Actions actions = new Actions(driver);
+        actions.contextClick(selectingMaster).perform();
+        common.clickElement("xpath","//MenuItem[@Name='Change']");
+        WebElement coose=common.findWebElement("xpath","//MenuItem[@Name='Node']");
+        coose.click();
+        coose.sendKeys(Keys.DOWN,Keys.ENTER);
+        common.clickElement("xpath", "//Button[@Name='Save']");
+        Thread.sleep(1000);
+        common.clickElement("xpath", "//Button[@Name='Yes']");
+        WebElement enter=common.findWebElement("xpath", "//Button[@Name='Yes']");
+        enter.sendKeys(Keys.ENTER,Keys.ENTER,Keys.ESCAPE);
+        common.clickElement("xpath","//TabItem[@Name='Customers']/Button[@Name='Close']");
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Customers");
+        Thread.sleep(1000);
+        WebElement right=common.findWebElement("xpath","//TreeItem[@Name='All Customers']");
+        right.sendKeys(Keys.ARROW_RIGHT,Keys.ARROW_RIGHT);
+        common.clickElement("xpath","//TreeItem[@Name='NewNodeRename']");
+        List<WebElement> listElement = common.findWebElements("xpath", "//Pane[@Name='Customers']/Pane/Pane/Pane/Pane/Pane/List/ListItem");
+        System.out.println("Size of elements and List: " + listElement.size());
+        for (WebElement s:listElement){
+            System.out.println("movedMasterText :"+s.getText());
+            if(s.getText().equalsIgnoreCase(selectMasterTomoveAnotherNode)){
+                System.out.println("Great masterMoved To The Some Other Node :"+selectMasterTomoveAnotherNode);
+            }
+        }
+
+
     }
 }
