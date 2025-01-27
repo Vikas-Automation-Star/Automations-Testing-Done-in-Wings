@@ -21,12 +21,15 @@ public class CompanyInitilizatonGSTconfig {
     @Test
     public void GSTConfigurations() throws InterruptedException {
         CompanyInitialisationGSTConfiguration configuration=new CompanyInitialisationGSTConfiguration(driver);
-        configuration.cgstConfiguration();
-        configuration.sgstConfiguration();
-        configuration.igstConfiguration();
+//        configuration.cgstConfiguration();
+//        configuration.sgstConfiguration();
+//        configuration.igstConfiguration();
+//        configuration.companyUnits();
+//        configuration.addOns();
+        configuration.entryViewPrintSettings();
     }
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 }
