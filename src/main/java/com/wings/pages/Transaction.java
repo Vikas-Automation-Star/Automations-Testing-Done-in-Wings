@@ -1684,7 +1684,7 @@ public abstract class Transaction {
         System.out.println("Transaction is Deleted Successfully");
     }
 
-    public void configureCheckboxSelection(String locatorXpath ){
+    public void enableCheckboxSelection(String locatorXpath ){
         WebElement element = driver.findElementByXPath(locatorXpath);
         String checkBoxToggleState = element.getAttribute("Toggle.ToggleState");
         System.out.println("Check Box Toggle state:-" + checkBoxToggleState);
