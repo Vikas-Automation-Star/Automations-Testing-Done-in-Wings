@@ -31,11 +31,9 @@ public class CompanyInitilizatonGSTconfig {
 //        configuration.inventoryWorkFlow();
 //        configuration.inventoryModuleSettings();
 //        configuration.productionWorkFlow();
-//        configuration.financeWorkFlow();
-//        configuration.financeModuleSettings();
-//        configuration.financePolicies();
+        configuration.financeWorkFlow();
 //        configuration.generalSettings();
-        configuration.taxesSettings();
+//        configuration.taxesSettings();
 
     }
     @AfterTest

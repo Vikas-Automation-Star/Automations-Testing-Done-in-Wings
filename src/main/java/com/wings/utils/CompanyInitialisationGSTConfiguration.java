@@ -4,6 +4,7 @@ import com.wings.pages.Transaction;
 import io.appium.java_client.windows.WindowsDriver;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
 import java.util.List;
@@ -300,6 +301,7 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         Thread.sleep(1500);
         common.clickElement("xpath","//Button[@Name='OK']");
     }
+
     public void inventoryWorkFlow() throws InterruptedException {
         common.clickElement("xpath","//TabItem[@Name='Configure']");
         common.clickElement("xpath","//HyperLink[@Name='Inventory']");
@@ -367,6 +369,7 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         //close
         common.clickElement("xpath","//Window//Button[@Name='Close']");
     }
+
     public void productionWorkFlow() throws InterruptedException {
         common.clickElement("xpath","//TabItem[@Name='Configure']");
         common.clickElement("xpath","//HyperLink[@Name='Production']");
@@ -398,6 +401,7 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         //close
         common.clickElement("xpath","//Window//Button[@Name='Close']");
     }
+
     public void financeWorkFlow() throws InterruptedException {
         common.clickElement("xpath","//TabItem[@Name='Configure']");
         common.clickElement("xpath","//HyperLink[@Name='Finance']");
@@ -443,13 +447,12 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         configureCheckboxSelection("//Pane//CheckBox[@Name='Party Opening Balances']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Opening Balances']");
         //Reports
-        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,20);
         configureCheckboxSelection("//Pane//CheckBox[@Name='Reports']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Profit and Loss T-Form']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Balance Sheet T-Form']");
-        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,20);
         Thread.sleep(1000);
         configureCheckboxSelection("//Pane//CheckBox[@Name='Ledger with Interest']");
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,100);
         configureCheckboxSelection("//Pane//CheckBox[@Name='Day wise Ledger Summary']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Account Balances[Tree View]']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Account Groups for Reporting']");
@@ -458,22 +461,23 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         common.clickElement("xpath","//RadioButton[@Name='Cash and Bank Book with Day wise Balance']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Enable Balances Reports']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Customer Balances']");
-        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,10);
         configureCheckboxSelection("//Pane//CheckBox[@Name='Supplier Balances']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Account Balances Summary']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Transfer Incomes and Expenses to PL']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Manual Stock valuation']");
         //save
-//        common.clickElement("xpath","//Button[@Name='Save']");
-//        common.clickElement("xpath","//Button[@Name='OK']");
-//        Thread.sleep(1500);
-//        common.clickElement("xpath","//Button[@Name='OK']");
+        common.clickElement("xpath","//Button[@Name='Save']");
+        common.clickElement("xpath","//Button[@Name='OK']");
+        Thread.sleep(1500);
+        common.clickElement("xpath","//Button[@Name='OK']");
+        financeModuleSettings();
+        financePolicies();
+        common.clickElement("xpath","//Window//Button[@Name='Close']");
     }
-    public void financeModuleSettings(){
-        common.clickElement("xpath","//TabItem[@Name='Configure']");
-        common.clickElement("xpath","//HyperLink[@Name='Finance']");
+    public void financeModuleSettings() throws InterruptedException {
+//        common.clickElement("xpath","//TabItem[@Name='Configure']");
+//        common.clickElement("xpath","//HyperLink[@Name='Finance']");
         common.clickElement("xpath","//Button[@Name='Module Settings']");
-
         configureCheckboxSelection("//Pane//CheckBox[@Name='Enable multi currency in all transactions.']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Enable bill wise accounting in all transactions.']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Enable bills receivables and bills payables tabs in all transactions.']");
@@ -483,15 +487,13 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         configureCheckboxSelection("//Pane//CheckBox[@Name='Receipts']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Post Dated Cheques']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Cheques [PDC]']");
-//        common.clickElement("xpath", "//Edit[@Name='Bank Details']/following-sibling::Button[@Name='Open']");
-
         configureCheckboxSelection("//Pane//CheckBox[@Name='Payments']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Post Dated Cheques']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Payments']/parent::Pane/parent::Pane/parent::Pane/parent::Pane/following-sibling::List/Pane/Pane//CheckBox[@Name='Post Dated Cheques']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Payments']/parent::Pane/parent::Pane/parent::Pane/parent::Pane/following-sibling::List/Pane/Pane//CheckBox[@Name='Cheques [PDC]']");
         //bankin
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Cheques [PDC]']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Bank Charges']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Receipts']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Payments']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Bank Charges']/parent::Pane/parent::Pane/parent::Pane/parent::Pane/following-sibling::Pane/Pane//CheckBox[@Name='Receipts']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Bank Charges']/parent::Pane/parent::Pane/parent::Pane/parent::Pane/following-sibling::Pane/Pane//CheckBox[@Name='Payments']");
         //scroll
         common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,150);
         configureCheckboxSelection("//Pane//CheckBox[@Name='Enable GST on advance receipts']");
@@ -506,16 +508,18 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         configureCheckboxSelection("//Pane//CheckBox[@Name='Enable drawn on bank.']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Disable book expenses or  payable transaction supplytype editable..']");
         //save
-//        common.clickElement("xpath","//Button[@Name='Save']");
-//        common.clickElement("xpath","//Button[@Name='OK']");
-//        Thread.sleep(1500);
-//        common.clickElement("xpath","//Button[@Name='OK']");
+        common.clickElement("xpath","//Button[@Name='Save']");
+        common.clickElement("xpath","//Button[@Name='OK']");
+        Thread.sleep(1500);
+        common.clickElement("xpath","//Button[@Name='OK']");
+        //close
+//        common.clickElement("xpath","//Window//Button[@Name='Close']");
+
     }
     public void financePolicies() throws InterruptedException {
-        common.clickElement("xpath","//TabItem[@Name='Configure']");
-        common.clickElement("xpath","//HyperLink[@Name='Finance']");
+//        common.clickElement("xpath","//TabItem[@Name='Configure']");
+//        common.clickElement("xpath","//HyperLink[@Name='Finance']");
         common.clickElement("xpath","//Button[@Name='Policies']");
-
         configureCheckboxSelection("//Pane//CheckBox[@Name='Show account balance in chart of accounts window.']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Enable manual stock valuation.']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Enable do not edit bank transactions after reconciled']");
@@ -524,7 +528,7 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         //payments
         configureCheckboxSelection("//Pane//CheckBox[@Name='Override alerts']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Enable credit limits in all sales transactions.']");
-        common.clickElement("xpath","//RadioButton[@Name='Company wise']");
+        common.clickElement("xpath","//Pane//CheckBox[@Name='Enable credit limits in all sales transactions.']/parent::Pane/parent::Pane/parent::Pane/parent::Pane/following-sibling::List/Pane/Pane//RadioButton[@Name='Company wise']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Override limits']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Enable credit periods in all transactions']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Overdue bill alerts.']");
@@ -536,7 +540,7 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         Thread.sleep(1500);
         common.clickElement("xpath","//Button[@Name='OK']");
         //close
-        common.clickElement("xpath","//Window//Button[@Name='Close']");
+//        common.clickElement("xpath","//Window//Button[@Name='Close']");
     }
 
     public void generalSettings() throws InterruptedException {
@@ -597,7 +601,6 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         common.clickElement("xpath","//TabItem[@Name='Configure']");
         common.clickElement("xpath","//HyperLink[@Name='Taxes']");
         Thread.sleep(1500);
-
         configureCheckboxSelection("//Pane//CheckBox[@Name='Enable Goods and Service Tax']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in all purchase transactions.']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in all sales transactions.']");
@@ -620,7 +623,6 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         configureCheckboxSelection("//Pane//CheckBox[@Name='Enable shipping address in sales transactions.']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Enable despatch address in sales transactions.']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Enable export shipping bill details.']");
-
         configureCheckboxSelection("//Pane//CheckBox[@Name='Allow multiple GST Service Providers']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Enable GST additional tabs in all transactions.']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Enable GST additional columns in all transactions.']");
