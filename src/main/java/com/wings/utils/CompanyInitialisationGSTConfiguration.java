@@ -302,7 +302,7 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         common.clickElement("xpath","//Button[@Name='OK']");
     }
 
-    public void inventoryWorkFlow() throws InterruptedException {
+    public void inventoryFlow() throws InterruptedException {
         common.clickElement("xpath","//TabItem[@Name='Configure']");
         common.clickElement("xpath","//HyperLink[@Name='Inventory']");
         common.clickElement("xpath","//Button[@Name='Work Flow']");
@@ -317,12 +317,7 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         Thread.sleep(1500);
         common.clickElement("xpath","//Button[@Name='OK']");
 
-        inventoryModuleSettings();
-        inventoryPolicies();
-    }
-    public void inventoryModuleSettings() throws InterruptedException {
-//        common.clickElement("xpath","//TabItem[@Name='Configure']");
-//        common.clickElement("xpath","//HyperLink[@Name='Inventory']");
+        //Module Settings
         common.clickElement("xpath","//Button[@Name='Module Settings']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Enable products.']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Enable services.']");
@@ -341,12 +336,8 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         common.clickElement("xpath","//Button[@Name='OK']");
         Thread.sleep(1500);
         common.clickElement("xpath","//Button[@Name='OK']");
-        //close
-//        common.clickElement("xpath","//Window//Button[@Name='Close']");
-    }
-    public void inventoryPolicies() throws InterruptedException {
-//        common.clickElement("xpath","//TabItem[@Name='Configure']");
-//        common.clickElement("xpath","//HyperLink[@Name='Inventory']");
+
+        //Policies
         common.clickElement("xpath","//Button[@Name='Policies']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Enable multiple locations under branch in all transactions.']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Enable storagebins under location in all transactions.']");
@@ -370,7 +361,7 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         common.clickElement("xpath","//Window//Button[@Name='Close']");
     }
 
-    public void productionWorkFlow() throws InterruptedException {
+    public void productionFlow() throws InterruptedException {
         common.clickElement("xpath","//TabItem[@Name='Configure']");
         common.clickElement("xpath","//HyperLink[@Name='Production']");
         common.clickElement("xpath","//Button[@Name='Work Flow']");
@@ -382,14 +373,7 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         common.clickElement("xpath","//Button[@Name='OK']");
         Thread.sleep(1500);
         common.clickElement("xpath","//Button[@Name='OK']");
-        //close
-//        common.clickElement("xpath","//Window//Button[@Name='Close']");
         //Module settings
-        productionModuleSettings();
-    }
-    public void productionModuleSettings() throws InterruptedException {
-//        common.clickElement("xpath","//TabItem[@Name='Configure']");
-//        common.clickElement("xpath","//HyperLink[@Name='Production']");
         common.clickElement("xpath","//Button[@Name='Module Settings']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Enable Bills of Material']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Disable batch pop up']");

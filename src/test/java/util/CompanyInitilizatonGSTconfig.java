@@ -27,11 +27,10 @@ public class CompanyInitilizatonGSTconfig {
 //        configuration.igstConfiguration();
 //        configuration.companyUnits();
 //        configuration.addOns();
+        configuration.productionFlow();
 //        configuration.entryViewPrintSettings();
-//        configuration.inventoryWorkFlow();
-//        configuration.inventoryModuleSettings();
-//        configuration.productionWorkFlow();
-        configuration.financeWorkFlow();
+//        configuration.inventoryFlow();
+//        configuration.financeWorkFlow();
 //        configuration.generalSettings();
 //        configuration.taxesSettings();
 
