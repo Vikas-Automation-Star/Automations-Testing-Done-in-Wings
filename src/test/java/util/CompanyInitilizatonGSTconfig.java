@@ -8,6 +8,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.awt.*;
 import java.io.IOException;
 
 public class CompanyInitilizatonGSTconfig {
@@ -19,14 +20,21 @@ public class CompanyInitilizatonGSTconfig {
         appLogin.singleUserLogin();
     }
     @Test
-    public void GSTConfigurations() throws InterruptedException {
+    public void GSTConfigurations() throws InterruptedException, AWTException {
         CompanyInitialisationGSTConfiguration configuration=new CompanyInitialisationGSTConfiguration(driver);
 //        configuration.cgstConfiguration();
 //        configuration.sgstConfiguration();
 //        configuration.igstConfiguration();
 //        configuration.companyUnits();
 //        configuration.addOns();
-        configuration.entryViewPrintSettings();
+//        configuration.entryViewPrintSettings();
+//        configuration.inventoryWorkFlow();
+//        configuration.inventoryModuleSettings();
+//        configuration.productionWorkFlow();
+        configuration.financeWorkFlow();
+//        configuration.generalSettings();
+//        configuration.taxesSettings();
+
     }
     @AfterTest
     public void afterTest() throws IOException {

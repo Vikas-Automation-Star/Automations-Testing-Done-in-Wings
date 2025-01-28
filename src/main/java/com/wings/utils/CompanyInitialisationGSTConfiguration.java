@@ -1,16 +1,19 @@
 package com.wings.utils;
 
+import com.wings.pages.Transaction;
 import io.appium.java_client.windows.WindowsDriver;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
 import java.util.List;
 
-public class CompanyInitialisationGSTConfiguration {
+public class CompanyInitialisationGSTConfiguration extends Transaction {
     WindowsDriver driver;
     Common common;
     public CompanyInitialisationGSTConfiguration(WindowsDriver driver){
+        super(driver);
         common=new Common(driver);
         this.driver=driver;
     }
@@ -219,722 +222,436 @@ public class CompanyInitialisationGSTConfiguration {
         common.clickElement("xpath","//Text[@Name='Entry, View and Print Settings']/HyperLink[@Name='Entry, View and Print Settings']");
         Thread.sleep(1000);
         //check boxes
-            //General
-//        WebElement closeTransaction = driver.findElementByXPath("//Pane//CheckBox[@Name='Do not close the transaction after save If transaction tab has more than 200 Lines']");
-//        String closeTransactionToggleState = closeTransaction.getAttribute("Toggle.ToggleState");
-//        System.out.println("Close Transaction Toggle state:-" + closeTransactionToggleState);
-//        if (closeTransactionToggleState.equals("0")) {
-//            closeTransaction.click();
-//            System.out.println("Close Transaction Checkbox was unchecked, now checked.");
-//        } else if (closeTransactionToggleState.equals("1")){
-//            System.out.println("Close Transaction Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //2
-//        WebElement resetVoucher = driver.findElementByXPath("//Pane//CheckBox[@Name='Reset voucher series when financial year changes in all transactions.']");
-//        String resetVoucherToggleState = resetVoucher.getAttribute("Toggle.ToggleState");
-//        System.out.println("Reset Voucher Toggle state:-" + resetVoucherToggleState);
-//        if (resetVoucherToggleState.equals("0")) {
-//            resetVoucher.click();
-//            System.out.println("Reset Voucher Checkbox was unchecked, now checked.");
-//        } else if (resetVoucherToggleState.equals("1")){
-//            System.out.println("Reset Voucher Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //3
-//        WebElement saveDraft = driver.findElementByXPath("//Pane//CheckBox[@Name='Allow save draft for all users in all transactions.']");
-//        String saveDraftToggleState = saveDraft.getAttribute("Toggle.ToggleState");
-//        System.out.println("Save Draft Toggle state:-" + saveDraftToggleState);
-//        if (saveDraftToggleState.equals("0")) {
-//            saveDraft.click();
-//            System.out.println("Save Draft Checkbox was unchecked, now checked.");
-//        } else if (saveDraftToggleState.equals("1")){
-//            System.out.println("Save Draft Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //4
-//        WebElement barCodePanelCentre = driver.findElementByXPath("//Pane//CheckBox[@Name='Show barcode panel']");
-//        String barcodeToggleState = barCodePanelCentre.getAttribute("Toggle.ToggleState");
-//        System.out.println("Barcode Panel Toggle state:-" + barcodeToggleState);
-//        if (barcodeToggleState.equals("0")) {
-//            barCodePanelCentre.click();
-//            System.out.println("Barcode Panel Checkbox was unchecked, now checked.");
-//        } else if (barcodeToggleState.equals("1")){
-//            System.out.println("Barcode Panel Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //5
-//        WebElement fileBasedBarcode = driver.findElementByXPath("//Pane//CheckBox[@Name='Show file based barcode configuration.']");
-//        String barcodeAttribute = fileBasedBarcode.getAttribute("Toggle.ToggleState");
-//        System.out.println("Barcode Toggle state:-" + barcodeAttribute);
-//        if (barcodeAttribute.equals("0")) {
-//            fileBasedBarcode.click();
-//            System.out.println("Barcode checkbox was unchecked, now checked.");
-//        } else if (barcodeAttribute.equals("1")){
-//            System.out.println("Barcode checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //6
-//        WebElement toolBar = driver.findElementByXPath("//Pane//CheckBox[@Name='Toolbar:show text with icons in all transactions and reports.']");
-//        String toolBarToggleState = toolBar.getAttribute("Toggle.ToggleState");
-//        System.out.println("Toolbar Toggle state:-" + toolBarToggleState);
-//        if (toolBarToggleState.equals("0")) {
-//            toolBar.click();
-//            System.out.println("Toolbar Checkbox was unchecked, now checked.");
-//        } else if (toolBarToggleState.equals("1")){
-//            System.out.println("Toolbar Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//            //Master
-//        WebElement renameMaster = driver.findElementByXPath("//Pane//CheckBox[@Name='Allow renaming of masters by pressing F2 in master window.']");
-//        String renameMasterAttribute = renameMaster.getAttribute("Toggle.ToggleState");
-//        System.out.println("Rename Master Toggle state:-" + renameMasterAttribute);
-//        if (renameMasterAttribute.equals("0")) {
-//            renameMaster.click();
-//            System.out.println("Rename Master Checkbox was unchecked, now checked.");
-//        } else if (renameMasterAttribute.equals("1")){
-//            System.out.println("Rename Master Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //2
-//        WebElement moveMaster = driver.findElementByXPath("//Pane//CheckBox[@Name='Allow moving of masters and nodes by drag and drop in master window.']");
-//        String moveMasterAttribute = moveMaster.getAttribute("Toggle.ToggleState");
-//        System.out.println("Move Master Toggle state:-" + moveMasterAttribute);
-//        if (moveMasterAttribute.equals("0")) {
-//            moveMaster.click();
-//            System.out.println("Move Master Checkbox was unchecked, now checked.");
-//        } else if (moveMasterAttribute.equals("1")){
-//            System.out.println("Move Master Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //3
-//        WebElement closeWindowConfig = driver.findElementByXPath("//Pane//CheckBox[@Name='Confirmation for closing master window.']");
-//        String closeWindowConfigAttribute = closeWindowConfig.getAttribute("Toggle.ToggleState");
-//        System.out.println("Close Window Config Toggle state:-" + closeWindowConfigAttribute);
-//        if (closeWindowConfigAttribute.equals("0")) {
-//            closeWindowConfig.click();
-//            System.out.println("Close Window Config Checkbox was unchecked, now checked.");
-//        } else if (closeWindowConfigAttribute.equals("1")){
-//            System.out.println("Close Window Config Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //4
-//        WebElement propertiesMaster = driver.findElementByXPath("//Pane//CheckBox[@Name='Show properties in master creation window.']");
-//        String propertiesMasterAttribute = propertiesMaster.getAttribute("Toggle.ToggleState");
-//        System.out.println("Properties Master Toggle state:-" + propertiesMasterAttribute);
-//        if (propertiesMasterAttribute.equals("0")) {
-//            propertiesMaster.click();
-//            System.out.println("Properties Master Checkbox was unchecked, now checked.");
-//        } else if (propertiesMasterAttribute.equals("1")){
-//            System.out.println("Properties Master Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-        //scroll down
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Do not close the transaction after save If transaction tab has more than 200 Lines']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Reset voucher series when financial year changes in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Allow save draft for all users in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Show barcode panel']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Show file based barcode configuration.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Toolbar:show text with icons in all transactions and reports.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Allow renaming of masters by pressing F2 in master window.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Allow moving of masters and nodes by drag and drop in master window.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Confirmation for closing master window.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Show properties in master creation window.']");
         common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,40);
-        // TRANSACTIONS
-//        WebElement lookUpSettings = driver.findElementByXPath("//Pane//CheckBox[@Name='Enable lookup settings in all transactions.']");
-//        String lookUpSettingsAttribute = lookUpSettings.getAttribute("Toggle.ToggleState");
-//        System.out.println("Look up Settings Toggle state:-" + lookUpSettingsAttribute);
-//        if (lookUpSettingsAttribute.equals("0")) {
-//            lookUpSettings.click();
-//            System.out.println("Look up Settings Checkbox was unchecked, now checked.");
-//        } else if (lookUpSettingsAttribute.equals("1")){
-//            System.out.println("Look up Settings Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //2
-//        WebElement masterCode = driver.findElementByXPath("//Pane//CheckBox[@Name='Show master code in master combos.']");
-//        String masterCodeAttribute = masterCode.getAttribute("Toggle.ToggleState");
-//        System.out.println("Master Code Toggle state:-" + masterCodeAttribute);
-//        if (masterCodeAttribute.equals("0")) {
-//            masterCode.click();
-//            System.out.println("Master Code Checkbox was unchecked, now checked.");
-//        } else if (masterCodeAttribute.equals("1")){
-//            System.out.println("Master Code Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //3
-//        WebElement description = driver.findElementByXPath("//Pane//CheckBox[@Name='Show description in master combos.']");
-//        String descriptionAttribute = description.getAttribute("Toggle.ToggleState");
-//        System.out.println("Description Toggle state:-" + descriptionAttribute);
-//        if (descriptionAttribute.equals("0")) {
-//            description.click();
-//            System.out.println("Description Checkbox was unchecked, now checked.");
-//        } else if (descriptionAttribute.equals("1")){
-//            System.out.println("Description Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //4
-//        WebElement masterNode = driver.findElementByXPath("//Pane//CheckBox[@Name='Show master node in master combos.']");
-//        String masterNodeAttribute = masterNode.getAttribute("Toggle.ToggleState");
-//        System.out.println("Master Node Toggle state:-" + masterNodeAttribute);
-//        if (masterNodeAttribute.equals("0")) {
-//            masterNode.click();
-//            System.out.println("Master Node Checkbox was unchecked, now checked.");
-//        } else if (masterNodeAttribute.equals("1")){
-//            System.out.println("Master Node Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //5
-//        WebElement transactionField = driver.findElementByXPath("//Pane//CheckBox[@Name='Show transaction field lookup configuration.']");
-//        String transactionFieldAttribute = transactionField.getAttribute("Toggle.ToggleState");
-//        System.out.println("Transaction Field Look up Toggle state:-" + transactionFieldAttribute);
-//        if (transactionFieldAttribute.equals("0")) {
-//            transactionField.click();
-//            System.out.println("Transaction Field Look up Checkbox was unchecked, now checked.");
-//        } else if (transactionFieldAttribute.equals("1")){
-//            System.out.println("Transaction Field Look up Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //6
-//        WebElement balances = driver.findElementByXPath("//Pane//CheckBox[@Name='Show balances']");
-//        String balancesAttribute = balances.getAttribute("Toggle.ToggleState");
-//        System.out.println("Balances Toggle state:-" + balancesAttribute);
-//        if (balancesAttribute.equals("0")) {
-//            balances.click();
-//            System.out.println("Balances Checkbox was unchecked, now checked.");
-//        } else if (balancesAttribute.equals("1")){
-//            System.out.println("Balances Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //7
-//        WebElement accountBalances = driver.findElementByXPath("//Pane//CheckBox[@Name='Show account balance in master combos.']");
-//        String accountBalancesAttribute = accountBalances.getAttribute("Toggle.ToggleState");
-//        System.out.println("Account Balances Toggle state:-" + accountBalancesAttribute);
-//        if (accountBalancesAttribute.equals("0")) {
-//            accountBalances.click();
-//            System.out.println("Account Balances Checkbox was unchecked, now checked.");
-//        } else if (accountBalancesAttribute.equals("1")){
-//            System.out.println("Account Balances Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //8
-//        WebElement stockBalances = driver.findElementByXPath("//Pane//CheckBox[@Name='Show stock balance in master combos.']");
-//        String stockBalancesAttribute = stockBalances.getAttribute("Toggle.ToggleState");
-//        System.out.println("Stock Balances Toggle state:-" + stockBalancesAttribute);
-//        if (stockBalancesAttribute.equals("0")) {
-//            stockBalances.click();
-//            System.out.println("Stock Balances Checkbox was unchecked, now checked.");
-//        } else if (stockBalancesAttribute.equals("1")){
-//            System.out.println("Stock Balances Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //9
-//        WebElement advanceOptions = driver.findElementByXPath("//Pane//CheckBox[@Name='Advanced options']");
-//        String advanceOptionsAttribute = advanceOptions.getAttribute("Toggle.ToggleState");
-//        System.out.println("Advance Options Toggle state:-" + advanceOptionsAttribute);
-//        if (advanceOptionsAttribute.equals("0")) {
-//            advanceOptions.click();
-//            System.out.println("Advance Options Checkbox was unchecked, now checked.");
-//        } else if (advanceOptionsAttribute.equals("1")){
-//            System.out.println("Advance Options Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-        //scroll
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable lookup settings in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Show master code in master combos.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Show description in master combos.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Show master node in master combos.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Show transaction field lookup configuration.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Show balances']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Show account balance in master combos.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Show stock balance in master combos.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Advanced options']");
         common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,40);
-        //radio button
-//        common.clickElement("xpath","//RadioButton[@Name='Use advanced combo in all transactions.']");
-//        //10
-//        WebElement closingTransactionConfirmation = driver.findElementByXPath("//Pane//CheckBox[@Name='Confirmation for closing transaction window in all transactions.']");
-//        String confirmationAttribute = closingTransactionConfirmation.getAttribute("Toggle.ToggleState");
-//        System.out.println("Confirm Close Toggle state:-" + confirmationAttribute);
-//        if (confirmationAttribute.equals("0")) {
-//            closingTransactionConfirmation.click();
-//            System.out.println("Confirm Close Checkbox was unchecked, now checked.");
-//        } else if (confirmationAttribute.equals("1")){
-//            System.out.println("Confirm Close Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //11
-//        WebElement saveTransactionConfirmation = driver.findElementByXPath("//Pane//CheckBox[@Name='Confirmation for saving transaction in all transactions.']");
-//        String saveTransactionConfirmationAttribute = saveTransactionConfirmation.getAttribute("Toggle.ToggleState");
-//        System.out.println("Confirm Save Toggle state:-" + saveTransactionConfirmationAttribute);
-//        if (saveTransactionConfirmationAttribute.equals("0")) {
-//            saveTransactionConfirmation.click();
-//            System.out.println("Confirm Save Checkbox was unchecked, now checked.");
-//        } else if (saveTransactionConfirmationAttribute.equals("1")){
-//            System.out.println("Confirm Save Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//
-//        //12
-//        WebElement editView = driver.findElementByXPath("//Pane//CheckBox[@Name='Show edit/view voucher option in all transactions.']");
-//        String editViewAttributeAttribute = editView.getAttribute("Toggle.ToggleState");
-//        System.out.println("Confirm Save Toggle state:-" + editViewAttributeAttribute);
-//        if (editViewAttributeAttribute.equals("0")) {
-//            editView.click();
-//            System.out.println("Confirm Save Checkbox was unchecked, now checked.");
-//        } else if (editViewAttributeAttribute.equals("1")){
-//            System.out.println("Confirm Save Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //13
-//        WebElement showBorders = driver.findElementByXPath("//Pane//CheckBox[@Name='Show borders for text fields in all transactions.']");
-//        String showBordersAttribute = showBorders.getAttribute("Toggle.ToggleState");
-//        System.out.println("Show Border Toggle state:-" + showBordersAttribute);
-//        if (showBordersAttribute.equals("0")) {
-//            showBorders.click();
-//            System.out.println("Show Border Checkbox was unchecked, now checked.");
-//        } else if (showBordersAttribute.equals("1")){
-//            System.out.println("Show Border Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//            //14
-//        WebElement wordWrap = driver.findElementByXPath("//Pane//CheckBox[@Name='Word wrap field names in header for all transactions.']");
-//        String wordWrapAttribute = wordWrap.getAttribute("Toggle.ToggleState");
-//        System.out.println("Word Wrap Toggle state:-" + wordWrapAttribute);
-//        if (wordWrapAttribute.equals("0")) {
-//            wordWrap.click();
-//            System.out.println("Word Wrap Checkbox was unchecked, now checked.");
-//        } else if (wordWrapAttribute.equals("1")){
-//            System.out.println("Word Wrap Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //15
-//        WebElement autoWidth = driver.findElementByXPath("//Pane//CheckBox[@Name='Autowidth in all transactions.']");
-//        String autoWidthConfirmationAttribute = autoWidth.getAttribute("Toggle.ToggleState");
-//        System.out.println("Auto Width Toggle state:-" + autoWidthConfirmationAttribute);
-//        if (autoWidthConfirmationAttribute.equals("0")) {
-//            autoWidth.click();
-//            System.out.println("Auto width Checkbox was unchecked, now checked.");
-//        } else if (autoWidthConfirmationAttribute.equals("1")){
-//            System.out.println("Auto width Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //16
-//        WebElement futureDateTrans = driver.findElementByXPath("//Pane//CheckBox[@Name='Allow entering transactions on future date in all transactions.']");
-//        String futureTransaConfirmationAttribute = futureDateTrans.getAttribute("Toggle.ToggleState");
-//        System.out.println("future Transaction Toggle state:-" + futureTransaConfirmationAttribute);
-//        if (futureTransaConfirmationAttribute.equals("0")) {
-//            futureDateTrans.click();
-//            System.out.println("future Transaction Checkbox was unchecked, now checked.");
-//        } else if (futureTransaConfirmationAttribute.equals("1")){
-//            System.out.println("future Transaction Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //17
-//        WebElement dateLock = driver.findElementByXPath("//Pane//CheckBox[@Name='Use date lock for previous entries in all transactions.']");
-//        String dateLockAttribute = dateLock.getAttribute("Toggle.ToggleState");
-//        System.out.println("Date Lock Toggle state:-" + dateLockAttribute);
-//        if (dateLockAttribute.equals("0")) {
-//            dateLock.click();
-//            System.out.println("Date lock Checkbox was unchecked, now checked.");
-//        } else if (dateLockAttribute.equals("1")){
-//            System.out.println("date lock Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-        //scroll
+        common.clickElement("xpath","//RadioButton[@Name='Use advanced combo in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Confirmation for closing transaction window in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Confirmation for saving transaction in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Show edit/view voucher option in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Show borders for text fields in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Word wrap field names in header for all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Autowidth in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Allow entering transactions on future date in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Use date lock for previous entries in all transactions.']");
         common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,28);
-            //TRANSACTION-SET UP
-//        WebElement voucherNo = driver.findElementByXPath("//Pane//CheckBox[@Name='Enable Incremental Voucher No']");
-//        String voucherNoAttributeAttribute = voucherNo.getAttribute("Toggle.ToggleState");
-//        System.out.println("Voucher No Toggle state:-" + voucherNoAttributeAttribute);
-//        if (voucherNoAttributeAttribute.equals("0")) {
-//            voucherNo.click();
-//            System.out.println("Voucher No Checkbox was unchecked, now checked.");
-//        } else if (voucherNoAttributeAttribute.equals("1")){
-//            System.out.println("Voucher No Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //2
-//        WebElement chartOfAcc = driver.findElementByXPath("//Pane//CheckBox[@Name='Enable chart of accounts in financial Accounting.']");
-//        String chartOfAccAttribute = chartOfAcc.getAttribute("Toggle.ToggleState");
-//        System.out.println("COA Toggle state:-" + chartOfAccAttribute);
-//        if (chartOfAccAttribute.equals("0")) {
-//            chartOfAcc.click();
-//            System.out.println("COA Checkbox was unchecked, now checked.");
-//        } else if (chartOfAccAttribute.equals("1")){
-//            System.out.println("COA Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //3
-//        WebElement voucherType = driver.findElementByXPath("//Pane//CheckBox[@Name='Enable voucher types in all transactions.']");
-//        String voucherTypeAttribute = voucherType.getAttribute("Toggle.ToggleState");
-//        System.out.println("Voucher Type Toggle state:-" + voucherTypeAttribute);
-//        if (voucherTypeAttribute.equals("0")) {
-//            voucherType.click();
-//            System.out.println("Voucher Type Checkbox was unchecked, now checked.");
-//        } else if (voucherTypeAttribute.equals("1")){
-//            System.out.println("Voucher Type Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //4
-//        WebElement lineComments = driver.findElementByXPath("//Pane//CheckBox[@Name='Enable line comments in all transactions.']");
-//        String lineCommentsAttribute = lineComments.getAttribute("Toggle.ToggleState");
-//        System.out.println("Line Comments Toggle state:-" + lineCommentsAttribute);
-//        if (lineCommentsAttribute.equals("0")) {
-//            lineComments.click();
-//            System.out.println("Line Comments Checkbox was unchecked, now checked.");
-//        } else if (lineCommentsAttribute.equals("1")){
-//            System.out.println("Line Comments Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //5
-//        WebElement images = driver.findElementByXPath("//Pane//CheckBox[@Name='Show images in master combos.']");
-//        String imagesAttribute = images.getAttribute("Toggle.ToggleState");
-//        System.out.println("Image Toggle state:-" + imagesAttribute);
-//        if (imagesAttribute.equals("0")) {
-//            images.click();
-//            System.out.println("Image Checkbox was unchecked, now checked.");
-//        } else if (imagesAttribute.equals("1")){
-//            System.out.println("Image Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //6
-//        WebElement autoDelete = driver.findElementByXPath("//Pane//CheckBox[@Name='Enable the automatic deletion of invalid rows for pending bills in all transactions.']");
-//        String autoDeleteAttribute = autoDelete.getAttribute("Toggle.ToggleState");
-//        System.out.println("Auto Delete Toggle state:-" + autoDeleteAttribute);
-//        if (autoDeleteAttribute.equals("0")) {
-//            autoDelete.click();
-//            System.out.println("Auto Delete Checkbox was unchecked, now checked.");
-//        } else if (autoDeleteAttribute.equals("1")){
-//            System.out.println("Auto Delete Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //7
-//        WebElement referenceBill = driver.findElementByXPath("//Pane//CheckBox[@Name='Enable reference bill details in all transactions.']");
-//        String referenceBillAttribute = referenceBill.getAttribute("Toggle.ToggleState");
-//        System.out.println("Reference Bill Toggle state:-" + referenceBillAttribute);
-//        if (referenceBillAttribute.equals("0")) {
-//            referenceBill.click();
-//            System.out.println("Reference Bill Checkbox was unchecked, now checked.");
-//        } else if (referenceBillAttribute.equals("1")){
-//            System.out.println("Reference Bill Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //8
-//        WebElement otherInfoEnable = driver.findElementByXPath("//Pane//CheckBox[@Name='Enable other info in all transactions.']");
-//        String otherInfoEnableAttribute = otherInfoEnable.getAttribute("Toggle.ToggleState");
-//        System.out.println("Other Info Toggle state:-" + otherInfoEnableAttribute);
-//        if (otherInfoEnableAttribute.equals("0")) {
-//            otherInfoEnable.click();
-//            System.out.println("Other Info Checkbox was unchecked, now checked.");
-//        } else if (otherInfoEnableAttribute.equals("1")){
-//            System.out.println("Other Info Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //9
-//        WebElement otherInfoEnable1 = driver.findElementByXPath("//Pane//CheckBox[@Name='Other Info 1']");
-//        String otherInfo1 = otherInfoEnable1.getAttribute("Toggle.ToggleState");
-//        System.out.println("Other Info 1 Toggle state:-" + otherInfo1);
-//        if (otherInfo1.equals("0")) {
-//            otherInfoEnable1.click();
-//            System.out.println("Other Info 1 Checkbox was unchecked, now checked.");
-//        } else if (otherInfo1.equals("1")){
-//            System.out.println("Other Info 1 Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //10
-//        WebElement otherInfoEnable2 = driver.findElementByXPath("//Pane//CheckBox[@Name='Other Info 2']");
-//        String otherInfo2 = otherInfoEnable2.getAttribute("Toggle.ToggleState");
-//        System.out.println("Other Info 2 Toggle state:-" + otherInfo2);
-//        if (otherInfo2.equals("0")) {
-//            otherInfoEnable2.click();
-//            System.out.println("Other Info 2 Checkbox was unchecked, now checked.");
-//        } else if (otherInfo2.equals("1")){
-//            System.out.println("Other Info  2 Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //11
-//        WebElement otherInfoEnable3 = driver.findElementByXPath("//Pane//CheckBox[@Name='Other Info 3']");
-//        String otherInfo3 = otherInfoEnable3.getAttribute("Toggle.ToggleState");
-//        System.out.println("Other Info 3 Toggle state:-" + otherInfo3);
-//        if (otherInfo3.equals("0")) {
-//            otherInfoEnable3.click();
-//            System.out.println("Other Info 3 Checkbox was unchecked, now checked.");
-//        } else if (otherInfo3.equals("1")){
-//            System.out.println("Other Info 3 Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //12
-//        WebElement otherInfoEnable4 = driver.findElementByXPath("//Pane//CheckBox[@Name='Other Info 4']");
-//        String otherInfo4 = otherInfoEnable4.getAttribute("Toggle.ToggleState");
-//        System.out.println("Other Info 4 Toggle state:-" + otherInfo4);
-//        if (otherInfo4.equals("0")) {
-//            otherInfoEnable4.click();
-//            System.out.println("Other Info 4 Checkbox was unchecked, now checked.");
-//        } else if (otherInfo4.equals("1")){
-//            System.out.println("Other Info4  Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-        //scroll
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable Incremental Voucher No']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable chart of accounts in financial Accounting.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable voucher types in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable line comments in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Show images in master combos.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable the automatic deletion of invalid rows for pending bills in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable reference bill details in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable other info in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Other Info 1']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Other Info 2']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Other Info 3']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Other Info 4']");
         common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,20);
-        //13
-//        WebElement otherInfoEnable5 = driver.findElementByXPath("//Pane//CheckBox[@Name='Other Info 5']");
-//        String otherInfo5 = otherInfoEnable5.getAttribute("Toggle.ToggleState");
-//        System.out.println("Other Info 5 Toggle state:-" + otherInfo5);
-//        if (otherInfo5.equals("0")) {
-//            otherInfoEnable5.click();
-//            System.out.println("Other Info 5 Checkbox was unchecked, now checked.");
-//        } else if (otherInfo5.equals("1")){
-//            System.out.println("Other Info 5 Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-        //scroll bar
-        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,60);
-        //REPORTS
-//        WebElement branchName = driver.findElementByXPath("//Pane//CheckBox[@Name='Show branch name in header in all reports.']");
-//        String branchNameAttribute = branchName.getAttribute("Toggle.ToggleState");
-//        System.out.println("Branch Name Toggle state:-" + branchNameAttribute);
-//        if (branchNameAttribute.equals("0")) {
-//            branchName.click();
-//            System.out.println("Branch Name Checkbox was unchecked, now checked.");
-//        } else if (branchNameAttribute.equals("1")){
-//            System.out.println("Branch Name Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //2
-//        WebElement zeroValues = driver.findElementByXPath("//Pane//CheckBox[@Name='Show zero values in all reports.']");
-//        String zeroValuesAttribute = zeroValues.getAttribute("Toggle.ToggleState");
-//        System.out.println("Zero Value Toggle state:-" + zeroValuesAttribute);
-//        if (zeroValuesAttribute.equals("0")) {
-//            zeroValues.click();
-//            System.out.println("Zero Value Checkbox was unchecked, now checked.");
-//        } else if (zeroValuesAttribute.equals("1")){
-//            System.out.println("Zero Value Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //3
-//        WebElement currencyPrefix = driver.findElementByXPath("//Pane//CheckBox[@Name='Supress currency prefix in all reports.']");
-//        String currencyPrefixAttribute = currencyPrefix.getAttribute("Toggle.ToggleState");
-//        System.out.println("Currency Prefix Toggle state:-" + currencyPrefixAttribute);
-//        if (currencyPrefixAttribute.equals("0")) {
-//            currencyPrefix.click();
-//            System.out.println("Currency Prefix Checkbox was unchecked, now checked.");
-//        } else if (currencyPrefixAttribute.equals("1")){
-//            System.out.println("Currency Prefix Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //4
-//        WebElement horizontalLines = driver.findElementByXPath("//Pane//CheckBox[@Name='Show horizontal lines in all reports.']");
-//        String horizontalLinesAttribute = horizontalLines.getAttribute("Toggle.ToggleState");
-//        System.out.println("horizontal Lines Toggle state:-" + horizontalLinesAttribute);
-//        if (horizontalLinesAttribute.equals("0")) {
-//            horizontalLines.click();
-//            System.out.println("horizontal Lines Checkbox was unchecked, now checked.");
-//        } else if (horizontalLinesAttribute.equals("1")){
-//            System.out.println("horizontal Lines Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //5
-//        WebElement serialNum = driver.findElementByXPath("//Pane//CheckBox[@Name='Do not print serial number column in all reports.']");
-//        String serialNumAttribute = serialNum.getAttribute("Toggle.ToggleState");
-//        System.out.println("Serial Num Toggle state:-" + serialNumAttribute);
-//        if (serialNumAttribute.equals("0")) {
-//            serialNum.click();
-//            System.out.println("Serial Num Checkbox was unchecked, now checked.");
-//        } else if (serialNumAttribute.equals("1")){
-//            System.out.println("Serial Num Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //6
-//        WebElement companyAddress = driver.findElementByXPath("//Pane//CheckBox[@Name='Show company address in all reports.']");
-//        String companyAddressAttribute = companyAddress.getAttribute("Toggle.ToggleState");
-//        System.out.println("Company Address Toggle state:-" + companyAddressAttribute);
-//        if (companyAddressAttribute.equals("0")) {
-//            companyAddress.click();
-//            System.out.println("Company Address Checkbox was unchecked, now checked.");
-//        } else if (companyAddressAttribute.equals("1")){
-//            System.out.println("Company Address Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-        //scroll bar
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Other Info 5']");
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,100);
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Show branch name in header in all reports.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Show zero values in all reports.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Supress currency prefix in all reports.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Show horizontal lines in all reports.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Do not print serial number column in all reports.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Show company address in all reports.']");
         common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,30);
-        //7
-//        WebElement reportHeader = driver.findElementByXPath("//Pane//CheckBox[@Name='Show report header in first page for all reports.']");
-//        String reportHeaderAttribute = reportHeader.getAttribute("Toggle.ToggleState");
-//        System.out.println("Report Header Toggle state:-" + reportHeaderAttribute);
-//        if (reportHeaderAttribute.equals("0")) {
-//            reportHeader.click();
-//            System.out.println("Report Header Checkbox was unchecked, now checked.");
-//        } else if (reportHeaderAttribute.equals("1")){
-//            System.out.println("Report Header Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //8
-//        WebElement closeWindowConfirm = driver.findElementByXPath("//Pane//CheckBox[@Name='Confirmation for closing report window in all reports.']");
-//        String closeWindowConfirmAttribute = closeWindowConfirm.getAttribute("Toggle.ToggleState");
-//        System.out.println("Close Window Toggle state:-" + closeWindowConfirmAttribute);
-//        if (closeWindowConfirmAttribute.equals("0")) {
-//            closeWindowConfirm.click();
-//            System.out.println("Close Window Checkbox was unchecked, now checked.");
-//        } else if (closeWindowConfirmAttribute.equals("1")){
-//            System.out.println("Close Window Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-//        //9
-//        WebElement refreshPendings = driver.findElementByXPath("//Pane//CheckBox[@Name='Refresh pendings.']");
-//        String refreshPendingsAttribute = refreshPendings.getAttribute("Toggle.ToggleState");
-//        System.out.println("Refresh Pendings Toggle state:-" + refreshPendingsAttribute);
-//        if (refreshPendingsAttribute.equals("0")) {
-//            refreshPendings.click();
-//            System.out.println("Refresh Pendings Checkbox was unchecked, now checked.");
-//        } else if (refreshPendingsAttribute.equals("1")){
-//            System.out.println("Refresh Pendings Checkbox is already checked, no action needed.");
-//        }
-//        else Assert.fail("Element Not Found");
-        //scroll
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Show report header in first page for all reports.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Confirmation for closing report window in all reports.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Refresh pendings.']");
         common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,25);
-            //PRINTING
-        WebElement draftPrint = driver.findElementByXPath("//Pane//CheckBox[@Name='Allow draft print in all transactions.']");
-        String draftPrintAttribute = draftPrint.getAttribute("Toggle.ToggleState");
-        System.out.println("Draft Print Toggle state:-" + draftPrintAttribute);
-        if (draftPrintAttribute.equals("0")) {
-            draftPrint.click();
-            System.out.println("Draft Print Checkbox was unchecked, now checked.");
-        } else if (draftPrintAttribute.equals("1")){
-            System.out.println("Draft Print Checkbox is already checked, no action needed.");
-        }
-        else Assert.fail("Element Not Found");
-        //2
-        WebElement unauthorisedTransaction = driver.findElementByXPath("//Pane//CheckBox[@Name='Allow printing of unauthorised transactions.']");
-        String unauthorisedTransactionAttribute = unauthorisedTransaction.getAttribute("Toggle.ToggleState");
-        System.out.println("Unauthorised Transaction Toggle state:-" + unauthorisedTransactionAttribute);
-        if (unauthorisedTransactionAttribute.equals("0")) {
-            unauthorisedTransaction.click();
-            System.out.println("Unauthorised Transaction Checkbox was unchecked, now checked.");
-        } else if (unauthorisedTransactionAttribute.equals("1")){
-            System.out.println("Unauthorised Transaction Checkbox is already checked, no action needed.");
-        }
-        else Assert.fail("Element Not Found");
-
-        //3
-        WebElement formDesign = driver.findElementByXPath("//Pane//CheckBox[@Name='Show form design footer in last page.']");
-        String formDesignAttribute = formDesign.getAttribute("Toggle.ToggleState");
-        System.out.println("form design Toggle state:-" + formDesignAttribute);
-        if (formDesignAttribute.equals("0")) {
-            formDesign.click();
-            System.out.println("form design Checkbox was unchecked, now checked.");
-        } else if (formDesignAttribute.equals("1")){
-            System.out.println("form design Checkbox is already checked, no action needed.");
-        }
-        else Assert.fail("Element Not Found");
-
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Allow draft print in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Allow printing of unauthorised transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Show form design footer in last page.']");
         common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,45);
-
-        //4
-        WebElement extendedFields = driver.findElementByXPath("//Pane//CheckBox[@Name='Add extended fields on extended field in invoice design.']");
-        String extendedFieldsAttribute = extendedFields.getAttribute("Toggle.ToggleState");
-        System.out.println("extended fields Toggle state:-" + extendedFieldsAttribute);
-        if (extendedFieldsAttribute.equals("0")) {
-            extendedFields.click();
-            System.out.println("extended fields Checkbox was unchecked, now checked.");
-        } else if (extendedFieldsAttribute.equals("1")){
-            System.out.println("extended fields Checkbox is already checked, no action needed.");
-        }
-        else Assert.fail("Element Not Found");
-        //5
-        WebElement onlinePrint = driver.findElementByXPath("//Pane//CheckBox[@Name='Enable online print templates.']");
-        String onlinePrintAttribute = onlinePrint.getAttribute("Toggle.ToggleState");
-        System.out.println("online print Toggle state:-" + onlinePrintAttribute);
-        if (onlinePrintAttribute.equals("0")) {
-            onlinePrint.click();
-            System.out.println("online print Checkbox was unchecked, now checked.");
-        } else if (onlinePrintAttribute.equals("1")){
-            System.out.println("online print Checkbox is already checked, no action needed.");
-        }
-        else Assert.fail("Element Not Found");
-        //6
-        WebElement quickPrinting = driver.findElementByXPath("//Pane//CheckBox[@Name='Enable quick printing in all transactions.']");
-        String quickPrintingAttribute = quickPrinting.getAttribute("Toggle.ToggleState");
-        System.out.println("quick printing Toggle state:-" + quickPrintingAttribute);
-        if (quickPrintingAttribute.equals("0")) {
-            quickPrinting.click();
-            System.out.println("quick printing Checkbox was unchecked, now checked.");
-        } else if (quickPrintingAttribute.equals("1")){
-            System.out.println("quick printing Checkbox is already checked, no action needed.");
-        }
-        else Assert.fail("Element Not Found");
-        //7
-        WebElement grapicalInvoice = driver.findElementByXPath("//Pane//CheckBox[@Name='Enable grapical invoice design and print templates.']");
-        String grapicalInvoiceAttribute = grapicalInvoice.getAttribute("Toggle.ToggleState");
-        System.out.println("grapical invoice Toggle state:-" + grapicalInvoiceAttribute);
-        if (grapicalInvoiceAttribute.equals("0")) {
-            grapicalInvoice.click();
-            System.out.println("grapical invoice Checkbox was unchecked, now checked.");
-        } else if (grapicalInvoiceAttribute.equals("1")){
-            System.out.println("grapical invoice Checkbox is already checked, no action needed.");
-        }
-        else Assert.fail("Element Not Found");
-        //8
-        WebElement printDraft = driver.findElementByXPath("//Pane//CheckBox[@Name='Enable print and draft templates.']");
-        String printDraftAttribute = printDraft.getAttribute("Toggle.ToggleState");
-        System.out.println("print and draft Toggle state:-" + printDraftAttribute);
-        if (printDraftAttribute.equals("0")) {
-            printDraft.click();
-            System.out.println("print and draft Checkbox was unchecked, now checked.");
-        } else if (printDraftAttribute.equals("1")){
-            System.out.println("print and draft Checkbox is already checked, no action needed.");
-        }
-        else Assert.fail("Element Not Found");
-        //scroll
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Add extended fields on extended field in invoice design.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable online print templates.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable quick printing in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable grapical invoice design and print templates.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable print and draft templates.']");
         common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,30);
-        //INVENTORY
-        WebElement negativeStock = driver.findElementByXPath("//Pane//CheckBox[@Name='Restrict negative stock alerts in issues transactions.']");
-        String negativeStockAttribute = negativeStock.getAttribute("Toggle.ToggleState");
-        System.out.println("negative stock Toggle state:-" + negativeStockAttribute);
-        if (negativeStockAttribute.equals("0")) {
-            negativeStock.click();
-            System.out.println("negative stock Checkbox was unchecked, now checked.");
-        } else if (negativeStockAttribute.equals("1")){
-            System.out.println("negative stock Checkbox is already checked, no action needed.");
-        }
-        else Assert.fail("Element Not Found");
-        //2
-        WebElement productBatch = driver.findElementByXPath("//Pane//CheckBox[@Name='Product batch wise']");
-        String productBatchAttribute = productBatch.getAttribute("Toggle.ToggleState");
-        System.out.println("Product batch Toggle state:-" + productBatchAttribute);
-        if (productBatchAttribute.equals("0")) {
-            productBatch.click();
-            System.out.println("Product batch Checkbox was unchecked, now checked.");
-        } else if (productBatchAttribute.equals("1")){
-            System.out.println("Product batch Checkbox is already checked, no action needed.");
-        }
-        else Assert.fail("Element Not Found");
-        //3
-        WebElement storageBin = driver.findElementByXPath("//Pane//CheckBox[@Name='Storage bin wise']");
-        String storageBinAttribute = storageBin.getAttribute("Toggle.ToggleState");
-        System.out.println("Storage bin Toggle state:-" + storageBinAttribute);
-        if (storageBinAttribute.equals("0")) {
-            storageBin.click();
-            System.out.println("Storage bin Checkbox was unchecked, now checked.");
-        } else if (storageBinAttribute.equals("1")){
-            System.out.println("Storage bin Checkbox is already checked, no action needed.");
-        }
-        else Assert.fail("Element Not Found");
-        //4
-        WebElement override = driver.findElementByXPath("//Pane//CheckBox[@Name='Override alerts']");
-        String overrideAttribute = override.getAttribute("Toggle.ToggleState");
-        System.out.println("Override Toggle state:-" + overrideAttribute);
-        if (overrideAttribute.equals("0")) {
-            override.click();
-            System.out.println("Override Checkbox was unchecked, now checked.");
-        } else if (overrideAttribute.equals("1")){
-            System.out.println("Override Checkbox is already checked, no action needed.");
-        }
-        else Assert.fail("Element Not Found");
-        //5
-        WebElement reorderLevel = driver.findElementByXPath("//Pane//CheckBox[@Name='Enable reorder level alerts.']");
-        String reorderLevelAttribute = reorderLevel.getAttribute("Toggle.ToggleState");
-        System.out.println("reorder level Toggle state:-" + reorderLevelAttribute);
-        if (reorderLevelAttribute.equals("0")) {
-            reorderLevel.click();
-            System.out.println("reorder level Checkbox was unchecked, now checked.");
-        } else if (reorderLevelAttribute.equals("1")){
-            System.out.println("reorder level Checkbox is already checked, no action needed.");
-        }
-        else Assert.fail("Element Not Found");
-        //6
-        WebElement overrideReorder = driver.findElementByXPath("//Pane//CheckBox[@Name='Override reorder level']");
-        String overrideReorderAttribute = overrideReorder.getAttribute("Toggle.ToggleState");
-        System.out.println("Override Toggle state:-" + overrideReorderAttribute);
-        if (overrideReorderAttribute.equals("0")) {
-            overrideReorder.click();
-            System.out.println("Override Checkbox was unchecked, now checked.");
-        } else if (overrideReorderAttribute.equals("1")){
-            System.out.println("Override Checkbox is already checked, no action needed.");
-        }
-        else Assert.fail("Element Not Found");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Restrict negative stock alerts in issues transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Product batch wise']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Storage bin wise']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Override alerts']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable reorder level alerts.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Override reorder level']");
+        //save
+        common.clickElement("xpath","//Button[@Name='Save']");
+        common.clickElement("xpath","//Button[@Name='OK']");
+        Thread.sleep(1500);
+        common.clickElement("xpath","//Button[@Name='OK']");
+    }
+
+    public void inventoryWorkFlow() throws InterruptedException {
+        common.clickElement("xpath","//TabItem[@Name='Configure']");
+        common.clickElement("xpath","//HyperLink[@Name='Inventory']");
+        common.clickElement("xpath","//Button[@Name='Work Flow']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Opening Stock']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Stock Creation']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Stock Consumption']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Stock Conversion']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Physical Stock Verification']");
+        //save
+        common.clickElement("xpath","//Button[@Name='Save']");
+        common.clickElement("xpath","//Button[@Name='OK']");
+        Thread.sleep(1500);
+        common.clickElement("xpath","//Button[@Name='OK']");
+
+        inventoryModuleSettings();
+        inventoryPolicies();
+    }
+    public void inventoryModuleSettings() throws InterruptedException {
+//        common.clickElement("xpath","//TabItem[@Name='Configure']");
+//        common.clickElement("xpath","//HyperLink[@Name='Inventory']");
+        common.clickElement("xpath","//Button[@Name='Module Settings']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable products.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable services.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable non inventory items.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable stock management units in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable multiple stock management units in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable free units in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable free SKU units in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable save transaction with free quantity in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable number of packs in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable value per unit.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable cost price for material issues']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable company wise reorder level']");
+        //save
+        common.clickElement("xpath","//Button[@Name='Save']");
+        common.clickElement("xpath","//Button[@Name='OK']");
+        Thread.sleep(1500);
+        common.clickElement("xpath","//Button[@Name='OK']");
+        //close
+//        common.clickElement("xpath","//Window//Button[@Name='Close']");
+    }
+    public void inventoryPolicies() throws InterruptedException {
+//        common.clickElement("xpath","//TabItem[@Name='Configure']");
+//        common.clickElement("xpath","//HyperLink[@Name='Inventory']");
+        common.clickElement("xpath","//Button[@Name='Policies']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable multiple locations under branch in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable storagebins under location in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable additional info fields in product creation window.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable additional value fields in product creation window.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable product attributes in product creation window.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Product categories']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Product sub categories']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Product types']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Product brands']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Product classes']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Product sub classes']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Seasons']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Styles']");
+        //save
+        common.clickElement("xpath","//Button[@Name='Save']");
+        common.clickElement("xpath","//Button[@Name='OK']");
+        Thread.sleep(1500);
+        common.clickElement("xpath","//Button[@Name='OK']");
+        //close
+        common.clickElement("xpath","//Window//Button[@Name='Close']");
+    }
+
+    public void productionWorkFlow() throws InterruptedException {
+        common.clickElement("xpath","//TabItem[@Name='Configure']");
+        common.clickElement("xpath","//HyperLink[@Name='Production']");
+        common.clickElement("xpath","//Button[@Name='Work Flow']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable assign standard rates']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable simple production flow']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable detailed production flow']");
+        //save
+        common.clickElement("xpath","//Button[@Name='Save']");
+        common.clickElement("xpath","//Button[@Name='OK']");
+        Thread.sleep(1500);
+        common.clickElement("xpath","//Button[@Name='OK']");
+        //close
+//        common.clickElement("xpath","//Window//Button[@Name='Close']");
+        //Module settings
+        productionModuleSettings();
+    }
+    public void productionModuleSettings() throws InterruptedException {
+//        common.clickElement("xpath","//TabItem[@Name='Configure']");
+//        common.clickElement("xpath","//HyperLink[@Name='Production']");
+        common.clickElement("xpath","//Button[@Name='Module Settings']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable Bills of Material']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Disable batch pop up']");
+        //save
+        common.clickElement("xpath","//Button[@Name='Save']");
+        common.clickElement("xpath","//Button[@Name='OK']");
+        Thread.sleep(1500);
+        common.clickElement("xpath","//Button[@Name='OK']");
+        //close
+        common.clickElement("xpath","//Window//Button[@Name='Close']");
+    }
+
+    public void financeWorkFlow() throws InterruptedException {
+        common.clickElement("xpath","//TabItem[@Name='Configure']");
+        common.clickElement("xpath","//HyperLink[@Name='Finance']");
+        common.clickElement("xpath","//Button[@Name='Work Flow']");
+
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Receipts']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Receipts from Parties']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Cash Receipts']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Bank Receipts']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Credit Card Receipts']");
+        //payments
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Payments']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Payments to Parties']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Cash Payments']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Bank Payments']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Cash Transfers']");
+        //banking
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Banking']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Cash Deposits and Withdrawals']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Inter Bank Fund Transfers']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Deposit Post Dated Cheques']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Received Cheque Bounce']");
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,100);
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Issued Cheque Bounce']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Bank Reconciliation']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Opening Uncleared Bank Entries']");
+        //Party Adjustments
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Party Adjustments']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Credit Note']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Debit Note']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Debit Note on Customer']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Credit Note on Customer']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Debit Note from Supplier']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Credit Note from Supplier']");
+        //Journals
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Journal']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Journal Entries']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Book Incomes or Receivables']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Book Expenses or Payables']");
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,100);
+        //Openings
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Openings']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Party Opening Balances']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Opening Balances']");
+        //Reports
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Reports']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Profit and Loss T-Form']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Balance Sheet T-Form']");
+        Thread.sleep(1000);
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Ledger with Interest']");
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,100);
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Day wise Ledger Summary']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Account Balances[Tree View]']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Account Groups for Reporting']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Cash and Bank Book']");
+        //radioButton
+        common.clickElement("xpath","//RadioButton[@Name='Cash and Bank Book with Day wise Balance']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable Balances Reports']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Customer Balances']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Supplier Balances']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Account Balances Summary']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Transfer Incomes and Expenses to PL']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Manual Stock valuation']");
+        //save
+        common.clickElement("xpath","//Button[@Name='Save']");
+        common.clickElement("xpath","//Button[@Name='OK']");
+        Thread.sleep(1500);
+        common.clickElement("xpath","//Button[@Name='OK']");
+        financeModuleSettings();
+        financePolicies();
+        common.clickElement("xpath","//Window//Button[@Name='Close']");
+    }
+    public void financeModuleSettings() throws InterruptedException {
+//        common.clickElement("xpath","//TabItem[@Name='Configure']");
+//        common.clickElement("xpath","//HyperLink[@Name='Finance']");
+        common.clickElement("xpath","//Button[@Name='Module Settings']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable multi currency in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable bill wise accounting in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable bills receivables and bills payables tabs in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable discount in receipts and payments transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Use PDCs']");
+        //payments
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Receipts']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Post Dated Cheques']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Cheques [PDC]']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Payments']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Payments']/parent::Pane/parent::Pane/parent::Pane/parent::Pane/following-sibling::List/Pane/Pane//CheckBox[@Name='Post Dated Cheques']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Payments']/parent::Pane/parent::Pane/parent::Pane/parent::Pane/following-sibling::List/Pane/Pane//CheckBox[@Name='Cheques [PDC]']");
+        //bankin
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Bank Charges']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Bank Charges']/parent::Pane/parent::Pane/parent::Pane/parent::Pane/following-sibling::Pane/Pane//CheckBox[@Name='Receipts']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Bank Charges']/parent::Pane/parent::Pane/parent::Pane/parent::Pane/following-sibling::Pane/Pane//CheckBox[@Name='Payments']");
+        //scroll
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,150);
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable GST on advance receipts']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable calculate 18% IGST on advances.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Auto sum for advance set off.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='GST on advance receipts.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable invoiceno and invoicedate.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Show cash details in all cash receipts transaction.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable other credits in  all  receipts transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable other debits in  all  payments transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable budgets']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable drawn on bank.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Disable book expenses or  payable transaction supplytype editable..']");
+        //save
+        common.clickElement("xpath","//Button[@Name='Save']");
+        common.clickElement("xpath","//Button[@Name='OK']");
+        Thread.sleep(1500);
+        common.clickElement("xpath","//Button[@Name='OK']");
+        //close
+//        common.clickElement("xpath","//Window//Button[@Name='Close']");
+
+    }
+    public void financePolicies() throws InterruptedException {
+//        common.clickElement("xpath","//TabItem[@Name='Configure']");
+//        common.clickElement("xpath","//HyperLink[@Name='Finance']");
+        common.clickElement("xpath","//Button[@Name='Policies']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Show account balance in chart of accounts window.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable manual stock valuation.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable do not edit bank transactions after reconciled']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Restrict negative cash alerts in payment transactions.']");
+        common.clickElement("xpath","//RadioButton[@Name='Company wise']");
+        //payments
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Override alerts']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable credit limits in all sales transactions.']");
+        common.clickElement("xpath","//Pane//CheckBox[@Name='Enable credit limits in all sales transactions.']/parent::Pane/parent::Pane/parent::Pane/parent::Pane/following-sibling::List/Pane/Pane//RadioButton[@Name='Company wise']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Override limits']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable credit periods in all transactions']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Overdue bill alerts.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Overdue bill warnings']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='No of bills exceed warnings']");
+        //save
+        common.clickElement("xpath","//Button[@Name='Save']");
+        common.clickElement("xpath","//Button[@Name='OK']");
+        Thread.sleep(1500);
+        common.clickElement("xpath","//Button[@Name='OK']");
+        //close
+//        common.clickElement("xpath","//Window//Button[@Name='Close']");
+    }
+
+    public void generalSettings() throws InterruptedException {
+        common.clickElement("xpath","//TabItem[@Name='Configure']");
+        common.clickElement("xpath","//HyperLink[@Name='General']");
+        Thread.sleep(1500);
+
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable Customers.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable Suppliers.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Create auto codes for customers in all sales transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable party account code in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable party description in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable product code in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable product description in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable account code in all transctions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable account description in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Show stock balance in product window.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Show product history in stock search window.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Show pending orders in stock search window.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Show stock search option to all users.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable consignor in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable consignor in finance transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable e-commerce in all transactions.']");
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,100);
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable Aadhaar number in party account properties.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable other charges in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable charges and deductions in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable maximum retail price [MRP] in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable round off']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in all purchases transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in all sales transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in all finance transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable line wise net amount do not exceed MRP amount.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable default UOM in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable batches in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable batch and serial numbers in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Disable batch pop up.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable copy quantity in stock details form.']");
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,100);
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Editable gross amount for reverse calculation.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable terms and term types.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable reasons.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable user wise voucher series.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='User wise restrict transaction editing after.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable DOB and anniversary date']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable UPI Payments']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable sales terms and purchases term details in company property.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable Voucher Statistics Report.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable Deleted Transactions Report.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable Deleted and Void Transactions Report.']");
+        //save
+        common.clickElement("xpath","//Button[@Name='Save']");
+        common.clickElement("xpath","//Button[@Name='OK']");
+        Thread.sleep(1500);
+        common.clickElement("xpath","//Button[@Name='OK']");
+    }
+    public void taxesSettings() throws InterruptedException {
+        common.clickElement("xpath","//TabItem[@Name='Configure']");
+        common.clickElement("xpath","//HyperLink[@Name='Taxes']");
+        Thread.sleep(1500);
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable Goods and Service Tax']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in all purchase transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in all sales transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in all inventory transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Finance']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in all receipt transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in all payment transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable inclusive tax in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable SGST Common for all states.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable GST CESS.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable GST Service CESS.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable GST Service RCM CESS.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Basis for CESS Info.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable GST E-Invoice']");
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,70);
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable RCM in all purchase and payment transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable RCM in all sales and receipts transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable RCM in other charges.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable GST rate on apparel and footwear on the basis of sale value.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable shipping address in sales transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable despatch address in sales transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable export shipping bill details.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Allow multiple GST Service Providers']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable GST additional tabs in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable GST additional columns in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable round off in HSN Code properties.']");
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,70);
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable abatement in HSN Code properties.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable all columns in GST Details.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable GST Category in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable HSN Code and Goods or Services in all transactions.']");
+        //TDS
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable Tax Deducted at Source']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in book expenses/payment transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in book incomes/receipt transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable TDS amount read only in all payment transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable TDS for services/accounts tab in all payments transactions.']");
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,70);
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable other charges in TDS payments transactions.']");
+        //TCS
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable Tax Collected at Source']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in purchase transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in sales transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in finance transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable round off in TCS transaction nature properties.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable other charges in TCS payments transactions.']");
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,35);
+        //E-way Bill
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable E-Way Bill']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='E-Way Bill Offline']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='E-Way Bill Online']");
         //save
         common.clickElement("xpath","//Button[@Name='Save']");
         common.clickElement("xpath","//Button[@Name='OK']");
