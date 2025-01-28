@@ -1,6 +1,5 @@
 package com.wings.pages;
 
-import com.beust.ah.A;
 import com.wings.utils.Common;
 import com.wings.utils.StringUtil;
 import io.appium.java_client.windows.WindowsDriver;
@@ -1684,13 +1683,15 @@ public abstract class Transaction {
         System.out.println("Transaction is Deleted Successfully");
     }
 
-    public void configureCheckboxSelection(String locatorXpath ){
+    public void enableCheckboxSelection(String locatorXpath ){
         WebElement element = driver.findElementByXPath(locatorXpath);
         String closeTransactionToggleState = element.getAttribute("Toggle.ToggleState");
         System.out.println("Close Transaction Toggle state:-" + closeTransactionToggleState);
         if (closeTransactionToggleState.equals("0")) {
             element.click();
-            System.out.println("Close Transaction Checkbox was unchecked, now checked.");
+            String closeTransactionToggleState1 = element.getAttribute("Toggle.ToggleState");
+            System.out.println("Close Transaction Toggle state:-" + closeTransactionToggleState1);
+            System.out.println("Checkbox was unchecked, now checked.");
         } else if (closeTransactionToggleState.equals("1")){
             System.out.println("Close Transaction Checkbox is already checked, no action needed.");
         }
