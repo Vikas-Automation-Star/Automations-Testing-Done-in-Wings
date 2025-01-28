@@ -1686,13 +1686,21 @@ public abstract class Transaction {
 
     public void configureCheckboxSelection(String locatorXpath ){
         WebElement element = driver.findElementByXPath(locatorXpath);
-        String closeTransactionToggleState = element.getAttribute("Toggle.ToggleState");
-        System.out.println("Close Transaction Toggle state:-" + closeTransactionToggleState);
-        if (closeTransactionToggleState.equals("0")) {
+        String checkBoxToggleState = element.getAttribute("Toggle.ToggleState");
+        System.out.println("Check Box Toggle state:-" + checkBoxToggleState);
+        if (checkBoxToggleState.equals("0")) {
             element.click();
-            System.out.println("Close Transaction Checkbox was unchecked, now checked.");
-        } else if (closeTransactionToggleState.equals("1")){
-            System.out.println("Close Transaction Checkbox is already checked, no action needed.");
+            String checkBoxToggleState1 = element.getAttribute("Toggle.ToggleState");
+            System.out.println("Check Box Toggle state:-" + checkBoxToggleState1);
+            if (checkBoxToggleState1.equals("1")){
+                System.out.println("Checkbox was unchecked, now checked.");
+            }
+            else if (checkBoxToggleState1.equals("0")){
+                element.click();
+            }
+            else Assert.fail("Check Box it not selected");
+        } else if (checkBoxToggleState.equals("1")){
+            System.out.println("Checkbox is already checked, no action needed.");
         }
         else Assert.fail("Element Not Found");
     }

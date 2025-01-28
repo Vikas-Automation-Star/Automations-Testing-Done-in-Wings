@@ -437,7 +437,7 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         configureCheckboxSelection("//Pane//CheckBox[@Name='Journal Entries']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Book Incomes or Receivables']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Book Expenses or Payables']");
-        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,20);
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,100);
         //Openings
         configureCheckboxSelection("//Pane//CheckBox[@Name='Openings']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Party Opening Balances']");
@@ -542,6 +542,7 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
     public void generalSettings() throws InterruptedException {
         common.clickElement("xpath","//TabItem[@Name='Configure']");
         common.clickElement("xpath","//HyperLink[@Name='General']");
+        Thread.sleep(1500);
 
         configureCheckboxSelection("//Pane//CheckBox[@Name='Enable Customers.']");
         configureCheckboxSelection("//Pane//CheckBox[@Name='Enable Suppliers.']");
@@ -591,7 +592,68 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         common.clickElement("xpath","//Button[@Name='OK']");
         Thread.sleep(1500);
         common.clickElement("xpath","//Button[@Name='OK']");
-
     }
+    public void taxesSettings() throws InterruptedException {
+        common.clickElement("xpath","//TabItem[@Name='Configure']");
+        common.clickElement("xpath","//HyperLink[@Name='Taxes']");
+        Thread.sleep(1500);
 
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable Goods and Service Tax']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in all purchase transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in all sales transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in all inventory transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Finance']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in all receipt transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in all payment transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable inclusive tax in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable SGST Common for all states.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable GST CESS.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable GST Service CESS.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable GST Service RCM CESS.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Basis for CESS Info.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable GST E-Invoice']");
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,70);
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable RCM in all purchase and payment transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable RCM in all sales and receipts transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable RCM in other charges.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable GST rate on apparel and footwear on the basis of sale value.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable shipping address in sales transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable despatch address in sales transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable export shipping bill details.']");
+
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Allow multiple GST Service Providers']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable GST additional tabs in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable GST additional columns in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable round off in HSN Code properties.']");
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,70);
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable abatement in HSN Code properties.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable all columns in GST Details.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable GST Category in all transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable HSN Code and Goods or Services in all transactions.']");
+        //TDS
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable Tax Deducted at Source']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in book expenses/payment transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in book incomes/receipt transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable TDS amount read only in all payment transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable TDS for services/accounts tab in all payments transactions.']");
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,70);
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable other charges in TDS payments transactions.']");
+        //TCS
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable Tax Collected at Source']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in purchase transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in sales transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in finance transactions.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable round off in TCS transaction nature properties.']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable other charges in TCS payments transactions.']");
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,35);
+        //E-way Bill
+        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable E-Way Bill']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='E-Way Bill Offline']");
+        configureCheckboxSelection("//Pane//CheckBox[@Name='E-Way Bill Online']");
+        //save
+        common.clickElement("xpath","//Button[@Name='Save']");
+        common.clickElement("xpath","//Button[@Name='OK']");
+        Thread.sleep(1500);
+        common.clickElement("xpath","//Button[@Name='OK']");
+    }
 }

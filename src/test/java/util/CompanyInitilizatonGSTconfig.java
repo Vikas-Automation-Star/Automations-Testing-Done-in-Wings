@@ -34,7 +34,8 @@ public class CompanyInitilizatonGSTconfig {
 //        configuration.financeWorkFlow();
 //        configuration.financeModuleSettings();
 //        configuration.financePolicies();
-        configuration.generalSettings();
+//        configuration.generalSettings();
+        configuration.taxesSettings();
 
     }
     @AfterTest
