@@ -22,17 +22,17 @@ public class CompanyInitilizatonGSTconfig {
     @Test
     public void GSTConfigurations() throws InterruptedException, AWTException {
         CompanyInitialisationGSTConfiguration configuration=new CompanyInitialisationGSTConfiguration(driver);
-//        configuration.cgstConfiguration();
-//        configuration.sgstConfiguration();
-//        configuration.igstConfiguration();
-//        configuration.companyUnits();
-//        configuration.addOns();
+        configuration.cgstConfiguration();
+        configuration.sgstConfiguration();
+        configuration.igstConfiguration();
+        configuration.companyUnits();
+        configuration.addOns();
         configuration.productionFlow();
-//        configuration.entryViewPrintSettings();
-//        configuration.inventoryFlow();
-//        configuration.financeWorkFlow();
-//        configuration.generalSettings();
-//        configuration.taxesSettings();
+        configuration.entryViewPrintSettings();
+        configuration.inventoryFlow();
+        configuration.financeFlow();
+        configuration.generalSettings();
+        configuration.taxesSettings();
 
     }
     @AfterTest
