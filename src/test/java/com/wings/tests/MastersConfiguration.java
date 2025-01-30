@@ -25,6 +25,9 @@ public class MastersConfiguration {
     @Test
     public void newNode() throws InterruptedException, IOException, ParseException, AWTException {
         MasterConfig config =new MasterConfig(driver,dataFile);
+        String customerName=config.newCustomer();
+        config.customerRename(customerName);
+        config.masterInactive("At_Cus_Reg_Intra");
         config.createNode();
         config.renameNode();
         config.moveAsSubNodeAndMainNode();
@@ -34,6 +37,6 @@ public class MastersConfiguration {
 
     @AfterTest
     public void afterTest() throws IOException {
-//            appLogin.logout();
+            appLogin.logout();
     }
 }
