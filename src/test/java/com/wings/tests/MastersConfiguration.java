@@ -25,16 +25,19 @@ public class MastersConfiguration {
     @Test
     public void newNode() throws InterruptedException, IOException, ParseException, AWTException {
         MasterConfig config =new MasterConfig(driver,dataFile);
+        config.newCustomer();
+//        config.customerRename("APCust123_123");
+//        config.masterInactive("At_Cus_Reg_Intra");
 //            config.createNode();
 //            config.renameNode();
 //            config.moveAsSubNodeAndMainNode();
 //        config.movingMastersBetweenNodes();
-        config.SalesModuleConfiguration();
-        config.purchaseModuleConfiguration();
+//        config.SalesModuleConfiguration();
+//        config.purchaseModuleConfiguration();
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-//            appLogin.logout();
+            appLogin.logout();
     }
 }

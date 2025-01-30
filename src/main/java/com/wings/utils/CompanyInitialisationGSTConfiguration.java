@@ -267,7 +267,9 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         enableCheckboxSelection("//Pane//CheckBox[@Name='Other Info 4']");
         common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,20);
         enableCheckboxSelection("//Pane//CheckBox[@Name='Other Info 5']");
-        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,100);
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,68);
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Use international comma style in all transactions.']");
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,40);
         enableCheckboxSelection("//Pane//CheckBox[@Name='Show branch name in header in all reports.']");
         enableCheckboxSelection("//Pane//CheckBox[@Name='Show zero values in all reports.']");
         enableCheckboxSelection("//Pane//CheckBox[@Name='Supress currency prefix in all reports.']");
