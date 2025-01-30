@@ -129,7 +129,6 @@ public class Common {
 //            System.out.println(i.getText());
 //            System.out.println(i.getAttribute("SelectionItem.IsSelected"));
             if (i.getAttribute("SelectionItem.IsSelected").equals("True")) {
-
                 if (!i.getText().contains(dataToBeSelected)) {
                     i.sendKeys(Keys.DOWN);
                 } else if (i.getText().contains(dataToBeSelected)) {
