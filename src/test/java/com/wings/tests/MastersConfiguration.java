@@ -10,17 +10,13 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.io.IOException;
 
-
-
-
-
 public class MastersConfiguration {
-
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
     String dataFile="./src/main/resources/masterConfig.json";
 
     @BeforeTest
+
     public void beforeTest() throws IOException, InterruptedException, ParseException {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
@@ -29,10 +25,12 @@ public class MastersConfiguration {
     @Test
     public void newNode() throws InterruptedException, IOException, ParseException, AWTException {
         MasterConfig config =new MasterConfig(driver,dataFile);
-        config.createNode();
-        config.renameNode();
-        config.moveAsSubNodeAndMainNode();
-        config.movingMastersBetweenNodes();
+//            config.createNode();
+//            config.renameNode();
+//            config.moveAsSubNodeAndMainNode();
+//        config.movingMastersBetweenNodes();
+        config.SalesModuleConfiguration();
+        config.purchaseModuleConfiguration();
     }
 
     @AfterTest

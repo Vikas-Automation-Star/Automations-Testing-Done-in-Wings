@@ -222,145 +222,137 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         common.clickElement("xpath","//Text[@Name='Entry, View and Print Settings']/HyperLink[@Name='Entry, View and Print Settings']");
         Thread.sleep(1000);
         //check boxes
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Do not close the transaction after save If transaction tab has more than 200 Lines']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Reset voucher series when financial year changes in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Allow save draft for all users in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Show barcode panel']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Show file based barcode configuration.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Toolbar:show text with icons in all transactions and reports.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Allow renaming of masters by pressing F2 in master window.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Allow moving of masters and nodes by drag and drop in master window.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Confirmation for closing master window.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Show properties in master creation window.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Do not close the transaction after save If transaction tab has more than 200 Lines']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Reset voucher series when financial year changes in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Allow save draft for all users in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Show barcode panel']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Show file based barcode configuration.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Toolbar:show text with icons in all transactions and reports.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Allow renaming of masters by pressing F2 in master window.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Allow moving of masters and nodes by drag and drop in master window.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Confirmation for closing master window.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Show properties in master creation window.']");
         common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,40);
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable lookup settings in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Show master code in master combos.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Show description in master combos.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Show master node in master combos.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Show transaction field lookup configuration.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Show balances']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Show account balance in master combos.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Show stock balance in master combos.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Advanced options']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable lookup settings in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Show master code in master combos.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Show description in master combos.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Show master node in master combos.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Show transaction field lookup configuration.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Show balances']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Show account balance in master combos.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Show stock balance in master combos.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Advanced options']");
         common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,40);
         common.clickElement("xpath","//RadioButton[@Name='Use advanced combo in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Confirmation for closing transaction window in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Confirmation for saving transaction in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Show edit/view voucher option in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Show borders for text fields in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Word wrap field names in header for all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Autowidth in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Allow entering transactions on future date in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Use date lock for previous entries in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Confirmation for closing transaction window in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Confirmation for saving transaction in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Show edit/view voucher option in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Show borders for text fields in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Word wrap field names in header for all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Autowidth in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Allow entering transactions on future date in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Use date lock for previous entries in all transactions.']");
         common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,28);
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable Incremental Voucher No']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable chart of accounts in financial Accounting.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable voucher types in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable line comments in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Show images in master combos.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable the automatic deletion of invalid rows for pending bills in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable reference bill details in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable other info in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Other Info 1']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Other Info 2']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Other Info 3']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Other Info 4']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable Incremental Voucher No']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable chart of accounts in financial Accounting.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable voucher types in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable line comments in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Show images in master combos.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable the automatic deletion of invalid rows for pending bills in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable reference bill details in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable other info in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Other Info 1']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Other Info 2']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Other Info 3']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Other Info 4']");
         common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,20);
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Other Info 5']");
-        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,100);
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Show branch name in header in all reports.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Show zero values in all reports.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Supress currency prefix in all reports.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Show horizontal lines in all reports.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Do not print serial number column in all reports.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Show company address in all reports.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Other Info 5']");
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,68);
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Use international comma style in all transactions.']");
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,40);
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Show branch name in header in all reports.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Show zero values in all reports.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Supress currency prefix in all reports.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Show horizontal lines in all reports.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Do not print serial number column in all reports.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Show company address in all reports.']");
         common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,30);
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Show report header in first page for all reports.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Confirmation for closing report window in all reports.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Refresh pendings.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Show report header in first page for all reports.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Confirmation for closing report window in all reports.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Refresh pendings.']");
         common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,25);
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Allow draft print in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Allow printing of unauthorised transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Show form design footer in last page.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Allow draft print in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Allow printing of unauthorised transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Show form design footer in last page.']");
         common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,45);
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Add extended fields on extended field in invoice design.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable online print templates.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable quick printing in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable grapical invoice design and print templates.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable print and draft templates.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Add extended fields on extended field in invoice design.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable online print templates.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable quick printing in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable grapical invoice design and print templates.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable print and draft templates.']");
         common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,30);
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Restrict negative stock alerts in issues transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Product batch wise']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Storage bin wise']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Override alerts']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable reorder level alerts.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Override reorder level']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Restrict negative stock alerts in issues transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Product batch wise']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Storage bin wise']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Override alerts']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable reorder level alerts.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Override reorder level']");
         //save
         common.clickElement("xpath","//Button[@Name='Save']");
         common.clickElement("xpath","//Button[@Name='OK']");
         Thread.sleep(1500);
         common.clickElement("xpath","//Button[@Name='OK']");
     }
-
-    public void inventoryWorkFlow() throws InterruptedException {
+    public void inventoryFlow() throws InterruptedException {
         common.clickElement("xpath","//TabItem[@Name='Configure']");
         common.clickElement("xpath","//HyperLink[@Name='Inventory']");
         common.clickElement("xpath","//Button[@Name='Work Flow']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Opening Stock']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Stock Creation']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Stock Consumption']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Stock Conversion']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Physical Stock Verification']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Opening Stock']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Stock Creation']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Stock Consumption']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Stock Conversion']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Physical Stock Verification']");
         //save
         common.clickElement("xpath","//Button[@Name='Save']");
         common.clickElement("xpath","//Button[@Name='OK']");
         Thread.sleep(1500);
         common.clickElement("xpath","//Button[@Name='OK']");
 
-        inventoryModuleSettings();
-        inventoryPolicies();
-    }
-    public void inventoryModuleSettings() throws InterruptedException {
-//        common.clickElement("xpath","//TabItem[@Name='Configure']");
-//        common.clickElement("xpath","//HyperLink[@Name='Inventory']");
+        //Module Settings
         common.clickElement("xpath","//Button[@Name='Module Settings']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable products.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable services.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable non inventory items.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable stock management units in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable multiple stock management units in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable free units in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable free SKU units in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable save transaction with free quantity in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable number of packs in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable value per unit.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable cost price for material issues']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable company wise reorder level']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable products.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable services.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable non inventory items.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable stock management units in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable multiple stock management units in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable free units in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable free SKU units in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable save transaction with free quantity in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable number of packs in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable value per unit.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable cost price for material issues']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable company wise reorder level']");
         //save
         common.clickElement("xpath","//Button[@Name='Save']");
         common.clickElement("xpath","//Button[@Name='OK']");
         Thread.sleep(1500);
         common.clickElement("xpath","//Button[@Name='OK']");
-        //close
-//        common.clickElement("xpath","//Window//Button[@Name='Close']");
-    }
-    public void inventoryPolicies() throws InterruptedException {
-//        common.clickElement("xpath","//TabItem[@Name='Configure']");
-//        common.clickElement("xpath","//HyperLink[@Name='Inventory']");
+
+        //Policies
         common.clickElement("xpath","//Button[@Name='Policies']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable multiple locations under branch in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable storagebins under location in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable additional info fields in product creation window.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable additional value fields in product creation window.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable product attributes in product creation window.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Product categories']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Product sub categories']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Product types']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Product brands']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Product classes']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Product sub classes']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Seasons']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Styles']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable multiple locations under branch in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable storagebins under location in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable additional info fields in product creation window.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable additional value fields in product creation window.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable product attributes in product creation window.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Product categories']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Product sub categories']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Product types']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Product brands']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Product classes']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Product sub classes']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Seasons']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Styles']");
         //save
         common.clickElement("xpath","//Button[@Name='Save']");
         common.clickElement("xpath","//Button[@Name='OK']");
@@ -369,30 +361,22 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         //close
         common.clickElement("xpath","//Window//Button[@Name='Close']");
     }
-
-    public void productionWorkFlow() throws InterruptedException {
+    public void productionFlow() throws InterruptedException {
         common.clickElement("xpath","//TabItem[@Name='Configure']");
         common.clickElement("xpath","//HyperLink[@Name='Production']");
         common.clickElement("xpath","//Button[@Name='Work Flow']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable assign standard rates']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable simple production flow']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable detailed production flow']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable assign standard rates']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable simple production flow']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable detailed production flow']");
         //save
         common.clickElement("xpath","//Button[@Name='Save']");
         common.clickElement("xpath","//Button[@Name='OK']");
         Thread.sleep(1500);
         common.clickElement("xpath","//Button[@Name='OK']");
-        //close
-//        common.clickElement("xpath","//Window//Button[@Name='Close']");
         //Module settings
-        productionModuleSettings();
-    }
-    public void productionModuleSettings() throws InterruptedException {
-//        common.clickElement("xpath","//TabItem[@Name='Configure']");
-//        common.clickElement("xpath","//HyperLink[@Name='Production']");
         common.clickElement("xpath","//Button[@Name='Module Settings']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable Bills of Material']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Disable batch pop up']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable Bills of Material']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Disable batch pop up']");
         //save
         common.clickElement("xpath","//Button[@Name='Save']");
         common.clickElement("xpath","//Button[@Name='OK']");
@@ -401,196 +385,182 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         //close
         common.clickElement("xpath","//Window//Button[@Name='Close']");
     }
-
-    public void financeWorkFlow() throws InterruptedException {
+    public void financeFlow() throws InterruptedException {
         common.clickElement("xpath","//TabItem[@Name='Configure']");
         common.clickElement("xpath","//HyperLink[@Name='Finance']");
         common.clickElement("xpath","//Button[@Name='Work Flow']");
 
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Receipts']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Receipts from Parties']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Cash Receipts']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Bank Receipts']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Credit Card Receipts']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Receipts']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Receipts from Parties']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Cash Receipts']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Bank Receipts']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Credit Card Receipts']");
         //payments
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Payments']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Payments to Parties']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Cash Payments']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Bank Payments']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Cash Transfers']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Payments']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Payments to Parties']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Cash Payments']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Bank Payments']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Cash Transfers']");
         //banking
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Banking']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Cash Deposits and Withdrawals']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Inter Bank Fund Transfers']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Deposit Post Dated Cheques']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Received Cheque Bounce']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Banking']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Cash Deposits and Withdrawals']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Inter Bank Fund Transfers']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Deposit Post Dated Cheques']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Received Cheque Bounce']");
         common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,100);
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Issued Cheque Bounce']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Bank Reconciliation']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Opening Uncleared Bank Entries']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Issued Cheque Bounce']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Bank Reconciliation']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Opening Uncleared Bank Entries']");
         //Party Adjustments
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Party Adjustments']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Credit Note']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Debit Note']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Debit Note on Customer']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Credit Note on Customer']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Debit Note from Supplier']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Credit Note from Supplier']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Party Adjustments']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Credit Note']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Debit Note']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Debit Note on Customer']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Credit Note on Customer']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Debit Note from Supplier']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Credit Note from Supplier']");
         //Journals
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Journal']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Journal Entries']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Book Incomes or Receivables']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Book Expenses or Payables']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Journal']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Journal Entries']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Book Incomes or Receivables']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Book Expenses or Payables']");
         common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,100);
         //Openings
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Openings']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Party Opening Balances']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Opening Balances']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Openings']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Party Opening Balances']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Opening Balances']");
         //Reports
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Reports']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Profit and Loss T-Form']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Balance Sheet T-Form']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Reports']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Profit and Loss T-Form']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Balance Sheet T-Form']");
         Thread.sleep(1000);
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Ledger with Interest']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Ledger with Interest']");
         common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,100);
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Day wise Ledger Summary']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Account Balances[Tree View]']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Account Groups for Reporting']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Cash and Bank Book']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Day wise Ledger Summary']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Account Balances[Tree View]']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Account Groups for Reporting']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Cash and Bank Book']");
         //radioButton
         common.clickElement("xpath","//RadioButton[@Name='Cash and Bank Book with Day wise Balance']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable Balances Reports']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Customer Balances']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Supplier Balances']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Account Balances Summary']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Transfer Incomes and Expenses to PL']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Manual Stock valuation']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable Balances Reports']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Customer Balances']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Supplier Balances']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Account Balances Summary']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Transfer Incomes and Expenses to PL']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Manual Stock valuation']");
         //save
         common.clickElement("xpath","//Button[@Name='Save']");
         common.clickElement("xpath","//Button[@Name='OK']");
         Thread.sleep(1500);
         common.clickElement("xpath","//Button[@Name='OK']");
-        financeModuleSettings();
-        financePolicies();
-        common.clickElement("xpath","//Window//Button[@Name='Close']");
-    }
-    public void financeModuleSettings() throws InterruptedException {
-//        common.clickElement("xpath","//TabItem[@Name='Configure']");
-//        common.clickElement("xpath","//HyperLink[@Name='Finance']");
+        //Module Settings
         common.clickElement("xpath","//Button[@Name='Module Settings']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable multi currency in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable bill wise accounting in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable bills receivables and bills payables tabs in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable discount in receipts and payments transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Use PDCs']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable multi currency in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable bill wise accounting in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable bills receivables and bills payables tabs in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable discount in receipts and payments transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Use PDCs']");
         //payments
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Receipts']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Post Dated Cheques']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Cheques [PDC]']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Payments']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Payments']/parent::Pane/parent::Pane/parent::Pane/parent::Pane/following-sibling::List/Pane/Pane//CheckBox[@Name='Post Dated Cheques']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Payments']/parent::Pane/parent::Pane/parent::Pane/parent::Pane/following-sibling::List/Pane/Pane//CheckBox[@Name='Cheques [PDC]']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Receipts']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Post Dated Cheques']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Cheques [PDC]']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Payments']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Payments']/parent::Pane/parent::Pane/parent::Pane/parent::Pane/following-sibling::List/Pane/Pane//CheckBox[@Name='Post Dated Cheques']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Payments']/parent::Pane/parent::Pane/parent::Pane/parent::Pane/following-sibling::List/Pane/Pane//CheckBox[@Name='Cheques [PDC]']");
         //bankin
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Bank Charges']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Bank Charges']/parent::Pane/parent::Pane/parent::Pane/parent::Pane/following-sibling::Pane/Pane//CheckBox[@Name='Receipts']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Bank Charges']/parent::Pane/parent::Pane/parent::Pane/parent::Pane/following-sibling::Pane/Pane//CheckBox[@Name='Payments']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Bank Charges']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Bank Charges']/parent::Pane/parent::Pane/parent::Pane/parent::Pane/following-sibling::Pane/Pane//CheckBox[@Name='Receipts']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Bank Charges']/parent::Pane/parent::Pane/parent::Pane/parent::Pane/following-sibling::Pane/Pane//CheckBox[@Name='Payments']");
         //scroll
         common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,150);
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable GST on advance receipts']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable calculate 18% IGST on advances.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Auto sum for advance set off.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='GST on advance receipts.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable invoiceno and invoicedate.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Show cash details in all cash receipts transaction.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable other credits in  all  receipts transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable other debits in  all  payments transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable budgets']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable drawn on bank.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Disable book expenses or  payable transaction supplytype editable..']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable GST on advance receipts']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable calculate 18% IGST on advances.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Auto sum for advance set off.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='GST on advance receipts.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable invoiceno and invoicedate.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Show cash details in all cash receipts transaction.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable other credits in  all  receipts transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable other debits in  all  payments transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable budgets']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable drawn on bank.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Disable book expenses or  payable transaction supplytype editable..']");
         //save
         common.clickElement("xpath","//Button[@Name='Save']");
         common.clickElement("xpath","//Button[@Name='OK']");
         Thread.sleep(1500);
         common.clickElement("xpath","//Button[@Name='OK']");
-        //close
-//        common.clickElement("xpath","//Window//Button[@Name='Close']");
 
-    }
-    public void financePolicies() throws InterruptedException {
-//        common.clickElement("xpath","//TabItem[@Name='Configure']");
-//        common.clickElement("xpath","//HyperLink[@Name='Finance']");
+        //Policies
         common.clickElement("xpath","//Button[@Name='Policies']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Show account balance in chart of accounts window.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable manual stock valuation.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable do not edit bank transactions after reconciled']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Restrict negative cash alerts in payment transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Show account balance in chart of accounts window.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable manual stock valuation.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable do not edit bank transactions after reconciled']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Restrict negative cash alerts in payment transactions.']");
         common.clickElement("xpath","//RadioButton[@Name='Company wise']");
         //payments
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Override alerts']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable credit limits in all sales transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Override alerts']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable credit limits in all sales transactions.']");
         common.clickElement("xpath","//Pane//CheckBox[@Name='Enable credit limits in all sales transactions.']/parent::Pane/parent::Pane/parent::Pane/parent::Pane/following-sibling::List/Pane/Pane//RadioButton[@Name='Company wise']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Override limits']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable credit periods in all transactions']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Overdue bill alerts.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Overdue bill warnings']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='No of bills exceed warnings']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Override limits']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable credit periods in all transactions']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Overdue bill alerts.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Overdue bill warnings']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='No of bills exceed warnings']");
         //save
         common.clickElement("xpath","//Button[@Name='Save']");
         common.clickElement("xpath","//Button[@Name='OK']");
         Thread.sleep(1500);
         common.clickElement("xpath","//Button[@Name='OK']");
-        //close
-//        common.clickElement("xpath","//Window//Button[@Name='Close']");
+        common.clickElement("xpath","//Window//Button[@Name='Close']");
     }
-
     public void generalSettings() throws InterruptedException {
         common.clickElement("xpath","//TabItem[@Name='Configure']");
         common.clickElement("xpath","//HyperLink[@Name='General']");
         Thread.sleep(1500);
 
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable Customers.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable Suppliers.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Create auto codes for customers in all sales transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable party account code in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable party description in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable product code in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable product description in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable account code in all transctions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable account description in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Show stock balance in product window.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Show product history in stock search window.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Show pending orders in stock search window.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Show stock search option to all users.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable consignor in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable consignor in finance transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable e-commerce in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable Customers.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable Suppliers.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Create auto codes for customers in all sales transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable party account code in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable party description in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable product code in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable product description in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable account code in all transctions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable account description in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Show stock balance in product window.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Show product history in stock search window.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Show pending orders in stock search window.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Show stock search option to all users.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable consignor in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable consignor in finance transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable e-commerce in all transactions.']");
         common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,100);
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable Aadhaar number in party account properties.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable other charges in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable charges and deductions in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable maximum retail price [MRP] in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable round off']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in all purchases transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in all sales transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in all finance transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable line wise net amount do not exceed MRP amount.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable default UOM in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable batches in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable batch and serial numbers in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Disable batch pop up.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable copy quantity in stock details form.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable Aadhaar number in party account properties.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable other charges in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable charges and deductions in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable maximum retail price [MRP] in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable round off']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable in all purchases transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable in all sales transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable in all finance transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable line wise net amount do not exceed MRP amount.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable default UOM in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable batches in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable batch and serial numbers in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Disable batch pop up.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable copy quantity in stock details form.']");
         common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,100);
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Editable gross amount for reverse calculation.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable terms and term types.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable reasons.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable user wise voucher series.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='User wise restrict transaction editing after.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable DOB and anniversary date']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable UPI Payments']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable sales terms and purchases term details in company property.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable Voucher Statistics Report.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable Deleted Transactions Report.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable Deleted and Void Transactions Report.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Editable gross amount for reverse calculation.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable terms and term types.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable reasons.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable user wise voucher series.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='User wise restrict transaction editing after.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable DOB and anniversary date']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable UPI Payments']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable sales terms and purchases term details in company property.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable Voucher Statistics Report.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable Deleted Transactions Report.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable Deleted and Void Transactions Report.']");
         //save
         common.clickElement("xpath","//Button[@Name='Save']");
         common.clickElement("xpath","//Button[@Name='OK']");
@@ -601,57 +571,57 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         common.clickElement("xpath","//TabItem[@Name='Configure']");
         common.clickElement("xpath","//HyperLink[@Name='Taxes']");
         Thread.sleep(1500);
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable Goods and Service Tax']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in all purchase transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in all sales transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in all inventory transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Finance']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in all receipt transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in all payment transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable inclusive tax in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable SGST Common for all states.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable GST CESS.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable GST Service CESS.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable GST Service RCM CESS.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Basis for CESS Info.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable GST E-Invoice']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable Goods and Service Tax']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable in all purchase transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable in all sales transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable in all inventory transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Finance']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable in all receipt transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable in all payment transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable inclusive tax in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable SGST Common for all states.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable GST CESS.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable GST Service CESS.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable GST Service RCM CESS.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Basis for CESS Info.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable GST E-Invoice']");
         common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,70);
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable RCM in all purchase and payment transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable RCM in all sales and receipts transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable RCM in other charges.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable GST rate on apparel and footwear on the basis of sale value.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable shipping address in sales transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable despatch address in sales transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable export shipping bill details.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Allow multiple GST Service Providers']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable GST additional tabs in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable GST additional columns in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable round off in HSN Code properties.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable RCM in all purchase and payment transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable RCM in all sales and receipts transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable RCM in other charges.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable GST rate on apparel and footwear on the basis of sale value.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable shipping address in sales transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable despatch address in sales transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable export shipping bill details.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Allow multiple GST Service Providers']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable GST additional tabs in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable GST additional columns in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable round off in HSN Code properties.']");
         common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,70);
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable abatement in HSN Code properties.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable all columns in GST Details.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable GST Category in all transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable HSN Code and Goods or Services in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable abatement in HSN Code properties.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable all columns in GST Details.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable GST Category in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable HSN Code and Goods or Services in all transactions.']");
         //TDS
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable Tax Deducted at Source']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in book expenses/payment transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in book incomes/receipt transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable TDS amount read only in all payment transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable TDS for services/accounts tab in all payments transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable Tax Deducted at Source']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable in book expenses/payment transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable in book incomes/receipt transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable TDS amount read only in all payment transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable TDS for services/accounts tab in all payments transactions.']");
         common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,70);
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable other charges in TDS payments transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable other charges in TDS payments transactions.']");
         //TCS
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable Tax Collected at Source']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in purchase transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in sales transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable in finance transactions.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable round off in TCS transaction nature properties.']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable other charges in TCS payments transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable Tax Collected at Source']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable in purchase transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable in sales transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable in finance transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable round off in TCS transaction nature properties.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable other charges in TCS payments transactions.']");
         common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,35);
         //E-way Bill
-        configureCheckboxSelection("//Pane//CheckBox[@Name='Enable E-Way Bill']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='E-Way Bill Offline']");
-        configureCheckboxSelection("//Pane//CheckBox[@Name='E-Way Bill Online']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable E-Way Bill']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='E-Way Bill Offline']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='E-Way Bill Online']");
         //save
         common.clickElement("xpath","//Button[@Name='Save']");
         common.clickElement("xpath","//Button[@Name='OK']");
