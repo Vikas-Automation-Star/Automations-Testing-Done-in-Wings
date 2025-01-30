@@ -25,12 +25,11 @@ public class MastersConfiguration {
     @Test
     public void newNode() throws InterruptedException, IOException, ParseException, AWTException {
         MasterConfig config =new MasterConfig(driver,dataFile);
-//            config.createNode();
-//            config.renameNode();
-//            config.moveAsSubNodeAndMainNode();
-//        config.movingMastersBetweenNodes();
-        config.SalesModuleConfiguration();
-        config.purchaseModuleConfiguration();
+        config.createNode();
+        config.renameNode();
+        config.moveAsSubNodeAndMainNode();
+        config.movingMastersBetweenNodes();
+
     }
 
     @AfterTest
