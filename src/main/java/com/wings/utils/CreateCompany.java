@@ -12,7 +12,7 @@ import java.net.URL;
 
 public class CreateCompany {
     WindowsDriver driver, logindriver;
-    public static String CompanyName = "DummyCompany", Password = "Wings@123",currencyText,stockValuationText,registrationNum = "998921", panNum = "AEKPE1471P";
+    public static String CompanyName = "CheckGSTConfigure", Password = "Wings@123",currencyText,stockValuationText,registrationNum = "998921", panNum = "AEKPE1471P";
 
     public void login() throws IOException, InterruptedException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -106,7 +106,6 @@ public class CreateCompany {
         logindriver.findElementByXPath("//Edit[@Name='Email']").sendKeys("Wingsinfo.net@gmail.com");
         logindriver.findElementByXPath("//Edit[@Name='Website']").sendKeys("https://www.wingsinfo.net/", Keys.TAB, Keys.ENTER);
         Thread.sleep(1000);
-//        logindriver.findElementByXPath("//Button[@Name='Ok']");
         WebElement currency1 = logindriver.findElementByXPath("//Edit[@Name='Currency']");
         String currency2 = currency1.getText();
         Assert.assertEquals(currency2, currencyText, "both currencies must be match if not validation failed");
@@ -124,6 +123,7 @@ public class CreateCompany {
     }
 
     public void logout() {
+
         logindriver.findElementByXPath("//MenuItem[@Name='File']").click();
         logindriver.findElementByXPath("//MenuItem[@Name='Exit']").click();
         logindriver.findElementByXPath("//Button[@Name='Yes']").click();
