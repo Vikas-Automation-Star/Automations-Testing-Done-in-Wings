@@ -2,7 +2,6 @@ package util;
 
 import com.wings.pages.AppLogin;
 import com.wings.utils.CompanyInitialisationGSTConfiguration;
-import com.wings.utils.CreateCompany;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
@@ -23,9 +22,6 @@ public class CompanyInitilizatonGSTconfig {
     @Test
     public void GSTConfigurations() throws InterruptedException, AWTException {
         CompanyInitialisationGSTConfiguration configuration=new CompanyInitialisationGSTConfiguration(driver);
-        configuration.cgstConfiguration();
-        configuration.sgstConfiguration();
-        configuration.igstConfiguration();
         configuration.companyUnits();
         configuration.addOns();
         configuration.entryViewPrintSettings();
@@ -34,9 +30,12 @@ public class CompanyInitilizatonGSTconfig {
         configuration.inventoryFlow();
         configuration.productionFlow();
         configuration.financeFlow();
-
         configuration.generalSettings();
         configuration.taxesSettings();
+        configuration.cgstConfiguration();
+        configuration.sgstConfiguration();
+        configuration.igstConfiguration();
+        configuration.cessConfiguration();
 
     }
     @AfterTest

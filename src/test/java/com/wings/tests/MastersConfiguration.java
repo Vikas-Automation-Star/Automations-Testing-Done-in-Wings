@@ -15,32 +15,22 @@ public class MastersConfiguration {
     AppLogin appLogin = new AppLogin();
     String dataFile="./src/main/resources/masterConfig.json";
 
-
-
     @BeforeTest
-
-
-
-
-
-
-
     public void beforeTest() throws IOException, InterruptedException, ParseException {
         driver = appLogin.launchSingleUserApp();
-
         appLogin.singleUserLogin();
     }
 
     @Test
     public void newNode() throws InterruptedException, IOException, ParseException, AWTException {
         MasterConfig config =new MasterConfig(driver,dataFile);
-//        String customerName=config.newCustomer();
-//        config.customerRename(customerName);
-//        config.masterInactive("At_Cus_Reg_Intra");
-//        config.createNode()
-        
+        String customerName=config.newCustomer();
+        config.customerRename(customerName);
+        config.masterInactive("At_Cus_Reg_Intra");
+        config.createNode();
+        config.renameNode();
+        config.moveAsSubNodeAndMainNode();
         config.movingMastersBetweenNodes();
-
     }
 
     @AfterTest
