@@ -366,6 +366,7 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         Thread.sleep(1500);
         common.clickElement("xpath","//Button[@Name='OK']");
     }
+
     public void addOns() throws InterruptedException {
         common.clickElement("xpath","//TabItem[@Name='Configure']");
         Thread.sleep(1000);
@@ -373,17 +374,17 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         Thread.sleep(1000);
         //check boxes
         //SMS
-        common.clickElement("xpath","//CheckBox[@Name='Allow sending SMS messages from transactions and reports.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Allow sending SMS messages from transactions and reports.']");
         //WhatsApp
-        common.clickElement("xpath","//CheckBox[@Name='Allow sending WhatsApp Message from transactions and reports.']");
-        common.clickElement("xpath","//CheckBox[@Name='WhatsApp web']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Allow sending WhatsApp Message from transactions and reports.']");
+        enableCheckboxSelection("//CheckBox[@Name='WhatsApp web']");
         //scroll down
         common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,100);
         //Email
-        common.clickElement("xpath","//CheckBox[@Name='Allow sending Emails from transactions and reports.']");
-        common.clickElement("xpath","//CheckBox[@Name='Send template as Email body.']");
+        enableCheckboxSelection("//CheckBox[@Name='Allow sending Emails from transactions and reports.']");
+        enableCheckboxSelection("//CheckBox[@Name='Send template as Email body.']");
         //Document Management
-        common.clickElement("xpath","//CheckBox[@Name='Enable document management.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable document management.']");
         //save
         common.clickElement("xpath","//Button[@Name='Save']");
         common.clickElement("xpath","//Button[@Name='OK']");
