@@ -1043,5 +1043,8 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         common.clickElement("xpath","//Button[@Name='OK']");
         Thread.sleep(1500);
         common.clickElement("xpath","//Button[@Name='OK']");
+        System.out.println("AllConfiguration Done "+new String(Character.toChars(0x1F60D)));
+        System.out.println(new String(Character.toChars(0x1F60D)));
+        System.out.println(new String(Character.toChars(0x1F981)));
     }
 }
