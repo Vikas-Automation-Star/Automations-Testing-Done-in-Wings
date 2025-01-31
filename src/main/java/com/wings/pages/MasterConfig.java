@@ -179,9 +179,9 @@ public class MasterConfig extends Transaction{
         common.clickElement("xpath", "//MenuItem[@Name='Inactivate']");
         common.clickElement("name", "OK");
         //search in inactive
-     WebElement clickDown=   common.findWebElement("xpath", "//Button[@Name='  Options  ']");
-     clickDown.click();
-     clickDown.sendKeys(Keys.DOWN,Keys.ENTER);
+        WebElement clickDown=   common.findWebElement("xpath", "//Button[@Name='  Options  ']");
+        clickDown.click();
+        clickDown.sendKeys(Keys.DOWN,Keys.ENTER);
         Thread.sleep(1000);
         List<WebElement> listElements = common.findWebElements("xpath", "//Pane[@Name='Customers']/Pane/Pane/Pane/Pane/Pane/List/ListItem");
         System.out.println("Size of elements under List: " + listElements.size());
@@ -267,7 +267,6 @@ public class MasterConfig extends Transaction{
         common.clickElement("xpath","//Pane[@Name='GeneralInformation']/*[@Name='New Node *']/Edit[@Name='New Node *']");
         common.inputText("xpath","//Pane[@Name='GeneralInformation']/*[@Name='New Node *']/Edit[@Name='New Node *']",common.getData(dataFile,"node"));
         common.clickElement("xpath", "//Button[@Name='Save']");
-        common.clickElement("xpath", "//Button[@Name='Yes']");
         WebElement enter=common.findWebElement("xpath", "//Button[@Name='Yes']");
         enter.sendKeys(Keys.ENTER,Keys.ENTER,Keys.ESCAPE);
         common.clickElement("xpath","//TabItem[@Name='Customers']/Button[@Name='Close']");
@@ -353,7 +352,6 @@ public class MasterConfig extends Transaction{
                 common.clickElement("xpath","//MenuItem[@Name='Move As Sub-Node']");
                 Thread.sleep(1500);
                 common.clickElement("xpath","//Button[@Name='Save']");
-                common.clickElement("xpath","//Window[@Name='Transaction']/*/Button[@Name='Yes']");
                 WebElement enter=common.findWebElement("xpath", "//Window[@Name='Transaction']/*/Button[@Name='Yes']");
                 enter.sendKeys(Keys.ENTER,Keys.ENTER,Keys.ESCAPE);
                 common.clickElement("xpath","//TabItem[@Name='Customers']/Button[@Name='Close']");
@@ -376,6 +374,8 @@ public class MasterConfig extends Transaction{
                 common.clickElement("xpath","//MenuItem[@Name='Move As Main Node']");
                 common.clickElement("xpath","//Button[@Name='OK']");
                 System.out.println("Node moved to Main Node");
+                common.clickElement("xpath","//TabItem[@Name='Customers']/Button[@Name='Close']");
+
                 List<WebElement> mainNode=common.findWebElements("xpath","//Tree/TreeItem[@Name='Customers']/*[contains(@Name,'NewNodeRename')]");
                 System.out.println("allNodesText :"+mainNode.size());
                 for (WebElement v:mainNode){
@@ -393,17 +393,17 @@ public class MasterConfig extends Transaction{
         common.clickElement("name", "Customers");
         Thread.sleep(1500);
         common.clickElement("xpath", "//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
-        WebElement selectingMaster= common.findWebElement("xpath","//ListItem[@Name='AT_Cus_Reg_Inter']/Text[@Name='AT_Cus_Reg_Inter']");
+        WebElement selectingMaster= common.findWebElement("xpath","//ListItem[@Name='AP_Customer_Customer_customer']/Text[@Name='AP_Customer_Customer_customer']");
         String selectMasterTomoveAnotherNode=selectingMaster.getText();
         Actions actions = new Actions(driver);
         actions.contextClick(selectingMaster).perform();
         common.clickElement("xpath","//MenuItem[@Name='Change']");
-        WebElement coose=common.findWebElement("xpath","//MenuItem[@Name='Node']");
-        coose.click();
-        coose.sendKeys(Keys.DOWN,Keys.ENTER);
+        WebElement choose=common.findWebElement("xpath","//MenuItem[@Name='Node']");
+        choose.click();
+        choose.sendKeys(Keys.DOWN,Keys.ENTER);
         common.clickElement("xpath", "//Button[@Name='Save']");
         Thread.sleep(1000);
-        common.clickElement("xpath", "//Button[@Name='Yes']");
+//        common.clickElement("xpath", "//Button[@Name='Yes']");
         WebElement enter=common.findWebElement("xpath", "//Button[@Name='Yes']");
         enter.sendKeys(Keys.ENTER,Keys.ENTER,Keys.ESCAPE);
         common.clickElement("xpath","//TabItem[@Name='Customers']/Button[@Name='Close']");
