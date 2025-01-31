@@ -37,6 +37,8 @@ public class CompanyInitilizatonGSTconfig {
         configuration.igstConfiguration();
         configuration.cessConfiguration();
 
+
+
     }
     @AfterTest
     public void afterTest() throws IOException {
