@@ -1,6 +1,5 @@
 package com.wings.pages;
 
-import com.beust.ah.A;
 import com.wings.utils.Common;
 import com.wings.utils.StringUtil;
 import io.appium.java_client.windows.WindowsDriver;
