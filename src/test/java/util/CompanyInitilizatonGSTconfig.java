@@ -30,10 +30,10 @@ public class CompanyInitilizatonGSTconfig {
         configuration.entryViewPrintSettings();
         configuration.SalesModuleConfiguration();
         configuration.purchaseModuleConfiguration();
-        configuration.inventoryWorkFlow();
-        configuration.inventoryModuleSettings();
-        configuration.productionWorkFlow();
-        configuration.financeWorkFlow();
+        configuration.inventoryFlow();
+        configuration.productionFlow();
+        configuration.financeFlow();
+
         configuration.generalSettings();
         configuration.taxesSettings();
 
