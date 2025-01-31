@@ -12,22 +12,22 @@ import java.net.URL;
 
 public class CreateCompany {
     WindowsDriver driver, logindriver;
-    public static String CompanyName = "CheckGSTConfigure", Password = "Wings@123",currencyText,stockValuationText,registrationNum = "998921", panNum = "AEKPE1471P";
+    public static String CompanyName = "Wings_Dummy", Password = "Wings@123",currencyText,stockValuationText,registrationNum = "998921", panNum = "AEKPE1471P";
 
     public void login() throws IOException, InterruptedException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("app", "C:\\Program Files (x86)\\Wings Infonet\\Wings Accounting 24DNP\\Wings.exe");
+        capabilities.setCapability("app", "C:\\Program Files (x86)\\Wings Infonet\\Wings Books 24D\\Wings.exe");
         capabilities.setCapability("platformName", "Windows");
         capabilities.setCapability("deviceName", "WindowsPC");
         driver = new WindowsDriver<>(new URL("http://127.0.0.1:4723/"), capabilities);
         driver.manage().window().maximize();
         Thread.sleep(2000);
         driver.findElementByXPath("//Pane[@Name='Manage companies']/Text[@Name='Create a new company']/*[@Name='Create a new company']").click();
-        Thread.sleep(3000);
+        Thread.sleep(1500);
         System.out.println("Legacy Accessible State Back :" + driver.findElementByXPath("//Button[@Name='< Back']").getAttribute("LegacyState"));
         System.out.println("Legacy Accessible State Create :" + driver.findElementByXPath("//Button[@Name='Create']").getAttribute("LegacyState"));
         driver.findElementByXPath("//Button[@Name='Create']").click();
-        Thread.sleep(3000);
+        Thread.sleep(1500);
         System.out.println("Legacy Accessible State :" + driver.findElementByXPath("//Button[@Name='Next']").getAttribute("LegacyState"));
         driver.findElementByXPath("//Button[@Name='Next']").click();
         Thread.sleep(3000);
@@ -43,29 +43,29 @@ public class CreateCompany {
         driver.findElementByXPath("//Button[@Name='Next']").click();
         driver.findElementByName("OK").click();
         Thread.sleep(1500);
-        driver.findElementByXPath("//Edit[@Name='Database ServerRequestFunctions']").sendKeys("Vikas");
+        driver.findElementByXPath("//Edit[@Name='Database ServerRequestFunctions']").sendKeys("Madhuri");
         driver.findElementByXPath("//Button[@Name='Next']").click();
 
-        Thread.sleep(240000);
+        Thread.sleep(200000);
         WebElement currency = driver.findElementByXPath("//Group[@Name='Specify Country and Currency Prefix']/Pane/Pane/Edit[@Name='Company Currency']");
         currencyText = currency.getText();
         System.out.println("currencyText :- "+currencyText);
         driver.findElementByXPath("//Button[@Name='Next']").click();
-        Thread.sleep(3000);
+        Thread.sleep(1500);
         WebElement stockValuation = driver.findElementByXPath("//ComboBox[@Name='Stock Valuation Method']");
         stockValuationText = stockValuation.getText();
         System.out.println("StockValuationTest :- "+stockValuationText);
         System.out.println("DB creation successful for " + CompanyName + " Company");
-        Thread.sleep(3000);
+        Thread.sleep(1500);
         driver.findElementByXPath("//Button[@Name='Next']").click();
-        Thread.sleep(3000);
+        Thread.sleep(1500);
         driver.findElementByXPath("//Button[@Name='Finish']").click();
-        Thread.sleep(3000);
+        Thread.sleep(1500);
         driver.findElementByXPath("//Button[@Name='OK']").click();
         System.out.println("Company creation with name " + CompanyName + " is successful ");
 
         DesiredCapabilities logincapabilities = new DesiredCapabilities();
-        logincapabilities.setCapability("app", "C:\\Program Files (x86)\\Wings Infonet\\Wings Accounting 24DNP\\Wings.exe");
+        logincapabilities.setCapability("app", "C:\\Program Files (x86)\\Wings Infonet\\Wings Books 24D\\Wings.exe");
         logincapabilities.setCapability("platformName", "Windows");
         logincapabilities.setCapability("deviceName", "WindowsPC");
         logindriver = new WindowsDriver(new URL("http://127.0.0.1:4723"), logincapabilities);
@@ -106,14 +106,16 @@ public class CreateCompany {
         logindriver.findElementByXPath("//Edit[@Name='Email']").sendKeys("Wingsinfo.net@gmail.com");
         logindriver.findElementByXPath("//Edit[@Name='Website']").sendKeys("https://www.wingsinfo.net/", Keys.TAB, Keys.ENTER);
         Thread.sleep(1000);
-        WebElement currency1 = logindriver.findElementByXPath("//Edit[@Name='Currency']");
-        String currency2 = currency1.getText();
-        Assert.assertEquals(currency2, currencyText, "both currencies must be match if not validation failed");
+        String actualCurrency = logindriver.findElementByXPath("//Edit[@Name='Currency']").getText();
+        System.out.println("actual Currency: " + actualCurrency);
+        System.out.println("Expected Currency: "+ currencyText);
+        Assert.assertEquals(actualCurrency, currencyText, "both currencies must be match if not validation failed");
         System.out.println("Currency verified");
         Thread.sleep(1000);
-        WebElement stock1 = logindriver.findElementByXPath("//Edit[@Name='Stock Valuation Method']");
-        String stock2 = stock1.getText();
-        Assert.assertEquals(stock2, stockValuationText, "both stock valuation must be match if not validation failed");
+        String actualStock = logindriver.findElementByXPath("//Edit[@Name='Stock Valuation Method']").getText();
+        System.out.println("Actual Stock: "+ actualStock);
+        System.out.println("Expected Stock: "+ stockValuationText);
+        Assert.assertEquals(actualStock, stockValuationText, "both stock valuation must be match if not validation failed");
         System.out.println("Stock valuation Method verified");
 
         logindriver.findElementByXPath("//Edit[@Name='Short Code']").sendKeys("998921");

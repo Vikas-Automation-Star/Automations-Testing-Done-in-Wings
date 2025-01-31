@@ -4,286 +4,112 @@ import com.wings.pages.Transaction;
 import io.appium.java_client.windows.WindowsDriver;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
-import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.util.List;
 
 public class CompanyInitialisationGSTConfiguration extends Transaction {
     WindowsDriver driver;
     Common common;
-
     public CompanyInitialisationGSTConfiguration(WindowsDriver driver){
         super(driver);
         common=new Common(driver);
         this.driver=driver;
     }
 
-    public void cgstConfiguration() throws InterruptedException, AWTException {
+    public void cgstConfiguration() throws InterruptedException {
         common.clickElement("xpath","//TabItem[@Name='Configure']");
         Thread.sleep(1500);
         common.clickElement("xpath","//Text[@Name='GST Configuration']/*[@Name='GST Configuration']");
         common.clickElement("xpath","//Button[@Name='Next >']");
-
-        List<WebElement> click=common.findWebElements("xpath","//Table/*[contains(@Name,'Row')]/CheckBox[contains(@Name,'UseThis Row')]");
-        System.out.println("size :"+click);
-        for (WebElement v:click) {
-            String checkBoxToggleState = v.getAttribute("Toggle.ToggleState");
-            System.out.println("Check Box Toggle state:-"+checkBoxToggleState);
-            if (checkBoxToggleState.equals("1")) {
-                v.click();
-                String checkBoxToggleState1 = v.getAttribute("Toggle.ToggleState");
-                System.out.println("Check Box Toggle state:-" + checkBoxToggleState1);
-                if (checkBoxToggleState1.equals("0")) {
-                    System.out.println("Checkbox is already checked, no action needed.");
-                } else if (checkBoxToggleState1.equals("1")) {
-                    v.click();
-                } else Assert.fail("Check Box it not selected");
-            } else if (checkBoxToggleState.equals("0")){
-                System.out.println("Checkbox is already checked, no action needed.");
-            }
-            else Assert.fail("Element Not Found");
+        List<WebElement> clickAll=common.findWebElements("xpath","//Table/*[contains(@Name,'Row')]/CheckBox[contains(@Name,'UseThis Row')]");
+        for(WebElement i:clickAll){
+            i.click();
         }
-
         common.clickElement("xpath","//Button[@Name='Next >']");
         WebElement element = common.findWebElement("xpath", "//Tree[1]/Group[@Name='Data Panel']/TreeItem[@Name='Node0']/*[@Name='Id row 0']");
-        System.out.println("before state :"+element.getAttribute("LegacyState"));
-//        int legacyState= Integer.parseInt(element.getAttribute("LegacyState"));
-//        String stateDescriptio = "";
-//        switch (legacyState) {
-//            case 0:
-//                stateDescriptio = "Unchecked";  // Or whatever corresponds to 0
-//                break;
-//            case 1:
-//                stateDescriptio = "Checked";   // Or whatever corresponds to 1
-//                break;
-//        }
-//        System.out.println("legacyState :"+stateDescriptio);
-
         element.click();
         element.sendKeys(Keys.SPACE);
-        System.out.println("After state :"+element.getAttribute("LegacyState"));
-
         WebElement element1 = common.findWebElement("xpath", "//Tree[2]/Group[@Name='Data Panel']/TreeItem[@Name='Node0']/*[@Name='Id row 0']");
-        System.out.println("before state :"+element1.getAttribute("LegacyState"));
         element1.click();
         element1.sendKeys(Keys.SPACE);
-        System.out.println("After state :"+element1.getAttribute("LegacyState"));
-
         common.clickElement("xpath","//Button[@Name='Next >']");
         common.clickElement("xpath","//Button[@Name='Next >']");
         Thread.sleep(3000);
-        common.clickElement("xpath","//ComboBox[@Name='GST Paid In Advance Account']/Button[@Name='Open']");
-        Robot robot=new Robot();
-        robot.keyPress(KeyEvent.VK_DOWN);
-        robot.keyRelease(KeyEvent.VK_DOWN);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-        common.clickElement("xpath","//ComboBox[@Name='CGST Paid Account']/Button[@Name='Open']");
-        robot.keyPress(KeyEvent.VK_DOWN);
-        robot.keyRelease(KeyEvent.VK_DOWN);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-        common.clickElement("xpath","//ComboBox[@Name='CGST Collected Account']/Button[@Name='Open']");
-        robot.keyPress(KeyEvent.VK_DOWN);
-        robot.keyRelease(KeyEvent.VK_DOWN);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-        common.clickElement("xpath","//Button[@Name='Next >']");
+        WebElement element2=common.findWebElement("xpath","//ComboBox[@Name='GST Paid In Advance Account']/Button[@Name='Open']");
+        element2.sendKeys(Keys.DOWN,Keys.ENTER);
+        Thread.sleep(3000);
+        WebElement element3=common.findWebElement("xpath","//ComboBox[@Name='CGST Paid Account']/Button[@Name='Open']");
+        element3.sendKeys(Keys.DOWN,Keys.ENTER);
+        Thread.sleep(3000);
+        WebElement element4 =common.findWebElement("xpath","//ComboBox[@Name='CGST Collected Account']/Button[@Name='Open']");
+        element4.sendKeys(Keys.DOWN,Keys.ENTER);
+        Thread.sleep(1000);
         common.clickElement("xpath","//Button[@Name='Finish']");
         System.out.println("CGST configuration completed");
-
     }
-    public void sgstConfiguration() throws InterruptedException, AWTException {
-        common.clickElement("xpath","//TabItem[@Name='Configure']");
-        Thread.sleep(1500);
+    public void sgstConfiguration() throws InterruptedException {
         common.clickElement("xpath","//Text[@Name='GST Configuration']/*[@Name='GST Configuration']");
         common.clickElement("xpath","//TreeItem[@Name='SGST']/TreeItem[@Name='SGST']");
+
         common.clickElement("xpath","//Button[@Name='Next >']");
 
-        List<WebElement> click=common.findWebElements("xpath","//Table/*[contains(@Name,'Row')]/CheckBox[contains(@Name,'UseThis Row')]");
-        System.out.println("size :"+click);
-        for (WebElement v:click) {
-            String checkBoxToggleState = v.getAttribute("Toggle.ToggleState");
-            System.out.println("Check Box Toggle state:-"+checkBoxToggleState);
-            if (checkBoxToggleState.equals("1")) {
-                v.click();
-                String checkBoxToggleState1 = v.getAttribute("Toggle.ToggleState");
-                System.out.println("Check Box Toggle state:-" + checkBoxToggleState1);
-                if (checkBoxToggleState1.equals("0")) {
-                    System.out.println("Checkbox is already checked, no action needed.");
-                } else if (checkBoxToggleState1.equals("1")) {
-                    v.click();
-                } else Assert.fail("Check Box it not selected");
-            } else if (checkBoxToggleState.equals("0")){
-                System.out.println("Checkbox is already checked, no action needed.");
-            }
-            else Assert.fail("Element Not Found");
+        List<WebElement> clickAll=common.findWebElements("xpath","//Table/*[contains(@Name,'Row')]/CheckBox[contains(@Name,'UseThis Row')]");
+        for(WebElement i:clickAll){
+            i.click();
         }
 
         common.clickElement("xpath","//Button[@Name='Next >']");
         WebElement element = common.findWebElement("xpath", "//Tree[1]/Group[@Name='Data Panel']/TreeItem[@Name='Node0']/*[@Name='Id row 0']");
-        System.out.println("before state :"+element.getAttribute("LegacyState"));
         element.click();
         element.sendKeys(Keys.SPACE);
-        System.out.println("After state :"+element.getAttribute("LegacyState"));
-
-        WebElement element1 = common.findWebElement("xpath", "//Tree[2]/Group[@Name='Data Panel']/TreeItem[@Name='Node0']/*[@Name='Id row 0']");
-        System.out.println("before state :"+element1.getAttribute("LegacyState"));
-        element1.click();
-        element1.sendKeys(Keys.SPACE);
-        System.out.println("After state :"+element1.getAttribute("LegacyState"));
-
+        WebElement element10 = common.findWebElement("xpath", "//Tree[2]/Group[@Name='Data Panel']/TreeItem[@Name='Node0']/*[@Name='Id row 0']");
+        element10.click();
+        element10.sendKeys(Keys.SPACE);
         common.clickElement("xpath","//Button[@Name='Next >']");
         common.clickElement("xpath","//Button[@Name='Next >']");
-        Thread.sleep(2000);
-        common.clickElement("xpath","//ComboBox[@Name='GST Paid in Advance Account']/Button[@Name='Open']");
-        Robot robot=new Robot();
-        robot.keyPress(KeyEvent.VK_DOWN);
-        robot.keyRelease(KeyEvent.VK_DOWN);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-        common.clickElement("xpath","//ComboBox[@Name='SGST Paid Account']/Button[@Name='Open']");
-        robot.keyPress(KeyEvent.VK_DOWN);
-        robot.keyRelease(KeyEvent.VK_DOWN);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-        common.clickElement("xpath","//ComboBox[@Name='SGST Collected Account']/Button[@Name='Open']");
-        robot.keyPress(KeyEvent.VK_DOWN);
-        robot.keyRelease(KeyEvent.VK_DOWN);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-        common.clickElement("xpath","//Button[@Name='Next >']");
+        Thread.sleep(1000);
+        WebElement element5 =common.findWebElement("xpath","//ComboBox[@Name='GST Paid in Advance Account']/Button[@Name='Open']");
+        element5.sendKeys(Keys.DOWN,Keys.ENTER);
+        Thread.sleep(1000);
+        WebElement element6 =common.findWebElement("xpath","//ComboBox[@Name='SGST Paid Account']/Button[@Name='Open']");
+        element6.sendKeys(Keys.DOWN,Keys.ENTER);
+        Thread.sleep(1000);
+        WebElement element7 =common.findWebElement("xpath","//ComboBox[@Name='SGST Collected Account']/Button[@Name='Open']");
+        element7.sendKeys(Keys.DOWN,Keys.ENTER);
         common.clickElement("xpath","//Button[@Name='Finish']");
-        System.out.println("CGST configuration completed");
         System.out.println("SGST configuration completed");
     }
-    public void igstConfiguration() throws InterruptedException, AWTException {
+    public void igstConfiguration() throws InterruptedException {
         common.clickElement("xpath","//TabItem[@Name='Configure']");
-        Thread.sleep(1500);
         common.clickElement("xpath","//Text[@Name='GST Configuration']/*[@Name='GST Configuration']");
         common.clickElement("xpath","//TreeItem[@Name='IGST']/TreeItem[@Name='IGST']");
         common.clickElement("xpath","//Button[@Name='Next >']");
-
-        List<WebElement> click=common.findWebElements("xpath","//Table/*[contains(@Name,'Row')]/CheckBox[contains(@Name,'UseThis Row')]");
-        System.out.println("size :"+click);
-        for (WebElement v:click) {
-            String checkBoxToggleState = v.getAttribute("Toggle.ToggleState");
-            System.out.println("Check Box Toggle state:-"+checkBoxToggleState);
-            if (checkBoxToggleState.equals("1")) {
-                v.click();
-                String checkBoxToggleState1 = v.getAttribute("Toggle.ToggleState");
-                System.out.println("Check Box Toggle state:-" + checkBoxToggleState1);
-                if (checkBoxToggleState1.equals("0")) {
-                    System.out.println("Checkbox is already checked, no action needed.");
-                } else if (checkBoxToggleState1.equals("1")) {
-                    v.click();
-                } else Assert.fail("Check Box it not selected");
-            } else if (checkBoxToggleState.equals("0")){
-                System.out.println("Checkbox is already checked, no action needed.");
-            }
-            else Assert.fail("Element Not Found");
+        List<WebElement> clickAll=common.findWebElements("xpath","//Table/*[contains(@Name,'Row')]/CheckBox[contains(@Name,'UseThis Row')]");
+        for(WebElement i:clickAll){
+            i.click();
         }
-
         common.clickElement("xpath","//Button[@Name='Next >']");
         WebElement element = common.findWebElement("xpath", "//Tree[1]/Group[@Name='Data Panel']/TreeItem[@Name='Node0']/*[@Name='Id row 0']");
-        System.out.println("before state :"+element.getAttribute("LegacyState"));
         element.click();
         element.sendKeys(Keys.SPACE);
-        System.out.println("After state :"+element.getAttribute("LegacyState"));
-
-        WebElement element1 = common.findWebElement("xpath", "//Tree[2]/Group[@Name='Data Panel']/TreeItem[@Name='Node0']/*[@Name='Id row 0']");
-        System.out.println("before state :"+element1.getAttribute("LegacyState"));
-        element1.click();
-        element1.sendKeys(Keys.SPACE);
-        System.out.println("After state :"+element1.getAttribute("LegacyState"));
-
+        WebElement element11 = common.findWebElement("xpath", "//Tree[2]/Group[@Name='Data Panel']/TreeItem[@Name='Node0']/*[@Name='Id row 0']");
+        element11.click();
+        element11.sendKeys(Keys.SPACE);
         common.clickElement("xpath","//Button[@Name='Next >']");
         common.clickElement("xpath","//Button[@Name='Next >']");
-        Thread.sleep(3000);
-        common.clickElement("xpath","//ComboBox[@Name='GST Paid In Advance Account']/Button[@Name='Open']");
-        Robot robot=new Robot();
-        robot.keyPress(KeyEvent.VK_DOWN);
-        robot.keyRelease(KeyEvent.VK_DOWN);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-        common.clickElement("xpath","//ComboBox[@Name='IGST Paid Account']/Button[@Name='Open']");
-        robot.keyPress(KeyEvent.VK_DOWN);
-        robot.keyRelease(KeyEvent.VK_DOWN);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-        common.clickElement("xpath","//ComboBox[@Name='IGST Collected Account']/Button[@Name='Open']");
-        robot.keyPress(KeyEvent.VK_DOWN);
-        robot.keyRelease(KeyEvent.VK_DOWN);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-        common.clickElement("xpath","//Button[@Name='Next >']");
+        Thread.sleep(4000);
+        WebElement element8 =common.findWebElement("xpath","//ComboBox[@Name='GST Paid In Advance Account']/Button[@Name='Open']");
+        element8.sendKeys(Keys.DOWN,Keys.ENTER);
+        Thread.sleep(1000);
+        WebElement element9 =common.findWebElement("xpath","//ComboBox[@Name='IGST Paid Account']/Button[@Name='Open']");
+        element9.sendKeys(Keys.DOWN,Keys.ENTER);
+        Thread.sleep(1000);
+        WebElement element10 =common.findWebElement("xpath","//ComboBox[@Name='IGST Collected Account']/Button[@Name='Open']");
+        element10.sendKeys(Keys.DOWN,Keys.ENTER);
         common.clickElement("xpath","//Button[@Name='Finish']");
         System.out.println("IGST configuration completed");
-    }
-    public void cessConfiguration() throws InterruptedException, AWTException {
-        common.clickElement("xpath","//TabItem[@Name='Configure']");
-        Thread.sleep(1500);
-        common.clickElement("xpath","//Text[@Name='GST Configuration']/*[@Name='GST Configuration']");
-        common.clickElement("xpath","//TreeItem[@Name='CESS']/TreeItem[@Name='CESS']");
-        common.clickElement("xpath","//Button[@Name='Next >']");
-
-        List<WebElement> click=common.findWebElements("xpath","//Table/*[contains(@Name,'Row')]/CheckBox[contains(@Name,'UseThis Row')]");
-        System.out.println("size :"+click);
-        for (WebElement v:click) {
-            String checkBoxToggleState = v.getAttribute("Toggle.ToggleState");
-            System.out.println("Check Box Toggle state:-"+checkBoxToggleState);
-            if (checkBoxToggleState.equals("1")) {
-                v.click();
-                String checkBoxToggleState1 = v.getAttribute("Toggle.ToggleState");
-                System.out.println("Check Box Toggle state:-" + checkBoxToggleState1);
-                if (checkBoxToggleState1.equals("0")) {
-                    System.out.println("Checkbox is already checked, no action needed.");
-                } else if (checkBoxToggleState1.equals("1")) {
-                    v.click();
-                } else Assert.fail("Check Box it not selected");
-            } else if (checkBoxToggleState.equals("0")){
-                System.out.println("Checkbox is already checked, no action needed.");
-            }
-            else Assert.fail("Element Not Found");
-        }
-
-        common.clickElement("xpath","//Button[@Name='Next >']");
-        WebElement element = common.findWebElement("xpath", "//Tree[1]/Group[@Name='Data Panel']/TreeItem[@Name='Node0']/*[@Name='Id row 0']");
-        System.out.println("before state :"+element.getAttribute("LegacyState"));
-        element.click();
-        element.sendKeys(Keys.SPACE);
-        System.out.println("After state :"+element.getAttribute("LegacyState"));
-
-        WebElement element1 = common.findWebElement("xpath", "//Tree[2]/Group[@Name='Data Panel']/TreeItem[@Name='Node0']/*[@Name='Id row 0']");
-        System.out.println("before state :"+element1.getAttribute("LegacyState"));
-        element1.click();
-        element1.sendKeys(Keys.SPACE);
-        System.out.println("After state :"+element1.getAttribute("LegacyState"));
-
-        common.clickElement("xpath","//Button[@Name='Next >']");
-        common.clickElement("xpath","//Button[@Name='Next >']");
-        Thread.sleep(3000);
-        common.clickElement("xpath","//ComboBox[@Name='GST Paid In Advance Account']/Button[@Name='Open']");
-        Robot robot=new Robot();
-        robot.keyPress(KeyEvent.VK_DOWN);
-        robot.keyRelease(KeyEvent.VK_DOWN);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-        common.clickElement("xpath","//ComboBox[@Name='CESS Paid Account']/Button[@Name='Open']");
-        robot.keyPress(KeyEvent.VK_DOWN);
-        robot.keyRelease(KeyEvent.VK_DOWN);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-        common.clickElement("xpath","//ComboBox[@Name='CESS Collected Account']/Button[@Name='Open']");
-        robot.keyPress(KeyEvent.VK_DOWN);
-        robot.keyRelease(KeyEvent.VK_DOWN);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-        common.clickElement("xpath","//Button[@Name='Next >']");
-        common.clickElement("xpath","//Button[@Name='Finish']");
-        System.out.println("CGST configuration completed");
     }
     public void companyUnits() throws InterruptedException {
         common.clickElement("xpath","//TabItem[@Name='Configure']");
@@ -371,19 +197,19 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         common.clickElement("xpath","//Text[@Name='Add-Ons']/HyperLink[@Name='Add-Ons']");
         Thread.sleep(1000);
         //check boxes
-        //SMS
-        common.clickElement("xpath","//CheckBox[@Name='Allow sending SMS messages from transactions and reports.']");
-        //WhatsApp
-        common.clickElement("xpath","//CheckBox[@Name='Allow sending WhatsApp Message from transactions and reports.']");
-        common.clickElement("xpath","//CheckBox[@Name='WhatsApp web']");
+            //SMS
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Allow sending SMS messages from transactions and reports.']");
+            //WhatsApp
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Allow sending WhatsApp Message from transactions and reports.']");
+        enableCheckboxSelection("//CheckBox[@Name='WhatsApp web']");
         //scroll down
         common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,100);
         //Email
-        common.clickElement("xpath","//CheckBox[@Name='Allow sending Emails from transactions and reports.']");
-        common.clickElement("xpath","//CheckBox[@Name='Send template as Email body.']");
-        //Document Management
-        common.clickElement("xpath","//CheckBox[@Name='Enable document management.']");
-        //save
+        enableCheckboxSelection("//CheckBox[@Name='Allow sending Emails from transactions and reports.']");
+        enableCheckboxSelection("//CheckBox[@Name='Send template as Email body.']");
+            //Document Management
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable document management.']");
+            //save
         common.clickElement("xpath","//Button[@Name='Save']");
         common.clickElement("xpath","//Button[@Name='OK']");
         Thread.sleep(1000);
@@ -437,10 +263,13 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         enableCheckboxSelection("//Pane//CheckBox[@Name='Other Info 1']");
         enableCheckboxSelection("//Pane//CheckBox[@Name='Other Info 2']");
         enableCheckboxSelection("//Pane//CheckBox[@Name='Other Info 3']");
-        enableCheckboxSelection("//Pane//CheckBox[@Name='Other Info 4']");
         common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,20);
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Other Info 4']");
+//        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,20);
         enableCheckboxSelection("//Pane//CheckBox[@Name='Other Info 5']");
-        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,100);
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,68);
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Use international comma style in all transactions.']");
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,40);
         enableCheckboxSelection("//Pane//CheckBox[@Name='Show branch name in header in all reports.']");
         enableCheckboxSelection("//Pane//CheckBox[@Name='Show zero values in all reports.']");
         enableCheckboxSelection("//Pane//CheckBox[@Name='Supress currency prefix in all reports.']");
@@ -719,6 +548,7 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         System.out.println(new String(Character.toChars(0x1F981)));
 
     }
+
     public void inventoryFlow() throws InterruptedException {
         common.clickElement("xpath","//TabItem[@Name='Configure']");
         common.clickElement("xpath","//HyperLink[@Name='Inventory']");
@@ -927,6 +757,7 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         //close
         common.clickElement("xpath","//Window//Button[@Name='Close']");
     }
+
     public void generalSettings() throws InterruptedException {
         common.clickElement("xpath","//TabItem[@Name='Configure']");
         common.clickElement("xpath","//HyperLink[@Name='General']");
