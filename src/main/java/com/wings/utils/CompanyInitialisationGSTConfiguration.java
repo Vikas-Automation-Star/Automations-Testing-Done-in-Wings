@@ -85,7 +85,6 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         common.clickElement("xpath","//TabItem[@Name='Configure']");
         common.clickElement("xpath","//Text[@Name='GST Configuration']/*[@Name='GST Configuration']");
         common.clickElement("xpath","//TreeItem[@Name='IGST']/TreeItem[@Name='IGST']");
-
         common.clickElement("xpath","//Button[@Name='Next >']");
         List<WebElement> clickAll=common.findWebElements("xpath","//Table/*[contains(@Name,'Row')]/CheckBox[contains(@Name,'UseThis Row')]");
         for(WebElement i:clickAll){
