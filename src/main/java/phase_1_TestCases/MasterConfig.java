@@ -389,12 +389,12 @@ public class MasterConfig extends Transaction {
             }
         }
     }
-    public void movingMastersBetweenNodes() throws InterruptedException {
+    public void movingMastersBetweenNodes(String movingMasterNamePath) throws InterruptedException {
         common.clickElement("name", "Sales");
         common.clickElement("name", "Customers");
         Thread.sleep(1500);
         common.clickElement("xpath", "//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
-        WebElement selectingMaster= common.findWebElement("xpath","//ListItem[@Name='AP_Customer_Customer_customer']/Text[@Name='AP_Customer_Customer_customer']");
+        WebElement selectingMaster= common.findWebElement("xpath",movingMasterNamePath);
         String selectMasterTomoveAnotherNode=selectingMaster.getText();
         Actions actions = new Actions(driver);
         actions.contextClick(selectingMaster).perform();

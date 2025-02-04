@@ -20,9 +20,12 @@ public class CompanyInitilizatonGSTconfig {
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
         company.login();
+        company.logout();
+        driver=appLogin.launchSingleUserApp();
+        appLogin.singleUserLogin();
     }
     @Test
-    public void GSTConfigurations() throws InterruptedException, AWTException, IOException {
+    public void GSTConfigurations() throws InterruptedException, AWTException {
         CompanyInitialisationGSTConfiguration configuration=new CompanyInitialisationGSTConfiguration(driver);
         configuration.companyUnits();
         configuration.addOns();

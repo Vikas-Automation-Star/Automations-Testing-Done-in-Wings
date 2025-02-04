@@ -29,7 +29,7 @@ public class MastersConfiguration {
         config.createNode();
         config.renameNode();
         config.moveAsSubNodeAndMainNode();
-        config.movingMastersBetweenNodes();
+        config.movingMastersBetweenNodes("//ListItem[@Name='AP_Customer_Customer_customer']/Text[@Name='AP_Customer_Customer_customer']");
     }
 
     @AfterTest
