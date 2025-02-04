@@ -1,6 +1,7 @@
-package com.wings.utils;
+package phase_1_TestCases;
 
 import com.wings.pages.Transaction;
+import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;

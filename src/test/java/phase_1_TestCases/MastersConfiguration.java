@@ -1,7 +1,6 @@
-package com.wings.tests;
+package phase_1_TestCases;
 
 import com.wings.pages.AppLogin;
-import com.wings.pages.MasterConfig;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
@@ -13,7 +12,7 @@ import java.io.IOException;
 public class MastersConfiguration {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String dataFile="./src/main/resources/masterConfig.json";
+    String dataFile="./src/main/resources/phase_1_List/masterConfig.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
@@ -35,6 +34,6 @@ public class MastersConfiguration {
 
     @AfterTest
     public void afterTest() throws IOException {
-//            appLogin.logout();
+            appLogin.logout();
     }
 }

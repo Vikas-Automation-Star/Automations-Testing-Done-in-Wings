@@ -13,7 +13,6 @@ public class StringUtil {
      * @return
      */
     public static double extractNumber(String input) {
-
         String regex = "\\d+(\\.\\d+)?"; // Matches integers or decimals
         java.util.regex.Pattern pattern = java.util.regex.Pattern.compile(regex);
         java.util.regex.Matcher matcher = pattern.matcher(input);
@@ -22,8 +21,17 @@ public class StringUtil {
             String number = matcher.group(); // Extract the matched number
             return Double.parseDouble(number); // Convert to double
         }
-
         return -1;
     }
-
-}
+        public static String extractVersion(String input){
+            String regex = "\\d+(\\.\\d+)+";
+            java.util.regex.Pattern pattern = java.util.regex.Pattern.compile(regex);
+            java.util.regex.Matcher matcher = pattern.matcher(input);
+            if (matcher.find()) {
+                String number = matcher.group();
+//                System.out.println("Version Found :" + number);
+                return number;
+            }
+            return "-1";
+        }
+    }

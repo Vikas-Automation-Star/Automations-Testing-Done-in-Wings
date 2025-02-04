@@ -1,5 +1,6 @@
-package com.wings.pages;
+package phase_1_TestCases;
 
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
@@ -12,7 +13,7 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.List;
 
-public class MasterConfig extends Transaction{
+public class MasterConfig extends Transaction {
     WindowsDriver driver;
     Common common;
     String dataFile;
