@@ -12,22 +12,56 @@ import java.io.IOException;
 
 public class ImportMasters {
     WindowsDriver driver;
-    AppLogin appLogin=new AppLogin();
-    String dataFile="src/main/resources/importMaster.json";
+    AppLogin appLogin = new AppLogin();
+    String dataFile = "src/main/resources/importMaster.json";
+
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        driver=appLogin.launchSingleUserApp();
+        driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
-    public void Test() throws IOException, ParseException, InterruptedException {
-        ImportingMasters im=new ImportingMasters(driver,dataFile);
-        im.masterImport();
+    public void importBranches() throws IOException, ParseException, InterruptedException {
+        ImportingMasters importing = new ImportingMasters(driver, dataFile);
+        importing.branchesMastersImporting("Branches");
+    }
+
+    @Test
+    public void importSuppliers() throws IOException, ParseException, InterruptedException {
+        ImportingMasters importing = new ImportingMasters(driver, dataFile);
+        importing.suppliersMastersImport("Suppliers");
+    }
+
+    @Test
+    public void importCustomers() throws IOException, ParseException, InterruptedException {
+        ImportingMasters importing = new ImportingMasters(driver, dataFile);
+        importing.customerMastersImport("Customers");
+    }
+
+    @Test
+    public void importProducts() throws IOException, ParseException, InterruptedException {
+        ImportingMasters importing = new ImportingMasters(driver, dataFile);
+        importing.productsMastersImport("Products");
+    }
+    @Test
+    public void importHsnCode() throws IOException, ParseException, InterruptedException {
+        ImportingMasters importing = new ImportingMasters(driver, dataFile);
+        importing.hsnCodesMastersImporting("HSN Codes");
+    }
+    @Test
+    public void importBankAccount() throws IOException, ParseException, InterruptedException {
+        ImportingMasters importing = new ImportingMasters(driver, dataFile);
+        importing.balanceSheetBankMastersImports("Balance Sheet");
+    }
+    @Test
+    public void importCashAccount() throws IOException, ParseException, InterruptedException {
+        ImportingMasters importing = new ImportingMasters(driver, dataFile);
+        importing.balanceSheetCashMastersImports("Balance Sheet");
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+         appLogin.logout();
     }
 }

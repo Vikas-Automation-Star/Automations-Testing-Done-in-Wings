@@ -1,3 +1,10 @@
 {
-  "branch": "Branches"
+  "supplierPath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Suppliers.CSV",
+  "customerPath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Customers.CSV",
+  "productsPath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Products.CSV",
+  "branchesPath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Branches.CSV",
+  "hsnCodePath":"C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_HSN Codes.CSV",
+  "balanceSheetBankAccount": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Balance Sheet.CSV",
+  "balanceSheetCashAccount": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Balance Sheet CashAccount.CSV"
+
 }
