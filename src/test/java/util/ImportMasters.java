@@ -21,47 +21,62 @@ public class ImportMasters {
         appLogin.singleUserLogin();
     }
 
-    @Test
+//    @Test
     public void importBranches() throws IOException, ParseException, InterruptedException {
         ImportingMasters importing = new ImportingMasters(driver, dataFile);
         importing.branchesMastersImporting("Branches");
     }
 
-    @Test
+//    @Test
     public void importSuppliers() throws IOException, ParseException, InterruptedException {
         ImportingMasters importing = new ImportingMasters(driver, dataFile);
         importing.suppliersMastersImport("Suppliers");
     }
 
-    @Test
+//    @Test
     public void importCustomers() throws IOException, ParseException, InterruptedException {
         ImportingMasters importing = new ImportingMasters(driver, dataFile);
         importing.customerMastersImport("Customers");
     }
 
-    @Test
+//    @Test
     public void importProducts() throws IOException, ParseException, InterruptedException {
         ImportingMasters importing = new ImportingMasters(driver, dataFile);
         importing.productsMastersImport("Products");
     }
-    @Test
+//    @Test
     public void importHsnCode() throws IOException, ParseException, InterruptedException {
         ImportingMasters importing = new ImportingMasters(driver, dataFile);
         importing.hsnCodesMastersImporting("HSN Codes");
     }
-    @Test
+//    @Test
     public void importBankAccount() throws IOException, ParseException, InterruptedException {
         ImportingMasters importing = new ImportingMasters(driver, dataFile);
         importing.balanceSheetBankMastersImports("Balance Sheet");
     }
-    @Test
+//    @Test
     public void importCashAccount() throws IOException, ParseException, InterruptedException {
         ImportingMasters importing = new ImportingMasters(driver, dataFile);
         importing.balanceSheetCashMastersImports("Balance Sheet");
     }
+//    @Test
+    public void ContactInformationGSTProperty() throws IOException, ParseException, InterruptedException {
+        ImportingMasters importing = new ImportingMasters(driver, dataFile);
+        importing.importContactInformationGSTProperty("Contact Information GST","Anjali Devi");
+    }
+//    @Test
+    public void RegistrationGSTProperty() throws IOException, ParseException, InterruptedException {
+        ImportingMasters importing = new ImportingMasters(driver, dataFile);
+        importing.importRegistrationGSTProperty("Registration GST","Anjali Devi");
+    }
+    @Test
+    public void shippingAddressProperty() throws IOException, ParseException, InterruptedException {
+        ImportingMasters importing = new ImportingMasters(driver, dataFile);
+        importing.importShippingAddressProperty("Shipping Address GST","Anjali Devi");
+    }
 
     @AfterTest
     public void afterTest() throws IOException {
-         appLogin.logout();
+//         appLogin.logout();
     }
 }

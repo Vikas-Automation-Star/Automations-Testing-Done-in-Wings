@@ -4,7 +4,10 @@
   "productsPath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Products.CSV",
   "branchesPath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Branches.CSV",
   "hsnCodePath":"C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_HSN Codes.CSV",
-  "balanceSheetBankAccount": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Balance Sheet.CSV",
-  "balanceSheetCashAccount": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Balance Sheet CashAccount.CSV"
+  "balanceSheetBankAccountPath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Balance Sheet.CSV",
+  "balanceSheetCashAccountPath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Balance Sheet CashAccount.CSV",
 
+  "contactInformationGSTPropertyPath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Contact Information GST.CSV",
+  "registrationGSTPath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Registration GST.CSV",
+  "ShippingAddressPath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Shipping Address GST.CSV"
 }
