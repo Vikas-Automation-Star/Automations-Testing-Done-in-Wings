@@ -5,6 +5,7 @@ import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import java.io.IOException;
 
@@ -76,6 +77,28 @@ public class AppLogin {
 //        } finally {
 //            common.quitWinAppServer();
 //        }
+    }
+
+    public void differentUserLogin(String userName) throws InterruptedException, IOException, ParseException {
+        Thread.sleep(2000);
+        common.clickElement("xpath", "//Pane[@Name='Choose a recent company']/Text[@Name='> " + common.getData(fileData, "companyName") + "']/*[@Name='> " + common.getData(fileData, "companyName") + "']");
+        Thread.sleep(3000);
+        WebElement user= common.findWebElement("xpath","//Edit[@Name='User name']");
+        user.clear();
+        user.sendKeys(userName);
+        common.inputText("xpath", "//Edit[@Name='Password']", common.getData(fileData, "password"));
+        common.clickElement("xpath", "//Button[@Name='Submit']");
+        Thread.sleep(2500);
+        common.clickElement("name", "OK");
+        System.out.println("Super User Login for " + common.getData(fileData, "companyName") + " company is successful " + new String(Character.toChars(0x2705)));
+        String title = driver.getTitle();
+        System.out.println(title);
+        if (title.contains(userName)){
+            System.out.println("Successfully navigated to different user");
+        }
+        else {
+            Assert.fail("User Login Failed");
+        }
     }
 
 
