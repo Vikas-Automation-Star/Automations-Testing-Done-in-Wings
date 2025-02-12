@@ -13,13 +13,12 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ImportingMasters {
+public class ImportingMastersAndProperties{
     WindowsDriver driver;
     Common common;
     String dataFile;
-    String masterData, masterDataValidate;
 
-    public ImportingMasters(WindowsDriver driver, String file) {
+    public ImportingMastersAndProperties(WindowsDriver driver, String file) {
         this.driver = driver;
         common = new Common(this.driver);
         dataFile = file;
@@ -80,6 +79,7 @@ public class ImportingMasters {
                 System.out.println("conformationText2: " + errorValidate.getText());
                 if (errorValidate.getText().contains("Some errors are found")) {
                     System.out.println("You made a mistake in the Masters import, which might be due to identical names or existing names already being present or No data");
+                    common.clickElement("xpath","//Button[@Name='Close']");
                 }
             } else {
                 System.out.println("some errors occur in the importing masters check again");
@@ -93,7 +93,7 @@ public class ImportingMasters {
         List<WebElement> fetching = common.findWebElements("xpath", "//Pane/List/ListItem");
         System.out.println("Size of fetching: " + fetching.size());
         for (WebElement v : fetching) {
-            masterDataValidate = v.getText();
+            String masterDataValidate = v.getText();
             System.out.println("masterDataValidate :" + masterDataValidate);
         }
         List<String> list2Texts = fetching.stream().map(WebElement::getText).filter(text -> !text.isEmpty()).map(String::trim).collect(Collectors.toList());
@@ -115,6 +115,8 @@ public class ImportingMasters {
 //            System.out.println("The lists have different sizes.");
 //            Assert.fail("The lists are not the same Names.");
 //        }
+        common.clickElement("xpath","//TabItem[@Name='Suppliers']/Button[@Name='Close']");
+
     }
 
     public void productsMastersImport(String selectMaster) throws InterruptedException, IOException, ParseException {
@@ -170,6 +172,7 @@ public class ImportingMasters {
         WebElement validate = common.findWebElement("xpath", "//Window[@Name='Import Data']/*[@Name='write header text here']/*[@Name='Data Import Centre']/Text[1]");
         if (validate.getText().contains("Some errors are found")) {
             Assert.fail("when You missed data might be Name,Code,Node,Description you will get this Errors" + " And We can't move to further also");
+            common.clickElement("xpath","//Button[@Name='Close']");
         } else if (validate.getText().equals("No errors found when importing data")) {
             System.out.println("no mistakes in the MasterData :" + new String(Character.toChars(0x1F602)));
             common.clickElement("xpath", "//Button[@Name='Next >']");
@@ -214,6 +217,8 @@ public class ImportingMasters {
 //            System.out.println("The lists have different sizes.");
 //            Assert.fail("The lists are not the same Names.");
 //        }
+        common.clickElement("xpath","//TabItem[@Name='Products']/Button[@Name='Close']");
+
     }
 
     public void customerMastersImport(String selectMaster) throws InterruptedException, IOException, ParseException {
@@ -269,6 +274,7 @@ public class ImportingMasters {
         WebElement validate = common.findWebElement("xpath", "//Window[@Name='Import Data']/*[@Name='write header text here']/*[@Name='Data Import Centre']/Text[1]");
         if (validate.getText().contains("Some errors are found")) {
             Assert.fail("when You missed data might be Name,Code,Node,Description you will get this Errors" + " And We can't move to further also");
+            common.clickElement("xpath","//Button[@Name='Close']");
         } else if (validate.getText().equals("No errors found when importing data")) {
             System.out.println("no mistakes in the MasterData :" + new String(Character.toChars(0x1F602)));
             common.clickElement("xpath", "//Button[@Name='Next >']");
@@ -292,7 +298,7 @@ public class ImportingMasters {
         List<WebElement> fetching = common.findWebElements("xpath", "//Pane/List/ListItem");
         System.out.println("Size of fetching: " + fetching.size());
         for (WebElement v : fetching) {
-            masterDataValidate = v.getText();
+            String masterDataValidate = v.getText();
             System.out.println("masterDataValidate :" + masterDataValidate);
         }
         List<String> list2Texts = fetching.stream().map(WebElement::getText).filter(text -> !text.isEmpty()).map(String::trim).collect(Collectors.toList());
@@ -315,6 +321,7 @@ public class ImportingMasters {
 //            System.out.println("The lists have different sizes.");
 //            Assert.fail("The lists are not the same Names.");
 //        }
+        common.clickElement("xpath","//TabItem[@Name='Customers']/Button[@Name='Close']");
 
     }
 
@@ -371,6 +378,7 @@ public class ImportingMasters {
         WebElement validate = common.findWebElement("xpath", "//Window[@Name='Import Data']/*[@Name='write header text here']/*[@Name='Data Import Centre']/Text[1]");
         if (validate.getText().contains("Some errors are found")) {
             Assert.fail("when You missed data might be Name,Code,Node,Description you will get this Errors" + " And We can't move to further also");
+            common.clickElement("xpath","//Button[@Name='Close']");
         } else if (validate.getText().equals("No errors found when importing data")) {
             System.out.println("no mistakes in the MasterData :" + new String(Character.toChars(0x1F602)));
             common.clickElement("xpath", "//Button[@Name='Next >']");
@@ -394,7 +402,7 @@ public class ImportingMasters {
         List<WebElement> fetching = common.findWebElements("xpath", "//Pane/List/ListItem");
         System.out.println("Size of fetching: " + fetching.size());
         for (WebElement v : fetching) {
-            masterDataValidate = v.getText();
+            String masterDataValidate = v.getText();
             System.out.println("masterDataValidate :" + masterDataValidate);
         }
         List<String> list2Texts = fetching.stream().map(WebElement::getText).filter(text -> !text.isEmpty()).map(String::trim).collect(Collectors.toList());
@@ -409,6 +417,8 @@ public class ImportingMasters {
                 System.out.println("No match for: " + text1);
             }
         }
+        common.clickElement("xpath","//TabItem[@Name='Branches']/Button[@Name='Close']");
+
     }
 
     public void hsnCodesMastersImporting(String selectMaster) throws InterruptedException, IOException, ParseException {
@@ -462,6 +472,7 @@ public class ImportingMasters {
         WebElement validate = common.findWebElement("xpath", "//Window[@Name='Import Data']/*[@Name='write header text here']/*[@Name='Data Import Centre']/Text[1]");
         if (validate.getText().contains("Some errors are found")) {
             Assert.fail("when You missed data might be Name,Code,Node,Description you will get this Errors" + " And We can't move to further also");
+            common.clickElement("xpath","//Button[@Name='Close']");
         } else if (validate.getText().equals("No errors found when importing data")) {
             System.out.println("no mistakes in the MasterData :" + new String(Character.toChars(0x1F602)));
             common.clickElement("xpath", "//Button[@Name='Next >']");
@@ -488,7 +499,7 @@ public class ImportingMasters {
         List<WebElement> fetching = common.findWebElements("xpath", "//Pane/List/ListItem");
         System.out.println("Size of fetching: " + fetching.size());
         for (WebElement v : fetching) {
-            masterDataValidate = v.getText();
+            String masterDataValidate = v.getText();
             System.out.println("masterDataValidate :" + masterDataValidate);
         }
         List<String> list2Texts = fetching.stream().map(WebElement::getText).filter(text -> !text.isEmpty()).map(String::trim).collect(Collectors.toList());
@@ -503,6 +514,8 @@ public class ImportingMasters {
                 System.out.println("No match for: " + text1);
             }
         }
+        common.clickElement("xpath","//TabItem[@Name='HSN Codes']/Button[@Name='Close']");
+
     }
 
     public void balanceSheetBankMastersImports(String selectMaster) throws IOException, ParseException, InterruptedException {
@@ -528,7 +541,7 @@ public class ImportingMasters {
         common.clickElement("xpath", "//Button[@Name='Browse']");
         WebElement enter = common.findWebElement("xpath", "//Edit[@Name='File name:']");
         enter.click();
-        enter.sendKeys(common.getData(dataFile, "balanceSheetBankAccount"));
+        enter.sendKeys(common.getData(dataFile, "balanceSheetBankAccountPath"));
         WebElement clickOpen = common.findWebElement("xpath", "//ComboBox[@Name='Files of type:']/Button[@Name='Open']");
         clickOpen.sendKeys(Keys.TAB, Keys.ENTER);
         common.clickElement("xpath", "//Button[@Name='Next >']");
@@ -557,6 +570,7 @@ public class ImportingMasters {
         WebElement validate = common.findWebElement("xpath", "//Window[@Name='Import Data']/*[@Name='write header text here']/*[@Name='Data Import Centre']/Text[1]");
         if (validate.getText().contains("Some errors are found")) {
             Assert.fail("when You missed data might be Name,Code,Node,Description you will get this Errors" + " And We can't move to further also");
+            common.clickElement("xpath","//Button[@Name='Close']");
         } else if (validate.getText().equals("No errors found when importing data")) {
             System.out.println("no mistakes in the MasterData :" + new String(Character.toChars(0x1F602)));
             common.clickElement("xpath", "//Button[@Name='Next >']");
@@ -573,8 +587,6 @@ public class ImportingMasters {
             }
         }
         common.clickElement("xpath", "//Button[@Name='Next >']");
-//        WebElement confirmSave = common.findWebElement("xpath", "//Window[@Name='Import Data']/*/*[@Name='Data Import Centre']");
-//        System.out.println("conformationText :" + confirmSave.getText());
         common.clickElement("xpath", "//Button[@Name='Finish']");
         System.out.println("importing Done");
         common.clickElement("xpath", "//MenuItem[@Name='Finance']");
@@ -585,7 +597,7 @@ public class ImportingMasters {
         List<WebElement> fetching = common.findWebElements("xpath", "//Pane/List/ListItem");
         System.out.println("Size of fetching: " + fetching.size());
         for (WebElement v : fetching) {
-            masterDataValidate = v.getText();
+            String masterDataValidate = v.getText();
             System.out.println("masterDataValidate :" + masterDataValidate);
         }
         List<String> list2Texts = fetching.stream().map(WebElement::getText).filter(text -> !text.isEmpty()).map(String::trim).collect(Collectors.toList());
@@ -600,6 +612,7 @@ public class ImportingMasters {
                 System.out.println("No match for: " + text1);
             }
         }
+        common.clickElement("xpath","//TabItem[@Name='Chart of Accounts']/Button[@Name='Close']");
     }
 
     public void balanceSheetCashMastersImports(String selectMaster) throws IOException, ParseException, InterruptedException {
@@ -621,7 +634,7 @@ public class ImportingMasters {
         common.clickElement("xpath", "//Button[@Name='Browse']");
         WebElement enter = common.findWebElement("xpath", "//Edit[@Name='File name:']");
         enter.click();
-        enter.sendKeys(common.getData(dataFile, "balanceSheetCashAccount"));
+        enter.sendKeys(common.getData(dataFile, "balanceSheetCashAccountPath"));
         WebElement clickOpen = common.findWebElement("xpath", "//ComboBox[@Name='Files of type:']/Button[@Name='Open']");
         clickOpen.sendKeys(Keys.TAB, Keys.ENTER);
         common.clickElement("xpath", "//Button[@Name='Next >']");
@@ -650,6 +663,7 @@ public class ImportingMasters {
         WebElement validate = common.findWebElement("xpath", "//Window[@Name='Import Data']/*[@Name='write header text here']/*[@Name='Data Import Centre']/Text[1]");
         if (validate.getText().contains("Some errors are found")) {
             Assert.fail("when You missed data might be Name,Code,Node,Description you will get this Errors" + " And We can't move to further also");
+            common.clickElement("xpath","//Button[@Name='Close']");
         } else if (validate.getText().equals("No errors found when importing data")) {
             System.out.println("no mistakes in the MasterData :" + new String(Character.toChars(0x1F602)));
             common.clickElement("xpath", "//Button[@Name='Next >']");
@@ -676,7 +690,7 @@ public class ImportingMasters {
         List<WebElement> fetching = common.findWebElements("xpath", "//Pane/List/ListItem");
         System.out.println("Size of fetching: " + fetching.size());
         for (WebElement v : fetching) {
-            masterDataValidate = v.getText();
+            String masterDataValidate = v.getText();
             System.out.println("masterDataValidate :" + masterDataValidate);
         }
         List<String> list2Texts = fetching.stream().map(WebElement::getText).filter(text -> !text.isEmpty()).map(String::trim).collect(Collectors.toList());
@@ -691,6 +705,7 @@ public class ImportingMasters {
                 System.out.println("No match for: " + text1);
             }
         }
+        common.clickElement("xpath","//TabItem[@Name='Chart of Accounts']/Button[@Name='Close']");
     }
 
     public void importContactInformationGSTProperty(String selectProperty, String importedPropertyName) throws InterruptedException, IOException, ParseException {
@@ -740,6 +755,7 @@ public class ImportingMasters {
         WebElement validate = common.findWebElement("xpath", "//Window[@Name='Import Data']/*[@Name='write header text here']/*[@Name='Data Import Centre']/Text[1]");
         if (validate.getText().contains("Some errors are found")) {
             Assert.fail("when You missed data might be Name,Code,Node,Description you will get this Errors" + " And We can't move to further also");
+            common.clickElement("xpath","//Button[@Name='Close']");
         } else if (validate.getText().equals("No errors found when importing data")) {
             System.out.println("no mistakes in the MasterData :" + new String(Character.toChars(0x1F602)));
             common.clickElement("xpath", "//Button[@Name='Next >']");
@@ -793,6 +809,9 @@ public class ImportingMasters {
                 System.out.println("property Not found");
             }
         }
+        common.clickElement("xpath","//Window[@Name='Contact Details']/TitleBar/Button[@Name='Close']");
+        common.clickElement("xpath","//TitleBar/Button[@Name='Close']");
+        common.clickElement("xpath","//TabItem[@Name='Customers']/Button[@Name='Close']");
     }
 
     public void importRegistrationGSTProperty(String selectProperty, String importedPropertyName) throws InterruptedException, IOException, ParseException {
@@ -842,6 +861,7 @@ public class ImportingMasters {
         WebElement validate = common.findWebElement("xpath", "//Window[@Name='Import Data']/*[@Name='write header text here']/*[@Name='Data Import Centre']/Text[1]");
         if (validate.getText().contains("Some errors are found")) {
             Assert.fail("when You missed data might be Name,Code,Node,Description you will get this Errors" + " And We can't move to further also");
+            common.clickElement("xpath","//Button[@Name='Close']");
         } else if (validate.getText().equals("No errors found when importing data")) {
             System.out.println("no mistakes in the MasterData :" + new String(Character.toChars(0x1F602)));
             common.clickElement("xpath", "//Button[@Name='Next >']");
@@ -895,6 +915,9 @@ public class ImportingMasters {
                 System.out.println("property Not found");
             }
         }
+        common.clickElement("xpath","//Window[@Name='Registration']/TitleBar/Button[@Name='Close']");
+        common.clickElement("xpath","//TitleBar/Button[@Name='Close']");
+        common.clickElement("xpath","//TabItem[@Name='Customers']/Button[@Name='Close']");
     }
 
     public void importShippingAddressProperty(String selectProperty,String importedPropertyName) throws InterruptedException, IOException, ParseException {
@@ -944,6 +967,7 @@ public class ImportingMasters {
         WebElement validate = common.findWebElement("xpath", "//Window[@Name='Import Data']/*[@Name='write header text here']/*[@Name='Data Import Centre']/Text[1]");
         if (validate.getText().contains("Some errors are found")) {
             Assert.fail("when You missed data might be Name,Code,Node,Description you will get this Errors" + " And We can't move to further also");
+            common.clickElement("xpath","//Button[@Name='Close']");
         } else if (validate.getText().equals("No errors found when importing data")) {
             System.out.println("no mistakes in the MasterData :" + new String(Character.toChars(0x1F602)));
             common.clickElement("xpath", "//Button[@Name='Next >']");
@@ -976,8 +1000,9 @@ public class ImportingMasters {
                 Actions actions1 = new Actions(driver);
                 actions1.doubleClick(element).perform();
                 Thread.sleep(1000);
-                common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/*[@Name='Position']",0,50);
-                WebElement clickDetails = common.findWebElement("xpath", "//Pane/*[contains(@Name,'...')]");
+                common.sliderHandling("xpath","//Pane/ScrollBar[@Name='Vertical']/*[@Name='Position']",0,120);
+                Thread.sleep(3000);
+                WebElement clickDetails = common.findWebElement("xpath", "//Text[@Name='Shipping Address GST']/following-sibling::Button[@Name='...']");
                 clickDetails.click();
                 List<WebElement> validateImportDataGSTData = common.findWebElements("xpath", "//Table[@Name='ShippingAddress']/*[@Name='Row 0']/*");
                 for (WebElement s : validateImportDataGSTData) {
@@ -998,5 +1023,9 @@ public class ImportingMasters {
                 System.out.println("property Not found");
             }
         }
+        common.clickElement("xpath","//Window[@Name='Shipping Address GST']/TitleBar/Button[@Name='Close']");
+        common.clickElement("xpath","//TitleBar/Button[@Name='Close']");
+        common.clickElement("xpath","//TabItem[@Name='Customers']/Button[@Name='Close']");
     }
+
 }

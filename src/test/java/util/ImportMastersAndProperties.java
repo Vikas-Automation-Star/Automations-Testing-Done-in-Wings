@@ -1,7 +1,7 @@
 package util;
 
 import com.wings.pages.AppLogin;
-import com.wings.utils.ImportingMasters;
+import com.wings.utils.ImportingMastersAndProperties;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class ImportMasters {
+public class ImportMastersAndProperties {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
     String dataFile = "src/main/resources/importMaster.json";
@@ -21,62 +21,68 @@ public class ImportMasters {
         appLogin.singleUserLogin();
     }
 
-//    @Test
+    @Test(priority = 1)
     public void importBranches() throws IOException, ParseException, InterruptedException {
-        ImportingMasters importing = new ImportingMasters(driver, dataFile);
+        ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
         importing.branchesMastersImporting("Branches");
     }
 
-//    @Test
-    public void importSuppliers() throws IOException, ParseException, InterruptedException {
-        ImportingMasters importing = new ImportingMasters(driver, dataFile);
-        importing.suppliersMastersImport("Suppliers");
-    }
-
-//    @Test
+    @Test(priority = 2)
     public void importCustomers() throws IOException, ParseException, InterruptedException {
-        ImportingMasters importing = new ImportingMasters(driver, dataFile);
+        ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
         importing.customerMastersImport("Customers");
     }
 
-//    @Test
+    @Test (priority = 3)
+    public void importSuppliers() throws IOException, ParseException, InterruptedException {
+        ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
+        importing.suppliersMastersImport("Suppliers");
+    }
+
+    @Test(priority = 4)
     public void importProducts() throws IOException, ParseException, InterruptedException {
-        ImportingMasters importing = new ImportingMasters(driver, dataFile);
+        ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
         importing.productsMastersImport("Products");
     }
-//    @Test
-    public void importHsnCode() throws IOException, ParseException, InterruptedException {
-        ImportingMasters importing = new ImportingMasters(driver, dataFile);
-        importing.hsnCodesMastersImporting("HSN Codes");
-    }
-//    @Test
+
+    @Test (priority = 5)
     public void importBankAccount() throws IOException, ParseException, InterruptedException {
-        ImportingMasters importing = new ImportingMasters(driver, dataFile);
+        ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
         importing.balanceSheetBankMastersImports("Balance Sheet");
     }
-//    @Test
+
+    @Test(priority = 6)
     public void importCashAccount() throws IOException, ParseException, InterruptedException {
-        ImportingMasters importing = new ImportingMasters(driver, dataFile);
+        ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
         importing.balanceSheetCashMastersImports("Balance Sheet");
     }
-//    @Test
+
+    @Test(priority = 7)
+    public void importHsnCode() throws IOException, ParseException, InterruptedException {
+        ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
+        importing.hsnCodesMastersImporting("HSN Codes");
+    }
+
+    @Test(priority = 8)
     public void ContactInformationGSTProperty() throws IOException, ParseException, InterruptedException {
-        ImportingMasters importing = new ImportingMasters(driver, dataFile);
+        ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
         importing.importContactInformationGSTProperty("Contact Information GST","Anjali Devi");
     }
-//    @Test
+
+    @Test(priority = 9)
     public void RegistrationGSTProperty() throws IOException, ParseException, InterruptedException {
-        ImportingMasters importing = new ImportingMasters(driver, dataFile);
+        ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
         importing.importRegistrationGSTProperty("Registration GST","Anjali Devi");
     }
-    @Test
+
+    @Test(priority = 10)
     public void shippingAddressProperty() throws IOException, ParseException, InterruptedException {
-        ImportingMasters importing = new ImportingMasters(driver, dataFile);
+        ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
         importing.importShippingAddressProperty("Shipping Address GST","Anjali Devi");
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-//         appLogin.logout();
+         appLogin.logout();
     }
 }
