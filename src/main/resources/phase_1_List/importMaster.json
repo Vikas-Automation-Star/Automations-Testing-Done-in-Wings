@@ -7,7 +7,13 @@
   "balanceSheetBankAccountPath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Balance Sheet.CSV",
   "balanceSheetCashAccountPath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Balance Sheet CashAccount.CSV",
 
+  "customerAddressAndContactInfo": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_CustomerAddress and Contact Details.CSV",
   "contactInformationGSTPropertyPath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Contact Information GST.CSV",
   "registrationGSTPath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Registration GST.CSV",
-  "ShippingAddressPath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Shipping Address GST.CSV"
+  "ShippingAddressPath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Shipping Address GST.CSV",
+  "bankDetailsPath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Bank Details.CSV",
+  "hsnCodePropertyPath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_GST HSN Codes.CSV",
+  "hsnRoundOffProperty": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_HSN Round Off.CSV",
+  "slabWiseGSTRatesPath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Slab Wise GST Rates.CSV",
+  "cessProductWiseCategoriesPath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_CESS GST Product Tax Categories.CSV"
 }
