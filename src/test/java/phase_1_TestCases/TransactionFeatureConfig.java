@@ -21,11 +21,15 @@ public class TransactionFeatureConfig {
         }
 
         @Test
-        public void transactionConfig() throws IOException, ParseException, InterruptedException {
+        public void draftTransaction() throws IOException, ParseException, InterruptedException {
             TransactionFeatures features=new TransactionFeatures(driver,dataFile);
             features.saveAsDraft();
+        }
+
+        @Test
+        public void holdTransaction() throws IOException, ParseException, InterruptedException {
+            TransactionFeatures features=new TransactionFeatures(driver,dataFile);
             features.holdTransaction();
-            features.voidTransaction();
         }
 
         @AfterTest
