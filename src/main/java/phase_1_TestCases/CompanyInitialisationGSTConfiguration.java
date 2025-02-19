@@ -285,7 +285,7 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         robot.keyRelease(KeyEvent.VK_ENTER);
         common.clickElement("xpath","//Button[@Name='Next >']");
         common.clickElement("xpath","//Button[@Name='Finish']");
-        System.out.println("CGST configuration completed");
+        System.out.println("CESS configuration completed");
     }
     public void companyUnits() throws InterruptedException {
         common.clickElement("xpath","//TabItem[@Name='Configure']");
@@ -367,7 +367,6 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         Thread.sleep(1500);
         common.clickElement("xpath","//Button[@Name='OK']");
     }
-
     public void addOns() throws InterruptedException {
         common.clickElement("xpath","//TabItem[@Name='Configure']");
         Thread.sleep(1000);
@@ -397,7 +396,6 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         Thread.sleep(1000);
         common.clickElement("xpath","//Text[@Name='Entry, View and Print Settings']/HyperLink[@Name='Entry, View and Print Settings']");
         Thread.sleep(1000);
-        //check boxes
         enableCheckboxSelection("//Pane//CheckBox[@Name='Do not close the transaction after save If transaction tab has more than 200 Lines']");
         enableCheckboxSelection("//Pane//CheckBox[@Name='Reset voucher series when financial year changes in all transactions.']");
         enableCheckboxSelection("//Pane//CheckBox[@Name='Allow save draft for all users in all transactions.']");
@@ -408,7 +406,7 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         enableCheckboxSelection("//Pane//CheckBox[@Name='Allow moving of masters and nodes by drag and drop in master window.']");
         enableCheckboxSelection("//Pane//CheckBox[@Name='Confirmation for closing master window.']");
         enableCheckboxSelection("//Pane//CheckBox[@Name='Show properties in master creation window.']");
-        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,40);
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,45);
         enableCheckboxSelection("//Pane//CheckBox[@Name='Enable lookup settings in all transactions.']");
         enableCheckboxSelection("//Pane//CheckBox[@Name='Show master code in master combos.']");
         enableCheckboxSelection("//Pane//CheckBox[@Name='Show description in master combos.']");
@@ -428,7 +426,7 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         enableCheckboxSelection("//Pane//CheckBox[@Name='Autowidth in all transactions.']");
         enableCheckboxSelection("//Pane//CheckBox[@Name='Allow entering transactions on future date in all transactions.']");
         enableCheckboxSelection("//Pane//CheckBox[@Name='Use date lock for previous entries in all transactions.']");
-        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,28);
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,35);
         enableCheckboxSelection("//Pane//CheckBox[@Name='Enable Incremental Voucher No']");
         enableCheckboxSelection("//Pane//CheckBox[@Name='Enable chart of accounts in financial Accounting.']");
         enableCheckboxSelection("//Pane//CheckBox[@Name='Enable voucher types in all transactions.']");
@@ -441,9 +439,12 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         enableCheckboxSelection("//Pane//CheckBox[@Name='Other Info 2']");
         enableCheckboxSelection("//Pane//CheckBox[@Name='Other Info 3']");
         enableCheckboxSelection("//Pane//CheckBox[@Name='Other Info 4']");
-        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,20);
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,10);
         enableCheckboxSelection("//Pane//CheckBox[@Name='Other Info 5']");
-        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,100);
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,50);
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Use international comma style in all transactions.']");
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,50);
+        Thread.sleep(3000);
         enableCheckboxSelection("//Pane//CheckBox[@Name='Show branch name in header in all reports.']");
         enableCheckboxSelection("//Pane//CheckBox[@Name='Show zero values in all reports.']");
         enableCheckboxSelection("//Pane//CheckBox[@Name='Supress currency prefix in all reports.']");

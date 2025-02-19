@@ -15,5 +15,7 @@
   "hsnCodePropertyPath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_GST HSN Codes.CSV",
   "hsnRoundOffProperty": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_HSN Round Off.CSV",
   "slabWiseGSTRatesPath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Slab Wise GST Rates.CSV",
-  "cessProductWiseCategoriesPath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_CESS GST Product Tax Categories.CSV"
+  "cessProductWiseCategoriesPath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_CESS GST Product Tax Categories.CSV",
+  "productStandardPurchasePricePath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Standard Purchase Price.CSV",
+  "productStandardSalesPricePath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Standard Sales Price.CSV"
 }
