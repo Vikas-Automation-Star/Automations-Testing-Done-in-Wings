@@ -12,7 +12,7 @@ import java.io.IOException;
 public class MastersConfiguration {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String dataFile="./src/main/resources/phase_1_List/masterConfig.json";
+    String dataFile = "./src/main/resources/phase_1_List/masterConfig.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
@@ -20,20 +20,46 @@ public class MastersConfiguration {
         appLogin.singleUserLogin();
     }
 
-    @Test
-    public void newNode() throws InterruptedException, IOException, ParseException, AWTException {
-        MasterConfig config =new MasterConfig(driver,dataFile);
-        String customerName=config.newCustomer();
+    @Test(priority = 1)
+    public void createNewCustomer() throws InterruptedException, IOException, ParseException, AWTException {
+        MasterConfig config = new MasterConfig(driver, dataFile);
+        String customerName = config.newCustomer();
         config.customerRename(customerName);
+    }
+
+    @Test(priority = 2)
+    public void setMasterInactive() throws InterruptedException, IOException, ParseException, AWTException {
+        MasterConfig config = new MasterConfig(driver, dataFile);
         config.masterInactive("At_Cus_Reg_Intra");
+    }
+
+    @Test(priority = 3)
+    public void nodeCreation() throws InterruptedException, IOException, ParseException, AWTException {
+        MasterConfig config = new MasterConfig(driver, dataFile);
         config.createNode();
+    }
+
+    @Test(priority = 4)
+    public void nodeRename() throws InterruptedException, IOException, ParseException, AWTException {
+        MasterConfig config = new MasterConfig(driver, dataFile);
         config.renameNode();
+    }
+
+    @Test(priority = 5)
+    public void moveAsSubNodeAndMoveToMainNode() throws InterruptedException, IOException, ParseException, AWTException {
+        MasterConfig config = new MasterConfig(driver, dataFile);
         config.moveAsSubNodeAndMainNode();
-        config.movingMastersBetweenNodes("//ListItem[@Name='AP_Customer_Customer_customer']/Text[@Name='AP_Customer_Customer_customer']");
+    }
+
+    @Test(priority = 6)
+    public void moveMastersBetweenNodes() throws InterruptedException, IOException, ParseException, AWTException {
+        MasterConfig config = new MasterConfig(driver, dataFile);
+        config.movingMastersBetweenNodes("//ListItem[@Name='Anjali Devi']/Text[@Name='Anjali Devi']");
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-            appLogin.logout();
+        appLogin.logout();
     }
+
 }

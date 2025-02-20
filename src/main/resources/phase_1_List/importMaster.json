@@ -12,10 +12,12 @@
   "registrationGSTPath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Registration GST.CSV",
   "ShippingAddressPath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Shipping Address GST.CSV",
   "bankDetailsPath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Bank Details.CSV",
+  "bankAddressAndContactDetailsPath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Bank Address and Contact Details.CSV",
   "hsnCodePropertyPath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_GST HSN Codes.CSV",
   "hsnRoundOffProperty": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_HSN Round Off.CSV",
   "slabWiseGSTRatesPath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Slab Wise GST Rates.CSV",
   "cessProductWiseCategoriesPath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_CESS GST Product Tax Categories.CSV",
   "productStandardPurchasePricePath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Standard Purchase Price.CSV",
-  "productStandardSalesPricePath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Standard Sales Price.CSV"
+  "productStandardSalesPricePath": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Standard Sales Price.CSV",
+  "branchAddressAndContactDetails": "C:\\Users\\Dell\\OneDrive\\Desktop\\WingsImportFiles\\Import_Branch Address Details.CSV"
 }

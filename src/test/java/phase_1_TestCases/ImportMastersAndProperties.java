@@ -61,28 +61,42 @@ public class ImportMastersAndProperties {
         importing.hsnCodesMastersImporting("HSN Codes");
     }
 
-    //    @Test(priority = 8)        //issue in the application
+    //    @Test(priority = 8)        //issue in the application accepting only for the excutive
 //    public void addressAndContactInformationProperty() throws IOException, ParseException, InterruptedException {
 //        ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
 //        importing.importAddressAndContactDetailsProperty("Address and Contact Details","Anjali Devi");
 //    }
 
     @Test(priority = 8)
-    public void ContactInformationGSTProperty() throws IOException, ParseException, InterruptedException {
+    public void BranchProperty() throws IOException, ParseException, InterruptedException {
+        ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
+        importing.branchContactDetails("Branch Address Details","Anantapur");
+    }
+
+    @Test(priority = 9)
+    public void customerProperty() throws IOException, ParseException, InterruptedException {
         ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
         importing.importContactInformationGSTProperty("Contact Information GST","Anjali Devi");
         importing.importRegistrationGSTProperty("Registration GST","Anjali Devi");
         importing.importShippingAddressProperty("Shipping Address GST","Anjali Devi");
     }
 
-    @Test(priority = 9)
-    public void bankAccountProperty() throws IOException, ParseException, InterruptedException {
+    @Test(priority = 10)
+    public void ProductProperty() throws IOException, ParseException, InterruptedException {
         ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
-        importing.importBankDetailsProperty("Bank Details","Axis Bank Account");
+        importing.importProductStandardPurchasePriceProperty("Standard Purchase Price", "Laptop");
+        importing.importProductStandardSalesPriceProperty("Standard Sales Price","Laptop");
     }
 
-    @Test(priority = 10)
-    public void gstHSNProperty() throws IOException, ParseException, InterruptedException {
+    @Test(priority = 11)
+    public void balanceSheetBankAccountProperty() throws IOException, ParseException, InterruptedException {
+        ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
+        importing.importBankDetailsProperty("Bank Details","Axis Bank Account");
+        importing.bankAddressAndContactDetails("Bank Address and Contact Details","Axis Bank Account");
+    }
+
+    @Test(priority = 12)
+    public void hsnCodeProperty() throws IOException, ParseException, InterruptedException {
         ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
         importing.importHSNCodesProperty("GST HSN Codes","Avinaya");
         importing.importHSNRoundOffProperty("HSN Round Off","Avinaya");
@@ -90,15 +104,8 @@ public class ImportMastersAndProperties {
         importing.importCESSGSTProductTaxCategories("CESS GST Product Tax Categories","Avinaya");
     }
 
-    @Test(priority = 11)
-    public void ProductProperty() throws IOException, ParseException, InterruptedException {
-        ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
-        importing.importProductStandardPurchasePriceProperty("Standard Purchase Price", "Laptop");
-        importing.importProductStandardSalesPriceProperty("Standard Sales Price","Laptop");
-    }
-
     @AfterTest
     public void afterTest() throws IOException {
-        appLogin.logout();
+//        appLogin.logout();
     }
 }

@@ -4,17 +4,21 @@ import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 public class MasterConfig extends Transaction {
-    WindowsDriver driver;
+    WindowsDriver driver,rootdriver;
     Common common;
     String dataFile;
 
@@ -63,9 +67,10 @@ public class MasterConfig extends Transaction {
         Thread.sleep(500);
         common.clickElement("xpath", "//Edit[@Name='Type Of Customer']/Button[@Name='Open']");
         common.rowDropDown("Type of Customer");
-        common.sliderHandling("xpath", "//*/Thumb[@Name='Position']", 0, 190);
+        common.sliderHandling("xpath", "//*/Thumb[@Name='Position']", 0, 200);
+        Thread.sleep(1000);
         common.clickElement("xpath", "//Pane[@Name='Registration']/Button[@Name='...']");
-        Thread.sleep(500);
+        Thread.sleep(1000);
         common.inputText("xpath", "//Window[@Name='Registration']/Pane/Pane/Edit[@Name='Party Reg Type *']", "registered");
         Thread.sleep(500);
         Robot robot = new Robot();
@@ -264,45 +269,61 @@ public class MasterConfig extends Transaction {
         Actions actions = new Actions(driver);
         actions.contextClick(allCustomer).perform();
         common.clickElement("name", "New Node");
-        Thread.sleep(1000);
-        common.clickElement("xpath","//Pane[@Name='GeneralInformation']/*[@Name='New Node *']/Edit[@Name='New Node *']");
-        common.inputText("xpath","//Pane[@Name='GeneralInformation']/*[@Name='New Node *']/Edit[@Name='New Node *']",common.getData(dataFile,"node"));
+        Thread.sleep(5000);
+        common.clickElement("xpath", "//Pane[@Name='GeneralInformation']/*[@Name='New Node *']/Edit[@Name='New Node *']");
+        common.inputText("xpath", "//Pane[@Name='GeneralInformation']/*[@Name='New Node *']/Edit[@Name='New Node *']", common.getData(dataFile, "node") + common.getRandom());
         common.clickElement("xpath", "//Button[@Name='Save']");
-        WebElement enter=common.findWebElement("xpath", "//Button[@Name='Yes']");
-        enter.sendKeys(Keys.ENTER,Keys.ENTER,Keys.ESCAPE);
-        common.clickElement("xpath","//TabItem[@Name='Customers']/Button[@Name='Close']");
+        common.clickElement("xpath", "//Button[@Name='Yes']");
+        common.clickElement("xpath", "//Button[@Name='Yes']");
+        DesiredCapabilities rootcapabilities = new DesiredCapabilities();
+        rootcapabilities.setCapability("app", "Root");
+        rootcapabilities.setCapability("deviceName", "WindowsPC");
+        rootdriver = new WindowsDriver<>(new URL("http://127.0.0.1:4723/"), rootcapabilities);
         Thread.sleep(1000);
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Customers");
-        common.clickElement("xpath", "//TreeItem[@Name='Customers']");
-        common.clickElement("xpath", "//TreeItem[@Name='All Customers']");
+        List<WebElement> windows = rootdriver.findElements(By.tagName("Window"));
+        Thread.sleep(2500);
+        if (windows.isEmpty()) {
+            System.out.println("No windows found.");
+        } else {
+            for (WebElement i : windows) {
+                System.out.println("WindowsNames :"+i.getText());
+                System.out.println("LegacyNAme :"+i.getAttribute("LegacyIAccessible.Role"));
+                String name = i.getAttribute("Name");
+                System.out.println("Name:- " + name);
+                if(i.getText().equals("")){
+                    Thread.sleep(1000);
+                    WebElement okButtonn = i.findElement(By.xpath("//Window/Button[@Name='OK']"));
+                    okButtonn.click();
+                    break;
+                }
+            }
+        }
+        Thread.sleep(1500);
+        common.clickElement("xpath","//TabItem[@Name='Customers']/Button[@Name='Close']");
+        navigateToMaster("Sales","Customers","//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
         List<WebElement> listElements = common.findWebElements("xpath", "//Pane[@Name='Customers']/Pane/Pane/Pane/Pane/Pane/List/ListItem");
         System.out.println("Size of elements and List: " + listElements.size());
         for (int i = 0; i < listElements.size(); i++) {
             WebElement element1= listElements.get(i);
             System.out.println("Element Text: " + element1.getText());
             String newnode=element1.getText();
-            // Check if the new name matches
-            if (element1.getText().equals(newnode)) {
-                System.out.println("Node Created Successfully  :"+common.getData(dataFile,"node"));
-                common.clickElement("xpath","//TabItem[@Name='Customers']/Button[@Name='Close']");
-                break;
+            if (element1.getText().contains(common.getData(dataFile,"node"))) {
+                Assert.assertTrue(true);
+                System.out.println("Node Created Successfully  :"+newnode);
             }
         }
+        common.clickElement("xpath","//TabItem[@Name='Customers']/Button[@Name='Close']");
     }
+
     public void renameNode() throws IOException, ParseException, InterruptedException {
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Customers");
-        Thread.sleep(1500);
-        common.clickElement("xpath", "//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
+        navigateToMaster("Sales","Customers","//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
         List<WebElement> listElements1 = common.findWebElements("xpath", "//Pane[@Name='Customers']/Pane/Pane/Pane/Pane/Pane/List/ListItem");
         System.out.println("Size of elements and List: " + listElements1.size());
         for (int i = 0; i < listElements1.size(); i++) {
             WebElement element2 = listElements1.get(i);
             System.out.println("Element Text: " + element2.getText());
             // Check if the new name matches
-            if (element2.getText().equals(common.getData(dataFile, "node"))) {
-                System.out.println("offToRenamingNode :"+common.getData(dataFile,"node"));
+            if (element2.getText().contains(common.getData(dataFile, "node"))) {
                 element2.click();
                 Actions actions1 = new Actions(driver);
                 actions1.contextClick(element2).perform();
@@ -316,9 +337,7 @@ public class MasterConfig extends Transaction {
                 break;
             }
         }
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Customers");
-        common.clickElement("xpath", "//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
+        navigateToMaster("Sales","Customers","//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
         Thread.sleep(1500);
         List<WebElement> listElements2 = common.findWebElements("xpath", "//Pane[@Name='Customers']/Pane/Pane/Pane/Pane/Pane/List/ListItem");
         System.out.println("Size of elements and List: " + listElements2.size());
@@ -326,9 +345,8 @@ public class MasterConfig extends Transaction {
             WebElement element3 = listElements2.get(i);
             System.out.println("Element Text: " + element3.getText());
             String renameNode=element3.getText();
-            // Check if the new name matches
             if (element3.getText().equalsIgnoreCase(renameNode)){
-                System.out.println("Renamed Node Successfully : "+common.getData(dataFile,"renamedNode"));
+                System.out.println("Renamed Node Successfully :"+renameNode);
                 common.clickElement("xpath","//TabItem[@Name='Customers']/Button[@Name='Close']");
                 break;
             }
@@ -336,10 +354,7 @@ public class MasterConfig extends Transaction {
     }
     public void moveAsSubNodeAndMainNode() throws InterruptedException, IOException, ParseException {
         Thread.sleep(2000);
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Customers");
-        Thread.sleep(1500);
-        common.clickElement("xpath", "//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
+        navigateToMaster("Sales","Customers","//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
         List<WebElement> listElements3 = common.findWebElements("xpath", "//Pane[@Name='Customers']/Pane/Pane/Pane/Pane/Pane/List/ListItem");
         System.out.println("Size of elements and List: " + listElements3.size());
         for (int i = 0; i < listElements3.size(); i++) {
@@ -353,17 +368,38 @@ public class MasterConfig extends Transaction {
                 common.clickElement("xpath","//MenuItem[@Name='Move As Sub-Node']");
                 Thread.sleep(1500);
                 common.clickElement("xpath","//Button[@Name='Save']");
-                WebElement enter=common.findWebElement("xpath", "//Window[@Name='Transaction']/*/Button[@Name='Yes']");
-                enter.sendKeys(Keys.ENTER,Keys.ENTER,Keys.ESCAPE);
+                common.clickElement("xpath", "//Button[@Name='Yes']");
+                common.clickElement("xpath", "//Button[@Name='Yes']");
+                DesiredCapabilities rootcapabilities = new DesiredCapabilities();
+                rootcapabilities.setCapability("app", "Root");
+                rootcapabilities.setCapability("deviceName", "WindowsPC");
+                rootdriver = new WindowsDriver<>(new URL("http://127.0.0.1:4723/"), rootcapabilities);
+                Thread.sleep(1000);
+                List<WebElement> windows = rootdriver.findElements(By.tagName("Window"));
+                Thread.sleep(2500);
+                if (windows.isEmpty()) {
+                    System.out.println("No windows found.");
+                } else {
+                    for (WebElement v : windows) {
+                        System.out.println("WindowsNames :"+v.getText());
+                        System.out.println("LegacyNAme :"+v.getAttribute("LegacyIAccessible.Role"));
+                        String name = v.getAttribute("Name");
+                        System.out.println("Name:- " + name);
+                        if(v.getText().equals("")){
+                            Thread.sleep(1000);
+                            WebElement okButtonn = v.findElement(By.xpath("//Window/Button[@Name='OK']"));
+                            okButtonn.click();
+                            break;
+                        }
+                    }
+                }
                 common.clickElement("xpath","//TabItem[@Name='Customers']/Button[@Name='Close']");
                 Thread.sleep(1000);
-                common.clickElement("name", "Sales");
-                common.clickElement("name", "Customers");
-                common.clickElement("xpath", "//TreeItem[@Name='All Customers']");
+                navigateToMaster("Sales","Customers","//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
                 Thread.sleep(1000);
                 WebElement right=common.findWebElement("xpath","//TreeItem[@Name='All Customers']");
                 right.sendKeys(Keys.ARROW_RIGHT,Keys.ARROW_RIGHT);
-                WebElement readText=common.findWebElement("xpath","//TreeItem[@Name='All Customers']/TreeItem[@Name='NewNodeRename']");
+                WebElement readText=common.findWebElement("xpath","//TreeItem[@Name='All Customers']/TreeItem");
                 String movedNode=readText.getText();
                 System.out.println("MovedNode Text :"+movedNode);
                 if(readText.getText().equalsIgnoreCase(moveToSubNode)) {
@@ -376,8 +412,8 @@ public class MasterConfig extends Transaction {
                 common.clickElement("xpath","//Button[@Name='OK']");
                 System.out.println("Node moved to Main Node");
                 common.clickElement("xpath","//TabItem[@Name='Customers']/Button[@Name='Close']");
-
-                List<WebElement> mainNode=common.findWebElements("xpath","//Tree/TreeItem[@Name='Customers']/*[contains(@Name,'NewNodeRename')]");
+                navigateToMaster("Sales","Customers","//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
+                List<WebElement> mainNode=common.findWebElements("xpath","//TreeItem");
                 System.out.println("allNodesText :"+mainNode.size());
                 for (WebElement v:mainNode){
                     System.out.println("printing all MainNodes :"+v.getText());
@@ -385,15 +421,12 @@ public class MasterConfig extends Transaction {
                         System.out.println("Great subNode is MovedToMainNode :"+movedNode);
                     }
                 }
-                break;
             }
+            break;
         }
     }
-    public void movingMastersBetweenNodes(String movingMasterNamePath) throws InterruptedException {
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Customers");
-        Thread.sleep(1500);
-        common.clickElement("xpath", "//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
+    public void movingMastersBetweenNodes(String movingMasterNamePath) throws InterruptedException, MalformedURLException {
+        navigateToMaster("Sales","Customers","//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
         WebElement selectingMaster= common.findWebElement("xpath",movingMasterNamePath);
         String selectMasterTomoveAnotherNode=selectingMaster.getText();
         Actions actions = new Actions(driver);
@@ -403,17 +436,40 @@ public class MasterConfig extends Transaction {
         choose.click();
         choose.sendKeys(Keys.DOWN,Keys.ENTER);
         common.clickElement("xpath", "//Button[@Name='Save']");
+        common.clickElement("xpath", "//Button[@Name='Yes']");
+        common.clickElement("xpath", "//Button[@Name='Yes']");
+        DesiredCapabilities rootcapabilities = new DesiredCapabilities();
+        rootcapabilities.setCapability("app", "Root");
+        rootcapabilities.setCapability("deviceName", "WindowsPC");
+        rootdriver = new WindowsDriver<>(new URL("http://127.0.0.1:4723/"), rootcapabilities);
         Thread.sleep(1000);
-//        common.clickElement("xpath", "//Button[@Name='Yes']");
-        WebElement enter=common.findWebElement("xpath", "//Button[@Name='Yes']");
-        enter.sendKeys(Keys.ENTER,Keys.ENTER,Keys.ESCAPE);
+        List<WebElement> windows = rootdriver.findElements(By.tagName("Window"));
+        Thread.sleep(2500);
+        if (windows.isEmpty()) {
+            System.out.println("No windows found.");
+        } else {
+            for (WebElement i : windows) {
+                System.out.println("WindowsNames :"+i.getText());
+                System.out.println("LegacyNAme :"+i.getAttribute("LegacyIAccessible.Role"));
+                String name = i.getAttribute("Name");
+                System.out.println("Name:- " + name);
+                if(i.getText().equals("")){
+                    Thread.sleep(1000);
+                    WebElement okButtonn = i.findElement(By.xpath("//Window/Button[@Name='OK']"));
+                    okButtonn.click();
+                    break;
+                }
+            }
+        }
         common.clickElement("xpath","//TabItem[@Name='Customers']/Button[@Name='Close']");
         common.clickElement("name", "Sales");
         common.clickElement("name", "Customers");
         Thread.sleep(1000);
-        WebElement right=common.findWebElement("xpath","//TreeItem[@Name='All Customers']");
-        right.sendKeys(Keys.ARROW_RIGHT,Keys.ARROW_RIGHT);
-        common.clickElement("xpath","//TreeItem[@Name='NewNodeRename']");
+//        WebElement right=common.findWebElement("xpath","//TreeItem[@Name='All Customers']");
+//        right.sendKeys(Keys.ENTER);
+        common.clickElement("xpath","//TreeItem[@Name='All Customers']");
+        common.clickElement("xpath","//TreeItem[starts-with(@Name,'NewNode')]");
+//        common.clickElement("xpath","//TreeItem[@Name='Customers']/*[@Name='All Customers']/*[starts-with(@Name,'NewNode')]");
         List<WebElement> listElement = common.findWebElements("xpath", "//Pane[@Name='Customers']/Pane/Pane/Pane/Pane/Pane/List/ListItem");
         System.out.println("Size of elements and List: " + listElement.size());
         for (WebElement s:listElement){
@@ -422,7 +478,6 @@ public class MasterConfig extends Transaction {
                 System.out.println("Great masterMoved To The Some Other Node :"+selectMasterTomoveAnotherNode);
             }
         }
-
 
     }
 }

@@ -604,7 +604,11 @@ public abstract class Transaction {
     public void navigateToUnclearedPayments() {
         common.clickElement("xpath", "//TabItem[contains(@Name,'Uncleared Payments')]");
     }
-
+    public void navigateToMaster(String menuItemName,String masterName,String subMasterName){
+        common.clickElement("name", menuItemName);
+        common.clickElement("name", masterName);
+        common.clickElement("xpath", subMasterName);
+    }
 
     public void navigateToSalesEnquiryMenu() {
         common.clickElement("name", "Sales");
@@ -1103,7 +1107,6 @@ public abstract class Transaction {
         System.out.println("Screen Name:-" + pageValidation);
         Assert.assertEquals(pageValidation, "Debit Note");
     }
-
 
     public void transactionSave() throws InterruptedException {
         common.clickElement("xpath", "//Button[@Name='Save']");
