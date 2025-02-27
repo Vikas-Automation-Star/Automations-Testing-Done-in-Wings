@@ -12,11 +12,11 @@ import java.net.URL;
 
 public class CreateCompany {
     WindowsDriver driver, logindriver;
-    public static String CompanyName = "TestingConfiguration", Password = "Wings@123",currencyText,stockValuationText,registrationNum = "998921", panNum = "AEKPE1471P";
+    public static String CompanyName = "Test_Company_1", Password = "Wings@123",currencyText,stockValuationText,registrationNum = "998921", panNum = "AEKPE1471P";
 
     public void login() throws IOException, InterruptedException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("app", "C:\\Program Files (x86)\\Wings Infonet\\Wings Accounting 24DNP\\Wings.exe");
+        capabilities.setCapability("app", "C:\\Program Files (x86)\\Wings Infonet\\Wings Books 24D\\Wings.exe");
         capabilities.setCapability("platformName", "Windows");
         capabilities.setCapability("deviceName", "WindowsPC");
         driver = new WindowsDriver<>(new URL("http://127.0.0.1:4723/"), capabilities);
@@ -43,7 +43,7 @@ public class CreateCompany {
         driver.findElementByXPath("//Button[@Name='Next']").click();
         driver.findElementByName("OK").click();
         Thread.sleep(1500);
-        driver.findElementByXPath("//Edit[@Name='Database ServerRequestFunctions']").sendKeys("Vikas");
+        driver.findElementByXPath("//Edit[@Name='Database ServerRequestFunctions']").sendKeys("Madhuri");
         driver.findElementByXPath("//Button[@Name='Next']").click();
 
         Thread.sleep(200000);
@@ -65,7 +65,7 @@ public class CreateCompany {
         System.out.println("Company creation with name " + CompanyName + " is successful ");
 
         DesiredCapabilities logincapabilities = new DesiredCapabilities();
-        logincapabilities.setCapability("app", "C:\\Program Files (x86)\\Wings Infonet\\Wings Accounting 24DNP\\Wings.exe");
+        logincapabilities.setCapability("app", "C:\\Program Files (x86)\\Wings Infonet\\Wings Books 24D\\Wings.exe");
         logincapabilities.setCapability("platformName", "Windows");
         logincapabilities.setCapability("deviceName", "WindowsPC");
         logindriver = new WindowsDriver(new URL("http://127.0.0.1:4723"), logincapabilities);
@@ -120,6 +120,7 @@ public class CreateCompany {
 
         logindriver.findElementByXPath("//Edit[@Name='Short Code']").sendKeys("998921");
         logindriver.findElementByXPath("//Button[@Name='Save']").click();
+        Thread.sleep(2500);
         logindriver.findElementByXPath("//Button[@Name='OK']").click();
         System.out.println("Overall Company creation test script ran successfully without any issues! " + new String(Character.toChars(0x1F349)));
     }

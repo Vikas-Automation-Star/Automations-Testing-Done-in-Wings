@@ -1613,7 +1613,10 @@ public abstract class Transaction {
         }
     }
 
-
+    public void refresh(){
+        common.clickElement("xpath","//MenuItem[@Name='Tools']");
+        common.clickElement("xpath","//MenuItem[@Name='Clear Cache']");
+    }
 //ONLY REPORTS
 
     public void bulkVerifyReport(String transaction) {

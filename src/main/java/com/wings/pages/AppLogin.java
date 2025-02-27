@@ -58,6 +58,21 @@ public class AppLogin {
 //        Assert.assertEquals("Wings Finance - PRO [ Wings InfoNet ; 01-04-2024 To 31-03-2025 ; Super User ]",title);
     }
 
+    public void singleUserLogin(String userName,String password) throws InterruptedException, IOException, ParseException {
+        Thread.sleep(2000);
+        common.clickElement("xpath", "//Pane[@Name='Choose a recent company']/Text[@Name='> " + common.getData(fileData, "companyName") + "']/*[@Name='> " + common.getData(fileData, "companyName") + "']");
+        Thread.sleep(3000);
+        common.inputText("xpath","//Edit[@Name='User name']",userName);
+        common.inputText("xpath", "//Edit[@Name='Password']", password);
+        common.clickElement("xpath", "//Button[@Name='Submit']");
+        Thread.sleep(2500);
+        common.clickElement("name", "OK");
+        System.out.println("Super User Login for " + common.getData(fileData, "companyName") + " company is successful " + new String(Character.toChars(0x2705)));
+        String title = driver.getTitle();
+        System.out.println(title);
+//        Assert.assertEquals("Wings Finance - PRO [ Wings InfoNet ; 01-04-2024 To 31-03-2025 ; Super User ]",title);
+    }
+
     public WindowsDriver launchSingleUserApp() throws IOException, InterruptedException {
         driver = common.initializeDriver(common.getProperty("singleUserApp"));
         driver.manage().window().maximize();
@@ -68,38 +83,13 @@ public class AppLogin {
 
     public void logout() throws IOException {
         try {
+            Thread.sleep(1500);
             common.clickElement("xpath", "//MenuItem[@Name='File']");
+            Thread.sleep(1500);
             common.clickElement("name", "Exit");
             common.clickElement("name", "Yes");
         } catch (Exception exception) {
             exception.printStackTrace();
         }
-//        } finally {
-//            common.quitWinAppServer();
-//        }
     }
-
-    public void differentUserLogin(String userName) throws InterruptedException, IOException, ParseException {
-        Thread.sleep(2000);
-        common.clickElement("xpath", "//Pane[@Name='Choose a recent company']/Text[@Name='> " + common.getData(fileData, "companyName") + "']/*[@Name='> " + common.getData(fileData, "companyName") + "']");
-        Thread.sleep(3000);
-        WebElement user= common.findWebElement("xpath","//Edit[@Name='User name']");
-        user.clear();
-        user.sendKeys(userName);
-        common.inputText("xpath", "//Edit[@Name='Password']", common.getData(fileData, "password"));
-        common.clickElement("xpath", "//Button[@Name='Submit']");
-        Thread.sleep(2500);
-        common.clickElement("name", "OK");
-        System.out.println("Super User Login for " + common.getData(fileData, "companyName") + " company is successful " + new String(Character.toChars(0x2705)));
-        String title = driver.getTitle();
-        System.out.println(title);
-        if (title.contains(userName)){
-            System.out.println("Successfully navigated to different user");
-        }
-        else {
-            Assert.fail("User Login Failed");
-        }
-    }
-
-
 }

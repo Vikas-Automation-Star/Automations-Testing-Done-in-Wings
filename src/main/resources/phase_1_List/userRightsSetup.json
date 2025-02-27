@@ -1,0 +1,18 @@
+{
+  "superUser": "Super User",
+  "user": "Sample User_1",
+  "password": "Wings@123",
+  "canView": "YES",
+  "canCreate": "YES",
+  "enterScreen": "YES",
+  "canEditMasterProperty": "YES",
+  "newAccountGroup": "New_Account_Group_Two",
+
+  "reportName": "Account Balances",
+  "reportNameUpdated": "Account Balances-AC",
+  "masterName": "Account Groups",
+  "transactionName": "Payments to Parties",
+  "transactionUpdated": "Payments to Parties-AC",
+
+  "propertyMaster": "Customers"
+}
