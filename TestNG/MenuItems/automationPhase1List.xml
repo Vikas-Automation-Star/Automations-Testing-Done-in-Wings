@@ -1,0 +1,33 @@
+<suite name="CompanyCreation, configure Company And Masters Importing">
+
+    <listeners>
+        <listener class-name="com.wings.utils.Listener"></listener>
+<!--        <listener class-name="util.AnnotationTransformer"/>-->
+    </listeners>
+
+
+    <test name="CompanyCreationAlongWithConfigurations" description="description for BranchMaster" testID="1">
+        <classes>
+            <class name="util.CompanyInitilizatonGSTconfig"></class>
+        </classes>
+    </test>
+
+    <test name="MastersAndPropertiesImporting" description="importing Branches,Customers,Suppliers,Products,BankAccount,CashAccount,HSN Codes" testID="2">
+        <classes>
+            <class name="phase_1_TestCases.ImportMastersAndProperties"></class>
+        </classes>
+    </test>
+
+    <test name="MastersAndNodesCreationAndNavigation" description="Creating Masters,Nodes and Moving " testID="3">
+        <classes>
+            <class name="phase_1_TestCases.MastersConfiguration"></class>
+        </classes>
+    </test>
+
+    <test name="VoucherTypesAndSeries" description="VoucherTypes,Manual VoucherTypes,Multiple VoucherTypes" testID="3">
+        <classes>
+            <class name="phase_1_TestCases.VoucherTypesAndSeries"></class>
+        </classes>
+    </test>
+
+</suite>
