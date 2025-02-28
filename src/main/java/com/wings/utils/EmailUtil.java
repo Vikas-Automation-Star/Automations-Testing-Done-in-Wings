@@ -48,7 +48,7 @@ public class EmailUtil {
             msg.setFrom(new InternetAddress("productupdates@wingsinfo.net", "NoReply-QA"));
             //msg.setReplyTo(InternetAddress.parse("no_reply@example.com", false));
 
-            msg.setSubject("Sales Invoices Test Cases", "UTF-8");
+            msg.setSubject("Automation Reports", "UTF-8");
             //Wings Test Automation Reports
             //msg.setText(body, "UTF-8");
             msg.setContent(multipart);

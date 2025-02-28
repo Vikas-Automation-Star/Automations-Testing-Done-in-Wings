@@ -58,7 +58,7 @@ public class XMLUtil {
                 "<td align=\"left\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">" + name + "</td>" +
                 "<td  align=\"left\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">" + status + "</td>" +
                 "<td align=\"center\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">" + description + "</td>" +
-                "<td align=\"left\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">" + duration + "s" + "</td></tr>";
+                "<td align=\"left\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">" + duration + "min" + "</td></tr>";
 
     }
 
@@ -102,7 +102,7 @@ public class XMLUtil {
         for (int i = 0; i < testList.getLength(); i++) {
             Element testElement = (Element) testList.item(i);
             String name = testElement.getAttribute("name");
-            double duration = Double.parseDouble(testElement.getAttribute("duration-min")) / 1000;
+            double duration = Double.parseDouble(testElement.getAttribute("duration-ms")) / 60000;
 
             NodeList testMethodTags = testElement.getElementsByTagName("test-method");
             if (testMethodTags.getLength() > 0) {
@@ -173,7 +173,7 @@ public class XMLUtil {
         // Send email with report attached
         final String fromEmail = "productupdates@wingsinfo.net";
         final String password = "Zuy97283";
-        final String toEmail = "vikas.empuluri@wingsinfo.net,madhuri.matta@wingsinfo.net";//,manoj.c@wingsinfo.net,ashokreddy.rs@wingsinfo.net,venkatarathaiah.m@wingsinfo.net";
+        final String toEmail = "vikas.empuluri@wingsinfo.net,madhuri.matta@wingsinfo.net,manoj.c@wingsinfo.net";//,venkatarathaiah.m@wingsinfo.net";
 
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.office365.com");
@@ -194,7 +194,7 @@ public class XMLUtil {
     public static void main(String[] args) {
         XMLUtil xmlUtil = new XMLUtil();
         try {
-            xmlUtil.readTestNG("./TestNG/MenuItems/salesInvoicesTestCases.xml");// Parse bothSuite.xml and testng-results.xml
+            xmlUtil.readTestNG("./TestNG/MenuItems/sampleSuite.xml");// Parse bothSuite.xml and testng-results.xml
             xmlUtil.readTestNGResults("./target/surefire-reports/testng-results.xml"); // Process test results and send email
         } catch (Exception e) {
             e.printStackTrace();
