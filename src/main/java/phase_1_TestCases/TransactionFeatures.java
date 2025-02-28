@@ -4,9 +4,8 @@ import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
-import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -31,8 +30,6 @@ public class TransactionFeatures extends Transaction {
     public void saveAsDraft() throws InterruptedException, IOException, ParseException {
         navigateToSalesEnquiryMenu();
         Thread.sleep(1500);
-        common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
-//        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
 //        selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
@@ -103,11 +100,10 @@ public class TransactionFeatures extends Transaction {
             }
         }
     }
+
     public void holdTransaction() throws IOException, ParseException, InterruptedException {
         navigateToSalesEnquiryMenu();
         Thread.sleep(1500);
-        common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
-//        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
 //        selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
@@ -146,9 +142,6 @@ public class TransactionFeatures extends Transaction {
         rootdriver = new WindowsDriver<>(new URL("http://127.0.0.1:4723/"), rootcapabilities);
         List<WebElement> panes = rootdriver.findElements(By.tagName("Window"));
         for (WebElement i : panes) {
-            String nativeWindow = i.getAttribute("NativeWindowHandle");
-            String hexloginid = Integer.toHexString(Integer.parseInt(nativeWindow));
-            System.out.println("window id: " + hexloginid);
             String name = i.getAttribute("Name");
             System.out.println("Name:- " + name);
             if (name.equals("Open Hold Transaction")) {
@@ -180,6 +173,68 @@ public class TransactionFeatures extends Transaction {
             }
         }
     }
+
+    public void saveAsTemplate() throws InterruptedException, IOException, ParseException {
+//        navigateToSalesEnquiryMenu();
+//        Thread.sleep(1500);
+
+//        common.clickElement("xpath", "//Edit[@Name='Branch *']");
+////        selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
+//        common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
+////        selectAndValidateData(common.getData(dataFile, "transaction"), "xpath", "//Edit[@Name='Trans Currency *']");
+//        common.clickElement("xpath", "//Edit[@Name='Party Code']");
+////        selectAndValidateDataNew(common.getData(dataFile, "partyCode"), "xpath", "//Edit[@Name='Party Code']");
+//        common.clickElement("xpath", "//Edit[@Name='Party Account *']");
+////        Thread.sleep(5000);
+////        gstTransactionType(common.getData(dataFile, "gstType"));
+//        Thread.sleep(1500);
+//        common.clickElement("xpath", "//Edit[@Name='Price List']");
+////        selectAndValidateData(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
+//        common.clickElement("xpath", "//Edit[@Name='Executive *']");
+//        selectAndValidateData(common.getData(dataFile, "executive"), "xpath", "//Edit[@Name='Executive *']");
+
+
+        //THIS IS WORKING//
+//        common.clickElement("xpath", "//Text[@Name='Remarks']");
+//        WebElement remarksButton= common.findWebElement("xpath", "//Text[@Name='Remarks']");
+//        Actions actions=new Actions(driver);
+//        actions.contextClick(remarksButton).sendKeys(Keys.DOWN,Keys.ENTER).perform();
+
+
+//        Thread.sleep(6000);
+//        WebElement field=common.findWebElement("xpath","//Window[@Name='Wings Accounting 24DNP - PRO [ 24D Books Fin AT ; 01-04-2024 To 31-03-2025 ; Super User ]']/Menu/MenuItem[@Name='Configure Field']");
+//        System.out.println("field:"+field.getAttribute("LegacyIAccessible.State"));
+//        field.sendKeys(Keys.ENTER);
+//        System.out.println("text :"+click);
+//        common.clickElement("xpath","//Menu/*[@Name='Configure Field']");
+
+
+//        selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
+        //items
+//        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']", dataFile, "draftProduct");
+////        enterData("xpath", "//Edit[@Name='Quantity * Row 0, Not sorted.']", dataFile, "draftQuantity");
+//        //save as draft
+//        common.clickElement("xpath", "//ToolBar/Button[@Name='Tools']");
+//        common.clickElement("xpath", "//Button[@Name='Save Template']");
+//        common.inputText("xpath", "//Edit[@Name='Enter VoucherSeries']", "Temp");
+//        common.inputText("xpath", "//Edit[@Name='Enter VoucherNo']", "4");
+//        common.clickElement("xpath", "//Button[@Name='Ok']");
+//        common.clickElement("xpath", "//Window[@Name='Transaction saved.']/Button[@Name='OK']");
+//        //open draft
+        common.clickElement("xpath", "//MenuItem[@Name='Tools']");
+        common.clickElement("xpath", "//MenuItem[@Name='Vouchers']");
+        common.clickElement("xpath", "//MenuItem[@Name='Open Template Transaction']");
+        Thread.sleep(3000);
+//        common.clickElement("xpath","//Window[@Name='Select Template']/Table/*[@Name='Data Panel']/ListItem[@Name='Row 2']/Item[@Name='Transaction row 2']");
+
+//        got to driver and navigate to select template window
+
+
+        WindowsDriver root = common.initializeDriver("Root");
+        WebElement login = root.findElement(By.name("Select Template"));
+        common.clickElement("xpath","//Button[@Name='Ok']");
+    }
+
 
     public void voidTransaction() throws IOException, ParseException, InterruptedException {
         common.clickElement("xpath", "//MenuItem[@Name='Tools']");

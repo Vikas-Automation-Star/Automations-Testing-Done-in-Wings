@@ -20,20 +20,26 @@ public class TransactionFeatureConfig {
             appLogin.singleUserLogin();
         }
 
-        @Test
+//        @Test
         public void draftTransaction() throws IOException, ParseException, InterruptedException {
             TransactionFeatures features=new TransactionFeatures(driver,dataFile);
             features.saveAsDraft();
         }
 
-        @Test
+//        @Test
         public void holdTransaction() throws IOException, ParseException, InterruptedException {
             TransactionFeatures features=new TransactionFeatures(driver,dataFile);
             features.holdTransaction();
         }
 
+        @Test
+        public void saveAsTemplate() throws IOException, ParseException, InterruptedException {
+            TransactionFeatures template=new TransactionFeatures(driver,dataFile);
+            template.saveAsTemplate();
+        }
+
         @AfterTest
         public void afterTest() throws IOException {
-            appLogin.logout();
+//            appLogin.logout();
         }
     }
