@@ -8,6 +8,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -604,7 +606,8 @@ public abstract class Transaction {
     public void navigateToUnclearedPayments() {
         common.clickElement("xpath", "//TabItem[contains(@Name,'Uncleared Payments')]");
     }
-    public void navigateToMaster(String menuItemName,String masterName,String subMasterName){
+
+    public void navigateToMaster(String menuItemName, String masterName, String subMasterName) {
         common.clickElement("name", menuItemName);
         common.clickElement("name", masterName);
         common.clickElement("xpath", subMasterName);
@@ -1115,8 +1118,16 @@ public abstract class Transaction {
         common.clickElement("xpath", "//Window[@Name='Transaction saved.']/Button[@Name='OK']");
     }
 
+    public void saveProperties() throws InterruptedException {
+        common.clickElement("xpath", "//Button[@Name='Save']");
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//Button[@Name='OK']"))).click();
+        Thread.sleep(1000);
+        common.clickElement("xpath", "//Button[@Name='OK']");
+    }
+
     public void lastTransactionName() {
-        System.out.println(common.findWebElement("xpath", "//Text[@Name='Last Saved :']/following-sibling::Text").getAttribute("Name"));
+        System.out.println("lastSaved :" + common.findWebElement("xpath", "//Text[@Name='Last Saved :']/following-sibling::Text").getAttribute("Name"));
     }
 
     public void closeTransaction(String transaction) {
@@ -1442,8 +1453,7 @@ public abstract class Transaction {
                 } else {
                     throw new IllegalArgumentException("Invalid GST Trans Type: " + gstTransType);
                 }
-            }
-            else if (taxType.equalsIgnoreCase("Exclusive")) {
+            } else if (taxType.equalsIgnoreCase("Exclusive")) {
                 double taxableValue = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='Taxable Value Row " + i + ", Not sorted.']").getText());
                 System.out.println("taxable: " + taxableValue);
                 // Exclusive Tax Calculations
@@ -1478,13 +1488,13 @@ public abstract class Transaction {
 
 
     public String oldTTransactionID() {
-        String oldID=common.findWebElement("xpath", "//Text[@Name='Last Saved :']/following-sibling::Text").getAttribute("Name");
+        String oldID = common.findWebElement("xpath", "//Text[@Name='Last Saved :']/following-sibling::Text").getAttribute("Name");
         return oldID;
     }
 
     public String newTransactionID(String oldID) {
-        String newID=common.findWebElement("xpath", "//Text[@Name='Last Saved :']/following-sibling::Text").getAttribute("Name");
-        return  newID;
+        String newID = common.findWebElement("xpath", "//Text[@Name='Last Saved :']/following-sibling::Text").getAttribute("Name");
+        return newID;
     }
 
     public void oldTTransaction() {
@@ -1634,7 +1644,7 @@ public abstract class Transaction {
         List<WebElement> elementList = common.findWebElements("xpath", "//Table/*[@Name='Data Panel']/ListItem[contains(@Name,'Row')]");
         System.out.println("Size :" + elementList.size());
         for (WebElement i : elementList) {
-            System.out.println("text :"+i.getText());
+            System.out.println("text :" + i.getText());
             if (i.getText().contains(transaction)) {
                 System.out.println("verifyingRow :");
                 bulkVerifyReportData(i.getText(), dataFile);
@@ -1660,36 +1670,36 @@ public abstract class Transaction {
 
     public void deleteSingleTransaction(String voucherID) throws InterruptedException {
         List<WebElement> elementList = common.findWebElements("xpath", "//Table/*[@Name='Data Panel']/ListItem[contains(@Name,'Row')]");
-        for (WebElement i : elementList){
-            if (i.getText().contains(voucherID)){
-                WebElement element=i.findElement(By.xpath("//DataItem[contains(@Name,'Voucher No row')]"));
+        for (WebElement i : elementList) {
+            if (i.getText().contains(voucherID)) {
+                WebElement element = i.findElement(By.xpath("//DataItem[contains(@Name,'Voucher No row')]"));
                 element.click();
-                Actions actions=new Actions(driver);
+                Actions actions = new Actions(driver);
                 actions.contextClick(element).perform();
                 break;
             }
         }
         Thread.sleep(1000);
-        common.clickElement("xpath","//MenuItem[@Name='View Transaction']");
+        common.clickElement("xpath", "//MenuItem[@Name='View Transaction']");
         Thread.sleep(10000);
-        common.clickElement("xpath","//Button[@Name='Tools']");
-        common.clickElement("xpath","//Button[@Name='Delete']");
-        common.clickElement("xpath","//Button[@Name='Yes']");
-        common.clickElement("xpath","//Button[@Name='OK']");
-        common.clickElement("xpath","//Window[@Name='Close']/Button[@Name='Yes']");
+        common.clickElement("xpath", "//Button[@Name='Tools']");
+        common.clickElement("xpath", "//Button[@Name='Delete']");
+        common.clickElement("xpath", "//Button[@Name='Yes']");
+        common.clickElement("xpath", "//Button[@Name='OK']");
+        common.clickElement("xpath", "//Window[@Name='Close']/Button[@Name='Yes']");
         //validate
-        common.clickElement("xpath","//ToolBar/Button[@Name='Refresh']");
+        common.clickElement("xpath", "//ToolBar/Button[@Name='Refresh']");
         Thread.sleep(1500);
         List<WebElement> voucherList = common.findWebElements("xpath", "//Table/*[@Name='Data Panel']/ListItem[contains(@Name,'Row')]");
-        for (WebElement i : voucherList){
-            if (i.getText().contains(voucherID)){
+        for (WebElement i : voucherList) {
+            if (i.getText().contains(voucherID)) {
                 Assert.fail("New Transaction isn't deleted");
             }
         }
         System.out.println("Transaction is Deleted Successfully");
     }
 
-    public void enableCheckboxSelection(String locatorXpath ){
+    public void enableCheckboxSelection(String locatorXpath) {
         WebElement element = driver.findElementByXPath(locatorXpath);
         String checkBoxToggleState = element.getAttribute("Toggle.ToggleState");
         System.out.println("Check Box Toggle state:-" + checkBoxToggleState);
@@ -1697,16 +1707,55 @@ public abstract class Transaction {
             element.click();
             String checkBoxToggleState1 = element.getAttribute("Toggle.ToggleState");
             System.out.println("Check Box Toggle state:-" + checkBoxToggleState1);
-            if (checkBoxToggleState1.equals("1")){
+            if (checkBoxToggleState1.equals("1")) {
                 System.out.println("Checkbox was unchecked, now checked.");
-            }
-            else if (checkBoxToggleState1.equals("0")){
+            } else if (checkBoxToggleState1.equals("0")) {
                 element.click();
-            }
-            else Assert.fail("Check Box it not selected");
-        } else if (checkBoxToggleState.equals("1")){
+            } else Assert.fail("Check Box it not selected");
+        } else if (checkBoxToggleState.equals("1")) {
             System.out.println("Checkbox is already checked, no action needed.");
-        }
-        else Assert.fail("Element Not Found");
+        } else Assert.fail("Element Not Found");
+
+    }
+
+    public String checkboxSelection(String locatorXpath) {
+        WebElement element = driver.findElementByXPath(locatorXpath);
+        String text = element.getText();
+        String checkBoxToggleState = element.getAttribute("Toggle.ToggleState");
+        System.out.println("Check Box Toggle state:-" + checkBoxToggleState);
+        if (checkBoxToggleState.equals("0")) {
+            element.click();
+            String checkBoxToggleState1 = element.getAttribute("Toggle.ToggleState");
+            System.out.println("Check Box Toggle state:-" + checkBoxToggleState1);
+            if (checkBoxToggleState1.equals("1")) {
+                System.out.println("Checkbox was unchecked, now checked.");
+            } else if (checkBoxToggleState1.equals("0")) {
+                element.click();
+            } else Assert.fail("Check Box it not selected");
+        } else if (checkBoxToggleState.equals("1")) {
+            System.out.println("Checkbox is already checked, no action needed.");
+        } else Assert.fail("Element Not Found");
+        return text;
+    }
+
+    public String uncheckCheckBox(String locatorXpath) {
+        WebElement element = driver.findElementByXPath(locatorXpath);
+        String text = element.getText();
+        String checkBoxToggleState = element.getAttribute("Toggle.ToggleState");
+        System.out.println("Check Box Toggle state:-" + checkBoxToggleState);
+        if (checkBoxToggleState.equals("1")) {
+            System.out.println("Checkbox is already checked, do uncheck");
+            element.click();
+            String checkBoxToggleState1 = element.getAttribute("Toggle.ToggleState");
+            System.out.println("Check Box Toggle state:-" + checkBoxToggleState1);
+            if (checkBoxToggleState1.equals("0")) {
+                System.out.println("Checkbox was unchecked");
+            } else if (checkBoxToggleState1.equals("1")) {
+                System.out.println("Checkbox is already checked, no action needed.");
+            } else Assert.fail("Check Box it not selected");
+        } else if (checkBoxToggleState.equals("0")) {
+            System.out.println("Checkbox was unchecked,no need action");
+        } else Assert.fail("Element Not Found");
+        return text;
     }
 }

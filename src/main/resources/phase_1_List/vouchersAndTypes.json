@@ -1,0 +1,16 @@
+{
+  "branch": "AT_Branch 1_Reg",
+  "partyCode": "AT_Cus_Reg_Inter",
+  "transaction": "INR",
+  "gstType": "Registered",
+  "executive": "AT_Executive 1",
+  "productCode": "P1",
+  "Quantity": "500",
+  "priceList": "AT_Inclusive Sales Price List 1",
+  "close": "Sales Enquiries",
+  "voucherSeries": "SalesEnquiry",
+  "voucherNumber": "1",
+  "voucherSeriesText": "SalesEnq",
+  "startingVoucherNo": "1",
+  "voucherSeriesSeparator": "--"
+}
