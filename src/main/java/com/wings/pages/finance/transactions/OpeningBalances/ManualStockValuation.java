@@ -22,7 +22,7 @@ public class ManualStockValuation extends Transaction {
     }
 
     public void manualStockValuation() throws InterruptedException, IOException, ParseException, AWTException {
-        navigateToManulStockVerificationMenu();
+        navigateToManualStockVerificationMenu();
         Thread.sleep(1000);
         lastTransactionName();
         common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
