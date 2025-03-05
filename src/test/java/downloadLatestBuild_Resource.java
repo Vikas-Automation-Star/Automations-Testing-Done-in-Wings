@@ -79,11 +79,12 @@ public class downloadLatestBuild_Resource {
             driver.findElement(By.linkText("Support Files")).click();
             Thread.sleep(2000);
             // Start downloading the files
-            driver.findElementByLinkText("Build_14058.0.zip").click();
-            driver.findElementByLinkText("Wings 24D Books 14K (14058--20453) Encrypted.zip").click();
+
+            driver.findElementByLinkText("Build_14066.1.zip").click();
+            driver.findElementByLinkText("Wings 24D Books 14K (14066.1--20637) Encrypted.zip").click();
             // Define the download paths
-            String filename1 = "Build_14058.0.zip";
-            String filename2 = "Wings 24D Books 14K (14058--20453) Encrypted.zip";
+            String filename1 = "Build_14066.1.zip";
+            String filename2 = "Wings 24D Books 14K (14066.1--20637) Encrypted.zip";
 
             String filepath = System.getProperty("user.home") + "\\Downloads\\Books New Resources\\" + filename1;
             String filepath1 = System.getProperty("user.home") + "\\Downloads\\Books New Resources\\" + filename2;
@@ -102,10 +103,10 @@ public class downloadLatestBuild_Resource {
             System.out.println("Unzipping completed successfully");
 
             //copying build
-            FileUtil.copyFile(new File("C:\\Users\\Dell\\Downloads\\Books New Resources\\Target\\Build_14058.0\\Wings.dll"), "C:\\Program Files (x86)\\Wings Infonet\\Wings Books 24D\\Wings.dll");
+            FileUtil.copyFile(new File("C:\\Users\\Dell\\Downloads\\Books New Resources\\Target\\Build_14066.1\\Wings.dll"), "C:\\Program Files (x86)\\Wings Infonet\\Wings Books 24D\\Wings.dll");
             System.out.println("Build is copied successfully");
             //renaming and moving resources
-            File dir = new File("C:\\Users\\Dell\\Downloads\\Books New Resources\\Target\\Wings 24D Books 14K (14058--20453) Encrypted");
+            File dir = new File("C:\\Users\\Dell\\Downloads\\Books New Resources\\Target\\Wings 24D Books 14K (14066.1--20637) Encrypted");
             if (!dir.isDirectory()) {
                 System.err.println("There is no directory at the given path");
             } else {
