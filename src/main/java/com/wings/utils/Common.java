@@ -1,6 +1,7 @@
 package com.wings.utils;
 
 import io.appium.java_client.windows.WindowsDriver;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -183,6 +184,35 @@ public class Common {
         } else {
             return String.valueOf(value);
         }
+    }
+
+    public String getData(String fileName, String dataSet, String key) throws IOException, ParseException {
+        JSONParser parser = new JSONParser();
+        FileReader reader = new FileReader(fileName);
+        Object obj = parser.parse(reader);
+
+        JSONArray jsonArray = (JSONArray) obj;
+        for (Object objItem : jsonArray) { //find dataset name
+            JSONObject jsonObject = (JSONObject) objItem;
+            if (jsonObject.containsKey("dataset") && jsonObject.get("dataset").equals(dataSet)) {
+                JSONObject dataObject = (JSONObject) jsonObject.get("data");
+                Object value = dataObject.get(key);
+                if (value == null) {
+                    return null;
+                } else if (value instanceof String) {
+                    return (String) value;
+                } else if (value instanceof Long) {
+                    return Long.toString((Long) value);
+                } else if (value instanceof Double) {
+                    return Double.toString((Double) value);
+                } else if (value instanceof Boolean) {
+                    return Boolean.toString((Boolean) value);
+                } else {
+                    return String.valueOf(value);
+                }
+            }
+        }
+        return null;
     }
 
 //    public String getOptionalData(String fileName,String key) throws IOException, ParseException {
