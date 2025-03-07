@@ -9,6 +9,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -18,7 +20,7 @@ import java.util.List;
 public class TransactionFeatures extends Transaction {
     WindowsDriver driver, rootdriver;
     Common common;
-    String dataFile;
+    String dataFile,dataset="beforeEditing";
 
     public TransactionFeatures(WindowsDriver driver, String file) {
         super(driver);
@@ -47,7 +49,7 @@ public class TransactionFeatures extends Transaction {
         common.clickElement("xpath", "//Edit[@Name='Remarks']");
 //        selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
         //items
-        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']", dataFile, "draftProduct");
+        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']", dataFile,dataset, "draftProduct");
 //        enterData("xpath", "//Edit[@Name='Quantity * Row 0, Not sorted.']", dataFile, "draftQuantity");
         //save as draft
         common.clickElement("xpath", "//ToolBar/Button[@Name='Tools']");
@@ -111,8 +113,6 @@ public class TransactionFeatures extends Transaction {
         common.clickElement("xpath", "//Edit[@Name='Party Code']");
 //        selectAndValidateDataNew(common.getData(dataFile, "partyCode"), "xpath", "//Edit[@Name='Party Code']");
         common.clickElement("xpath", "//Edit[@Name='Party Account *']");
-//        Thread.sleep(5000);
-//        gstTransactionType(common.getData(dataFile, "gstType"));
         Thread.sleep(1500);
         common.clickElement("xpath", "//Edit[@Name='Price List']");
 //        selectAndValidateData(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
@@ -121,7 +121,7 @@ public class TransactionFeatures extends Transaction {
         common.clickElement("xpath", "//Edit[@Name='Remarks']");
 //        selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
         //items
-        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']", dataFile, "draftProduct");
+        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']", dataFile,dataset, "draftProduct");
 //        enterData("xpath", "//Edit[@Name='Quantity * Row 0, Not sorted.']", dataFile, "draftQuantity");
         //save as hold
         common.clickElement("xpath", "//ToolBar/Button[@Name='Tools']");
@@ -175,66 +175,178 @@ public class TransactionFeatures extends Transaction {
     }
 
     public void saveAsTemplate() throws InterruptedException, IOException, ParseException {
-//        navigateToSalesEnquiryMenu();
-//        Thread.sleep(1500);
-
-//        common.clickElement("xpath", "//Edit[@Name='Branch *']");
-////        selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
-//        common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
-////        selectAndValidateData(common.getData(dataFile, "transaction"), "xpath", "//Edit[@Name='Trans Currency *']");
-//        common.clickElement("xpath", "//Edit[@Name='Party Code']");
-////        selectAndValidateDataNew(common.getData(dataFile, "partyCode"), "xpath", "//Edit[@Name='Party Code']");
-//        common.clickElement("xpath", "//Edit[@Name='Party Account *']");
-////        Thread.sleep(5000);
-////        gstTransactionType(common.getData(dataFile, "gstType"));
-//        Thread.sleep(1500);
-//        common.clickElement("xpath", "//Edit[@Name='Price List']");
-////        selectAndValidateData(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
-//        common.clickElement("xpath", "//Edit[@Name='Executive *']");
-//        selectAndValidateData(common.getData(dataFile, "executive"), "xpath", "//Edit[@Name='Executive *']");
-
-
-        //THIS IS WORKING//
-//        common.clickElement("xpath", "//Text[@Name='Remarks']");
-//        WebElement remarksButton= common.findWebElement("xpath", "//Text[@Name='Remarks']");
-//        Actions actions=new Actions(driver);
-//        actions.contextClick(remarksButton).sendKeys(Keys.DOWN,Keys.ENTER).perform();
-
-
-//        Thread.sleep(6000);
-//        WebElement field=common.findWebElement("xpath","//Window[@Name='Wings Accounting 24DNP - PRO [ 24D Books Fin AT ; 01-04-2024 To 31-03-2025 ; Super User ]']/Menu/MenuItem[@Name='Configure Field']");
-//        System.out.println("field:"+field.getAttribute("LegacyIAccessible.State"));
-//        field.sendKeys(Keys.ENTER);
-//        System.out.println("text :"+click);
-//        common.clickElement("xpath","//Menu/*[@Name='Configure Field']");
-
-
-//        selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
-        //items
-//        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']", dataFile, "draftProduct");
-////        enterData("xpath", "//Edit[@Name='Quantity * Row 0, Not sorted.']", dataFile, "draftQuantity");
-//        //save as draft
-//        common.clickElement("xpath", "//ToolBar/Button[@Name='Tools']");
-//        common.clickElement("xpath", "//Button[@Name='Save Template']");
-//        common.inputText("xpath", "//Edit[@Name='Enter VoucherSeries']", "Temp");
-//        common.inputText("xpath", "//Edit[@Name='Enter VoucherNo']", "4");
-//        common.clickElement("xpath", "//Button[@Name='Ok']");
-//        common.clickElement("xpath", "//Window[@Name='Transaction saved.']/Button[@Name='OK']");
-//        //open draft
+        navigateToSalesEnquiryMenu();
+        Thread.sleep(1500);
+        common.clickElement("xpath", "//Text[@Name='Remarks']");
+        WebElement remarksButton = common.findWebElement("xpath", "//Text[@Name='Remarks']");
+        Actions actions = new Actions(driver);
+        actions.contextClick(remarksButton).sendKeys(Keys.DOWN, Keys.ENTER).perform();
+        Thread.sleep(1500);
+        common.clickElement("xpath", "//Window[@Name='Configure Field']/Tab/Pane/Pane/Text[@Name='Hide']/following-sibling::CheckBox");
+        common.clickElement("xpath", "//Button[@Name='Ok']");
+        Thread.sleep(1500);
+        closeTransaction("Sales Enquiries");
+        refresh();
+        Thread.sleep(3000);
+        navigateToSalesEnquiryMenu();
+        List<WebElement> remarks = common.findWebElements("xpath", "//Text[@Name='Remarks']");
+        if (!remarks.isEmpty()) Assert.fail("Element is not hidden.Pls check again");  //if the element is found, fail
+        else System.out.println("Element is not found. Hidden Successfully");
+        //save as template
+        common.clickElement("xpath", "//ToolBar/Button[@Name='Tools']");
+        common.clickElement("xpath", "//Button[@Name='Save Template']");
+        common.inputText("xpath", "//Edit[@Name='Enter VoucherSeries']", "Template");
+        common.inputText("xpath", "//Edit[@Name='Enter VoucherNo']", "2123");
+        common.clickElement("xpath", "//Button[@Name='Ok']");
+        common.clickElement("xpath", "//Window[@Name='Transaction saved.']/Button[@Name='OK']");
+        //open template
         common.clickElement("xpath", "//MenuItem[@Name='Tools']");
         common.clickElement("xpath", "//MenuItem[@Name='Vouchers']");
         common.clickElement("xpath", "//MenuItem[@Name='Open Template Transaction']");
         Thread.sleep(3000);
-//        common.clickElement("xpath","//Window[@Name='Select Template']/Table/*[@Name='Data Panel']/ListItem[@Name='Row 2']/Item[@Name='Transaction row 2']");
-
-//        got to driver and navigate to select template window
-
-
+        //go to driver and navigate to select template window
         WindowsDriver root = common.initializeDriver("Root");
         WebElement login = root.findElement(By.name("Select Template"));
-        common.clickElement("xpath","//Button[@Name='Ok']");
+
+        List<WebElement> dateElements = root.findElementsByXPath("//DataItem[contains(@Name, 'DateOfSaving row')]");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        Date latestDate = null;
+        WebElement latestDateElement = null;
+
+        for (WebElement dateElement : dateElements) {
+            String dateText = dateElement.getAttribute("Value.Value"); // Extract date text
+            try {
+                Date parsedDate = dateFormat.parse(dateText); // Convert to Date object
+                if (latestDate == null || parsedDate.after(latestDate)) {
+                    latestDate = parsedDate;
+                    latestDateElement = dateElement;
+                }
+            } catch (java.text.ParseException e) {
+                System.out.println("Error parsing date: " + dateText);
+            }
+        }
+        if (latestDateElement != null) {
+            latestDateElement.click(); // Click on the row with the latest date
+            root.findElementByXPath("//Button[@Name='Ok']").click(); // Click OK
+        }
+        //unhide remarks again
+        Thread.sleep(1500);
+        closeTransaction("Sales Enquiries");
+        Thread.sleep(1500);
+        navigateToSalesEnquiryMenu();
+
+        common.clickElement("xpath", "//Text[@Name='Shipping Address']");
+        WebElement shippingAddress = common.findWebElement("xpath", "//Text[@Name='Shipping Address']");
+        actions=new Actions(root);
+        actions.contextClick(shippingAddress).sendKeys(Keys.DOWN,Keys.DOWN, Keys.ENTER).perform();
+        driver.getKeyboard().sendKeys(Keys.TAB,Keys.TAB,Keys.TAB,Keys.SPACE,Keys.ENTER,Keys.ENTER);
+
+        Thread.sleep(2000);
+        closeTransaction("Sales Enquiries");
+        //verify if it is unhidden or not
+        navigateToSalesEnquiryMenu();
+        List<WebElement> remarksText = common.findWebElements("xpath", "//Text[@Name='Remarks']");
+        if (remarksText.isEmpty()) Assert.fail("Element is not unhidden.Pls check again");  //if the element is not found, fail
+        else System.out.println("Element is unhidden Successfully");
+
     }
 
+    public void editTransaction() throws IOException, ParseException, InterruptedException {
+        navigateToSalesEnquiryMenu();
+        Thread.sleep(1500);
+        enterBranch(dataFile,dataset,"branch");
+        enterPartyCode(dataFile,dataset, "partyCode");
+        gstTransactionType(common.getData(dataFile,dataset,"gstType"));
+        enterPriceList(dataFile, dataset,"priceList");
+        //enter details
+        enterData("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']", dataFile,dataset, "productCode");
+        enterData("xpath", "//Edit[@Name='Quantity * Row 0, Not sorted.']", dataFile,dataset, "Quantity");
+        enterDataAndValidate("xpath", "//Edit[@Name='HSN Row 0, Not sorted.']", dataFile,dataset, "HSNCode");
+        transactionSave();
+        String voucherNo=getNewTransactionId().replace(" ","");
+        System.out.println(voucherNo);
+        navigateToSalesEnquiryReport();
+        verifyReport(voucherNo,dataFile,dataset);
+        //edit a transaction
+        List<WebElement> elementList = common.findWebElements("xpath", "//Table/*[@Name='Data Panel']/ListItem[contains(@Name,'Row')]");
+        for (WebElement i : elementList) {
+//            System.out.println("nvufihf:" + i.getText());
+            if (i.getText().contains(voucherNo)) {
+                System.out.println("element present");
+                WebElement element = i.findElement(By.xpath("//DataItem[contains(@Name,'Voucher No row')]"));
+                element.click();
+                Actions actions = new Actions(driver);
+                actions.contextClick(element).perform();
+                break;
+            }
+        }
+        Thread.sleep(1500);
+        common.clickElement("xpath", "//MenuItem[@Name='Edit Transaction']");
+        Thread.sleep(5000);
+        enterData("xpath", "//Edit[@Name='Quantity * Row 0, Not sorted.']", dataFile,dataset, "editedQuantity");
+        //save
+        common.clickElement("xpath", "//Button[@Name='Save']");
+        common.clickElement("xpath", "//Button[@Name='Yes']");
+        Thread.sleep(1500);
+        common.clickElement("xpath", "//Button[@Name='Yes']");
+        Thread.sleep(1500);
+        common.clickElement("xpath", "//Window[@Name='Transaction saved.']/Button[@Name='OK']");
+        //refresh
+        common.clickElement("xpath","//ToolBar[@Name='Tool Bar']/Button[@Name='Refresh']");
+        verifyReport(voucherNo,dataFile,"afterEditing");
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    public void addToFavourites() throws InterruptedException {
+        navigateToSalesEnquiryMenu();
+        Thread.sleep(5000);
+        common.clickElement("xpath","//ToolBar/Button[@Name='Tools']");
+        common.clickElement("xpath","//Button[@Name='Add To Favourites']");
+        Thread.sleep(1500);
+        common.clickElement("xpath","//Button[@Name='OK']");
+        //verify favourites
+        Thread.sleep(1500);
+        common.clickElement("xpath","//TabItem[@Name='My Page']");
+        Thread.sleep(2000);
+        //fetch list
+        String transactionName="Sales Enquiries";
+        boolean notFound=true;
+        List<WebElement> favouritesList = common.findWebElements("xpath", "//Pane[@Name='Apps']/Pane[@Name='Apps']/Pane[@Name='Apps']/*");
+        for (WebElement list:favouritesList) {
+            if (list.getText().equals(transactionName)) {
+                System.out.println("Screen is added to favourites successfully");
+                notFound = false;
+                break;
+            }
+        }
+        if (notFound) Assert.fail("Screen is not added to favourites");
+        //remove from favourites
+        WebElement clickLink=common.findWebElement("xpath","//Pane[@Name='Sales Enquiries']/Text[@Name='Sales Enquiries']/*[@Name='Sales Enquiries']");
+        Actions actions=new Actions(driver);
+        actions.contextClick(clickLink).perform();
+        actions.contextClick(clickLink).perform();
+        common.clickElement("xpath","//MenuItem[@Name='Remove "+ transactionName+"']");
+        //verify
+        boolean found=true;
+        List<WebElement> removedList = common.findWebElements("xpath", "//Pane[@Name='Apps']/Pane[@Name='Apps']/Pane[@Name='Apps']/*");
+        for (WebElement list: removedList) {
+            if (list.getText().equals(transactionName)) {
+                found=false;
+                Assert.fail("Not Removed Successfully");
+            }
+        }
+        if (found) System.out.println("Removed From Favourites successfully");
+    }
 
     public void voidTransaction() throws IOException, ParseException, InterruptedException {
         common.clickElement("xpath", "//MenuItem[@Name='Tools']");
@@ -282,10 +394,10 @@ public class TransactionFeatures extends Transaction {
                             System.out.println("Void button is not present or not displayed. Skipping.");
                         }
                     }catch (TimeoutException e) {
-                    // If the button is not found within the timeout, skip without throwing an exception
-                    System.out.println("Void button not found within the timeout. Skipping.");
-                    break;
-                }
+                        // If the button is not found within the timeout, skip without throwing an exception
+                        System.out.println("Void button not found within the timeout. Skipping.");
+                        break;
+                    }
                 }
             }
             rootdriver.findElementByXPath("//MenuItem[@Name='Audit']").click();

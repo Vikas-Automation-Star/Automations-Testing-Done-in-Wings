@@ -1,7 +1,66 @@
-{
-  "draftProduct":"P1",
-  "draftQuantity": 1,
-  "voidTransactionVoucher": "SI",
-  "voidTransactionVoucherNumber":28
+[
+  {
+    "dataset": "beforeEditing",
+    "data": {
+      "draftProduct": "P1",
+      "draftQuantity": 1,
+      "voidTransactionVoucher": "SI",
+      "voidTransactionVoucherNumber": 28,
+      "branch": "AT_Branch 1_Reg",
+      "gstType": "Registered Dealers",
+      "partyCode": "CRI1",
+      "priceList": "AT_Inclusive Sales Price List 1",
+      "executive": "AT_Executive1",
+      "Quantity": 5,
+      "productCode": "p1",
+      "HSNCode": "AT_HSN Code 2",
+      "editedQuantity": 2,
+      "column3": "AT_Branch4_Reg_Inter",
+      "column4": "INR",
+      "column5": "1.00",
+      "column6": "AT_Cus_Reg_Inter",
+      "column7": "5.00",
+      "column8": "2,500.00",
+      "column9": "0.00",
+      "column10": "1,953.12",
+      "column11": "0.00",
+      "column12": "0.00",
+      "column13": "351.56",
+      "column14": "195.31",
+      "column15": "546.88",
+      "column16": "2,500.00",
+      "column17": "2,500.00",
+      "column18": "0.00",
+      "column19": "0.00",
+      "column20": "0.00",
+      "column21": "2,500.00",
+      "column22": "2,500.00"
+    }
+  },
 
-}
+  {
+    "dataset": "afterEditing",
+    "data": {
+      "column3": "AT_Branch 1_Reg",
+      "column4": "INR",
+      "column5": "1.00",
+      "column6": "AT_Cus_Reg_Inter",
+      "column7": "2.00",
+      "column8": "1,000.00",
+      "column9": "0.00",
+      "column10": "781.25",
+      "column11": "0.00",
+      "column12": "0.00",
+      "column13": "140.63",
+      "column14": "78.13",
+      "column15": "218.75",
+      "column16": "1,000.00",
+      "column17": "1,000.00",
+      "column18": "0.00",
+      "column19": "0.00",
+      "column20": "0.00",
+      "column21": "1,000.00",
+      "column22": "1,000.00"
+    }
+  }
+]

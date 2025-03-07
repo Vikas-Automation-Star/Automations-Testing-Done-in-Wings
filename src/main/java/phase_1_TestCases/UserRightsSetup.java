@@ -97,6 +97,7 @@ public class UserRightsSetup extends Transaction {
         common = new Common(driver);
         appLogin.singleUserLogin(common.getData(dataFile, "user"), common.getData(dataFile, "password"));
         System.out.println("Password Assigning and Login is validated successfully");
+        appLogin.logout();
     }
 
     public void grantAccessForMaster() throws InterruptedException, IOException, ParseException {
