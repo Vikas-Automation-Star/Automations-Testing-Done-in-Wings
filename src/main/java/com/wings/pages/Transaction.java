@@ -1538,7 +1538,7 @@ public abstract class Transaction {
     public void bulkVerifyReportData(String text, String dataFile) throws IOException, ParseException {
         String[] columns = text.split(";");
         for (int i = 0; i < columns.length; i++) {
-            if (i > 2 && !common.getData(dataFile, "column" + (i + 1)).equals("")) {
+            if (i > 1 && !common.getData(dataFile, "column" + (i + 1)).equals("")) {
                 Assert.assertEquals(columns[i], common.getData(dataFile, "column" + (i + 1)));
             }
             System.out.println(columns[i]);
