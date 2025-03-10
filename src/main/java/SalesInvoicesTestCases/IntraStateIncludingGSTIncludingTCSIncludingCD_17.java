@@ -36,7 +36,7 @@ public class IntraStateIncludingGSTIncludingTCSIncludingCD_17 extends Transactio
         common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
         selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
+        selectAndValidateDataNew(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Location *']");
 
         enterInput("xpath", "//Edit[@Name='Cash/Party Code']",dataFile, "partyCode");
@@ -44,7 +44,7 @@ public class IntraStateIncludingGSTIncludingTCSIncludingCD_17 extends Transactio
         gstTransactionType("Registered Dealers");
         Thread.sleep(1000);
         common.clickElement("xpath", "//Edit[@Name='Sales A/c Code']");
-        selectAndValidateData(common.getData(dataFile, "salesAccountCode"), "xpath", "//Edit[@Name='Sales A/c Code']");
+        selectAndValidateDataNew(common.getData(dataFile, "salesAccountCode"), "xpath", "//Edit[@Name='Sales A/c Code']");
 //        common.clickElement("xpath", "//CheckBox[@Name='Apply TCS']");
         common.clickElement("xpath", "//Edit[@Name='TCS Trans Nature']");
 
@@ -59,7 +59,7 @@ public class IntraStateIncludingGSTIncludingTCSIncludingCD_17 extends Transactio
         robot.keyRelease(KeyEvent.VK_ENTER);
 //        super.validateElements("xpath","//Edit[@Name='Invoice Type']", common.getData(dataFile,"invoice"));
         common.clickElement("xpath", "//Edit[@Name='Price List']");
-        selectAndValidateData(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
+        selectAndValidateDataNew(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
         generalInfoSliderHandle(800);
         common.clickElement("xpath", "//Edit[@Name='Port Code']");
         selectOptionalMaster(common.getData(dataFile, "portCode"), "xpath", "//Edit[@Name='Port Code']");

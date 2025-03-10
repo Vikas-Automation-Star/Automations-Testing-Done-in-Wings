@@ -38,7 +38,7 @@ public class InterStateUnRegCustExcludingGSTIncludingOCIncludingCD_30 extends Tr
             gstTransactionType("Unregistered Dealers");
             Thread.sleep(1000);
             common.clickElement("xpath", "//Edit[@Name='Sales A/c Code']");
-            selectAndValidateData(common.getData(dataFile, "salesAccountCode"), "xpath", "//Edit[@Name='Sales A/c Code']");
+            selectAndValidateDataNew(common.getData(dataFile, "salesAccountCode"), "xpath", "//Edit[@Name='Sales A/c Code']");
             common.clickElement("xpath","//CheckBox[@Name='Apply TCS']");
 
             common.inputText("xpath", "//Edit[@Name='Invoice Type']", common.getData(dataFile, "invoice"));
@@ -51,7 +51,7 @@ public class InterStateUnRegCustExcludingGSTIncludingOCIncludingCD_30 extends Tr
             robot.keyPress(KeyEvent.VK_ENTER);
             robot.keyRelease(KeyEvent.VK_ENTER);
             common.clickElement("xpath", "//Edit[@Name='Price List']");
-            selectAndValidateData(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
+            selectAndValidateDataNew(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
             generalInfoSliderHandle(800);
             common.clickElement("xpath", "//Edit[@Name='Port Code']");
             selectOptionalMaster(common.getData(dataFile, "portCode"), "xpath", "//Edit[@Name='Port Code']");
