@@ -50,7 +50,7 @@ public abstract class Transaction {
 
     public void selectAndValidateData(String transaction, String locatorType, String locator) {
         List<WebElement> elementList = common.findWebElements("xpath", "//Table[@Name='Lookup']/*/*[contains(@Name,'Master Row')]");
-        System.out.println("Size :" + elementList.size());
+//        System.out.println("Size :" + elementList.size());
         for (WebElement element : elementList) {
 //            System.out.println(element.getText());
             if (element.getText().contains(transaction)) {
@@ -247,21 +247,20 @@ public abstract class Transaction {
         }
     }
 
-    public void enterBranch(String dataFile,String dataset,String key) throws IOException, ParseException {
-        enterInput("xpath", "//Edit[@Name='Branch *']", dataFile,dataset, key);
-
+    public void enterBranch(String dataFile, String key) throws IOException, ParseException {
+        enterInput("xpath", "//Edit[@Name='Branch *']", dataFile, key);
     }
 
-    public void enterPartyCode(String dataFile,String dataset, String key) throws IOException, ParseException {
-        enterInput("xpath", "//Edit[@Name='Party Code']", dataFile,dataset, key);
+    public void enterPartyCode(String dataFile, String key) throws IOException, ParseException {
+        enterInput("xpath", "//Edit[@Name='Party Code']", dataFile, key);
     }
 
-    public void enterPriceList(String dataFile,String dataset, String key) throws IOException, ParseException {
-        enterInput("xpath", "//Edit[@Name='Price List']", dataFile,dataset, key);
+    public void enterPriceList(String dataFile, String key) throws IOException, ParseException {
+        enterInput("xpath", "//Edit[@Name='Price List']", dataFile, key);
     }
 
-    public void enterExecutive(String dataFile,String dataset, String key) throws IOException, ParseException {
-        enterInput("xpath", "//Edit[@Name='Executive *']", dataFile,dataset, key);
+    public void enterExecutive(String dataFile, String key) throws IOException, ParseException {
+        enterInput("xpath", "//Edit[@Name='Executive *']", dataFile, key);
     }
 
     //navigation methods
@@ -392,7 +391,7 @@ public abstract class Transaction {
         common.clickElement("xpath", "//TabItem[contains(@Name,'Uncleared Payments')]");
     }
 
-    public void navigateToMaster(String menuItemName, String masterName, String subMasterName) {
+    public void navigateToMastersOrMenus(String menuItemName, String masterName, String subMasterName) {
         common.clickElement("name", menuItemName);
         common.clickElement("name", masterName);
         common.clickElement("xpath", subMasterName);
@@ -1074,7 +1073,7 @@ public abstract class Transaction {
             robot.keyRelease(KeyEvent.VK_SPACE);
             robot.keyPress(KeyEvent.VK_DOWN);
             robot.keyRelease(KeyEvent.VK_DOWN);
-            Thread.sleep(1000);
+            Thread.sleep(1500);
         }
         common.clickElement("xpath", "//Button[@Name='OK']");
     }
@@ -1241,7 +1240,7 @@ public abstract class Transaction {
         common.clickElement("xpath", "//Button[@Name='Save']");
         common.clickElement("xpath", "//Button[@Name='Yes']");
         Thread.sleep(3000);
-        common.clickElement("xpath", "//Window[@Name='Transaction saved.']/Button[@Name='OK']");
+        common.clickElement("xpath", "//*[@Name='Transaction saved.']/Button[@Name='OK']");
     }
 
     public void lastTransactionName() {
@@ -1280,8 +1279,13 @@ public abstract class Transaction {
         common.clickElement("xpath", "//Button[@Name='Save']");
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//Button[@Name='OK']"))).click();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         common.clickElement("xpath", "//Button[@Name='OK']");
+    }
+    public void saveMasterOrProperty(){
+        common.clickElement("xpath", "//Button[@Name='Save']");
+        common.clickElement("xpath", "//Button[@Name='Yes']");
+        common.clickElement("xpath", "//Window/Button[@Name='OK']");
     }
 
     public void sliderHandle() {
@@ -1389,11 +1393,11 @@ public abstract class Transaction {
     public void enableCheckboxSelection(String locatorXpath) {
         WebElement element = driver.findElementByXPath(locatorXpath);
         String checkBoxToggleState = element.getAttribute("Toggle.ToggleState");
-        System.out.println("Check Box Toggle state:-" + checkBoxToggleState);
+//        System.out.println("Check Box Toggle state:-" + checkBoxToggleState);
         if (checkBoxToggleState.equals("0")) {
             element.click();
             String checkBoxToggleState1 = element.getAttribute("Toggle.ToggleState");
-            System.out.println("Check Box Toggle state:-" + checkBoxToggleState1);
+//            System.out.println("Check Box Toggle state:-" + checkBoxToggleState1);
             if (checkBoxToggleState1.equals("1")) {
                 System.out.println("Checkbox was unchecked, now checked.");
             } else if (checkBoxToggleState1.equals("0")) {
@@ -1409,11 +1413,11 @@ public abstract class Transaction {
         WebElement element = driver.findElementByXPath(locatorXpath);
         String text = element.getText();
         String checkBoxToggleState = element.getAttribute("Toggle.ToggleState");
-        System.out.println("Check Box Toggle state:-" + checkBoxToggleState);
+//        System.out.println("Check Box Toggle state:-" + checkBoxToggleState);
         if (checkBoxToggleState.equals("0")) {
             element.click();
             String checkBoxToggleState1 = element.getAttribute("Toggle.ToggleState");
-            System.out.println("Check Box Toggle state:-" + checkBoxToggleState1);
+//            System.out.println("Check Box Toggle state:-" + checkBoxToggleState1);
             if (checkBoxToggleState1.equals("1")) {
                 System.out.println("Checkbox was unchecked, now checked.");
             } else if (checkBoxToggleState1.equals("0")) {
@@ -1429,12 +1433,12 @@ public abstract class Transaction {
         WebElement element = driver.findElementByXPath(locatorXpath);
         String text = element.getText();
         String checkBoxToggleState = element.getAttribute("Toggle.ToggleState");
-        System.out.println("Check Box Toggle state:-" + checkBoxToggleState);
+//        System.out.println("Check Box Toggle state:-" + checkBoxToggleState);
         if (checkBoxToggleState.equals("1")) {
             System.out.println("Checkbox is already checked, do uncheck");
             element.click();
             String checkBoxToggleState1 = element.getAttribute("Toggle.ToggleState");
-            System.out.println("Check Box Toggle state:-" + checkBoxToggleState1);
+//            System.out.println("Check Box Toggle state:-" + checkBoxToggleState1);
             if (checkBoxToggleState1.equals("0")) {
                 System.out.println("Checkbox was unchecked");
             } else if (checkBoxToggleState1.equals("1")) {
@@ -1529,7 +1533,7 @@ public abstract class Transaction {
         for (WebElement i : elementList) {
             System.out.println("text :" + i.getText());
             if (i.getText().contains(transaction)) {
-                System.out.println("verifyingRow :");
+                System.out.println("verifyingRow.....");
                 bulkVerifyReportData(i.getText(), dataFile);
             }
         }
@@ -1537,9 +1541,10 @@ public abstract class Transaction {
 
     public void bulkVerifyReportData(String text, String dataFile) throws IOException, ParseException {
         String[] columns = text.split(";");
+        System.out.println("columSize :"+columns.length);
         for (int i = 0; i < columns.length; i++) {
-            if (i > 1 && !common.getData(dataFile, "column" + (i + 1)).equals("")) {
-                Assert.assertEquals(columns[i], common.getData(dataFile, "column" + (i + 1)));
+            if (i >=2 && !common.getData(dataFile, "column" + (i + 1)).equals("")) {
+                Assert.assertEquals(columns[i], common.getData(dataFile, "column" + (i + 1)),"columns mismatch");
             }
             System.out.println(columns[i]);
         }
@@ -1734,65 +1739,5 @@ public abstract class Transaction {
         if ((grossMinusDiscountAmount == (null) || "(null)".equals(grossMinusDiscountAmount))) {
             Assert.fail("grossDiscountAmount field is empty");
         }
-    }
-
-    //over-loaded methods
-    public void enterData(String locatorType, String locator, String fileName,String dataset, String key) throws IOException, ParseException {
-        List<WebElement> elementList = common.findWebElements(locatorType, locator);
-//        System.out.println("Size :" + elementList.size());
-        for (WebElement i : elementList) {
-            i.click();
-            i.sendKeys(common.getData(fileName,dataset, key), Keys.TAB);
-            break;
-        }
-    }
-    public void enterInput(String locatorType, String locator, String fileName,String dataset, String key) throws IOException, ParseException {
-        List<WebElement> elementList = common.findWebElements(locatorType, locator);
-        for (WebElement i : elementList) {
-            i.click();
-            i.sendKeys(Keys.CONTROL + "a");
-            i.sendKeys(Keys.BACK_SPACE);
-            i.sendKeys(common.getData(fileName,dataset, key), Keys.TAB);
-            break;
-        }
-    }
-    public void enterDataAndValidate(String locatorType, String locator, String fileName, String dataset,String key) throws IOException, ParseException {
-        List<WebElement> elementList = common.findWebElements(locatorType, locator);
-//        System.out.println("Size :" + elementList.size());
-        for (WebElement i : elementList) {
-//            System.out.println(i.getText());
-            i.click();
-            i.sendKeys(common.getData(fileName,dataset, key), Keys.TAB);
-        }
-        WebElement element = common.findWebElement(locatorType, locator);
-        if (element.getText().equals(common.getData(fileName,dataset, key))) {
-//            System.out.println("successfully selected/opened:- " + element.getText());
-
-        } else {
-            Assert.fail(element.getText() + "is not selected");
-        }
-    }
-
-    public void verifyReport(String transaction, String dataFile,String dataset) throws IOException, ParseException {
-        List<WebElement> elementList = common.findWebElements("xpath", "//Table/*[@Name='Data Panel']/ListItem[contains(@Name,'Row')]");
-        System.out.println("Size :" + elementList.size());
-        for (WebElement i : elementList) {
-            System.out.println("text :" + i.getText());
-            if (i.getText().contains(transaction)) {
-                System.out.println("verifyingRow :");
-                bulkVerifyReportData(i.getText(), dataFile,dataset);
-            }
-        }
-    }
-
-    public void bulkVerifyReportData(String text, String dataFile,String dataset) throws IOException, ParseException {
-        String[] columns = text.split(";");
-        for (int i = 0; i < columns.length; i++) {
-            if (i > 2 && !common.getData(dataFile, dataset,"column" + (i + 1)).equals("")) {
-                Assert.assertEquals(columns[i], common.getData(dataFile, dataset,"column" + (i + 1)));
-            }
-            System.out.println(columns[i]);
-        }
-        System.out.println("Report verified Successfully");
     }
 }

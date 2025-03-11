@@ -45,6 +45,8 @@ public class XMLUtil {
     WindowsDriver driver;
     Common common = new Common(driver);
     StringBuilder testDetails = new StringBuilder();
+    TimeUtil timeUtil=new TimeUtil();
+
 
     public void readXMLFile(String pathOfFile) throws ParserConfigurationException, IOException, SAXException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -53,13 +55,12 @@ public class XMLUtil {
         document.getDocumentElement().normalize();
     }
 
-    public String testRowAppend(String testID, String name, String status, String description, double duration) {
+    public String testRowAppend(String testID, String name, String status, String description, String duration) {
         return "<tr style='text-align: center; vertical-align: middle;'> <td align=\"center\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">" + testID + "</td>" +
                 "<td align=\"left\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">" + name + "</td>" +
                 "<td  align=\"left\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">" + status + "</td>" +
                 "<td align=\"center\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">" + description + "</td>" +
-                "<td align=\"left\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">" + duration + "min" + "</td></tr>";
-
+                "<td align=\"left\" valign=\"middle\" style=\"border:1px solid #b6b6b6; font:normal 13px 'Segoe UI', Arial, Helvetica, sans-serif; \">" + duration + "</td></tr>";
     }
 
     public void readTestNG(String TestNGFile) throws ParserConfigurationException, IOException, SAXException {
@@ -77,7 +78,6 @@ public class XMLUtil {
             testData.put("testID", testID);
             testDetailsList.add(testData);
         }
-
     }
 
     public void readTestNGResults(String testNGResultsFIle) throws ParseException, IOException, ParserConfigurationException, SAXException, org.json.simple.parser.ParseException {
@@ -102,7 +102,8 @@ public class XMLUtil {
         for (int i = 0; i < testList.getLength(); i++) {
             Element testElement = (Element) testList.item(i);
             String name = testElement.getAttribute("name");
-            double duration = Double.parseDouble(testElement.getAttribute("duration-ms")) / 60000;
+//            double duration = Double.parseDouble(testElement.getAttribute("duration-ms")) / 60000;
+            String duration= timeUtil.convertTime(Long.parseLong(testElement.getAttribute("duration-ms")));
 
             NodeList testMethodTags = testElement.getElementsByTagName("test-method");
             if (testMethodTags.getLength() > 0) {
@@ -146,11 +147,7 @@ public class XMLUtil {
         totalTests = passedTests + failedTests + skippedTests;
         passRate = (totalTests > 0) ? (passedTests / (double) totalTests) * 100 : 0;
 
-        String executionTimeFormatted = String.format("%02d:%02d:%02d",
-                (executionTimeMillis / (1000 * 60 * 60)) % 24,
-                (executionTimeMillis / (1000 * 60)) % 60,
-                (executionTimeMillis / 1000) % 60);
-
+        String executionTimeFormatted = String.format("%02d:%02d:%02d", (executionTimeMillis / (1000 * 60 * 60)) % 24, (executionTimeMillis / (1000 * 60)) % 60, (executionTimeMillis / 1000) % 60);
 
         // Read and update HTML template
         String htmlTemplate = new String(Files.readAllBytes(Paths.get("mailTemplates/executiontemplate.html")), "UTF-8");
@@ -173,7 +170,7 @@ public class XMLUtil {
         // Send email with report attached
         final String fromEmail = "productupdates@wingsinfo.net";
         final String password = "Zuy97283";
-        final String toEmail = "vikas.empuluri@wingsinfo.net,madhuri.matta@wingsinfo.net,manoj.c@wingsinfo.net";//,venkatarathaiah.m@wingsinfo.net";
+        final String toEmail = "vikas.empuluri@wingsinfo.net,madhuri.matta@wingsinfo.net,manoj.c@wingsinfo.net,venkatarathaiah.m@wingsinfo.net";
 
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.office365.com");
@@ -194,7 +191,7 @@ public class XMLUtil {
     public static void main(String[] args) {
         XMLUtil xmlUtil = new XMLUtil();
         try {
-            xmlUtil.readTestNG("./TestNG/MenuItems/sampleSuite.xml");// Parse bothSuite.xml and testng-results.xml
+            xmlUtil.readTestNG("./TestNG/MenuItems/salesInvoicesTestCases.xml");// Parse bothSuite.xml and testng-results.xml
             xmlUtil.readTestNGResults("./target/surefire-reports/testng-results.xml"); // Process test results and send email
         } catch (Exception e) {
             e.printStackTrace();

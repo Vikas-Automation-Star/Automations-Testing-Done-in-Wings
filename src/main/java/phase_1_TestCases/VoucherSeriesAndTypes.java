@@ -7,9 +7,12 @@ import org.json.simple.parser.ParseException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 
 import java.awt.*;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class VoucherSeriesAndTypes extends Transaction {
     WindowsDriver driver;
@@ -23,7 +26,7 @@ public class VoucherSeriesAndTypes extends Transaction {
         common = new Common(this.driver);
     }
 
-    public String setVouchersTypes(String voucherTypeName, String navigateMenu, String navigateSubMenu, String navigateSubMenu1, String selectVoucher, String closeTransTab) throws InterruptedException, AWTException, IOException, ParseException {
+    public List<String> setVouchersTypes(String voucherTypeName, String voucherSeries, String navigateMenu, String navigateSubMenu, String navigateSubMenu1, String closeTransTab) throws InterruptedException, AWTException, IOException, ParseException {
         common.clickElement("xpath", "//MenuItem[@Name='Configure']");
         common.clickElement("xpath", "//MenuItem[@Name='Voucher Types']");
         WebElement rightClick = common.findWebElement("xpath", "//TreeItem[@Name='All Voucher Types']");
@@ -31,94 +34,118 @@ public class VoucherSeriesAndTypes extends Transaction {
         actions.contextClick(rightClick).perform();
         common.clickElement("xpath", "//MenuItem[@Name='New Master']");
         Thread.sleep(1500);
-        common.inputText("xpath", "//Edit[@Name='New Voucher Type *']/*[@Name='New Voucher Type *']", voucherTypeName);
+        common.inputText("xpath", "//Edit[@Name='New Voucher Type *']/*[@Name='New Voucher Type *']", voucherTypeName+common.getRandom());
+        String voucherType = common.findWebElement("xpath", "//Edit[@Name='New Voucher Type *']/*[@Name='New Voucher Type *']").getText();
+//        System.out.println("Series :" + voucherType);
+        common.inputText("xpath", "//Edit[@Name='Voucher Series']/*[@Name='Voucher Series']", voucherSeries);
+        String assignSeries = common.findWebElement("xpath", "//Edit[@Name='Voucher Series']/*[@Name='Voucher Series']").getText();
+//        System.out.println("Series :" + assignSeries);
         common.clickElement("xpath", "//Button[@Name='Save']");
         common.clickElement("xpath", "//Button[@Name='OK']");
         common.clickElement("xpath", "//Button[@Name='Close']");
         closeTransaction("Voucher Types");
-//        common.clickElement("xpath","//TabItem[@Name='Voucher Types']/Button[@Name='Close']");
-        common.clickElement("xpath", navigateMenu);
-        common.clickElement("xpath", navigateSubMenu);
-        common.clickElement("xpath", navigateSubMenu1);
         Thread.sleep(1000);
+        navigateToMastersOrMenus(navigateMenu,navigateSubMenu,navigateSubMenu1);
+        Thread.sleep(2000);
         common.clickElement("xpath", "//Button[@Name='Configure']");
         common.clickElement("xpath", "//Button[@Name='Voucher Type']");
         common.clickElement("xpath", "//Text[@Name='Applicable Voucher Type']/following-sibling::Button[@Name='...']");
         Thread.sleep(1000);
         WebElement voucherPath = common.findWebElement("xpath", "//Table[@Name='ApplicableVoucherType']/*[starts-with(@Name,'Row 0')]/*[contains(@Name,'Voucher Type * Row 0, Not sorted.')]");
-        voucherPath.sendKeys(selectVoucher, Keys.ENTER);
-        WebElement voucherText = common.findWebElement("xpath", "//Table[@Name='ApplicableVoucherType']/*[starts-with(@Name,'Row 0')]/*[contains(@Name,'Voucher Type * Row 0, Not sorted.')]");
-        String voucherTxt = voucherText.getText();
-        System.out.println("voucherText :" + voucherTxt);
+        voucherPath.sendKeys(voucherType);
         common.clickElement("xpath", "//Pane/Button[@Name='Ok']");
-        common.clickElement("xpath", "//Button[@Name='Save']");
-        common.clickElement("xpath", "//Button[@Name='Yes']");
-        common.clickElement("xpath", "//Window/Button[@Name='OK']");
-        common.clickElement("xpath", closeTransTab);
-        return voucherTxt;
-    }
-
-    public String validateVoucherTypes(String navigateMenu, String navigateSubMenu, String navigateSubMenu1) throws InterruptedException {
-        Thread.sleep(1500);
-        common.clickElement("xpath", navigateMenu);
-        common.clickElement("xpath", navigateSubMenu);
-        common.clickElement("xpath", navigateSubMenu1);
-        WebElement transVid = common.findWebElement("xpath", "//Edit[@Name='Voucher Type']/Edit[@Name='Voucher Type']");
-        String transactionID = transVid.getText();
-        System.out.println("expectedVoucherText :" + transactionID);
-        return transactionID;
-    }
-
-    public void setManualVoucherSeries(String navigateMenu, String navigateSubMenu, String navigateSubMenu1, String closeTransTab) throws IOException, ParseException, InterruptedException {
-        common.clickElement("xpath", navigateMenu);
-        common.clickElement("xpath", navigateSubMenu);
-        common.clickElement("xpath", navigateSubMenu1);
+        saveMasterOrProperty();
+        Thread.sleep(1000);
         common.clickElement("xpath", "//Button[@Name='Configure']");
         common.clickElement("xpath", "//Button[@Name='Voucher Series']");
-        enableCheckboxSelection("//CheckBox[@Name='Use Manual Voucher Numbers']");
-        common.clickElement("xpath", "//Button[@Name='Save']");
-        common.clickElement("xpath", "//Button[@Name='Yes']");
-        common.clickElement("xpath", "//Window/Button[@Name='OK']");
-//        common.clickElement("xpath",closeTransTab);
-//        navigateToMaster("Sales","Enquiries","//Menu/MenuItem[@Name='Sales Enquiries']");
-        lastTransactionName();
-        common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
-        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
+        Thread.sleep(2000);
+        common.clickElement("xpath","//Text[@Name='Voucher Series Options']/following-sibling::Button[@Name='...']");
+        WebElement selectVoucherSeries = common.findWebElement("xpath", "//Table[@Name='VoucherSeriesOptions']/*[starts-with(@Name,'Row 0')]/*[contains(@Name,'Include Option Row 0, Not sorted.')]");
+        voucherPath.sendKeys(common.getData(dataFile,"selectIncludeOption"),Keys.TAB, common.getData(dataFile,"selectSeries"));
+        common.clickElement("xpath", "//Pane/Button[@Name='Ok']");
+        saveMasterOrProperty();
+        common.clickElement("xpath", closeTransTab);
+        List<String> voucherAndSeries=new ArrayList<>();
+        voucherAndSeries.add(voucherType);
+        voucherAndSeries.add(assignSeries);
+        return voucherAndSeries;
+    }
+    public List<String>validateVoucherTypeAndSeries(String navigateMenu, String navigateSubMenu, String navigateSubMenu1,String closeTab) throws InterruptedException, IOException, ParseException, AWTException {
+        navigateToMastersOrMenus(navigateMenu,navigateSubMenu,navigateSubMenu1);
+        String transVid = common.findWebElement("xpath", "//Edit[@Name='Voucher Type']/Edit[@Name='Voucher Type']").getText();
+//        System.out.println("voucher type :"+transVid);
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
+        selectAndValidateDataNew(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
-        selectAndValidateData(common.getData(dataFile, "transaction"), "xpath", "//Edit[@Name='Trans Currency *']");
+        common.clickElement("xpath", "//Edit[@Name='Party Code']");
+        enterInput("xpath","//Edit[@Name='Party Code']",dataFile,"partyCode");
+        common.clickElement("xpath", "//Edit[@Name='Party Account *']");
+        gstTransactionType(common.getData(dataFile, "gstType"));
+        Thread.sleep(1500);
+        //items
+        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']", dataFile, "productCode");
+        enterData("xpath", "//Edit[@Name='Quantity * Row 0, Not sorted.']", dataFile, "quantity");
+        transactionSave();
+        String lastSaved = common.findWebElement("xpath", "//Text[@Name='Last Saved :']/following-sibling::Text").getAttribute("Name");
+//        System.out.println("last Saved :"+lastSaved);
+        common.clickElement("xpath",closeTab);
+        List<String> voucherAndSeries=new ArrayList<>();
+        voucherAndSeries.add(transVid);
+        voucherAndSeries.add(lastSaved);
+        return voucherAndSeries;
+    }
+    public void setManualVoucherSeries() throws IOException, ParseException, InterruptedException {
+        navigateToMastersOrMenus("Sales","Enquiries","//Menu/MenuItem[@Name='Sales Enquiries']");
+        common.clickElement("xpath", "//Button[@Name='Configure']");
+        common.clickElement("xpath", "//Button[@Name='Voucher Series']");
+        Thread.sleep(1000);
+        enableCheckboxSelection("//Pane/CheckBox[@Name='Use Manual Voucher Numbers']");
+        saveMasterOrProperty();
+        closeTransaction("Sales Enquiries");
+        navigateToMastersOrMenus("Sales", "Enquiries", "//Menu/MenuItem[@Name='Sales Enquiries']");
+        lastTransactionName();
+        common.clickElement("xpath", "//Edit[@Name='Branch *']");
+        selectAndValidateDataNew(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
+        common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
+        selectAndValidateDataNew(common.getData(dataFile, "transaction"), "xpath", "//Edit[@Name='Trans Currency *']");
         common.clickElement("xpath", "//Edit[@Name='Party Code']");
         selectAndValidateDataNew(common.getData(dataFile, "partyCode"), "xpath", "//Edit[@Name='Party Code']");
         common.clickElement("xpath", "//Edit[@Name='Party Account *']");
-        Thread.sleep(5000);
+        Thread.sleep(2000);
         gstTransactionType(common.getData(dataFile, "gstType"));
         Thread.sleep(1500);
         common.clickElement("xpath", "//Edit[@Name='Price List']");
-        selectAndValidateData(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
-        common.clickElement("xpath", "//Edit[@Name='Executive *']");
-        selectAndValidateData(common.getData(dataFile, "executive"), "xpath", "//Edit[@Name='Executive *']");
-        common.clickElement("xpath", "//Edit[@Name='Remarks']");
-        selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
-        //items
+        selectAndValidateDataNew(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
         enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']", dataFile, "productCode");
-        enterData("xpath", "//Edit[@Name='Quantity * Row 0, Not sorted.']", dataFile, "Quantity");
-        //save
+        enterData("xpath", "//Edit[@Name='Quantity * Row 0, Not sorted.']", dataFile, "quantity");
         common.clickElement("xpath", "//Button[@Name='Save']");
         common.inputText("xpath", "//Edit[@Name='Enter VoucherSeries']", common.getData(dataFile, "voucherSeries"));
         common.inputText("xpath", "//Edit[@Name='Enter VoucherNo']", common.getData(dataFile, "voucherNumber") + common.getRandom());
         String voucherSeries = common.findWebElement("xpath", "//Edit[@Name='Enter VoucherSeries']").getText();
         String voucherNumber = common.findWebElement("xpath", "//Edit[@Name='Enter VoucherNo']").getText();
-        String voucherDetails = voucherSeries + voucherNumber;
+        String voucherDetails = voucherSeries +" "+ voucherNumber;
         System.out.println("Voucher Details: " + voucherDetails);
         common.clickElement("xpath", "//Button[@Name='Ok']");
-        //once the build is stable we need to validate using the pop-up text
-//        Assert.assertEquals(voucherDetails,"");
+        common.clickElement("xpath", "//Button[@Name='Yes']");
+        String popupText = common.findWebElement("xpath", "//Window[@Name='Transaction saved.']/Text").getText();
+        System.out.println("windowText :" + popupText);
+        common.clickElement("xpath", "//Button[@Name='OK']");
+        if (popupText.contains(voucherDetails)) {
+            Assert.assertTrue(true, "not matched[ManualVoucherSeries&Pup-up text]");
+            System.out.println("pup-up contain Manual voucher series");
+        } else {
+            Assert.assertFalse(false);
+        }
+        String lastSaved = common.findWebElement("xpath", "//Text[@Name='Last Saved :']/following-sibling::Text").getAttribute("Name");
+        System.out.println("lastSaved :"+lastSaved);
+        Assert.assertEquals(voucherDetails,lastSaved,"ManualVoucherSeries and LastSaved both are different please check again");
+        System.out.println("Manual Voucher series worked fine");
+        common.clickElement("xpath", "//Button[@Name='Configure']");
+        common.clickElement("xpath", "//Button[@Name='Voucher Series']");
         Thread.sleep(1000);
-        common.clickElement("xpath", "//Window[starts-with(@Name,'Transaction')]/*[@Name='OK']");
-//        String lastSaved=common.findWebElement("xpath", "//Text[@Name='Last Saved :']/following-sibling::Text").getAttribute("Name");
-        //here also once the build is table manual testers gave that build so automatically last saved will be updating then we can perform complete validation
-//        Assert.assertEquals(voucherDetails,lastSaved,"Manual voucher series is no updated check once again");
+        uncheckCheckBox("//Pane/CheckBox[@Name='Use Manual Voucher Numbers']");
+        saveMasterOrProperty();
+        common.clickElement("xpath", "//TabItem[@Name='Sales Enquiries']/Button[@Name='Close']");
     }
 
     public void setMultipleVoucherSeries(String navigateMenu, String navigateSubMenu, String navigateSubMenu1, String closeTransactionTabItem) throws IOException, ParseException, InterruptedException {
@@ -149,7 +176,7 @@ public class VoucherSeriesAndTypes extends Transaction {
         common.clickElement("xpath", "//Button[@Name='Yes']");
         common.clickElement("xpath", "//Window/Button[@Name='OK']");
         closeTransaction(closeTransactionTabItem);
-        navigateToMaster("Sales", "Enquiries", "//Menu/MenuItem[@Name='Sales Enquiries']");
+        navigateToMastersOrMenus("Sales", "Enquiries", "//Menu/MenuItem[@Name='Sales Enquiries']");
         lastTransactionName();
         common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
         selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");

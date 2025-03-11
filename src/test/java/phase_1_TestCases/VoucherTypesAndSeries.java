@@ -11,11 +11,12 @@ import org.testng.annotations.Test;
 
 import java.awt.*;
 import java.io.IOException;
+import java.util.List;
 
 public class VoucherTypesAndSeries {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String dataFile = "./src/main/resources/phase_1_List/vouchersAndTypes.json";
+    String dataFile = "./src/main/resources/phase_1_List/voucherTypesAndSeries.json";
     Common common;
 
     @BeforeTest
@@ -23,38 +24,39 @@ public class VoucherTypesAndSeries {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
-
-    @Test
+    @Test(priority = 1)
     public void voucherTypes() throws InterruptedException, AWTException, IOException, ParseException {
         VoucherSeriesAndTypes types = new VoucherSeriesAndTypes(driver, dataFile);
-        String voucherID = types.setVouchersTypes("SI", "//MenuItem[@Name='Sales']", "//MenuItem[@Name='Invoices']", "//Menu/MenuItem[@Name='Sales Invoices']", "SI", "//TabItem[@Name='Sales Invoices']/Button[@Name='Close']");
-        System.out.println("givenVoucherID :" + voucherID);
+        List<String> voucherIdAndSeries = types.setVouchersTypes("AT-SE","Sales Enquiry", "Sales", "Enquiries", "//Menu/MenuItem[@Name='Sales Enquiries']", "//TabItem[@Name='Sales Enquiries']/Button[@Name='Close']");
+        String voucher=voucherIdAndSeries.get(0);
+        String series=voucherIdAndSeries.get(1);
         appLogin.logout();
         driver = appLogin.launchSingleUserApp();
         common = new Common(driver);
         appLogin.singleUserLogin();
-        Thread.sleep(1500);
         VoucherSeriesAndTypes seriesAndTypes = new VoucherSeriesAndTypes(driver, dataFile);
-        String TransactionVoucherID = seriesAndTypes.validateVoucherTypes("//MenuItem[@Name='Sales']", "//MenuItem[@Name='Invoices']", "//Menu/MenuItem[@Name='Sales Invoices']");
-        System.out.println("expectedTransactionVoucherID :" + TransactionVoucherID);
-        Assert.assertEquals(voucherID, TransactionVoucherID, "both vouchers are not same please check again");
+        List<String> TransactionVoucherTypeAndSeries = seriesAndTypes.validateVoucherTypeAndSeries("Sales", "Enquiries", "//Menu/MenuItem[@Name='Sales Enquiries']","//TabItem[@Name='Sales Enquiries']/Button[@Name='Close']");
+        String voucherType= TransactionVoucherTypeAndSeries.get(0);
+        String voucherSeries= TransactionVoucherTypeAndSeries.get(1);
+        Assert.assertEquals(voucher, voucherType, "both vouchers are not same please check again");
+        Assert.assertTrue(voucherSeries.contains(series),"both vouchers series are not same please check again");
+        appLogin.logout();
     }
-
-    //    @Test
+    @Test(priority = 2)
     public void manualVoucherSeries() throws IOException, ParseException, InterruptedException {
+        driver = appLogin.launchSingleUserApp();
+        common = new Common(driver);
+        appLogin.singleUserLogin();
         VoucherSeriesAndTypes manualVS = new VoucherSeriesAndTypes(driver, dataFile);
-        manualVS.setManualVoucherSeries("//MenuItem[@Name='Sales']", "//MenuItem[@Name='Enquiries']", "//Menu/MenuItem[@Name='Sales Enquiries']", "//TabItem[@Name='Sales Enquiries']/Button[@Name='Close']");
+        manualVS.setManualVoucherSeries();
     }
-
     //    @Test
     public void multipleVoucherSeries() throws IOException, ParseException, InterruptedException {
         VoucherSeriesAndTypes multipleVT = new VoucherSeriesAndTypes(driver, dataFile);
         multipleVT.setMultipleVoucherSeries("Sales", "Enquiries", "Sales Enquiries", "Sales Enquiries");
     }
-
     @AfterTest
     public void afterTest() throws IOException {
         appLogin.logout();
     }
-
 }

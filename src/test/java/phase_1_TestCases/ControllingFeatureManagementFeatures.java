@@ -21,16 +21,17 @@ public class ControllingFeatureManagementFeatures {
     }
 
     @Test
-    public void MenuItems() throws InterruptedException {
+    public void featureManagementValidations() throws InterruptedException {
         ControllingWithFeatureManagement controlling = new ControllingWithFeatureManagement(driver, file);
-        controlling.menuItemsFeatureManagementPositive();
-//        controlling.menuItemsNegativeFeatureManagementNegative();
+        controlling.validateMenuItemsNegative();
+        controlling.validateMenuItemsPositive();
+        controlling.validateTransactionFieldsPositive();
+        controlling.validateTransactionFieldsNegative();
     }
 
     @AfterTest
     public void afterTest() throws IOException {
         appLogin.logout();
     }
-
 
 }

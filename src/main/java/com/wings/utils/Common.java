@@ -242,7 +242,7 @@ public class Common {
 
     public int getRandom() {
         Random rand = new Random();
-        int randomNumber = 1000 + rand.nextInt(9000);
+        int randomNumber =rand.nextInt(100);
         return randomNumber;
     }
 

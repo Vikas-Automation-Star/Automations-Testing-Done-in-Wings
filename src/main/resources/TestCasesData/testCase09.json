@@ -6,18 +6,21 @@
   "salesAccountCode": "AT_Sales  Acc 1",
   "tcsNature": "AT_TCS Transaction Nature 1",
   "portCode": "225588",
-  "productCount": 3,
   "HSNCode": "AT_HSN Code 2",
+
+  "productCount": 3,
   "productType0": "general",
   "productCode0": 332211,
   "quantity0": 5,
   "voucherDiscount0": 2,
   "partyDiscount0": 5,
+
   "productType1": "multiBatch",
   "productCode1": 6302258,
   "quantity1": 10,
   "voucherDiscount1": 2,
   "partyDiscount1": 9,
+
   "productType2": "serial",
   "productCode2": 123456,
   "quantity2": 5,

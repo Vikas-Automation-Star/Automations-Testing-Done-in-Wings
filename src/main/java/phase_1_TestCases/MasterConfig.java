@@ -300,7 +300,7 @@ public class MasterConfig extends Transaction {
         }
         Thread.sleep(1500);
         common.clickElement("xpath","//TabItem[@Name='Customers']/Button[@Name='Close']");
-        navigateToMaster("Sales","Customers","//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
+        navigateToMastersOrMenus("Sales","Customers","//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
         List<WebElement> listElements = common.findWebElements("xpath", "//Pane[@Name='Customers']/Pane/Pane/Pane/Pane/Pane/List/ListItem");
         System.out.println("Size of elements and List: " + listElements.size());
         for (int i = 0; i < listElements.size(); i++) {
@@ -316,7 +316,7 @@ public class MasterConfig extends Transaction {
     }
 
     public void renameNode() throws IOException, ParseException, InterruptedException {
-        navigateToMaster("Sales","Customers","//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
+        navigateToMastersOrMenus("Sales","Customers","//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
         List<WebElement> listElements1 = common.findWebElements("xpath", "//Pane[@Name='Customers']/Pane/Pane/Pane/Pane/Pane/List/ListItem");
         System.out.println("Size of elements and List: " + listElements1.size());
         for (int i = 0; i < listElements1.size(); i++) {
@@ -337,7 +337,7 @@ public class MasterConfig extends Transaction {
                 break;
             }
         }
-        navigateToMaster("Sales","Customers","//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
+        navigateToMastersOrMenus("Sales","Customers","//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
         Thread.sleep(1500);
         List<WebElement> listElements2 = common.findWebElements("xpath", "//Pane[@Name='Customers']/Pane/Pane/Pane/Pane/Pane/List/ListItem");
         System.out.println("Size of elements and List: " + listElements2.size());
@@ -354,7 +354,7 @@ public class MasterConfig extends Transaction {
     }
     public void moveAsSubNodeAndMainNode() throws InterruptedException, IOException, ParseException {
         Thread.sleep(2000);
-        navigateToMaster("Sales","Customers","//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
+        navigateToMastersOrMenus("Sales","Customers","//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
         List<WebElement> listElements3 = common.findWebElements("xpath", "//Pane[@Name='Customers']/Pane/Pane/Pane/Pane/Pane/List/ListItem");
         System.out.println("Size of elements and List: " + listElements3.size());
         for (int i = 0; i < listElements3.size(); i++) {
@@ -395,7 +395,7 @@ public class MasterConfig extends Transaction {
                 }
                 common.clickElement("xpath","//TabItem[@Name='Customers']/Button[@Name='Close']");
                 Thread.sleep(1000);
-                navigateToMaster("Sales","Customers","//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
+                navigateToMastersOrMenus("Sales","Customers","//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
                 Thread.sleep(1000);
                 WebElement right=common.findWebElement("xpath","//TreeItem[@Name='All Customers']");
                 right.sendKeys(Keys.ARROW_RIGHT,Keys.ARROW_RIGHT);
@@ -412,7 +412,7 @@ public class MasterConfig extends Transaction {
                 common.clickElement("xpath","//Button[@Name='OK']");
                 System.out.println("Node moved to Main Node");
                 common.clickElement("xpath","//TabItem[@Name='Customers']/Button[@Name='Close']");
-                navigateToMaster("Sales","Customers","//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
+                navigateToMastersOrMenus("Sales","Customers","//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
                 List<WebElement> mainNode=common.findWebElements("xpath","//TreeItem");
                 System.out.println("allNodesText :"+mainNode.size());
                 for (WebElement v:mainNode){
@@ -426,7 +426,7 @@ public class MasterConfig extends Transaction {
         }
     }
     public void movingMastersBetweenNodes(String movingMasterNamePath) throws InterruptedException, MalformedURLException {
-        navigateToMaster("Sales","Customers","//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
+        navigateToMastersOrMenus("Sales","Customers","//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
         WebElement selectingMaster= common.findWebElement("xpath",movingMasterNamePath);
         String selectMasterTomoveAnotherNode=selectingMaster.getText();
         Actions actions = new Actions(driver);
