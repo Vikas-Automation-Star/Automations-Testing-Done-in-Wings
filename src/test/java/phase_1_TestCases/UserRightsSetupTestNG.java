@@ -23,7 +23,7 @@ public class UserRightsSetupTestNG {
         appLogin.singleUserLogin(common.getData(dataFile,"superUser"), common.getData(dataFile,"password"));
     }
 
-//    @Test(priority = 1)
+    @Test(priority = 1)
     public void assignPasswordAndVerify() throws IOException, ParseException, InterruptedException {
         System.out.println("PRIORITY-1");
         UserRightsSetup assignPassword = new UserRightsSetup(driver, dataFile, appLogin);
@@ -31,7 +31,7 @@ public class UserRightsSetupTestNG {
         appLogin.logout();
     }
 
-//    @Test(priority = 2)
+    @Test(priority = 2)
     public void grantRevokeAccessMaster() throws IOException, InterruptedException, ParseException {
         System.out.println("PRIORITY-2");
         //grant access
@@ -66,7 +66,7 @@ public class UserRightsSetupTestNG {
         appLogin.logout(); //this logout isn't working
     }
 
-//    @Test(priority = 3)
+    @Test(priority = 3)
     public void grantRevokeAccessTransaction() throws InterruptedException, IOException, ParseException {
         System.out.println("PRIORITY-3");
         //grantAccess
@@ -100,7 +100,7 @@ public class UserRightsSetupTestNG {
         appLogin.logout();
     }
 
-//    @Test(priority = 4)
+    @Test(priority = 4)
     public void grantRevokeAccessReport() throws IOException, ParseException, InterruptedException {
         System.out.println("PRIORITY-4");
         //grantAccess
@@ -134,7 +134,7 @@ public class UserRightsSetupTestNG {
         appLogin.logout();
     }
 
-    @Test(priority = 5)
+//    @Test(priority = 5)
     public void grantRevokeAccessMasterProperties() throws IOException, ParseException, InterruptedException {
         System.out.println("PRIORITY -5");
         //grant Access

@@ -1740,4 +1740,76 @@ public abstract class Transaction {
             Assert.fail("grossDiscountAmount field is empty");
         }
     }
+
+    //over-loaded methods
+    public void enterData(String locatorType, String locator, String fileName,String dataset, String key) throws IOException, ParseException {
+        List<WebElement> elementList = common.findWebElements(locatorType, locator);
+//        System.out.println("Size :" + elementList.size());
+        for (WebElement i : elementList) {
+            i.click();
+            i.sendKeys(common.getData(fileName,dataset, key), Keys.TAB);
+            break;
+        }
+    }
+    public void enterInput(String locatorType, String locator, String fileName,String dataset, String key) throws IOException, ParseException {
+        List<WebElement> elementList = common.findWebElements(locatorType, locator);
+        for (WebElement i : elementList) {
+            i.click();
+            i.sendKeys(Keys.CONTROL + "a");
+            i.sendKeys(Keys.BACK_SPACE);
+            i.sendKeys(common.getData(fileName,dataset, key), Keys.TAB);
+            break;
+        }
+    }
+    public void enterDataAndValidate(String locatorType, String locator, String fileName, String dataset,String key) throws IOException, ParseException {
+        List<WebElement> elementList = common.findWebElements(locatorType, locator);
+//        System.out.println("Size :" + elementList.size());
+        for (WebElement i : elementList) {
+//            System.out.println(i.getText());
+            i.click();
+            i.sendKeys(common.getData(fileName,dataset, key), Keys.TAB);
+        }
+        WebElement element = common.findWebElement(locatorType, locator);
+        if (element.getText().equals(common.getData(fileName,dataset, key))) {
+//            System.out.println("successfully selected/opened:- " + element.getText());
+        } else {
+            Assert.fail(element.getText() + "is not selected");
+        }
+    }
+    public void verifyReport(String transaction, String dataFile,String dataset) throws IOException, ParseException {
+        List<WebElement> elementList = common.findWebElements("xpath", "//Table/*[@Name='Data Panel']/ListItem[contains(@Name,'Row')]");
+        System.out.println("Size :" + elementList.size());
+        for (WebElement i : elementList) {
+            System.out.println("text :" + i.getText());
+            if (i.getText().contains(transaction)) {
+                System.out.println("verifyingRow :");
+                bulkVerifyReportData(i.getText(), dataFile,dataset);
+            }
+        }
+    }
+    public void bulkVerifyReportData(String text, String dataFile,String dataset) throws IOException, ParseException {
+        String[] columns = text.split(";");
+        for (int i = 0; i < columns.length; i++) {
+            if (i > 2 && !common.getData(dataFile, dataset,"column" + (i + 1)).equals("")) {
+                Assert.assertEquals(columns[i], common.getData(dataFile, dataset,"column" + (i + 1)));
+            }
+            System.out.println(columns[i]);
+        }
+        System.out.println("Report verified Successfully");
+    }
+    public void enterBranch(String dataFile,String dataset,String key) throws IOException, ParseException {
+        enterInput("xpath", "//Edit[@Name='Branch *']", dataFile,dataset, key);
+    }
+
+    public void enterPartyCode(String dataFile,String dataset, String key) throws IOException, ParseException {
+        enterInput("xpath", "//Edit[@Name='Party Code']", dataFile,dataset, key);
+    }
+
+    public void enterPriceList(String dataFile,String dataset, String key) throws IOException, ParseException {
+        enterInput("xpath", "//Edit[@Name='Price List']", dataFile,dataset, key);
+    }
+
+    public void enterExecutive(String dataFile,String dataset, String key) throws IOException, ParseException {
+        enterInput("xpath", "//Edit[@Name='Executive *']", dataFile,dataset, key);
+    }
 }
