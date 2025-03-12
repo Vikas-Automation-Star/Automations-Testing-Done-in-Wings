@@ -1,7 +1,6 @@
-package util;
+package phase_1_TestCases;
 
 import com.wings.pages.AppLogin;
-import phase_1_TestCases.CompanyInitialisationGSTConfiguration;
 import com.wings.utils.CreateCompany;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
