@@ -20,34 +20,34 @@ public class TransactionFeatureConfig {
         appLogin.singleUserLogin();
     }
 
-    @Test
+    @Test(priority = 1)
     public void draftTransaction() throws IOException, ParseException, InterruptedException {
         TransactionFeatures features=new TransactionFeatures(driver,dataFile);
         features.saveAsDraft();
     }
 
-    @Test
+    @Test(priority = 2)
     public void holdTransaction() throws IOException, ParseException, InterruptedException {
         TransactionFeatures features=new TransactionFeatures(driver,dataFile);
         features.holdTransaction();
     }
 
-    @Test
-    public void saveAsTemplate() throws IOException, ParseException, InterruptedException {
-        TransactionFeatures template=new TransactionFeatures(driver,dataFile);
-        template.saveAsTemplate();
-    }
-
-    @Test
+    @Test(priority = 3)
     public void editTransaction() throws IOException, ParseException, InterruptedException {
         TransactionFeatures editTrans=new TransactionFeatures(driver,dataFile);
         editTrans.editTransaction();
     }
 
-    @Test
+    @Test(priority = 4)
     public void addToFavourite() throws IOException, ParseException, InterruptedException {
         TransactionFeatures addToFav =new TransactionFeatures(driver,dataFile);
         addToFav.addToFavourites();
+    }
+
+    @Test(priority = 5)
+    public void saveAsTemplate() throws IOException, ParseException, InterruptedException {
+        TransactionFeatures template=new TransactionFeatures(driver,dataFile);
+        template.saveAsTemplate();
     }
 
 

@@ -34,24 +34,30 @@ public class MastersConfiguration {
     }
 
     @Test(priority = 3)
+    public void searchMaster() throws IOException, ParseException {
+        MasterConfig search=new MasterConfig(driver,dataFile);
+        search.searchMaster("code");
+    }
+
+    @Test(priority = 4)
     public void nodeCreation() throws InterruptedException, IOException, ParseException, AWTException {
         MasterConfig config = new MasterConfig(driver, dataFile);
         config.createNode();
     }
 
-    @Test(priority = 4)
+    @Test(priority = 5)
     public void nodeRename() throws InterruptedException, IOException, ParseException, AWTException {
         MasterConfig config = new MasterConfig(driver, dataFile);
         config.renameNode();
     }
 
-    @Test(priority = 5)
+    @Test(priority = 6)
     public void moveAsSubNodeAndMoveToMainNode() throws InterruptedException, IOException, ParseException, AWTException {
         MasterConfig config = new MasterConfig(driver, dataFile);
         config.moveAsSubNodeAndMainNode();
     }
 
-    @Test(priority = 6)
+    @Test(priority = 7)
     public void moveMastersBetweenNodes() throws InterruptedException, IOException, ParseException, AWTException {
         MasterConfig config = new MasterConfig(driver, dataFile);
         config.movingMastersBetweenNodes("//ListItem[@Name='Anjali Devi']/Text[@Name='Anjali Devi']");

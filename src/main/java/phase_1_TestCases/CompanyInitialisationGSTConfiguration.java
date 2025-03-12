@@ -29,7 +29,6 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         common.clickElement("xpath","//Button[@Name='Next >']");
 
         List<WebElement> click=common.findWebElements("xpath","//Table/*[contains(@Name,'Row')]/CheckBox[contains(@Name,'UseThis Row')]");
-        System.out.println("size :"+click);
         for (WebElement v:click) {
             String checkBoxToggleState = v.getAttribute("Toggle.ToggleState");
             System.out.println("Check Box Toggle state:-"+checkBoxToggleState);
@@ -105,7 +104,6 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         common.clickElement("xpath","//Button[@Name='Next >']");
 
         List<WebElement> click=common.findWebElements("xpath","//Table/*[contains(@Name,'Row')]/CheckBox[contains(@Name,'UseThis Row')]");
-        System.out.println("size :"+click);
         for (WebElement v:click) {
             String checkBoxToggleState = v.getAttribute("Toggle.ToggleState");
             System.out.println("Check Box Toggle state:-"+checkBoxToggleState);
@@ -158,7 +156,6 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         robot.keyRelease(KeyEvent.VK_ENTER);
         common.clickElement("xpath","//Button[@Name='Next >']");
         common.clickElement("xpath","//Button[@Name='Finish']");
-        System.out.println("CGST configuration completed");
         System.out.println("SGST configuration completed");
     }
     public void igstConfiguration() throws InterruptedException, AWTException {
@@ -169,7 +166,6 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         common.clickElement("xpath","//Button[@Name='Next >']");
 
         List<WebElement> click=common.findWebElements("xpath","//Table/*[contains(@Name,'Row')]/CheckBox[contains(@Name,'UseThis Row')]");
-        System.out.println("size :"+click);
         for (WebElement v:click) {
             String checkBoxToggleState = v.getAttribute("Toggle.ToggleState");
             System.out.println("Check Box Toggle state:-"+checkBoxToggleState);
@@ -232,7 +228,6 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         common.clickElement("xpath","//Button[@Name='Next >']");
 
         List<WebElement> click=common.findWebElements("xpath","//Table/*[contains(@Name,'Row')]/CheckBox[contains(@Name,'UseThis Row')]");
-        System.out.println("size :"+click);
         for (WebElement v:click) {
             String checkBoxToggleState = v.getAttribute("Toggle.ToggleState");
             System.out.println("Check Box Toggle state:-"+checkBoxToggleState);
@@ -383,6 +378,11 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         //Email
         enableCheckboxSelection("//CheckBox[@Name='Allow sending Emails from transactions and reports.']");
         enableCheckboxSelection("//CheckBox[@Name='Send template as Email body.']");
+        //Dashboard
+        enableCheckboxSelection("//CheckBox[@Name='Enable dashboard Open Items.']");
+        enableCheckboxSelection("//CheckBox[@Name='Enable dashboard Key Metrics.']");
+        //scroll-down
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,50);
         //Document Management
         enableCheckboxSelection("//Pane//CheckBox[@Name='Enable document management.']");
         //save
@@ -494,7 +494,7 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         common.clickElement("xpath","//Button[@Name='Save']");
         common.clickElement("xpath","//Button[@Name='OK']");
         common.clickElement("xpath","//Button[@Name='OK']");
-        System.out.println(" SALES WORKFLOW CHECKBOX SELECTION DONE  :-"+new String(Character.toChars(0x1F600)));
+        System.out.println(" SALES WORKFLOW CHECKBOX SELECTION DONE");
 
         common.clickElement("xpath","//Button[@Name='Module Settings']");
         enableCheckboxSelection("//Pane//CheckBox[@Name='Enable product wise discounts in all transactions.']");
@@ -585,7 +585,7 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         common.clickElement("xpath","//Button[@Name='OK']");
         Thread.sleep(500);
         common.clickElement("xpath","//Window/Button[@Name='OK']");
-        System.out.println("SALES MODULE FLOW CHECKBOX SELECTION DONE  :-"+new String(Character.toChars(0x1F601)));
+        System.out.println("SALES MODULE FLOW CHECKBOX SELECTION DONE");
 
         common.clickElement("xpath","//Button[@Name='Policies']");
         enableCheckboxSelection("//Pane//CheckBox[@Name='Pricing']");
@@ -602,8 +602,7 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         Thread.sleep(500);
         common.clickElement("xpath","//Window/Button[@Name='OK']");
         common.clickElement("xpath","//TitleBar/Button[@Name='Close']");
-        System.out.println("SALES MODULE CONFIGURATION COMPLETED  :-"+new String(Character.toChars(0x1F60D)));
-        System.out.println(new String(Character.toChars(0x1F981)));
+        System.out.println("SALES MODULE CONFIGURATION COMPLETED");
 
     }
     public void purchaseModuleConfiguration() throws InterruptedException {
@@ -622,7 +621,7 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         common.clickElement("xpath","//Button[@Name='Save']");
         common.clickElement("xpath","//Button[@Name='OK']");
         common.clickElement("xpath","//Button[@Name='OK']");
-        System.out.println(" SALES WORKFLOW CHECKBOX SELECTION DONE  :-"+new String(Character.toChars(0x1F600)));
+        System.out.println(" PURCHASE WORKFLOW CHECKBOX SELECTION DONE");
 
         common.clickElement("xpath","//Button[@Name='Module Settings']");
         enableCheckboxSelection("//Pane//CheckBox[@Name='Enable product wise discounts in all purchase transactions.']");
@@ -704,7 +703,7 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         common.clickElement("xpath","//Button[@Name='OK']");
         Thread.sleep(500);
         common.clickElement("xpath","//Window/Button[@Name='OK']");
-        System.out.println("SALES MODULE FLOW CHECKBOX SELECTION DONE  :-"+new String(Character.toChars(0x1F601)));
+        System.out.println("PURCHASE MODULE FLOW CHECKBOX SELECTION DONE");
 
         common.clickElement("xpath","//Button[@Name='Policies']");
         enableCheckboxSelection("//Pane//CheckBox[@Name='Pricing']");
@@ -719,8 +718,7 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         Thread.sleep(500);
         common.clickElement("xpath","//Window/Button[@Name='OK']");
         common.clickElement("xpath","//TitleBar/Button[@Name='Close']");
-        System.out.println("SALES MODULE CONFIGURATION COMPLETED  :-"+new String(Character.toChars(0x1F60D)));
-        System.out.println(new String(Character.toChars(0x1F981)));
+        System.out.println("PURCHASE MODULE CONFIGURATION COMPLETED");
 
     }
     public void inventoryFlow() throws InterruptedException {
@@ -1035,18 +1033,24 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         enableCheckboxSelection("//Pane//CheckBox[@Name='Enable in finance transactions.']");
         enableCheckboxSelection("//Pane//CheckBox[@Name='Enable round off in TCS transaction nature properties.']");
         enableCheckboxSelection("//Pane//CheckBox[@Name='Enable other charges in TCS payments transactions.']");
-        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,35);
+        common.sliderHandling("xpath","//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']",0,45);
         //E-way Bill
         enableCheckboxSelection("//Pane//CheckBox[@Name='Enable E-Way Bill']");
         enableCheckboxSelection("//Pane//CheckBox[@Name='E-Way Bill Offline']");
         enableCheckboxSelection("//Pane//CheckBox[@Name='E-Way Bill Online']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable E-Way Bill Online']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable Generate E-WayBill With Part B Transaction']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable Offline E-WayBill With Part B Updation']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable Offline E-WayBill Info WithOut Part B Updation']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable Generate E-WayBill WithOut PartB']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable Update Eway Bill PartB Offline']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable Update Eway Bill PartB Online']");
+
         //save
         common.clickElement("xpath","//Button[@Name='Save']");
         common.clickElement("xpath","//Button[@Name='OK']");
         Thread.sleep(1500);
         common.clickElement("xpath","//Button[@Name='OK']");
-        System.out.println("AllConfiguration Done "+new String(Character.toChars(0x1F60D)));
-        System.out.println(new String(Character.toChars(0x1F60D)));
-        System.out.println(new String(Character.toChars(0x1F981)));
+        System.out.println("AllConfiguration Done ");
     }
 }
