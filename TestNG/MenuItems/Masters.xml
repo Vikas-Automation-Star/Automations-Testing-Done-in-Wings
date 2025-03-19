@@ -5,6 +5,67 @@
     </listeners>
     <!-- Sales Masters -->
 
+
+    <test name="Creating DepartmentMaster" description="description for DepartmentMaster" testID="WOW 3">
+        <classes>
+            <class name="menuItems.company.masters.DepartmentsMaster"/>
+        </classes>
+    </test>
+
+    <test name="Creating ProjectMaster" description="description for ProjectMaster" testID="WOW 4">
+        <classes>
+            <class name="menuItems.company.masters.ProjectMaster"/>
+        </classes>
+    </test>
+
+    <test name="Creating CostCentresMaster" description="description for ProjectMaster" testID="WOW 5">
+        <classes>
+            <class name="menuItems.company.masters.CostCentresMaster"/>
+        </classes>
+    </test>
+
+    <test name="Creating ProfitCentresMaster" description="description for ProfitCentresMaster" testID="WOW 6">
+        <classes>
+            <class name="menuItems.company.masters.ProfitCentresMaster"/>
+        </classes>
+    </test>
+
+    <test name="Creating RoutesMaster" description="description for RoutesMaster" testID="WOW 7">
+        <classes>
+            <class name="menuItems.company.masters.RoutesMaster"/>
+        </classes>
+    </test>
+
+    <test name="Creating TransportersMaster" description="description for TransportersMaster" testID="WOW 8">
+        <classes>
+            <class name="menuItems.company.masters.TransportersMaster"/>
+        </classes>
+    </test>
+
+    <test name="Creating TermTypesMaster" description="description for TermTypesMaster" testID="WOW 9">
+        <classes>
+            <class name="menuItems.company.masters.TermTypeMaster"/>
+        </classes>
+    </test>
+
+    <test name="Creating TermsMaster" description="description for TermsMaster" testID="WOW 10">
+        <classes>
+            <class name="menuItems.company.masters.TermsMaster"/>
+        </classes>
+    </test>
+
+    <test name="Creating ReasonsMaster" description="description for ReasonsMaster" testID="WOW 11">
+        <classes>
+            <class name="menuItems.company.masters.ReasonsMaster"/>
+        </classes>
+    </test>
+
+    <test name="Creating ExecutiveMaster" description="description for ExecutiveMaster" testID="WOW 12">
+        <classes>
+            <class name="menuItems.company.masters.ExecutiveMaster"/>
+        </classes>
+    </test>
+
     <test name="Customers Master" description="Test 1 description" testID="1">
         <classes>
             <class name="menuItems.sales.masters.CustomerMaster"/>
@@ -98,7 +159,7 @@
 
     <test name="Product Batch Master" description="Test 7 description" testID="7">
         <classes>
-            <class name="menuItems.inventory.masters.product.batches.ProductBatche"/>
+            <class name="menuItems.inventory.masters.product.batches.ProductBatch"/>
         </classes>
     </test>
 
@@ -252,8 +313,7 @@
         </classes>
     </test>
 
-    <test name="Chart of Accounts - Selling And Distribution Expenses"
-          description="SellingAndDistributionExpenses Master Description" testID="23">
+    <test name="Chart of Accounts - Selling And Distribution Expenses" description="SellingAndDistributionExpenses Master Description" testID="23">
         <classes>
             <class name="menuItems.finance.masters.ChartOfAccounts.ProfitAndLoss.SellingAndDistributionExpenses"/>
         </classes>
