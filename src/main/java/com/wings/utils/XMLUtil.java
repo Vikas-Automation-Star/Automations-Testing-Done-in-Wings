@@ -25,11 +25,11 @@ import java.util.regex.Pattern;
 
 public class XMLUtil {
     Document document;
-    long executionTimeMillis = 0;
     String executionMachine = "";
     String executionStartTime = "";
-    String suiteName1 = "";
     String executionEndTime = "";
+    long executionTimeMillis = 0;
+    String suiteName1 = "";
     String os = System.getProperty("os.name");
     static final Path toFile = Paths.get("mailTemplates/to.html");
     int passedTests = 0;
@@ -114,12 +114,12 @@ public class XMLUtil {
                     Element testMethodElement = (Element) testMethodTags.item(j);
                     String signature = testMethodElement.getAttribute("signature");
 //                    System.out.println(signature + " signature for example");
-
                     if (!signature.contains("afterTest()")) {
                         requiredTestMethod = testMethodElement;
                         break;
                     }
                 }
+
 
                 if (requiredTestMethod != null) {
                     String status = requiredTestMethod.getAttribute("status");
@@ -136,9 +136,9 @@ public class XMLUtil {
                             skippedTests++;
                             break;
                     }
-                    if (common.getProperty("failedtcreport").equals("true") && status.equals("FAIL")) {
+                    if (common.getProperty("failedTcReport").equals("true") && status.equals("FAIL")) {
                         testDetails.append(testRowAppend(testDetailsMap.get("testID"), testDetailsMap.get("name"), testDetailsMap.get("description"), status, duration));
-                    } else if (common.getProperty("failedtcreport").equals("false")) {
+                    } else if (common.getProperty("failedTcReport").equals("false")) {
                         testDetails.append(testRowAppend(testDetailsMap.get("testID"), testDetailsMap.get("name"), testDetailsMap.get("description"), status, duration));
                     }
                 }
@@ -150,7 +150,7 @@ public class XMLUtil {
         String executionTimeFormatted = String.format("%02d:%02d:%02d", (executionTimeMillis / (1000 * 60 * 60)) % 24, (executionTimeMillis / (1000 * 60)) % 60, (executionTimeMillis / 1000) % 60);
 
         // Read and update HTML template
-        String htmlTemplate = new String(Files.readAllBytes(Paths.get("mailTemplates/executiontemplate.html")), "UTF-8");
+        String htmlTemplate = new String(Files.readAllBytes(Paths.get("mailTemplates/executionTemplate.html")), "UTF-8");
         htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#ExecutionMachine#"), executionMachine);
         htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#SuiteName#"), suiteName1);
         htmlTemplate = htmlTemplate.replaceAll(Pattern.quote("#TestPassRate#"), String.format("%.2f%%", passRate));
@@ -170,7 +170,7 @@ public class XMLUtil {
         // Send email with report attached
         final String fromEmail = "productupdates@wingsinfo.net";
         final String password = "Zuy97283";
-        final String toEmail = "vikas.empuluri@wingsinfo.net,madhuri.matta@wingsinfo.net,manoj.c@wingsinfo.net,venkatarathaiah.m@wingsinfo.net";
+        final String toEmail = "vikas.empuluri@wingsinfo.net,madhuri.matta@wingsinfo.net";//,manoj.c@wingsinfo.net,venkatarathaiah.m@wingsinfo.net";
 
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.office365.com");
@@ -191,7 +191,7 @@ public class XMLUtil {
     public static void main(String[] args) {
         XMLUtil xmlUtil = new XMLUtil();
         try {
-            xmlUtil.readTestNG("./TestNG/MenuItems/salesInvoicesTestCases.xml");// Parse bothSuite.xml and testng-results.xml
+            xmlUtil.readTestNG("./TestNG/MenuItems/automationPhase1List.xml");// Parse bothSuite.xml and testng-results.xml
             xmlUtil.readTestNGResults("./target/surefire-reports/testng-results.xml"); // Process test results and send email
         } catch (Exception e) {
             e.printStackTrace();

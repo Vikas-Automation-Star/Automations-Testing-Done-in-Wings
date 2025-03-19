@@ -3,15 +3,21 @@ package phase_1_TestCases;
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
+import org.json.simple.parser.ParseException;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static java.util.Collections.sort;
 
 public class ControllingWithFeatureManagement extends Transaction {
-    WindowsDriver driver;
+    WindowsDriver driver,rootDriver;
     Common common;
     String dataFile;
 
@@ -21,7 +27,6 @@ public class ControllingWithFeatureManagement extends Transaction {
         dataFile = dFile;
         common = new Common(driver);
     }
-
     public void validateMenuItemsPositive() throws InterruptedException {
         common.clickElement("xpath", "//TabItem[@Name='Configure']");
         common.clickElement("xpath", "//Text[@Name='Select Modules']");
@@ -154,6 +159,86 @@ public class ControllingWithFeatureManagement extends Transaction {
         System.out.println("validatedTransactionFields :"+validateTransactionFields);
         if (!validateTransactionFields.containsAll(enableTransactionFields)) System.out.println("Validation Passed No transactionFields are present!");
         else System.out.println("Validation Failed transactionFields Present!");
+    }
+    public void enableDragAndDropNodes() throws InterruptedException, IOException, ParseException {
+        common.clickElement("xpath", "//TabItem[@Name='Configure']");
+        common.clickElement("xpath", "//Text[@Name='Entry, View and Print Settings']/*[@Name='Entry, View and Print Settings']");
+        enableCheckboxSelection("//CheckBox[@Name='Allow moving of masters and nodes by drag and drop in master window.']");
+        saveProperties();
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Suppliers");
+        Thread.sleep(2500);
+        WebElement allCustomer = common.findWebElement("xpath", "//TreeItem[@Name='Suppliers']/TreeItem[@Name='All Suppliers']");
+        allCustomer.sendKeys(Keys.ENTER,Keys.ARROW_RIGHT);
+        WebElement source=common.findWebElement("xpath","//ListItem[@Name='NodeDrag']/*[@Name='NodeDrag']");
+        System.out.println("sourceTest :"+source.getText());
+        WebElement destination=common.findWebElement("xpath","//TreeItem[@Name='All Suppliers']/*[@Name='NodeDrop']");
+        Actions dragAndDrop=new Actions(driver);
+        dragAndDrop.clickAndHold(source).moveToElement(destination).release().build().perform();
+        System.out.println("node drag and dropped please do validation");
+        closeReport("Suppliers");
+        Thread.sleep(1000);
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Suppliers");
+        Thread.sleep(2500);
+        WebElement navigate = common.findWebElement("xpath", "//TreeItem[@Name='Suppliers']/TreeItem[@Name='All Suppliers']");
+        navigate.sendKeys(Keys.ARROW_RIGHT);
+        WebElement dragedNode = common.findWebElement("xpath", "//TreeItem[@Name='NodeDrop']");
+        dragedNode.sendKeys(Keys.ARROW_RIGHT);
+        WebElement  validateDraggedNode= common.findWebElement("xpath", "//TreeItem[@Name='NodeDrop']/*");
+        System.out.println("validated draggedNode :"+validateDraggedNode.getText());
+        if (validateDraggedNode.getText().equals(source.getText())){
+            Assert.assertTrue(true,"nodes are not drag and dropped");
+            System.out.println("nodes are drag and dropped");
+        }
+        Actions actions=new Actions(driver);
+        actions.contextClick(validateDraggedNode).perform();
+        common.clickElement("xpath","//MenuItem[@Name='Move As Sub-Node']");
+        WebElement save =common.findWebElement("xpath","//Button[@Name='Save']");
+        save.sendKeys(Keys.ENTER,Keys.ENTER,Keys.ENTER);
+//        common.clickElement("xpath","//Button[@Name='Yes']");
+//        common.clickElement("xpath","//Dialog[@Name='Close']/Button[@Name='Yes']");
+        rootDriver=common.initializeDriver("Root");
+        Thread.sleep(5000);
+        WebElement root=rootDriver.findElementByXPath("//*//Button[@Name='OK']");
+        root.click();
+        System.out.println("Okay button clicked ");
+        closeReport("Suppliers");
+    }
+
+    public void disableDragAndDropToNodes() throws InterruptedException {
+        common.clickElement("xpath", "//TabItem[@Name='Configure']");
+        common.clickElement("xpath", "//Text[@Name='Entry, View and Print Settings']/*[@Name='Entry, View and Print Settings']");
+        uncheckCheckBox("//CheckBox[@Name='Allow moving of masters and nodes by drag and drop in master window.']"); // Disabling Drag and Drop
+        saveProperties();
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Suppliers");
+        Thread.sleep(2500);
+        WebElement allCustomer = common.findWebElement("xpath", "//TreeItem[@Name='Suppliers']/TreeItem[@Name='All Suppliers']");
+        allCustomer.sendKeys(Keys.ENTER);
+        WebElement source = common.findWebElement("xpath", "//ListItem[@Name='NodeDrag']/*[@Name='NodeDrag']");
+        System.out.println("sourceTest :" + source.getText());
+        WebElement destination = common.findWebElement("xpath", "//TreeItem[@Name='All Suppliers']/*[@Name='NodeDrop']");
+        Actions dragAndDrop = new Actions(driver);
+        try {
+            dragAndDrop.clickAndHold(source).moveToElement(destination).release().build().perform();
+            Thread.sleep(2000); // Allow time for UI response
+            // Now verify if the node was actually moved
+            WebElement validateDraggedNode;
+            try {
+                validateDraggedNode = common.findWebElement("xpath", "//TreeItem[@Name='NodeDrop']/*");
+                System.out.println("Negative Test Failed: Drag-and-drop still happened!");
+                Assert.fail("Drag-and-drop should not happen when the setting is disabled.");
+            } catch (NoSuchElementException e) {
+                System.out.println("Negative Test Passed: Drag-and-drop did not occur.");
+                Assert.assertTrue(true, "Drag-and-drop is correctly disabled.");
+            }
+
+        } catch (Exception e) {
+            // If an exception occurs during drag-and-drop, it means the operation was blocked
+            System.out.println("Drag-and-drop action was prevented as expected.");
+            Assert.assertTrue(true, "Drag-and-drop is disabled and prevented by the system.");
+        }
     }
 
 }

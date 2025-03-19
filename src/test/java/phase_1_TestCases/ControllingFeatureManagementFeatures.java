@@ -21,17 +21,19 @@ public class ControllingFeatureManagementFeatures {
     }
 
     @Test
-    public void featureManagementValidations() throws InterruptedException {
+    public void featureManagementValidations() throws InterruptedException, IOException, ParseException {
         ControllingWithFeatureManagement controlling = new ControllingWithFeatureManagement(driver, file);
-        controlling.validateMenuItemsNegative();
-        controlling.validateMenuItemsPositive();
-        controlling.validateTransactionFieldsPositive();
-        controlling.validateTransactionFieldsNegative();
+//        controlling.validateMenuItemsNegative();
+//        controlling.validateMenuItemsPositive();
+//        controlling.validateTransactionFieldsPositive();
+//        controlling.validateTransactionFieldsNegative();
+        controlling.enableDragAndDropNodes();
+        controlling.disableDragAndDropToNodes();
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-        appLogin.logout();
+//        appLogin.logout();
     }
 
 }

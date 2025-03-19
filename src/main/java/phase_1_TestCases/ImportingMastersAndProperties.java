@@ -1140,6 +1140,7 @@ public class ImportingMastersAndProperties {
 
     public void importBankDetailsProperty(String selectProperty, String importedPropertyName) throws IOException, ParseException, InterruptedException {
         common.clickElement("xpath", "//MenuItem[@Name='Tools']");
+        Thread.sleep(1000);
         common.clickElement("xpath", "//MenuItem[@Name='Import Data']");
         common.clickElement("xpath", "//Button[@Name='Next >']");
         common.clickElement("xpath", "//RadioButton[@Name='Properties']");
@@ -1353,6 +1354,7 @@ public class ImportingMastersAndProperties {
     }
 
     public void importHSNCodesProperty(String selectProperty, String importedPropertyName) throws IOException, ParseException, InterruptedException {
+        Thread.sleep(1000);
         common.clickElement("xpath", "//MenuItem[@Name='Tools']");
         common.clickElement("xpath", "//MenuItem[@Name='Import Data']");
         common.clickElement("xpath", "//Button[@Name='Next >']");
@@ -1776,6 +1778,7 @@ public class ImportingMastersAndProperties {
     }
 
     public void importProductStandardPurchasePriceProperty(String selectProperty, String importedPropertyName) throws InterruptedException, IOException, ParseException {
+        Thread.sleep(1000);
         common.clickElement("xpath", "//MenuItem[@Name='Tools']");
         common.clickElement("xpath", "//MenuItem[@Name='Import Data']");
         common.clickElement("xpath", "//Button[@Name='Next >']");
@@ -1854,7 +1857,7 @@ public class ImportingMastersAndProperties {
                 element.click();
                 Actions actions1 = new Actions(driver);
                 actions1.doubleClick(element).perform();
-                Thread.sleep(1000);
+                Thread.sleep(2000);
                 WebElement clickDetails = common.findWebElement("xpath", "//Pane[@Name='StandardPurchasePriceAC']/*[@Name='Standard Purchase Price']/Button[@Name='...']");
                 clickDetails.click();
                 List<WebElement> validateImportDataGSTData = common.findWebElements("xpath", "//Window[@Name='Standard Purchase Price']/*/*/Edit");

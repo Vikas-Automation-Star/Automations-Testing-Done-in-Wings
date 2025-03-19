@@ -19,49 +19,49 @@ public class ImportMastersAndProperties {
         appLogin.singleUserLogin();
     }
 
-//    @Test(priority = 1)
+    @Test(priority = 1)
     public void importBranches() throws IOException, ParseException, InterruptedException {
         ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
         importing.branchesMastersImporting("Branches");
     }
 
-//    @Test(priority = 2)
+    @Test(priority = 2)
     public void importCustomers() throws IOException, ParseException, InterruptedException {
         ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
         importing.customerMastersImport("Customers");
     }
 
-//    @Test (priority = 3)
+    @Test (priority = 3)
     public void importSuppliers() throws IOException, ParseException, InterruptedException {
         ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
         importing.suppliersMastersImport("Suppliers");
     }
 
-//    @Test(priority = 4)
+    @Test(priority = 4)
     public void importProducts() throws IOException, ParseException, InterruptedException {
         ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
         importing.productsMastersImport("Products");
     }
 
-//    @Test (priority = 5)
+    @Test (priority = 5)
     public void importBankAccount() throws IOException, ParseException, InterruptedException {
         ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
         importing.balanceSheetBankMastersImports("Balance Sheet");
     }
 
-//    @Test(priority = 6)
+    @Test(priority = 6)
     public void importCashAccount() throws IOException, ParseException, InterruptedException {
         ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
         importing.balanceSheetCashMastersImports("Balance Sheet");
     }
 
-//    @Test(priority = 7)
+    @Test(priority = 7)
     public void importHsnCode() throws IOException, ParseException, InterruptedException {
         ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
         importing.hsnCodesMastersImporting("HSN Codes");
     }
 
-    //    @Test(priority = 8)        //issue in the application accepting only for the excutive
+//    @Test(priority = 8)        //issue in the application accepting only for the excutive
 //    public void addressAndContactInformationProperty() throws IOException, ParseException, InterruptedException {
 //        ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
 //        importing.importAddressAndContactDetailsProperty("Address and Contact Details","Anjali Devi");
