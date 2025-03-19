@@ -1,0 +1,367 @@
+<suite name="Production Masters Transactions and Reports">
+
+    <listeners>
+        <listener class-name="com.wings.utils.Listener"/>
+    </listeners>
+    <!-- Sales Masters -->
+
+    <test name="Customers Master" description="Test 1 description" testID="1">
+        <classes>
+            <class name="menuItems.sales.masters.CustomerMaster"/>
+        </classes>
+    </test>
+
+    <test name="Types of Customers Master" description="Test 2 description" testID="2">
+        <classes>
+            <class name="menuItems.sales.masters.TypeOfCustomerMaster"/>
+        </classes>
+    </test>
+
+    <test name="Price and Discount - Sales Price Lists Master" description="Test 3 description" testID="3">
+        <classes>
+            <class name="menuItems.sales.masters.SalesPriceListMaster"/>
+        </classes>
+    </test>
+
+    <test name="Price and Discount - Party Discount Group Master" description="Test 4 description" testID="4">
+        <classes>
+            <class name="menuItems.sales.masters.PartyDiscountGroupMaster"/>
+        </classes>
+    </test>
+
+    <test name="Price and Discount - Product Discount Group Master" description="Test 5 description" testID="5">
+        <classes>
+            <class name="menuItems.sales.masters.ProductDiscountMaster"/>
+        </classes>
+    </test>
+
+    <test name="Sales Target -Product Sales Target Groups Master" description="Test 6 description" testID="6">
+        <classes>
+            <class name="menuItems.sales.masters.SalesTargetGroupMaster"/>
+        </classes>
+    </test>
+
+    <test name="Creating SupplierMaster" description="description for Supplier Master" testID="WOW 1">
+        <classes>
+            <class name="menuItems.purchase.masters.SuppliersMaster"/>
+        </classes>
+    </test>
+
+    <test name="Creating PurchaseBatchPoliciesMaster" description="description for PurchaseBatchPolicies Master"
+          testID="WOW 2">
+        <classes>
+            <class name="menuItems.purchase.masters.PurchaseBatchPoliciesMaster"/>
+        </classes>
+    </test>
+
+    <test name="Creating PriceListMaster" description="description for PriceList Master" testID="WOW 3">
+        <classes>
+            <class name="menuItems.purchase.masters.PriceListMaster"/>
+        </classes>
+    </test>
+
+    <test name="Location Master" description="Test 1 description" testID="1">
+        <classes>
+            <class name="menuItems.inventory.masters.product.Location"/>
+        </classes>
+    </test>
+
+    <test name="Non-Inventory Items Master" description="Test 2 description" testID="2">
+        <classes>
+            <class name="menuItems.inventory.masters.product.NonInventoryItem"/>
+        </classes>
+    </test>
+
+    <test name="Products Master" description="Test 3 description" testID="3">
+        <classes>
+            <class name="menuItems.inventory.masters.product.Product"/>
+        </classes>
+    </test>
+
+    <test name="Services Master" description="Test 4 description" testID="4">
+        <classes>
+            <class name="menuItems.inventory.masters.product.Service"/>
+        </classes>
+    </test>
+
+    <test name="Storage Bins Master" description="Test 5 description" testID="5">
+        <classes>
+            <class name="menuItems.inventory.masters.product.StorageBin"/>
+        </classes>
+    </test>
+
+    <test name="Units Of Measure Master" description="Test 6 description" testID="6">
+        <classes>
+            <class name="menuItems.inventory.masters.product.UnitOfMeasure"/>
+        </classes>
+    </test>
+
+    <test name="Product Batch Master" description="Test 7 description" testID="7">
+        <classes>
+            <class name="menuItems.inventory.masters.product.batches.ProductBatche"/>
+        </classes>
+    </test>
+
+    <test name="Product Batch-serial No Master" description="Test 8 description" testID="8">
+        <classes>
+            <class name="menuItems.inventory.masters.product.batches.ProductBatchesSerialNo"/>
+        </classes>
+    </test>
+
+    <test name="Product Batch-Multi Batch Master" description="Test 9 description" testID="9">
+        <classes>
+            <class name="menuItems.inventory.masters.product.batches.ProductsMultiBatch"/>
+        </classes>
+    </test>
+
+    <test name="Chart of Accounts - Bank" description="Bank Master Description" testID="1">
+        <classes>
+            <class name="menuItems.finance.masters.ChartOfAccounts.Assests.Bank"/>
+        </classes>
+    </test>
+
+    <test name="Chart of Accounts - Cash" description="Cash Master Description" testID="2">
+        <classes>
+            <class name="menuItems.finance.masters.ChartOfAccounts.Assests.Cash"/>
+        </classes>
+    </test>
+
+    <test name="Chart of Accounts - FixedAssests" description="FixedAssests Master Description" testID="3">
+        <classes>
+            <class name="menuItems.finance.masters.ChartOfAccounts.Assests.FixedAssests"/>
+        </classes>
+    </test>
+
+    <test name="Chart of Accounts - Inventories" description="Inventories Master Description" testID="4">
+        <classes>
+            <class name="menuItems.finance.masters.ChartOfAccounts.Assests.Inventories"/>
+        </classes>
+    </test>
+
+    <test name="Chart of Accounts - Investments" description="Investments Master Description" testID="5">
+        <classes>
+            <class name="menuItems.finance.masters.ChartOfAccounts.Assests.Investments"/>
+        </classes>
+    </test>
+
+    <test name="Chart of Accounts - MiscellaneousAssests" description="MiscellaneousAssests Master Description"
+          testID="6">
+        <classes>
+            <class name="menuItems.finance.masters.ChartOfAccounts.Assests.MiscellaneousAssests"/>
+        </classes>
+    </test>
+
+    <test name="Chart of Accounts - SundryDebtors" description="SundryDebtors Master Description" testID="7">
+        <classes>
+            <class name="menuItems.finance.masters.ChartOfAccounts.Assests.SundryDebtors"/>
+        </classes>
+    </test>
+
+    <test name="Chart of Accounts - CaptialShareHoldersFunds" description="CaptialShareHoldersFunds Master Description"
+          testID="8">
+        <classes>
+            <class name="menuItems.finance.masters.ChartOfAccounts.Liabilities.CaptialShareHoldersFunds"/>
+        </classes>
+    </test>
+
+    <test name="Chart of Accounts - OtherCurrentLiabilities" description="OtherCurrentLiabilities Master Description"
+          testID="9">
+        <classes>
+            <class name="menuItems.finance.masters.ChartOfAccounts.Liabilities.OtherCurrentLiabilities"/>
+        </classes>
+    </test>
+
+    <test name="Chart of Accounts - Provisions" description="Provisions Master Description" testID="10">
+        <classes>
+            <class name="menuItems.finance.masters.ChartOfAccounts.Liabilities.Provisions"/>
+        </classes>
+    </test>
+
+    <test name="Chart of Accounts - ReservesAndSurplus" description="ReservesAndSurplus Master Description" testID="11">
+        <classes>
+            <class name="menuItems.finance.masters.ChartOfAccounts.Liabilities.ReservesAndSurplus"/>
+        </classes>
+    </test>
+
+    <test name="Chart of Accounts - SecuredLoans" description="SecuredLoans Master Description" testID="12">
+        <classes>
+            <class name="menuItems.finance.masters.ChartOfAccounts.Liabilities.SecuredLoans"/>
+        </classes>
+    </test>
+
+    <test name="Chart of Accounts - SundryCreditiorsSuppliers"
+          description="SundryCreditiorsSuppliers Master Description" testID="13">
+        <classes>
+            <class name="menuItems.finance.masters.ChartOfAccounts.Liabilities.SundryCreditiorsSuppliers"/>
+        </classes>
+    </test>
+
+    <test name="Chart of Accounts - Unsecured Loans" description="UnsecuredLoans Master Description" testID="14">
+        <classes>
+            <class name="menuItems.finance.masters.ChartOfAccounts.Liabilities.UnsecuredLoans"/>
+        </classes>
+    </test>
+
+    <test name="Chart of Accounts - AdministrativeExpenses" description="AdministrativeExpenses Master Description"
+          testID="15">
+        <classes>
+            <class name="menuItems.finance.masters.ChartOfAccounts.ProfitAndLoss.AdministrativeExpenses"/>
+        </classes>
+    </test>
+
+    <test name="Chart of Accounts - Appropriations" description="Appropriations Master Description" testID="16">
+        <classes>
+            <class name="menuItems.finance.masters.ChartOfAccounts.ProfitAndLoss.Appropriations"/>
+        </classes>
+    </test>
+
+    <test name="Chart of Accounts - Depreciation" description="Depreciation Master Description" testID="17">
+        <classes>
+            <class name="menuItems.finance.masters.ChartOfAccounts.ProfitAndLoss.Depreciation"/>
+        </classes>
+    </test>
+
+    <test name="Chart of Accounts - Finance Expenses" description="FinanceExpenses Master Description" testID="18">
+        <classes>
+            <class name="menuItems.finance.masters.ChartOfAccounts.ProfitAndLoss.FinanceExpenses"/>
+        </classes>
+    </test>
+
+    <test name="Chart of Accounts - Opening And ClosingStock" description="OpeningAndClosingStock Master Description"
+          testID="19">
+        <classes>
+            <class name="menuItems.finance.masters.ChartOfAccounts.ProfitAndLoss.OpeningAndClosingStock"/>
+        </classes>
+    </test>
+
+    <test name="Chart of Accounts - Other Incomes" description="OtherIncomes Master Description" testID="20">
+        <classes>
+            <class name="menuItems.finance.masters.ChartOfAccounts.ProfitAndLoss.OtherIncomes"/>
+        </classes>
+    </test>
+
+    <test name="Chart of Accounts - Purchases" description="Purchases Master Description" testID="21">
+        <classes>
+            <class name="menuItems.finance.masters.ChartOfAccounts.ProfitAndLoss.Purchases"/>
+        </classes>
+    </test>
+
+    <test name="Chart of Accounts - Sales" description="Sales Master Description" testID="22">
+        <classes>
+            <class name="menuItems.finance.masters.ChartOfAccounts.ProfitAndLoss.Sales"/>
+        </classes>
+    </test>
+
+    <test name="Chart of Accounts - Selling And Distribution Expenses"
+          description="SellingAndDistributionExpenses Master Description" testID="23">
+        <classes>
+            <class name="menuItems.finance.masters.ChartOfAccounts.ProfitAndLoss.SellingAndDistributionExpenses"/>
+        </classes>
+    </test>
+
+    <test name="Chart of Accounts - Taxes And Other Charges" description="TaxesAndOtherCharges Master Description"
+          testID="24">
+        <classes>
+            <class name="menuItems.finance.masters.ChartOfAccounts.ProfitAndLoss.TaxesAndOtherCharges"/>
+        </classes>
+    </test>
+
+    <test name="Credit Cards - Swipe Machine Type" description="Swipe Machine Type Master Description" testID="25">
+        <classes>
+            <class name="menuItems.finance.masters.CreditCards.SwipeMachineTypeMaster"/>
+        </classes>
+    </test>
+
+    <test name="Credit Cards - Swipe Type" description="Swipe Type Master Description" testID="26">
+        <classes>
+            <class name="menuItems.finance.masters.CreditCards.SwipeTypeMaster"/>
+        </classes>
+    </test>
+
+    <test name="Manage Currencies - Manage Currencies" description="Manage Currency Master Description" testID="27">
+        <classes>
+            <class name="menuItems.finance.masters.ManageCurrencies.ManageCurrencyMaster"/>
+        </classes>
+    </test>
+
+    <test name="Drawn On Bank" description="Drawn On Master Description" testID="28">
+        <classes>
+            <class name="menuItems.finance.masters.DrawnOnBanksMaster"/>
+        </classes>
+    </test>
+
+    <test name="Create BillOfMaterialsMaster" description="description for BillOfMaterialsMaster" testID="WOW 1">
+        <classes>
+            <class name="menuItems.Production.masters.BillOfMaterialsMater"/>
+        </classes>
+    </test>
+
+    <test name="Create ProductionBatchPoliciesMaster" description="description for BillOfMaterialsMaster"
+          testID="WOW 2">
+        <classes>
+            <class name="menuItems.Production.masters.ProductionBatchPoliciesMaster"/>
+        </classes>
+    </test>
+
+    <test name="Create HsnCodesMaster" description="description for HsnCodesMaster" testID="WOW 1">
+        <classes>
+            <class name="menuItems.Taxes.masters.GST.HsnCodesMaster"/>
+        </classes>
+    </test>
+
+    <test name="Create GstRegistrationMaster" description="description for GstRegistrationMaster" testID="WOW 2">
+        <classes>
+            <class name="menuItems.Taxes.masters.GST.GstRegistrationMaster"/>
+        </classes>
+    </test>
+
+    <test name="Create ConsignerMaster" description="description for ConsignerMaster" testID="WOW 3">
+        <classes>
+            <class name="menuItems.Taxes.masters.GST.ConsignerMaster"/>
+        </classes>
+    </test>
+
+    <test name="Create EcommerceOperatorMaster" description="description for EcommerceOperatorMaster" testID="WOW 4">
+        <classes>
+            <class name="menuItems.Taxes.masters.GST.EcommerceOperatorMaster"/>
+        </classes>
+    </test>
+
+    <test name="Create TdsAssesseTypesMaster" description="description for TdsAssesseTypesMaster" testID="WOW 5">
+        <classes>
+            <class name="menuItems.Taxes.masters.TDS.TdsAssesseeTypesMaster"/>
+        </classes>
+    </test>
+
+    <test name="Create TdsSubTypesMaster" description="description for TdsSubTypesMaster" testID="WOW 6">
+        <classes>
+            <class name="menuItems.Taxes.masters.TDS.TdsSubTypesMaster"/>
+        </classes>
+    </test>
+
+    <test name="Create TdsTransactionNaturesMaster" description="description for TdsTransactionNaturesMaster"
+          testID="WOW 7">
+        <classes>
+            <class name="menuItems.Taxes.masters.TDS.TdsTransactionNaturesMaster"/>
+        </classes>
+    </test>
+
+    <test name="Create TcsAssesseeTypesMaster" description="description for TcsAssesseeTypesMaster" testID="WOW 8">
+        <classes>
+            <class name="menuItems.Taxes.masters.TCS.TcsAssesseeTypesMaster"/>
+        </classes>
+    </test>
+
+    <test name="Create TcsSubTypesMaster" description="description for TcsSubTypesMaster" testID="WOW 9">
+        <classes>
+            <class name="menuItems.Taxes.masters.TCS.TcsSubTypesMaster"/>
+        </classes>
+    </test>
+
+    <test name="Create TcsTransactionNatureMaster" description="description for TcsTransactionNatureMaster"
+          testID="WOW 10">
+        <classes>
+            <class name="menuItems.Taxes.masters.TCS.TcsTransactionNatureMaster"/>
+        </classes>
+    </test>
+</suite>
