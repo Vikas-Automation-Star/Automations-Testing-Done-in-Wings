@@ -4,7 +4,10 @@ import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.io.IOException;
@@ -50,7 +53,6 @@ public class AppLogin {
         Thread.sleep(3000);
         common.inputText("xpath", "//Edit[@Name='Password']", common.getData(fileData, "password"));
         common.clickElement("xpath", "//Button[@Name='Submit']");
-        Thread.sleep(2500);
         common.clickElement("xpath", "//Window[@Name='Information']/Button[@Name='OK']");
         System.out.println("Super User Login for " + common.getData(fileData, "companyName") + " company is successful " + new String(Character.toChars(0x2705)));
         String title = driver.getTitle();
@@ -66,7 +68,7 @@ public class AppLogin {
         common.inputText("xpath", "//Edit[@Name='Password']", password);
         common.clickElement("xpath", "//Button[@Name='Submit']");
         Thread.sleep(2500);
-        common.clickElement("name", "OK");
+        common.clickElement("xpath", "//Window[@Name='Information']/Button[@Name='OK']");
         System.out.println("Super User Login for " + common.getData(fileData, "companyName") + " company is successful " + new String(Character.toChars(0x2705)));
         String title = driver.getTitle();
         System.out.println(title);
