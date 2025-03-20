@@ -48,6 +48,20 @@ public abstract class Transaction {
         }
     }
 
+    public void createMaster(String locatorType, String locator) {
+        WebElement element = common.findWebElement(locatorType, locator);
+        Actions actions = new Actions(driver);
+        actions.contextClick(element).perform();
+        common.clickElement("name", "New Master");
+    }
+
+    public void saveMaster() throws InterruptedException {
+        common.clickElement("name", "Save");
+        Thread.sleep(2000);
+        common.clickElement("name", "OK");
+        common.clickElement("xpath", "//Button[@Name='Close']");
+    }
+
     public void selectAndValidateData(String transaction, String locatorType, String locator) {
         List<WebElement> elementList = common.findWebElements("xpath", "//Table[@Name='Lookup']/*/*[contains(@Name,'Master Row')]");
 //        System.out.println("Size :" + elementList.size());
@@ -1030,6 +1044,34 @@ public abstract class Transaction {
         System.out.println(validate);
         Assert.assertEquals("Purchase Returns with Invoice Reference", validate);
     }
+    public void navigateToAccountGroups(){
+        common.clickElement("name", "Finance");
+        common.clickElement("name", "Account Groups");
+    }
+    public void navigateToCustomerMenu(){
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Customers");
+    }
+    public void navigateToTypesOfCustomer(){
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Types of Customer");
+    }
+    public void navigateToProductDiscountGroup(){
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Prices and Discounts");
+        common.clickElement("xpath", "//Menu[@Name='Prices and Discounts']/MenuItem[@Name='Product Discount Groups']");
+    }
+    public void navigateToSalesPriceList(){
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Prices and Discounts");
+        common.clickElement("xpath", "//Menu[@Name='Prices and Discounts']/MenuItem[@Name='Sales Price Lists']");
+    }
+    public void navigatetoProductSalesTargetGroup(){
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Sales Target");
+        common.clickElement("xpath", "//Menu[@Name='Sales Target']/MenuItem[@Name='Product Sales Target Groups']");
+    }
+
 
     public void navigateToSalesEnquiryReport() throws InterruptedException {
         common.clickElement("name", "Sales");
@@ -1508,6 +1550,31 @@ public abstract class Transaction {
                 System.out.println("Checkbox clicked for voucher: " + value);
             }
         }
+    }
+
+    public void validateAndInactivate(String menuItem,String startWith) throws IOException, ParseException {
+        WebElement allGroups = common.findWebElement("xpath", "//TreeItem[@Name='"+menuItem+"']/TreeItem[@Name='All "+ menuItem +"']");
+        allGroups.click();
+        List<WebElement> listItems = common.findWebElements("xpath", "//Pane[@Name='"+menuItem+"']/Pane/Pane/Pane/Pane/Pane/List/*");
+        boolean masterValidation=false;
+        for (WebElement items : listItems){
+            System.out.println(items.getText());
+            if (items.getText().startsWith(startWith)){
+                masterValidation=true;
+                System.out.println("Master is created successfully - " + items.getText());
+                //inactivate it
+                items.click();
+                Actions actions1 =new Actions(driver);
+                actions1.contextClick(items).perform();
+                common.clickElement("xpath","//MenuItem[@Name='Inactivate']");
+                WebDriverWait wait=new WebDriverWait(driver,5);
+                WebElement okButton=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//Button[@Name='OK']")));
+                okButton.click();
+                System.out.println("Master Inactivated successfully");
+                closeTransaction(menuItem);
+            }
+        }
+        if (!masterValidation) Assert.fail("Master is not validated");
     }
 
     public void refresh() {
