@@ -124,6 +124,7 @@ public class Masters {
         actions.clickAndHold(slider).moveByOffset(0, offset).release().perform();
     }
 
+
     public void navigateToMastersWhen2Steps(String menu, String menuItem) {
         common.clickElement("xpath", "//MenuItem[@Name='"+menu+"']");
         common.clickElement("xpath", "//MenuItem[@Name='"+menuItem+"']");
