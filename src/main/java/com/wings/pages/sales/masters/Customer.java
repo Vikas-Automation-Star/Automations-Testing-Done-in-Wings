@@ -1,8 +1,10 @@
 package com.wings.pages.sales.masters;
 
+import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
@@ -10,26 +12,23 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 
-public class Customer {
+public class Customer extends Transaction {
     WindowsDriver driver;
     Common common;
     String dataFile;
 
     public Customer(WindowsDriver driver, String file) {
+        super(driver);
         this.driver = driver;
         common = new Common(this.driver);
         dataFile = file;
     }
 
     public void newCustomer() throws InterruptedException, IOException, ParseException, AWTException {
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Customers");
-        Thread.sleep(5000);
-        WebElement allCustomer = common.findWebElement("xpath", "//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
-        Actions actions = new Actions(driver);
-        actions.contextClick(allCustomer).perform();
-        common.clickElement("name", "New Master");
-        Thread.sleep(5000);
+        navigateToCustomerMenu();
+        Thread.sleep(1500);
+        createMaster("xpath","//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
+        Thread.sleep(3000);
         common.inputText("xpath", "//Edit[@Name='New Account *']", common.getData(dataFile, "newAccount") + common.getRandom());
         WebElement element = common.findWebElement("xpath", "//Edit[@Name='New Account *']");
         common.inputText("xpath", "//Edit[@Name='Account Code']", "" + common.getRandom());
@@ -49,7 +48,7 @@ public class Customer {
         common.rowDropDown(common.getData(dataFile, "Route"));
         Thread.sleep(1200);
         common.clickElement("xpath", "//Edit[@Name='Purchase Price List']/Button[@Name='Open']");
-        common.rowDropDown(common.getData(dataFile, "priceList"));
+        common.rowDropDown(common.getData(dataFile, "purchasePriceList"));
         Thread.sleep(1200);
         common.clickElement("xpath", "//Edit[@Name='Transport']/Button[@Name='Open']");
         common.rowDropDown(common.getData(dataFile, "transport"));
@@ -94,18 +93,48 @@ public class Customer {
         common.inputAndVerify("xpath", "//Edit[@Name='Contact Person Mobile No']", common.getData(dataFile, "cpmn"));
         common.inputAndVerify("xpath", "//Edit[@Name='Contact Person Email']", common.getData(dataFile, "cpe"));
         common.clickElement("name", "Ok");
-
         //TDS
         common.clickElement("xpath", "//CheckBox[@Name='Apply TDS']");
         common.clickElement("xpath", "//Edit[@Name='TDS Assessee Type']");
         common.clickElement("xpath", "//CheckBox[@Name='Apply TCS']");
         common.clickElement("xpath", "//Edit[@Name='TCS Assessee Type']");
+        common.sliderHandling("name", "Position", 0, 95);
+        common.clickElement("xpath","//Text[@Name='Shipping Address GST']/following-sibling::Button[@Name='...']");
+        common.clickElement("xpath", "//Edit[@Name='GSTIN Row 0, Not sorted.']");
+        common.inputText("xpath", "//Edit[@Name='GSTIN Row 0, Not sorted.']", common.getData(dataFile, "gst"));
+        common.clickElement("xpath", "//Edit[@Name='Address Name * Row 0, Not sorted.']");
+        common.inputText("xpath", "//Edit[@Name='Address Name * Row 0, Not sorted.']", common.getData(dataFile, "shippingAdressName"));
+        common.clickElement("xpath", "//Edit[@Name='Address 1 * Row 0, Not sorted.']");
+        common.inputText("xpath", "//Edit[@Name='Address 1 * Row 0, Not sorted.']", common.getData(dataFile, "ShippingAdress1"));
+        common.clickElement("xpath", "//Edit[@Name='City * Row 0, Not sorted.']");
+        common.inputText("xpath", "//Edit[@Name='City * Row 0, Not sorted.']", common.getData(dataFile, "Shippingcity"));
+        WebElement state = common.findWebElement("xpath", "//Edit[@Name='State * Row 0, Not sorted.']");
+        state.click();
+        state.sendKeys(common.getData(dataFile, "ShippingState"), Keys.ENTER);
+        Thread.sleep(3000);
+        generalInfoSliderHandle(300);
+        common.clickElement("xpath", "//Edit[@Name='Zip/PostalCode * Row 0, Not sorted.']");
+        common.inputText("xpath", "//Edit[@Name='Zip/PostalCode * Row 0, Not sorted.']", common.getData(dataFile, "stateZipcode"));
+        common.clickElement("xpath", "//Edit[@Name='Country * Row 0, Not sorted.']");
+        WebElement country = common.findWebElement("xpath", "//Edit[@Name='Country * Row 0, Not sorted.']");
+        country.click();
+        country.sendKeys(common.getData(dataFile, "country"), Keys.ENTER);
+        Thread.sleep(2000);
+        common.clickElement("xpath", "//Button[@Name='Ok']");
+        Thread.sleep(2000);
+        common.clickElement("xpath", "//Text[@Name='Consignor']/following-sibling::Button[@Name='...']");
+        WebElement consignor = common.findWebElement("xpath", "//Edit[@Name='Applicable Consignor Row 0, Not sorted.']");
+        consignor.click();
+        consignor.sendKeys(common.getData(dataFile, "consignor"), Keys.ENTER);
+        common.clickElement("xpath", "//Button[@Name='Ok']");
+       //save
+        saveMaster();
+        //close
+        closeTransaction(common.getData(dataFile,"close"));
+        refresh();
+        //validate
+        navigateToCustomerMenu();
+        validateAndInactivate(common.getData(dataFile,"close"),common.getData(dataFile,"newAccount") );
 
-        common.clickElement("xpath", "//Pane/Button[@Name='Save']");
-        Thread.sleep(1000);
-        common.clickElement("xpath", "//Window/Button[@Name='OK']");
-        Thread.sleep(1000);
-        common.clickElement("xpath", "//Pane/Button[@Name='Cancel']");
-//        super.closeMaster(common.getData(dataFile,"close"));
     }
 }

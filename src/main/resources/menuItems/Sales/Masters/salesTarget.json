@@ -1,4 +1,5 @@
 {
-  "salesGroup": "Sales Target Group",
+  "menuItem": "Product Sales Target Groups",
+  "newAccount": "New_Sales_Target_Group",
   "description": "This is Sales Target Group"
 }

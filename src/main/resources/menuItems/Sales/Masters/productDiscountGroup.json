@@ -1,6 +1,7 @@
 {
-  "productGroup": "Product Discount Group",
+  "newAccount": "New_Product_Discount_Group",
   "description": "This is Product Discount Group",
   "applicable": "All Products",
-  "masterType": "Products"
+  "masterType": "Products",
+  "menuItem": "Product Discount Groups"
 }

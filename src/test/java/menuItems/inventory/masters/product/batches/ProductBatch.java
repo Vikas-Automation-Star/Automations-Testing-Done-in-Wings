@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.io.IOException;
 
-public class ProductBatche {
+public class ProductBatch {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
     String file = "./src/main/resources/menuItems/inventory/masters/productBatch.json";

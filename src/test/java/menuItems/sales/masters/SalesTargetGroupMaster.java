@@ -7,7 +7,6 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.wings.pages.AppLogin;
 import com.wings.pages.sales.masters.SalesTargetGroup;
-
 import java.io.IOException;
 
 public class SalesTargetGroupMaster {
@@ -25,7 +24,6 @@ public class SalesTargetGroupMaster {
     public void salesTarget() throws InterruptedException, IOException, ParseException {
         SalesTargetGroup targetGroup = new SalesTargetGroup(driver, file);
         targetGroup.salesTarget();
-
     }
 
     @AfterTest
