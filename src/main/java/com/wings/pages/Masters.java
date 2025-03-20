@@ -2,11 +2,16 @@ package com.wings.pages;
 
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
+import org.json.simple.parser.ParseException;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.io.IOException;
 import java.util.List;
 
 public class Masters {
@@ -84,7 +89,34 @@ public class Masters {
         Thread.sleep(2000);
         common.clickElement("xpath", "//Button[@Name='Close']");
     }
-
+    public void validateAndInactivate(String menuItem,String startWith) throws IOException, ParseException {
+        WebElement allGroups = common.findWebElement("xpath", "//TreeItem[@Name='"+menuItem+"']/TreeItem[@Name='All "+ menuItem +"']");
+        allGroups.click();
+        List<WebElement> listItems = common.findWebElements("xpath", "//Pane[@Name='"+menuItem+"']/Pane/Pane/Pane/Pane/Pane/List/*");
+        boolean masterValidation=false;
+        for (WebElement items : listItems){
+            System.out.println(items.getText());
+            if (items.getText().startsWith(startWith)){
+                masterValidation=true;
+                System.out.println("Master is created successfully - " + items.getText());
+                //inactivate it
+                items.click();
+                Actions actions1 =new Actions(driver);
+                actions1.contextClick(items).perform();
+                common.clickElement("xpath","//MenuItem[@Name='Inactivate']");
+                WebDriverWait wait=new WebDriverWait(driver,5);
+                WebElement okButton=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//Button[@Name='OK']")));
+                okButton.click();
+                System.out.println("Master Inactivated successfully");
+                closeMaster(menuItem);
+            }
+        }
+        if (!masterValidation) Assert.fail("Master is not validated");
+    }
+    public void refresh() {
+        common.clickElement("xpath", "//MenuItem[@Name='Tools']");
+        common.clickElement("xpath", "//MenuItem[@Name='Clear Cache']");
+    }
     public void vericleSliderHandle() {
         int offset = 400;
         WebElement slider = common.findWebElement("xpath", "//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']");
