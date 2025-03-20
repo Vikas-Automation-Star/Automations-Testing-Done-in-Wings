@@ -42,7 +42,7 @@
 
     <test name="Product Batch Master" description="Test 7 description" testID="7">
         <classes>
-            <class name="menuItems.inventory.masters.product.batches.ProductBatche"/>
+            <class name="menuItems.inventory.masters.product.batches.ProductBatch"/>
         </classes>
     </test>
 
