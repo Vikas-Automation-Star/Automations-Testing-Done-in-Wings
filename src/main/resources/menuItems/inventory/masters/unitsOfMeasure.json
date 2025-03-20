@@ -1,4 +1,6 @@
 {
   "uom": "packs",
+  "newAccount": "New_Unit_of_Measure",
+  "menuItem": "Units of Measure",
   "conversionFactor": "1"
 }

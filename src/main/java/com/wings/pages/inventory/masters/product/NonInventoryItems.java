@@ -2,12 +2,8 @@ package com.wings.pages.inventory.masters.product;
 
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import com.wings.pages.Masters;
-import com.wings.pages.Transaction;
 import com.wings.utils.Common;
-
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
@@ -28,9 +24,9 @@ public class NonInventoryItems extends Masters {
         common.clickElement("name", "Inventory");
         common.clickElement("name", "Product");
         common.clickElement("name", "Non Inventory Items");
-        super.actionsMaster("xpath", "//TreeItem[@Name='Non Inventory Items']/TreeItem[@Name='All Non Inventory Items']", "//MenuItem[@Name='New Master']");
+        createMaster("xpath", "//TreeItem[@Name='Non Inventory Items']/TreeItem[@Name='All Non Inventory Items']");
         Thread.sleep(2000);
-        common.inputText("xpath", "//Edit[@Name='New Non Inventory Item *']", common.getData(filepath, "item") + common.getRandom());
+        common.inputText("xpath", "//Edit[@Name='New Non Inventory Item *']", common.getData(filepath, "newAccount") + common.getRandom());
         common.inputText("xpath", "//Edit[@Name='Non Inventory Item Code']", String.valueOf(common.getRandom()));
         common.clickElement("xpath", "//Edit[@Name='SKU *']/Button[@Name='Open']");
         Robot robot = new Robot();
@@ -49,10 +45,13 @@ public class NonInventoryItems extends Masters {
         robot.keyRelease(KeyEvent.VK_DOWN);
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
-
-        super.saveMaster();
-        super.closeMaster("Non Inventory Items");
-
-        System.out.println("Non Inventory Items created successfully");
+        saveMaster();
+        closeMaster(common.getData(filepath,"menuItem"));
+        refresh();
+        //validate
+        common.clickElement("name", "Inventory");
+        common.clickElement("name", "Product");
+        common.clickElement("name", "Non Inventory Items");
+        validateAndInactivate(common.getData(filepath,"menuItem"), common.getData(filepath,"newAccount") );
     }
 }

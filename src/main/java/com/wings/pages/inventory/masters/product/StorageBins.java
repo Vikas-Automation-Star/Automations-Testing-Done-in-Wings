@@ -25,17 +25,23 @@ public class StorageBins extends Masters {
         common.clickElement("name", "Inventory");
         common.clickElement("name", "Product");
         common.clickElement("name", "Storage Bins");
-        super.actionsMaster("xpath", "//TreeItem[@Name='Storage Bins']/TreeItem[@Name='All Storage Bins']", "//MenuItem[@Name='New Master']");
+        createMaster("xpath", "//TreeItem[@Name='Storage Bins']/TreeItem[@Name='All Storage Bins']");
         Thread.sleep(2000);
-        common.inputText("xpath", "//Edit[@Name='New Storage Bin *']", common.getData(dataFile, "StorageBin") + common.getRandom());
+        common.inputText("xpath", "//Edit[@Name='New Storage Bin *']", common.getData(dataFile, "newAccount") + common.getRandom());
         common.clickElement("xpath", "//Edit[@Name='Location *']/Button[@Name='Open']");
-        super.selectDropDownMaster("Andhra Default Location");
+        selectDropDownMaster("Andhra Default Location");
         common.clickElement("xpath", "//Edit[@Name='Storage Bin Type *']/Button[@Name='Open']");
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
-        super.saveMaster();
-        super.closeMaster("Storage Bins");
+        saveMaster();
+        closeMaster(common.getData(dataFile,"menuItem"));
+        refresh();
+        //validate
+        common.clickElement("name", "Inventory");
+        common.clickElement("name", "Product");
+        common.clickElement("name", "Storage Bins");
+        validateAndInactivate(common.getData(dataFile,"menuItem"), common.getData(dataFile,"newAccount") );
         System.out.println("Storage Bins created successfully");
     }
 }

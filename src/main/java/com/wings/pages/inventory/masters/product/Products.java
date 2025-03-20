@@ -25,9 +25,9 @@ public class Products extends Masters {
         common.clickElement("name", "Inventory");
         common.clickElement("name", "Product");
         common.clickElement("name", "Products");
-        super.actionsMaster("xpath", "//TreeItem[@Name='Products']/TreeItem[@Name='All Products']", "//MenuItem[@Name='New Master']");
+        createMaster("xpath", "//TreeItem[@Name='Products']/TreeItem[@Name='All Products']");
         Thread.sleep(2000);
-        common.inputText("xpath", "//Edit[@Name='New Product *']", common.getData(filepath, "newProduct") + common.getRandom());
+        common.inputText("xpath", "//Edit[@Name='New Product *']", common.getData(filepath, "newAccount") + common.getRandom());
         common.inputText("xpath", "//Edit[@Name='Product Code']", String.valueOf(common.getRandom()));
         common.clickElement("xpath", "//Edit[@Name='SKU *']/Button[@Name='Open']");
         Robot robot = new Robot();
@@ -48,8 +48,13 @@ public class Products extends Masters {
         robot.keyRelease(KeyEvent.VK_ENTER);
         //slider
         common.sliderHandling("name", "Position", 0, 100);
-        super.saveMaster();
-        super.closeMaster("Products");
-        System.out.println("product created successfully");
+        saveMaster();
+        closeMaster(common.getData(filepath,"menuItem"));
+        refresh();
+        //validate
+        common.clickElement("name", "Inventory");
+        common.clickElement("name", "Product");
+        common.clickElement("name", "Products");
+        validateAndInactivate(common.getData(filepath,"menuItem"), common.getData(filepath,"newAccount") );
     }
 }

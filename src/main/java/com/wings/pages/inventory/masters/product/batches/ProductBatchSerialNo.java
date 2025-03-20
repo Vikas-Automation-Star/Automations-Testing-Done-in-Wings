@@ -4,7 +4,6 @@ import com.wings.pages.Masters;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
-
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
@@ -26,9 +25,9 @@ public class ProductBatchSerialNo extends Masters {
         common.clickElement("name", "Product");
         common.clickElement("name", "Batches");
         common.clickElement("name", "Products - Batches and Serial No");
-        super.actionsMaster("xpath", "//TreeItem[@Name='Products - Batches and Serial No']/TreeItem[@Name='All Products - Batches and Serial No']", "//MenuItem[@Name='New Master']");
+        createMaster("xpath", "//TreeItem[@Name='Products - Batches and Serial No']/TreeItem[@Name='All Products - Batches and Serial No']");
         Thread.sleep(2000);
-        common.inputText("xpath", "//Edit[@Name='Serial No Product *']", common.getData(filepath, "product") + common.getRandom());
+        common.inputText("xpath", "//Edit[@Name='Serial No Product *']", common.getData(filepath, "newAccount") + common.getRandom());
         common.inputText("xpath", "//Edit[@Name='Product Code']", String.valueOf(common.getRandom()));
         common.clickElement("xpath", "//Edit[@Name='SKU *']/Button[@Name='Open']");
         Robot robot = new Robot();
@@ -48,8 +47,13 @@ public class ProductBatchSerialNo extends Masters {
         robot.keyRelease(KeyEvent.VK_DOWN);
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
-        super.saveMaster();
-        super.closeMaster("Products - Batches and Serial No");
-        System.out.println("Products - Batches and Serial No created successfully");
+        saveMaster();
+        closeMaster(common.getData(filepath,"menuItem"));
+        //validate
+        common.clickElement("name", "Inventory");
+        common.clickElement("name", "Product");
+        common.clickElement("name", "Batches");
+        common.clickElement("name", "Products - Batches and Serial No");
+        validateAndInactivate(common.getData(filepath,"menuItem"), common.getData(filepath,"newAccount") );
     }
 }

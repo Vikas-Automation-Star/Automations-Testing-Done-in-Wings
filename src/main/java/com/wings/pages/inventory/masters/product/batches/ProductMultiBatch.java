@@ -4,7 +4,6 @@ import com.wings.pages.Masters;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
-
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
@@ -26,9 +25,9 @@ public class ProductMultiBatch extends Masters {
         common.clickElement("name", "Product");
         common.clickElement("name", "Batches");
         common.clickElement("name", "Products - MultiBatch");
-        super.actionsMaster("xpath", "//TreeItem[@Name='Products - MultiBatch']/TreeItem[@Name='All Products - MultiBatch']", "//MenuItem[@Name='New Master']");
+        createMaster("xpath", "//TreeItem[@Name='Products - MultiBatch']/TreeItem[@Name='All Products - MultiBatch']");
         Thread.sleep(2000);
-        common.inputText("xpath", "//Edit[@Name='New Product *']", common.getData(filepath, "product") + common.getRandom());
+        common.inputText("xpath", "//Edit[@Name='New Product *']", common.getData(filepath, "newAccount") + common.getRandom());
         common.inputText("xpath", "//Edit[@Name='Product Code']", String.valueOf(common.getRandom()));
         common.clickElement("xpath", "//Edit[@Name='SKU *']/Button[@Name='Open']");
         Robot robot = new Robot();
@@ -47,8 +46,15 @@ public class ProductMultiBatch extends Masters {
         robot.keyRelease(KeyEvent.VK_DOWN);
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
-        super.saveMaster();
-        super.closeMaster("Products - MultiBatch");
+        saveMaster();
+        closeMaster(common.getData(filepath,"menuItem"));
+        refresh();
+        //validate
+        common.clickElement("name", "Inventory");
+        common.clickElement("name", "Product");
+        common.clickElement("name", "Batches");
+        common.clickElement("name", "Products - MultiBatch");
+        validateAndInactivate(common.getData(filepath,"menuItem"), common.getData(filepath,"newAccount") );
         System.out.println("Products - MultiBatch created successfully");
     }
 }

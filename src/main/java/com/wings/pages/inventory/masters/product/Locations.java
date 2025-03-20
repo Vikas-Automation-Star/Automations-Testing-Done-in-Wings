@@ -6,7 +6,6 @@ import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-
 import java.awt.*;
 import java.io.IOException;
 import java.util.List;
@@ -27,11 +26,11 @@ public class Locations extends Masters {
         common.clickElement("name", "Inventory");
         common.clickElement("name", "Product");
         common.clickElement("name", "Locations");
-        super.actionsMaster("xpath", "//TreeItem[@Name='Locations']/TreeItem[@Name='All Locations']", "//MenuItem[@Name='New Master']");
+        createMaster("xpath", "//TreeItem[@Name='Locations']/TreeItem[@Name='All Locations']");
         Thread.sleep(2000);
-        common.inputText("xpath", "//Edit[@Name='New Location *']", common.getData(filepath, "location") + common.getRandom());
+        common.inputText("xpath", "//Edit[@Name='New Location *']", common.getData(filepath, "newAccount") + common.getRandom());
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        super.selectMasterItem(common.getData(filepath, "branch"));
+        selectMasterItem(common.getData(filepath, "branch"));
         common.inputAndVerify("xpath", "//Edit[@Name='Address 1 *']", common.getData(filepath, "address1"));
         common.inputAndVerify("xpath", "//Edit[@Name='City *']", common.getData(filepath, "city"));
         common.inputText("xpath", "//Edit[@Name='GSTIN']", common.getData(filepath, "gst"));
@@ -43,7 +42,6 @@ public class Locations extends Masters {
         System.out.println("button size:-" + button.size());
         button.get(0).click();
         Thread.sleep(1000);
-
         common.inputAndVerify("xpath", "//Edit[@Name='Address 1']", common.getData(filepath, "address1"));
         common.inputAndVerify("xpath", "//Edit[@Name='Address 2']", common.getData(filepath, "address2"));
         common.inputAndVerify("xpath", "//Edit[@Name='Address 3']", common.getData(filepath, "address3"));
@@ -69,9 +67,13 @@ public class Locations extends Masters {
         common.inputAndVerify("xpath", "//Edit[@Name='Contact Person Mobile No']", common.getData(filepath, "cpmn"));
         common.inputAndVerify("xpath", "//Edit[@Name='Contact Person Email']", common.getData(filepath, "cpe"));
         common.clickElement("name", "Ok");
-        super.saveMaster();
-        super.closeMaster("Locations");
-        System.out.println("Locations created successfully");
-        Thread.sleep(2000);
+        saveMaster();
+        closeMaster(common.getData(filepath,"menuItem"));
+        refresh();
+        //validate
+        common.clickElement("name", "Inventory");
+        common.clickElement("name", "Product");
+        common.clickElement("name", "Locations");
+        validateAndInactivate(common.getData(filepath,"menuItem"), common.getData(filepath,"newAccount") );
     }
 }
