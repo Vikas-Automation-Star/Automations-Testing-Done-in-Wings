@@ -28,6 +28,7 @@ public class UnitsOfMeasure extends Masters {
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='New Units Of Measure *']", common.getData(filepath, "newAccount") + common.getRandom());
         Thread.sleep(2500);
+        common.clickElement("xpath","//Edit[@Name='UQC *']");
         common.inputText("xpath", "//Edit[@Name='UQC *']", common.getData(filepath, "uom"));
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_DOWN);
