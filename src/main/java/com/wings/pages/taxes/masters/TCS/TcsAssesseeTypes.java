@@ -23,24 +23,18 @@ public class TcsAssesseeTypes extends Masters {
     }
 
     public void tcsAssesseeTypes() throws InterruptedException, IOException, ParseException, AWTException {
-
-        common.clickElement("name", "Taxes");
-        common.clickElement("name", "TCS");
-        common.clickElement("name", "TCS Assessee Types");
+        navigateToMastersWhen3Steps("Taxes","TCS","TCS Assessee Types");
         WebElement element = common.findWebElement("xpath", "//TreeItem[@Name='TCS Assessee Types']/TreeItem[@Name='All TCS Assessee Types']");
         Actions actions = new Actions(driver);
         actions.contextClick(element).perform();
         common.clickElement("name", "New Master");
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='NewTCS Assessee Type *']", common.getData(dataFile, "newTcsType") + common.getRandom());
-        common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "desription"));
-
-
-        common.clickElement("xpath", "//Button[@Name='Save']");
-        common.clickElement("xpath", "//Button[@Name='OK']");
-        common.clickElement("xpath", "//Button[@Name='Close']");
+        String master=common.findWebElement("xpath","//Edit[@Name='NewTCS Assessee Type *']").getText();
+        common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
+        saveAfterMasterCreate();
         Thread.sleep(1000);
-        super.closeMaster("TCS Assessee Types");
-        Thread.sleep(2000);
+        validateMastersAndInactive("TCS Assessee Types","All TCS Assessee Types",master,"TCS Assessee Types");
+        Thread.sleep(1000);
     }
 }

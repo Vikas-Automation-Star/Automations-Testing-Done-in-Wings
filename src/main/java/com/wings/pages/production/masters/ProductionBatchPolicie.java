@@ -1,10 +1,10 @@
 package com.wings.pages.production.masters;
 
+
 import com.wings.pages.Masters;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
 import java.awt.*;
@@ -24,13 +24,12 @@ public class ProductionBatchPolicie extends Masters {
     }
 
     public void productionBatchPolicie() throws InterruptedException, IOException, ParseException, AWTException {
-        common.clickElement("name", "Production");
-        common.clickElement("name", "Bill of Material");
-        common.clickElement("name", "Production Batch Policies");
-        Thread.sleep(2000);
+        navigateToMastersWhen3Steps("Production","Bill of Material","Production Batch Policies");
+        Thread.sleep(1500);
         super.createMaster("xpath", "//TreeItem[@Name='Production Batch Policies']/TreeItem[@Name='All Production Batch Policies']");
         Thread.sleep(2000);
-        common.inputText("xpath", "//Edit[@Name='New Production Batch Policy *']", common.getData(dataFile, "newproductionbatchpolicy") + common.getRandom());
+        common.inputText("xpath", "//Edit[@Name='New Production Batch Policy *']", common.getData(dataFile, "newProductionBatchPolicy") + common.getRandom());
+        String master=common.findWebElement("xpath","//Edit[@Name='New Production Batch Policy *']").getText();
         common.clickElement("xpath", "//Edit[@Name='Batch Policy Type *']/Button[@Name='Open']");
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_DOWN);
@@ -45,14 +44,16 @@ public class ProductionBatchPolicie extends Masters {
         Thread.sleep(2000);
         WebElement element1 = common.findWebElement("xpath", "//Edit[@Name='Include Option * Row 0, Not sorted.']");
         element1.click();
-        element1.sendKeys(common.getData(dataFile, "branch"), Keys.ENTER);
-        common.inputText("xpath", "//Edit[@Name='Policy Sequence * Row 0, Not sorted.']", common.getData(dataFile, "sequence"));
+        element1.sendKeys(common.getData(dataFile, "branch"));
+        WebElement ele = common.findWebElement("xpath", "//Edit[@Name='Policy Sequence * Row 0, Not sorted.']");
+        ele.click();
+        ele.sendKeys(common.getData(dataFile, "sequence"));
         WebElement element2 = common.findWebElement("xpath", "//Edit[@Name='Policy Option Format * Row 0, Not sorted.']");
         element2.click();
-        element2.sendKeys(common.getData(dataFile, "pof"), Keys.ENTER);
+        element2.sendKeys(common.getData(dataFile, "pof"));
         common.clickElement("xpath", "//Button[@Name='Ok']");
         super.saveAfterMasterCreate();
-        super.closeMaster("Production Batch Policies");
+        validateMastersAndInactive("Production Batch Policies","All Production Batch Policies",master,"Production Batch Policies");
         Thread.sleep(1000);
     }
 }

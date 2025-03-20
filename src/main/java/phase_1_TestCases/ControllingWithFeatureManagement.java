@@ -195,11 +195,11 @@ public class ControllingWithFeatureManagement extends Transaction {
         actions.contextClick(validateDraggedNode).perform();
         common.clickElement("xpath","//MenuItem[@Name='Move As Sub-Node']");
         WebElement save =common.findWebElement("xpath","//Button[@Name='Save']");
-        save.sendKeys(Keys.ENTER,Keys.ENTER,Keys.ENTER);
+        save.sendKeys(Keys.ENTER);//,Keys.ENTER,Keys.ENTER);
+        common.clickElement("xpath","//Button[@Name='Yes']");
 //        common.clickElement("xpath","//Button[@Name='Yes']");
-//        common.clickElement("xpath","//Dialog[@Name='Close']/Button[@Name='Yes']");
         rootDriver=common.initializeDriver("Root");
-        Thread.sleep(5000);
+        Thread.sleep(3000);
         WebElement root=rootDriver.findElementByXPath("//*//Button[@Name='OK']");
         root.click();
         System.out.println("Okay button clicked ");

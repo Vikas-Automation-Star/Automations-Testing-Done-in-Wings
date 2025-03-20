@@ -24,14 +24,12 @@ public class BillOfMaterial extends Masters {
     }
 
     public void billOfMaterial() throws InterruptedException, IOException, ParseException, AWTException {
-        common.clickElement("name", "Production");
-        common.clickElement("name", "Bill of Material");
-        common.clickElement("name", "Bill Of Material");
-        Thread.sleep(2500);
-
+        navigateToMastersWhen3Steps("Production","Bill of Material","Bill Of Material");
+        Thread.sleep(1500);
         super.createMaster("xpath", "//TreeItem[@Name='Bill Of Material']/TreeItem[@Name='All Bill Of Material']");
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='New Bill Of Material *']", common.getData(dataFile, "newBillMaterial") + common.getRandom());
+        String master=common.findWebElement("xpath","//Edit[@Name='New Bill Of Material *']").getText();
         common.clickElement("xpath", "//Edit[@Name='Output Product *']/Button[@Name='Open']");
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_DOWN);
@@ -49,19 +47,18 @@ public class BillOfMaterial extends Masters {
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
         super.inputTextWithValidation("xpath", "//Edit[@Name='Quantity']", common.getData(dataFile, "quantity"));
-        super.inputTextWithValidation("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "desciption"));
+        super.inputTextWithValidation("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
         common.clickElement("xpath", "//Text[@Name='Applicable Inputs']/following-sibling::Button[@Name='...']");
         Thread.sleep(2000);
-
         WebElement element1 = common.findWebElement("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']");
         element1.click();
-        element1.sendKeys(common.getData(dataFile, "pCode"), Keys.ENTER);
+        element1.sendKeys(common.getData(dataFile, "pCode"));
         WebElement element2 = common.findWebElement("xpath", "//Edit[@Name='Quantity * Row 0, Not sorted.']");
         element2.click();
         element2.sendKeys(common.getData(dataFile, "quantity"));
         common.clickElement("xpath", "//Button[@Name='Ok']");
         super.saveAfterMasterCreate();
-        super.closeMaster("Bill Of Material");
-        Thread.sleep(2000);
+        validateMastersAndInactive("Bill Of Material","All Bill Of Material",master,"Bill Of Material");
+
     }
 }

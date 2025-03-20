@@ -26,12 +26,12 @@ public class Supplier extends Masters {
     }
 
     public void createSupplier() throws InterruptedException, IOException, ParseException, AWTException {
-        common.clickElement("name", "Purchase");
-        common.clickElement("name", "Suppliers");
-        Thread.sleep(2500);
+        navigateToMastersWhen2Steps("Purchase","Suppliers");
+       Thread.sleep(1500);
         createMaster("xpath", "//TreeItem[@Name='Suppliers']/TreeItem[@Name='All Suppliers']");
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         inputTextWithValidation("xpath", "//Edit[@Name='New Supplier *']", common.getData(dataFile, "newSupplier") + common.getRandom());
+        String master=common.findWebElement("xpath","//Edit[@Name='New Supplier *']").getText();
         inputTextWithValidation("xpath", "//Edit[@Name='Supplier Code']", common.getData(dataFile, "supplierCode") + common.getRandom());
         inputTextWithValidation("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "desription"));
         common.clickElement("xpath", "//Pane[@Name='Bank Details']/Button[@Name='...']");
@@ -147,8 +147,6 @@ public class Supplier extends Masters {
         common.clickElement("xpath", "//Edit[@Name='Country * Row 0, Not sorted.']");
         WebElement country = common.findWebElement("xpath", "//Edit[@Name='Country * Row 0, Not sorted.']");
         country.click();
-//    Thread.sleep(1000);
-//    common.clickElement("xpath","//Button[@Name='Open']");
         country.sendKeys(common.getData(dataFile, "county"), Keys.ENTER);
         Thread.sleep(2000);
         common.clickElement("xpath", "//Button[@Name='Ok']");
@@ -159,7 +157,7 @@ public class Supplier extends Masters {
         consigner.sendKeys(common.getData(dataFile, "consigner"), Keys.ENTER);
         common.clickElement("xpath", "//Button[@Name='Ok']");
         saveAfterMasterCreate();
-        closeMaster("Suppliers");
-        Allure.step("Supplier");
+        validateMastersAndInactive("Suppliers","All Suppliers",master,"Suppliers");
+
     }
 }

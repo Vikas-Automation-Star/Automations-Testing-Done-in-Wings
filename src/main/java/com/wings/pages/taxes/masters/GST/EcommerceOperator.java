@@ -23,16 +23,14 @@ public class EcommerceOperator extends Masters {
     }
 
     public void ecommerceOperator() throws InterruptedException, IOException, ParseException, AWTException {
-
-        common.clickElement("name", "Taxes");
-        common.clickElement("name", "GST");
-        common.clickElement("name", "ECommerce Operators");
+        navigateToMastersWhen3Steps("Taxes","GST","ECommerce Operators");
         WebElement element = common.findWebElement("xpath", "//TreeItem[@Name='ECommerce Operators']/TreeItem[@Name='All ECommerce Operators']");
         Actions actions = new Actions(driver);
         actions.contextClick(element).perform();
         common.clickElement("name", "New Master");
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='New E-Commerce Operator *']", common.getData(dataFile, "newECommerceOperator") + common.getRandom());
+        String master=common.findWebElement("xpath","//Edit[@Name='New E-Commerce Operator *']").getText();
         Thread.sleep(2000);
         common.clickElement("xpath", "//Pane[@Name='ECommerce Operator Details']/Button[@Name='...']");
         common.inputText("xpath", "//Edit[@Name='E-Commerce Operator GSTIN *']", common.getData(dataFile, "EcommerceOperatorGSTIN"));
@@ -42,7 +40,7 @@ public class EcommerceOperator extends Masters {
         common.clickElement("xpath", "//Button[@Name='OK']");
         common.clickElement("xpath", "//Button[@Name='Close']");
         Thread.sleep(1000);
-        super.closeMaster("ECommerce Operators");
-        Thread.sleep(2000);
+        validateMastersAndInactive("ECommerce Operators","All ECommerce Operators",master,"ECommerce Operators");
+        Thread.sleep(1000);
     }
 }

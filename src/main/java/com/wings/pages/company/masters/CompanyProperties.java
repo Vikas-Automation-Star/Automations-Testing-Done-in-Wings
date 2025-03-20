@@ -26,9 +26,8 @@ public class CompanyProperties extends Masters {
     }
 
     public void companyProperty() throws IOException, ParseException, InterruptedException, AWTException {
-        common.clickElement("name", "Company");
-        common.clickElement("name", "Company Properties");
-        Thread.sleep(2000);
+        navigateToMastersWhen2Steps("Company","Company Properties");
+        Thread.sleep(1500);
         super.inputTextWithValidation("xpath", "//Edit[@Name='Registration Certificate No']", common.getData(dataFile, "Registration certificateNo") + common.getRandom());
         super.inputTextWithValidation("xpath", "//Edit[@Name='PAN No']", common.getData(dataFile, "PAN NO"));
         common.clickElement("xpath", "//Button[@Name='...']");

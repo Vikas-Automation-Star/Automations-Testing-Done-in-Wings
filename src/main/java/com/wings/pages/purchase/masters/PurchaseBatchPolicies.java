@@ -25,12 +25,12 @@ public class PurchaseBatchPolicies extends Masters {
     }
 
     public void batchPolicies() throws InterruptedException, IOException, ParseException, AWTException {
-        common.clickElement("name", "Purchase");
-        common.clickElement("name", "Purchase Batch Policies");
-        Thread.sleep(2500);
+        navigateToMastersWhen2Steps("Purchase","Purchase Batch Policies");
+        Thread.sleep(2000);
         super.createMaster("xpath", "//TreeItem[@Name='Purchase Batch Policies']/TreeItem[@Name='All Purchase Batch Policies']");
         Thread.sleep(2000);
-        super.inputTextWithValidation("xpath", "//Edit[@Name='New Purchase Batch Policy *']", common.getData(dataFile, "newPurchaseBatchPolice") + common.getRandom());
+        super.inputTextWithValidation("xpath", "//Edit[@Name='New Purchase Batch Policy *']", common.getData(dataFile, "PurchaseBatchPolice") + common.getRandom());
+        String master=common.findWebElement("xpath","//Edit[@Name='New Purchase Batch Policy *']").getText();
         common.clickElement("xpath", "//Edit[@Name='Batch Policy Type *']/Button[@Name='Open']");
         Thread.sleep(2000);
         Robot robot = new Robot();
@@ -44,15 +44,14 @@ public class PurchaseBatchPolicies extends Masters {
         common.clickElement("xpath", "//Text[@Name='Purchase Batch Policy']/following-sibling::Button[@Name='...']");
         WebElement element = common.findWebElement("xpath", "//Edit[@Name='Include Option * Row 0, Not sorted.']");
         element.click();
-        element.sendKeys(common.getData(dataFile, "includeOption"), Keys.ENTER);
+        element.sendKeys(common.getData(dataFile, "includeOption"));
         common.clickElement("xpath", "//Edit[@Name='Policy Sequence * Row 0, Not sorted.']");
         common.inputText("xpath", "//Edit[@Name='Policy Sequence * Row 0, Not sorted.']", common.getData(dataFile, "policySequence"));
         WebElement element1 = common.findWebElement("xpath", "//Edit[@Name='Policy Option Format * Row 0, Not sorted.']");
         element1.click();
-        element.sendKeys(common.getData(dataFile, "policyOptionFormate"), Keys.ENTER);
+        element1.sendKeys(common.getData(dataFile, "policyOptionFormat"));
         common.clickElement("xpath", "//Button[@Name='Ok']");
         super.saveAfterMasterCreate();
-        super.closeMaster("Purchase Batch Policies");
-        Allure.step("Purchase Batch Policies");
+        validateMastersAndInactive("Purchase Batch Policies","All Purchase Batch Policies",master,"Purchase Batch Policies");
     }
 }

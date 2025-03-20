@@ -23,17 +23,17 @@ public class Reasons extends Masters {
     }
 
     public void createTransporters() throws InterruptedException, IOException, ParseException, AWTException {
-        common.clickElement("name", "Company");
-        common.clickElement("name", "Reasons");
+        navigateToMastersWhen2Steps("Company","Reasons");
         Thread.sleep(1000);
         super.createMaster("xpath", "//TreeItem[@Name='Reasons']/TreeItem[@Name='All Reasons']");
         Thread.sleep(1000);
         common.inputText("xpath", "//Edit[@Name='New Reason *']", common.getData(dataFile, "reason") + common.getRandom());
+        String master=common.findWebElement("xpath","//Edit[@Name='New Reason *']").getText();
         Thread.sleep(1000);
         common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
         Thread.sleep(1000);
         super.saveAfterMasterCreate();
-        super.closeMaster("Reasons");
+        validateMastersAndInactive("Reasons","All Reasons",master,"Reasons");
         Thread.sleep(1000);
     }
 }

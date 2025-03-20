@@ -26,7 +26,6 @@ public class BillOfMaterialsMater {
     public void billOfMaterials() throws IOException, ParseException, InterruptedException, AWTException {
         BillOfMaterial bom = new BillOfMaterial(driver, file);
         bom.billOfMaterial();
-
     }
 
     @AfterTest

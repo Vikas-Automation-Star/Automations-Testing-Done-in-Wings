@@ -12,7 +12,7 @@ import java.net.URL;
 
 public class CreateCompany {
     WindowsDriver driver, logindriver;
-    public static String CompanyName = "Test_Company_1", Password = "Wings@123",currencyText,stockValuationText,registrationNum = "998921", panNum = "AEKPE1471P";
+    public static String CompanyName = "AutomationMarchSprintOne", Password = "Wings@123",currencyText,stockValuationText,registrationNum = "998921", panNum = "AEKPE1471P";
 
     public void login() throws IOException, InterruptedException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -43,7 +43,7 @@ public class CreateCompany {
         driver.findElementByXPath("//Button[@Name='Next']").click();
         driver.findElementByName("OK").click();
         Thread.sleep(1500);
-        driver.findElementByXPath("//Edit[@Name='Database ServerRequestFunctions']").sendKeys("Madhuri");
+        driver.findElementByXPath("//Edit[@Name='Database ServerRequestFunctions']").sendKeys("Vikas");
         driver.findElementByXPath("//Button[@Name='Next']").click();
 
         Thread.sleep(200000);

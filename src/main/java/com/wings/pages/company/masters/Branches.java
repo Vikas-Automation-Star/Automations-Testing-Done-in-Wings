@@ -25,13 +25,13 @@ public class Branches extends Masters {
     }
 
     public void branch() throws InterruptedException, IOException, ParseException, AWTException {
-        common.clickElement("name", "Company");
-        common.clickElement("name", "Branches");
-        Thread.sleep(2500);
+        navigateToMastersWhen2Steps("Company","Branches");
+        Thread.sleep(1500);
         super.createMaster("xpath", "//TreeItem[@Name='Branches']/TreeItem[@Name='All Branches']");
         Thread.sleep(2000);
         common.clickElement("xpath", "//Edit[@Name='New Branch *']");
         inputTextWithValidation("xpath", "//Edit[@Name='New Branch *']", common.getData(dataFile, "newBranch") + common.getRandom());
+        String master=common.findWebElement("xpath","//Edit[@Name='New Branch *']").getText();
         common.clickElement("xpath", "//Edit[@Name='Company *']");
         super.inputTextWithValidation("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
         super.inputTextWithValidation("xpath", "//Edit[@Name='Address 1 *']", common.getData(dataFile, "address1"));
@@ -77,13 +77,9 @@ public class Branches extends Masters {
         System.out.println("size : " + newgst.size());
         WebElement newgstTest = common.findWebElement("xpath", "//Window[@Name='Create New Master']/Window/Pane/Text[@Name='Count : 0']");
         newgstTest.click();
-//        robot.keyPress(KeyEvent.VK_ENTER);
-//        robot.keyRelease(KeyEvent.VK_ENTER);
-//        Thread.sleep(1000);
-//        common.clickElement("xpath","//Window[@Name='Create New Master']/Table/Pane/Button[@Name='New Bank Details']");
         super.saveAfterMasterCreate();
-        super.closeMaster("Branches");
-        Thread.sleep(2000);
+        validateMastersAndInactive("Branches","All Branches",master,"Branches");
+        Thread.sleep(1000);
 
     }
 }

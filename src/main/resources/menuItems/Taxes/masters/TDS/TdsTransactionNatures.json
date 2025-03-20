@@ -1,8 +1,8 @@
 {
   "newTdsTransactionNature": "TaxDeductionNature",
-  "desription": "Description Given for TaxDeduction Nature",
-  "tdsAssesseType": "New TaxDeductedSource69",
-  "subTdsTax": "New Sub TaxDeductedSource38",
+  "description": "Description Given for TaxDeduction Nature",
+  "tdsAssesseType": "AT_TDS Assessee Type 1",
+  "subTdsTax": "AT_TDS Sub type 1",
   "level": "1",
   "tdsRate": "10"
 }

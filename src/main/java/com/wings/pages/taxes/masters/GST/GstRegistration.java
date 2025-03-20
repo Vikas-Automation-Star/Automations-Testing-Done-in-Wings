@@ -24,16 +24,14 @@ public class GstRegistration extends Masters {
     }
 
     public void gstRegistration() throws InterruptedException, IOException, ParseException, AWTException {
-
-        common.clickElement("name", "Taxes");
-        common.clickElement("name", "GST");
-        common.clickElement("name", "GST Registration");
+        navigateToMastersWhen3Steps("Taxes","GST","GST Registration");
         WebElement element = common.findWebElement("xpath", "//TreeItem[@Name='GST Registration']/TreeItem[@Name='All GST Registration']");
         Actions actions = new Actions(driver);
         actions.contextClick(element).perform();
         common.clickElement("name", "New Master");
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='New GST Registration *']", common.getData(dataFile, "newGst") + common.getRandom());
+        String master=common.findWebElement("xpath","//Edit[@Name='New GST Registration *']").getText();
         Thread.sleep(2000);
         common.clickElement("xpath", "//Edit[@Name='Registration Type *']/Button[@Name='Open']");
         Thread.sleep(300);
@@ -51,8 +49,8 @@ public class GstRegistration extends Masters {
         common.clickElement("xpath", "//Button[@Name='OK']");
         common.clickElement("xpath", "//Button[@Name='Close']");
         Thread.sleep(1000);
-        super.closeMaster("GST Registration");
-        Thread.sleep(2000);
+        validateMastersAndInactive("GST Registration","All GST Registration",master,"GST Registration");
+        Thread.sleep(1000);
 
     }
 }

@@ -24,34 +24,29 @@ public class TdsTransactionNatures extends Masters {
     }
 
     public void tdsTransactionNatures() throws InterruptedException, IOException, ParseException, AWTException {
-
-        common.clickElement("name", "Taxes");
-        common.clickElement("name", "TDS");
-        common.clickElement("name", "TDS Transaction Natures");
+        navigateToMastersWhen3Steps("Taxes","TDS","TDS Transaction Natures");
         WebElement element = common.findWebElement("xpath", "//TreeItem[@Name='TDS Transaction Natures']/TreeItem[@Name='All TDS Transaction Natures']");
         Actions actions = new Actions(driver);
         actions.contextClick(element).perform();
         common.clickElement("name", "New Master");
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='New TDS Transaction Nature *']", common.getData(dataFile, "newTdsTransactionNature") + common.getRandom());
-        common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "desription"));
+        String master=common.findWebElement("xpath","//Edit[@Name='New TDS Transaction Nature *']").getText();
+        common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
         common.clickElement("xpath", "//Text[@Name='TDS Transaction Nature']/following-sibling::Button[@Name='...']");
         Thread.sleep(2000);
         common.clickElement("xpath", "//Edit[@Name='TDS Assessee Type * Row 0, Not sorted.']");
         WebElement element1 = common.findWebElement("xpath", "//Edit[@Name='TDS Assessee Type * Row 0, Not sorted.']");
-        element1.sendKeys(common.getData(dataFile, "tdsAssesseType"), Keys.ENTER);
+        element1.sendKeys(common.getData(dataFile, "tdsAssesseType"), Keys.TAB);
         WebElement element2 = common.findWebElement("xpath", "//Edit[@Name='TDS Sub Type * Row 0, Not sorted.']");
-        element2.sendKeys(common.getData(dataFile, "subTdsTax"), Keys.ENTER);
+        element2.sendKeys(common.getData(dataFile, "subTdsTax"), Keys.TAB);
         common.inputText("xpath", "//Edit[@Name='Level * Row 0, Not sorted.']", common.getData(dataFile, "level"));
         common.clickElement("xpath", "//Edit[@Name='TDS Rate Row 0, Not sorted.']");
         common.inputText("xpath", "//Edit[@Name='TDS Rate Row 0, Not sorted.']", common.getData(dataFile, "tdsRate"));
         common.clickElement("xpath", "//Button[@Name='Ok']");
-
-        common.clickElement("xpath", "//Button[@Name='Save']");
-        common.clickElement("xpath", "//Button[@Name='OK']");
-        common.clickElement("xpath", "//Button[@Name='Close']");
+        saveAfterMasterCreate();
         Thread.sleep(1000);
-        super.closeMaster("TDS Transaction Natures");
-        Thread.sleep(2000);
+        validateMastersAndInactive("TDS Transaction Natures","All TDS Transaction Natures",master,"TDS Transaction Natures");
+        Thread.sleep(1000);
     }
 }

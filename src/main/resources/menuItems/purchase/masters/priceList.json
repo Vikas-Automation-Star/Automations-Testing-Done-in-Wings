@@ -1,4 +1,4 @@
 {
-  "newPurchasePriceList": "newPurchasePriceList",
-  "description": "description given for newPurchasePriceList "
+  "PurchasePriceList": "ExclusivePriceList",
+  "description": "description given for ExclusivePriceList "
 }

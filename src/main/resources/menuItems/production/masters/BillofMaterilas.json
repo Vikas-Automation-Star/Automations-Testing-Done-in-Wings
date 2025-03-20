@@ -1,6 +1,6 @@
 {
-  "newBillMaterial": "New Bill of Material",
+  "newBillMaterial": "BillOfMaterial",
   "quantity": "100",
-  "pCode": "9989",
-  "desciption": "description given for new bill of material"
+  "pCode": "P1",
+  "description": "description given for BillOfMaterial"
 }

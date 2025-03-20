@@ -23,13 +23,12 @@ public class Terms extends Masters {
     }
 
     public void terms() throws InterruptedException, IOException, ParseException, AWTException {
-        common.clickElement("name", "Company");
-        common.clickElement("name", "Terms");
-        common.clickElement("xpath", "//MenuItem[@Name='Terms']");
+        navigateToMastersWhen3Steps("Company","Terms","Terms");
         Thread.sleep(1000);
         super.createMaster("xpath", "//TreeItem[@Name='Terms']/TreeItem[@Name='All Terms']");
         Thread.sleep(1000);
         super.inputTextWithValidation("xpath", "//Edit[@Name='New Term *']", common.getData(dataFile, "newTerm") + common.getRandom());
+        String master=common.findWebElement("xpath","//Edit[@Name='New Term *']").getText();
         common.clickElement("xpath", "//Edit[@Name='Term Type *']/Button[@Name='Open']");
         Thread.sleep(1000);
         Robot robot = new Robot();
@@ -40,7 +39,7 @@ public class Terms extends Masters {
         super.inputTextWithValidation("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
         Thread.sleep(1000);
         super.saveAfterMasterCreate();
-        super.closeMaster("Terms");
+        validateMastersAndInactive("Terms","All Terms",master,"Terms");
         Thread.sleep(1000);
 
     }

@@ -28,7 +28,7 @@ public class ControllingFeatureManagementFeatures {
 //        controlling.validateTransactionFieldsPositive();
 //        controlling.validateTransactionFieldsNegative();
         controlling.enableDragAndDropNodes();
-        controlling.disableDragAndDropToNodes();
+//        controlling.disableDragAndDropToNodes();
     }
 
     @AfterTest

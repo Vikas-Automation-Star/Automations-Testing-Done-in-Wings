@@ -26,7 +26,6 @@ public class TcsSubTypesMaster {
     public void tcsSubTypesMaster() throws InterruptedException, IOException, ParseException, AWTException {
         TcsSubTypes tsm = new TcsSubTypes(driver, file);
         tsm.tcsSubTypes();
-
     }
 
     @AfterTest

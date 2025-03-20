@@ -21,15 +21,15 @@ public class ProfitCentres extends Masters {
     }
 
     public void profitCentres() throws InterruptedException, IOException, ParseException {
-        common.clickElement("name", "Company");
-        common.clickElement("name", "Profit Centres");
+        navigateToMastersWhen2Steps("Company","Profit Centres");
         Thread.sleep(1000);
         super.createMaster("xpath", "//TreeItem[@Name='Profit Centres']/TreeItem[@Name='All Profit Centres']");
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='New Profit Centre *']", common.getData(dataFile, "newProfitCentres") + common.getRandom());
+        String master=common.findWebElement("xpath","//Edit[@Name='New Profit Centre *']").getText();
         common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
         super.saveAfterMasterCreate();
-        super.closeMaster("Profit Centres");
+        validateMastersAndInactive("Profit Centres","All Profit Centres",master,"Profit Centres");
         Thread.sleep(1500);
     }
 

@@ -1,6 +1,5 @@
-package menuItems.Taxes.masters.TDS;//package menuItems.Taxes.masters.TDS;
+package menuItems.Taxes.masters.TDS;
 
-//import com.wings.pages.taxes.TDS.TdsAssesseeTypes;
 
 import com.wings.pages.AppLogin;
 import com.wings.pages.taxes.masters.TDS.TdsAssesseeTypes;
@@ -16,7 +15,7 @@ import java.io.IOException;
 public class TdsAssesseeTypesMaster {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String file = "./src/main/resources/MenuItems/Taxes/masters/TDS/TdsAssesseeTypes.json";
+    String file = "./src/main/resources/menuItems/Taxes/masters/TDS/TdsAssesseeTypes.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {

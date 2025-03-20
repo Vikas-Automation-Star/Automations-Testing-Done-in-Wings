@@ -1,8 +1,8 @@
 {
   "newTcsTransactionNature": "New TaxCollectedSource Transaction Nature",
-  "desription": "description given for New TaxCollectedSource Transaction Nature",
-  "tdsAssesseType": "New TaxCollectedSource28",
-  "subTcsTax": "sub new tcs",
+  "description": "description given for New TaxCollectedSource Transaction Nature",
+  "tdsAssesseType": "AT_TCS Assessee Type 1",
+  "subTcsTax": "AT_TCS Sub type 1",
   "level": "1",
   "tcsRate": "10",
   "minValue": "5000"

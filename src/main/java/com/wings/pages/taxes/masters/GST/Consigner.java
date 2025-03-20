@@ -25,16 +25,14 @@ public class Consigner extends Masters {
     }
 
     public void consigner() throws InterruptedException, IOException, ParseException, AWTException {
-
-        common.clickElement("name", "Taxes");
-        common.clickElement("name", "GST");
-        common.clickElement("name", "Consignor");
+        navigateToMastersWhen3Steps("Taxes","GST","Consignor");
         WebElement element = common.findWebElement("xpath", "//TreeItem[@Name='Consignor']/TreeItem[@Name='All Consignor']");
         Actions actions = new Actions(driver);
         actions.contextClick(element).perform();
         common.clickElement("name", "New Master");
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='New Consignor *']", common.getData(dataFile, "newConsigner") + common.getRandom());
+        String master=common.findWebElement("xpath","//Edit[@Name='New Consignor *']").getText();
         common.inputText("xpath", "//Edit[@Name='New Consignor Code']", common.getData(dataFile, "newConsignerCode") + common.getRandom());
         common.clickElement("xpath", "//Pane[@Name='Registration']/Button[@Name='...']");
         Thread.sleep(2000);
@@ -51,13 +49,12 @@ public class Consigner extends Masters {
         element1.click();
         element1.sendKeys(Keys.ESCAPE);
         Thread.sleep(200);
-//        common.clickElement("xpath", "//Button[@Name='Close']");
         common.clickElement("xpath", "//Button[@Name='Ok']");
         common.clickElement("xpath", "//Button[@Name='Save']");
         common.clickElement("xpath", "//Button[@Name='OK']");
         common.clickElement("xpath", "//Button[@Name='Close']");
         Thread.sleep(1000);
-        super.closeMaster("Consignor");
+        validateMastersAndInactive("Consignor","All Consignor",master,"Consignor");
         Thread.sleep(2000);
     }
 }

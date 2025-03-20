@@ -26,7 +26,6 @@ public class TdsTransactionNaturesMaster {
     public void tdsTransactionNaturesMaster() throws InterruptedException, IOException, ParseException, AWTException {
         TdsTransactionNatures ttn = new TdsTransactionNatures(driver, file);
         ttn.tdsTransactionNatures();
-
     }
 
     @AfterTest

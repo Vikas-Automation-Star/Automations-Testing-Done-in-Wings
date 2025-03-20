@@ -25,16 +25,14 @@ public class HsnCodes extends Masters {
     }
 
     public void hsnCodes() throws InterruptedException, IOException, ParseException, AWTException {
-
-        common.clickElement("name", "Taxes");
-        common.clickElement("name", "GST");
-        common.clickElement("name", "HSN Codes");
+        navigateToMastersWhen3Steps("Taxes","GST","HSN Codes");
         WebElement element = common.findWebElement("xpath", "//TreeItem[@Name='HSN Codes']/TreeItem[@Name='All HSN Codes']");
         Actions actions = new Actions(driver);
         actions.contextClick(element).perform();
         common.clickElement("name", "New Master");
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='New HSNCode *']", common.getData(dataFile, "hsnName") + common.getRandom());
+        String master=common.findWebElement("xpath","//Edit[@Name='New HSNCode *']").getText();
         common.clickElement("xpath", "//Button[@Name='Open']/ancestor::Edit[@Name='Goods/Service *']");
         Thread.sleep(4000);
         Robot robot = new Robot();
@@ -70,11 +68,9 @@ public class HsnCodes extends Masters {
         common.clickElement("xpath", "//Edit[@Name='Maximum Value Row 0, Not sorted.']");
         common.inputText("xpath", "//Edit[@Name='Maximum Value Row 0, Not sorted.']", common.getData(dataFile, "maxValue"));
         common.clickElement("xpath", "//Button[@Name='Ok']");
-
-        saveMaster();
+        saveAfterMasterCreate();
         Thread.sleep(1000);
-        super.closeMaster("HSN Codes");
-        Thread.sleep(2000);
-
+        validateMastersAndInactive("HSN Codes","All HSN Codes",master,"HSN Codes");
+        Thread.sleep(1000);
     }
 }

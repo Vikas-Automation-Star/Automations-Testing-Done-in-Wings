@@ -25,12 +25,12 @@ public class Transporters extends Masters {
     }
 
     public void createTransporters() throws InterruptedException, IOException, ParseException, AWTException {
-        common.clickElement("name", "Company");
-        common.clickElement("name", "Transporters");
+        navigateToMastersWhen2Steps("Company","Transporters");
         Thread.sleep(1000);
         super.createMaster("xpath", "//TreeItem[@Name='Transporters']/TreeItem[@Name='All Transporters']");
         Thread.sleep(1000);
         common.inputText("xpath", "//Edit[@Name='New Transporter *']", common.getData(dataFile, "transporter") + common.getRandom());
+        String master=common.findWebElement("xpath","//Edit[@Name='New Transporter *']").getText();
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
         Thread.sleep(1000);
@@ -77,7 +77,7 @@ public class Transporters extends Masters {
         common.clickElement("xpath", "//TitleBar/Button[@Name='Close']");
         common.clickElement("xpath", "//Button[@Name='Ok']");
         super.saveAfterMasterCreate();
-        super.closeMaster("Transporters");
+        validateMastersAndInactive("Transporters","All Transporters",master,"Transporters");
         Thread.sleep(2000);
 
     }

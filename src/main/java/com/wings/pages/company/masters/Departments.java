@@ -22,17 +22,16 @@ public class Departments extends Masters {
     }
 
     public void departments() throws InterruptedException, IOException, ParseException {
-        common.clickElement("name", "Company");
-        common.clickElement("name", "Departments");
+        navigateToMastersWhen2Steps("Company","Departments");
         Thread.sleep(1000);
         super.createMaster("xpath", "//TreeItem[@Name='Departments']/TreeItem[@Name='All Departments']");
         Thread.sleep(1500);
         common.inputText("xpath", "//Edit[@Name='New Department *']", common.getData(dataFile, "newDepartment") + common.getRandom());
+        String master=common.findWebElement("xpath","//Edit[@Name='New Department *']").getText();
         common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
         super.saveAfterMasterCreate();
-        super.closeMaster("Departments");
+        validateMastersAndInactive("Departments","All Departments",master,"Departments");
         Thread.sleep(2000);
-
     }
 
 }

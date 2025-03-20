@@ -21,17 +21,16 @@ public class Projects extends Masters {
     }
 
     public void project() throws InterruptedException, IOException, ParseException {
-        common.clickElement("name", "Company");
-        common.clickElement("name", "Projects");
+        navigateToMastersWhen2Steps("Company","Projects");
         Thread.sleep(1000);
         super.createMaster("xpath", "//TreeItem[@Name='Projects']/TreeItem[@Name='All Projects']");
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='New Project *']", common.getData(dataFile, "newProject") + common.getRandom());
+        String master=common.findWebElement("xpath","//Edit[@Name='New Project *']").getText();
         common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
         Thread.sleep(1000);
         super.saveAfterMasterCreate();
-        Thread.sleep(2000);
-        super.closeMaster("Projects");
+        validateMastersAndInactive("Projects","All Projects",master,"Projects");
     }
 
 }

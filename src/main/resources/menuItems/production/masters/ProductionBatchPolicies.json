@@ -1,6 +1,6 @@
 {
-  "newproductionbatchpolicy": "New Production Batch Policy",
+  "newProductionBatchPolicy": "ProductionBatchPolicy",
   "branch": "Include Branch",
-  "sequence": "6",
+  "sequence": "1",
   "pof": "DD-MM-YY"
 }

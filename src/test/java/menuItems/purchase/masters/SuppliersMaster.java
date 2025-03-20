@@ -3,7 +3,6 @@ package menuItems.purchase.masters;
 import com.wings.pages.AppLogin;
 import com.wings.pages.purchase.masters.Supplier;
 import io.appium.java_client.windows.WindowsDriver;
-import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -12,7 +11,6 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.io.IOException;
 
-;
 
 public class SuppliersMaster {
     WindowsDriver driver;
@@ -23,12 +21,10 @@ public class SuppliersMaster {
     public void beforeTest() throws IOException, InterruptedException, ParseException {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
-        Allure.step("Before Test Supplier");
     }
 
     @Test
     public void suppliersMaster() throws IOException, ParseException, InterruptedException, AWTException {
-
         Supplier supplier = new Supplier(driver, file);
         supplier.createSupplier();
     }
@@ -36,6 +32,5 @@ public class SuppliersMaster {
     @AfterTest
     public void afterTest() throws IOException {
         appLogin.logout();
-        Allure.step("After Test Supplier");
     }
 }

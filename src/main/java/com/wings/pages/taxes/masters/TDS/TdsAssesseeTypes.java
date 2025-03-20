@@ -23,25 +23,19 @@ public class TdsAssesseeTypes extends Masters {
     }
 
     public void tdsAssesseeTypes() throws InterruptedException, IOException, ParseException, AWTException {
-
-        common.clickElement("name", "Taxes");
-        common.clickElement("name", "TDS");
-        common.clickElement("name", "TDS Assessee Types");
+        navigateToMastersWhen3Steps("Taxes","TDS","TDS Assessee Types");
         WebElement element = common.findWebElement("xpath", "//TreeItem[@Name='TDS Assessee Types']/TreeItem[@Name='All TDS Assessee Types']");
         Actions actions = new Actions(driver);
         actions.contextClick(element).perform();
         common.clickElement("name", "New Master");
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='New TDS Assessee Type *']", common.getData(dataFile, "newTdsType") + common.getRandom());
-        common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "desription"));
-
-
-        common.clickElement("xpath", "//Button[@Name='Save']");
-        common.clickElement("xpath", "//Button[@Name='OK']");
-        common.clickElement("xpath", "//Button[@Name='Close']");
+        String master=common.findWebElement("xpath","//Edit[@Name='New TDS Assessee Type *']").getText();
+        common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
+        saveAfterMasterCreate();
         Thread.sleep(1000);
-        super.closeMaster("TDS Assessee Types");
-        Thread.sleep(2000);
+        validateMastersAndInactive("TDS Assessee Types","All TDS Assessee Types",master,"TDS Assessee Types");
+        Thread.sleep(1000);
 
     }
 }

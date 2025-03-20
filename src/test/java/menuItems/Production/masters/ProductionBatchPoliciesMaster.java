@@ -26,7 +26,6 @@ public class ProductionBatchPoliciesMaster {
     public void ProductionBatchPolicies() throws IOException, ParseException, InterruptedException, AWTException {
         ProductionBatchPolicie pbp = new ProductionBatchPolicie(driver, file);
         pbp.productionBatchPolicie();
-
     }
 
     @AfterTest

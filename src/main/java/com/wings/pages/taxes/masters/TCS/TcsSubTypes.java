@@ -23,25 +23,20 @@ public class TcsSubTypes extends Masters {
     }
 
     public void tcsSubTypes() throws InterruptedException, IOException, ParseException, AWTException {
-
-        common.clickElement("name", "Taxes");
-        common.clickElement("name", "TCS");
-        common.clickElement("name", "TCS Sub Types");
+        navigateToMastersWhen3Steps("Taxes","TCS","TCS Sub Types");
         WebElement element = common.findWebElement("xpath", "//TreeItem[@Name='TCS Sub Types']/TreeItem[@Name='All TCS Sub Types']");
         Actions actions = new Actions(driver);
         actions.contextClick(element).perform();
         common.clickElement("name", "New Master");
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='NewTCS Sub Type *']", common.getData(dataFile, "newTcsSubType") + common.getRandom());
-        common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "desription"));
+        String master=common.findWebElement("xpath","//Edit[@Name='NewTCS Sub Type *']").getText();
+        common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
         common.clickElement("xpath", "//Edit[@Name='TCS Paid Account']/Button[@Name='Open']");
         common.clickElement("xpath", "//Edit[@Name='TCS Collected Account']/Button[@Name='Open']");
-
-        common.clickElement("xpath", "//Button[@Name='Save']");
-        common.clickElement("xpath", "//Button[@Name='OK']");
-        common.clickElement("xpath", "//Button[@Name='Close']");
+        saveAfterMasterCreate();
         Thread.sleep(1000);
-        super.closeMaster("TCS Sub Types");
-        Thread.sleep(2000);
+        validateMastersAndInactive("TCS Sub Types","All TCS Sub Types",master,"TCS Sub Types");
+        Thread.sleep(1000);
     }
 }

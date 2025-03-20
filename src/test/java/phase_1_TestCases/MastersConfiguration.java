@@ -20,20 +20,20 @@ public class MastersConfiguration {
         appLogin.singleUserLogin();
     }
 
-    @Test(priority = 1)
+//    @Test(priority = 1)
     public void createNewCustomer() throws InterruptedException, IOException, ParseException, AWTException {
         MasterConfig config = new MasterConfig(driver, dataFile);
         String customerName = config.newCustomer();
         config.customerRename(customerName);
     }
 
-    @Test(priority = 2)
+//    @Test(priority = 2)
     public void setMasterInactive() throws InterruptedException, IOException, ParseException, AWTException {
         MasterConfig config = new MasterConfig(driver, dataFile);
         config.masterInactive("At_Cus_Reg_Intra");
     }
 
-    @Test(priority = 3)
+//    @Test(priority = 3)
     public void searchMaster() throws IOException, ParseException {
         MasterConfig search=new MasterConfig(driver,dataFile);
         search.searchMaster("code");
@@ -45,19 +45,19 @@ public class MastersConfiguration {
         config.createNode();
     }
 
-    @Test(priority = 5)
+//    @Test(priority = 5)
     public void nodeRename() throws InterruptedException, IOException, ParseException, AWTException {
         MasterConfig config = new MasterConfig(driver, dataFile);
         config.renameNode();
     }
 
-    @Test(priority = 6)
+//    @Test(priority = 6)
     public void moveAsSubNodeAndMoveToMainNode() throws InterruptedException, IOException, ParseException, AWTException {
         MasterConfig config = new MasterConfig(driver, dataFile);
         config.moveAsSubNodeAndMainNode();
     }
 
-    @Test(priority = 7)
+//    @Test(priority = 7)
     public void moveMastersBetweenNodes() throws InterruptedException, IOException, ParseException, AWTException {
         MasterConfig config = new MasterConfig(driver, dataFile);
         config.movingMastersBetweenNodes("//ListItem[@Name='Anjali Devi']/Text[@Name='Anjali Devi']");

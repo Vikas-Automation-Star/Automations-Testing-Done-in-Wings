@@ -91,4 +91,73 @@ public class Masters {
         Actions actions = new Actions(driver);
         actions.clickAndHold(slider).moveByOffset(0, offset).release().perform();
     }
+
+    public void navigateToMastersWhen2Steps(String menu, String menuItem) {
+        common.clickElement("xpath", "//MenuItem[@Name='"+menu+"']");
+        common.clickElement("xpath", "//MenuItem[@Name='"+menuItem+"']");
+    }
+
+    public void navigateToMastersWhen3Steps(String menu, String menuItem, String subMenuItem) {
+        common.clickElement("xpath", "//MenuItem[@Name='"+menu+"']");
+        common.clickElement("xpath", "//MenuItem[@Name='"+menuItem+"']");
+        common.clickElement("xpath", "//MenuItem[@Name='"+subMenuItem+"']");
+    }
+
+    public void validateMastersAndInactive(String nodeLocator,String subNodeLocator,String master,String masterClose){
+        common.clickElement("xpath","//TreeItem[@Name='"+nodeLocator+"']");
+        common.clickElement("xpath","//TreeItem[@Name='"+subNodeLocator+"']");
+        List<WebElement> fetchMasters=common.findWebElements("xpath","//List//ListItem");
+        for (WebElement v:fetchMasters){
+            if (v.getText().equals(master)) {
+                System.out.println("masterName :"+v.getText());
+                System.out.println("Master validated do Inactive");
+                Actions actions=new Actions(driver);
+                actions.contextClick(v).perform();
+                common.clickElement("xpath","//MenuItem[@Name='Inactivate']");
+                common.clickElement("xpath","//*/Button[@Name='OK']");
+                System.out.println("Master inactive successfully");
+            }
+            else {
+                System.out.println("check another Master");
+            }
+        }
+        closeMaster(masterClose);
+
+//        WebElement fetchMaster=common.findWebElement(listXpath,listLocator);
+//        Actions actions=new Actions(driver);
+//        actions.contextClick(fetchMaster).perform();
+//        common.clickElement("xpath","//MenuItem[@Name='Inactivate']");
+//        common.clickElement("xpath","//*/Button[@Name='OK']");
+//        System.out.println("Master inactive successfully");
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

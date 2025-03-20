@@ -21,18 +21,17 @@ public class TermType extends Masters {
     }
 
     public void termType() throws InterruptedException, IOException, ParseException, AWTException {
-        common.clickElement("name", "Company");
-        common.clickElement("name", "Terms");
-        common.clickElement("xpath", "//MenuItem[@Name='Term Types']");
+        navigateToMastersWhen3Steps("Company","Terms","Term Types");
         Thread.sleep(1000);
         super.createMaster("xpath", "//TreeItem[@Name='Term Types']/TreeItem[@Name='All Term Types']");
         Thread.sleep(1000);
         common.inputText("xpath", "//Edit[@Name='New Term Type *']", common.getData(dataFile, "newTermType") + common.getRandom());
+        String master=common.findWebElement("xpath","//Edit[@Name='New Term Type *']").getText();
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
         Thread.sleep(1000);
         super.saveAfterMasterCreate();
-        super.closeMaster("Term Types");
+        validateMastersAndInactive("Term Types","All Term Types",master,"Term Types");
         Thread.sleep(1000);
     }
 }

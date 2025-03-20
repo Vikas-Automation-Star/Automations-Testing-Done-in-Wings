@@ -14,7 +14,7 @@ import java.io.IOException;
 public class TcsAssesseeTypesMaster {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String file = "./src/main/resources/MenuItems/Taxes/masters/TCS/TcsAssesseeTypes.json";
+    String file = "./src/main/resources/menuItems/Taxes/masters/TCS/TcsAssesseeTypes.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {

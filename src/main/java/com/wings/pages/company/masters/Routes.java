@@ -24,16 +24,16 @@ public class Routes extends Masters {
     }
 
     public void createRoutes() throws InterruptedException, IOException, ParseException {
-        common.clickElement("name", "Company");
-        common.clickElement("name", "Routes");
+        navigateToMastersWhen2Steps("Company","Routes");
         Thread.sleep(1000);
         super.createMaster("xpath", "//TreeItem[@Name='Routes']/TreeItem[@Name='All Routes']");
         Thread.sleep(1000);
         common.inputText("xpath", "//Edit[@Name='New Route *']", common.getData(dataFile, "route") + common.getRandom());
-        Thread.sleep(2000);
+        String master=common.findWebElement("xpath","//Edit[@Name='New Route *']").getText();
+        Thread.sleep(1000);
         common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
         super.saveAfterMasterCreate();
-        super.closeMaster("Routes");
+        validateMastersAndInactive("Routes","All Routes",master,"Routes");
         Thread.sleep(1500);
     }
 }

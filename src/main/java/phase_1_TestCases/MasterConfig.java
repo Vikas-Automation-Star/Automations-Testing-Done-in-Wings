@@ -275,29 +275,9 @@ public class MasterConfig extends Transaction {
         common.clickElement("xpath", "//Button[@Name='Save']");
         common.clickElement("xpath", "//Button[@Name='Yes']");
         common.clickElement("xpath", "//Button[@Name='Yes']");
-        DesiredCapabilities rootcapabilities = new DesiredCapabilities();
-        rootcapabilities.setCapability("app", "Root");
-        rootcapabilities.setCapability("deviceName", "WindowsPC");
-        rootdriver = new WindowsDriver<>(new URL("http://127.0.0.1:4723/"), rootcapabilities);
-        Thread.sleep(1000);
-        List<WebElement> windows = rootdriver.findElements(By.tagName("Window"));
-        Thread.sleep(2500);
-        if (windows.isEmpty()) {
-            System.out.println("No windows found.");
-        } else {
-            for (WebElement i : windows) {
-                System.out.println("WindowsNames :"+i.getText());
-                System.out.println("LegacyNAme :"+i.getAttribute("LegacyIAccessible.Role"));
-                String name = i.getAttribute("Name");
-                System.out.println("Name:- " + name);
-                if(i.getText().equals("")){
-                    Thread.sleep(1000);
-                    WebElement okButtonn = i.findElement(By.xpath("//Window/Button[@Name='OK']"));
-                    okButtonn.click();
-                    break;
-                }
-            }
-        }
+        rootdriver=common.initializeDriver("Root");
+        System.out.println("root navigated");
+        common.clickElement("xpath","//*/Button[@Name='OK']");
         Thread.sleep(1500);
         common.clickElement("xpath","//TabItem[@Name='Customers']/Button[@Name='Close']");
         navigateToMastersOrMenus("Sales","Customers","//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
@@ -314,7 +294,6 @@ public class MasterConfig extends Transaction {
         }
         common.clickElement("xpath","//TabItem[@Name='Customers']/Button[@Name='Close']");
     }
-
     public void renameNode() throws IOException, ParseException, InterruptedException {
         navigateToMastersOrMenus("Sales","Customers","//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
         List<WebElement> listElements1 = common.findWebElements("xpath", "//Pane[@Name='Customers']/Pane/Pane/Pane/Pane/Pane/List/ListItem");
@@ -465,8 +444,6 @@ public class MasterConfig extends Transaction {
         common.clickElement("name", "Sales");
         common.clickElement("name", "Customers");
         Thread.sleep(1000);
-//        WebElement right=common.findWebElement("xpath","//TreeItem[@Name='All Customers']");
-//        right.sendKeys(Keys.ENTER);
         common.clickElement("xpath","//TreeItem[@Name='All Customers']");
         common.clickElement("xpath","//TreeItem[starts-with(@Name,'NewNode')]");
 //        common.clickElement("xpath","//TreeItem[@Name='Customers']/*[@Name='All Customers']/*[starts-with(@Name,'NewNode')]");

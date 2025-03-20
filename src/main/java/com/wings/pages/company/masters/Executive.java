@@ -24,13 +24,12 @@ public class Executive extends Masters {
     }
 
     public void Executive() throws InterruptedException, IOException, ParseException {
-
-        common.clickElement("name", "Company");
-        common.clickElement("name", "Executives");
+        navigateToMastersWhen2Steps("Company","Executives");
         Thread.sleep(2500);
         super.createMaster("xpath", "//TreeItem[@Name='Executives']/TreeItem[@Name='All Executives']");
         Thread.sleep(1000);
         common.inputText("xpath", "//Edit[@Name='New Executive *']", common.getData(dataFile, "Executive") + common.getRandom());
+        String master=common.findWebElement("xpath","//Edit[@Name='New Executive *']").getText();
         common.inputText("xpath", "//Edit[@Name='Executive Code']", common.getData(dataFile, "eCode") + common.getRandom());
         common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
         common.clickElement("xpath", "//Pane[@Name='Address and Contact Details']/Button[@Name='...']");
@@ -60,7 +59,7 @@ public class Executive extends Masters {
         common.clickElement("xpath", "//Button[@Name='Ok']");
         Thread.sleep(1000);
         super.saveAfterMasterCreate();
-        super.closeMaster("Executives");
+        validateMastersAndInactive("Executives","All Executives",master,"Executives");
     }
 
 }

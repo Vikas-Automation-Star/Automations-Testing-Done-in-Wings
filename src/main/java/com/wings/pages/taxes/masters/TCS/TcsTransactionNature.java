@@ -24,24 +24,22 @@ public class TcsTransactionNature extends Masters {
     }
 
     public void tcsTransactionNature() throws InterruptedException, IOException, ParseException, AWTException {
-
-        common.clickElement("name", "Taxes");
-        common.clickElement("name", "TCS");
-        common.clickElement("name", "TCS Transaction Natures");
+        navigateToMastersWhen3Steps("Taxes","TCS","TCS Transaction Natures");
         WebElement element = common.findWebElement("xpath", "//TreeItem[@Name='TCS Transaction Natures']/TreeItem[@Name='All TCS Transaction Natures']");
         Actions actions = new Actions(driver);
         actions.contextClick(element).perform();
         common.clickElement("name", "New Master");
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='NewTCS Transaction Nature *']", common.getData(dataFile, "newTcsTransactionNature") + common.getRandom());
-        common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "desription"));
+        String master=common.findWebElement("xpath","//Edit[@Name='NewTCS Transaction Nature *']").getText();
+        common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
         common.clickElement("xpath", "//Text[@Name='TCS Transaction Nature']/following-sibling::Button[@Name='...']");
         Thread.sleep(2000);
         common.clickElement("xpath", "//Edit[@Name='TCS Assessee Type * Row 0, Not sorted.']");
         WebElement element1 = common.findWebElement("xpath", "//Edit[@Name='TCS Assessee Type * Row 0, Not sorted.']");
-        element1.sendKeys(common.getData(dataFile, "tdsAssesseType"), Keys.ENTER);
+        element1.sendKeys(common.getData(dataFile, "tdsAssesseType"), Keys.TAB);
         WebElement element2 = common.findWebElement("xpath", "//Edit[@Name='TCS Sub Type * Row 0, Not sorted.']");
-        element2.sendKeys(common.getData(dataFile, "subTcsTax"), Keys.ENTER);
+        element2.sendKeys(common.getData(dataFile, "subTcsTax"), Keys.TAB);
         common.inputText("xpath", "//Edit[@Name='Level Row 0, Not sorted.']", common.getData(dataFile, "level"));
         common.clickElement("xpath", "//Edit[@Name='TCS Rate Row 0, Not sorted.']");
         WebElement tcsRate = common.findWebElement("xpath", "//Edit[@Name='TCS Rate Row 0, Not sorted.']");
@@ -52,12 +50,9 @@ public class TcsTransactionNature extends Masters {
         minValue.clear();
         minValue.sendKeys(common.getData(dataFile, "minValue"));
         common.clickElement("xpath", "//Button[@Name='Ok']");
-
-        common.clickElement("xpath", "//Button[@Name='Save']");
-        common.clickElement("xpath", "//Button[@Name='OK']");
-        common.clickElement("xpath", "//Button[@Name='Close']");
+        saveAfterMasterCreate();
         Thread.sleep(1000);
-        super.closeMaster("TCS Transaction Natures");
-        Thread.sleep(2000);
+        validateMastersAndInactive("TCS Transaction Natures","All TCS Transaction Natures",master,"TCS Transaction Natures");
+        Thread.sleep(1000);
     }
 }
