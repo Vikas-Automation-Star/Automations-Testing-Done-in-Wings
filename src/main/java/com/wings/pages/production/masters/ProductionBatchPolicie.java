@@ -53,7 +53,7 @@ public class ProductionBatchPolicie extends Masters {
         element2.sendKeys(common.getData(dataFile, "pof"));
         common.clickElement("xpath", "//Button[@Name='Ok']");
         super.saveAfterMasterCreate();
-        validateMastersAndInactive("Production Batch Policies","All Production Batch Policies",master,"Production Batch Policies");
+        validateMastersAndInactive("Production Batch Policies",master);
         Thread.sleep(1000);
     }
 }

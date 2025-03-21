@@ -30,7 +30,7 @@ public class Departments extends Masters {
         String master=common.findWebElement("xpath","//Edit[@Name='New Department *']").getText();
         common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
         super.saveAfterMasterCreate();
-        validateMastersAndInactive("Departments","All Departments",master,"Departments");
+        validateMastersAndInactive("Departments",master);
         Thread.sleep(2000);
     }
 

@@ -34,7 +34,7 @@ public class TdsAssesseeTypes extends Masters {
         common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
         saveAfterMasterCreate();
         Thread.sleep(1000);
-        validateMastersAndInactive("TDS Assessee Types","All TDS Assessee Types",master,"TDS Assessee Types");
+        validateMastersAndInactive("TDS Assessee Types",master);
         Thread.sleep(1000);
 
     }

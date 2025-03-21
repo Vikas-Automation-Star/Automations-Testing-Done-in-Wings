@@ -29,7 +29,7 @@ public class CostCentres extends Masters {
         String master=common.findWebElement("xpath","//Edit[@Name='New Cost Centre *']").getText();
         common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
         super.saveAfterMasterCreate();
-        validateMastersAndInactive("Cost Centres","All Cost Centres",master,"Cost Centres");
+        validateMastersAndInactive("Cost Centres",master);
         Thread.sleep(1500);
 
     }

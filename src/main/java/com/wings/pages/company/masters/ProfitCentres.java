@@ -29,7 +29,7 @@ public class ProfitCentres extends Masters {
         String master=common.findWebElement("xpath","//Edit[@Name='New Profit Centre *']").getText();
         common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
         super.saveAfterMasterCreate();
-        validateMastersAndInactive("Profit Centres","All Profit Centres",master,"Profit Centres");
+        validateMastersAndInactive("Profit Centres",master);
         Thread.sleep(1500);
     }
 

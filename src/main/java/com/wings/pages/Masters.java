@@ -125,9 +125,9 @@ public class Masters {
         common.clickElement("xpath", "//MenuItem[@Name='"+subMenuItem+"']");
     }
 
-    public void validateMastersAndInactive(String nodeLocator,String subNodeLocator,String master,String masterClose){
-        common.clickElement("xpath","//TreeItem[@Name='"+nodeLocator+"']");
-        common.clickElement("xpath","//TreeItem[@Name='"+subNodeLocator+"']");
+    public void validateMastersAndInactive(String menuItem,String master){
+        common.clickElement("xpath","//TreeItem[@Name='"+menuItem+"']");
+        common.clickElement("xpath","//TreeItem[@Name='All "+ menuItem +"']");
         List<WebElement> fetchMasters=common.findWebElements("xpath","//List//ListItem");
         for (WebElement v:fetchMasters){
             if (v.getText().equals(master)) {
@@ -138,12 +138,13 @@ public class Masters {
                 common.clickElement("xpath","//MenuItem[@Name='Inactivate']");
                 common.clickElement("xpath","//*/Button[@Name='OK']");
                 System.out.println("Master inactive successfully");
+                closeMaster(menuItem);
+                break;
             }
             else {
                 System.out.println("check another Master");
             }
         }
-        closeMaster(masterClose);
 
 //        WebElement fetchMaster=common.findWebElement(listXpath,listLocator);
 //        Actions actions=new Actions(driver);

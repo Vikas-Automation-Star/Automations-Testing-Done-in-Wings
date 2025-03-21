@@ -36,7 +36,7 @@ public class TdsSubTypes extends Masters {
         common.clickElement("xpath", "//Edit[@Name='TDS Collected Account']/Button[@Name='Open']");
         saveAfterMasterCreate();
         Thread.sleep(1000);
-        validateMastersAndInactive("TDS Sub Types","All TDS Sub Types",master,"TDS Sub Types");
+        validateMastersAndInactive("TDS Sub Types",master);
         Thread.sleep(1000);
     }
 }

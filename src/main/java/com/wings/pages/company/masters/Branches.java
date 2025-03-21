@@ -78,7 +78,7 @@ public class Branches extends Masters {
         WebElement newgstTest = common.findWebElement("xpath", "//Window[@Name='Create New Master']/Window/Pane/Text[@Name='Count : 0']");
         newgstTest.click();
         super.saveAfterMasterCreate();
-        validateMastersAndInactive("Branches","All Branches",master,"Branches");
+        validateMastersAndInactive("Branches",master);
         Thread.sleep(1000);
 
     }

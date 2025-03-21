@@ -52,7 +52,7 @@ public class TcsTransactionNature extends Masters {
         common.clickElement("xpath", "//Button[@Name='Ok']");
         saveAfterMasterCreate();
         Thread.sleep(1000);
-        validateMastersAndInactive("TCS Transaction Natures","All TCS Transaction Natures",master,"TCS Transaction Natures");
+        validateMastersAndInactive("TCS Transaction Natures",master);
         Thread.sleep(1000);
     }
 }

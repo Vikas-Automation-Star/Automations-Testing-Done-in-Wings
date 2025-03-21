@@ -49,7 +49,7 @@ public class GstRegistration extends Masters {
         common.clickElement("xpath", "//Button[@Name='OK']");
         common.clickElement("xpath", "//Button[@Name='Close']");
         Thread.sleep(1000);
-        validateMastersAndInactive("GST Registration","All GST Registration",master,"GST Registration");
+        validateMastersAndInactive("GST Registration",master);
         Thread.sleep(1000);
 
     }

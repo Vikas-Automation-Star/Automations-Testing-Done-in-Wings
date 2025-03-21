@@ -33,7 +33,7 @@ public class Routes extends Masters {
         Thread.sleep(1000);
         common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
         super.saveAfterMasterCreate();
-        validateMastersAndInactive("Routes","All Routes",master,"Routes");
+        validateMastersAndInactive("Routes",master);
         Thread.sleep(1500);
     }
 }

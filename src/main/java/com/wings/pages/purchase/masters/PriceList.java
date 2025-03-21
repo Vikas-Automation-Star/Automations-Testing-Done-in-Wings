@@ -28,6 +28,6 @@ public class PriceList extends Masters {
         String master=common.findWebElement("xpath","//Edit[@Name='New Purchase Price List *']").getText();
         super.inputTextWithValidation("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
         super.saveAfterMasterCreate();
-        validateMastersAndInactive("Purchase Price Lists","All Purchase Price Lists",master,"Purchase Price Lists");
+        validateMastersAndInactive("Purchase Price Lists",master);
     }
 }

@@ -36,7 +36,7 @@ public class TcsSubTypes extends Masters {
         common.clickElement("xpath", "//Edit[@Name='TCS Collected Account']/Button[@Name='Open']");
         saveAfterMasterCreate();
         Thread.sleep(1000);
-        validateMastersAndInactive("TCS Sub Types","All TCS Sub Types",master,"TCS Sub Types");
+        validateMastersAndInactive("TCS Sub Types",master);
         Thread.sleep(1000);
     }
 }

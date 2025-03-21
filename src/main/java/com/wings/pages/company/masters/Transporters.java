@@ -77,7 +77,7 @@ public class Transporters extends Masters {
         common.clickElement("xpath", "//TitleBar/Button[@Name='Close']");
         common.clickElement("xpath", "//Button[@Name='Ok']");
         super.saveAfterMasterCreate();
-        validateMastersAndInactive("Transporters","All Transporters",master,"Transporters");
+        validateMastersAndInactive("Transporters",master);
         Thread.sleep(2000);
 
     }

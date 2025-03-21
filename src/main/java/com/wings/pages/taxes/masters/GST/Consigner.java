@@ -54,7 +54,7 @@ public class Consigner extends Masters {
         common.clickElement("xpath", "//Button[@Name='OK']");
         common.clickElement("xpath", "//Button[@Name='Close']");
         Thread.sleep(1000);
-        validateMastersAndInactive("Consignor","All Consignor",master,"Consignor");
+        validateMastersAndInactive("Consignor",master);
         Thread.sleep(2000);
     }
 }

@@ -33,7 +33,7 @@ public class Reasons extends Masters {
         common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
         Thread.sleep(1000);
         super.saveAfterMasterCreate();
-        validateMastersAndInactive("Reasons","All Reasons",master,"Reasons");
+        validateMastersAndInactive("Reasons",master);
         Thread.sleep(1000);
     }
 }

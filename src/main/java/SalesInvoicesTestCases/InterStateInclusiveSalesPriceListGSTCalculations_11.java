@@ -88,8 +88,6 @@ public class InterStateInclusiveSalesPriceListGSTCalculations_11 extends Transac
         deleteSingleTransaction(newVoucherID);
         closeReport("Sales Book");
         closeTransaction("Sales Invoices");
-//        WebElement click=driver.findElementByXPath("//Pane/*/Text[starts-with(@Name,'SI')]/*[starts-with(@Name,'SI')]");
-//        click.click();
     }
 
     public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {

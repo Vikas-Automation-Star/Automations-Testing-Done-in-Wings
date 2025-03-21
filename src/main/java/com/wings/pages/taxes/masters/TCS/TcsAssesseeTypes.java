@@ -34,7 +34,7 @@ public class TcsAssesseeTypes extends Masters {
         common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
         saveAfterMasterCreate();
         Thread.sleep(1000);
-        validateMastersAndInactive("TCS Assessee Types","All TCS Assessee Types",master,"TCS Assessee Types");
+        validateMastersAndInactive("TCS Assessee Types",master);
         Thread.sleep(1000);
     }
 }

@@ -70,7 +70,7 @@ public class HsnCodes extends Masters {
         common.clickElement("xpath", "//Button[@Name='Ok']");
         saveAfterMasterCreate();
         Thread.sleep(1000);
-        validateMastersAndInactive("HSN Codes","All HSN Codes",master,"HSN Codes");
+        validateMastersAndInactive("HSN Codes",master);
         Thread.sleep(1000);
     }
 }

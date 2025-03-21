@@ -139,22 +139,6 @@ public class Listener implements ITestListener, ISuiteListener, IExecutionListen
     public void onStart(ISuite suite) {
         Reporter.log(suite.getXmlSuite().getParameters().toString());
         System.out.println("On suite start");
-        try {
-            // Check if the backup directory already exists, and delete it if it does
-            File backupDir = new File("./backup");
-            if (backupDir.exists()) {
-                FileUtils.deleteDirectory(backupDir);  // Delete the existing backup directory
-            }
-
-            // Now, move the allure-results directory to backup
-            File allureResultsDir = new File("./allure-results");
-            if (allureResultsDir.exists()) {
-                FileUtils.moveDirectory(allureResultsDir, backupDir);
-            }
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     @Override
@@ -174,7 +158,6 @@ public class Listener implements ITestListener, ISuiteListener, IExecutionListen
 
         PieChartGenerator chartGenerator=new PieChartGenerator();
         chartGenerator.generatePieChart(suitePassed,suiteFailed,suiteSkipped);
-
 
         FileUtil file = new FileUtil();
         file.createJson(obj);

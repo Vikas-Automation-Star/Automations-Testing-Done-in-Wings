@@ -52,6 +52,6 @@ public class PurchaseBatchPolicies extends Masters {
         element1.sendKeys(common.getData(dataFile, "policyOptionFormat"));
         common.clickElement("xpath", "//Button[@Name='Ok']");
         super.saveAfterMasterCreate();
-        validateMastersAndInactive("Purchase Batch Policies","All Purchase Batch Policies",master,"Purchase Batch Policies");
+        validateMastersAndInactive("Purchase Batch Policies",master);
     }
 }

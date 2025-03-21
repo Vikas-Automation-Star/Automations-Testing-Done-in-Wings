@@ -39,7 +39,7 @@ public class Terms extends Masters {
         super.inputTextWithValidation("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
         Thread.sleep(1000);
         super.saveAfterMasterCreate();
-        validateMastersAndInactive("Terms","All Terms",master,"Terms");
+        validateMastersAndInactive("Terms",master);
         Thread.sleep(1000);
 
     }

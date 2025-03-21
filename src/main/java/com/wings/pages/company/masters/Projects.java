@@ -30,7 +30,7 @@ public class Projects extends Masters {
         common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
         Thread.sleep(1000);
         super.saveAfterMasterCreate();
-        validateMastersAndInactive("Projects","All Projects",master,"Projects");
+        validateMastersAndInactive("Projects",master);
     }
 
 }

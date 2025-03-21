@@ -40,7 +40,7 @@ public class EcommerceOperator extends Masters {
         common.clickElement("xpath", "//Button[@Name='OK']");
         common.clickElement("xpath", "//Button[@Name='Close']");
         Thread.sleep(1000);
-        validateMastersAndInactive("ECommerce Operators","All ECommerce Operators",master,"ECommerce Operators");
+        validateMastersAndInactive("ECommerce Operators",master);
         Thread.sleep(1000);
     }
 }

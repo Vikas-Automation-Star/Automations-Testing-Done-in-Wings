@@ -58,7 +58,7 @@ public class BillOfMaterial extends Masters {
         element2.sendKeys(common.getData(dataFile, "quantity"));
         common.clickElement("xpath", "//Button[@Name='Ok']");
         super.saveAfterMasterCreate();
-        validateMastersAndInactive("Bill Of Material","All Bill Of Material",master,"Bill Of Material");
+        validateMastersAndInactive("Bill Of Material",master);
 
     }
 }

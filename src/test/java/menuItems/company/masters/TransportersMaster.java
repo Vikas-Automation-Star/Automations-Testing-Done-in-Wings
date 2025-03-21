@@ -23,7 +23,7 @@ public class TransportersMaster {
     }
 
     @Test
-    public void routesMaster() throws IOException, ParseException, InterruptedException, AWTException {
+    public void transporterMaster() throws IOException, ParseException, InterruptedException, AWTException {
         Transporters transporters = new Transporters(driver, file);
         transporters.createTransporters();
     }

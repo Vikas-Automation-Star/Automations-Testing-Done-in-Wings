@@ -59,7 +59,7 @@ public class Executive extends Masters {
         common.clickElement("xpath", "//Button[@Name='Ok']");
         Thread.sleep(1000);
         super.saveAfterMasterCreate();
-        validateMastersAndInactive("Executives","All Executives",master,"Executives");
+        validateMastersAndInactive("Executives",master);
     }
 
 }

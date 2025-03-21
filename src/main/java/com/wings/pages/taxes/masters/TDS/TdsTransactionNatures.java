@@ -46,7 +46,7 @@ public class TdsTransactionNatures extends Masters {
         common.clickElement("xpath", "//Button[@Name='Ok']");
         saveAfterMasterCreate();
         Thread.sleep(1000);
-        validateMastersAndInactive("TDS Transaction Natures","All TDS Transaction Natures",master,"TDS Transaction Natures");
+        validateMastersAndInactive("TDS Transaction Natures",master);
         Thread.sleep(1000);
     }
 }
