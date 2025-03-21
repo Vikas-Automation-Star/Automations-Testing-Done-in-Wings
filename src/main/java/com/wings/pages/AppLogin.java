@@ -53,7 +53,19 @@ public class AppLogin {
         Thread.sleep(3000);
         common.inputText("xpath", "//Edit[@Name='Password']", common.getData(fileData, "password"));
         common.clickElement("xpath", "//Button[@Name='Submit']");
-        common.clickElement("xpath", "//Window[@Name='Information']/Button[@Name='OK']");
+        Thread.sleep(1500);
+        //only sometimes
+        WebDriverWait wait = new WebDriverWait(driver, 60);
+        try {
+            WebElement next=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//Window[@Name='Company Initialization']/Pane[@Name='header text']/Button[@Name='Next >']")));
+            next.click();
+            WebElement finish = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//Window[@Name='Company Initialization']/Pane[@Name='header text']/Button[@Name='Finish']")));
+            finish.click();
+        }catch (Exception e){
+            System.out.println("No next/finish is found");
+        }
+        //mandatory
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//Window[@Name='Information']/Button[@Name='OK']"))).click();
         System.out.println("Super User Login for " + common.getData(fileData, "companyName") + " company is successful " + new String(Character.toChars(0x2705)));
         String title = driver.getTitle();
         System.out.println(title);
@@ -67,8 +79,19 @@ public class AppLogin {
         common.inputText("xpath","//Edit[@Name='User name']",userName);
         common.inputText("xpath", "//Edit[@Name='Password']", password);
         common.clickElement("xpath", "//Button[@Name='Submit']");
-        Thread.sleep(2500);
-        common.clickElement("xpath", "//Window[@Name='Information']/Button[@Name='OK']");
+        Thread.sleep(1500);
+        //only sometimes
+        WebDriverWait wait = new WebDriverWait(driver, 60);
+        try {
+            WebElement next=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//Window[@Name='Company Initialization']/Pane[@Name='header text']/Button[@Name='Next >']")));
+            next.click();
+            WebElement finish = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//Window[@Name='Company Initialization']/Pane[@Name='header text']/Button[@Name='Finish']")));
+            finish.click();
+        }catch (Exception e){
+            System.out.println("No next/finish is found");
+        }
+        //mandatory
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//Window[@Name='Information']/Button[@Name='OK']"))).click();
         System.out.println("Super User Login for " + common.getData(fileData, "companyName") + " company is successful " + new String(Character.toChars(0x2705)));
         String title = driver.getTitle();
         System.out.println(title);
