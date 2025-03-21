@@ -132,9 +132,6 @@ public class Masters {
         common.clickElement("xpath", "//MenuItem[@Name='"+fourthMenu+"']");
     }
 
-    public void validateMastersAndInactive(String nodeLocator,String subNodeLocator,String master,String masterClose){
-        common.clickElement("xpath","//TreeItem[@Name='"+nodeLocator+"']");
-        common.clickElement("xpath","//TreeItem[@Name='"+subNodeLocator+"']");
     public void validateMastersAndInactive(String menuItem,String master){
         common.clickElement("xpath","//TreeItem[@Name='"+menuItem+"']");
         common.clickElement("xpath","//TreeItem[@Name='All "+ menuItem +"']");
