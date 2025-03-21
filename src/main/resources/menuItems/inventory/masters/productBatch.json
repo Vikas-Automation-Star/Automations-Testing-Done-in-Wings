@@ -1,5 +1,9 @@
 {
   "newAccount": "New_Product_Batch",
   "menuItem": "Product Batches",
-  "expiryDate": "20-12-2030"
+  "expiryDate": "20-12-2030",
+  "menu": "Inventory",
+  "secondMenu": "Product",
+  "thirdMenu": "Batches",
+  "fourthMenu": "Product Batches"
 }

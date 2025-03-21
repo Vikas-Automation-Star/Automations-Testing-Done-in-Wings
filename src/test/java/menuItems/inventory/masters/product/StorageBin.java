@@ -25,7 +25,7 @@ public class StorageBin {
     @Test
     public void storageBin() throws IOException, ParseException, InterruptedException, AWTException {
         StorageBins storageBins = new StorageBins(driver, file);
-        storageBins.storageBincreation();
+        storageBins.storageBinCreation();
     }
 
     @AfterTest

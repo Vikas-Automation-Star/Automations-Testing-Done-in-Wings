@@ -20,10 +20,8 @@ public class Services extends Masters {
         filepath = file;
     }
 
-    public void serviceMastercreation() throws InterruptedException, AWTException, IOException, ParseException {
-        common.clickElement("name", "Inventory");
-        common.clickElement("name", "Product");
-        common.clickElement("name", "Services");
+    public void serviceMasterCreation() throws InterruptedException, AWTException, IOException, ParseException {
+        navigateToMastersWhen3Steps(common.getData(filepath,"menu"), common.getData(filepath,"secondMenu"), common.getData(filepath,"subMenu") );
         createMaster("xpath", "//TreeItem[@Name='Services']/TreeItem[@Name='All Services']");
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='New Service *']", common.getData(filepath, "newAccount") + common.getRandom());
@@ -49,9 +47,7 @@ public class Services extends Masters {
         closeMaster(common.getData(filepath,"menuItem"));
         refresh();
         //validate
-        common.clickElement("name", "Inventory");
-        common.clickElement("name", "Product");
-        common.clickElement("name", "Services");
+        navigateToMastersWhen3Steps(common.getData(filepath,"menu"), common.getData(filepath,"secondMenu"), common.getData(filepath,"subMenu") );
         validateAndInactivate(common.getData(filepath,"menuItem"), common.getData(filepath,"newAccount") );
     }
 }

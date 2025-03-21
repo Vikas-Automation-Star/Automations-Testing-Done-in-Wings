@@ -1,4 +1,7 @@
 {
   "newAccount": "New_Service",
-  "menuItem": "Services"
+  "menuItem": "Services",
+  "menu": "Inventory",
+  "secondMenu": "Product",
+  "subMenu": "Services"
 }

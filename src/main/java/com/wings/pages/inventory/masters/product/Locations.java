@@ -22,10 +22,8 @@ public class Locations extends Masters {
         filepath = file;
     }
 
-    public void locationMastercreation() throws InterruptedException, AWTException, IOException, ParseException {
-        common.clickElement("name", "Inventory");
-        common.clickElement("name", "Product");
-        common.clickElement("name", "Locations");
+    public void locationMasterCreation() throws InterruptedException, AWTException, IOException, ParseException {
+        navigateToMastersWhen3Steps(common.getData(filepath,"menu"), common.getData(filepath,"secondMenu"), common.getData(filepath,"subMenu") );
         createMaster("xpath", "//TreeItem[@Name='Locations']/TreeItem[@Name='All Locations']");
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='New Location *']", common.getData(filepath, "newAccount") + common.getRandom());
@@ -71,9 +69,7 @@ public class Locations extends Masters {
         closeMaster(common.getData(filepath,"menuItem"));
         refresh();
         //validate
-        common.clickElement("name", "Inventory");
-        common.clickElement("name", "Product");
-        common.clickElement("name", "Locations");
+        navigateToMastersWhen3Steps(common.getData(filepath,"menu"), common.getData(filepath,"secondMenu"), common.getData(filepath,"subMenu") );
         validateAndInactivate(common.getData(filepath,"menuItem"), common.getData(filepath,"newAccount") );
     }
 }

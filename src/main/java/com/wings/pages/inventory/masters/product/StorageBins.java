@@ -4,7 +4,6 @@ import com.wings.pages.Masters;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
-
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
@@ -21,10 +20,8 @@ public class StorageBins extends Masters {
         dataFile = file;
     }
 
-    public void storageBincreation() throws InterruptedException, AWTException, IOException, ParseException {
-        common.clickElement("name", "Inventory");
-        common.clickElement("name", "Product");
-        common.clickElement("name", "Storage Bins");
+    public void storageBinCreation() throws InterruptedException, AWTException, IOException, ParseException {
+        navigateToMastersWhen3Steps(common.getData(dataFile,"menu"), common.getData(dataFile,"secondMenu"), common.getData(dataFile,"subMenu") );
         createMaster("xpath", "//TreeItem[@Name='Storage Bins']/TreeItem[@Name='All Storage Bins']");
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='New Storage Bin *']", common.getData(dataFile, "newAccount") + common.getRandom());
@@ -38,10 +35,7 @@ public class StorageBins extends Masters {
         closeMaster(common.getData(dataFile,"menuItem"));
         refresh();
         //validate
-        common.clickElement("name", "Inventory");
-        common.clickElement("name", "Product");
-        common.clickElement("name", "Storage Bins");
+        navigateToMastersWhen3Steps(common.getData(dataFile,"menu"), common.getData(dataFile,"secondMenu"), common.getData(dataFile,"subMenu") );
         validateAndInactivate(common.getData(dataFile,"menuItem"), common.getData(dataFile,"newAccount") );
-        System.out.println("Storage Bins created successfully");
     }
 }

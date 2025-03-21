@@ -1,4 +1,7 @@
 {
   "newAccount": "New_Non_Inventory_Account",
-  "menuItem": "Non Inventory Items"
+  "menuItem": "Non Inventory Items",
+  "subMenu": "Non Inventory Items",
+  "secondMenu": "Product",
+  "menu": "Inventory"
 }

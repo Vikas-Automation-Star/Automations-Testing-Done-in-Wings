@@ -25,7 +25,7 @@ public class Service {
     @Test
     public void serviceMaster() throws IOException, ParseException, InterruptedException, AWTException {
         Services services = new Services(driver, file);
-        services.serviceMastercreation();
+        services.serviceMasterCreation();
     }
 
     @AfterTest

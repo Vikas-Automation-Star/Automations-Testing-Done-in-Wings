@@ -21,5 +21,8 @@
   "cpd": "QA Engineer",
   "cptn": "0864525224",
   "cpmn": "7993156081",
-  "cpe": "madhu@gmail.com"
+  "cpe": "madhu@gmail.com",
+  "menu": "Inventory",
+  "secondMenu": "Product",
+  "subMenu": "Locations"
 }

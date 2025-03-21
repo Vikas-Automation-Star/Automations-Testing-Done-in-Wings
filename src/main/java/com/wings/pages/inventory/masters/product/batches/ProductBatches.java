@@ -20,11 +20,8 @@ public class ProductBatches extends Masters {
         filepath = file;
     }
 
-    public void productBatch() throws InterruptedException, AWTException, IOException, ParseException {
-        common.clickElement("name", "Inventory");
-        common.clickElement("name", "Product");
-        common.clickElement("name", "Batches");
-        common.clickElement("name", "Product Batches");
+     public void productBatch() throws InterruptedException, AWTException, IOException, ParseException {
+        navigateToMastersWhen4Steps(common.getData(filepath,"menu"), common.getData(filepath,"secondMenu"), common.getData(filepath,"thirdMenu"), common.getData(filepath,"fourthMenu") );
         createMaster("xpath", "//TreeItem[@Name='Product Batches']/TreeItem[@Name='All Product Batches']");
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='New Product Batch *']", common.getData(filepath, "newAccount") + common.getRandom());
@@ -41,10 +38,7 @@ public class ProductBatches extends Masters {
         closeMaster(common.getData(filepath,"menuItem"));
         refresh();
         //validate
-        common.clickElement("name", "Inventory");
-        common.clickElement("name", "Product");
-        common.clickElement("name", "Batches");
-        common.clickElement("name", "Product Batches");
+        navigateToMastersWhen4Steps(common.getData(filepath,"menu"), common.getData(filepath,"secondMenu"), common.getData(filepath,"thirdMenu"), common.getData(filepath,"fourthMenu") );
         validateAndInactivate(common.getData(filepath,"menuItem"), common.getData(filepath,"newAccount") );
     }
 }

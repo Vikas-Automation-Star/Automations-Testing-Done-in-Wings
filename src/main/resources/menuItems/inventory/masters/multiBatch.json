@@ -1,4 +1,8 @@
 {
   "newAccount": "New_Multi_Batch_Product",
-  "menuItem": "Products - MultiBatch"
+  "menuItem": "Products - MultiBatch",
+  "menu": "Inventory",
+  "secondMenu": "Product",
+  "thirdMenu": "Batches",
+  "fourthMenu": "Products - MultiBatch"
 }

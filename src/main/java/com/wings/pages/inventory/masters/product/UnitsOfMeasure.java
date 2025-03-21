@@ -39,9 +39,7 @@ public class UnitsOfMeasure extends Masters {
         saveMaster();
         closeMaster(common.getData(filepath,"menuItem"));
         //validate
-        common.clickElement("name", "Inventory");
-        common.clickElement("name", "Product");
-        common.clickElement("name", "Units of Measure");
+        navigateToMastersWhen3Steps(common.getData(filepath,"menu"), common.getData(filepath,"secondMenu"), common.getData(filepath,"subMenu") );
         validateAndInactivate(common.getData(filepath,"menuItem"), common.getData(filepath,"newAccount") );
     }
 }

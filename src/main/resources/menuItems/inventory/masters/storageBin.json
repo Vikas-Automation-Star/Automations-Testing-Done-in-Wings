@@ -1,4 +1,7 @@
 {
   "newAccount": "New_Storage_Bin",
-  "menuItem": "Storage Bins"
+  "menuItem": "Storage Bins",
+  "menu": "Inventory",
+  "secondMenu": "Product",
+  "subMenu": "Storage Bins"
 }

@@ -21,9 +21,7 @@ public class NonInventoryItems extends Masters {
     }
 
     public void nonInventoryItemcreation() throws InterruptedException, AWTException, IOException, ParseException {
-        common.clickElement("name", "Inventory");
-        common.clickElement("name", "Product");
-        common.clickElement("name", "Non Inventory Items");
+        navigateToMastersWhen3Steps(common.getData(filepath,"menu"), common.getData(filepath,"secondMenu"), common.getData(filepath,"subMenu") );
         createMaster("xpath", "//TreeItem[@Name='Non Inventory Items']/TreeItem[@Name='All Non Inventory Items']");
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='New Non Inventory Item *']", common.getData(filepath, "newAccount") + common.getRandom());
@@ -49,9 +47,7 @@ public class NonInventoryItems extends Masters {
         closeMaster(common.getData(filepath,"menuItem"));
         refresh();
         //validate
-        common.clickElement("name", "Inventory");
-        common.clickElement("name", "Product");
-        common.clickElement("name", "Non Inventory Items");
+        navigateToMastersWhen3Steps(common.getData(filepath,"menu"), common.getData(filepath,"secondMenu"), common.getData(filepath,"subMenu") );
         validateAndInactivate(common.getData(filepath,"menuItem"), common.getData(filepath,"newAccount") );
     }
 }

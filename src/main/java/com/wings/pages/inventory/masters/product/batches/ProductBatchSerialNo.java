@@ -21,10 +21,7 @@ public class ProductBatchSerialNo extends Masters {
     }
 
     public void productSerialNo() throws InterruptedException, AWTException, IOException, ParseException {
-        common.clickElement("name", "Inventory");
-        common.clickElement("name", "Product");
-        common.clickElement("name", "Batches");
-        common.clickElement("name", "Products - Batches and Serial No");
+        navigateToMastersWhen4Steps(common.getData(filepath,"menu"), common.getData(filepath,"secondMenu"), common.getData(filepath,"thirdMenu"), common.getData(filepath,"fourthMenu") );
         createMaster("xpath", "//TreeItem[@Name='Products - Batches and Serial No']/TreeItem[@Name='All Products - Batches and Serial No']");
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='Serial No Product *']", common.getData(filepath, "newAccount") + common.getRandom());
@@ -50,10 +47,7 @@ public class ProductBatchSerialNo extends Masters {
         saveMaster();
         closeMaster(common.getData(filepath,"menuItem"));
         //validate
-        common.clickElement("name", "Inventory");
-        common.clickElement("name", "Product");
-        common.clickElement("name", "Batches");
-        common.clickElement("name", "Products - Batches and Serial No");
+        navigateToMastersWhen4Steps(common.getData(filepath,"menu"), common.getData(filepath,"secondMenu"), common.getData(filepath,"thirdMenu"), common.getData(filepath,"fourthMenu") );
         validateAndInactivate(common.getData(filepath,"menuItem"), common.getData(filepath,"newAccount") );
     }
 }

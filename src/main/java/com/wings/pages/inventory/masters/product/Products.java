@@ -21,10 +21,8 @@ public class Products extends Masters {
         filepath = file;
     }
 
-    public void productMastercreation() throws InterruptedException, AWTException, IOException, ParseException {
-        common.clickElement("name", "Inventory");
-        common.clickElement("name", "Product");
-        common.clickElement("name", "Products");
+    public void productMasterCreation() throws InterruptedException, AWTException, IOException, ParseException {
+        navigateToMastersWhen3Steps(common.getData(filepath,"menu"), common.getData(filepath,"secondMenu"), common.getData(filepath,"subMenu") );
         createMaster("xpath", "//TreeItem[@Name='Products']/TreeItem[@Name='All Products']");
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='New Product *']", common.getData(filepath, "newAccount") + common.getRandom());
@@ -52,9 +50,7 @@ public class Products extends Masters {
         closeMaster(common.getData(filepath,"menuItem"));
         refresh();
         //validate
-        common.clickElement("name", "Inventory");
-        common.clickElement("name", "Product");
-        common.clickElement("name", "Products");
+        navigateToMastersWhen3Steps(common.getData(filepath,"menu"), common.getData(filepath,"secondMenu"), common.getData(filepath,"subMenu") );
         validateAndInactivate(common.getData(filepath,"menuItem"), common.getData(filepath,"newAccount") );
     }
 }

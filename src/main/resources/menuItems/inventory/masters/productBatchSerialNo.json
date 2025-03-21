@@ -1,4 +1,8 @@
 {
   "newAccount": "New_Product_Batch_Serial_No",
-  "menuItem": "Products - Batches and Serial No"
+  "menuItem": "Products - Batches and Serial No",
+  "menu": "Inventory",
+  "secondMenu": "Product",
+  "thirdMenu": "Batches",
+  "fourthMenu": "Products - Batches and Serial No"
 }

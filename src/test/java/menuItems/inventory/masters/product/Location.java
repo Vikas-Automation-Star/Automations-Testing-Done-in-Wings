@@ -25,7 +25,7 @@ public class Location {
     @Test
     public void locationMaster() throws IOException, ParseException, InterruptedException, AWTException {
         Locations locations = new Locations(driver, file);
-        locations.locationMastercreation();
+        locations.locationMasterCreation();
     }
 
     @AfterTest
