@@ -1,12 +1,12 @@
 package com.wings.pages.sales.masters;
 
-import com.wings.pages.Transaction;
+import com.wings.pages.Masters;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import java.io.IOException;
 
-public class SalesTargetGroup extends Transaction {
+public class SalesTargetGroup extends Masters {
     WindowsDriver driver;
     Common common;
     String dataFile;
@@ -19,7 +19,7 @@ public class SalesTargetGroup extends Transaction {
     }
 
     public void salesTarget() throws InterruptedException, IOException, ParseException {
-        navigatetoProductSalesTargetGroup();
+        navigateToMastersWhen3Steps(common.getData(dataFile,"menu"), common.getData(dataFile,"secondMenu"), common.getData(dataFile,"subMenu") );
         Thread.sleep(1000);
         createMaster("xpath", "//TreeItem[@Name='Product Sales Target Groups']/TreeItem[@Name='All Product Sales Target Groups']");
         Thread.sleep(1000);
@@ -28,10 +28,10 @@ public class SalesTargetGroup extends Transaction {
         common.inputText("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
         Thread.sleep(1000);
         saveMaster();
-        closeTransaction(common.getData(dataFile,"menuItem"));
+        closeMaster(common.getData(dataFile,"menuItem"));
         refresh();
         //validate
-        navigatetoProductSalesTargetGroup();
+        navigateToMastersWhen3Steps(common.getData(dataFile,"menu"), common.getData(dataFile,"secondMenu"), common.getData(dataFile,"subMenu") );
         validateAndInactivate(common.getData(dataFile,"menuItem"), common.getData(dataFile,"newAccount") );
     }
 }

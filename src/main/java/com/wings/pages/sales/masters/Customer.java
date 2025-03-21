@@ -1,18 +1,17 @@
 package com.wings.pages.sales.masters;
 
-import com.wings.pages.Transaction;
+import com.wings.pages.Masters;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 
-public class Customer extends Transaction {
+public class Customer extends Masters {
     WindowsDriver driver;
     Common common;
     String dataFile;
@@ -25,7 +24,7 @@ public class Customer extends Transaction {
     }
 
     public void newCustomer() throws InterruptedException, IOException, ParseException, AWTException {
-        navigateToCustomerMenu();
+        navigateToMastersWhen2Steps(common.getData(dataFile,"menu"), common.getData(dataFile,"subMenu") );
         Thread.sleep(1500);
         createMaster("xpath","//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
         Thread.sleep(3000);
@@ -112,7 +111,12 @@ public class Customer extends Transaction {
         state.click();
         state.sendKeys(common.getData(dataFile, "ShippingState"), Keys.ENTER);
         Thread.sleep(3000);
-        generalInfoSliderHandle(300);
+        //verify this
+            int offset = 300;
+            WebElement slider = common.findWebElement("xpath", "//ScrollBar[@Name='Horizontal']/Thumb[@Name='Position']");
+            Actions actions = new Actions(driver);
+            actions.clickAndHold(slider).moveByOffset(offset, 0).release().perform();
+
         common.clickElement("xpath", "//Edit[@Name='Zip/PostalCode * Row 0, Not sorted.']");
         common.inputText("xpath", "//Edit[@Name='Zip/PostalCode * Row 0, Not sorted.']", common.getData(dataFile, "stateZipcode"));
         common.clickElement("xpath", "//Edit[@Name='Country * Row 0, Not sorted.']");
@@ -130,10 +134,10 @@ public class Customer extends Transaction {
        //save
         saveMaster();
         //close
-        closeTransaction(common.getData(dataFile,"close"));
+        closeMaster(common.getData(dataFile,"close"));
         refresh();
         //validate
-        navigateToCustomerMenu();
+        navigateToMastersWhen2Steps(common.getData(dataFile,"menu"), common.getData(dataFile,"subMenu") );
         validateAndInactivate(common.getData(dataFile,"close"),common.getData(dataFile,"newAccount") );
 
     }

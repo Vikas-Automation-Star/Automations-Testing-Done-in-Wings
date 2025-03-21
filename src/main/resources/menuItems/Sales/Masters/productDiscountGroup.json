@@ -3,5 +3,9 @@
   "description": "This is Product Discount Group",
   "applicable": "All Products",
   "masterType": "Products",
-  "menuItem": "Product Discount Groups"
+  "menuItem": "Product Discount Groups",
+
+  "menu": "Sales",
+  "secondMenu": "Prices and Discounts",
+  "subMenu": "Product Discount Groups"
 }

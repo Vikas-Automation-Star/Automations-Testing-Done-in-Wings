@@ -1,6 +1,6 @@
 package com.wings.pages.sales.masters;
 
-import com.wings.pages.Transaction;
+import com.wings.pages.Masters;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 
-public class PartyDiscountGroup extends Transaction {
+public class PartyDiscountGroup extends Masters {
     WindowsDriver driver;
     Common common;
     String dataFile;
@@ -21,9 +21,7 @@ public class PartyDiscountGroup extends Transaction {
     }
 
     public void partyGroup() throws InterruptedException, IOException, ParseException, AWTException {
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Prices and Discounts");
-        common.clickElement("xpath", "//Menu[@Name='Prices and Discounts']/MenuItem[@Name='Party Discount Groups']");
+        navigateToMastersWhen3Steps(common.getData(dataFile,"menu"), common.getData(dataFile,"secondMenu"), common.getData(dataFile,"subMenu") );
         Thread.sleep(1000);
         createMaster("xpath", "//TreeItem[@Name='Party Discount Groups']/TreeItem[@Name='All Party Discount Groups']");
         Thread.sleep(2000);
@@ -39,12 +37,10 @@ public class PartyDiscountGroup extends Transaction {
         robot.keyRelease(KeyEvent.VK_ENTER);
         common.clickElement("name", "Ok");
         saveMaster();
-        closeTransaction(common.getData(dataFile,"menuItem"));
+        closeMaster(common.getData(dataFile,"menuItem"));
         refresh();
         //validate
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Prices and Discounts");
-        common.clickElement("xpath", "//Menu[@Name='Prices and Discounts']/MenuItem[@Name='Party Discount Groups']");
+        navigateToMastersWhen3Steps(common.getData(dataFile,"menu"), common.getData(dataFile,"secondMenu"), common.getData(dataFile,"subMenu") );
         validateAndInactivate(common.getData(dataFile,"menuItem"), common.getData(dataFile,"newAccount") );
     }
 }

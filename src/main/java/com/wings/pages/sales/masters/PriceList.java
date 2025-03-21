@@ -1,12 +1,12 @@
 package com.wings.pages.sales.masters;
 
-import com.wings.pages.Transaction;
+import com.wings.pages.Masters;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import java.io.IOException;
 
-public class PriceList extends Transaction {
+public class PriceList extends Masters {
     WindowsDriver driver;
     Common common;
     String dataFile;
@@ -19,7 +19,7 @@ public class PriceList extends Transaction {
     }
 
     public void priceList() throws InterruptedException, IOException, ParseException {
-        navigateToSalesPriceList();
+        navigateToMastersWhen3Steps(common.getData(dataFile,"menu"), common.getData(dataFile,"secondMenu"), common.getData(dataFile,"subMenu") );
         Thread.sleep(1000);
         createMaster("xpath", "//TreeItem[@Name='Sales Price Lists']/TreeItem[@Name='All Sales Price Lists']");
         Thread.sleep(1000);
@@ -28,10 +28,10 @@ public class PriceList extends Transaction {
         common.inputAndVerify("xpath", "//Edit[@Name='Description']", common.getData(dataFile, "description"));
         Thread.sleep(1000);
         saveMaster();
-        closeTransaction(common.getData(dataFile,"menuItem"));
+        closeMaster(common.getData(dataFile,"menuItem"));
         refresh();
         //validate
-        navigateToSalesPriceList();
+        navigateToMastersWhen3Steps(common.getData(dataFile,"menu"), common.getData(dataFile,"secondMenu"), common.getData(dataFile,"subMenu") );
         validateAndInactivate(common.getData(dataFile,"menuItem"), common.getData(dataFile,"newAccount") );
     }
 }

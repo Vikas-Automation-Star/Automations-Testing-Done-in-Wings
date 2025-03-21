@@ -1,6 +1,6 @@
 package com.wings.pages.sales.masters;
 
-import com.wings.pages.Transaction;
+import com.wings.pages.Masters;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 
-public class ProductDiscountGroup extends Transaction {
+public class ProductDiscountGroup extends Masters {
     WindowsDriver driver;
     Common common;
     String dataFile;
@@ -21,7 +21,7 @@ public class ProductDiscountGroup extends Transaction {
     }
 
     public void productGroup() throws InterruptedException, IOException, ParseException, AWTException {
-        navigateToProductDiscountGroup();
+        navigateToMastersWhen3Steps(common.getData(dataFile,"menu"), common.getData(dataFile,"secondMenu"), common.getData(dataFile,"subMenu") );
         Thread.sleep(1000);
         createMaster("xpath", "//TreeItem[@Name='Product Discount Groups']/TreeItem[@Name='All Product Discount Groups']");
         Thread.sleep(2000);
@@ -42,10 +42,10 @@ public class ProductDiscountGroup extends Transaction {
         common.clickElement("name", "Ok");
         //save
         saveMaster();
-        closeTransaction(common.getData(dataFile,"menuItem"));
+        closeMaster(common.getData(dataFile,"menuItem"));
         refresh();
         //validate
-        navigateToProductDiscountGroup();
+        navigateToMastersWhen3Steps(common.getData(dataFile,"menu"), common.getData(dataFile,"secondMenu"), common.getData(dataFile,"subMenu") );
         validateAndInactivate(common.getData(dataFile,"menuItem"), common.getData(dataFile,"newAccount") );
     }
 }

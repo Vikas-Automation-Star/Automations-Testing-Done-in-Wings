@@ -1,5 +1,9 @@
 {
   "menuItem": "Product Sales Target Groups",
   "newAccount": "New_Sales_Target_Group",
-  "description": "This is Sales Target Group"
+  "description": "This is Sales Target Group",
+
+  "menu": "Sales",
+  "secondMenu": "Sales Target",
+  "subMenu": "Product Sales Target Groups"
 }

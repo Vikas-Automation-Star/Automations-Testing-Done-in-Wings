@@ -21,9 +21,7 @@ public class UnitsOfMeasure extends Masters {
     }
 
     public void unitsOfMeasure() throws InterruptedException, AWTException, IOException, ParseException {
-        common.clickElement("name", "Inventory");
-        common.clickElement("name", "Product");
-        common.clickElement("name", "Units of Measure");
+        navigateToMastersWhen3Steps(common.getData(filepath,"menu"), common.getData(filepath,"secondMenu"), common.getData(filepath,"subMenu") );
         createMaster("xpath", "//TreeItem[@Name='Units of Measure']/TreeItem[@Name='All Units of Measure']");
         Thread.sleep(2000);
         common.inputText("xpath", "//Edit[@Name='New Units Of Measure *']", common.getData(filepath, "newAccount") + common.getRandom());

@@ -1,5 +1,9 @@
 {
   "newAccount": "New_Sales_Price_List",
   "description": "This is New sales PriceList",
-  "menuItem":"Sales Price Lists"
+  "menuItem":"Sales Price Lists",
+
+  "menu":"Sales",
+  "secondMenu": "Prices and Discounts",
+  "subMenu": "Sales Price Lists"
 }

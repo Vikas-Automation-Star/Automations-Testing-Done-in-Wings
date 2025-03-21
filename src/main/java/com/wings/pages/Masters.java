@@ -47,13 +47,6 @@ public class Masters {
         }
     }
 
-    public void actionsMaster(String locatorType, String itemsLocator, String masterLocator) {
-        WebElement Allitems = common.findWebElement(locatorType, itemsLocator);
-        Actions actions = new Actions(driver);
-        actions.contextClick(Allitems).perform();
-        common.clickElement(locatorType, masterLocator);
-    }
-
     public void saveMaster() throws InterruptedException {
         common.clickElement("name", "Save");
         Thread.sleep(2000);
@@ -89,6 +82,7 @@ public class Masters {
         Thread.sleep(2000);
         common.clickElement("xpath", "//Button[@Name='Close']");
     }
+
     public void validateAndInactivate(String menuItem,String startWith) throws IOException, ParseException {
         WebElement allGroups = common.findWebElement("xpath", "//TreeItem[@Name='"+menuItem+"']/TreeItem[@Name='All "+ menuItem +"']");
         allGroups.click();
@@ -109,21 +103,16 @@ public class Masters {
                 okButton.click();
                 System.out.println("Master Inactivated successfully");
                 closeMaster(menuItem);
+                break;
             }
         }
         if (!masterValidation) Assert.fail("Master is not validated");
     }
+
     public void refresh() {
         common.clickElement("xpath", "//MenuItem[@Name='Tools']");
         common.clickElement("xpath", "//MenuItem[@Name='Clear Cache']");
     }
-    public void vericleSliderHandle() {
-        int offset = 400;
-        WebElement slider = common.findWebElement("xpath", "//ScrollBar[@Name='Vertical']/Thumb[@Name='Position']");
-        Actions actions = new Actions(driver);
-        actions.clickAndHold(slider).moveByOffset(0, offset).release().perform();
-    }
-
 
     public void navigateToMastersWhen2Steps(String menu, String menuItem) {
         common.clickElement("xpath", "//MenuItem[@Name='"+menu+"']");

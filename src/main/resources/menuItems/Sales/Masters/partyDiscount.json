@@ -2,5 +2,9 @@
   "newAccount": "New_Party_Discount_Group",
   "description": "This is New Party Discount Group",
   "applicable": "All Customers",
-  "menuItem": "Party Discount Groups"
+  "menuItem": "Party Discount Groups",
+
+  "menu": "Sales",
+  "secondMenu": "Prices and Discounts",
+  "subMenu": "Party Discount Groups"
 }

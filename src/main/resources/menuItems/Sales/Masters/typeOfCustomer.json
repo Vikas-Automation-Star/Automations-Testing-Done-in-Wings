@@ -2,5 +2,7 @@
   "newCust": "New_Type_Of_Customer",
   "prefix": "KPHB",
   "noOfDigits": "7",
-  "customerType": "Types of Customer"
+  "customerType": "Types of Customer",
+  "menu": "Sales",
+  "subMenu": "Types of Customer"
 }

@@ -1,5 +1,6 @@
 package com.wings.pages.sales.masters;
 
+import com.wings.pages.Masters;
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
@@ -9,7 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 
 import java.io.IOException;
 
-public class TypeOfCustomer extends Transaction {
+public class TypeOfCustomer extends Masters {
     WindowsDriver driver;
     Common common;
     String file;
@@ -22,7 +23,7 @@ public class TypeOfCustomer extends Transaction {
     }
 
     public void typecust() throws InterruptedException, IOException, ParseException {
-        navigateToTypesOfCustomer();
+        navigateToMastersWhen2Steps(common.getData(file,"menu"), common.getData(file,"subMenu") );
         Thread.sleep(1000);
         createMaster("xpath", "//TreeItem[@Name='Types of Customer']/TreeItem[@Name='All Types of Customer']");
         Thread.sleep(2500);
@@ -32,10 +33,10 @@ public class TypeOfCustomer extends Transaction {
         common.inputAndVerify("xpath", "//Edit[@Name='No Of Digits *']", common.getData(file, "noOfDigits"));
         Thread.sleep(1000);
         saveMaster();
-        closeTransaction(common.getData(file,"customerType"));
+        closeMaster(common.getData(file,"customerType"));
         refresh();
         //validate
-        navigateToTypesOfCustomer();
+        navigateToMastersWhen2Steps(common.getData(file,"menu"), common.getData(file,"subMenu") );
         validateAndInactivate(common.getData(file,"customerType"), common.getData(file,"newCust"));
     }
 }
