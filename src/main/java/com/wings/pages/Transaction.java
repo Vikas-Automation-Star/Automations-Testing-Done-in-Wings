@@ -301,29 +301,10 @@ public abstract class Transaction {
         common.clickElement("xpath", "//TabItem[contains(@Name,'Accounts')]");
     }
 
-    public void navigateToEinvoiceTab() {
-        common.clickElement("xpath", "//TabItem[contains(@Name,'E-Invoice')]");
-    }
-
-    public void navigateToTDSTab() {
-        common.clickElement("xpath", "//TabItem[contains(@Name,'TDS')]");
-    }
-
     public void navigateToTCSTab() {
         common.clickElement("xpath", "//TabItem[contains(@Name,'TCS')]");
     }
 
-    public void navigateToBillingAdressTab() {
-        common.clickElement("xpath", "//TabItem[contains(@Name,'Billing Address')]");
-    }
-
-    public void navigateToShippingAddressTab() {
-        common.clickElement("xpath", "//TabItem[contains(@Name,'Shipping Address')]");
-    }
-
-    public void navigateToInvoiceDetailsTab() {
-        common.clickElement("xpath", "//TabItem[contains(@Name,'Invoice Details')]");
-    }
 
     public void navigateToCashTab() {
         common.clickElement("xpath", "//TabItem[contains(@Name,'Cash')]");
@@ -333,25 +314,16 @@ public abstract class Transaction {
         common.clickElement("xpath", "//TabItem[contains(@Name,'Credit Card Company Charges')]");
     }
 
-    public void navigateToBankTab() {
-        common.clickElement("xpath", "//TabItem[contains(@Name,'Bank')]");
-    }
 
     public void navigateToIncomesTab() {
         common.clickElement("xpath", "//TabItem[contains(@Name,'Incomes')]");
     }
 
-    public void navigateToExpensesTab() {
-        common.clickElement("xpath", "//TabItem[contains(@Name,'Expenses')]");
-    }
 
     public void navigateToPaytymTab() {
         common.clickElement("xpath", "//TabItem[contains(@Name,'Paytm')]");
     }
 
-    public void navigateToInputsTab() {
-        common.clickElement("xpath", "//TabItem[contains(@Name,'Inputs')]");
-    }
 
     public void navigateToOutputsTab() {
         common.clickElement("xpath", "//TabItem[contains(@Name,'Out puts')]");
@@ -369,36 +341,12 @@ public abstract class Transaction {
         common.clickElement("xpath", "//TabItem[contains(@Name,'Other Info')]");
     }
 
-    public void navigateToAllocationsTab() {
-        common.clickElement("xpath", "//TabItem[contains(@Name,'Allocations  ')]");
-    }
-
-    public void navigateToSerialNoTab() {
-        common.clickElement("xpath", "//TabItem[contains(@Name,'Serial Nos')]");
-    }
-
-    public void navigateToEwayBillTab() {
-        common.clickElement("xpath", "//TabItem[contains(@Name,'E Way Bill Details')]");
-    }
-
-    public void navigateToToLocationDetailsTab() {
-        common.clickElement("xpath", "//TabItem[contains(@Name,'To Location Details')]");
-    }
-
-    public void navigateToTermsAndConditionsTab() {
-        common.clickElement("xpath", "//TabItem[contains(@Name,'Terms And Conditions')]");
-    }
-
     public void navigateToOtherChargesTab() {
         common.clickElement("xpath", "//TabItem[contains(@Name,'Other Charges')]");
     }
 
     public void navigateToChargesAndDeductionsTab() {
         common.clickElement("xpath", "//TabItem[contains(@Name,'Charges And Deductions')]");
-    }
-
-    public void navigateToItemsTab() {
-        common.clickElement("xpath", "//TabItem[contains(@Name,'Items')]");
     }
 
     public void navigateToUnclearedPayments() {
@@ -1048,29 +996,6 @@ public abstract class Transaction {
         common.clickElement("name", "Finance");
         common.clickElement("name", "Account Groups");
     }
-    public void navigateToCustomerMenu(){
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Customers");
-    }
-    public void navigateToTypesOfCustomer(){
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Types of Customer");
-    }
-    public void navigateToProductDiscountGroup(){
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Prices and Discounts");
-        common.clickElement("xpath", "//Menu[@Name='Prices and Discounts']/MenuItem[@Name='Product Discount Groups']");
-    }
-    public void navigateToSalesPriceList(){
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Prices and Discounts");
-        common.clickElement("xpath", "//Menu[@Name='Prices and Discounts']/MenuItem[@Name='Sales Price Lists']");
-    }
-    public void navigatetoProductSalesTargetGroup(){
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Sales Target");
-        common.clickElement("xpath", "//Menu[@Name='Sales Target']/MenuItem[@Name='Product Sales Target Groups']");
-    }
 
 
     public void navigateToSalesEnquiryReport() throws InterruptedException {
@@ -1119,6 +1044,34 @@ public abstract class Transaction {
         }
         common.clickElement("xpath", "//Button[@Name='OK']");
     }
+    //over-load
+    public void generalProduct(String filename, String product, String quantity,String freeQuantity, int i) throws IOException, ParseException {
+        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, product);
+        common.clickElement("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']");
+        enterData("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']", filename, quantity);
+        if (Boolean.parseBoolean(common.getData(filename,"enableFreeQuantity"))){
+            enterData("xpath","//Edit[@Name='Free Quantity Row " + i + ", Not sorted.']",filename,freeQuantity);
+        }
+    }
+
+    public void multiBatchProduct(String filename, String product, String quantity,String freeQuantity, int i) throws IOException, ParseException, InterruptedException {
+        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, product);
+        common.clickElement("xpath", "//Button[@Name='Stock Details Row " + i + "']");
+        Thread.sleep(3000);
+        List<WebElement> rows = common.findWebElements("xpath", "//Table[@Name='Batch Details']/*[@Name='Data Panel']/*[@Name='Row 1']/*[@Name='Quantity row 1']");
+        System.out.println("Row count: " + rows.size());
+        for (WebElement k : rows) {
+            k.click();
+            k.sendKeys(Keys.CONTROL + "a", Keys.DELETE);
+            k.sendKeys(common.getData(filename, quantity), Keys.TAB);
+            if (Boolean.parseBoolean(common.getData(filename,"enableFreeQuantity"))){
+                k.sendKeys(common.getData(filename,freeQuantity),Keys.TAB);
+            }
+        }
+        common.clickElement("xpath", "//Button[@Name='OK']");
+    }
+    
+
 
     //calculations methods
     public void chargesAndDeductionsCalculations(String dataFile, String type, String accCode, String amount, String iterations) throws IOException, ParseException {
@@ -1419,7 +1372,7 @@ public abstract class Transaction {
         common.clickElement("xpath", "//Button[@Name='Delete']");
         common.clickElement("xpath", "//Button[@Name='Yes']");
         common.clickElement("xpath", "//Button[@Name='OK']");
-        common.clickElement("xpath", "//Window[@Name='Close']/Button[@Name='Yes']");
+//        common.clickElement("xpath", "//Window[@Name='Close']/Button[@Name='Yes']");
         //validate
         common.clickElement("xpath", "//ToolBar/Button[@Name='Refresh']");
         Thread.sleep(1500);

@@ -53,9 +53,8 @@ public class AppLogin {
         Thread.sleep(3000);
         common.inputText("xpath", "//Edit[@Name='Password']", common.getData(fileData, "password"));
         common.clickElement("xpath", "//Button[@Name='Submit']");
-        Thread.sleep(1500);
         //only sometimes
-        WebDriverWait wait = new WebDriverWait(driver, 60);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         try {
             WebElement next=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//Window[@Name='Company Initialization']/Pane[@Name='header text']/Button[@Name='Next >']")));
             next.click();
@@ -79,9 +78,8 @@ public class AppLogin {
         common.inputText("xpath","//Edit[@Name='User name']",userName);
         common.inputText("xpath", "//Edit[@Name='Password']", password);
         common.clickElement("xpath", "//Button[@Name='Submit']");
-        Thread.sleep(1500);
         //only sometimes
-        WebDriverWait wait = new WebDriverWait(driver, 60);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         try {
             WebElement next=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//Window[@Name='Company Initialization']/Pane[@Name='header text']/Button[@Name='Next >']")));
             next.click();
