@@ -246,7 +246,11 @@ public class Common {
         return randomNumber;
     }
 
-
+    public  static  char getRandomChar() {
+        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        Random random = new Random();
+        return chars.charAt(random.nextInt(chars.length()));
+    }
     public void screnShot() {
         try {
             TakesScreenshot screenshot = (TakesScreenshot) driver;
@@ -313,4 +317,5 @@ public class Common {
         String command = "taskkill /IM \"WinAppDriver.exe\" /F";
         Process p = Runtime.getRuntime().exec(command);
     }
+
 }
