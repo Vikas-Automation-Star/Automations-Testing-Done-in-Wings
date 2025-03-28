@@ -1,0 +1,46 @@
+{
+  "menu": "Purchase",
+  "menuItem": "Invoices",
+  "subMenuItem": "Purchase Returns with Invoice Reference",
+  "branch": "AT_Branch 1_Reg",
+  "location": "AT_Branch 1_Location 1",
+  "currency": "INR",
+  "voucherNum": "PV17",
+  "purchaseReturnActCode": "PRA1",
+  "partyCode": "At_Cus_Reg_Intra",
+  "purchaseAccount": "AT_Purchase  Acc 1",
+  "tcsNature": "AT_TCS Transaction Nature 1",
+  "priceList": "AT_Exclusive Purchase price list 1",
+  "executive": "AT_Executive 1",
+  "HSNCode": "AT_HSN Code 2",
+
+  "quantity": "2",
+  "freeQuantity": "1",
+
+
+
+  "column3": "AT_Branch 1_Reg",
+  "column4": "INR",
+  "column5": "1.00",
+  "column6": "AT_Sup_Reg_Intra",
+  "column7": "2.00",
+  "column8": "1.00",
+  "column9": "200.00",
+  "column10": "0.00",
+  "column11": "200.00",
+  "column12": "18.00",
+  "column13": "18.00",
+  "column14": "0.00",
+  "column15": "20.00",
+  "column16": "56.00",
+  "column17": "256.00",
+  "column18": "256.00",
+  "column19": "0.00",
+  "column20": "0.00",
+  "column21": "0.00",
+  "column22": "12.80",
+  "column23": "0.20",
+  "column24": "269.00",
+  "column25": "269.00"
+
+}

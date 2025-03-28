@@ -48,6 +48,7 @@ public abstract class Transaction {
         }
     }
 
+
     public void createMaster(String locatorType, String locator) {
         WebElement element = common.findWebElement(locatorType, locator);
         Actions actions = new Actions(driver);
@@ -314,7 +315,23 @@ public abstract class Transaction {
         common.clickElement("xpath", "//TabItem[contains(@Name,'Credit Card Company Charges')]");
     }
 
+    public void navigateToMastersWhen2Steps(String menu, String menuItem) {
+        common.clickElement("xpath", "//MenuItem[@Name='"+menu+"']");
+        common.clickElement("xpath", "//MenuItem[@Name='"+menuItem+"']");
+    }
 
+    public void navigateToMastersWhen3Steps(String menu, String menuItem, String subMenuItem) {
+        common.clickElement("xpath", "//MenuItem[@Name='"+menu+"']");
+        common.clickElement("xpath", "//MenuItem[@Name='"+menuItem+"']");
+        common.clickElement("xpath", "//MenuItem[@Name='"+subMenuItem+"']");
+    }
+
+    public void navigateToMastersWhen4Steps(String menu, String secondMenu, String thirdMenu,String fourthMenu) {
+        common.clickElement("xpath", "//MenuItem[@Name='"+menu+"']");
+        common.clickElement("xpath", "//MenuItem[@Name='"+secondMenu+"']");
+        common.clickElement("xpath", "//MenuItem[@Name='"+thirdMenu+"']");
+        common.clickElement("xpath", "//MenuItem[@Name='"+fourthMenu+"']");
+    }
     public void navigateToIncomesTab() {
         common.clickElement("xpath", "//TabItem[contains(@Name,'Incomes')]");
     }
@@ -1064,6 +1081,14 @@ public abstract class Transaction {
         }
     }
 
+    public void multiBatchProductPurchase(String filename, String product, String quantity,String freeQuantity, int i) throws IOException, ParseException, InterruptedException {
+        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, product);
+        enterData("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']",filename,quantity);
+        if (Boolean.parseBoolean(common.getData(filename,"enableFreeQuantity"))){
+            enterInput("xpath","//Edit[@Name='Free Quantity Row " + i + ", Not sorted.']",filename,freeQuantity);
+        }
+    }
+
     public void multiBatchProduct(String filename, String product, String quantity,String freeQuantity, int i) throws IOException, ParseException, InterruptedException {
         enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, product);
         common.clickElement("xpath", "//Button[@Name='Stock Details Row " + i + "']");
@@ -1134,7 +1159,18 @@ public abstract class Transaction {
         common.clickElement("xpath", "//Button[@Name='OK']");
     }
 
-
+    public void serialNumberProductInPurchase(String filename, String product,String serialText,String serialQuantity,String freeQuantity, int i) throws IOException, ParseException, InterruptedException, AWTException {
+        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, product);
+        common.clickElement("xpath", "//Button[@Name='Serial Nos Row "+i+"']");
+        WebElement increment = common.findWebElement("xpath", "//CheckBox[@Name='Exclude Box Barcode']");
+        increment.sendKeys(Keys.TAB,common.getData(filename, serialText)+common.getRandomChar(), Keys.TAB, common.getData(filename, serialQuantity),Keys.ENTER);
+        if(Boolean.parseBoolean(common.getData(filename,"enableFreeQuantity"))) {
+            System.out.println("true u can provide quantity and free");
+            WebElement freeQ = common.findWebElement("xpath", "//CheckBox[@Name='Exclude Box Barcode']");
+            freeQ.sendKeys(Keys.TAB, Keys.TAB, Keys.TAB, common.getData(filename, freeQuantity),Keys.ENTER);
+        }
+        common.clickElement("xpath", "//Button[@Name='OK']");
+    }
 
 //    public void serialNumberProduct(String filename, String product,String freeQuantity, int i) throws IOException, ParseException, InterruptedException, AWTException {
 //        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, product);
@@ -1340,6 +1376,10 @@ public abstract class Transaction {
     public String oldTTransactionID() {
         String oldID = common.findWebElement("xpath", "//Text[@Name='Last Saved :']/following-sibling::Text").getAttribute("Name");
         return oldID;
+    }
+
+    public void navigateToTcs() {
+        common.clickElement("xpath", "//TabItem[contains(@Name,'TCS')]");
     }
 
     public String newTransactionID(String oldID) {
@@ -1717,6 +1757,21 @@ public abstract class Transaction {
         }
     }
 
+    public void sgstPresentInSummary() {
+        WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='SGST']");
+        String grossMinusDiscountAmount = grossDiscountAmount.getText();
+        if ((grossMinusDiscountAmount == (null) || "(null)".equals(grossMinusDiscountAmount))) {
+            Assert.fail("grossDiscountAmount field is empty");
+        }
+    }
+    public void cgstPresentInSummary() {
+        WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='CGST']");
+        String grossMinusDiscountAmount = grossDiscountAmount.getText();
+        if ((grossMinusDiscountAmount == (null) || "(null)".equals(grossMinusDiscountAmount))) {
+            Assert.fail("grossDiscountAmount field is empty");
+        }
+    }
+
     public void validateIGSTAmountTabIsNotEmpty() {
         common.clickElement("xpath", "//TabItem[@Name='  F11 IGST  ']");
         String value2 = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
@@ -1836,7 +1891,13 @@ public abstract class Transaction {
             Assert.fail("grossDiscountAmount field is empty");
         }
     }
-
+    public void freeQuantityPresentInSummary() {
+        WebElement Quantity = common.findWebElement("xpath", "//Edit[@Name='Free Quantity']");
+        String quantityText = Quantity.getText();
+        if ((quantityText == (null))) {
+            Assert.fail("Quantity field is empty");
+        }
+    }
     public void otherChargesCESSPresentInSummary() {
         WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='Other Charges CESS']");
         String grossMinusDiscountAmount = grossDiscountAmount.getText();
