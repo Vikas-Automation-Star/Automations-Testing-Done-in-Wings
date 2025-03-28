@@ -1,6 +1,7 @@
 package com.wings.utils;
 
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -24,10 +25,24 @@ public class Time {
         return formattedDateTime;
     }
 
-    public String timeStamp() {
-        LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
-        String formattedDateTime = now.format(formatter);
-        return formattedDateTime;
+    public static String timeStamp() {
+        LocalDate now = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        return now.format(formatter);
+    }
+
+    public static boolean currentDateAndTime(){
+        // Get current time in milliseconds
+        long currentMillis = System.currentTimeMillis();
+        // Convert milliseconds to LocalDateTime
+        LocalDateTime dateTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(currentMillis), ZoneId.systemDefault());
+        // Format the time
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        System.out.println("Current Time: " + dateTime.format(formatter));
+        return false;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(timeStamp());
     }
 }
