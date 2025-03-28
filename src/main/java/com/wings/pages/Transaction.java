@@ -1030,21 +1030,31 @@ public abstract class Transaction {
     public void serialNumberProduct(String filename, String product, int i) throws IOException, ParseException, InterruptedException, AWTException {
         enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, product);
         common.clickElement("xpath", "//Button[@Name='Stock Details Row " + i + "']");
-        List<WebElement> rowss = common.findWebElements("xpath", "//Table[@Name='Serial Numbers List']/*[@Name='Data Panel']/*[contains(@Name,'Row')]/*[contains(@Name,'Select row')]");
-        System.out.println("Row count: " + rowss.size());
+        List<WebElement> rows = common.findWebElements("xpath", "//Table[@Name='Serial Numbers List']/*[@Name='Data Panel']/*[contains(@Name,'Row')]/*[contains(@Name,'Select row')]");
+        System.out.println("Row count: " + rows.size());
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_TAB);
         robot.keyRelease(KeyEvent.VK_TAB);
-        for (int z = 0; z < 5; z++) {
+        for (int z = 0; z < Integer.parseInt(common.getData(filename,"numOfSerialProducts")); z++) {
             robot.keyPress(KeyEvent.VK_SPACE);
             robot.keyRelease(KeyEvent.VK_SPACE);
             robot.keyPress(KeyEvent.VK_DOWN);
             robot.keyRelease(KeyEvent.VK_DOWN);
             Thread.sleep(1500);
         }
+        List<WebElement> free=common.findWebElements("xpath","//Table[@Name='Selected Serial Numbers']/*[@Name='Data Panel']/ListItem[contains(@Name,'Row')]");
+        System.out.println("free elements size: "+free.size());
+        if (Boolean.parseBoolean(common.getData(filename,"enableFreeQuantity"))){
+            for (int j = 1; j <=Integer.parseInt(common.getData(filename,"numOfSerialProductsFree")); j++) {
+                String rowXPath = "//Table[@Name='Selected Serial Numbers']/*[@Name='Data Panel']/*[@Name='Row "+j+"']/*[@Name='FreeQuantity row "+j+"']";
+                // Find the element based on the dynamic XPath
+                WebElement button = common.findWebElement("xpath", rowXPath);
+                button.click();
+            }
+        }
         common.clickElement("xpath", "//Button[@Name='OK']");
     }
-    //over-load
+    //over-load freeqty
     public void generalProduct(String filename, String product, String quantity,String freeQuantity, int i) throws IOException, ParseException {
         enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, product);
         common.clickElement("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']");
@@ -1070,7 +1080,86 @@ public abstract class Transaction {
         }
         common.clickElement("xpath", "//Button[@Name='OK']");
     }
-    
+
+    //over load with dataset
+    public void generalProduct(String filename,String dataSet, String product, String quantity,String freeQuantity, int i) throws IOException, ParseException {
+        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename,dataSet, product);
+        common.clickElement("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']");
+        enterData("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']", filename,dataSet, quantity);
+        if (Boolean.parseBoolean(common.getData(filename,dataSet,"enableFreeQuantity"))){
+            enterData("xpath","//Edit[@Name='Free Quantity Row " + i + ", Not sorted.']",filename,dataSet,freeQuantity);
+        }
+    }
+    public void multiBatchProduct(String filename,String dataSet, String product, String quantity,String freeQuantity, int i) throws IOException, ParseException, InterruptedException {
+        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, dataSet,product);
+        common.clickElement("xpath", "//Button[@Name='Stock Details Row " + i + "']");
+        Thread.sleep(3000);
+        List<WebElement> rows = common.findWebElements("xpath", "//Table[@Name='Batch Details']/*[@Name='Data Panel']/*[@Name='Row 1']/*[@Name='Quantity row 1']");
+        System.out.println("Row count: " + rows.size());
+        for (WebElement k : rows) {
+            k.click();
+            k.sendKeys(Keys.CONTROL + "a", Keys.DELETE);
+            k.sendKeys(common.getData(filename,dataSet, quantity), Keys.TAB);
+            if (Boolean.parseBoolean(common.getData(filename,dataSet,"enableFreeQuantity"))){
+                k.sendKeys(common.getData(filename,dataSet,freeQuantity),Keys.TAB);
+            }
+        }
+        common.clickElement("xpath", "//Button[@Name='OK']");
+    }
+    public void serialNumberProduct(String filename,String dataSet,String product, int i) throws IOException, ParseException, InterruptedException, AWTException {
+        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename,dataSet, product);
+        common.clickElement("xpath", "//Button[@Name='Stock Details Row " + i + "']");
+        List<WebElement> rows = common.findWebElements("xpath", "//Table[@Name='Serial Numbers List']/*[@Name='Data Panel']/*[contains(@Name,'Row')]/*[contains(@Name,'Select row')]");
+        System.out.println("Row count: " + rows.size());
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_TAB);
+        robot.keyRelease(KeyEvent.VK_TAB);
+        for (int z = 0; z < Integer.parseInt(common.getData(filename,dataSet,"numOfSerialProducts")); z++) {
+            robot.keyPress(KeyEvent.VK_SPACE);
+            robot.keyRelease(KeyEvent.VK_SPACE);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            robot.keyRelease(KeyEvent.VK_DOWN);
+            Thread.sleep(1500);
+        }
+        List<WebElement> free=common.findWebElements("xpath","//Table[@Name='Selected Serial Numbers']/*[@Name='Data Panel']/ListItem[contains(@Name,'Row')]");
+        System.out.println("free elements size: "+free.size());
+        if (Boolean.parseBoolean(common.getData(filename,dataSet,"enableFreeQuantity"))){
+            for (int j = 1; j <=Integer.parseInt(common.getData(filename,dataSet,"numOfSerialProductsFree")); j++) {
+                String rowXPath = "//Table[@Name='Selected Serial Numbers']/*[@Name='Data Panel']/*[@Name='Row "+j+"']/*[@Name='FreeQuantity row "+j+"']";
+                // Find the element based on the dynamic XPath
+                WebElement button = common.findWebElement("xpath", rowXPath);
+                button.click();
+            }
+        }
+        common.clickElement("xpath", "//Button[@Name='OK']");
+    }
+
+
+
+//    public void serialNumberProduct(String filename, String product,String freeQuantity, int i) throws IOException, ParseException, InterruptedException, AWTException {
+//        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, product);
+//        common.clickElement("xpath", "//Button[@Name='Stock Details Row " + i + "']");
+//        List<WebElement> rowss = common.findWebElements("xpath", "//Table[@Name='Serial Numbers List']/*[@Name='Data Panel']/*[contains(@Name,'Row')]/*[contains(@Name,'Select row')]");
+//        System.out.println("Row count: " + rowss.size());
+//        Robot robot = new Robot();
+//        robot.keyPress(KeyEvent.VK_TAB);
+//        robot.keyRelease(KeyEvent.VK_TAB);
+//        for (int z = 0; z < Integer.parseInt(common.getData(filename,"numOfSerialProducts")); z++) {
+//            robot.keyPress(KeyEvent.VK_SPACE);
+//            robot.keyRelease(KeyEvent.VK_SPACE);
+//            robot.keyPress(KeyEvent.VK_DOWN);
+//            robot.keyRelease(KeyEvent.VK_DOWN);
+//            Thread.sleep(1500);
+//        }
+//        if (Boolean.parseBoolean(common.getData(filename,"enableFreeQuantity"))){
+////            List<WebElement> freeQtyRows=common.findWebElements("xpath","//Table[@Name='Selected Serial Numbers']/*[@Name='Data Panel']/*[contains(@Name,'Row')]/*contains(@Name.'FreeQuantity row)]");
+////            System.out.println("free qty rows: "+freeQtyRows.size());
+//            for (int j = 0; j < Integer.parseInt(common.getData(filename,"numOfSerialProductsFree")); j++) {
+//                common.clickElement("xpath","//Table[@Name='Selected Serial Numbers']/*[@Name='Data Panel']/*[contains(@Name,'Row')]/Item[@Name='FreeQuantity row " + i + "']");
+//            }
+//        }
+//        common.clickElement("xpath", "//Button[@Name='OK']");
+//    }
 
 
     //calculations methods
@@ -1234,8 +1323,10 @@ public abstract class Transaction {
     public void transactionSave() throws InterruptedException {
         common.clickElement("xpath", "//Button[@Name='Save']");
         common.clickElement("xpath", "//Button[@Name='Yes']");
-        Thread.sleep(3000);
-        common.clickElement("xpath", "//*[@Name='Transaction saved.']/Button[@Name='OK']");
+        WebDriverWait wait=new WebDriverWait(driver,30);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@Name='Transaction saved.']/Button[@Name='OK']"))).click();
+//        Thread.sleep(4000);
+//        common.clickElement("xpath", "//*[@Name='Transaction saved.']/Button[@Name='OK']");
     }
 
     public void lastTransactionName() {
@@ -1372,7 +1463,8 @@ public abstract class Transaction {
         common.clickElement("xpath", "//Button[@Name='Delete']");
         common.clickElement("xpath", "//Button[@Name='Yes']");
         common.clickElement("xpath", "//Button[@Name='OK']");
-//        common.clickElement("xpath", "//Window[@Name='Close']/Button[@Name='Yes']");
+        Thread.sleep(1500);
+        common.clickElement("xpath", "//Window[@Name='Close']/Button[@Name='Yes']");
         //validate
         common.clickElement("xpath", "//ToolBar/Button[@Name='Refresh']");
         Thread.sleep(1500);
