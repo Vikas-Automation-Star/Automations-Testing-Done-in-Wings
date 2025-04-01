@@ -1,7 +1,7 @@
 package menuItems.sales.transactions;
-////compltd exec 3
+////compltd exec 3 - ready
 import com.wings.pages.AppLogin;
-import com.wings.pages.sales.transactions.Reg_InterInclusiveTCSGST_FreeQty;
+import com.wings.pages.sales.transactions.SalesInvoiceFQ_RegInterInclusive;
 import com.wings.pages.sales.transactions.SRTWIR_RegInterInclusive;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
@@ -14,7 +14,7 @@ import java.io.IOException;
 public class Test_InterInclusiveTCSGSTReg_FreeQty {
         WindowsDriver driver;
         AppLogin appLogin=new AppLogin();
-        String dataFile="./src/main/resources/TestCasesData/freeQuantitySITCInclusiveInter_Reg.json";
+        String dataFile="./src/main/resources/menuItems/Sales/Transactions/freeQuantitySITCInclusiveInter_Reg.json";
 
         @BeforeTest
         public void beforeTest() throws IOException, ParseException, InterruptedException {
@@ -27,13 +27,14 @@ public class Test_InterInclusiveTCSGSTReg_FreeQty {
 
         @Test
         public void InclusiveTCSGSTFreeQuantity() throws IOException, ParseException, InterruptedException, AWTException {
-            Reg_InterInclusiveTCSGST_FreeQty interInclusiveTCSGSTFreeQty=new Reg_InterInclusiveTCSGST_FreeQty(driver,dataFile);
+            SalesInvoiceFQ_RegInterInclusive interInclusiveTCSGSTFreeQty=new SalesInvoiceFQ_RegInterInclusive(driver,dataFile);
             SRTWIR_RegInterInclusive regInterInclusive=new SRTWIR_RegInterInclusive(driver,dataFile);
+//            regInterInclusive.RegInclusiveInvoiceReference("SI 47");
             regInterInclusive.RegInclusiveInvoiceReference(interInclusiveTCSGSTFreeQty.interInclusiveTCSGST_FreeQty());
         }
 
         @AfterTest
         public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
         }
     }

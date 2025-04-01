@@ -21,51 +21,51 @@ public class SalesInvoice extends Transaction {
 
     public void salesInvoice() throws InterruptedException, IOException, ParseException, AWTException {
         navigateToSalesInvoiceMenu();
-//        Thread.sleep(1000);
-//        lastTransactionName();
-//        //branch selection
-//        common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
-//        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
+        Thread.sleep(1000);
+        lastTransactionName();
+        //branch selection
+        common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
+        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
 //        common.clickElement("xpath", "//Edit[@Name='Branch *']");
-//        selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
-//        common.clickElement("xpath", "//Edit[@Name='Location *']");
-//        common.clickElement("xpath", "//Edit[@Name='Cash/Party Code']");
-//        selectAndValidateData(common.getData(dataFile, "partyCode"), "xpath", "//Edit[@Name='Cash/Party Code']");
-//        Thread.sleep(1000);
-//        gstTransactionType("Registered Dealers");
-//        common.clickElement("xpath", "//Edit[@Name='Sales A/c Code']");
-//        common.clickElement("xpath", "//Edit[@Name='Sales Account']");
-//        common.clickElement("xpath", "//CheckBox[@Name='Apply TCS']");
-////        common.clickElement("xpath", "//Edit[@Name='TCS Trans Nature']");
-//
-//        common.inputText("xpath", "//Edit[@Name='Invoice Type']", common.getData(dataFile, "invoice"));
-//        Thread.sleep(1000);
-//        Robot robot = new Robot();
-//        robot.keyPress(KeyEvent.VK_DOWN);
-//        robot.keyRelease(KeyEvent.VK_DOWN);
-//        robot.keyPress(KeyEvent.VK_DOWN);
-//        robot.keyRelease(KeyEvent.VK_DOWN);
-//        robot.keyPress(KeyEvent.VK_ENTER);
-//        robot.keyRelease(KeyEvent.VK_ENTER);
-////        super.validateElements("xpath","//Edit[@Name='Invoice Type']", common.getData(dataFile,"invoice"));
-//        common.clickElement("xpath", "//Edit[@Name='Price List']");
-//        selectAndValidateData(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
-//        common.clickElement("xpath", "//Edit[@Name='Port Code']");
-//        selectOptionalMaster(common.getData(dataFile, "portCode"), "xpath", "//Edit[@Name='Port Code']");
-//        common.clickElement("xpath", "//Edit[@Name='Remarks']");
-//        selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
-//        //F3-Items
-//        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']", dataFile, "productCode");
-////        common.inputText("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']", common.getData(dataFile, "productCode"));
-//        common.clickElement("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']");
-//        enterData("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']", dataFile, "Quantity");
-//        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 700, 0);
-//        enterDataAndValidate("xpath", "//Edit[@Name='HSN Row 0, Not sorted.']", dataFile, "HSNCode");
-//        Thread.sleep(1000);
-//        navigateToBillsPayablesTab();
-//        common.deleteInvalidRows();
-//        //save
-//        transactionSave();
+        enterInput( "xpath", "//Edit[@Name='Branch *']",dataFile, "branch");
+        common.clickElement("xpath", "//Edit[@Name='Location *']");
+        common.clickElement("xpath", "//Edit[@Name='Cash/Party Code']");
+        enterInput( "xpath", "//Edit[@Name='Cash/Party Code']",dataFile, "partyCode");
+        Thread.sleep(1000);
+        gstTransactionType("Registered Dealers");
+        common.clickElement("xpath", "//Edit[@Name='Sales A/c Code']");
+        common.clickElement("xpath", "//Edit[@Name='Sales Account']");
+        common.clickElement("xpath", "//CheckBox[@Name='Apply TCS']");
+//        common.clickElement("xpath", "//Edit[@Name='TCS Trans Nature']");
+
+        common.inputText("xpath", "//Edit[@Name='Invoice Type']", common.getData(dataFile, "invoice"));
+        Thread.sleep(1000);
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_DOWN);
+        robot.keyRelease(KeyEvent.VK_DOWN);
+        robot.keyPress(KeyEvent.VK_DOWN);
+        robot.keyRelease(KeyEvent.VK_DOWN);
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
+//        super.validateElements("xpath","//Edit[@Name='Invoice Type']", common.getData(dataFile,"invoice"));
+        common.clickElement("xpath", "//Edit[@Name='Price List']");
+        selectAndValidateDataNew(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
+        common.clickElement("xpath", "//Edit[@Name='Port Code']");
+        selectOptionalMaster(common.getData(dataFile, "portCode"), "xpath", "//Edit[@Name='Port Code']");
+        common.clickElement("xpath", "//Edit[@Name='Remarks']");
+        selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
+        //F3-Items
+        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']", dataFile, "productCode");
+//        common.inputText("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']", common.getData(dataFile, "productCode"));
+        common.clickElement("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']");
+        enterData("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']", dataFile, "Quantity");
+        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 700, 0);
+        enterDataAndValidate("xpath", "//Edit[@Name='HSN Row 0, Not sorted.']", dataFile, "HSNCode");
+        Thread.sleep(1000);
+        navigateToBillsPayablesTab();
+        common.deleteInvalidRows();
+        //save
+        transactionSave();
         String transactionID = getNewTransactionId().replace(" ","");
         System.out.println("TransactionID: " + transactionID);
         //verifying report

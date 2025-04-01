@@ -1,5 +1,5 @@
 package com.wings.pages.sales.transactions;
-//COMPLETED 45MNTS 28SEC -1
+
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import com.wings.utils.StringUtil;
@@ -12,7 +12,7 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
-public class Reg_IntraStateExclusiveTCSGST_FreeQty extends Transaction {
+public class SalesInvoiceFQ_RegInterInclusive extends Transaction {
     WindowsDriver driver;
     Common common;
     String dataFile;
@@ -20,14 +20,14 @@ public class Reg_IntraStateExclusiveTCSGST_FreeQty extends Transaction {
     double mrp, grossAmount, unitRate, quantity,freeQuantity,
             voucherDiscountValue, partyDiscountValue, netAmount, grossMinusDiscount, gstValue, cessValue, taxableValue, taxableAmountCalculated;
 
-    public Reg_IntraStateExclusiveTCSGST_FreeQty(WindowsDriver driver, String file) {
+    public SalesInvoiceFQ_RegInterInclusive(WindowsDriver driver, String file) {
         super(driver);
         this.driver = driver;
         common = new Common(this.driver);
         dataFile = file;
     }
 
-    public String intraStateExclusiveTCSGST_FreeQty() throws InterruptedException, IOException, ParseException, AWTException {
+    public String interInclusiveTCSGST_FreeQty() throws InterruptedException, IOException, ParseException, AWTException {
         long testMainMethodStart=System.currentTimeMillis();
         navigateToSalesInvoiceMenu();
         Thread.sleep(2000);
@@ -35,8 +35,8 @@ public class Reg_IntraStateExclusiveTCSGST_FreeQty extends Transaction {
         System.out.println("oldID: "+ oldVoucherID);
         //branch selection
         common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
-        selectOptionalMaster(common.getData(dataFile,"salesInvoice", "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
-        enterInput("xpath", "//Edit[@Name='Branch *']",dataFile,"salesInvoice", "branch");
+        selectOptionalMaster(common.getData(dataFile, "salesInvoice","voucher"), "xpath", "//Edit[@Name='Voucher Type']");
+        enterInput("xpath", "//Edit[@Name='Branch *']",dataFile, "salesInvoice","branch");
         common.clickElement("xpath", "//Edit[@Name='Location *']");
         enterInput("xpath", "//Edit[@Name='Cash/Party Code']",dataFile, "salesInvoice","partyCode");
         Thread.sleep(2500);
@@ -53,29 +53,28 @@ public class Reg_IntraStateExclusiveTCSGST_FreeQty extends Transaction {
         robot.keyRelease(KeyEvent.VK_DOWN);
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
-        enterInput("xpath", "//Edit[@Name='Price List']",dataFile, "salesInvoice","priceList");
+        enterInput("xpath", "//Edit[@Name='Price List']",dataFile,"salesInvoice", "priceList");
         generalInfoSliderHandle(800);
         common.clickElement("xpath", "//Edit[@Name='Port Code']");
         selectOptionalMaster(common.getData(dataFile,"salesInvoice", "portCode"), "xpath", "//Edit[@Name='Port Code']");
         common.clickElement("xpath", "//Edit[@Name='Remarks']");
-        selectOptionalMaster(common.getData(dataFile, "salesInvoice","remarks"), "xpath", "//Edit[@Name='Remarks']");
+        selectOptionalMaster(common.getData(dataFile,"salesInvoice", "remarks"), "xpath", "//Edit[@Name='Remarks']");
         generalInfoSliderHandle(-500);
         //F3-Items
-        for (int i = 0; i < Integer.parseInt(common.getData(dataFile, "salesInvoice","productCount")); i++) {
+        for (int i = 0; i < Integer.parseInt(common.getData(dataFile,"salesInvoice", "productCount")); i++) {
             addProduct(i);
         }
-        //verify FQ in Items tab
+        //verify free quantity in Items tab
         //formatting both to 1 decimal
         Assert.assertEquals(
                 String.format("%.1f", Double.parseDouble(common.findWebElement("xpath", "//Edit[@AutomationId='FreeQuantity']").getText())),
                 String.format("%.1f", freeQuantity), "Free Quantity mismatch in Items tab");
-
 //        Assert.assertEquals(common.findWebElement("xpath","//Edit[@AutomationId='FreeQuantity']").getText(),freeQuantity,"Free Quantity mismatch in Items tab");
         double itemsNetValue = Double.parseDouble(common.findWebElement("xpath", "//Edit[@AutomationId='NetAmount']").getText().replace(",", ""));
         tcsCalculations(itemsNetValue);
-        validateCGSTAmountTabIsNotEmpty();
-        validateSGSTAmountTabIsNotEmpty();
-        validateIGSTAmountTabIsEmpty();
+        validateCGSTAmountTabIsEmpty();
+        validateSGSTAmountTabIsEmpty();
+        validateIGSTAmountTabIsNotEmpty();;
         validateCESSAmountTabIsNotEmpty();
         navigateToBatchDetailsTab();
         navigateToBillsPayablesTab();
@@ -87,7 +86,7 @@ public class Reg_IntraStateExclusiveTCSGST_FreeQty extends Transaction {
             robot.keyRelease(KeyEvent.VK_RIGHT);
         }
         quantityPresentInSummary();
-        //freeQty in summary
+        //freeQty in summary tab
         double freeQtyInSummary =Double.parseDouble(common.findWebElement("xpath","//Edit[@Name='Free Quantity']").getText());
         Assert.assertEquals(freeQuantity, freeQtyInSummary,"Free Quantity is not same");
         grossAmountPresentInSummary();
@@ -96,6 +95,7 @@ public class Reg_IntraStateExclusiveTCSGST_FreeQty extends Transaction {
         totalValueInCompanyCurrenyPresentInSummary();
         receivableAmountPresentInSummary();
         cessPresentInSummary();
+        iGSTPresentInSummary();
         tcsAmountPresentInSummary();
         tcsTaxableValuePresentInSummary();
         //save
@@ -114,18 +114,17 @@ public class Reg_IntraStateExclusiveTCSGST_FreeQty extends Transaction {
         //calculate time taken
         long testMainMethodEnd=System.currentTimeMillis();
         System.out.println("exec time for main method: "+(testMainMethodEnd-testMainMethodStart)/1000);
-
         return newVoucherID;
     }
 
     public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {
         long addProductStart=System.currentTimeMillis();
-        if (common.getData(dataFile, "salesInvoice","productType" + i).equals("general")) {
-            generalProduct(dataFile, "salesInvoice","productCode" + i, "quantity" + i,"freeQuantity" + i, i);
+        if (common.getData(dataFile,"salesInvoice", "productType" + i).equals("general")) {
+            generalProduct(dataFile,"salesInvoice", "productCode" + i, "quantity" + i,"freeQuantity" + i, i);
         } else if (common.getData(dataFile,"salesInvoice", "productType" + i).equals("multiBatch")) {
-            multiBatchProduct(dataFile,"salesInvoice", "productCode" + i, "quantity" + i,"freeQuantity" + i, i);
-        }else if (common.getData(dataFile, "salesInvoice","productType" + i).equals("serial")) {
-            serialNumberProduct(dataFile, "salesInvoice","productCode" + i, i);
+            multiBatchProduct(dataFile, "salesInvoice","productCode" + i, "quantity" + i,"freeQuantity" + i, i);
+        }else if (common.getData(dataFile,"salesInvoice", "productType" + i).equals("serial")) {
+            serialNumberProduct(dataFile,"salesInvoice", "productCode" + i, i);
         }
 
         quantity = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']").getText());
@@ -156,7 +155,7 @@ public class Reg_IntraStateExclusiveTCSGST_FreeQty extends Transaction {
         System.out.println("gross expected:-" + grossExpected);
         Assert.assertEquals(grossAmount, grossExpected, "Mismatch in Gross Amount");
         //discount
-        enterData("xpath", "//Edit[@Name='Voucher Disc % Row " + i + ", Not sorted.']", dataFile, "salesInvoice","voucherDiscount" + i);
+        enterData("xpath", "//Edit[@Name='Voucher Disc % Row " + i + ", Not sorted.']", dataFile,"salesInvoice", "voucherDiscount" + i);
 
         WebElement voucher = common.findWebElement("xpath", "//Edit[@Name='Voucher Disc Row " + i + ", Not sorted.']");
         String voucherText = voucher.getText().replace(",", "");
@@ -173,10 +172,21 @@ public class Reg_IntraStateExclusiveTCSGST_FreeQty extends Transaction {
         enterDataAndValidate("xpath", "//Edit[@Name='HSN Row " + i + ", Not sorted.']", dataFile,"salesInvoice", "HSNCode");
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 400, 0);
 
+        //GST
+        WebElement gst = common.findWebElement("xpath", "//Edit[@Name='GST Product Category Row " + i + ", Not sorted.']");
+        gstValue = StringUtil.extractNumber(gst.getText());
+        System.out.println("gst percentage:- " + gstValue);
+
+        WebElement cess = common.findWebElement("xpath", "//Edit[@Name='CESS Product Category Row " + i + ", Not sorted.']");
+        cessValue = StringUtil.extractNumber(cess.getText());
+        System.out.println("cess percentage:- " + cessValue);
+
         //check for inclusive or exclusive sales price list
         grossMinusDiscount = (grossAmount - (voucherDiscountValue + partyDiscountValue));
         System.out.println("gross-disc is: " + grossMinusDiscount);
         if (common.getData(dataFile,"salesInvoice", "priceList").contains("Inclusive")) {
+            taxableValue=(grossMinusDiscount/(100+ (gstValue+cessValue)))*100;
+            System.out.println("taxable value for inclusive is: "+taxableValue);
             netAmount = Double.parseDouble((common.findWebElement("xpath", "//Edit[@Name='Net Amount Row " + i + ", Not sorted.']").getText().replace(",", "")));
             System.out.println("Net Amount:- " + netAmount);
             Assert.assertEquals(grossMinusDiscount, netAmount);
@@ -187,14 +197,6 @@ public class Reg_IntraStateExclusiveTCSGST_FreeQty extends Transaction {
             System.out.println("taxable: " + taxableAmountCalculated);
             Assert.assertEquals(grossMinusDiscount, taxableValue);
         }
-        //GST
-        WebElement gst = common.findWebElement("xpath", "//Edit[@Name='GST Product Category Row " + i + ", Not sorted.']");
-        gstValue = StringUtil.extractNumber(gst.getText());
-        System.out.println("gst percentage:- " + gstValue);
-
-        WebElement cess = common.findWebElement("xpath", "//Edit[@Name='CESS Product Category Row " + i + ", Not sorted.']");
-        cessValue = StringUtil.extractNumber(cess.getText());
-        System.out.println("cess percentage:- " + cessValue);
 
         DecimalFormat decimalFormat = new DecimalFormat("#.###");
 

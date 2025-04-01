@@ -11,6 +11,10 @@ import org.testng.Assert;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class SRTWIR_RegIntraExclusive extends Transaction {
     WindowsDriver driver;
@@ -39,28 +43,81 @@ public class SRTWIR_RegIntraExclusive extends Transaction {
         common.clickElement("xpath","//Edit[@Name='Sales Return A/c']");
         common.clickElement("xpath","//Edit[@Name='TCS Trans Nature']");
         //items
+        // Product codes to search for
+        String productCode1 = common.getData(dataFile, "salesInvoice", "productCode0");
+        String productCode2 = common.getData(dataFile, "salesInvoice", "productCode1");
+
+        // List of product codes for easy iteration
+        java.util.List<String> productCodes = Arrays.asList(productCode1, productCode2);
+
+        List<WebElement> items = common.findWebElements("xpath", "//Pane[@Name='  F3 Items  ']/Pane/Pane/Pane/Table[@Name='Items']/*[contains(@Name,'Row')]");
+
+        // Track which product codes have been processed
+        Set<String> processedCodes = new HashSet<>();
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 400, 0);
-        String pendingQty=common.findWebElement("xpath","//Edit[@Name='Pending Quantity In SKU Row 0, Not sorted.']").getText();
-        WebElement quantity=common.findWebElement("xpath","//Edit[@Name='Quantity Row 0, Not sorted.']");
-        quantity.click();
-        quantity.sendKeys(pendingQty);
-        //enter full free quantity
-        String pendingFreeQuantity=common.findWebElement("xpath","//Edit[@Name='Pending Free Quantity In SKU Row 0, Not sorted.']").getText();
-        WebElement freeQuantity= common.findWebElement("xpath","//Edit[@Name='Free Quantity Row 0, Not sorted.']");
-        freeQuantity.click();
-        freeQuantity.sendKeys(pendingFreeQuantity,Keys.TAB);
-        //enter partial quantity and free quantity
-        String pendingQty1=common.findWebElement("xpath","//Edit[@Name='Pending Quantity In SKU Row 1, Not sorted.']").getText();
-        double actualPendingQuantity=Double.parseDouble(pendingQty1)-1;
-        WebElement quantity1=common.findWebElement("xpath","//Edit[@Name='Quantity Row 1, Not sorted.']");
-        quantity1.click();
-        quantity1.sendKeys(String.valueOf(actualPendingQuantity),Keys.TAB);
-        //enter partial free quantity
-        String pendingFreeQuantity1=common.findWebElement("xpath","//Edit[@Name='Pending Free Quantity In SKU Row 1, Not sorted.']").getText();
-        double actualFreeQuant=Double.parseDouble(pendingFreeQuantity1)-1;
-        WebElement freeQuantity1= common.findWebElement("xpath","//Edit[@Name='Free Quantity Row 1, Not sorted.']");
-        freeQuantity1.click();
-        freeQuantity1.sendKeys(String.valueOf(actualFreeQuant),Keys.TAB);
+        for (int i = 0; i < items.size(); i++) {
+            WebElement productList = items.get(i);
+            String value = productList.getAttribute("LegacyValue");
+
+            for (String productCode : productCodes) {
+                if (value != null && value.contains(productCode) && !processedCodes.contains(productCode)) {
+                    if (processedCodes.isEmpty()) {
+                        // First matched product - full quantity and free quantity
+                        String pendingQty = common.findWebElement("xpath", "//Edit[@Name='Pending Quantity In SKU Row " + i + ", Not sorted.']").getText();
+                        WebElement quantity = common.findWebElement("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']");
+                        quantity.click();
+                        quantity.sendKeys(pendingQty,Keys.TAB);
+
+                        String pendingFreeQuantity = common.findWebElement("xpath", "//Edit[@Name='Pending Free Quantity In SKU Row " + i + ", Not sorted.']").getText();
+                        WebElement freeQuantity = common.findWebElement("xpath", "//Edit[@Name='Free Quantity Row " + i + ", Not sorted.']");
+                        freeQuantity.click();
+                        freeQuantity.sendKeys(pendingFreeQuantity, Keys.TAB);
+                    }
+//                    else {
+//                        // Second matched product - pending quantity - 1 and free quantity - 1
+//                        String pendingQty = common.findWebElement("xpath", "//Edit[@Name='Pending Quantity In SKU Row " + i + ", Not sorted.']").getText();
+//                        double actualPendingQuantity = Double.parseDouble(pendingQty) - 1;
+//                        WebElement quantity = common.findWebElement("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']");
+//                        quantity.click();
+//                        quantity.sendKeys(String.valueOf(actualPendingQuantity), Keys.TAB);
+//
+//                        String pendingFreeQuantity = common.findWebElement("xpath", "//Edit[@Name='Pending Free Quantity In SKU Row " + i + ", Not sorted.']").getText();
+//                        double actualFreeQuant = Double.parseDouble(pendingFreeQuantity) - 1;
+//                        WebElement freeQuantity = common.findWebElement("xpath", "//Edit[@Name='Free Quantity Row " + i + ", Not sorted.']");
+//                        freeQuantity.click();
+//                        freeQuantity.sendKeys(String.valueOf(actualFreeQuant), Keys.TAB);
+//                    }
+                    processedCodes.add(productCode);  // Mark as processed
+                    break;  // Move to the next item after processing the current one
+                }
+            }
+            // Stop if both product codes have been processed
+            if (processedCodes.size() == productCodes.size()) {
+                break;
+            }
+        }
+//        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 400, 0);
+//        String pendingQty=common.findWebElement("xpath","//Edit[@Name='Pending Quantity In SKU Row 0, Not sorted.']").getText();
+//        WebElement quantity=common.findWebElement("xpath","//Edit[@Name='Quantity Row 0, Not sorted.']");
+//        quantity.click();
+//        quantity.sendKeys(pendingQty);
+//        //enter full free quantity
+//        String pendingFreeQuantity=common.findWebElement("xpath","//Edit[@Name='Pending Free Quantity In SKU Row 0, Not sorted.']").getText();
+//        WebElement freeQuantity= common.findWebElement("xpath","//Edit[@Name='Free Quantity Row 0, Not sorted.']");
+//        freeQuantity.click();
+//        freeQuantity.sendKeys(pendingFreeQuantity,Keys.TAB);
+//        //enter partial quantity and free quantity
+//        String pendingQty1=common.findWebElement("xpath","//Edit[@Name='Pending Quantity In SKU Row 1, Not sorted.']").getText();
+//        double actualPendingQuantity=Double.parseDouble(pendingQty1)-1;
+//        WebElement quantity1=common.findWebElement("xpath","//Edit[@Name='Quantity Row 1, Not sorted.']");
+//        quantity1.click();
+//        quantity1.sendKeys(String.valueOf(actualPendingQuantity),Keys.TAB);
+//        //enter partial free quantity
+//        String pendingFreeQuantity1=common.findWebElement("xpath","//Edit[@Name='Pending Free Quantity In SKU Row 1, Not sorted.']").getText();
+//        double actualFreeQuant=Double.parseDouble(pendingFreeQuantity1)-1;
+//        WebElement freeQuantity1= common.findWebElement("xpath","//Edit[@Name='Free Quantity Row 1, Not sorted.']");
+//        freeQuantity1.click();
+//        freeQuantity1.sendKeys(String.valueOf(actualFreeQuant),Keys.TAB);
 
         common.deleteInvalidRows();
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 700, 0);

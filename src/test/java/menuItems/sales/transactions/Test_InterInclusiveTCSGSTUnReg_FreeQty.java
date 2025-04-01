@@ -1,8 +1,8 @@
 package menuItems.sales.transactions;
-// modifies, need to execute -4 modify gst values
+// modifies, need to execute -4 modify gst values  ready
 import com.wings.pages.AppLogin;
 import com.wings.pages.sales.transactions.SRTWIR_UnRegInterInclusive;
-import com.wings.pages.sales.transactions.UnReg_InterInclusiveTCSGST_FreeQty;
+import com.wings.pages.sales.transactions.SalesInvoiceFQ_UnRegInterInclusive;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
@@ -14,7 +14,7 @@ import java.io.IOException;
 public class Test_InterInclusiveTCSGSTUnReg_FreeQty {
     WindowsDriver driver;
     AppLogin appLogin=new AppLogin();
-    String dataFile="./src/main/resources/TestCasesData/freeQuantitySITCInclusiveInter_UnReg.json";
+    String dataFile="./src/main/resources/menuItems/Sales/Transactions/freeQuantitySITCInclusiveInter_UnReg.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, ParseException, InterruptedException {
@@ -24,13 +24,13 @@ public class Test_InterInclusiveTCSGSTUnReg_FreeQty {
 
     @Test
     public void InclusiveTCSGSTFreeQuantity() throws IOException, ParseException, InterruptedException, AWTException {
-        UnReg_InterInclusiveTCSGST_FreeQty unRegInterInclusiveTCSGSTFreeQty=new UnReg_InterInclusiveTCSGST_FreeQty(driver,dataFile);
+        SalesInvoiceFQ_UnRegInterInclusive unRegInterInclusiveTCSGSTFreeQty=new SalesInvoiceFQ_UnRegInterInclusive(driver,dataFile);
         SRTWIR_UnRegInterInclusive interInclusive=new SRTWIR_UnRegInterInclusive(driver,dataFile);
         interInclusive.UnRegInclusiveInvoiceReference(unRegInterInclusiveTCSGSTFreeQty.interStateInclusiveTCSGST_FreeQty());
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 }

@@ -12,7 +12,7 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
-public class UnReg_InterInclusiveTCSGST_FreeQty extends Transaction {
+public class SalesInvoiceFQ_UnRegInterInclusive extends Transaction {
         WindowsDriver driver;
         Common common;
         String dataFile;
@@ -20,7 +20,7 @@ public class UnReg_InterInclusiveTCSGST_FreeQty extends Transaction {
         double mrp, grossAmount, unitRate, quantity,freeQuantity,
                 voucherDiscountValue, partyDiscountValue, netAmount, grossMinusDiscount, gstValue, cessValue, taxableValue, taxableAmountCalculated;
 
-        public UnReg_InterInclusiveTCSGST_FreeQty(WindowsDriver driver, String file) {
+        public SalesInvoiceFQ_UnRegInterInclusive(WindowsDriver driver, String file) {
             super(driver);
             this.driver = driver;
             common = new Common(this.driver);
