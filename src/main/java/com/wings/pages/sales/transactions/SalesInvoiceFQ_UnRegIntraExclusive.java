@@ -12,7 +12,7 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
-public class SalesInvoiceFQ_IntraExclusive extends Transaction {
+public class SalesInvoiceFQ_UnRegIntraExclusive extends Transaction {
         WindowsDriver driver;
         Common common;
         String dataFile;
@@ -20,7 +20,7 @@ public class SalesInvoiceFQ_IntraExclusive extends Transaction {
         double mrp, grossAmount, unitRate, quantity,freeQuantity,
                 voucherDiscountValue, partyDiscountValue, netAmount, grossMinusDiscount, gstValue, cessValue, taxableValue, taxableAmountCalculated;
 
-        public SalesInvoiceFQ_IntraExclusive(WindowsDriver driver, String file) {
+        public SalesInvoiceFQ_UnRegIntraExclusive(WindowsDriver driver, String file) {
             super(driver);
             this.driver = driver;
             common = new Common(this.driver);

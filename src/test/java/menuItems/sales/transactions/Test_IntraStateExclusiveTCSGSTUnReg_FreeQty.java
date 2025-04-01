@@ -2,7 +2,7 @@ package menuItems.sales.transactions;
 //need to execute, changes done 2
 import com.wings.pages.AppLogin;
 import com.wings.pages.sales.transactions.SRTWIR_UnRegIntraExclusive;
-import com.wings.pages.sales.transactions.SalesInvoiceFQ_IntraExclusive;
+import com.wings.pages.sales.transactions.SalesInvoiceFQ_UnRegIntraExclusive;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
@@ -25,7 +25,7 @@ public class Test_IntraStateExclusiveTCSGSTUnReg_FreeQty {
 
     @Test
     public void UnRegFreeQtyIntra() throws IOException, ParseException, InterruptedException, AWTException {
-        SalesInvoiceFQ_IntraExclusive unRegFreeQty=new SalesInvoiceFQ_IntraExclusive(driver,dataFile);
+        SalesInvoiceFQ_UnRegIntraExclusive unRegFreeQty=new SalesInvoiceFQ_UnRegIntraExclusive(driver,dataFile);
         SRTWIR_UnRegIntraExclusive unRegIntraExclusive=new SRTWIR_UnRegIntraExclusive(driver,dataFile);
         unRegIntraExclusive.UnRegExclusiveInvoiceReference(unRegFreeQty.intraStateExclusiveTCSGST_FreeQty_UnReg());
     }

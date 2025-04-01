@@ -1159,17 +1159,60 @@ public abstract class Transaction {
         common.clickElement("xpath", "//Button[@Name='OK']");
     }
 
+    public void multiBatchProductPurchase(String filename,String dataset, String product, String quantity,String freeQuantity, int i) throws IOException, ParseException, InterruptedException {
+        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename,dataset, product);
+        enterData("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']",filename,dataset,quantity);
+        if (Boolean.parseBoolean(common.getData(filename,dataset,"enableFreeQuantity"))){
+            enterInput("xpath","//Edit[@Name='Free Quantity Row " + i + ", Not sorted.']",filename,dataset,freeQuantity);
+        }
+    }
+
+    public void serialNumberProductInPurchase(String filename,String dataSet, String product,String serialText,String serialQuantity,String freeQuantity, int i) throws IOException, ParseException, InterruptedException, AWTException {
+        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename,dataSet, product);
+        common.clickElement("xpath", "//Button[@Name='Serial Nos Row "+i+"']");
+        WebElement increment = common.findWebElement("xpath", "//CheckBox[@Name='Exclude Box Barcode']");
+        increment.sendKeys(Keys.TAB,common.getData(filename,dataSet, serialText)+ Common.getRandomChar(), Keys.TAB, common.getData(filename,dataSet, serialQuantity),Keys.ENTER);
+        if(Boolean.parseBoolean(common.getData(filename,dataSet,"enableFreeQuantity"))) {
+//            System.out.println("true u can provide quantity and free");
+            WebElement freeQ = common.findWebElement("xpath", "//CheckBox[@Name='Exclude Box Barcode']");
+            freeQ.sendKeys(Keys.TAB, Keys.TAB, Keys.TAB, common.getData(filename,dataSet, freeQuantity),Keys.ENTER);
+        }
+        common.clickElement("xpath", "//Button[@Name='OK']");
+    }
+
     public void serialNumberProductInPurchase(String filename, String product,String serialText,String serialQuantity,String freeQuantity, int i) throws IOException, ParseException, InterruptedException, AWTException {
         enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, product);
         common.clickElement("xpath", "//Button[@Name='Serial Nos Row "+i+"']");
         WebElement increment = common.findWebElement("xpath", "//CheckBox[@Name='Exclude Box Barcode']");
-        increment.sendKeys(Keys.TAB,common.getData(filename, serialText)+common.getRandomChar(), Keys.TAB, common.getData(filename, serialQuantity),Keys.ENTER);
+        increment.sendKeys(Keys.TAB,common.getData(filename, serialText)+ Common.getRandomChar(), Keys.TAB, common.getData(filename, serialQuantity),Keys.ENTER);
         if(Boolean.parseBoolean(common.getData(filename,"enableFreeQuantity"))) {
-            System.out.println("true u can provide quantity and free");
+//            System.out.println("true u can provide quantity and free");
             WebElement freeQ = common.findWebElement("xpath", "//CheckBox[@Name='Exclude Box Barcode']");
             freeQ.sendKeys(Keys.TAB, Keys.TAB, Keys.TAB, common.getData(filename, freeQuantity),Keys.ENTER);
         }
         common.clickElement("xpath", "//Button[@Name='OK']");
+    }
+
+    public void multiBatchProduct_New(String filename,String dataSet,String transType,String product,String quantity,String freeQuantity,int i) throws IOException, ParseException {
+        if (common.getData(filename,dataSet,transType).equalsIgnoreCase("Sales Order") || common.getData(filename,dataSet,transType).equalsIgnoreCase("Purchase Order")) {
+            enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, dataSet, product);
+            common.clickElement("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']");
+            enterData("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']", filename, dataSet, quantity);
+            if (Boolean.parseBoolean(common.getData(filename, dataSet, "enableFreeQuantity"))) {
+                enterData("xpath", "//Edit[@Name='Free Quantity Row " + i + ", Not sorted.']", filename, dataSet, freeQuantity);
+            }
+        }
+    }
+
+    public void serialNumProduct_New(String filename,String dataSet,String transType,String product,String quantity,String freeQuantity,int i) throws IOException, ParseException {
+        if (common.getData(filename,dataSet,transType).equalsIgnoreCase("Sales Order") || common.getData(filename,dataSet,transType).equalsIgnoreCase("Purchase Order")) {
+            enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, dataSet, product);
+            common.clickElement("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']");
+            enterData("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']", filename, dataSet, quantity);
+            if (Boolean.parseBoolean(common.getData(filename, dataSet, "enableFreeQuantity"))) {
+                enterData("xpath", "//Edit[@Name='Free Quantity Row " + i + ", Not sorted.']", filename, dataSet, freeQuantity);
+            }
+        }
     }
 
 //    public void serialNumberProduct(String filename, String product,String freeQuantity, int i) throws IOException, ParseException, InterruptedException, AWTException {
@@ -1742,7 +1785,7 @@ public abstract class Transaction {
     }
 
     public void validateCGSTAmountTabIsNotEmpty() {
-        common.clickElement("xpath", "//TabItem[@Name='  F8 CGST  ']");
+        common.clickElement("xpath", "//TabItem[contains(@Name,'CGST')]");
         String value = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
         if (value == (null) || "(null)".equals(value)) {
             Assert.fail("CGST field is  empty");
@@ -1750,7 +1793,7 @@ public abstract class Transaction {
     }
 
     public void validateSGSTAmountTabIsNotEmpty() {
-        common.clickElement("xpath", "//TabItem[@Name='  F9 SGST  ']");
+        common.clickElement("xpath", "//TabItem[contains(@Name,' SGST  ')]");
         String value1 = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
         if (value1 == (null) || "(null)".equals(value1)) {
             Assert.fail("SGST field is empty");
