@@ -2,7 +2,6 @@ package menuItems.purchase.transactions;
 
 import com.wings.pages.AppLogin;
 import com.wings.pages.purchase.transactions.Reg_PurchaseOrder_GSTInclusive;
-import com.wings.pages.purchase.transactions.UnReg_PurchaseOrder_GSTExclusive;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
