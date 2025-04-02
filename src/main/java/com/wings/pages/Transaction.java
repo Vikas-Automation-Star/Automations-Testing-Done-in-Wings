@@ -172,7 +172,7 @@ public abstract class Transaction {
         System.out.println("Size :" + elementList.size());
         for (WebElement i : elementList) {
 //                System.out.println(i.getText());
-            if (i.getText().contains(gstType)) {
+            if (i.getText().equals(gstType)) {
                 i.click();
                 i.sendKeys(Keys.LEFT, Keys.SPACE, Keys.ENTER, Keys.ENTER);
                 break;
@@ -279,14 +279,14 @@ public abstract class Transaction {
     }
 
     //navigation methods
-    public void navigateToSummaryTab() throws AWTException {
+    public void navigateToSummaryTab() {
 //        navigateToOtherInfoTab();
-        navigateToPaytymTab();
-        for (int j = 0; j < 6; j++) {
-            Robot robot = new Robot();
-            robot.keyPress(KeyEvent.VK_RIGHT);
-            robot.keyRelease(KeyEvent.VK_RIGHT);
-        }
+//        navigateToPaytymTab();
+//        for (int j = 0; j < 6; j++) {
+//            Robot robot = new Robot();
+//            robot.keyPress(KeyEvent.VK_RIGHT);
+//            robot.keyRelease(KeyEvent.VK_RIGHT);
+//        }
         common.clickElement("xpath", "//TabItem[contains(@Name,'Summary')]");
     }
 
@@ -1109,8 +1109,8 @@ public abstract class Transaction {
     //over load with dataset
     public void generalProduct(String filename,String dataSet, String product, String quantity,String freeQuantity, int i) throws IOException, ParseException {
         enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename,dataSet, product);
-        common.clickElement("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']");
-        enterData("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']", filename,dataSet, quantity);
+        common.clickElement("xpath", "//Edit[@Name='Quantity * Row "+i+", Not sorted.']");
+        enterData("xpath", "//Edit[@Name='Quantity * Row "+i+", Not sorted.']", filename,dataSet, quantity);
         if (Boolean.parseBoolean(common.getData(filename,dataSet,"enableFreeQuantity"))){
             enterData("xpath","//Edit[@Name='Free Quantity Row " + i + ", Not sorted.']",filename,dataSet,freeQuantity);
         }
@@ -1192,15 +1192,7 @@ public abstract class Transaction {
         }
         common.clickElement("xpath", "//Button[@Name='OK']");
     }
-    //sales order and purchase order methods
-    public void generalProduct_New(String filename,String dataSet, String product, String quantity,String freeQuantity, int i) throws IOException, ParseException {
-        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename,dataSet, product);
-        common.clickElement("xpath", "//Edit[@Name='Quantity * Row "+i+", Not sorted.']");
-        enterData("xpath", "//Edit[@Name='Quantity * Row "+i+", Not sorted.']", filename,dataSet, quantity);
-        if (Boolean.parseBoolean(common.getData(filename,dataSet,"enableFreeQuantity"))){
-            enterData("xpath","//Edit[@Name='Free Quantity Row " + i + ", Not sorted.']",filename,dataSet,freeQuantity);
-        }
-    }
+
     public void multiBatchProduct_New(String filename,String dataSet,String transType,String product,String quantity,String freeQuantity,int i) throws IOException, ParseException {
         if (common.getData(filename,dataSet,transType).equalsIgnoreCase("Sales Order") || common.getData(filename,dataSet,transType).equalsIgnoreCase("Purchase Order")) {
             enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, dataSet, product);
@@ -1209,6 +1201,14 @@ public abstract class Transaction {
             if (Boolean.parseBoolean(common.getData(filename, dataSet, "enableFreeQuantity"))) {
                 enterData("xpath", "//Edit[@Name='Free Quantity Row " + i + ", Not sorted.']", filename, dataSet, freeQuantity);
             }
+        }
+    }
+    public void generalProduct_New(String filename,String dataSet, String product, String quantity,String freeQuantity, int i) throws IOException, ParseException {
+        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename,dataSet, product);
+        common.clickElement("xpath", "//Edit[@Name='Quantity * Row "+i+", Not sorted.']");
+        enterData("xpath", "//Edit[@Name='Quantity * Row "+i+", Not sorted.']", filename,dataSet, quantity);
+        if (Boolean.parseBoolean(common.getData(filename,dataSet,"enableFreeQuantity"))){
+            enterData("xpath","//Edit[@Name='Free Quantity Row " + i + ", Not sorted.']",filename,dataSet,freeQuantity);
         }
     }
 
@@ -1824,7 +1824,7 @@ public abstract class Transaction {
     }
 
     public void validateIGSTAmountTabIsNotEmpty() {
-        common.clickElement("xpath", "//TabItem[contains(@Name,'IGST')]");
+        common.clickElement("xpath", "//TabItem[@Name='  F11 IGST  ']");
         String value2 = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
         if (value2 == (null) || "(null)".equals(value2)) {
             Assert.fail("IGST field is empty");
@@ -1840,7 +1840,7 @@ public abstract class Transaction {
     }
 
     public void quantityPresentInSummary() {
-        WebElement Quantity = common.findWebElement("xpath", "//Edit[@Name='Quantity']");
+        WebElement Quantity = common.findWebElement("xpath", "//Edit[contains(@Name,'Quantity')]");
         String quantityText = Quantity.getText();
         if ((quantityText == (null) || "(null)".equals(quantityText))) {
             Assert.fail("Quantity field is empty");
@@ -1848,7 +1848,7 @@ public abstract class Transaction {
     }
 
     public void grossAmountPresentInSummary() {
-        WebElement grossAmount = common.findWebElement("xpath", "//Edit[@Name='Gross Amount']");
+        WebElement grossAmount = common.findWebElement("xpath", "//Edit[contains(@Name,'Gross Amount')]");
         String grossAmountText1 = grossAmount.getText();
         if ((grossAmountText1 == (null) || "(null)".equals(grossAmountText1))) {
             Assert.fail("grossAmount field is empty");
@@ -1920,7 +1920,7 @@ public abstract class Transaction {
     }
 
     public void grossMinusDiscountPresentInSummary() {
-        WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='Gross - Disc']");
+        WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[contains(@Name,'Gross - Disc')]");
         String grossMinusDiscountAmount = grossDiscountAmount.getText();
         if ((grossMinusDiscountAmount == (null) || "(null)".equals(grossMinusDiscountAmount))) {
             Assert.fail("grossDiscountAmount field is empty");
