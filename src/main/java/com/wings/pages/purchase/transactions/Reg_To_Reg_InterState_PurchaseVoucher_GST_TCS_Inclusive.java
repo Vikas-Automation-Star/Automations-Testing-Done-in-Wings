@@ -25,7 +25,7 @@ public class Reg_To_Reg_InterState_PurchaseVoucher_GST_TCS_Inclusive extends Tra
         dataFile = file;
     }
 
-    public void InterState_PurchaseVoucher_GST_TCS_Inclusive() throws InterruptedException, IOException, ParseException, AWTException {
+    public String InterState_PurchaseVoucher_GST_TCS_Inclusive() throws InterruptedException, IOException, ParseException, AWTException {
         System.out.println("startTime1 :"+System.currentTimeMillis());
         navigateToMastersWhen3Steps(common.getData(dataFile,"menu"),common.getData(dataFile,"menuItem"), common.getData(dataFile,"subMenuItem"));
         Thread.sleep(1000);
@@ -75,7 +75,8 @@ public class Reg_To_Reg_InterState_PurchaseVoucher_GST_TCS_Inclusive extends Tra
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
         verifyReport(newVoucherID,dataFile);
-        deleteSingleTransaction(newVoucherID);
+//        deleteSingleTransaction(newVoucherID);
+        return newVoucherID;
     }
 
     public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {

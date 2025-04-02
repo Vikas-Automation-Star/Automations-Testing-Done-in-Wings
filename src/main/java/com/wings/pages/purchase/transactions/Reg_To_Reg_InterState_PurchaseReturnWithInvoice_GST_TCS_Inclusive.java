@@ -72,6 +72,6 @@ public class Reg_To_Reg_InterState_PurchaseReturnWithInvoice_GST_TCS_Inclusive e
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
         verifyReport(newVoucherID,dataFile);
-        deleteSingleTransaction(newVoucherID);
+//        deleteSingleTransaction(newVoucherID);
     }
 }

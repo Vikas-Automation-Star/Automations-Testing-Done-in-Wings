@@ -1801,7 +1801,7 @@ public abstract class Transaction {
     }
 
     public void validateSGSTAmountTabIsNotEmpty() {
-        common.clickElement("xpath", "//TabItem[contains(@Name,' SGST  ')]");
+        common.clickElement("xpath", "//TabItem[contains(@Name,'SGST')]");
         String value1 = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
         if (value1 == (null) || "(null)".equals(value1)) {
             Assert.fail("SGST field is empty");
@@ -1824,9 +1824,9 @@ public abstract class Transaction {
     }
 
     public void validateIGSTAmountTabIsNotEmpty() {
-        common.clickElement("xpath", "//TabItem[@Name='  F11 IGST  ']");
+        common.clickElement("xpath", "//TabItem[contains(@Name,'IGST')]");
         String value2 = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
-        if (value2 == (null) || "(null)".equals(value2)) {
+        if (value2 == ("0.000")) {
             Assert.fail("IGST field is empty");
         }
     }

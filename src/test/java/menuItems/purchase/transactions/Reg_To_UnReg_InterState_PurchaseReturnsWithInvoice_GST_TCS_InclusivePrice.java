@@ -25,7 +25,7 @@ public class Reg_To_UnReg_InterState_PurchaseReturnsWithInvoice_GST_TCS_Inclusiv
     @Test
     public void reg_To_UnReg_InterState_PurchaseReturnWithInvoice_GST_TCS_Exclusive() throws IOException, ParseException, InterruptedException, AWTException {
         Reg_To_UnReg_InterState_PurchaseReturnsWithInvoice_GST_TCS_Inclusive voucherRef=new Reg_To_UnReg_InterState_PurchaseReturnsWithInvoice_GST_TCS_Inclusive(driver,dataFile);
-        voucherRef.reg_To_UnReg_InterState_PurchaseReturnsWithInvoice_GST_TCS_Inclusive("PV32");
+        voucherRef.reg_To_UnReg_InterState_PurchaseReturnsWithInvoice_GST_TCS_Inclusive("PV 47");
     }
 
     @AfterTest

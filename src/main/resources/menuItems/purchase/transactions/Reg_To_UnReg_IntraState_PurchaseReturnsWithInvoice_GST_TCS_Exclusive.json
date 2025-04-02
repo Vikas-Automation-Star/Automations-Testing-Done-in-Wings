@@ -20,7 +20,7 @@
   "column3": "AT_Branch 1_Reg",
   "column4": "INR",
   "column5": "1.00",
-  "column6": "AT_Sup_Reg_Inter",
+  "column6": "AT_Sup_UnReg_Intra",
   "column7": "2.00",
   "column8": "1.00",
   "column9": "200.00",
@@ -36,8 +36,8 @@
   "column19": "0.00",
   "column20": "0.00",
   "column21": "0.00",
-  "column22": "20.80",
-  "column23": "0.20",
+  "column22": "10.00",
+  "column23": "0.00",
   "column24": "210.00",
   "column25": "210.00"
 }

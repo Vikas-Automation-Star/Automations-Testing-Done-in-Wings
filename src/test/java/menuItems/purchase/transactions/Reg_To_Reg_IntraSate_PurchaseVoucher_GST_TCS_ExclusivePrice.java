@@ -31,6 +31,6 @@ public class Reg_To_Reg_IntraSate_PurchaseVoucher_GST_TCS_ExclusivePrice {
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 }

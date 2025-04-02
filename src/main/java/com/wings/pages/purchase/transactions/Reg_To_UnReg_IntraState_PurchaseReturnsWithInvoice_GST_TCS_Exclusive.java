@@ -38,7 +38,6 @@ public class Reg_To_UnReg_IntraState_PurchaseReturnsWithInvoice_GST_TCS_Exclusiv
         enterData("xpath","//Edit[@Name='Free Quantity Row 0, Not sorted.']",dataFile,"freeQuantity");
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 100, 0);
         common.deleteInvalidRows();
-
         double itemsNetValue = Double.parseDouble(common.findWebElement("xpath", "//Edit[@AutomationId='NetAmount']").getText().replace(",", ""));
         tcsCalculations(itemsNetValue);
 
@@ -68,6 +67,6 @@ public class Reg_To_UnReg_IntraState_PurchaseReturnsWithInvoice_GST_TCS_Exclusiv
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
         verifyReport(newVoucherID,dataFile);
-        deleteSingleTransaction(newVoucherID);
+//        deleteSingleTransaction(newVoucherID);
     }
 }

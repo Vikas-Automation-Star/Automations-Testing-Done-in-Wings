@@ -16,7 +16,7 @@ public class Reg_To_UnReg_IntraState_PurchaseReturnsWithInvoice_GST_TCS_Exclusiv
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
     String voucherDataFile = "./src/main/resources/menuItems/purchase/transactions/Reg_To_UnReg_PurchaseVoucher_IntraState_GST_TCS_Exclusive.json";
-    String prwirdataFile = "./src/main/resources/menuItems/purchase/transactions/Reg_To_UnReg_IntraState_PurchaseReturnsWithInvoice_GST_TCS_Exclusive.json";
+    String prwirDataFile = "./src/main/resources/menuItems/purchase/transactions/Reg_To_UnReg_IntraState_PurchaseReturnsWithInvoice_GST_TCS_Exclusive.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
@@ -25,12 +25,11 @@ public class Reg_To_UnReg_IntraState_PurchaseReturnsWithInvoice_GST_TCS_Exclusiv
     }
 
     @Test
-    public void reg_To_Reg_InterState_PurchaseReturnWithInvoice_GST_TCS_Inclusive() throws IOException, ParseException, InterruptedException, AWTException {
+    public void reg_To_Reg_IntraState_PurchaseReturnWithInvoice_GST_TCS_Exclusive() throws IOException, ParseException, InterruptedException, AWTException {
         Reg_To_UnReg_PurchaseVoucher_IntraState_GST_TCS_Exclusive voucher=new Reg_To_UnReg_PurchaseVoucher_IntraState_GST_TCS_Exclusive(driver,voucherDataFile);
-        String voucherID=voucher.Reg_To_UnReg_PvIntraStateExclusive();
-        System.out.println("UpdatedTransactionId :"+voucherID);
-        Reg_To_UnReg_IntraState_PurchaseReturnsWithInvoice_GST_TCS_Exclusive voucherRef=new Reg_To_UnReg_IntraState_PurchaseReturnsWithInvoice_GST_TCS_Exclusive(driver,prwirdataFile);
-        voucherRef.regToUnRegPrwirExcusive(voucherID);
+        String voucherId=voucher.Reg_To_UnReg_PvIntraStateExclusive();
+        Reg_To_UnReg_IntraState_PurchaseReturnsWithInvoice_GST_TCS_Exclusive voucherRef=new Reg_To_UnReg_IntraState_PurchaseReturnsWithInvoice_GST_TCS_Exclusive(driver,prwirDataFile);
+        voucherRef.regToUnRegPrwirExcusive(voucherId);
     }
 
     @AfterTest

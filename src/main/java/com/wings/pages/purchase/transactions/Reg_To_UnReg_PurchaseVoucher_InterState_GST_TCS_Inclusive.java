@@ -24,8 +24,8 @@ public class Reg_To_UnReg_PurchaseVoucher_InterState_GST_TCS_Inclusive extends T
         dataFile = file;
     }
 
-    public void Reg_To_UnReg_PurchaseVoucher_InterState_Inclusive() throws InterruptedException, IOException, ParseException, AWTException {
-       Time.currentDateAndTime();
+    public String Reg_To_UnReg_PurchaseVoucher_InterState_Inclusive() throws InterruptedException, IOException, ParseException, AWTException {
+        Time.currentDateAndTime();
         navigateToMastersWhen3Steps(common.getData(dataFile,"menu"),common.getData(dataFile,"menuItem"), common.getData(dataFile,"subMenuItem"));
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
@@ -47,11 +47,10 @@ public class Reg_To_UnReg_PurchaseVoucher_InterState_GST_TCS_Inclusive extends T
         enterInput("xpath", "//Edit[@Name='Executive *']", dataFile, "executive");
         Time.currentDateAndTime();
 //        generalInfoSliderHandle(-500);
-        System.out.println("startTime2 :"+Time.currentDateAndTime());
         for (int i = 0; i < Integer.parseInt(common.getData(dataFile, "productCount")); i++) {
             addProduct(i);
         }
-       Time.currentDateAndTime();
+        Time.currentDateAndTime();
 
         double itemsNetValue = Double.parseDouble(common.findWebElement("xpath", "//Edit[@AutomationId='NetAmount']").getText().replace(",", ""));tcsCalculations(itemsNetValue);
 
@@ -74,7 +73,8 @@ public class Reg_To_UnReg_PurchaseVoucher_InterState_GST_TCS_Inclusive extends T
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
         verifyReport(newVoucherID,dataFile);
-//        deleteSingleTransaction(newVoucherID);
+        deleteSingleTransaction(newVoucherID);
+        return newVoucherID;
     }
 
     public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {
