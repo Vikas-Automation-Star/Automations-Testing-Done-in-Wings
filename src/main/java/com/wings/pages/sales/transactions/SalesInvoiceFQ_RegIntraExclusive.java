@@ -1,5 +1,5 @@
 package com.wings.pages.sales.transactions;
-//COMPLETED 45MNTS 28SEC -1
+
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import com.wings.utils.StringUtil;

@@ -1109,8 +1109,8 @@ public abstract class Transaction {
     //over load with dataset
     public void generalProduct(String filename,String dataSet, String product, String quantity,String freeQuantity, int i) throws IOException, ParseException {
         enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename,dataSet, product);
-        common.clickElement("xpath", "//Edit[@Name='Quantity * Row "+i+", Not sorted.']");
-        enterData("xpath", "//Edit[@Name='Quantity * Row "+i+", Not sorted.']", filename,dataSet, quantity);
+        common.clickElement("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']");
+        enterData("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']", filename,dataSet, quantity);
         if (Boolean.parseBoolean(common.getData(filename,dataSet,"enableFreeQuantity"))){
             enterData("xpath","//Edit[@Name='Free Quantity Row " + i + ", Not sorted.']",filename,dataSet,freeQuantity);
         }

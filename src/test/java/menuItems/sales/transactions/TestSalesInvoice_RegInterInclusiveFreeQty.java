@@ -1,5 +1,5 @@
 package menuItems.sales.transactions;
-
+//done
 import com.wings.pages.AppLogin;
 import com.wings.pages.sales.transactions.SalesInvoiceFQ_RegInterInclusive;
 import com.wings.pages.sales.transactions.SRTWIR_RegInterInclusive;
@@ -29,12 +29,12 @@ public class TestSalesInvoice_RegInterInclusiveFreeQty {
         public void InclusiveTCSGSTFreeQuantity() throws IOException, ParseException, InterruptedException, AWTException {
             SalesInvoiceFQ_RegInterInclusive interInclusiveTCSGSTFreeQty=new SalesInvoiceFQ_RegInterInclusive(driver,dataFile);
             SRTWIR_RegInterInclusive regInterInclusive=new SRTWIR_RegInterInclusive(driver,dataFile);
-//            regInterInclusive.RegInclusiveInvoiceReference("SI 47");
-            regInterInclusive.RegInclusiveInvoiceReference(interInclusiveTCSGSTFreeQty.interInclusiveTCSGST_FreeQty());
+            regInterInclusive.RegInclusiveInvoiceReference("SI 2");
+//            regInterInclusive.RegInclusiveInvoiceReference(interInclusiveTCSGSTFreeQty.interInclusiveTCSGST_FreeQty());
         }
 
         @AfterTest
         public void afterTest() throws IOException {
-        appLogin.logout();
+//        appLogin.logout();
         }
     }

@@ -41,7 +41,7 @@ public class SalesOrder_UnRegIntraExclusive extends Transaction {
             enterInput("xpath", "//Edit[@Name='Location *']",dataFile, "SalesOrder","location");
             enterInput("xpath", "//Edit[@Name='Party Code']",dataFile, "SalesOrder","partyCode");
             Thread.sleep(2500);
-            gstTransactionType("Registered Dealers");
+            gstTransactionType("Intra State Sales to Unregistered Dealers");
             Thread.sleep(1000);
             enterInput("xpath", "//Edit[@Name='Price List']",dataFile,"SalesOrder", "priceList");
             common.clickElement("xpath","//CheckBox[@Name='Advance Receipts']");

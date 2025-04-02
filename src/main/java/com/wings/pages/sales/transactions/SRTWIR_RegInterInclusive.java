@@ -47,12 +47,8 @@ public class SRTWIR_RegInterInclusive extends Transaction {
         String productCode1 = common.getData(dataFile, "salesInvoice", "productCode0");
         String productCode2 = common.getData(dataFile, "salesInvoice", "productCode1");
 
-        // List of product codes for easy iteration
         List<String> productCodes = Arrays.asList(productCode1, productCode2);
-
-        List<WebElement> items = common.findWebElements("xpath", "//Pane[@Name='  F3 Items  ']/Pane/Pane/Pane/Table[@Name='Items']/*[contains(@Name,'Row')]");
-
-        // Track which product codes have been processed
+        List<WebElement> items = common.findWebElements("xpath", "//Pane[@Name='  F3 Items  ']/Pane/Pane/Pane/Table[@Name='Items']/*[starts-with(@Name,'Row')]");
         Set<String> processedCodes = new HashSet<>();
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 400, 0);
         for (int i = 0; i < items.size(); i++) {
@@ -87,8 +83,7 @@ public class SRTWIR_RegInterInclusive extends Transaction {
 //                        freeQuantity.click();
 //                        freeQuantity.sendKeys(String.valueOf(actualFreeQuant), Keys.TAB);
 //                    }
-                    processedCodes.add(productCode);  // Mark as processed
-                    break;  // Move to the next item after processing the current one
+                    processedCodes.add(productCode);
                 }
             }
             // Stop if both product codes have been processed
@@ -119,7 +114,6 @@ public class SRTWIR_RegInterInclusive extends Transaction {
 //            WebElement freeQuantity1= common.findWebElement("xpath","//Edit[@Name='Free Quantity Row 1, Not sorted.']");
 //            freeQuantity1.click();
 //            freeQuantity1.sendKeys(String.valueOf(actualFreeQuant),Keys.TAB);
-
             common.deleteInvalidRows();
             common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 700, 0);
             double netValue=Double.parseDouble(common.findWebElement("xpath","//Edit[@AutomationId='NetAmount']").getText().replace(",",""));

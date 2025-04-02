@@ -1,5 +1,5 @@
 package com.wings.pages.sales.transactions;
-//COMPLETED 45MNTS 28SEC -1
+
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
@@ -7,7 +7,6 @@ import org.json.simple.parser.ParseException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
@@ -46,13 +45,8 @@ public class SRTWIR_RegIntraExclusive extends Transaction {
         // Product codes to search for
         String productCode1 = common.getData(dataFile, "salesInvoice", "productCode0");
         String productCode2 = common.getData(dataFile, "salesInvoice", "productCode1");
-
-        // List of product codes for easy iteration
-        java.util.List<String> productCodes = Arrays.asList(productCode1, productCode2);
-
+        List<String> productCodes = Arrays.asList(productCode1, productCode2);
         List<WebElement> items = common.findWebElements("xpath", "//Pane[@Name='  F3 Items  ']/Pane/Pane/Pane/Table[@Name='Items']/*[contains(@Name,'Row')]");
-
-        // Track which product codes have been processed
         Set<String> processedCodes = new HashSet<>();
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 400, 0);
         for (int i = 0; i < items.size(); i++) {
