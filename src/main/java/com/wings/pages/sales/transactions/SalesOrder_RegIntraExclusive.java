@@ -12,92 +12,67 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
-public class SalesInvoiceFQ_RegInterInclusive extends Transaction {
+public class SalesOrder_RegIntraExclusive extends Transaction {
+
     WindowsDriver driver;
     Common common;
     String dataFile;
     boolean gstAmountClicked = false;
-    double mrp, grossAmount, unitRate, quantity,freeQuantity,
+    double mrp, grossAmount, unitRate, quantity,
             voucherDiscountValue, partyDiscountValue, netAmount, grossMinusDiscount, gstValue, cessValue, taxableValue, taxableAmountCalculated;
 
-    public SalesInvoiceFQ_RegInterInclusive(WindowsDriver driver, String file) {
+    public SalesOrder_RegIntraExclusive(WindowsDriver driver, String file) {
         super(driver);
         this.driver = driver;
         common = new Common(this.driver);
         dataFile = file;
     }
 
-    public String interInclusiveTCSGST_FreeQty() throws InterruptedException, IOException, ParseException, AWTException {
+    public String intraExclusiveReg() throws InterruptedException, IOException, ParseException, AWTException {
         long testMainMethodStart=System.currentTimeMillis();
-        navigateToSalesInvoiceMenu();
+        navigateToSalesOrderMenu();
         Thread.sleep(2000);
         String oldVoucherID =oldTTransactionID();
         System.out.println("oldID: "+ oldVoucherID);
         //branch selection
         common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
-        selectOptionalMaster(common.getData(dataFile, "salesInvoice","voucher"), "xpath", "//Edit[@Name='Voucher Type']");
-        enterInput("xpath", "//Edit[@Name='Branch *']",dataFile, "salesInvoice","branch");
-        common.clickElement("xpath", "//Edit[@Name='Location *']");
-        enterInput("xpath", "//Edit[@Name='Cash/Party Code']",dataFile, "salesInvoice","partyCode");
+        selectOptionalMaster(common.getData(dataFile, "SalesOrder","voucher"), "xpath", "//Edit[@Name='Voucher Type']");
+        enterInput("xpath", "//Edit[@Name='Branch *']",dataFile, "SalesOrder","branch");
+        enterInput("xpath", "//Edit[@Name='Location *']",dataFile, "SalesOrder","location");
+        enterInput("xpath", "//Edit[@Name='Party Code']",dataFile, "SalesOrder","partyCode");
         Thread.sleep(2500);
-        gstTransactionType("Inter State Sales to Registered Dealers");
+        gstTransactionType("Registered Dealers");
         Thread.sleep(1000);
-        enterInput( "xpath", "//Edit[@Name='Sales A/c Code']",dataFile,"salesInvoice", "salesAccountCode");
-        common.clickElement("xpath", "//Edit[@Name='TCS Trans Nature']");
-        common.inputText("xpath", "//Edit[@Name='Invoice Type']", common.getData(dataFile,"salesInvoice", "invoice"));
-        Thread.sleep(1000);
-        Robot robot = new Robot();
-        robot.keyPress(KeyEvent.VK_DOWN);
-        robot.keyRelease(KeyEvent.VK_DOWN);
-        robot.keyPress(KeyEvent.VK_DOWN);
-        robot.keyRelease(KeyEvent.VK_DOWN);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-        enterInput("xpath", "//Edit[@Name='Price List']",dataFile,"salesInvoice", "priceList");
-        generalInfoSliderHandle(800);
-        common.clickElement("xpath", "//Edit[@Name='Port Code']");
-        selectOptionalMaster(common.getData(dataFile,"salesInvoice", "portCode"), "xpath", "//Edit[@Name='Port Code']");
+        enterInput("xpath", "//Edit[@Name='Price List']",dataFile,"SalesOrder", "priceList");
+        common.clickElement("xpath","//CheckBox[@Name='Advance Receipts']");
         common.clickElement("xpath", "//Edit[@Name='Remarks']");
-        selectOptionalMaster(common.getData(dataFile,"salesInvoice", "remarks"), "xpath", "//Edit[@Name='Remarks']");
-        generalInfoSliderHandle(-500);
+        selectOptionalMaster(common.getData(dataFile,"SalesOrder", "remarks"), "xpath", "//Edit[@Name='Remarks']");
         //F3-Items
-        for (int i = 0; i < Integer.parseInt(common.getData(dataFile,"salesInvoice", "productCount")); i++) {
+        for (int i = 0; i < Integer.parseInt(common.getData(dataFile,"SalesOrder", "productCount")); i++) {
             addProduct(i);
         }
-        //verify free quantity in Items tab
-        //formatting both to 1 decimal
-        Assert.assertEquals(
-                String.format("%.1f", Double.parseDouble(common.findWebElement("xpath", "//Edit[@AutomationId='FreeQuantity']").getText())),
-                String.format("%.1f", freeQuantity), "Free Quantity mismatch in Items tab");
-//        Assert.assertEquals(common.findWebElement("xpath","//Edit[@AutomationId='FreeQuantity']").getText(),freeQuantity,"Free Quantity mismatch in Items tab");
-        double itemsNetValue = Double.parseDouble(common.findWebElement("xpath", "//Edit[@AutomationId='NetAmount']").getText().replace(",", ""));
-        tcsCalculations(itemsNetValue);
-        validateCGSTAmountTabIsEmpty();
-        validateSGSTAmountTabIsEmpty();
-        validateIGSTAmountTabIsNotEmpty();;
+        validateCGSTAmountTabIsNotEmpty();
+        validateSGSTAmountTabIsNotEmpty();
+        validateIGSTAmountTabIsEmpty();;
         validateCESSAmountTabIsNotEmpty();
-        navigateToBatchDetailsTab();
-        navigateToBillsPayablesTab();
-        common.deleteInvalidRows();
         //verify all the fields in summary are fetching data
-        navigateToPaytymTab();
-        for (int j = 0; j < 7; j++) {
+        navigateToOtherInfoTab();
+        for (int j = 0; j < 2; j++) {
+            Robot robot=new Robot();
             robot.keyPress(KeyEvent.VK_RIGHT);
             robot.keyRelease(KeyEvent.VK_RIGHT);
         }
-        quantityPresentInSummary();
-        //freeQty in summary tab
-        double freeQtyInSummary =Double.parseDouble(common.findWebElement("xpath","//Edit[@Name='Free Quantity']").getText());
-        Assert.assertEquals(freeQuantity, freeQtyInSummary,"Free Quantity is not same");
+        WebElement Quantity = common.findWebElement("xpath", "//Edit[@Name='Quantity *']");
+        String quantityText = Quantity.getText();
+        if ((quantityText == (null) || "(null)".equals(quantityText))) {
+            Assert.fail("Quantity field is empty");
+        }
         grossAmountPresentInSummary();
         netAmountPresentInSummary();
         totalValuePresentInSummary();
         totalValueInCompanyCurrenyPresentInSummary();
-        receivableAmountPresentInSummary();
         cessPresentInSummary();
         iGSTPresentInSummary();
-        tcsAmountPresentInSummary();
-        tcsTaxableValuePresentInSummary();
         //save
         transactionSave();
         String newVoucherID =newTransactionID(oldVoucherID).replace(" ","");
@@ -105,12 +80,12 @@ public class SalesInvoiceFQ_RegInterInclusive extends Transaction {
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         Thread.sleep(1000);
         common.clickElement("name", "Sales");
-        common.clickElement("name", "Invoices");
-        common.clickElement("name", "Sales Book");
+        common.clickElement("name", "Orders");
+        common.clickElement("xpath", "//MenuItem[@Name='Sales Orders'][2]");
         Thread.sleep(1000);
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
-        verifyReport(newVoucherID,dataFile,"salesInvoice");
+        verifyReport(newVoucherID,dataFile,"SalesOrder");
         //calculate time taken
         long testMainMethodEnd=System.currentTimeMillis();
         System.out.println("exec time for main method: "+(testMainMethodEnd-testMainMethodStart)/1000);
@@ -119,16 +94,15 @@ public class SalesInvoiceFQ_RegInterInclusive extends Transaction {
 
     public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {
         long addProductStart=System.currentTimeMillis();
-        if (common.getData(dataFile,"salesInvoice", "productType" + i).equals("general")) {
-            generalProduct(dataFile,"salesInvoice", "productCode" + i, "quantity" + i,"freeQuantity" + i, i);
-        } else if (common.getData(dataFile,"salesInvoice", "productType" + i).equals("multiBatch")) {
-            multiBatchProduct(dataFile, "salesInvoice","productCode" + i, "quantity" + i,"freeQuantity" + i, i);
-        }else if (common.getData(dataFile,"salesInvoice", "productType" + i).equals("serial")) {
-            serialNumberProduct(dataFile,"salesInvoice", "productCode" + i, i);
+        if (common.getData(dataFile,"SalesOrder", "productType" + i).equals("general")) {
+            generalProduct_New(dataFile,"SalesOrder", "productCode" + i, "quantity" + i,"freeQuantity" + i, i);
+        } else if (common.getData(dataFile,"SalesOrder", "productType" + i).equals("multiBatch")) {
+            multiBatchProduct_New(dataFile, "SalesOrder","transType","productCode" + i, "quantity" + i,"freeQuantity" + i, i);
+        }else if (common.getData(dataFile,"SalesOrder", "productType" + i).equals("serial")) {
+            serialNumProduct_New(dataFile,"SalesOrder", "transType","productCode" + i,"quantity" + i,"freeQuantity" + i, i);
         }
 
-        quantity = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']").getText());
-        freeQuantity+=Double.parseDouble(common.findWebElement("xpath","//Edit[@Name='Free Quantity Row " + i + ", Not sorted.']").getText());
+        quantity = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='Quantity * Row "+i+", Not sorted.']").getText());
 
         WebElement element = common.findWebElement("xpath", "//Edit[@Name='MRP Row " + i + ", Not sorted.']");
         mrp = Double.parseDouble(element.getText().replace(",", ""));
@@ -155,21 +129,21 @@ public class SalesInvoiceFQ_RegInterInclusive extends Transaction {
         System.out.println("gross expected:-" + grossExpected);
         Assert.assertEquals(grossAmount, grossExpected, "Mismatch in Gross Amount");
         //discount
-        enterData("xpath", "//Edit[@Name='Voucher Disc % Row " + i + ", Not sorted.']", dataFile,"salesInvoice", "voucherDiscount" + i);
+        enterData("xpath", "//Edit[@Name='Voucher Disc % Row " + i + ", Not sorted.']", dataFile,"SalesOrder", "voucherDiscount" + i);
 
         WebElement voucher = common.findWebElement("xpath", "//Edit[@Name='Voucher Disc Row " + i + ", Not sorted.']");
         String voucherText = voucher.getText().replace(",", "");
         voucherDiscountValue = Double.parseDouble(voucherText);
         System.out.println("voucher Amount Value:- " + voucherDiscountValue);
 
-        enterData("xpath", "//Edit[@Name='Party Disc % Row " + i + ", Not sorted.']", dataFile,"salesInvoice", "partyDiscount" + i);
+        enterData("xpath", "//Edit[@Name='Party Disc % Row " + i + ", Not sorted.']", dataFile,"SalesOrder", "partyDiscount" + i);
 
         WebElement partyDisc = common.findWebElement("xpath", "//Edit[@Name='Party Disc Row " + i + ", Not sorted.']");
         String partyDiscText = partyDisc.getText().replace(",", "");
         partyDiscountValue = Double.parseDouble(partyDiscText);
         System.out.println("party Discount Value: - " + partyDiscountValue);
 
-        enterDataAndValidate("xpath", "//Edit[@Name='HSN Row " + i + ", Not sorted.']", dataFile,"salesInvoice", "HSNCode");
+        enterDataAndValidate("xpath", "//Edit[@Name='HSN Row " + i + ", Not sorted.']", dataFile,"SalesOrder", "HSNCode");
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 400, 0);
 
         //GST
@@ -184,7 +158,7 @@ public class SalesInvoiceFQ_RegInterInclusive extends Transaction {
         //check for inclusive or exclusive sales price list
         grossMinusDiscount = (grossAmount - (voucherDiscountValue + partyDiscountValue));
         System.out.println("gross-disc is: " + grossMinusDiscount);
-        if (common.getData(dataFile,"salesInvoice", "priceList").contains("Inclusive")) {
+        if (common.getData(dataFile,"SalesOrder", "priceList").contains("Inclusive")) {
             taxableValue=(grossMinusDiscount/(100+ (gstValue+cessValue)))*100;
             System.out.println("taxable value for inclusive is: "+taxableValue);
             netAmount = Double.parseDouble((common.findWebElement("xpath", "//Edit[@Name='Net Amount Row " + i + ", Not sorted.']").getText().replace(",", "")));

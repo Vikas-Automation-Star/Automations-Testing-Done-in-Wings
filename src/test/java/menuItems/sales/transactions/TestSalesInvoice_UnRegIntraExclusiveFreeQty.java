@@ -1,5 +1,5 @@
 package menuItems.sales.transactions;
-//need to execute, changes done 2
+
 import com.wings.pages.AppLogin;
 import com.wings.pages.sales.transactions.SRTWIR_UnRegIntraExclusive;
 import com.wings.pages.sales.transactions.SalesInvoiceFQ_UnRegIntraExclusive;
@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.io.IOException;
 
-public class Test_IntraStateExclusiveTCSGSTUnReg_FreeQty {
+public class TestSalesInvoice_UnRegIntraExclusiveFreeQty {
 
     WindowsDriver driver;
     AppLogin appLogin=new AppLogin();

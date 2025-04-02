@@ -40,7 +40,7 @@ public class SalesInvoiceFQ_RegIntraExclusive extends Transaction {
         common.clickElement("xpath", "//Edit[@Name='Location *']");
         enterInput("xpath", "//Edit[@Name='Cash/Party Code']",dataFile, "salesInvoice","partyCode");
         Thread.sleep(2500);
-        gstTransactionType("Registered Dealers");
+        gstTransactionType("Intra State Sales to Registered Dealers");
         Thread.sleep(1000);
         enterInput( "xpath", "//Edit[@Name='Sales A/c Code']",dataFile,"salesInvoice", "salesAccountCode");
         common.clickElement("xpath", "//Edit[@Name='TCS Trans Nature']");

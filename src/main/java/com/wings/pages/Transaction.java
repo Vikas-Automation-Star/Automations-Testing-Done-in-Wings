@@ -1192,12 +1192,20 @@ public abstract class Transaction {
         }
         common.clickElement("xpath", "//Button[@Name='OK']");
     }
-
+    //sales order and purchase order methods
+    public void generalProduct_New(String filename,String dataSet, String product, String quantity,String freeQuantity, int i) throws IOException, ParseException {
+        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename,dataSet, product);
+        common.clickElement("xpath", "//Edit[@Name='Quantity * Row "+i+", Not sorted.']");
+        enterData("xpath", "//Edit[@Name='Quantity * Row "+i+", Not sorted.']", filename,dataSet, quantity);
+        if (Boolean.parseBoolean(common.getData(filename,dataSet,"enableFreeQuantity"))){
+            enterData("xpath","//Edit[@Name='Free Quantity Row " + i + ", Not sorted.']",filename,dataSet,freeQuantity);
+        }
+    }
     public void multiBatchProduct_New(String filename,String dataSet,String transType,String product,String quantity,String freeQuantity,int i) throws IOException, ParseException {
         if (common.getData(filename,dataSet,transType).equalsIgnoreCase("Sales Order") || common.getData(filename,dataSet,transType).equalsIgnoreCase("Purchase Order")) {
             enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, dataSet, product);
-            common.clickElement("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']");
-            enterData("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']", filename, dataSet, quantity);
+            common.clickElement("xpath", "//Edit[@Name='Quantity * Row "+i+", Not sorted.']");
+            enterData("xpath", "//Edit[@Name='Quantity * Row "+i+", Not sorted.']", filename, dataSet, quantity);
             if (Boolean.parseBoolean(common.getData(filename, dataSet, "enableFreeQuantity"))) {
                 enterData("xpath", "//Edit[@Name='Free Quantity Row " + i + ", Not sorted.']", filename, dataSet, freeQuantity);
             }
@@ -1207,8 +1215,8 @@ public abstract class Transaction {
     public void serialNumProduct_New(String filename,String dataSet,String transType,String product,String quantity,String freeQuantity,int i) throws IOException, ParseException {
         if (common.getData(filename,dataSet,transType).equalsIgnoreCase("Sales Order") || common.getData(filename,dataSet,transType).equalsIgnoreCase("Purchase Order")) {
             enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, dataSet, product);
-            common.clickElement("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']");
-            enterData("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']", filename, dataSet, quantity);
+            common.clickElement("xpath", "//Edit[@Name='Quantity * Row "+i+", Not sorted.']");
+            enterData("xpath", "//Edit[@Name='Quantity * Row "+i+", Not sorted.']", filename, dataSet, quantity);
             if (Boolean.parseBoolean(common.getData(filename, dataSet, "enableFreeQuantity"))) {
                 enterData("xpath", "//Edit[@Name='Free Quantity Row " + i + ", Not sorted.']", filename, dataSet, freeQuantity);
             }
@@ -1816,7 +1824,7 @@ public abstract class Transaction {
     }
 
     public void validateIGSTAmountTabIsNotEmpty() {
-        common.clickElement("xpath", "//TabItem[@Name='  F11 IGST  ']");
+        common.clickElement("xpath", "//TabItem[contains(@Name,'IGST')]");
         String value2 = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
         if (value2 == (null) || "(null)".equals(value2)) {
             Assert.fail("IGST field is empty");

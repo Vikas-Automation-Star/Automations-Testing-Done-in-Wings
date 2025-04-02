@@ -1,5 +1,5 @@
 package menuItems.sales.transactions;
-// modifies, need to execute -4 modify gst values  ready
+
 import com.wings.pages.AppLogin;
 import com.wings.pages.sales.transactions.SRTWIR_UnRegInterInclusive;
 import com.wings.pages.sales.transactions.SalesInvoiceFQ_UnRegInterInclusive;
@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.io.IOException;
 
-public class Test_InterInclusiveTCSGSTUnReg_FreeQty {
+public class TestSalesInvoice_UnRegInterInclusiveFreeQty {
     WindowsDriver driver;
     AppLogin appLogin=new AppLogin();
     String dataFile="./src/main/resources/menuItems/Sales/Transactions/freeQuantitySITCInclusiveInter_UnReg.json";

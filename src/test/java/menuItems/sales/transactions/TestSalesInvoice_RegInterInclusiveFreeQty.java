@@ -1,5 +1,5 @@
 package menuItems.sales.transactions;
-////compltd exec 3 - ready
+
 import com.wings.pages.AppLogin;
 import com.wings.pages.sales.transactions.SalesInvoiceFQ_RegInterInclusive;
 import com.wings.pages.sales.transactions.SRTWIR_RegInterInclusive;
@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.io.IOException;
 
-public class Test_InterInclusiveTCSGSTReg_FreeQty {
+public class TestSalesInvoice_RegInterInclusiveFreeQty {
         WindowsDriver driver;
         AppLogin appLogin=new AppLogin();
         String dataFile="./src/main/resources/menuItems/Sales/Transactions/freeQuantitySITCInclusiveInter_Reg.json";

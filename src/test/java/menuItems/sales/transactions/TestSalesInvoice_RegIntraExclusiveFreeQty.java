@@ -1,5 +1,5 @@
 package menuItems.sales.transactions;
-//COMPLETED 45MNTS 28SEC -1 READY
+
 import com.wings.pages.AppLogin;
 import com.wings.pages.sales.transactions.SalesInvoiceFQ_RegIntraExclusive;
 import com.wings.pages.sales.transactions.SRTWIR_RegIntraExclusive;
@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.io.IOException;
 
-public class Test_IntraStateExclusiveTCSGSTReg_FreeQty {
+public class TestSalesInvoice_RegIntraExclusiveFreeQty {
     WindowsDriver driver;
     AppLogin appLogin=new AppLogin();
     String dataFile="./src/main/resources/menuItems/Sales/Transactions/freeQuantitySITCExclusiveIntra_Reg.json";

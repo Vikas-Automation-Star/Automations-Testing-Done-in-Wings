@@ -1,0 +1,58 @@
+[
+  {
+    "dataset": "SalesOrder",
+    "data": {
+      "branch": "AT_Branch 1_Reg",
+      "location": "AT_Branch 1_Location 2",
+      "partyCode": "CUI1",
+      "priceList": "AT_Inclusive Sales Price List 1",
+      "HSNCode": "AT_HSN Code 2",
+      "productCount": 3,
+      "transType": "Sales Order",
+      "enableFreeQuantity": "false",
+
+      "productType0": "general",
+      "quantity0": 50,
+      "freeQuantity0": 1,
+      "productCode0": "P1",
+      "voucherDiscount0": 1,
+      "partyDiscount0": 2,
+
+      "productType1": "multiBatch",
+      "quantity1": 50,
+      "freeQuantity1": 1,
+      "productCode1": "MBP1",
+      "voucherDiscount1": 1,
+      "partyDiscount1": 2,
+
+      "productType2": "serial",
+      "productCode2": "PSN2",
+      "quantity2": 50,
+      "freeQuantity2": 1,
+      "voucherDiscount2": 1,
+      "partyDiscount2": 2,
+
+      "column3": "AT_Branch 1_Reg",
+      "column4": "INR",
+      "column5": "1.00",
+      "column6": "AT_Cus_Reg_Inter",
+      "column7": "150.00",
+      "column8": "80,000.00",
+      "column9": "2,400.00",
+      "column10": "60,625.00",
+      "column11": "0.00",
+      "column12": "0.00",
+      "column13": "10,912.50",
+      "column14": "6,062.50",
+      "column15": "16,975.00",
+      "column16": "77,600.00",
+      "column17": "77,600.00",
+      "column18": "0.00",
+      "column19": "0.00",
+      "column20": "0.00",
+      "column21": "0.00",
+      "column22": "77,600.00",
+      "column23": "77,600.00"
+    }
+  }
+]
