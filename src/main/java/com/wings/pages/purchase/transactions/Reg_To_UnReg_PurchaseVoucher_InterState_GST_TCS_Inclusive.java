@@ -73,7 +73,7 @@ public class Reg_To_UnReg_PurchaseVoucher_InterState_GST_TCS_Inclusive extends T
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
         verifyReport(newVoucherID,dataFile);
-        deleteSingleTransaction(newVoucherID);
+//        deleteSingleTransaction(newVoucherID);
         return newVoucherID;
     }
 

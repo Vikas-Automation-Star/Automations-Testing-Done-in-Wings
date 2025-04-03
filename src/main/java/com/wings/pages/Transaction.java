@@ -1194,7 +1194,7 @@ public abstract class Transaction {
     }
 
     public void multiBatchProduct_New(String filename,String dataSet,String transType,String product,String quantity,String freeQuantity,int i) throws IOException, ParseException {
-        if (common.getData(filename,dataSet,transType).equalsIgnoreCase("Sales Order") || common.getData(filename,dataSet,transType).equalsIgnoreCase("Purchase Order")) {
+        if (common.getData(filename,dataSet,transType).equalsIgnoreCase("Sales Order") || common.getData(filename,dataSet,transType).equalsIgnoreCase("Purchase Order")||common.getData(filename,dataSet,transType).equalsIgnoreCase("Purchase Voucher")) {
             enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, dataSet, product);
             common.clickElement("xpath", "//Edit[@Name='Quantity * Row "+i+", Not sorted.']");
             enterData("xpath", "//Edit[@Name='Quantity * Row "+i+", Not sorted.']", filename, dataSet, quantity);
@@ -1799,6 +1799,13 @@ public abstract class Transaction {
             Assert.fail("CGST field is  empty");
         }
     }
+    public void validateRCMCGSTAmountTabIsNotEmpty() {
+        common.clickElement("xpath", "//TabItem[contains(@Name,'RCM CGST')]");
+        String value = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
+        if (value == ("0.000")) {
+            Assert.fail("CGST field is  empty");
+        }
+    }
 
     public void validateSGSTAmountTabIsNotEmpty() {
         common.clickElement("xpath", "//TabItem[contains(@Name,'SGST')]");
@@ -1807,7 +1814,13 @@ public abstract class Transaction {
             Assert.fail("SGST field is empty");
         }
     }
-
+    public void validateRCMSGSTAmountTabIsNotEmpty() {
+        common.clickElement("xpath", "//TabItem[contains(@Name,'RCM SGST')]");
+        String value1 = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
+        if (value1 == ("0.000")) {
+            Assert.fail("SGST field is empty");
+        }
+    }
     public void sgstPresentInSummary() {
         WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='SGST']");
         String grossMinusDiscountAmount = grossDiscountAmount.getText();
@@ -1815,10 +1828,24 @@ public abstract class Transaction {
             Assert.fail("grossDiscountAmount field is empty");
         }
     }
+    public void RCMSGSTPresentInSummary() {
+        WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='RCM SGST']");
+        String grossMinusDiscountAmount = grossDiscountAmount.getText();
+        if ((grossMinusDiscountAmount == ("0.000"))) {
+            Assert.fail("grossDiscountAmount field is empty");
+        }
+    }
     public void cgstPresentInSummary() {
         WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='CGST']");
         String grossMinusDiscountAmount = grossDiscountAmount.getText();
         if ((grossMinusDiscountAmount == (null) || "(null)".equals(grossMinusDiscountAmount))) {
+            Assert.fail("grossDiscountAmount field is empty");
+        }
+    }
+    public void RCMCGSTPresentInSummary() {
+        WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='RCM CGST']");
+        String grossMinusDiscountAmount = grossDiscountAmount.getText();
+        if ((grossMinusDiscountAmount == ("0.000"))) {
             Assert.fail("grossDiscountAmount field is empty");
         }
     }
@@ -1830,11 +1857,25 @@ public abstract class Transaction {
             Assert.fail("IGST field is empty");
         }
     }
+    public void validateRCMIGSTAmountTabIsNotEmpty() {
+        common.clickElement("xpath", "//TabItem[contains(@Name,'RCM IGST')]");
+        String value2 = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
+        if (value2 == ("0.000")) {
+            Assert.fail("IGST field is empty");
+        }
+    }
 
     public void validateCESSAmountTabIsNotEmpty() {
         common.clickElement("xpath", "//TabItem[contains(@Name,'CESS')]");
         String value = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
         if (value == (null) || "(null)".equals(value)) {
+            Assert.fail("CESS field is empty");
+        }
+    }
+    public void validateRCMCESSAmountTabIsNotEmpty() {
+        common.clickElement("xpath", "//TabItem[contains(@Name,'RCM CESS')]");
+        String value = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
+        if (value == ("0.000")) {
             Assert.fail("CESS field is empty");
         }
     }
@@ -1934,11 +1975,25 @@ public abstract class Transaction {
             Assert.fail("grossDiscountAmount field is empty");
         }
     }
+    public void RCMIGSTPresentInSummary() {
+        WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='RCM IGST']");
+        String grossMinusDiscountAmount = grossDiscountAmount.getText();
+        if ((grossMinusDiscountAmount == ("0.000"))) {
+            Assert.fail("grossDiscountAmount field is empty");
+        }
+    }
 
     public void cessPresentInSummary() {
         WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='CESS']");
         String grossMinusDiscountAmount = grossDiscountAmount.getText();
         if ((grossMinusDiscountAmount == (null) || "(null)".equals(grossMinusDiscountAmount))) {
+            Assert.fail("grossDiscountAmount field is empty");
+        }
+    }
+    public void RCMCESSPresentInSummary() {
+        WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='RCM CESS']");
+        String grossMinusDiscountAmount = grossDiscountAmount.getText();
+        if ((grossMinusDiscountAmount == ("0.000"))) {
             Assert.fail("grossDiscountAmount field is empty");
         }
     }
