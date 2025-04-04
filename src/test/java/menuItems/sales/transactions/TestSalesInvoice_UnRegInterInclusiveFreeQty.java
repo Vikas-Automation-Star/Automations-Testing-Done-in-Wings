@@ -1,5 +1,5 @@
 package menuItems.sales.transactions;
-
+//43min 25sec
 import com.wings.pages.AppLogin;
 import com.wings.pages.sales.transactions.SRTWIR_UnRegInterInclusive;
 import com.wings.pages.sales.transactions.SalesInvoiceFQ_UnRegInterInclusive;
