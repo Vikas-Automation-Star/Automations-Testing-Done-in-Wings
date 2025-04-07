@@ -30,7 +30,7 @@ public class Reg_PurchaseVoucher_IntraState_RCMGST_TCS_Exclusive extends Transac
         dataFile = file;
     }
 
-    public String IntraState_PurchaseVoucher_GST_TCS_Exclusive() throws InterruptedException, IOException, ParseException, AWTException {
+    public String IntraState_PV_RCMGST_TCS_Exclusive() throws InterruptedException, IOException, ParseException, AWTException {
         navigateToMastersWhen3Steps(common.getData(dataFile,"Purchase Voucher","menu"),common.getData(dataFile,"Purchase Voucher","menuItem"), common.getData(dataFile,"Purchase Voucher","subMenuItem"));
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();

@@ -32,5 +32,3 @@ public class Reg_PurchaseOrder_GSTExclusivePrice {
         appLogin.logout();
     }
 }
-//Quantity * Row 0, Not sorted.
-//Quantity Row 0, Not sorted

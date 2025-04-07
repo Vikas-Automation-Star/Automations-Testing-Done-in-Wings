@@ -40,7 +40,7 @@
 
       "productType2": "serial",
       "productCode2": "PSN2",
-      "serialText": "Start",
+      "serialText": "init",
       "voucherDiscount2": 2,
       "freeQuantity2": 2,
       "quantity2": 7,
@@ -57,7 +57,7 @@
       "column12": "1,500.00",
       "column13": "30.00",
       "column14": "1,148.16",
-      "column15": "1,148.14",
+      "column15": "1,148.44",
       "column16": "0.00",
       "column17": "0.00",
       "column18": "0.00",
@@ -85,9 +85,36 @@
   },
 
   {
-    "dataset": "",
+    "dataset": "Invoice Reference",
     "data": {
+      "menu": "Purchase",
+      "menuItem": "Invoices",
+      "subMenuItem": "Purchase Returns with Invoice Reference",
+      "purchaseReturnActCode": "AT_Purchase Return  Acc 1",
 
+      "column3": "AT_Branch 1_Reg",
+      "column4": "INR",
+      "column5": "1.00",
+      "column6": "AT_Sup_Reg_Inter",
+      "column7": "5.00",
+      "column8": "2.00",
+      "column9": "500.00",
+      "column10": "0.00",
+      "column11": "389.00",
+      "column12": "0.00",
+      "column13":"0.00",
+      "column14": "71.00",
+      "column15": "40.00",
+      "column16": "111.00",
+      "column17": "500.00",
+      "column18": "500.00",
+      "column19": "0.00",
+      "column20": "0.00",
+      "column21": "0.00",
+      "column22": "50.00",
+      "column23": "0.00",
+      "column24": "550.00",
+      "column25": "550.00"
     }
   }
 ]

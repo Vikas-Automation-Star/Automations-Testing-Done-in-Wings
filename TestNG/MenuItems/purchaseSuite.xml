@@ -1,40 +1,107 @@
-<suite name="SUITE EXECUTION OF ALL MASTERS TRANSACTION AND REPORTS IN THE PURCHASE MODULE">
-
+<suite name="Purchase Transactions Suite">
 
     <listeners>
         <listener class-name="com.wings.utils.Listener"/>
     </listeners>
 
-    <test name="Reg_To_Reg_IntraSate_PurchaseVoucher_GST_TCS_ExclusivePrice" description="description for Reg_To_Reg_IntraSate_PurchaseVoucher_GST_TCS_ExclusivePrice" testID="1">
+    <!-- purchase Order -->
+
+    <test name="Reg-PO 1" description="Purchase Order Reg-To-Reg Intra State Exclusive GST" testID="1">
+        <classes>
+            <class name="menuItems.purchase.transactions.Reg_PurchaseOrder_GSTExclusivePrice"/>
+        </classes>
+    </test>
+
+    <test name="Reg-PO 2" description="PurchaseOrder Reg-To-Reg Inter State Inclusive GST" testID="2">
+        <classes>
+            <class name="menuItems.purchase.transactions.Reg_PurchaseOrder_GSTInclusivePrice"/>
+        </classes>
+    </test>
+
+    <test name="UnReg-PO 3" description="PurchaseOrder Reg-To-UnReg Intra State Exclusive GST" testID="3">
+        <classes>
+            <class name="menuItems.purchase.transactions.UnReg_PurchaseOrder_GSTExclusivePrice"/>
+        </classes>
+    </test>
+
+    <test name="UnReg-PO 4" description="PurchaseOrder Reg-To-UnReg Inter State Inclusive GST" testID="4">
+        <classes>
+            <class name="menuItems.purchase.transactions.UnReg_PurchaseOrder_GSTInclusivePrice"/>
+        </classes>
+    </test>
+
+    <!-- purchase Voucher -->
+
+    <test name="Reg-PV 5" description="PurchaseVoucher Reg_To_Reg Intra State Exclusive GST-TCS Including FreeQuantity" testID="5">
         <classes>
             <class name="menuItems.purchase.transactions.Reg_To_Reg_IntraSate_PurchaseVoucher_GST_TCS_ExclusivePrice"/>
         </classes>
     </test>
 
-    <test name="Reg_To_Reg_InterSate_PurchaseVoucher_GST_TCS_InclusivePrice" description="description for Reg_To_Reg_InterSate_PurchaseVoucher_GST_TCS_InclusivePrice" testID="2">
+    <test name="Reg-PV 6" description="PurchaseVoucher Reg_To_Reg Inter State Inclusive GST-TCS Including FreeQuantity" testID="6">
         <classes>
             <class name="menuItems.purchase.transactions.Reg_To_Reg_InterState_PurchaseVoucher_GST_TCS_InclusivePrice"/>
         </classes>
     </test>
 
-    <test name="Reg_To_UNReg_IntraSate_PurchaseVoucher_GST_TCS_ExclusivePrice" description="description for Reg_To_UNReg_IntraSate_PurchaseVoucher_GST_TCS_ExclusivePrice" testID="3">
+    <test name="UnReg-PV 7" description="purchaseVoucher Reg_To_UNReg Intra State Exclusive GST-TCS Including FreeQuantity" testID="7">
         <classes>
             <class name="menuItems.purchase.transactions.Reg_To_UnReg_PurchaseVoucher_IntraState_GST_TCS_ExclusivePrice"/>
         </classes>
     </test>
 
-    <test name="Reg_To_UNReg_IntraSate_PurchaseVoucher_GST_TCS_InclusivePrice" description="description for Reg_To_UNReg_IntraSate_PurchaseVoucher_GST_TCS_InclusivePrice" testID="4">
+    <test name="UnReg-PV 8" description="PurchaseVoucher Reg-To-UNReg Inter State inclusive GST-TCS Including FreeQuantity" testID="8">
         <classes>
-            <class name="menuItems.purchase.transactions.Reg_To_Reg_InterState_PurchaseVoucher_GST_TCS_InclusivePrice"/>
+            <class name="menuItems.purchase.transactions.Reg_To_UnReg_PurchaseVoucher_InterState_GST_TCS_InclusivePrice"/>
         </classes>
     </test>
 
-    <test name="Reg_To_UNReg_IntraSate_PurchaseVoucherWithInvoiceReference_GST_TCS_ExclusivePrice" description="description for Reg_To_UNReg_IntraSate_PurchaseVoucherWithInvoiceReference_GST_TCS_ExclusivePrice" testID="5">
+    <test name="Reg-PV 9" description="PurchaseVoucher Reg-To-Reg Intra State Exclusive RCM-GST-TCS Including FreeQuantity" testID="9">
+        <classes>
+            <class name="menuItems.purchase.transactions.Reg_PurchaseVoucher_IntraState_RCMGST_TCS_ExclusivePrice"/>
+        </classes>
+    </test>
+
+    <test name="Reg-PV 10" description="PurchaseVoucher Reg-To-Reg Inter State inclusive RCM-GST-TCS Including FreeQuantity" testID="10">
+        <classes>
+            <class name="menuItems.purchase.transactions.Reg_PurchaseVoucher_InterState_RCMGST_TCS_InclusivePrice"/>
+        </classes>
+    </test>
+
+
+    <!-- purchase return with invoice reference -->
+
+    <test name="Reg-PRWIR 11" description="PV->PRWIR Reg-To-Reg Intra State Exclusive GST-TCS Including FreeQuantity" testID="11">
+        <classes>
+            <class name="menuItems.purchase.transactions.Reg_To_Reg_IntraState_PurchaseReturnsWithInvoice_GST_TCS_ExclusivePrice"/>
+        </classes>
+    </test>
+
+    <test name="Reg-PRWIR 12" description="PV->PRWIR Reg-To-Reg Inter State Inclusive GST-TCS Including FreeQuantity" testID="12">
+        <classes>
+            <class name="menuItems.purchase.transactions.Reg_To_Reg_InterState_PurchaseReturnWithInvoice_GST_TCS_InclusivePrice"/>
+        </classes>
+    </test>
+
+    <test name="UnReg-PRWIR 13" description="PV->PRWIR Reg-To-UNReg Intra State Exclusive GST-TCS Including FreeQuantity" testID="13">
         <classes>
             <class name="menuItems.purchase.transactions.Reg_To_UnReg_IntraState_PurchaseReturnsWithInvoice_GST_TCS_ExclusivePrice"/>
         </classes>
     </test>
 
+    <!-- purchase return with invoice reference RCM -->
+
+        <test name="Reg-RCMPRWIR 14" description="PV->PRWIR Reg-To-Reg Intra State Exclusive RCMGST-TCS Including FreeQuantity" testID="14">
+            <classes>
+                <class name="menuItems.purchase.transactions.Reg_PurchaseVoucher_IntraState_RCMGST_TCS_ExclusivePrice"/>
+            </classes>
+        </test>
+
+    <test name="Reg-RCMPRWIR 15" description="PV->PRWIR Reg-To-Reg Inter State Inclusive RCMGST-TCS Including FreeQuantity" testID="15">
+        <classes>
+            <class name="menuItems.purchase.transactions.Reg_PurchaseVoucher_InterState_RCMGST_TCS_InclusivePrice"/>
+        </classes>
+    </test>
 
 
 
@@ -44,6 +111,45 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Purchase Orders -->
+    <!--        <test name="Test 8" description="Reg_To_Reg_IntraState_PurchaseOrder_GSTExclusivePrice" testID="1">-->
+    <!--            <classes>-->
+    <!--                <class name="menuItems.purchase.transactions.Reg_PurchaseOrder_GSTExclusivePrice"/>-->
+    <!--            </classes>-->
+    <!--        </test>-->
+
+    <!--        <test name="Test 9" description="Reg_To_Reg_InterState_PurchaseOrder_GSTInclusivePrice" testID="2">-->
+    <!--            <classes>-->
+    <!--                <class name="menuItems.purchase.transactions.Reg_PurchaseOrder_GSTInclusivePrice"/>-->
+    <!--            </classes>-->
+    <!--        </test>-->
+
+    <!--        <test name="Test 10" description="Reg_To_UnReg_IntraState_PurchaseOrder_GSTExclusivePrice" testID="3">-->
+    <!--            <classes>-->
+    <!--                <class name="menuItems.purchase.transactions.UnReg_PurchaseOrder_GSTExclusivePrice"/>-->
+    <!--            </classes>-->
+    <!--        </test>-->
+
+    <!--        <test name="Test 11" description="Reg_To_UnReg_InterState_PurchaseOrder_GSTInclusivePrice" testID="4">-->
+    <!--            <classes>-->
+    <!--                <class name="menuItems.purchase.transactions.UnReg_PurchaseOrder_GSTInclusivePrice"/>-->
+    <!--            </classes>-->
+    <!--        </test>-->
 
 
     <!--    <test name="Creating SupplierMaster" description="description for Supplier Master" testID="WOW 1">-->
@@ -105,7 +211,7 @@
     <!--    <test name="Performing PurchaseOrders Transaction" description="description for PurchaseOrders Transaction"-->
     <!--          testID="WOW 9">-->
     <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.PurchaseOrdersTransaction"></class>-->
+    <!--            <class name="menuItems.purchase.transactions.Reg_PurchaseOrder_GSTExclusivePrice"></class>-->
     <!--        </classes>-->
     <!--    </test>-->
 

@@ -91,7 +91,7 @@ public class UnReg_PurchaseVoucher_InterState_RCMGST_TCS_Inclusive extends Trans
         Thread.sleep(1000);
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
-//        verifyReport(newVoucherID,dataFile,"Purchase Voucher");
+        verifyReport(newVoucherID,dataFile,"Purchase Voucher");
 //        deleteSingleTransaction(newVoucherID);
         return newVoucherID;
     }
