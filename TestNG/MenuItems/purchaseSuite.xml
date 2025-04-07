@@ -91,11 +91,11 @@
 
     <!-- purchase return with invoice reference RCM -->
 
-        <test name="Reg-RCMPRWIR 14" description="PV->PRWIR Reg-To-Reg Intra State Exclusive RCMGST-TCS Including FreeQuantity" testID="14">
-            <classes>
-                <class name="menuItems.purchase.transactions.Reg_PurchaseVoucher_IntraState_RCMGST_TCS_ExclusivePrice"/>
-            </classes>
-        </test>
+    <test name="Reg-RCMPRWIR 14" description="PV->PRWIR Reg-To-Reg Intra State Exclusive RCMGST-TCS Including FreeQuantity" testID="14">
+        <classes>
+            <class name="menuItems.purchase.transactions.Reg_PurchaseVoucher_IntraState_RCMGST_TCS_ExclusivePrice"/>
+        </classes>
+    </test>
 
     <test name="Reg-RCMPRWIR 15" description="PV->PRWIR Reg-To-Reg Inter State Inclusive RCMGST-TCS Including FreeQuantity" testID="15">
         <classes>
