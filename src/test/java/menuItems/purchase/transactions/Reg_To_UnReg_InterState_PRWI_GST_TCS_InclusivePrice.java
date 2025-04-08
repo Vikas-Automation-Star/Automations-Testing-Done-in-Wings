@@ -1,7 +1,7 @@
 package menuItems.purchase.transactions;
 
 import com.wings.pages.AppLogin;
-import com.wings.pages.purchase.transactions.Reg_To_UnReg_PurchaseVoucher_IntraState_GST_TCS_Exclusive;
+import com.wings.pages.purchase.transactions.Reg_To_UnReg_InterState_PRWI_GST_TCS_Inclusive;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
@@ -11,10 +11,10 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.io.IOException;
 
-public class Reg_To_UnReg_PurchaseVoucher_IntraState_GST_TCS_ExclusivePrice {
+public class Reg_To_UnReg_InterState_PRWI_GST_TCS_InclusivePrice {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String dataFile = "./src/main/resources/menuItems/purchase/transactions/Reg_To_UnReg_PurchaseVoucher_IntraState_GST_TCS_Exclusive.json";
+    String dataFile = "./src/main/resources/menuItems/purchase/transactions/Reg_To_UnReg_InterState_PRWI_GST_TCS_Inclusive.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
@@ -23,9 +23,9 @@ public class Reg_To_UnReg_PurchaseVoucher_IntraState_GST_TCS_ExclusivePrice {
     }
 
     @Test
-    public void Reg_To_UnReg_PurchaseVoucher_IntraState_Exclusive() throws IOException, ParseException, InterruptedException, AWTException {
-        Reg_To_UnReg_PurchaseVoucher_IntraState_GST_TCS_Exclusive voucher=new Reg_To_UnReg_PurchaseVoucher_IntraState_GST_TCS_Exclusive(driver,dataFile);
-        voucher.Reg_To_UnReg_PvIntraStateExclusive();
+    public void reg_To_UnReg_InterState_PurchaseReturnWithInvoice_GST_TCS_Exclusive() throws IOException, ParseException, InterruptedException, AWTException {
+        Reg_To_UnReg_InterState_PRWI_GST_TCS_Inclusive voucherRef=new Reg_To_UnReg_InterState_PRWI_GST_TCS_Inclusive(driver,dataFile);
+        voucherRef.reg_To_UnReg_InterState_PurchaseReturnsWithInvoice_GST_TCS_Inclusive("PV 47");
     }
 
     @AfterTest

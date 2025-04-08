@@ -14,7 +14,7 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
-public class UnReg_PurchaseVoucher_InterState_RCMGST_TCS_Inclusive extends Transaction {
+public class UnReg_PV_InterState_RCMGST_TCS_Inclusive extends Transaction {
     WindowsDriver driver;
     Common common;
     String dataFile;
@@ -22,7 +22,7 @@ public class UnReg_PurchaseVoucher_InterState_RCMGST_TCS_Inclusive extends Trans
     double mrp, grossAmount, unitRate, quantity,voucherDiscountValue,grossMinusDiscount,gstValue,taxableValue,taxableAmountCalculated,cessValue,netAmount,expectedGSTAmount,calculatedNet;
 
 
-    public UnReg_PurchaseVoucher_InterState_RCMGST_TCS_Inclusive(WindowsDriver driver, String file) {
+    public UnReg_PV_InterState_RCMGST_TCS_Inclusive(WindowsDriver driver, String file) {
         super(driver);
         this.driver = driver;
         common = new Common(this.driver);

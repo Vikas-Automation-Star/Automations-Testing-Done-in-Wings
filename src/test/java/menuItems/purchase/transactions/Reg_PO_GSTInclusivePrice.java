@@ -1,7 +1,7 @@
 package menuItems.purchase.transactions;
 
 import com.wings.pages.AppLogin;
-import com.wings.pages.purchase.transactions.UnReg_PurchaseOrder_GSTExclusive;
+import com.wings.pages.purchase.transactions.Reg_PO_GSTInclusive;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
@@ -10,10 +10,10 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class UnReg_PurchaseOrder_GSTExclusivePrice {
+public class Reg_PO_GSTInclusivePrice {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String file = "./src/main/resources/menuItems/purchase/transactions/UnReg_PurchaseOrder_GSTExclusive.json";
+    String file = "./src/main/resources/menuItems/purchase/transactions/Reg_PO_GSTInclusive.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
@@ -23,8 +23,8 @@ public class UnReg_PurchaseOrder_GSTExclusivePrice {
 
     @Test
     public void UnReg_purchaseOrdersGST_ExclusivePrice() throws IOException, ParseException, InterruptedException, NoSuchMethodException {
-        UnReg_PurchaseOrder_GSTExclusive orders=new UnReg_PurchaseOrder_GSTExclusive(driver,file);
-        orders.unReg_PO_GSTExclusive();
+        Reg_PO_GSTInclusive orderGstInclusive=new Reg_PO_GSTInclusive(driver,file);
+        orderGstInclusive.unReg_PO_GSTInclusive();
     }
 
     @AfterTest

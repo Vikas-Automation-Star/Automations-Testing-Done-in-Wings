@@ -6,29 +6,26 @@ import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 
-
 import java.awt.*;
 import java.io.IOException;
 
-public class Reg_To_Reg_IntraState_PurchaseReturnsWithInvoice_GST_TCS_Exclusive extends Transaction {
+public class Reg_To_UnReg_IntraState_PRWI_GST_TCS_Exclusive extends Transaction {
     WindowsDriver driver;
     Common common;
     String dataFile;
 
-    public Reg_To_Reg_IntraState_PurchaseReturnsWithInvoice_GST_TCS_Exclusive(WindowsDriver driver, String file) {
+    public Reg_To_UnReg_IntraState_PRWI_GST_TCS_Exclusive(WindowsDriver driver, String file) {
         super(driver);
         this.driver = driver;
         common = new Common(this.driver);
         dataFile = file;
     }
 
-    public void Reg_To_Reg_IntraState_PurchaseReturnsWithInvoice(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
+    public void regToUnRegPrwirExcusive(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
         navigateToMastersWhen3Steps(common.getData(dataFile,"menu"),common.getData(dataFile,"menuItem"), common.getData(dataFile,"subMenuItem"));
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
         System.out.println("oldID: "+ oldVoucherID);
-//        common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
-//        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
         enterInput("xpath","//Edit[@Name='Branch *']",dataFile,"branch");
 //        enterInput("xpath","//Edit[@Name='Location *']",dataFile,"location");
 //        enterInput("xpath","//Edit[@Name='Trans Currency *']",dataFile,"currency")
@@ -41,13 +38,9 @@ public class Reg_To_Reg_IntraState_PurchaseReturnsWithInvoice_GST_TCS_Exclusive 
         enterData("xpath","//Edit[@Name='Free Quantity Row 0, Not sorted.']",dataFile,"freeQuantity");
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 100, 0);
         common.deleteInvalidRows();
-
         double itemsNetValue = Double.parseDouble(common.findWebElement("xpath", "//Edit[@AutomationId='NetAmount']").getText().replace(",", ""));
         tcsCalculations(itemsNetValue);
 
-        validateCGSTAmountTabIsNotEmpty();
-        validateSGSTAmountTabIsNotEmpty();
-        validateCESSAmountTabIsNotEmpty();
         navigateToBillsPayablesTab();
         common.deleteInvalidRows();
         navigateToSummaryTab();
@@ -55,7 +48,6 @@ public class Reg_To_Reg_IntraState_PurchaseReturnsWithInvoice_GST_TCS_Exclusive 
         freeQuantityPresentInSummary();
         grossAmountPresentInSummary();
         grossMinusDiscountPresentInSummary();
-        iGSTPresentInSummary();
         cessPresentInSummary();
         netAmountPresentInSummary();
         tcsAmountPresentInSummary();
@@ -63,7 +55,6 @@ public class Reg_To_Reg_IntraState_PurchaseReturnsWithInvoice_GST_TCS_Exclusive 
         totalValuePresentInSummary();
         totalValueInCompanyCurrenyPresentInSummary();
 
-//        //save
         transactionSave();
         String newVoucherID =newTransactionID(oldVoucherID).replace(" ","");
         System.out.println("newID: "+newVoucherID);

@@ -1180,6 +1180,18 @@ public abstract class Transaction {
         common.clickElement("xpath", "//Button[@Name='OK']");
     }
 
+    public void serialNumberForMRAO(String filename,String dataSet,String serialText,String serialQuantity,String freeQuantity) throws IOException, ParseException{
+        common.clickElement("xpath", "//Button[@Name='Serial Nos Row 2']");
+        WebElement increment = common.findWebElement("xpath", "//CheckBox[@Name='Exclude Box Barcode']");
+        increment.sendKeys(Keys.TAB,common.getData(filename,dataSet, serialText)+ Common.getRandomChar(), Keys.TAB, common.getData(filename,dataSet, serialQuantity),Keys.ENTER);
+        if(Boolean.parseBoolean(common.getData(filename,dataSet,"enableFreeQuantity"))) {
+//            System.out.println("true u can provide quantity and free");
+            WebElement freeQ = common.findWebElement("xpath", "//CheckBox[@Name='Exclude Box Barcode']");
+            freeQ.sendKeys(Keys.TAB, Keys.TAB, Keys.TAB, common.getData(filename,dataSet, freeQuantity),Keys.ENTER);
+        }
+        common.clickElement("xpath", "//Button[@Name='OK']");
+    }
+
     public void serialNumberProductInPurchase(String filename, String product,String serialText,String serialQuantity,String freeQuantity, int i) throws IOException, ParseException, InterruptedException, AWTException {
         enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, product);
         common.clickElement("xpath", "//Button[@Name='Serial Nos Row "+i+"']");

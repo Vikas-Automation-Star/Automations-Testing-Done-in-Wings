@@ -1,19 +1,20 @@
 package menuItems.purchase.transactions;
 
 import com.wings.pages.AppLogin;
-import com.wings.pages.purchase.transactions.Reg_PurchaseOrder_GSTInclusive;
+import com.wings.pages.purchase.transactions.Reg_To_Reg_InterState_PV_GST_TCS_Inclusive;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.awt.*;
 import java.io.IOException;
 
-public class Reg_PurchaseOrder_GSTInclusivePrice {
+public class Reg_To_Reg_InterState_PV_GST_TCS_InclusivePrice {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String file = "./src/main/resources/menuItems/purchase/transactions/Reg_PurchaseOrder_GSTInclusive.json";
+    String dataFile = "./src/main/resources/menuItems/purchase/transactions/Reg_To_Reg_InterState_PV_GST_TCS_Inclusive.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
@@ -22,13 +23,14 @@ public class Reg_PurchaseOrder_GSTInclusivePrice {
     }
 
     @Test
-    public void UnReg_purchaseOrdersGST_ExclusivePrice() throws IOException, ParseException, InterruptedException, NoSuchMethodException {
-        Reg_PurchaseOrder_GSTInclusive orderGstInclusive=new Reg_PurchaseOrder_GSTInclusive(driver,file);
-        orderGstInclusive.unReg_PO_GSTInclusive();
+    public void Reg_To_Reg_InterState_PurchaseVoucher_GST_TCS_Inclusive() throws IOException, ParseException, InterruptedException, AWTException {
+        Reg_To_Reg_InterState_PV_GST_TCS_Inclusive voucher=new Reg_To_Reg_InterState_PV_GST_TCS_Inclusive(driver,dataFile);
+        voucher.InterState_PurchaseVoucher_GST_TCS_Inclusive();
     }
 
     @AfterTest
     public void afterTest() throws IOException {
         appLogin.logout();
     }
+
 }

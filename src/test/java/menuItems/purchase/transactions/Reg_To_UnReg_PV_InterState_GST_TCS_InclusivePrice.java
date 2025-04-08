@@ -1,20 +1,19 @@
 package menuItems.purchase.transactions;
 
 import com.wings.pages.AppLogin;
-import com.wings.pages.purchase.transactions.Reg_PurchaseOrder_GSTInclusive;
-import com.wings.pages.purchase.transactions.UnReg_PurchaseOrder_GSTInclusive;
+import com.wings.pages.purchase.transactions.Reg_To_UnReg_PV_InterState_GST_TCS_Inclusive;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
+import java.awt.*;
 import java.io.IOException;
 
-public class UnReg_PurchaseOrder_GSTInclusivePrice {
+public class Reg_To_UnReg_PV_InterState_GST_TCS_InclusivePrice {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String file = "./src/main/resources/menuItems/purchase/transactions/UnReg_PurchaseOrder_GSTInclusive.json";
+    String dataFile = "./src/main/resources/menuItems/purchase/transactions/Reg_To_UnReg_PV_InterState_GST_TCS_Inclusive.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
@@ -23,9 +22,9 @@ public class UnReg_PurchaseOrder_GSTInclusivePrice {
     }
 
     @Test
-    public void UnReg_purchaseOrdersGST_InclusivePrice() throws  InterruptedException, NoSuchMethodException, IOException, ParseException {
-        UnReg_PurchaseOrder_GSTInclusive unRegInclusive=new UnReg_PurchaseOrder_GSTInclusive(driver,file);
-        unRegInclusive.unReg_PO_GSTInclusive();
+    public void Reg_To_UnReg_PurchaseVoucher_InterState_Inclusive() throws IOException, ParseException, InterruptedException, AWTException {
+        Reg_To_UnReg_PV_InterState_GST_TCS_Inclusive voucher=new Reg_To_UnReg_PV_InterState_GST_TCS_Inclusive(driver,dataFile);
+        voucher.Reg_To_UnReg_PurchaseVoucher_InterState_Inclusive();
     }
 
     @AfterTest

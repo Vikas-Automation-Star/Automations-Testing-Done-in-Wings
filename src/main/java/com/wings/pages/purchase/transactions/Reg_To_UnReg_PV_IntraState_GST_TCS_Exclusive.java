@@ -14,59 +14,52 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
-public class Reg_PurchaseVoucher_IntraState_RCMGST_TCS_Exclusive extends Transaction {
+public class Reg_To_UnReg_PV_IntraState_GST_TCS_Exclusive extends Transaction {
     WindowsDriver driver;
     Common common;
     String dataFile;
     boolean gstAmountClicked = false;
-    boolean rstAmountClicked = false;
     double mrp, grossAmount, unitRate, quantity,gstValue,taxableAmountCalculated,cessValue,netAmount,expectedGSTAmount,calculatedNet;
 
 
-    public Reg_PurchaseVoucher_IntraState_RCMGST_TCS_Exclusive(WindowsDriver driver, String file) {
+    public Reg_To_UnReg_PV_IntraState_GST_TCS_Exclusive(WindowsDriver driver, String file) {
         super(driver);
         this.driver = driver;
         common = new Common(this.driver);
         dataFile = file;
     }
 
-    public String IntraState_PV_RCMGST_TCS_Exclusive() throws InterruptedException, IOException, ParseException, AWTException {
-        navigateToMastersWhen3Steps(common.getData(dataFile,"Purchase Voucher","menu"),common.getData(dataFile,"Purchase Voucher","menuItem"), common.getData(dataFile,"Purchase Voucher","subMenuItem"));
+    public String Reg_To_UnReg_PvIntraStateExclusive() throws InterruptedException, IOException, ParseException, AWTException {
+        Time.currentDateAndTime();
+        navigateToMastersWhen3Steps(common.getData(dataFile,"menu"),common.getData(dataFile,"menuItem"), common.getData(dataFile,"subMenuItem"));
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
         System.out.println("oldID: "+ oldVoucherID);
-//        common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
-//        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
-        enterInput("xpath","//Edit[@Name='Branch *']",dataFile,"Purchase Voucher","branch");
-//        enterInput("xpath","//Edit[@Name='Location *']",dataFile,"location");
-//        enterInput("xpath","//Edit[@Name='Trans Currency *']",dataFile,"currency");
-        enterInput("xpath", "//Edit[@Name='Cash/Party Code']",dataFile,"Purchase Voucher", "partyCode");
+        common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
+        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
+        enterInput("xpath","//Edit[@Name='Branch *']",dataFile,"branch");
+        enterInput("xpath","//Edit[@Name='Location *']",dataFile,"location");
+        enterInput("xpath","//Edit[@Name='Trans Currency *']",dataFile,"currency");
+        enterInput("xpath", "//Edit[@Name='Cash/Party Code']",dataFile, "partyCode");
         Thread.sleep(2000);
-        gstTransactionType("Intra State Purchase from Registered Dealers with RCM");
-        Thread.sleep(1000);
-        enableCheckboxSelection("//CheckBox[@Name='Apply RCM']");
-        enterInput("xpath", "//Edit[@Name='Purchase A/c Code']",dataFile,"Purchase Voucher", "purchaseAccount");
-        inputTextWithValidation("xpath", "//Edit[@Name='Supplier Bill No *']", common.getData(dataFile,"Purchase Voucher", "supplierCode") +common.getRandom());
-        inputTextWithValidation("xpath", "//Edit[@Name='Supplier Bill Date *']", common.getData(dataFile, "Purchase Voucher","date") + Time.timeStamp());
-        enterInput("xpath", "//Edit[@Name='Batch Policy']",dataFile,"Purchase Voucher", "batchPolicy");
+        enterInput("xpath", "//Edit[@Name='Purchase A/c Code']",dataFile, "purchaseAccount");
+        inputTextWithValidation("xpath", "//Edit[@Name='Supplier Bill No *']", common.getData(dataFile, "supplierCode") +common.getRandom());
+        inputTextWithValidation("xpath", "//Edit[@Name='Supplier Bill Date *']", common.getData(dataFile, "date") + Time.timeStamp());
+        enterInput("xpath", "//Edit[@Name='Batch Policy']",dataFile, "batchPolicy");
         enableCheckboxSelection("//CheckBox[@Name='Apply TCS']");
-        enterInput("xpath","//Edit[@Name='TCS Trans Nature']", dataFile,"Purchase Voucher","tcsNature");
-        enterInput("xpath", "//Edit[@Name='Price List']", dataFile,"Purchase Voucher", "priceList");
-        enterInput("xpath", "//Edit[@Name='Executive *']", dataFile,"Purchase Voucher", "executive");
+        enterInput("xpath","//Edit[@Name='TCS Trans Nature']", dataFile,"tcsNature");
+        enterInput("xpath", "//Edit[@Name='Price List']", dataFile, "priceList");
+        enterInput("xpath", "//Edit[@Name='Executive *']", dataFile, "executive");
+        Time.currentDateAndTime();
 //        //F3-Items
-        for (int i = 0; i < Integer.parseInt(common.getData(dataFile,"Purchase Voucher", "productCount")); i++) {
+        for (int i = 0; i < Integer.parseInt(common.getData(dataFile, "productCount")); i++) {
             addProduct(i);
         }
-
         double itemsNetValue = Double.parseDouble(common.findWebElement("xpath", "//Edit[@AutomationId='NetAmount']").getText().replace(",", ""));
         tcsCalculations(itemsNetValue);
 
-        validateRCMCGSTAmountTabIsNotEmpty();
-        validateRCMSGSTAmountTabIsNotEmpty();
-        validateRCMCESSAmountTabIsNotEmpty();
         navigateToBillsReceivablesTab();
         common.deleteInvalidRows();
-        //verify all the fields in summary are fetching data
         navigateToTcs();
         for (int j = 0; j <=7; j++) {
             Robot robot=new Robot();
@@ -77,8 +70,8 @@ public class Reg_PurchaseVoucher_IntraState_RCMGST_TCS_Exclusive extends Transac
         freeQuantityPresentInSummary();
         grossAmountPresentInSummary();
         grossMinusDiscountPresentInSummary();
-        RCMSGSTPresentInSummary();
-        RCMCGSTPresentInSummary();
+        sgstPresentInSummary();
+        cgstPresentInSummary();
         cessPresentInSummary();
         netAmountPresentInSummary();
         tcsAmountPresentInSummary();
@@ -96,19 +89,22 @@ public class Reg_PurchaseVoucher_IntraState_RCMGST_TCS_Exclusive extends Transac
         Thread.sleep(1000);
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
-        verifyReport(newVoucherID,dataFile,"Purchase Voucher");
+        verifyReport(newVoucherID,dataFile);
 //        deleteSingleTransaction(newVoucherID);
+        Time.currentDateAndTime();
         return newVoucherID;
     }
 
     public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {
-        if (common.getData(dataFile,"Purchase Voucher", "productType" + i).equals("general")) {
-            generalProduct(dataFile, "Purchase Voucher", "productCode"+ i,"quantity" + i,"freeQuantity" +i, i);
-        } else if (common.getData(dataFile,"Purchase Voucher", "productType" + i).equals("multiBatch")) {
-            multiBatchProductPurchase(dataFile, "Purchase Voucher" , "productCode" + i,"quantity"+i,"freeQuantity"+i, i);
-        } else if (common.getData(dataFile,"Purchase Voucher", "productType" + i).equals("serial")) {
-            serialNumberProductInPurchase(dataFile, "Purchase Voucher","productCode"+i,"serialText","quantity"+i,"freeQuantity"+i, i);
+        Time.currentDateAndTime();
+        if (common.getData(dataFile, "productType" + i).equals("general")) {
+            generalProduct(dataFile, "productCode" + i, "quantity" + i,"freeQuantity" +i, i);
+        } else if (common.getData(dataFile, "productType" + i).equals("multiBatch")) {
+            multiBatchProductPurchase (dataFile, "productCode" + i, "quantity" + i,"freeQuantity"+i, i);
+        } else if (common.getData(dataFile, "productType" + i).equals("serial")) {
+            serialNumberProductInPurchase(dataFile, "productCode" + i,"serialText","quantity"+i,"freeQuantity"+i, i);
         }
+
         quantity = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']").getText());
 
         WebElement element = common.findWebElement("xpath", "//Edit[@Name='MRP Row " + i + ", Not sorted.']");
@@ -137,7 +133,7 @@ public class Reg_PurchaseVoucher_IntraState_RCMGST_TCS_Exclusive extends Transac
         System.out.println("gross expected:-" + grossExpected);
         Assert.assertEquals(grossAmount, grossExpected, "Mismatch in Gross Amount");
 
-        enterInput("xpath", "//Edit[@Name='HSN Row " + i + ", Not sorted.']", dataFile, "Purchase Voucher","HSNCode");
+        enterDataAndValidate("xpath", "//Edit[@Name='HSN Row " + i + ", Not sorted.']", dataFile, "HSNCode");
 
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 450, 0);
 
@@ -159,51 +155,48 @@ public class Reg_PurchaseVoucher_IntraState_RCMGST_TCS_Exclusive extends Transac
         double totalValue = gstValue + cessValue;
         System.out.println("total:-" + totalValue);
 
-//        if (!gstAmountClicked) {
-//            common.clickElement("xpath", "//Header[@Name='GST Amount']");
-//            gstAmountClicked = true;
-//        }
-        if (!rstAmountClicked) {
-            common.clickElement("xpath", "//Header[@Name='GST RCM Amount']");
-            rstAmountClicked = true;
+        if (!gstAmountClicked) {
+            common.clickElement("xpath", "//Header[@Name='GST Amount']");
+            gstAmountClicked = true;
         }
 
         String gstTransType = common.findWebElement("xpath", "//Edit[@Name='GST Trans Type *']").getText().trim();
-        if (gstTransType.equalsIgnoreCase("Intra State Purchase from Registered Dealers with RCM")) {
-            double expectedRCMCGST = Double.parseDouble(decimalFormat.format(((grossAmount * gstValue) / 100) / 2));
-            double actualRCMCGST = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='RCM CGST Row "+i+", Not sorted.']").getText().replace(",", ""));
-            System.out.println("Actual RCMCGST: " + actualRCMCGST);
-            System.out.println("Expected RCMCGST: " + expectedRCMCGST);
-            Assert.assertEquals(actualRCMCGST, expectedRCMCGST, "mismatch");
+        if (gstTransType.equalsIgnoreCase("Intra State Purchase from Registered Dealers")) {
+            double expectedCGST = Double.parseDouble(decimalFormat.format(((grossAmount * gstValue) / 100) / 2));
+            double actualCGST = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='CGST Row " + i + ", Not sorted.']").getText().replace(",", ""));
+            System.out.println("Actual CGST: " + actualCGST);
+            System.out.println("Expected CGST: " + expectedCGST);
+            Assert.assertEquals(actualCGST, expectedCGST);
 
-            double expectedRCMSGST = Double.parseDouble(decimalFormat.format(((grossAmount * gstValue) / 100) / 2));
-            double actualSGST = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='RCM SGST Row "+i+", Not sorted.']").getText().replace(",", ""));
-            System.out.println("Actual RCMSGST: " + actualSGST);
-            System.out.println("Expected RCMSGST: " + expectedRCMSGST);
-            Assert.assertEquals(actualSGST, expectedRCMSGST,"mismatch");
+            double expectedSGST = Double.parseDouble(decimalFormat.format(((grossAmount * gstValue) / 100) / 2));
+            double actualSGST = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='SGST Row " + i + ", Not sorted.']").getText().replace(",", ""));
+            System.out.println("Actual SGST: " + actualSGST);
+            System.out.println("Expected SGST: " + expectedSGST);
+            Assert.assertEquals(actualSGST, expectedSGST);
 
-            double expectedRCMCESS = Double.parseDouble(decimalFormat.format((grossAmount * cessValue) / 100));
-            double actualCESS = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='RCM CESS Row "+i+", Not sorted.']").getText().replace(",", ""));
-            System.out.println("Actual RCMCESS: " + actualCESS);
-            System.out.println("Expected RCMCESS: " + expectedRCMCESS);
-            Assert.assertEquals(actualCESS, expectedRCMCESS,"mismatch");
+            double expectedCESS = Double.parseDouble(decimalFormat.format((grossAmount * cessValue) / 100));
+            double actualCESS = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='CESS Row " + i + ", Not sorted.']").getText().replace(",", ""));
+            System.out.println("Actual CESS: " + actualCESS);
+            System.out.println("Expected CESS: " + expectedCESS);
+            Assert.assertEquals(actualCESS, expectedCESS);
 
-            expectedGSTAmount = expectedRCMCGST + expectedRCMSGST + expectedRCMCESS;
-            double actualGSTAmount = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='GST RCM Amount Row "+i+", Not sorted.']").getText().replace(",", ""));
-            System.out.println("Expected RCMGST Amount: " + decimalFormat.format(expectedGSTAmount));
+            expectedGSTAmount = expectedCGST + expectedSGST + expectedCESS;
+            double actualGSTAmount = Double.parseDouble(common.findWebElement("xpath", "//Edit[@Name='GST Amount Row " + i + ", Not sorted.']").getText().replace(",", ""));
+            System.out.println("Expected GST Amount: " + decimalFormat.format(expectedGSTAmount));
             System.out.println("Actual GST Amount: " + decimalFormat.format(actualGSTAmount));
             Assert.assertEquals(decimalFormat.format(actualGSTAmount), decimalFormat.format(expectedGSTAmount));
         } else {
+
             System.out.println("Gst TransactionType Mismatch");
         }
         calculatedNet=grossAmount+expectedGSTAmount;
         WebElement net = common.findWebElement("xpath", "//Edit[@Name='Net Amount Row " + i + ", Not sorted.']");
         String netAmountText = net.getText().replace(",", "");
         netAmount = Double.parseDouble(netAmountText);
-        Assert.assertEquals(netAmount,calculatedNet, "check calculations once");
+        Assert.assertEquals(calculatedNet, netAmount, "check calculations once");
         System.out.println("Net Amount:- " + netAmount);
-        String netInCompanyCurrency = common.findWebElement("xpath", "//Edit[@Name='Net Amount Row " + i + ", Not sorted.']").getText().replace(",", "");
-        Assert.assertEquals(netInCompanyCurrency,netAmountText, "check calculations once");
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 200, 0);
+        Time.currentDateAndTime();
     }
+
 }

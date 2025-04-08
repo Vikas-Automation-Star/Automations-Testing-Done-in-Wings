@@ -14,8 +14,8 @@
   "productType0": "general",
   "productCode0": "P1",
   "quantity0": 5,
-  "voucherDiscount0": 2,
-  "partyDiscount0": 5,
+  "mrpAmount": "5,000.000",
+  "grossAmount": "500.000",
 
   "productType1": "multiBatch",
   "productCode1": "MBP1",

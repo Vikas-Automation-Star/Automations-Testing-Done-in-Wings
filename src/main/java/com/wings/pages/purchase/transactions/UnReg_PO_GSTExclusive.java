@@ -12,14 +12,14 @@ import org.testng.Assert;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
-public class UnReg_PurchaseOrder_GSTExclusive extends Transaction {
+public class UnReg_PO_GSTExclusive extends Transaction {
     WindowsDriver driver;
     Common common;
     String dataFile;
     boolean gstAmountClicked = false;
     double mrp, grossAmount, unitRate, quantity, gstValue, taxableAmountCalculated, cessValue, netAmount, expectedGSTAmount, calculatedNet;
 
-    public UnReg_PurchaseOrder_GSTExclusive(WindowsDriver driver, String file) {
+    public UnReg_PO_GSTExclusive(WindowsDriver driver, String file) {
         super(driver);
         this.driver = driver;
         common = new Common(this.driver);

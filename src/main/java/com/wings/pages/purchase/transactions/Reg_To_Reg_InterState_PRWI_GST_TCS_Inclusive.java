@@ -2,7 +2,6 @@ package com.wings.pages.purchase.transactions;
 
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
-import com.wings.utils.Time;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.Assert;
@@ -10,20 +9,19 @@ import org.testng.Assert;
 import java.awt.*;
 import java.io.IOException;
 
-public class Reg_To_UnReg_InterState_PurchaseReturnsWithInvoice_GST_TCS_Inclusive extends Transaction {
+public class Reg_To_Reg_InterState_PRWI_GST_TCS_Inclusive extends Transaction {
     WindowsDriver driver;
     Common common;
     String dataFile;
 
-    public Reg_To_UnReg_InterState_PurchaseReturnsWithInvoice_GST_TCS_Inclusive(WindowsDriver driver, String file) {
+    public Reg_To_Reg_InterState_PRWI_GST_TCS_Inclusive(WindowsDriver driver, String file) {
         super(driver);
         this.driver = driver;
         common = new Common(this.driver);
         dataFile = file;
     }
 
-    public void reg_To_UnReg_InterState_PurchaseReturnsWithInvoice_GST_TCS_Inclusive(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
-        Time.currentDateAndTime();
+    public void reg_To_Reg_InterState_PurchaseReturnWithInvoice_GST_TCS_Inclusive(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
         navigateToMastersWhen3Steps(common.getData(dataFile,"menu"),common.getData(dataFile,"menuItem"), common.getData(dataFile,"subMenuItem"));
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
@@ -37,11 +35,10 @@ public class Reg_To_UnReg_InterState_PurchaseReturnsWithInvoice_GST_TCS_Inclusiv
         enterInput("xpath","//Edit[@Name='Purchase Return A/c Code']",dataFile,"purchaseReturnActCode");
         enableCheckboxSelection("//CheckBox[@Name='Apply TCS']");
         enterInput("xpath","//Edit[@Name='TCS Trans Nature']", dataFile,"tcsNature");
-        Time.currentDateAndTime();
 
         enterInput("xpath","//Edit[@Name='Quantity Row 0, Not sorted.']",dataFile,"quantity");
         enterData("xpath","//Edit[@Name='Free Quantity Row 0, Not sorted.']",dataFile,"freeQuantity");
-        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 200, 0);
+        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 100, 0);
         common.deleteInvalidRows();
 
         double itemsNetValue = Double.parseDouble(common.findWebElement("xpath", "//Edit[@AutomationId='NetAmount']").getText().replace(",", ""));
@@ -75,7 +72,6 @@ public class Reg_To_UnReg_InterState_PurchaseReturnsWithInvoice_GST_TCS_Inclusiv
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
         verifyReport(newVoucherID,dataFile);
-        deleteSingleTransaction(newVoucherID);
-        Time.currentDateAndTime();
+//        deleteSingleTransaction(newVoucherID);
     }
 }

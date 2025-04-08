@@ -9,12 +9,12 @@ import org.testng.Assert;
 
 import java.io.IOException;
 
-public class UnReg_PurchaseOrder_GSTInclusive extends Transaction {
+public class UnReg_PO_GSTInclusive extends Transaction {
     Common common;
     String dataFile;
     boolean gstAmountClicked = false;
 
-    public UnReg_PurchaseOrder_GSTInclusive(WindowsDriver driver, String file) {
+    public UnReg_PO_GSTInclusive(WindowsDriver driver, String file) {
         super(driver);
         this.driver = driver;
         common = new Common(this.driver);

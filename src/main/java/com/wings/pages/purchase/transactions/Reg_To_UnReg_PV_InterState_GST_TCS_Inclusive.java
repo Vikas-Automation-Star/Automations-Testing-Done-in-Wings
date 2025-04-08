@@ -11,13 +11,13 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 
-public class Reg_To_UnReg_PurchaseVoucher_InterState_GST_TCS_Inclusive extends Transaction {
+public class Reg_To_UnReg_PV_InterState_GST_TCS_Inclusive extends Transaction {
     WindowsDriver driver;
     Common common;
     String dataFile;
     boolean gstAmountClicked = false;
 
-    public Reg_To_UnReg_PurchaseVoucher_InterState_GST_TCS_Inclusive(WindowsDriver driver, String file) {
+    public Reg_To_UnReg_PV_InterState_GST_TCS_Inclusive(WindowsDriver driver, String file) {
         super(driver);
         this.driver = driver;
         common = new Common(this.driver);
