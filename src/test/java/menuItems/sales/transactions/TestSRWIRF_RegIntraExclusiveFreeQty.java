@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.io.IOException;
 
-public class TestSalesInvoice_RegIntraExclusiveFreeQty {
+public class TestSRWIRF_RegIntraExclusiveFreeQty {
     WindowsDriver driver;
     AppLogin appLogin=new AppLogin();
     String dataFile="./src/main/resources/menuItems/Sales/Transactions/freeQuantitySITCExclusiveIntra_Reg.json";
@@ -27,6 +27,8 @@ public class TestSalesInvoice_RegIntraExclusiveFreeQty {
         SalesInvoiceFQ_RegIntraExclusive tcsgstFreeQty=new SalesInvoiceFQ_RegIntraExclusive(driver,dataFile);
         SRTWIR_RegIntraExclusive exclusive=new SRTWIR_RegIntraExclusive(driver,dataFile);
         exclusive.RegExclusiveInvoiceReference(tcsgstFreeQty.intraStateExclusiveTCSGST_FreeQty());
+//                exclusive.RegExclusiveInvoiceReference("SI43");
+
     }
 
     @AfterTest

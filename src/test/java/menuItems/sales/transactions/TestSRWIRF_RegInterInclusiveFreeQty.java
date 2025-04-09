@@ -1,5 +1,5 @@
 package menuItems.sales.transactions;
-//done
+
 import com.wings.pages.AppLogin;
 import com.wings.pages.sales.transactions.SalesInvoiceFQ_RegInterInclusive;
 import com.wings.pages.sales.transactions.SRTWIR_RegInterInclusive;
@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.io.IOException;
 
-public class TestSalesInvoice_RegInterInclusiveFreeQty {
+public class TestSRWIRF_RegInterInclusiveFreeQty {
         WindowsDriver driver;
         AppLogin appLogin=new AppLogin();
         String dataFile="./src/main/resources/menuItems/Sales/Transactions/freeQuantitySITCInclusiveInter_Reg.json";
@@ -26,15 +26,15 @@ public class TestSalesInvoice_RegInterInclusiveFreeQty {
         }
 
         @Test
-        public void InclusiveTCSGSTFreeQuantity() throws IOException, ParseException, InterruptedException, AWTException {
+        public void InclusiveTCSGSTFreeQuantityReg() throws IOException, ParseException, InterruptedException, AWTException {
             SalesInvoiceFQ_RegInterInclusive interInclusiveTCSGSTFreeQty=new SalesInvoiceFQ_RegInterInclusive(driver,dataFile);
             SRTWIR_RegInterInclusive regInterInclusive=new SRTWIR_RegInterInclusive(driver,dataFile);
-//            regInterInclusive.RegInclusiveInvoiceReference("SI 2");
+//            regInterInclusive.RegInclusiveInvoiceReference("j");
             regInterInclusive.RegInclusiveInvoiceReference(interInclusiveTCSGSTFreeQty.interInclusiveTCSGST_FreeQty());
         }
 
         @AfterTest
         public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
         }
     }

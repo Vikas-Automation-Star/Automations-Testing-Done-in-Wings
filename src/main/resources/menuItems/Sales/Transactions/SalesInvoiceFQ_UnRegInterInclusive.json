@@ -2,19 +2,18 @@
   {
     "dataset": "salesInvoice",
     "data": {
-      "title": "Sales Invoices",
       "branch": "AT_Branch 1_Reg",
       "location": "AT_Branch 1_Location 1",
-      "partyName": "AT_Cus_UnReg_Inter",
-      "executive": "AT_Executive 2",
       "partyCode": "CUI1",
+      "partyName": "AT_Cus_UnReg_Inter",
+      "tcsTransactionNature": "AT_TCS Transaction Nature 2",
+      "executive": "AT_Executive 2",
       "salesAccountCode": "SA1",
       "priceList": "AT_Inclusive Sales Price List 1",
       "invoice": "Regular",
       "HSNCode": "AT_HSN Code 2",
       "productCount": 3,
       "enableFreeQuantity": "true",
-      "tcsTransactionNature": "AT_TCS Transaction Nature 2",
 
       "productType0": "general",
       "quantity0": 5,
@@ -101,40 +100,6 @@
       "column28": "8,536.00",
       "column29": "8,536.00",
       "column30": "AT_Executive 2"
-    }
-  },
-  {
-    "dataset": "salesReturn",
-    "data": {
-      "branch": "AT_Branch 1_Reg",
-      "location": "AT_Branch 1_Location 1",
-      "salesReturnAccountCode": "SRA1",
-      "salesReturnAccount": "AT_Sales Return  Acc 1",
-      "tcsTransactionNature": "AT_TCS Transaction Nature 2",
-
-      "column3": "AT_Branch 1_Reg",
-      "column4": "INR",
-      "column5": "1.00",
-      "column6": "AT_Cus_UnReg_Inter",
-      "column7": "5.00",
-      "column8": "2.00",
-      "column9": "2,500.00",
-      "column10": "25.00",
-      "column11": "1,933.59",
-      "column12": "0.00",
-      "column13": "0.00",
-      "column14": "348.05",
-      "column15": "193.36",
-      "column16": "541.41",
-      "column17": "2,475.00",
-      "column18": "2,475.00",
-      "column19": "0.00",
-      "column20": "0.00",
-      "column21": "0.00",
-      "column22": "247.50",
-      "column23": "0.50",
-      "column24": "2,723.00",
-      "column25": "2,723.00"
     }
   }
 ]

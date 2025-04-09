@@ -1,5 +1,5 @@
 package menuItems.sales.transactions;
-//44min 53sec
+
 import com.wings.pages.AppLogin;
 import com.wings.pages.sales.transactions.SRTWIR_UnRegIntraExclusive;
 import com.wings.pages.sales.transactions.SalesInvoiceFQ_UnRegIntraExclusive;
@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.io.IOException;
 
-public class TestSalesInvoice_UnRegIntraExclusiveFreeQty {
+public class TestSRWIRF_UnRegIntraExclusiveFreeQty {
 
     WindowsDriver driver;
     AppLogin appLogin=new AppLogin();
@@ -28,10 +28,12 @@ public class TestSalesInvoice_UnRegIntraExclusiveFreeQty {
         SalesInvoiceFQ_UnRegIntraExclusive unRegFreeQty=new SalesInvoiceFQ_UnRegIntraExclusive(driver,dataFile);
         SRTWIR_UnRegIntraExclusive unRegIntraExclusive=new SRTWIR_UnRegIntraExclusive(driver,dataFile);
         unRegIntraExclusive.UnRegExclusiveInvoiceReference(unRegFreeQty.intraStateExclusiveTCSGST_FreeQty_UnReg());
+//        unRegIntraExclusive.UnRegExclusiveInvoiceReference("SI36");
+
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-        appLogin.logout();
+//        appLogin.logout();
     }
 }

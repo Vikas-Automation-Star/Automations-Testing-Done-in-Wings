@@ -25,14 +25,14 @@ public class TestSalesReturnFQ_RegInterInclusive {
     public void salesReturnRegInterInclusive() throws IOException, ParseException, InterruptedException, AWTException {
         SalesInvoiceFQ_RegInterInclusive fq_regInterInclusive=new SalesInvoiceFQ_RegInterInclusive(driver,dataFile);
         SalesReturnFreeQuantity_RegInterInclusive regInterInclusive=new SalesReturnFreeQuantity_RegInterInclusive(driver,dataFile);
-//        regInterInclusive.regInterInclusiveSalesReturn(fq_regInterInclusive.interInclusiveTCSGST_FreeQty());
-        regInterInclusive.regInterInclusiveSalesReturn("si21");
+        regInterInclusive.regInterInclusiveSalesReturn(fq_regInterInclusive.interInclusiveTCSGST_FreeQty());
+//        regInterInclusive.regInterInclusiveSalesReturn("si21");
 
 
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 }

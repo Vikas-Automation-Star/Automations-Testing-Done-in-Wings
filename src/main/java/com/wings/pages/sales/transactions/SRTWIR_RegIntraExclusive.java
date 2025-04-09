@@ -33,22 +33,29 @@ public class SRTWIR_RegIntraExclusive extends Transaction {
         String oldVoucherId=oldTTransactionID();
         System.out.println("old Transaction ID: " + oldVoucherId);
         //general info selection
-        enterInput("xpath","//Edit[@Name='Branch *']",dataFile,"salesReturn","branch");
-        common.clickElement("xpath", "//Edit[@Name='Location *']");
+        enterInput("xpath", "//Edit[@Name='Branch *']", dataFile, "salesReturn", "branch");
+        enterInput("xpath", "//Edit[@Name='Location *']", dataFile, "salesReturn", "location");
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Branch *']"), common.getData(dataFile, "salesReturn", "branch"), "Branch is not validated");
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Location *']"), common.getData(dataFile, "salesReturn", "location"), "Location is not validated");
+
         common.findWebElement("xpath","//Edit[@Name='Sales Invoice No *']").sendKeys(salesInvoiceVoucher, Keys.TAB);
         Thread.sleep(1500);
         gstTransactionType("Intra State Sales Returns from Registered Dealers");
-        Thread.sleep(2500);
-        common.clickElement("xpath","//Edit[@Name='Sales Return A/c']");
-        common.clickElement("xpath","//Edit[@Name='TCS Trans Nature']");
+        Thread.sleep(1500);
+        enterInput("xpath","//Edit[@Name='Sales Return A/c Code']",dataFile,"salesReturn","salesReturnAccountCode");
+        Assert.assertEquals(common.getText("xpath","//Edit[@Name='Sales Return A/c']"),common.getData(dataFile,"salesReturn","salesReturnAccount"),"Sales Account Code is not validated");
+        generalInfoSliderHandle(250);
+        enterInput("xpath", "//Edit[@Name='TCS Trans Nature']", dataFile,"salesReturn", "tcsTransactionNature");
+        Assert.assertEquals(common.getText("xpath","//Edit[@Name='TCS Trans Nature']"),common.getData(dataFile,"salesReturn","tcsTransactionNature"),"TCS Nature is not validated");
         //items
+
         // Product codes to search for
         String productCode1 = common.getData(dataFile, "salesInvoice", "productCode0");
         String productCode2 = common.getData(dataFile, "salesInvoice", "productCode1");
         List<String> productCodes = Arrays.asList(productCode1, productCode2);
         List<WebElement> items = common.findWebElements("xpath", "//Pane[@Name='  F3 Items  ']/Pane/Pane/Pane/Table[@Name='Items']/*[contains(@Name,'Row')]");
         Set<String> processedCodes = new HashSet<>();
-        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 400, 0);
+//        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 400, 0);
         for (int i = 0; i < items.size(); i++) {
             WebElement productList = items.get(i);
             String value = productList.getAttribute("LegacyValue");
@@ -81,8 +88,8 @@ public class SRTWIR_RegIntraExclusive extends Transaction {
 //                        freeQuantity.click();
 //                        freeQuantity.sendKeys(String.valueOf(actualFreeQuant), Keys.TAB);
 //                    }
-                    processedCodes.add(productCode);  // Mark as processed
-                    break;  // Move to the next item after processing the current one
+                    processedCodes.add(productCode);
+                    break;
                 }
             }
             // Stop if both product codes have been processed
@@ -90,29 +97,6 @@ public class SRTWIR_RegIntraExclusive extends Transaction {
                 break;
             }
         }
-//        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 400, 0);
-//        String pendingQty=common.findWebElement("xpath","//Edit[@Name='Pending Quantity In SKU Row 0, Not sorted.']").getText();
-//        WebElement quantity=common.findWebElement("xpath","//Edit[@Name='Quantity Row 0, Not sorted.']");
-//        quantity.click();
-//        quantity.sendKeys(pendingQty);
-//        //enter full free quantity
-//        String pendingFreeQuantity=common.findWebElement("xpath","//Edit[@Name='Pending Free Quantity In SKU Row 0, Not sorted.']").getText();
-//        WebElement freeQuantity= common.findWebElement("xpath","//Edit[@Name='Free Quantity Row 0, Not sorted.']");
-//        freeQuantity.click();
-//        freeQuantity.sendKeys(pendingFreeQuantity,Keys.TAB);
-//        //enter partial quantity and free quantity
-//        String pendingQty1=common.findWebElement("xpath","//Edit[@Name='Pending Quantity In SKU Row 1, Not sorted.']").getText();
-//        double actualPendingQuantity=Double.parseDouble(pendingQty1)-1;
-//        WebElement quantity1=common.findWebElement("xpath","//Edit[@Name='Quantity Row 1, Not sorted.']");
-//        quantity1.click();
-//        quantity1.sendKeys(String.valueOf(actualPendingQuantity),Keys.TAB);
-//        //enter partial free quantity
-//        String pendingFreeQuantity1=common.findWebElement("xpath","//Edit[@Name='Pending Free Quantity In SKU Row 1, Not sorted.']").getText();
-//        double actualFreeQuant=Double.parseDouble(pendingFreeQuantity1)-1;
-//        WebElement freeQuantity1= common.findWebElement("xpath","//Edit[@Name='Free Quantity Row 1, Not sorted.']");
-//        freeQuantity1.click();
-//        freeQuantity1.sendKeys(String.valueOf(actualFreeQuant),Keys.TAB);
-
         common.deleteInvalidRows();
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 700, 0);
         double netValue=Double.parseDouble(common.findWebElement("xpath","//Edit[@AutomationId='NetAmount']").getText().replace(",",""));

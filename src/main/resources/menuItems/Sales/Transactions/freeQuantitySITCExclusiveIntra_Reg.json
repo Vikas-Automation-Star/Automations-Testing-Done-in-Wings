@@ -2,16 +2,19 @@
   {
     "dataset": "salesInvoice",
     "data": {
-      "title": "Sales Invoices",
       "branch": "AT_Branch 1_Reg",
       "partyCode": "CRI2",
+      "location": "AT_Branch 1_Location 1",
+      "partyName": "At_Cus_Reg_Intra",
+      "tcsTransactionNature": "AT_TCS Transaction Nature 1",
+      "executive": "AT_Executive 2",
       "salesAccountCode": "SA1",
       "priceList": "AT_Exclusive Sales Price List 1",
       "invoice": "Regular",
       "HSNCode": "AT_HSN Code 2",
       "productCount": 3,
       "enableFreeQuantity": "true",
-              "c": "COMPLETEDB9FEU0F9IFJ",
+
       "productType0": "general",
       "quantity0": 5,
       "freeQuantity0": 2,
@@ -33,6 +36,47 @@
 
       "numOfSerialProducts": 6,
       "numOfSerialProductsFree": 2,
+
+      "mrpAmount0": "2,500.000",
+      "mrpAmount1":"5,000.000",
+      "mrpAmount2": "2,000.000",
+
+      "grossAmount0": "1,250.000",
+      "grossAmount1": "2,500.000",
+      "grossAmount2": "1,000.000",
+
+      "voucherDiscAmount0": "12.500",
+      "voucherDiscAmount1": "25.000",
+      "voucherDiscAmount2": "10.000",
+
+      "partyDiscAmount0": "25.000",
+      "partyDiscAmount1": "50.000",
+      "partyDiscAmount2": "20.000",
+
+      "taxableValue0": "1,212.500",
+      "taxableValue1": "2,425.000",
+      "taxableValue2": "970.000",
+
+      "cgstAmount0": "109.125",
+      "cgstAmount1": "218.250",
+      "cgstAmount2": "87.300",
+
+      "sgstAmount0": "109.125",
+      "sgstAmount1": "218.250",
+      "sgstAmount2": "87.300",
+
+      "cessAmount0": "121.250",
+      "cessAmount1": "242.500",
+      "cessAmount2": "97.000",
+
+      "expectedGStExclusive0": "339.500",
+      "expectedGStExclusive1": "679.000",
+      "expectedGStExclusive2": "271.600",
+
+      "netAmount0": "1,552.000",
+      "netAmount1": "3,104.000",
+      "netAmount2": "1,241.600",
+
       "column3": "AT_Branch 1_Reg",
       "column4": "INR",
       "column5": "1.00",
@@ -67,6 +111,10 @@
     "dataset": "salesReturn",
     "data": {
       "branch": "AT_Branch 1_Reg",
+      "location": "AT_Branch 1_Location 1",
+      "salesReturnAccountCode": "SRA1",
+      "salesReturnAccount": "AT_Sales Return  Acc 1",
+      "tcsTransactionNature": "AT_TCS Transaction Nature 1",
       "partyCode": "CRI2",
       "salesAccountCode": "SA1",
       "column3": "AT_Branch 1_Reg",

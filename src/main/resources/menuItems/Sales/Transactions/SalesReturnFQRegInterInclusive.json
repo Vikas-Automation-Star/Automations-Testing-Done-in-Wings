@@ -2,11 +2,11 @@
   {
     "dataset": "salesInvoice",
     "data": {
-      "title": "Sales Invoices",
       "branch": "AT_Branch 1_Reg",
       "partyCode": "CRI1",
       "salesAccountCode": "SA1",
       "priceList": "AT_Inclusive Sales Price List 1",
+      "tcsTransactionNature": "AT_TCS Transaction Nature 1",
       "invoice": "Regular",
       "HSNCode": "AT_HSN Code 2",
       "productCount": 3,
@@ -70,12 +70,55 @@
     "dataset": "salesReturn",
     "data": {
       "branch": "AT_Branch 1_Reg",
+      "location": "AT_Branch 1_Location 1",
       "partyCode": "CRI1",
+      "partyName": "AT_Cus_Reg_Inter",
       "salesReturnAccountCode": "SRA1",
+      "tcsTransactionNature": "AT_TCS Transaction Nature 1",
+      "priceList": "AT_Inclusive Sales Price List 1",
+      "batchPolicy": "AT-Purchase Batch Policy_CIDNE",
+      "executive": "AT_Executive 2",
+
+      "mrpAmount0": "3,750.000",
+      "mrpAmount1":"5,000.000",
+      "mrpAmount2": "5,000.000",
+
+      "grossAmount0": "2,500.000",
+      "grossAmount1": "2,500.000",
+      "grossAmount2": "3,000.000",
+
+      "voucherDiscAmount0": "25.000",
+      "voucherDiscAmount1": "25.000",
+      "voucherDiscAmount2": "30.000",
+
+      "partyDiscAmount0": "50.000",
+      "partyDiscAmount1": "50.000",
+      "partyDiscAmount2": "60.000",
+
+      "taxableValue0": "1,894.531",
+      "taxableValue1": "1,894.531",
+      "taxableValue2": "2,273.438",
+
+      "igstAmount0": "341.016",
+      "igstAmount1": "341.016",
+      "igstAmount2": "409.219",
+
+      "cessAmount0": "189.453",
+      "cessAmount1": "189.453",
+      "cessAmount2": "227.344",
+
+      "expectedGStInclusive0": "530.469",
+      "expectedGStInclusive1": "530.469",
+      "expectedGStInclusive2": "636.563",
+
+      "netAmount0": "2,425.000",
+      "netAmount1": "2,425.000",
+      "netAmount2": "2,910.000",
+
       "column3": "AT_Branch 1_Reg",
       "column4": "INR",
       "column5": "1.00",
-      "column6": "AT_Cus_Reg_Inter",
+      "column6": "AT_Cus_UnReg_Inter",
       "column7": "15.00",
       "column8": "6.00",
       "column9": "8,000.00",

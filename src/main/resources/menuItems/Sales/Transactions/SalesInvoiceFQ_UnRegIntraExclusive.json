@@ -106,40 +106,5 @@
       "column29": "6,487.00",
       "column30": "AT_Executive 2"
     }
-  },
-  {
-    "dataset": "salesReturn",
-    "data": {
-      "branch": "AT_Branch 1_Reg",
-      "location": "AT_Branch 1_Location 1",
-      "salesReturnAccountCode": "SRA1",
-      "salesReturnAccount": "AT_Sales Return  Acc 1",
-      "tcsTransactionNature": "AT_TCS Transaction Nature 2",
-
-      "salesAccountCode": "SA1",
-      "column3": "AT_Branch 1_Reg",
-      "column4": "INR",
-      "column5": "1.00",
-      "column6": "AT_Cus_UnReg_Intra",
-      "column7": "5.00",
-      "column8": "2.00",
-      "column9": "2,500.00",
-      "column10": "25.00",
-      "column11": "2,475.00",
-      "column12": "222.75",
-      "column13": "222.75",
-      "column14": "0.00",
-      "column15": "247.50",
-      "column16": "693.00",
-      "column17": "3,168.00",
-      "column18": "3,168.00",
-      "column19": "0.00",
-      "column20": "0.00",
-      "column21": "0.00",
-      "column22": "316.80",
-      "column23": "0.20",
-      "column24": "3,485.00",
-      "column25": "3,485.00"
-    }
   }
 ]
