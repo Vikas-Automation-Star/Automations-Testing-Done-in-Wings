@@ -111,7 +111,7 @@ public class SalesInvoiceFQ_UnRegInterInclusive extends Transaction {
         }else if (common.getData(dataFile,"salesInvoice", "productType" + i).equals("serial")) {
             serialNumberProduct(dataFile, "salesInvoice","productCode" + i, i);
         }
-
+        Thread.sleep(2500);
         //validate
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 650, 0);
         //MRP and gross Amount

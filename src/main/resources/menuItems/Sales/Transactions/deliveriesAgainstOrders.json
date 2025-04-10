@@ -1,9 +1,0 @@
-{
-  "close": "Deliveries against Orders",
-  "branch": "AT_Branch 1_Reg",
-  "location": "AT_Branch 1_Location 1",
-  "transaction": "INR",
-  "Quantity": 10,
-  "partyCode": "AT_Cus_Reg_Inter",
-  "gstType": "Registered"
-}

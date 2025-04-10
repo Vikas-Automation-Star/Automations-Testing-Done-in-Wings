@@ -5,7 +5,9 @@
       "branch": "AT_Branch 1_Reg",
       "location": "AT_Branch 1_Location 2",
       "partyCode": "CRI1",
+      "partyName": "AT_Cus_Reg_Inter",
       "priceList": "AT_Inclusive Sales Price List 1",
+      "executive": "AT_Executive 2",
       "HSNCode": "AT_HSN Code 2",
       "productCount": 3,
       "transType": "Sales Order",
@@ -31,6 +33,42 @@
       "freeQuantity2": 1,
       "voucherDiscount2": 1,
       "partyDiscount2": 2,
+
+      "mrpAmount0": "37,500.000",
+      "mrpAmount1":"50,000.000",
+      "mrpAmount2": "50,000.000",
+
+      "grossAmount0": "25,000.000",
+      "grossAmount1": "25,000.000",
+      "grossAmount2": "30,000.000",
+
+      "voucherDiscAmount0": "250.000",
+      "voucherDiscAmount1": "250.000",
+      "voucherDiscAmount2": "300.000",
+
+      "partyDiscAmount0": "500.000",
+      "partyDiscAmount1": "500.000",
+      "partyDiscAmount2": "600.000",
+
+      "taxableValue0": "18,945.312",
+      "taxableValue1": "18,945.312",
+      "taxableValue2": "22,734.375",
+
+      "igstAmount0": "3,410.156",
+      "igstAmount1": "3,410.156",
+      "igstAmount2": "4,092.188",
+
+      "cessAmount0": "1,894.531",
+      "cessAmount1": "1,894.531",
+      "cessAmount2": "2,273.438",
+
+      "expectedGStInclusive0": "5,304.687",
+      "expectedGStInclusive1": "5,304.687",
+      "expectedGStInclusive2": "6,365.626",
+
+      "netAmount0": "24,250.000",
+      "netAmount1": "24,250.000",
+      "netAmount2": "29,100.000",
 
       "column3": "AT_Branch 1_Reg",
       "column4": "INR",

@@ -1,5 +1,5 @@
 package menuItems.sales.transactions;
-//15mn 31sec
+
 import com.wings.pages.AppLogin;
 import com.wings.pages.sales.transactions.SalesOrder_UnRegInterInclusive;
 import io.appium.java_client.windows.WindowsDriver;
