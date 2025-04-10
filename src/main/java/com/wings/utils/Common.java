@@ -105,9 +105,9 @@ public class Common {
         element.sendKeys(inputText, Keys.TAB);
     }
 
-    public void getText(String locatorType, String locator) {
+    public String getText(String locatorType, String locator) {
         WebElement element = findWebElement(locatorType, locator);
-        element.getText();
+        return element.getText();
     }
 
     public void inputAndVerify(String locatorType, String locator, String inputText) {
@@ -247,10 +247,11 @@ public class Common {
     }
 
     public  static  char getRandomChar() {
-        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?/~";
         Random random = new Random();
         return chars.charAt(random.nextInt(chars.length()));
     }
+
     public void screnShot() {
         try {
             TakesScreenshot screenshot = (TakesScreenshot) driver;
