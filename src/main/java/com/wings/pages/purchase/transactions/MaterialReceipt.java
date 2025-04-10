@@ -3,7 +3,7 @@ package com.wings.pages.purchase.transactions;
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
-import io.qameta.allure.Allure;
+
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
@@ -60,7 +60,5 @@ public class MaterialReceipt extends Transaction {
         newTransaction();
         closeTransaction("Material Receipts");
         Thread.sleep(2000);
-        Allure.step("MaterialReceipts Transaction");
-
     }
 }

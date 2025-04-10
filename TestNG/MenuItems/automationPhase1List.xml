@@ -5,29 +5,81 @@
 <!--        <listener class-name="util.AnnotationTransformer"/>-->
     </listeners>
 
+    <test name="DownloadLatestBuildAndResource" description="description for build and resource" testID="1">
+        <classes>
+            <class name="downloadLatestBuild_Resource"></class>
+        </classes>
+    </test>
 
     <test name="CompanyCreationAlongWithConfigurations" description="description for BranchMaster" testID="1">
         <classes>
-            <class name="util.CompanyInitilizatonGSTconfig"></class>
-        </classes>
-    </test>
-
-    <test name="MastersAndPropertiesImporting" description="importing Branches,Customers,Suppliers,Products,BankAccount,CashAccount,HSN Codes" testID="2">
-        <classes>
-            <class name="phase_1_TestCases.ImportMastersAndProperties"></class>
-        </classes>
-    </test>
-
-    <test name="MastersAndNodesCreationAndNavigation" description="Creating Masters,Nodes and Moving " testID="3">
-        <classes>
-            <class name="phase_1_TestCases.MastersConfiguration"></class>
-        </classes>
-    </test>
-
-    <test name="VoucherTypesAndSeries" description="VoucherTypes,Manual VoucherTypes,Multiple VoucherTypes" testID="3">
-        <classes>
-            <class name="phase_1_TestCases.VoucherTypesAndSeries"></class>
+            <class name="phase_1_TestCases.CompanyInitilizatonGSTconfig"></class>
         </classes>
     </test>
 
 </suite>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!--<test name="MastersAndPropertiesImporting" description="Branches,Customers,Suppliers,Products,BankAccount,CashAccount,HSN Codes" testID="3">-->
+        <!--<classes>-->
+        <!--    <class name="phase_1_TestCases.ImportMastersAndProperties"></class>-->
+        <!--</classes>-->
+        <!--</test>-->
+
+        <!--    <test name="MastersAndNodesCreationAndNavigation" description="Creating Masters,Nodes and Moving " testID="2">-->
+        <!--    <classes>-->
+        <!--        <class name="phase_1_TestCases.MastersConfiguration"></class>-->
+        <!--    </classes>-->
+
+        <!--    <test name="VoucherTypesAndSeries" description="VoucherTypes,Manual VoucherTypes,Multiple VoucherTypes" testID="2">-->
+        <!--        <classes>-->
+        <!--            <class name="phase_1_TestCases.VoucherTypesAndSeries"></class>-->
+        <!--        </classes>-->
+        <!--    </test>-->
+
+
+        <!--<test name="ControllingFeatureManagements" description="Menus ControllingFeatureManagements Validation" testID="1">-->
+        <!--<classes>-->
+        <!--    <class name="phase_1_TestCases.ControllingFeatureManagementFeatures"></class>-->
+        <!--</classes>-->
+        <!--</test>-->
+
+        <!--</test>-->

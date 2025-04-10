@@ -3,7 +3,6 @@ package com.wings.pages.finance.reports.Balances;
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
-import io.qameta.allure.Allure;
 
 import java.awt.*;
 
@@ -27,6 +26,5 @@ public class SupplierBalances extends Transaction {
 //        Thread.sleep(1500);
 //        super.bulkVerifyReport("ILT 1");
         closeReport("Supplier Balances");
-        Allure.step("Verify Supplier balance report");
     }
 }

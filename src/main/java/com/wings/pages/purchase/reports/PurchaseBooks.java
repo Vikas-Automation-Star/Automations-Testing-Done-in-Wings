@@ -3,7 +3,7 @@ package com.wings.pages.purchase.reports;
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
-import io.qameta.allure.Allure;
+
 
 import java.awt.*;
 
@@ -25,7 +25,7 @@ public class PurchaseBooks extends Transaction {
         common.clickElement("xpath", "//Button[@Name='Submit']");
         super.bulkVerifyReport("");
         super.closeReport("Purchase Book");
-        Allure.step("Validating PurchaseBook Report");
+
     }
 
 }

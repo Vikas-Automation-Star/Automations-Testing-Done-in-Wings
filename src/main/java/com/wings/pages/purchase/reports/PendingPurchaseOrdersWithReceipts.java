@@ -3,7 +3,7 @@ package com.wings.pages.purchase.reports;
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
-import io.qameta.allure.Allure;
+
 
 
 public class PendingPurchaseOrdersWithReceipts extends Transaction {
@@ -24,6 +24,5 @@ public class PendingPurchaseOrdersWithReceipts extends Transaction {
         common.clickElement("xpath", "//Button[@Name='Submit']");
         super.bulkVerifyReport("");
         super.closeReport("Pending Purchase Orders with Receipts");
-        Allure.step("Validating PendingPurchaseOrdersWithReceipts Report");
     }
 }

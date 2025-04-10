@@ -1,6 +1,7 @@
 package menuItems.purchase.transactions;
 
 import com.wings.pages.AppLogin;
+import com.wings.pages.purchase.transactions.UnReg_MRAO_ExclusiveGST;
 import com.wings.pages.purchase.transactions.UnReg_PO_GSTExclusive;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
@@ -8,6 +9,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.awt.*;
 import java.io.IOException;
 
 public class UnReg_PO_GSTExclusivePrice {
@@ -22,9 +24,11 @@ public class UnReg_PO_GSTExclusivePrice {
     }
 
     @Test
-    public void UnReg_purchaseOrdersGST_ExclusivePrice() throws IOException, ParseException, InterruptedException, NoSuchMethodException {
+    public void UnReg_MRAO_ExclusivePrice() throws IOException, ParseException, InterruptedException, NoSuchMethodException, AWTException {
         UnReg_PO_GSTExclusive orders=new UnReg_PO_GSTExclusive(driver,file);
         orders.unReg_PO_GSTExclusive();
+        UnReg_MRAO_ExclusiveGST receipts=new UnReg_MRAO_ExclusiveGST(driver,file);
+        receipts.unReg_MRAO_ExclusiveGST();
     }
 
     @AfterTest

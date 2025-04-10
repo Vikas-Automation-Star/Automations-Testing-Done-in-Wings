@@ -21,7 +21,6 @@ public class Reg_PO_GSTInclusive extends Transaction { WindowsDriver driver;
     }
 
     public void unReg_PO_GSTInclusive() throws InterruptedException, IOException, ParseException {
-        Time.currentDateAndTime();
         navigateToMastersWhen3Steps("Purchase", "Orders", "Purchase Orders");
         String oldVoucherID = oldTTransactionID();
         System.out.println("oldID: " + oldVoucherID);
@@ -132,7 +131,6 @@ public class Reg_PO_GSTInclusive extends Transaction { WindowsDriver driver;
             throw new IllegalArgumentException("Invalid GST Trans Type: " + gstTransType);
         }
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 200, 0);
-        Time.currentDateAndTime();
     }
 
 }

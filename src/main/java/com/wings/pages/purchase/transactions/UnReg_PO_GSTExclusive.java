@@ -10,7 +10,6 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import java.io.IOException;
-import java.text.DecimalFormat;
 
 public class UnReg_PO_GSTExclusive extends Transaction {
     WindowsDriver driver;
@@ -121,8 +120,6 @@ public class UnReg_PO_GSTExclusive extends Transaction {
         WebElement cess = common.findWebElement("xpath", "//Edit[@Name='CESS Product Category Row " + i + ", Not sorted.']");
         cessValue = StringUtil.extractNumber(cess.getText());
         System.out.println("cess percentage:- " + cessValue);
-
-        DecimalFormat decimalFormat = new DecimalFormat("#.###");
 
         double totalValue = gstValue + cessValue;
         System.out.println("total:-" + totalValue);

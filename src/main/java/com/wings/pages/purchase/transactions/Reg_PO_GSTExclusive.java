@@ -2,6 +2,7 @@ package com.wings.pages.purchase.transactions;
 
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import com.wings.utils.FileUtil;
 import com.wings.utils.StringUtil;
 import com.wings.utils.Time;
 import io.appium.java_client.windows.WindowsDriver;
@@ -11,6 +12,7 @@ import org.testng.Assert;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.time.Instant;
 
 public class Reg_PO_GSTExclusive extends Transaction {
     WindowsDriver driver;
@@ -26,7 +28,7 @@ public class Reg_PO_GSTExclusive extends Transaction {
     }
 
     public void reg_PV_GSTExclusive() throws InterruptedException, IOException, ParseException {
-        Time.currentDateAndTime();
+        long startTime=Instant.now().getEpochSecond();
         navigateToMastersWhen3Steps("Purchase","Orders","Purchase Orders");
         String oldVoucherID =oldTTransactionID();
         System.out.println("oldID: "+ oldVoucherID);
@@ -71,10 +73,11 @@ public class Reg_PO_GSTExclusive extends Transaction {
         Thread.sleep(1500);
         verifyReport(newVoucherID,dataFile,"Purchase Order");
 //        deleteSingleTransaction(newVoucherID);
-
+        long endTime=Instant.now().getEpochSecond();
+        System.out.println((endTime-startTime)/100);
+//        FileUtil.writeTimeLog("MRAO_ExclusiveGST",(endTime-startTime)/100);
     }
     public void addProduct(int i) throws IOException, ParseException {
-        Time.currentDateAndTime();
         if (common.getData(dataFile,"Purchase Order", "productType" + i).equals("general")) {
             generalProduct_New(dataFile, "Purchase Order", "productCode"+ i,"quantity" + i,"freeQuantity" +i, i);
         } else if (common.getData(dataFile,"Purchase Order", "productType" + i).equals("multiBatch")) {
@@ -174,7 +177,7 @@ public class Reg_PO_GSTExclusive extends Transaction {
         Assert.assertEquals(calculatedNet, netAmount, "check calculations once");
         System.out.println("Net Amount:- " + netAmount);
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 200, 0);
-        Time.currentDateAndTime();
+
     }
 
 }

@@ -2,6 +2,8 @@ package com.wings.pages.purchase.transactions;
 
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import com.wings.utils.FileUtil;
+import com.wings.utils.Time;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.Keys;
@@ -16,19 +18,19 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class MRAO_ExclusiveGST extends Transaction {
+public class Reg_MRAO_ExclusiveGST extends Transaction {
     WindowsDriver driver;
     Common common;
     String dataFile;
 
-    public MRAO_ExclusiveGST(WindowsDriver driver, String file) {
+    public Reg_MRAO_ExclusiveGST(WindowsDriver driver, String file) {
         super(driver);
         this.driver = driver;
         common = new Common(this.driver);
         dataFile = file;
     }
 
-    public void MRAO_ExclusiveGST() throws InterruptedException, IOException, ParseException, AWTException {
+    public void MRAO_ExclusiveGST() throws InterruptedException, IOException, ParseException {
         navigateToMastersWhen3Steps(common.getData(dataFile,"Material Receipts","menu"),common.getData(dataFile,"Material Receipts","menuItem"), common.getData(dataFile,"Material Receipts","subMenuItem"));
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
@@ -39,6 +41,8 @@ public class MRAO_ExclusiveGST extends Transaction {
         enterInput("xpath","//Edit[@Name='Party Code']",dataFile,"Purchase Order","partyCode");
         gstTransactionType("Intra State Purchase from Registered Dealers");
         enterInput("xpath","//Edit[@Name='Batch Policy']",dataFile,"Purchase Order","batchPolicy");
+//        common.clickElement("xpath","//*//CheckBox[@Name='Select Row 0']");
+//        common.clickElement("xpath","//Button[@Name='Ok']");
 
         // Product codes to search for
         String productCode1 = common.getData(dataFile, "Purchase Order", "productCode0");
@@ -103,6 +107,6 @@ public class MRAO_ExclusiveGST extends Transaction {
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
         verifyReport(newVoucherID,dataFile,"Material Receipts");
-//        deleteSingleTransaction(newVoucherID);
+        deleteTransactionBasedOnYear(newVoucherID);
     }
 }

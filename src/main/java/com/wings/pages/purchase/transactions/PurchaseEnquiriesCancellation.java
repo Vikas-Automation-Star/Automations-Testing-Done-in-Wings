@@ -3,7 +3,6 @@ package com.wings.pages.purchase.transactions;
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
-import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
@@ -51,7 +50,6 @@ public class PurchaseEnquiriesCancellation extends Transaction {
         super.newTransaction();
         super.closeTransaction("Purchase Enquiries Cancellation");
         Thread.sleep(2000);
-        Allure.step("PurchaseEnquiriescancellation Transation");
 
     }
 }

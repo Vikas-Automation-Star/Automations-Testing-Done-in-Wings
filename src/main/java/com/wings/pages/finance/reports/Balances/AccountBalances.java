@@ -3,7 +3,6 @@ package com.wings.pages.finance.reports.Balances;
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
-import io.qameta.allure.Allure;
 
 import java.awt.*;
 
@@ -26,7 +25,6 @@ public class AccountBalances extends Transaction {
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
 //        Thread.sleep(1500);
 //        super.bulkVerifyReport("ILT 1");
-        Allure.step("Validating account balances report");
         closeReport("Account Balances");
     }
 }

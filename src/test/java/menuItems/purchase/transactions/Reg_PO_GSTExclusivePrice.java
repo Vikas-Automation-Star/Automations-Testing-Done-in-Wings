@@ -1,7 +1,7 @@
 package menuItems.purchase.transactions;
 
 import com.wings.pages.AppLogin;
-import com.wings.pages.purchase.transactions.MRAO_ExclusiveGST;
+import com.wings.pages.purchase.transactions.Reg_MRAO_ExclusiveGST;
 import com.wings.pages.purchase.transactions.Reg_PO_GSTExclusive;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
@@ -24,10 +24,10 @@ public class Reg_PO_GSTExclusivePrice {
     }
 
     @Test
-    public void Reg_purchaseOrders_GST_Exclusive() throws IOException, ParseException, InterruptedException, NoSuchMethodException, AWTException {
+    public void Reg_purchaseOrders_GST_ExclusivePrice() throws IOException, ParseException, InterruptedException, NoSuchMethodException, AWTException {
         Reg_PO_GSTExclusive pr = new Reg_PO_GSTExclusive(driver, file);
         pr.reg_PV_GSTExclusive();
-        MRAO_ExclusiveGST mrao=new MRAO_ExclusiveGST(driver,file);
+        Reg_MRAO_ExclusiveGST mrao=new Reg_MRAO_ExclusiveGST(driver,file);
         mrao.MRAO_ExclusiveGST();
     }
 

@@ -3,7 +3,6 @@ package com.wings.pages.purchase.reports;
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
-import io.qameta.allure.Allure;
 
 import java.awt.*;
 
@@ -25,7 +24,6 @@ public class PurchaseOrderAgainstQuotations extends Transaction {
         common.clickElement("xpath", "//Button[@Name='Submit']");
         super.bulkVerifyReport("");
         super.closeReport("Purchase Orders against Quotations");
-        Allure.step("Validating PurchaseOrdersAgainstQuotations Report");
     }
 }
 

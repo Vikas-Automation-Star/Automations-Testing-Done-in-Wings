@@ -22,7 +22,6 @@ public class UnReg_PO_GSTInclusive extends Transaction {
     }
 
     public void unReg_PO_GSTInclusive() throws InterruptedException, IOException, ParseException {
-        Time.currentDateAndTime();
         navigateToMastersWhen3Steps("Purchase", "Orders", "Purchase Orders");
         String oldVoucherID = oldTTransactionID();
         System.out.println("oldID: " + oldVoucherID);
@@ -61,7 +60,6 @@ public class UnReg_PO_GSTInclusive extends Transaction {
     }
 
     public void addProduct(int i) throws IOException, ParseException {
-        Time.currentDateAndTime();
         if (common.getData(dataFile, "Purchase Order", "productType" + i).equals("general")) {
             generalProduct_New(dataFile, "Purchase Order", "productCode" + i, "quantity" + i, "freeQuantity" + i, i);
         } else if (common.getData(dataFile, "Purchase Order", "productType" + i).equals("multiBatch")) {
@@ -98,6 +96,5 @@ public class UnReg_PO_GSTInclusive extends Transaction {
             throw new IllegalArgumentException("Invalid GST Trans Type: " + gstTransType);
         }
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 200, 0);
-        Time.currentDateAndTime();
     }
 }

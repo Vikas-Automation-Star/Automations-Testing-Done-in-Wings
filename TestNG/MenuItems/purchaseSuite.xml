@@ -12,7 +12,7 @@
         </classes>
     </test>
 
-    <test name="PO 2" description="PurchaseOrder Reg-To-Reg Inter State Inclusive GST" testID="2">
+    <test name="PO 2" description="PO->MRAO Reg-To-Reg Inter State Inclusive GST" testID="2">
         <classes>
             <class name="menuItems.purchase.transactions.Reg_PO_GSTInclusivePrice"/>
         </classes>
@@ -50,58 +50,64 @@
     <!--        </classes>-->
     <!--    </test>-->
 
-    <test name="PV 5" description="PurchaseVoucher Reg-To-UNReg Inter State inclusive GST-TCS Including FreeQuantity" testID="8">
+    <test name="PV 5" description="PurchaseVoucher Reg-To-UNReg Inter State inclusive GST-TCS Including FreeQuantity" testID="5">
         <classes>
             <class name="menuItems.purchase.transactions.Reg_To_UnReg_PV_InterState_GST_TCS_InclusivePrice"/>
         </classes>
     </test>
 
-    <!--    <test name="PV 9" description="PurchaseVoucher Reg-To-Reg Intra State Exclusive RCM-GST-TCS Including FreeQuantity" testID="9">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.Reg_PV_IntraState_RCMGST_TCS_ExclusivePrice"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <!--    &lt;!&ndash;    <test name="PV 9" description="PurchaseVoucher Reg-To-Reg Intra State Exclusive RCM-GST-TCS Including FreeQuantity" testID="9">&ndash;&gt;-->
+    <!--    &lt;!&ndash;        <classes>&ndash;&gt;-->
+    <!--    &lt;!&ndash;            <class name="menuItems.purchase.transactions.Reg_PV_IntraState_RCMGST_TCS_ExclusivePrice"/>&ndash;&gt;-->
+    <!--    &lt;!&ndash;        </classes>&ndash;&gt;-->
+    <!--    &lt;!&ndash;    </test>&ndash;&gt;-->
 
-    <!--    <test name="PV 10" description="PurchaseVoucher Reg-To-Reg Inter State inclusive RCM-GST-TCS Including FreeQuantity" testID="10">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.Reg_PV_InterState_RCMGST_TCS_InclusivePrice"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <!--    &lt;!&ndash;    <test name="PV 10" description="PurchaseVoucher Reg-To-Reg Inter State inclusive RCM-GST-TCS Including FreeQuantity" testID="10">&ndash;&gt;-->
+    <!--    &lt;!&ndash;        <classes>&ndash;&gt;-->
+    <!--    &lt;!&ndash;            <class name="menuItems.purchase.transactions.Reg_PV_InterState_RCMGST_TCS_InclusivePrice"/>&ndash;&gt;-->
+    <!--    &lt;!&ndash;        </classes>&ndash;&gt;-->
+    <!--    &lt;!&ndash;    </test>&ndash;&gt;-->
 
 
     <!-- purchase return with invoice reference -->
 
-    <test name="PRWIR 6" description="PV->PRWIR Reg-To-Reg Intra State Exclusive GST-TCS Including FreeQuantity" testID="11">
+    <test name="PRWIR 6" description="PV->PRWIR Reg-To-Reg Intra State Exclusive GST-TCS Including FreeQuantity" testID="6">
         <classes>
             <class name="menuItems.purchase.transactions.Reg_To_Reg_IntraState_PRWI_GST_TCS_ExclusivePrice"/>
         </classes>
     </test>
 
-    <test name="PRWIR 7" description="PV->PRWIR Reg-To-Reg Inter State Inclusive GST-TCS Including FreeQuantity" testID="12">
+    <test name="PRWIR 7" description="PV->PRWIR Reg-To-Reg Inter State Inclusive GST-TCS Including FreeQuantity" testID="7">
         <classes>
             <class name="menuItems.purchase.transactions.Reg_To_Reg_InterState_PRWI_GST_TCS_InclusivePrice"/>
         </classes>
     </test>
 
-    <test name="PRWIR 8" description="PV->PRWIR Reg-To-UNReg Intra State Exclusive GST-TCS Including FreeQuantity" testID="13">
+    <test name="PRWIR 8" description="PV->PRWIR Reg-To-UNReg Intra State Exclusive GST-TCS Including FreeQuantity" testID="8">
         <classes>
             <class name="menuItems.purchase.transactions.Reg_To_UnReg_IntraState_PRWI_GST_TCS_ExclusivePrice"/>
         </classes>
     </test>
 
-    <!-- purchase return with invoice reference RCM -->
+    <!--purchase return with invoice reference RCM-->
 
-    <test name="RCM PRWIR 9" description="PV->PRWIR Reg-To-Reg Intra State Exclusive RCMGST-TCS Including FreeQuantity" testID="14">
+    <test name="RCM PRWIR 9" description="PV->PRWIR Reg-To-Reg Intra State Exclusive RCMGST-TCS Including FreeQuantity" testID="9">
         <classes>
             <class name="menuItems.purchase.transactions.Reg_PV_IntraState_RCMGST_TCS_ExclusivePrice"/>
         </classes>
     </test>
 
-    <test name="RCM PRWIR 10" description="PV->PRWIR Reg-To-Reg Inter State Inclusive RCMGST-TCS Including FreeQuantity" testID="15">
+    <test name="RCM PRWIR 10" description="PV->PRWIR Reg-To-Reg Inter State Inclusive RCMGST-TCS Including FreeQuantity" testID="10">
         <classes>
             <class name="menuItems.purchase.transactions.Reg_PV_InterState_RCMGST_TCS_InclusivePrice"/>
         </classes>
     </test>
+
+
+
+
+
+
 
 
 
