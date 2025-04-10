@@ -6,6 +6,7 @@ import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -1579,6 +1580,55 @@ public abstract class Transaction {
         }
         System.out.println("Transaction is Deleted Successfully");
     }
+
+    //overloaded deleted Transaction method
+    public void deleteTransactionBasedOnYear(String voucherID) throws InterruptedException {
+        List<WebElement> elementList = common.findWebElements("xpath", "//Table/*[@Name='Data Panel']/ListItem[contains(@Name,'Row')]");
+        for (WebElement i : elementList) {
+            if (i.getText().contains(voucherID)) {
+                WebElement element = i.findElement(By.xpath("//DataItem[contains(@Name,'Voucher No row')]"));
+                element.click();
+                Actions actions = new Actions(driver);
+                actions.contextClick(element).perform();
+                break;
+            }
+        }
+        Thread.sleep(1000);
+        common.clickElement("xpath", "//MenuItem[@Name='View Transaction']");
+        Thread.sleep(5000);
+
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        try {
+            WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//Window[@Name='View Transaction")));
+
+            if (element.isDisplayed()) {
+                System.out.println("Element is visible.");
+            } else {
+                System.out.println("Element is present but not visible.");
+            }
+        } catch (Exception e) {
+            System.out.println("Element did not appear within the time limit.");
+        }
+
+        common.clickElement("xpath", "//Button[@Name='Tools']");
+        common.clickElement("xpath", "//Button[@Name='Delete']");
+        common.clickElement("xpath", "//Button[@Name='Yes']");
+        common.clickElement("xpath", "//Button[@Name='OK']");
+        Thread.sleep(1500);
+        common.clickElement("xpath", "//Window[@Name='Close']/Button[@Name='Yes']");
+        //validate
+        common.clickElement("xpath", "//ToolBar/Button[@Name='Refresh']");
+        Thread.sleep(1500);
+        List<WebElement> voucherList = common.findWebElements("xpath", "//Table/*[@Name='Data Panel']/ListItem[contains(@Name,'Row')]");
+        for (WebElement i : voucherList) {
+            if (i.getText().contains(voucherID)) {
+                Assert.fail("New Transaction isn't deleted");
+            }
+        }
+        System.out.println("Transaction is Deleted Successfully");
+    }
+
+
 
     public void enableCheckboxSelection(String locatorXpath) {
         WebElement element = driver.findElementByXPath(locatorXpath);
