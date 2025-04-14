@@ -1,8 +1,7 @@
 package menuItems.purchase.transactions;
 
 import com.wings.pages.AppLogin;
-import com.wings.pages.purchase.transactions.UnReg_MRAO_ExclusiveGST;
-import com.wings.pages.purchase.transactions.UnReg_PO_GSTExclusive;
+import com.wings.pages.purchase.transactions.Reg_Intra_PO_GSTExclusive;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
@@ -12,10 +11,10 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.io.IOException;
 
-public class UnReg_PO_GSTExclusivePrice {
+public class Reg_Intra_PO_GSTExclusivePrice {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String file = "./src/main/resources/menuItems/purchase/transactions/UnReg_PO_GSTExclusive.json";
+    String file = "./src/main/resources/MenuItems/purchase/transactions/Reg_Intra_PO_GSTExclusive.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
@@ -24,11 +23,9 @@ public class UnReg_PO_GSTExclusivePrice {
     }
 
     @Test
-    public void UnReg_MRAO_ExclusivePrice() throws IOException, ParseException, InterruptedException, NoSuchMethodException, AWTException {
-        UnReg_PO_GSTExclusive orders=new UnReg_PO_GSTExclusive(driver,file);
-        orders.unReg_PO_GSTExclusive();
-        UnReg_MRAO_ExclusiveGST receipts=new UnReg_MRAO_ExclusiveGST(driver,file);
-        receipts.unReg_MRAO_ExclusiveGST();
+    public void Reg_purchaseOrders_GST_ExclusivePrice() throws IOException, ParseException, InterruptedException, NoSuchMethodException, AWTException {
+        Reg_Intra_PO_GSTExclusive pr = new Reg_Intra_PO_GSTExclusive(driver, file);
+        pr.reg_PV_GSTExclusive();
     }
 
     @AfterTest

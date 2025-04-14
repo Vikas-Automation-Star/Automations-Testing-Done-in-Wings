@@ -2,7 +2,6 @@ package com.wings.pages.purchase.transactions;
 
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
-import com.wings.utils.FileUtil;
 import com.wings.utils.Time;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
@@ -10,28 +9,28 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
-
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Reg_MRAO_ExclusiveGST extends Transaction {
+public class Reg_Intra_PVAO_Exclusive extends Transaction {
     WindowsDriver driver;
     Common common;
     String dataFile;
-
-    public Reg_MRAO_ExclusiveGST(WindowsDriver driver, String file) {
+    boolean RCMgstAmountClicked=false;
+    public Reg_Intra_PVAO_Exclusive(WindowsDriver driver, String file) {
         super(driver);
         this.driver = driver;
         common = new Common(this.driver);
         dataFile = file;
     }
 
-    public void MRAO_ExclusiveGST() throws InterruptedException, IOException, ParseException {
-        navigateToMastersWhen3Steps(common.getData(dataFile,"Material Receipts","menu"),common.getData(dataFile,"Material Receipts","menuItem"), common.getData(dataFile,"Material Receipts","subMenuItem"));
+    public void reg_PVAO_Exclusive() throws InterruptedException, IOException, ParseException, AWTException {
+        navigateToMastersWhen3Steps(common.getData(dataFile,"PVAO RCM","menu"),common.getData(dataFile,"PVAO RCM","menuItem"), common.getData(dataFile,"PVAO RCM","subMenuItem"));
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
         System.out.println("oldID: "+ oldVoucherID);
@@ -39,8 +38,16 @@ public class Reg_MRAO_ExclusiveGST extends Transaction {
 //        enterInput("xpath","//Edit[@Name='Location *']",dataFile,"location");
 //        enterInput("xpath","//Edit[@Name='Trans Currency *']",dataFile,"currency")
         enterInput("xpath","//Edit[@Name='Party Code']",dataFile,"Purchase Order","partyCode");
-        gstTransactionType("Intra State Purchase from Registered Dealers");
-        enterInput("xpath","//Edit[@Name='Batch Policy']",dataFile,"Purchase Order","batchPolicy");
+        gstTransactionType("Intra State Purchase from Registered Dealers with RCM");
+        enableCheckboxSelection("//CheckBox[@Name='Apply RCM']");
+        enterInput("xpath","//Edit[@Name='Purchase A/C Code']",dataFile,"PVAO RCM","purchaseA/cCode");
+        enableCheckboxSelection("//CheckBox[@Name='Apply TCS']");
+        enterInput("xpath","//Edit[@Name='TCS Trans Nature']", dataFile,"PVAO RCM","tcsNature");
+        inputTextWithValidation("xpath", "//Edit[@Name='Supplier Bill No *']", common.getData(dataFile,"PVAO RCM", "supplierCode") +common.getRandom());
+        inputTextWithValidation("xpath", "//Edit[@Name='Supplier Bill Date *']", common.getData(dataFile,"PVAO RCM", "date") +Time.timeStamp());
+        enterInput("xpath","//Edit[@Name='Batch Policy']",dataFile,"PVAO RCM","batchPolicy");
+        enterInput("xpath", "//Edit[@Name='Price List']", dataFile,"Purchase Order", "priceList");
+        enterInput("xpath", "//Edit[@Name='Executive *']", dataFile, "Purchase Order","executive");
 //        common.clickElement("xpath","//*//CheckBox[@Name='Select Row 0']");
 //        common.clickElement("xpath","//Button[@Name='Ok']");
 
@@ -62,7 +69,13 @@ public class Reg_MRAO_ExclusiveGST extends Transaction {
                         String pendingQty = common.findWebElement("xpath", "//Edit[@Name='Pending Quantity In SKU Row " + i + ", Not sorted.']").getText();
                         WebElement quantity = common.findWebElement("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']");
                         quantity.click();
-                        quantity.sendKeys(pendingQty,Keys.TAB);
+                        quantity.sendKeys(pendingQty, Keys.TAB);
+                        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 630, 0);
+                        if (!RCMgstAmountClicked) {
+                            common.clickElement("xpath", "//Header[@Name='GST RCM Amount']");
+                            RCMgstAmountClicked = true;
+                        }
+                        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", -630, 0);
                     }
                     else {
                         // Second matched product - pending quantity - 1 and free quantity - 1
@@ -81,17 +94,23 @@ public class Reg_MRAO_ExclusiveGST extends Transaction {
         }
 
         common.deleteInvalidRows();
-        validateCGSTAmountTabIsNotEmpty();
-        validateSGSTAmountTabIsNotEmpty();
-        validateCESSAmountTabIsNotEmpty();
-        navigateToSummaryTab();
-        quantityPresentInSummary();
+        validateRCMCGSTAmountTabIsNotEmpty();
+        validateRCMSGSTAmountTabIsNotEmpty();
+        validateRCMCESSAmountTabIsNotEmpty();
+        navigateToTcs();
+        for (int j = 0; j <=7; j++) {
+            Robot robot=new Robot();
+            robot.keyPress(KeyEvent.VK_RIGHT);
+            robot.keyRelease(KeyEvent.VK_RIGHT);
+        }        quantityPresentInSummary();
         grossAmountPresentInSummary();
         grossMinusDiscountPresentInSummary();
-        sgstPresentInSummary();
-        sgstPresentInSummary();
-        cessPresentInSummary();
+        RCMCGSTPresentInSummary();
+        RCMSGSTPresentInSummary();
+        RCMCESSPresentInSummary();
         netAmountPresentInSummary();
+        tcsTaxableValuePresentInSummary();
+        tcsAmountPresentInSummary();
         totalValuePresentInSummary();
         totalValueInCompanyCurrenyPresentInSummary();
         //save
@@ -101,12 +120,12 @@ public class Reg_MRAO_ExclusiveGST extends Transaction {
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"both ID's should not Equal when we perform transaction");
         Thread.sleep(1000);
         common.clickElement("name", "Purchase");
-        common.clickElement("name", "Receipts");
-        common.clickElement("xpath", "//MenuItem[@Name='Material Receipts against Orders'][2]");
+        common.clickElement("name", "Invoices");
+        common.clickElement("xpath", "//MenuItem[@Name='Purchase Vouchers against Orders'][2]");
         Thread.sleep(1000);
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
-        verifyReport(newVoucherID,dataFile,"Material Receipts");
+        verifyReport(newVoucherID,dataFile,"PVAO RCM");
         deleteTransactionBasedOnYear(newVoucherID);
     }
 }

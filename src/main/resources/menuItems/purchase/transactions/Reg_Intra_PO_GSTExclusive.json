@@ -89,5 +89,58 @@
       "column25": "0.00",
       "column26": "0.00"
     }
+  },
+  {
+    "dataset": "PVAO RCM",
+    "data": {
+      "menu": "Purchase",
+      "menuItem": "Invoices",
+      "subMenuItem": "Purchase Vouchers against Orders",
+      "serialText":"ser",
+      "serialQuantity": "5",
+      "enableFreeQuantity": "false",
+      "purchaseA/cCode": "AT_Purchase  Acc 1",
+      "tcsNature": "AT_TCS Transaction Nature 1",
+      "supplierCode": "45612",
+      "date": "",
+      "batchPolicy": "AT-Purchase Batch Policy_CIDNE",
+
+      "grossAmount": "500.000",
+      "mrpAmount": "5,000.000",
+
+      "column3": "AT_Branch 1_Reg",
+      "column4": "INR",
+      "column5": "1.00",
+      "column6": "AT_Sup_Reg_Intra",
+      "column7": "15.00",
+      "column8": "0.00",
+      "column9": "1,500.00",
+      "column10": "0.00",
+      "column11": "1,500.00",
+      "column12": "1,500.00",
+      "column13": "0.00",
+      "column14": "0.00",
+      "column15": "0.00",
+      "column16": "0.00",
+      "column17": "0.00",
+      "column18": "135.00",
+      "column19": "135.00",
+      "column20": "0.00",
+      "column21": "150.00",
+      "column22": "420.00",
+      "column23": "1,500.00",
+      "column24": "1,500.00",
+      "column25": "0.00",
+      "column26": "0.00",
+      "column27": "0.00",
+      "column28": "96.00",
+      "column29": "0.00",
+      "column30": "0.00",
+      "column31": "1,596.00",
+      "column32": "1,596.00",
+      "column33": "0.00",
+      "column34": "0.00"
+
+    }
   }
 ]

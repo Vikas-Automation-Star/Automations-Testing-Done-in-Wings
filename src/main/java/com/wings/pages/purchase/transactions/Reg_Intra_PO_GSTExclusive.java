@@ -2,9 +2,7 @@ package com.wings.pages.purchase.transactions;
 
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
-import com.wings.utils.FileUtil;
 import com.wings.utils.StringUtil;
-import com.wings.utils.Time;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
@@ -14,13 +12,13 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 import java.time.Instant;
 
-public class Reg_PO_GSTExclusive extends Transaction {
+public class Reg_Intra_PO_GSTExclusive extends Transaction {
     WindowsDriver driver;
     Common common;
     String dataFile;
     boolean gstAmountClicked =false;
     double mrp, grossAmount, unitRate, quantity,gstValue,taxableAmountCalculated,cessValue,netAmount,expectedGSTAmount,calculatedNet;
-    public Reg_PO_GSTExclusive(WindowsDriver driver, String file) {
+    public Reg_Intra_PO_GSTExclusive(WindowsDriver driver, String file) {
         super(driver);
         this.driver = driver;
         common = new Common(this.driver);

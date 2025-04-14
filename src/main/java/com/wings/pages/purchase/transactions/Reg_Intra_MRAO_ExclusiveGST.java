@@ -8,26 +8,26 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
-import java.awt.*;
+
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Reg_MRAO_InclusiveGST extends Transaction {
+public class Reg_Intra_MRAO_ExclusiveGST extends Transaction {
     WindowsDriver driver;
     Common common;
     String dataFile;
 
-    public Reg_MRAO_InclusiveGST(WindowsDriver driver, String file) {
+    public Reg_Intra_MRAO_ExclusiveGST(WindowsDriver driver, String file) {
         super(driver);
         this.driver = driver;
         common = new Common(this.driver);
         dataFile = file;
     }
 
-    public void mroa_InclusiveGST() throws InterruptedException, IOException, ParseException, AWTException {
+    public void MRAO_ExclusiveGST() throws InterruptedException, IOException, ParseException {
         navigateToMastersWhen3Steps(common.getData(dataFile,"Material Receipts","menu"),common.getData(dataFile,"Material Receipts","menuItem"), common.getData(dataFile,"Material Receipts","subMenuItem"));
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
@@ -44,7 +44,7 @@ public class Reg_MRAO_InclusiveGST extends Transaction {
         // Product codes to search for
         String productCode1 = common.getData(dataFile, "Purchase Order", "productCode0");
         String productCode2 = common.getData(dataFile, "Purchase Order", "productCode1");
-        java.util.List<String> productCodes = Arrays.asList(productCode1, productCode2);
+        List<String> productCodes = Arrays.asList(productCode1, productCode2);
         List<WebElement> items = common.findWebElements("xpath", "//Pane[@Name='  F3 Items  ']/Pane/Pane/Pane/Table[@Name='Items']/*[starts-with(@Name,'Row')]");
         System.out.println("size :"+items);
         Set<String> processedCodes = new HashSet<>();
@@ -59,7 +59,7 @@ public class Reg_MRAO_InclusiveGST extends Transaction {
                         String pendingQty = common.findWebElement("xpath", "//Edit[@Name='Pending Quantity In SKU Row " + i + ", Not sorted.']").getText();
                         WebElement quantity = common.findWebElement("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']");
                         quantity.click();
-                        quantity.sendKeys(pendingQty, Keys.TAB);
+                        quantity.sendKeys(pendingQty,Keys.TAB);
                     }
                     else {
                         // Second matched product - pending quantity - 1 and free quantity - 1
@@ -78,13 +78,15 @@ public class Reg_MRAO_InclusiveGST extends Transaction {
         }
 
         common.deleteInvalidRows();
-        validateIGSTAmountTabIsNotEmpty();
+        validateCGSTAmountTabIsNotEmpty();
+        validateSGSTAmountTabIsNotEmpty();
         validateCESSAmountTabIsNotEmpty();
         navigateToSummaryTab();
         quantityPresentInSummary();
         grossAmountPresentInSummary();
         grossMinusDiscountPresentInSummary();
-        iGSTPresentInSummary();
+        sgstPresentInSummary();
+        sgstPresentInSummary();
         cessPresentInSummary();
         netAmountPresentInSummary();
         totalValuePresentInSummary();

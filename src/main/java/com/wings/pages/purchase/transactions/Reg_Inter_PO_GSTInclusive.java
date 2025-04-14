@@ -8,12 +8,12 @@ import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 import java.io.IOException;
 
-public class Reg_PO_GSTInclusive extends Transaction { WindowsDriver driver;
+public class Reg_Inter_PO_GSTInclusive extends Transaction { WindowsDriver driver;
     Common common;
     String dataFile;
     boolean gstAmountClicked = false;
 
-    public Reg_PO_GSTInclusive(WindowsDriver driver, String file) {
+    public Reg_Inter_PO_GSTInclusive(WindowsDriver driver, String file) {
         super(driver);
         this.driver = driver;
         common = new Common(this.driver);

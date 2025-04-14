@@ -2,19 +2,18 @@ package com.wings.pages.purchase.transactions;
 
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
-import com.wings.utils.Time;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 
 import java.io.IOException;
 
-public class UnReg_PO_GSTInclusive extends Transaction {
+public class UnReg_Inter_PO_GSTInclusive extends Transaction {
     Common common;
     String dataFile;
     boolean gstAmountClicked = false;
 
-    public UnReg_PO_GSTInclusive(WindowsDriver driver, String file) {
+    public UnReg_Inter_PO_GSTInclusive(WindowsDriver driver, String file) {
         super(driver);
         this.driver = driver;
         common = new Common(this.driver);

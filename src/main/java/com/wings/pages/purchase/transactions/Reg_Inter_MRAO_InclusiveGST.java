@@ -15,19 +15,19 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class UnReg_MRAO_InclusiveGST extends Transaction {
+public class Reg_Inter_MRAO_InclusiveGST extends Transaction {
     WindowsDriver driver;
     Common common;
     String dataFile;
 
-    public UnReg_MRAO_InclusiveGST(WindowsDriver driver, String file) {
+    public Reg_Inter_MRAO_InclusiveGST(WindowsDriver driver, String file) {
         super(driver);
         this.driver = driver;
         common = new Common(this.driver);
         dataFile = file;
     }
 
-    public void unReg_MRAO_InclusiveGST() throws InterruptedException, IOException, ParseException, AWTException {
+    public void mroa_InclusiveGST() throws InterruptedException, IOException, ParseException, AWTException {
         navigateToMastersWhen3Steps(common.getData(dataFile,"Material Receipts","menu"),common.getData(dataFile,"Material Receipts","menuItem"), common.getData(dataFile,"Material Receipts","subMenuItem"));
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
@@ -78,10 +78,14 @@ public class UnReg_MRAO_InclusiveGST extends Transaction {
         }
 
         common.deleteInvalidRows();
+        validateIGSTAmountTabIsNotEmpty();
+        validateCESSAmountTabIsNotEmpty();
         navigateToSummaryTab();
         quantityPresentInSummary();
         grossAmountPresentInSummary();
         grossMinusDiscountPresentInSummary();
+        iGSTPresentInSummary();
+        cessPresentInSummary();
         netAmountPresentInSummary();
         totalValuePresentInSummary();
         totalValueInCompanyCurrenyPresentInSummary();
