@@ -6,6 +6,7 @@ import org.json.simple.JSONObject;
 import org.testng.*;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class Listener implements ITestListener, ISuiteListener, IExecutionListener {
@@ -17,7 +18,20 @@ public class Listener implements ITestListener, ISuiteListener, IExecutionListen
     ITestContext tc = null;
     ISuiteListener suiteResults = null;
     JSONArray results = new JSONArray();
+    File TimeLogFile;
 
+
+    @Override
+    public void onExecutionStart() {
+        IExecutionListener.super.onExecutionStart();
+        Reporter.log("Execution is started");
+    }
+
+    @Override
+    public void onExecutionFinish() {
+        IExecutionListener.super.onExecutionFinish();
+        Reporter.log("Execution is finished");
+    }
 
     @Override
     public void onStart(ITestContext context) {
@@ -56,7 +70,6 @@ public class Listener implements ITestListener, ISuiteListener, IExecutionListen
             Reporter.log("Status code: " + result.getStatus(), true);
             Reporter.log("Test execution is success:-" + result.getName(), true);
         }
-
         passed++;
     }
 
@@ -120,31 +133,31 @@ public class Listener implements ITestListener, ISuiteListener, IExecutionListen
 
     @Override
     public void onFinish(ITestContext context) {
-        Reporter.log("COMPLETED " + context.getName());
-    }
-
-    @Override
-    public void onExecutionStart() {
-        IExecutionListener.super.onExecutionStart();
-        Reporter.log("Execution is started");
-    }
-
-    @Override
-    public void onExecutionFinish() {
-        IExecutionListener.super.onExecutionFinish();
-        Reporter.log("Execution is finished");
+        Reporter.log("Test Completed " + context.getName());
     }
 
     @Override
     public void onStart(ISuite suite) {
-        Reporter.log(suite.getXmlSuite().getParameters().toString());
-        System.out.println("On suite start");
+        try {
+            Reporter.log(suite.getXmlSuite().getParameters().toString());
+            System.out.println("On suite start");
+            Time time = new Time();
+            String timeStamp = time.timeStamp();
+            String filepath = String.format("./results/text/Time_%s.txt",timeStamp);
+            TimeLogFile = new File(filepath);
+            TimeLogFile.getParentFile().mkdirs();
+            TimeLogFile.createNewFile();
+//            TimeLogFile.getPath();
+            suite.setAttribute("TimeLogFile",TimeLogFile.getPath());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     @Override
     public void onFinish(ISuite suite) {
         suiteTotalTest = suite.getResults().size();
-//        suite.getXmlSuite()
 
         for (ISuiteResult sr : suite.getResults().values()) {
             tc = sr.getTestContext();

@@ -9,6 +9,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -118,5 +120,32 @@ public class FileUtil {
         }
     }
 
+    public static void writeTimeLog(String methodName,long timeStamp) throws IOException {
+        try {
+            org.testng.ITestResult result= org.testng.Reporter.getCurrentTestResult();
+            org.testng.ISuite currentSuite=result.getTestContext().getSuite();
+
+            FileWriter writer = new FileWriter(String.valueOf(currentSuite.getAttribute("TimeLogFile")));
+            System.out.println("path "+currentSuite.getAttribute("TimeLogFile"));
+            writer.write("TimeTakenToExecute " + methodName + " is " + timeStamp + "\n");
+            writer.close();
+            System.out.println("Time written to file: " + timeStamp);
+
+        } catch (NullPointerException e) {
+            System.err.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        } catch (RuntimeException | IOException e) {
+            System.err.println("Runtime Error: " + e.getMessage());
+            e.printStackTrace();
+            throw e;
+        }
+
+    }
+
+
+
+    public static void main(String[] args) {
+//        writeCurrentTimeToFile();
+    }
 
 }
