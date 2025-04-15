@@ -1,7 +1,7 @@
 package phase_1_TestCases;
 
 import com.wings.pages.AppLogin;
-import com.wings.utils.CreateCompany;
+import com.wings.pages.generalScripts.CreateCompany;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;

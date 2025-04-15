@@ -1,4 +1,4 @@
-package com.wings.utils;
+package com.wings.pages.generalScripts;
 
 import io.appium.java_client.windows.WindowsDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
