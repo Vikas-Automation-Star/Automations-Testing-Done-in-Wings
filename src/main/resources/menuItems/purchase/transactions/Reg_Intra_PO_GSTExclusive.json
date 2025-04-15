@@ -63,6 +63,8 @@
       "serialText":"start",
       "serialQuantity": "5",
       "enableFreeQuantity": "false",
+      "FYear": "20250401",
+
 
       "column3": "AT_Branch 1_Reg",
       "column4": "INR",
@@ -104,6 +106,8 @@
       "supplierCode": "45612",
       "date": "",
       "batchPolicy": "AT-Purchase Batch Policy_CIDNE",
+      "FYear": "20250401",
+
 
       "grossAmount": "500.000",
       "mrpAmount": "5,000.000",

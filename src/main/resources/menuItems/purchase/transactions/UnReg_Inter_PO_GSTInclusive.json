@@ -65,6 +65,8 @@
       "serialText":"start",
       "serialQuantity": "5",
       "enableFreeQuantity": "false",
+      "FYear": "20250401",
+
 
       "column3": "AT_Branch 1_Reg",
       "column4": "INR",

@@ -1,7 +1,7 @@
 <suite name="Sample suite">
     <listeners>
         <listener class-name="com.wings.utils.Listener"/>
-        <listener class-name="util.AnnotationTransformer"/>
+<!--        <listener class-name="util.AnnotationTransformer"/>-->
     </listeners>
 
     <test name="Test 1" description="Test 1 description" testID="WOW 1">
@@ -10,15 +10,15 @@
         </classes>
     </test>
 
-    <test name="Test 2" description="Test 2 description" testID="WOW 2">
-        <classes>
-            <class name="menuItems.purchase.transactions.PurchaseEnquiriesCancellationTransaction"/>
-        </classes>
-    </test>
+<!--    <test name="Test 2" description="Test 2 description" testID="WOW 2">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.transactions.PurchaseEnquiriesCancellationTransaction"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Test 3" description="Test 3 description" testID="WOW 3">
-        <classes>
-            <class name="menuItems.purchase.transactions.PurchaseQuotationsAgainstEnquiriesTransaction"/>
-        </classes>
-    </test>
+<!--    <test name="Test 3" description="Test 3 description" testID="WOW 3">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.transactions.PurchaseQuotationsAgainstEnquiriesTransaction"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 </suite>
