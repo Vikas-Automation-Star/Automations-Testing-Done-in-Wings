@@ -14,8 +14,8 @@ import java.io.IOException;
 public class TestPRWIR_RegIntraExclusivePrice {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String voucherdatafile="./src/main/resources/menuItems/purchase/transactions/Reg_To_Reg_IntraState_PV_GST_TCS_Exclusive.json";
-    String dataFile = "./src/main/resources/menuItems/purchase/transactions/Reg_To_Reg_IntraState_PRWI_GST_TCS_Exclusive.json";
+    String voucherdatafile="./src/main/resources/menuItems/purchase/transactions/PurchaseVoucher_RegIntraExclusive.json";
+    String dataFile = "./src/main/resources/menuItems/purchase/transactions/PRWIR_RegIntraExclusive.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {

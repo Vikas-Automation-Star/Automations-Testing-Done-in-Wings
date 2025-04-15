@@ -15,7 +15,7 @@ import java.io.IOException;
 public class TestMaterialReceiptsAPO_RegIntraExclusivePrice {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String file = "./src/main/resources/MenuItems/purchase/transactions/Reg_Intra_PO_GSTExclusive.json";
+    String file = "./src/main/resources/MenuItems/purchase/transactions/PO_MReceiptsAPO_PVAPO_RegIntraExclusive.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {

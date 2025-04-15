@@ -14,7 +14,7 @@ import java.io.IOException;
 public class TestPRWIR_UnRegInterInclusivePrice {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String dataFile = "./src/main/resources/menuItems/purchase/transactions/Reg_To_UnReg_InterState_PRWI_GST_TCS_Inclusive.json";
+    String dataFile = "./src/main/resources/menuItems/purchase/transactions/PRWIR_UnRegInterInclusive.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {

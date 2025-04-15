@@ -15,7 +15,7 @@ import java.io.IOException;
 public class TestPurchaseVoucher_RegIntraRCMExclusivePrice {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String dataFile = "./src/main/resources/menuItems/purchase/transactions/Reg_PV_IntraState_RCMGST_TCS_Exclusive.json";
+    String dataFile = "./src/main/resources/menuItems/purchase/transactions/PurchaseVoucher_RegIntraRCMExclusive.json";
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
         driver = appLogin.launchSingleUserApp();

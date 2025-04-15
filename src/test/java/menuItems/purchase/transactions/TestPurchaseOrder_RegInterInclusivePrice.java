@@ -14,7 +14,7 @@ import java.io.IOException;
 public class TestPurchaseOrder_RegInterInclusivePrice {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String file = "./src/main/resources/menuItems/purchase/transactions/Reg_inter_PO_GSTInclusive.json";
+    String file = "./src/main/resources/menuItems/purchase/transactions/PO_MReceiptsAPO_PVAPO_RegInterInclusive.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {

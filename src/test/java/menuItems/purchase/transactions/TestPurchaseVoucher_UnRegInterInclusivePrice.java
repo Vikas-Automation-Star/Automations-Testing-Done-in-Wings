@@ -13,7 +13,7 @@ import java.io.IOException;
 public class TestPurchaseVoucher_UnRegInterInclusivePrice {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String dataFile = "./src/main/resources/menuItems/purchase/transactions/Reg_To_UnReg_PV_InterState_GST_TCS_Inclusive.json";
+    String dataFile = "./src/main/resources/menuItems/purchase/transactions/PurchaseVoucher_UnRegInterInclusive.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
