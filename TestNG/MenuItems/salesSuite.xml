@@ -107,6 +107,31 @@
         </classes>
     </test>
 
+            <!-- deliveries against order -->
+
+        <test name="DELO 1" description="Deliveries against Order -Reg-Reg Inter state Inclusive GST" testID="17">
+            <classes>
+                <class name="menuItems.sales.transactions.TestDeliveriesAgainstOrder_RegInterInclusive"/>
+            </classes>
+        </test>
+
+    <test name="DELO 2" description="Deliveries against Order -Reg-Reg Intra state Exclusive GST" testID="18">
+        <classes>
+            <class name="menuItems.sales.transactions.TestDeliveriesAgainstOrder_RegIntraExclusive"/>
+        </classes>
+    </test>
+
+    <test name="DELO 3" description="Deliveries against Order -Reg-UnReg Inter state Inclusive GST" testID="19">
+        <classes>
+            <class name="menuItems.sales.transactions.TestDeliveriesAgainstOrder_UnRegInterInclusive"/>
+        </classes>
+    </test>
+
+    <test name="DELO 4" description="Deliveries against Order -Reg-UnReg Intra state Exclusive GST" testID="20">
+        <classes>
+            <class name="menuItems.sales.transactions.TestDeliveriesAgainstOrder_UnRegIntraExclusive"/>
+        </classes>
+    </test>
 
 
 </suite>

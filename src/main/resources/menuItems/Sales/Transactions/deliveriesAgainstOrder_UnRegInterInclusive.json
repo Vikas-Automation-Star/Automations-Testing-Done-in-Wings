@@ -1,0 +1,134 @@
+[
+  {
+    "dataset": "SalesOrder",
+    "data": {
+      "branch": "AT_Branch 1_Reg",
+      "location": "AT_Branch 1_Location 2",
+      "partyCode": "CUI1",
+      "partyName": "AT_Cus_UnReg_Inter",
+      "priceList": "AT_Inclusive Sales Price List 1",
+      "executive": "AT_Executive 2",
+      "HSNCode": "AT_HSN Code 2",
+      "productCount": 3,
+      "transType": "Sales Order",
+      "enableFreeQuantity": "false",
+      "numOfSerialProducts": 50,
+      "numOfSerialProductsFree": "2",
+
+      "productType0": "general",
+      "quantity0": 50,
+      "freeQuantity0": 1,
+      "productCode0": "P1",
+      "voucherDiscount0": 1,
+      "partyDiscount0": 2,
+
+      "productType1": "multiBatch",
+      "quantity1": 50,
+      "freeQuantity1": 1,
+      "productCode1": "MBP1",
+      "voucherDiscount1": 1,
+      "partyDiscount1": 2,
+
+      "productType2": "serial",
+      "productCode2": "PSN2",
+      "quantity2": 50,
+      "freeQuantity2": 1,
+      "voucherDiscount2": 1,
+      "partyDiscount2": 2,
+
+      "mrpAmount0": "37,500.000",
+      "mrpAmount1": "50,000.000",
+      "mrpAmount2": "50,000.000",
+
+      "grossAmount0": "25,000.000",
+      "grossAmount1": "25,000.000",
+      "grossAmount2": "30,000.000",
+
+      "voucherDiscAmount0": "250.000",
+      "voucherDiscAmount1": "250.000",
+      "voucherDiscAmount2": "300.000",
+
+      "partyDiscAmount0": "500.000",
+      "partyDiscAmount1": "500.000",
+      "partyDiscAmount2": "600.000",
+
+      "taxableValue0": "18,945.312",
+      "taxableValue1": "18,945.312",
+      "taxableValue2": "22,734.375",
+
+      "igstAmount0": "3,410.156",
+      "igstAmount1": "3,410.156",
+      "igstAmount2": "4,092.188",
+
+      "cessAmount0": "1,894.531",
+      "cessAmount1": "1,894.531",
+      "cessAmount2": "2,273.438",
+
+      "expectedGStInclusive0": "5,304.687",
+      "expectedGStInclusive1": "5,304.687",
+      "expectedGStInclusive2": "6,365.626",
+
+      "netAmount0": "24,250.000",
+      "netAmount1": "24,250.000",
+      "netAmount2": "29,100.000",
+
+      "column3": "AT_Branch 1_Reg",
+      "column4": "INR",
+      "column5": "1.00",
+      "column6": "AT_Cus_UnReg_Inter",
+      "column7": "150.00",
+      "column8": "80,000.00",
+      "column9": "2,400.00",
+      "column10": "60,625.00",
+      "column11": "0.00",
+      "column12": "0.00",
+      "column13": "10,912.50",
+      "column14": "6,062.50",
+      "column15": "16,975.00",
+      "column16": "77,600.00",
+      "column17": "77,600.00",
+      "column18": "0.00",
+      "column19": "0.00",
+      "column20": "0.00",
+      "column21": "0.00",
+      "column22": "77,600.00",
+      "column23": "77,600.00"
+    }
+  },
+  {
+    "dataset": "deliveriesAgainstOrders",
+    "data": {
+      "branch": "AT_Branch 1_Reg",
+      "location": "AT_Branch 1_Location 2",
+      "partyCode": "CUI1",
+      "partyName": "AT_Cus_UnReg_Inter",
+      "priceList": "AT_Inclusive Sales Price List 1",
+      "executive": "AT_Executive 2",
+      "FYyear": "20250401",
+
+      "column3": "AT_Branch 1_Reg",
+      "column4": "INR",
+      "column5": "1.00",
+      "column6": "AT_Cus_UnReg_Inter",
+      "column7": "150.00",
+      "column8": "",
+      "column9": "80,000.00",
+      "column10": "0.00",
+      "column11": "62,500.00",
+      "column12": "0.00",
+      "column13": "0.00",
+      "column14": "11,250.00",
+      "column15": "6,250.00",
+      "column16": "17,500.00",
+      "column17": "80,000.00",
+      "column18": "80,000.00",
+      "column19": "0.00",
+      "column20": "0.00",
+      "column21": "0.00",
+      "column22": "0.00",
+      "column23": "80,000.00",
+      "column24": "80,000.00"
+
+    }
+  }
+]

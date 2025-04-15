@@ -23,7 +23,7 @@ public class SalesOrder_UnRegInterInclusive extends Transaction{
             dataFile = file;
         }
 
-        public String interInclusiveUnReg() throws InterruptedException, IOException, ParseException, AWTException {
+        public String[] interInclusiveUnReg() throws InterruptedException, IOException, ParseException, AWTException {
             navigateToSalesOrderMenu();
             Thread.sleep(2000);
             String oldVoucherID =oldTTransactionID();
@@ -67,6 +67,7 @@ public class SalesOrder_UnRegInterInclusive extends Transaction{
             totalValueInCompanyCurrenyPresentInSummary();
             //save
             transactionSave();
+            String originalID=newTransactionID(oldVoucherID);
             String newVoucherID =newTransactionID(oldVoucherID).replace(" ","");
             System.out.println("newID: "+newVoucherID);
             Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
@@ -78,7 +79,7 @@ public class SalesOrder_UnRegInterInclusive extends Transaction{
             common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
             Thread.sleep(1500);
             verifyReport(newVoucherID,dataFile,"SalesOrder");
-            return newVoucherID;
+            return new String[]{newVoucherID,originalID};
         }
 
         public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {
