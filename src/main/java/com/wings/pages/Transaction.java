@@ -3,6 +3,7 @@ package com.wings.pages;
 import com.wings.utils.Common;
 import com.wings.utils.StringUtil;
 import io.appium.java_client.windows.WindowsDriver;
+import org.apache.commons.beanutils.PropertyUtilsBean;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -1159,7 +1160,6 @@ public abstract class Transaction {
         }
         common.clickElement("xpath", "//Button[@Name='OK']");
     }
-
     public void multiBatchProductPurchase(String filename,String dataset, String product, String quantity,String freeQuantity, int i) throws IOException, ParseException, InterruptedException {
         enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename,dataset, product);
         enterData("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']",filename,dataset,quantity);
@@ -1192,7 +1192,6 @@ public abstract class Transaction {
         }
         common.clickElement("xpath", "//Button[@Name='OK']");
     }
-
     public void serialNumberProductInPurchase(String filename, String product,String serialText,String serialQuantity,String freeQuantity, int i) throws IOException, ParseException, InterruptedException, AWTException {
         enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, product);
         common.clickElement("xpath", "//Button[@Name='Serial Nos Row "+i+"']");
@@ -1235,6 +1234,55 @@ public abstract class Transaction {
             }
         }
     }
+
+    //deliveries against orders
+    public void generalProductInDELO(String filename,String dataset, String product, String quantity, int i) throws IOException, ParseException {
+        common.clickElement("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']");
+        enterData("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']", filename,dataset, quantity);
+    }
+    public void multiBatchProductInDELO(String filename,String dataSet, String product, String quantity,String freeQuantity, int i) throws IOException, ParseException, InterruptedException {
+        common.clickElement("xpath", "//Button[@Name='Stock Details Row " + i + "']");
+        Thread.sleep(3000);
+        List<WebElement> rows = common.findWebElements("xpath", "//Table[@Name='Batch Details']/*[@Name='Data Panel']/*[@Name='Row 1']/*[@Name='Quantity row 1']");
+        System.out.println("Row count: " + rows.size());
+        for (WebElement k : rows) {
+            k.click();
+            k.sendKeys(Keys.CONTROL + "a", Keys.DELETE);
+            k.sendKeys(common.getData(filename,dataSet, quantity), Keys.TAB);
+            if (Boolean.parseBoolean(common.getData(filename,dataSet,"enableFreeQuantity"))){
+                k.sendKeys(common.getData(filename,dataSet,freeQuantity),Keys.TAB);
+            }
+        }
+        common.clickElement("xpath", "//Button[@Name='OK']");
+    }
+    public void serialNumberProductInDELO(String filename,String dataSet,String product, int i) throws IOException, ParseException, InterruptedException, AWTException {
+        common.clickElement("xpath", "//Button[@Name='Stock Details Row " + i + "']");
+        List<WebElement> rows = common.findWebElements("xpath", "//Table[@Name='Serial Numbers List']/*[@Name='Data Panel']/*[contains(@Name,'Row')]/*[contains(@Name,'Select row')]");
+        System.out.println("Row count: " + rows.size());
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_TAB);
+        robot.keyRelease(KeyEvent.VK_TAB);
+        for (int z = 0; z < Integer.parseInt(common.getData(filename,dataSet,"numOfSerialProducts")); z++) {
+            robot.keyPress(KeyEvent.VK_SPACE);
+            robot.keyRelease(KeyEvent.VK_SPACE);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            robot.keyRelease(KeyEvent.VK_DOWN);
+            Thread.sleep(1500);
+        }
+        List<WebElement> free=common.findWebElements("xpath","//Table[@Name='Selected Serial Numbers']/*[@Name='Data Panel']/ListItem[contains(@Name,'Row')]");
+        System.out.println("free elements size: "+free.size());
+        if (Boolean.parseBoolean(common.getData(filename,dataSet,"enableFreeQuantity"))){
+            for (int j = 1; j <=Integer.parseInt(common.getData(filename,dataSet,"numOfSerialProductsFree")); j++) {
+                String rowXPath = "//Table[@Name='Selected Serial Numbers']/*[@Name='Data Panel']/*[@Name='Row "+j+"']/*[@Name='FreeQuantity row "+j+"']";
+                // Find the element based on the dynamic XPath
+                WebElement button = common.findWebElement("xpath", rowXPath);
+                button.click();
+            }
+        }
+        common.clickElement("xpath", "//Button[@Name='OK']");
+    }
+
+
 
 //    public void serialNumberProduct(String filename, String product,String freeQuantity, int i) throws IOException, ParseException, InterruptedException, AWTException {
 //        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, product);
@@ -1462,6 +1510,37 @@ public abstract class Transaction {
     public String getNewTransactionId() {
         String transactionId = common.findWebElement("xpath", "//Text[@Name='Last Saved :']/following-sibling::Text").getAttribute("Name");
         return transactionId;
+    }
+
+    public void selectPendingsSalesOrder(String voucherNum,String financialYearNum){
+        List<WebElement> pendings = common.findWebElements("xpath", "//Window[@Name='Open Transactions']//Pane/Table/*[starts-with(@Name,'Row ')]");
+        System.out.println("pendings size: " + pendings.size());
+
+        boolean voucherFound=false;
+        for (int i = 0; i < pendings.size(); i++) {
+            WebElement userRow = pendings.get(i);
+//            System.out.println("row text: "+userRow.getText());
+//            System.out.println("Row " + i + ": " + userRow.getAttribute("LegacyValue"));
+
+            WebElement voucherNo = userRow.findElement(By.xpath(".//*[starts-with(@Name, 'TowardsVNo Row')]"));
+            WebElement financialYear = userRow.findElement(By.xpath(".//*[starts-with(@Name, 'FinancialYear Row')]"));
+
+            String voucherNoText = voucherNo.getText();
+            String financialYearText = financialYear.getText();
+
+            if (!(voucherNoText.equals(voucherNum) && financialYearText.equals(financialYearNum))) {
+                voucherNo.click();
+                voucherNo.sendKeys(Keys.DOWN);
+            }else {
+                voucherNo.sendKeys(Keys.LEFT,Keys.SPACE);
+                voucherFound=true;
+                break;
+            }
+        }
+        if(!voucherFound) {
+            Assert.fail("Pending Transaction not found. pls check");
+        }
+        common.clickElement("xpath", "//Button[@Name='Ok']");
     }
 
     //general methods
