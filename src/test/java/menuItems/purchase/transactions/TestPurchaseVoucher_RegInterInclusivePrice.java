@@ -23,7 +23,7 @@ public class TestPurchaseVoucher_RegInterInclusivePrice {
     }
 
     @Test
-    public void Reg_To_Reg_InterState_PurchaseVoucher_GST_TCS_Inclusive() throws IOException, ParseException, InterruptedException, AWTException {
+    public void Reg_InterPurchaseVoucher_GST_TCS_Inclusive() throws IOException, ParseException, InterruptedException, AWTException {
         PurchaseVoucher_RegInterInclusive voucher=new PurchaseVoucher_RegInterInclusive(driver,dataFile);
         voucher.InterState_PurchaseVoucher_GST_TCS_Inclusive();
     }

@@ -24,7 +24,7 @@ public class TestMaterialReceiptsAPO_RegInterInclusivePrice {
     }
 
     @Test
-    public void reg_PurchaseOrder_GST_InclusivePrice() throws IOException, ParseException, InterruptedException, AWTException {
+    public void reg_PO_MRAPO_GST_InclusivePrice() throws IOException, ParseException, InterruptedException, AWTException {
         PurchaseOrder_RegInterInclusive orderGstInclusive=new PurchaseOrder_RegInterInclusive(driver,file);
         String[] inclusivePO=orderGstInclusive.Reg_PO_GSTInclusive();
         MaterialReceiptsAPO_RegInterInclusive mrao=new MaterialReceiptsAPO_RegInterInclusive(driver,file);

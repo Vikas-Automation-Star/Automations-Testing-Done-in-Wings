@@ -25,7 +25,7 @@ public class TestPRWIR_UnRegIntraExclusivePrice {
     }
 
     @Test
-    public void reg_To_Reg_IntraState_PurchaseReturnWithInvoice_GST_TCS_Exclusive() throws IOException, ParseException, InterruptedException, AWTException {
+    public void UReg_IntraPurchaseReturnWithInvoice_Exclusive() throws IOException, ParseException, InterruptedException, AWTException {
         PurchaseVoucher_UnRegIntraExclusive voucher=new PurchaseVoucher_UnRegIntraExclusive(driver,voucherDataFile);
         String voucherId=voucher.Reg_To_UnReg_PvIntraStateExclusive();
         PRWIR_UnRegIntraExclusive voucherRef=new PRWIR_UnRegIntraExclusive(driver,prwirDataFile);

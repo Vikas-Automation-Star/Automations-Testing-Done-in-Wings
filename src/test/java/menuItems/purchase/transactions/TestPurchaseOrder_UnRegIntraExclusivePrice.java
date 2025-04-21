@@ -23,7 +23,7 @@ public class TestPurchaseOrder_UnRegIntraExclusivePrice {
     }
 
     @Test
-    public void UnReg_MRAO_ExclusivePrice() throws IOException, ParseException, InterruptedException, NoSuchMethodException, AWTException {
+    public void UnReg_PO_ExclusivePrice() throws IOException, ParseException, InterruptedException, NoSuchMethodException, AWTException {
         PurchaseOrder_UnRegIntraExclusive orders=new PurchaseOrder_UnRegIntraExclusive(driver,file);
         orders.unReg_PO_GSTExclusive();
     }

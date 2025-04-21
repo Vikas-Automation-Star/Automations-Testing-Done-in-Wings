@@ -23,7 +23,7 @@ public class TestPurchaseVoucher_UnRegIntraExclusivePrice {
     }
 
     @Test
-    public void Reg_To_UnReg_PurchaseVoucher_IntraState_Exclusive() throws IOException, ParseException, InterruptedException, AWTException {
+    public void UnReg_IntraPurchaseVoucher_Exclusive() throws IOException, ParseException, InterruptedException, AWTException {
         PurchaseVoucher_UnRegIntraExclusive voucher=new PurchaseVoucher_UnRegIntraExclusive(driver,dataFile);
         voucher.Reg_To_UnReg_PvIntraStateExclusive();
     }

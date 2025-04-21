@@ -23,7 +23,7 @@ public class TestPurchaseOrder_UnRegInterInclusivePrice {
     }
 
     @Test
-    public void UnReg_MRAO_InclusivePrice() throws InterruptedException, NoSuchMethodException, IOException, ParseException, AWTException {
+    public void UnReg_PO_InclusivePrice() throws InterruptedException, NoSuchMethodException, IOException, ParseException, AWTException {
         PurchaseOrder_UnRegInterInclusive unRegInclusive=new PurchaseOrder_UnRegInterInclusive(driver,file);
         unRegInclusive.unReg_PO_GSTInclusive();
     }

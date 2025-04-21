@@ -24,7 +24,7 @@ public class TestMaterialReceiptsAPO_UnRegInterInclusivePrice {
     }
 
     @Test
-    public void UnReg_MRAO_InclusivePrice() throws InterruptedException, NoSuchMethodException, IOException, ParseException, AWTException {
+    public void UnReg_PO_MRAPO_InclusivePrice() throws InterruptedException, NoSuchMethodException, IOException, ParseException, AWTException {
         PurchaseOrder_UnRegInterInclusive unRegInclusive=new PurchaseOrder_UnRegInterInclusive(driver,file);
         String[] unRegInc=unRegInclusive.unReg_PO_GSTInclusive();
         MaterialReceiptsAPO_UnRegInterInclusive receipts=new MaterialReceiptsAPO_UnRegInterInclusive(driver,file);

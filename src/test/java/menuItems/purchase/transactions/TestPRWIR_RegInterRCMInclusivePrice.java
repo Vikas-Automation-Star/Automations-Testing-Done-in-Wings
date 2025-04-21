@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.io.IOException;
 
-public class TestPurchaseVoucher_RegInterRCMInclusivePrice {
+public class TestPRWIR_RegInterRCMInclusivePrice {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
     String dataFile = "./src/main/resources/menuItems/purchase/transactions/PurchaseVoucher_RegInterRCMInclusive.json";
@@ -27,6 +27,8 @@ public class TestPurchaseVoucher_RegInterRCMInclusivePrice {
     public void reg_InterPV_PRWIR_RCMGST_Inclusive() throws IOException, ParseException, InterruptedException, AWTException {
         PurchaseVoucher_RegInterRCMInclusive inclusiveRCM=new PurchaseVoucher_RegInterRCMInclusive(driver,dataFile);
         String purchaseVoucher=inclusiveRCM.InterState_PV_GST_TCS_Inclusive();
+        PRWIR_RegInterRCMInclusive invoiceReturns=new PRWIR_RegInterRCMInclusive(driver,dataFile);
+        invoiceReturns.regPrwirInclusive(purchaseVoucher);
     }
 
     @AfterTest

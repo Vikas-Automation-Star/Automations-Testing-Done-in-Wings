@@ -25,7 +25,7 @@ public class TestPRWIR_RegInterInclusivePrice {
     }
 
     @Test
-    public void reg_To_Reg_InterState_PurchaseReturnWithInvoice_GST_TCS_Inclusive() throws IOException, ParseException, InterruptedException, AWTException {
+    public void Reg_InterPurchaseReturnWithInvoice_Inclusive() throws IOException, ParseException, InterruptedException, AWTException {
         PurchaseVoucher_RegInterInclusive purchaseVoucher=new PurchaseVoucher_RegInterInclusive(driver,VoucherDataFile);
         String inclusivePV =purchaseVoucher.InterState_PurchaseVoucher_GST_TCS_Inclusive();
         PRWIR_RegInterInclusive voucherRef=new PRWIR_RegInterInclusive(driver,dataFile);

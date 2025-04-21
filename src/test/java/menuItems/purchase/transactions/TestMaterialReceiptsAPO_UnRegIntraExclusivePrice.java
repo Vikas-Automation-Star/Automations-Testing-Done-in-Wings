@@ -24,7 +24,7 @@ public class TestMaterialReceiptsAPO_UnRegIntraExclusivePrice {
     }
 
     @Test
-    public void UnReg_MRAO_ExclusivePrice() throws IOException, ParseException, InterruptedException, NoSuchMethodException, AWTException {
+    public void UnReg_PO_MRAPO_ExclusivePrice() throws IOException, ParseException, InterruptedException, NoSuchMethodException, AWTException {
         PurchaseOrder_UnRegIntraExclusive orders=new PurchaseOrder_UnRegIntraExclusive(driver,file);
         String[] unRegExc= orders.unReg_PO_GSTExclusive();
         MaterialReceiptsAPO_UnRegIntraExclusive receipts=new MaterialReceiptsAPO_UnRegIntraExclusive(driver,file);

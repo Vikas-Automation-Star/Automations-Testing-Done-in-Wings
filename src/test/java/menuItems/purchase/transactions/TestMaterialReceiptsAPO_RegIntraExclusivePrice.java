@@ -24,7 +24,7 @@ public class TestMaterialReceiptsAPO_RegIntraExclusivePrice {
     }
 
     @Test
-    public void Reg_purchaseOrders_GST_ExclusivePrice() throws IOException, ParseException, InterruptedException, NoSuchMethodException, AWTException {
+    public void Reg_PO_MRAPO_GST_ExclusivePrice() throws IOException, ParseException, InterruptedException, NoSuchMethodException, AWTException {
         PurchaseOrder_RegIntraExclusive pr = new PurchaseOrder_RegIntraExclusive(driver, file);
         String[] exclusivePO =pr.reg_PV_GSTExclusive();
         System.out.println("first Voucher " + exclusivePO[0]); //without space

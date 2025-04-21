@@ -15,12 +15,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class PRWIR_RegInterstateRCMInclusive extends Transaction {
+public class PRWIR_RegInterRCMInclusive extends Transaction {
     WindowsDriver driver;
     Common common;
     String dataFile;
 
-    public PRWIR_RegInterstateRCMInclusive(WindowsDriver driver, String file) {
+    public PRWIR_RegInterRCMInclusive(WindowsDriver driver, String file) {
         super(driver);
         this.driver = driver;
         common = new Common(this.driver);

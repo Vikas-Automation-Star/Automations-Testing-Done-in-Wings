@@ -9,10 +9,10 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+
 import java.awt.*;
 import java.io.IOException;
-
-public class TestPurchaseVoucher_RegIntraRCMExclusivePrice {
+public class TestPRWIR_RegIntraRCMExclusivePrice {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
     String dataFile = "./src/main/resources/menuItems/purchase/transactions/PurchaseVoucher_RegIntraRCMExclusive.json";
@@ -21,13 +21,13 @@ public class TestPurchaseVoucher_RegIntraRCMExclusivePrice {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
-
     @Test
     public void reg_IntraPV_PRWIR_RCMGST_Exclusive() throws IOException, ParseException, InterruptedException, AWTException {
         PurchaseVoucher_RegIntraRCMExclusive rcmGST=new PurchaseVoucher_RegIntraRCMExclusive(driver,dataFile);
         String rcmVoucher=rcmGST.IntraState_PV_RCMGST_TCS_Exclusive();
+        PRWIR_RegIntraRCMExclusive returnRCm=new PRWIR_RegIntraRCMExclusive(driver,dataFile);
+        returnRCm.regPrwirExcusive(rcmVoucher);
     }
-
     @AfterTest
     public void afterTest() throws IOException {
         appLogin.logout();
