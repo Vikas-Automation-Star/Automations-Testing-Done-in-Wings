@@ -13,7 +13,9 @@ import java.io.IOException;
 public class TestSalesOrder_UnRegIntraExclusive {
     WindowsDriver driver;
     AppLogin appLogin=new AppLogin();
-    String dataFile="./src/main/resources/menuItems/Sales/Transactions/SalesOrderUnRegIntraExclusive.json";
+//    String dataFile="./src/main/resources/menuItems/Sales/Transactions/SalesOrderUnRegIntraExclusive.json";
+    String dataFile="./src/main/resources/menuItems/Sales/Transactions/deliveriesAgainstOrder_UnRegIntraExclusive.json";
+
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {

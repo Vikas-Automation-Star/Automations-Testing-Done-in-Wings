@@ -125,7 +125,7 @@ public class FileUtil {
             org.testng.ITestResult result= org.testng.Reporter.getCurrentTestResult();
             org.testng.ISuite currentSuite=result.getTestContext().getSuite();
 
-            FileWriter writer = new FileWriter(String.valueOf(currentSuite.getAttribute("TimeLogFile")));
+            FileWriter writer = new FileWriter(String.valueOf(currentSuite.getAttribute("TimeLogFile")),true);
             System.out.println("path "+currentSuite.getAttribute("TimeLogFile"));
             writer.write("TimeTakenToExecute " + methodName + " is " + timeStamp + "\n");
             writer.close();

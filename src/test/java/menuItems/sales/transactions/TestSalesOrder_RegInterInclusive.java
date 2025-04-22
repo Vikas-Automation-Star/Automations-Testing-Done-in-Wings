@@ -13,7 +13,8 @@ import java.io.IOException;
 public class TestSalesOrder_RegInterInclusive {
     WindowsDriver driver;
     AppLogin appLogin=new AppLogin();
-    String dataFile="./src/main/resources/menuItems/Sales/Transactions/SalesOrderRegInterInclusive.json";
+//    String dataFile="./src/main/resources/menuItems/Sales/Transactions/SalesOrderRegInterInclusive.json";
+    String dataFile="./src/main/resources/menuItems/Sales/Transactions/deliveriesAgainstOrder_RegInterInclusive.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {

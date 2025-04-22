@@ -35,7 +35,7 @@ public class DeliveriesAgainstOrders_RegInterInclusive extends Transaction {
         Thread.sleep(2500);
         gstTransactionType("Inter State Sales to Registered Dealers");
         Thread.sleep(1000);
-        selectPendingsSalesOrder(voucherNum,"20250401");
+        selectPendingsSalesOrder(voucherNum, common.getData(dataFile,"deliveriesAgainstOrders","fyYear"));
         Thread.sleep(2000);
         Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Party Account *']"), common.getData(dataFile, "deliveriesAgainstOrders", "partyName"));
         //enter quantity
