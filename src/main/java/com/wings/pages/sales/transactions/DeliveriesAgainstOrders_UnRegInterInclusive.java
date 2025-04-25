@@ -22,7 +22,7 @@ public class DeliveriesAgainstOrders_UnRegInterInclusive extends Transaction{
         dataFile = file;
     }
 
-    public String interInclusiveUnRegDeliveries(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
+    public String[] interInclusiveUnRegDeliveries(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
         navigateToDeliveriesAgainstOrdersMenu();
         Thread.sleep(2000);
         String oldVoucherID = oldTTransactionID();
@@ -62,6 +62,7 @@ public class DeliveriesAgainstOrders_UnRegInterInclusive extends Transaction{
         totalValueInCompanyCurrenyPresentInSummary();
         //save
         transactionSave();
+        String originalID=newTransactionID(oldVoucherID);
         String newVoucherID =newTransactionID(oldVoucherID).replace(" ","");
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
@@ -73,8 +74,8 @@ public class DeliveriesAgainstOrders_UnRegInterInclusive extends Transaction{
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
 //        verifyReport(newVoucherID,dataFile,"SalesOrder");
-//        return newVoucherID;
-            return "DELO Completed SuccessFully";
+        return new String[]{newVoucherID,originalID};
+//            return "DELO Completed SuccessFully";
     }
 
     public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {
