@@ -28,7 +28,7 @@ public class TestPurchaseVoucher_UnRegIntraRCMExclusivePrice {
 
     @BeforeTest
     public void afterTest() throws IOException, InterruptedException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 
 }

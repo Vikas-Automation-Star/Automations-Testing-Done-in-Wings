@@ -31,7 +31,7 @@ public class TestPRWIR_UnRegIntraRCMExclusive {
 
     @BeforeTest
     public void afterTest() throws IOException, InterruptedException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 
 }
