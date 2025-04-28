@@ -27,7 +27,7 @@ public class MaterialReceiptsAPO_UnRegInterInclusive extends Transaction {
         dataFile = file;
     }
 
-    public void unReg_MRAO_InclusiveGST(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
+    public String[] unReg_MRAO_InclusiveGST(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
         navigateToMastersWhen3Steps(common.getData(dataFile,"Material Receipts","menu"),common.getData(dataFile,"Material Receipts","menuItem"), common.getData(dataFile,"Material Receipts","subMenuItem"));
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
@@ -39,9 +39,7 @@ public class MaterialReceiptsAPO_UnRegInterInclusive extends Transaction {
         gstTransactionType("Intra State Purchase from Registered Dealers");
         Thread.sleep(1000);
         selectPendingsSalesOrder(voucherNum,common.getData(dataFile,"Material Receipts","FYear"));
-
         enterInput("xpath","//Edit[@Name='Batch Policy']",dataFile,"Purchase Order","batchPolicy");
-
 
         // Product codes to search for
         String productCode1 = common.getData(dataFile, "Purchase Order", "productCode0");
@@ -89,6 +87,7 @@ public class MaterialReceiptsAPO_UnRegInterInclusive extends Transaction {
         totalValueInCompanyCurrenyPresentInSummary();
         //save
         transactionSave();
+        String originalId =newTransactionID(oldVoucherID);
         String newVoucherID =newTransactionID(oldVoucherID).replace(" ","");
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"both ID's should not Equal when we perform transaction");
@@ -100,6 +99,7 @@ public class MaterialReceiptsAPO_UnRegInterInclusive extends Transaction {
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
         verifyReport(newVoucherID,dataFile,"Material Receipts");
-        deleteTransactionBasedOnYear(newVoucherID);
+//        deleteTransactionBasedOnYear(newVoucherID);
+        return new String[]{newVoucherID,originalId};
     }
 }
