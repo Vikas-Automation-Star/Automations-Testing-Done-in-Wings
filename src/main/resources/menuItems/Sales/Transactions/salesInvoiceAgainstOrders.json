@@ -1,8 +1,0 @@
-{
-  "branch": "AT_Branch 1_Reg",
-  "location": "AT_Branch 1_Location 1",
-  "gstType": "Registered",
-  "transaction": "INR",
-  "partyCode": "AT_Cus_Reg_Inter",
-  "close": "Sales Invoices against Orders"
-}

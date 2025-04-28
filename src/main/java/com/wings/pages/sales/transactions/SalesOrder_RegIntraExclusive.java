@@ -2,6 +2,7 @@ package com.wings.pages.sales.transactions;
 
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.Assert;
@@ -24,6 +25,10 @@ public class SalesOrder_RegIntraExclusive extends Transaction {
     }
 
     public String[] intraExclusiveReg() throws InterruptedException, IOException, ParseException, AWTException {
+        long start = System.nanoTime();
+        System.out.println("SO startTime executed in :"+start);
+        Thread.sleep(100);
+
         navigateToSalesOrderMenu();
         Thread.sleep(2000);
         String oldVoucherID =oldTTransactionID();
@@ -80,6 +85,12 @@ public class SalesOrder_RegIntraExclusive extends Transaction {
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
         verifyReport(newVoucherID,dataFile,"SalesOrder");
+
+        long duration = System.nanoTime() - start;
+        System.out.println("endTime executed in :"+duration);
+        System.out.println("helperMethod1 executed in :" + duration / 1000000000 + " sec");
+        FileUtil.writeTimeLog("PurchaseEnquiries",duration/1000000000);
+
         return new String[]{newVoucherID,originalID};
     }
 

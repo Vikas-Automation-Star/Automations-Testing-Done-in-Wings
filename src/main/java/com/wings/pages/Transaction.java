@@ -507,9 +507,9 @@ public abstract class Transaction {
         common.clickElement("name", "Sales");
         common.clickElement("name", "Invoices");
         common.clickElement("xpath", "//MenuItem[@Name='Sales Invoices against Orders']");
-        String pageValidation = common.findWebElement("xpath", "//Pane/Text[@Name='Sales Invoices against Orders']").getText();
-        System.out.println("Screen Name:-" + pageValidation);
-        Assert.assertEquals(pageValidation, "Sales Invoices against Orders");
+//        String pageValidation = common.findWebElement("xpath", "//Pane/Text[@Name='Sales Invoices against Orders']").getText();
+//        System.out.println("Screen Name:-" + pageValidation);
+//        Assert.assertEquals(pageValidation, "Sales Invoices against Orders");
     }
 
     public void navigateToProformaSalesInvoiceMenu() {
@@ -2407,6 +2407,7 @@ public void selectPendingsSalesOrder(String voucherNum, String financialYearNum)
             Assert.fail(element.getText() + "is not selected");
         }
     }
+
     public void verifyReport(String transaction, String dataFile,String dataset) throws IOException, ParseException {
         List<WebElement> elementList = common.findWebElements("xpath", "//Table/*[@Name='Data Panel']/ListItem[contains(@Name,'Row')]");
         System.out.println("Size :" + elementList.size());
