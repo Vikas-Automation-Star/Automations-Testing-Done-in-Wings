@@ -2,53 +2,46 @@ package com.wings.pages.purchase.transactions;
 
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
-import com.wings.utils.Time;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-
 import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class PVAMR_RegInterInclusive extends Transaction {
+public class PVAMR_PRWIR_RegInterInclusive extends Transaction {
+
     WindowsDriver driver;
     Common common;
     String dataFile;
     boolean gstAmountClicked=false;
-    public PVAMR_RegInterInclusive(WindowsDriver driver, String file) {
+    public PVAMR_PRWIR_RegInterInclusive(WindowsDriver driver, String file) {
         super(driver);
         this.driver = driver;
         common = new Common(this.driver);
         dataFile = file;
     }
 
-    public String[] pvamr_RegInterInclusive(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
-        navigateToMastersWhen3Steps(common.getData(dataFile,"PVAMR RegInter","menu"),common.getData(dataFile,"PVAMR RegInter","menuItem"), common.getData(dataFile,"PVAMR RegInter","subMenuItem"));
+    public void regInterInclusiveWithInvoiceRef_PVAMR(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
+        navigateToMastersWhen3Steps(common.getData(dataFile,"PVAMR-PRWIR RegInter","menu"),common.getData(dataFile,"PVAMR-PRWIR RegInter","menuItem"), common.getData(dataFile,"PVAMR-PRWIR RegInter","subMenuItem"));
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
         System.out.println("oldID: "+ oldVoucherID);
+//        common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
+//        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
         enterInput("xpath","//Edit[@Name='Branch *']",dataFile,"Purchase Order","branch");
-        enterInput("xpath","//Edit[@Name='Party Code']",dataFile,"Purchase Order","partyCode");
-//        gstTransactionType("Intra State Purchase from Registered Dealers");
-        Thread.sleep(1500);
-        selectPendingsSalesOrder(voucherNum,common.getData(dataFile,"PVAMR RegInter","FYear"));
-        enterInput("xpath","//Edit[@Name='Purchase A/C Code']",dataFile,"PVAMR RegInter","purchaseA/cCode");
+//        enterInput("xpath","//Edit[@Name='Location *']",dataFile,"location");
+//        enterInput("xpath","//Edit[@Name='Trans Currency *']",dataFile,"currency")
+        inputTextWithValidation("xpath", "//Edit[@Name='Purchase VNo *']",voucherNum);
+        enterInput("xpath","//Edit[@Name='Purchase Return A/c Code']",dataFile,"PVAMR-PRWIR RegInter","purchaseReturnActCode");
         enableCheckboxSelection("//CheckBox[@Name='Apply TCS']");
-        enterInput("xpath","//Edit[@Name='TCS Trans Nature']", dataFile,"PVAMR RegInter","tcsNature");
-        inputTextWithValidation("xpath", "//Edit[@Name='Supplier Bill No *']", common.getData(dataFile,"PVAMR RegInter", "supplierCode") +common.getRandom());
-        inputTextWithValidation("xpath", "//Edit[@Name='Supplier Bill Date *']", common.getData(dataFile,"PVAMR RegInter", "date") + Time.timeStamp());
-        enterInput("xpath","//Edit[@Name='Batch Policy']",dataFile,"PVAMR RegInter","batchPolicy");
-        enterInput("xpath", "//Edit[@Name='Price List']", dataFile,"Purchase Order", "priceList");
-        enterInput("xpath", "//Edit[@Name='Executive *']", dataFile, "Purchase Order","executive");
+        enterInput("xpath","//Edit[@Name='TCS Trans Nature']", dataFile,"PVAMR-PRWIR RegInter","tcsNature");
 
-        // Product codes to search for
         String productCode1 = common.getData(dataFile, "Purchase Order", "productCode0");
         String productCode2 = common.getData(dataFile, "Purchase Order", "productCode1");
         java.util.List<String> productCodes = Arrays.asList(productCode1, productCode2);
@@ -88,52 +81,42 @@ public class PVAMR_RegInterInclusive extends Transaction {
                     break;
                 }
             }
-
         }
         double itemsNetValue = Double.parseDouble(common.findWebElement("xpath", "//Edit[@AutomationId='NetAmount']").getText().replace(",", ""));
         System.out.println("Items NetAmount :- " + itemsNetValue);
         common.deleteInvalidRows();
-        OtherChargesCalculations(dataFile,"PVAMR RegInter", "otherChargesCode", "amount", "rowCount","HSNCode","TaxType");
+        tcsCalculations(itemsNetValue);
+
         validateIGSTAmountTabIsNotEmpty();
         validateCESSAmountTabIsNotEmpty();
-        navigateToBillsReceivablesTab();
+        navigateToBillsPayablesTab();
         common.deleteInvalidRows();
-        tcsCalculations(itemsNetValue);
-        navigateToTcs();
-        for (int j = 0; j <=8; j++) {
-            Robot robot=new Robot();
-            robot.keyPress(KeyEvent.VK_RIGHT);
-            robot.keyRelease(KeyEvent.VK_RIGHT);
-        }
+        navigateToSummaryTab();
         quantityPresentInSummary();
+        freeQuantityPresentInSummary();
         grossAmountPresentInSummary();
         grossMinusDiscountPresentInSummary();
         iGSTPresentInSummary();
         cessPresentInSummary();
         netAmountPresentInSummary();
-        otherChargesPresentInSummary();
-        otherChargesCGSTPresentInSummary();
-        otherChargesSGSTPresentInSummary();
-        otherChargesCESSPresentInSummary();
-        tcsTaxableValuePresentInSummary();
         tcsAmountPresentInSummary();
+        tcsTaxableValuePresentInSummary();
         totalValuePresentInSummary();
         totalValueInCompanyCurrenyPresentInSummary();
+
         //save
         transactionSave();
-        String originalID =newTransactionID(oldVoucherID);
         String newVoucherID =newTransactionID(oldVoucherID).replace(" ","");
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"both ID's should not Equal when we perform transaction");
         Thread.sleep(1000);
         common.clickElement("name", "Purchase");
         common.clickElement("name", "Invoices");
-        common.clickElement("xpath", "//MenuItem[@Name='Purchase Vouchers against Receipts'][2]");
+        common.clickElement("xpath", "//MenuItem[@Name='Purchase Returns with Invoice Reference'][2]");
         Thread.sleep(1000);
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
-        verifyReport(newVoucherID,dataFile,"PVAMR RegInter");
-//        deleteTransactionBasedOnYear(newVoucherID);
-        return new String[]{newVoucherID,originalID};
+        verifyReport(newVoucherID,dataFile,"PVAMR-PRWIR RegInter");
+//        deleteSingleTransaction(newVoucherID);
     }
 }

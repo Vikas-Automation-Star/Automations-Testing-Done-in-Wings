@@ -40,8 +40,6 @@ public class MaterialReceiptsAPO_RegInterInclusive extends Transaction {
         Thread.sleep(1000);
         selectPendingsSalesOrder(voucherNum,common.getData(dataFile,"Material Receipts","FYear"));
         enterInput("xpath","//Edit[@Name='Batch Policy']",dataFile,"Purchase Order","batchPolicy");
-//        common.clickElement("xpath","//*//CheckBox[@Name='Select Row 0']");
-//        common.clickElement("xpath","//Button[@Name='Ok']");
 
         // Product codes to search for
         String productCode1 = common.getData(dataFile, "Purchase Order", "productCode0");
@@ -78,7 +76,6 @@ public class MaterialReceiptsAPO_RegInterInclusive extends Transaction {
             }
 
         }
-
         common.deleteInvalidRows();
         validateIGSTAmountTabIsNotEmpty();
         validateCESSAmountTabIsNotEmpty();

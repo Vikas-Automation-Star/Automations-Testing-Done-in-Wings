@@ -100,8 +100,6 @@ public class PVAMR_RegIntraExclusive extends Transaction {
         navigateToBillsReceivablesTab();
         common.deleteInvalidRows();
         tcsCalculations(itemsNetValue);
-        navigateToBillsReceivablesTab();
-        common.deleteInvalidRows();
         navigateToTcs();
         for (int j = 0; j <=8; j++) {
             Robot robot=new Robot();
@@ -137,7 +135,7 @@ public class PVAMR_RegIntraExclusive extends Transaction {
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
         verifyReport(newVoucherID,dataFile,"PVAMR RegIntra");
-        deleteTransactionBasedOnYear(newVoucherID);
+//        deleteTransactionBasedOnYear(newVoucherID);
         return new String[]{newVoucherID,originalID};
     }
 
