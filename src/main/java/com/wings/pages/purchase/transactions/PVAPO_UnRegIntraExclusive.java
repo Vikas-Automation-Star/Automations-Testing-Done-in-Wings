@@ -29,7 +29,7 @@ public class PVAPO_UnRegIntraExclusive extends Transaction {
         dataFile = file;
     }
 
-    public void pvapo_UnRegIntraExclusive(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
+    public String[] pvapo_UnRegIntraExclusive(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
         navigateToMastersWhen3Steps(common.getData(dataFile,"PVAPO UnRegIntra","menu"),common.getData(dataFile,"PVAPO UnRegIntra","menuItem"), common.getData(dataFile,"PVAPO UnRegIntra","subMenuItem"));
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
@@ -114,6 +114,7 @@ public class PVAPO_UnRegIntraExclusive extends Transaction {
         totalValueInCompanyCurrenyPresentInSummary();
         //save
         transactionSave();
+        String originalID =newTransactionID(oldVoucherID);
         String newVoucherID =newTransactionID(oldVoucherID).replace(" ","");
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"both ID's should not Equal when we perform transaction");
@@ -125,7 +126,8 @@ public class PVAPO_UnRegIntraExclusive extends Transaction {
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
         verifyReport(newVoucherID,dataFile,"PVAPO UnRegIntra");
-        deleteTransactionBasedOnYear(newVoucherID);
+//        deleteTransactionBasedOnYear(newVoucherID);
+        return new String[]{newVoucherID,originalID};
     }
 
 }

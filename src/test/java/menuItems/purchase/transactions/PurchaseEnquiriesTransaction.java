@@ -29,6 +29,6 @@ public class PurchaseEnquiriesTransaction {
 
     @AfterTest
     public void afterTest() throws IOException {
-        appLogin.logout();
+//        appLogin.logout();
     }
 }

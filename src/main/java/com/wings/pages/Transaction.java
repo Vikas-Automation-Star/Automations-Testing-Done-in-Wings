@@ -1632,8 +1632,6 @@ public abstract class Transaction {
         common.clickElement("xpath", "//Button[@Name='Yes']");
         WebDriverWait wait=new WebDriverWait(driver,40);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@Name='Transaction saved.']/Button[@Name='OK']"))).click();
-//        Thread.sleep(4000);
-//        common.clickElement("xpath", "//*[@Name='Transaction saved.']/Button[@Name='OK']");
     }
 
     public void lastTransactionName() {

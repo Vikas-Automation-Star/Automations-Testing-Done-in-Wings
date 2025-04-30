@@ -136,6 +136,5 @@ public class PurchaseOrder_UnRegIntraExclusive extends Transaction {
         Assert.assertEquals(grossAmount, netAmount, "check calculations once");
         System.out.println("Net Amount:- " + netAmount);
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 200, 0);
-        Time.currentDateAndTime();
     }
 }

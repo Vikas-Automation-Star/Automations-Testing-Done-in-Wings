@@ -33,7 +33,6 @@ public class TestPVAMR_PRWIR_RegInterInclusive {
         String[] inclusivePVAMR=pvamr.pvamr_RegInterInclusive(inclusiveMRPO[1]);
         PVAMR_PRWIR_RegInterInclusive prwir_regInterInclusive=new PVAMR_PRWIR_RegInterInclusive(driver,file);
         prwir_regInterInclusive.regInterInclusiveWithInvoiceRef_PVAMR(inclusivePVAMR[1]);
-//        prwir_regInterInclusive.regInterInclusiveWithInvoiceRef_PVAMR("PVAMR4");
     }
 
     @AfterTest
