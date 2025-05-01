@@ -192,7 +192,7 @@ public class XMLUtil {
     public static void main(String[] args) {
         XMLUtil xmlUtil = new XMLUtil();
         try {
-            xmlUtil.readTestNG("./TestNG/MenuItems/Masters.xml");// Parse bothSuite.xml and testng-results.xml
+            xmlUtil.readTestNG("./TestNG/MenuItems/purchaseSuite.xml");// Parse bothSuite.xml and testng-results.xml
             xmlUtil.readTestNGResults("./target/surefire-reports/testng-results.xml"); // Process test results and send email
         } catch (Exception e) {
             e.printStackTrace();

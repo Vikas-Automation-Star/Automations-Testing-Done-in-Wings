@@ -31,18 +31,17 @@ public class Time {
         return now.format(formatter);
     }
 
-    public static boolean currentDateAndTime(){
+    public static String currentDateAndTime(){
         // Get current time in milliseconds
         long currentMillis = System.currentTimeMillis();
         // Convert milliseconds to LocalDateTime
         LocalDateTime dateTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(currentMillis), ZoneId.systemDefault());
         // Format the time
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-        System.out.println("Current Time: " + dateTime.format(formatter));
-        return false;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd_MM_yyyy-hh-mm-ss_a");
+        return dateTime.format(formatter);
     }
 
     public static void main(String[] args) {
-        System.out.println(timeStamp());
+        System.out.println(currentDateAndTime());
     }
 }

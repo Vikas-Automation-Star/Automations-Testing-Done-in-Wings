@@ -20,7 +20,6 @@ public class PurchaseOrdersAgainstQuotationsReport {
     public void beforeTest() throws IOException, InterruptedException, ParseException {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
-        Allure.step("Before Test PurchaseOrdersAgainstQuotations Report");
     }
 
     @Test
@@ -32,6 +31,5 @@ public class PurchaseOrdersAgainstQuotationsReport {
     @AfterTest
     public void afterTest() throws IOException {
         appLogin.logout();
-        Allure.step("After Test PurchaseOrdersAgainstQuotations Report");
     }
 }

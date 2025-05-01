@@ -21,7 +21,6 @@ public class PendingPurchaseOrdersWithReceiptsReport {
     public void beforeTest() throws IOException, InterruptedException, ParseException {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
-        Allure.step("Before Test PendingPurchaseOrdersWithReceipts Report");
     }
 
     @Test
@@ -33,7 +32,6 @@ public class PendingPurchaseOrdersWithReceiptsReport {
     @AfterTest
     public void afterTest() throws IOException {
         appLogin.logout();
-        Allure.step("after Test PendingPurchaseOrdersWithReceipts Report");
     }
 
 }
