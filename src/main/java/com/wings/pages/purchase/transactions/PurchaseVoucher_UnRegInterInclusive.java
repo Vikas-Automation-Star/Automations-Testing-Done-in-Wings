@@ -25,7 +25,6 @@ public class PurchaseVoucher_UnRegInterInclusive extends Transaction {
     }
 
     public String Reg_To_UnReg_PurchaseVoucher_InterState_Inclusive() throws InterruptedException, IOException, ParseException, AWTException {
-        Time.currentDateAndTime();
         navigateToMastersWhen3Steps(common.getData(dataFile,"menu"),common.getData(dataFile,"menuItem"), common.getData(dataFile,"subMenuItem"));
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
@@ -45,15 +44,11 @@ public class PurchaseVoucher_UnRegInterInclusive extends Transaction {
         enterInput("xpath","//Edit[@Name='TCS Trans Nature']", dataFile,"tcsNature");
         enterInput("xpath", "//Edit[@Name='Price List']", dataFile, "priceList");
         enterInput("xpath", "//Edit[@Name='Executive *']", dataFile, "executive");
-        Time.currentDateAndTime();
 //        generalInfoSliderHandle(-500);
         for (int i = 0; i < Integer.parseInt(common.getData(dataFile, "productCount")); i++) {
             addProduct(i);
         }
-        Time.currentDateAndTime();
-
         double itemsNetValue = Double.parseDouble(common.findWebElement("xpath", "//Edit[@AutomationId='NetAmount']").getText().replace(",", ""));tcsCalculations(itemsNetValue);
-
         validateIGSTAmountTabIsEmpty();validateCESSAmountTabIsEmpty();navigateToBillsReceivablesTab();common.deleteInvalidRows();
         //verify all the fields in summary are fetching data
         navigateToTcs();

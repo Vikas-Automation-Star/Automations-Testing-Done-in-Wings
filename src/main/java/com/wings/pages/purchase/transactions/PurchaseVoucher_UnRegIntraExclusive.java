@@ -30,7 +30,6 @@ public class PurchaseVoucher_UnRegIntraExclusive extends Transaction {
     }
 
     public String Reg_To_UnReg_PvIntraStateExclusive() throws InterruptedException, IOException, ParseException, AWTException {
-        Time.currentDateAndTime();
         navigateToMastersWhen3Steps(common.getData(dataFile,"menu"),common.getData(dataFile,"menuItem"), common.getData(dataFile,"subMenuItem"));
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
@@ -50,7 +49,6 @@ public class PurchaseVoucher_UnRegIntraExclusive extends Transaction {
         enterInput("xpath","//Edit[@Name='TCS Trans Nature']", dataFile,"tcsNature");
         enterInput("xpath", "//Edit[@Name='Price List']", dataFile, "priceList");
         enterInput("xpath", "//Edit[@Name='Executive *']", dataFile, "executive");
-        Time.currentDateAndTime();
 //        //F3-Items
         for (int i = 0; i < Integer.parseInt(common.getData(dataFile, "productCount")); i++) {
             addProduct(i);
@@ -91,12 +89,10 @@ public class PurchaseVoucher_UnRegIntraExclusive extends Transaction {
         Thread.sleep(1500);
         verifyReport(newVoucherID,dataFile);
 //        deleteSingleTransaction(newVoucherID);
-        Time.currentDateAndTime();
         return newVoucherID;
     }
 
     public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {
-        Time.currentDateAndTime();
         if (common.getData(dataFile, "productType" + i).equals("general")) {
             generalProduct(dataFile, "productCode" + i, "quantity" + i,"freeQuantity" +i, i);
         } else if (common.getData(dataFile, "productType" + i).equals("multiBatch")) {
@@ -196,7 +192,6 @@ public class PurchaseVoucher_UnRegIntraExclusive extends Transaction {
         Assert.assertEquals(calculatedNet, netAmount, "check calculations once");
         System.out.println("Net Amount:- " + netAmount);
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 200, 0);
-        Time.currentDateAndTime();
     }
 
 }

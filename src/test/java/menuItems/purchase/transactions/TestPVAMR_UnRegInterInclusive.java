@@ -30,16 +30,12 @@ public class TestPVAMR_UnRegInterInclusive {
         String[] unRegInc=unRegInclusive.unReg_PO_GSTInclusive();
         MaterialReceiptsAPO_UnRegInterInclusive receipts=new MaterialReceiptsAPO_UnRegInterInclusive(driver,file);
         String[] UnRegIncMRAPO=receipts.unReg_MRAO_InclusiveGST(unRegInc[1]);
-        System.out.println("receipts Voucher " + UnRegIncMRAPO[0]); //without space
-        System.out.println("receipts secVoucher " + UnRegIncMRAPO[1]); //with space
         PVAMR_UnRegInterInclusive UnRegInclusive =new PVAMR_UnRegInterInclusive(driver,file);
         String[] UnregInvPVAMR=UnRegInclusive.pvamr_UnRegInterInclusive(UnRegIncMRAPO[1]);
-        System.out.println("PVAMR Voucher " + UnregInvPVAMR[0]); //without space
-        System.out.println("PVAMR secVoucher " + UnregInvPVAMR[1]); //with space
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 }

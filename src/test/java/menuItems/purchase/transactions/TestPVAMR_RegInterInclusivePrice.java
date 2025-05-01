@@ -30,17 +30,12 @@ public class TestPVAMR_RegInterInclusivePrice {
         PurchaseOrder_RegInterInclusive po = new PurchaseOrder_RegInterInclusive(driver, file);
         MaterialReceiptsAPO_RegInterInclusive pvao = new MaterialReceiptsAPO_RegInterInclusive(driver, file);
         String [] inclusiveMRPO=pvao.mroa_InclusiveGST(po.Reg_PO_GSTInclusive()[1]);
-        System.out.println("receipts Voucher " + inclusiveMRPO[0]); //without space
-        System.out.println("receipts secVoucher " + inclusiveMRPO[1]); //with space
-
         PVAMR_RegInterInclusive pvamr=new PVAMR_RegInterInclusive(driver,file);
         String[] inclusivePVAMR=pvamr.pvamr_RegInterInclusive(inclusiveMRPO[1]);
-        System.out.println("PVAMR Voucher " + inclusivePVAMR[0]); //without space
-        System.out.println("PVAMR secVoucher " + inclusivePVAMR[1]); //with space
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 }

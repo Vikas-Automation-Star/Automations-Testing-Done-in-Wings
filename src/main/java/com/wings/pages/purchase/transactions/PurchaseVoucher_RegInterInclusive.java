@@ -26,7 +26,6 @@ public class PurchaseVoucher_RegInterInclusive extends Transaction {
     }
 
     public String InterState_PurchaseVoucher_GST_TCS_Inclusive() throws InterruptedException, IOException, ParseException, AWTException {
-        System.out.println("startTime1 :"+System.currentTimeMillis());
         navigateToMastersWhen3Steps(common.getData(dataFile,"menu"),common.getData(dataFile,"menuItem"), common.getData(dataFile,"subMenuItem"));
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
@@ -64,7 +63,16 @@ public class PurchaseVoucher_RegInterInclusive extends Transaction {
             robot.keyPress(KeyEvent.VK_RIGHT);
             robot.keyRelease(KeyEvent.VK_RIGHT);
         }
-        quantityPresentInSummary();freeQuantityPresentInSummary();grossAmountPresentInSummary();grossMinusDiscountPresentInSummary();cessPresentInSummary();netAmountPresentInSummary();tcsAmountPresentInSummary();tcsTaxableValuePresentInSummary();totalValuePresentInSummary();totalValueInCompanyCurrenyPresentInSummary();
+        quantityPresentInSummary();
+        freeQuantityPresentInSummary();
+        grossAmountPresentInSummary();
+        grossMinusDiscountPresentInSummary();
+        cessPresentInSummary();
+        netAmountPresentInSummary();
+        tcsAmountPresentInSummary();
+        tcsTaxableValuePresentInSummary();
+        totalValuePresentInSummary();
+        totalValueInCompanyCurrenyPresentInSummary();
         //save
         transactionSave();
         String newVoucherID =newTransactionID(oldVoucherID).replace(" ","");System.out.println("newID: "+newVoucherID);

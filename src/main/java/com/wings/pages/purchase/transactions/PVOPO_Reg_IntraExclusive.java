@@ -131,8 +131,7 @@ public class PVOPO_Reg_IntraExclusive extends Transaction {
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
         verifyReport(newVoucherID,dataFile,"PVAPO GSTTCS");
-        deleteTransactionBasedOnYear(newVoucherID);
-
+//        deleteTransactionBasedOnYear(newVoucherID);
     }
 
 }

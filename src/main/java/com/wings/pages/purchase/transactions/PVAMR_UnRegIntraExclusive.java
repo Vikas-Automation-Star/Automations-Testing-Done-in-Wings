@@ -133,7 +133,7 @@ public class PVAMR_UnRegIntraExclusive extends Transaction {
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
         verifyReport(newVoucherID,dataFile,"PVAMR UNRegIntra");
-        deleteTransactionBasedOnYear(newVoucherID);
+//        deleteTransactionBasedOnYear(newVoucherID);
         return new String[]{newVoucherID,originalID};
     }
 }
