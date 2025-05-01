@@ -37,6 +37,6 @@ public class TestSalesInvoiceAgainstOrders_UnRegInterInclusive {
 
         @AfterTest
         public void afterTest() throws IOException {
-//            appLogin.logout();
+            appLogin.logout();
         }
     }

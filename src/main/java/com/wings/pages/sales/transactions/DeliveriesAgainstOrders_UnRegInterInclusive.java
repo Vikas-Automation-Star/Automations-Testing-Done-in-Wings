@@ -2,6 +2,7 @@ package com.wings.pages.sales.transactions;
 
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.Assert;
@@ -23,6 +24,9 @@ public class DeliveriesAgainstOrders_UnRegInterInclusive extends Transaction{
     }
 
     public String[] interInclusiveUnRegDeliveries(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
+        long start = System.nanoTime();
+        System.out.println("deliveriesAgainstOrder UnRegInterInclusive start: " +start);
+
         navigateToDeliveriesAgainstOrdersMenu();
         Thread.sleep(2000);
         String oldVoucherID = oldTTransactionID();
@@ -74,6 +78,9 @@ public class DeliveriesAgainstOrders_UnRegInterInclusive extends Transaction{
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
 //        verifyReport(newVoucherID,dataFile,"SalesOrder");
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("deliveriesAgainstOrder UnRegInterInclusive end: ",duration/1000000000);
+
         return new String[]{newVoucherID,originalID};
 //            return "DELO Completed SuccessFully";
     }

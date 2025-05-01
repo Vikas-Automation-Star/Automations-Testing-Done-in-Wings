@@ -1,13 +1,12 @@
 package com.wings.pages;
 
 import com.wings.utils.Common;
+import com.wings.utils.FileUtil;
 import com.wings.utils.StringUtil;
 import io.appium.java_client.windows.WindowsDriver;
-import org.apache.commons.beanutils.PropertyUtilsBean;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -2213,36 +2212,62 @@ public void selectPendingsSalesOrder(String voucherNum, String financialYearNum)
         }
     }
 
-    public void quantityPresentInSummary() {
+    public void quantityPresentInSummary() throws InterruptedException, IOException {
+        long start = System.nanoTime();
+        System.out.println("quantity present in summary : " +start);
+        Thread.sleep(100);
+
         WebElement Quantity = common.findWebElement("xpath", "//Edit[contains(@Name,'Quantity')]");
         String quantityText = Quantity.getText();
         if ((quantityText == (null) || "(null)".equals(quantityText))) {
             Assert.fail("Quantity field is empty");
         }
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("quantity Present in summary",duration/1000000000);
     }
 
-    public void grossAmountPresentInSummary() {
+    public void grossAmountPresentInSummary() throws IOException, InterruptedException {
+        long start = System.nanoTime();
+        System.out.println("grossAmount present in summary : " +start);
+        Thread.sleep(100);
+
         WebElement grossAmount = common.findWebElement("xpath", "//Edit[contains(@Name,'Gross Amount')]");
         String grossAmountText1 = grossAmount.getText();
         if ((grossAmountText1 == (null) || "(null)".equals(grossAmountText1))) {
             Assert.fail("grossAmount field is empty");
         }
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("grossAmount Present in summary",duration/1000000000);
     }
 
-    public void totalValuePresentInSummary() {
+    public void totalValuePresentInSummary() throws InterruptedException, IOException {
+        long start = System.nanoTime();
+        System.out.println("Total value present in summary : " +start);
+        Thread.sleep(100);
+
         WebElement totalValue = common.findWebElement("xpath", "//Edit[@Name='Total Value']");
         String totalValueText = totalValue.getText();
         if (totalValueText == (null) || "(null)".equals(totalValueText)) {
             Assert.fail("Total value field is Empty");
         }
+
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Total value Present in summary", duration / 1000000000);
     }
 
-    public void totalValueInCompanyCurrenyPresentInSummary() {
+    public void totalValueInCompanyCurrenyPresentInSummary() throws InterruptedException, IOException {
+        long start = System.nanoTime();
+        System.out.println("Total value in Company Currency present in summary : " +start);
+        Thread.sleep(100);
+
         WebElement totalValueCompanyCurreny = common.findWebElement("xpath", "//Edit[@Name='Total Value In Company Currency']");
         String totalValuecurrencyText = totalValueCompanyCurreny.getText();
         if (totalValuecurrencyText == (null) || "(null)".equals(totalValuecurrencyText)) {
-            Assert.fail("Total value in Company Curreny field is Empty");
+            Assert.fail("Total value in Company Currency field is Empty");
         }
+
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Total value in Company Currency Present in summary",duration/1000000000);
     }
 
     public void receivableAmountPresentInSummary() {
@@ -2253,120 +2278,168 @@ public void selectPendingsSalesOrder(String voucherNum, String financialYearNum)
         }
     }
 
-    public void tcsTaxableValuePresentInSummary() {
-        WebElement netAmount = common.findWebElement("xpath", "//Edit[@Name='TCS Taxable Value']");
-        String netAmountText1 = netAmount.getText();
-        if ((netAmountText1 == (null) || "(null)".equals(netAmountText1))) {
-            Assert.fail(" tcsTaxableValuePresentInSummary field is empty");
+    public void tcsTaxableValuePresentInSummary() throws InterruptedException, IOException {
+        long start = System.nanoTime();
+        System.out.println("TCS Taxable present in summary : " +start);
+        Thread.sleep(100);
+
+        WebElement tcsTaxable = common.findWebElement("xpath", "//Edit[@Name='TCS Taxable Value']");
+        String tcsTaxableText = tcsTaxable.getText();
+        if ((tcsTaxableText == (null) || "(null)".equals(tcsTaxableText))) {
+            Assert.fail(" TCS Taxable  field is empty");
         }
+
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("TCS Taxable Present in summary",duration/1000000000);
     }
 
-    public void tcsAmountPresentInSummary() {
-        WebElement netAmount = common.findWebElement("xpath", "//Edit[@Name='TCS Amount']");
-        String netAmountText1 = netAmount.getText();
-        if ((netAmountText1 == (null) || "(null)".equals(netAmountText1))) {
+    public void tcsAmountPresentInSummary() throws IOException, InterruptedException {
+        long start = System.nanoTime();
+        System.out.println("TCS Amount present in summary : " +start);
+        Thread.sleep(100);
+
+        WebElement tcsAmount = common.findWebElement("xpath", "//Edit[@Name='TCS Amount']");
+        String tcsAmountText = tcsAmount.getText();
+        if ((tcsAmountText == (null) || "(null)".equals(tcsAmountText))) {
             Assert.fail("TCS Amount field is empty");
         }
+
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("TCS Amount Present in summary",duration/1000000000);
     }
 
-    public void netAmountPresentInSummary() {
+    public void netAmountPresentInSummary() throws InterruptedException, IOException {
+        long start = System.nanoTime();
+        System.out.println("netAmount present in summary : " +start);
+        Thread.sleep(100);
+
         WebElement netAmount = common.findWebElement("xpath", "//Edit[@Name='Net Amount']");
         String netAmountText1 = netAmount.getText();
         if ((netAmountText1 == (null) || "(null)".equals(netAmountText1))) {
             Assert.fail("netAmount field is empty");
         }
+
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("netAmount Present in summary",duration/1000000000);
     }
 
     public void chargesPresentInSummary() {
-        WebElement netAmount = common.findWebElement("xpath", "//Edit[@Name='Charges']");
-        String netAmountText1 = netAmount.getText();
-        if ((netAmountText1 == (null) || "(null)".equals(netAmountText1))) {
+        WebElement charges = common.findWebElement("xpath", "//Edit[@Name='Charges']");
+        String chargesText = charges.getText();
+        if ((chargesText == (null) || "(null)".equals(chargesText))) {
             Assert.fail("netAmount field is empty");
         }
     }
 
     public void otherChargesPresentInSummary() {
-        WebElement netAmount = common.findWebElement("xpath", "//Edit[@Name='Other Charges']");
-        String netAmountText1 = netAmount.getText();
-        if ((netAmountText1 == (null) || "(null)".equals(netAmountText1))) {
+        WebElement otherCharges = common.findWebElement("xpath", "//Edit[@Name='Other Charges']");
+        String otherChargesText = otherCharges.getText();
+        if ((otherChargesText == (null) || "(null)".equals(otherChargesText))) {
             Assert.fail("netAmount field is empty");
         }
     }
 
     public void otherChargesSGSTPresentInSummary() {
-        WebElement netAmount = common.findWebElement("xpath", "//Edit[@Name='Other Charges SGST']");
-        String netAmountText1 = netAmount.getText();
-        if ((netAmountText1 == (null) || "(null)".equals(netAmountText1))) {
+        WebElement otherChargesSGST = common.findWebElement("xpath", "//Edit[@Name='Other Charges SGST']");
+        String otherChargesSGSTText = otherChargesSGST.getText();
+        if ((otherChargesSGSTText == (null) || "(null)".equals(otherChargesSGSTText))) {
             Assert.fail("netAmount field is empty");
         }
     }
 
     public void otherChargesCGSTPresentInSummary() {
-        WebElement netAmount = common.findWebElement("xpath", "//Edit[@Name='Other Charges CGST']");
-        String netAmountText1 = netAmount.getText();
-        if ((netAmountText1 == (null) || "(null)".equals(netAmountText1))) {
+        WebElement otherChargesCGST = common.findWebElement("xpath", "//Edit[@Name='Other Charges CGST']");
+        String otherChargesCGSTText = otherChargesCGST.getText();
+        if ((otherChargesCGSTText == (null) || "(null)".equals(otherChargesCGSTText))) {
             Assert.fail("netAmount field is empty");
         }
     }
 
 
-    public void grossMinusDiscountPresentInSummary() {
+    public void grossMinusDiscountPresentInSummary() throws IOException, InterruptedException {
+        long start = System.nanoTime();
+        System.out.println("grossDiscountAmount present in summary : " +start);
+        Thread.sleep(100);
+
         WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[contains(@Name,'Gross - Disc')]");
         String grossMinusDiscountAmount = grossDiscountAmount.getText();
         if ((grossMinusDiscountAmount == (null) || "(null)".equals(grossMinusDiscountAmount))) {
             Assert.fail("grossDiscountAmount field is empty");
         }
+
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("grossDiscountAmount Present in summary",duration/1000000000);
     }
 
-    public void iGSTPresentInSummary() {
-        WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='IGST']");
-        String grossMinusDiscountAmount = grossDiscountAmount.getText();
-        if ((grossMinusDiscountAmount == (null) || "(null)".equals(grossMinusDiscountAmount))) {
-            Assert.fail("grossDiscountAmount field is empty");
+    public void iGSTPresentInSummary() throws InterruptedException, IOException {
+        long start = System.nanoTime();
+        System.out.println("IGST present in summary : " +start);
+        Thread.sleep(100);
+
+        WebElement igstSummary = common.findWebElement("xpath", "//Edit[@Name='IGST']");
+        String igstSummaryText = igstSummary.getText();
+        if ((igstSummaryText == (null) || "(null)".equals(igstSummaryText))) {
+            Assert.fail("IGST field is empty");
         }
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("IGST Present in summary",duration/1000000000);
     }
     public void RCMIGSTPresentInSummary() {
-        WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='RCM IGST']");
-        String grossMinusDiscountAmount = grossDiscountAmount.getText();
-        if ((grossMinusDiscountAmount == ("0.000"))) {
-            Assert.fail("grossDiscountAmount field is empty");
+        WebElement rcmIGST = common.findWebElement("xpath", "//Edit[@Name='RCM IGST']");
+        String rcmIGSTText = rcmIGST.getText();
+        if ((rcmIGSTText == ("0.000"))) {
+            Assert.fail("RCM IGST field is empty");
         }
     }
 
-    public void cessPresentInSummary() {
-        WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='CESS']");
-        String grossMinusDiscountAmount = grossDiscountAmount.getText();
-        if ((grossMinusDiscountAmount == (null) || "(null)".equals(grossMinusDiscountAmount))) {
-            Assert.fail("grossDiscountAmount field is empty");
+    public void cessPresentInSummary() throws InterruptedException, IOException {
+        long start = System.nanoTime();
+        System.out.println("CESS present in summary : " +start);
+        Thread.sleep(100);
+
+        WebElement cessSummary = common.findWebElement("xpath", "//Edit[@Name='CESS']");
+        String cessSummaryText = cessSummary.getText();
+        if ((cessSummaryText == (null) || "(null)".equals(cessSummaryText))) {
+            Assert.fail("CESS field is empty");
         }
+
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("CESS Present in summary",duration/1000000000);
     }
     public void RCMCESSPresentInSummary() {
-        WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='RCM CESS']");
-        String grossMinusDiscountAmount = grossDiscountAmount.getText();
-        if ((grossMinusDiscountAmount == ("0.000"))) {
-            Assert.fail("grossDiscountAmount field is empty");
+        WebElement rcmCESS = common.findWebElement("xpath", "//Edit[@Name='RCM CESS']");
+        String rcmCESSText = rcmCESS.getText();
+        if ((rcmCESSText == ("0.000"))) {
+            Assert.fail("RCM CESS field is empty");
         }
     }
-    public void freeQuantityPresentInSummary() {
-        WebElement Quantity = common.findWebElement("xpath", "//Edit[@Name='Free Quantity']");
-        String quantityText = Quantity.getText();
+    public void freeQuantityPresentInSummary() throws InterruptedException, IOException {
+        long start = System.nanoTime();
+        System.out.println("free quantity present in summary : " +start);
+        Thread.sleep(100);
+
+        WebElement freeQuantity = common.findWebElement("xpath", "//Edit[@Name='Free Quantity']");
+        String quantityText = freeQuantity.getText();
         if ((quantityText == (null))) {
-            Assert.fail("Quantity field is empty");
+            Assert.fail("free quantity field is empty");
         }
+
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("free quantity Present in summary",duration/1000000000);
     }
     public void otherChargesCESSPresentInSummary() {
-        WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='Other Charges CESS']");
-        String grossMinusDiscountAmount = grossDiscountAmount.getText();
-        if ((grossMinusDiscountAmount == (null) || "(null)".equals(grossMinusDiscountAmount))) {
-            Assert.fail("grossDiscountAmount field is empty");
+        WebElement otherChargesCESS = common.findWebElement("xpath", "//Edit[@Name='Other Charges CESS']");
+        String otherChargesCESSText = otherChargesCESS.getText();
+        if ((otherChargesCESSText == (null) || "(null)".equals(otherChargesCESSText))) {
+            Assert.fail("other Charges CESS field is empty");
         }
     }
 
     public void otherChargesIGSTPresentInSummary() {
-        WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='Other Charges IGST']");
-        String grossMinusDiscountAmount = grossDiscountAmount.getText();
-        if ((grossMinusDiscountAmount == (null) || "(null)".equals(grossMinusDiscountAmount))) {
-            Assert.fail("grossDiscountAmount field is empty");
+        WebElement otherChargesIGST = common.findWebElement("xpath", "//Edit[@Name='Other Charges IGST']");
+        String otherChargesIGSTText = otherChargesIGST.getText();
+        if ((otherChargesIGSTText == (null) || "(null)".equals(otherChargesIGSTText))) {
+            Assert.fail("other Charges IGST field is empty");
         }
     }
 
@@ -2406,7 +2479,11 @@ public void selectPendingsSalesOrder(String voucherNum, String financialYearNum)
         }
     }
 
-    public void verifyReport(String transaction, String dataFile,String dataset) throws IOException, ParseException {
+    public void verifyReport(String transaction, String dataFile,String dataset) throws IOException, ParseException, InterruptedException {
+        long start = System.nanoTime();
+        System.out.println("Verify Report start: " +start);
+        Thread.sleep(100);
+
         List<WebElement> elementList = common.findWebElements("xpath", "//Table/*[@Name='Data Panel']/ListItem[contains(@Name,'Row')]");
         System.out.println("Size :" + elementList.size());
         for (WebElement i : elementList) {
@@ -2416,8 +2493,14 @@ public void selectPendingsSalesOrder(String voucherNum, String financialYearNum)
                 bulkVerifyReportData(i.getText(), dataFile,dataset);
             }
         }
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Verify Report end: ",duration/1000000000);
     }
-    public void bulkVerifyReportData(String text, String dataFile,String dataset) throws IOException, ParseException {
+    public void bulkVerifyReportData(String text, String dataFile,String dataset) throws IOException, ParseException, InterruptedException {
+        long start = System.nanoTime();
+        System.out.println("Bulk verify Report start: " +start);
+        Thread.sleep(100);
+
         String[] columns = text.split(";");
         for (int i = 0; i < columns.length; i++) {
             if (i > 2 && !common.getData(dataFile, dataset,"column" + (i + 1)).equals("")) {
@@ -2426,6 +2509,8 @@ public void selectPendingsSalesOrder(String voucherNum, String financialYearNum)
             System.out.println(columns[i]);
         }
         System.out.println("Report verified Successfully");
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Bulk verify Report end: ",duration/1000000000);
     }
     public void enterBranch(String dataFile,String dataset,String key) throws IOException, ParseException {
         enterInput("xpath", "//Edit[@Name='Branch *']", dataFile,dataset, key);

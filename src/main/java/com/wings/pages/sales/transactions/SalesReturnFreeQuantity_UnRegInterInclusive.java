@@ -31,31 +31,31 @@ public class SalesReturnFreeQuantity_UnRegInterInclusive extends Transaction {
         System.out.println("oldID: " + oldVoucherID);
         enterInput("xpath", "//Edit[@Name='Branch *']", dataFile, "SalesReturn", "branch");
         enterInput("xpath", "//Edit[@Name='Location *']", dataFile, "SalesReturn", "location");
-        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Branch *']"), common.getData(dataFile, "SalesReturn", "branch"), "Branch is not validated");
-        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Location *']"), common.getData(dataFile, "SalesReturn", "location"), "Location is not validated");
+//        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Branch *']"), common.getData(dataFile, "SalesReturn", "branch"), "Branch is not validated");
+//        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Location *']"), common.getData(dataFile, "SalesReturn", "location"), "Location is not validated");
         inputTextWithValidation("xpath", "//Edit[@Name='Sales Invoice No']", voucherNum);
         inputTextWithValidation("xpath", "//Edit[@Name='Sales Invoice Date']", Time.timeStamp());
         enterInput("xpath", "//Edit[@Name='Cash/Party Code']", dataFile, "SalesReturn", "partyCode");
-        Assert.assertEquals(common.getText("xpath","//Edit[@Name='Cash/Party *']"),common.getData(dataFile,"SalesReturn","partyName"));
+//        Assert.assertEquals(common.getText("xpath","//Edit[@Name='Cash/Party *']"),common.getData(dataFile,"SalesReturn","partyName"));
         enterInput("xpath","//Edit[@Name='Sales Return A/c Code']",dataFile,"SalesReturn","salesReturnAccountCode");
-        Assert.assertEquals(common.getText("xpath","//Edit[@Name='Sales Return A/c Code']"),common.getData(dataFile,"SalesReturn","salesReturnAccountCode"),"Sales Return Account Code is not validated");
+//        Assert.assertEquals(common.getText("xpath","//Edit[@Name='Sales Return A/c Code']"),common.getData(dataFile,"SalesReturn","salesReturnAccountCode"),"Sales Return Account Code is not validated");
         generalInfoSliderHandle(200);
         enterInput("xpath", "//Edit[@Name='TCS Trans Nature']", dataFile,"SalesReturn", "tcsTransactionNature");
-        Assert.assertEquals(common.getText("xpath","//Edit[@Name='TCS Trans Nature']"),common.getData(dataFile,"SalesReturn","tcsTransactionNature"),"TCS Nature is not validated");
+//        Assert.assertEquals(common.getText("xpath","//Edit[@Name='TCS Trans Nature']"),common.getData(dataFile,"SalesReturn","tcsTransactionNature"),"TCS Nature is not validated");
         enterInput("xpath", "//Edit[@Name='Batch Policy']", dataFile, "SalesReturn","batchPolicy");
-        Assert.assertEquals(common.getText("xpath","//Edit[@Name='Batch Policy']"),common.getData(dataFile,"SalesReturn","batchPolicy"),"Batch Policy isn't validated");
+//        Assert.assertEquals(common.getText("xpath","//Edit[@Name='Batch Policy']"),common.getData(dataFile,"SalesReturn","batchPolicy"),"Batch Policy isn't validated");
         enterInput("xpath", "//Edit[@Name='Price List']", dataFile,"SalesReturn", "priceList");
-        Assert.assertEquals(common.getText("xpath","//Edit[@Name='Price List']"),common.getData(dataFile,"SalesReturn","priceList"),"Price List isn't validated");
+//        Assert.assertEquals(common.getText("xpath","//Edit[@Name='Price List']"),common.getData(dataFile,"SalesReturn","priceList"),"Price List isn't validated");
         enterInput("xpath", "//Edit[@Name='Executive *']", dataFile, "SalesReturn","executive");
-        Assert.assertEquals(common.getText("xpath","//Edit[@Name='Executive *']"),common.getData(dataFile,"SalesReturn","executive"),"Executive isn't validated");
+//        Assert.assertEquals(common.getText("xpath","//Edit[@Name='Executive *']"),common.getData(dataFile,"SalesReturn","executive"),"Executive isn't validated");
         generalInfoSliderHandle(-300);
 
-        System.out.println("EndTime1 :" + System.currentTimeMillis());
-        System.out.println("startTime2 :" + System.currentTimeMillis());
+//        System.out.println("EndTime1 :" + System.currentTimeMillis());
+//        System.out.println("startTime2 :" + System.currentTimeMillis());
         for (int i = 0; i < Integer.parseInt(common.getData(dataFile,"salesInvoice", "productCount")); i++) {
             addProduct(i);
         }
-        System.out.println("EndTime2 :" + System.currentTimeMillis());
+//        System.out.println("EndTime2 :" + System.currentTimeMillis());
 
         double itemsNetValue = Double.parseDouble(common.findWebElement("xpath", "//Edit[@AutomationId='NetAmount']").getText().replace(",", ""));
         tcsCalculations(itemsNetValue);

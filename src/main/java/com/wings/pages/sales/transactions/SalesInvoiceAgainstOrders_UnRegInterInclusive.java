@@ -24,7 +24,7 @@ public class SalesInvoiceAgainstOrders_UnRegInterInclusive extends Transaction {
         public String[] interInclusiveUnRegSIAO(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
             navigateToSalesInvoiceAgainstOrdersMenu();
             Thread.sleep(2000);
-            generalInfoSliderHandle(-50);
+//            generalInfoSliderHandle(-50);
             String oldVoucherID = oldTTransactionID();
             System.out.println("oldID: " + oldVoucherID);
             //branch selection

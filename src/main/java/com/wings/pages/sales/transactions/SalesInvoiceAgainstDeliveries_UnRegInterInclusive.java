@@ -2,6 +2,7 @@ package com.wings.pages.sales.transactions;
 
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.Keys;
@@ -24,9 +25,9 @@ public class SalesInvoiceAgainstDeliveries_UnRegInterInclusive extends Transacti
             dataFile = file;
         }
 
-        public void UnRegInterInclusiveSIAD(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
+        public String[] UnRegInterInclusiveSIAD(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
             long start = System.nanoTime();
-            System.out.println("SIAD startTime executed in :"+start);
+            System.out.println("SIAD UnRegInterInclusive startTime executed in :"+start);
             Thread.sleep(100);
 
             navigateToSalesInvoiceAgainstDeliveriesMenu();
@@ -100,6 +101,7 @@ public class SalesInvoiceAgainstDeliveries_UnRegInterInclusive extends Transacti
             totalValueInCompanyCurrenyPresentInSummary();
             //save
             transactionSave();
+            String originalID=newTransactionID(oldVoucherID);
             String newVoucherID = newTransactionID(oldVoucherID).replace(" ", "");
             System.out.println("newID: " + newVoucherID);
             Assert.assertNotEquals(newVoucherID, oldVoucherID, "Voucher Numbers are same. Check Transaction.");
@@ -112,5 +114,9 @@ public class SalesInvoiceAgainstDeliveries_UnRegInterInclusive extends Transacti
             Thread.sleep(1500);
             verifyReport(newVoucherID, dataFile, "salesInvoiceAgainstDeliveries");
 
+            long duration = System.nanoTime() - start;
+            FileUtil.writeTimeLog("SIAD UnRegInterInclusive end: ",duration/1000000000);
+
+            return new String[]{newVoucherID,originalID};
         }
     }

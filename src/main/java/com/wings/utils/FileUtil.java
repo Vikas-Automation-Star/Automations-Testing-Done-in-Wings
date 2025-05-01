@@ -127,7 +127,7 @@ public class FileUtil {
 
             FileWriter writer = new FileWriter(String.valueOf(currentSuite.getAttribute("TimeLogFile")),true);
             System.out.println("path "+currentSuite.getAttribute("TimeLogFile"));
-            writer.write("TimeTakenToExecute " + methodName + " is " + timeStamp + "\n");
+            writer.write("Time taken to execute " + methodName + " is " + timeStamp + "sec" +"\n");
             writer.close();
             System.out.println("Time written to file: " + timeStamp);
 
