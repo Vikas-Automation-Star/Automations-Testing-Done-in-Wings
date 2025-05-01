@@ -3,11 +3,9 @@ package com.wings.pages;
 import com.wings.utils.Common;
 import com.wings.utils.StringUtil;
 import io.appium.java_client.windows.WindowsDriver;
-import org.apache.commons.beanutils.PropertyUtilsBean;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -2095,278 +2093,254 @@ public void selectPendingsSalesOrder(String voucherNum, String financialYearNum)
     //validating in summary
     public void validateCGSTAmountTabIsEmpty() {
         common.clickElement("xpath", "//TabItem[contains(@Name,'CGST')]");
-        String value = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
-        if (!(value == (null) || "(null)".equals(value))) {
+        String cgst = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
+        if (!(cgst == (null) || "(null)".equals(cgst))) {
             Assert.fail("CGST field is not empty");
         }
     }
 
     public void validateSGSTAmountTabIsEmpty() {
         common.clickElement("xpath", "//TabItem[contains(@Name,'SGST')]");
-        String value1 = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
-        if (!(value1 == (null) || "(null)".equals(value1))) {
+        String sgst = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
+        if (!(sgst == (null) || "(null)".equals(sgst))) {
             Assert.fail("SGST field is not empty");
         }
     }
 
     public void validateIGSTAmountTabIsEmpty() {
         common.clickElement("xpath", "//TabItem[contains(@Name,'IGST')]");
-        String value2 = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
-        if (!(value2 == (null) || "(null)".equals(value2))) {
+        String igst = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
+        if (!(igst == (null) || "(null)".equals(igst))) {
             Assert.fail("IGST field is not empty");
         }
     }
 
     public void validateCESSAmountTabIsEmpty() {
         common.clickElement("xpath", "//TabItem[contains(@Name,'CESS')]");
-        String value = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
-        if (!(value == (null) || "(null)".equals(value))) {
+        String cess = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
+        if (!(cess == (null) || "(null)".equals(cess))) {
             Assert.fail("CESS field is not empty");
         }
     }
 
     public void validateCGSTAmountTabIsNotEmpty() {
         common.clickElement("xpath", "//TabItem[contains(@Name,'CGST')]");
-        String value = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
-        if (value == (null) || "(null)".equals(value)) {
+        String cgst = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
+        if (cgst == (null) || "(null)".equals(cgst)) {
             Assert.fail("CGST field is  empty");
         }
     }
     public void validateRCMCGSTAmountTabIsNotEmpty() {
         common.clickElement("xpath", "//TabItem[contains(@Name,'RCM CGST')]");
-        String value = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
-        if (value == ("0.000")) {
-            Assert.fail("CGST field is  empty");
+        String rcmCGST = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
+        if (rcmCGST == ("0.000")) {
+            Assert.fail("RCMCGST field is  empty");
         }
     }
 
     public void validateSGSTAmountTabIsNotEmpty() {
         common.clickElement("xpath", "//TabItem[contains(@Name,'SGST')]");
-        String value1 = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
-        if (value1 == (null) || "(null)".equals(value1)) {
+        String sgst = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
+        if (sgst == (null) || "(null)".equals(sgst)) {
             Assert.fail("SGST field is empty");
         }
     }
     public void validateRCMSGSTAmountTabIsNotEmpty() {
         common.clickElement("xpath", "//TabItem[contains(@Name,'RCM SGST')]");
-        String value1 = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
-        if (value1 == ("0.000")) {
-            Assert.fail("SGST field is empty");
+        String rcmSGST = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
+        if (rcmSGST == ("0.000")) {
+            Assert.fail("RCMSGST field is empty");
         }
     }
     public void sgstPresentInSummary() {
-        WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='SGST']");
-        String grossMinusDiscountAmount = grossDiscountAmount.getText();
-        if ((grossMinusDiscountAmount == (null) || "(null)".equals(grossMinusDiscountAmount))) {
-            Assert.fail("grossDiscountAmount field is empty");
+        String sgstPresent = common.findWebElement("xpath", "//Edit[@Name='SGST']").getText();
+        if ((sgstPresent == (null) || "(null)".equals(sgstPresent))) {
+            Assert.fail("SGST field is empty");
         }
     }
     public void RCMSGSTPresentInSummary() {
-        WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='RCM SGST']");
-        String grossMinusDiscountAmount = grossDiscountAmount.getText();
-        if ((grossMinusDiscountAmount == ("0.000"))) {
-            Assert.fail("grossDiscountAmount field is empty");
+        String rcmSGST = common.findWebElement("xpath", "//Edit[@Name='RCM SGST']").getText();
+        if ((rcmSGST == ("0.000"))) {
+            Assert.fail("RCMSGST field is empty");
         }
     }
     public void cgstPresentInSummary() {
-        WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='CGST']");
-        String grossMinusDiscountAmount = grossDiscountAmount.getText();
-        if ((grossMinusDiscountAmount == (null) || "(null)".equals(grossMinusDiscountAmount))) {
-            Assert.fail("grossDiscountAmount field is empty");
+        String cgstPresent = common.findWebElement("xpath", "//Edit[@Name='CGST']").getText();
+        if ((cgstPresent == (null) || "(null)".equals(cgstPresent))) {
+            Assert.fail("CGST field is empty");
         }
     }
     public void RCMCGSTPresentInSummary() {
-        WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='RCM CGST']");
-        String grossMinusDiscountAmount = grossDiscountAmount.getText();
-        if ((grossMinusDiscountAmount == ("0.000"))) {
-            Assert.fail("grossDiscountAmount field is empty");
+        String  rcmCGST = common.findWebElement("xpath", "//Edit[@Name='RCM CGST']").getText();
+        if ((rcmCGST == ("0.000"))) {
+            Assert.fail("RCMCGST field is empty");
         }
     }
 
     public void validateIGSTAmountTabIsNotEmpty() {
         common.clickElement("xpath", "//TabItem[contains(@Name,'IGST')]");
-        String value2 = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
-        if (value2 == ("0.000")) {
+        String igst = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
+        if (igst == ("0.000")) {
             Assert.fail("IGST field is empty");
         }
     }
     public void validateRCMIGSTAmountTabIsNotEmpty() {
         common.clickElement("xpath", "//TabItem[contains(@Name,'RCM IGST')]");
-        String value2 = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
-        if (value2 == ("0.000")) {
-            Assert.fail("IGST field is empty");
+        String rcmIGST = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
+        if (rcmIGST == ("0.000")) {
+            Assert.fail("RCM IGST field is empty");
         }
     }
 
     public void validateCESSAmountTabIsNotEmpty() {
         common.clickElement("xpath", "//TabItem[contains(@Name,'CESS')]");
-        String value = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
-        if (value == (null) || "(null)".equals(value)) {
+        String cess = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
+        if (cess == (null) || "(null)".equals(cess)) {
             Assert.fail("CESS field is empty");
         }
     }
     public void validateRCMCESSAmountTabIsNotEmpty() {
         common.clickElement("xpath", "//TabItem[contains(@Name,'RCM CESS')]");
-        String value = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
-        if (value == ("0.000")) {
-            Assert.fail("CESS field is empty");
+        String rcmCESS = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
+        if (rcmCESS == ("0.000")) {
+            Assert.fail("RCM CESS field is empty");
         }
     }
 
     public void quantityPresentInSummary() {
-        WebElement Quantity = common.findWebElement("xpath", "//Edit[contains(@Name,'Quantity')]");
-        String quantityText = Quantity.getText();
-        if ((quantityText == (null) || "(null)".equals(quantityText))) {
+        String quantity = common.findWebElement("xpath", "//Edit[contains(@Name,'Quantity')]").getText();
+        if ((quantity == (null) || "(null)".equals(quantity))) {
             Assert.fail("Quantity field is empty");
         }
     }
 
     public void grossAmountPresentInSummary() {
-        WebElement grossAmount = common.findWebElement("xpath", "//Edit[contains(@Name,'Gross Amount')]");
-        String grossAmountText1 = grossAmount.getText();
-        if ((grossAmountText1 == (null) || "(null)".equals(grossAmountText1))) {
-            Assert.fail("grossAmount field is empty");
+        String grossAmount = common.findWebElement("xpath", "//Edit[contains(@Name,'Gross Amount')]").getText();
+        if ((grossAmount == (null) || "(null)".equals(grossAmount))) {
+            Assert.fail("GrossAmount field is empty");
         }
     }
 
     public void totalValuePresentInSummary() {
-        WebElement totalValue = common.findWebElement("xpath", "//Edit[@Name='Total Value']");
-        String totalValueText = totalValue.getText();
-        if (totalValueText == (null) || "(null)".equals(totalValueText)) {
+        String  totalValue = common.findWebElement("xpath", "//Edit[@Name='Total Value']").getText();
+        if (totalValue == (null) || "(null)".equals(totalValue)) {
             Assert.fail("Total value field is Empty");
         }
     }
 
     public void totalValueInCompanyCurrenyPresentInSummary() {
-        WebElement totalValueCompanyCurreny = common.findWebElement("xpath", "//Edit[@Name='Total Value In Company Currency']");
-        String totalValuecurrencyText = totalValueCompanyCurreny.getText();
-        if (totalValuecurrencyText == (null) || "(null)".equals(totalValuecurrencyText)) {
-            Assert.fail("Total value in Company Curreny field is Empty");
+        String totalValueCompanyCurrency = common.findWebElement("xpath", "//Edit[@Name='Total Value In Company Currency']").getText();
+        if (totalValueCompanyCurrency == (null) || "(null)".equals(totalValueCompanyCurrency)) {
+            Assert.fail("Total value in Company Currency field is Empty");
         }
     }
 
     public void receivableAmountPresentInSummary() {
-        WebElement receivableAmount = common.findWebElement("xpath", "//Edit[@Name='Receivable Amount']");
-        String receivableAmountText = receivableAmount.getText();
-        if (receivableAmountText == (null) || "(null)".equals(receivableAmountText)) {
+        String receivableAmount = common.findWebElement("xpath", "//Edit[@Name='Receivable Amount']").getText();
+        if (receivableAmount == (null) || "(null)".equals(receivableAmount)) {
             Assert.fail("Receivable Amount field is empty");
         }
     }
 
     public void tcsTaxableValuePresentInSummary() {
-        WebElement netAmount = common.findWebElement("xpath", "//Edit[@Name='TCS Taxable Value']");
-        String netAmountText1 = netAmount.getText();
-        if ((netAmountText1 == (null) || "(null)".equals(netAmountText1))) {
-            Assert.fail(" tcsTaxableValuePresentInSummary field is empty");
+        String tcsTaxableValue = common.findWebElement("xpath", "//Edit[@Name='TCS Taxable Value']").getText();
+        if ((tcsTaxableValue == (null) || "(null)".equals(tcsTaxableValue))) {
+            Assert.fail(" TCSTaxableValue Present In Summary field is empty");
         }
     }
 
     public void tcsAmountPresentInSummary() {
-        WebElement netAmount = common.findWebElement("xpath", "//Edit[@Name='TCS Amount']");
-        String netAmountText1 = netAmount.getText();
-        if ((netAmountText1 == (null) || "(null)".equals(netAmountText1))) {
+        String tcsAmount = common.findWebElement("xpath", "//Edit[@Name='TCS Amount']").getText();
+        if ((tcsAmount == (null) || "(null)".equals(tcsAmount))) {
             Assert.fail("TCS Amount field is empty");
         }
     }
 
     public void netAmountPresentInSummary() {
-        WebElement netAmount = common.findWebElement("xpath", "//Edit[@Name='Net Amount']");
-        String netAmountText1 = netAmount.getText();
-        if ((netAmountText1 == (null) || "(null)".equals(netAmountText1))) {
-            Assert.fail("netAmount field is empty");
+        String netAmount = common.findWebElement("xpath", "//Edit[@Name='Net Amount']").getText();
+        if ((netAmount == (null) || "(null)".equals(netAmount))) {
+            Assert.fail("NetAmount field is empty");
         }
     }
 
     public void chargesPresentInSummary() {
-        WebElement netAmount = common.findWebElement("xpath", "//Edit[@Name='Charges']");
-        String netAmountText1 = netAmount.getText();
-        if ((netAmountText1 == (null) || "(null)".equals(netAmountText1))) {
-            Assert.fail("netAmount field is empty");
+        String charges = common.findWebElement("xpath", "//Edit[@Name='Charges']").getText();
+        if ((charges == (null) || "(null)".equals(charges))) {
+            Assert.fail("Charges field is empty");
         }
     }
 
     public void otherChargesPresentInSummary() {
-        WebElement netAmount = common.findWebElement("xpath", "//Edit[@Name='Other Charges']");
-        String netAmountText1 = netAmount.getText();
-        if ((netAmountText1 == (null) || "(null)".equals(netAmountText1))) {
-            Assert.fail("netAmount field is empty");
+        String otherCharges = common.findWebElement("xpath", "//Edit[@Name='Other Charges']").getText();
+        if ((otherCharges == (null) || "(null)".equals(otherCharges))) {
+            Assert.fail("Other Charges field is empty");
         }
     }
 
     public void otherChargesSGSTPresentInSummary() {
-        WebElement netAmount = common.findWebElement("xpath", "//Edit[@Name='Other Charges SGST']");
-        String netAmountText1 = netAmount.getText();
-        if ((netAmountText1 == (null) || "(null)".equals(netAmountText1))) {
-            Assert.fail("netAmount field is empty");
+        String otherChargesSGST = common.findWebElement("xpath", "//Edit[@Name='Other Charges SGST']").getText();
+        if ((otherChargesSGST == (null) || "(null)".equals(otherChargesSGST))) {
+            Assert.fail("Other Charges SGST field is empty");
         }
     }
 
     public void otherChargesCGSTPresentInSummary() {
-        WebElement netAmount = common.findWebElement("xpath", "//Edit[@Name='Other Charges CGST']");
-        String netAmountText1 = netAmount.getText();
-        if ((netAmountText1 == (null) || "(null)".equals(netAmountText1))) {
-            Assert.fail("netAmount field is empty");
+        String otherChargesCGST = common.findWebElement("xpath", "//Edit[@Name='Other Charges CGST']").getText();
+        if ((otherChargesCGST == (null) || "(null)".equals(otherChargesCGST))) {
+            Assert.fail("Other Charges CGST field is empty");
         }
     }
 
 
     public void grossMinusDiscountPresentInSummary() {
-        WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[contains(@Name,'Gross - Disc')]");
-        String grossMinusDiscountAmount = grossDiscountAmount.getText();
+        String grossMinusDiscountAmount = common.findWebElement("xpath", "//Edit[contains(@Name,'Gross - Disc')]").getText();
         if ((grossMinusDiscountAmount == (null) || "(null)".equals(grossMinusDiscountAmount))) {
-            Assert.fail("grossDiscountAmount field is empty");
+            Assert.fail("grossMinusDiscountAmount field is empty");
         }
     }
 
     public void iGSTPresentInSummary() {
-        WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='IGST']");
-        String grossMinusDiscountAmount = grossDiscountAmount.getText();
-        if ((grossMinusDiscountAmount == (null) || "(null)".equals(grossMinusDiscountAmount))) {
-            Assert.fail("grossDiscountAmount field is empty");
+        String igstPresent = common.findWebElement("xpath", "//Edit[@Name='IGST']").getText();
+        if ((igstPresent == (null) || "(null)".equals(igstPresent))) {
+            Assert.fail("IGST Present field is empty");
         }
     }
     public void RCMIGSTPresentInSummary() {
-        WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='RCM IGST']");
-        String grossMinusDiscountAmount = grossDiscountAmount.getText();
-        if ((grossMinusDiscountAmount == ("0.000"))) {
-            Assert.fail("grossDiscountAmount field is empty");
+        String rcmIGST = common.findWebElement("xpath", "//Edit[@Name='RCM IGST']").getText();
+        if ((rcmIGST == ("0.000"))) {
+            Assert.fail("RCM IGST field is empty");
         }
     }
 
     public void cessPresentInSummary() {
-        WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='CESS']");
-        String grossMinusDiscountAmount = grossDiscountAmount.getText();
-        if ((grossMinusDiscountAmount == (null) || "(null)".equals(grossMinusDiscountAmount))) {
-            Assert.fail("grossDiscountAmount field is empty");
+        String cess = common.findWebElement("xpath", "//Edit[@Name='CESS']").getText();
+        if ((cess == (null) || "(null)".equals(cess))) {
+            Assert.fail("CESS Present field is empty");
         }
     }
     public void RCMCESSPresentInSummary() {
-        WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='RCM CESS']");
-        String grossMinusDiscountAmount = grossDiscountAmount.getText();
-        if ((grossMinusDiscountAmount == ("0.000"))) {
-            Assert.fail("grossDiscountAmount field is empty");
+        String rcmCESS = common.findWebElement("xpath", "//Edit[@Name='RCM CESS']").getText();
+        if ((rcmCESS == ("0.000"))) {
+            Assert.fail("RCM CESS field is empty");
         }
     }
     public void freeQuantityPresentInSummary() {
-        WebElement Quantity = common.findWebElement("xpath", "//Edit[@Name='Free Quantity']");
-        String quantityText = Quantity.getText();
-        if ((quantityText == (null))) {
-            Assert.fail("Quantity field is empty");
+        String freeQuantity = common.findWebElement("xpath", "//Edit[@Name='Free Quantity']").getText();
+        if ((freeQuantity == (null))) {
+            Assert.fail("FreeQuantity field is empty");
         }
     }
     public void otherChargesCESSPresentInSummary() {
-        WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='Other Charges CESS']");
-        String grossMinusDiscountAmount = grossDiscountAmount.getText();
-        if ((grossMinusDiscountAmount == (null) || "(null)".equals(grossMinusDiscountAmount))) {
-            Assert.fail("grossDiscountAmount field is empty");
+        String otherChargesCESS = common.findWebElement("xpath", "//Edit[@Name='Other Charges CESS']").getText();
+        if ((otherChargesCESS == (null) || "(null)".equals(otherChargesCESS))) {
+            Assert.fail("Other Charges CESS field is empty");
         }
     }
 
     public void otherChargesIGSTPresentInSummary() {
-        WebElement grossDiscountAmount = common.findWebElement("xpath", "//Edit[@Name='Other Charges IGST']");
-        String grossMinusDiscountAmount = grossDiscountAmount.getText();
-        if ((grossMinusDiscountAmount == (null) || "(null)".equals(grossMinusDiscountAmount))) {
-            Assert.fail("grossDiscountAmount field is empty");
+        String  otherChargesIGST = common.findWebElement("xpath", "//Edit[@Name='Other Charges IGST']").getText();
+        if ((otherChargesIGST == (null) || "(null)".equals(otherChargesIGST))) {
+            Assert.fail("Other Charges IGST field is empty");
         }
     }
 
