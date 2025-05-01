@@ -180,9 +180,9 @@
         </classes>
     </test>
 
-    <!--    &lt;!&ndash; RCM purchase Voucher Done&ndash;&gt;-->
+        <!-- RCM purchase Voucher Done-->
 
-    <!--    &lt;!&ndash; purchase return with invoice reference &ndash;&gt;-->
+        <!-- purchase return with invoice reference -->
 
     <test name="PRWIR 17" description="PV->PRWIR Reg-To-Reg Intra State Exclusive GST-TCS Including FreeQuantity" testID="17">
         <classes>
@@ -202,7 +202,7 @@
         </classes>
     </test>
 
-    <!--    &lt;!&ndash;purchase return with invoice reference RCM&ndash;&gt;-->
+        <!--purchase return with invoice reference RCM-->
 
     <test name="RCM PRWIR 20" description="PV->PRWIR Reg-To-Reg Intra State Exclusive RCMGST-TCS Including FreeQuantity" testID="20">
         <classes>
