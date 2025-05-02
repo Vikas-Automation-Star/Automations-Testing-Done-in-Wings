@@ -1,0 +1,9 @@
+{
+  "newAccount": "New_Product_Class",
+  "menuItem": "Product Classes",
+  "menu": "Inventory",
+  "description": "This is Dummy Product Class. Don't Use it",
+  "secondMenu": "Product",
+  "thirdMenu": "Attributes",
+  "fourthMenu": "Product Classes"
+}
