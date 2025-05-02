@@ -1,0 +1,10 @@
+{
+  "newAccount": "New_Product_Category",
+  "Code": "123",
+  "menuItem": "Product Categories",
+  "menu": "Inventory",
+  "description": "This is Dummy Product Categories. Don't Use it",
+  "secondMenu": "Product",
+  "thirdMenu": "Attributes",
+  "fourthMenu": "Product Categories"
+}

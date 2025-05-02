@@ -11,7 +11,6 @@ import java.awt.*;
 import java.io.IOException;
 
 public class TestProductClasses {
-
         WindowsDriver driver;
         AppLogin appLogin = new AppLogin();
         String file = "./src/main/resources/menuItems/inventory/masters/productClasses.json";
@@ -26,7 +25,6 @@ public class TestProductClasses {
         public void productClass() throws IOException, ParseException, InterruptedException, AWTException {
             ProductClasses productClasses=new ProductClasses(driver,file);
             productClasses.productClasses();
-
         }
 
         @AfterTest

@@ -23,13 +23,13 @@ public class PurchaseEnquiriesReport {
     }
 
     @Test
-    public void purchaseEnquiries() throws InterruptedException, AWTException {
+    public void purchaseEnquiries() throws InterruptedException, AWTException, IOException {
         PurchaseEnquiries pe = new PurchaseEnquiries(driver);
         pe.purchaseEnquiry();
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-        appLogin.logout();
+//        appLogin.logout();
     }
 }
