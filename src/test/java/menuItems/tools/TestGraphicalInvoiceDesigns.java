@@ -1,19 +1,19 @@
-package menuItems.inventory.masters.product.attributes;
+package menuItems.tools;
 
 import com.wings.pages.AppLogin;
-import com.wings.pages.inventory.masters.product.attributes.ProductClasses;
+import com.wings.pages.tools.formsAndPrintTemplates.laserPrinters.GraphicalInvoiceDesigns;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import java.awt.*;
 import java.io.IOException;
 
-public class TestProductClasses {
+public class TestGraphicalInvoiceDesigns {
+
         WindowsDriver driver;
         AppLogin appLogin = new AppLogin();
-        String file = "./src/main/resources/menuItems/inventory/masters/productClasses.json";
+        String file = "./src/main/resources/menuItems/tools/graphicalInvoiceDesigns.json";
 
         @BeforeTest
         public void beforeTest() throws InterruptedException, IOException, ParseException {
@@ -22,9 +22,9 @@ public class TestProductClasses {
         }
 
         @Test
-        public void productClass() throws IOException, ParseException, InterruptedException, AWTException {
-            ProductClasses productClasses=new ProductClasses(driver,file);
-            productClasses.productClasses();
+        public void graphicalInvoiceDesigns() throws IOException, ParseException, InterruptedException {
+            GraphicalInvoiceDesigns graphicalInvoiceDesigns=new GraphicalInvoiceDesigns(driver,file);
+            graphicalInvoiceDesigns.graphicalInvoiceDesigns();
         }
 
         @AfterTest

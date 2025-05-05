@@ -1,30 +1,29 @@
-package com.wings.pages.inventory.masters.product.attributes;
+package com.wings.pages.tools.formsAndPrintTemplates.laserPrinters;
 
 import com.wings.pages.Masters;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
-import java.awt.*;
 import java.io.IOException;
 
-public class ProductClasses extends Masters {
+public class GraphicalInvoiceDesigns extends Masters {
 
         WindowsDriver driver;
         Common common;
         String filepath;
 
-        public ProductClasses(WindowsDriver driver, String file) {
+        public GraphicalInvoiceDesigns(WindowsDriver driver, String file) {
             super(driver);
             this.driver = driver;
             common = new Common(driver);
             filepath = file;
         }
 
-        public void productClasses() throws InterruptedException, AWTException, IOException, ParseException {
+        public void graphicalInvoiceDesigns() throws InterruptedException, IOException, ParseException {
             navigateToMastersWhen4Steps(common.getData(filepath,"menu"), common.getData(filepath,"secondMenu"), common.getData(filepath,"thirdMenu"), common.getData(filepath,"fourthMenu") );
-            createMaster("xpath", "//TreeItem[@Name='Product Classes']/TreeItem[@Name='All Product Classes']");
+            createMaster("xpath", "//TreeItem[@Name='Graphical Invoice Designs']/TreeItem[@Name='All Graphical Invoice Designs']");
             Thread.sleep(2000);
-            common.inputText("xpath", "//Edit[@Name='New Product Class *']", common.getData(filepath, "newAccount") + common.getRandom());
+            common.inputText("xpath", "//Edit[@Name='New Graphical Invoice Design *']", common.getData(filepath, "newAccount") + common.getRandom());
             common.inputText("xpath", "//Edit[@Name='Description']", common.getData(filepath,"description"));
             saveMaster();
             closeMaster(common.getData(filepath,"menuItem"));
