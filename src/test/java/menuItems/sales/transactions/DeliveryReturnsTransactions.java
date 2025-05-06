@@ -1,14 +1,14 @@
 package menuItems.sales.transactions;
 
 import com.wings.pages.AppLogin;
+import com.wings.pages.sales.transactions.Deliveries;
 import com.wings.pages.sales.transactions.DeliveryReturns;
 import io.appium.java_client.windows.WindowsDriver;
-import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
+import java.awt.*;
 import java.io.IOException;
 
 public class DeliveryReturnsTransactions {
@@ -21,18 +21,17 @@ public class DeliveryReturnsTransactions {
     public void beforeTest() throws IOException, InterruptedException, ParseException {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
-        Allure.step("Before Test Delivery Returns");
     }
 
     @Test
-    public void deliveryReturns() throws IOException, InterruptedException, ParseException {
+    public void deliveryReturns() throws IOException, InterruptedException, ParseException, AWTException {
+        Deliveries deliveries=new Deliveries(driver,dataFile);
         DeliveryReturns deliveryReturns = new DeliveryReturns(driver, dataFile);
-        deliveryReturns.deliveryreturns();
+        deliveryReturns.deliveryreturns(deliveries.salesDeliveries());
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-        appLogin.logout();
-        Allure.step("After Test Delivery Returns");
+//        appLogin.logout();
     }
 }

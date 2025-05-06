@@ -98,9 +98,9 @@ public class SalesOrder_RegIntraExclusive extends Transaction {
         if (common.getData(dataFile,"SalesOrder", "productType" + i).equals("general")) {
             generalProduct_New(dataFile,"SalesOrder", "productCode" + i, "quantity" + i,"freeQuantity" + i, i);
         } else if (common.getData(dataFile,"SalesOrder", "productType" + i).equals("multiBatch")) {
-            multiBatchProduct_New(dataFile, "SalesOrder","transType","productCode" + i, "quantity" + i,"freeQuantity" + i, i);
+            multiBatchProductDirectQuantity(dataFile, "SalesOrder","productCode" + i, "quantity" + i,"freeQuantity" + i, i);
         }else if (common.getData(dataFile,"SalesOrder", "productType" + i).equals("serial")) {
-            serialNumProduct_New(dataFile,"SalesOrder", "transType","productCode" + i,"quantity" + i,"freeQuantity" + i, i);
+            serialNumProductDirectQuantity(dataFile,"SalesOrder", "productCode" + i,"quantity" + i,"freeQuantity" + i, i);
         }
 
         //validate

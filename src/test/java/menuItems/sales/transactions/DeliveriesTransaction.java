@@ -3,12 +3,11 @@ package menuItems.sales.transactions;
 import com.wings.pages.AppLogin;
 import com.wings.pages.sales.transactions.Deliveries;
 import io.appium.java_client.windows.WindowsDriver;
-import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
+import java.awt.*;
 import java.io.IOException;
 
 public class DeliveriesTransaction {
@@ -20,18 +19,16 @@ public class DeliveriesTransaction {
     public void beforeTest() throws IOException, InterruptedException, ParseException {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
-        Allure.step("Before Test -Deliveries");
     }
 
     @Test
-    public void deliveries() throws IOException, InterruptedException, ParseException {
+    public void deliveries() throws IOException, InterruptedException, ParseException, AWTException {
         Deliveries deliveries = new Deliveries(driver, dataFile);
         deliveries.salesDeliveries();
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-        appLogin.logout();
-        Allure.step("After Test -Deliveries");
+//        appLogin.logout();
     }
 }

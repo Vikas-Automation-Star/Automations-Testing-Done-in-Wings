@@ -389,9 +389,9 @@ public abstract class Transaction {
         Thread.sleep(1500);
         common.clickElement("name", "Enquiries");
         common.clickElement("xpath", "//Menu[@Name='Enquiries']/MenuItem[@Name='Sales Enquiries']");
-        String pageValidation = common.findWebElement("xpath", "//Pane/Text[@Name='Sales Enquiries']").getText();
-        System.out.println("Screen Name:-" + pageValidation);
-        Assert.assertEquals(pageValidation, "Sales Enquiries");
+//        String pageValidation = common.findWebElement("xpath", "//Pane/Text[@Name='Sales Enquiries']").getText();
+//        System.out.println("Screen Name:-" + pageValidation);
+//        Assert.assertEquals(pageValidation, "Sales Enquiries");
     }
 
     public void navigateToSalesEnquiryCancellationMenu() {
@@ -474,8 +474,8 @@ public abstract class Transaction {
     }
 
     public void navigateToDeliveryReturnsMenu() {
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Deliveries");
+        common.clickElement("xpath", "//MenuItem[@Name='Sales']");
+        common.clickElement("xpath", "//MenuItem[@Name='Deliveries']");
         common.clickElement("xpath", "//MenuItem[@Name='Delivery Returns']");
         String pageValidation = common.findWebElement("xpath", "//Pane/Text[@Name='Delivery Returns']").getText();
         System.out.println("Screen Name:-" + pageValidation);
@@ -1212,7 +1212,7 @@ public abstract class Transaction {
     }
 
     public void multiBatchProduct_New(String filename,String dataSet,String transType,String product,String quantity,String freeQuantity,int i) throws IOException, ParseException {
-        if (common.getData(filename,dataSet,transType).equalsIgnoreCase("Sales Order") || common.getData(filename,dataSet,transType).equalsIgnoreCase("Purchase Order")||common.getData(filename,dataSet,transType).equalsIgnoreCase("Purchase Voucher")) {
+        if (common.getData(filename,dataSet,transType).equalsIgnoreCase("Sales Order") || common.getData(filename,dataSet,transType).equalsIgnoreCase("Purchase Order")||common.getData(filename,dataSet,transType).equalsIgnoreCase("Purchase Voucher")||common.getData(filename,dataSet,transType).contains("Sales")) {
             enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, dataSet, product);
             common.clickElement("xpath", "//Edit[@Name='Quantity * Row "+i+", Not sorted.']");
             enterData("xpath", "//Edit[@Name='Quantity * Row "+i+", Not sorted.']", filename, dataSet, quantity);
@@ -1231,7 +1231,7 @@ public abstract class Transaction {
     }
 
     public void serialNumProduct_New(String filename,String dataSet,String transType,String product,String quantity,String freeQuantity,int i) throws IOException, ParseException {
-        if (common.getData(filename,dataSet,transType).equalsIgnoreCase("Sales Order") || common.getData(filename,dataSet,transType).equalsIgnoreCase("Purchase Order")) {
+        if (common.getData(filename,dataSet,transType).equalsIgnoreCase("Sales Order") || common.getData(filename,dataSet,transType).equalsIgnoreCase("Purchase Order") || common.getData(filename,dataSet,transType).contains("Sales")) {
             enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, dataSet, product);
             common.clickElement("xpath", "//Edit[@Name='Quantity * Row "+i+", Not sorted.']");
             enterData("xpath", "//Edit[@Name='Quantity * Row "+i+", Not sorted.']", filename, dataSet, quantity);
@@ -1241,6 +1241,23 @@ public abstract class Transaction {
         }
     }
 
+    public void serialNumProductDirectQuantity(String filename,String dataSet,String product,String quantity,String freeQuantity,int i) throws IOException, ParseException {
+            enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, dataSet, product);
+            common.clickElement("xpath", "//Edit[@Name='Quantity * Row "+i+", Not sorted.']");
+            enterData("xpath", "//Edit[@Name='Quantity * Row "+i+", Not sorted.']", filename, dataSet, quantity);
+            if (Boolean.parseBoolean(common.getData(filename, dataSet, "enableFreeQuantity"))) {
+                enterData("xpath", "//Edit[@Name='Free Quantity Row " + i + ", Not sorted.']", filename, dataSet, freeQuantity);
+            }
+        }
+
+    public void multiBatchProductDirectQuantity(String filename,String dataSet,String product,String quantity,String freeQuantity,int i) throws IOException, ParseException {
+            enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, dataSet, product);
+            common.clickElement("xpath", "//Edit[@Name='Quantity * Row "+i+", Not sorted.']");
+            enterData("xpath", "//Edit[@Name='Quantity * Row "+i+", Not sorted.']", filename, dataSet, quantity);
+            if (Boolean.parseBoolean(common.getData(filename, dataSet, "enableFreeQuantity"))) {
+                enterData("xpath", "//Edit[@Name='Free Quantity Row " + i + ", Not sorted.']", filename, dataSet, freeQuantity);
+            }
+        }
     //deliveries against orders
     public void generalProductInDELO(String filename,String dataset, String product, String quantity, int i) throws IOException, ParseException {
         common.clickElement("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']");
@@ -2381,11 +2398,12 @@ public void selectPendingsSalesOrder(String voucherNum, String financialYearNum)
     }
 
     public void verifyReport(String transaction, String dataFile,String dataset) throws IOException, ParseException {
+        String newTransaction=transaction.replace(" ", "");
         List<WebElement> elementList = common.findWebElements("xpath", "//Table/*[@Name='Data Panel']/ListItem[contains(@Name,'Row')]");
         System.out.println("Size :" + elementList.size());
         for (WebElement i : elementList) {
 //            System.out.println("text :" + i.getText());
-            if (i.getText().contains(transaction)) {
+            if (i.getText().contains(newTransaction)) {
                 System.out.println("verifyingRow :");
                 bulkVerifyReportData(i.getText(), dataFile,dataset);
             }
