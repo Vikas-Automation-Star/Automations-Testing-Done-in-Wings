@@ -329,6 +329,12 @@
       "chequeAmount": "500",
       "pdcAccount": "PDC Account",
 
+      "expenseCode": "FA1",
+      "vendor": "AT_Sup_Reg_Inter",
+      "otherCostCurrency": "INR",
+      "otherCostAmount": "100",
+
+
       "termType": "AT_Term Type 1",
       "term": "AT_Term 1",
       "comments": "Present no comments",
