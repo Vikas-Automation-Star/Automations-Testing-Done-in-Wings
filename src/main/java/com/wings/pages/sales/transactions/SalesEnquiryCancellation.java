@@ -33,12 +33,13 @@ public class SalesEnquiryCancellation extends Transaction {
         System.out.println("oldID: "+ oldVoucherID);
         //branch selection
         enterInput("xpath", "//Edit[@Name='Branch *']", dataFile, "salesEnquiryCancellation", "branch");
-//        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Branch *']"), common.getData(dataFile, "salesEnquiryCancellation", "branch"), "Branch is not validated");
         enterInput("xpath", "//Edit[@Name='Party Code']", dataFile, "salesEnquiryCancellation", "partyCode");
         Thread.sleep(1000);
         gstTransactionType("Inter State Sales to Registered Dealers");
         Thread.sleep(2500);
         selectPendingsSalesOrder(voucherNum, common.getData(dataFile,"salesEnquiryCancellation","fyYear"));
+        Thread.sleep(1000);
+        common.clickElement("xpath","//Button[@Name='OK']");
         //select pending quantity
         List<WebElement> items = common.findWebElements("xpath", "//Pane[@Name='  F3 Items  ']/Pane/Pane/Pane/Pane/Table[@Name='Items']/*[starts-with(@Name,'Row')]");
         System.out.println("items size: "+items.size());

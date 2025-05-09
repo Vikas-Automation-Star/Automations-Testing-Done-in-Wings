@@ -2,6 +2,7 @@ package menuItems.sales.transactions;
 
 import com.wings.pages.AppLogin;
 import com.wings.pages.sales.transactions.SalesEnquiry;
+import com.wings.pages.sales.transactions.SalesInvoiceAgainstOrders;
 import com.wings.pages.sales.transactions.SalesOrdersAgainstQuotations;
 import com.wings.pages.sales.transactions.SalesQuotationAgainstEnquiry;
 import io.appium.java_client.windows.WindowsDriver;
@@ -12,7 +13,8 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.io.IOException;
 
-public class SalesOrdersAgainstQuotationsTransaction {
+public class TestSalesInvoiceAgainstOrder {
+
     WindowsDriver driver;
     AppLogin login = new AppLogin();
     String dataFile = "./src/main/resources/menuItems/Sales/Transactions/salesEnquiry.json";
@@ -31,11 +33,16 @@ public class SalesOrdersAgainstQuotationsTransaction {
         String orderAgainstQuotation=agnstEnquiry.quotationAgainstEnquiry(salesEnquiry.salesEnquiry());
 
         SalesOrdersAgainstQuotations quotations = new SalesOrdersAgainstQuotations(driver, dataFile);
-        quotations.salesOrderAgainstQuotation(orderAgainstQuotation);
+        String ordersVoucherNum= quotations.salesOrderAgainstQuotation(orderAgainstQuotation);
+
+        SalesInvoiceAgainstOrders invoiceAgainstOrders=new SalesInvoiceAgainstOrders(driver,dataFile);
+        invoiceAgainstOrders.invoiceAgainstOrders(ordersVoucherNum);
+//            invoiceAgainstOrders.invoiceAgainstOrders("SOAQ 2");
+
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-        login.logout();
+//            login.logout();
     }
 }

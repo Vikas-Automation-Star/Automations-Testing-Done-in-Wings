@@ -4,8 +4,11 @@ import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
-
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import java.io.IOException;
+import java.util.List;
 
 public class SalesQuotationAgainstEnquiry extends Transaction {
     WindowsDriver driver;
@@ -18,31 +21,59 @@ public class SalesQuotationAgainstEnquiry extends Transaction {
         dataFile = file;
     }
 
-    public void quotationAgainstEnquiry() throws InterruptedException, IOException, ParseException {
+    public String quotationAgainstEnquiry(String voucherNum) throws InterruptedException, IOException, ParseException {
+        long start = System.nanoTime();
+        System.out.println("sales quotation against enquiry startTime executed in :"+start);
         navigateToSalesQuotationAgainstEnquiryMenu();
-        Thread.sleep(2000);
-        lastTransactionName();
-        //data
-        common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
-        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
-        common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
-        common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
-        selectAndValidateData(common.getData(dataFile, "transaction"), "xpath", "//Edit[@Name='Trans Currency *']");
-        common.clickElement("xpath", "//Edit[@Name='Party Code']");
-        selectAndValidateDataNew(common.getData(dataFile, "partyCode"), "xpath", "//Edit[@Name='Party Code']");
-        common.clickElement("xpath", "//Edit[@Name='Party Account *']");
-        Thread.sleep(3500);
-        gstTransactionType(common.getData(dataFile, "gstType"));
-        Thread.sleep(2000);
-        common.clickElement("xpath", "//CheckBox[@Name='Select Row 0']");
-        common.clickElement("name", "Ok");
-        common.clickElement("xpath", "//Edit[@Name='Remarks']");
-        selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
-        //items
-        enterData("xpath", "//Edit[@Name='Quantity * Row 0, Not sorted.']", dataFile, "Quantity");
+        Thread.sleep(100);
+        String oldVoucherID =oldTTransactionID();
+        System.out.println("oldID: "+ oldVoucherID);
+        //branch selection
+        enterInput("xpath", "//Edit[@Name='Branch *']", dataFile, "salesQuotationAgainstEnquiry", "branch");
+        enterInput("xpath", "//Edit[@Name='Party Code']", dataFile, "salesQuotationAgainstEnquiry", "partyCode");
+        Thread.sleep(1000);
+        gstTransactionType("Inter State Sales to Registered Dealers");
+        Thread.sleep(1000);
+        selectPendingsSalesOrder(voucherNum, common.getData(dataFile,"salesQuotationAgainstEnquiry","fyYear"));
+        common.clickElement("xpath","//Button[@Name='OK']");
+        //select pending quantity
+        List<WebElement> items = common.findWebElements("xpath", "//Pane[@Name='  F3 Items  ']/Pane/Pane/Pane/Table[@Name='Items']/*[starts-with(@Name,'Row')]");
+        System.out.println("items size: "+items.size());
+        for (int i = 0; i < items.size(); i++) {
+            WebElement productList = items.get(i);
+            String value = productList.getAttribute("LegacyValue");
+            if (!"(null)".equals(value) && !"(Create New)".equals(value)){
+                String pendingQty = common.findWebElement("xpath", "//Edit[@Name='Pending Quantity * Row "+i+", Not sorted.']").getText();
+                WebElement quantity = common.findWebElement("xpath", "//Edit[@Name='Quantity * Row "+i+", Not sorted.']");
+                quantity.click();
+                quantity.sendKeys(pendingQty, Keys.TAB);
+            }
+        }
+        //charges and deductions
+        enterChargesAndDeductions(dataFile,"salesQuotationAgainstEnquiry");
+        validateIGSTAmountTabIsNotEmpty();
+        validateCESSAmountTabIsNotEmpty();
+        //summary
+        common.clickElement("xpath","//TabItem[@Name='  Ctrl-F5 Summary  ']");
+        quantityPresentInSummary();
+        grossAmountPresentInSummary();
+        totalValuePresentInSummary();
+        totalValueInCompanyCurrenyPresentInSummary();
+        //terms and Conditions
+        termsAndConditions(dataFile,"salesQuotationAgainstEnquiry");
         //save
         transactionSave();
-        lastTransactionName();
+        String newVoucherID = newTransactionID(oldVoucherID);
+        System.out.println("newID: " + newVoucherID);
+        Assert.assertNotEquals(newVoucherID, oldVoucherID, "Voucher Numbers are same. Check Transaction.");
+        Thread.sleep(1000);
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Quotations");
+        common.clickElement("xpath", "//MenuItem[@Name='Sales Quotations against Enquiries'][2]");
+        Thread.sleep(1000);
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
+        Thread.sleep(1500);
+        verifyReport(newVoucherID, dataFile, "salesQuotationAgainstEnquiry");
+        return newVoucherID;
     }
 }

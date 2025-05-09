@@ -31,25 +31,25 @@
         </test>
     <!-- sales return with invoice reference -->
 
-    <test name="SRWIF 1" description="Sales Return With Invoice Reference Invoice - Reg-Reg Inter state Inclusive TCS GST including Free Quantity" testID="1">
+    <test name="SRWIF 1" description="Sales Return With Invoice Reference Invoice - Reg-Reg Inter state Inclusive TCS GST including Free Quantity" testID="5">
         <classes>
             <class name="menuItems.sales.transactions.TestSRWIRF_RegInterInclusiveFreeQty"/>
         </classes>
     </test>
 
-    <test name="SRWIF 2" description="Sales Return With Invoice Reference Invoice - Reg-UnReg Inter state Inclusive TCS GST including Free Quantity" testID="2">
+    <test name="SRWIF 2" description="Sales Return With Invoice Reference Invoice - Reg-UnReg Inter state Inclusive TCS GST including Free Quantity" testID="6">
         <classes>
             <class name="menuItems.sales.transactions.TestSRWIRF_UnRegInterInclusiveFreeQty"/>
         </classes>
     </test>
 
-    <test name="SRWIF 3" description="Sales Return With Invoice Reference Invoice - Reg-UnReg Intra state Exclusive TCS GST including Free Quantity" testID="3">
+    <test name="SRWIF 3" description="Sales Return With Invoice Reference Invoice - Reg-UnReg Intra state Exclusive TCS GST including Free Quantity" testID="7">
         <classes>
             <class name="menuItems.sales.transactions.TestSRWIRF_UnRegIntraExclusiveFreeQty"/>
         </classes>
     </test>
 
-    <test name="SRWIF 4" description="Sales Return With Invoice Reference Invoice - Reg-Reg Intra state Exclusive TCS GST including Free Quantity" testID="4">
+    <test name="SRWIF 4" description="Sales Return With Invoice Reference Invoice - Reg-Reg Intra state Exclusive TCS GST including Free Quantity" testID="8">
         <classes>
             <class name="menuItems.sales.transactions.TestSRWIRF_RegIntraExclusiveFreeQty"/>
         </classes>
@@ -57,51 +57,51 @@
 
     <!-- sales return -->
 
-    <test name="SRT 1" description="Sales Return -Reg-UnReg Inter state Inclusive GST" testID="5">
-        <classes>
-            <class name="menuItems.sales.transactions.TestSalesReturnFQ_UnRegInterInclusive"/>
-        </classes>
-    </test>
+<!--    <test name="SRT 1" description="Sales Return -Reg-UnReg Inter state Inclusive GST" testID="9">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.sales.transactions.TestSalesReturnFQ_UnRegInterInclusive"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="SRT 2" description="Sales Return -Reg-Reg Inter state Inclusive GST" testID="6">
-        <classes>
-            <class name="menuItems.sales.transactions.TestSalesReturnFQ_RegInterInclusive"/>
-        </classes>
-    </test>
+<!--    <test name="SRT 1" description="Sales Return -Reg-Reg Inter state Inclusive GST" testID="10">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.sales.transactions.TestSalesReturnFQ_RegInterInclusive"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="SRT 3" description="Sales Return -Reg-Reg Intra state Exclusive GST" testID="7">
-        <classes>
-            <class name="menuItems.sales.transactions.TestSalesReturnFQ_RegIntraExclusive"/>
-        </classes>
-    </test>
+<!--    <test name="SRT 3" description="Sales Return -Reg-Reg Intra state Exclusive GST" testID="11">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.sales.transactions.TestSalesReturnFQ_RegIntraExclusive"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="SRT 4" description="Sales Return -Reg-UnReg Intra state Exclusive GST" testID="8">
-        <classes>
-            <class name="menuItems.sales.transactions.TestSalesReturnFQ_UnRegIntraExclusive"/>
-        </classes>
-    </test>
+<!--    <test name="SRT 4" description="Sales Return -Reg-UnReg Intra state Exclusive GST" testID="12">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.sales.transactions.TestSalesReturnFQ_UnRegIntraExclusive"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
     <!-- sales order -->
 
-    <test name="SO 1" description="Sales Order - Reg-Reg Inter state Inclusive GST" testID="13">
+    <test name="SO 1" description="Sales Order - Reg-Reg Inter state Inclusive GST" testID="9">
         <classes>
             <class name="menuItems.sales.transactions.TestSalesOrder_RegInterInclusive"/>
         </classes>
     </test>
 
-    <test name="SO 2" description="Sales Order - Reg-UnReg Inter state Inclusive GST" testID="14">
+    <test name="SO 2" description="Sales Order - Reg-UnReg Inter state Inclusive GST" testID="10">
         <classes>
             <class name="menuItems.sales.transactions.TestSalesOrder_UnRegInterInclusive"/>
         </classes>
     </test>
 
-    <test name="SO 3" description="Sales Order - Reg-Reg Intra state Exclusive GST" testID="15">
+    <test name="SO 3" description="Sales Order - Reg-Reg Intra state Exclusive GST" testID="11">
         <classes>
             <class name="menuItems.sales.transactions.TestSalesOrder_RegIntraExclusive"/>
         </classes>
     </test>
 
-    <test name="SO 4" description="Sales Order -Reg-UnReg Intra state Exclusive GST" testID="16">
+    <test name="SO 4" description="Sales Order -Reg-UnReg Intra state Exclusive GST" testID="12">
         <classes>
             <class name="menuItems.sales.transactions.TestSalesOrder_UnRegIntraExclusive"/>
         </classes>
@@ -109,76 +109,101 @@
 
     <!-- deliveries against order -->
 
-    <test name="DELO 1" description="Deliveries against Order -Reg-Reg Inter state Inclusive GST" testID="17">
+    <test name="DELO 1" description="Deliveries against Order -Reg-Reg Inter state Inclusive GST" testID="13">
         <classes>
             <class name="menuItems.sales.transactions.TestDeliveriesAgainstOrder_RegInterInclusive"/>
         </classes>
     </test>
 
-    <test name="DELO 2" description="Deliveries against Order -Reg-Reg Intra state Exclusive GST" testID="18">
+    <test name="DELO 2" description="Deliveries against Order -Reg-Reg Intra state Exclusive GST" testID="14">
         <classes>
             <class name="menuItems.sales.transactions.TestDeliveriesAgainstOrder_RegIntraExclusive"/>
         </classes>
     </test>
 
-    <test name="DELO 3" description="Deliveries against Order -Reg-UnReg Inter state Inclusive GST" testID="19">
+    <test name="DELO 3" description="Deliveries against Order -Reg-UnReg Inter state Inclusive GST" testID="15">
         <classes>
             <class name="menuItems.sales.transactions.TestDeliveriesAgainstOrder_UnRegInterInclusive"/>
         </classes>
     </test>
 
-    <test name="DELO 4" description="Deliveries against Order -Reg-UnReg Intra state Exclusive GST" testID="20">
+    <test name="DELO 4" description="Deliveries against Order -Reg-UnReg Intra state Exclusive GST" testID="16">
         <classes>
             <class name="menuItems.sales.transactions.TestDeliveriesAgainstOrder_UnRegIntraExclusive"/>
         </classes>
     </test>
 
+    <test name="SE 1" description="Sales Enquiry" testID="17">
+        <classes>
+            <class name="menuItems.sales.transactions.TestSalesEnquiry"/>
+        </classes>
+    </test>
+
+    <test name="SEC 1" description="Sales Enquiry Cancellation" testID="18">
+        <classes>
+            <class name="menuItems.sales.transactions.TestSalesEnquiryCancellation"/>
+        </classes>
+    </test>
+
+    <test name="SQ 1" description="Sales Quotation" testID="19">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesQuotationTransaction"/>
+        </classes>
+    </test>
+
+    <test name="SQC 1" description="Sales Quotation Cancellation" testID="20">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesQuotationsCancellationTransaction"/>
+        </classes>
+    </test>
+
     <!-- Sales invoice against deliveries -->
 
-    <test name="SIAD 1" description="Sales Invoice against Deliveries -Reg-Reg Inter state Inclusive GST" testID="9">
+    <test name="SIAD 1" description="Sales Invoice against Deliveries -Reg-Reg Inter state Inclusive GST" testID="21">
         <classes>
             <class name="menuItems.sales.transactions.TestSalesInvoiceAgainstDeliveries_RegInterInclusive"/>
         </classes>
     </test>
 
-    <test name="SIAD 2" description="Sales Invoice against Deliveries -Reg-UnReg Inter state Inclusive GST" testID="10">
+    <test name="SIAD 2" description="Sales Invoice against Deliveries -Reg-UnReg Inter state Inclusive GST" testID="22">
         <classes>
             <class name="menuItems.sales.transactions.TestSalesInvoiceAgainstDeliveries_UnRegInterInclusive"/>
         </classes>
     </test>
 
-    <test name="SIAD 3" description="Sales Invoice against Deliveries -Reg-Reg Intra state Exlusive GST" testID="11">
+    <test name="SIAD 3" description="Sales Invoice against Deliveries -Reg-Reg Intra state Exlusive GST" testID="23">
         <classes>
             <class name="menuItems.sales.transactions.TestSalesInvoiceAgainstDeliveries_RegIntraExclusive"/>
         </classes>
     </test>
 
-    <test name="SIAD 4" description="Sales Invoice against Deliveries -Reg-UnReg Intra state Exlusive GST" testID="12">
+    <test name="SIAD 4" description="Sales Invoice against Deliveries -Reg-UnReg Intra state Exlusive GST" testID="24">
         <classes>
             <class name="menuItems.sales.transactions.TestsalesInvoiceAgainstDeliveries_UnRegIntraExclusive"/>
         </classes>
     </test>
 
     <!-- Sales invoice against orders -->
-    <test name="SIAO 1" description="Sales Invoice against Orders -Reg-Reg Inter state Inclusive GST" testID="13">
+
+    <test name="SIAO 1" description="Sales Invoice against Orders -Reg-Reg Inter state Inclusive GST" testID="25">
         <classes>
             <class name="menuItems.sales.transactions.TestSalesInvoiceAgainstOrders_RegInterInclusive"/>
         </classes>
     </test>
 
-    <test name="SIAO 2" description="Sales Invoice against Orders -Reg-Reg Intra state Exclusive GST" testID="14">
+    <test name="SIAO 2" description="Sales Invoice against Orders -Reg-Reg Intra state Exclusive GST" testID="26">
         <classes>
             <class name="menuItems.sales.transactions.TestSalesInvoiceAgainstOrders_RegIntraExclusive"/>
         </classes>
     </test>
 
-    <test name="SIAO 3" description="Sales Invoice against Orders -Reg-UnReg Inter state Inclusive GST" testID="15">
+    <test name="SIAO 3" description="Sales Invoice against Orders -Reg-UnReg Inter state Inclusive GST" testID="27">
         <classes>
             <class name="menuItems.sales.transactions.TestSalesInvoiceAgainstOrders_UnRegInterInclusive"/>
         </classes>
     </test>
 
-    <test name="SIAO 4" description="Sales Invoice against Orders -Reg-UnReg Intra state Exclusive GST" testID="16">
+    <test name="SIAO 4" description="Sales Invoice against Orders -Reg-UnReg Intra state Exclusive GST" testID="28">
         <classes>
             <class name="menuItems.sales.transactions.TestSalesInvoiceAgainstOrders_UnRegIntraExclusive"/>
         </classes>
@@ -186,28 +211,28 @@
 
     <!-- sales return with invoice reference -->
 
-    <test name="SRWIR - SIAO 1" description="Sales Return with invoice reference -Sales Invoice against Orders-Reg Intra state Exclusive GST" testID="17">
-        <classes>
-            <class name="menuItems.sales.transactions.TestSalesReturnWIR_SIAORegIntraExclusive"/>
-        </classes>
-    </test>
+<!--    <test name="SRWIR - SIAO 1" description="Sales Return with invoice reference -Sales Invoice against Orders-Reg Intra state Exclusive GST" testID="17">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.sales.transactions.TestSalesReturnWIR_SIAORegIntraExclusive"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="SRWIR - SIAO 2" description="Sales Return with invoice reference -Sales Invoice against Orders-Reg Inter state Inclusive GST" testID="18">
-        <classes>
-            <class name="menuItems.sales.transactions.TestSalesReturnWIR_SIAORegInterInclusive"/>
-        </classes>
-    </test>
+<!--    <test name="SRWIR - SIAO 2" description="Sales Return with invoice reference -Sales Invoice against Orders-Reg Inter state Inclusive GST" testID="18">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.sales.transactions.TestSalesReturnWIR_SIAORegInterInclusive"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="SRWIR - SIAD 1" description="Sales Return with invoice reference -Sales Invoice against Deliveries-UnReg Intra state Exclusive GST" testID="19">
-        <classes>
-            <class name="menuItems.sales.transactions.TestSalesReturnWIR_SIADUnRegIntraExclusive"/>
-        </classes>
-    </test>
+<!--    <test name="SRWIR - SIAD 1" description="Sales Return with invoice reference -Sales Invoice against Deliveries-UnReg Intra state Exclusive GST" testID="19">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.sales.transactions.TestSalesReturnWIR_SIADUnRegIntraExclusive"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="SRWIR - SIAD 2" description="Sales Return with invoice reference -Sales Invoice against Deliveries-UnReg Inter state Inclusive GST" testID="20">
-        <classes>
-            <class name="menuItems.sales.transactions.TestSalesReturnWIR_SIADUnRegInterInclusive"/>
-        </classes>
-    </test>
+<!--    <test name="SRWIR - SIAD 2" description="Sales Return with invoice reference -Sales Invoice against Deliveries-UnReg Inter state Inclusive GST" testID="20">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.sales.transactions.TestSalesReturnWIR_SIADUnRegInterInclusive"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
 </suite>

@@ -4,8 +4,11 @@ import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
-
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import java.io.IOException;
+import java.util.List;
 
 public class SalesQuotationCancellaton extends Transaction {
     WindowsDriver driver;
@@ -18,30 +21,51 @@ public class SalesQuotationCancellaton extends Transaction {
         dataFile = file;
     }
 
-    public void salesQuotationCancelltion() throws InterruptedException, IOException, ParseException {
+    public void salesQuotationCancelltion(String voucherNum) throws InterruptedException, IOException, ParseException {
+        long start = System.nanoTime();
+        System.out.println("salesEnquiry Cancellation startTime executed in :"+start);
         navigateToSalesQuotationsCancellationMenu();
-        lastTransactionName();
+        Thread.sleep(100);
+        String oldVoucherID =oldTTransactionID();
+        System.out.println("oldID: "+ oldVoucherID);
+        //branch selection
+        enterInput("xpath", "//Edit[@Name='Branch *']", dataFile, "salesQuotationCancellation", "branch");
+        enterInput("xpath", "//Edit[@Name='Party Code']", dataFile, "salesQuotationCancellation", "partyCode");
         Thread.sleep(1000);
-        //data
-        common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
-        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
-        common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
-        common.clickElement("xpath", "//Edit[@Name='Transaction Currency *']");
-        selectAndValidateData(common.getData(dataFile, "transaction"), "xpath", "//Edit[@Name='Transaction Currency *']");
-        common.clickElement("xpath", "//Edit[@Name='Party Code']");
-        selectAndValidateData(common.getData(dataFile, "partyCode"), "xpath", "//Edit[@Name='Party Code']");
-        Thread.sleep(2000);
-        common.clickElement("xpath", "//CheckBox[@Name='Select Row 1']");
-        common.clickElement("name", "Ok");
-        Thread.sleep(1500);
-        common.clickElement("xpath", "//Edit[@Name='Remarks']");
-        selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
-        //items
-        enterData("xpath", "//Edit[@Name='Quantity * Row 0, Not sorted.']", dataFile, "Quantity");
-        Thread.sleep(1500);
+        selectPendingsSalesOrder(voucherNum, common.getData(dataFile,"salesQuotationCancellation","fyYear"));
+        common.clickElement("xpath","//Button[@Name='OK']");
+
+        //select pending quantity
+        List<WebElement> items = common.findWebElements("xpath", "//Pane[@Name='  F3 Items  ']/Pane/Pane/Pane/Pane/Table[@Name='Items']/*[starts-with(@Name,'Row')]");
+        System.out.println("items size: "+items.size());
+        for (int i = 0; i < items.size(); i++) {
+            WebElement productList = items.get(i);
+            String value = productList.getAttribute("LegacyValue");
+            if (!"(null)".equals(value) && !"(Create New)".equals(value)){
+                String pendingQty = common.findWebElement("xpath", "//Edit[@Name='Pending Quantity * Row "+i+", Not sorted.']").getText();
+                WebElement quantity = common.findWebElement("xpath", "//Edit[@Name='Quantity * Row "+i+", Not sorted.']");
+                quantity.click();
+                quantity.sendKeys(pendingQty, Keys.TAB);
+            }
+        }
+        //summary
+        common.clickElement("xpath","//TabItem[@Name='  F8 Summary  ']");
+        quantityPresentInSummary();
+        grossAmountPresentInSummary();
+        totalValuePresentInSummary();
+        totalValueInCompanyCurrenyPresentInSummary();
         //save
         transactionSave();
-        lastTransactionName();
+        String newVoucherID = newTransactionID(oldVoucherID);
+        System.out.println("newID: " + newVoucherID);
+        Assert.assertNotEquals(newVoucherID, oldVoucherID, "Voucher Numbers are same. Check Transaction.");
+        Thread.sleep(1000);
+//        common.clickElement("name", "Sales");
+//        common.clickElement("name", "Enquiries");
+//        common.clickElement("xpath", "//MenuItem[@Name='Sales Enquiry Cancellations']");
+//        Thread.sleep(1000);
+//        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
+//        Thread.sleep(1500);
+//        verifyReport(newVoucherID, dataFile, "salesQuotationCancellation");
     }
 }

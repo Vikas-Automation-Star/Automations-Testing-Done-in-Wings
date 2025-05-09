@@ -2,36 +2,39 @@ package menuItems.sales.transactions;
 
 import com.wings.pages.AppLogin;
 import com.wings.pages.sales.transactions.SalesQuotationCancellaton;
+import com.wings.pages.sales.transactions.SalesQuotations;
+import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
-import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.awt.*;
 import java.io.IOException;
 
 public class SalesQuotationsCancellationTransaction {
     WindowsDriver driver;
     AppLogin login = new AppLogin();
-    String dataFile = "./src/main/resources/MenuItems/Sales/Transactions/salesQuotationCancellation.json";
+    Common common;
+    String dataFile = "./src/main/resources/menuItems/Sales/Transactions/salesQuotation.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
+        common=new Common(driver);
         driver = login.launchSingleUserApp();
-        login.singleUserLogin();
-        Allure.step("Before Test Sales Quotations Cancellation");
+        login.singleUserLogin(common.getData(dataFile,"salesQuotation","userName"), common.getData(dataFile,"salesQuotation","password"));
     }
 
     @Test
-    public void salesQuoteCancel() throws InterruptedException, IOException, ParseException {
+    public void salesQuotationCancellation() throws InterruptedException, IOException, ParseException, AWTException {
         SalesQuotationCancellaton cancellation = new SalesQuotationCancellaton(driver, dataFile);
-        cancellation.salesQuotationCancelltion();
+        SalesQuotations salesQuotations=new SalesQuotations(driver,dataFile);
+        cancellation.salesQuotationCancelltion(salesQuotations.salesQuotation());
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-        login.logout();
-        Allure.step("After Test Sales Quotations Cancellation");
+//        login.logout();
     }
 }
