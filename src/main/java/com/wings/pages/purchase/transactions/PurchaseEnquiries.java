@@ -2,17 +2,17 @@ package com.wings.pages.purchase.transactions;
 
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
-import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
+import org.testng.Assert;
 
+import java.awt.*;
 import java.io.IOException;
 
 public class PurchaseEnquiries extends Transaction {
     WindowsDriver driver;
     Common common;
     String dataFile;
-
 
     public PurchaseEnquiries(WindowsDriver driver, String file) {
         super(driver);
@@ -21,75 +21,46 @@ public class PurchaseEnquiries extends Transaction {
         dataFile = file;
     }
 
-    public void purchaseEnquires() throws InterruptedException, IOException, ParseException {
-        long start = System.nanoTime();
-        System.out.println("startTime executed in :"+start);
-        Thread.sleep(100);
-        navigateToPurchaseEnquiriesCancellation();
-        navigateToPurchaseQuotations();
-        navigateToPurchaseOrders();
-        navigateToPurchaseOrdersaCancellation();
-        navigateToPurchaseEnquiries();
-        long duration = System.nanoTime() - start;
-        System.out.println("endTime executed in :"+duration);
-        System.out.println("helperMethod1 executed in :" + duration / 1_000_000_000 + " sec");
-        FileUtil.writeTimeLog("PurchaseEnquiries",duration/1_000_000_000);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//        long startTime= Instant.now().getEpochSecond();
-//        System.out.println("startTime :"+startTime);
-//        navigateToPurchaseEnquiries();
-//        Thread.sleep(3000);
-//        common.clickElement("xpath", "//Edit[@Name='Branch *']");
-//        selectMasterWithValidation(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
-//        common.clickElement("xpath", "//Edit[@Name='Transaction Currency *']");
-//        selectMasterWithValidation(common.getData(dataFile, "currency"), "xpath", "//Edit[@Name='Transaction Currency *']");
-//        common.clickElement("xpath", "//Edit[@Name='Party Code']");
-//        selectAndValidateDataNew(common.getData(dataFile, "partyCode"), "xpath", "//Edit[@Name='Party Code']");
-//        common.clickElement("xpath", "//Edit[@Name='Price List']");
-//        selectMasterWithValidation(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
-//        common.clickElement("xpath", "//Edit[@Name='Executive *']");
-//        selectMasterWithValidation(common.getData(dataFile, "executive"), "xpath", "//Edit[@Name='Executive *']");
-//        enterData("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']", dataFile, "productCode");
-//        common.clickElement("xpath", "//Edit[@Name='Quantity * Row 0, Not sorted.']");
-//        common.inputText("xpath", "//Edit[@Name='Quantity * Row 0, Not sorted.']", common.getData(dataFile, "quantity"));
-//        common.clickElement("xpath", "//Edit[@Name='Unit Rate Row 0, Not sorted.']");
-//        common.inputText("xpath", "//Edit[@Name='Unit Rate Row 0, Not sorted.']", common.getData(dataFile, "unitRate"));
-//        Thread.sleep(2000);
-//        transactionSave();
-//        Thread.sleep(1500);
-//        String transactionId = getNewTransactionId();
-//        System.out.println("New Transaction ID: " + transactionId);
-//        closeTransaction("Purchase Enquiries");
-//        navigateToPurchaseEnquiriesCancellation();
-//        navigateToPurchaseQuotations();
-//        navigateToPurchaseOrders();
-//        navigateToPurchaseOrdersaCancellation();
-//        long endTime=Instant.now().getEpochSecond();
-//        System.out.println("endTime :"+endTime);
-//        System.out.println((endTime-startTime));
-//        FileUtil.writeTimeLog("PurchaseEnquiries",(endTime-startTime));
-
+    public String purchaseEnquires() throws InterruptedException, IOException, ParseException, AWTException {
+        navigateToMastersWhen3Steps("Purchase","Enquiries","Purchase Enquiries");
+        Thread.sleep(3000);
+        String oldVoucherID = oldTTransactionID();
+        enterInput("xpath", "//Edit[@Name='Branch *']", dataFile, "Purchase Enquiries", "branch");
+//        enterInput("xpath", "//Edit[@Name='Transaction Currency *']", dataFile, "Purchase Enquiries", "currency");
+        enterInput("xpath", "//Edit[@Name='Party Code']", dataFile, "Purchase Enquiries", "partyCode");
+        enterInput("xpath", "//Edit[@Name='Price List']", dataFile, "Purchase Enquiries", "priceList");
+        enterInput("xpath", "//Edit[@Name='Executive *']", dataFile, "Purchase Enquiries", "executive");
+        for (int i = 0; i < Integer.parseInt(common.getData(dataFile, "Purchase Enquiries", "productCount")); i++) {
+            addProduct(i);
+        }
+        enterOtherInfo(dataFile,"Purchase Enquiries");
+        termsAndConditions(dataFile,"Purchase Enquiries");
+        navigateToSummaryTab();
+        quantityPresentInSummary();
+        grossAmountPresentInSummary();
+        grossAmountInCompanyCurrencyPresentInSummary();
+        transactionSave();
+        String transactionId = newTransactionID(oldVoucherID);
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Enquiries");
+        common.clickElement("xpath", "//MenuItem[@Name='Purchase Enquiries'][2]");
+        Thread.sleep(1000);
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
+        verifyReport(transactionId,dataFile,"Purchase Enquiries");
+        return transactionId;
     }
+
+    public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {
+        if (common.getData(dataFile,"Purchase Enquiries", "productType" + i).equals("general")) {
+            generalProduct_New(dataFile,"Purchase Enquiries", "productCode" + i, "quantity" + i,"freeQuantity" + i, i);
+        } else if (common.getData(dataFile,"Purchase Enquiries", "productType" + i).equals("multiBatch")) {
+            serialNumProductDirectQuantity(dataFile, "Purchase Enquiries","productCode" + i, "quantity" + i,"freeQuantity" + i, i);
+        }else if (common.getData(dataFile,"Purchase Enquiries", "productType" + i).equals("serial")) {
+            serialNumProductDirectQuantity(dataFile,"Purchase Enquiries", "productCode" + i,"quantity" + i,"freeQuantity" + i, i);
+        }
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Gross Amount Row " + i + ", Not sorted.']"), common.getData(dataFile, "Purchase Enquiries","grossAmount" + i),"Gross Amount mismatch");
+        Assert.assertEquals(common.getText("xpath","//Edit[@Name='Gross Amount In Company Currency Row "+i+", Not sorted.']"),common.getData(dataFile,"Purchase Enquiries","grossInCompanyCurrency"+i),"grossInCompanyCurrency mismatch");
+    }
+
 }
 

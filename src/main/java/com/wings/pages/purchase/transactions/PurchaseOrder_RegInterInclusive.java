@@ -65,9 +65,9 @@ public class PurchaseOrder_RegInterInclusive extends Transaction {
         if (common.getData(dataFile, "Purchase Order", "productType" + i).equals("general")) {
             generalProduct_New(dataFile, "Purchase Order", "productCode" + i, "quantity" + i, "freeQuantity" + i, i);
         } else if (common.getData(dataFile, "Purchase Order", "productType" + i).equals("multiBatch")) {
-            multiBatchProduct_New(dataFile, "Purchase Order", "transType", "productCode" + i, "quantity" + i, "freeQuantity" + i, i);
+            multiBatchProductDirectQuantity(dataFile, "Purchase Order", "productCode" + i, "quantity" + i, "freeQuantity" + i, i);
         } else if (common.getData(dataFile, "Purchase Order", "productType" + i).equals("serial")) {
-            serialNumProduct_New(dataFile, "Purchase Order", "transType", "productCode" + i, "quantity" + i, "freeQuantity" + i, i);
+            serialNumProductDirectQuantity(dataFile, "Purchase Order", "productCode" + i, "quantity" + i, "freeQuantity" + i, i);
         }
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 500, 0);
         String mrpAmount = common.findWebElement("xpath", "//Edit[@Name='MRP Amount Row " + i + ", Not sorted.']").getText();

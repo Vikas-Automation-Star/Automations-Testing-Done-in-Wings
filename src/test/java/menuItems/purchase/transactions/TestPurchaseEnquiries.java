@@ -1,31 +1,34 @@
 package menuItems.purchase.transactions;
 
 import com.wings.pages.AppLogin;
-import com.wings.pages.purchase.transactions.PurchaseOrdersAgainstQuotation;
+import com.wings.pages.purchase.transactions.PurchaseEnquiries;
+import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
-import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.awt.*;
 import java.io.IOException;
 
-public class PurchaseOrdersAgainstQuotationsTransaction {
+public class TestPurchaseEnquiries {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String file = "./src/main/resources/MenuItems/purchase/transactions/PurchaseOrdersAgainstQuotation.json";
+    Common common;
+    String file = "./src/main/resources/menuItems/purchase/transactions/purchaseEnquiries.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
+        common=new Common(driver);
         driver = appLogin.launchSingleUserApp();
-        appLogin.singleUserLogin();
+        appLogin.singleUserLogin(common.getData(file,"Purchase Enquiries","userName"),common.getData(file,"Purchase Enquiries","password"));
     }
 
     @Test
-    public void purchaseOrdersAgainstQuotations() throws IOException, ParseException, InterruptedException {
-        PurchaseOrdersAgainstQuotation poaq = new PurchaseOrdersAgainstQuotation(driver, file);
-        poaq.purchaseOrdersAgainstQuotation();
+    public void purchaseEnquiries() throws IOException, ParseException, InterruptedException, AWTException {
+        PurchaseEnquiries pe = new PurchaseEnquiries(driver, file);
+        pe.purchaseEnquires();
     }
 
     @AfterTest

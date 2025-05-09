@@ -101,35 +101,35 @@
     <test name="Performing PurchaseEnquiries Transaction" description="description for PurchaseEnquiries Transaction"
           testID="WOW 16">
         <classes>
-            <class name="menuItems.purchase.transactions.PurchaseEnquiriesTransaction"></class>
+            <class name="menuItems.purchase.transactions.TestPurchaseEnquiries"></class>
         </classes>
     </test>
 
     <test name="Performing PurchaseEnquiriesCancellation Transaction"
           description="description for PurchaseEnquiriesCancellation Transaction" testID="WOW 17">
         <classes>
-            <class name="menuItems.purchase.transactions.PurchaseEnquiriesCancellationTransaction"></class>
+            <class name="menuItems.purchase.transactions.TestPurchaseEnquiriesCancellation"></class>
         </classes>
     </test>
 
     <test name="Performing PurchaseQuotations Transaction" description="description for PurchaseQuotations Transaction"
           testID="WOW 18">
         <classes>
-            <class name="menuItems.purchase.transactions.PurchaseQuotationsTransaction"></class>
+            <class name="menuItems.purchase.transactions.TestPurchaseQuotations"></class>
         </classes>
     </test>
 
     <test name="Performing PurchaseQuotationsAgainstEnquiries Transaction"
           description="description for PurchaseQuotationsAgainstEnquiries Transaction" testID="WOW 19">
         <classes>
-            <class name="menuItems.purchase.transactions.PurchaseQuotationsAgainstEnquiriesTransaction"></class>
+            <class name="menuItems.purchase.transactions.TestPurchaseQuotationsAgainstEnquiries"></class>
         </classes>
     </test>
 
     <test name="Performing PurchaseOrdersAgainstQuotations Transaction"
           description="description for PurchaseOrdersAgainstQuotations Transaction" testID="WOW 20">
         <classes>
-            <class name="menuItems.purchase.transactions.PurchaseOrdersAgainstQuotationsTransaction"></class>
+            <class name="menuItems.purchase.transactions.TestPurchaseOrdersAgainstQuotations"></class>
         </classes>
     </test>
 

@@ -2,10 +2,16 @@ package com.wings.pages.purchase.transactions;
 
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import com.wings.utils.Time;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
+import java.awt.*;
 import java.io.IOException;
+import java.util.List;
 
 public class PurchaseEnquiriesCancellation extends Transaction {
     WindowsDriver driver;
@@ -19,37 +25,41 @@ public class PurchaseEnquiriesCancellation extends Transaction {
         dataFile = file;
     }
 
-    public void purchaseEnquiriesCancellation() throws InterruptedException, IOException, ParseException {
-        navigateToPurchaseEnquiriesCancellation();
+    public void purchaseEnquiriesCancellation(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
+        navigateToMastersWhen3Steps("Purchase","Enquiries","Purchase Enquiries Cancellation");
         Thread.sleep(3000);
-        super.oldTTransaction();
-        common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
-        super.selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
-        common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        super.selectMasterWithValidation(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
-        common.clickElement("xpath", "//Edit[@Name='Transaction Currency *']");
-        super.selectMasterWithValidation(common.getData(dataFile, "currency"), "xpath", "//Edit[@Name='Transaction Currency *']");
-        common.clickElement("xpath", "//Edit[@Name='Party Code']");
-        super.selectAndValidateDataNew(common.getData(dataFile, "partyCode"), "xpath", "//Edit[@Name='Party Code']");
-        Thread.sleep(1000);
-        common.clickElement("xpath", "//CheckBox[@Name='Select Row 0']");
-        common.clickElement("xpath", "//Button[@Name='Ok']");
-
-        common.clickElement("xpath", "//Edit[@Name='Price List']");
-        super.selectMasterWithValidation(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
-
-        common.clickElement("xpath", "//Edit[@Name='Executive *']");
-        super.selectMasterWithValidation(common.getData(dataFile, "executive"), "xpath", "//Edit[@Name='Executive *']");
-        Thread.sleep(500);
-        common.clickElement("xpath", "//Edit[@Name='Remarks']");
-        super.selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
-        common.clickElement("xpath", "//Edit[@Name='Quantity * Row 0, Not sorted.']");
-        common.inputText("xpath", "//Edit[@Name='Quantity * Row 0, Not sorted.']", common.getData(dataFile, "quantity"));
+        String oldVoucherID = oldTTransactionID();
+        enterInput("xpath", "//Edit[@Name='Branch *']", dataFile, "Purchase Enquiries", "branch");
+//        enterInput("xpath", "//Edit[@Name='Transaction Currency *']", dataFile, "PurchaseEnquiriesCancellation", "currency");
+        enterInput("xpath", "//Edit[@Name='Party Code']", dataFile, "Purchase Enquiries", "partyCode");
+        selectPendingsSalesOrder(voucherNum,common.getData(dataFile,"PurchaseEnquiriesCancellation","FYear"));
+        common.clickElement("xpath","//Button[@Name='OK']");
+        enterInput("xpath", "//Edit[@Name='Executive *']", dataFile, "Purchase Enquiries", "executive");
+        List<WebElement> items = common.findWebElements("xpath", "//Pane[@Name='  F3 Items  ']/Pane/Pane/Pane/Pane/Table[@Name='Items']/*[starts-with(@Name,'Row')]");
+        System.out.println("items size: "+items.size());
+        for (int i = 0; i < items.size(); i++) {
+            WebElement productList = items.get(i);
+            String value = productList.getAttribute("LegacyValue");
+            if (!"(null)".equals(value) && !"(Create New)".equals(value)){
+                String pendingQty = common.findWebElement("xpath", "//Edit[@Name='Pending Quantity * Row "+i+", Not sorted.']").getText();
+                WebElement quantity = common.findWebElement("xpath", "//Edit[@Name='Quantity * Row "+i+", Not sorted.']");
+                quantity.click();
+                quantity.sendKeys(pendingQty, Keys.TAB);
+            }
+        }
+        navigateToOtherInfoTab();
+        inputTextWithValidation("xpath", "//Edit[@Name='Reference Bill Date']", common.getData(dataFile,"Purchase Enquiries","billRefDate")+ Time.timeStamp());
+        termsAndConditions(dataFile,"Purchase Enquiries");
+        navigateToSummaryTab();
+        quantityPresentInSummary();
         transactionSave();
-        Thread.sleep(1500);
-        super.newTransaction();
-        super.closeTransaction("Purchase Enquiries Cancellation");
-        Thread.sleep(2000);
-
+        String transactionId = newTransactionID(oldVoucherID);
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Enquiries");
+        common.clickElement("xpath", "//MenuItem[@Name='Purchase Enquiries Cancellation'][2]");
+        Thread.sleep(1000);
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
+//        verifyReport(transactionId,dataFile,"PurchaseEnquiriesCancellation");
     }
 }
+

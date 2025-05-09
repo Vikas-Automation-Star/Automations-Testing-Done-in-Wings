@@ -1,20 +1,20 @@
 package menuItems.purchase.transactions;
 
 import com.wings.pages.AppLogin;
-import com.wings.pages.purchase.transactions.PurchaseQuotationsAgainstEnquiries;
+import com.wings.pages.purchase.transactions.PurchaseQuotation;
 import io.appium.java_client.windows.WindowsDriver;
-import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.awt.*;
 import java.io.IOException;
 
-public class PurchaseQuotationsAgainstEnquiriesTransaction {
+public class TestPurchaseQuotations {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String file = "./src/main/resources/MenuItems/purchase/transactions/purchaseQuotationsAgainstEnquires.json";
+    String file = "./src/main/resources/MenuItems/purchase/transactions/purchaseQuotation.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
@@ -23,9 +23,9 @@ public class PurchaseQuotationsAgainstEnquiriesTransaction {
     }
 
     @Test
-    public void purchaseQuotationsAgainstEnquiries() throws IOException, ParseException, InterruptedException {
-        PurchaseQuotationsAgainstEnquiries pqae = new PurchaseQuotationsAgainstEnquiries(driver, file);
-        pqae.purchaseQuotationsAgainstEnquiry();
+    public void purchaseQuotations() throws IOException, ParseException, InterruptedException, AWTException {
+        PurchaseQuotation pq = new PurchaseQuotation(driver, file);
+        pq.purchaseQuotation();
     }
 
     @AfterTest

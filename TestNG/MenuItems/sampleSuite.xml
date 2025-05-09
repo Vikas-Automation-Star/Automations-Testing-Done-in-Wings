@@ -6,19 +6,19 @@
 
     <test name="Test 1" description="Test 1 description" testID="WOW 1">
         <classes>
-            <class name="menuItems.purchase.transactions.PurchaseEnquiriesTransaction"/>
+            <class name="menuItems.purchase.transactions.TestPurchaseEnquiries"/>
         </classes>
     </test>
 
 <!--    <test name="Test 2" description="Test 2 description" testID="WOW 2">-->
 <!--        <classes>-->
-<!--            <class name="menuItems.purchase.transactions.PurchaseEnquiriesCancellationTransaction"/>-->
+<!--            <class name="menuItems.purchase.transactions.TestPurchaseEnquiriesCancellation"/>-->
 <!--        </classes>-->
 <!--    </test>-->
 
 <!--    <test name="Test 3" description="Test 3 description" testID="WOW 3">-->
 <!--        <classes>-->
-<!--            <class name="menuItems.purchase.transactions.PurchaseQuotationsAgainstEnquiriesTransaction"/>-->
+<!--            <class name="menuItems.purchase.transactions.TestPurchaseQuotationsAgainstEnquiries"/>-->
 <!--        </classes>-->
 <!--    </test>-->
 </suite>

@@ -1,9 +1,103 @@
-{
-  "branch": "AT_Branch 1_Reg",
-  "currency": "INR",
-  "partyCode": "AT_Sup_Reg_Intra",
-  "priceList": "AT_Exclusive Purchase price list 1",
-  "executive": "AT_Executive 1",
-  "product": "P1",
-  "quantity": "1000"
-}
+[
+  {
+    "dataset": "Purchase Quotations",
+    "data": {
+      "branch": "AT_Branch 1_Reg",
+      "currency": "INR",
+      "partyCode": "AT_Sup_Reg_Inter",
+      "priceList": "AT_Exclusive Purchase price list 1",
+      "executive": "AT_Executive 1",
+
+      "invoice": "Regular",
+      "HSNCode": "AT_HSN Code 2",
+      "productCount": 3,
+      "enableFreeQuantity": "false",
+
+      "productType0": "general",
+      "quantity0": 10,
+      "freeQuantity0": 1,
+      "productCode0": "P1",
+
+      "productType1": "multiBatch",
+      "quantity1": 10,
+      "freeQuantity1": 1,
+      "productCode1": "MBP1",
+
+      "productType2": "serial",
+      "productCode2": "PSN2",
+      "quantity2": 10,
+      "freeQuantity2": 1,
+
+      "mrpAmount0": "10,000.000",
+      "mrpAmount1": "10,000.000",
+      "mrpAmount2": "10,000.000",
+
+      "grossAmount0": "1,000.000",
+      "grossAmount1": "1,000.000",
+      "grossAmount2": "1,000.000",
+
+
+      "taxableValue0": "1,000.000",
+      "taxableValue1": "1,000.000",
+      "taxableValue2": "1,000.000",
+
+
+      "igstAmount0": "180.000",
+      "igstAmount1": "180.000",
+      "igstAmount2": "180.000",
+
+      "cessAmount0": "100.000",
+      "cessAmount1": "100.000",
+      "cessAmount2": "100.000",
+
+      "expectedGStExclusive0": "280.000",
+      "expectedGStExclusive1": "280.000",
+      "expectedGStExclusive2": "280.000",
+
+      "netAmount0": "1,280.000",
+      "netAmount1": "1,280.000",
+      "netAmount2": "1,280.000",
+
+      "chargesRowCount": "2",
+      "charges": "Charges",
+      "chargesAcc": "CA11",
+      "chargesAmount": "100.000",
+
+      "deductions": "Deduction",
+      "deductionsAcc": "DA",
+      "chargesAcc1": "89",
+      "deductionsAmount": "100.000",
+
+
+      "billRefNum": "852",
+      "billRefDate": "",
+      "otherInfo1": "good products",
+      "otherInfo2": "good products",
+
+      "termType": "AT_Term Type 1",
+      "term": "AT_Term 1",
+      "comments": "Present no comments",
+
+      "column3": "AT_Branch 1_Reg",
+      "column4": "INR",
+      "column5": "1.00",
+      "column6": "AT_Sup_Reg_Inter",
+      "column7": "30.00",
+      "column8": "3,000.00",
+      "column9": "0.00",
+      "column10": "3,000.00",
+      "column11": "0.00",
+      "column12": "0.00",
+      "column13": "540.00",
+      "column14": "300.00",
+      "column15": "840.00",
+      "column16": "100.00",
+      "column17": "100.00",
+      "column18": "3,840.00",
+      "column19": "3,840.00",
+      "column20": "0.00",
+      "column21": "3,840.00",
+      "column22": "3,840.00"
+    }
+  }
+]
