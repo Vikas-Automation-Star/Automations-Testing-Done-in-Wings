@@ -1408,7 +1408,6 @@ public abstract class Transaction {
         enterInput("xpath","//Edit[@Name='TDS Amount Row 0, Not sorted.']",dataFile,dataset,"tdsAmount");
     }
 
-
     public void enterCreditCard(String dataFile,String key) throws IOException, ParseException, InterruptedException {
         common.clickElement("xpath","//TabItem[contains(@Name,'Credit Card')]");
         enterInput("xpath","//Edit[@Name='Swipe Machine Type * Row 0, Not sorted.']",dataFile,key,"swipeMachineType");
@@ -1435,7 +1434,46 @@ public abstract class Transaction {
         approvalNo.sendKeys(String.valueOf(common.getRandom()));
     }
 
+    public void enterServices(String dataFile,String dataset) throws IOException, ParseException {
+        common.clickElement("xpath","//TabItem[contains(@Name,'Services')]");
+        enterData("xpath", "//Edit[@Name='Service Code Row 0, Not sorted.']", dataFile,dataset, "servicesCode");
+        enterData("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']", dataFile, dataset,"servicesQuantity");
+        enterData("xpath", "//Edit[@Name='Rate Row 0, Not sorted.']", dataFile, dataset,"servicesRate");
+        enterData("xpath", "//Edit[@Name='HSN Row 0, Not sorted.']", dataFile, dataset,"HSNCode");
+    }
+    public void enterPostDatedChequesInPurchase(String dataFile,String dataSet) throws IOException, ParseException {
+        common.clickElement("xpath","//TabItem[contains(@Name,'Post Dated Cheques')]");
+        enterInput("xpath","//Edit[@Name='Bank Account Code Row 0, Not sorted.']",dataFile,dataSet,"bankAccountCode");
+        enterInput("xpath","//Edit[@Name='PDC Account * Row 0, Not sorted.']",dataFile,dataSet,"pdcAccount");
+        enterInput("xpath","//Edit[@Name='Amount * Row 0, Not sorted.']",dataFile,dataSet,"chequeAmount");
+        common.findWebElement("xpath","//Edit[@Name='Cheque/EFT No * Row 0, Not sorted.']").sendKeys(String.valueOf(common.getRandom()));
+    }
 
+    public void enterChequesInPurchase(String dataFile,String dataSet) throws IOException, ParseException {
+        List<WebElement> elements=common.findWebElements("xpath","//TabItem[contains(@Name,'Cheques')]");
+        System.out.println(elements.get(0).getText());
+        elements.get(0).click();
+        enterInput("xpath","//Edit[@Name='Bank Account Code Row 0, Not sorted.']",dataFile,dataSet,"bankAccountCode");
+        enterInput("xpath","//Edit[@Name='Amount * Row 0, Not sorted.']",dataFile,dataSet,"chequeAmount");
+        common.findWebElement("xpath","//Edit[@Name='Cheque/EFT No * Row 0, Not sorted.']").sendKeys(String.valueOf(common.getRandom()));
+        enterInput("xpath","//Edit[@Name='Charges Account Code Row 0, Not sorted.']",dataFile,dataSet,"chargesAcc");
+        enterInput("xpath","//Edit[@Name='Charges Row 0, Not sorted.']",dataFile,dataSet,"chargesAmount");
+
+    }
+
+    public void enterChequesPDCInPurchase(String dataFile,String key) throws IOException, ParseException {
+        common.clickElement("xpath","//TabItem[contains(@Name,'Cheques [PDC]')]");
+        enterInput("xpath","//Edit[@Name='Bank Account Code Row 0, Not sorted.']",dataFile,key,"bankAccountCode");
+        enterInput("xpath","//Edit[@Name='Amount * Row 0, Not sorted.']",dataFile,key,"chequeAmount");
+        common.findWebElement("xpath","//Edit[@Name='Cheque/EFT No * Row 0, Not sorted.']").sendKeys(String.valueOf(common.getRandom()));
+    }
+    public void enterOtherInfo(String dataFile,String dataset) throws IOException, ParseException {
+        navigateToOtherInfoTab();
+        common.findWebElement("xpath","//Edit[@Name='Reference Bill No']").sendKeys(String.valueOf(common.getRandom()));
+        common.findWebElement("xpath","//Edit[@Name='Reference Bill Date']").sendKeys(Time.timeStamp());
+        enterInput("xpath", "//Edit[@Name='OtherInfo 1']", dataFile, dataset, "otherInfo1");
+        enterInput("xpath", "//Edit[@Name='OtherInfo 2']", dataFile, dataset, "otherInfo2");
+    }
 
 
     public void chargesAndDeductionsCalculations(String dataFile, String type, String accCode, String amount, String iterations) throws IOException, ParseException {
@@ -2335,95 +2373,6 @@ public void scrollRight(int iterations){
         }
     }
 
-    public void termsAndConditions(String dataFile,String dataset) throws IOException, ParseException {
-        common.clickElement("xpath","//TabItem[contains(@Name,'Terms And Conditions')]");
-        enterInput("xpath","//Edit[@Name='Term Type * Row 0, Not sorted.']",dataFile,dataset,"termType");
-        enterInput("xpath","//Edit[@Name='Term * Row 0, Not sorted.']",dataFile,dataset,"term");
-        enterInput("xpath","//Edit[@Name='Comments Row 0, Not sorted.']",dataFile,dataset,"comments");
-    }
-    public void enterOtherCharges(String dataFile,String dataset) throws IOException, ParseException {
-        navigateToOtherChargesTab();
-        enterData("xpath", "//Edit[@Name='Account Code Row 0, Not sorted.']", dataFile,dataset, "otherChargesAccount");
-        enterData("xpath", "//Edit[@Name='Amount * Row 0, Not sorted.']", dataFile, dataset,"otherChargesAmount");
-        enterData("xpath", "//Edit[@Name='HSN Row 0, Not sorted.']", dataFile, dataset,"HSNCode");
-    }
-
-    public void enterServices(String dataFile,String dataset) throws IOException, ParseException {
-        common.clickElement("xpath","//TabItem[contains(@Name,'Services')]");
-        enterData("xpath", "//Edit[@Name='Service Code Row 0, Not sorted.']", dataFile,dataset, "servicesCode");
-        enterData("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']", dataFile, dataset,"servicesQuantity");
-        enterData("xpath", "//Edit[@Name='Rate Row 0, Not sorted.']", dataFile, dataset,"servicesRate");
-        enterData("xpath", "//Edit[@Name='HSN Row 0, Not sorted.']", dataFile, dataset,"HSNCode");
-    }
-
-    public void enterCash(String dataFile,String dataSet) throws IOException, ParseException {
-        navigateToCashTab();
-        enterInput("xpath","//Edit[@Name='Cash Account Code Row 0, Not sorted.']",dataFile,dataSet,"cashAccount");
-        enterInput("xpath","//Edit[@Name='Amount * Row 0, Not sorted.']",dataFile,dataSet,"cashAmount");
-    }
-    public void enterPostDatedChequesInPurchase(String dataFile,String dataSet) throws IOException, ParseException {
-        common.clickElement("xpath","//TabItem[contains(@Name,'Post Dated Cheques')]");
-        enterInput("xpath","//Edit[@Name='Bank Account Code Row 0, Not sorted.']",dataFile,dataSet,"bankAccountCode");
-        enterInput("xpath","//Edit[@Name='PDC Account * Row 0, Not sorted.']",dataFile,dataSet,"pdcAccount");
-        enterInput("xpath","//Edit[@Name='Amount * Row 0, Not sorted.']",dataFile,dataSet,"chequeAmount");
-        common.findWebElement("xpath","//Edit[@Name='Cheque/EFT No * Row 0, Not sorted.']").sendKeys(String.valueOf(common.getRandom()));
-    }
-
-    public void enterChequesInPurchase(String dataFile,String dataSet) throws IOException, ParseException {
-        List<WebElement> elements=common.findWebElements("xpath","//TabItem[contains(@Name,'Cheques')]");
-        System.out.println(elements.get(0).getText());
-        elements.get(0).click();
-        enterInput("xpath","//Edit[@Name='Bank Account Code Row 0, Not sorted.']",dataFile,dataSet,"bankAccountCode");
-        enterInput("xpath","//Edit[@Name='Amount * Row 0, Not sorted.']",dataFile,dataSet,"chequeAmount");
-        common.findWebElement("xpath","//Edit[@Name='Cheque/EFT No * Row 0, Not sorted.']").sendKeys(String.valueOf(common.getRandom()));
-        enterInput("xpath","//Edit[@Name='Charges Account Code Row 0, Not sorted.']",dataFile,dataSet,"chargesAcc");
-        enterInput("xpath","//Edit[@Name='Charges Row 0, Not sorted.']",dataFile,dataSet,"chargesAmount");
-
-    }
-
-    public void enterPostDatedCheques(String dataFile,String key) throws IOException, ParseException {
-        common.clickElement("xpath","//TabItem[contains(@Name,'Post Dated Cheques')]");
-        enterInput("xpath","//Edit[@Name='PDC Account Code Row 0, Not sorted.']",dataFile,key,"pdcAccount");
-        enterInput("xpath","//Edit[@Name='Amount * Row 0, Not sorted.']",dataFile,key,"chequeAmount");
-        common.findWebElement("xpath","//Edit[@Name='Cheque/EFT No * Row 0, Not sorted.']").sendKeys(String.valueOf(common.getRandom()));
-        enterInput("xpath","//Edit[@Name='Drawn On Bank * Row 0, Not sorted.']",dataFile,key,"drawnOn");
-        enterInput("xpath","//Edit[@Name='Drawn On Bank Branch Row 0, Not sorted.']",dataFile,key,"drawnOnBranch");
-    }
-
-    public void enterChequesPDCInPurchase(String dataFile,String key) throws IOException, ParseException {
-        common.clickElement("xpath","//TabItem[contains(@Name,'Cheques [PDC]')]");
-        enterInput("xpath","//Edit[@Name='Bank Account Code Row 0, Not sorted.']",dataFile,key,"bankAccountCode");
-        enterInput("xpath","//Edit[@Name='Amount * Row 0, Not sorted.']",dataFile,key,"chequeAmount");
-        common.findWebElement("xpath","//Edit[@Name='Cheque/EFT No * Row 0, Not sorted.']").sendKeys(String.valueOf(common.getRandom()));
-    }
-
-    public void enterChequesPDC(String dataFile,String key) throws IOException, ParseException {
-        common.clickElement("xpath","//TabItem[contains(@Name,'Cheques [PDC]')]");
-        enterInput("xpath","//Edit[@Name='Bank Account Code Row 0, Not sorted.']",dataFile,key,"bankAccountCode");
-        enterInput("xpath","//Edit[@Name='Amount * Row 0, Not sorted.']",dataFile,key,"chargesAmount");
-        common.findWebElement("xpath","//Edit[@Name='Cheque/EFT No * Row 0, Not sorted.']").sendKeys(String.valueOf(common.getRandom()));
-        enterInput("xpath","//Edit[@Name='Drawn On Bank Account * Row 0, Not sorted.']",dataFile,key,"drawnOn");
-        enterInput("xpath","//Edit[@Name='Drawn On Bank Branch Row 0, Not sorted.']",dataFile,key,"drawnOnBranch");
-    }
-
-    public void enterCreditCard(String dataFile,String key) throws IOException, ParseException, InterruptedException {
-        common.clickElement("xpath","//TabItem[contains(@Name,'Credit Card')]");
-        enterInput("xpath","//Edit[@Name='Swipe Machine Type * Row 0, Not sorted.']",dataFile,key,"swipeMachineType");
-        enterInput("xpath","//Edit[@Name='Swipe Type * Row 0, Not sorted.']",dataFile,key,"swipeType");
-        enterInput("xpath","//Edit[@Name='Amount * Row 0, Not sorted.']",dataFile,key,"chargesAmount");
-        common.findWebElement("xpath","//Edit[@Name='Card No Row 0, Not sorted.']").sendKeys(String.valueOf(common.getRandom()));
-        Thread.sleep(1500);
-        WebElement approvalNo=common.findWebElement("xpath","//Edit[@Name='Approval No * Row 0, Not sorted.']");
-        approvalNo.click();
-        approvalNo.sendKeys(String.valueOf(common.getRandom()));
-    }
-    public void enterOtherInfo(String dataFile,String dataset) throws IOException, ParseException {
-        navigateToOtherInfoTab();
-        common.findWebElement("xpath","//Edit[@Name='Reference Bill No']").sendKeys(String.valueOf(common.getRandom()));
-        common.findWebElement("xpath","//Edit[@Name='Reference Bill Date']").sendKeys(Time.timeStamp());
-        enterInput("xpath", "//Edit[@Name='OtherInfo 1']", dataFile, dataset, "otherInfo1");
-        enterInput("xpath", "//Edit[@Name='OtherInfo 2']", dataFile, dataset, "otherInfo2");
-    }
     public void validateCESSAmountTabIsEmpty() {
         common.clickElement("xpath", "//TabItem[contains(@Name,'CESS')]");
         String cess = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
