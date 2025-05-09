@@ -22,6 +22,7 @@ public abstract class Transaction {
     protected WindowsDriver driver;
     protected Common common;
 
+
     public Transaction(WindowsDriver driver) {
         this.driver = driver;
         this.common = new Common(this.driver);
