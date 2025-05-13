@@ -8,6 +8,7 @@ import org.json.simple.parser.ParseException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
+import java.awt.*;
 import java.io.IOException;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class PurchaseVoucherAgainstPurchaseOrders extends Transaction {
         common = new Common(this.driver);
         dataFile = file;
     }
-    public String purchaseVoucherAgainstPurchaseOrders(String voucherNum) throws InterruptedException, IOException, ParseException {
+    public String purchaseVoucherAgainstPurchaseOrders(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
         navigateToMastersWhen3Steps("Purchase","Invoices","Purchase Vouchers against Orders");
         Thread.sleep(3000);
         String oldVoucherID = oldTTransactionID();
@@ -49,9 +50,15 @@ public class PurchaseVoucherAgainstPurchaseOrders extends Transaction {
                 WebElement quantity = common.findWebElement("xpath", "//Edit[@Name='Quantity Row "+i+", Not sorted.']");
                 quantity.click();
                 quantity.sendKeys(pendingQty, Keys.TAB);
+                common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 800, 0);
+                enterItemsOtherCosts(dataFile,"PurchaseVouchersAgainstOrders",i);
+                common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", -800, 0);
             }
         }
         serialNumberForMRAO(dataFile,"PurchaseVouchersAgainstOrders","serialText","serialQuantity","");
+        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 800, 0);
+        enterItemsOtherCosts(dataFile,"PurchaseVouchersAgainstOrders",2);
+        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", -800, 0);
         enterServices(dataFile,"PurchaseVouchersAgainstOrders");
         chargesAndDeductionsCalculations1(dataFile,"PurchaseVouchersAgainstOrders", "charges","deductions","chargesAcc","deductionsAcc", "chargesAmount", "deductionsAmount", "chargesRowCount");
         enterOtherCharges(dataFile,"PurchaseVouchersAgainstOrders");
@@ -61,40 +68,26 @@ public class PurchaseVoucherAgainstPurchaseOrders extends Transaction {
         validateCESSAmountTabIsNotEmpty();
         validateTDS(dataFile,"PurchaseVouchersAgainstOrders");
         validateTCS(dataFile,"PurchaseVouchersAgainstOrders");
-//        enterCash(dataFile,"PurchaseVouchersAgainstOrders");
-//        enterChequesInPurchase(dataFile,"PurchaseVouchersAgainstOrders");
-//        enterPostDatedChequesInPurchase(dataFile,"PurchaseVouchersAgainstOrders");
-//        enterChequesPDCInPurchase(dataFile,"PurchaseVouchersAgainstOrders");
-//        navigateToOtherInfoTab();
-//        inputTextWithValidation("xpath", "//Edit[@Name='Reference Bill Date']", common.getData(dataFile,"PurchaseOrdersAgainstEnquiries","billRefDate")+ Time.timeStamp());
-//        termsAndConditions(dataFile,"PurchaseVouchersAgainstOrders");
-//        navigateToSummaryTab();
-//        quantityPresentInSummary();
-//        grossAmountPresentInSummary();
-//        grossAmountMinusDiscountPresentInSummary();
-//        iGSTPresentInSummary();
-//        cessPresentInSummary();
-//        netAmountPresentInSummary();
-//        chargesPresentInSummary();
-//        deductionsPresentInSummary();
-//        taxableOtherChargesPresentInSummary();
-//        otherChargesIGSTPresentInSummary();
-//        otherChargesSGSTPresentInSummary();
-//        totalValuePresentInSummary();
-//        totalValueInCompanyCurrenyPresentInSummary();
-//        cashPresentInSummary();
-//        postDatedChequesPresentInSummary();
-//        paymentsPresentInSummary();
-//
-//        transactionSave();
-        String transactionId = newTransactionID(oldVoucherID);
-//        common.clickElement("name", "Purchase");
-//        common.clickElement("name", "Invoices");
-//        common.clickElement("xpath", "//MenuItem[@Name='Purchase Vouchers against Orders'][2]");
-//        Thread.sleep(1000);
-//        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
-//        verifyReport(transactionId,dataFile,"PurchaseVouchersAgainstOrders");
-        return transactionId;
+        enterOtherCosts(dataFile,"PurchaseVouchersAgainstOrders");
+        navigateToItemsOtherCosts();
+        moveToRight(7);
+        enterCash(dataFile,"PurchaseVouchersAgainstOrders");
+        enterChequesInPurchase(dataFile,"PurchaseVouchersAgainstOrders");
+        enterPostDatedChequesInPurchase(dataFile,"PurchaseVouchersAgainstOrders");
+        enterChequesPDCInPurchase(dataFile,"PurchaseVouchersAgainstOrders");
+        navigateToOtherInfoTab();
+        inputTextWithValidation("xpath", "//Edit[@Name='Reference Bill Date']", common.getData(dataFile,"PurchaseOrdersAgainstEnquiries","billRefDate")+ Time.timeStamp());
+        termsAndConditions(dataFile,"PurchaseVouchersAgainstOrders");
+        navigateToSummaryTab();quantityPresentInSummary();grossAmountPresentInSummary();servicesAmountPresentInSummary();grossMinusDiscountPresentInSummary();iGSTPresentInSummary();cessPresentInSummary();servicesIGSTPresentInSummary();servicesCESSPresentInSummary();netAmountPresentInSummary();chargesPresentInSummary();deductionsPresentInSummary();otherChargesPresentInSummary();otherChargesIGSTPresentInSummary();otherChargesCESSPresentInSummary();otherCostsAmountPresentInSummary();tcsTaxableValuePresentInSummary();tcsAmountPresentInSummary();tdsAmountPresentInSummary();payableAfterTdsPresentInSummary();totalValuePresentInSummary();totalValueInCompanyCurrenyPresentInSummary();cashPresentInSummary();chequesPresentInSummary();postDatedChequesPresentInSummary();chequesPDCPresentInSummary();paymentsValuePresentInSummary();payableAMountPresentInSummary();
 
+        transactionSave();
+        String transactionId = newTransactionID(oldVoucherID);
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Invoices");
+        common.clickElement("xpath", "//MenuItem[@Name='Purchase Vouchers against Orders'][2]");
+        Thread.sleep(1000);
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
+        verifyReport(transactionId,dataFile,"PurchaseVouchersAgainstOrders");
+        return transactionId;
     }
 }

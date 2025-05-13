@@ -1,5 +1,8 @@
 package menuItems.purchase.transactions;
 import com.wings.pages.AppLogin;
+import com.wings.pages.purchase.transactions.PurchaseEnquiries;
+import com.wings.pages.purchase.transactions.PurchaseOrdersAgainstQuotation;
+import com.wings.pages.purchase.transactions.PurchaseQuotationsAgainstEnquiries;
 import com.wings.pages.purchase.transactions.PurchaseVoucherAgainstPurchaseOrders;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
@@ -25,19 +28,18 @@ public class TestPurchaseVoucherAgainstOrders {
     }
 
     @Test
-    public void purchaseOrdersAgainstQuotations() throws IOException, ParseException, InterruptedException, AWTException {
-//        PurchaseEnquiries enquiries=new PurchaseEnquiries(driver,file);
-//        PurchaseQuotationsAgainstEnquiries quotationsAgainstEnquiries = new PurchaseQuotationsAgainstEnquiries(driver, file);
-//        String PQAE =quotationsAgainstEnquiries.purchaseQuotationsAgainstEnquiry(enquiries.purchaseEnquires());
-//        PurchaseOrdersAgainstQuotation POAQ = new PurchaseOrdersAgainstQuotation(driver, file);
-//        POAQ.purchaseOrdersAgainstQuotation(PQAE);
-
+    public void PurchaseVouchersAgainstOrders() throws IOException, ParseException, InterruptedException, AWTException {
+        PurchaseEnquiries enquiries=new PurchaseEnquiries(driver,file);
+        PurchaseQuotationsAgainstEnquiries quotationsAgainstEnquiries = new PurchaseQuotationsAgainstEnquiries(driver, file);
+        String PQAE =quotationsAgainstEnquiries.purchaseQuotationsAgainstEnquiry(enquiries.purchaseEnquires());
+        PurchaseOrdersAgainstQuotation ordersAgainstQuotation = new PurchaseOrdersAgainstQuotation(driver, file);
+        String POAPQ= ordersAgainstQuotation.purchaseOrdersAgainstQuotation(PQAE);
         PurchaseVoucherAgainstPurchaseOrders voucherAgainstPurchaseOrders=new PurchaseVoucherAgainstPurchaseOrders(driver,file);
-        String PVAPO=voucherAgainstPurchaseOrders.purchaseVoucherAgainstPurchaseOrders("POAQ 2");
+        String PVAPO=voucherAgainstPurchaseOrders.purchaseVoucherAgainstPurchaseOrders(POAPQ);
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 }

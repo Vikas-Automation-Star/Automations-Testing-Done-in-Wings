@@ -1362,6 +1362,23 @@ public abstract class Transaction {
         enterInput("xpath","//Edit[@Name='Drawn On Bank * Row 0, Not sorted.']",dataFile,dataset,"drawnOn");
         enterInput("xpath","//Edit[@Name='Drawn On Bank Branch Row 0, Not sorted.']",dataFile,dataset,"drawnOnBranch");
     }
+
+    public  void navigateToItemsOtherCosts(){
+        List<WebElement> elements=common.findWebElements("xpath","//TabItem[contains(@Name,'Other Costs')]");
+        System.out.println(elements.get(1).getText());
+        elements.get(1).click();
+    }
+
+    public void enterItemsOtherCosts(String dataFile,String dataset,int i) throws IOException, ParseException, InterruptedException {
+        common.clickElement("xpath","//Button[@Name='Item Other Cost Row "+i+"']");
+        Thread.sleep(1000);
+        common.clickElement("xpath","//Window[@Name='Item Other Cost Details']/Table[@Name='Item Other Cost Details']/*[@Name='Data Panel']/*[@Name='NewItem Row']/*[@Name='ExpenseType newitem row']");
+        enterData("xpath", "//Edit[@Name='Editing control']", dataFile,dataset, "expenseCode");
+        enterData("xpath", "//Edit[@Name='Editing control']", dataFile, dataset,"vendor");
+        enterData("xpath", "//Edit[@Name='Editing control']", dataFile, dataset,"otherCostCurrency");
+        enterData("xpath", "//Edit[@Name='Editing control']", dataFile, dataset,"otherCostAmount");
+        common.clickElement("xpath","//Button[@Name='OK']");
+    }
     public void enterPostDatedChequesinSIAO(String dataFile,String dataset) throws IOException, ParseException {
         common.clickElement("xpath","//TabItem[contains(@Name,'Post Dated Cheques')]");
         enterInput("xpath","//Edit[@Name='PDC Account Code Row 0, Not sorted.']",dataFile,dataset,"pdcAccount");
@@ -1886,6 +1903,15 @@ public abstract class Transaction {
             common.clickElement("xpath","//Button[@Name='Scroll Right']");
         }
     }
+
+    public void moveToRight(int iterations) throws AWTException {
+        for (int i=0;i<iterations;i++){
+            Robot robot = new Robot();
+            robot.keyPress(KeyEvent.VK_RIGHT);
+            robot.keyRelease(KeyEvent.VK_RIGHT);
+        }
+    }
+
     public void sliderHandle() {
         int offset = 350;
         WebElement slider = common.findWebElement("xpath", "//Table[@Name='Items']/ScrollBar[@Name='Horizontal']/Thumb[@Name='Position']");
@@ -2284,6 +2310,119 @@ public abstract class Transaction {
             Assert.fail("SGST field is empty");
         }
     }
+    public void grossAmountMinusDiscountPresentInSummary() {
+        String grossAmountMinusDiscountAmount = common.findWebElement("xpath", "//Edit[contains(@Name,'Gross Minus Discount')]").getText();
+        if ((grossAmountMinusDiscountAmount == (null) || "(null)".equals(grossAmountMinusDiscountAmount))) {
+            Assert.fail("grossMinusDiscountAmount field is empty");
+        }
+    }
+    public void enterOtherInfo(String dataFile,String dataset) throws IOException, ParseException {
+        navigateToOtherInfoTab();
+        common.findWebElement("xpath","//Edit[@Name='Reference Bill No']").sendKeys(String.valueOf(common.getRandom()));
+        common.findWebElement("xpath","//Edit[@Name='Reference Bill Date']").sendKeys(Time.timeStamp());
+        enterInput("xpath", "//Edit[@Name='OtherInfo 1']", dataFile, dataset, "otherInfo1");
+        enterInput("xpath", "//Edit[@Name='OtherInfo 2']", dataFile, dataset, "otherInfo2");
+    }
+    public void selectPendingPurchaseOrder(String voucherNum, String financialYearNum) {
+        // Try to detect the popup
+        List<WebElement> popupWindow = common.findWebElements("xpath", "//Window[@Name='Purchase Quotations']");
+        if (popupWindow.isEmpty()) {
+            System.out.println("No popup found, moving on.");
+            return; // Skip this method's logic if no popup is present
+        }
+        // Popup found, continue with existing logic
+        List<WebElement> pendings = common.findWebElements("xpath", "//Window[@Name='Purchase Quotations']//Pane/Table/*[starts-with(@Name,'Row ')]");
+        System.out.println("pendings size: " + pendings.size());
+        boolean voucherFound = false;
+        for (int i = 0; i < pendings.size(); i++) {
+            WebElement userRow = pendings.get(i);
+            WebElement voucherNo = userRow.findElement(By.xpath(".//*[starts-with(@Name,'TowardsVNo Row')]"));
+            String voucherNoText = voucherNo.getText();
+            System.out.println(voucherNoText);
+            if (!(voucherNoText.equals(voucherNum) )) {
+                voucherNo.sendKeys(Keys.DOWN);
+            } else {
+                voucherNo.sendKeys(Keys.LEFT, Keys.SPACE);
+                voucherFound = true;
+                break;
+            }
+        }
+        if (!voucherFound) {
+            Assert.fail("Pending Transaction not found. Please check.");
+        }
+        common.clickElement("xpath", "//Button[@Name='Ok']");
+    }
+    public void enterPostDatedChequesInPurchase(String dataFile,String dataSet) throws IOException, ParseException {
+        List<WebElement> elements=common.findWebElements("xpath","//TabItem[contains(@Name,'Cheques')]");
+        System.out.println(elements.get(1).getText());
+        elements.get(1).click();
+//        common.clickElement("xpath","//TabItem[contains(@Name,'Post Dated Cheques')]");
+        enterInput("xpath","//Edit[@Name='Bank Account Code Row 0, Not sorted.']",dataFile,dataSet,"bankAccountCode");
+        enterInput("xpath","//Edit[@Name='PDC Account * Row 0, Not sorted.']",dataFile,dataSet,"pdcAccount");
+        enterInput("xpath","//Edit[@Name='Amount * Row 0, Not sorted.']",dataFile,dataSet,"chequeAmount");
+        common.findWebElement("xpath","//Edit[@Name='Cheque/EFT No * Row 0, Not sorted.']").sendKeys(String.valueOf(common.getRandom()));
+    }
+
+    public void enterPostDatedChequesInPRWIR(String dataFile,String dataSet) throws IOException, ParseException, InterruptedException {
+        List<WebElement> elements=common.findWebElements("xpath","//TabItem[contains(@Name,'Cheques')]");
+        System.out.println(elements.get(1).getText());
+        elements.get(1).click();
+        Thread.sleep(1000);
+        enterInput("xpath","//Edit[@Name='PDC Account Code Row 0, Not sorted.']",dataFile,dataSet,"pdcAccount");
+        enterInput("xpath","//Edit[@Name='Amount * Row 0, Not sorted.']",dataFile,dataSet,"chequeAmount");
+        common.findWebElement("xpath","//Edit[@Name='Cheque/EFT No * Row 0, Not sorted.']").sendKeys(String.valueOf(common.getRandom()));
+        Thread.sleep(1000);
+        enterInput("xpath","//Edit[@Name='Drawn On Bank * Row 0, Not sorted.']",dataFile,dataSet,"drawnBankAccCode");
+    }
+
+
+    public void enterChequesPDCInPurchase(String dataFile,String key) throws IOException, ParseException {
+        List<WebElement> elements=common.findWebElements("xpath","//TabItem[contains(@Name,'Cheques')]");
+        System.out.println(elements.get(2).getText());
+        elements.get(2).click();
+//        common.clickElement("xpath","//TabItem[contains(@Name,'Cheques [PDC]')]");
+        enterInput("xpath","//Edit[@Name='Bank Account Code Row 0, Not sorted.']",dataFile,key,"bankAccountCode");
+        enterInput("xpath","//Edit[@Name='Amount * Row 0, Not sorted.']",dataFile,key,"chequeAmount");
+        common.findWebElement("xpath","//Edit[@Name='Cheque/EFT No * Row 0, Not sorted.']").sendKeys(String.valueOf(common.getRandom()));
+    }
+
+    public void enterChequesPDCInPRWIR(String dataFile,String dataSet) throws IOException, ParseException {
+        List<WebElement> elements=common.findWebElements("xpath","//TabItem[contains(@Name,'Cheques')]");
+        System.out.println(elements.get(2).getText());
+        elements.get(2).click();
+        enterInput("xpath","//Edit[@Name='Bank Account Code Row 0, Not sorted.']",dataFile,dataSet,"bankAccountCode");
+        enterInput("xpath","//Edit[@Name='Amount * Row 0, Not sorted.']",dataFile,dataSet,"chequeAmount");
+        common.findWebElement("xpath","//Edit[@Name='Cheque/EFT No * Row 0, Not sorted.']").sendKeys(String.valueOf(common.getRandom()));
+        enterInput("xpath","//Edit[@Name='Drawn On Bank * Row 0, Not sorted.']",dataFile,dataSet,"drawnBankAccCode");
+    }
+    public void enterChequesInPurchase(String dataFile,String dataSet) throws IOException, ParseException {
+        List<WebElement> elements=common.findWebElements("xpath","//TabItem[contains(@Name,'Cheques')]");
+        System.out.println(elements.get(0).getText());
+        elements.get(0).click();
+        enterInput("xpath","//Edit[@Name='Bank Account Code Row 0, Not sorted.']",dataFile,dataSet,"bankAccountCode");
+        enterInput("xpath","//Edit[@Name='Amount * Row 0, Not sorted.']",dataFile,dataSet,"chequeAmount");
+        common.findWebElement("xpath","//Edit[@Name='Cheque/EFT No * Row 0, Not sorted.']").sendKeys(String.valueOf(common.getRandom()));
+        enterInput("xpath","//Edit[@Name='Charges Account Code Row 0, Not sorted.']",dataFile,dataSet,"chargesAcc");
+        enterInput("xpath","//Edit[@Name='Charges Row 0, Not sorted.']",dataFile,dataSet,"chargesAmount");
+    }
+    public void enterChequesInPRWIR(String dataFile,String dataSet) throws IOException, ParseException, InterruptedException {
+        List<WebElement> elements=common.findWebElements("xpath","//TabItem[contains(@Name,'Cheques')]");
+        System.out.println(elements.get(0).getText());
+        elements.get(0).click();
+        enterInput("xpath","//Edit[@Name='Bank Account Code Row 0, Not sorted.']",dataFile,dataSet,"bankAccountCode");
+        enterInput("xpath","//Edit[@Name='Amount * Row 0, Not sorted.']",dataFile,dataSet,"chequeAmount");
+        common.findWebElement("xpath","//Edit[@Name='Cheque/EFT No * Row 0, Not sorted.']").sendKeys(String.valueOf(common.getRandom()));
+        enterInput("xpath","//Edit[@Name='Charges Account Code Row 0, Not sorted.']",dataFile,dataSet,"chargesAcc");
+        enterInput("xpath","//Edit[@Name='Charges Row 0, Not sorted.']",dataFile,dataSet,"chargesAmount");
+        Thread.sleep(1000);
+        enterInput("xpath","//Edit[@Name='Drawn On Bank * Row 0, Not sorted.']",dataFile,dataSet,"drawnBankAccCode");
+    }
+    public void deductionsPresentInSummary() {
+        String charges = common.findWebElement("xpath", "//Edit[@Name='Deductions']").getText();
+        if ((charges == (null) || "(null)".equals(charges))) {
+            Assert.fail("Charges field is empty");
+        }
+    }
     public void validateRCMSGSTAmountTabIsNotEmpty() {
         common.clickElement("xpath", "//TabItem[contains(@Name,'RCM SGST')]");
         String rcmSGST = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
@@ -2394,6 +2533,20 @@ public abstract class Transaction {
             Assert.fail("TCS Amount field is empty");
         }
     }
+    public void tdsAmountPresentInSummary() {
+        String tdsAmount = common.findWebElement("xpath", "//Edit[@Name='TDS Amount']").getText();
+        if ((tdsAmount == (null) || "(null)".equals(tdsAmount))) {
+            Assert.fail("TCS Amount field is empty");
+        }
+    }
+
+    public void payableAfterTdsPresentInSummary() {
+        String payableAfterTds = common.findWebElement("xpath", "//Edit[@Name='Payable After TDS']").getText();
+        if ((payableAfterTds == "0.000")) {
+            Assert.fail("TCS Amount field is empty");
+        }
+    }
+
 
     public void netAmountPresentInSummary() {
         String netAmount = common.findWebElement("xpath", "//Edit[@Name='Net Amount']").getText();
@@ -2423,6 +2576,41 @@ public abstract class Transaction {
         }
     }
 
+    public void servicesAmountPresentInSummary() {
+        String serviceAmount = common.findWebElement("xpath", "//Edit[@Name='Service Amount']").getText();
+        if ((serviceAmount == "0.000" )) {
+            Assert.fail("Service Amount  field is empty");
+        }
+    }
+    public void servicesIGSTPresentInSummary() {
+        String serviceIGST = common.findWebElement("xpath", "//Edit[@Name='Services IGST']").getText();
+        if ((serviceIGST == "0.000" )) {
+            Assert.fail("Service IGST  field is empty");
+        }
+    }
+
+    public void servicesCESSPresentInSummary() {
+        String servicesCESS = common.findWebElement("xpath", "//Edit[@Name='Services CESS']").getText();
+        if ((servicesCESS == "0.000" )) {
+            Assert.fail("Service CESS  field is empty");
+        }
+    }
+
+    public void servicesQuantityPresentInSummary() {
+        String servicesQuantity= common.findWebElement("xpath", "//Edit[@Name='Service Quantity']").getText();
+        if ((servicesQuantity == "0.000" )) {
+            Assert.fail("Service CESS  field is empty");
+        }
+    }
+
+    public void otherCostsAmountPresentInSummary() {
+        String otherCosts = common.findWebElement("xpath", "//Edit[@Name='Other Cost Amount']").getText();
+        if ((otherCosts == "0.000" )) {
+            Assert.fail("Service CESS  field is empty");
+        }
+    }
+
+
     public void otherChargesCGSTPresentInSummary() {
         String otherChargesCGST = common.findWebElement("xpath", "//Edit[@Name='Other Charges CGST']").getText();
         if ((otherChargesCGST == (null) || "(null)".equals(otherChargesCGST))) {
@@ -2448,6 +2636,75 @@ public abstract class Transaction {
         String rcmIGST = common.findWebElement("xpath", "//Edit[@Name='RCM IGST']").getText();
         if ((rcmIGST == ("0.000"))) {
             Assert.fail("RCM IGST field is empty");
+        }
+    }
+    public void cashPresentInSummary() {
+        String cash = common.findWebElement("xpath", "//Edit[@Name='Cash']").getText();
+        if ((cash == "0.000" )) {
+            Assert.fail("Charges field is empty");
+        }
+    }
+    public void chequesPresentInSummary() {
+        String cheques = common.findWebElement("xpath", "//Edit[@Name='Cheques']").getText();
+        if ((cheques == "0.000" )) {
+            Assert.fail("Charges field is empty");
+        }
+    }
+    public void chequesPDCPresentInSummary() {
+        String chequesPDC = common.findWebElement("xpath", "//Edit[@Name='Cheques [PDC]']").getText();
+        if ((chequesPDC == "0.000" )) {
+            Assert.fail("Charges field is empty");
+        }
+    }
+    public void paymentsPresentInSummary() {
+        String payments = common.findWebElement("xpath", "//Edit[@Name='Payment']").getText();
+        if ((payments == (null) || "(null)".equals(payments))) {
+            Assert.fail("Charges field is empty");
+        }
+    }
+    public void paymentsValuePresentInSummary() {
+        String paymentsValue = common.findWebElement("xpath", "//Edit[@Name='Payments Value']").getText();
+        if ((paymentsValue == "0.000")) {
+            Assert.fail("Charges field is empty");
+        }
+    }
+    public void receiptsValuePresentInSummary() {
+        String receiptsValue = common.findWebElement("xpath", "//Edit[@Name='Receipts Value']").getText();
+        if ((receiptsValue == "0.000")) {
+            Assert.fail("Charges field is empty");
+        }
+    }
+
+    public void payableAMountPresentInSummary() {
+        String  payableAMount = common.findWebElement("xpath", "//Edit[@Name='Payable Amount']").getText();
+        if (( payableAMount == "0.000")) {
+            Assert.fail("Charges field is empty");
+        }
+    }
+
+    public void receivableMountPresentInSummary() {
+        String  receivableMount = common.findWebElement("xpath", "//Edit[@Name='Receivable Amount']").getText();
+        if (( receivableMount == "0.000")) {
+            Assert.fail("Charges field is empty");
+        }
+    }
+
+    public void grossAmountInCompanyCurrencyPresentInSummary() {
+        String grossAmount = common.findWebElement("xpath", "//Edit[contains(@Name,'Gross Amount In Company Currency')]").getText();
+        if ((grossAmount == "0.000")) {
+            Assert.fail("GrossAmount field is empty");
+        }
+    }
+    public void taxableOtherChargesPresentInSummary() {
+        String taxableOtherCharges = common.findWebElement("xpath", "//Edit[@Name='Taxable Other Charges']").getText();
+        if ((taxableOtherCharges == (null) || "(null)".equals(taxableOtherCharges))) {
+            Assert.fail("Other Charges field is empty");
+        }
+    }
+    public void postDatedChequesPresentInSummary() {
+        String postDatedCheques = common.findWebElement("xpath", "//Edit[@Name='Post Dated Cheques']").getText();
+        if ((postDatedCheques== "0.000")) {
+            Assert.fail("Charges field is empty");
         }
     }
 
@@ -2502,6 +2759,70 @@ public abstract class Transaction {
             i.sendKeys(common.getData(fileName,dataset, key), Keys.TAB);
             break;
         }
+    }
+
+
+
+    public void enterServices(String dataFile,String dataset) throws IOException, ParseException, InterruptedException {
+        common.clickElement("xpath","//TabItem[contains(@Name,'Services')]");
+        enterData("xpath", "//Edit[@Name='Service Code Row 0, Not sorted.']", dataFile,dataset, "servicesCode");
+        enterData("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']", dataFile, dataset,"servicesQuantity");
+        Thread.sleep(1000);
+        enterData("xpath", "//Edit[@Name='Rate Row 0, Not sorted.']", dataFile, dataset,"servicesRate");
+        enterData("xpath", "//Edit[@Name='HSN Row 0, Not sorted.']", dataFile, dataset,"HSNCode");
+    }
+
+    public void chargesAndDeductionsCalculations1(String dataFile, String dataSet,String type,String type2, String chargesAccCode,String deductionsAccCode,String chargesAmount, String deductionsAmount, String iterations) throws IOException, ParseException {
+        navigateToChargesAndDeductionsTab();
+        int totalIterations = Integer.parseInt(common.getData(dataFile, dataSet, iterations));
+        for (int i = 0; i < totalIterations; i++) {
+            // Enter Charges Amount if not empty
+            if (chargesAmount != null && !chargesAmount.trim().isEmpty()) {
+                enterData("xpath", "//Edit[@Name='Account Code Row " + i + ", Not sorted.']", dataFile, dataSet, chargesAccCode);
+                enterData("xpath", "//Edit[@Name='Charges Or Deductions * Row " + i + ", Not sorted.']", dataFile, dataSet, type);
+                enterData("xpath", "//Edit[@Name='Amount * Row " + i + ", Not sorted.']", dataFile, dataSet, chargesAmount);
+                String chargeAmount = common.getData(dataFile, dataSet, chargesAmount);
+                String chargesValue = common.findWebElement("xpath", "//Edit[@Name='Charges Row "+i+", Not sorted.']").getText();
+                Assert.assertEquals(chargeAmount,chargesValue,"Amount Mismatch");
+            }
+            // Enter Deductions Amount if not empty
+            if (deductionsAmount != null && !deductionsAmount.trim().isEmpty()) {
+                // Move to next row for deductions
+                i++;
+                enterData("xpath", "//Edit[@Name='Account Code Row " + i + ", Not sorted.']", dataFile, dataSet, deductionsAccCode);
+                enterData("xpath", "//Edit[@Name='Charges Or Deductions * Row " + i + ", Not sorted.']", dataFile, dataSet, type2);
+                enterData("xpath", "//Edit[@Name='Amount * Row " + i + ", Not sorted.']", dataFile, dataSet, deductionsAmount);
+                String deductAmount = common.getData(dataFile, dataSet, deductionsAmount);
+                String deductionsValue = common.findWebElement("xpath", "//Edit[@Name='Deductions Row "+i+", Not sorted.']").getText();
+                Assert.assertEquals(deductAmount,deductionsValue,"Amount Mismatch");
+            }
+        }
+    }
+    public void validateTDS(String dataFile,String dataSet) throws IOException, ParseException {
+        navigateToTDSTab();
+        String tdsText=common.findWebElement("xpath","//Edit[@Name='TDS Amount']").getText();
+        String tds= common.getData(dataFile, dataSet, "validateTdsAmount");
+        Assert.assertEquals(tdsText,tds,"TDS Mismatch");
+    }
+
+    public void navigateToTDSTab(){
+        common.clickElement("xpath","//TabItem[contains(@Name,'TDS  ')]");
+
+    }
+    public void enterOtherCosts(String dataFile,String dataset) throws IOException, ParseException {
+        List<WebElement> elements=common.findWebElements("xpath","//TabItem[contains(@Name,'Other Costs ')]");
+        System.out.println(elements.get(0).getText());
+        elements.get(0).click();
+        enterData("xpath", "//Edit[@Name='Expense Type Code Row 0, Not sorted.']", dataFile,dataset, "expenseCode");
+        enterData("xpath", "//Edit[@Name='Vendor Code Row 0, Not sorted.']", dataFile, dataset,"vendor");
+        enterData("xpath", "//Edit[@Name='Currency Row 0, Not sorted.']", dataFile, dataset,"otherCostCurrency");
+        enterData("xpath", "//Edit[@Name='Other Cost * Row 0, Not sorted.']", dataFile, dataset,"otherCostAmount");
+    }
+    public void validateTCS(String dataFile,String dataSet) throws IOException, ParseException {
+        navigateToTCSTab();
+        String tcsText=common.findWebElement("xpath","//Edit[@Name='TCS Amount']").getText();
+        String tcs= common.getData(dataFile, dataSet, "validateTcsAmount");
+        Assert.assertEquals(tcsText,tcs,"TCS Mismatch");
     }
     public void enterDataAndValidate(String locatorType, String locator, String fileName, String dataset,String key) throws IOException, ParseException {
         List<WebElement> elementList = common.findWebElements(locatorType, locator);

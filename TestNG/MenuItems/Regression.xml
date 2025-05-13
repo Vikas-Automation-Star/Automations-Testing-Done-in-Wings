@@ -192,7 +192,7 @@
     <test name="Performing PurchaseReturnsWithInvoicesReferences Transaction"
           description="description for PurchaseReturnsWithInvoiceReference Transaction" testID="WOW 29">
         <classes>
-            <class name="menuItems.purchase.transactions.PurchaseReturnsWithInvoicesReferencesTransaction"></class>
+            <class name="menuItems.purchase.transactions.TestPurchaseReturnsWithInvoicesReference"></class>
         </classes>
     </test>
 

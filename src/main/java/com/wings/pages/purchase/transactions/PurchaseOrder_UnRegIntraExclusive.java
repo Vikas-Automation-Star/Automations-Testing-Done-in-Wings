@@ -69,7 +69,6 @@ public class PurchaseOrder_UnRegIntraExclusive extends Transaction {
     }
 
     public void addProduct(int i) throws IOException, ParseException {
-        Time.currentDateAndTime();
         if (common.getData(dataFile, "Purchase Order", "productType" + i).equals("general")) {
             generalProduct_New(dataFile, "Purchase Order", "productCode" + i, "quantity" + i, "freeQuantity" + i, i);
         } else if (common.getData(dataFile, "Purchase Order", "productType" + i).equals("multiBatch")) {

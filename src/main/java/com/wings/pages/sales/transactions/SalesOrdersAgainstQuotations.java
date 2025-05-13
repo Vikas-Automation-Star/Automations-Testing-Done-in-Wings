@@ -1,6 +1,5 @@
 package com.wings.pages.sales.transactions;
 
-import com.wings.pages.SalesOrdersBaseClass;
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;

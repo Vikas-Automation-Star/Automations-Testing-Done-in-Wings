@@ -2,10 +2,14 @@ package com.wings.pages.purchase.transactions;
 
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import com.wings.utils.Time;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 
 import java.io.IOException;
+import java.util.List;
 
 public class PurchaseReturnsWithInvoicesReference extends Transaction {
     WindowsDriver driver;
@@ -19,43 +23,60 @@ public class PurchaseReturnsWithInvoicesReference extends Transaction {
         dataFile = file;
     }
 
-    public void purchaseReturnsWithInvoicesReference() throws InterruptedException, IOException, ParseException {
-        navigateToPurchaseVouchersWithInvoicesReference();
+    public void purchaseReturnsWithInvoicesReference(String voucherNum) throws InterruptedException, IOException, ParseException {
+        navigateToMastersWhen3Steps("Purchase","Invoices","Purchase Returns with Invoice Reference");
         Thread.sleep(3000);
-        oldTTransaction();
-//        common.clickElement("xpath","//Edit[@Name='Voucher Type']");
-//        selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']" );
-        common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        selectMasterWithValidation(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
-        common.clickElement("xpath", "//Edit[@Name='Location *']");
-        selectOptionalMaster(common.getData(dataFile, "location"), "xpath", "//Edit[@Name='Location *']");
-        common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
-        selectMasterWithValidation(common.getData(dataFile, "currency"), "xpath", "//Edit[@Name='Trans Currency *']");
-        common.clickElement("xpath", "//Edit[@Name='Purchase VNo *']");
-        inputTextWithValidation("xpath", "//Edit[@Name='Purchase VNo *']", common.getData(dataFile, "purchaseVoucherNo"));
+        String oldVoucherID = oldTTransactionID();
+        enterInput("xpath", "//Edit[@Name='Branch *']", dataFile, "PurchaseVouchersAgainstOrders", "branch");
+//        enterInput("xpath", "//Edit[@Name='Location *']",dataFile,"PurchaseReturnsWithInvoiceReference(Orders)");
+//        enterInput("xpath", "//Edit[@Name='Trans Currency *']",dataFile,"PurchaseReturnsWithInvoiceReference(Orders)");
+        inputTextWithValidation("xpath", "//Edit[@Name='Purchase VNo *']",voucherNum);
         common.clickElement("xpath", "//Edit[@Name='Cash/Party *']");
-        Thread.sleep(1000);
-        common.clickElement("xpath", "//Edit[@Name='Consignor']");
-        selectMasterWithValidation(common.getData(dataFile, "consignor"), "xpath", "//Edit[@Name='Consignor']");
-        common.clickElement("xpath", "//Edit[@Name='Purchase Return A/c Code']");
-        selectMasterWithValidation(common.getData(dataFile, "PurchaseReturnA/cCode"), "xpath", "//Edit[@Name='Purchase Return A/c Code']");
-        Thread.sleep(1000);
-        common.clickElement("xpath", "//Edit[@Name='Price List']");
-        selectMasterWithValidation(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
-        common.clickElement("xpath", "//Edit[@Name='Executive *']");
-        selectMasterWithValidation(common.getData(dataFile, "executive"), "xpath", "//Edit[@Name='Executive *']");
-        Thread.sleep(1000);
-//        common.clickElement("xpath","//Edit[@Name='Remarks']");
-//        selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"remarks"), "xpath","//Edit[@Name='Remarks']");
-        enterData("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']", dataFile, "quantity");
-        common.findWebElements("xpath", "//Edit[@Name='Quantity In SKU Row 0, Not sorted.']");
-        Thread.sleep(500);
-        sliderHandle();
-        billsPayable("xpath", "//Edit[@Name='Amount Adjusted * Row 0, Not sorted.']", dataFile, "billsPayableAmount");
-        transactionSave();
-        Thread.sleep(1500);
-        newTransaction();
-        closeTransaction("Purchase Returns with Invoice Reference");
         Thread.sleep(2000);
+        common.clickElement("xpath","//Button[@Name='OK']");
+        enterInput("xpath", "//Edit[@Name='Purchase Return A/c Code']", dataFile, "PurchaseReturnsWithInvoiceReference(Orders)", "PurchaseReturnAccCode");
+        enableCheckboxSelection("//CheckBox[@Name='Apply TCS']");
+        enterInput("xpath","//Edit[@Name='TCS Trans Nature']", dataFile,"PurchaseReturnsWithInvoiceReference(Orders)","tcsNature");
+//        enterInput("xpath","//Edit[@Name='priceList']", dataFile,"PurchaseVouchersAgainstOrders","tcsNature");
+//        enterInput("xpath","//Edit[@Name='executive']", dataFile,"PurchaseVouchersAgainstOrders","tcsNature");
+
+        List<WebElement> items = common.findWebElements("xpath", "//Pane[@Name='  F3 Items  ']/Pane/Pane/Pane/Table[@Name='Items']/*[starts-with(@Name,'Row')]");
+        System.out.println(items.size());
+        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 400, 0);
+        for (int i = 0; i<items.size(); i++) {
+            WebElement productList = items.get(i);
+            String value = productList.getAttribute("LegacyValue");
+            if (!value.equals("(null)")){
+                String pendingQty = common.findWebElement("xpath", "//Edit[@Name='Pending Quantity In SKU Row "+i+", Not sorted.']").getText();
+                WebElement quantity = common.findWebElement("xpath", "//Edit[@Name='Quantity Row "+i+", Not sorted.']");
+                quantity.click();
+                quantity.sendKeys(pendingQty, Keys.TAB);
+            }
+        }
+        chargesAndDeductionsCalculations1(dataFile,"PurchaseReturnsWithInvoiceReference(Orders)", "charges","deductions","chargesAcc","deductionsAcc", "chargesAmount", "deductionsAmount", "chargesRowCount");
+        enterOtherCharges(dataFile,"PurchaseReturnsWithInvoiceReference(Orders)");
+        navigateToBillsPayablesTab();
+        common.deleteInvalidRows();
+        validateIGSTAmountTabIsNotEmpty();
+        validateCESSAmountTabIsNotEmpty();
+        validateTCS(dataFile,"PurchaseReturnsWithInvoiceReference(Orders)");
+        enterCash(dataFile,"PurchaseReturnsWithInvoiceReference(Orders)");
+        enterChequesInPRWIR(dataFile,"PurchaseReturnsWithInvoiceReference(Orders)");
+        enterPostDatedChequesInPRWIR(dataFile,"PurchaseReturnsWithInvoiceReference(Orders)");
+        enterChequesPDCInPRWIR(dataFile,"PurchaseReturnsWithInvoiceReference(Orders)");
+        navigateToOtherInfoTab();
+        inputTextWithValidation("xpath", "//Edit[@Name='Reference Bill Date']", common.getData(dataFile,"PurchaseReturnsWithInvoiceReference(Orders)","billRefDate")+ Time.timeStamp());
+        termsAndConditions(dataFile,"PurchaseReturnsWithInvoiceReference(Orders)");
+        navigateToSummaryTab();quantityPresentInSummary();grossAmountPresentInSummary();grossMinusDiscountPresentInSummary();iGSTPresentInSummary();cessPresentInSummary();;netAmountPresentInSummary();chargesPresentInSummary();deductionsPresentInSummary();otherChargesPresentInSummary();otherChargesIGSTPresentInSummary();otherChargesCESSPresentInSummary();tcsTaxableValuePresentInSummary();tcsAmountPresentInSummary();totalValuePresentInSummary();totalValueInCompanyCurrenyPresentInSummary();cashPresentInSummary();chequesPresentInSummary();postDatedChequesPresentInSummary();chequesPDCPresentInSummary();receiptsValuePresentInSummary();receivableMountPresentInSummary();
+
+
+        transactionSave();
+        String transactionId = newTransactionID(oldVoucherID);
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Invoices");
+        common.clickElement("xpath", "//MenuItem[@Name='Purchase Returns with Invoice Reference'][2]");
+        Thread.sleep(1000);
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
+        verifyReport(transactionId,dataFile,"PurchaseReturnsWithInvoiceReference(Orders)");
     }
 }
