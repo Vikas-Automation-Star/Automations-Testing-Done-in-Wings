@@ -1,0 +1,321 @@
+[
+  {
+    "dataset": "PurchaseOrders",
+    "data": {
+      "userName":"AT_User 2",
+      "password": "Wings@123",
+
+      "branch": "AT_Branch 1_Reg",
+      "currency": "INR",
+      "partyCode": "AT_Sup_Reg_Inter",
+      "priceList": "AT_Exclusive Purchase price list 1",
+      "executive": "AT_Executive 1",
+
+      "invoice": "Regular",
+      "HSNCode": "AT_HSN Code 2",
+      "productCount": 3,
+      "enableFreeQuantity": "false",
+
+      "productType0": "general",
+      "quantity0": 5,
+      "freeQuantity0": 1,
+      "productCode0": "P1",
+
+      "productType1": "multiBatch",
+      "quantity1": 5,
+      "freeQuantity1": 1,
+      "productCode1": "MBP1",
+
+      "productType2": "serial",
+      "productCode2": "PSN2",
+      "quantity2": 5,
+      "freeQuantity2": 1,
+
+      "mrpAmount0": "5,000.000",
+      "mrpAmount1": "5,000.000",
+      "mrpAmount2": "5,000.000",
+
+      "grossAmount0": "500.000",
+      "grossAmount1": "500.000",
+      "grossAmount2": "500.000",
+
+
+      "taxableValue0": "500.000",
+      "taxableValue1": "500.000",
+      "taxableValue2": "500.000",
+
+
+      "igstAmount0": "90.000",
+      "igstAmount1": "90.000",
+      "igstAmount2": "90.000",
+
+      "cessAmount0": "50.000",
+      "cessAmount1": "50.000",
+      "cessAmount2": "50.000",
+
+      "expectedGStExclusive0": "140.000",
+      "expectedGStExclusive1": "140.000",
+      "expectedGStExclusive2": "140.000",
+
+      "netAmount0": "640.000",
+      "netAmount1": "640.000",
+      "netAmount2": "640.000",
+
+      "chargesRowCount": "2",
+      "charges": "Charges",
+      "chargesAcc": "CA11",
+      "chargesAmount": "100.000",
+
+      "deductions": "Deduction",
+      "deductionsAcc": "DA",
+      "chargesAcc1": "89",
+      "deductionsAmount": "100.000",
+
+      "otherChargesAccount": "OCA1",
+      "otherChargesAmount": "100.000",
+
+      "cashAccount": "CA1",
+      "cashAmount": "1000",
+
+      "bankAccountCode": "BA1",
+      "chequeAmount": "500",
+      "pdcAccount": "PDC Account",
+
+      "billRefNum": "852",
+      "billRefDate": "",
+      "otherInfo1": "good products",
+      "otherInfo2": "good products",
+
+      "termType": "AT_Term Type 1",
+      "term": "AT_Term 1",
+      "comments": "Present no comments",
+
+      "column3": "AT_Branch 1_Reg",
+      "column4": "INR",
+      "column5": "1.00",
+      "column6": "AT_Sup_Reg_Inter",
+      "column7": "15.00",
+      "column8": "1,500.00",
+      "column9": "0.00",
+      "column10": "1,600.00",
+      "column11": "0.00",
+      "column12": "0.00",
+      "column13": "288.00",
+      "column14": "160.00",
+      "column15": "448.00",
+      "column16": "1,920.00",
+      "column17": "1,920.00",
+      "column18": "100.00",
+      "column19": "100.00",
+      "column20": "128.00",
+      "column21": "0.00",
+      "column22": "2,048.00",
+      "column23": "2,048.00"
+
+    }
+  },
+  {
+    "dataset": "PurchaseOrdersCancellation",
+    "data": {
+      "branch": "AT_Branch 1_Reg",
+      "currency": "INR",
+      "partyCode": "AT_Sup_Reg_Inter",
+      "priceList": "AT_Exclusive Purchase price list 1",
+      "executive": "AT_Executive 1",
+      "FYear": "20250401",
+      "HSNCode": "AT_HSN Code 2",
+
+      "generalProduct": "AT_Product 1",
+
+      "billRefDate": "",
+      "otherInfo1": "good products",
+      "otherInfo2": "good products",
+
+      "termType": "AT_Term Type 1",
+      "term": "AT_Term 1",
+      "comments": "Present no comments",
+
+      "column4": "AT_Branch 1_Reg",
+      "column5": "INR",
+      "column6": "1.00",
+      "column7": "AT_Sup_Reg_Inter",
+      "column8": "AT_Product 1",
+      "column9": "Nos",
+      "column10": "100.00",
+      "column11": "5.00",
+      "column12": "500.00",
+      "column13": "0.00",
+      "column14": "500.00",
+      "column15": "500.00",
+      "column16": "500.00",
+      "column17": "0.00",
+      "column18": "500.00",
+      "column19": "500.00"
+    }
+  },
+  {
+    "dataset": "MaterialReceiptsAgainstOrders",
+    "data": {
+      "branch": "AT_Branch 1_Reg",
+      "currency": "INR",
+      "partyCode": "AT_Sup_Reg_Inter",
+      "priceList": "AT_Exclusive Purchase price list 1",
+      "executive": "AT_Executive 1",
+      "FYear": "20250401",
+      "HSNCode": "AT_HSN Code 2",
+      "BatchPolicy": "AT-Purchase Batch Policy_CIDNE",
+
+      "generalProduct": "AT_Product 1",
+
+      "serialText": "s",
+      "serialQuantity": "5",
+      "freeQuantity": "",
+
+      "chargesRowCount": "2",
+      "charges": "Charges",
+      "chargesAcc": "CA11",
+      "chargesAmount": "100.000",
+
+      "deductions": "Deduction",
+      "deductionsAcc": "DA",
+      "chargesAcc1": "89",
+      "deductionsAmount": "100.000",
+
+      "otherChargesAccount": "OCA1",
+      "otherChargesAmount": "100.000",
+
+      "expenseCode": "AT_Expenses  Acc 1",
+      "vendor": "AT_Sup_Reg_Inter",
+      "otherCostCurrency": "INR",
+      "otherCostAmount": "100",
+
+      "billRefDate": "",
+      "otherInfo1": "good products",
+      "otherInfo2": "good products",
+
+      "termType": "AT_Term Type 1",
+      "term": "AT_Term 1",
+      "comments": "Present no comments",
+
+      "column3": "AT_Branch 1_Reg",
+      "column4": "INR",
+      "column5": "1.00",
+      "column6": "AT_Sup_Reg_Inter",
+      "column7": "15.00",
+      "column8": "0.00",
+      "column9": "1,500.00",
+      "column10": "0.00",
+      "column11": "1,600.00",
+      "column12": "0.00",
+      "column13": "0.00",
+      "column14": "288.00",
+      "column15": "160.00",
+      "column16": "448.00",
+      "column17": "1,920.00",
+      "column18": "1,920.00",
+      "column19": "100.00",
+      "column20": "100.00",
+      "column21": "100.00",
+      "column22": "0.00",
+      "column23": "2,048.00",
+      "column24": "2,048.00",
+      "column25": "100.00",
+      "column26": "100.00"
+
+    }
+  },
+  {
+    "dataset": "PurchaseVoucherAgainstReceipts",
+    "data": {
+      "branch": "AT_Branch 1_Reg",
+      "currency": "INR",
+      "partyCode": "AT_Sup_Reg_Inter",
+      "priceList": "AT_Exclusive Purchase price list 1",
+      "executive": "AT_Executive 1",
+      "FYear": "20250401",
+      "PurchaseAccCode": "PA1",
+      "tcsNature": "AT_TCS Transaction Nature 2",
+      "tdsNature": "AT_TDS Transaction Nature 2",
+      "batchPolicy": "AT-Purchase Batch Policy_CIDNE",
+
+      "invoice": "Regular",
+      "HSNCode": "AT_HSN Code 2",
+      "productCount": 3,
+      "enableFreeQuantity": "false",
+
+      "serialQuantity": "10",
+      "serialText": "v",
+
+      "billRefDate": "",
+
+      "servicesCode": "S1",
+      "servicesQuantity": "10",
+      "servicesRate": "100",
+
+      "chargesRowCount": "2",
+      "charges": "Charges",
+      "chargesAcc": "CA11",
+      "chargesAmount": "100.000",
+
+      "deductions": "Deduction",
+      "deductionsAcc": "DA",
+      "deductionsAmount": "100.000",
+
+      "otherChargesAccount": "OCA1",
+      "otherChargesAmount": "100.000",
+
+      "validateTdsAmount": "260.000",
+      "validateTcsAmount": "204.800",
+
+      "cashAccount": "CA1",
+      "cashAmount": "1000",
+
+      "bankAccountCode": "BA1",
+      "chequeAmount": "500",
+      "pdcAccount": "PDC Account",
+
+      "expenseCode": "AT_Expenses  Acc 1",
+      "vendor": "AT_Sup_Reg_Inter",
+      "otherCostCurrency": "INR",
+      "otherCostAmount": "100",
+
+
+      "termType": "AT_Term Type 1",
+      "term": "AT_Term 1",
+      "comments": "Present no comments",
+
+      "column3": "AT_Branch 1_Reg",
+      "column4": "INR",
+      "column5": "1.00",
+      "column6": "AT_Sup_Reg_Inter",
+      "column7": "25.00",
+      "column8": "0.00",
+      "column9": "2,500.00",
+      "column10": "0.00",
+      "column11": "2,500.00",
+      "column12": "2,600.00",
+      "column13": "0.00",
+      "column14": "0.00",
+      "column15": "468.00",
+      "column16": "260.00",
+      "column17": "728.00",
+      "column18": "0.00",
+      "column19": "0.00",
+      "column20": "0.00",
+      "column21": "0.00",
+      "column22": "0.00",
+      "column23": "3,200.00",
+      "column24": "3,200.00",
+      "column25": "100.00",
+      "column26": "100.00",
+      "column27": "100.00",
+      "column28": "204.80",
+      "column29": "0.20",
+      "column30": "260.00",
+      "column31": "3,273.00",
+      "column32": "3,273.00",
+      "column33": "400.00",
+      "column34": "400.00"
+    }
+  }
+]

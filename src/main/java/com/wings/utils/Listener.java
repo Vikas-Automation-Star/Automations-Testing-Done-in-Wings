@@ -19,6 +19,7 @@ public class Listener implements ITestListener, ISuiteListener, IExecutionListen
     ISuiteListener suiteResults = null;
     JSONArray results = new JSONArray();
     File TimeLogFile;
+    Process process;
 
 
     @Override

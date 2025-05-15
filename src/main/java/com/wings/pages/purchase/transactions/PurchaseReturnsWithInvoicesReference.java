@@ -2,6 +2,7 @@ package com.wings.pages.purchase.transactions;
 
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import com.wings.utils.FileUtil;
 import com.wings.utils.Time;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
@@ -24,6 +25,9 @@ public class PurchaseReturnsWithInvoicesReference extends Transaction {
     }
 
     public void purchaseReturnsWithInvoicesReference(String voucherNum) throws InterruptedException, IOException, ParseException {
+
+        long start = System.nanoTime();
+
         navigateToMastersWhen3Steps("Purchase","Invoices","Purchase Returns with Invoice Reference");
         Thread.sleep(3000);
         String oldVoucherID = oldTTransactionID();
@@ -40,6 +44,13 @@ public class PurchaseReturnsWithInvoicesReference extends Transaction {
 //        enterInput("xpath","//Edit[@Name='priceList']", dataFile,"PurchaseVouchersAgainstOrders","tcsNature");
 //        enterInput("xpath","//Edit[@Name='executive']", dataFile,"PurchaseVouchersAgainstOrders","tcsNature");
 
+
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("purchaseReturns generalInformation", duration /1000000000);
+
+        long start1 = System.nanoTime();
+
+
         List<WebElement> items = common.findWebElements("xpath", "//Pane[@Name='  F3 Items  ']/Pane/Pane/Pane/Table[@Name='Items']/*[starts-with(@Name,'Row')]");
         System.out.println(items.size());
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 400, 0);
@@ -53,6 +64,14 @@ public class PurchaseReturnsWithInvoicesReference extends Transaction {
                 quantity.sendKeys(pendingQty, Keys.TAB);
             }
         }
+
+
+        long duration1 = System.nanoTime() - start1;
+        FileUtil.writeTimeLog("purchaseReturns Products Enter", duration1 /1000000000);
+
+
+        long start2 = System.nanoTime();
+
         chargesAndDeductionsCalculations1(dataFile,"PurchaseReturnsWithInvoiceReference(Orders)", "charges","deductions","chargesAcc","deductionsAcc", "chargesAmount", "deductionsAmount", "chargesRowCount");
         enterOtherCharges(dataFile,"PurchaseReturnsWithInvoiceReference(Orders)");
         navigateToBillsPayablesTab();
@@ -69,6 +88,10 @@ public class PurchaseReturnsWithInvoicesReference extends Transaction {
         termsAndConditions(dataFile,"PurchaseReturnsWithInvoiceReference(Orders)");
         navigateToSummaryTab();quantityPresentInSummary();grossAmountPresentInSummary();grossMinusDiscountPresentInSummary();iGSTPresentInSummary();cessPresentInSummary();;netAmountPresentInSummary();chargesPresentInSummary();deductionsPresentInSummary();otherChargesPresentInSummary();otherChargesIGSTPresentInSummary();otherChargesCESSPresentInSummary();tcsTaxableValuePresentInSummary();tcsAmountPresentInSummary();totalValuePresentInSummary();totalValueInCompanyCurrenyPresentInSummary();cashPresentInSummary();chequesPresentInSummary();postDatedChequesPresentInSummary();chequesPDCPresentInSummary();receiptsValuePresentInSummary();receivableMountPresentInSummary();
 
+        long duration2 = System.nanoTime() - start2;
+        FileUtil.writeTimeLog("purchaseReturns validating Tab Items UpTo summary", duration2 /1000000000);
+
+        long start3 = System.nanoTime();
 
         transactionSave();
         String transactionId = newTransactionID(oldVoucherID);
@@ -78,5 +101,8 @@ public class PurchaseReturnsWithInvoicesReference extends Transaction {
         Thread.sleep(1000);
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         verifyReport(transactionId,dataFile,"PurchaseReturnsWithInvoiceReference(Orders)");
+
+        long duration3 = System.nanoTime() - start3;
+        FileUtil.writeTimeLog("purchaseReturns SaveAndVerify", duration3 /1000000000);
     }
 }

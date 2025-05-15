@@ -2,6 +2,7 @@ package com.wings.pages.purchase.transactions;
 
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import com.wings.utils.FileUtil;
 import com.wings.utils.Time;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
@@ -30,6 +31,9 @@ public class PurchaseQuotationsAgainstEnquiries extends Transaction {
         enterInput("xpath", "//Edit[@Name='Branch *']", dataFile, "PurchaseQuotationsAgainstEnquiries", "branch");
         enterInput("xpath", "//Edit[@Name='Party Code']", dataFile, "PurchaseQuotationsAgainstEnquiries", "partyCode");
         selectPendingsSalesOrder(voucherNum,common.getData(dataFile,"PurchaseQuotationsAgainstEnquiries","FYear"));
+
+        long start = System.nanoTime();
+
         List<WebElement> items = common.findWebElements("xpath", "//Pane[@Name='  F3 Items  ']/Pane/Pane/Pane/Pane/Table[@Name='Items']/*[starts-with(@Name,'Row')]");
         System.out.println("items size: "+items.size());
         for (int i = 0; i < items.size(); i++) {
@@ -45,6 +49,12 @@ public class PurchaseQuotationsAgainstEnquiries extends Transaction {
                 common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", -600, 0);
             }
         }
+
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("purchaseQuotationsAgainstEnquiry Enter Products:",duration/1000000000);
+
+        long start1 = System.nanoTime();
+
         chargesAndDeductionsCalculations1(dataFile,"PurchaseQuotationsAgainstEnquiries", "charges","deductions","chargesAcc","deductionsAcc", "chargesAmount", "deductionsAmount", "chargesRowCount");
         navigateToOtherInfoTab();
         inputTextWithValidation("xpath", "//Edit[@Name='Reference Bill Date']", common.getData(dataFile,"PurchaseQuotationsAgainstEnquiries","billRefDate")+ Time.timeStamp());
@@ -68,6 +78,10 @@ public class PurchaseQuotationsAgainstEnquiries extends Transaction {
         Thread.sleep(1000);
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         verifyReport(transactionId,dataFile,"PurchaseQuotationsAgainstEnquiries");
+
+        long duration1 = System.nanoTime() - start1;
+        FileUtil.writeTimeLog("purchaseQuotationsAgainstEnquiry validating Tab Items UpTo summary",duration1/1000000000);
+
         return transactionId;
     }
 }

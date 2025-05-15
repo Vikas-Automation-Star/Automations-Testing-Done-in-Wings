@@ -2,6 +2,7 @@ package com.wings.pages.purchase.transactions;
 
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.Assert;
@@ -30,9 +31,17 @@ public class PurchaseEnquiries extends Transaction {
         enterInput("xpath", "//Edit[@Name='Party Code']", dataFile, "Purchase Enquiries", "partyCode");
         enterInput("xpath", "//Edit[@Name='Price List']", dataFile, "Purchase Enquiries", "priceList");
         enterInput("xpath", "//Edit[@Name='Executive *']", dataFile, "Purchase Enquiries", "executive");
+
+        long start = System.nanoTime();
+
         for (int i = 0; i < Integer.parseInt(common.getData(dataFile, "Purchase Enquiries", "productCount")); i++) {
             addProduct(i);
         }
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("PurchaseEnquiries Enter Products:",duration/1000000000);
+
+        long start1 = System.nanoTime();
+
         enterOtherInfo(dataFile,"Purchase Enquiries");
         termsAndConditions(dataFile,"Purchase Enquiries");
         navigateToSummaryTab();
@@ -47,6 +56,10 @@ public class PurchaseEnquiries extends Transaction {
         Thread.sleep(1000);
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         verifyReport(transactionId,dataFile,"Purchase Enquiries");
+
+        long duration1 = System.nanoTime() - start1;
+        FileUtil.writeTimeLog("purchaseEnquiries validating Tab Items UpTo summary", duration1 /1000000000);
+
         return transactionId;
     }
 

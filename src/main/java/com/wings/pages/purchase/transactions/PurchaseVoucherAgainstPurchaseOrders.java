@@ -2,6 +2,7 @@ package com.wings.pages.purchase.transactions;
 
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import com.wings.utils.FileUtil;
 import com.wings.utils.Time;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
@@ -24,8 +25,10 @@ public class PurchaseVoucherAgainstPurchaseOrders extends Transaction {
         dataFile = file;
     }
     public String purchaseVoucherAgainstPurchaseOrders(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
+        long start = System.nanoTime();
+
         navigateToMastersWhen3Steps("Purchase","Invoices","Purchase Vouchers against Orders");
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         String oldVoucherID = oldTTransactionID();
         enterInput("xpath", "//Edit[@Name='Branch *']", dataFile, "PurchaseVouchersAgainstOrders", "branch");
         enterInput("xpath", "//Edit[@Name='Party Code']", dataFile, "PurchaseVouchersAgainstOrders", "partyCode");
@@ -39,6 +42,12 @@ public class PurchaseVoucherAgainstPurchaseOrders extends Transaction {
         inputTextWithValidation("xpath", "//Edit[@Name='Supplier Bill No *']",String.valueOf(common.getRandom()));
         inputTextWithValidation("xpath", "//Edit[@Name='Supplier Bill Date *']",Time.timeStamp());
         enterInput("xpath", "//Edit[@Name='Batch Policy']",dataFile,"PurchaseVouchersAgainstOrders", "batchPolicy");
+
+
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("purchaseVoucherAgainstPurchaseOrders GeneralInformation",duration/1000000000);
+
+        long start1 = System.nanoTime();
 
         List<WebElement> items = common.findWebElements("xpath", "//Pane[@Name='  F3 Items  ']/Pane/Pane/Pane/Table[@Name='Items']/*[starts-with(@Name,'Row')]");
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 400, 0);
@@ -55,6 +64,12 @@ public class PurchaseVoucherAgainstPurchaseOrders extends Transaction {
                 common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", -800, 0);
             }
         }
+
+        long duration1 = System.nanoTime() - start1;
+        FileUtil.writeTimeLog("purchaseVoucherAgainstPurchaseOrders Enter Products",duration1/1000000000);
+
+        long start2 = System.nanoTime();
+
         serialNumberForMRAO(dataFile,"PurchaseVouchersAgainstOrders","serialText","serialQuantity","");
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 800, 0);
         enterItemsOtherCosts(dataFile,"PurchaseVouchersAgainstOrders",2);
@@ -78,7 +93,18 @@ public class PurchaseVoucherAgainstPurchaseOrders extends Transaction {
         navigateToOtherInfoTab();
         inputTextWithValidation("xpath", "//Edit[@Name='Reference Bill Date']", common.getData(dataFile,"PurchaseOrdersAgainstEnquiries","billRefDate")+ Time.timeStamp());
         termsAndConditions(dataFile,"PurchaseVouchersAgainstOrders");
+
+        long duration2 = System.nanoTime() - start2;
+        FileUtil.writeTimeLog("purchaseVoucherAgainstPurchaseOrders validating Tab Items before Summary",duration2/1000000000);
+
+        long start5 = System.nanoTime();
+
         navigateToSummaryTab();quantityPresentInSummary();grossAmountPresentInSummary();servicesAmountPresentInSummary();grossMinusDiscountPresentInSummary();iGSTPresentInSummary();cessPresentInSummary();servicesIGSTPresentInSummary();servicesCESSPresentInSummary();netAmountPresentInSummary();chargesPresentInSummary();deductionsPresentInSummary();otherChargesPresentInSummary();otherChargesIGSTPresentInSummary();otherChargesCESSPresentInSummary();otherCostsAmountPresentInSummary();tcsTaxableValuePresentInSummary();tcsAmountPresentInSummary();tdsAmountPresentInSummary();payableAfterTdsPresentInSummary();totalValuePresentInSummary();totalValueInCompanyCurrenyPresentInSummary();cashPresentInSummary();chequesPresentInSummary();postDatedChequesPresentInSummary();chequesPDCPresentInSummary();paymentsValuePresentInSummary();payableAMountPresentInSummary();
+
+        long duration5 = System.nanoTime() - start5;
+        FileUtil.writeTimeLog("purchaseVoucherAgainstPurchaseOrders only summary",duration5/1000000000);
+
+        long start3 = System.nanoTime();
 
         transactionSave();
         String transactionId = newTransactionID(oldVoucherID);
@@ -88,6 +114,10 @@ public class PurchaseVoucherAgainstPurchaseOrders extends Transaction {
         Thread.sleep(1000);
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         verifyReport(transactionId,dataFile,"PurchaseVouchersAgainstOrders");
+
+        long duration3 = System.nanoTime() - start3;
+        FileUtil.writeTimeLog("purchaseVoucherAgainstPurchaseOrders SaveAndVerify Report", duration3 /1000000000);
+
         return transactionId;
     }
 }

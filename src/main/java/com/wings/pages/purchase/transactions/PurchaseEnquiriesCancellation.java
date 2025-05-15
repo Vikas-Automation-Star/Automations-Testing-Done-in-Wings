@@ -27,7 +27,7 @@ public class PurchaseEnquiriesCancellation extends Transaction {
 
     public void purchaseEnquiriesCancellation(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
         navigateToMastersWhen3Steps("Purchase","Enquiries","Purchase Enquiries Cancellation");
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         String oldVoucherID = oldTTransactionID();
         enterInput("xpath", "//Edit[@Name='Branch *']", dataFile, "Purchase Enquiries", "branch");
 //        enterInput("xpath", "//Edit[@Name='Transaction Currency *']", dataFile, "PurchaseEnquiriesCancellation", "currency");

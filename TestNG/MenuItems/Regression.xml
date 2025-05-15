@@ -143,7 +143,7 @@
     <test name="Performing PurchaseOrdersCancellation Transaction"
           description="description for PurchaseOrdersCancellation Transaction" testID="WOW 22">
         <classes>
-            <class name="menuItems.purchase.transactions.PurchaseOrderCancellationTransaction"></class>
+            <class name="menuItems.purchase.transactions.TestPurchaseOrderCancellation"></class>
         </classes>
     </test>
 
@@ -157,7 +157,7 @@
     <test name="Performing MaterialReceiptsAgainstOrders Transaction"
           description="description for MaterialReceiptsAgainstOrders Transaction" testID="WOW 24">
         <classes>
-            <class name="menuItems.purchase.transactions.MaterialReceiptsAgainstOrdersTransaction"></class>
+            <class name="menuItems.purchase.transactions.TestMaterialReceiptsAgainstOrders"></class>
         </classes>
     </test>
 
@@ -171,7 +171,7 @@
     <test name="Performing  PurchaseVouchers Transaction" description="description for PurchaseVouchers Transaction"
           testID="WOW 26">
         <classes>
-            <class name="menuItems.purchase.transactions.PurchaseVouchersTransaction"></class>
+            <class name="menuItems.purchase.transactions.TestPurchaseVouchers"></class>
         </classes>
     </test>
 
@@ -185,7 +185,7 @@
     <test name="Performing PurchaseVouchersAgainstReceipts Transaction"
           description="description for PurchaseVouchersAgainstReceipts Transaction" testID="WOW 28">
         <classes>
-            <class name="menuItems.purchase.transactions.PurchaseVouchersAgainstReceiptsTransaction"></class>
+            <class name="menuItems.purchase.transactions.TestPurchaseVouchersAgainstReceipts"></class>
         </classes>
     </test>
 

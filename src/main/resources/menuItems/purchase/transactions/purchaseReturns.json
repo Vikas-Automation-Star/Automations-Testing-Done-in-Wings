@@ -1,0 +1,126 @@
+[
+  {
+    "dataset": "PurchaseReturns",
+    "data": {
+      "userName":"AT_User 2",
+      "password": "Wings@123",
+      "branch": "AT_Branch 1_Reg",
+      "currency": "INR",
+      "partyCode": "AT_Sup_Reg_Inter",
+      "PurchaseReturnAccCode": "PRA1",
+      "tcsNature": "AT_TCS Transaction Nature 2",
+      "priceList": "AT_Exclusive Purchase price list 1",
+      "executive": "AT_Executive 1",
+
+
+      "invoice": "Regular",
+      "HSNCode": "AT_HSN Code 2",
+      "productCount": 3,
+      "enableFreeQuantity": "false",
+
+      "productType0": "general",
+      "quantity0": 5,
+      "freeQuantity0": 1,
+      "productCode0": "P1",
+
+      "productType1": "multiBatch",
+      "quantity1": 5,
+      "freeQuantity1": 1,
+      "productCode1": "MBP1",
+
+      "productType2": "serial",
+      "productCode2": "PSN3",
+      "quantity2": 5,
+      "seriesText": "Ma",
+      "numOfSerialProducts": "5",
+      "freeQuantity2": 1,
+
+      "mrpAmount0": "5,000.000",
+      "mrpAmount1": "5,000.000",
+      "mrpAmount2": "5,000.000",
+
+      "grossAmount0": "500.000",
+      "grossAmount1": "500.000",
+      "grossAmount2": "1,250.000",
+
+      "taxableValue0": "500.000",
+      "taxableValue1": "500.000",
+      "taxableValue2": "1,250.000",
+
+      "igstAmount0": "90.000",
+      "igstAmount1": "90.000",
+      "igstAmount2": "225.000",
+
+      "cessAmount0": "50.000",
+      "cessAmount1": "50.000",
+      "cessAmount2": "125.000",
+
+      "expectedGStExclusive0": "140.000",
+      "expectedGStExclusive1": "140.000",
+      "expectedGStExclusive2": "350.000",
+
+      "netAmount0": "640.000",
+      "netAmount1": "640.000",
+      "netAmount2": "1,600.000",
+
+      "billRefDate": "",
+
+      "chargesRowCount": "2",
+      "charges": "Charges",
+      "chargesAcc": "CA11",
+      "chargesAmount": "200.000",
+
+      "deductions": "Deduction",
+      "deductionsAcc": "DA",
+      "deductionsAmount": "100.000",
+
+      "otherChargesAccount": "OCA1",
+      "validateTcsAmount": "313.600",
+
+      "cashAccount": "CA1",
+      "cashAmount": "100",
+      "drawnOn": "AT_Drawn On Bank 1",
+      "drawnOnBranch": "Hyderabad",
+
+      "bankAccount": "BA1",
+      "chequeAmount": "500",
+      "postDatedChequeAmount": "500",
+      "chequesPDCAmount": "500",
+      "chargesAccount": "CA11",
+      "pdcAccount": "CIH1",
+
+      "termType": "AT_Term Type 1",
+      "term": "AT_Term 1",
+      "comments": "Present no comments",
+
+      "otherInfo1": "nothing",
+      "otherInfo2": "nothing",
+
+
+      "column3": "AT_Branch 1_Reg",
+      "column4": "INR",
+      "column5": "1.00",
+      "column6": "AT_Sup_Reg_Inter",
+      "column7": "15.00",
+      "column8": "0.00",
+      "column9": "2,250.00",
+      "column10": "0.00",
+      "column11": "2,450.00",
+      "column12": "0.00",
+      "column13": "0.00",
+      "column14": "441.00",
+      "column15": "245.00",
+      "column16": "686.00",
+      "column17": "2,880.00",
+      "column18": "2,880.00",
+      "column19": "200.00",
+      "column20": "100.00",
+      "column21": "200.00",
+      "column22": "313.60",
+      "column23": "0.40",
+      "column24": "3,550.00",
+      "column25": "3,550.00"
+
+    }
+  }
+]

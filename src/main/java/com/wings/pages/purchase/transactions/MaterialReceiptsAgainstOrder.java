@@ -3,10 +3,14 @@ package com.wings.pages.purchase.transactions;
 
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import com.wings.utils.Time;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 
 import java.io.IOException;
+import java.util.List;
 
 public class MaterialReceiptsAgainstOrder extends Transaction {
     WindowsDriver driver;
@@ -20,45 +24,62 @@ public class MaterialReceiptsAgainstOrder extends Transaction {
         dataFile = file;
     }
 
-    public void meterialReceiptsAgainstOrder() throws InterruptedException, IOException, ParseException {
-        navigateToMaterialReceiptsAgainstOrders();
-        Thread.sleep(3000);
-        oldTTransaction();
-//        common.clickElement("xpath","//Edit[@Name='Voucher Type']");
-//        selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']" );
-        common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        selectMasterWithValidation(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
-        common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
-        selectMasterWithValidation(common.getData(dataFile, "currency"), "xpath", "//Edit[@Name='Trans Currency *']");
-        common.clickElement("xpath", "//Edit[@Name='Location *']");
-        selectOptionalMaster(common.getData(dataFile, "location"), "xpath", "//Edit[@Name='Location *']");
-        common.clickElement("xpath", "//Edit[@Name='Party Code']");
-        selectAndValidateDataNew(common.getData(dataFile, "partyCode"), "xpath", "//Edit[@Name='Party Code']");
-        Thread.sleep(1000);
-        gstSelectionWhenBothRegisteredDealers();
+    public String materialReceiptsAgainstOrder(String voucherNum) throws InterruptedException, IOException, ParseException {
+        navigateToMastersWhen3Steps("Purchase","Receipts","Material Receipts against Orders");
         Thread.sleep(2000);
-        common.clickElement("xpath", "//CheckBox[@Name='Select Row 0']");
-        common.clickElement("xpath", "//Button[@Name='Ok']");
-        Thread.sleep(1000);
-        common.clickElement("xpath", "//Edit[@Name='Consignor']");
-        selectMasterWithValidation(common.getData(dataFile, "consignor"), "xpath", "//Edit[@Name='Consignor']");
-        common.clickElement("xpath", "//Edit[@Name='GST Trans Type *']");
-        selectMasterWithValidation(common.getData(dataFile, "registrationType"), "xpath", "//Edit[@Name='GST Trans Type *']");
-        common.clickElement("xpath", "//Edit[@Name='Batch Policy']");
-        selectMasterWithValidation(common.getData(dataFile, "batchPolicy"), "xpath", "//Edit[@Name='Batch Policy']");
-        common.clickElement("xpath", "//Edit[@Name='Executive *']");
-        selectMasterWithValidation(common.getData(dataFile, "executive"), "xpath", "//Edit[@Name='Executive *']");
-        Thread.sleep(500);
-//        common.clickElement("xpath","//Edit[@Name='Remarks']");
-//        selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"remarks"), "xpath","//Edit[@Name='Remarks']");
-        sliderHandle();
-        enterData("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']", dataFile, "quantity");
-        common.clickElement("xpath", "//Edit[@Name='MRP Row 0, Not sorted.']");
-        transactionSave();
-        Thread.sleep(1500);
-        newTransaction();
-        closeTransaction("Material Receipts against Orders");
-        Thread.sleep(2000);
-    }
+        String oldVoucherID = oldTTransactionID();
+        enterInput("xpath", "//Edit[@Name='Branch *']", dataFile, "MaterialReceiptsAgainstOrders", "branch");
+        enterInput("xpath", "//Edit[@Name='Party Code']", dataFile, "MaterialReceiptsAgainstOrders", "partyCode");
+        selectPendingsSalesOrder(voucherNum,common.getData(dataFile,"MaterialReceiptsAgainstOrders","FYear"));
+        common.clickElement("xpath","//Button[@Name='OK']");
+        enterInput("xpath", "//Edit[@Name='Batch Policy']", dataFile, "MaterialReceiptsAgainstOrders", "BatchPolicy");
 
+        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 400, 0);
+        List<WebElement> items = common.findWebElements("xpath", "//Pane[@Name='  F3 Items  ']/Pane/Pane/Pane/Table[@Name='Items']/*[starts-with(@Name,'Row')]");
+        System.out.println("items size: "+items.size());
+        for (int i = 0; i < items.size(); i++) {
+            WebElement productList = items.get(i);
+            String value = productList.getAttribute("LegacyValue");
+            if (!"(null)".equals(value) && !"(Create New)".equals(value)){
+                String pendingQty = common.findWebElement("xpath", "//Edit[@Name='Pending Quantity Row "+i+", Not sorted.']").getText();
+                WebElement quantity = common.findWebElement("xpath", "//Edit[@Name='Quantity Row "+i+", Not sorted.']");
+                quantity.click();
+                quantity.sendKeys(pendingQty, Keys.TAB);
+            }
+        }
+        serialNumberForMRAO(dataFile,"MaterialReceiptsAgainstOrders","serialText","serialQuantity","");
+        chargesAndDeductionsCalculations1(dataFile,"MaterialReceiptsAgainstOrders", "charges","deductions","chargesAcc","deductionsAcc", "chargesAmount", "deductionsAmount", "chargesRowCount");
+        enterOtherCharges(dataFile,"MaterialReceiptsAgainstOrders");
+        validateIGSTAmountTabIsNotEmpty();
+        validateCESSAmountTabIsNotEmpty();
+        enterOtherCosts(dataFile,"MaterialReceiptsAgainstOrders");
+        navigateToOtherInfoTab();
+        inputTextWithValidation("xpath", "//Edit[@Name='Reference Bill Date']", common.getData(dataFile,"PurchaseOrdersCancellation","billRefDate")+ Time.timeStamp());
+        termsAndConditions(dataFile,"MaterialReceiptsAgainstOrders");
+        navigateToSummaryTab();
+        quantityPresentInSummary();
+        grossAmountPresentInSummary();
+        grossMinusDiscountPresentInSummary();
+        iGSTPresentInSummary();
+        cessPresentInSummary();
+        netAmountPresentInSummary();
+        chargesPresentInSummary();
+        deductionsPresentInSummary();
+        otherChargesPresentInSummary();
+        otherChargesIGSTPresentInSummary();
+        otherChargesCESSPresentInSummary();
+        otherCostsAmountPresentInSummary();
+        totalValuePresentInSummary();
+        totalValueInCompanyCurrenyPresentInSummary();
+        transactionSave();
+        String transactionId = newTransactionID(oldVoucherID);
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Receipts");
+        common.clickElement("xpath", "//MenuItem[@Name='Material Receipts against Orders'][2]");
+        Thread.sleep(1000);
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
+        verifyReport(transactionId,dataFile,"MaterialReceiptsAgainstOrders");
+        return transactionId;
+    }
 }
+
