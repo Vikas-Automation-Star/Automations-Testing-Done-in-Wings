@@ -63,7 +63,7 @@ public class PurchaseVoucher extends Transaction {
         enterChequesInPurchase(dataFile,"PurchaseVoucher");
         enterPostDatedChequesInPurchase(dataFile,"PurchaseVoucher");
         enterChequesPDCInPurchase(dataFile,"PurchaseVoucher");
-        enterOtherInfo(dataFile,dataFile);
+        enterOtherInfo(dataFile,"PurchaseVoucher");
         termsAndConditions(dataFile,"PurchaseVoucher");
         navigateToSummaryTab();
         quantityPresentInSummary();
@@ -99,7 +99,7 @@ public class PurchaseVoucher extends Transaction {
 
         //save
         transactionSave();
-        String newVoucherID =newTransactionID(oldVoucherID).replace(" ","");
+        String newVoucherID =newTransactionID(oldVoucherID);
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"both ID's should not Equal when we perform transaction");
         Thread.sleep(1000);
@@ -107,7 +107,7 @@ public class PurchaseVoucher extends Transaction {
         Thread.sleep(1000);
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
-//        verifyReport(newVoucherID,dataFile,"PurchaseVoucher");
+        verifyReport(newVoucherID,dataFile,"PurchaseVoucher");
 //        deleteSingleTransaction(newVoucherID,dataFile);
         return newVoucherID;
     }

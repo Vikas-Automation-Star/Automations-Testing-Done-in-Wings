@@ -96,26 +96,38 @@
       "grossInCompanyCurrency1": "1,000.000",
       "grossInCompanyCurrency2": "1,000.000",
 
-      "column3": "AT_Branch 1_Reg",
-      "column4": "INR",
-      "column5": "1.00",
-      "column6": "AT_Cus_Reg_Inter",
-      "column7": "15.00",
-      "column8": "5,000.00",
-      "column9": "0.00",
-      "column10": "5,000.00",
-      "column11": "0.00",
-      "column12": "0.00",
-      "column13": "900.00",
-      "column14": "500.00",
-      "column15": "1,400.00",
-      "column16": "6,400.00",
-      "column17": "6,400.00",
-      "column18": "20.00",
-      "column19": "0.00",
-      "column20": "0.00",
-      "column21": "6,420.00",
-      "column22": "6,420.00"
+      "column4": "AT_Branch 1_Reg",
+      "column5": "INR",
+      "column6": "1.00",
+      "column7": "AT_Sup_Reg_Inter",
+      "column8": "AT_Product 1",
+      "column9": "Nos",
+      "column10": "10.00"
+
+    }
+  },
+  {
+    "dataset": "PurchaseEnquiriesCancellationMultiBatchProduct",
+    "data": {
+      "column4": "AT_Branch 1_Reg",
+      "column5": "INR",
+      "column6": "1.00",
+      "column7": "AT_Sup_Reg_Inter",
+      "column8": "AT_Multi batch Product 1",
+      "column9": "Nos",
+      "column10": "10.00"
+    }
+  },
+  {
+    "dataset": "PurchaseEnquiriesCancellationSerialProduct",
+    "data": {
+      "column4": "AT_Branch 1_Reg",
+      "column5": "INR",
+      "column6": "1.00",
+      "column7": "AT_Sup_Reg_Inter",
+      "column8": "AT_Product With SN 2",
+      "column9": "Nos",
+      "column10": "10.00"
     }
   },
   {

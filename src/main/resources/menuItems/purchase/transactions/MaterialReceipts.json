@@ -1,12 +1,181 @@
-{
-  "branch": "AT_Branch 1_Reg",
-  "currency": "INR",
-  "location": "AT_Branch 1_Reg Default Location",
-  "partyCode": "AT_Sup_Reg_Intra",
-  "consignor": "AT_Consignor 1_Reg",
-  "priceList": "AT_Exclusive Purchase price list 1",
-  "batchPolicy": "AT-Purchase Batch Policy_CIDNE",
-  "executive": "AT_Executive 1",
-  "Product": "P1",
-  "quantity": 10
-}
+[
+  {
+    "dataset": "MaterialReceipts",
+    "data": {
+      "userName":"AT_User 2",
+      "password": "Wings@123",
+
+      "branch": "AT_Branch 1_Reg",
+      "currency": "INR",
+      "partyCode": "AT_Sup_Reg_Inter",
+      "batchPolicy": "AT-Purchase Batch Policy_CIDNE",
+      "priceList": "AT_Exclusive Purchase price list 1",
+      "executive": "AT_Executive 1",
+
+
+      "invoice": "Regular",
+      "HSNCode": "AT_HSN Code 2",
+      "productCount": 3,
+      "enableFreeQuantity": "false",
+
+      "productType0": "general",
+      "quantity0": 5,
+      "freeQuantity0": 1,
+      "productCode0": "P1",
+
+      "productType1": "multiBatch",
+      "quantity1": 5,
+      "freeQuantity1": 1,
+      "productCode1": "MBP1",
+
+      "productType2": "serial",
+      "productCode2": "PSN2",
+      "quantity2": 5,
+      "seriesText": "Ma",
+      "freeQuantity2": 1,
+
+      "mrpAmount0": "5,000.000",
+      "mrpAmount1": "5,000.000",
+      "mrpAmount2": "5,000.000",
+
+      "grossAmount0": "500.000",
+      "grossAmount1": "500.000",
+      "grossAmount2": "500.000",
+
+
+      "taxableValue0": "500.000",
+      "taxableValue1": "500.000",
+      "taxableValue2": "500.000",
+
+
+      "igstAmount0": "90.000",
+      "igstAmount1": "90.000",
+      "igstAmount2": "90.000",
+
+      "cessAmount0": "50.000",
+      "cessAmount1": "50.000",
+      "cessAmount2": "50.000",
+
+      "expectedGStExclusive0": "140.000",
+      "expectedGStExclusive1": "140.000",
+      "expectedGStExclusive2": "140.000",
+
+      "netAmount0": "640.000",
+      "netAmount1": "640.000",
+      "netAmount2": "640.000",
+
+      "billRefDate": "",
+
+      "servicesCode": "S1",
+      "servicesQuantity": "10",
+      "servicesRate": "100",
+
+      "chargesRowCount": "2",
+      "charges": "Charges",
+      "chargesAcc": "CA11",
+      "chargesAmount": "200.000",
+
+      "deductions": "Deduction",
+      "deductionsAcc": "DA",
+      "deductionsAmount": "100.000",
+
+      "otherChargesAccount": "OCA1",
+
+      "expenseCode": "AT_Expenses  Acc 1",
+      "vendor": "AT_Sup_Reg_Inter",
+      "otherCostCurrency": "INR",
+      "otherCostAmount": "100",
+
+
+      "termType": "AT_Term Type 1",
+      "term": "AT_Term 1",
+      "comments": "Present no comments",
+
+      "otherInfo1": "nothing",
+      "otherInfo2": "nothing",
+
+
+      "column3": "AT_Branch 1_Reg",
+      "column4": "INR",
+      "column5": "1.00",
+      "column6": "AT_Sup_Reg_Inter",
+      "column7": "15.00",
+      "column8": "0.00",
+      "column9": "1,500.00",
+      "column10": "0.00",
+      "column11": "1,500.00",
+      "column12": "0.00",
+      "column13": "0.00",
+      "column14": "306.00",
+      "column15": "170.00",
+      "column16": "476.00",
+      "column17": "1,920.00",
+      "column18": "1,920.00",
+      "column19": "200.00",
+      "column20": "100.00",
+      "column21": "200.00",
+      "column22": "0.00",
+      "column23": "2,276.00",
+      "column24": "2,276.00"
+    }
+  },
+  {
+    "dataset": "MaterialReturns",
+    "data": {
+      "userName":"AT_User 2",
+      "password": "Wings@123",
+
+      "branch": "AT_Branch 1_Reg",
+
+      "chargesRowCount": "2",
+      "charges": "Charges",
+      "chargesAcc": "CA11",
+      "chargesAmount": "200.000",
+
+      "deductions": "Deduction",
+      "deductionsAcc": "DA",
+      "deductionsAmount": "100.000",
+
+      "otherChargesAccount": "OCA1",
+
+      "expenseCode": "AT_Expenses  Acc 1",
+      "vendor": "AT_Sup_Reg_Inter",
+      "otherCostCurrency": "INR",
+      "otherCostAmount": "100",
+
+
+      "termType": "AT_Term Type 1",
+      "term": "AT_Term 1",
+      "comments": "Present no comments",
+
+      "otherInfo1": "nothing",
+      "otherInfo2": "nothing",
+
+
+      "column3": "AT_Branch 1_Reg",
+      "column4": "INR",
+      "column5": "1.00",
+      "column6": "AT_Sup_Reg_Inter",
+      "column7": "15.00",
+      "column8": "0.00",
+      "column9": "1,500.00",
+      "column10": "0.00",
+      "column11": "1,500.00",
+      "column12": "0.00",
+      "column13": "0.00",
+      "column14": "270.00",
+      "column15": "150.00",
+      "column16": "420.00",
+      "column17": "1,920.00",
+      "column18": "1,920.00",
+      "column19": "200.00",
+      "column20": "100.00",
+      "column21": "0.00",
+      "column22": "2,020.00",
+      "column23": "2,020.00",
+      "column24": "100.00",
+      "column25": "100.00"
+
+    }
+  }
+]

@@ -1,8 +1,8 @@
 package menuItems.purchase.transactions;
 
 import com.wings.pages.AppLogin;
-import com.wings.pages.purchase.transactions.PurchaseOrderCancellation;
-import com.wings.pages.purchase.transactions.PurchaseOrders;
+import com.wings.pages.purchase.transactions.MaterialReceipt;
+import com.wings.pages.purchase.transactions.MaterialReturn;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
@@ -13,24 +13,24 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.io.IOException;
 
-public class TestPurchaseOrderCancellation {
+public class TestMaterialReturns {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
     Common common;
-    String file = "./src/main/resources/menuItems/purchase/transactions/purchaseOrders.json";
+    String file = "./src/main/resources/menuItems/purchase/transactions/MaterialReceipts.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
         common=new Common(driver);
         driver = appLogin.launchSingleUserApp();
-        appLogin.singleUserLogin(common.getData(file,"PurchaseOrders","userName"),common.getData(file,"PurchaseOrders","password"));
+        appLogin.singleUserLogin(common.getData(file,"MaterialReceipts","userName"),common.getData(file,"MaterialReceipts","password"));
     }
 
     @Test
-    public void purchaseOrderCancellations() throws IOException, ParseException, InterruptedException, AWTException {
-        PurchaseOrders purchaseOrders=new PurchaseOrders(driver,file);
-        PurchaseOrderCancellation poc = new PurchaseOrderCancellation(driver, file);
-        poc.purchaseOrderCancellation(purchaseOrders.purchaseOrders());
+    public void materialReturns() throws IOException, ParseException, InterruptedException, AWTException {
+        MaterialReceipt materialReceipt = new MaterialReceipt(driver, file);
+        MaterialReturn materialReturn = new MaterialReturn(driver, file);
+        materialReturn.materialReturn(materialReceipt.materialReceipt());
     }
 
     @AfterTest

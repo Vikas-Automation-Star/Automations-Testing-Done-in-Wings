@@ -150,7 +150,7 @@
     <test name="Performing MaterialReceipts Transaction" description="descriptionM for MaterialReceipts Transaction"
           testID="WOW 23">
         <classes>
-            <class name="menuItems.purchase.transactions.MaterialReceiptsTransaction"></class>
+            <class name="menuItems.purchase.transactions.TestMaterialReceipts"></class>
         </classes>
     </test>
 
@@ -164,7 +164,7 @@
     <test name="Performing MaterialReturns Transaction" description="description for MaterialReturns Transaction"
           testID="WOW 25">
         <classes>
-            <class name="menuItems.purchase.transactions.MaterialReturnsTransaction"></class>
+            <class name="menuItems.purchase.transactions.TestMaterialReturns"></class>
         </classes>
     </test>
 
@@ -199,7 +199,7 @@
     <test name="Performing PurchasePrices Transaction" description="description for PurchasePrices Transaction"
           testID="WOW 30">
         <classes>
-            <class name="menuItems.purchase.transactions.PurchasePricesTransaction"></class>
+            <class name="menuItems.purchase.transactions.TestPurchasePrices"></class>
         </classes>
     </test>
 

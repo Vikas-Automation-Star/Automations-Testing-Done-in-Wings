@@ -2936,19 +2936,43 @@ public abstract class Transaction {
         }
     }
 
-    public void verifyReportProductWise(String transaction, String dataFile,String dataset,String product) throws IOException, ParseException {
-        String newTransaction=transaction.replace(" ", "");
-        System.out.println(newTransaction);
+    public void verifyReportProductWise(String transaction, String dataFile, String dataset, List<String> products) throws IOException, ParseException {
+        String newTransaction = transaction.replace(" ", "");
+        System.out.println("Transaction ID: " + newTransaction);
         List<WebElement> elementList = common.findWebElements("xpath", "//Table/*[@Name='Data Panel']/ListItem[contains(@Name,'Row')]");
-        System.out.println("Size :" + elementList.size());
-        for (WebElement i : elementList) {
-            System.out.println("text :" + i.getText());
-            if (i.getText().contains(newTransaction) && i.getText().contains(product)) {
-                System.out.println("verifyingRow :");
-                bulkVerifyReportData(i.getText(), dataFile,dataset);
+        System.out.println("Report Rows Found: " + elementList.size());
+
+        for (String product : products) {
+            boolean found = false;
+            for (WebElement element : elementList) {
+                String rowText = element.getText();
+                System.out.println("Row Text: " + rowText);
+
+                if (rowText.contains(newTransaction) && rowText.contains(product)) {
+                    System.out.println("Verifying row for product: " + product);
+                    bulkVerifyReportData(rowText, dataFile, dataset);
+                    found = true;
+                    break; // Remove this `break` if multiple rows per product need checking
+                }
             }
+            if (!found) System.out.println("No report row found for product: " + product);
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public void bulkVerifyReportData(String text, String dataFile,String dataset) throws IOException, ParseException {
         String[] columns = text.split(";");

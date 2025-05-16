@@ -11,6 +11,8 @@ import org.testng.Assert;
 
 import java.awt.*;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class PurchaseEnquiriesCancellation extends Transaction {
@@ -59,7 +61,10 @@ public class PurchaseEnquiriesCancellation extends Transaction {
         common.clickElement("xpath", "//MenuItem[@Name='Purchase Enquiries Cancellation'][2]");
         Thread.sleep(1000);
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
-//        verifyReport(transactionId,dataFile,"PurchaseEnquiriesCancellation");
+        List<String> products = Arrays.asList("AT_Product 1", "AT_Multi batch Product 1", "AT_Product With SN 2");
+        verifyReportProductWise(transactionId,dataFile,"PurchaseEnquiriesCancellation", Collections.singletonList(products.get(0)));
+        verifyReportProductWise(transactionId,dataFile,"PurchaseEnquiriesCancellationMultiBatchProduct", Collections.singletonList(products.get(1)));
+        verifyReportProductWise(transactionId,dataFile,"PurchaseEnquiriesCancellationSerialProduct", Collections.singletonList(products.get(2)));
     }
 }
 

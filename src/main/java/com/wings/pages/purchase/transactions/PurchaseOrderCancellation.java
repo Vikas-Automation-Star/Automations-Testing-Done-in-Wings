@@ -10,6 +10,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class PurchaseOrderCancellation extends Transaction {
@@ -61,7 +63,11 @@ public class PurchaseOrderCancellation extends Transaction {
         common.clickElement("xpath", "//MenuItem[@Name='Purchase Orders Cancellation'][2]");
         Thread.sleep(1000);
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
-//        verifyReportProductWise(transactionId,dataFile,"PurchaseOrdersCancellation","generalProduct");
+        List<String> products = Arrays.asList("AT_Product 1", "AT_Multi batch Product 1", "AT_Product With SN 2");
+        verifyReportProductWise(transactionId,dataFile,"PurchaseOrdersCancellation", Collections.singletonList(products.get(0)));
+        verifyReportProductWise(transactionId,dataFile,"PurchaseOrdersCancellationMultiBatchProduct", Collections.singletonList(products.get(1)));
+        verifyReportProductWise(transactionId,dataFile,"PurchaseOrdersCancellationSerialNumberProduct", Collections.singletonList(products.get(2)));
+        System.out.println("All reports are verified");
     }
 
 }

@@ -25,7 +25,6 @@ public class TestPurchaseVouchers {
         appLogin.singleUserLogin(common.getData(file,"PurchaseVoucher","userName"),common.getData(file,"PurchaseVoucher","password"));
     }
 
-
     @Test
     public void purchaseVouchers() throws IOException, ParseException, InterruptedException, AWTException {
         PurchaseVoucher po = new PurchaseVoucher(driver, file);

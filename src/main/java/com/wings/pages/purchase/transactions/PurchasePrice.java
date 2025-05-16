@@ -5,8 +5,12 @@ import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 
 import org.json.simple.parser.ParseException;
+import org.testng.Assert;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class PurchasePrice extends Transaction {
     WindowsDriver driver;
@@ -21,36 +25,49 @@ public class PurchasePrice extends Transaction {
     }
 
     public void purchasePrice() throws InterruptedException, IOException, ParseException {
-        navigateToPurchasePrice();
-        Thread.sleep(3000);
-        oldTTransaction();
+        navigateToMastersWhen3Steps("Purchase","Price", "Purchase Prices");
+        Thread.sleep(1000);
+        String oldVoucherID =oldTTransactionID();
+        enterInput("xpath","//Edit[@Name='Branch *']",dataFile,"PurchasePrice","branch");
 //        common.clickElement("xpath","//Edit[@Name='Voucher Type']");
 //        selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']" );
-        common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        selectMasterWithValidation(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
-        common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
-        selectMasterWithValidation(common.getData(dataFile, "currency"), "xpath", "//Edit[@Name='Trans Currency *']");
-        common.clickElement("xpath", "//Edit[@Name='Master Type']");
-        selectAndValidateDataNew(common.getData(dataFile, "masterType"), "xpath", "//Edit[@Name='Master Type']");
-        ;
-        common.clickElement("xpath", "//Edit[@Name='Node']");
-        Thread.sleep(1000);
-        common.clickElement("xpath", "//Edit[@Name='Price List *']");
-        selectMasterWithValidation(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List *']");
-        common.clickElement("xpath", "//Edit[@Name='Executive *']");
-        selectMasterWithValidation(common.getData(dataFile, "executive"), "xpath", "//Edit[@Name='Executive *']");
-        Thread.sleep(1000);
-//        common.clickElement("xpath","//Edit[@Name='Remarks']");
-//        selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"remarks"), "xpath","//Edit[@Name='Remarks']");
-        enterData("xpath", "//Edit[@Name='Rate * Row 0, Not sorted.']", dataFile, "URate");
-        enterData("xpath", "//Edit[@Name='MRP Row 0, Not sorted.']", dataFile, "mrp");
-        Thread.sleep(1000);
-        common.deleteInvalidRows();
+//        enterInput("xpath","//Edit[@Name='Location *']",dataFile,"location");
+//        enterInput("xpath","//Edit[@Name='Trans Currency *']",dataFile,"currency");
+        enterInput("xpath","//Edit[@Name='Master Type']",dataFile,"PurchasePrice","MasterType");
+        enterInput("xpath", "//Edit[@Name='Price List *']", dataFile, "PurchasePrice","priceList");
+        enterInput("xpath", "//Edit[@Name='Basis']", dataFile, "PurchasePrice","basis");
+        enterInput("xpath", "//Edit[@Name='Amount']", dataFile, "PurchasePrice","amount");
+        enterInput("xpath", "//Edit[@Name='Executive *']", dataFile, "PurchasePrice","executive");
+//        enterInput("xpath", "//Edit[@Name='Remarks']", dataFile, "PurchasePrice","remarks");
+
+        for (int i = 0; i < Integer.parseInt(common.getData(dataFile,"PurchasePrice", "productCount")); i++) {
+            enterInput("xpath", "//Edit[@Name='Rate * Row "+i+", Not sorted.']", dataFile, "PurchasePrice","unitRate"+i);
+            enterInput("xpath", "//Edit[@Name='MRP Row "+i+", Not sorted.']", dataFile, "PurchasePrice","mrp"+i);
+            enterInput("xpath", "//Edit[@Name='Disc Basis 1 Row "+i+", Not sorted.']", dataFile, "PurchasePrice","DiscountBasis"+i);
+            enterInput("xpath", "//Edit[@Name='Disc 1 Row "+i+", Not sorted.']", dataFile, "PurchasePrice","DiscountBasisAmount"+i);
+            enterInput("xpath", "//Edit[@Name='Disc Basis 2 Row "+i+", Not sorted.']", dataFile, "PurchasePrice","DiscountBasis"+i);
+            enterInput("xpath", "//Edit[@Name='Disc 2 Row "+i+", Not sorted.']", dataFile, "PurchasePrice","DiscountBasisAmount"+i);
+            common.clickElement("xpath","//Edit[@Name='Disc Basis 3 Row "+i+", Not sorted.']");
+            enterInput("xpath", "//Edit[@Name='Disc Basis 3 Row "+i+" Not sorted.']", dataFile, "PurchasePrice","DiscountBasis"+i);
+            enterInput("xpath", "//Edit[@Name='Disc 3 Row "+i+", Not sorted.']", dataFile, "PurchasePrice","DiscountBasisAmount"+i);
+
+        }
+
         transactionSave();
-        Thread.sleep(1500);
-        oldTTransaction();
+        String newVoucherID =newTransactionID(oldVoucherID);
+        Assert.assertNotEquals(newVoucherID, oldVoucherID,"both ID's should not Equal when we perform transaction");
         Thread.sleep(1000);
-        closeTransaction("Purchase Prices");
-        Thread.sleep(2000);
+        navigateToMastersWhen3Steps("Purchase","Price","Purchase Price Updation");
+        Thread.sleep(1000);
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
+        Thread.sleep(1500);
+        List<String> products = Arrays.asList("AT_Product 1","AT_Product 2","AT_Product 3","AT_Product 4");
+        verifyReportProductWise(newVoucherID,dataFile,"PurchasePrice", Collections.singletonList(products.get(0)));
+        verifyReportProductWise(newVoucherID,dataFile,"PurchasePrice1", Collections.singletonList(products.get(1)));
+        verifyReportProductWise(newVoucherID,dataFile,"PurchasePrice2",Collections.singletonList(products.get(2)));
+        verifyReportProductWise(newVoucherID,dataFile,"PurchasePrice3",Collections.singletonList(products.get(3)));
+        System.out.println("All reports are verified");
+//        deleteSingleTransaction(newVoucherID,dataFile);
+
     }
 }

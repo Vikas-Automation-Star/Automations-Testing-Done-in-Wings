@@ -48,48 +48,67 @@
         </classes>
     </test>
 
-    <test name="POC 8" description="MaterialReceiptsAgainstOrders inter State Exclusive PriceList" testID="8">
+<!--    <test name="MR 8" description="Material Receipts inter State Exclusive PriceList" testID="8">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.transactions.TestMaterialReceipts"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+    <test name="POC 8" description="Material Receipts Against Orders inter State Exclusive PriceList" testID="8">
         <classes>
             <class name="menuItems.purchase.transactions.TestMaterialReceiptsAgainstOrders"/>
         </classes>
     </test>
 
-
-    <!--        <test name="PV 8" description="PurchaseVouchers inter State Exclusive PriceList" testID="9">-->
+    <!--        <test name="MR 10" description="Material Returns inter State Exclusive PriceList" testID="10">-->
     <!--            <classes>-->
-    <!--                <class name="menuItems.purchase.transactions.TestPurchaseVouchers"/>-->
+    <!--                <class name="menuItems.purchase.transactions.TestPurchaseReturns"/>-->
     <!--            </classes>-->
     <!--        </test>-->
 
-    <test name="PVAPO 9" description="PurchaseVouchersAgainstPurchaseOrders inter State Exclusive PriceList" testID="9">
+
+    <test name="PV 9" description="Purchase Vouchers inter State Exclusive PriceList" testID="9">
+        <classes>
+            <class name="menuItems.purchase.transactions.TestPurchaseVouchers"/>
+        </classes>
+    </test>
+
+    <test name="PVAPO 10" description="Purchase Vouchers Against PurchaseOrders inter State Exclusive PriceList" testID="10">
         <classes>
             <class name="menuItems.purchase.transactions.TestPurchaseVoucherAgainstOrders"/>
         </classes>
     </test>
 
-    <!--    <test name="PVAPR 6" description="PurchaseVouchersAgainstPurchaseReceipts inter State Exclusive PriceList" testID="7">-->
+    <!--    <test name="PVAPR 13" description="Purchase Vouchers Against PurchaseReceipts inter State Exclusive PriceList" testID="13">-->
     <!--        <classes>-->
     <!--            <class name="menuItems.purchase.transactions.TestPurchaseVouchersAgainstReceipts"/>-->
     <!--        </classes>-->
     <!--    </test>-->
 
-    <!--    <test name="PPV 8" description="Proforma PurchaseVouchers inter State Exclusive PriceList" testID="9">-->
+    <!--    <test name="PPV 14" description="Proforma PurchaseVouchers inter State Exclusive PriceList" testID="14">-->
     <!--        <classes>-->
     <!--            <class name="menuItems.purchase.transactions.TestProformaPurchaseVouchers"/>-->
     <!--        </classes>-->
     <!--    </test>-->
 
-    <!--    <test name="PR 8" description="Purchase Returns inter State Exclusive PriceList" testID="9">-->
+    <!--    <test name="PR 15" description="Purchase Returns inter State Exclusive PriceList" testID="15">-->
     <!--        <classes>-->
     <!--            <class name="menuItems.purchase.transactions.TestPurchaseReturns"/>-->
     <!--        </classes>-->
     <!--    </test>-->
 
-    <test name="PRWIR 10" description="PurchaseReturnsWithInvoiceReference inter State Exclusive PriceList" testID="10">
+    <test name="PRWIR 11" description="Purchase Returns With Invoice Reference inter State Exclusive PriceList" testID="11">
         <classes>
             <class name="menuItems.purchase.transactions.TestPurchaseReturnsWithInvoicesReference"/>
         </classes>
     </test>
+
+    <!--    <test name="PRWIR 11" description="Purchase Prices inter State Exclusive PriceList" testID="11">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.transactions.TestPurchasePrices"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+
 
 
     <!--purchase Enquiries Start-->
@@ -501,7 +520,7 @@
     <!--    <test name="Performing MaterialReceipts Transaction" description="descriptionM for MaterialReceipts Transaction"-->
     <!--          testID="WOW 11">-->
     <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.MaterialReceiptsTransaction"></class>-->
+    <!--            <class name="menuItems.purchase.transactions.TestMaterialReceipts"></class>-->
     <!--        </classes>-->
     <!--    </test>-->
 
@@ -515,7 +534,7 @@
     <!--    <test name="Performing MaterialReturns Transaction" description="description for MaterialReturns Transaction"-->
     <!--          testID="WOW 13">-->
     <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.MaterialReturnsTransaction"></class>-->
+    <!--            <class name="menuItems.purchase.transactions.TestMaterialReturns"></class>-->
     <!--        </classes>-->
     <!--    </test>-->
 
@@ -550,7 +569,7 @@
     <!--    <test name="Performing PurchasePrices Transaction" description="description for PurchasePrices Transaction"-->
     <!--          testID="WOW 18">-->
     <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.PurchasePricesTransaction"></class>-->
+    <!--            <class name="menuItems.purchase.transactions.TestPurchasePrices"></class>-->
     <!--        </classes>-->
     <!--    </test>-->
 

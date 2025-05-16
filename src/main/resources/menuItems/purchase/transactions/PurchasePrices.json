@@ -1,12 +1,113 @@
-{
-  "branch": "AT_Branch 1_Reg",
-  "currency": "INR",
-  "location": "AT_Branch 1_Reg Default Location",
-  "masterType": "Products",
-  "priceList": "AT_Exclusive Purchase price list 1",
-  "executive": "AT_Executive 1",
-  "URate": "5",
-  "ProductCode": "9989",
-  "rate": "5",
-  "mrp": "50"
-}
+
+[
+  {
+    "dataset": "PurchasePrice",
+    "data": {
+      "userName":"AT_User 2",
+      "password": "Wings@123",
+
+      "branch": "AT_Branch 1_Reg",
+      "currency": "INR",
+      "location": "AT_Branch 1_Reg Default Location",
+      "MasterType": "Products",
+      "priceList": "AT_Exclusive Purchase price list 2",
+      "executive": "AT_Executive 2",
+      "basis": "Percentage",
+      "amount": "5",
+      "productCount": "4",
+
+
+      "unitRate0": "100",
+      "unitRate1": "100",
+      "unitRate2": "100",
+      "unitRate3": "100",
+
+      "mrp0": "1000",
+      "mrp1": "1000",
+      "mrp2": "1000",
+      "mrp3": "1000",
+
+
+      "DiscountBasis0": "% on Gross",
+      "DiscountBasis1": "% on Gross",
+      "DiscountBasis2": "% on Gross",
+      "DiscountBasis3": "% on Gross",
+
+
+      "DiscountBasisAmount0": "5",
+      "DiscountBasisAmount1": "5",
+      "DiscountBasisAmount2": "5",
+      "DiscountBasisAmount3": "5",
+
+      "column3": "AT_Branch 1_Reg",
+      "column4": "16-05-2025",
+      "column5": "AT_Product 1",
+      "column6": "Nos",
+      "column7": "1,000.00",
+      "column8": "100.00",
+      "column9": "AT_Exclusive Purchase price list 2",
+      "column10": "5.00",
+      "column11": "% on Gross",
+      "column12": "5.00",
+      "column13": "% on Gross",
+      "column14": "5.00",
+      "column15": "% on Gross"
+    }
+  },
+  {
+    "dataset": "PurchasePrice1",
+    "data": {
+            "column3": "AT_Branch 1_Reg",
+      "column4": "16-05-2025",
+      "column5": "AT_Product 2",
+      "column6": "Nos",
+      "column7": "1,000.00",
+      "column8": "100.00",
+      "column9": "AT_Exclusive Purchase price list 2",
+      "column10": "5.00",
+      "column11": "% on Gross",
+      "column12": "5.00",
+      "column13": "% on Gross",
+      "column14": "5.00",
+      "column15": "% on Gross"
+    }
+  },
+  {
+    "dataset": "PurchasePrice2",
+    "data": {
+
+      "column3": "AT_Branch 1_Reg",
+      "column4": "16-05-2025",
+      "column5": "AT_Product 3",
+      "column6": "Nos",
+      "column7": "1,000.00",
+      "column8": "100.00",
+      "column9": "AT_Exclusive Purchase price list 2",
+      "column10": "5.00",
+      "column11": "% on Gross",
+      "column12": "5.00",
+      "column13": "% on Gross",
+      "column14": "5.00",
+      "column15": "% on Gross"
+    }
+  },
+  {
+    "dataset": "PurchasePrice3",
+    "data": {
+
+      "column3": "AT_Branch 1_Reg",
+      "column4": "16-05-2025",
+      "column5": "AT_Product 4",
+      "column6": "Nos",
+      "column7": "1,000.00",
+      "column8": "100.00",
+      "column9": "AT_Exclusive Purchase price list 2",
+      "column10": "5.00",
+      "column11": "% on Gross",
+      "column12": "5.00",
+      "column13": "% on Gross",
+      "column14": "5.00",
+      "column15": "% on Gross"
+    }
+  }
+]
