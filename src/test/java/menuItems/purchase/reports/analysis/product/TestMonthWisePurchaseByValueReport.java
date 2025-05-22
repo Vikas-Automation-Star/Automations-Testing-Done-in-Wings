@@ -1,7 +1,7 @@
 package menuItems.purchase.reports.analysis.product;
 
 import com.wings.pages.AppLogin;
-import com.wings.pages.purchase.reports.analysis.product.YearWisePurchaseByQuantity;
+import com.wings.pages.purchase.reports.analysis.product.MonthWisePurchaseByValue;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class YearWisePurchaseByQuantityReport {
+public class TestMonthWisePurchaseByValueReport {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
 
@@ -22,8 +22,8 @@ public class YearWisePurchaseByQuantityReport {
 
     @Test
     public void monthWiseSalesByQuantity() throws InterruptedException {
-        YearWisePurchaseByQuantity ywpbq = new YearWisePurchaseByQuantity(driver);
-        ywpbq.yearWisePurchaseByQuantity();
+        MonthWisePurchaseByValue mwpbv = new MonthWisePurchaseByValue(driver);
+        mwpbv.monthWisePurchaseByValue();
     }
 
     @AfterTest

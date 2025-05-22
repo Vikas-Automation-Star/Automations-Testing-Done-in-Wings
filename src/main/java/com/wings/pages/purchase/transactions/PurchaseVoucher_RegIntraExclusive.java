@@ -51,7 +51,6 @@ public class PurchaseVoucher_RegIntraExclusive extends Transaction {
         enterInput("xpath","//Edit[@Name='TCS Trans Nature']", dataFile,"tcsNature");
         enterInput("xpath", "//Edit[@Name='Price List']", dataFile, "priceList");
         enterInput("xpath", "//Edit[@Name='Executive *']", dataFile, "executive");
-//        generalInfoSliderHandle(-500);
 //        //F3-Items
         for (int i = 0; i < Integer.parseInt(common.getData(dataFile, "productCount")); i++) {
             addProduct(i);

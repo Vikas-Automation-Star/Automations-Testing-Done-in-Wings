@@ -1,122 +1,39 @@
-<suite name="Inventory Menu">
+<suite name="Inventory suite">
 
     <listeners>
         <listener class-name="com.wings.utils.Listener"/>
     </listeners>
 
-    <test name="Location Master" description="Test 1 description" testID="1">
+    <test name="OS 1" description="Test 10 description" testID="1">
         <classes>
-            <class name="menuItems.inventory.masters.product.Location"/>
+            <class name="menuItems.inventory.transactions.TestOpeningStock"/>
         </classes>
     </test>
 
-    <test name="Non-Inventory Items Master" description="Test 2 description" testID="2">
+    <test name="SCreate 2" description="Test 12 description" testID="2">
         <classes>
-            <class name="menuItems.inventory.masters.product.NonInventoryItem"/>
+            <class name="menuItems.inventory.transactions.TestStockCreation"/>
         </classes>
     </test>
 
-    <test name="Products Master" description="Test 3 description" testID="3">
+    <test name="SConsu 3" description="Test 14 description" testID="3">
         <classes>
-            <class name="menuItems.inventory.masters.product.Product"/>
+            <class name="menuItems.inventory.transactions.TestStockConsumption"/>
         </classes>
     </test>
 
-    <test name="Services Master" description="Test 4 description" testID="4">
+    <test name="SConve 4" description="Test 16 description" testID="4">
         <classes>
-            <class name="menuItems.inventory.masters.product.Service"/>
+            <class name="menuItems.inventory.transactions.TestStockConversion"/>
         </classes>
     </test>
 
-    <test name="Storage Bins Master" description="Test 5 description" testID="5">
+    <test name="ILT 5" description="Test 18 description" testID="5">
         <classes>
-            <class name="menuItems.inventory.masters.product.StorageBin"/>
+            <class name="menuItems.inventory.transactions.TestInterLocationTransfers"/>
         </classes>
     </test>
 
-    <test name="Units Of Measure Master" description="Test 6 description" testID="6">
-        <classes>
-            <class name="menuItems.inventory.masters.product.UnitOfMeasure"/>
-        </classes>
-    </test>
-
-    <test name="Product Batch Master" description="Test 7 description" testID="7">
-        <classes>
-            <class name="menuItems.inventory.masters.product.batches.ProductBatch"/>
-        </classes>
-    </test>
-
-    <test name="Product Batch-serial No Master" description="Test 8 description" testID="8">
-        <classes>
-            <class name="menuItems.inventory.masters.product.batches.ProductBatchesSerialNo"/>
-        </classes>
-    </test>
-
-    <test name="Product Batch-Multi Batch Master" description="Test 9 description" testID="9">
-        <classes>
-            <class name="menuItems.inventory.masters.product.batches.ProductsMultiBatch"/>
-        </classes>
-    </test>
-
-    <test name="Opening Stock Transaction" description="Test 10 description" testID="10">
-        <classes>
-            <class name="menuItems.inventory.transactions.OpeningStockTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Opening Stock Report" description="Test 11 description" testID="11">
-        <classes>
-            <class name="menuItems.inventory.reports.OpeningStockReport"/>
-        </classes>
-    </test>
-
-    <test name="Stock Creation Transaction" description="Test 12 description" testID="12">
-        <classes>
-            <class name="menuItems.inventory.transactions.StockCreationTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Stock Creation Report" description="Test 13 description" testID="13">
-        <classes>
-            <class name="menuItems.inventory.reports.StockCreationReport"/>
-        </classes>
-    </test>
-
-    <test name="Stock Consumption Transaction" description="Test 14 description" testID="14">
-        <classes>
-            <class name="menuItems.inventory.transactions.StockConsumptionTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Stock Consumption Report" description="Test 15 description" testID="15">
-        <classes>
-            <class name="menuItems.inventory.reports.StockConsumptionReport"/>
-        </classes>
-    </test>
-
-    <test name="Stock Conversion Transaction" description="Test 16 description" testID="16">
-        <classes>
-            <class name="menuItems.inventory.transactions.StockConversionTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Stock Conversion Report" description="Test 17 description" testID="17">
-        <classes>
-            <class name="menuItems.inventory.reports.StockConversionReport"/>
-        </classes>
-    </test>
-
-    <test name="Inter Location Transfer Transaction" description="Test 18 description" testID="18">
-        <classes>
-            <class name="menuItems.inventory.transactions.InterLocatonTransfersTransaction"/>
-        </classes>
-    </test>
-
-    <test name="Inter Location Transfer Report" description="Test 19 description" testID="19">
-        <classes>
-            <class name="menuItems.inventory.reports.InterLocationTransfers"/>
-        </classes>
-    </test>
     <!---->
     <test name="Master Info-Product with GST Detail Report" description="Test 20 description" testID="20">
         <classes>

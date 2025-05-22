@@ -1,12 +1,64 @@
-{
-  "branch": "AT_Branch 1_Reg",
-  "priceList": "AT_Inclusive purchase price List 1",
-  "executive": "AT_Executive 1",
-  "stockAcc": "AT_Charges  Acc 1",
-  "batchPolicy": "AT-Purchase Batch Policy_CNA",
-  "productCode": "AT_Product 1",
-  "Location": "AT_Branch 1_Location 1",
-  "Quantity": "200",
-  "goods": "AT_Purchase  Acc 1",
-  "close": "Stock Creation"
-}
+[
+  {
+    "dataset": "stockCreation",
+    "data": {
+      "userName":"AT_User 2",
+      "password": "Wings@123",
+
+      "branch": "AT_Branch 1_Reg",
+      "Location": "AT_Branch 1_Location 1",
+      "stockAccount": "AT_Charges  Acc 1",
+      "batchPolicy": "AT-Purchase Batch Policy_CIDNE",
+      "executive": "AT_Executive 2",
+      "priceList": "AT_Exclusive Purchase price list 2",
+      "storageBin": "AT_Branch 1_Location 1 Default Bin",
+
+
+      "invoice": "Regular",
+      "HSNCode": "AT_HSN Code 2",
+      "productCount": 3,
+      "enableFreeQuantity": "false",
+
+      "productType0": "general",
+      "quantity0": 100,
+      "freeQuantity0": 1,
+      "productCode0": "P1",
+
+      "productType1": "multiBatch",
+      "quantity1": 100,
+      "freeQuantity1": 1,
+      "productCode1": "MBP2",
+
+      "productType2": "serial",
+      "productCode2": "PSN2",
+      "quantity2": 100,
+      "freeQuantity2": 1,
+      "serialNumText": "Num",
+
+
+      "grossAmount0": "10,000.000",
+      "grossAmount1": "10,000.000",
+      "grossAmount2": "10,000.000",
+
+      "mrpAmount0": "100,000.000",
+      "mrpAmount1": "100,000.000",
+      "mrpAmount2": "100,000.000",
+
+
+      "netInCompanyCurrency0": "10,000.000",
+      "netInCompanyCurrency1": "10,000.000",
+      "netInCompanyCurrency2": "10,000.000",
+
+
+      "column3": "AT_Branch 1_Reg",
+      "column4": "INR",
+      "column5": "1.00",
+      "column6": "300.00",
+      "column7": "30,000.00",
+      "column8": "30,000.00",
+      "column9": "30,000.00"
+
+
+    }
+  }
+]

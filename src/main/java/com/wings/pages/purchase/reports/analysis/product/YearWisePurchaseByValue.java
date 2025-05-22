@@ -15,10 +15,7 @@ public class YearWisePurchaseByValue extends Transaction {
     }
 
     public void yearWisePurchaseByValue() throws InterruptedException {
-        common.clickElement("name", "Purchase");
-        common.clickElement("name", "Analysis");
-        common.clickElement("xpath", "//MenuItem[@Name='Product']");
-        common.clickElement("xpath", "//MenuItem[@Name='Year Wise Purchase By Value']");
+        navigateToMastersWhen4Steps("Purchase","Analysis","Product","Year Wise Purchase By Value");
         Thread.sleep(2000);
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         super.bulkVerifyReport("");

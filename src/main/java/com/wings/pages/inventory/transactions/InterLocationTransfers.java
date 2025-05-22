@@ -21,33 +21,13 @@ public class InterLocationTransfers extends Transaction {
     }
 
     public void locationTransfer() throws InterruptedException, AWTException, IOException, ParseException {
-        navigateToInterLocationTransfersMenu();
-        lastTransactionName();
-        common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
-        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
-        common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
-        common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
-        selectAndValidateData(common.getData(dataFile, "transaction"), "xpath", "//Edit[@Name='Trans Currency *']");
-        common.clickElement("xpath", "//Edit[@Name='Location *']");
-        selectAndValidateData(common.getData(dataFile, "fromLocation"), "xpath", "//Edit[@Name='Location *']");
-        common.clickElement("xpath", "//Edit[@Name='To Location *']");
-        selectAndValidateData(common.getData(dataFile, "toLocation"), "xpath", "//Edit[@Name='To Location *']");
-        common.clickElement("xpath", "//Edit[@Name='Price List']");
-        selectAndValidateData(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
-        common.clickElement("xpath", "//Edit[@Name='Executive *']");
-        selectAndValidateData(common.getData(dataFile, "executive"), "xpath", "//Edit[@Name='Executive *']");
-        common.clickElement("xpath", "//Edit[@Name='Remarks']");
-        selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
-        //F3-Items
-        common.clickElement("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']");
-        selectAndValidateData(common.getData(dataFile, "productCode"), "xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']");
-        Thread.sleep(2500);
-        enterData("xpath", "//Edit[@Name='Quantity * Row 0, Not sorted.']", dataFile, "quantity");
+        navigateToMastersWhen2Steps("Inventory","Inter Location Transfers");
         Thread.sleep(1000);
-        common.sliderHandling("name", "Position", 500, 0);
-        //save
-        transactionSave();
-        lastTransactionName();
+        String oldVoucherID =oldTTransactionID();
+        enterInput("xpath","//Edit[@Name='Branch *']",dataFile,"interLocationTransfer","branch");
+        enterInput("xpath","//Edit[@Name='Location *']",dataFile,"interLocationTransfer","location");
+        enterInput("xpath","//Edit[@Name='To Location *']",dataFile,"interLocationTransfer","toLocation");
+        enterInput("xpath", "//Edit[@Name='Price List']", dataFile, "interLocationTransfer","priceList");
+        enterInput("xpath", "//Edit[@Name='Executive *']", dataFile, "interLocationTransfer","executive");
     }
 }

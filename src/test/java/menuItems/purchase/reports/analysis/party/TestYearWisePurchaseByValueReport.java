@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class YearWisePurchaseByValueReport {
+public class TestYearWisePurchaseByValueReport {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
 

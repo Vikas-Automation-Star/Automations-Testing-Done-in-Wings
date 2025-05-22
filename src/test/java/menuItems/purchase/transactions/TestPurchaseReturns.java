@@ -34,7 +34,7 @@ public class TestPurchaseReturns {
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 
 }

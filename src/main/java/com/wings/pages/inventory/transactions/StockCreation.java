@@ -4,6 +4,7 @@ import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
+import org.testng.Assert;
 
 import java.awt.*;
 import java.io.IOException;
@@ -21,34 +22,51 @@ public class StockCreation extends Transaction {
     }
 
     public void stockCreation() throws InterruptedException, AWTException, IOException, ParseException {
-        navigateToStockCreationMenu();
-        lastTransactionName();
-        Thread.sleep(1500);
-        common.clickElement("xpath", "//Edit[@Name='Voucher Type']");
-        selectOptionalMaster(common.getData(dataFile, "voucher"), "xpath", "//Edit[@Name='Voucher Type']");
-        common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
-        common.clickElement("xpath", "//Edit[@Name='Location *']");
-        selectAndValidateData(common.getData(dataFile, "Location"), "xpath", "//Edit[@Name='Location *']");
-        Thread.sleep(10000);
-        common.clickElement("xpath", "//Edit[@Name='Stock Account *']");
-        selectAndValidateDataNew(common.getData(dataFile, "stockAcc"), "xpath", "//Edit[@Name='Stock Account *']");
-        common.clickElement("xpath", "//Edit[@Name='Batch Policy']");
-        selectMasterWithValidation(common.getData(dataFile, "batchPolicy"), "xpath", "//Edit[@Name='Batch Policy']");
-        common.clickElement("xpath", "//Edit[@Name='Price List']");
-        selectAndValidateData(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
-        common.clickElement("xpath", "//Edit[@Name='Executive *']");
-        selectAndValidateData(common.getData(dataFile, "executive"), "xpath", "//Edit[@Name='Executive *']");
-        common.clickElement("xpath", "//Edit[@Name='Remarks']");
-        selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
-        //f3-items
-        common.clickElement("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']");
-        selectAndValidateData(common.getData(dataFile, "productCode"), "xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']");
-        enterData("xpath", "//Edit[@Name='Goods Received Account * Row 0, Not sorted.']", dataFile, "goods");
-        enterData("xpath", "//Edit[@Name='Quantity * Row 0, Not sorted.']", dataFile, "Quantity");
-        common.sliderHandling("name", "Position", 300, 0);
-        //save
+        navigateToMastersWhen2Steps("Inventory","Stock Creation");
+        Thread.sleep(1000);
+        String oldVoucherID =oldTTransactionID();
+        enterInput("xpath","//Edit[@Name='Branch *']",dataFile,"stockCreation","branch");
+        enterInput("xpath", "//Edit[@Name='Stock Account']",dataFile,"stockCreation", "stockAccount");
+        enterInput("xpath", "//Edit[@Name='Batch Policy']",dataFile,"stockCreation", "batchPolicy");
+        enterInput("xpath", "//Edit[@Name='Price List']", dataFile, "stockCreation","priceList");
+        enterInput("xpath", "//Edit[@Name='Executive *']", dataFile, "stockCreation","executive");
+
+
+        for (int i = 0; i < Integer.parseInt(common.getData(dataFile,"stockCreation", "productCount")); i++) {
+            addProduct(i);
+        }
+        enterOtherInfo(dataFile,"stockCreation");
+        navigateToSummaryTab();
+        totalValuePresentInSummary();
+        totalValueInCompanyCurrenyPresentInSummary();
+
         transactionSave();
-        lastTransactionName();
+        String newVoucherID =newTransactionID(oldVoucherID);
+        System.out.println("newID: "+newVoucherID);
+        Assert.assertNotEquals(newVoucherID, oldVoucherID,"both ID's should not Equal when we perform transaction");
+        Thread.sleep(1000);
+        common.clickElement("name", "Inventory");
+        common.clickElement("xpath", "//MenuItem[@Name='Stock Creation'][2]");
+        Thread.sleep(1000);
+        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
+        Thread.sleep(1500);
+        verifyReport(newVoucherID,dataFile,"stockCreation");
+        deleteSingleTransaction(newVoucherID);
+    }
+
+    public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {
+        if (common.getData(dataFile,"stockCreation", "productType" + i).equals("general")) {
+            enterProductInOpeningStock(dataFile,"stockCreation", "productCode" + i, "quantity"+i,"freeQuantity" + i, i);
+        } else if (common.getData(dataFile,"stockCreation", "productType" + i).equals("multiBatch")) {
+            multiBatchProductInOpeningStock(dataFile, "stockCreation","productCode" + i, "quantity" + i,"freeQuantity" + i, i);
+        }else if (common.getData(dataFile,"stockCreation", "productType" + i).equals("serial")) {
+            serialNumberProductInOpeningStock(dataFile,"stockCreation", "productCode" + i,"serialNumText","freeQuantity"+i,"quantity"+i,i);
+        }
+        Thread.sleep(2000);
+        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 500, 0);
+
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='MRP Amount Row "+i+", Not sorted.']"), common.getData(dataFile, "stockCreation","mrpAmount" + i),"MRP Amount mismatch");
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Gross Amount Row " + i + ", Not sorted.']"), common.getData(dataFile, "stockCreation","grossAmount" + i),"Gross Amount mismatch");
+        Assert.assertEquals(common.getText("xpath","//Edit[@Name='Net Amount In Company Currency Row "+i+", Not sorted.']"),common.getData(dataFile,"stockCreation","netInCompanyCurrency"+i),"netInCompanyCurrency mismatch");
     }
 }

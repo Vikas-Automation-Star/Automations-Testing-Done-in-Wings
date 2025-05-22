@@ -15,10 +15,7 @@ public class MonthWisePurchaseByValue extends Transaction {
     }
 
     public void monthWisePurchaseByValue() throws InterruptedException {
-        common.clickElement("name", "Purchase");
-        common.clickElement("name", "Analysis");
-        common.clickElement("xpath", "//MenuItem[@Name='Product']");
-        common.clickElement("xpath", "//MenuItem[@Name='Month Wise Purchase By Value']");
+        navigateToMastersWhen4Steps("Purchase","Analysis","Product","Month Wise Purchase By Value");
         Thread.sleep(2000);
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         super.bulkVerifyReport("");
