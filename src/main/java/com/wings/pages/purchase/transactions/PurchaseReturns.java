@@ -81,16 +81,18 @@ public class PurchaseReturns extends Transaction {
 
         //save
         transactionSave();
-        String newVoucherID =newTransactionID(oldVoucherID).replace(" ","");
-        System.out.println("newID: "+newVoucherID);
+        String newVoucherID =newTransactionID(oldVoucherID);
+        String originalID =newTransactionID(oldVoucherID).replace(" ","");
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"both ID's should not Equal when we perform transaction");
         Thread.sleep(1000);
-        navigateToMastersWhen3Steps("Purchase","Invoices","Purchase Book");
+        common.clickElement("name", "Purchase");
+        common.clickElement("name", "Invoices");
+        common.clickElement("xpath", "//MenuItem[@Name='Purchase Returns'][2]");
         Thread.sleep(1000);
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
         verifyReport(newVoucherID,dataFile,"PurchaseReturns");
-//        deleteSingleTransaction(newVoucherID,dataFile);
+        deleteSingleTransaction(originalID);
         return newVoucherID;
     }
 

@@ -27,7 +27,7 @@ public class TestPurchaseReturns {
 
 
     @Test
-    public void purchaseVouchers() throws IOException, ParseException, InterruptedException, AWTException {
+    public void purchaseReturns() throws IOException, ParseException, InterruptedException, AWTException {
         PurchaseReturns purchaseReturns=new PurchaseReturns(driver,file);
         purchaseReturns.purchaseReturns();
     }

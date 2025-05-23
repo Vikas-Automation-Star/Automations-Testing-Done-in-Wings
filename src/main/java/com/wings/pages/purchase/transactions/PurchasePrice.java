@@ -29,8 +29,6 @@ public class PurchasePrice extends Transaction {
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
         enterInput("xpath","//Edit[@Name='Branch *']",dataFile,"PurchasePrice","branch");
-//        common.clickElement("xpath","//Edit[@Name='Voucher Type']");
-//        selectOptionalMaster(common.getDataEvenNoKeyPresent(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']" );
 //        enterInput("xpath","//Edit[@Name='Location *']",dataFile,"location");
 //        enterInput("xpath","//Edit[@Name='Trans Currency *']",dataFile,"currency");
         enterInput("xpath","//Edit[@Name='Master Type']",dataFile,"PurchasePrice","MasterType");
@@ -52,9 +50,10 @@ public class PurchasePrice extends Transaction {
             enterInput("xpath", "//Edit[@Name='Disc 3 Row "+i+", Not sorted.']", dataFile, "PurchasePrice","DiscountBasisAmount"+i);
 
         }
-
+        common.deleteInvalidRows();
         transactionSave();
         String newVoucherID =newTransactionID(oldVoucherID);
+        String originalID =newTransactionID(oldVoucherID).replace(" ","");
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"both ID's should not Equal when we perform transaction");
         Thread.sleep(1000);
         navigateToMastersWhen3Steps("Purchase","Price","Purchase Price Updation");
@@ -67,7 +66,7 @@ public class PurchasePrice extends Transaction {
         verifyReportProductWise(newVoucherID,dataFile,"PurchasePrice2",Collections.singletonList(products.get(2)));
         verifyReportProductWise(newVoucherID,dataFile,"PurchasePrice3",Collections.singletonList(products.get(3)));
         System.out.println("All reports are verified");
-//        deleteSingleTransaction(newVoucherID,dataFile);
+        deleteSingleTransaction(originalID);
 
     }
 }

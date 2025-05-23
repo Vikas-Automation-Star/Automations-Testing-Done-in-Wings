@@ -1549,7 +1549,7 @@ public abstract class Transaction {
         enterInput("xpath","//Edit[@Name='Amount * Row 0, Not sorted.']",dataFile,key,"chequesPDCAmount");
         common.findWebElement("xpath","//Edit[@Name='Cheque/EFT No * Row 0, Not sorted.']").sendKeys(String.valueOf(common.getRandom()));
         enterInput("xpath","//Edit[@Name='Drawn On Bank * Row 0, Not sorted.']",dataFile,key,"drawnOn");
-        enterInput("xpath","//Edit[contains(@Name,'Drawn On Bank Branch Row 0, Not sorted.']",dataFile,key,"drawnOnBranch");
+        enterInput("xpath","//Edit[contains(@Name,'Drawn On Bank Branch Row 0, Not sorted.')]",dataFile,key,"drawnOnBranch");
     }
 
     public void enterChequesPDCinSIAO(String dataFile,String dataset) throws IOException, ParseException {
@@ -2362,6 +2362,25 @@ public abstract class Transaction {
                 bulkVerifyReportData(i.getText(), dataFile);
             }
         }
+    }
+    public void analysisReport( String dataFile,String dataSet) throws IOException, ParseException {
+        List<WebElement> elementList = common.findWebElements("xpath", "//Table/*[@Name='Data Panel']/ListItem[contains(@Name,'Row')]");
+        System.out.println("Size :" + elementList.size());
+        for (WebElement i : elementList) {
+            System.out.println("text :" + i.getText());
+            bulkVerifyAnalysisReport(i.getText(),dataFile,dataSet);
+        }
+    }
+    public void bulkVerifyAnalysisReport(String text, String dataFile,String dataSet) throws IOException, ParseException {
+        String[] columns = text.split(";");
+        System.out.println("columSize :"+columns.length);
+        for (int i = 0; i < columns.length; i++) {
+            if (i >=1 && !common.getData(dataFile, dataSet,"column" + (i + 1)).equals("")) {
+                Assert.assertEquals(columns[i], common.getData(dataFile,dataSet, "column" + (i + 1)),"columns mismatch");
+            }
+            System.out.println(columns[i]);
+        }
+        System.out.println("Report verified Successfully");
     }
 
     public void bulkVerifyReportData(String text, String dataFile) throws IOException, ParseException {

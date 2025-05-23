@@ -1,4 +1,4 @@
-<suite name="Purchase Transactions Suite">
+<suite name="Purchase Suite">
 
     <listeners>
         <listener class-name="com.wings.utils.Listener"/>
@@ -6,78 +6,78 @@
 
     <!--purchase Enquiries Start-->
 
-    <test name="PE 1" description="PurchaseEnquiries inter State Exclusive PriceList" testID="1">
-        <classes>
-            <class name="menuItems.purchase.transactions.TestPurchaseEnquiries"/>
-        </classes>
-    </test>
+    <!--    <test name="PE 1" description="PurchaseEnquiries inter State Exclusive PriceList" testID="1">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.transactions.TestPurchaseEnquiries"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-    <test name="PEC 2" description="PurchaseEnquiriesCancellation inter State Exclusive PriceList" testID="2">
-        <classes>
-            <class name="menuItems.purchase.transactions.TestPurchaseEnquiriesCancellation"/>
-        </classes>
-    </test>
+    <!--    <test name="PEC 2" description="PurchaseEnquiriesCancellation inter State Exclusive PriceList" testID="2">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.transactions.TestPurchaseEnquiriesCancellation"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-    <test name="PQ 3" description="PurchaseQuotations inter State Exclusive PriceList" testID="3">
-        <classes>
-            <class name="menuItems.purchase.transactions.TestPurchaseQuotations"/>
-        </classes>
-    </test>
+    <!--    <test name="PQ 3" description="PurchaseQuotations inter State Exclusive PriceList" testID="3">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.transactions.TestPurchaseQuotations"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-    <test name="PQAE 4" description="PurchaseQuotationsAgainstEnquiries inter State Exclusive PriceList" testID="4">
-        <classes>
-            <class name="menuItems.purchase.transactions.TestPurchaseQuotationsAgainstEnquiries"/>
-        </classes>
-    </test>
+    <!--    <test name="PQAE 4" description="PurchaseQuotationsAgainstEnquiries inter State Exclusive PriceList" testID="4">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.transactions.TestPurchaseQuotationsAgainstEnquiries"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-    <test name="POAQ 5" description="PurchaseOrdersAgainstQuotations inter State Exclusive PriceList" testID="5">
-        <classes>
-            <class name="menuItems.purchase.transactions.TestPurchaseOrdersAgainstQuotations"/>
-        </classes>
-    </test>
+    <!--    <test name="POAQ 5" description="PurchaseOrdersAgainstQuotations inter State Exclusive PriceList" testID="5">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.transactions.TestPurchaseOrdersAgainstQuotations"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-    <test name="PO 6" description="PurchaseOrders inter State Exclusive PriceList" testID="6">
-        <classes>
-            <class name="menuItems.purchase.transactions.TestPurchaseOrders"/>
-        </classes>
-    </test>
+    <!--    <test name="PO 6" description="PurchaseOrders inter State Exclusive PriceList" testID="6">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.transactions.TestPurchaseOrders"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-    <test name="POC 7" description="PurchaseOrdersCancellation inter State Exclusive PriceList" testID="7">
-        <classes>
-            <class name="menuItems.purchase.transactions.TestPurchaseOrderCancellation"/>
-        </classes>
-    </test>
+    <!--    <test name="POC 7" description="PurchaseOrdersCancellation inter State Exclusive PriceList" testID="7">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.transactions.TestPurchaseOrderCancellation"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-<!--    <test name="MR 8" description="Material Receipts inter State Exclusive PriceList" testID="8">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.purchase.transactions.TestMaterialReceipts"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <!--    <test name="MRec 8" description="Material Receipts inter State Exclusive PriceList" testID="8">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.transactions.TestMaterialReceipts"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-    <test name="POC 8" description="Material Receipts Against Orders inter State Exclusive PriceList" testID="8">
-        <classes>
-            <class name="menuItems.purchase.transactions.TestMaterialReceiptsAgainstOrders"/>
-        </classes>
-    </test>
+    <!--    <test name="MRAO 9" description="Material Receipts Against Orders inter State Exclusive PriceList" testID="9">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.transactions.TestMaterialReceiptsAgainstOrders"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-    <!--        <test name="MR 10" description="Material Returns inter State Exclusive PriceList" testID="10">-->
-    <!--            <classes>-->
-    <!--                <class name="menuItems.purchase.transactions.TestPurchaseReturns"/>-->
-    <!--            </classes>-->
-    <!--        </test>-->
+    <!--    <test name="MRet 10" description="Material Returns inter State Exclusive PriceList" testID="10">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.transactions.TestMaterialReturns"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
 
-    <test name="PV 9" description="Purchase Vouchers inter State Exclusive PriceList" testID="9">
-        <classes>
-            <class name="menuItems.purchase.transactions.TestPurchaseVouchers"/>
-        </classes>
-    </test>
+    <!--    <test name="PV 11" description="Purchase Vouchers inter State Exclusive PriceList" testID="11">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.transactions.TestPurchaseVouchers"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-    <test name="PVAPO 10" description="Purchase Vouchers Against PurchaseOrders inter State Exclusive PriceList" testID="10">
-        <classes>
-            <class name="menuItems.purchase.transactions.TestPurchaseVoucherAgainstOrders"/>
-        </classes>
-    </test>
+    <!--    <test name="PVAPO 12" description="Purchase Vouchers Against PurchaseOrders inter State Exclusive PriceList" testID="12">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.transactions.TestPurchaseVoucherAgainstOrders"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
     <!--    <test name="PVAPR 13" description="Purchase Vouchers Against PurchaseReceipts inter State Exclusive PriceList" testID="13">-->
     <!--        <classes>-->
@@ -91,19 +91,19 @@
     <!--        </classes>-->
     <!--    </test>-->
 
-    <!--    <test name="PR 15" description="Purchase Returns inter State Exclusive PriceList" testID="15">-->
+    <!--    <test name="PRet 15" description="Purchase Returns inter State Exclusive PriceList" testID="15">-->
     <!--        <classes>-->
     <!--            <class name="menuItems.purchase.transactions.TestPurchaseReturns"/>-->
     <!--        </classes>-->
     <!--    </test>-->
 
-    <test name="PRWIR 11" description="Purchase Returns With Invoice Reference inter State Exclusive PriceList" testID="11">
-        <classes>
-            <class name="menuItems.purchase.transactions.TestPurchaseReturnsWithInvoicesReference"/>
-        </classes>
-    </test>
+    <!--    <test name="PRWIR 16" description="Purchase Returns With Invoice Reference inter State Exclusive PriceList" testID="16">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.transactions.TestPurchaseReturnsWithInvoicesReference"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-    <!--    <test name="PRWIR 11" description="Purchase Prices inter State Exclusive PriceList" testID="11">-->
+    <!--    <test name="PPrice 17" description="Purchase Prices inter State Exclusive PriceList" testID="17">-->
     <!--        <classes>-->
     <!--            <class name="menuItems.purchase.transactions.TestPurchasePrices"/>-->
     <!--        </classes>-->
@@ -111,666 +111,55 @@
 
 
 
-    <!--purchase Enquiries Start-->
 
+    <test name="analysis - party 1" description="Month wise purchase by quantity" testID="11">
+        <classes>
+            <class name="menuItems.purchase.reports.analysis.party.TestMonthWisePurchaseByQuantityReport"/>
+        </classes>
+    </test>
+
+    <test name="analysis - party 2" description="Month wise purchase by value" testID="11">
+        <classes>
+            <class name="menuItems.purchase.reports.analysis.party.TestMonthWisePurchaseByValueReport"/>
+        </classes>
+    </test>
+
+    <test name="analysis - party 3" description="Year wise purchase by quantity" testID="11">
+        <classes>
+            <class name="menuItems.purchase.reports.analysis.party.TestYearWisePurchaseByQuantityReport"/>
+        </classes>
+    </test>
+
+    <test name="analysis - party 4" description="Year wise purchase by Value" testID="11">
+        <classes>
+            <class name="menuItems.purchase.reports.analysis.party.TestYearWisePurchaseByValueReport"/>
+        </classes>
+    </test>
+
+
+    <test name="analysis - product 1" description="Month wise purchase by quantity" testID="11">
+        <classes>
+            <class name="menuItems.purchase.reports.analysis.product.TestMonthWisePurchaseByQuantityReport"/>
+        </classes>
+    </test>
+
+    <test name="analysis - product 2" description="Month wise purchase by value" testID="11">
+        <classes>
+            <class name="menuItems.purchase.reports.analysis.product.TestMonthWisePurchaseByValueReport"/>
+        </classes>
+    </test>
+
+    <test name="analysis - product 3" description="Year wise purchase by quantity" testID="11">
+        <classes>
+            <class name="menuItems.purchase.reports.analysis.product.TestYearWisePurchaseByQuantityReport"/>
+        </classes>
+    </test>
+
+    <test name="analysis - product 4" description="Year wise purchase by Value" testID="11">
+        <classes>
+            <class name="menuItems.purchase.reports.analysis.product.TestYearWisePurchaseByValueReport"/>
+        </classes>
+    </test>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- purchase Order -->
-
-    <!--    <test name="PO 1" description="PurchaseOrder Reg-To-Reg Intra State Exclusive GST" testID="1">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchaseOrder_RegIntraExclusivePrice"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="PO 2" description="PurchaseOrder Reg-To-Reg Inter State Inclusive GST" testID="2">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchaseOrder_RegInterInclusivePrice"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="PO 3" description="PurchaseOrder Reg-To-UnReg Intra State Exclusive GST" testID="3">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchaseOrder_UnRegIntraExclusivePrice"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="PO 4" description="PurchaseOrder Reg-To-UnReg Inter State Inclusive GST" testID="4">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchaseOrder_UnRegInterInclusivePrice"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    &lt;!&ndash;MaterialAgainst purchase Order&ndash;&gt;-->
-
-    <!--    &lt;!&ndash;    <test name="PO->MRAO 9" description="PO->MRAO Reg-To-Reg Intra State Exclusive GST" testID="9">&ndash;&gt;-->
-    <!--    &lt;!&ndash;        <classes>&ndash;&gt;-->
-    <!--    &lt;!&ndash;            <class name="menuItems.purchase.transactions.TestMaterialReceiptsAPO_RegIntraExclusivePrice"/>&ndash;&gt;-->
-    <!--    &lt;!&ndash;        </classes>&ndash;&gt;-->
-    <!--    &lt;!&ndash;    </test>&ndash;&gt;-->
-
-    <!--    &lt;!&ndash;    <test name="PO->MRAO 10" description="PO->MRAO Reg-To-Reg Inter State Inclusive GST" testID="10">&ndash;&gt;-->
-    <!--    &lt;!&ndash;        <classes>&ndash;&gt;-->
-    <!--    &lt;!&ndash;            <class name="menuItems.purchase.transactions.TestMaterialReceiptsAPO_RegInterInclusivePrice"/>&ndash;&gt;-->
-    <!--    &lt;!&ndash;        </classes>&ndash;&gt;-->
-    <!--    &lt;!&ndash;    </test>&ndash;&gt;-->
-
-    <!--    &lt;!&ndash;    <test name="PO->MRAO 11" description="PO->MRAO Reg-To-UnReg Intra State Exclusive GST" testID="11">&ndash;&gt;-->
-    <!--    &lt;!&ndash;        <classes>&ndash;&gt;-->
-    <!--    &lt;!&ndash;            <class name="menuItems.purchase.transactions.TestMaterialReceiptsAPO_UnRegIntraExclusivePrice"/>&ndash;&gt;-->
-    <!--    &lt;!&ndash;        </classes>&ndash;&gt;-->
-    <!--    &lt;!&ndash;    </test>&ndash;&gt;-->
-
-    <!--    &lt;!&ndash;    <test name="PO->MRAO 12" description="PO->MRAO Reg-To-UnReg Inter State Inclusive GST" testID="12">&ndash;&gt;-->
-    <!--    &lt;!&ndash;        <classes>&ndash;&gt;-->
-    <!--    &lt;!&ndash;            <class name="menuItems.purchase.transactions.TestMaterialReceiptsAPO_UnRegInterInclusivePrice"/>&ndash;&gt;-->
-    <!--    &lt;!&ndash;        </classes>&ndash;&gt;-->
-    <!--    &lt;!&ndash;    </test>&ndash;&gt;-->
-
-    <!--    &lt;!&ndash; purchase Voucher against Material receipts&ndash;&gt;-->
-
-    <!--    &lt;!&ndash;PurchaseVoucher Against purchase GST Order&ndash;&gt;-->
-
-    <!--    <test name="PO->PVAPO 5" description="PO->PVAO Reg-To-Reg Intra State Exclusive GST" testID="5">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPVOPO_Reg_IntraExclusivePrice"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="PO->PVAPO 6" description="PO->PVAPO Reg-To-Reg Inter State Inclusive GST" testID="6">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPVAPO_Reg_InterInclusivePrice"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="PO->PVAPO 7" description="PO->PVAPO Reg-To-UnReg Intra State Exclusive GST" testID="7">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPVAPO_UnRegIntraExclusivePrice"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="PO->PVAPO 8" description="PO->PVAPO Reg-To-UnReg Inter State Inclusive GST" testID="8">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPVAPO_UnRegInterInclusivePrice"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    &lt;!&ndash;PurchaseVoucher Against purchase GST Order&ndash;&gt;-->
-
-    <!--    &lt;!&ndash; purchase Voucher against Material receipts&ndash;&gt;-->
-
-    <!--    <test name="PO->PVAMR 9" description="PO->PVAMR Reg-To-Reg Intra State Exclusive GST" testID="9">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPVAMR_RegIntraExclusivePrice"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="PO->PVAMR 10" description="PO->PVAMR Reg-To-Reg Inter State Inclusive GST" testID="10">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPVAMR_RegInterInclusivePrice"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="PO->PVAMR 11" description="PO->PVAMR Reg-To-UNReg Inter State Inclusive GST" testID="11">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPVAMR_UnRegInterInclusive"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="PO->PVAMR 12" description="PO->PVAMR Reg-To-UNReg Intra State Exclusive GST" testID="12">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPVAMR_UnRegIntraExclusivePrice"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    &lt;!&ndash; purchase Voucher against Material receipts&ndash;&gt;-->
-
-    <!--    &lt;!&ndash;        PurchaseVoucher Against purchase RCM Order&ndash;&gt;-->
-
-    <!--    &lt;!&ndash;                <test name="PO->PVAO 5" description="PO->PVAO Reg-To-Reg Intra State Exclusive RCM GST" testID="8">&ndash;&gt;-->
-    <!--    &lt;!&ndash;                    <classes>&ndash;&gt;-->
-    <!--    &lt;!&ndash;                        <class name="menuItems.purchase.transactions.TestPVAPO_RegIntraRCMExclusivePrice"/>&ndash;&gt;-->
-    <!--    &lt;!&ndash;                    </classes>&ndash;&gt;-->
-    <!--    &lt;!&ndash;                </test>&ndash;&gt;-->
-
-    <!--    &lt;!&ndash;                    <test name="PO->PVAO 5" description="PO->PVAO Reg-To-Reg Inter State Inclusive RCM GST" testID="8">&ndash;&gt;-->
-    <!--    &lt;!&ndash;                        <classes>&ndash;&gt;-->
-    <!--    &lt;!&ndash;                            <class name="menuItems.purchase.transactions.TestPVAPO_Reg_InterRCMInclusivePrice"/>&ndash;&gt;-->
-    <!--    &lt;!&ndash;                        </classes>&ndash;&gt;-->
-    <!--    &lt;!&ndash;                    </test>&ndash;&gt;-->
-
-    <!--    &lt;!&ndash;    purchase Voucher&ndash;&gt;-->
-
-    <!--    <test name="PV 13" description="PurchaseVoucher Reg_To_Reg Intra State Exclusive GST-TCS Including FreeQuantity" testID="13">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchaseVoucher_RegIntraExclusivePrice"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="PV 14" description="PurchaseVoucher Reg_To_Reg Inter State Inclusive GST-TCS Including FreeQuantity" testID="14">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchaseVoucher_RegInterInclusivePrice"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="PV 15" description="purchaseVoucher Reg_To_UNReg Intra State Exclusive GST-TCS Including FreeQuantity" testID="15">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchaseVoucher_UnRegIntraExclusivePrice"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="PV 16" description="PurchaseVoucher Reg-To-UNReg Inter State inclusive GST-TCS Including FreeQuantity" testID="1162">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchaseVoucher_UnRegInterInclusivePrice"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    &lt;!&ndash; RCM purchase Voucher&ndash;&gt;-->
-
-    <!--    &lt;!&ndash;    <test name="PV 13" description="PurchaseVoucher Reg-To-Reg Intra State Exclusive RCM-GST-TCS Including FreeQuantity" testID="13">&ndash;&gt;-->
-    <!--    &lt;!&ndash;        <classes>&ndash;&gt;-->
-    <!--    &lt;!&ndash;            <class name="menuItems.purchase.transactions.TestPurchaseVoucher_RegIntraRCMExclusivePrice"/>&ndash;&gt;-->
-    <!--    &lt;!&ndash;        </classes>&ndash;&gt;-->
-    <!--    &lt;!&ndash;    </test>&ndash;&gt;-->
-
-    <!--    &lt;!&ndash;    <test name="PV 14" description="PurchaseVoucher Reg-To-Reg Inter State inclusive RCM-GST-TCS Including FreeQuantity" testID="14">&ndash;&gt;-->
-    <!--    &lt;!&ndash;        <classes>&ndash;&gt;-->
-    <!--    &lt;!&ndash;            <class name="menuItems.purchase.transactions.TestPurchaseVoucher_RegInterRCMInclusivePrice"/>&ndash;&gt;-->
-    <!--    &lt;!&ndash;        </classes>&ndash;&gt;-->
-    <!--    &lt;!&ndash;    </test>&ndash;&gt;-->
-
-    <!--    &lt;!&ndash;    <test name="PV 15" description="PurchaseVoucher Reg-To-Un-Reg Intra State Exclusive RCM-GST-TCS Including FreeQuantity" testID="15">&ndash;&gt;-->
-    <!--    &lt;!&ndash;        <classes>&ndash;&gt;-->
-    <!--    &lt;!&ndash;            <class name="menuItems.purchase.transactions.TestPurchaseVoucher_UnRegIntraRCMExclusivePrice"/>&ndash;&gt;-->
-    <!--    &lt;!&ndash;        </classes>&ndash;&gt;-->
-    <!--    &lt;!&ndash;    </test>&ndash;&gt;-->
-
-    <!--    &lt;!&ndash;    <test name="PV 16" description="PurchaseVoucher Reg-To-Un-Reg Inter State Exclusive RCM-GST-TCS Including FreeQuantity" testID="16">&ndash;&gt;-->
-    <!--    &lt;!&ndash;        <classes>&ndash;&gt;-->
-    <!--    &lt;!&ndash;            <class name="menuItems.purchase.transactions.TestPurchaseVoucher_UnRegInterRCMExclusivePrice"/>&ndash;&gt;-->
-    <!--    &lt;!&ndash;        </classes>&ndash;&gt;-->
-    <!--    &lt;!&ndash;    </test>&ndash;&gt;-->
-
-    <!--    &lt;!&ndash; RCM purchase Voucher Done&ndash;&gt;-->
-
-    <!--    &lt;!&ndash; purchase return with invoice reference &ndash;&gt;-->
-
-    <!--    <test name="PRWIR 17" description="PV->PRWIR Reg-To-Reg Intra State Exclusive GST-TCS Including FreeQuantity" testID="17">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPRWIR_RegIntraExclusivePrice"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="PRWIR 18" description="PV->PRWIR Reg-To-Reg Inter State Inclusive GST-TCS Including FreeQuantity" testID="18">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPRWIR_RegInterInclusivePrice"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="PRWIR 19" description="PV->PRWIR Reg-To-UNReg Intra State Exclusive GST-TCS Including FreeQuantity" testID="19">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPRWIR_UnRegIntraExclusivePrice"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--purchase return with invoice reference RCM-->
-
-
-
-    <!--    <test name="RCM PRWIR 20" description="PV->PRWIR Reg-To-Reg Intra State Exclusive RCMGST-TCS Including FreeQuantity" testID="20">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPRWIR_RegIntraRCMExclusivePrice"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="RCM PRWIR 21" description="PV->PRWIR Reg-To-Reg Inter State Inclusive RCMGST-TCS Including FreeQuantity" testID="21">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPRWIR_RegInterRCMInclusivePrice"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="RCM PRWIR 22" description="PV->PRWIR Reg-To-UnReg Intra State Exclusive RCMGST-TCS Including FreeQuantity" testID="22">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPRWIR_UnRegIntraRCMExclusive"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--purchase return with invoice reference RCM-->
-
-
-
-
-    <!--purchase return with invoice reference PO->MRAPO->PVAMR->PRWIR-->
-
-    <!--    <test name="PO->MRAPO->PVAMR->PRWIR 23" description="PO->MRAPO->PVAMR->PRWIR Reg-To-Reg Inter State Exclusive GST-TCS" testID="23">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPVAMR_PRWIR_RegIntraExclusive"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="PO->MRAPO->PVAMR->PRWIR 24" description="PO->MRAPO->PVAMR->PRWIR Reg-To-Reg Intra State Inclusive GST-TCS" testID="24">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPVAMR_PRWIR_RegInterInclusive"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    purchase return with invoice reference PO->MRAPO->PVAMR->PRWIR-->
-
-    <!--    purchase return with invoice reference PO->PVAPO->PRWIR-->
-
-    <!--    <test name="PO->PVAPO->PRWIR 25" description="PO->PVAPO->PRWIR Reg-To-UnReg Intra State Exclusive" testID="25">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPVAPO_PRWIR_UnRegIntraExclusive"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="PO->PVAPO->PRWIR 31" description="PO->PVAPO->PRWIR Reg-To-UnReg Intra State Inclusive Hold Not Working FI" testID="31">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPVAPO_PRWIR_UnRegInterInclusive"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--purchase return with invoice reference PO->PVAPO->PRWIR-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!--    <test name="Creating SupplierMaster" description="description for Supplier Master" testID="WOW 1">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.masters.SuppliersMaster"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Creating PurchaseBatchPoliciesMaster" description="description for PurchaseBatchPolicies Master"-->
-    <!--          testID="WOW 2">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.masters.PurchaseBatchPoliciesMaster"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Creating PriceListMaster" description="description for PriceList Master" testID="WOW 3">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.masters.PriceListMaster"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!-- Masters of purchase menu completed 3 -->
-
-    <!--        <test name="Performing PurchaseEnquiries Transaction" description="description for PurchaseEnquiries Transaction"-->
-    <!--              testID="WOW 4">-->
-    <!--            <classes>-->
-    <!--                <class name="menuItems.purchase.transactions.TestPurchaseEnquiries"></class>-->
-    <!--            </classes>-->
-    <!--        </test>-->
-
-    <!--    <test name="Performing PurchaseEnquiriesCancellation Transaction"-->
-    <!--          description="description for PurchaseEnquiriesCancellation Transaction" testID="WOW 5">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchaseEnquiriesCancellation"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Performing PurchaseQuotations Transaction" description="description for PurchaseQuotations Transaction"-->
-    <!--          testID="WOW 6">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchaseQuotations"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Performing PurchaseQuotationsAgainstEnquiries Transaction"-->
-    <!--          description="description for PurchaseQuotationsAgainstEnquiries Transaction" testID="WOW 7">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchaseQuotationsAgainstEnquiries"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Performing PurchaseOrdersAgainstQuotations Transaction"-->
-    <!--          description="description for PurchaseOrdersAgainstQuotations Transaction" testID="WOW 8">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchaseOrdersAgainstQuotations"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Performing PurchaseOrders Transaction" description="description for PurchaseOrders Transaction"-->
-    <!--          testID="WOW 9">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchaseOrder_RegIntraExclusivePrice"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Performing PurchaseOrdersCancellation Transaction"-->
-    <!--          description="description for PurchaseOrdersCancellation Transaction" testID="WOW 10">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchaseOrderCancellation"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Performing MaterialReceipts Transaction" description="descriptionM for MaterialReceipts Transaction"-->
-    <!--          testID="WOW 11">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestMaterialReceipts"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Performing MaterialReceiptsAgainstOrders Transaction"-->
-    <!--          description="description for MaterialReceiptsAgainstOrders Transaction" testID="WOW 12">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestMaterialReceiptsAgainstOrders"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Performing MaterialReturns Transaction" description="description for MaterialReturns Transaction"-->
-    <!--          testID="WOW 13">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestMaterialReturns"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Performing  PurchaseVouchers Transaction" description="description for PurchaseVouchers Transaction"-->
-    <!--          testID="WOW 14">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchaseVouchers"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Performing PurchaseVouchersAgainstOrders Transaction"-->
-    <!--          description="description for PurchaseVouchersAgainstOrders Transaction" testID="WOW 15">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.PurchaseVouchersAgainstOrdersTransaction"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Performing PurchaseVouchersAgainstReceipts Transaction"-->
-    <!--          description="description for PurchaseVouchersAgainstReceipts Transaction" testID="WOW 16">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchaseVouchersAgainstReceipts"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Performing PurchaseReturnsWithInvoicesReferences Transaction"-->
-    <!--          description="description for PurchaseReturnsWithInvoiceReference Transaction" testID="WOW 17">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchaseReturnsWithInvoicesReference"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Performing PurchasePrices Transaction" description="description for PurchasePrices Transaction"-->
-    <!--          testID="WOW 18">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchasePrices"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    &lt;!&ndash; Transactions of purchase menu completed 15&ndash;&gt;-->
-
-    <!--    <test name="Checking PurchaseEnquiries Report" description="description for PurchaseEnquiries Report"-->
-    <!--          testID="WOW 19">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.reports.PurchaseEnquiriesReport"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Checking PendingPurchaseEnquiries Report" description="description for PendingPurchaseEnquiries Report"-->
-    <!--          testID="WOW 20">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.reports.PendingPurchaseEnquiriesReport"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Checking PurchaseEnquiriesCancellation Report"-->
-    <!--          description="description for PurchaseEnquiriesCancellation Report" testID="WOW 21">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.reports.PurchaseEnquiriesCancellationsReport"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Checking PurchaseQuotations Report" description="description for PurchaseQuotations Report"-->
-    <!--          testID="WOW 22">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.reports.PurchaseQuotationsReport"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Checking PendingPurchaseQuotations Report"-->
-    <!--          description="description for PendingPurchaseQuotations Report" testID="WOW 23">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.reports.PendingPurchaseQuotationsReport"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Checking PurchaseQuotationsAgainstEnquiries Report"-->
-    <!--          description="description for PurchaseQuotationsAgainstEnquiries Report" testID="WOW 24">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.reports.PurchaseQuotationsAgainstEnquiriesReport"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Checking PurchaseOrdersAgainstQuotations Report"-->
-    <!--          description="description for PurchaseOrdersAgainstQuotations Report" testID="WOW 25">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.reports.PurchaseOrdersAgainstQuotationsReport"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Checking PurchaseOrders Report" description="description for PurchaseOrders Report" testID="WOW 26">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.reports.PurchaseOrdersReport"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-    <!--    <test name="Checking PendingPurchaseOrders Report" description="description for PendingPurchaseOrders Report"-->
-    <!--          testID="WOW 27">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.reports.PendingPurchaseOrdersReport"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Checking PurchaseOrderStatusDetails Report"-->
-    <!--          description="description for PurchaseOrderStatusDetails Report" testID="WOW 28">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.reports.PurchaseOrderStatusDetailsReport"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Checking PurchaseOrdersCancellations Report"-->
-    <!--          description="description for PurchaseOrdersCancellations Report" testID="WOW 29">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.reports.PurchaseOrdersCancellationsReport"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Checking MaterialReceipts Report" description="description for MaterialReceipts Report" testID="WOW 30">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.reports.MaterialReceiptsReport"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Checking PendingMaterialReceipts Report" description="description for PendingMaterialReceipts Report"-->
-    <!--          testID="WOW 31">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.reports.PendingMaterialReceiptsReport"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Checking MaterialReceiptsAgainstOrders Report"-->
-    <!--          description="description for MaterialReceiptsAgainstOrders Report" testID="WOW 32">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.reports.MaterialReceiptsAgainstOrdersReport"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Checking PendingPurchaseOrdersWithReceipts Report"-->
-    <!--          description="description for PendingPurchaseOrdersWithReceipts Report" testID="WOW 32">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.reports.PendingPurchaseOrdersWithReceiptsReport"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Checking MaterialReturns Report" description="description for MaterialReturns Report" testID="WOW 34">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.reports.MaterialReturnsReport"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Checking PurchaseBooks Report" description="description for PurchaseBooks Report" testID="WOW 35">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.reports.PurchaseBooksReport"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Checking PurchaseVouchersAgainstOrders Report"-->
-    <!--          description="description for PurchaseVouchersAgainstOrders Report" testID="WOW 36">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.reports.PurchaseVouchersAgainstOrdersReport"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Checking PurchaseVouchersAgainstReceiptsReport Report"-->
-    <!--          description="description for PurchaseVouchersAgainstReceipts Report" testID="WOW 37">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.reports.PurchaseVouchersAgainstReceiptsReport"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Checking PurchaseReturnsWithInvoiceReferences Report"-->
-    <!--          description="description for PurchaseReturnsWithInvoiceReferences Report" testID="WOW 38">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.reports.PurchaseReturnsWithInvoiceReferencesReport"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Checking PurchasePriceUpdations Report" description="description for PurchasePriceUpdations Report"-->
-    <!--          testID="WOW 39">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.reports.PurchasePriceUpdationReport"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Checking MonthWisePurchaseByQuantity1 Report"-->
-    <!--          description="description forMonthWisePurchaseByQuantity Report" testID="WOW 40">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.reports.analysis.party.MonthWisePurchaseByQuantityReport"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Checking MonthWisePurchaseByValue1 Report" description="description for MonthWisePurchaseByValue Report"-->
-    <!--          testID="WOW 41">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.reports.analysis.party.MonthWisePurchaseByValueReport"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Checking YearWisePurchaseByQuantity1 Report"-->
-    <!--          description="description for YearWisePurchaseByQuantity Report" testID="WOW 42">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.reports.analysis.party.YearWisePurchaseByQuantityReport"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Checking YearWisePurchaseByValue1 Report" description="description for YearWisePurchaseByValue Report"-->
-    <!--          testID="WOW 43">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.reports.analysis.party.YearWisePurchaseByValueReport"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Checking MonthWisePurchaseByQuantity2 Report"-->
-    <!--          description="description for MonthWisePurchaseByQuantity Report" testID="WOW 44">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.reports.analysis.product.MonthWisePurchaseByQuantityReport"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Checking MonthWisePurchaseByValue2 Report" description="description for MonthWisePurchaseByValue Report"-->
-    <!--          testID="WOW 45">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.reports.analysis.product.MonthWisePurchaseByValueReport"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Checking YearWisePurchaseByQuantity2 Report"-->
-    <!--          description="description for YearWisePurchaseByQuantity Report" testID="WOW 46">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.reports.analysis.product.YearWisePurchaseByQuantityReport"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="Checking YearWisePurchaseByValue2 Report" description="description for YearWisePurchaseByValue Report"-->
-    <!--          testID="WOW 47">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.reports.analysis.product.YearWisePurchaseByValueReport"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
 
 </suite>
