@@ -6,160 +6,156 @@
 
     <!--purchase Enquiries Start-->
 
-    <!--    <test name="PE 1" description="PurchaseEnquiries inter State Exclusive PriceList" testID="1">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchaseEnquiries"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="PE 1" description="PurchaseEnquiries inter State Exclusive PriceList" testID="1">
+        <classes>
+            <class name="menuItems.purchase.transactions.TestPurchaseEnquiries"/>
+        </classes>
+    </test>
 
-    <!--    <test name="PEC 2" description="PurchaseEnquiriesCancellation inter State Exclusive PriceList" testID="2">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchaseEnquiriesCancellation"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="PEC 2" description="PurchaseEnquiriesCancellation inter State Exclusive PriceList" testID="2">
+        <classes>
+            <class name="menuItems.purchase.transactions.TestPurchaseEnquiriesCancellation"/>
+        </classes>
+    </test>
 
-    <!--    <test name="PQ 3" description="PurchaseQuotations inter State Exclusive PriceList" testID="3">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchaseQuotations"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="PQ 3" description="PurchaseQuotations inter State Exclusive PriceList" testID="3">
+        <classes>
+            <class name="menuItems.purchase.transactions.TestPurchaseQuotations"/>
+        </classes>
+    </test>
 
-    <!--    <test name="PQAE 4" description="PurchaseQuotationsAgainstEnquiries inter State Exclusive PriceList" testID="4">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchaseQuotationsAgainstEnquiries"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="PQAE 4" description="PurchaseQuotationsAgainstEnquiries inter State Exclusive PriceList" testID="4">
+        <classes>
+            <class name="menuItems.purchase.transactions.TestPurchaseQuotationsAgainstEnquiries"/>
+        </classes>
+    </test>
 
-    <!--    <test name="POAQ 5" description="PurchaseOrdersAgainstQuotations inter State Exclusive PriceList" testID="5">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchaseOrdersAgainstQuotations"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="POAQ 5" description="PurchaseOrdersAgainstQuotations inter State Exclusive PriceList" testID="5">
+        <classes>
+            <class name="menuItems.purchase.transactions.TestPurchaseOrdersAgainstQuotations"/>
+        </classes>
+    </test>
 
-    <!--    <test name="PO 6" description="PurchaseOrders inter State Exclusive PriceList" testID="6">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchaseOrders"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="PO 6" description="PurchaseOrders inter State Exclusive PriceList" testID="6">
+        <classes>
+            <class name="menuItems.purchase.transactions.TestPurchaseOrders"/>
+        </classes>
+    </test>
 
-    <!--    <test name="POC 7" description="PurchaseOrdersCancellation inter State Exclusive PriceList" testID="7">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchaseOrderCancellation"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="POC 7" description="PurchaseOrdersCancellation inter State Exclusive PriceList" testID="7">
+        <classes>
+            <class name="menuItems.purchase.transactions.TestPurchaseOrderCancellation"/>
+        </classes>
+    </test>
 
-    <!--    <test name="MRec 8" description="Material Receipts inter State Exclusive PriceList" testID="8">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestMaterialReceipts"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="MRec 8" description="Material Receipts inter State Exclusive PriceList" testID="8">
+        <classes>
+            <class name="menuItems.purchase.transactions.TestMaterialReceipts"/>
+        </classes>
+    </test>
 
-    <!--    <test name="MRAO 9" description="Material Receipts Against Orders inter State Exclusive PriceList" testID="9">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestMaterialReceiptsAgainstOrders"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="MRAO 9" description="Material Receipts Against Orders inter State Exclusive PriceList" testID="9">
+        <classes>
+            <class name="menuItems.purchase.transactions.TestMaterialReceiptsAgainstOrders"/>
+        </classes>
+    </test>
 
-    <!--    <test name="MRet 10" description="Material Returns inter State Exclusive PriceList" testID="10">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestMaterialReturns"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-
-    <!--    <test name="PV 11" description="Purchase Vouchers inter State Exclusive PriceList" testID="11">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchaseVouchers"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="PVAPO 12" description="Purchase Vouchers Against PurchaseOrders inter State Exclusive PriceList" testID="12">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchaseVoucherAgainstOrders"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="PVAPR 13" description="Purchase Vouchers Against PurchaseReceipts inter State Exclusive PriceList" testID="13">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchaseVouchersAgainstReceipts"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="PPV 14" description="Proforma PurchaseVouchers inter State Exclusive PriceList" testID="14">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestProformaPurchaseVouchers"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="PRet 15" description="Purchase Returns inter State Exclusive PriceList" testID="15">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchaseReturns"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="PRWIR 16" description="Purchase Returns With Invoice Reference inter State Exclusive PriceList" testID="16">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchaseReturnsWithInvoicesReference"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="PPrice 17" description="Purchase Prices inter State Exclusive PriceList" testID="17">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchasePrices"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="MRet 10" description="Material Returns inter State Exclusive PriceList" testID="10">
+        <classes>
+            <class name="menuItems.purchase.transactions.TestMaterialReturns"/>
+        </classes>
+    </test>
 
 
+    <test name="PV 11" description="Purchase Vouchers inter State Exclusive PriceList" testID="11">
+        <classes>
+            <class name="menuItems.purchase.transactions.TestPurchaseVouchers"/>
+        </classes>
+    </test>
 
+    <test name="PVAPO 12" description="Purchase Vouchers Against PurchaseOrders inter State Exclusive PriceList" testID="12">
+        <classes>
+            <class name="menuItems.purchase.transactions.TestPurchaseVoucherAgainstOrders"/>
+        </classes>
+    </test>
 
-    <test name="analysis - party 1" description="Month wise purchase by quantity" testID="11">
+    <test name="PVAPR 13" description="Purchase Vouchers Against PurchaseReceipts inter State Exclusive PriceList" testID="13">
+        <classes>
+            <class name="menuItems.purchase.transactions.TestPurchaseVouchersAgainstReceipts"/>
+        </classes>
+    </test>
+
+    <test name="PPV 14" description="Proforma PurchaseVouchers inter State Exclusive PriceList" testID="14">
+        <classes>
+            <class name="menuItems.purchase.transactions.TestProformaPurchaseVouchers"/>
+        </classes>
+    </test>
+
+    <test name="PRet 15" description="Purchase Returns inter State Exclusive PriceList" testID="15">
+        <classes>
+            <class name="menuItems.purchase.transactions.TestPurchaseReturns"/>
+        </classes>
+    </test>
+
+    <test name="PRWIR 16" description="Purchase Returns With Invoice Reference inter State Exclusive PriceList" testID="16">
+        <classes>
+            <class name="menuItems.purchase.transactions.TestPurchaseReturnsWithInvoicesReference"/>
+        </classes>
+    </test>
+
+    <test name="PPrice 17" description="Purchase Prices inter State Exclusive PriceList" testID="17">
+        <classes>
+            <class name="menuItems.purchase.transactions.TestPurchasePrices"/>
+        </classes>
+    </test>
+
+    <test name="analysis - party 18" description="Month wise purchase by quantity" testID="18">
         <classes>
             <class name="menuItems.purchase.reports.analysis.party.TestMonthWisePurchaseByQuantityReport"/>
         </classes>
     </test>
 
-    <test name="analysis - party 2" description="Month wise purchase by value" testID="11">
+    <test name="analysis - party 19" description="Month wise purchase by value" testID="19">
         <classes>
             <class name="menuItems.purchase.reports.analysis.party.TestMonthWisePurchaseByValueReport"/>
         </classes>
     </test>
 
-    <test name="analysis - party 3" description="Year wise purchase by quantity" testID="11">
+    <test name="analysis - party 20" description="Year wise purchase by quantity" testID="20">
         <classes>
             <class name="menuItems.purchase.reports.analysis.party.TestYearWisePurchaseByQuantityReport"/>
         </classes>
     </test>
 
-    <test name="analysis - party 4" description="Year wise purchase by Value" testID="11">
+    <test name="analysis - party 21" description="Year wise purchase by Value" testID="21">
         <classes>
             <class name="menuItems.purchase.reports.analysis.party.TestYearWisePurchaseByValueReport"/>
         </classes>
     </test>
 
 
-    <test name="analysis - product 1" description="Month wise purchase by quantity" testID="11">
+    <test name="analysis - product 22" description="Month wise purchase by quantity" testID="22">
         <classes>
             <class name="menuItems.purchase.reports.analysis.product.TestMonthWisePurchaseByQuantityReport"/>
         </classes>
     </test>
 
-    <test name="analysis - product 2" description="Month wise purchase by value" testID="11">
+    <test name="analysis - product 23" description="Month wise purchase by value" testID="23">
         <classes>
             <class name="menuItems.purchase.reports.analysis.product.TestMonthWisePurchaseByValueReport"/>
         </classes>
     </test>
 
-    <test name="analysis - product 3" description="Year wise purchase by quantity" testID="11">
+    <test name="analysis - product 24" description="Year wise purchase by quantity" testID="24">
         <classes>
             <class name="menuItems.purchase.reports.analysis.product.TestYearWisePurchaseByQuantityReport"/>
         </classes>
     </test>
 
-    <test name="analysis - product 4" description="Year wise purchase by Value" testID="11">
+    <test name="analysis - product 25" description="Year wise purchase by Value" testID="25">
         <classes>
             <class name="menuItems.purchase.reports.analysis.product.TestYearWisePurchaseByValueReport"/>
         </classes>
     </test>
-
 
 </suite>

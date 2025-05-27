@@ -43,6 +43,7 @@ public class StockCreation extends Transaction {
         transactionSave();
         String newVoucherID =newTransactionID(oldVoucherID);
         System.out.println("newID: "+newVoucherID);
+        String originalID =newTransactionID(oldVoucherID).replace(" ","");
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"both ID's should not Equal when we perform transaction");
         Thread.sleep(1000);
         common.clickElement("name", "Inventory");
@@ -51,7 +52,7 @@ public class StockCreation extends Transaction {
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
         verifyReport(newVoucherID,dataFile,"stockCreation");
-        deleteSingleTransaction(newVoucherID);
+        deleteSingleTransaction(originalID);
     }
 
     public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {

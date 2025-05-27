@@ -11,7 +11,7 @@
       "executive": "AT_Executive 2",
       "priceList": "AT_Exclusive Sales Price List 2",
       "storageBin": "AT_Branch 1_Location 1 Default Bin",
-
+      "StockDetails": "no",
 
       "invoice": "Regular",
       "HSNCode": "AT_HSN Code 2",

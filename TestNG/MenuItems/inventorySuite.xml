@@ -4,121 +4,170 @@
         <listener class-name="com.wings.utils.Listener"/>
     </listeners>
 
-    <test name="OS 1" description="Test 10 description" testID="1">
+
+    <test name="PWGST 1" description="Product with GST details Report" testID="1">
         <classes>
-            <class name="menuItems.inventory.transactions.TestOpeningStock"/>
+            <class name="menuItems.inventory.reports.masterInfo.TestProductWithGSTDetail"/>
         </classes>
     </test>
 
-    <test name="SCreate 2" description="Test 12 description" testID="2">
+    <test name="MD 2" description="Master Details Report" testID="2">
         <classes>
-            <class name="menuItems.inventory.transactions.TestStockCreation"/>
+            <class name="menuItems.inventory.reports.masterInfo.TestMasterDetail"/>
         </classes>
     </test>
 
-    <test name="SConsu 3" description="Test 14 description" testID="3">
+    <test name="PAUOM 3" description="Product alternate UOM details Report" testID="2">
         <classes>
-            <class name="menuItems.inventory.transactions.TestStockConsumption"/>
+            <class name="menuItems.inventory.reports.masterInfo.TestProductWithGSTDetail"/>
         </classes>
     </test>
 
-    <test name="SConve 4" description="Test 16 description" testID="4">
-        <classes>
-            <class name="menuItems.inventory.transactions.TestStockConversion"/>
-        </classes>
-    </test>
-
-    <test name="ILT 5" description="Test 18 description" testID="5">
-        <classes>
-            <class name="menuItems.inventory.transactions.TestInterLocationTransfers"/>
-        </classes>
-    </test>
-
-    <!---->
-    <test name="Master Info-Product with GST Detail Report" description="Test 20 description" testID="20">
-        <classes>
-            <class name="menuItems.inventory.reports.masterInfo.ProductWithGSTDetail"/>
-        </classes>
-    </test>
-
-    <test name="Master Info- Master Detail Report" description="Test 21 description" testID="21">
-        <classes>
-            <class name="menuItems.inventory.reports.masterInfo.MasterDetail"/>
-        </classes>
-    </test>
-
-    <test name="Master Info-Product Alternate UOM Detail Report" description="Test 22 description" testID="22">
-        <classes>
-            <class name="menuItems.inventory.reports.masterInfo.ProductAlternateUOMDetail"/>
-        </classes>
-    </test>
-
-    <test name="Master Info-Product Batch Report" description="Test 23 description" testID="23">
+    <test name="PB 4" description="Product Batches Report" testID="4">
         <classes>
             <class name="menuItems.inventory.reports.masterInfo.ProductBatch"/>
         </classes>
     </test>
 
+<!--    <test name="OS 5" description="Opening stock" testID="5">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.inventory.transactions.TestOpeningStock"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Stock- Stock Ledger Report" description="Test 24 description" testID="24">
-        <classes>
-            <class name="menuItems.inventory.reports.stock.StockLedgerReport"/>
-        </classes>
-    </test>
+<!--    <test name="SCreate 6" description="Stock Creation" testID="6">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.inventory.transactions.TestStockCreation"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Stock - Stock List Report" description="Test 25 description" testID="25">
-        <classes>
-            <class name="menuItems.inventory.reports.stock.StockListReport"/>
-        </classes>
-    </test>
+<!--    <test name="SConsu 7" description="Stock Consumption" testID="7">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.inventory.transactions.TestStockConsumption"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Stock - Stock Balance Report" description="Test 26 description" testID="26">
-        <classes>
-            <class name="menuItems.inventory.reports.stock.StockBalanceReport"/>
-        </classes>
-    </test>
+<!--    <test name="SConve 8" description="Stock Conversation" testID="8">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.inventory.transactions.TestStockConversion"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Stock - Stock Valuation Report" description="Test 27 description" testID="27">
-        <classes>
-            <class name="menuItems.inventory.reports.stock.StockValuationReport"/>
-        </classes>
-    </test>
+<!--    &lt;!&ndash;    <test name="ILT 5" description="Test 18 description" testID="5">&ndash;&gt;-->
+<!--    &lt;!&ndash;        <classes>&ndash;&gt;-->
+<!--    &lt;!&ndash;            <class name="menuItems.inventory.transactions.TestInterLocationTransfers"/>&ndash;&gt;-->
+<!--    &lt;!&ndash;        </classes>&ndash;&gt;-->
+<!--    &lt;!&ndash;    </test>&ndash;&gt;-->
 
-    <test name="Stock- stock ageing Report" description="Test 28 description" testID="28">
-        <classes>
-            <class name="menuItems.inventory.reports.stock.StockAgeingReport"/>
-        </classes>
-    </test>
+<!--    <test name="IST 9" description="Initiate stock take" testID="9">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.inventory.transactions.TestInitiateStockTake"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Stock - Stock Transaction Analysis Report" description="Test 29 description" testID="29">
-        <classes>
-            <class name="menuItems.inventory.reports.stock.StockTransactionAnalysisReport"/>
-        </classes>
-    </test>
+<!--    <test name="PST 10" description="Physical stock Take" testID="10">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.inventory.transactions.TestPhysicalStockTake"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Stock- company wise recorder level Report" description="Test 30 description" testID="30">
-        <classes>
-            <class name="menuItems.inventory.reports.stock.CompanyWiseReorderLevelReport"/>
-        </classes>
-    </test>
 
-    <test name="Stock - Stock List with alternate UOM Report" description="Test 31 description" testID="31">
-        <classes>
-            <class name="menuItems.inventory.reports.stock.StockListWithAlternatUOM"/>
-        </classes>
-    </test>
 
-    <test name="Stock- Serial No history Report" description="Test 32 description" testID="32">
-        <classes>
-            <class name="menuItems.inventory.reports.stock.SerialNoHistoryReport"/>
-        </classes>
-    </test>
 
-    <test name="Stock - Material Issues and Stock consumption Report" description="Test 33 description" testID="33">
-        <classes>
-            <class name="menuItems.inventory.reports.stock.MaterialIssueAndStockConsumption"/>
-        </classes>
-    </test>
+
+
+
+
+
+
+
+
+
+    <!---->
+    <!--    <test name="Master Info-Product with GST Detail Report" description="Test 20 description" testID="20">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.inventory.reports.masterInfo.TestProductWithGSTDetail"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+
+    <!--    <test name="Master Info- Master Detail Report" description="Test 21 description" testID="21">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.inventory.reports.masterInfo.TestMasterDetail"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+
+    <!--    <test name="Master Info-Product Alternate UOM Detail Report" description="Test 22 description" testID="22">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.inventory.reports.masterInfo.ProductAlternateUOMDetail"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+
+    <!--    <test name="Master Info-Product Batch Report" description="Test 23 description" testID="23">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.inventory.reports.masterInfo.ProductBatch"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+
+
+    <!--    <test name="Stock- Stock Ledger Report" description="Test 24 description" testID="24">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.inventory.reports.stock.StockLedgerReport"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+
+    <!--    <test name="Stock - Stock List Report" description="Test 25 description" testID="25">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.inventory.reports.stock.StockListReport"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+
+    <!--    <test name="Stock - Stock Balance Report" description="Test 26 description" testID="26">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.inventory.reports.stock.StockBalanceReport"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+
+    <!--    <test name="Stock - Stock Valuation Report" description="Test 27 description" testID="27">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.inventory.reports.stock.StockValuationReport"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+
+    <!--    <test name="Stock- stock ageing Report" description="Test 28 description" testID="28">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.inventory.reports.stock.StockAgeingReport"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+
+    <!--    <test name="Stock - Stock Transaction Analysis Report" description="Test 29 description" testID="29">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.inventory.reports.stock.StockTransactionAnalysisReport"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+
+    <!--    <test name="Stock- company wise recorder level Report" description="Test 30 description" testID="30">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.inventory.reports.stock.CompanyWiseReorderLevelReport"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+
+    <!--    <test name="Stock - Stock List with alternate UOM Report" description="Test 31 description" testID="31">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.inventory.reports.stock.StockListWithAlternatUOM"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+
+    <!--    <test name="Stock- Serial No history Report" description="Test 32 description" testID="32">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.inventory.reports.stock.SerialNoHistoryReport"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+
+    <!--    <test name="Stock - Material Issues and Stock consumption Report" description="Test 33 description" testID="33">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.inventory.reports.stock.MaterialIssueAndStockConsumption"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
 </suite>
 

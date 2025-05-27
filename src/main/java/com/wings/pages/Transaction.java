@@ -1306,10 +1306,10 @@ public abstract class Transaction {
         enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename,dataSet, product);
         enterInput("xpath","//Edit[@Name='Storage Bin * Row "+i+", Not sorted.']",filename,dataSet,"storageBin");
             common.clickElement("xpath", "//Button[@Name='Serial Nos Row "+i+"']");
+            Thread.sleep(2000);
             WebElement increment = common.findWebElement("xpath", "//CheckBox[@Name='Exclude Box Barcode']");
             increment.sendKeys(Keys.TAB,common.getData(filename,dataSet, serialText)+ Common.getRandomChar(), Keys.TAB, common.getData(filename,dataSet, serialQuantity),Keys.ENTER);
             if(Boolean.parseBoolean(common.getData(filename,dataSet,"enableFreeQuantity"))) {
-//            System.out.println("true u can provide quantity and free");
                 WebElement freeQ = common.findWebElement("xpath", "//CheckBox[@Name='Exclude Box Barcode']");
                 freeQ.sendKeys(Keys.TAB, Keys.TAB, Keys.TAB, common.getData(filename,dataSet, freeQuantity),Keys.ENTER);
             }
@@ -3114,20 +3114,25 @@ public abstract class Transaction {
         }
     }
 
+    public void verifyAnalysisReportProductWise(String dataFile,String dataset, List<String> products) throws IOException, ParseException {
+        List<WebElement> elementList = common.findWebElements("xpath", "//Table/*[@Name='Data Panel']/ListItem[contains(@Name,'Row')]");
+        System.out.println("Report Rows Found: " + elementList.size());
+        for (String product:products) {
+            boolean found = false;
+            for (WebElement element : elementList) {
+                String rowText = element.getText();
+//                System.out.println(rowText);
+                if (rowText.contains(product)) {
+                    System.out.println("Verifying row for product: " + product);
+                    bulkVerifyReportData(rowText, dataFile, dataset);
+                    found = true;
+                    break; // Remove this `break` if multiple rows per product need checking
+                }
+            }
+            if (!found) System.out.println("No report row found for product: " + product);
+        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }
 
     public void bulkVerifyReportData(String text, String dataFile,String dataset) throws IOException, ParseException {
         String[] columns = text.split(";");

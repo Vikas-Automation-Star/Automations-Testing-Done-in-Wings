@@ -1,35 +1,34 @@
-package menuItems.finance.transactions.Receipts;
+package menuItems.finance.transactions.Payments;
 
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
-import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.wings.pages.AppLogin;
-import com.wings.pages.finance.transactions.Receipts.ReceiptsFromParties;
+import com.wings.pages.finance.transactions.Payments.PaymentToParties;
 
 import java.awt.*;
 import java.io.IOException;
 
-public class ReceiptsFromPartiesTransaction {
+public class TestPaymentToParties {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
     Common common;
-    String file = "./src/main/resources/menuItems/finance/transaction/receiptFromParty.json";
+    String file = "./src/main/resources/menuItems/finance/transaction/paymentToParties.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
         common=new Common(driver);
         driver = appLogin.launchSingleUserApp();
-        appLogin.singleUserLogin(common.getData(file,"receiptsFromParties","userName"),common.getData(file,"receiptsFromParties","password"));
+        appLogin.singleUserLogin(common.getData(file,"paymentsToParties","userName"),common.getData(file,"paymentsToParties","password"));
     }
 
     @Test
-    public void receiptFromParty() throws IOException, ParseException, InterruptedException, AWTException {
-        ReceiptsFromParties fromParties = new ReceiptsFromParties(driver, file);
-        fromParties.receiptFromParty();
+    public void paymentToParties() throws InterruptedException, AWTException, IOException, ParseException {
+        PaymentToParties paymentToParties = new PaymentToParties(driver, file);
+        paymentToParties.paymentToParty();
     }
 
     @AfterTest

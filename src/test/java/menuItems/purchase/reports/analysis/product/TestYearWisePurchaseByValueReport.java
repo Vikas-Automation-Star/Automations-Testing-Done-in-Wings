@@ -21,7 +21,7 @@ public class TestYearWisePurchaseByValueReport {
     public void beforeTest() throws IOException, InterruptedException, ParseException {
         common=new Common(driver);
         driver = appLogin.launchSingleUserApp();
-        appLogin.singleUserLogin(common.getData(file,"monthWisePurchaseByQuantity","userName"),common.getData(file,"monthWisePurchaseByQuantity","password"));
+        appLogin.singleUserLogin(common.getData(file,"monthWisePurchaseByQuantityGeneral","userName"),common.getData(file,"monthWisePurchaseByQuantityGeneral","password"));
     }
     @Test
     public void yearWisePurchaseByValue() throws InterruptedException, IOException, ParseException {

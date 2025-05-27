@@ -26,13 +26,13 @@ public class TestOpeningStock {
     }
 
     @Test
-    public void openStock() throws InterruptedException, AWTException, IOException, ParseException {
+    public void openingStock() throws InterruptedException, AWTException, IOException, ParseException {
         OpeningStock stockTrans = new OpeningStock(driver, file);
         stockTrans.openingStock();
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 }

@@ -1,0 +1,18 @@
+[
+  {
+    "dataset": "productBatches",
+    "data": {
+      "userName":"AT_User 2",
+      "password": "Wings@123",
+      "product": "AT_Product Batch 1",
+
+
+      "column1": "AT_Product Batch 1",
+      "column2": "",
+      "column3": "Active",
+      "column4": "All Product Batches",
+      "column5": "Product Batches",
+      "column6": "Product Batch"
+    }
+  }
+]

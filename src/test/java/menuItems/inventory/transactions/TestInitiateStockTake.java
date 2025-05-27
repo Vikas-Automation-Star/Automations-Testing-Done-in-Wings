@@ -26,7 +26,7 @@ public class TestInitiateStockTake {
         appLogin.singleUserLogin(common.getData(file,"initiateStockTake","userName"),common.getData(file,"initiateStockTake","password"));
     }
     @Test
-    public void stockConversion() throws InterruptedException, AWTException, IOException, ParseException {
+    public void initiateStockTake() throws InterruptedException, AWTException, IOException, ParseException {
         InitiateStockTake initiateStockTake=new InitiateStockTake(driver,file);
         initiateStockTake.initiateStockTake();
     }

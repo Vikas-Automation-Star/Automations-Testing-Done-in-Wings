@@ -26,59 +26,22 @@ public class ReceiptsFromParties extends Transaction {
     }
 
     public void receiptFromParty() throws InterruptedException, IOException, ParseException, AWTException {
-        navigateToReceiptsFromPartiesMenu();
-        Thread.sleep(1000);
-        lastTransactionName();
-        //enter data
+        navigateToMastersWhen3Steps("Finance","Receipts","Receipts from Parties");
         common.clickElement("xpath","//Edit[@Name='Voucher Type']");
         selectOptionalMaster(common.getData(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']");
-        common.clickElement("xpath","//Edit[@Name='Branch *']");
-        selectAndValidateData(common.getData(dataFile,"branch"),"xpath","//Edit[@Name='Branch *']");
-        common.clickElement("xpath","//Edit[@Name='Trans Currency *']");
-        selectAndValidateData(common.getData(dataFile,"transaction"),"xpath","//Edit[@Name='Trans Currency *']");
-        common.clickElement("xpath", "//Edit[@Name='Party Code']");
-        selectAndValidateData(common.getData(dataFile, "partyCode"),"xpath", "//Edit[@Name='Party Code']");
-        gstTransactionType(common.getData(dataFile,"gstType"));
-        common.clickElement("xpath", "//Edit[@Name='Email']");
-        selectOptionalMaster(common.getData(dataFile, "Email"),"xpath", "//Edit[@Name='Email']");
-        common.clickElement("xpath", "//Edit[@Name='MobileNumber']");
-        selectOptionalMaster(common.getData(dataFile, "MobileNumber"),"xpath", "//Edit[@Name='MobileNumber']");
-        common.clickElement("xpath","//Edit[@Name='Discount Account']");
-        selectOptionalMaster(common.getData(dataFile,"discountAccount"),"xpath","//Edit[@Name='Discount Account']");
-        common.clickElement("xpath", "//Edit[@Name='Executive *']");
-        selectAndValidateData(common.getData(dataFile, "executive"),"xpath", "//Edit[@Name='Executive *']");
+        Thread.sleep(1000);
+        String oldVoucherID =oldTTransactionID();
+        enterInput("xpath","//Edit[@Name='Branch *']",dataFile,"receiptsFromParties","branch");
+        enterInput("xpath", "//Edit[@Name='Party Code']",dataFile,"receiptsFromParties", "partyCode");
+        gstTransactionType("Inter State Sales to Registered Dealers");
+        enterInput("xpath", "//Edit[@Name='Email']",dataFile,"receiptsFromParties", "email");
+        enterInput("xpath", "//Edit[@Name='MobileNumber']",dataFile,"receiptsFromParties", "mobileNum");
+        enterInput("xpath", "//Edit[@Name='Discount Account']", dataFile, "receiptsFromParties","discAct");
+        WebElement dropDown=common.findWebElement("xpath","//Button[@Name='Open']");dropDown.click();dropDown.sendKeys(Keys.DOWN,Keys.ENTER);
+        enterInput("xpath", "//Edit[@Name='Executive *']", dataFile, "receiptsFromParties","executive");
         common.clickElement("xpath","//Edit[@Name='Remarks']");
         selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
         common.clickElement("xpath","//CheckBox[@Name='Advance Receipts']");
 
-        //f3-items
-        Thread.sleep(4000);
-        enterDataAndValidate("xpath", "//Edit[@Name='Cash Account * Row 0, Not sorted.']",dataFile,"cashAccount");
-        //check for bills receivable
-        Thread.sleep(2500);
-        navigateToBillsReceivablesTab();
-        enterData("xpath","//Edit[@Name='Amount Adjusted * Row 0, Not sorted.']",dataFile,"adjustedAmount");
-        common.deleteInvalidRows();
-//        finalAmount=super.singleCheckBoxSelection("xpath","//Table[@Name='BillsReceivable']/*[starts-with(@Name,'Row')]","//Edit[starts-with(@Name,'Towards VNo *')]");
-        //enter into amount in f3
-        navigateToCashTab();
-        List<WebElement> amount = common.findWebElements("xpath", "//Edit[@Name='Amount * Row 0, Not sorted.']");
-        System.out.println("Size :" + amount.size());
-        for (WebElement i : amount) {
-            i.click();
-            i.sendKeys(common.getData(dataFile,"adjustedAmount"), Keys.TAB);
-        }
-        //check summary
-        common.clickElement("xpath", "//TabItem[contains(@Name,'Summary')]");
-        //check summary
-        navigateToOtherInfoTab();
-        for (int j = 0; j < 1; j++) {
-            Robot robot=new Robot();
-            robot.keyPress(KeyEvent.VK_RIGHT);
-            robot.keyRelease(KeyEvent.VK_RIGHT);
-        }
-        //save
-        transactionSave();
-        lastTransactionName();
     }
 }

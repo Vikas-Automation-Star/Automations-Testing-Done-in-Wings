@@ -1,5 +1,6 @@
 package menuItems.inventory.reports.masterInfo;
 
+import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
@@ -14,17 +15,20 @@ import java.io.IOException;
 public class ProductAlternateUOMDetail {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
+    Common common;
+    String file = "./src/main/resources/menuItems/inventory/reports/productUOMDetails.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
+        common=new Common(driver);
         driver = appLogin.launchSingleUserApp();
-        appLogin.singleUserLogin();
+        appLogin.singleUserLogin(common.getData(file,"productUOMDetails","userName"),common.getData(file,"productUOMDetails","password"));
     }
 
     @Test
-    public void productUOMDetails() throws InterruptedException, AWTException {
-        ProductAlternateUOMDetails uomDetails = new ProductAlternateUOMDetails(driver);
-        uomDetails.masterDetails();
+    public void productUOMDetails() throws InterruptedException, AWTException, IOException, ParseException {
+        ProductAlternateUOMDetails uomDetails = new ProductAlternateUOMDetails(driver,file);
+        uomDetails.productAlternateUOMDetails();
     }
 
     @AfterTest

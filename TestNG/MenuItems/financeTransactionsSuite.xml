@@ -37,19 +37,19 @@
                  <!--Payments !-->
     <test name="Payments- Payments to Parties">
         <classes>
-            <class name="menuItems.finance.transactions.Payments.PaymentToPartiesTransaction"/>
+            <class name="menuItems.finance.transactions.Payments.TestPaymentToParties"/>
         </classes>
     </test>
 
     <test name="Payments- Cash Payments">
         <classes>
-            <class name="menuItems.finance.transactions.Payments.CashPaymentsTransaction"/>
+            <class name="menuItems.finance.transactions.Payments.TestCashPayments"/>
         </classes>
     </test>
 
     <test name="Payments- Bank Payments">
         <classes>
-            <class name="menuItems.finance.transactions.Payments.BankPaymentsTransaction"/>
+            <class name="menuItems.finance.transactions.Payments.TestBankPayments"/>
         </classes>
     </test>
 

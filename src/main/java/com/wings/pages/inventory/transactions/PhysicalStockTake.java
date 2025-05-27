@@ -72,6 +72,5 @@ public class PhysicalStockTake extends Transaction {
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
         deleteSingleTransaction("IST1");
-
     }
 }

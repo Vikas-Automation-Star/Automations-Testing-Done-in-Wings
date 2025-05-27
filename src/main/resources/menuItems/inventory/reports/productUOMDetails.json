@@ -1,0 +1,36 @@
+[
+  {
+    "dataset": "productUOMDetails",
+    "data": {
+      "userName":"AT_User 2",
+      "password": "Wings@123",
+      "product": "AT_Product 1"
+    }
+  },
+  {
+    "dataset": "AT_BoxUOM",
+    "data": {
+      "column1": "AT_Product 1",
+      "column2": "P1",
+      "column3": "Nos",
+      "column4": "AT_Box",
+      "column5": "Active",
+      "column6": "Products",
+      "column7": "Product 1",
+      "column8": "All Products"
+    }
+  },
+  {
+    "dataset": "NumbersUOM",
+    "data": {
+      "column1": "AT_Product 1",
+      "column2": "P1",
+      "column3": "Nos",
+      "column4": "Nos",
+      "column5": "Active",
+      "column6": "Products",
+      "column7": "Product 1",
+      "column8": "All Products"
+    }
+  }
+]

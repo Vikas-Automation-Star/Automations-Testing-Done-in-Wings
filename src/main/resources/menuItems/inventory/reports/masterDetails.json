@@ -1,0 +1,115 @@
+[
+  {
+    "dataset": "masterDetails",
+    "data": {
+      "userName":"AT_User 2",
+      "password": "Wings@123",
+      "master": "Suppliers"
+    }
+  },
+  {
+    "dataset": "supplierCompositeInter",
+    "data": {
+
+      "column1": "SCI1",
+      "column2": "AT_Sup_Comp_Inter",
+      "column3": "All Suppliers",
+      "column4": "Suppliers",
+      "column5": "Suppliers",
+      "column6": "Accounts"
+    }
+  },
+  {
+    "dataset": "supplierCompositeIntra",
+    "data": {
+
+      "column1": "SCI1",
+      "column2": "AT_Sup_Comp_Intra",
+      "column3": "All Suppliers",
+      "column4": "Suppliers",
+      "column5": "Suppliers",
+      "column6": "Accounts"
+    }
+  },
+  {
+    "dataset": "supplierExemptedInter",
+    "data": {
+      "column1": "SCI1",
+      "column2": "AT_Sup_Exempted_Inter",
+      "column3": "All Suppliers",
+      "column4": "Suppliers",
+      "column5": "Suppliers",
+      "column6": "Accounts"
+    }
+  },
+
+  {
+    "dataset": "supplierExemptedIntra",
+    "data": {
+      "column1": "SCI1",
+      "column2": "AT_Sup_Exempted_Intra",
+      "column3": "All Suppliers",
+      "column4": "Suppliers",
+      "column5": "Suppliers",
+      "column6": "Accounts"
+    }
+  },
+
+  {
+    "dataset": "supplierRegInter",
+    "data": {
+      "column1": "SCI1",
+      "column2": "AT_Sup_Reg_Inter",
+      "column3": "All Suppliers",
+      "column4": "Suppliers",
+      "column5": "Suppliers",
+      "column6": "Accounts"
+    }
+  },
+  {
+    "dataset": "supplierRegIntra",
+    "data": {
+      "column1": "SCI1",
+      "column2": "AT_Sup_Reg_Intra",
+      "column3": "All Suppliers",
+      "column4": "Suppliers",
+      "column5": "Suppliers",
+      "column6": "Accounts"
+    }
+  },
+
+  {
+    "dataset": "supplierSEZInter",
+    "data": {
+      "column1": "SCI1",
+      "column2": "AT_Sup_SEZ_Inter",
+      "column3": "All Suppliers",
+      "column4": "Suppliers",
+      "column5": "Suppliers",
+      "column6": "Accounts"
+    }
+  },
+  {
+    "dataset": "supplierUnRegInter",
+    "data": {
+      "column1": "SCI1",
+      "column2": "AT_Sup_UnReg_Inter",
+      "column3": "All Suppliers",
+      "column4": "Suppliers",
+      "column5": "Suppliers",
+      "column6": "Accounts"
+    }
+  },
+  {
+    "dataset": "supplierUnRegIntra",
+    "data": {
+      "column1": "SCI1",
+      "column2": "AT_Sup_UnReg_Intra",
+      "column3": "All Suppliers",
+      "column4": "Suppliers",
+      "column5": "Suppliers",
+      "column6": "Accounts"
+    }
+  }
+
+]

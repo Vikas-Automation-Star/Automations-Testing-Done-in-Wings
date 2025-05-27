@@ -28,7 +28,7 @@ public class TestPurchaseVouchersAgainstReceipts {
     }
 
     @Test
-    public void materialReceiptsAgainstOrders() throws IOException, ParseException, InterruptedException, AWTException {
+    public void purchaseVouchersAgainstTheReceipts() throws IOException, ParseException, InterruptedException, AWTException {
         PurchaseOrders purchaseOrders=new PurchaseOrders(driver,file);
         MaterialReceiptsAgainstOrder receiptsAgainstOrder = new MaterialReceiptsAgainstOrder(driver, file);
         String Mrao = receiptsAgainstOrder.materialReceiptsAgainstOrder(purchaseOrders.purchaseOrders());

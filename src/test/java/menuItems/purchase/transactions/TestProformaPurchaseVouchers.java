@@ -27,13 +27,13 @@ public class TestProformaPurchaseVouchers {
     }
 
     @Test
-    public void purchaseVouchers() throws IOException, ParseException, InterruptedException, AWTException {
+    public void proformaPurchaseVouchers() throws IOException, ParseException, InterruptedException, AWTException {
         ProformaPurchaseVouchers proformaPurchaseVouchers=new ProformaPurchaseVouchers(driver,file);
         proformaPurchaseVouchers.proformaPurchaseVouchers();
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 }

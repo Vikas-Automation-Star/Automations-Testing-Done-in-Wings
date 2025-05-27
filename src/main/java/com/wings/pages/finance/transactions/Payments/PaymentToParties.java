@@ -15,8 +15,6 @@ public class PaymentToParties extends Transaction {
     WindowsDriver driver;
     Common common;
     String dataFile;
-    double finalAmount=0.0;
-
 
     public PaymentToParties(WindowsDriver driver, String file) {
         super(driver);
@@ -26,51 +24,16 @@ public class PaymentToParties extends Transaction {
     }
 
     public void paymentToParty() throws InterruptedException, IOException, ParseException, AWTException {
-        navigateToPaymentToPartiesMenu();
+        navigateToMastersWhen3Steps("Finance", "Payments", "Payments to Parties");
+//        common.clickElement("xpath","//Edit[@Name='Voucher Type']");
+//        selectOptionalMaster(common.getData(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']");
         Thread.sleep(1000);
-        lastTransactionName();
-        //enter data
-        common.clickElement("xpath","//Edit[@Name='Voucher Type']");
-        selectOptionalMaster(common.getData(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']");
-        common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        selectAndValidateData(common.getData(dataFile, "branch"),"xpath", "//Edit[@Name='Branch *']");
-        common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
-        selectAndValidateData(common.getData(dataFile, "transaction"),"xpath", "//Edit[@Name='Trans Currency *']");
-        common.clickElement("xpath", "//Edit[@Name='Party Code']");
-        selectAndValidateData(common.getData(dataFile,"PartyCode"),"xpath", "//Edit[@Name='Party Code']");
-        common.clickElement("xpath","//Edit[@Name='Discount Account']");
-        selectOptionalMaster(common.getData(dataFile,"discountAccount"),"xpath","//Edit[@Name='Discount Account']");
-        common.clickElement("xpath", "//Edit[@Name='Executive *']");
-        selectAndValidateData(common.getData(dataFile,"executive"),"xpath", "//Edit[@Name='Executive *']");
-        common.clickElement("xpath","//Edit[@Name='Remarks']");
-        selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
-        //f3-items
-        Thread.sleep(5000);
-        enterDataAndValidate("xpath","//Edit[@Name='Cash Account * Row 0, Not sorted.']",dataFile,"cashAccount");
-        Thread.sleep(1000);
-        common.clickElement("xpath", "//CheckBox[@Name='Inclusive Tax Row 0']");
-        enterData("xpath","//Edit[@Name='HSN Row 0, Not sorted.']",dataFile,"hsn");
-        //bills payable
-        Thread.sleep(1500);
-        navigateToBillsPayablesTab();
-        enterData("xpath","//Edit[@Name='Amount Adjusted * Row 0, Not sorted.']",dataFile,"adjustedAmount");
-        common.deleteInvalidRows();
+        String oldVoucherID = oldTTransactionID();
+        enterInput("xpath", "//Edit[@Name='Branch *']", dataFile, "paymentsToParties", "branch");
+        enterInput("xpath", "//Edit[@Name='Party Code']", dataFile, "paymentsToParties", "partyCode");
+        enterInput("xpath", "//Edit[@Name='Discount Account']", dataFile, "paymentsToParties", "discAct");
+        enterInput("xpath", "//Edit[@Name='Executive *']", dataFile, "paymentsToParties", "executive");
+//        enterInput("xpath", "//Edit[@Name='Remarks']", dataFile, "paymentsToParties","remarks");
 
-//        finalAmount=singleCheckBoxSelection("xpath","//Table[@Name='BillsPayable']/*[starts-with(@Name,'Row')]","//Edit[starts-with(@Name,'Towards VNo *')]");
-//        System.out.println(finalAmount);
-        //navigate back to f3-items and enter amount
-        Thread.sleep(2000);
-        navigateToCashTab();
-        List<WebElement> amount = common.findWebElements("xpath", "//Edit[@Name='Amount * Row 0, Not sorted.']");
-        for (WebElement i : amount) {
-            i.click();
-            i.sendKeys(common.getData(dataFile,"adjustedAmount"), Keys.TAB);
-        }
-
-        common.clickElement("xpath", "//TabItem[contains(@Name,'Summary')]");
-
-        //save
-        transactionSave();
-        lastTransactionName();
     }
 }

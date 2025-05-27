@@ -1,0 +1,38 @@
+[
+  {
+    "dataset": "productWithGST",
+    "data": {
+      "userName":"AT_User 2",
+      "password": "Wings@123",
+
+      "product": "AT_Product 4",
+
+
+      "column1": "P4",
+      "column2": "AT_Product 4",
+      "column3": "SGST/CGST/IGST",
+      "column4": "AT_HSN Code 2",
+      "column5": "GST 18%",
+      "column6": "27-12-2024",
+      "column7": "7777            "
+    }
+  },
+  {
+    "dataset": "productWithGSTCESS",
+    "data": {
+      "userName":"AT_User 2",
+      "password": "Wings@123",
+
+      "product": "AT_Multi batch Product 2",
+
+
+      "column1": "MBP2",
+      "column2": "AT_Multi batch Product 2",
+      "column3": "CESS",
+      "column4": "AT_HSN Code 2",
+      "column5": "CESS 10%",
+      "column6": "27-12-2024",
+      "column7": "7777            "
+    }
+  }
+]

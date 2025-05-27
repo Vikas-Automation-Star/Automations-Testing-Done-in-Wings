@@ -6,6 +6,9 @@ import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class YearWisePurchaseByValue extends Transaction {
     WindowsDriver driver;
@@ -23,7 +26,10 @@ public class YearWisePurchaseByValue extends Transaction {
         navigateToMastersWhen4Steps("Purchase","Analysis","Product","Year Wise Purchase By Value");
         Thread.sleep(2000);
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
-        analysisReport(dataFile,"yearWisePurchaseByValue");
+        List<String> products = Arrays.asList("AT_Multi batch Product 1","AT_Product 1","AT_Product With SN 2");
+        verifyAnalysisReportProductWise( dataFile,"yearWisePurchaseByValueMultiBatch", Collections.singletonList(products.get(0)));
+        verifyAnalysisReportProductWise(dataFile,"yearWisePurchaseByValueGeneral", Collections.singletonList(products.get(1)));
+        verifyAnalysisReportProductWise( dataFile,"yearWisePurchaseByValueSerialNum",Collections.singletonList(products.get(2)));
         closeReport("Year Wise Purchase By Value");
     }
 }
