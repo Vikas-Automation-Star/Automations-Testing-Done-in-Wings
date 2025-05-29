@@ -5,6 +5,7 @@ import com.wings.pages.sales.transactions.DeliveriesAgainstOrders_UnRegIntraExcl
 import com.wings.pages.sales.transactions.SRWIR_SIADUnRegIntraExclusive;
 import com.wings.pages.sales.transactions.SalesInvoiceAgainstDeliveries_UnRegIntraExclusive;
 import com.wings.pages.sales.transactions.SalesOrder_UnRegIntraExclusive;
+import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
@@ -17,29 +18,39 @@ public class TestSalesReturnWIR_SIADUnRegIntraExclusive {
 
         WindowsDriver driver;
         AppLogin appLogin=new AppLogin();
+        Common common;
         String dataFile="./src/main/resources/menuItems/Sales/Transactions/deliveriesAgainstOrder_UnRegIntraExclusive.json";
 
         @BeforeTest
         public void beforeTest() throws IOException, InterruptedException, ParseException {
+            common=new Common(driver);
             driver=appLogin.launchSingleUserApp();
-            appLogin.singleUserLogin();
+            appLogin.singleUserLogin(common.getData(dataFile,"SalesOrder","userName"),common.getData(dataFile,"SalesOrder","password"));
         }
 
         @Test
         public void siad_UnRegIntraExclusivewithInvocie() throws IOException, ParseException, InterruptedException, AWTException {
             SalesOrder_UnRegIntraExclusive unRegIntraExclusive=new SalesOrder_UnRegIntraExclusive(driver,dataFile);
             String []salesOrder=unRegIntraExclusive.intraExclusiveUnReg();
-            System.out.println("first Voucher " +salesOrder[0]); //without space
-            System.out.println("sec Voucher " +salesOrder[1]); //with space
+
+            appLogin.logout();
+            driver = appLogin.launchSingleUserApp();
+            appLogin.singleUserLogin(common.getData(dataFile,"SalesOrder","userName"),common.getData(dataFile,"SalesOrder","password"));
 
             DeliveriesAgainstOrders_UnRegIntraExclusive regIntraExclusive=new DeliveriesAgainstOrders_UnRegIntraExclusive(driver,dataFile);
             String[] deliveriesAgainstOrders=regIntraExclusive.intraExclusiveUnRegDeliveries(salesOrder[1]);
-            System.out.println("deliveriesAgainstOrder 1stV: "+deliveriesAgainstOrders[0]);
-            System.out.println("deliveriesAgainstOrder 2ndV: "+deliveriesAgainstOrders[1]);
+
+            appLogin.logout();
+            driver = appLogin.launchSingleUserApp();
+            appLogin.singleUserLogin(common.getData(dataFile,"SalesOrder","userName"),common.getData(dataFile,"SalesOrder","password"));
 
             SalesInvoiceAgainstDeliveries_UnRegIntraExclusive invoiceAgainstDeliveriesUnRegIntraExclusive=new SalesInvoiceAgainstDeliveries_UnRegIntraExclusive(driver,dataFile);
             String []deliveries=invoiceAgainstDeliveriesUnRegIntraExclusive.UnRegIntraExclusiveSIAD(deliveriesAgainstOrders[1]);
 //            invoiceAgainstDeliveriesUnRegIntraExclusive.UnRegIntraExclusiveSIAD("DELO 9");
+
+            appLogin.logout();
+            driver = appLogin.launchSingleUserApp();
+            appLogin.singleUserLogin(common.getData(dataFile,"SalesOrder","userName"),common.getData(dataFile,"SalesOrder","password"));
 
             SRWIR_SIADUnRegIntraExclusive siadUnRegIntraExclusive=new SRWIR_SIADUnRegIntraExclusive(driver,dataFile);
             siadUnRegIntraExclusive.unRegExclusiveIntraInvoiceRef_SIAD(deliveries[1]);
@@ -48,6 +59,6 @@ public class TestSalesReturnWIR_SIADUnRegIntraExclusive {
 
         @AfterTest
         public void afterTest() throws IOException {
-            appLogin.logout();
+//            appLogin.logout();
         }
     }

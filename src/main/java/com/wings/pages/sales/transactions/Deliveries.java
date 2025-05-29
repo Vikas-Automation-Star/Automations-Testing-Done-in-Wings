@@ -2,6 +2,7 @@ package com.wings.pages.sales.transactions;
 
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.Keys;
@@ -27,7 +28,6 @@ public class Deliveries extends Transaction {
     }
 
     public String salesDeliveries() throws InterruptedException, IOException, ParseException, AWTException {
-
         long start = System.nanoTime();
         System.out.println("deliveries startTime executed in :" + start);
         Thread.sleep(100);
@@ -40,16 +40,12 @@ public class Deliveries extends Transaction {
         //branch selection
         enterInput("xpath", "//Edit[@Name='Branch *']", dataFile, "deliveries", "branch");
         enterInput("xpath", "//Edit[@Name='Location *']", dataFile, "deliveries", "location");
-//        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Branch *']"), common.getData(dataFile, "deliveries", "branch"), "Branch is not validated");
-//        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Location *']"), common.getData(dataFile, "deliveries", "location"), "Location is not validated");
         enterInput("xpath", "//Edit[@Name='Party Code']", dataFile, "deliveries", "partyCode");
         Thread.sleep(1000);
         gstTransactionType("Inter State Sales to Registered Dealers");
         Thread.sleep(2000);
         enterInput("xpath", "//Edit[@Name='Price List']", dataFile, "deliveries", "priceList");
-//        Assert.assertEquals(common.getText("xpath","//Edit[@Name='Price List']"),common.getData(dataFile,"deliveries","priceList"),"Price List isn't validated");
         enterInput("xpath", "//Edit[@Name='Executive *']", dataFile, "deliveries", "executive");
-//        Assert.assertEquals(common.getText("xpath","//Edit[@Name='Executive *']"),common.getData(dataFile,"deliveries","executive"),"Executive isn't validated");
 
         //items
         for (int i = 0; i < Integer.parseInt(common.getData(dataFile,"deliveries", "productCount")); i++) {
@@ -92,6 +88,10 @@ public class Deliveries extends Transaction {
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
         verifyReport(newVoucherID,dataFile,"deliveries");
+
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("deliveries",duration/1000000000);
+
         return newVoucherID;
 //        return " ";
     }

@@ -2,6 +2,7 @@ package com.wings.pages.sales.transactions;
 
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.Keys;
@@ -36,7 +37,6 @@ public class DeliveryReturns extends Transaction {
         System.out.println("oldID: "+ oldVoucherID);
         //branch selection
         enterInput("xpath", "//Edit[@Name='Branch *']", dataFile, "deliveryReturns", "branch");
-//        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Branch *']"), common.getData(dataFile, "deliveryReturns", "branch"), "Branch is not validated");
         enterInput("xpath", "//Edit[@Name='Party Code']", dataFile, "deliveryReturns", "partyCode");
         Thread.sleep(1000);
         gstTransactionType("Inter State Sales to Registered Dealers");
@@ -52,9 +52,7 @@ public class DeliveryReturns extends Transaction {
         for (int i = 0; i < items.size(); i++) {
             WebElement productList = items.get(i);
             String value = productList.getAttribute("LegacyValue");
-//            System.out.println("value: "+value);
             String billType=common.getText("xpath","//Edit[@Name='Pending Type Row "+i+", Not sorted.']");
-//            System.out.println("billType: "+ billType);
 
             if (!"(null)".equals(value) && !"(Create New)".equals(value) && billType.equals("Billed")) {
                 String pendingQty = common.getText("xpath", "//Edit[@Name='Pending Quantity Row " + i + ", Not sorted.']");
@@ -91,6 +89,9 @@ public class DeliveryReturns extends Transaction {
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
         verifyReport(newVoucherID, dataFile, "deliveryReturns");
+
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("delivery returns",duration/1000000000);
 
     }
 }

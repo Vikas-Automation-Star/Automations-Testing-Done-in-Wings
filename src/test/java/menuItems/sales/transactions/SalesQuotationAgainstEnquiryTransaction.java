@@ -36,6 +36,6 @@ public class SalesQuotationAgainstEnquiryTransaction {
 
     @AfterTest
     public void afterTest() throws IOException {
-//        login.logout();
+        login.logout();
     }
 }

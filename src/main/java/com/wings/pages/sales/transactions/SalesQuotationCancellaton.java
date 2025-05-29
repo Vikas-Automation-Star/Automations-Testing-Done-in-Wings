@@ -2,6 +2,7 @@ package com.wings.pages.sales.transactions;
 
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.Keys;
@@ -23,7 +24,7 @@ public class SalesQuotationCancellaton extends Transaction {
 
     public void salesQuotationCancelltion(String voucherNum) throws InterruptedException, IOException, ParseException {
         long start = System.nanoTime();
-        System.out.println("salesEnquiry Cancellation startTime executed in :"+start);
+        System.out.println("sales quotation Cancellation startTime executed in :"+start);
         navigateToSalesQuotationsCancellationMenu();
         Thread.sleep(100);
         String oldVoucherID =oldTTransactionID();
@@ -60,6 +61,8 @@ public class SalesQuotationCancellaton extends Transaction {
         System.out.println("newID: " + newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID, "Voucher Numbers are same. Check Transaction.");
         Thread.sleep(1000);
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Sales Quotation Cancellation",duration/1000000000);
 //        common.clickElement("name", "Sales");
 //        common.clickElement("name", "Enquiries");
 //        common.clickElement("xpath", "//MenuItem[@Name='Sales Enquiry Cancellations']");

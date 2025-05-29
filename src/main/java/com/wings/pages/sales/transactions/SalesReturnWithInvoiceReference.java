@@ -13,43 +13,37 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.List;
 
-public class SRWIR_SIADUnRegInterInclusive extends Transaction {
+public class SalesReturnWithInvoiceReference extends Transaction {
         WindowsDriver driver;
         Common common;
         String dataFile;
 
-        public SRWIR_SIADUnRegInterInclusive(WindowsDriver driver,String file){
+        public SalesReturnWithInvoiceReference(WindowsDriver driver,String file){
             super(driver);
             this.driver=driver;
             common=new Common(driver);
             dataFile=file;
         }
 
-        public void unRegInclusiveInterInvoiceRef_SIAD(String salesInvoiceVoucher) throws InterruptedException, IOException, ParseException, AWTException {
+        public void salesReturnWithInvoiceReference(String salesInvoiceVoucher) throws InterruptedException, IOException, ParseException, AWTException {
             long start = System.nanoTime();
-            System.out.println("SRWIR_SIAD unRegInterInclusive executed in : " +start);
-            Thread.sleep(100);
+            System.out.println("SRWIR_SIAO: " +start);
 
+            Thread.sleep(100);
             navigateToSalesReturnWithInvoiceReferenceMenu();
             Thread.sleep(1000);
             String oldVoucherId=oldTTransactionID();
             System.out.println("old Transaction ID: " + oldVoucherId);
             //general info selection
-            enterInput("xpath", "//Edit[@Name='Branch *']", dataFile, "srwirSalesInvoiceAgnstDeliveries", "branch");
-            enterInput("xpath", "//Edit[@Name='Location *']", dataFile, "srwirSalesInvoiceAgnstDeliveries", "location");
-//        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Branch *']"), common.getData(dataFile, "salesReturn", "branch"), "Branch is not validated");
-//        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Location *']"), common.getData(dataFile, "salesReturn", "location"), "Location is not validated");
-
+            enterInput("xpath", "//Edit[@Name='Branch *']", dataFile, "salesReturnWithInvoiceReference", "branch");
+            enterInput("xpath", "//Edit[@Name='Location *']", dataFile, "salesReturnWithInvoiceReference", "location");
             common.findWebElement("xpath","//Edit[@Name='Sales Invoice No *']").sendKeys(salesInvoiceVoucher, Keys.TAB);
             Thread.sleep(1500);
-            gstTransactionType("Inter State Sales Returns from Unregistered Dealers");
+            gstTransactionType("Inter State Sales Returns from Registered Dealers");
             Thread.sleep(2500);
-
-            enterInput("xpath","//Edit[@Name='Sales Return A/c Code']",dataFile,"srwirSalesInvoiceAgnstDeliveries","salesReturnAccountCode");
-//        Assert.assertEquals(common.getText("xpath","//Edit[@Name='Sales Return A/c']"),common.getData(dataFile,"salesReturn","salesReturnAccount"),"Sales Account Code is not validated");
-//            generalInfoSliderHandle(250);
-            enterInput("xpath", "//Edit[@Name='TCS Trans Nature']", dataFile,"srwirSalesInvoiceAgnstDeliveries", "tcsTransactionNature");
-
+            common.clickElement("xpath","//Button[@Name='OK']");
+            enterInput("xpath","//Edit[@Name='Sales Return A/c Code']",dataFile,"salesReturnWithInvoiceReference","salesReturnAccountCode");
+            enterInput("xpath", "//Edit[@Name='TCS Trans Nature']", dataFile,"salesReturnWithInvoiceReference", "tcsTransactionNature");
             common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 350, 0);
             //select qty
             List<WebElement> items = common.findWebElements("xpath", "//Pane[@Name='  F3 Items  ']/Pane/Pane/Pane/Table[@Name='Items']/*[starts-with(@Name,'Row')]");
@@ -68,9 +62,18 @@ public class SRWIR_SIADUnRegInterInclusive extends Transaction {
             common.deleteInvalidRows();
             common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 700, 0);
             double netValue=Double.parseDouble(common.findWebElement("xpath","//Edit[@AutomationId='NetAmount']").getText().replace(",",""));
+            //charges and Deductions
+            enterChargesAndDeductionsNoSpace(dataFile,"salesReturnWithInvoiceReference");
+            enterOtherCharges(dataFile,"salesReturnWithInvoiceReference");
+
             tcsCalculations(netValue);
             navigateToBillsReceivablesTab();
             common.deleteInvalidRows();
+            //collections
+            enterCash(dataFile,"salesReturnWithInvoiceReference");
+            enterChequesinSRWIRF(dataFile,"salesReturnWithInvoiceReference");
+            enterPostDatedChequesInPurchase(dataFile,"salesReturnWithInvoiceReference");
+            enterChequesPDCInPurchase(dataFile,"salesReturnWithInvoiceReference");
             //summary
             navigateToOtherInfoTab();
             for (int i = 0; i < 2; i++) {
@@ -79,10 +82,17 @@ public class SRWIR_SIADUnRegInterInclusive extends Transaction {
                 robot.keyRelease(KeyEvent.VK_RIGHT);
             }
             quantityPresentInSummary();
-            cessPresentInSummary();
+            grossAmountPresentInSummary();
+            grossMinusDiscountPresentInSummary();
             netAmountPresentInSummary();
+            cessPresentInSummary();
+            iGSTPresentInSummary();
+            tcsAmountPresentInSummary();
             totalValuePresentInSummary();
             totalValueInCompanyCurrenyPresentInSummary();
+            //terms
+            scrollRight(6);
+            termsAndConditions(dataFile,"salesReturnWithInvoiceReference");
             //save
             transactionSave();
             String newVoucherId =newTransactionID(oldVoucherId).replace(" ","");
@@ -95,9 +105,9 @@ public class SRWIR_SIADUnRegInterInclusive extends Transaction {
             Thread.sleep(1000);
             common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
             Thread.sleep(1500);
-            verifyReport(newVoucherId,dataFile,"srwirSalesInvoiceAgnstDeliveries");
+            verifyReport(newVoucherId,dataFile,"salesReturnWithInvoiceReference");
 
             long duration = System.nanoTime() - start;
-            FileUtil.writeTimeLog("SRWIR_SIAD UnRegInterInclusive",duration/1000000000);
+            FileUtil.writeTimeLog("SRWIR_SIAO",duration/1000000000);
         }
     }

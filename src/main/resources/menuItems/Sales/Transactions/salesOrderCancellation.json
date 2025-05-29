@@ -1,8 +1,0 @@
-{
-  "branch": "AT_Branch 1_Reg",
-  "transaction": "INR",
-  "Location": "AT_Branch 1_Location 1",
-  "partyCode": "AT_Cus_Reg_Inter",
-  "quantity": 1,
-  "close": "Sales Orders Cancellation"
-}

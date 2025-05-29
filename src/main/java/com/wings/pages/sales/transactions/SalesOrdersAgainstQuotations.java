@@ -2,6 +2,7 @@ package com.wings.pages.sales.transactions;
 
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.Keys;
@@ -24,7 +25,7 @@ public class SalesOrdersAgainstQuotations extends Transaction {
 
     public String salesOrderAgainstQuotation(String voucherNum) throws InterruptedException, IOException, ParseException {
         long start = System.nanoTime();
-        System.out.println("sales order against quotation startTime executed in :"+start);
+        System.out.println("Sales order against quotation startTime executed in :"+start);
         navigateToSalesOrderAgainstQuotationsMenu();
         Thread.sleep(100);
         String oldVoucherID =oldTTransactionID();
@@ -69,7 +70,7 @@ public class SalesOrdersAgainstQuotations extends Transaction {
         grossAmountPresentInSummary();
         totalValuePresentInSummary();
         totalValueInCompanyCurrenyPresentInSummary();
-       scrollRight(3);
+        scrollRight(3);
 
         //terms and Conditions
         termsAndConditions(dataFile,"salesOrderAgainstQuotation");
@@ -87,6 +88,11 @@ public class SalesOrdersAgainstQuotations extends Transaction {
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
         verifyReport(newVoucherID, dataFile, "salesOrderAgainstQuotation");
+
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("sales order against quotation",duration/1000000000);
+
         return newVoucherID;
+
     }
 }

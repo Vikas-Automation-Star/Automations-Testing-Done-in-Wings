@@ -2,6 +2,7 @@ package com.wings.pages.sales.transactions;
 
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.Keys;
@@ -74,6 +75,9 @@ public class SalesQuotationAgainstEnquiry extends Transaction {
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
         verifyReport(newVoucherID, dataFile, "salesQuotationAgainstEnquiry");
+
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Sales Quotation against Enquiry",duration/1000000000);
         return newVoucherID;
     }
 }

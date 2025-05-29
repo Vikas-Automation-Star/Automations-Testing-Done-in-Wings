@@ -2,6 +2,7 @@ package com.wings.pages.sales.transactions;
 
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.Assert;
@@ -22,6 +23,9 @@ public class SalesQuotations extends Transaction {
     }
 
     public String salesQuotation() throws InterruptedException, IOException, ParseException, AWTException {
+        long start = System.nanoTime();
+        System.out.println("Sales Quotations startTime executed in :"+start);
+
         navigateToSalesQuotationsMenu();
 
         String oldVoucherID =oldTTransactionID();
@@ -68,6 +72,9 @@ public class SalesQuotations extends Transaction {
         common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
         Thread.sleep(1500);
         verifyReport(newVoucherID,dataFile,"salesQuotation");
+
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Sales Quotations",duration/1000000000);
         return newVoucherID;
     }
 

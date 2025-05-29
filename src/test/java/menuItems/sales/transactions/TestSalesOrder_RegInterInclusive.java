@@ -2,6 +2,7 @@ package menuItems.sales.transactions;
 
 import com.wings.pages.AppLogin;
 import com.wings.pages.sales.transactions.SalesOrder_RegInterInclusive;
+import com.wings.pages.sales.transactions.SalesOrders;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
@@ -13,8 +14,8 @@ import java.io.IOException;
 public class TestSalesOrder_RegInterInclusive {
     WindowsDriver driver;
     AppLogin appLogin=new AppLogin();
-//    String dataFile="./src/main/resources/menuItems/Sales/Transactions/SalesOrderRegInterInclusive.json";
-    String dataFile="./src/main/resources/menuItems/Sales/Transactions/deliveriesAgainstOrder_RegInterInclusive.json";
+    String dataFile="./src/main/resources/menuItems/Sales/Transactions/salesEnquiry.json";
+//    String dataFile="./src/main/resources/menuItems/Sales/Transactions/deliveriesAgainstOrder_RegInterInclusive.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
@@ -24,8 +25,10 @@ public class TestSalesOrder_RegInterInclusive {
 
     @Test
     public void regInterInclusive() throws IOException, ParseException, InterruptedException, AWTException {
-        SalesOrder_RegInterInclusive regInterInclusive=new SalesOrder_RegInterInclusive(driver,dataFile);
-        regInterInclusive.interInclusiveReg();
+//        SalesOrder_RegInterInclusive regInterInclusive=new SalesOrder_RegInterInclusive(driver,dataFile);
+//        regInterInclusive.interInclusiveReg();
+        SalesOrders salesOrders=new SalesOrders(driver,dataFile);
+        salesOrders.salesOrders();
     }
 
     @AfterTest

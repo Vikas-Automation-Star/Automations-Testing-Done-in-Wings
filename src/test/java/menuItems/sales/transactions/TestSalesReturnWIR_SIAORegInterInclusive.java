@@ -1,7 +1,6 @@
 package menuItems.sales.transactions;
 
 import com.wings.pages.AppLogin;
-import com.wings.pages.sales.transactions.SRTWIR_RegInterInclusive;
 import com.wings.pages.sales.transactions.SRWIR_SIAORegInterInclusive;
 import com.wings.pages.sales.transactions.SalesInvoiceAgainstOrders_RegInterInclusive;
 import com.wings.pages.sales.transactions.SalesOrder_RegInterInclusive;

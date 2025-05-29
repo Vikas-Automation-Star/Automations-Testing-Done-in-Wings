@@ -2,6 +2,7 @@ package com.wings.pages.sales.transactions;
 
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.Keys;
@@ -65,6 +66,9 @@ public class SalesEnquiryCancellation extends Transaction {
         System.out.println("newID: " + newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID, "Voucher Numbers are same. Check Transaction.");
         Thread.sleep(1000);
+
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Sales Enquiry Cancellation",duration/1000000000);
 //        common.clickElement("name", "Sales");
 //        common.clickElement("name", "Enquiries");
 //        common.clickElement("xpath", "//MenuItem[@Name='Sales Enquiry Cancellations']");

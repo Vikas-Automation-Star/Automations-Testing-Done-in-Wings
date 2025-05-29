@@ -2,6 +2,7 @@ package com.wings.pages.sales.transactions;
 
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.Assert;
@@ -22,9 +23,9 @@ public class SalesInvoiceAgainstOrders extends Transaction {
             dataFile = file;
         }
 
-        public void invoiceAgainstOrders(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
+        public String invoiceAgainstOrders(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
             long start = System.nanoTime();
-            System.out.println("SIAD startTime executed in :"+start);
+            System.out.println("SIAO startTime executed in :"+start);
             Thread.sleep(100);
 
             navigateToSalesInvoiceAgainstOrdersMenu();
@@ -82,9 +83,9 @@ public class SalesInvoiceAgainstOrders extends Transaction {
             //terms
             scrollRight(5);
             termsAndConditions(dataFile,"salesInvoiceAgainstOrders");
-//            //save
+            //save
             transactionSave();
-            String newVoucherID = newTransactionID(oldVoucherID).replace(" ", "");
+            String newVoucherID = newTransactionID(oldVoucherID);
             System.out.println("newID: " + newVoucherID);
             Assert.assertNotEquals(newVoucherID, oldVoucherID, "Voucher Numbers are same. Check Transaction.");
             Thread.sleep(1000);
@@ -96,6 +97,10 @@ public class SalesInvoiceAgainstOrders extends Transaction {
             Thread.sleep(1500);
             verifyReport(newVoucherID, dataFile, "salesInvoiceAgainstOrders");
 
+            long duration = System.nanoTime() - start;
+            FileUtil.writeTimeLog("Sales Invoice Against Orders",duration/1000000000);
+
+            return newVoucherID;
         }
     public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {
         if (common.getData(dataFile,"salesEnquiry", "productType" + i).equals("general")) {

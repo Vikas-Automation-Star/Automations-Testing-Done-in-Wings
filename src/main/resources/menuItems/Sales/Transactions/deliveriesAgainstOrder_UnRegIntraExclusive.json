@@ -2,6 +2,9 @@
   {
     "dataset": "SalesOrder",
     "data": {
+      "userName": "AT_User 1",
+      "password": "Wings@123",
+
       "branch": "AT_Branch 1_Reg",
       "location": "AT_Branch 1_Location 2",
       "partyCode": "CUI3",
