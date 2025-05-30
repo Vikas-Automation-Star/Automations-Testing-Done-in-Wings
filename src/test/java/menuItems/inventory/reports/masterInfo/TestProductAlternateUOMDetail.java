@@ -12,7 +12,7 @@ import com.wings.pages.inventory.reports.masterInfo.ProductAlternateUOMDetails;
 import java.awt.*;
 import java.io.IOException;
 
-public class ProductAlternateUOMDetail {
+public class TestProductAlternateUOMDetail {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
     Common common;

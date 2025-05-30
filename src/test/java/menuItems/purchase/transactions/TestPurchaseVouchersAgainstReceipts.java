@@ -10,7 +10,6 @@ import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
 import java.awt.*;
 import java.io.IOException;
 
@@ -30,10 +29,21 @@ public class TestPurchaseVouchersAgainstReceipts {
     @Test
     public void purchaseVouchersAgainstTheReceipts() throws IOException, ParseException, InterruptedException, AWTException {
         PurchaseOrders purchaseOrders=new PurchaseOrders(driver,file);
+        String purchaseOrderVoucher= purchaseOrders.purchaseOrders();
+
+        appLogin.logout();
+        driver = appLogin.launchSingleUserApp();
+        appLogin.singleUserLogin(common.getData(file,"PurchaseOrders","userName"),common.getData(file,"PurchaseOrders","password"));
+
         MaterialReceiptsAgainstOrder receiptsAgainstOrder = new MaterialReceiptsAgainstOrder(driver, file);
-        String Mrao = receiptsAgainstOrder.materialReceiptsAgainstOrder(purchaseOrders.purchaseOrders());
+        String mrao = receiptsAgainstOrder.materialReceiptsAgainstOrder(purchaseOrderVoucher);
+
+        appLogin.logout();
+        driver = appLogin.launchSingleUserApp();
+        appLogin.singleUserLogin(common.getData(file,"PurchaseOrders","userName"),common.getData(file,"PurchaseOrders","password"));
+
         PurchaseVouchersAgainstReceipt vouchersAgainstReceipt=new PurchaseVouchersAgainstReceipt(driver,file);
-        vouchersAgainstReceipt.purchaseVouchersAgainstReceipt(Mrao);
+        vouchersAgainstReceipt.purchaseVouchersAgainstReceipt(mrao);
     }
 
     @AfterTest

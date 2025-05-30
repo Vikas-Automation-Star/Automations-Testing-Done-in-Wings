@@ -11,7 +11,7 @@ import com.wings.pages.inventory.reports.masterInfo.ProductBatches;
 
 import java.io.IOException;
 
-public class ProductBatch {
+public class TestProductBatch {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
     Common common;

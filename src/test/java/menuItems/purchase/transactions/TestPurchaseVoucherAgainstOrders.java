@@ -30,10 +30,26 @@ public class TestPurchaseVoucherAgainstOrders {
     @Test
     public void PurchaseVouchersAgainstOrders() throws IOException, ParseException, InterruptedException, AWTException {
         PurchaseEnquiries enquiries=new PurchaseEnquiries(driver,file);
+        String purchaseEnquiryVoucher= enquiries.purchaseEnquires();
+
+        appLogin.logout();
+        driver = appLogin.launchSingleUserApp();
+        appLogin.singleUserLogin(common.getData(file,"Purchase Enquiries","userName"),common.getData(file,"Purchase Enquiries","password"));
+
         PurchaseQuotationsAgainstEnquiries quotationsAgainstEnquiries = new PurchaseQuotationsAgainstEnquiries(driver, file);
-        String PQAE =quotationsAgainstEnquiries.purchaseQuotationsAgainstEnquiry(enquiries.purchaseEnquires());
+        String PQAE =quotationsAgainstEnquiries.purchaseQuotationsAgainstEnquiry(purchaseEnquiryVoucher);
+
+        appLogin.logout();
+        driver = appLogin.launchSingleUserApp();
+        appLogin.singleUserLogin(common.getData(file,"Purchase Enquiries","userName"),common.getData(file,"Purchase Enquiries","password"));
+
         PurchaseOrdersAgainstQuotation ordersAgainstQuotation = new PurchaseOrdersAgainstQuotation(driver, file);
         String POAPQ= ordersAgainstQuotation.purchaseOrdersAgainstQuotation(PQAE);
+
+        appLogin.logout();
+        driver = appLogin.launchSingleUserApp();
+        appLogin.singleUserLogin(common.getData(file,"Purchase Enquiries","userName"),common.getData(file,"Purchase Enquiries","password"));
+
         PurchaseVoucherAgainstPurchaseOrders voucherAgainstPurchaseOrders=new PurchaseVoucherAgainstPurchaseOrders(driver,file);
         String PVAPO=voucherAgainstPurchaseOrders.purchaseVoucherAgainstPurchaseOrders(POAPQ);
     }

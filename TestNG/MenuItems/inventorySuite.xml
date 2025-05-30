@@ -4,7 +4,6 @@
         <listener class-name="com.wings.utils.Listener"/>
     </listeners>
 
-
     <test name="PWGST 1" description="Product with GST details Report" testID="1">
         <classes>
             <class name="menuItems.inventory.reports.masterInfo.TestProductWithGSTDetail"/>
@@ -25,7 +24,7 @@
 
     <test name="PB 4" description="Product Batches Report" testID="4">
         <classes>
-            <class name="menuItems.inventory.reports.masterInfo.ProductBatch"/>
+            <class name="menuItems.inventory.reports.masterInfo.TestProductBatch"/>
         </classes>
     </test>
 
@@ -98,13 +97,13 @@
 
     <!--    <test name="Master Info-Product Alternate UOM Detail Report" description="Test 22 description" testID="22">-->
     <!--        <classes>-->
-    <!--            <class name="menuItems.inventory.reports.masterInfo.ProductAlternateUOMDetail"/>-->
+    <!--            <class name="menuItems.inventory.reports.masterInfo.TestProductAlternateUOMDetail"/>-->
     <!--        </classes>-->
     <!--    </test>-->
 
     <!--    <test name="Master Info-Product Batch Report" description="Test 23 description" testID="23">-->
     <!--        <classes>-->
-    <!--            <class name="menuItems.inventory.reports.masterInfo.ProductBatch"/>-->
+    <!--            <class name="menuItems.inventory.reports.masterInfo.TestProductBatch"/>-->
     <!--        </classes>-->
     <!--    </test>-->
 
