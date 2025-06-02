@@ -13,6 +13,7 @@ import java.awt.*;
 import java.io.IOException;
 
 public class TestPurchaseVouchers {
+
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
     Common common;

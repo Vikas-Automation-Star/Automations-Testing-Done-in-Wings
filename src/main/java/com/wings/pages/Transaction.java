@@ -1306,15 +1306,15 @@ public abstract class Transaction {
     public void serialNumberProductInOpeningStock(String filename,String dataSet,String product,String serialText,String freeQuantity,String serialQuantity, int i) throws IOException, ParseException, InterruptedException, AWTException {
         enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename,dataSet, product);
         enterInput("xpath","//Edit[@Name='Storage Bin * Row "+i+", Not sorted.']",filename,dataSet,"storageBin");
-            common.clickElement("xpath", "//Button[@Name='Serial Nos Row "+i+"']");
-            Thread.sleep(2000);
-            WebElement increment = common.findWebElement("xpath", "//CheckBox[@Name='Exclude Box Barcode']");
-            increment.sendKeys(Keys.TAB,common.getData(filename,dataSet, serialText)+ Common.getRandomChar(), Keys.TAB, common.getData(filename,dataSet, serialQuantity),Keys.ENTER);
-            if(Boolean.parseBoolean(common.getData(filename,dataSet,"enableFreeQuantity"))) {
-                WebElement freeQ = common.findWebElement("xpath", "//CheckBox[@Name='Exclude Box Barcode']");
-                freeQ.sendKeys(Keys.TAB, Keys.TAB, Keys.TAB, common.getData(filename,dataSet, freeQuantity),Keys.ENTER);
-            }
-            common.clickElement("xpath", "//Button[@Name='OK']");
+        common.clickElement("xpath", "//Button[@Name='Serial Nos Row "+i+"']");
+        Thread.sleep(2000);
+        WebElement increment = common.findWebElement("xpath", "//CheckBox[@Name='Exclude Box Barcode']");
+        increment.sendKeys(Keys.TAB,common.getData(filename,dataSet, serialText)+ Common.getRandomChar(), Keys.TAB, common.getData(filename,dataSet, serialQuantity),Keys.ENTER);
+        if(Boolean.parseBoolean(common.getData(filename,dataSet,"enableFreeQuantity"))) {
+            WebElement freeQ = common.findWebElement("xpath", "//CheckBox[@Name='Exclude Box Barcode']");
+            freeQ.sendKeys(Keys.TAB, Keys.TAB, Keys.TAB, common.getData(filename,dataSet, freeQuantity),Keys.ENTER);
+        }
+        common.clickElement("xpath", "//Button[@Name='OK']");
     }
 
 
@@ -2586,7 +2586,7 @@ public abstract class Transaction {
     }
     public void enterPostDatedChequesInPurchase(String dataFile,String dataSet) throws IOException, ParseException {
         List<WebElement> elements=common.findWebElements("xpath","//TabItem[contains(@Name,'Cheques')]");
-        System.out.println(elements.get(1).getText());
+//        System.out.println(elements.get(1).getText());
         elements.get(1).click();
 //        common.clickElement("xpath","//TabItem[contains(@Name,'Post Dated Cheques')]");
         enterInput("xpath","//Edit[@Name='Bank Account Code Row 0, Not sorted.']",dataFile,dataSet,"bankAccountCode");
@@ -2610,7 +2610,7 @@ public abstract class Transaction {
 
     public void enterChequesPDCInPurchase(String dataFile,String key) throws IOException, ParseException {
         List<WebElement> elements=common.findWebElements("xpath","//TabItem[contains(@Name,'Cheques')]");
-        System.out.println(elements.get(2).getText());
+//        System.out.println(elements.get(2).getText());
         elements.get(2).click();
 //        common.clickElement("xpath","//TabItem[contains(@Name,'Cheques [PDC]')]");
         enterInput("xpath","//Edit[@Name='Bank Account Code Row 0, Not sorted.']",dataFile,key,"bankAccountCode");
@@ -2629,7 +2629,7 @@ public abstract class Transaction {
     }
     public void enterChequesInPurchase(String dataFile,String dataSet) throws IOException, ParseException {
         List<WebElement> elements=common.findWebElements("xpath","//TabItem[contains(@Name,'Cheques')]");
-        System.out.println(elements.get(0).getText());
+//        System.out.println(elements.get(0).getText());
         elements.get(0).click();
         enterInput("xpath","//Edit[@Name='Bank Account Code Row 0, Not sorted.']",dataFile,dataSet,"bankAccountCode");
         enterInput("xpath","//Edit[@Name='Amount * Row 0, Not sorted.']",dataFile,dataSet,"chequeAmount");
@@ -2649,12 +2649,23 @@ public abstract class Transaction {
         Thread.sleep(1000);
         enterInput("xpath","//Edit[@Name='Drawn On Bank * Row 0, Not sorted.']",dataFile,dataSet,"drawnBankAccCode");
     }
-    public void deductionsPresentInSummary() {
-        String charges = common.findWebElement("xpath", "//Edit[@Name='Deductions']").getText();
-        if ((charges == (null) || "(null)".equals(charges))) {
+    public void deductionsPresentInSummary() throws IOException {
+        long start = System.nanoTime();
+        String deductions = common.findWebElement("xpath", "//Edit[@Name='Deductions']").getText();
+        if ((deductions == (null) || "(null)".equals(deductions))) {
             Assert.fail("Charges field is empty");
         }
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Deductions",duration/1000000000);
     }
+    public void deductionsPresentInSummary(String expectedDeductionsAmount) throws IOException {
+        long start = System.nanoTime();
+        String deductions = common.findWebElement("xpath", "//Edit[@Name='Deductions']").getText();
+        Assert.assertEquals(deductions,expectedDeductionsAmount,"Deduction Amount mismatch in summary");
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Deduction",duration/1000000000);
+    }
+
     public void validateRCMSGSTAmountTabIsNotEmpty() {
         common.clickElement("xpath", "//TabItem[contains(@Name,'RCM SGST')]");
         String rcmSGST = common.findWebElement("xpath", "//Edit[@Name='Tax Amount Row 0, Not sorted.']").getText();
@@ -2717,12 +2728,25 @@ public abstract class Transaction {
         }
     }
 
-    public void quantityPresentInSummary() {
+    public void quantityPresentInSummary() throws IOException {
+
+        long start = System.nanoTime();
         String quantity = common.findWebElement("xpath", "//Edit[contains(@Name,'Quantity')]").getText();
         if ((quantity == (null) || "(null)".equals(quantity))) {
             Assert.fail("Quantity field is empty");
         }
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("quantity",duration/1000000000);
     }
+
+    public void quantityPresentInSummary(String expectedQuantity) throws IOException {
+        long start = System.nanoTime();
+        String quantity = common.findWebElement("xpath", "//Edit[contains(@Name,'Quantity')]").getText();
+        Assert.assertEquals(quantity,expectedQuantity,"Quantity mismatch in summary");
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("quantity",duration/1000000000);
+    }
+
     public void inputQuantityPresentInSummary() {
         String inputQuantity = common.findWebElement("xpath", "//Edit[contains(@Name,'Input Quantity *')]").getText();
         if ((inputQuantity == (null) || "(null)".equals(inputQuantity))) {
@@ -2737,25 +2761,58 @@ public abstract class Transaction {
         }
     }
 
-    public void grossAmountPresentInSummary() {
+    public void grossAmountPresentInSummary() throws IOException {
+        long start = System.nanoTime();
         String grossAmount = common.findWebElement("xpath", "//Edit[contains(@Name,'Gross Amount')]").getText();
         if ((grossAmount == (null) || "(null)".equals(grossAmount))) {
             Assert.fail("GrossAmount field is empty");
         }
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Gross amount",duration/1000000000);
     }
 
-    public void totalValuePresentInSummary() {
+    public void grossAmountPresentInSummary(String expectedGrossAmount) throws IOException {
+        long start = System.nanoTime();
+        String grossAmount = common.findWebElement("xpath", "//Edit[contains(@Name,'Gross Amount')]").getText();
+        Assert.assertEquals(grossAmount,expectedGrossAmount,"GrossAmount mismatch in summary");
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Gross amount",duration/1000000000);
+    }
+
+    public void totalValuePresentInSummary() throws IOException {
+        long start = System.nanoTime();
         String  totalValue = common.findWebElement("xpath", "//Edit[@Name='Total Value']").getText();
         if (totalValue == (null) || "(null)".equals(totalValue)) {
             Assert.fail("Total value field is Empty");
         }
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Total value",duration/1000000000);
     }
 
-    public void totalValueInCompanyCurrenyPresentInSummary() {
+    public void totalValuePresentInSummary(String expectedTotalValueAmount) throws IOException {
+        long start = System.nanoTime();
+        String  totalValue = common.findWebElement("xpath", "//Edit[@Name='Total Value']").getText();
+        Assert.assertEquals(totalValue,expectedTotalValueAmount,"Expected Total value mismatch in summary");
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Total value",duration/1000000000);
+    }
+
+    public void totalValueInCompanyCurrenyPresentInSummary() throws IOException {
+        long start = System.nanoTime();
         String totalValueCompanyCurrency = common.findWebElement("xpath", "//Edit[@Name='Total Value In Company Currency']").getText();
         if (totalValueCompanyCurrency == (null) || "(null)".equals(totalValueCompanyCurrency)) {
             Assert.fail("Total value in Company Currency field is Empty");
         }
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Total value in company currency",duration/1000000000);
+    }
+
+    public void totalValueInCompanyCurrencyPresentInSummary(String expectedTotalValueInCompanyCurrency) throws IOException {
+        long start = System.nanoTime();
+        String totalValueCompanyCurrency = common.findWebElement("xpath", "//Edit[@Name='Total Value In Company Currency']").getText();
+        Assert.assertEquals(totalValueCompanyCurrency,expectedTotalValueInCompanyCurrency,"Expected Total value in company currency mismatch in summary");
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Total value in company currency",duration/1000000000);
     }
 
     public void receivableAmountPresentInSummary() {
@@ -2765,31 +2822,68 @@ public abstract class Transaction {
         }
     }
 
-    public void tcsTaxableValuePresentInSummary() {
+    public void tcsTaxableValuePresentInSummary() throws IOException {
+        long start = System.nanoTime();
         String tcsTaxableValue = common.findWebElement("xpath", "//Edit[@Name='TCS Taxable Value']").getText();
         if ((tcsTaxableValue == (null) || "(null)".equals(tcsTaxableValue))) {
             Assert.fail(" TCSTaxableValue Present In Summary field is empty");
         }
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Taxable value",duration/1000000000);
     }
 
-    public void tcsAmountPresentInSummary() {
+    public void tcsTaxableValuePresentInSummary(String expectedTCSTaxableValue) throws IOException {
+        long start = System.nanoTime();
+        String tcsTaxableValue = common.findWebElement("xpath", "//Edit[@Name='TCS Taxable Value']").getText();
+        Assert.assertEquals(tcsTaxableValue,expectedTCSTaxableValue,"TCS taxable value mismatch in summary");
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("TCS taxable value",duration/1000000000);
+    }
+
+    public void tcsAmountPresentInSummary() throws IOException {
+        long start = System.nanoTime();
         String tcsAmount = common.findWebElement("xpath", "//Edit[@Name='TCS Amount']").getText();
         if ((tcsAmount == (null) || "(null)".equals(tcsAmount))) {
             Assert.fail("TCS Amount field is empty");
         }
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("TCS amount",duration/1000000000);
     }
-    public void tdsAmountPresentInSummary() {
+
+    public void tcsAmountPresentInSummary(String expectedTCSAmount) throws IOException {
+        long start = System.nanoTime();
+        String tcsAmount = common.findWebElement("xpath", "//Edit[@Name='TCS Amount']").getText();
+        Assert.assertEquals(tcsAmount,expectedTCSAmount,"TCS amount mismatch in summary");
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("TCS amount",duration/1000000000);
+    }
+
+    public void tdsAmountPresentInSummary() throws IOException {
+        long start = System.nanoTime();
         String tdsAmount = common.findWebElement("xpath", "//Edit[@Name='TDS Amount']").getText();
         if ((tdsAmount == (null) || "(null)".equals(tdsAmount))) {
             Assert.fail("TCS Amount field is empty");
         }
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("TDS amount",duration/1000000000);
     }
 
-    public void payableAfterTdsPresentInSummary() {
+    public void tdsAmountPresentInSummary(String expectedTDSAmount) throws IOException {
+        long start = System.nanoTime();
+        String tdsAmount = common.findWebElement("xpath", "//Edit[@Name='TDS Amount']").getText();
+        Assert.assertEquals(tdsAmount,expectedTDSAmount,"TDS amount mismatch in summary");
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("TDS amount",duration/1000000000);
+    }
+
+    public void payableAfterTdsPresentInSummary() throws IOException {
+        long start = System.nanoTime();
         String payableAfterTds = common.findWebElement("xpath", "//Edit[@Name='Payable After TDS']").getText();
         if ((payableAfterTds == "0.000")) {
             Assert.fail("Payable After TDS Amount field is empty");
         }
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Payable after TDS",duration/1000000000);
     }
 
     public void totalValueAfterTdsPresentInSummary() {
@@ -2799,26 +2893,69 @@ public abstract class Transaction {
         }
     }
 
+    public void totalValueAfterTdsPresentInSummary(String expectedTotalValueAfterTDS) throws IOException {
+        long start = System.nanoTime();
+        String payableAfterTds = common.findWebElement("xpath", "//Edit[@Name='Total Value After TDS']").getText();
+        Assert.assertEquals(payableAfterTds,expectedTotalValueAfterTDS,"Total value after TDS mismatch in summary");
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Total value after TDS",duration/1000000000);
+    }
 
-    public void netAmountPresentInSummary() {
+
+    public void netAmountPresentInSummary() throws IOException {
+        long start = System.nanoTime();
         String netAmount = common.findWebElement("xpath", "//Edit[@Name='Net Amount']").getText();
         if ((netAmount == (null) || "(null)".equals(netAmount))) {
             Assert.fail("NetAmount field is empty");
         }
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("NetAmount",duration/1000000000);
     }
 
-    public void chargesPresentInSummary() {
+    public void netAmountPresentInSummary(String expectedNetAmount) throws IOException {
+        long start = System.nanoTime();
+        String netAmount = common.findWebElement("xpath", "//Edit[@Name='Net Amount']").getText();
+        Assert.assertEquals(netAmount,expectedNetAmount,"NetAmount mismatch in summary");
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("NetAmount",duration/1000000000);
+    }
+
+
+
+    public void chargesPresentInSummary() throws IOException {
+        long start = System.nanoTime();
         String charges = common.findWebElement("xpath", "//Edit[@Name='Charges']").getText();
         if ((charges == (null) || "(null)".equals(charges))) {
             Assert.fail("Charges field is empty");
         }
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Charges",duration/1000000000);
     }
 
-    public void otherChargesPresentInSummary() {
+    public void chargesPresentInSummary(String expectedChargesAmount) throws IOException {
+        long start = System.nanoTime();
+        String charges = common.findWebElement("xpath", "//Edit[@Name='Charges']").getText();
+        Assert.assertEquals(charges,expectedChargesAmount,"Charges amount mismatch");
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Charges amount mismatch in summary",duration/1000000000);
+    }
+
+    public void otherChargesPresentInSummary() throws IOException {
+        long start = System.nanoTime();
         String otherCharges = common.findWebElement("xpath", "//Edit[@Name='Other Charges']").getText();
         if ((otherCharges == "0.000" )) {
             Assert.fail("Other Charges field is empty");
         }
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Other Charges",duration/1000000000);
+    }
+
+    public void otherChargesPresentInSummary(String expectedOtherChargesAmount) throws IOException {
+        long start = System.nanoTime();
+        String otherCharges = common.findWebElement("xpath", "//Edit[@Name='Other Charges']").getText();
+        Assert.assertEquals(otherCharges,expectedOtherChargesAmount,"Other charges mismatch in summary");
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Other Charges",duration/1000000000);
     }
 
     public void otherDeductionsPresentInSummary() {
@@ -2826,6 +2963,14 @@ public abstract class Transaction {
         if ((otherDeductions == "0.000" )) {
             Assert.fail("Other Deductions field is empty");
         }
+    }
+
+    public void otherDeductionsPresentInSummary(String expectedOtherDeductionsAmount) throws IOException {
+        long start = System.nanoTime();
+        String otherDeductions = common.findWebElement("xpath", "//Edit[@Name='Other Deductions']").getText();
+        Assert.assertEquals(otherDeductions,expectedOtherDeductionsAmount,"Other Deductions mismatch in summary");
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Other Deductions",duration/1000000000);
     }
 
     public void otherChargesSGSTPresentInSummary() {
@@ -2840,6 +2985,21 @@ public abstract class Transaction {
             Assert.fail("Other Deductions SGST field is empty");
         }
     }
+    public void otherDeductionsIGSTPresentInSummary(String expectedOtherDeductionsIGST) throws IOException {
+        long start = System.nanoTime();
+        String otherDeductionsSGST = common.findWebElement("xpath", "//Edit[@Name='Other Deductions IGST']").getText();
+        Assert.assertEquals(otherDeductionsSGST,expectedOtherDeductionsIGST,"Other Deductions IGST  mismatch in summary");
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Other Deductions IGST",duration/1000000000);
+    }
+
+    public void otherDeductionsCESSPresentInSummary(String expectedOtherDeductionsCESS) throws IOException {
+        long start = System.nanoTime();
+        String otherDeductionsSGST = common.findWebElement("xpath", "//Edit[@Name='Other Deductions CESS']").getText();
+        Assert.assertEquals(otherDeductionsSGST,expectedOtherDeductionsCESS,"Other Deductions CESS  mismatch in summary");
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Other Deductions CESS",duration/1000000000);
+    }
 
     public void otherDeductionsCGSTPresentInSummary() {
         String otherDeductionsCGST = common.findWebElement("xpath", "//Edit[@Name='Other Deductions CGST']").getText();
@@ -2848,38 +3008,84 @@ public abstract class Transaction {
         }
     }
 
-    public void servicesAmountPresentInSummary() {
+    public void servicesAmountPresentInSummary() throws IOException {
+        long start = System.nanoTime();
         String serviceAmount = common.findWebElement("xpath", "//Edit[@Name='Service Amount']").getText();
         if ((serviceAmount == "0.000" )) {
             Assert.fail("Service Amount  field is empty");
         }
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Service amount",duration/1000000000);
     }
-    public void servicesIGSTPresentInSummary() {
+
+    public void servicesAmountPresentInSummary(String expectedServiceAmount) throws IOException {
+        long start = System.nanoTime();
+        String serviceAmount = common.findWebElement("xpath", "//Edit[@Name='Service Amount']").getText();
+        Assert.assertEquals(serviceAmount,expectedServiceAmount,"Services amount mismatch in summary");
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Service amount",duration/1000000000);
+    }
+
+    public void servicesIGSTPresentInSummary() throws IOException {
+        long start = System.nanoTime();
         String serviceIGST = common.findWebElement("xpath", "//Edit[@Name='Services IGST']").getText();
         if ((serviceIGST == "0.000" )) {
             Assert.fail("Service IGST  field is empty");
         }
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Services IGST",duration/1000000000);
     }
 
-    public void servicesCESSPresentInSummary() {
+    public void servicesIGSTPresentInSummary(String expectedServicesIGST) throws IOException {
+        long start = System.nanoTime();
+        String serviceIGST = common.findWebElement("xpath", "//Edit[@Name='Services IGST']").getText();
+        Assert.assertEquals(serviceIGST,expectedServicesIGST,"ServicesIGST mismatch in summary");
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Services IGST",duration/1000000000);
+    }
+
+    public void servicesCESSPresentInSummary() throws IOException {
+        long start = System.nanoTime();
         String servicesCESS = common.findWebElement("xpath", "//Edit[@Name='Services CESS']").getText();
         if ((servicesCESS == "0.000" )) {
             Assert.fail("Service CESS  field is empty");
         }
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Services CESS",duration/1000000000);
     }
 
-    public void servicesQuantityPresentInSummary() {
+    public void servicesCESSPresentInSummary(String expectedServicesCESS) throws IOException {
+        long start = System.nanoTime();
+        String servicesCESS = common.findWebElement("xpath", "//Edit[@Name='Services CESS']").getText();
+        Assert.assertEquals(servicesCESS,expectedServicesCESS,"Expected services CESS mismatch in summary");
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Services CESS",duration/1000000000);
+    }
+
+    public void servicesQuantityPresentInSummary(String expectedServiceQuantity) throws IOException {
+        long start = System.nanoTime();
         String servicesQuantity= common.findWebElement("xpath", "//Edit[@Name='Service Quantity']").getText();
-        if ((servicesQuantity == "0.000" )) {
-            Assert.fail("Service CESS  field is empty");
-        }
+        Assert.assertEquals(servicesQuantity,expectedServiceQuantity,"Service quantity mismatch in summary");
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Services quantity",duration/1000000000);
     }
 
-    public void otherCostsAmountPresentInSummary() {
+    public void otherCostsAmountPresentInSummary() throws IOException {
+        long start = System.nanoTime();
         String otherCosts = common.findWebElement("xpath", "//Edit[@Name='Other Cost Amount']").getText();
         if ((otherCosts == "0.000" )) {
             Assert.fail("Service CESS  field is empty");
         }
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Other Costs Amount",duration/1000000000);
+    }
+
+    public void otherCostsAmountPresentInSummary(String expectedOtherCostAmount) throws IOException {
+        long start = System.nanoTime();
+        String otherCosts = common.findWebElement("xpath", "//Edit[@Name='Other Cost Amount']").getText();
+        Assert.assertEquals(otherCosts,expectedOtherCostAmount,"Other costs amount mismatch in summary");
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Other Cost Amount",duration/1000000000);
     }
 
     public void otherCostsPresentInSummary() {
@@ -2898,19 +3104,42 @@ public abstract class Transaction {
     }
 
 
-    public void grossMinusDiscountPresentInSummary() {
+    public void grossMinusDiscountPresentInSummary() throws IOException {
+        long start = System.nanoTime();
         String grossMinusDiscountAmount = common.findWebElement("xpath", "//Edit[contains(@Name,'Gross - Disc')]").getText();
         if ((grossMinusDiscountAmount == (null) || "(null)".equals(grossMinusDiscountAmount))) {
             Assert.fail("grossMinusDiscountAmount field is empty");
         }
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Gross-Discount",duration/1000000000);
     }
 
-    public void iGSTPresentInSummary() {
+    public void grossMinusDiscountPresentInSummary(String expectedGrossMinusDiscount) throws IOException {
+        long start = System.nanoTime();
+        String grossMinusDiscountAmount = common.findWebElement("xpath", "//Edit[contains(@Name,'Gross - Disc')]").getText();
+        Assert.assertEquals(grossMinusDiscountAmount,expectedGrossMinusDiscount,"Gross minus discount mismatch in summary");
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Gross minus discount ",duration/1000000000);
+    }
+
+    public void iGSTPresentInSummary() throws IOException {
+        long start = System.nanoTime();
         String igstPresent = common.findWebElement("xpath", "//Edit[@Name='IGST']").getText();
         if ((igstPresent == (null) || "(null)".equals(igstPresent))) {
             Assert.fail("IGST Present field is empty");
         }
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("IGST",duration/1000000000);
     }
+
+    public void iGSTPresentInSummary(String expectedIGST) throws IOException {
+        long start = System.nanoTime();
+        String igstPresent = common.findWebElement("xpath", "//Edit[@Name='IGST']").getText();
+        Assert.assertEquals(igstPresent,expectedIGST,"IGST mismatch in summary");
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("IGST",duration/1000000000);
+    }
+
     public void RCMIGSTPresentInSummary() {
         String rcmIGST = common.findWebElement("xpath", "//Edit[@Name='RCM IGST']").getText();
         if ((rcmIGST == ("0.000"))) {
@@ -2932,23 +3161,57 @@ public abstract class Transaction {
         }
     }
 
-    public void cashPresentInSummary() {
+    public void cashPresentInSummary() throws IOException {
+        long start = System.nanoTime();
         String cash = common.findWebElement("xpath", "//Edit[@Name='Cash']").getText();
         if ((cash == "0.000" )) {
             Assert.fail("Charges field is empty");
         }
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Cash",duration/1000000000);
     }
-    public void chequesPresentInSummary() {
+
+    public void cashPresentInSummary(String expectedCashAmount) throws IOException {
+        long start = System.nanoTime();
+        String cash = common.findWebElement("xpath", "//Edit[@Name='Cash']").getText();
+        Assert.assertEquals(cash,expectedCashAmount,"Cash amount mismatch in summary tab");
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Cash",duration/1000000000);
+    }
+    public void chequesPresentInSummary() throws IOException {
+        long start = System.nanoTime();
         String cheques = common.findWebElement("xpath", "//Edit[@Name='Cheques']").getText();
         if ((cheques == "0.000" )) {
             Assert.fail("Charges field is empty");
         }
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Cheques",duration/1000000000);
     }
-    public void chequesPDCPresentInSummary() {
+
+    public void chequesPresentInSummary(String expectedChequeAmount) throws IOException {
+        long start = System.nanoTime();
+        String cheques = common.findWebElement("xpath", "//Edit[@Name='Cheques']").getText();
+        Assert.assertEquals(cheques,expectedChequeAmount,"Cheques Amount mismatch in summary");
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Cheques",duration/1000000000);
+    }
+
+    public void chequesPDCPresentInSummary(String expectedChequesPDCAmount) throws IOException {
+        long start = System.nanoTime();
+        String chequesPDC = common.findWebElement("xpath", "//Edit[@Name='Cheques [PDC]']").getText();
+        Assert.assertEquals(chequesPDC,expectedChequesPDCAmount,"Cheques PDC amount mismatch in summary");
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("ChequesPDC",duration/1000000000);
+    }
+
+    public void chequesPDCPresentInSummary() throws IOException {
+        long start = System.nanoTime();
         String chequesPDC = common.findWebElement("xpath", "//Edit[@Name='Cheques [PDC]']").getText();
         if ((chequesPDC == "0.000" )) {
             Assert.fail("Charges field is empty");
         }
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Cheques PDC",duration/1000000000);
     }
 
     public void PDCPresentInSummary() {
@@ -2964,11 +3227,22 @@ public abstract class Transaction {
             Assert.fail("Charges field is empty");
         }
     }
-    public void paymentsValuePresentInSummary() {
+    public void paymentsValuePresentInSummary() throws IOException {
+        long start = System.nanoTime();
         String paymentsValue = common.findWebElement("xpath", "//Edit[@Name='Payments Value']").getText();
         if ((paymentsValue == "0.000")) {
             Assert.fail("Charges field is empty");
         }
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Payments value",duration/1000000000);
+    }
+
+    public void paymentsValuePresentInSummary(String expectedPaymentValue) throws IOException {
+        long start = System.nanoTime();
+        String paymentsValue = common.findWebElement("xpath", "//Edit[@Name='Payments Value']").getText();
+        Assert.assertEquals(paymentsValue,expectedPaymentValue,"Payments value mismatch in the summary");
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Payments value",duration/1000000000);
     }
     public void paymentValuePresentInSummary() {
         String paymentValue = common.findWebElement("xpath", "//Edit[@Name='Payment Value']").getText();
@@ -2983,12 +3257,24 @@ public abstract class Transaction {
         }
     }
 
-    public void payableAMountPresentInSummary() {
+    public void payableAMountPresentInSummary() throws IOException {
+        long start = System.nanoTime();
         String  payableAMount = common.findWebElement("xpath", "//Edit[@Name='Payable Amount']").getText();
         if (( payableAMount == "0.000")) {
             Assert.fail("Charges field is empty");
         }
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Payable amount",duration/1000000000);
     }
+
+    public void payableAMountPresentInSummary(String expectedPayableAmount) throws IOException {
+        long start = System.nanoTime();
+        String  payableAMount = common.findWebElement("xpath", "//Edit[@Name='Payable Amount']").getText();
+        Assert.assertEquals(payableAMount,expectedPayableAmount,"Payable amount mismatch in summary");
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Payable amount ",duration/1000000000);
+    }
+
 
     public void receivableMountPresentInSummary() {
         String  receivableMount = common.findWebElement("xpath", "//Edit[@Name='Receivable Amount']").getText();
@@ -3009,19 +3295,43 @@ public abstract class Transaction {
             Assert.fail("Other Charges field is empty");
         }
     }
-    public void postDatedChequesPresentInSummary() {
+    public void postDatedChequesPresentInSummary() throws IOException {
+        long start = System.nanoTime();
         String postDatedCheques = common.findWebElement("xpath", "//Edit[@Name='Post Dated Cheques']").getText();
         if ((postDatedCheques== "0.000")) {
             Assert.fail("Charges field is empty");
         }
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Post dated cheques",duration/1000000000);
     }
 
-    public void cessPresentInSummary() {
+    public void postDatedChequesPresentInSummary(String expectedPostDatedChequesAmount) throws IOException {
+        long start = System.nanoTime();
+        String postDatedCheques = common.findWebElement("xpath", "//Edit[@Name='Post Dated Cheques']").getText();
+        Assert.assertEquals(postDatedCheques,expectedPostDatedChequesAmount,"Post dated cheques present mismatch in the summary");
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Post dated cheques",duration/1000000000);
+    }
+
+    public void cessPresentInSummary() throws IOException {
+        long start = System.nanoTime();
         String cess = common.findWebElement("xpath", "//Edit[@Name='CESS']").getText();
         if ((cess == (null) || "(null)".equals(cess))) {
             Assert.fail("CESS Present field is empty");
         }
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("CESS",duration/1000000000);
     }
+
+    public void cessPresentInSummary(String expectedCESS) throws IOException {
+        long start = System.nanoTime();
+        String cess = common.findWebElement("xpath", "//Edit[@Name='CESS']").getText();
+        Assert.assertEquals(cess,expectedCESS,"CESS mismatch in summary");
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("CESS",duration/1000000000);
+    }
+
+
     public void RCMCESSPresentInSummary() {
         String rcmCESS = common.findWebElement("xpath", "//Edit[@Name='RCM CESS']").getText();
         if ((rcmCESS == ("0.000"))) {
@@ -3034,18 +3344,39 @@ public abstract class Transaction {
             Assert.fail("FreeQuantity field is empty");
         }
     }
-    public void otherChargesCESSPresentInSummary() {
+    public void otherChargesCESSPresentInSummary() throws IOException {
+        long start = System.nanoTime();
         String otherChargesCESS = common.findWebElement("xpath", "//Edit[@Name='Other Charges CESS']").getText();
         if ((otherChargesCESS == (null) || "(null)".equals(otherChargesCESS))) {
             Assert.fail("Other Charges CESS field is empty");
         }
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Other Charges CESS",duration/1000000000);
     }
 
-    public void otherChargesIGSTPresentInSummary() {
+    public void otherChargesCESSPresentInSummary(String expectedOtherChargesCESS) throws IOException {
+        long start = System.nanoTime();
+        String otherChargesCESS = common.findWebElement("xpath", "//Edit[@Name='Other Charges CESS']").getText();
+        Assert.assertEquals(otherChargesCESS,expectedOtherChargesCESS,"Other Charges CESS mismatch in summary");
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Other Charges CESS",duration/1000000000);
+    }
+    public void otherChargesIGSTPresentInSummary() throws IOException {
+        long start = System.nanoTime();
         String  otherChargesIGST = common.findWebElement("xpath", "//Edit[@Name='Other Charges IGST']").getText();
         if ((otherChargesIGST == (null) || "(null)".equals(otherChargesIGST))) {
             Assert.fail("Other Charges IGST field is empty");
         }
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Other Charges IGST",duration/1000000000);
+    }
+
+    public void otherChargesIGSTPresentInSummary(String expectedOtherChargesIGST) throws IOException {
+        long start = System.nanoTime();
+        String  otherChargesIGST = common.findWebElement("xpath", "//Edit[@Name='Other Charges IGST']").getText();
+        Assert.assertEquals(otherChargesIGST,expectedOtherChargesIGST,"Other charges IGST mismatch in summary");
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Other Charges IGST",duration/1000000000);
     }
 
     //over-loaded methods
@@ -3231,4 +3562,24 @@ public abstract class Transaction {
     public void enterExecutive(String dataFile,String dataset, String key) throws IOException, ParseException {
         enterInput("xpath", "//Edit[@Name='Executive *']", dataFile,dataset, key);
     }
+
+    public void validateStockLedger(String fileName,String dataSet) throws IOException, ParseException, InterruptedException {
+
+        for (int i=0; i < Integer.parseInt(common.getData(fileName,dataSet,"productCount")); i++){
+            navigateToMastersWhen3Steps("Inventory","Stock","Stock Ledger");
+            Thread.sleep(1000);
+            enterInput("xpath","//Tab[@Name='Stock Ledger']/Pane/Pane/Pane/Pane/Edit",fileName,dataSet,"product"+i);
+            common.clickElement("xpath","//TabItem[@Name='Branch']");
+            common.clickElement("xpath","//Tab[@Name='Stock Ledger']/Pane/Pane/Pane/List[@Name=' All ']/RadioButton[@Name=' One ']");
+            enterInput("xpath","//Tab[@Name='Stock Ledger']/Pane/Pane/Pane/Pane/Edit",fileName,dataSet,"branch");
+            common.clickElement("xpath","//TabItem[@Name='Location']");
+            common.clickElement("xpath","//Tab[@Name='Stock Ledger']/Pane/Pane/Pane/List[@Name=' All ']/RadioButton[@Name=' One ']");
+            enterInput("xpath","//Tab[@Name='Stock Ledger']/Pane/Pane/Pane/Pane/Edit",fileName,dataSet,"location");
+            common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
+//            Thread.sleep(1500);
+//            closeReport("Stock Ledger");
+        }
+    }
+
+
 }

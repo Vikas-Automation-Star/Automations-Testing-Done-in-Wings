@@ -58,6 +58,7 @@ public class PurchaseOrderCancellation extends Transaction {
         totalValueInCompanyCurrenyPresentInSummary();
         transactionSave();
         String transactionId = newTransactionID(oldVoucherID);
+        String originalId = newTransactionID(oldVoucherID).replace(" ","");
         common.clickElement("name", "Purchase");
         common.clickElement("name", "Orders");
         common.clickElement("xpath", "//MenuItem[@Name='Purchase Orders Cancellation'][2]");
@@ -67,7 +68,7 @@ public class PurchaseOrderCancellation extends Transaction {
         verifyReportProductWise(transactionId,dataFile,"PurchaseOrdersCancellation", Collections.singletonList(products.get(0)));
         verifyReportProductWise(transactionId,dataFile,"PurchaseOrdersCancellationMultiBatchProduct", Collections.singletonList(products.get(1)));
         verifyReportProductWise(transactionId,dataFile,"PurchaseOrdersCancellationSerialNumberProduct", Collections.singletonList(products.get(2)));
-        System.out.println("All reports are verified");
+        deleteSingleTransaction(originalId);
     }
 
 }

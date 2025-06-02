@@ -2,6 +2,7 @@ package com.wings.pages.purchase.transactions;
 
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import com.wings.utils.FileUtil;
 import com.wings.utils.Time;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
@@ -42,7 +43,7 @@ public class PurchaseVoucher extends Transaction {
         enterInput("xpath","//Edit[@Name='TDS Trans Nature']", dataFile,"PurchaseVoucher","tdsNature");
         enterInput("xpath", "//Edit[@Name='Price List']", dataFile, "PurchaseVoucher","priceList");
         enterInput("xpath", "//Edit[@Name='Executive *']", dataFile, "PurchaseVoucher","executive");
-//        //F3-Items
+
         for (int i = 0; i < Integer.parseInt(common.getData(dataFile,"PurchaseVoucher", "productCount")); i++) {
             addProduct(i);
         }
@@ -65,39 +66,45 @@ public class PurchaseVoucher extends Transaction {
         enterChequesPDCInPurchase(dataFile,"PurchaseVoucher");
         enterOtherInfo(dataFile,"PurchaseVoucher");
         termsAndConditions(dataFile,"PurchaseVoucher");
-        navigateToSummaryTab();
-        quantityPresentInSummary();
-        servicesAmountPresentInSummary();
-        grossAmountPresentInSummary();
-        grossMinusDiscountPresentInSummary();
-        iGSTPresentInSummary();
-        cessPresentInSummary();
-        servicesIGSTPresentInSummary();
-        servicesCESSPresentInSummary();
-        netAmountPresentInSummary();
-        chargesPresentInSummary();
-        deductionsPresentInSummary();
-        otherChargesPresentInSummary();
-        otherChargesIGSTPresentInSummary();
-        otherChargesCESSPresentInSummary();
-        otherDeductionsPresentInSummary();
-        otherDeductionsSGSTPresentInSummary();
-        otherDeductionsCGSTPresentInSummary();
-        otherCostsAmountPresentInSummary();
-        tcsTaxableValuePresentInSummary();
-        tcsAmountPresentInSummary();
-        tdsAmountPresentInSummary();
-        totalValueAfterTdsPresentInSummary();
-        totalValuePresentInSummary();
-        totalValueInCompanyCurrenyPresentInSummary();
-        cashPresentInSummary();
-        chequesPresentInSummary();
-        postDatedChequesPresentInSummary();
-        chequesPDCPresentInSummary();
-        paymentsValuePresentInSummary();
-        payableAMountPresentInSummary();
 
-        //save
+        long start = System.nanoTime();
+
+        navigateToSummaryTab();
+        quantityPresentInSummary(common.getData(dataFile,"PurchaseVoucher","expectedQuantity"));
+        servicesQuantityPresentInSummary(common.getData(dataFile,"PurchaseVoucher","expectedServiceQuantity"));
+        grossAmountPresentInSummary(common.getData(dataFile,"PurchaseVoucher","expectedGrossAmount"));
+        servicesAmountPresentInSummary(common.getData(dataFile,"PurchaseVoucher","expectedServiceAmount"));
+        grossMinusDiscountPresentInSummary(common.getData(dataFile,"PurchaseVoucher","expectedGrossMinusDiscount"));
+        iGSTPresentInSummary(common.getData(dataFile,"PurchaseVoucher","expectedIGST"));
+        cessPresentInSummary(common.getData(dataFile,"PurchaseVoucher","expectedCESS"));
+        servicesIGSTPresentInSummary(common.getData(dataFile,"PurchaseVoucher","expectedServicesIGST"));
+        servicesCESSPresentInSummary(common.getData(dataFile,"PurchaseVoucher","expectedServicesCESS"));
+        netAmountPresentInSummary(common.getData(dataFile,"PurchaseVoucher","expectedNetAmount"));
+        chargesPresentInSummary(common.getData(dataFile,"PurchaseVoucher","expectedChargesAmount"));
+        deductionsPresentInSummary(common.getData(dataFile,"PurchaseVoucher","expectedDeductionsAmount"));
+        otherChargesPresentInSummary(common.getData(dataFile,"PurchaseVoucher","expectedOtherChargesAmount"));
+        otherChargesIGSTPresentInSummary(common.getData(dataFile,"PurchaseVoucher","expectedOtherChargesIGST"));
+        otherChargesCESSPresentInSummary(common.getData(dataFile,"PurchaseVoucher","expectedOtherChargesCESS"));
+        otherDeductionsPresentInSummary(common.getData(dataFile,"PurchaseVoucher","expectedOtherDeductionsAmount"));
+        otherDeductionsIGSTPresentInSummary(common.getData(dataFile,"PurchaseVoucher","expectedOtherDeductionsIGST"));
+        otherDeductionsCESSPresentInSummary(common.getData(dataFile,"PurchaseVoucher","expectedOtherDeductionsCESS"));
+        otherCostsAmountPresentInSummary(common.getData(dataFile,"PurchaseVoucher","expectedOtherCostAmount"));
+        tcsTaxableValuePresentInSummary(common.getData(dataFile,"PurchaseVoucher","expectedTCSTaxableValue"));
+        tcsAmountPresentInSummary(common.getData(dataFile,"PurchaseVoucher","expectedTCSAmount"));
+        tdsAmountPresentInSummary(common.getData(dataFile,"PurchaseVoucher","expectedTDSAmount"));
+        totalValueAfterTdsPresentInSummary(common.getData(dataFile,"PurchaseVoucher","expectedTotalValueAfterTDS"));
+        totalValuePresentInSummary(common.getData(dataFile,"PurchaseVoucher","expectedTotalValueAmount"));
+        totalValueInCompanyCurrencyPresentInSummary(common.getData(dataFile,"PurchaseVoucher","expectedTotalValueInCompanyCurrency"));
+        cashPresentInSummary(common.getData(dataFile,"PurchaseVoucher","expectedCashAmount"));
+        chequesPresentInSummary(common.getData(dataFile,"PurchaseVoucher","expectedChequeAmount"));
+        postDatedChequesPresentInSummary(common.getData(dataFile,"PurchaseVoucher","expectedPostDatedChequesAmount"));
+        chequesPDCPresentInSummary(common.getData(dataFile,"PurchaseVoucher","expectedChequesPDCAmount"));
+        paymentsValuePresentInSummary(common.getData(dataFile,"PurchaseVoucher","expectedPaymentValue"));
+        payableAMountPresentInSummary(common.getData(dataFile,"PurchaseVoucher","expectedPayableAmount"));
+
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("Purchase Voucher only Summary",duration/1000000000);
+
         transactionSave();
         String newVoucherID =newTransactionID(oldVoucherID);
         System.out.println("newID: "+newVoucherID);

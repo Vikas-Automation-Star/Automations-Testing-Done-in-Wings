@@ -92,7 +92,7 @@ public class PurchaseReturnsWithInvoicesReference extends Transaction {
         grossMinusDiscountPresentInSummary();
         iGSTPresentInSummary();
         cessPresentInSummary();
-        ;netAmountPresentInSummary();
+        netAmountPresentInSummary();
         chargesPresentInSummary();
         deductionsPresentInSummary();
         otherChargesPresentInSummary();

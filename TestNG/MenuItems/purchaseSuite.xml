@@ -4,8 +4,6 @@
         <listener class-name="com.wings.utils.Listener"/>
     </listeners>
 
-    <!--purchase Enquiries Start-->
-
     <test name="PE 1" description="Purchase Enquiries" testID="1">
         <classes>
             <class name="menuItems.purchase.transactions.TestPurchaseEnquiries"/>

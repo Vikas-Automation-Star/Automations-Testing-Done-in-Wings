@@ -29,19 +29,24 @@ public class TestPurchaseReturnsWithInvoicesReference {
         PurchaseEnquiries enquiries=new PurchaseEnquiries(driver,file);
         PurchaseQuotationsAgainstEnquiries quotationsAgainstEnquiries = new PurchaseQuotationsAgainstEnquiries(driver, file);
         String PQAE =quotationsAgainstEnquiries.purchaseQuotationsAgainstEnquiry(enquiries.purchaseEnquires());
+
         appLogin.logout();
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin(common.getData(file,"Purchase Enquiries","userName"),common.getData(file,"Purchase Enquiries","password"));
+
         PurchaseOrdersAgainstQuotation ordersAgainstQuotation = new PurchaseOrdersAgainstQuotation(driver, file);
         String POAPQ= ordersAgainstQuotation.purchaseOrdersAgainstQuotation(PQAE);
+
         appLogin.logout();
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin(common.getData(file,"Purchase Enquiries","userName"),common.getData(file,"Purchase Enquiries","password"));
+
         PurchaseVoucherAgainstPurchaseOrders voucherAgainstPurchaseOrders=new PurchaseVoucherAgainstPurchaseOrders(driver,file);
         String PVAPO=voucherAgainstPurchaseOrders.purchaseVoucherAgainstPurchaseOrders(POAPQ);
         appLogin.logout();
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin(common.getData(file,"Purchase Enquiries","userName"),common.getData(file,"Purchase Enquiries","password"));
+
         PurchaseReturnsWithInvoicesReference prwir = new PurchaseReturnsWithInvoicesReference(driver, file);
         prwir.purchaseReturnsWithInvoicesReference(PVAPO);
     }

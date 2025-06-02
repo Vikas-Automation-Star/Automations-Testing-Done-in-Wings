@@ -99,7 +99,34 @@ public class PurchaseVoucherAgainstPurchaseOrders extends Transaction {
 
         long start5 = System.nanoTime();
 
-        navigateToSummaryTab();quantityPresentInSummary();grossAmountPresentInSummary();servicesAmountPresentInSummary();grossMinusDiscountPresentInSummary();iGSTPresentInSummary();cessPresentInSummary();servicesIGSTPresentInSummary();servicesCESSPresentInSummary();netAmountPresentInSummary();chargesPresentInSummary();deductionsPresentInSummary();otherChargesPresentInSummary();otherChargesIGSTPresentInSummary();otherChargesCESSPresentInSummary();otherCostsAmountPresentInSummary();tcsTaxableValuePresentInSummary();tcsAmountPresentInSummary();tdsAmountPresentInSummary();payableAfterTdsPresentInSummary();totalValuePresentInSummary();totalValueInCompanyCurrenyPresentInSummary();cashPresentInSummary();chequesPresentInSummary();postDatedChequesPresentInSummary();chequesPDCPresentInSummary();paymentsValuePresentInSummary();payableAMountPresentInSummary();
+        navigateToSummaryTab();
+        quantityPresentInSummary();
+        grossAmountPresentInSummary();
+        servicesAmountPresentInSummary();
+        grossMinusDiscountPresentInSummary();
+        iGSTPresentInSummary();
+        cessPresentInSummary();
+        servicesIGSTPresentInSummary();
+        servicesCESSPresentInSummary();
+        netAmountPresentInSummary();
+        chargesPresentInSummary();
+        deductionsPresentInSummary();
+        otherChargesPresentInSummary();
+        otherChargesIGSTPresentInSummary();
+        otherChargesCESSPresentInSummary();
+        otherCostsAmountPresentInSummary();
+        tcsTaxableValuePresentInSummary();
+        tcsAmountPresentInSummary();
+        tdsAmountPresentInSummary();
+        payableAfterTdsPresentInSummary();
+        totalValuePresentInSummary();
+        totalValueInCompanyCurrenyPresentInSummary();
+        cashPresentInSummary();
+        chequesPresentInSummary();
+        postDatedChequesPresentInSummary();
+        chequesPDCPresentInSummary();
+        paymentsValuePresentInSummary();
+        payableAMountPresentInSummary();
 
         long duration5 = System.nanoTime() - start5;
         FileUtil.writeTimeLog("purchaseVoucherAgainstPurchaseOrders only summary",duration5/1000000000);

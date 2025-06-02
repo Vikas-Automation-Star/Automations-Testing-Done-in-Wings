@@ -32,6 +32,11 @@ public class TestPurchaseOrdersAgainstQuotations {
         PurchaseEnquiries enquiries=new PurchaseEnquiries(driver,file);
         PurchaseQuotationsAgainstEnquiries quotationsAgainstEnquiries = new PurchaseQuotationsAgainstEnquiries(driver, file);
         String PQAE =quotationsAgainstEnquiries.purchaseQuotationsAgainstEnquiry(enquiries.purchaseEnquires());
+
+        appLogin.logout();
+        driver = appLogin.launchSingleUserApp();
+        appLogin.singleUserLogin(common.getData(file,"Purchase Enquiries","userName"),common.getData(file,"Purchase Enquiries","password"));
+
         PurchaseOrdersAgainstQuotation POAQ = new PurchaseOrdersAgainstQuotation(driver, file);
         POAQ.purchaseOrdersAgainstQuotation(PQAE);
     }
