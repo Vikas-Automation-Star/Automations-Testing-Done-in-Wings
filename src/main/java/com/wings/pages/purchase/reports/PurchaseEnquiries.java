@@ -5,7 +5,6 @@ import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.openqa.selenium.WebElement;
 
-import java.awt.*;
 import java.io.IOException;
 import java.util.List;
 
@@ -19,7 +18,7 @@ public class PurchaseEnquiries extends Transaction {
         common = new Common(this.driver);
     }
 
-    public void purchaseEnquiry() throws InterruptedException, AWTException, IOException {
+    public void purchaseEnquiry() throws InterruptedException, IOException {
         common.clickElement("name", "Purchase");
         common.clickElement("name", "Enquiries");
         common.clickElement("xpath", "//MenuItem[@Name='Purchase Enquiries'][2]");
