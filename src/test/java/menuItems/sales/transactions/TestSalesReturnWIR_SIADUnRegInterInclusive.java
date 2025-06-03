@@ -1,10 +1,8 @@
 package menuItems.sales.transactions;
 
 import com.wings.pages.AppLogin;
-import com.wings.pages.sales.transactions.DeliveriesAgainstOrders_UnRegInterInclusive;
-import com.wings.pages.sales.transactions.SRWIR_SIADUnRegInterInclusive;
-import com.wings.pages.sales.transactions.SalesInvoiceAgainstDeliveries_UnRegInterInclusive;
-import com.wings.pages.sales.transactions.SalesOrder_UnRegInterInclusive;
+import com.wings.pages.sales.transactions.*;
+import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
@@ -17,33 +15,50 @@ public class TestSalesReturnWIR_SIADUnRegInterInclusive {
 
         WindowsDriver driver;
         AppLogin appLogin=new AppLogin();
-        String dataFile="./src/main/resources/menuItems/Sales/Transactions/deliveriesAgainstOrder_UnRegInterInclusive.json";
+    Common common;
+    String dataFile="./src/main/resources/menuItems/Sales/Transactions/salesEnquiry.json";
+//    String dataFile="./src/main/resources/menuItems/Sales/Transactions/deliveriesAgainstOrder_UnRegInterInclusive.json";
 
         @BeforeTest
         public void beforeTest() throws IOException, InterruptedException, ParseException {
+            common=new Common(driver);
             driver=appLogin.launchSingleUserApp();
-            appLogin.singleUserLogin();
+            appLogin.singleUserLogin(common.getData(dataFile,"salesEnquiry","userName"),common.getData(dataFile,"salesEnquiry","password"));
         }
 
         @Test
         public void siad_UnRegInterInclusiveWithInvoice() throws IOException, ParseException, InterruptedException, AWTException {
-            SalesOrder_UnRegInterInclusive unRegInterInclusive =new SalesOrder_UnRegInterInclusive(driver,dataFile);
-//            String []salesOrder=unRegInterInclusive.interInclusiveUnReg();
-//            System.out.println("first Voucher " +salesOrder[0]); //without space
-//            System.out.println("sec Voucher " +salesOrder[1]); //with space
+            SalesOrders salesOrders=new SalesOrders(driver,dataFile);
+            String salesOrderVoucher=salesOrders.salesOrders();
 
-            DeliveriesAgainstOrders_UnRegInterInclusive againstOrdersUnRegInterInclusive=new DeliveriesAgainstOrders_UnRegInterInclusive(driver,dataFile);
-            String []deliveriesAgainstOrders=againstOrdersUnRegInterInclusive.interInclusiveUnRegDeliveries(unRegInterInclusive.interInclusiveUnReg()[1]);
-//            System.out.println("deliveriesAgainstOrder 1stV: "+deliveriesAgainstOrders[0]);
-//            System.out.println("deliveriesAgainstOrder 2ndV: "+deliveriesAgainstOrders[1]);
+            appLogin.logout();
+            driver = appLogin.launchSingleUserApp();
+            appLogin.singleUserLogin(common.getData(dataFile,"salesEnquiry","userName"),common.getData(dataFile,"salesEnquiry","password"));
 
+            DeliveriesAgainstOrdersTransaction deliveriesAgainstOrdersTransaction=new DeliveriesAgainstOrdersTransaction(driver,dataFile);
+            String deliveriesAgainstOrdersVoucher=deliveriesAgainstOrdersTransaction.deliveriesAgainstOrders(salesOrderVoucher);
 
-            SalesInvoiceAgainstDeliveries_UnRegInterInclusive againstDeliveries_unRegInterInclusive=new SalesInvoiceAgainstDeliveries_UnRegInterInclusive(driver,dataFile);
-            String []againstDeliveries=againstDeliveries_unRegInterInclusive.UnRegInterInclusiveSIAD(deliveriesAgainstOrders[1]);
+            appLogin.logout();
+            driver = appLogin.launchSingleUserApp();
+            appLogin.singleUserLogin(common.getData(dataFile,"salesEnquiry","userName"),common.getData(dataFile,"salesEnquiry","password"));
 
-            SRWIR_SIADUnRegInterInclusive srwirSiadUnRegInterInclusive=new SRWIR_SIADUnRegInterInclusive(driver,dataFile);
-            srwirSiadUnRegInterInclusive.unRegInclusiveInterInvoiceRef_SIAD(againstDeliveries[1]);
-//            srwirSiadUnRegInterInclusive.unRegInclusiveInterInvoiceRef_SIAD("SIAD 6");
+            SalesInvoiceAgainstDeliveries salesInvoiceAgainstDeliveries=new SalesInvoiceAgainstDeliveries(driver,dataFile);
+            String salesInvoiceAgainstDelVoucher=salesInvoiceAgainstDeliveries.salesInvoiceAgainstDeliveries(deliveriesAgainstOrdersVoucher);
+
+            appLogin.logout();
+            driver = appLogin.launchSingleUserApp();
+            appLogin.singleUserLogin(common.getData(dataFile,"salesEnquiry","userName"),common.getData(dataFile,"salesEnquiry","password"));
+
+            SalesReturnWithInvoiceReference salesReturnWithInvoiceReference=new SalesReturnWithInvoiceReference(driver,dataFile);
+            salesReturnWithInvoiceReference.salesReturnWithInvoiceReference(salesInvoiceAgainstDelVoucher);
+
+//            SalesOrder_UnRegInterInclusive unRegInterInclusive =new SalesOrder_UnRegInterInclusive(driver,dataFile);
+//            DeliveriesAgainstOrders_UnRegInterInclusive againstOrdersUnRegInterInclusive=new DeliveriesAgainstOrders_UnRegInterInclusive(driver,dataFile);
+//            String []deliveriesAgainstOrders=againstOrdersUnRegInterInclusive.interInclusiveUnRegDeliveries(unRegInterInclusive.interInclusiveUnReg()[1]);
+//            SalesInvoiceAgainstDeliveries_UnRegInterInclusive againstDeliveries_unRegInterInclusive=new SalesInvoiceAgainstDeliveries_UnRegInterInclusive(driver,dataFile);
+//            String []againstDeliveries=againstDeliveries_unRegInterInclusive.UnRegInterInclusiveSIAD(deliveriesAgainstOrders[1]);
+//            SRWIR_SIADUnRegInterInclusive srwirSiadUnRegInterInclusive=new SRWIR_SIADUnRegInterInclusive(driver,dataFile);
+//            srwirSiadUnRegInterInclusive.unRegInclusiveInterInvoiceRef_SIAD(againstDeliveries[1]);
 
         }
 

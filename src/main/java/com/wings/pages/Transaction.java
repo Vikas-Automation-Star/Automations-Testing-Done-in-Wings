@@ -1244,16 +1244,6 @@ public abstract class Transaction {
         common.clickElement("xpath", "//Button[@Name='OK']");
     }
 
-    public void multiBatchProduct_New(String filename,String dataSet,String transType,String product,String quantity,String freeQuantity,int i) throws IOException, ParseException {
-        if (common.getData(filename,dataSet,transType).equalsIgnoreCase("Sales Order") || common.getData(filename,dataSet,transType).equalsIgnoreCase("Purchase Order")||common.getData(filename,dataSet,transType).equalsIgnoreCase("Purchase Voucher")||common.getData(filename,dataSet,transType).contains("Sales")) {
-            enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, dataSet, product);
-            common.clickElement("xpath", "//Edit[@Name='Quantity * Row "+i+", Not sorted.']");
-            enterData("xpath", "//Edit[@Name='Quantity * Row "+i+", Not sorted.']", filename, dataSet, quantity);
-            if (Boolean.parseBoolean(common.getData(filename, dataSet, "enableFreeQuantity"))) {
-                enterData("xpath", "//Edit[@Name='Free Quantity Row " + i + ", Not sorted.']", filename, dataSet, freeQuantity);
-            }
-        }
-    }
     public void generalProduct_New(String filename,String dataSet, String product, String quantity,String freeQuantity, int i) throws IOException, ParseException {
         enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename,dataSet, product);
         common.clickElement("xpath", "//Edit[@Name='Quantity * Row "+i+", Not sorted.']");
@@ -1273,16 +1263,6 @@ public abstract class Transaction {
         }
     }
 
-    public void serialNumProduct_New(String filename,String dataSet,String transType,String product,String quantity,String freeQuantity,int i) throws IOException, ParseException {
-        if (common.getData(filename,dataSet,transType).equalsIgnoreCase("Sales Order") || common.getData(filename,dataSet,transType).equalsIgnoreCase("Purchase Order") || common.getData(filename,dataSet,transType).contains("Sales")) {
-            enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, dataSet, product);
-            common.clickElement("xpath", "//Edit[@Name='Quantity * Row "+i+", Not sorted.']");
-            enterData("xpath", "//Edit[@Name='Quantity * Row "+i+", Not sorted.']", filename, dataSet, quantity);
-            if (Boolean.parseBoolean(common.getData(filename, dataSet, "enableFreeQuantity"))) {
-                enterData("xpath", "//Edit[@Name='Free Quantity Row " + i + ", Not sorted.']", filename, dataSet, freeQuantity);
-            }
-        }
-    }
 
     public void serialNumProductDirectQuantity(String filename,String dataSet,String product,String quantity,String freeQuantity,int i) throws IOException, ParseException {
         enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, dataSet, product);
@@ -1335,6 +1315,7 @@ public abstract class Transaction {
             enterData("xpath", "//Edit[@Name='Free Quantity Row " + i + ", Not sorted.']", filename, dataSet, freeQuantity);
         }
     }
+
     //deliveries against orders
     public void generalProductInDELO(String filename,String dataset, String product, String quantity, int i) throws IOException, ParseException {
         common.clickElement("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']");
@@ -2548,10 +2529,11 @@ public abstract class Transaction {
             Assert.fail("grossMinusDiscountAmount field is empty");
         }
     }
-    public void enterOtherInfo(String dataFile,String dataset) throws IOException, ParseException {
+    public void enterOtherInfo(String dataFile,String dataset) throws IOException, ParseException, InterruptedException {
         navigateToOtherInfoTab();
         common.findWebElement("xpath","//Edit[@Name='Reference Bill No']").sendKeys(String.valueOf(common.getRandom()));
         common.findWebElement("xpath","//Edit[@Name='Reference Bill Date']").sendKeys(Time.timeStamp());
+        Thread.sleep(1000);
         enterInput("xpath", "//Edit[@Name='OtherInfo 1']", dataFile, dataset, "otherInfo1");
         enterInput("xpath", "//Edit[@Name='OtherInfo 2']", dataFile, dataset, "otherInfo2");
     }
