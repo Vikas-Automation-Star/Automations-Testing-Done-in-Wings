@@ -105,4 +105,5 @@ public class SalesEnquiry extends Transaction {
         Assert.assertEquals(common.getText("xpath", "//Edit[@Name='GST Amount Row " + i + ", Not sorted.']"), common.getData(dataFile,"salesEnquiry", "expectedGStExclusive" +i), "GST Amount mismatch");
         Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Net Amount Row " + i + ", Not sorted.']"), common.getData(dataFile, "salesEnquiry","netAmount" +i), "Net Amount mismatch");
     }
+
 }
