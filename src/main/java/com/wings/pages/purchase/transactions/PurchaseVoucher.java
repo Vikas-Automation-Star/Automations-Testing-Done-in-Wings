@@ -1,7 +1,6 @@
 package com.wings.pages.purchase.transactions;
 
 import com.wings.pages.Transaction;
-import com.wings.pages.TransactionsBaseClass;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import com.wings.utils.Time;
@@ -12,7 +11,7 @@ import org.testng.Assert;
 import java.awt.*;
 import java.io.IOException;
 
-public class PurchaseVoucher extends TransactionsBaseClass {
+public class PurchaseVoucher extends Transaction {
     WindowsDriver driver;
     Common common;
     String dataFile;
@@ -25,41 +24,26 @@ public class PurchaseVoucher extends TransactionsBaseClass {
         dataFile = file;
     }
 
+
     public String purchaseVoucher() throws InterruptedException, IOException, ParseException, AWTException {
         navigateToMastersWhen3Steps("Purchase","Invoices", "Purchase Vouchers");
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
-//        enterInput("xpath","//Edit[@Name='Branch *']",dataFile,"PurchaseVoucher","branch");
-////        enterInput("xpath","//Edit[@Name='Location *']",dataFile,"location");
-////        enterInput("xpath","//Edit[@Name='Trans Currency *']",dataFile,"currency");
-//        enterInput("xpath", "//Edit[@Name='Cash/Party Code']",dataFile,"PurchaseVoucher", "partyCode");
-//        Thread.sleep(1000);
-//        enterInput("xpath", "//Edit[@Name='Purchase A/c Code']",dataFile,"PurchaseVoucher", "PurchaseAccCode");
-//        inputTextWithValidation("xpath", "//Edit[@Name='Supplier Bill No *']", String.valueOf(common.getRandom()));
-//        inputTextWithValidation("xpath", "//Edit[@Name='Supplier Bill Date *']",Time.timeStamp());
-//        enterInput("xpath", "//Edit[@Name='Batch Policy']",dataFile,"PurchaseVoucher", "batchPolicy");
-//        enableCheckboxSelection("//CheckBox[@Name='Apply TCS']");
-//        enterInput("xpath","//Edit[@Name='TCS Trans Nature']", dataFile,"PurchaseVoucher","tcsNature");
-//        enableCheckboxSelection("//CheckBox[@Name='Deduct TDS']");
-//        enterInput("xpath","//Edit[@Name='TDS Trans Nature']", dataFile,"PurchaseVoucher","tdsNature");
-//        enterInput("xpath", "//Edit[@Name='Price List']", dataFile, "PurchaseVoucher","priceList");
-//        enterInput("xpath", "//Edit[@Name='Executive *']", dataFile, "PurchaseVoucher","executive");
-
-        enterBranchName(dataFile,"PurchaseVoucher","branch");
-        enterLocation(dataFile,"PurchaseVoucher","location");
-        enterCurrency(dataFile,"PurchaseVoucher","currency");
-        enterCashOrParty(dataFile,"PurchaseVoucher","partyCode");
+        enterInput("xpath","//Edit[@Name='Branch *']",dataFile,"PurchaseVoucher","branch");
+//        enterInput("xpath","//Edit[@Name='Location *']",dataFile,"location");
+//        enterInput("xpath","//Edit[@Name='Trans Currency *']",dataFile,"currency");
+        enterInput("xpath", "//Edit[@Name='Cash/Party Code']",dataFile,"PurchaseVoucher", "partyCode");
         Thread.sleep(1000);
-        enterPurchaseAccountCode(dataFile,"PurchaseVoucher","PurchaseAccCode");
-        enterSuppliersBillNumber(dataFile,"PurchaseVoucher",String.valueOf(common.getRandom()));
-        enterSuppliersBillDate(dataFile,"PurchaseVoucher",Time.timeStamp());
-        enterBatchPolicy(dataFile,"PurchaseVoucher","batchPolicy");
-        enterTcsTransNature(dataFile,"PurchaseVoucher","tcsNature");
-        enterTdsTransNature(dataFile,"PurchaseVoucher","tdsNature");
-        enterPriceList(dataFile,"PurchaseVoucher","priceList");
-        enterExecutive(dataFile,"Executive *","executive");
-
-
+        enterInput("xpath", "//Edit[@Name='Purchase A/c Code']",dataFile,"PurchaseVoucher", "PurchaseAccCode");
+        inputTextWithValidation("xpath", "//Edit[@Name='Supplier Bill No *']", String.valueOf(common.getRandom()));
+        inputTextWithValidation("xpath", "//Edit[@Name='Supplier Bill Date *']",Time.timeStamp());
+        enterInput("xpath", "//Edit[@Name='Batch Policy']",dataFile,"PurchaseVoucher", "batchPolicy");
+        enableCheckboxSelection("//CheckBox[@Name='Apply TCS']");
+        enterInput("xpath","//Edit[@Name='TCS Trans Nature']", dataFile,"PurchaseVoucher","tcsNature");
+        enableCheckboxSelection("//CheckBox[@Name='Deduct TDS']");
+        enterInput("xpath","//Edit[@Name='TDS Trans Nature']", dataFile,"PurchaseVoucher","tdsNature");
+        enterInput("xpath", "//Edit[@Name='Price List']", dataFile, "PurchaseVoucher","priceList");
+        enterInput("xpath", "//Edit[@Name='Executive *']", dataFile, "PurchaseVoucher","executive");
 
 
         for (int i = 0; i < Integer.parseInt(common.getData(dataFile,"PurchaseVoucher", "productCount")); i++) {
