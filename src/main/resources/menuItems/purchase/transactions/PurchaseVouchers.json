@@ -4,8 +4,10 @@
     "data": {
       "userName":"AT_User 2",
       "password": "Wings@123",
+
       "branch": "AT_Branch 1_Reg",
       "currency": "INR",
+      "location": "AT_Branch 1_Location 1",
       "partyCode": "AT_Sup_Reg_Inter",
       "PurchaseAccCode": "PA1",
       "tcsNature": "AT_TCS Transaction Nature 2",
