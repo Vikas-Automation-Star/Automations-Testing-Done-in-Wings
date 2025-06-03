@@ -61,6 +61,7 @@ public class PurchaseVoucher extends TransactionsBaseClass {
 
 
 
+
         for (int i = 0; i < Integer.parseInt(common.getData(dataFile,"PurchaseVoucher", "productCount")); i++) {
             addProduct(i);
         }

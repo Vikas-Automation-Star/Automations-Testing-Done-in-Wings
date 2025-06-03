@@ -65,20 +65,6 @@ public class TransactionsBaseClass extends Transaction {
         enterInput("xpath","//Edit[@Name='TDS Trans Nature']",dataFile,dataSet,tdsTransNature);
     }
 
-    public void enterPriceList(String dataFile,String dataSet,String priceList) throws IOException, ParseException {
-        enterInput("xpath","//Edit[@Name='Price List']",dataFile,dataSet,priceList);
-    }
-    public void enterExecutive(String dataFile,String dataSet,String executive) throws IOException, ParseException {
-        enterInput("xpath","//Edit[@Name='Executive *']",dataFile,dataSet,executive);
-    }
-
-
-
-
-
-
-
-
 
 
 
