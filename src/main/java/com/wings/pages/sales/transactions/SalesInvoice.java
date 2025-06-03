@@ -21,6 +21,7 @@ public class SalesInvoice extends Transaction {
         super(driver);
         common = new Common(this.driver = driver);
         dataFile = file;
+
     }
 
     public String salesInvoice() throws InterruptedException, IOException, ParseException, AWTException {
