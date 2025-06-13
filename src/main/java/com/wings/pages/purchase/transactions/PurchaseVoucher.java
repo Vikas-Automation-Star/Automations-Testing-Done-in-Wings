@@ -742,5 +742,4 @@ public class PurchaseVoucher extends TransactionsBaseClass {
         common.findWebElement("xpath","//Edit[@Name='Profit Centre']").sendKeys(common.getData(dataFile,"PurchaseVoucher","profitCentre0"));
         common.findWebElement("xpath","//Edit[@Name='Cost Centre']").sendKeys(common.getData(dataFile,"PurchaseVoucher","costCentre0"));
     }
-
 }

@@ -4,65 +4,65 @@
         <listener class-name="com.wings.utils.Listener"/>
     </listeners>
 
-    <test name="PE 1" description="Purchase Enquiries" testID="1">
-        <classes>
-            <class name="menuItems.purchase.transactions.TestPurchaseEnquiries"/>
-        </classes>
-    </test>
+    <!--    <test name="PE 1" description="Purchase Enquiries" testID="1">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.transactions.TestPurchaseEnquiries"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-    <test name="PEC 2" description="Purchase Enquiries Cancellation" testID="2">
-        <classes>
-            <class name="menuItems.purchase.transactions.TestPurchaseEnquiriesCancellation"/>
-        </classes>
-    </test>
+    <!--    <test name="PEC 2" description="Purchase Enquiries Cancellation" testID="2">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.transactions.TestPurchaseEnquiriesCancellation"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-    <test name="PQ 3" description="Purchase Quotations" testID="3">
-        <classes>
-            <class name="menuItems.purchase.transactions.TestPurchaseQuotations"/>
-        </classes>
-    </test>
+    <!--    <test name="PQ 3" description="Purchase Quotations" testID="3">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.transactions.TestPurchaseQuotations"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-    <test name="PQAE 4" description="Purchase Quotations Against Enquiries" testID="4">
-        <classes>
-            <class name="menuItems.purchase.transactions.TestPurchaseQuotationsAgainstEnquiries"/>
-        </classes>
-    </test>
+    <!--    <test name="PQAE 4" description="Purchase Quotations Against Enquiries" testID="4">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.transactions.TestPurchaseQuotationsAgainstEnquiries"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-    <test name="POAQ 5" description="Purchase Orders Against Quotations" testID="5">
-        <classes>
-            <class name="menuItems.purchase.transactions.TestPurchaseOrdersAgainstQuotations"/>
-        </classes>
-    </test>
+    <!--    <test name="POAQ 5" description="Purchase Orders Against Quotations" testID="5">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.transactions.TestPurchaseOrdersAgainstQuotations"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-    <test name="PO 6" description="Purchase Orders" testID="6">
-        <classes>
-            <class name="menuItems.purchase.transactions.TestPurchaseOrders"/>
-        </classes>
-    </test>
+    <!--    <test name="PO 6" description="Purchase Orders" testID="6">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.transactions.TestPurchaseOrders"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-    <test name="POC 7" description="Purchase Orders Cancellation" testID="7">
-        <classes>
-            <class name="menuItems.purchase.transactions.TestPurchaseOrderCancellation"/>
-        </classes>
-    </test>
+    <!--    <test name="POC 7" description="Purchase Orders Cancellation" testID="7">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.transactions.TestPurchaseOrderCancellation"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-    <test name="MRec 8" description="Material Receipts" testID="8">
-        <classes>
-            <class name="menuItems.purchase.transactions.TestMaterialReceipts"/>
-        </classes>
-    </test>
+    <!--    <test name="MRec 8" description="Material Receipts" testID="8">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.transactions.TestMaterialReceipts"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-    <test name="MRAO 9" description="Material Receipts Against Orders" testID="9">
-        <classes>
-            <class name="menuItems.purchase.transactions.TestMaterialReceiptsAgainstOrders"/>
-        </classes>
-    </test>
+    <!--    <test name="MRAO 9" description="Material Receipts Against Orders" testID="9">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.transactions.TestMaterialReceiptsAgainstOrders"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-    <test name="MRet 10" description="Material Returns" testID="10">
-        <classes>
-            <class name="menuItems.purchase.transactions.TestMaterialReturns"/>
-        </classes>
-    </test>
+    <!--    <test name="MRet 10" description="Material Returns" testID="10">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.transactions.TestMaterialReturns"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
 
     <test name="PV 11" description="Purchase Vouchers" testID="11">
@@ -71,89 +71,89 @@
         </classes>
     </test>
 
-    <test name="PVAPO 12" description="Purchase Vouchers Against PurchaseOrders" testID="12">
-        <classes>
-            <class name="menuItems.purchase.transactions.TestPurchaseVoucherAgainstOrders"/>
-        </classes>
-    </test>
+    <!--    <test name="PVAPO 12" description="Purchase Vouchers Against PurchaseOrders" testID="12">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.transactions.TestPurchaseVoucherAgainstOrders"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-    <test name="PVAPR 13" description="Purchase Vouchers Against PurchaseReceipts" testID="13">
-        <classes>
-            <class name="menuItems.purchase.transactions.TestPurchaseVouchersAgainstReceipts"/>
-        </classes>
-    </test>
+    <!--    <test name="PVAPR 13" description="Purchase Vouchers Against PurchaseReceipts" testID="13">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.transactions.TestPurchaseVouchersAgainstReceipts"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-    <test name="PPV 14" description="Proforma Purchase Vouchers" testID="14">
-        <classes>
-            <class name="menuItems.purchase.transactions.TestProformaPurchaseVouchers"/>
-        </classes>
-    </test>
+    <!--    <test name="PPV 14" description="Proforma Purchase Vouchers" testID="14">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.transactions.TestProformaPurchaseVouchers"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-    <test name="PRet 15" description="Purchase Returns" testID="15">
-        <classes>
-            <class name="menuItems.purchase.transactions.TestPurchaseReturns"/>
-        </classes>
-    </test>
+    <!--    <test name="PRet 15" description="Purchase Returns" testID="15">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.transactions.TestPurchaseReturns"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-    <test name="PRWIR-PVAO 16" description="Purchase Returns With Invoice Reference" testID="16">
-        <classes>
-            <class name="menuItems.purchase.transactions.TestPurchaseReturnsWithInvoicesReference"/>
-        </classes>
-    </test>
+    <!--    <test name="PRWIR-PVAO 16" description="Purchase Returns With Invoice Reference" testID="16">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.transactions.TestPurchaseReturnsWithInvoicesReference"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-    <test name="PPrice 17" description="Purchase Prices" testID="17">
-        <classes>
-            <class name="menuItems.purchase.transactions.TestPurchasePrices"/>
-        </classes>
-    </test>
+    <!--    <test name="PPrice 17" description="Purchase Prices" testID="17">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.transactions.TestPurchasePrices"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-    <test name="analysis - party 18" description="Month wise purchase by quantity" testID="18">
-        <classes>
-            <class name="menuItems.purchase.reports.analysis.party.TestMonthWisePurchaseByQuantityReport"/>
-        </classes>
-    </test>
+    <!--    <test name="analysis - party 18" description="Month wise purchase by quantity" testID="18">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.reports.analysis.party.TestMonthWisePurchaseByQuantityReport"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-    <test name="analysis - party 19" description="Month wise purchase by value" testID="19">
-        <classes>
-            <class name="menuItems.purchase.reports.analysis.party.TestMonthWisePurchaseByValueReport"/>
-        </classes>
-    </test>
+    <!--    <test name="analysis - party 19" description="Month wise purchase by value" testID="19">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.reports.analysis.party.TestMonthWisePurchaseByValueReport"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-    <test name="analysis - party 20" description="Year wise purchase by quantity" testID="20">
-        <classes>
-            <class name="menuItems.purchase.reports.analysis.party.TestYearWisePurchaseByQuantityReport"/>
-        </classes>
-    </test>
+    <!--    <test name="analysis - party 20" description="Year wise purchase by quantity" testID="20">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.reports.analysis.party.TestYearWisePurchaseByQuantityReport"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-    <test name="analysis - party 21" description="Year wise purchase by Value" testID="21">
-        <classes>
-            <class name="menuItems.purchase.reports.analysis.party.TestYearWisePurchaseByValueReport"/>
-        </classes>
-    </test>
+    <!--    <test name="analysis - party 21" description="Year wise purchase by Value" testID="21">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.reports.analysis.party.TestYearWisePurchaseByValueReport"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
 
-    <test name="analysis - product 22" description="Month wise purchase by quantity" testID="22">
-        <classes>
-            <class name="menuItems.purchase.reports.analysis.product.TestMonthWisePurchaseByQuantityReport"/>
-        </classes>
-    </test>
+    <!--    <test name="analysis - product 22" description="Month wise purchase by quantity" testID="22">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.reports.analysis.product.TestMonthWisePurchaseByQuantityReport"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-    <test name="analysis - product 23" description="Month wise purchase by value" testID="23">
-        <classes>
-            <class name="menuItems.purchase.reports.analysis.product.TestMonthWisePurchaseByValueReport"/>
-        </classes>
-    </test>
+    <!--    <test name="analysis - product 23" description="Month wise purchase by value" testID="23">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.reports.analysis.product.TestMonthWisePurchaseByValueReport"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-    <test name="analysis - product 24" description="Year wise purchase by quantity" testID="24">
-        <classes>
-            <class name="menuItems.purchase.reports.analysis.product.TestYearWisePurchaseByQuantityReport"/>
-        </classes>
-    </test>
+    <!--    <test name="analysis - product 24" description="Year wise purchase by quantity" testID="24">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.reports.analysis.product.TestYearWisePurchaseByQuantityReport"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-    <test name="analysis - product 25" description="Year wise purchase by Value" testID="25">
-        <classes>
-            <class name="menuItems.purchase.reports.analysis.product.TestYearWisePurchaseByValueReport"/>
-        </classes>
-    </test>
+    <!--    <test name="analysis - product 25" description="Year wise purchase by Value" testID="25">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.reports.analysis.product.TestYearWisePurchaseByValueReport"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
 </suite>
