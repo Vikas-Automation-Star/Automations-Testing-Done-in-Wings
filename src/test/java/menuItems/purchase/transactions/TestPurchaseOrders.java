@@ -26,7 +26,7 @@ public class TestPurchaseOrders {
     }
 
     @Test
-    public void purchaseReturnsWithInvoicesReferences() throws IOException, ParseException, InterruptedException, AWTException {
+    public void purchaseOrders() throws IOException, ParseException, InterruptedException, AWTException {
         PurchaseOrders purchaseOrders=new PurchaseOrders(driver,file);
         purchaseOrders.purchaseOrders();
     }

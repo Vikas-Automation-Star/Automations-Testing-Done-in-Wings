@@ -1,0 +1,17 @@
+[
+  {
+    "dataset": "stockLedger",
+    "data": {
+      "userName":"AT_User 2",
+      "password": "Wings@123",
+      "productCount": "3",
+
+      "product0": "AT_Product 5",
+      "product1": "AT_Multi batch Product 2",
+      "product2": "AT_Multi batch Product 3",
+
+      "branch": "AT_Branch 1_Reg",
+      "location": "AT_Branch 1_Location 2"
+    }
+  }
+]

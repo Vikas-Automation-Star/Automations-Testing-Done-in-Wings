@@ -1,5 +1,6 @@
 package com.wings.pages;
 
+import com.wings.utils.Time;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 
@@ -27,8 +28,8 @@ public class TransactionsBaseClass extends Transaction {
     public void enterBranchName(String dataFile,String dataSet,String branch) throws IOException, ParseException {
         enterInput("xpath","//Edit[@Name='Branch *']",dataFile,dataSet,branch);
     }
-    public void enterDate(String dataFile,String dataSet,String date) throws IOException, ParseException {
-        enterInput("xpath","//Edit[@Name='Date *']",dataFile,dataSet,date);
+    public void enterDate() throws IOException, ParseException {
+        common.findWebElement("xpath","//Edit[@Name='Date *']").sendKeys(Time.timeStamp());
     }
     public void enterVoucherType(String dataFile,String dataSet,String voucherType) throws IOException, ParseException {
         enterInput("xpath","//Edit[@Name='Date *']",dataFile,dataSet,voucherType);

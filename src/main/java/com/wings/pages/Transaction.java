@@ -121,6 +121,11 @@ public abstract class Transaction {
         }
     }
 
+    public void enterData(WebElement element, String fileName, String datset, String key) throws IOException, ParseException {
+            element.click();
+            element.sendKeys(common.getData(fileName,datset, key), Keys.TAB);
+    }
+
     public void enterInput(String locatorType, String locator, String fileName, String key) throws IOException, ParseException {
         List<WebElement> elementList = common.findWebElements(locatorType, locator);
         for (WebElement i : elementList) {
