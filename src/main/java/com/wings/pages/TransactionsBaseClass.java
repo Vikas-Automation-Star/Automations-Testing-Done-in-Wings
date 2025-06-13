@@ -1,5 +1,6 @@
 package com.wings.pages;
 
+import com.wings.utils.Time;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 
@@ -27,8 +28,8 @@ public class TransactionsBaseClass extends Transaction {
     public void enterBranchName(String dataFile,String dataSet,String branch) throws IOException, ParseException {
         enterInput("xpath","//Edit[@Name='Branch *']",dataFile,dataSet,branch);
     }
-    public void enterDate(String dataFile,String dataSet,String date) throws IOException, ParseException {
-        enterInput("xpath","//Edit[@Name='Date *']",dataFile,dataSet,date);
+    public void enterDate() throws IOException, ParseException {
+        inputTextWithValidation("xpath","//Edit[@Name='Date *']", Time.timeStamp());
     }
     public void enterVoucherType(String dataFile,String dataSet,String voucherType) throws IOException, ParseException {
         enterInput("xpath","//Edit[@Name='Date *']",dataFile,dataSet,voucherType);
@@ -39,6 +40,33 @@ public class TransactionsBaseClass extends Transaction {
     }
     public void enterCurrency(String dataFile,String dataSet,String currency) throws IOException, ParseException {
         enterInput("xpath","//Edit[@Name='Trans Currency *']",dataFile,dataSet,currency);
+    }
+
+    public void enterCustomerEmail(String dataFile,String dataSet,String email) throws IOException, ParseException {
+        enterInput("xpath","//Edit[@Name='Customer Email']",dataFile,dataSet,email);
+    }
+
+    public void enterShippingBillNo(String dataFile,String dataSet,String shippingBillNo) throws IOException, ParseException {
+        enterInput("xpath","//Edit[@Name='Shipping Bill No']",dataFile,dataSet, shippingBillNo);
+    }
+
+    public void enterShippingDate() throws IOException, ParseException {
+        inputTextWithValidation("xpath","//Edit[@Name='Shipping Bill Date']", Time.timeStamp());
+    }
+
+    public void enterPortCode(String dataFile,String dataSet,String portCode) throws IOException, ParseException {
+        enterInput("xpath","//Edit[@Name='Port Code']",dataFile,dataSet, portCode);
+    }
+
+    public void enterRemarks(String dataFile,String dataSet,String remarks) throws IOException, ParseException {
+        enterInput("xpath","//Edit[@Name='Remarks']",dataFile,dataSet, remarks);
+    }
+
+    public void enterSalesAccountCode(String dataFile,String dataSet,String salesAccountCode) throws IOException, ParseException {
+        enterInput("xpath","//Edit[@Name='Sales A/c Code']",dataFile,dataSet,salesAccountCode);
+    }
+    public void enterCustomerMobileNum(String dataFile,String dataSet,String mobileNum) throws IOException, ParseException {
+        enterInput("xpath","//Edit[@Name='Customer Mobile Number']",dataFile,dataSet, mobileNum);
     }
 
     public void enterCashOrParty(String dataFile,String dataSet,String cashOrParty) throws IOException, ParseException {

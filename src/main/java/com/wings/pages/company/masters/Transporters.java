@@ -28,7 +28,7 @@ public class Transporters extends Masters {
         navigateToMastersWhen2Steps("Company","Transporters");
         Thread.sleep(1000);
         super.createMaster("xpath", "//TreeItem[@Name='Transporters']/TreeItem[@Name='All Transporters']");
-        Thread.sleep(1000);
+        Thread.sleep(2500);
         common.inputText("xpath", "//Edit[@Name='New Transporter *']", common.getData(dataFile, "transporter") + common.getRandom());
         String master=common.findWebElement("xpath","//Edit[@Name='New Transporter *']").getText();
         Thread.sleep(2000);

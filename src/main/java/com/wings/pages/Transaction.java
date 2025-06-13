@@ -22,6 +22,7 @@ import java.util.List;
 public abstract class Transaction {
     protected WindowsDriver driver;
     protected Common common;
+    boolean IsDiscountClicked=false,gstAmountClicked=false,IsAmountHeaderClicked=false;
 
     public Transaction(WindowsDriver driver) {
         this.driver = driver;
@@ -262,22 +263,6 @@ public abstract class Transaction {
         } else {
             Assert.fail("wrong input");
         }
-    }
-
-    public void enterBranch(String dataFile, String key) throws IOException, ParseException {
-        enterInput("xpath", "//Edit[@Name='Branch *']", dataFile, key);
-    }
-
-    public void enterPartyCode(String dataFile, String key) throws IOException, ParseException {
-        enterInput("xpath", "//Edit[@Name='Party Code']", dataFile, key);
-    }
-
-    public void enterPriceList(String dataFile, String key) throws IOException, ParseException {
-        enterInput("xpath", "//Edit[@Name='Price List']", dataFile, key);
-    }
-
-    public void enterExecutive(String dataFile, String key) throws IOException, ParseException {
-        enterInput("xpath", "//Edit[@Name='Executive *']", dataFile, key);
     }
 
     //navigation methods
@@ -1017,7 +1002,6 @@ public abstract class Transaction {
         common.clickElement("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']");
         enterData("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']", filename, quantity);
     }
-
     public void multiBatchProduct(String filename, String product, String quantity, int i) throws IOException, ParseException, InterruptedException {
         enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, product);
         common.clickElement("xpath", "//Button[@Name='Stock Details Row " + i + "']");
@@ -1031,7 +1015,6 @@ public abstract class Transaction {
         }
         common.clickElement("xpath", "//Button[@Name='OK']");
     }
-
     public void serialNumberProduct(String filename, String product, int i) throws IOException, ParseException, InterruptedException, AWTException {
         enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, product);
         common.clickElement("xpath", "//Button[@Name='Stock Details Row " + i + "']");
@@ -1059,7 +1042,6 @@ public abstract class Transaction {
         }
         common.clickElement("xpath", "//Button[@Name='OK']");
     }
-
     public void serialNumberProductInStockConsumption(String filename, String dataSet ,String product, int i) throws IOException, ParseException, InterruptedException, AWTException {
         enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename,dataSet, product);
         if(common.getData(filename,dataSet,"StockDetails").equals("yes")){
@@ -1101,7 +1083,6 @@ public abstract class Transaction {
             enterData("xpath","//Edit[@Name='Free Quantity Row " + i + ", Not sorted.']",filename,freeQuantity);
         }
     }
-
     public void multiBatchProductPurchase(String filename, String product, String quantity,String freeQuantity, int i) throws IOException, ParseException, InterruptedException {
         enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, product);
         enterData("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']",filename,quantity);
@@ -1109,7 +1090,6 @@ public abstract class Transaction {
             enterInput("xpath","//Edit[@Name='Free Quantity Row " + i + ", Not sorted.']",filename,freeQuantity);
         }
     }
-
     public void multiBatchProduct(String filename, String product, String quantity,String freeQuantity, int i) throws IOException, ParseException, InterruptedException {
         enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, product);
         common.clickElement("xpath", "//Button[@Name='Stock Details Row " + i + "']");
@@ -1126,7 +1106,6 @@ public abstract class Transaction {
         }
         common.clickElement("xpath", "//Button[@Name='OK']");
     }
-
     //over load with dataset
     public void generalProduct(String filename,String dataSet, String product, String quantity,String freeQuantity, int i) throws IOException, ParseException {
         enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename,dataSet, product);
@@ -1136,8 +1115,79 @@ public abstract class Transaction {
             enterData("xpath","//Edit[@Name='Free Quantity Row " + i + ", Not sorted.']",filename,dataSet,freeQuantity);
         }
     }
-    public void multiBatchProduct(String filename,String dataSet, String product, String quantity,String freeQuantity, int i) throws IOException, ParseException, InterruptedException {
-        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, dataSet,product);
+    public void generalProductSalesInvoice(String filename,String dataSet, int i) throws IOException, ParseException {
+        long start = System.nanoTime();
+        System.out.println("general Product in Sales Invoice :" + start);
+
+        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename,dataSet, "productCode"+i);
+        enterInput("xpath", "//Edit[@Name='Sales Account * Row "+i+", Not sorted.']", filename,dataSet, "salesAccount" + i);
+        common.clickElement("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']");
+        enterData("xpath", "//Edit[@Name='Quantity Row " + i + ", Not sorted.']", filename,dataSet, "quantity" + i);
+        if (Boolean.parseBoolean(common.getData(filename,dataSet,"enableFreeQuantity"))){
+            enterData("xpath","//Edit[@Name='Free Quantity Row " + i + ", Not sorted.']",filename,dataSet,"freeQuantity" + i);
+        }
+        enterInput("xpath","//Edit[@Name='No Of Packs Row "+i+", Not sorted.']",filename,dataSet, "noOfPacks"+i);
+        inputTextWithValidation("xpath","//Edit[@Name='Delivery Date Row "+i+", Not sorted.']",Time.timeStamp());
+        enterInput("xpath","//Edit[@Name='MRP Row "+i+", Not sorted.']",filename,dataSet,"mrp"+i);
+        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 65, 0);
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='MRP Amount Row " + i + ", Not sorted.']"), common.getData(filename,"salesInvoice", "mrpAmount" + i),"MRP Amount mismatch");
+        enterInput("xpath","//Edit[@Name='Minimum Rate * Row "+i+", Not sorted.']",filename,dataSet, "minRate"+i);
+        enterInput("xpath","//Edit[@Name='Maximum Rate * Row "+i+", Not sorted.']",filename,dataSet,"maxRate"+i);
+        enterInput("xpath","//Edit[@Name='Unit Rate Row "+i+", Not sorted.']",filename,dataSet,"unitRate"+i);
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Gross Amount Row " + i + ", Not sorted.']"), common.getData(filename, dataSet,"grossAmount" + i),"Gross Amount mismatch");
+        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 300, 0);
+        enterInput("xpath", "//Edit[@Name='Voucher Disc % Row " + i + ", Not sorted.']", filename,dataSet, "voucherDiscount" + i);
+        enterInput("xpath", "//Edit[@Name='Party Disc % Row " + i + ", Not sorted.']", filename,dataSet, "partyDiscount" + i);
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Voucher Disc Row " + i +", Not sorted.']"),common.getData(filename,dataSet,"voucherDiscAmount"+i),"Voucher discount value mismatch");
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Party Disc Row "+ i +", Not sorted.']"),common.getData(filename,dataSet,"partyDiscAmount"+i),"Party discount value mismatch");
+        //discount 1
+        if (!IsDiscountClicked) {
+            common.clickElement("xpath", "//Header[@Name='Disc Amount 1']");
+            common.clickElement("xpath", "//Header[@Name='Disc Amount 2']");
+            common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 140, 0);
+            common.clickElement("xpath", "//Header[@Name='Disc Amount 3']");
+            IsDiscountClicked = true;
+        }
+        enterInput("xpath", "//Edit[@Name='Disc Basis 1 Row "+i+", Not sorted.']", filename,dataSet, "Discount1B" + i);
+        enterInput("xpath", "//Edit[@Name='Disc 1 Row "+i+", Not sorted.']", filename,dataSet, "disc1Row" + i);
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Disc Amount 1 Row "+i+", Not sorted.']"),common.getData(filename,dataSet,"Disc1Amount"+i),"Discount Amount 1 is not matched");
+        enterInput("xpath", "//Edit[@Name='Disc Basis 2 Row "+i+", Not sorted.']", filename,dataSet, "Discount2B" + i);
+        enterInput("xpath", "//Edit[@Name='Disc 2 Row "+i+", Not sorted.']", filename,dataSet, "disc2Row" + i);
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Disc Amount 2 Row "+i+", Not sorted.']"),common.getData(filename,dataSet,"Disc2Amount"+i),"Discount Amount 2  is not matched");
+        enterInput("xpath", "//Edit[@Name='Disc Basis 3 Row "+i+", Not sorted.']", filename,dataSet, "Discount3B" + i);
+        enterInput("xpath", "//Edit[@Name='Disc 3 Row "+i+", Not sorted.']", filename,dataSet, "disc3Row" + i);
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Disc Amount 3 Row "+i+", Not sorted.']"),common.getData(filename,dataSet,"Disc3Amount"+i),"Discount Amount 3  is not matched");
+        enterData("xpath", "//Edit[@Name='HSN Row " + i + ", Not sorted.']", filename,dataSet, "HSNCode"+i);
+        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 350, 0);
+        Assert.assertEquals(common.getText("xpath","//Edit[@Name='Taxable Value Row " + i + ", Not sorted.']"),common.getData(filename,dataSet,"taxableValue"+i),"Taxable value mismatch");
+        if (!gstAmountClicked) {
+            common.clickElement("xpath", "//Header[@Name='GST Amount']");
+            gstAmountClicked = true;
+        }
+        //check tax and net Amount
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='IGST Row " + i + ", Not sorted.']"), common.getData(filename,dataSet,"igstAmount" + i),"SGST mismatch");
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='CESS Row " + i + ", Not sorted.']"), common.getData(filename,dataSet, "cessAmount" +i),"CESS mismatch");
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='GST Amount Row " + i + ", Not sorted.']"), common.getData(filename,dataSet, "expectedGStExclusive" +i), "GST Amount mismatch");
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Net Amount Row " + i + ", Not sorted.']"), common.getData(filename,dataSet,"netAmount" +i), "Net Amount mismatch");
+        enterInput("xpath","//Edit[@Name='Department Row "+i+", Not sorted.']",filename,dataSet, "department"+i);
+        enterInput("xpath","//Edit[@Name='Project Row "+i+", Not sorted.']",filename,dataSet, "project"+i);
+        enterInput("xpath","//Edit[@Name='Profit Centre Row "+i+", Not sorted.']",filename,dataSet, "profitCentre"+i);
+        enterInput("xpath","//Edit[@Name='Cost Centre Row "+i+", Not sorted.']",filename,dataSet, "costCentre"+i);
+        enterInput("xpath","//Edit[@Name='Comments Row "+i+", Not sorted.']",filename,dataSet, "comments"+i);
+        enterInput("xpath","//Edit[@Name='Info 1 Row "+i+", Not sorted.']",filename,dataSet, "info"+i);
+        enterInput("xpath","//Edit[@Name='Value 1 Row "+i+", Not sorted.']",filename,dataSet, "value"+i);
+        common.findWebElement("xpath","//Edit[@Name='Date 1 Row "+i+", Not sorted.']").sendKeys(Time.timeStamp());
+
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("general product in sales invoice end", duration / 1000000000);
+    }
+    public void multiBatchProductSalesInvoice(String filename,String dataSet,int i) throws IOException, ParseException, InterruptedException {
+        long start = System.nanoTime();
+        System.out.println("multi-batch product start in :" + start);
+
+        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, dataSet,"productCode"+i);
+        enterInput("xpath", "//Edit[@Name='Sales Account * Row "+i+", Not sorted.']", filename,dataSet, "salesAccount" + i);
+
         common.clickElement("xpath", "//Button[@Name='Stock Details Row " + i + "']");
         Thread.sleep(3000);
         List<WebElement> rows = common.findWebElements("xpath", "//Table[@Name='Batch Details']/*[@Name='Data Panel']/*[@Name='Row 1']/*[@Name='Quantity row 1']");
@@ -1145,13 +1195,294 @@ public abstract class Transaction {
         for (WebElement k : rows) {
             k.click();
             k.sendKeys(Keys.CONTROL + "a", Keys.DELETE);
-            k.sendKeys(common.getData(filename,dataSet, quantity), Keys.TAB);
+            k.sendKeys(common.getData(filename,dataSet, "quantity"+i), Keys.TAB);
             if (Boolean.parseBoolean(common.getData(filename,dataSet,"enableFreeQuantity"))){
-                k.sendKeys(common.getData(filename,dataSet,freeQuantity),Keys.TAB);
+                k.sendKeys(common.getData(filename,dataSet,"freeQuantity"+i),Keys.TAB);
             }
         }
         common.clickElement("xpath", "//Button[@Name='OK']");
+        enterInput("xpath","//Edit[@Name='No Of Packs Row "+i+", Not sorted.']",filename,dataSet, "noOfPacks"+i);
+        inputTextWithValidation("xpath","//Edit[@Name='Delivery Date Row "+i+", Not sorted.']",Time.timeStamp());
+        enterInput("xpath","//Edit[@Name='MRP Row "+i+", Not sorted.']",filename,dataSet,"mrp"+i);
+        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 65, 0);
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='MRP Amount Row " + i + ", Not sorted.']"), common.getData(filename,"salesInvoice", "mrpAmount" + i),"MRP Amount mismatch");
+        enterInput("xpath","//Edit[@Name='Minimum Rate * Row "+i+", Not sorted.']",filename,dataSet, "minRate"+i);
+        enterInput("xpath","//Edit[@Name='Maximum Rate * Row "+i+", Not sorted.']",filename,dataSet,"maxRate"+i);
+        enterInput("xpath","//Edit[@Name='Unit Rate Row "+i+", Not sorted.']",filename,dataSet,"unitRate"+i);
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Gross Amount Row " + i + ", Not sorted.']"), common.getData(filename, dataSet,"grossAmount" + i),"Gross Amount mismatch");
+        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 300, 0);
+        enterInput("xpath", "//Edit[@Name='Voucher Disc % Row " + i + ", Not sorted.']", filename,dataSet, "voucherDiscount" + i);
+        enterInput("xpath", "//Edit[@Name='Party Disc % Row " + i + ", Not sorted.']", filename,dataSet, "partyDiscount" + i);
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Voucher Disc Row " + i +", Not sorted.']"),common.getData(filename,dataSet,"voucherDiscAmount"+i),"Voucher discount value mismatch");
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Party Disc Row "+ i +", Not sorted.']"),common.getData(filename,dataSet,"partyDiscAmount"+i),"Party discount value mismatch");
+        //discount 1
+        if (!IsDiscountClicked) {
+            common.clickElement("xpath", "//Header[@Name='Disc Amount 1']");
+            common.clickElement("xpath", "//Header[@Name='Disc Amount 2']");
+            common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 140, 0);
+            common.clickElement("xpath", "//Header[@Name='Disc Amount 3']");
+            IsDiscountClicked = true;
+        }
+        enterInput("xpath", "//Edit[@Name='Disc Basis 1 Row "+i+", Not sorted.']", filename,dataSet, "Discount1B" + i);
+        enterInput("xpath", "//Edit[@Name='Disc 1 Row "+i+", Not sorted.']", filename,dataSet, "disc1Row" + i);
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Disc Amount 1 Row "+i+", Not sorted.']"),common.getData(filename,dataSet,"Disc1Amount"+i),"Discount Amount 1 is not matched");
+        enterInput("xpath", "//Edit[@Name='Disc Basis 2 Row "+i+", Not sorted.']", filename,dataSet, "Discount2B" + i);
+        enterInput("xpath", "//Edit[@Name='Disc 2 Row "+i+", Not sorted.']", filename,dataSet, "disc2Row" + i);
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Disc Amount 2 Row "+i+", Not sorted.']"),common.getData(filename,dataSet,"Disc2Amount"+i),"Discount Amount 2  is not matched");
+        enterInput("xpath", "//Edit[@Name='Disc Basis 3 Row "+i+", Not sorted.']", filename,dataSet, "Discount3B" + i);
+        enterInput("xpath", "//Edit[@Name='Disc 3 Row "+i+", Not sorted.']", filename,dataSet, "disc3Row" + i);
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Disc Amount 3 Row "+i+", Not sorted.']"),common.getData(filename,dataSet,"Disc3Amount"+i),"Discount Amount 3  is not matched");
+        enterData("xpath", "//Edit[@Name='HSN Row " + i + ", Not sorted.']", filename,dataSet, "HSNCode"+i);
+        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 350, 0);
+        Assert.assertEquals(common.getText("xpath","//Edit[@Name='Taxable Value Row " + i + ", Not sorted.']"),common.getData(filename,dataSet,"taxableValue"+i),"Taxable value mismatch");
+        if (!gstAmountClicked) {
+            common.clickElement("xpath", "//Header[@Name='GST Amount']");
+            gstAmountClicked = true;
+        }
+        //check tax and net Amount
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='IGST Row " + i + ", Not sorted.']"), common.getData(filename,dataSet,"igstAmount" + i),"SGST mismatch");
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='CESS Row " + i + ", Not sorted.']"), common.getData(filename,dataSet, "cessAmount" +i),"CESS mismatch");
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='GST Amount Row " + i + ", Not sorted.']"), common.getData(filename,dataSet, "expectedGStExclusive" +i), "GST Amount mismatch");
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Net Amount Row " + i + ", Not sorted.']"), common.getData(filename,dataSet,"netAmount" +i), "Net Amount mismatch");
+        enterInput("xpath","//Edit[@Name='Department Row "+i+", Not sorted.']",filename,dataSet, "department"+i);
+        enterInput("xpath","//Edit[@Name='Project Row "+i+", Not sorted.']",filename,dataSet, "project"+i);
+        enterInput("xpath","//Edit[@Name='Profit Centre Row "+i+", Not sorted.']",filename,dataSet, "profitCentre"+i);
+        enterInput("xpath","//Edit[@Name='Cost Centre Row "+i+", Not sorted.']",filename,dataSet, "costCentre"+i);
+        enterInput("xpath","//Edit[@Name='Comments Row "+i+", Not sorted.']",filename,dataSet, "comments"+i);
+        enterInput("xpath","//Edit[@Name='Info 1 Row "+i+", Not sorted.']",filename,dataSet, "info"+i);
+        enterInput("xpath","//Edit[@Name='Value 1 Row "+i+", Not sorted.']",filename,dataSet, "value"+i);
+        common.findWebElement("xpath","//Edit[@Name='Date 1 Row "+i+", Not sorted.']").sendKeys(Time.timeStamp());
+
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("multi-batch product in sales invoice end", duration / 1000000000);
     }
+    public void serialNumberProductSalesInvoice(String filename,String dataSet, int i) throws IOException, ParseException, InterruptedException, AWTException {
+        long start = System.nanoTime();
+        System.out.println("serial num product start in :" + start);
+
+        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, dataSet,"productCode"+i);
+        enterInput("xpath", "//Edit[@Name='Sales Account * Row "+i+", Not sorted.']", filename,dataSet, "salesAccount" + i);
+        common.clickElement("xpath", "//Button[@Name='Stock Details Row " + i + "']");
+        List<WebElement> rows = common.findWebElements("xpath", "//Table[@Name='Serial Numbers List']/*[@Name='Data Panel']/*[contains(@Name,'Row')]/*[contains(@Name,'Select row')]");
+        System.out.println("Row count: " + rows.size());
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_TAB);
+        robot.keyRelease(KeyEvent.VK_TAB);
+        for (int z = 0; z < Integer.parseInt(common.getData(filename,dataSet,"numOfSerialProducts")); z++) {
+            robot.keyPress(KeyEvent.VK_SPACE);
+            robot.keyRelease(KeyEvent.VK_SPACE);
+            robot.keyPress(KeyEvent.VK_DOWN);
+            robot.keyRelease(KeyEvent.VK_DOWN);
+            Thread.sleep(1500);
+        }
+        List<WebElement> free=common.findWebElements("xpath","//Table[@Name='Selected Serial Numbers']/*[@Name='Data Panel']/ListItem[contains(@Name,'Row')]");
+        System.out.println("free elements size: "+free.size());
+        if (Boolean.parseBoolean(common.getData(filename,dataSet,"enableFreeQuantity"))){
+            for (int j = 1; j <=Integer.parseInt(common.getData(filename,dataSet,"numOfSerialProductsFree"+i)); j++) {
+                String rowXPath = "//Table[@Name='Selected Serial Numbers']/*[@Name='Data Panel']/*[@Name='Row "+j+"']/*[@Name='FreeQuantity row "+j+"']";
+                // Find the element based on the dynamic XPath
+                WebElement button = common.findWebElement("xpath", rowXPath);
+                button.click();
+            }
+        }
+        common.clickElement("xpath", "//Button[@Name='OK']");
+        enterInput("xpath","//Edit[@Name='No Of Packs Row "+i+", Not sorted.']",filename,dataSet, "noOfPacks"+i);
+        inputTextWithValidation("xpath","//Edit[@Name='Delivery Date Row "+i+", Not sorted.']",Time.timeStamp());
+        enterInput("xpath","//Edit[@Name='MRP Row "+i+", Not sorted.']",filename,dataSet,"mrp"+i);
+        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 65, 0);
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='MRP Amount Row " + i + ", Not sorted.']"), common.getData(filename,"salesInvoice", "mrpAmount" + i),"MRP Amount mismatch");
+        enterInput("xpath","//Edit[@Name='Minimum Rate * Row "+i+", Not sorted.']",filename,dataSet, "minRate"+i);
+        enterInput("xpath","//Edit[@Name='Maximum Rate * Row "+i+", Not sorted.']",filename,dataSet,"maxRate"+i);
+        enterInput("xpath","//Edit[@Name='Unit Rate Row "+i+", Not sorted.']",filename,dataSet,"unitRate"+i);
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Gross Amount Row " + i + ", Not sorted.']"), common.getData(filename, dataSet,"grossAmount" + i),"Gross Amount mismatch");
+        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 300, 0);
+        enterInput("xpath", "//Edit[@Name='Voucher Disc % Row " + i + ", Not sorted.']", filename,dataSet, "voucherDiscount" + i);
+        enterInput("xpath", "//Edit[@Name='Party Disc % Row " + i + ", Not sorted.']", filename,dataSet, "partyDiscount" + i);
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Voucher Disc Row " + i +", Not sorted.']"),common.getData(filename,dataSet,"voucherDiscAmount"+i),"Voucher discount value mismatch");
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Party Disc Row "+ i +", Not sorted.']"),common.getData(filename,dataSet,"partyDiscAmount"+i),"Party discount value mismatch");
+        //discount 1
+        if (!IsDiscountClicked) {
+            common.clickElement("xpath", "//Header[@Name='Disc Amount 1']");
+            common.clickElement("xpath", "//Header[@Name='Disc Amount 2']");
+            common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 140, 0);
+            common.clickElement("xpath", "//Header[@Name='Disc Amount 3']");
+            IsDiscountClicked = true;
+        }
+        enterInput("xpath", "//Edit[@Name='Disc Basis 1 Row "+i+", Not sorted.']", filename,dataSet, "Discount1B" + i);
+        enterInput("xpath", "//Edit[@Name='Disc 1 Row "+i+", Not sorted.']", filename,dataSet, "disc1Row" + i);
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Disc Amount 1 Row "+i+", Not sorted.']"),common.getData(filename,dataSet,"Disc1Amount"+i),"Discount Amount 1 is not matched");
+        enterInput("xpath", "//Edit[@Name='Disc Basis 2 Row "+i+", Not sorted.']", filename,dataSet, "Discount2B" + i);
+        enterInput("xpath", "//Edit[@Name='Disc 2 Row "+i+", Not sorted.']", filename,dataSet, "disc2Row" + i);
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Disc Amount 2 Row "+i+", Not sorted.']"),common.getData(filename,dataSet,"Disc2Amount"+i),"Discount Amount 2  is not matched");
+        enterInput("xpath", "//Edit[@Name='Disc Basis 3 Row "+i+", Not sorted.']", filename,dataSet, "Discount3B" + i);
+        enterInput("xpath", "//Edit[@Name='Disc 3 Row "+i+", Not sorted.']", filename,dataSet, "disc3Row" + i);
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Disc Amount 3 Row "+i+", Not sorted.']"),common.getData(filename,dataSet,"Disc3Amount"+i),"Discount Amount 3  is not matched");
+        enterData("xpath", "//Edit[@Name='HSN Row " + i + ", Not sorted.']", filename,dataSet, "HSNCode"+i);
+        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 350, 0);
+        Assert.assertEquals(common.getText("xpath","//Edit[@Name='Taxable Value Row " + i + ", Not sorted.']"),common.getData(filename,dataSet,"taxableValue"+i),"Taxable value mismatch");
+        if (!gstAmountClicked) {
+            common.clickElement("xpath", "//Header[@Name='GST Amount']");
+            gstAmountClicked = true;
+        }
+        //check tax and net Amount
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='IGST Row " + i + ", Not sorted.']"), common.getData(filename,dataSet,"igstAmount" + i),"SGST mismatch");
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='CESS Row " + i + ", Not sorted.']"), common.getData(filename,dataSet, "cessAmount" +i),"CESS mismatch");
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='GST Amount Row " + i + ", Not sorted.']"), common.getData(filename,dataSet, "expectedGStExclusive" +i), "GST Amount mismatch");
+        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Net Amount Row " + i + ", Not sorted.']"), common.getData(filename,dataSet,"netAmount" +i), "Net Amount mismatch");
+        enterInput("xpath","//Edit[@Name='Department Row "+i+", Not sorted.']",filename,dataSet, "department"+i);
+        enterInput("xpath","//Edit[@Name='Project Row "+i+", Not sorted.']",filename,dataSet, "project"+i);
+        enterInput("xpath","//Edit[@Name='Profit Centre Row "+i+", Not sorted.']",filename,dataSet, "profitCentre"+i);
+        enterInput("xpath","//Edit[@Name='Cost Centre Row "+i+", Not sorted.']",filename,dataSet, "costCentre"+i);
+        enterInput("xpath","//Edit[@Name='Comments Row "+i+", Not sorted.']",filename,dataSet, "comments"+i);
+        enterInput("xpath","//Edit[@Name='Info 1 Row "+i+", Not sorted.']",filename,dataSet, "info"+i);
+        enterInput("xpath","//Edit[@Name='Value 1 Row "+i+", Not sorted.']",filename,dataSet, "value"+i);
+        common.findWebElement("xpath","//Edit[@Name='Date 1 Row "+i+", Not sorted.']").sendKeys(Time.timeStamp());
+
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("serial num product in sales invoice end", duration / 1000000000);
+    }
+    public void enterCashSalesInvoice(String dataFile,String dataset,int i) throws IOException, ParseException {
+        navigateToCashTab();
+        enterInput("xpath","//Edit[@Name='Cash Account Code Row "+i+", Not sorted.']",dataFile,dataset,"cashAccount"+i);
+        enterInput("xpath","//Edit[@Name='Amount * Row "+i+", Not sorted.']",dataFile,dataset,"cashAmount"+i);
+        enterInput("xpath","//Edit[@Name='TDS Transaction Nature Row "+i+", Not sorted.']",dataFile,dataset,"tdsTransactionNature"+i);
+        enterInput("xpath","//Edit[@Name='TDS Account Row "+i+", Not sorted.']",dataFile,dataset,"tdsAccount"+i);
+        enterInput("xpath","//Edit[@Name='TDS Amount Row "+i+", Not sorted.']",dataFile,dataset,"tdsAmount"+i);
+        enterInput("xpath","//Edit[@Name='Department Row "+i+", Not sorted.']",dataFile,dataset, "department"+i);
+        enterInput("xpath","//Edit[@Name='Project Row "+i+", Not sorted.']",dataFile,dataset, "project"+i);
+        enterInput("xpath","//Edit[@Name='Profit Centre Row "+i+", Not sorted.']",dataFile,dataset, "profitCentre"+i);
+        enterInput("xpath","//Edit[@Name='Cost Centre Row "+i+", Not sorted.']",dataFile,dataset, "costCentre"+i);
+        enterInput("xpath","//Edit[@Name='Comments Row "+i+", Not sorted.']",dataFile,dataset, "comments"+i);
+
+    }
+    public void enterChargesAndDeductionsSalesInvoice(String dataFile,String dataset,int i) throws IOException, ParseException {
+        long start = System.nanoTime();
+        System.out.println("charges and deductions in Sales Invoice :" + start);
+
+        navigateToChargesAndDeductionsTab();
+        enterData("xpath", "//Edit[@Name='Charges Or Deductions * Row "+i+", Not sorted.']", dataFile, dataset, "charges"+i);
+        enterData("xpath", "//Edit[@Name='Account Code Row "+i+", Not sorted.']", dataFile, dataset, "chargesAccount"+i);
+        if(!IsAmountHeaderClicked){
+            common.clickElement("xpath","//Header[@Name='Amount *']");
+            IsAmountHeaderClicked=true;
+        }
+        enterInput("xpath","//Edit[@Name='Basis Row "+i+", Not sorted.']",dataFile,dataset, "chargesBasis"+i);
+        enterInput("xpath","//Edit[@Name='Percentage Row "+i+", Not sorted.']",dataFile,dataset, "chargesPercentage"+i);
+        String amount=common.getText("xpath", "//Edit[@Name='Amount * Row "+i+", Not sorted.']");
+        String charges=common.getText("xpath", "//Edit[@Name='Charges Row "+i+", Not sorted.']"),deductions=common.getText("xpath", "//Edit[@Name='Deductions Row "+i+", Not sorted.']");
+        Assert.assertTrue(amount.equals(charges)|| amount.equals(deductions),"Amount doesn't match Charges or Deductions for row " +i+". Actual: " + amount + ", Charges: " + charges + ", Deductions: " + deductions);
+        enterInput("xpath","//Edit[@Name='Department Row "+i+", Not sorted.']",dataFile,dataset, "department"+i);
+        enterInput("xpath","//Edit[@Name='Project Row "+i+", Not sorted.']",dataFile,dataset, "project"+i);
+        enterInput("xpath","//Edit[@Name='Profit Centre Row "+i+", Not sorted.']",dataFile,dataset, "profitCentre"+i);
+        enterInput("xpath","//Edit[@Name='Cost Centre Row "+i+", Not sorted.']",dataFile,dataset, "costCentre"+i);
+        enterInput("xpath","//Edit[@Name='Comments Row "+i+", Not sorted.']",dataFile,dataset, "comments"+i);
+
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("charges and deductions in sales invoice end", duration / 1000000000);
+    }
+    public void enterOtherChargesSalesInvoice(String dataFile,String dataset,int i) throws IOException, ParseException {
+        long start = System.nanoTime();
+        System.out.println("other Charges in Sales Invoice :" + start);
+
+        navigateToOtherChargesTab();
+        enterData("xpath", "//Edit[@Name='Account Code Row "+i+", Not sorted.']", dataFile,dataset, "otherChargesAccount"+i);
+        enterData("xpath", "//Edit[@Name='Amount * Row "+i+", Not sorted.']", dataFile, dataset,"chargesAmount"+i);
+        enterData("xpath", "//Edit[@Name='HSN Row "+i+", Not sorted.']", dataFile, dataset,"HSNCode"+i);
+        common.sliderHandling("xpath", "//Table[@Name='OtherCharges']/*/Thumb[@Name='Position']", 200, 0);
+        enterInput("xpath","//Edit[@Name='Department Row "+i+", Not sorted.']",dataFile, dataset, "department"+i);
+        enterInput("xpath","//Edit[@Name='Project Row "+i+", Not sorted.']",dataFile, dataset, "project"+i);
+        enterInput("xpath","//Edit[@Name='Profit Centre Row "+i+", Not sorted.']",dataFile, dataset, "profitCentre"+i);
+        enterInput("xpath","//Edit[@Name='Cost Centre Row "+i+", Not sorted.']",dataFile, dataset, "costCentre"+i);
+        enterInput("xpath","//Edit[@Name='Comments Row "+i+", Not sorted.']",dataFile, dataset, "comments"+i);
+        long duration = System.nanoTime() - start;
+        FileUtil.writeTimeLog("other Charges in sales invoice end", duration / 1000000000);
+    }
+    public void enterChequesSalesInvoice(String dataFile,String dataset,int i) throws IOException, ParseException {
+        List<WebElement> elements=common.findWebElements("xpath","//TabItem[contains(@Name,'Cheques')]");
+        System.out.println(elements.get(0).getText());
+        elements.get(0).click();
+        enterInput("xpath","//Edit[@Name='Bank Account Code Row "+i+", Not sorted.']",dataFile,dataset,"bankAccount"+i);
+        enterInput("xpath","//Edit[@Name='Amount * Row "+i+", Not sorted.']",dataFile,dataset,"cashAmount"+i);
+        common.findWebElement("xpath","//Edit[@Name='Cheque/EFT No * Row "+i+", Not sorted.']").sendKeys(String.valueOf(common.getRandom()));
+        enterInput("xpath","//Edit[@Name='Drawn On Bank * Row "+i+", Not sorted.']",dataFile,dataset,"drawnOn"+i);
+        enterInput("xpath","//Edit[@Name='Drawn On Bank Branch Row "+i+", Not sorted.']",dataFile,dataset,"drawnOnBranch");
+        enterInput("xpath","//Edit[@Name='TDS Transaction Nature Row "+i+", Not sorted.']",dataFile,dataset,"tdsTransactionNature"+i);
+        enterInput("xpath","//Edit[@Name='TDS Account Row "+i+", Not sorted.']",dataFile,dataset,"tdsAccount"+i);
+        enterInput("xpath","//Edit[@Name='TDS Amount Row "+i+", Not sorted.']",dataFile,dataset,"tdsAmount"+i);
+        enterInput("xpath","//Edit[@Name='Charges Account Code Row "+i+", Not sorted.']",dataFile,dataset,"chargesAccount"+i);
+        enterInput("xpath","//Edit[@Name='Charges Row "+i+", Not sorted.']",dataFile,dataset,"chargesAmount"+i);
+        common.sliderHandling("xpath", "//Table[@Name='Cheques']/*/Thumb[@Name='Position']", 70, 0);
+        enterInput("xpath","//Edit[@Name='Department Row "+i+", Not sorted.']",dataFile,dataset, "department"+i);
+        enterInput("xpath","//Edit[@Name='Project Row "+i+", Not sorted.']",dataFile,dataset, "project"+i);
+        enterInput("xpath","//Edit[@Name='Profit Centre Row "+i+", Not sorted.']",dataFile,dataset, "profitCentre"+i);
+        enterInput("xpath","//Edit[@Name='Cost Centre Row "+i+", Not sorted.']",dataFile,dataset, "costCentre"+i);
+        enterInput("xpath","//Edit[@Name='Comments Row "+i+", Not sorted.']",dataFile,dataset, "comments"+i);
+    }
+    public void enterPostDatedChequesSalesInvoice(String dataFile,String dataset,int i) throws IOException, ParseException, InterruptedException {
+        common.clickElement("xpath","//TabItem[contains(@Name,'Post Dated Cheques')]");
+        enterInput("xpath","//Edit[@Name='PDC Account Code Row "+i+", Not sorted.']",dataFile,dataset,"pdcAccount"+i);
+        enterInput("xpath","//Edit[@Name='Amount * Row "+i+", Not sorted.']",dataFile,dataset,"cashAmount"+i);
+        common.findWebElement("xpath","//Edit[@Name='Cheque/EFT No * Row "+i+", Not sorted.']").sendKeys(String.valueOf(common.getRandom()));
+        WebElement chequeDate=common.findWebElement("xpath","//Edit[@Name='Cheque Date * Row "+i+", Not sorted.']");
+        chequeDate.click();
+        chequeDate.sendKeys(Time.timeStamp());
+        Thread.sleep(1000);
+        enterInput("xpath","//Edit[@Name='Drawn On Bank * Row "+i+", Not sorted.']",dataFile,dataset,"drawnOn"+i);
+        enterInput("xpath","//Edit[@Name='Drawn On Bank Branch Row "+i+", Not sorted.']",dataFile,dataset,"drawnOnBranch");
+        enterInput("xpath","//Edit[@Name='TDS Transaction Nature Row "+i+", Not sorted.']",dataFile,dataset,"tdsTransactionNature"+i);
+        enterInput("xpath","//Edit[@Name='TDS Account Row "+i+", Not sorted.']",dataFile,dataset,"tdsAccount"+i);
+        enterInput("xpath","//Edit[@Name='TDS Amount Row "+i+", Not sorted.']",dataFile,dataset,"tdsAmount"+i);
+        enterInput("xpath","//Edit[@Name='Department Row "+i+", Not sorted.']",dataFile,dataset, "department"+i);
+        enterInput("xpath","//Edit[@Name='Project Row "+i+", Not sorted.']",dataFile,dataset, "project"+i);
+        enterInput("xpath","//Edit[@Name='Profit Centre Row "+i+", Not sorted.']",dataFile,dataset, "profitCentre"+i);
+        enterInput("xpath","//Edit[@Name='Cost Centre Row "+i+", Not sorted.']",dataFile,dataset, "costCentre"+i);
+        enterInput("xpath","//Edit[@Name='Comments Row "+i+", Not sorted.']",dataFile,dataset, "comments"+i);
+    }
+    public void enterChequesPDCSalesInvoice(String dataFile,String dataset,int i) throws IOException, ParseException {
+        List<WebElement> elements=common.findWebElements("xpath","//TabItem[contains(@Name,'Cheques')]");
+        System.out.println(elements.get(2).getText());
+        elements.get(2).click();
+        enterInput("xpath","//Edit[@Name='Bank Account Code Row "+i+", Not sorted.']",dataFile,dataset,"bankAccount"+i);
+        enterInput("xpath","//Edit[@Name='Amount * Row "+i+", Not sorted.']",dataFile,dataset,"cashAmount"+i);
+        common.findWebElement("xpath","//Edit[@Name='Cheque/EFT No * Row "+i+", Not sorted.']").sendKeys(String.valueOf(common.getRandom()));
+        enterInput("xpath","//Edit[@Name='Drawn On Bank * Row "+i+", Not sorted.']",dataFile,dataset,"drawnOn"+i);
+        enterInput("xpath","//Edit[@Name='Drawn On Bank Branch Row "+i+", Not sorted.']",dataFile,dataset,"drawnOnBranch");
+        enterInput("xpath","//Edit[@Name='TDS Transaction Nature Row "+i+", Not sorted.']",dataFile,dataset,"tdsTransactionNature"+i);
+        enterInput("xpath","//Edit[@Name='TDS Account Row "+i+", Not sorted.']",dataFile,dataset,"tdsAccount"+i);
+        enterInput("xpath","//Edit[@Name='TDS Amount Row "+i+", Not sorted.']",dataFile,dataset,"tdsAmount"+i);
+        enterInput("xpath","//Edit[@Name='Department Row "+i+", Not sorted.']",dataFile,dataset, "department"+i);
+        enterInput("xpath","//Edit[@Name='Project Row "+i+", Not sorted.']",dataFile,dataset, "project"+i);
+        enterInput("xpath","//Edit[@Name='Profit Centre Row "+i+", Not sorted.']",dataFile,dataset, "profitCentre"+i);
+        enterInput("xpath","//Edit[@Name='Cost Centre Row "+i+", Not sorted.']",dataFile,dataset, "costCentre"+i);
+        enterInput("xpath","//Edit[@Name='Comments Row "+i+", Not sorted.']",dataFile,dataset, "comments"+i);
+    }
+    public void enterCreditCardSalesInvoie(String dataFile,String dataset,int i) throws IOException, ParseException, InterruptedException {
+        common.clickElement("xpath","//TabItem[contains(@Name,'Credit Card')]");
+        enterInput("xpath","//Edit[@Name='Swipe Machine Type * Row "+i+", Not sorted.']",dataFile,dataset,"swipeMachineType"+i);
+        enterInput("xpath","//Edit[@Name='Swipe Type * Row "+i+", Not sorted.']",dataFile,dataset,"swipeType"+i);
+        enterInput("xpath","//Edit[@Name='Amount * Row "+i+", Not sorted.']",dataFile,dataset,"chargesAmount"+i);
+        enterInput("xpath","//Edit[@Name='TDS Transaction Nature Row "+i+", Not sorted.']",dataFile,dataset,"tdsTransactionNature"+i);
+        enterInput("xpath","//Edit[@Name='TDS Account Row "+i+", Not sorted.']",dataFile,dataset,"tdsAccount"+i);
+        enterInput("xpath","//Edit[@Name='TDS Amount Row "+i+", Not sorted.']",dataFile,dataset,"tdsAmount"+i);
+        common.findWebElement("xpath","//Edit[@Name='Card No Row "+i+", Not sorted.']").sendKeys("852741"+common.getRandom());
+        Thread.sleep(1500);
+        WebElement approvalNo=common.findWebElement("xpath","//Edit[@Name='Approval No * Row "+i+", Not sorted.']");
+        approvalNo.click();
+        approvalNo.sendKeys(String.valueOf(common.getRandom()));
+        enterInput("xpath","//Edit[@Name='Charges Account Code Row "+i+", Not sorted.']",dataFile,dataset,"chargesAccount"+i);
+        enterInput("xpath","//Edit[@Name='Percentage Row "+i+", Not sorted.']",dataFile,dataset,"chargesPercentage"+i);
+        common.sliderHandling("xpath", "//Table[@Name='CreditCard']/*/Thumb[@Name='Position']", 100, 0);
+        enterInput("xpath","//Edit[@Name='Executive Row "+i+", Not sorted.']",dataFile,dataset,"executive"+i);
+        enterInput("xpath","//Edit[@Name='Department Row "+i+", Not sorted.']",dataFile,dataset, "department"+i);
+        enterInput("xpath","//Edit[@Name='Project Row "+i+", Not sorted.']",dataFile,dataset, "project"+i);
+        enterInput("xpath","//Edit[@Name='Profit Centre Row "+i+", Not sorted.']",dataFile,dataset, "profitCentre"+i);
+        enterInput("xpath","//Edit[@Name='Cost Centre Row "+i+", Not sorted.']",dataFile,dataset, "costCentre"+i);
+        enterInput("xpath","//Edit[@Name='Comments Row "+i+", Not sorted.']",dataFile,dataset, "comments"+i);
+    }
+
+
+
+
     public void multiBatchProductInStockConsumption(String filename,String dataSet, String product, String quantity,String freeQuantity, int i) throws IOException, ParseException, InterruptedException {
         enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, dataSet,product);
         Thread.sleep(3000);
@@ -1171,6 +1502,23 @@ public abstract class Transaction {
         common.clickElement("xpath", "//Button[@Name='OK']");
         Thread.sleep(500);
         enterInput("xpath","//Edit[@Name='Storage Bin * Row "+i+", Not sorted.']",filename,dataSet,"storageBin");
+    }
+
+    public void multiBatchProduct(String filename,String dataSet, String product, String quantity,String freeQuantity, int i) throws IOException, ParseException, InterruptedException {
+        enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", filename, dataSet,product);
+        common.clickElement("xpath", "//Button[@Name='Stock Details Row " + i + "']");
+        Thread.sleep(3000);
+        List<WebElement> rows = common.findWebElements("xpath", "//Table[@Name='Batch Details']/*[@Name='Data Panel']/*[@Name='Row 1']/*[@Name='Quantity row 1']");
+        System.out.println("Row count: " + rows.size());
+        for (WebElement k : rows) {
+            k.click();
+            k.sendKeys(Keys.CONTROL + "a", Keys.DELETE);
+            k.sendKeys(common.getData(filename,dataSet, quantity), Keys.TAB);
+            if (Boolean.parseBoolean(common.getData(filename,dataSet,"enableFreeQuantity"))){
+                k.sendKeys(common.getData(filename,dataSet,freeQuantity),Keys.TAB);
+            }
+        }
+        common.clickElement("xpath", "//Button[@Name='OK']");
     }
 
     public void serialNumberProduct(String filename,String dataSet,String product, int i) throws IOException, ParseException, InterruptedException, AWTException {
@@ -1437,6 +1785,12 @@ public abstract class Transaction {
         enterInput("xpath","//Edit[@Name='Term * Row 0, Not sorted.']",dataFile,dataset,"term");
         enterInput("xpath","//Edit[@Name='Comments Row 0, Not sorted.']",dataFile,dataset,"comments");
     }
+    public void termsAndConditions(String dataFile,String dataset,int i) throws IOException, ParseException {
+        common.clickElement("xpath","//TabItem[contains(@Name,'Terms And Conditions')]");
+        enterInput("xpath","//Edit[@Name='Term Type * Row "+i+", Not sorted.']",dataFile,dataset,"termType"+i);
+        enterInput("xpath","//Edit[@Name='Term * Row "+i+", Not sorted.']",dataFile,dataset,"term"+i);
+        enterInput("xpath","//Edit[@Name='Comments Row "+i+", Not sorted.']",dataFile,dataset,"comments");
+    }
     public void enterOtherInfo(){
         navigateToOtherInfoTab();
         common.findWebElement("xpath","//Edit[@Name='Reference Bill No']").sendKeys("89"+common.getRandom());
@@ -1477,7 +1831,8 @@ public abstract class Transaction {
         common.findWebElement("xpath","//Edit[@Name='Cheque/EFT No * Row 0, Not sorted.']").sendKeys(String.valueOf(common.getRandom()));
         WebElement chequeDate=common.findWebElement("xpath","//Edit[@Name='Cheque Date * Row 0, Not sorted.']");
         chequeDate.click();
-        chequeDate.sendKeys(Time.timeStamp());        enterInput("xpath","//Edit[@Name='Drawn On Bank * Row 0, Not sorted.']",dataFile,dataset,"drawnOn");
+        chequeDate.sendKeys(Time.timeStamp());
+        enterInput("xpath","//Edit[@Name='Drawn On Bank * Row 0, Not sorted.']",dataFile,dataset,"drawnOn");
         enterInput("xpath","//Edit[@Name='Drawn On Bank Branch Row 0, Not sorted.']",dataFile,dataset,"drawnOnBranch");
     }
 
@@ -2239,8 +2594,6 @@ public abstract class Transaction {
         System.out.println("Transaction is Deleted Successfully");
     }
 
-
-
     public void enableCheckboxSelection(String locatorXpath) {
         WebElement element = driver.findElementByXPath(locatorXpath);
         String checkBoxToggleState = element.getAttribute("Toggle.ToggleState");
@@ -2299,6 +2652,27 @@ public abstract class Transaction {
             System.out.println("Checkbox was unchecked,no need action");
         } else Assert.fail("Element Not Found");
         return text;
+    }
+
+    public void reportDesigner(WindowsDriver rootDriver,String option,String operator,String value) throws IOException, InterruptedException {
+        common.clickElement("xpath", "//Button[@Name='Designer']");
+        common.clickElement("xpath", "//TabItem[@Name='Data']");
+        common.clickElement("xpath", "//Button[@Name='Filter']");
+        rootDriver=common.initializeDriver("Root");
+        System.out.println("root navigated");
+        Thread.sleep(2000);
+        List<WebElement> columnsList=common.findWebElements("xpath","//Window[@Name='Filter']/Table/*[@Name='Data Panel']/ListItem[starts-with(@Name,'Row ')]");
+        System.out.println("size :"+columnsList.size());
+        for (int i=0;i<=8;i++){
+            WebElement v=columnsList.get(i);
+            System.out.println(v.getText());
+            if (v.getText().contains(option)){
+                v.click();
+                v.sendKeys(Keys.ARROW_RIGHT,operator,Keys.ENTER,Keys.ARROW_RIGHT,value);
+            }
+        }
+        common.clickElement("xpath", "//Button[@Name='Apply']");
+        System.out.println("completed");
     }
 
     public double billsReceivable(String locatorType, String rowLocator, String voucherLocator, String checkBoxLocator, String pendingAmountLocator) {
@@ -2534,8 +2908,16 @@ public abstract class Transaction {
         common.findWebElement("xpath","//Edit[@Name='Reference Bill No']").sendKeys(String.valueOf(common.getRandom()));
         common.findWebElement("xpath","//Edit[@Name='Reference Bill Date']").sendKeys(Time.timeStamp());
         Thread.sleep(1000);
-        enterInput("xpath", "//Edit[@Name='OtherInfo 1']", dataFile, dataset, "otherInfo1");
-        enterInput("xpath", "//Edit[@Name='OtherInfo 2']", dataFile, dataset, "otherInfo2");
+        enterInput("xpath", "//Edit[@Name='Other Info 1']", dataFile, dataset, "otherInfo1");
+        enterInput("xpath", "//Edit[@Name='Other Info 2']", dataFile, dataset, "otherInfo2");
+    }
+    public void enterAllocations(String dataFile,String dataset) throws IOException, ParseException {
+        common.clickElement("xpath","//TabItem[contains(@Name,'Allocations')]");
+        enterInput("xpath","//Edit[@Name='Department']",dataFile,dataset,"department");
+        enterInput("xpath","//Edit[@Name='Project']",dataFile,dataset,"project");
+        enterInput("xpath","//Edit[@Name='Profit Centre']",dataFile,dataset,"profitCentre");
+        enterInput("xpath","//Edit[@Name='Cost Centre']",dataFile,dataset,"costCentre");
+
     }
     public void selectPendingPurchaseOrder(String voucherNum, String financialYearNum) {
         // Try to detect the popup

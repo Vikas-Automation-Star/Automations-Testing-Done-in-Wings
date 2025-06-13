@@ -65,10 +65,8 @@ public class Locations extends Masters {
         common.inputAndVerify("xpath", "//Edit[@Name='Contact Person Mobile No']", common.getData(filepath, "cpmn"));
         common.inputAndVerify("xpath", "//Edit[@Name='Contact Person Email']", common.getData(filepath, "cpe"));
         common.clickElement("name", "Ok");
-        saveMaster();
-        closeMaster(common.getData(filepath,"menuItem"));
-        refresh();
-        //validate
+        saveAfterMasterCreate();
+
         navigateToMastersWhen3Steps(common.getData(filepath,"menu"), common.getData(filepath,"secondMenu"), common.getData(filepath,"subMenu") );
         validateAndInactivate(common.getData(filepath,"menuItem"), common.getData(filepath,"newAccount") );
     }

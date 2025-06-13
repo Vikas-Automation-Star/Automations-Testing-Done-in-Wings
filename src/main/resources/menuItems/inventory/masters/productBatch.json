@@ -4,6 +4,8 @@
   "expiryDate": "20-12-2030",
   "menu": "Inventory",
   "secondMenu": "Product",
+  "description": "This is sample product batch",
+  "batchText": "Sample Batch Text",
   "thirdMenu": "Batches",
   "fourthMenu": "Product Batches"
 }

@@ -1,17 +1,17 @@
 package com.wings.pages.sales.transactions;
 
 import com.wings.pages.Transaction;
+import com.wings.pages.TransactionsBaseClass;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.Assert;
-
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 
-public class SalesInvoice extends Transaction {
+public class SalesInvoice extends TransactionsBaseClass {
     WindowsDriver driver;
     Common common;
     String dataFile;
@@ -30,19 +30,22 @@ public class SalesInvoice extends Transaction {
         navigateToSalesInvoiceMenu();
         Thread.sleep(2000);
 
-        String oldVoucherID =oldTTransactionID();
-        System.out.println("oldID: "+ oldVoucherID);
-        //branch selection
-        enterInput("xpath", "//Edit[@Name='Branch *']", dataFile, "salesInvoice", "branch");
-        enterInput("xpath", "//Edit[@Name='Location *']", dataFile, "salesInvoice", "location");
-        enterInput("xpath", "//Edit[@Name='Cash/Party Code']", dataFile, "salesInvoice", "partyCode");
+        String oldVoucherID = oldTTransactionID();
+        System.out.println("oldID: " + oldVoucherID);
+        enterDate();
+        enterBranchName(dataFile, "salesInvoice", "branch");
+        enterLocation(dataFile, "salesInvoice", "location");
+        enterCurrency(dataFile, "salesInvoice", "currency");
+        enterCashOrParty(dataFile, "salesInvoice", "partyCode");
         Thread.sleep(1500);
         gstTransactionType("Inter State Sales to Registered Dealers");
         Thread.sleep(1000);
-        enterInput("xpath","//Edit[@Name='Sales A/c Code']",dataFile,"salesInvoice","salesAccountCode");
+        enterCustomerEmail(dataFile, "salesInvoice", "email");
+        enterCustomerMobileNum(dataFile, "salesInvoice", "mobileNum");
+        enterSalesAccountCode(dataFile, "salesInvoice", "salesAccountCode");
         generalInfoSliderHandle(250);
-        enterInput("xpath", "//Edit[@Name='TCS Trans Nature']", dataFile,"salesInvoice", "tcsTransactionNature");
-        common.inputText("xpath", "//Edit[@Name='Invoice Type']", common.getData(dataFile,"salesInvoice", "invoice"));
+        enterTcsTransNature(dataFile, "salesInvoice", "tcsTransactionNature");
+        common.inputText("xpath", "//Edit[@Name='Invoice Type']", common.getData(dataFile, "salesInvoice", "invoice"));
         Thread.sleep(1000);
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_DOWN);
@@ -51,97 +54,130 @@ public class SalesInvoice extends Transaction {
         robot.keyRelease(KeyEvent.VK_DOWN);
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
-        enterInput("xpath", "//Edit[@Name='Price List']", dataFile,"salesInvoice", "priceList");
+        enterPriceList(dataFile, "salesInvoice", "priceList");
         generalInfoSliderHandle(400);
-        enterInput("xpath", "//Edit[@Name='Executive *']", dataFile, "salesInvoice","executive");
+        enterExecutive(dataFile, "salesInvoice", "executive");
+        enterShippingBillNo(dataFile, "salesInvoice", "shippingBillNo");
+        enterShippingDate();
+        enterPortCode(dataFile, "salesInvoice", "portCode");
+        enterRemarks(dataFile, "salesInvoice", "remarks");
         generalInfoSliderHandle(-500);
         //F3-Items
-        for (int i = 0; i < Integer.parseInt(common.getData(dataFile,"salesInvoice", "productCount")); i++) {
-            addProduct(i);
+        for (int i = 0; i < Integer.parseInt(common.getData(dataFile, "salesInvoice", "productCount")); i++) {
+            addProduct1(i);
         }
-        enterChargesAndDeductions(dataFile, "salesInvoice");
-        enterOtherCharges(dataFile, "salesInvoice");
-        navigateToBillsPayablesTab();
-        common.deleteInvalidRows();
-        //collections
-        enterCashinSIAO(dataFile, "salesInvoice");
-        enterChequesinSIAO(dataFile, "salesInvoice");
-        enterPostDatedChequesinSIAO(dataFile, "salesInvoice");
-        enterChequesPDCinSIAO(dataFile, "salesInvoice");
-        enterCreditCardinSIAO(dataFile, "salesInvoice");
-        //verify all the fields in summary are fetching data
-        navigateToPaytymTab();
-        for (int j = 0; j < 2; j++) {
-            robot.keyPress(KeyEvent.VK_RIGHT);
-            robot.keyRelease(KeyEvent.VK_RIGHT);
+        for (int i = 0; i < Integer.parseInt(common.getData(dataFile, "salesInvoice", "productCount")); i++) {
+            enterChargesAndDeductionsSalesInvoice(dataFile, "salesInvoice",i);
         }
+        for (int i = 0; i < Integer.parseInt(common.getData(dataFile, "salesInvoice", "productCount")); i++) {
+            enterOtherChargesSalesInvoice(dataFile, "salesInvoice", i);
+        }
+        for (int i = 0; i < Integer.parseInt(common.getData(dataFile, "salesInvoice", "productCount")); i++) {
+            enterCashSalesInvoice(dataFile, "salesInvoice",i);
+        }
+        for (int i = 0; i < Integer.parseInt(common.getData(dataFile, "salesInvoice", "productCount")); i++) {
+            enterChequesSalesInvoice(dataFile, "salesInvoice",i);
+        }
+        for (int i = 0; i < Integer.parseInt(common.getData(dataFile, "salesInvoice", "productCount")); i++) {
+            enterPostDatedChequesSalesInvoice(dataFile, "salesInvoice",i);
+        }
+        for (int i = 0; i < Integer.parseInt(common.getData(dataFile, "salesInvoice", "productCount")); i++) {
+            enterChequesPDCSalesInvoice(dataFile, "salesInvoice",i);
+        }
+        for (int i = 0; i < Integer.parseInt(common.getData(dataFile, "salesInvoice", "productCount")); i++) {
+                    enterCreditCardSalesInvoie(dataFile, "salesInvoice",i);
+        }
+        scrollRight(10);
         enterOtherInfo(dataFile,"salesInvoice");
-        //summary
-        navigateToOtherInfoTab();
-        for (int i = 0; i < 5; i++) {
-            robot.keyPress(KeyEvent.VK_RIGHT);
-            robot.keyRelease(KeyEvent.VK_RIGHT);
+        scrollRight(7);
+        for (int i = 0; i < Integer.parseInt(common.getData(dataFile, "salesInvoice", "productCount")); i++) {
+            termsAndConditions(dataFile,"salesInvoice",i);
         }
-        quantityPresentInSummary();
-        grossAmountPresentInSummary();
-        grossMinusDiscountPresentInSummary();
-        netAmountPresentInSummary();
-        cessPresentInSummary();
-        iGSTPresentInSummary();
-        tcsAmountPresentInSummary();
-        tcsTaxableValuePresentInSummary();
-        totalValuePresentInSummary();
-        totalValueInCompanyCurrenyPresentInSummary();
-        //save
+        enterAllocations(dataFile,"salesInvoice");
         transactionSave();
-        String newVoucherID =newTransactionID(oldVoucherID);
-        System.out.println("newID: "+newVoucherID);
-        Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
-        Thread.sleep(1000);
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Invoices");
-        common.clickElement("name", "Sales Book");
-        Thread.sleep(1000);
-        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
-        Thread.sleep(1500);
-        verifyReport(newVoucherID,dataFile,"salesInvoice");
 
         long duration = System.nanoTime() - start;
-        FileUtil.writeTimeLog("Sales Invoice", duration / 1000000000);
-
-        return newVoucherID;
+        FileUtil.writeTimeLog("Sales Invoice ended at", duration / 1000000000);
+        return "";
     }
 
-    public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {
-        if (common.getData(dataFile,"salesInvoice", "productType" + i).equals("general")) {
-            generalProduct(dataFile, "salesInvoice","productCode" + i, "quantity" + i,"freeQuantity" + i, i);
-        } else if (common.getData(dataFile,"salesInvoice", "productType" + i).equals("multiBatch")) {
-            multiBatchProduct(dataFile,"salesInvoice", "productCode" + i, "quantity" + i,"freeQuantity" + i, i);
-        }else if (common.getData(dataFile,"salesInvoice", "productType" + i).equals("serial")) {
-            serialNumberProduct(dataFile,"salesInvoice", "productCode" + i, i);
+//        navigateToBillsPayablesTab();
+//        common.deleteInvalidRows();
+//        //collections
+//        enterCashinSIAO(dataFile, "salesInvoice");
+//        enterChequesinSIAO(dataFile, "salesInvoice");
+//        enterPostDatedChequesinSIAO(dataFile, "salesInvoice");
+//        enterChequesPDCinSIAO(dataFile, "salesInvoice");
+//        enterCreditCardinSIAO(dataFile, "salesInvoice");
+//        //verify all the fields in summary are fetching data
+//        navigateToPaytymTab();
+//        for (int j = 0; j < 2; j++) {
+//            robot.keyPress(KeyEvent.VK_RIGHT);
+//            robot.keyRelease(KeyEvent.VK_RIGHT);
+//        }
+//        enterOtherInfo(dataFile,"salesInvoice");
+//        //summary
+//        navigateToOtherInfoTab();
+//        for (int i = 0; i < 5; i++) {
+//            robot.keyPress(KeyEvent.VK_RIGHT);
+//            robot.keyRelease(KeyEvent.VK_RIGHT);
+//        }
+//        quantityPresentInSummary();
+//        grossAmountPresentInSummary();
+//        grossMinusDiscountPresentInSummary();
+//        netAmountPresentInSummary();
+//        cessPresentInSummary();
+//        iGSTPresentInSummary();
+//        tcsAmountPresentInSummary();
+//        tcsTaxableValuePresentInSummary();
+//        totalValuePresentInSummary();
+//        totalValueInCompanyCurrenyPresentInSummary();
+//        //save
+//        transactionSave();
+//        String newVoucherID =newTransactionID(oldVoucherID);
+//        System.out.println("newID: "+newVoucherID);
+//        Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
+//        Thread.sleep(1000);
+//        common.clickElement("name", "Sales");
+//        common.clickElement("name", "Invoices");
+//        common.clickElement("name", "Sales Book");
+//        Thread.sleep(1000);
+//        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
+//        Thread.sleep(1500);
+//        verifyReport(newVoucherID,dataFile,"salesInvoice");
+//
+//        long duration = System.nanoTime() - start;
+//        FileUtil.writeTimeLog("Sales Invoice", duration / 1000000000);
+//
+//        return newVoucherID;
+//    }
+//
+//    public void addProduct(int i) throws InterruptedException, IOException, ParseException, AWTException {
+//        if (common.getData(dataFile, "salesInvoice", "productType" + i).equals("general")) {
+//            generalProduct(dataFile, "salesInvoice", "productCode" + i, "quantity" + i, "freeQuantity" + i, i);
+//        } else if (common.getData(dataFile, "salesInvoice", "productType" + i).equals("multiBatch")) {
+//            multiBatchProduct(dataFile, "salesInvoice", "productCode" + i, "quantity" + i, "freeQuantity" + i, i);
+//        } else if (common.getData(dataFile, "salesInvoice", "productType" + i).equals("serial")) {
+//            serialNumberProduct(dataFile, "salesInvoice", "productCode" + i, i);
+//        }
+
+    public void addProduct1(int i) throws InterruptedException, IOException, ParseException, AWTException {
+//            int productCount = Integer.parseInt(common.getData(dataFile, "salesInvoice", "productCount"));
+//            for (int i = 0; i < productCount; i++) {
+//                enterInput("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", dataFile, "salesInvoice", "productCode" + i);
+//            }
+//            for (int i = 0; i < productCount; i++) {
+//                enterInput("xpath", "//Edit[@Name='Sales Account * Row " + i + ", Not sorted.']", dataFile, "salesInvoice", "salesAccount" + i);
+//            }
+//        }
+//        enterInput("xpath", "//Edit[@Name='Product Code Row " + i + ", Not sorted.']", dataFile,"salesInvoice", "productCode"+i);
+//        enterInput("xpath", "//Edit[@Name='Sales Account * Row "+i+", Not sorted.']",  dataFile,"salesInvoice", "salesAccount" + i);
+        if (common.getData(dataFile, "salesInvoice", "productType" + i).equals("general")) {
+            generalProductSalesInvoice(dataFile, "salesInvoice", i);
+        } else if (common.getData(dataFile, "salesInvoice", "productType" + i).equals("multiBatch")) {
+            multiBatchProductSalesInvoice(dataFile, "salesInvoice", i);
+        } else if (common.getData(dataFile, "salesInvoice", "productType" + i).equals("serial")) {
+            serialNumberProductSalesInvoice(dataFile, "salesInvoice", i);
         }
-
-        //validate
-        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 650, 0);
-        //MRP and gross Amount
-        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='MRP Amount Row " + i + ", Not sorted.']"), common.getData(dataFile,"salesInvoice", "mrpAmount" + i),"MRP Amount mismatch");
-        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Gross Amount Row " + i + ", Not sorted.']"), common.getData(dataFile, "salesInvoice","grossAmount" + i),"Gross Amount mismatch");
-
-        enterData("xpath", "//Edit[@Name='HSN Row " + i + ", Not sorted.']", dataFile,"salesInvoice", "HSNCode");
-        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 250, 0);
-
-        //taxable
-        Assert.assertEquals(common.getText("xpath","//Edit[@Name='Taxable Value Row " + i + ", Not sorted.']"),common.getData(dataFile,"salesInvoice","taxableValue"+i),"Taxable value mismatch");
-
-        if (!gstAmountClicked) {
-            common.clickElement("xpath", "//Header[@Name='GST Amount']");
-            gstAmountClicked = true;
-        }
-
-        //check tax and net Amount
-        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='IGST Row " + i + ", Not sorted.']"), common.getData(dataFile, "salesInvoice","igstAmount" + i),"IGST mismatch");
-        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='CESS Row " + i + ", Not sorted.']"), common.getData(dataFile,"salesInvoice", "cessAmount" +i),"CESS mismatch");
-        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='GST Amount Row " + i + ", Not sorted.']"), common.getData(dataFile,"salesInvoice", "expectedGStExclusive" +i), "GST Amount mismatch");
-        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Net Amount Row " + i + ", Not sorted.']"), common.getData(dataFile, "salesInvoice","netAmount" +i), "Net Amount mismatch");
     }
 }

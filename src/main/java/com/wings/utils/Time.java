@@ -31,6 +31,12 @@ public class Time {
         return now.format(formatter);
     }
 
+    public static String getFormattedFutureDate(int daysToAdd) {
+        LocalDate futureDate = LocalDate.now().plusDays(daysToAdd);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        return futureDate.format(formatter);
+    }
+
     public static String currentDateAndTime(){
         // Get current time in milliseconds
         long currentMillis = System.currentTimeMillis();
@@ -42,6 +48,6 @@ public class Time {
     }
 
     public static void main(String[] args) {
-        System.out.println(currentDateAndTime());
+        System.out.println(getFormattedFutureDate(3));
     }
 }

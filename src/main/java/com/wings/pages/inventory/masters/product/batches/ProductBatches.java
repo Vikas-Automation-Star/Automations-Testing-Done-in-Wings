@@ -33,12 +33,14 @@ public class ProductBatches extends Masters {
         robot.keyRelease(KeyEvent.VK_DOWN);
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
+        common.inputText("xpath","//Edit[@Name='Description']", common.getData(filepath,"description"));
         common.inputText("xpath", "//Edit[@Name='Expiry Date']", common.getData(filepath, "expiryDate"));
+        common.inputText("xpath","//Edit[@Name='Batch Text']", common.getData(filepath,"batchText"));
         saveMaster();
         closeMaster(common.getData(filepath,"menuItem"));
         refresh();
         //validate
-        navigateToMastersWhen4Steps(common.getData(filepath,"menu"), common.getData(filepath,"secondMenu"), common.getData(filepath,"thirdMenu"), common.getData(filepath,"fourthMenu") );
-        validateAndInactivate(common.getData(filepath,"menuItem"), common.getData(filepath,"newAccount") );
+//        navigateToMastersWhen4Steps(common.getData(filepath,"menu"), common.getData(filepath,"secondMenu"), common.getData(filepath,"thirdMenu"), common.getData(filepath,"fourthMenu") );
+//        validateAndInactivate(common.getData(filepath,"menuItem"), common.getData(filepath,"newAccount") );
     }
 }

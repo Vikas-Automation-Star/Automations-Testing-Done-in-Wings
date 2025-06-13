@@ -28,7 +28,7 @@ public class Supplier extends Masters {
   navigateToMastersWhen2Steps("Purchase","Suppliers");
   Thread.sleep(1500);
   createMaster("xpath", "//TreeItem[@Name='Suppliers']/TreeItem[@Name='All Suppliers']");
-  Thread.sleep(2000);
+  Thread.sleep(2500);
   inputTextWithValidation("xpath", "//Edit[@Name='New Supplier *']", common.getData(dataFile, "newSupplier") + common.getRandom());
   String master=common.findWebElement("xpath","//Edit[@Name='New Supplier *']").getText();
   inputTextWithValidation("xpath", "//Edit[@Name='Supplier Code']", common.getData(dataFile, "supplierCode") + common.getRandom());
@@ -77,6 +77,33 @@ public class Supplier extends Masters {
   Thread.sleep(2000);
   inputTextWithValidation("xpath", "//Edit[@Name='Aadhaar No']", common.getData(dataFile, "Aadhaar"));
   inputTextWithValidation("xpath", "//Pane[@Name='PartyDescription']/Edit[@Name='Description']", common.getData(dataFile, "Description"));
+  Thread.sleep(1000);
+  common.clickElement("xpath", "//Pane[@Name='Address and Contact Details']/Button[@Name='...']");
+  Thread.sleep(1000);
+  inputTextWithValidation("xpath", "//Edit[@Name='Address 1']", common.getData(dataFile, "Address1"));
+  inputTextWithValidation("xpath", "//Edit[@Name='Address 2']", common.getData(dataFile, "Address2"));
+  inputTextWithValidation("xpath", "//Edit[@Name='Address 3']", common.getData(dataFile, "Address3"));
+  inputTextWithValidation("xpath", "//Edit[@Name='City']", common.getData(dataFile, "city"));
+  inputTextWithValidation("xpath", "//Edit[@Name='State']", common.getData(dataFile, "state"));
+  Thread.sleep(1000);
+  WebElement country = common.findWebElement("xpath", "//Edit[@Name='Country']");
+  country.clear();
+  country.sendKeys(common.getData(dataFile, "country"), Keys.ENTER);
+  inputTextWithValidation("xpath", "//Edit[@Name='Zip']", common.getData(dataFile, "zip"));
+  inputTextWithValidation("xpath", "//Edit[@Name='Telephones 1']", common.getData(dataFile, "Telephone1"));
+  inputTextWithValidation("xpath", "//Edit[@Name='Telephones 2']", common.getData(dataFile, "Telephone2"));
+  inputTextWithValidation("xpath", "//Edit[@Name='Telephones 3']", common.getData(dataFile, "Telephone3"));
+  inputTextWithValidation("xpath", "//Edit[@Name='Telephones 4']", common.getData(dataFile, "Telephone4"));
+  inputTextWithValidation("xpath", "//Edit[@Name='Fax']", common.getData(dataFile, "fax"));
+  inputTextWithValidation("xpath", "//Edit[@Name='Email']", common.getData(dataFile, "email"));
+  inputTextWithValidation("xpath", "//Edit[@Name='Website']", common.getData(dataFile, "website"));
+  inputTextWithValidation("xpath", "//Edit[@Name='Contact Person']", common.getData(dataFile, "contactPersion"));
+  inputTextWithValidation("xpath", "//Edit[@Name='Contact Person Designation']", common.getData(dataFile, "contactPersonDesignation"));
+  inputTextWithValidation("xpath", "//Edit[@Name='Contact Person Telephone No']", common.getData(dataFile, "contactPersonTelephoneNo"));
+  inputTextWithValidation("xpath", "//Edit[@Name='Contact Person Mobile No']", common.getData(dataFile, "contactPersonMobileNo"));
+  inputTextWithValidation("xpath", "//Edit[@Name='Contact Person Email']", common.getData(dataFile, "contactPersonEmail"));
+  common.clickElement("xpath", "//Button[@Name='Ok']");
+  common.sliderHandling("xpath","//*/Thumb[@Name='Position']",0,190);
   common.clickElement("xpath", "//Pane[@Name='Registration']/Button[@Name='...']");
   common.clickElement("xpath", "//Edit[@Name='Party Reg Type *']/Button[@Name='Open']");
   Thread.sleep(2000);
@@ -129,6 +156,8 @@ public class Supplier extends Masters {
   common.inputText("xpath", "//Edit[@Name='Address Name * Row 0, Not sorted.']", common.getData(dataFile, "shippingAdressName"));
   common.clickElement("xpath", "//Edit[@Name='Address 1 * Row 0, Not sorted.']");
   common.inputText("xpath", "//Edit[@Name='Address 1 * Row 0, Not sorted.']", common.getData(dataFile, "ShippingAdress1"));
+  common.inputText("xpath", "//Edit[@Name='Address 2 Row 0, Not sorted.']", common.getData(dataFile, "ShippingAdress2"));
+  common.inputText("xpath", "//Edit[@Name='Address 3 Row 0, Not sorted.']", common.getData(dataFile, "ShippingAdress3"));
   common.clickElement("xpath", "//Edit[@Name='City * Row 0, Not sorted.']");
   common.inputText("xpath", "//Edit[@Name='City * Row 0, Not sorted.']", common.getData(dataFile, "Shippingcity"));
   WebElement state = common.findWebElement("xpath", "//Edit[@Name='State * Row 0, Not sorted.']");
@@ -144,19 +173,24 @@ public class Supplier extends Masters {
   common.clickElement("xpath", "//Edit[@Name='Zip/PostalCode * Row 0, Not sorted.']");
   common.inputText("xpath", "//Edit[@Name='Zip/PostalCode * Row 0, Not sorted.']", common.getData(dataFile, "stateZipcode"));
   common.clickElement("xpath", "//Edit[@Name='Country * Row 0, Not sorted.']");
-  WebElement country = common.findWebElement("xpath", "//Edit[@Name='Country * Row 0, Not sorted.']");
-  country.click();
-  country.sendKeys(common.getData(dataFile, "county"), Keys.ENTER);
+  WebElement country1 = common.findWebElement("xpath", "//Edit[@Name='Country * Row 0, Not sorted.']");
+  country1.click();
+  country1.sendKeys(common.getData(dataFile, "country"), Keys.ENTER);
   Thread.sleep(2000);
   common.clickElement("xpath", "//Button[@Name='Ok']");
   Thread.sleep(2000);
-  common.clickElement("xpath", "//Text[@Name='Consignor']/following-sibling::Button[@Name='...']");
-  WebElement consigner = common.findWebElement("xpath", "//Edit[@Name='Applicable Consignor Row 0, Not sorted.']");
-  consigner.click();
-  consigner.sendKeys(common.getData(dataFile, "consigner"), Keys.ENTER);
+    common.clickElement("xpath", "//Text[@Name='Account Group']/following-sibling::Button[@Name='...']");
+  WebElement accountGroup = common.findWebElement("xpath", "//Edit[@Name='Account Group Row 0, Not sorted.']");
+  accountGroup.click();
+  accountGroup.sendKeys(common.getData(dataFile, "accountGroup"), Keys.ENTER);
   common.clickElement("xpath", "//Button[@Name='Ok']");
+
+//  common.clickElement("xpath", "//Text[@Name='Consignor']/following-sibling::Button[@Name='...']");
+//  WebElement consigner = common.findWebElement("xpath", "//Edit[@Name='Applicable Consignor Row 0, Not sorted.']");
+//  consigner.click();
+//  consigner.sendKeys(common.getData(dataFile, "consigner"), Keys.ENTER);
+//  common.clickElement("xpath", "//Button[@Name='Ok']");
   saveAfterMasterCreate();
   validateMastersAndInactive("Suppliers",master);
-
  }
 }
