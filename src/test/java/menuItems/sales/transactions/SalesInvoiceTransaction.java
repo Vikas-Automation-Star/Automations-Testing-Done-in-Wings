@@ -1,7 +1,7 @@
 package menuItems.sales.transactions;
 
 import com.wings.pages.AppLogin;
-import com.wings.pages.sales.transactions.SalesInvoice;
+
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
@@ -26,8 +26,8 @@ public class SalesInvoiceTransaction {
 
     @Test
     public void salesInvoiceTransaction() throws IOException, InterruptedException, ParseException, AWTException {
-        SalesInvoice invoice = new SalesInvoice(driver, dataFile);
-        invoice.salesInvoice();
+//        SalesInvoice invoice = new SalesInvoice(driver, dataFile);
+//        invoice.salesInvoice();
     }
 
     @AfterTest

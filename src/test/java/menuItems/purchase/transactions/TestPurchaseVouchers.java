@@ -32,7 +32,6 @@ public class TestPurchaseVouchers {
         po.purchaseVoucher();
     }
 
-
     @AfterTest
     public void afterTest() throws IOException {
 //        appLogin.logout();

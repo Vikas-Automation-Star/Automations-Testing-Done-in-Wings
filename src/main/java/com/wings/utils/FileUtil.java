@@ -120,11 +120,6 @@ public class FileUtil {
         }
     }
 
-    public static  long startTimeLog(long startTime){
-        startTime = System.nanoTime();
-        return startTime;
-    }
-
     public static void writeTimeLog(String methodName,long timeStamp) throws IOException {
         try {
             org.testng.ITestResult result= org.testng.Reporter.getCurrentTestResult();

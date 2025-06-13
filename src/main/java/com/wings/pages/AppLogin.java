@@ -55,15 +55,15 @@ public class AppLogin {
         common.clickElement("xpath", "//Button[@Name='Submit']");
         //only sometimes
         WebDriverWait wait = new WebDriverWait(driver, 10);
-//        try {
-//            WebElement next=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//Window[@Name='Company Initialization']/Pane[@Name='header text']/Button[@Name='Next >']")));
-//            next.click();
-//            WebElement finish = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//Window[@Name='Company Initialization']/Pane[@Name='header text']/Button[@Name='Finish']")));
-//            finish.click();
-//        }catch (Exception e){
-//            System.out.println("No next/finish is found");
-//        }
-//        mandatory
+        try {
+            WebElement next=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//Window[@Name='Company Initialization']/Pane[@Name='header text']/Button[@Name='Next >']")));
+            next.click();
+            WebElement finish = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//Window[@Name='Company Initialization']/Pane[@Name='header text']/Button[@Name='Finish']")));
+            finish.click();
+        }catch (Exception e){
+            System.out.println("No next/finish is found");
+        }
+        //mandatory
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//Window[@Name='Information']/Button[@Name='OK']"))).click();
         System.out.println("Super User Login for " + common.getData(fileData, "companyName") + " company is successful " + new String(Character.toChars(0x2705)));
         String title = driver.getTitle();
@@ -80,14 +80,14 @@ public class AppLogin {
         common.clickElement("xpath", "//Button[@Name='Submit']");
         //only sometimes
         WebDriverWait wait = new WebDriverWait(driver, 10);
-//        try {
-//            WebElement next=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//Window[@Name='Company Initialization']/Pane[@Name='header text']/Button[@Name='Next >']")));
-//            next.click();
-//            WebElement finish = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//Window[@Name='Company Initialization']/Pane[@Name='header text']/Button[@Name='Finish']")));
-//            finish.click();
-//        }catch (Exception e){
-//            System.out.println("No next/finish is found");
-//        }
+        try {
+            WebElement next=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//Window[@Name='Company Initialization']/Pane[@Name='header text']/Button[@Name='Next >']")));
+            next.click();
+            WebElement finish = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//Window[@Name='Company Initialization']/Pane[@Name='header text']/Button[@Name='Finish']")));
+            finish.click();
+        }catch (Exception e){
+            System.out.println("No next/finish is found");
+        }
         //mandatory
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//Window[@Name='Information']/Button[@Name='OK']"))).click();
         System.out.println("Super User Login for " + common.getData(fileData, "companyName") + " company is successful " + new String(Character.toChars(0x2705)));

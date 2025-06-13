@@ -29,10 +29,10 @@ public class TransactionsBaseClass extends Transaction {
         enterInput("xpath","//Edit[@Name='Branch *']",dataFile,dataSet,branch);
     }
     public void enterDate() throws IOException, ParseException {
-        common.findWebElement("xpath","//Edit[@Name='Date *']").sendKeys(Time.timeStamp());
+        inputTextWithValidation("xpath","//Edit[@Name='Date *']",Time.timeStamp());
     }
     public void enterVoucherType(String dataFile,String dataSet,String voucherType) throws IOException, ParseException {
-        enterInput("xpath","//Edit[@Name='Date *']",dataFile,dataSet,voucherType);
+        enterInput("xpath","//Edit[@Name='']",dataFile,dataSet,voucherType);
     }
 
     public void enterLocation(String dataFile,String dataSet,String location) throws IOException, ParseException {
@@ -46,15 +46,19 @@ public class TransactionsBaseClass extends Transaction {
         enterInput("xpath","//Edit[@Name='Cash/Party Code']",dataFile,dataSet,cashOrParty);
     }
 
+    public void enterCreditPeriod(String dataFile,String dataSet,String creditPeriod) throws IOException, ParseException {
+        enterInput("xpath","//Edit[@Name='Credit Period']",dataFile,dataSet,creditPeriod);
+    }
+
     public void enterPurchaseAccountCode(String dataFile,String dataSet,String purchaseAccountCode) throws IOException, ParseException {
         enterInput("xpath","//Edit[@Name='Purchase A/c Code']",dataFile,dataSet,purchaseAccountCode);
     }
 
-    public void enterSuppliersBillNumber(String dataFile,String dataSet,String suppliersBillNumber) throws IOException, ParseException {
-        enterInput("xpath","//Edit[@Name='Supplier Bill No *']",dataFile,dataSet,suppliersBillNumber);
+    public void enterSuppliersBillNumber() {
+        inputTextWithValidation("xpath","//Edit[@Name='Supplier Bill No *']",String.valueOf(common.getRandom()));
     }
-    public void enterSuppliersBillDate(String dataFile,String dataSet,String suppliersBillDate) throws IOException, ParseException {
-        enterInput("xpath","//Edit[@Name='Supplier Bill Date *']",dataFile,dataSet,suppliersBillDate);
+    public void enterSuppliersBillDate()  {
+        inputTextWithValidation("xpath","//Edit[@Name='Supplier Bill Date *']", Time.timeStamp());
     }
     public void enterBatchPolicy(String dataFile,String dataSet,String batchPolicy) throws IOException, ParseException {
         enterInput("xpath","//Edit[@Name='Batch Policy']",dataFile,dataSet,batchPolicy);
@@ -65,6 +69,10 @@ public class TransactionsBaseClass extends Transaction {
     public void enterTdsTransNature(String dataFile,String dataSet,String tdsTransNature) throws IOException, ParseException {
         enterInput("xpath","//Edit[@Name='TDS Trans Nature']",dataFile,dataSet,tdsTransNature);
     }
+    public void enterRemarks(String dataFile,String dataSet,String remarks) throws IOException, ParseException {
+        enterInput("xpath","//Edit[@Name='Remarks']",dataFile,dataSet,remarks);
+    }
+
 
 
 
