@@ -49,7 +49,7 @@ public class Masters {
 
     public void saveMaster() throws InterruptedException {
         common.clickElement("name", "Save");
-        Thread.sleep(2000);
+        Thread.sleep(2500);
         common.clickElement("name", "OK");
         common.clickElement("xpath", "//Button[@Name='Close']");
     }
@@ -63,7 +63,7 @@ public class Masters {
         element.sendKeys(inputText);
         System.out.println(element.getText());
         if (element.getText().equals(inputText)) {
-            System.out.println("entered currect Input :" + element.getText());
+//            System.out.println("entered correct Input :" + element.getText());
         } else {
             Assert.fail("wrong input");
         }
