@@ -42,6 +42,29 @@ public class TransactionsBaseClass extends Transaction {
         enterInput("xpath","//Edit[@Name='Trans Currency *']",dataFile,dataSet,currency);
     }
 
+    public void enterCustomerEmail(String dataFile,String dataSet,String email) throws IOException, ParseException {
+        enterInput("xpath","//Edit[@Name='Customer Email']",dataFile,dataSet,email);
+    }
+
+    public void enterShippingBillNo(String dataFile,String dataSet,String shippingBillNo) throws IOException, ParseException {
+        enterInput("xpath","//Edit[@Name='Shipping Bill No']",dataFile,dataSet, shippingBillNo);
+    }
+
+    public void enterPortCode(String dataFile,String dataSet,String portCode) throws IOException, ParseException {
+        enterInput("xpath","//Edit[@Name='Port Code']",dataFile,dataSet, portCode);
+    }
+
+    public void enterRemarks(String dataFile,String dataSet,String remarks) throws IOException, ParseException {
+        enterInput("xpath","//Edit[@Name='Remarks']",dataFile,dataSet, remarks);
+    }
+
+    public void enterSalesAccountCode(String dataFile,String dataSet,String salesAccountCode) throws IOException, ParseException {
+        enterInput("xpath","//Edit[@Name='Sales A/c Code']",dataFile,dataSet,salesAccountCode);
+    }
+    public void enterCustomerMobileNum(String dataFile,String dataSet,String mobileNum) throws IOException, ParseException {
+        enterInput("xpath","//Edit[@Name='Customer Mobile Number']",dataFile,dataSet, mobileNum);
+    }
+
     public void enterCashOrParty(String dataFile,String dataSet,String cashOrParty) throws IOException, ParseException {
         enterInput("xpath","//Edit[@Name='Cash/Party Code']",dataFile,dataSet,cashOrParty);
     }
@@ -54,11 +77,11 @@ public class TransactionsBaseClass extends Transaction {
         enterInput("xpath","//Edit[@Name='Purchase A/c Code']",dataFile,dataSet,purchaseAccountCode);
     }
 
-    public void enterSuppliersBillNumber() {
-        inputTextWithValidation("xpath","//Edit[@Name='Supplier Bill No *']",String.valueOf(common.getRandom()));
+    public void enterSuppliersBillNumber(String dataFile,String dataSet,String suppliersBillNumber) throws IOException, ParseException {
+        enterInput("xpath","//Edit[@Name='Supplier Bill No *']",dataFile,dataSet,suppliersBillNumber);
     }
-    public void enterSuppliersBillDate()  {
-        inputTextWithValidation("xpath","//Edit[@Name='Supplier Bill Date *']", Time.timeStamp());
+    public void enterSuppliersBillDate(String dataFile,String dataSet,String suppliersBillDate) throws IOException, ParseException {
+        enterInput("xpath","//Edit[@Name='Supplier Bill Date *']",dataFile,dataSet,suppliersBillDate);
     }
     public void enterBatchPolicy(String dataFile,String dataSet,String batchPolicy) throws IOException, ParseException {
         enterInput("xpath","//Edit[@Name='Batch Policy']",dataFile,dataSet,batchPolicy);
@@ -69,10 +92,6 @@ public class TransactionsBaseClass extends Transaction {
     public void enterTdsTransNature(String dataFile,String dataSet,String tdsTransNature) throws IOException, ParseException {
         enterInput("xpath","//Edit[@Name='TDS Trans Nature']",dataFile,dataSet,tdsTransNature);
     }
-    public void enterRemarks(String dataFile,String dataSet,String remarks) throws IOException, ParseException {
-        enterInput("xpath","//Edit[@Name='Remarks']",dataFile,dataSet,remarks);
-    }
-
 
 
 
