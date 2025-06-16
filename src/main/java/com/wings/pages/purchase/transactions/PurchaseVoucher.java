@@ -167,7 +167,6 @@ public class PurchaseVoucher extends TransactionsBaseClass {
 
 
         long start12 = System.nanoTime();
-        common.clickElement("xpath","//TabItem[contains(@Name,'Terms And Conditions')]");
         addAllocations();
         long duration12 = System.nanoTime() - start12;
         FileUtil.writeTimeLog("Purchase Vouchers Enter Allocations", duration12 /1000000000);
@@ -726,20 +725,24 @@ public class PurchaseVoucher extends TransactionsBaseClass {
             enterInput("xpath","//Edit[@Name='Term Type * Row "+v+", Not sorted.']",dataFile,"PurchaseVoucher","termType"+v);
 
         }
-        List<WebElement> termRowList = common.findWebElements("xpath", "//Table[@Name='PDC']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Term * Row ')]");
-        List<WebElement> commentsRowList = common.findWebElements("xpath", "//Table[@Name='PDC']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Comments Row ')]");
+        List<WebElement> termRowList = common.findWebElements("xpath", "//Table[@Name='TermsAndConditions']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Term * Row ')]");
+        List<WebElement> commentsRowList = common.findWebElements("xpath", "//Table[@Name='TermsAndConditions']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Comments Row ')]");
         for (int i = 0; i < 6; i++) {
             enterData(termRowList.get(i), dataFile, "PurchaseVoucher", "term"+i);
             enterData(commentsRowList.get(i), dataFile, "PurchaseVoucher", "comments"+i);
         }
-
     }
 
     public void addAllocations() throws IOException, ParseException {
-        common.clickElement("xpath","//TabItems[contains(@Name,'Allocations  ')]");
-        common.findWebElement("xpath","//Edit[@Name='Department']").sendKeys(common.getData(dataFile,"PurchaseVoucher","department0"));
-        common.findWebElement("xpath","//Edit[@Name='Project']").sendKeys(common.getData(dataFile,"PurchaseVoucher","project0"));
-        common.findWebElement("xpath","//Edit[@Name='Profit Centre']").sendKeys(common.getData(dataFile,"PurchaseVoucher","profitCentre0"));
-        common.findWebElement("xpath","//Edit[@Name='Cost Centre']").sendKeys(common.getData(dataFile,"PurchaseVoucher","costCentre0"));
+        common.clickElement("xpath","//TabItem[contains(@Name,'Allocations')]");
+        enterInput("xpath","//Edit[@Name='Department']",dataFile,"PurchaseVoucher","department0");
+        enterInput("xpath","//Edit[@Name='Project']",dataFile,"PurchaseVoucher","project0");
+        enterInput("xpath","//Edit[@Name='Profit Centre']",dataFile,"PurchaseVoucher","profitCentre0");
+        enterInput("xpath","//Edit[@Name='Cost Centre']",dataFile,"PurchaseVoucher","costCentre0");
+
+//        common.findWebElement("xpath","//Edit[@Name='Department']").sendKeys(common.getData(dataFile,"PurchaseVoucher","department0"));
+//        common.findWebElement("xpath","//Edit[@Name='Project']").sendKeys(common.getData(dataFile,"PurchaseVoucher","project0"));
+//        common.findWebElement("xpath","//Edit[@Name='Profit Centre']").sendKeys(common.getData(dataFile,"PurchaseVoucher","profitCentre0"));
+//        common.findWebElement("xpath","//Edit[@Name='Cost Centre']").sendKeys(common.getData(dataFile,"PurchaseVoucher","costCentre0"));
     }
 }

@@ -77,11 +77,11 @@ public class TransactionsBaseClass extends Transaction {
         enterInput("xpath","//Edit[@Name='Purchase A/c Code']",dataFile,dataSet,purchaseAccountCode);
     }
 
-    public void enterSuppliersBillNumber(String dataFile,String dataSet,String suppliersBillNumber) throws IOException, ParseException {
-        enterInput("xpath","//Edit[@Name='Supplier Bill No *']",dataFile,dataSet,suppliersBillNumber);
+    public void enterSuppliersBillNumber() {
+        inputTextWithValidation("xpath","//Edit[@Name='Supplier Bill No *']",String.valueOf(common.getRandom()));
     }
-    public void enterSuppliersBillDate(String dataFile,String dataSet,String suppliersBillDate) throws IOException, ParseException {
-        enterInput("xpath","//Edit[@Name='Supplier Bill Date *']",dataFile,dataSet,suppliersBillDate);
+    public void enterSuppliersBillDate()  {
+        inputTextWithValidation("xpath","//Edit[@Name='Supplier Bill Date *']", Time.timeStamp());
     }
     public void enterBatchPolicy(String dataFile,String dataSet,String batchPolicy) throws IOException, ParseException {
         enterInput("xpath","//Edit[@Name='Batch Policy']",dataFile,dataSet,batchPolicy);
