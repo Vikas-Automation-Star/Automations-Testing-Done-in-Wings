@@ -1,6 +1,6 @@
 package com.wings.pages.purchase.transactions;
 
-import com.wings.pages.Transaction;
+import com.wings.pages.TransactionsBaseClass;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import com.wings.utils.Time;
@@ -13,7 +13,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.List;
 
-public class PurchaseVoucherAgainstPurchaseOrders extends Transaction {
+public class PurchaseVoucherAgainstPurchaseOrders extends TransactionsBaseClass {
     WindowsDriver driver;
     Common common;
     String dataFile;

@@ -19,7 +19,6 @@ import java.io.IOException;
 //    }
 
 
-
 public class TransactionsBaseClass extends Transaction {
     public TransactionsBaseClass(WindowsDriver driver) {
         super(driver);
@@ -28,11 +27,11 @@ public class TransactionsBaseClass extends Transaction {
     public void enterBranchName(String dataFile,String dataSet,String branch) throws IOException, ParseException {
         enterInput("xpath","//Edit[@Name='Branch *']",dataFile,dataSet,branch);
     }
-    public void enterDate() throws IOException, ParseException {
+    public void enterDate()  {
         inputTextWithValidation("xpath","//Edit[@Name='Date *']",Time.timeStamp());
     }
     public void enterVoucherType(String dataFile,String dataSet,String voucherType) throws IOException, ParseException {
-        enterInput("xpath","//Edit[@Name='']",dataFile,dataSet,voucherType);
+        enterInput("xpath","//Edit[@Name='Voucher Type']",dataFile,dataSet,voucherType);
     }
 
     public void enterLocation(String dataFile,String dataSet,String location) throws IOException, ParseException {

@@ -17,8 +17,8 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.text.DecimalFormat;
-import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 public abstract class Transaction {
     protected WindowsDriver driver;
@@ -1965,10 +1965,18 @@ public abstract class Transaction {
 
     public  void navigateToItemsOtherCosts(String dataFile,String dataSet) throws IOException, ParseException {
         List<WebElement> elements=common.findWebElements("xpath","//TabItem[contains(@Name,'Other Costs')]");
-//        System.out.println(elements.get(1).getText());
         elements.get(1).click();
-        Assert.assertEquals(common.findWebElement("xpath", "//Pane//following-sibling::edit[6]").getAttribute("LegacyValue"), common.getData(dataFile, dataSet, "expectedItemsOtherCostsAmount"), "ItemsOtherCostsAmount Mismatch");
-        System.out.println("worked this assertion");
+//        List<WebElement> edits = common.findWebElements("xpath", "//Pane[@Name='TCS Account']//Edit");
+//        System.out.println("items amount editable sizes :"+edits);
+//        String legacyValue = edits.get(5).getAttribute("LegacyValue"); // 6th element (0-based)
+//        System.out.println("items legacy value"+legacyValue);
+        WebElement sixthEdit = common.findWebElement("xpath", "//Edit[contains(@AutomationId,'OtherCost')]");
+        String legacyValue = sixthEdit.getAttribute("LegacyValue");
+        System.out.println("6th edit legacy value: " + legacyValue);
+
+        Assert.assertEquals(legacyValue, common.getData(dataFile, dataSet, "expectedItemsOtherCostsAmount"), "ItemsOtherCostsAmount Mismatch");
+//        Assert.assertEquals(common.findWebElement("xpath", "//Pane[@Name='TCS Account']/Pane//following-sibling::edit[6]").getAttribute("LegacyValue"), common.getData(dataFile, dataSet, "expectedItemsOtherCostsAmount"), "ItemsOtherCostsAmount Mismatch");
+        System.out.println("worked this assertion for Items Other Charges");
     }
 
     public  void navigateToItemsOtherCosts() throws IOException, ParseException {
@@ -2851,7 +2859,8 @@ public abstract class Transaction {
             WebElement voucher = row.findElement(By.xpath(voucherLocator));
             String value = voucher.getText();
             System.out.println("Voucher value: " + value);
-            if (value == (null) || "(null)".equals(value)) {                // value.isEmpty() ||
+            if (value == (null) || "(null)".equals(value)) {
+                // value.isEmpty() ||
                 // If the value is null, throw an assertion error
                 if (rows.size() == 1) {
                     Assert.fail("No Accounts found in row: " + row.getAttribute("outerHTML"));
@@ -3044,8 +3053,8 @@ public abstract class Transaction {
 
     public void enterAdditionalInfo(String dataFile,String dataset) throws IOException, ParseException {
         common.clickElement("xpath","//TabItem[contains(@Name,'Additional Information  ')]");
-        common.findWebElement("xpath","//Edit[@Name='Info 1']").sendKeys(dataFile,dataset,"otherInfo1");
-        common.findWebElement("xpath","//Edit[@Name='Value 1']").sendKeys(dataFile,dataset,"value0");
+        enterInput("xpath", "//Edit[@Name='Info 1']", dataFile, dataset, "otherInfo1");
+        enterInput("xpath", "//Edit[@Name='Value 1']", dataFile, dataset, "value0");
         common.findWebElement("xpath","//Edit[@Name='Date 1']").sendKeys(Time.timeStamp());
     }
 
@@ -3238,7 +3247,7 @@ public abstract class Transaction {
         long start = System.nanoTime();
         Assert.assertEquals(common.findWebElement("xpath", "//Edit[contains(@Name,'Quantity')]").getText(),expectedQuantity,"Quantity mismatch in summary");
         long duration = System.nanoTime() - start;
-        FileUtil.writeTimeLog("quantity",duration/1000000000);
+        FileUtil.writeTimeLog("Quantity",duration/1000000000);
     }
 
     public void inputQuantityPresentInSummary() {
@@ -3284,7 +3293,7 @@ public abstract class Transaction {
 
     public void totalValuePresentInSummary(String expectedTotalValueAmount) throws IOException {
         long start = System.nanoTime();
-        Assert.assertEquals(common.findWebElement("xpath", "//Edit[@Name='Total Value']").getText(),expectedTotalValueAmount,"Expected Total value mismatch in summary");
+        Assert.assertEquals(common.findWebElement("xpath", "//Edit[@Name='Total Value']").getText(),expectedTotalValueAmount,"Total value mismatch in summary");
         long duration = System.nanoTime() - start;
         FileUtil.writeTimeLog("Total value",duration/1000000000);
     }
@@ -3301,7 +3310,7 @@ public abstract class Transaction {
 
     public void totalValueInCompanyCurrencyPresentInSummary(String expectedTotalValueInCompanyCurrency) throws IOException {
         long start = System.nanoTime();
-        Assert.assertEquals(common.findWebElement("xpath", "//Edit[@Name='Total Value In Company Currency']").getText(),expectedTotalValueInCompanyCurrency,"Expected Total value in company currency mismatch in summary");
+        Assert.assertEquals(common.findWebElement("xpath", "//Edit[@Name='Total Value In Company Currency']").getText(),expectedTotalValueInCompanyCurrency,"Total value in company currency mismatch in summary");
         long duration = System.nanoTime() - start;
         FileUtil.writeTimeLog("Total value in company currency",duration/1000000000);
     }
@@ -3422,7 +3431,7 @@ public abstract class Transaction {
         long start = System.nanoTime();
         Assert.assertEquals(common.findWebElement("xpath", "//Edit[@Name='Charges']").getText(),expectedChargesAmount,"Charges amount mismatch");
         long duration = System.nanoTime() - start;
-        FileUtil.writeTimeLog("Charges amount mismatch in summary",duration/1000000000);
+        FileUtil.writeTimeLog("Charges amount mismatch",duration/1000000000);
     }
 
     public void otherChargesPresentInSummary() throws IOException {
@@ -3508,7 +3517,7 @@ public abstract class Transaction {
 
     public void discountPresentInSummary(String expectedDiscount) throws IOException {
         long start = System.nanoTime();
-        Assert.assertEquals(common.findWebElement("xpath", "//Edit[@Name='']").getText(),expectedDiscount,"Services amount mismatch in summary");
+        Assert.assertEquals(common.findWebElement("xpath", "//Edit[@Name='Discount']").getText(),expectedDiscount,"Discount mismatch in summary");
         long duration = System.nanoTime() - start;
         FileUtil.writeTimeLog("Discount amount",duration/1000000000);
     }
@@ -3542,7 +3551,7 @@ public abstract class Transaction {
 
     public void servicesCESSPresentInSummary(String expectedServicesCESS) throws IOException {
         long start = System.nanoTime();
-        Assert.assertEquals(common.findWebElement("xpath", "//Edit[@Name='Services CESS']").getText(),expectedServicesCESS,"Expected services CESS mismatch in summary");
+        Assert.assertEquals(common.findWebElement("xpath", "//Edit[@Name='Services CESS']").getText(),expectedServicesCESS,"Services CESS mismatch in summary");
         long duration = System.nanoTime() - start;
         FileUtil.writeTimeLog("Services CESS",duration/1000000000);
     }
@@ -3814,9 +3823,9 @@ public abstract class Transaction {
     }
     public void freeQuantityPresentInSummary(String expectedFreeQuantity) throws IOException {
         long start = System.nanoTime();
-        Assert.assertEquals(common.findWebElement("xpath", "//Edit[@Name='Free Quantity']").getText(),expectedFreeQuantity,"expectedFreeQuantity mismatch in summary");
+        Assert.assertEquals(common.findWebElement("xpath", "//Edit[@Name='Free Quantity']").getText(),expectedFreeQuantity,"FreeQuantity mismatch in summary");
         long duration = System.nanoTime() - start;
-        FileUtil.writeTimeLog("expectedFreeQuantity",duration/1000000000);
+        FileUtil.writeTimeLog("FreeQuantity",duration/1000000000);
     }
     public void freeQuantityPresentInSummary() throws IOException {
         long start = System.nanoTime();
@@ -4007,9 +4016,7 @@ public abstract class Transaction {
     public void validateTDS(String dataFile,String dataSet) throws IOException, ParseException {
         navigateToTDSTab();
         Assert.assertEquals(common.findWebElement("xpath", "//Edit[@Name='Assessable Value']").getText(), common.getData(dataFile, dataSet, "expectedTdsAssessableValue"), "TDS Assessable value Mismatch");
-        System.out.println("worked this assertion");
         Assert.assertEquals(common.findWebElement("xpath", "//Edit[@Name='TDS Amount']").getText(), common.getData(dataFile, dataSet, "expectedTdsAmount"), "TDS amount Mismatch");
-        System.out.println("worked this assertion");
     }
 
 
@@ -4029,9 +4036,7 @@ public abstract class Transaction {
     public void validateTCS(String dataFile,String dataSet) throws IOException, ParseException {
         navigateToTCSTab();
         Assert.assertEquals(common.findWebElement("xpath","//Edit[@Name='Assessable Value']").getText(),common.getData(dataFile, dataSet, "expectedTCsAssessableAmount"),"TCS Assessable Mismatch");
-        System.out.println("worked this assertion");
         Assert.assertEquals(common.findWebElement("xpath","//Edit[@Name='TCS Amount']").getText(),common.getData(dataFile, dataSet, "expectedTcsAmount"),"TCS Mismatch");
-        System.out.println("worked this assertion");
     }
     public void enterDataAndValidate(String locatorType, String locator, String fileName, String dataset,String key) throws IOException, ParseException {
         List<WebElement> elementList = common.findWebElements(locatorType, locator);
@@ -4284,4 +4289,15 @@ public abstract class Transaction {
         enterInput("xpath","//Edit[@Name='Comments Row "+i+", Not sorted.']",dataFile,dataset, "comments"+i);
     }
 
+
+    public void assertSummaryFields(List<WebElement> summary, String targetName, String expectedData) {
+        Optional<WebElement> targetElement = summary.stream().filter(el -> targetName.equals(el.getAttribute("Name"))).findFirst();
+        Assert.assertEquals(targetElement.get().getText(),expectedData,targetName+"mismatch in summary");
+    }
+
 }
+
+
+
+
+
