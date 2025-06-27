@@ -36,5 +36,6 @@ public class Demo {
     public void afterTest() throws IOException {
         System.out.println("After locationMaster");
         landingPage.quit();
+
     }
 }
