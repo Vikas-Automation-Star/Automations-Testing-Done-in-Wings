@@ -3,6 +3,7 @@ package menu;
 import com.wings.pages.AppLogin;
 import com.wings.pages.LandingPage;
 import io.appium.java_client.windows.WindowsDriver;
+import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -17,7 +18,7 @@ public class Demo1 {
     LandingPage landingPage;
 
     @BeforeTest
-    public void beforeTest() throws IOException, InterruptedException {
+    public void beforeTest() throws IOException, InterruptedException, ParseException {
         driver = appLogin.login();
     }
 

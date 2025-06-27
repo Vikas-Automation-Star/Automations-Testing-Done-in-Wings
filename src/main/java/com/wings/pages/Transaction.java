@@ -4295,9 +4295,9 @@ public abstract class Transaction {
         Assert.assertEquals(targetElement.get().getText(),expectedData,targetName+"mismatch in summary");
     }
 
+    public void assertSummaaryFields(List<WebElement> summary, String targetName,String expectedData){
+        Optional<WebElement> targetElement=summary.stream().filter(el -> targetName.equals(el.getAttribute("Name"))).findFirst();
+        Assert.assertEquals(targetElement.get().getText(),expectedData,targetName+"  mismatch in summary");
+    }
+
 }
-
-
-
-
-

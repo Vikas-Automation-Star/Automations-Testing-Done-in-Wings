@@ -18,30 +18,26 @@ public class AppLogin {
     String fileData = "./src/main/resources/company_Name.json";
 
 
-    public WindowsDriver login() throws IOException, InterruptedException {
+    public WindowsDriver login() throws IOException, InterruptedException, ParseException {
 
-        driver = common.initializeDriver(common.getProperty("app"));
+        driver = common.initializeDriver(common.getProperty("multiUserApp"));
         String currentwindowHandle = driver.getWindowHandle();
         System.out.println("Window 1 -" + currentwindowHandle);
-
-        driver.findElement(By.name("24DBooksFin")).click();
-        Thread.sleep(20000);
-
+        driver.findElement(By.name("24D Books Automation")).click();
+        Thread.sleep(4000);
         rootDriver = common.initializeDriver("Root");
         WebElement login = rootDriver.findElement(By.name("Wings 24 - Web Client"));
-
         String nativeWindow = login.getAttribute("NativeWindowHandle");
         String hexLoginId = Integer.toHexString(Integer.parseInt(nativeWindow));
         System.out.println("window id: " + hexLoginId);
-
         loginDriver = common.navigateToAppWindow(hexLoginId);
         common = new Common(loginDriver);
 
         common.inputText("xpath", "//Edit[@Name='Password']", common.getProperty("password"));
         System.out.println("Password TagName " + common.getTagName("name", "Password"));
         common.clickElement("name", "Submit");
-        Thread.sleep(25000);
-
+        Thread.sleep(10000);
+       common.clickElement("xpath","//Button[@Name='OK']");
         driver.quit();
         rootDriver.quit();
         return loginDriver;
@@ -98,6 +94,14 @@ public class AppLogin {
 
     public WindowsDriver launchSingleUserApp() throws IOException, InterruptedException {
         driver = common.initializeDriver(common.getProperty("singleUserApp"));
+        driver.manage().window().maximize();
+        Thread.sleep(2000);
+        common.findWebElement("name", "Wings 24");
+        return driver;
+    }
+
+    public WindowsDriver launchMultiUserApp() throws IOException, InterruptedException {
+        driver = common.initializeDriver(common.getProperty("app"));
         driver.manage().window().maximize();
         Thread.sleep(2000);
         common.findWebElement("name", "Wings 24");

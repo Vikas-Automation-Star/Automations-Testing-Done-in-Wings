@@ -17,8 +17,7 @@ public class SalesOrderTransaction {
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        driver = appLogin.launchSingleUserApp();
-        appLogin.singleUserLogin();
+        driver = appLogin.login();
     }
 
     @Test
@@ -31,6 +30,6 @@ public class SalesOrderTransaction {
 
     @AfterTest
     public void afterTest() throws IOException {
-        appLogin.logout();
+//        appLogin.logout();
     }
 }

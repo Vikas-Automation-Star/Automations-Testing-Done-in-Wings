@@ -127,7 +127,7 @@ public class FileUtil {
 
             FileWriter writer = new FileWriter(String.valueOf(currentSuite.getAttribute("TimeLogFile")),true);
             System.out.println("path "+currentSuite.getAttribute("TimeLogFile"));
-            writer.write("Time taken to execute " + methodName + " is " + timeStamp + "sec" +"\n");
+            writer.write("Time taken to execute " + methodName + timeStamp + "min" +"\n");
             writer.close();
             System.out.println("Time written to file: " + timeStamp);
 
@@ -141,6 +141,40 @@ public class FileUtil {
         }
 
     }
+
+    public static void writeTimeLogInMinutes(String methodName, long timeStampInNano) throws IOException {
+        try {
+            org.testng.ITestResult result = org.testng.Reporter.getCurrentTestResult();
+            org.testng.ISuite currentSuite = result.getTestContext().getSuite();
+            FileWriter writer = new FileWriter(String.valueOf(currentSuite.getAttribute("TimeLogFile")), true);
+            System.out.println("path " + currentSuite.getAttribute("TimeLogFile"));
+
+            long timeInSeconds = timeStampInNano / 1_000_000_000L;
+            long minutes = timeInSeconds / 60;
+            long seconds = timeInSeconds % 60;
+
+            StringBuilder timeOutput = new StringBuilder("Time taken to execute " + methodName);
+            if (minutes > 0) {
+                timeOutput.append(minutes).append(" min ");
+            }
+            timeOutput.append(seconds).append(" sec\n");
+
+            writer.write(timeOutput.toString());
+            writer.close();
+
+            System.out.println("Time written to file: " + timeOutput.toString().trim());
+
+        } catch (NullPointerException e) {
+            System.err.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        } catch (RuntimeException | IOException e) {
+            System.err.println("Runtime Error: " + e.getMessage());
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+
 
 
 

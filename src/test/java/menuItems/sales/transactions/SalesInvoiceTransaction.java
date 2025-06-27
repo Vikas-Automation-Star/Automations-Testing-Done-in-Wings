@@ -1,8 +1,7 @@
 package menuItems.sales.transactions;
 
 import com.wings.pages.AppLogin;
-
-import com.wings.utils.Common;
+import com.wings.pages.sales.transactions.SalesInvoice;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
@@ -14,24 +13,21 @@ import java.io.IOException;
 public class SalesInvoiceTransaction {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    Common common;
     String dataFile = "./src/main/resources/menuItems/Sales/Transactions/salesEnquiry.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        common=new Common(driver);
-        driver = appLogin.launchSingleUserApp();
-        appLogin.singleUserLogin(common.getData(dataFile,"salesEnquiry","userName"),common.getData(dataFile,"salesEnquiry","password"));
+       driver= appLogin.login();
     }
 
     @Test
     public void salesInvoiceTransaction() throws IOException, InterruptedException, ParseException, AWTException {
-//        SalesInvoice invoice = new SalesInvoice(driver, dataFile);
-//        invoice.salesInvoice();
+        SalesInvoice invoice = new SalesInvoice(driver, dataFile);
+        invoice.salesInvoice();
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 }

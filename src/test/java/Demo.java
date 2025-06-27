@@ -16,7 +16,7 @@ public class Demo {
     LandingPage landingPage;
 
     @BeforeTest
-    public void beforeTest() throws IOException, InterruptedException {
+    public void beforeTest() throws IOException, InterruptedException, ParseException {
         driver = appLogin.login();
     }
 

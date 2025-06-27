@@ -65,7 +65,7 @@ public class TransactionsBaseClass extends Transaction {
     }
 
     public void enterCashOrParty(String dataFile,String dataSet,String cashOrParty) throws IOException, ParseException {
-        enterInput("xpath","//Edit[@Name='Cash/Party Code']",dataFile,dataSet,cashOrParty);
+        enterInput("xpath","//Edit[@Name='Cash/Party Code'] | //Edit[@Name='Party Code']",dataFile,dataSet,cashOrParty);
     }
 
     public void enterCreditPeriod(String dataFile,String dataSet,String creditPeriod) throws IOException, ParseException {
