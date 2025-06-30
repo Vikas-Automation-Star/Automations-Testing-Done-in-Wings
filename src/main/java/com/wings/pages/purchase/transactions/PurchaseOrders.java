@@ -34,7 +34,7 @@ public class PurchaseOrders extends TransactionsBaseClass {
     {
         long start1 = System.nanoTime();
         navigateToMastersWhen3Steps("Purchase","Orders","Purchase Orders");
-        Thread.sleep(1000);
+        Thread.sleep(4000);
         String oldVoucherID = oldTTransactionID();
         enterVoucherType(dataFile,"PurchaseOrders","voucherType");
         enterDate();
@@ -47,7 +47,7 @@ public class PurchaseOrders extends TransactionsBaseClass {
         enterExecutive(dataFile,"PurchaseOrders","executive");
         enterRemarks(dataFile,"PurchaseOrders","remarks");
         long duration1 = System.nanoTime() - start1;
-        FileUtil.writeTimeLog("General information", duration1 /1000000000);
+        FileUtil.writeTimeLog("General information PO", duration1 /1000000000);
 
         long start = System.nanoTime();
         addProduct();
@@ -55,13 +55,11 @@ public class PurchaseOrders extends TransactionsBaseClass {
         FileUtil.writeTimeLog("Enter Products include Assertions", duration /1000000000);
 
         long start3 = System.nanoTime();
-        navigateToChargesAndDeductionsTab();
         addChargesAndDeductions();
         long duration3 = System.nanoTime() - start3;
         FileUtil.writeTimeLog("Enter Charges And Deductions include Assertions", duration3 /1000000000);
 
         long start4 = System.nanoTime();
-        navigateToOtherChargesTab();
         addOtherCharges();
         long duration4 = System.nanoTime() - start4;
         FileUtil.writeTimeLog("Enter Other Charges include Assertions", duration4 /1000000000);
@@ -70,28 +68,21 @@ public class PurchaseOrders extends TransactionsBaseClass {
         validateCESSAmountTabIsNotEmpty();
 
         long start7 = System.nanoTime();
-        navigateToCashTab();
         addCash();
         long duration7 = System.nanoTime() - start7;
         FileUtil.writeTimeLog("Enter Cash include Assertions", duration7 /1000000000);
 
         long start8 = System.nanoTime();
-        List<WebElement> element=common.findWebElements("xpath","//TabItem[contains(@Name,'Cheques')]");
-        element.get(0).click();
         addCheques();
         long duration8 = System.nanoTime() - start8;
         FileUtil.writeTimeLog("Enter Cheque include Assertions", duration8 /1000000000);
 
         long start9 = System.nanoTime();
-        List<WebElement> elementsss=common.findWebElements("xpath","//TabItem[contains(@Name,'Cheques')]");
-        elementsss.get(1).click();
         addPostDatedCheques();
         long duration9 = System.nanoTime() - start9;
         FileUtil.writeTimeLog("Enter Post Dated Cheques include Assertions", duration9 /1000000000);
 
         long start10 = System.nanoTime();
-        List<WebElement> elem=common.findWebElements("xpath","//TabItem[contains(@Name,'Cheques')]");
-        elem.get(2).click();
         addChequesPDC();
         long duration10 = System.nanoTime() - start10;
         FileUtil.writeTimeLog("Enter Cheque PDC include Assertions", duration10 /1000000000);
@@ -107,7 +98,6 @@ public class PurchaseOrders extends TransactionsBaseClass {
         FileUtil.writeTimeLog("Enter Additional Information", duration14 /1000000000);
 
         long start11 = System.nanoTime();
-        common.clickElement("xpath","//TabItem[contains(@Name,'Terms And Conditions')]");
         addTermsAndConditions();
         long duration11 = System.nanoTime() - start11;
         FileUtil.writeTimeLog("Enter Terms And Conditions", duration11 /1000000000);
@@ -124,25 +114,25 @@ public class PurchaseOrders extends TransactionsBaseClass {
         List<WebElement> summary = common.findWebElements("xpath", "//Pane[@Name='Summary']//Edit/*");
         System.out.println("Size " + summary.size());
 
-        assertSummaryFields(summary,"Quantity",common.getData(dataFile,"PurchaseVoucher","expectedQuantity"));
-        assertSummaryFields(summary,"Gross Amount",common.getData(dataFile,"PurchaseVoucher","expectedGrossAmount"));
-        assertSummaryFields(summary,"Discount",common.getData(dataFile,"PurchaseVoucher","expectedDiscount"));
-        assertSummaryFields(summary,"Gross - Disc",common.getData(dataFile,"PurchaseVoucher","expectedGrossMinusDiscount"));
-        assertSummaryFields(summary,"IGST",common.getData(dataFile,"PurchaseVoucher","expectedIGST"));
-        assertSummaryFields(summary,"CESS",common.getData(dataFile,"PurchaseVoucher","expectedCESS"));
-        assertSummaryFields(summary,"Net Amount",common.getData(dataFile,"PurchaseVoucher","expectedNetAmount"));
-        assertSummaryFields(summary,"Charges",common.getData(dataFile,"PurchaseVoucher","expectedChargesAmount"));
-        assertSummaryFields(summary,"Deductions",common.getData(dataFile,"PurchaseVoucher","expectedDeductionsAmount"));
-        assertSummaryFields(summary,"Other Charges",common.getData(dataFile,"PurchaseVoucher","expectedOtherChargesAmount"));
-        assertSummaryFields(summary,"Other Charges IGST",common.getData(dataFile,"PurchaseVoucher","expectedOtherChargesIGST"));
-        assertSummaryFields(summary,"Other Charges CESS",common.getData(dataFile,"PurchaseVoucher","expectedOtherChargesCESS"));
-        assertSummaryFields(summary,"Total Value",common.getData(dataFile,"PurchaseVoucher","expectedTotalValueAmount"));
-        assertSummaryFields(summary,"Total Value In Company Currency",common.getData(dataFile,"PurchaseVoucher","expectedTotalValueInCompanyCurrency"));
-        assertSummaryFields(summary,"Cash",common.getData(dataFile,"PurchaseVoucher","expectedCashAmount"));
-        assertSummaryFields(summary,"Cheques",common.getData(dataFile,"PurchaseVoucher","expectedChequeAmount"));
-        assertSummaryFields(summary,"Post Dated Cheques",common.getData(dataFile,"PurchaseVoucher","expectedPostDatedChequesAmount"));
-        assertSummaryFields(summary,"Cheques [PDC]",common.getData(dataFile,"PurchaseVoucher","expectedChequesPDCAmount"));
-        assertSummaryFields(summary,"Payments Value",common.getData(dataFile,"PurchaseVoucher","expectedPaymentValue"));
+        assertSummaryFields(summary,"Quantity *",common.getData(dataFile,"PurchaseOrders","expectedQuantity"));
+        assertSummaryFields(summary,"Gross Amount",common.getData(dataFile,"PurchaseOrders","expectedGrossAmount"));
+        assertSummaryFields(summary,"Discount",common.getData(dataFile,"PurchaseOrders","expectedDiscount"));
+        assertSummaryFields(summary,"Gross - Disc",common.getData(dataFile,"PurchaseOrders","expectedGrossMinusDiscount"));
+        assertSummaryFields(summary,"IGST",common.getData(dataFile,"PurchaseOrders","expectedIGST"));
+        assertSummaryFields(summary,"CESS",common.getData(dataFile,"PurchaseOrders","expectedCESS"));
+        assertSummaryFields(summary,"Net Amount",common.getData(dataFile,"PurchaseOrders","expectedNetAmount"));
+        assertSummaryFields(summary,"Charges",common.getData(dataFile,"PurchaseOrders","expectedChargesAmount"));
+        assertSummaryFields(summary,"Deductions",common.getData(dataFile,"PurchaseOrders","expectedDeductionsAmount"));
+        assertSummaryFields(summary,"Other Charges",common.getData(dataFile,"PurchaseOrders","expectedOtherChargesAmount"));
+        assertSummaryFields(summary,"Other Charges IGST",common.getData(dataFile,"PurchaseOrders","expectedOtherChargesIGST"));
+        assertSummaryFields(summary,"Other Charges CESS",common.getData(dataFile,"PurchaseOrders","expectedOtherChargesCESS"));
+        assertSummaryFields(summary,"Total Value",common.getData(dataFile,"PurchaseOrders","expectedTotalValueAmount"));
+        assertSummaryFields(summary,"Total Value In Company Currency",common.getData(dataFile,"PurchaseOrders","expectedTotalValueInCompanyCurrency"));
+        assertSummaryFields(summary,"Cash",common.getData(dataFile,"PurchaseOrders","expectedCashAmount"));
+        assertSummaryFields(summary,"Cheques",common.getData(dataFile,"PurchaseOrders","expectedChequeAmount"));
+        assertSummaryFields(summary,"Post Dated Cheques",common.getData(dataFile,"PurchaseOrders","expectedPostDatedChequesAmount"));
+        assertSummaryFields(summary,"Cheques [PDC]",common.getData(dataFile,"PurchaseOrders","expectedChequesPDCAmount"));
+        assertSummaryFields(summary,"Payment Value",common.getData(dataFile,"PurchaseOrders","expectedPaymentValue"));
 
         long durationSum = System.nanoTime() - startSum;
         FileUtil.writeTimeLog("Purchase Orders Summary",durationSum/1000000000);
@@ -150,38 +140,38 @@ public class PurchaseOrders extends TransactionsBaseClass {
         transactionSave();
         String newVoucherID = newTransactionID(oldVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"both ID's should not Equal when we perform transaction");
-        String prefix = newVoucherID.replaceAll("\\d", "");String number = newVoucherID.replaceAll("\\D", "");
-        Thread.sleep(2000);
-        navigateToMastersWhen3Steps("Tools","Automated Testing","Generate Input File");
-        rootDriver=common.initializeDriver("Root");
-        Thread.sleep(3000);
-        common.findWebElement("xpath", "//Window[@Name='Export Transaction Postings']/Pane/Edit[@Name='Voucher Series']").sendKeys(prefix);
-        common.findWebElement("xpath","//Window[@Name='Export Transaction Postings']/Pane/Edit[@Name='Voucher Number']").sendKeys(number);
-        common.clickElement("xpath","//Button[@Name='OK']");
-        Thread.sleep(1500);
-        if (common.findWebElement("xpath","//Text").getText().equals("Data Exported successfully!")) {
-            common.clickElement("xpath", "//Button[@Name='OK']");
-        }
-        else if(common.findWebElement("xpath","//Text").getText().equals("Transactionno doesnot exist.")){
-            Assert.fail("Transaction does not exists");
-            common.clickElement("xpath", "//Button[@Name='OK']");
-        }
-
-        Thread.sleep(2000);
-        navigateToMastersWhen3Steps("Tools","Automated Testing","Generate Output File");
-        rootDriver=common.initializeDriver("Root");
-        Thread.sleep(3000);
-        common.findWebElement("xpath", "//Window[@Name='Export Transaction Postings']/Pane/Edit[@Name='Voucher Series']").sendKeys(prefix);
-        common.findWebElement("xpath","//Window[@Name='Export Transaction Postings']/Pane/Edit[@Name='Voucher Number']").sendKeys(number);
-        common.clickElement("xpath","//Button[@Name='OK']");
-        Thread.sleep(1500);
-        if (common.findWebElement("xpath","//Text").getText().equals("Data Exported successfully!")) {
-            common.clickElement("xpath", "//Button[@Name='OK']");
-        }
-        else if(common.findWebElement("xpath","//Text").getText().equals("Transactionno doesnot exist.")){
-            Assert.fail("Transaction does not exists");
-            common.clickElement("xpath", "//Button[@Name='OK']");
-        }
+//        String prefix = newVoucherID.replaceAll("\\d", "");String number = newVoucherID.replaceAll("\\D", "");
+//        Thread.sleep(2000);
+//        navigateToMastersWhen3Steps("Tools","Automated Testing","Generate Input File");
+//        rootDriver=common.initializeDriver("Root");
+//        Thread.sleep(3000);
+//        common.findWebElement("xpath", "//Window[@Name='Export Transaction Postings']/Pane/Edit[@Name='Voucher Series']").sendKeys(prefix);
+//        common.findWebElement("xpath","//Window[@Name='Export Transaction Postings']/Pane/Edit[@Name='Voucher Number']").sendKeys(number);
+//        common.clickElement("xpath","//Button[@Name='OK']");
+//        Thread.sleep(1500);
+//        if (common.findWebElement("xpath","//Text").getText().equals("Data Exported successfully!")) {
+//            common.clickElement("xpath", "//Button[@Name='OK']");
+//        }
+//        else if(common.findWebElement("xpath","//Text").getText().equals("Transactionno doesnot exist.")){
+//            Assert.fail("Transaction does not exists");
+//            common.clickElement("xpath", "//Button[@Name='OK']");
+//        }
+//
+//        Thread.sleep(2000);
+//        navigateToMastersWhen3Steps("Tools","Automated Testing","Generate Output File");
+//        rootDriver=common.initializeDriver("Root");
+//        Thread.sleep(3000);
+//        common.findWebElement("xpath", "//Window[@Name='Export Transaction Postings']/Pane/Edit[@Name='Voucher Series']").sendKeys(prefix);
+//        common.findWebElement("xpath","//Window[@Name='Export Transaction Postings']/Pane/Edit[@Name='Voucher Number']").sendKeys(number);
+//        common.clickElement("xpath","//Button[@Name='OK']");
+//        Thread.sleep(1500);
+//        if (common.findWebElement("xpath","//Text").getText().equals("Data Exported successfully!")) {
+//            common.clickElement("xpath", "//Button[@Name='OK']");
+//        }
+//        else if(common.findWebElement("xpath","//Text").getText().equals("Transactionno doesnot exist.")){
+//            Assert.fail("Transaction does not exists");
+//            common.clickElement("xpath", "//Button[@Name='OK']");
+//        }
         return newVoucherID;
     }
 
@@ -264,7 +254,9 @@ public class PurchaseOrders extends TransactionsBaseClass {
             enterData(gstProductCategoryRowList.get(j), dataFile, "PurchaseOrders", "GSTPercentage" + j);
             enterData(cessProductCategoryRowList.get(j), dataFile, "PurchaseOrders", "CESSPercentage" + j);
             Assert.assertEquals(taxableValueRowList.get(j).getText(), common.getData(dataFile, "PurchaseOrders", "expectedTaxableValue" + j), "Taxable value mismatch");
+            Thread.sleep(3000);
             Assert.assertEquals(igstAmountRowList.get(j).getText(), common.getData(dataFile, "PurchaseOrders", "expectedIGSTAmount" + j), "IGST mismatch");
+            Thread.sleep(1000);
             Assert.assertEquals(cessAmountRowList.get(j).getText(), common.getData(dataFile, "PurchaseOrders", "expectedCESSAmount" + j), "CESS mismatch");
             Assert.assertEquals(gstAmountRowList.get(j).getText(), common.getData(dataFile, "PurchaseOrders", "expectedGSTAmount" + j), "GST Amount mismatch");
             Assert.assertEquals(netAmountRowList.get(j).getText(), common.getData(dataFile, "PurchaseOrders", "expectedNetAmount" + j), "Net Amount mismatch");
@@ -283,6 +275,7 @@ public class PurchaseOrders extends TransactionsBaseClass {
     }
 
     public void addChargesAndDeductions() throws IOException, ParseException {
+        navigateToChargesAndDeductionsTab();
         for (int v = 0; v < Integer.parseInt(common.getData(dataFile, "PurchaseOrders", "productCount")); v++) {
             enterData("xpath", "//Edit[@Name='Charges Or Deductions * Row " + v + ", Not sorted.']", dataFile, "PurchaseOrders", "chargesOrDeductions" + v);
         }
@@ -317,6 +310,7 @@ public class PurchaseOrders extends TransactionsBaseClass {
     }
 
     public void addOtherCharges() throws IOException, ParseException {
+        navigateToOtherChargesTab();
         for (int v = 0; v < Integer.parseInt(common.getData(dataFile, "PurchaseOrders", "productCount")); v++) {
             enterData("xpath", "//Edit[@Name='Account Code Row " + v + ", Not sorted.']", dataFile, "PurchaseOrders", "otherChargesAccount" + v);
         }
@@ -366,9 +360,11 @@ public class PurchaseOrders extends TransactionsBaseClass {
         }
     }
 
-    public void addCash() throws IOException, ParseException {
-        for (int v = 0; v < Integer.parseInt(common.getData(dataFile, "PurchaseOrders", "productCount")); v++) {
-            enterInput("xpath", "//Edit[@Name='Cash Account Code Row " + v + ", Not sorted.']", dataFile, "PurchaseOrders", "cashAccount" + v);
+    public void addCash() throws IOException, ParseException, InterruptedException {
+        navigateToCashTab();
+        for (int v = 0; v < Integer.parseInt(common.getData(dataFile, "PurchaseOrders", "productCount")); v++)  {
+            enterData("xpath", "//Edit[@Name='Cash Account Code Row "+ v +", Not sorted.']", dataFile, "PurchaseOrders", "cashAccount" + v);
+            Thread.sleep(1000);
         }
         List<WebElement> amountRowList = common.findWebElements("xpath", "//Table[@Name='Cash']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Amount * Row ')]");
         List<WebElement> amountInCompanyCurrencyRowList = common.findWebElements("xpath", "//Table[@Name='Cash']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Amount In Company Currency Row ')]");
@@ -390,8 +386,10 @@ public class PurchaseOrders extends TransactionsBaseClass {
     }
 
     public void addCheques() throws IOException, ParseException {
+        List<WebElement> element=common.findWebElements("xpath","//TabItem[contains(@Name,'Cheques')]");
+        element.get(0).click();
         for (int v = 0; v < Integer.parseInt(common.getData(dataFile, "PurchaseOrders", "productCount")); v++) {
-            enterInput("xpath", "//Edit[@Name='Bank Account Code Row " + v + ", Not sorted.']", dataFile, "PurchaseOrders", "bankAccountCode" + v);
+            enterData("xpath", "//Edit[@Name='Bank Account Code Row " + v + ", Not sorted.']", dataFile, "PurchaseOrders", "bankAccountCode" + v);
         }
         List<WebElement> amountRowList = common.findWebElements("xpath", "//Table[@Name='Cheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Amount * Row ')]");
         List<WebElement> chargesAccRowList = common.findWebElements("xpath", "//Table[@Name='Cheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Charges Account Code Row ')]");
@@ -420,8 +418,10 @@ public class PurchaseOrders extends TransactionsBaseClass {
     }
 
     public void addPostDatedCheques() throws IOException, ParseException {
+        List<WebElement> elementsss=common.findWebElements("xpath","//TabItem[contains(@Name,'Cheques')]");
+        elementsss.get(1).click();
         for (int v = 0; v < Integer.parseInt(common.getData(dataFile, "PurchaseOrders", "productCount")); v++) {
-            enterInput("xpath", "//Edit[@Name='Bank Account Code Row " + v + ", Not sorted.']", dataFile, "PurchaseOrders", "bankAccountCode" + v);
+            enterData("xpath", "//Edit[@Name='Bank Account Code Row " + v + ", Not sorted.']", dataFile, "PurchaseOrders", "bankAccountCode" + v);
         }
         List<WebElement> pdcAccRowList = common.findWebElements("xpath", "//Table[@Name='PostDatedCheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'PDC Account * Row ')]");
         List<WebElement> amoutRowList = common.findWebElements("xpath", "//Table[@Name='PostDatedCheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Amount * Row ')]");
@@ -446,8 +446,10 @@ public class PurchaseOrders extends TransactionsBaseClass {
     }
 
     public void addChequesPDC() throws IOException, ParseException {
+        List<WebElement> elem=common.findWebElements("xpath","//TabItem[contains(@Name,'Cheques')]");
+        elem.get(2).click();
         for (int v = 0; v < Integer.parseInt(common.getData(dataFile, "PurchaseOrders", "productCount")); v++) {
-            enterInput("xpath", "//Edit[@Name='Bank Account Code Row " + v + ", Not sorted.']", dataFile, "PurchaseOrders", "bankAccountCode" + v);
+            enterData("xpath", "//Edit[@Name='Bank Account Code Row " + v + ", Not sorted.']", dataFile, "PurchaseOrders", "bankAccountCode" + v);
 
         }
         List<WebElement> chequeAmountRowList = common.findWebElements("xpath", "//Table[@Name='PDC']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Amount * Row ')]");
@@ -471,8 +473,9 @@ public class PurchaseOrders extends TransactionsBaseClass {
     }
 
     public void addTermsAndConditions() throws IOException, ParseException {
+        common.clickElement("xpath","//TabItem[contains(@Name,'Terms And Conditions')]");
         for (int v = 0; v < Integer.parseInt(common.getData(dataFile, "PurchaseOrders", "productCount")); v++) {
-            enterInput("xpath", "//Edit[@Name='Term Type * Row " + v + ", Not sorted.']", dataFile, "PurchaseOrders", "termType" + v);
+            enterData("xpath", "//Edit[@Name='Term Type * Row " + v + ", Not sorted.']", dataFile, "PurchaseOrders", "termType" + v);
         }
         List<WebElement> termRowList = common.findWebElements("xpath", "//Table[@Name='TermsAndConditions']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Term * Row ')]");
         List<WebElement> commentsRowList = common.findWebElements("xpath", "//Table[@Name='TermsAndConditions']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Comments Row ')]");

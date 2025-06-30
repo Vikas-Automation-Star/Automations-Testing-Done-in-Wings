@@ -68,12 +68,20 @@ public class TransactionsBaseClass extends Transaction {
         enterInput("xpath","//Edit[@Name='Cash/Party Code'] | //Edit[@Name='Party Code']",dataFile,dataSet,cashOrParty);
     }
 
+    public void enterConsigner(String dataFile,String dataSet,String Consigner) throws IOException, ParseException {
+        enterInput("xpath","//Edit[@Name='Cash/Party Code']",dataFile,dataSet,Consigner);
+    }
+
     public void enterCreditPeriod(String dataFile,String dataSet,String creditPeriod) throws IOException, ParseException {
         enterInput("xpath","//Edit[@Name='Credit Period']",dataFile,dataSet,creditPeriod);
     }
 
     public void enterPurchaseAccountCode(String dataFile,String dataSet,String purchaseAccountCode) throws IOException, ParseException {
-        enterInput("xpath","//Edit[@Name='Purchase A/c Code']",dataFile,dataSet,purchaseAccountCode);
+        enterInput("xpath","//Edit[@Name='Purchase A/c Code'  or @Name='Purchase A/C Code']",dataFile,dataSet,purchaseAccountCode);
+    }
+
+    public void enterPurchaseAccountCODE(String dataFile,String dataSet,String purchaseAccountCode) throws IOException, ParseException {
+        enterInput("xpath","//Edit[@Name='Purchase A/C Code']",dataFile,dataSet,purchaseAccountCode);
     }
 
     public void enterSuppliersBillNumber() {

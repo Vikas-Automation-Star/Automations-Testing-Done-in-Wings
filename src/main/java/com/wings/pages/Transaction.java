@@ -1966,17 +1966,11 @@ public abstract class Transaction {
     public  void navigateToItemsOtherCosts(String dataFile,String dataSet) throws IOException, ParseException {
         List<WebElement> elements=common.findWebElements("xpath","//TabItem[contains(@Name,'Other Costs')]");
         elements.get(1).click();
-//        List<WebElement> edits = common.findWebElements("xpath", "//Pane[@Name='TCS Account']//Edit");
-//        System.out.println("items amount editable sizes :"+edits);
-//        String legacyValue = edits.get(5).getAttribute("LegacyValue"); // 6th element (0-based)
-//        System.out.println("items legacy value"+legacyValue);
         WebElement sixthEdit = common.findWebElement("xpath", "//Edit[contains(@AutomationId,'OtherCost')]");
         String legacyValue = sixthEdit.getAttribute("LegacyValue");
-        System.out.println("6th edit legacy value: " + legacyValue);
-
+//        System.out.println("6th edit legacy value: " + legacyValue);
         Assert.assertEquals(legacyValue, common.getData(dataFile, dataSet, "expectedItemsOtherCostsAmount"), "ItemsOtherCostsAmount Mismatch");
-//        Assert.assertEquals(common.findWebElement("xpath", "//Pane[@Name='TCS Account']/Pane//following-sibling::edit[6]").getAttribute("LegacyValue"), common.getData(dataFile, dataSet, "expectedItemsOtherCostsAmount"), "ItemsOtherCostsAmount Mismatch");
-        System.out.println("worked this assertion for Items Other Charges");
+//        System.out.println("worked this assertion for Items Other Charges");
     }
 
     public  void navigateToItemsOtherCosts() throws IOException, ParseException {
@@ -3870,7 +3864,6 @@ public abstract class Transaction {
     //over-loaded methods
     public void enterData(String locatorType, String locator, String fileName,String dataset, String key) throws IOException, ParseException {
         List<WebElement> elementList = common.findWebElements(locatorType, locator);
-//        System.out.println("Size :" + elementList.size());
         for (WebElement i : elementList) {
             i.click();
             i.sendKeys(common.getData(fileName,dataset, key), Keys.TAB);
@@ -3907,7 +3900,7 @@ public abstract class Transaction {
     public void enterInput(String locatorType, String locator, String fileName,String dataset, String key) throws IOException, ParseException {
         List<WebElement> elementList = common.findWebElements(locatorType, locator);
         for (WebElement i : elementList) {
-            i.click();
+//            i.click();
             i.sendKeys(Keys.CONTROL + "a");
             i.sendKeys(Keys.BACK_SPACE);
             i.sendKeys(common.getData(fileName,dataset, key), Keys.TAB);

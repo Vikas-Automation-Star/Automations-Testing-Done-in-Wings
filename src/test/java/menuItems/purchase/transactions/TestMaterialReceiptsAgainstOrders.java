@@ -3,7 +3,6 @@ package menuItems.purchase.transactions;
 import com.wings.pages.AppLogin;
 import com.wings.pages.purchase.transactions.MaterialReceiptsAgainstOrder;
 import com.wings.pages.purchase.transactions.PurchaseOrders;
-import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
@@ -16,25 +15,25 @@ import java.io.IOException;
 public class TestMaterialReceiptsAgainstOrders {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    Common common;
     String file = "./src/main/resources/menuItems/purchase/transactions/purchaseOrders.json";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        common=new Common(driver);
-        driver = appLogin.launchSingleUserApp();
-        appLogin.singleUserLogin(common.getData(file,"PurchaseOrders","userName"),common.getData(file,"PurchaseOrders","password"));
+        driver=appLogin.login();
     }
 
     @Test
     public void materialReceiptsAgainstOrders() throws IOException, ParseException, InterruptedException, AWTException {
         PurchaseOrders purchaseOrders=new PurchaseOrders(driver,file);
+        String po=purchaseOrders.purchaseOrders();
+        appLogin.logout();
+        driver=appLogin.login();
         MaterialReceiptsAgainstOrder mrao = new MaterialReceiptsAgainstOrder(driver, file);
-        mrao.materialReceiptsAgainstOrder(purchaseOrders.purchaseOrders());
+        mrao.materialReceiptsAgainstOrder(po);
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-        appLogin.logout();
+//        appLogin.logout();
     }
 }

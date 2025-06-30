@@ -10,6 +10,7 @@
       "location": "AT_Branch 1_Location 1",
       "currency": "INR",
       "partyCode": "AT_Sup_Reg_Inter",
+      "Consigner": "AT_Sup_Reg_Inter",
       "creditPeriod": "2",
       "PurchaseAccCode": "PA1",
       "tcsNature": "AT_TCS Transaction Nature 2",
