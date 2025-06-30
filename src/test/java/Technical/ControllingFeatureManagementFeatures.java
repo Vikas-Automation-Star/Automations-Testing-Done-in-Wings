@@ -1,5 +1,6 @@
-package phase_1_TestCases;
+package Technical;
 
+import com.wings.Technical.ControllingWithFeatureManagement;
 import com.wings.pages.AppLogin;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;

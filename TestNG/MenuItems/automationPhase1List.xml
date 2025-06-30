@@ -78,7 +78,7 @@
 
         <!--<test name="ControllingFeatureManagements" description="Menus ControllingFeatureManagements Validation" testID="1">-->
         <!--<classes>-->
-        <!--    <class name="phase_1_TestCases.ControllingFeatureManagementFeatures"></class>-->
+        <!--    <class name="Technical.ControllingFeatureManagementFeatures"></class>-->
         <!--</classes>-->
         <!--</test>-->
 

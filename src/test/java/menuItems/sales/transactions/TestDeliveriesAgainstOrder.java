@@ -26,14 +26,14 @@ public class TestDeliveriesAgainstOrder {
 
         @Test
         public void deliveriesAgainstOrders() throws IOException, ParseException, InterruptedException, AWTException {
-//            SalesOrders salesOrders=new SalesOrders(driver,dataFile);
-//            String salesOrderVoucher=salesOrders.salesOrders();
-//
-//            appLogin.logout();
-//            driver = appLogin.login();
-//
+            SalesOrders salesOrders=new SalesOrders(driver,dataFile);
+            String salesOrderVoucher=salesOrders.salesOrders();
+
+            appLogin.logout();
+            driver = appLogin.login();
+
             DeliveriesAgainstOrdersTransaction deliveriesAgainstOrdersTransaction=new DeliveriesAgainstOrdersTransaction(driver,dataFile);
-            String deliveriesAgainstOrdersVoucher=deliveriesAgainstOrdersTransaction.deliveriesAgainstOrders("SO 15");
+            String deliveriesAgainstOrdersVoucher=deliveriesAgainstOrdersTransaction.deliveriesAgainstOrders(salesOrderVoucher);
 
 //            SalesInvoiceAgainstDeliveries salesInvoiceAgainstDeliveries=new SalesInvoiceAgainstDeliveries(driver,dataFile);
 //            salesInvoiceAgainstDeliveries.salesInvoiceAgainstDeliveries("DELO 4");

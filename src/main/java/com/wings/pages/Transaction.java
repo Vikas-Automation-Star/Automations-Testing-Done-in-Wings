@@ -2574,8 +2574,9 @@ public abstract class Transaction {
         common.clickElement("xpath", "//Button[@Name='Save']");
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//Button[@Name='OK']"))).click();
-        Thread.sleep(2000);
-        common.clickElement("xpath", "//Button[@Name='OK']");
+//        Thread.sleep(2000);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//Window[@Name='Message']/Button[@Name='OK']"))).click();
+//        common.clickElement("xpath", "//Window[@Name='Message']/Button[@Name='OK']");
     }
     public void saveMasterOrProperty(){
         common.clickElement("xpath", "//Button[@Name='Save']");
@@ -2800,7 +2801,7 @@ public abstract class Transaction {
                 System.out.println("Checkbox was unchecked");
             } else if (checkBoxToggleState1.equals("1")) {
                 System.out.println("Checkbox is already checked, no action needed.");
-            } else Assert.fail("Check Box it not selected");
+            } else Assert.fail("Check Box is not selected");
         } else if (checkBoxToggleState.equals("0")) {
             System.out.println("Checkbox was unchecked,no need action");
         } else Assert.fail("Element Not Found");

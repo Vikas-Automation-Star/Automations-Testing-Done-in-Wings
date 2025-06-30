@@ -26,6 +26,7 @@ public class AppLogin {
         driver.findElement(By.name("24D Books Automation")).click();
         Thread.sleep(4000);
         rootDriver = common.initializeDriver("Root");
+        Thread.sleep(4000);
         WebElement login = rootDriver.findElement(By.name("Wings 24 - Web Client"));
         String nativeWindow = login.getAttribute("NativeWindowHandle");
         String hexLoginId = Integer.toHexString(Integer.parseInt(nativeWindow));

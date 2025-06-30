@@ -1,4 +1,4 @@
-package phase_1_TestCases;
+package com.wings.Technical;
 
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
@@ -8,7 +8,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -17,6 +16,7 @@ import java.io.IOException;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -28,7 +28,7 @@ public class ControllingWithFeatureManagement extends Transaction {
     Common common;
     String dataFile;
 
-    ControllingWithFeatureManagement(WindowsDriver driver, String dFile) {
+    public ControllingWithFeatureManagement(WindowsDriver driver, String dFile) {
         super(driver);
         this.driver = driver;
         dataFile = dFile;
@@ -60,13 +60,13 @@ public class ControllingWithFeatureManagement extends Transaction {
         System.out.println("menus :" + menus);
         saveProperties();
         List<String> validateMenus = new ArrayList<>();
-//        List<WebElement> checkMenus =common.findWebElements("xpath","//MenuBar/MenuItem");
-//        System.out.println("validateMenusSize :"+ checkMenus.size());
-        List<WebElement> checkMenus = common.findWebElements("xpath", "//Pane[@Name='Cost Centres']/Text/*");
-        System.out.println("fetchedMenusSize :" + checkMenus.size());
+        List<WebElement> checkMenus =common.findWebElements("xpath","//MenuBar/MenuItem");
+        System.out.println("validateMenusSize :"+ checkMenus.size());
+//        List<WebElement> checkMenus = common.findWebElements("xpath", "//Pane[@Name='Cost Centres']/Text/*");
+//        System.out.println("fetchedMenusSize :" + checkMenus.size());
         for (WebElement v : checkMenus) {
             String allMenus = v.getText();
-//            System.out.println("allMenus :"+allMenus);
+            System.out.println("allMenus :"+allMenus);
             validateMenus.add(allMenus);
         }
         validateMenus.remove(0);
@@ -80,6 +80,7 @@ public class ControllingWithFeatureManagement extends Transaction {
         common.clickElement("xpath", "//TabItem[@Name='Configure']");
         common.clickElement("xpath", "//Text[@Name='Select Modules']");
         List<String> menus = new ArrayList<>();
+        Thread.sleep(1500);
         String finance = uncheckCheckBox("//CheckBox[@Name='Finance']");
         menus.add(finance);
         String taxes = uncheckCheckBox("//CheckBox[@Name='Taxes']");
@@ -100,15 +101,18 @@ public class ControllingWithFeatureManagement extends Transaction {
         System.out.println("menus :" + menus);
         saveProperties();
         List<String> validateMenus = new ArrayList<>();
-        List<WebElement> checkMenus = common.findWebElements("xpath", "//Pane[@Name='Cost Centres']/Text/*");
-        System.out.println("fetchedMenusSize :" + checkMenus.size());
+        WebDriverWait wait = new WebDriverWait(driver,10);
+        List<WebElement> checkMenus = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//Window[starts-with(@Name,'Wings Finance - PRO ')]/MenuBar/*")));
+
+//        List<WebElement> checkMenus = common.findWebElements("xpath", "//MenuBar/*");
+//        System.out.println("fetchedMenusSize :" + checkMenus.size());
         for (WebElement v : checkMenus) {
             String allMenus = v.getText();
             validateMenus.add(allMenus);
         }
         System.out.println("validateMenusSize :" + validateMenus.size());
         System.out.println("validateMenus :" + validateMenus);
-        Assert.assertTrue(!validateMenus.contains(menus), "validateMenus contains Menus it should not like this");
+        Assert.assertTrue(validateMenus.containsAll(menus), "validateMenus contains Menus it should not like this");
     }
 
     public void validateTransactionFieldsPositive() throws InterruptedException {
