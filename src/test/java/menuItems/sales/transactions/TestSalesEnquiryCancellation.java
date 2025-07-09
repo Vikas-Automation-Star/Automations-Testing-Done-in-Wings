@@ -14,29 +14,26 @@ import java.io.IOException;
 
 public class TestSalesEnquiryCancellation {
     WindowsDriver driver;
-    AppLogin login = new AppLogin();
-    Common common;
-    String dataFile = "./src/main/resources/menuItems/Sales/Transactions/salesEnquiry.json";
+    AppLogin appLogin = new AppLogin();
+    String dataFile = "./src/main/resources/menuItems/Sales/Transactions/460469 - Sales Enquiries Cancellation-AC.xlsx";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        common=new Common(driver);
-        driver = login.launchSingleUserApp();
-        login.singleUserLogin(common.getData(dataFile,"salesEnquiry","userName"), common.getData(dataFile,"salesEnquiry","password") );
+        driver=appLogin.login();
     }
 
     @Test
     public void salesEnquiryCancellation() throws IOException, ParseException, InterruptedException, AWTException {
+//        SalesEnquiry salesEnquiry=new SalesEnquiry(driver,dataFile);
+//        String se=salesEnquiry.salesEnquiry();
         SalesEnquiryCancellation cancellation = new SalesEnquiryCancellation(driver, dataFile);
-        SalesEnquiry salesEnquiry=new SalesEnquiry(driver,dataFile);
-        cancellation.salesEnquiryCancellation(salesEnquiry.salesEnquiry());
+        cancellation.salesEnquiryCancellation("SE 15");
 //        cancellation.salesEnquiryCancellation("SE 9");
-
     }
 
 
     @AfterTest
     public void afterTest() throws IOException {
-        login.logout();
+//        login.logout();
     }
 }

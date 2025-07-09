@@ -253,8 +253,8 @@ public class TransactionFeatures extends Transaction {
     public void editTransaction() throws IOException, ParseException, InterruptedException {
         navigateToSalesEnquiryMenu();
         Thread.sleep(1500);
-        enterBranch(dataFile,dataset,"branch");
-        enterPartyCode(dataFile,dataset, "partyCode");
+//        enterBranch(dataFile,dataset,"branch");
+//        enterPartyCode(dataFile,dataset, "partyCode");
         gstTransactionType(common.getData(dataFile,dataset,"gstType"));
         enterPriceList(dataFile, dataset,"priceList");
         //enter details
