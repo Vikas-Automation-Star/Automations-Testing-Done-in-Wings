@@ -1,0 +1,35 @@
+[
+  {
+    "dataset": "changePassword",
+    "data": {
+      "oldPassword": "Madhu@123",
+      "newPassword": "Wings@123",
+      "confirmationText": "Password changed successfully."
+    }
+  },
+  {
+    "dataset": "addToFavorites",
+    "data": {
+      "alreadyExists": "Item 'Sales Enquiries' is already in the favourites list.",
+      "newlyAdded": "Item 'Sales Enquiries' added successfully to the favourites list.",
+      "transactionName": "Sales Enquiries"
+    }
+  },
+  {
+    "dataset": "incorrectCredentials",
+    "data": {
+      "errorText": "Username / Password mismatch!",
+      "wrongUserName": "USer 2",
+      "validUserName": "Super User",
+      "wrongPassword": "wings23",
+      "validPassword": "Wings@123"
+
+    }
+  },
+  {
+    "dataset": "quickMenu",
+    "data": {
+      "searchedElement": "Customer"
+    }
+  }
+]
