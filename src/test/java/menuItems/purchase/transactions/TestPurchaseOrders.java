@@ -14,7 +14,8 @@ import java.io.IOException;
 public class TestPurchaseOrders {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String file = "./src/main/resources/menuItems/purchase/transactions/purchaseOrders.json";
+//    String file = "./src/main/resources/menuItems/purchase/transactions/purchaseOrders.json";
+    String file = "./src/main/resources/pv.xlsx";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {

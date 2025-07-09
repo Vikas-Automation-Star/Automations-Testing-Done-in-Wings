@@ -34,11 +34,11 @@
     <!--        </classes>-->
     <!--    </test>-->
 
-    <!--    <test name="PO 6" description="Purchase Orders" testID="6">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchaseOrders"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <!--        <test name="PO 6" description="Purchase Orders" testID="6">-->
+    <!--            <classes>-->
+    <!--                <class name="menuItems.purchase.transactions.TestPurchaseOrders"/>-->
+    <!--            </classes>-->
+    <!--        </test>-->
 
     <!--    <test name="POC 7" description="Purchase Orders Cancellation" testID="7">-->
     <!--        <classes>-->
@@ -52,11 +52,11 @@
     <!--        </classes>-->
     <!--    </test>-->
 
-    <!--    <test name="MRAO 9" description="Material Receipts Against Orders" testID="9">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestMaterialReceiptsAgainstOrders"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+        <test name="MRAO 9" description="Material Receipts Against Orders" testID="9">
+            <classes>
+                <class name="menuItems.purchase.transactions.TestMaterialReceiptsAgainstOrders"/>
+            </classes>
+        </test>
 
     <!--    <test name="MRet 10" description="Material Returns" testID="10">-->
     <!--        <classes>-->
@@ -65,11 +65,11 @@
     <!--    </test>-->
 
 
-    <test name="PV 11" description="Purchase Vouchers" testID="11">
-        <classes>
-            <class name="menuItems.purchase.transactions.TestPurchaseVouchers"/>
-        </classes>
-    </test>
+<!--    <test name="PV 11" description="Purchase Vouchers" testID="11">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.transactions.TestPurchaseVouchers"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
     <!--    <test name="PVAPO 12" description="Purchase Vouchers Against PurchaseOrders" testID="12">-->
     <!--        <classes>-->
@@ -95,11 +95,11 @@
     <!--        </classes>-->
     <!--    </test>-->
 
-    <!--    <test name="PRWIR-PVAO 16" description="Purchase Returns With Invoice Reference" testID="16">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchaseReturnsWithInvoicesReference"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <!--        <test name="PRWIR-PVAO 16" description="Purchase Returns With Invoice Reference" testID="16">-->
+    <!--            <classes>-->
+    <!--                <class name="menuItems.purchase.transactions.TestPurchaseReturnsWithInvoicesReference"/>-->
+    <!--            </classes>-->
+    <!--        </test>-->
 
     <!--    <test name="PPrice 17" description="Purchase Prices" testID="17">-->
     <!--        <classes>-->

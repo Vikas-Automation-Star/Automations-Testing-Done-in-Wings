@@ -18,13 +18,42 @@ public class AppLogin {
     String fileData = "./src/main/resources/company_Name.json";
 
 
+    //    public WindowsDriver login() throws IOException, InterruptedException, ParseException {
+//
+//        driver = common.initializeDriver(common.getProperty("multiUserApp"));
+////        String currentWindowHandle = driver.getWindowHandle();
+////        System.out.println("Window 1 -" + currentWindowHandle);
+//
+//        driver.findElement(By.name("24DBooks_Testing")).click();
+//        Thread.sleep(20000);
+//
+//        rootDriver = common.initializeDriver("Root");
+//        WebElement login = rootDriver.findElement(By.name("Wings 24 - Web Client"));
+//
+//        String nativeWindow = login.getAttribute("NativeWindowHandle");
+//        String hexLoginId = Integer.toHexString(Integer.parseInt(nativeWindow));
+////        System.out.println("window id: " + hexLoginId);
+//        loginDriver = common.navigateToAppWindow(hexLoginId);
+//        common = new Common(loginDriver);
+//        common.inputText("xpath", "//Edit[@Name='Password']", common.getProperty("password"));
+////        System.out.println("Password TagName " + common.getTagName("name", "Password"));
+//        common.clickElement("name", "Submit");
+//        Thread.sleep(3000);
+//        rootDriver = common.initializeDriver("Root");
+//        Thread.sleep(4000);
+//        common.clickElement("xpath","//Window[contains(@Name,'Wings Finance - PRO ')]//Window[@Name='Information']//Button[@Name='OK']");
+//
+//        driver.quit();
+//        rootDriver.quit();
+//        return loginDriver;
+//    }
     public WindowsDriver login() throws IOException, InterruptedException, ParseException {
 
         driver = common.initializeDriver(common.getProperty("multiUserApp"));
-        String currentwindowHandle = driver.getWindowHandle();
-        System.out.println("Window 1 -" + currentwindowHandle);
-        driver.findElement(By.name("24D Books Automation")).click();
-        Thread.sleep(4000);
+//    String currentwindowHandle = driver.getWindowHandle();
+//    System.out.println("Window 1 -" + currentwindowHandle);
+        driver.findElement(By.name("24DBooks_Testing")).click();
+        Thread.sleep(5000);
         rootDriver = common.initializeDriver("Root");
         Thread.sleep(4000);
         WebElement login = rootDriver.findElement(By.name("Wings 24 - Web Client"));
@@ -38,11 +67,12 @@ public class AppLogin {
         System.out.println("Password TagName " + common.getTagName("name", "Password"));
         common.clickElement("name", "Submit");
         Thread.sleep(10000);
-       common.clickElement("xpath","//Button[@Name='OK']");
+        common.clickElement("xpath","//Button[@Name='OK']");
         driver.quit();
         rootDriver.quit();
         return loginDriver;
     }
+
 
     public void singleUserLogin() throws InterruptedException, IOException, ParseException {
         Thread.sleep(2000);
@@ -101,14 +131,6 @@ public class AppLogin {
         return driver;
     }
 
-    public WindowsDriver launchMultiUserApp() throws IOException, InterruptedException {
-        driver = common.initializeDriver(common.getProperty("app"));
-        driver.manage().window().maximize();
-        Thread.sleep(2000);
-        common.findWebElement("name", "Wings 24");
-        return driver;
-    }
-
     public void logout() throws IOException {
         try {
             Thread.sleep(1500);
@@ -120,4 +142,5 @@ public class AppLogin {
             exception.printStackTrace();
         }
     }
+
 }

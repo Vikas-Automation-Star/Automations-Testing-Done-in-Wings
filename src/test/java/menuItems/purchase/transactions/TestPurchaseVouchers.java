@@ -15,11 +15,13 @@ public class TestPurchaseVouchers {
 
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String file = "./src/main/resources/menuItems/purchase/transactions/PurchaseVouchers.json";
+    String file = "./src/main/resources/menuItems/purchase/transactions/479081_Purchase Vouchers-AC.xls";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
         driver=appLogin.login();
+//        driver = appLogin.launchSingleUserApp();
+//        appLogin.singleUserLogin();
     }
 
     @Test

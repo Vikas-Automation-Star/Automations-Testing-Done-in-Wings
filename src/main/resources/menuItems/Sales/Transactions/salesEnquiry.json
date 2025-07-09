@@ -13,7 +13,7 @@
       "priceList": "AT_Exclusive Sales Price List 1",
       "invoice": "Regular",
       "HSNCode": "AT_HSN Code 2",
-      "productCount": 3,
+      "productCount": 4,
       "transType": "Sales",
       "enableFreeQuantity": "false",
       "numOfSerialProducts": 10,

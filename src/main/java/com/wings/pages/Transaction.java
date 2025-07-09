@@ -5,6 +5,10 @@ import com.wings.utils.FileUtil;
 import com.wings.utils.StringUtil;
 import com.wings.utils.Time;
 import io.appium.java_client.windows.WindowsDriver;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -15,12 +19,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.text.DateFormat;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public abstract class Transaction {
+public  class Transaction {
     protected WindowsDriver driver;
     protected Common common;
     boolean IsDiscountClicked=false;
@@ -180,8 +190,8 @@ public abstract class Transaction {
     }
 
     public void gstTransactionType(String gstType) {
-        List<WebElement> elementList = common.findWebElements("xpath", "//Table/*[@Name='Data Panel']/*/*[contains(@Name,'GST Transaction Type row')]");
-        System.out.println("Size :" + elementList.size());
+        List<WebElement> elementList = common.findWebElements("xpath", "//Window[@Name='GST Transaction Type']//Table/*[@Name='Data Panel']/*/*[starts-with(@Name,'GST Transaction Type row ')]");
+//        System.out.println("Size :" + elementList.size());
         for (WebElement i : elementList) {
 //                System.out.println(i.getText());
             if (i.getText().equals(gstType)) {
@@ -274,8 +284,9 @@ public abstract class Transaction {
         }
     }
 
-    public void enterBranch(String dataFile, String key) throws IOException, ParseException {
-        enterInput("xpath", "//Edit[@Name='Branch *']", dataFile, key);
+    public void enterBranchh(String dataFile,String sheetName, String key) throws IOException {
+        EnterData("//Edit[@Name='Branch *']",dataFile,sheetName,key);
+//        enterInput("xpath", "//Edit[@Name='Branch *']", dataFile, key);
     }
 
     public void enterPartyCode(String dataFile, String key) throws IOException, ParseException {
@@ -393,17 +404,19 @@ public abstract class Transaction {
     }
 
     public void navigateToSalesEnquiryMenu() throws InterruptedException {
-        common.clickElement("name", "Sales");
-        Thread.sleep(1500);
-        common.clickElement("name", "Enquiries");
-        common.clickElement("xpath", "//Menu[@Name='Enquiries']/MenuItem[@Name='Sales Enquiries']");
+//        common.clickElement("name", "Sales");
+//        common.clickElement("name", "Enquiries");
+//         common.clickElement("xpath", "//Menu[@Name='Enquiries']/MenuItem[@Name='Sales Enquiries']");
 //        String pageValidation = common.findWebElement("xpath", "//Pane/Text[@Name='Sales Enquiries']").getText();
 //        System.out.println("Screen Name:-" + pageValidation);
 //        Assert.assertEquals(pageValidation, "Sales Enquiries");
+        common.clickElement("name", "Reports");
+        common.clickElement("name", "Enquiries");
+        common.clickElement("xpath", "//MenuItem[@Name='Sales Enquiries']");
     }
 
     public void navigateToSalesEnquiryCancellationMenu() {
-        common.clickElement("name", "Sales");
+        common.clickElement("name", "Reports");
         common.clickElement("name", "Enquiries");
         common.clickElement("xpath", "//MenuItem[@Name='Sales Enquiries Cancellation']");
         Assert.assertEquals(common.findWebElement("xpath", "//Pane/Text[@Name='Sales Enquiries Cancellation']").getText(), "Sales Enquiries Cancellation");
@@ -3862,21 +3875,14 @@ public abstract class Transaction {
         FileUtil.writeTimeLog("Other Charges IGST",duration/1000000000);
     }
 
-    //over-loaded methods
-    public void enterData(String locatorType, String locator, String fileName,String dataset, String key) throws IOException, ParseException {
-        List<WebElement> elementList = common.findWebElements(locatorType, locator);
-        for (WebElement i : elementList) {
-            i.click();
-            i.sendKeys(common.getData(fileName,dataset, key), Keys.TAB);
-            break;
-        }
-    }
 
 
-    public void enterData( WebElement element,String fileName,String dataset, String key) throws IOException, ParseException {
+    public void enterData( WebElement element,String fileName,String sheetName, String key) throws IOException, ParseException {
         element.click();
-        element.sendKeys(common.getData(fileName,dataset, key), Keys.TAB);
+        element.sendKeys(common.getData(fileName,sheetName, key), Keys.TAB);
     }
+
+
 
 
 //    public void enterDataNew(String locatorType, String locator, String fileName, String dataset, String key) throws IOException, ParseException {
@@ -3895,6 +3901,223 @@ public abstract class Transaction {
 //        }
 //    }
 
+    // after move to Excel
+    public static List<String> readExcelData(String filePath, String sheetName, String columnName) {
+        List<String> columnData = new ArrayList<>();
+        try (FileInputStream fis = new FileInputStream(new File(filePath))) {
+            Workbook workbook;
+            if (filePath.endsWith(".xlsx")) {
+                workbook = new XSSFWorkbook(fis);
+            } else if (filePath.endsWith(".xls")) {
+                workbook = new HSSFWorkbook(fis);
+            } else {
+                System.out.println("Invalid file format. Please provide an .xls or .xlsx file.");
+                return columnData;
+            }
+            Sheet sheet = workbook.getSheet(sheetName);
+            if (sheet == null) {
+                System.out.println("Sheet not found: " + sheetName);
+                return columnData;
+            }
+            Row headerRow = sheet.getRow(0);
+            int columnIndex = -1;
+            // Find the index of the specified column
+            for (int i = 0; i < headerRow.getPhysicalNumberOfCells(); i++) {
+                Cell cell = headerRow.getCell(i);
+                if (cell.getStringCellValue().equalsIgnoreCase(columnName)) {
+                    columnIndex = i;
+                    break;
+                }
+            }
+            if (columnIndex == -1) {
+                System.out.println("Column not found: " + columnName);
+                return columnData;
+            }
+            // Read the data from the specified column
+            for (int i = 1; i <= sheet.getLastRowNum(); i++) {
+                Row row = sheet.getRow(i);
+                if (row != null) {
+                    Cell cell = row.getCell(columnIndex);
+                    if (cell != null) {
+                        columnData.add(cell.toString());
+                    }
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return columnData;
+    }
+
+    public String getValueByColumnHeader(String filePath, String sheetName, String headerName) throws IOException {
+        FileInputStream file = new FileInputStream(filePath);
+        Workbook workbook = WorkbookFactory.create(file);
+        Sheet sheet = workbook.getSheet(sheetName);
+        if (sheet == null) {
+            System.out.println("❌ Sheet not found: " + sheetName);
+            workbook.close();
+            return null;
+        }
+        // Read the header row (assumed to be the first row: index 0)
+        Row headerRow = sheet.getRow(0);
+        if (headerRow == null) {
+            System.out.println("❌ Header row is empty");
+            workbook.close();
+            return null;
+        }
+        int targetColumnIndex = -1;
+        // Find the column index for the header name
+        for (Cell cell : headerRow) {
+            cell.setCellType(CellType.STRING);
+            if (cell.getStringCellValue().trim().equalsIgnoreCase(headerName.trim())) {
+                targetColumnIndex = cell.getColumnIndex();
+                break;
+            }
+        }
+        if (targetColumnIndex == -1) {
+            System.out.println("❌ Column not found for header: " + headerName);
+            workbook.close();
+            return null;
+        }
+        // Get the first data row (assumed to be row 1)
+        Row dataRow = sheet.getRow(1);
+        if (dataRow == null) {
+            System.out.println("❌ Data row is empty");
+            workbook.close();
+            return null;
+        }
+        Cell valueCell = dataRow.getCell(targetColumnIndex);
+        if (valueCell == null) {
+            System.out.println("⚠️ Value cell is null under header: " + headerName);
+            workbook.close();
+            return null;
+        }
+        String value = "";
+        if (valueCell.getCellType() == CellType.STRING) {
+            value = valueCell.getStringCellValue();
+        } else if (valueCell.getCellType() == CellType.NUMERIC && DateUtil.isCellDateFormatted(valueCell)) {
+            value = new SimpleDateFormat("dd-MM-yyyy").format(valueCell.getDateCellValue());
+        } else {
+            value = valueCell.toString();
+        }
+        workbook.close();
+        return value;
+    }
+
+    public List<String> getValuesByColumnHeader(String filePath, String sheetName, String headerName) throws IOException {
+        List<String> values = new ArrayList<>();
+
+        FileInputStream file = new FileInputStream(new File(filePath));
+        Workbook workbook = WorkbookFactory.create(file);
+        Sheet sheet = workbook.getSheet(sheetName);
+
+        if (sheet == null) {
+            System.out.println("❌ Sheet not found: " + sheetName);
+            workbook.close();
+            return values;
+        }
+
+        Row headerRow = sheet.getRow(0);
+        if (headerRow == null) {
+            System.out.println("❌ Header row is empty");
+            workbook.close();
+            return values;
+        }
+
+        int targetColumnIndex = -1;
+
+        for (Cell cell : headerRow) {
+            cell.setCellType(CellType.STRING);
+            if (cell.getStringCellValue().trim().equalsIgnoreCase(headerName.trim())) {
+                targetColumnIndex = cell.getColumnIndex();
+                break;
+            }
+        }
+
+        if (targetColumnIndex == -1) {
+            System.out.println("❌ Column not found for header: " + headerName);
+            workbook.close();
+            return values;
+        }
+
+        // Start from row 1 (skip header)
+        for (int i = 1; i <= sheet.getLastRowNum(); i++) {
+            Row row = sheet.getRow(i);
+            if (row == null) continue;
+
+            Cell valueCell = row.getCell(targetColumnIndex);
+            if (valueCell == null) continue;
+
+            String value;
+            if (valueCell.getCellType() == CellType.STRING) {
+                value = valueCell.getStringCellValue();
+            } else if (valueCell.getCellType() == CellType.NUMERIC && DateUtil.isCellDateFormatted(valueCell)) {
+                value = new SimpleDateFormat("dd-MM-yyyy").format(valueCell.getDateCellValue());
+            } else {
+                value = valueCell.toString();
+            }
+
+            values.add(value.trim());
+        }
+
+        workbook.close();
+        return values;
+    }
+
+    public void EnterData(String locator,String dataFile,String sheetName,String key) {
+        WebElement element=common.findWebElement("xpath",locator);
+        element.sendKeys(Keys.CONTROL + "a");
+        element.sendKeys(Keys.BACK_SPACE);
+        List<String> columnData = readExcelData(dataFile, sheetName, key);
+        if (!columnData.isEmpty()) {
+            element.sendKeys(columnData.get(0),Keys.TAB);
+        }
+    }
+
+    public void addData( String locatorType,String locator, String fileName,String sheetName, String key,int j) {
+        List<WebElement> elementList = common.findWebElements(locatorType, locator);
+        for (WebElement i : elementList) {
+            i.click();
+            List<String> columnData = readExcelData(fileName, sheetName,key);
+            if (!columnData.isEmpty()) {
+                i.sendKeys(columnData.get(j),Keys.TAB);
+            }
+        }
+    }
+
+    public void enterListData( WebElement element,String fileName,String sheetName, String columnName,int j) throws IOException {
+        List<String> dataList = readExcelData(fileName, sheetName, columnName);
+        if (!dataList.isEmpty()) {
+            element.click();
+            element.sendKeys(dataList.get(j),Keys.TAB);
+        }
+    }
+
+    public void enterListDate( WebElement element,String fileName,String sheetName, String columnName,int j) throws IOException {
+        List<String> dataList = getValuesByColumnHeader(fileName, sheetName, columnName);
+        System.out.println(dataList.size());
+        if (!dataList.isEmpty()) {
+            element.click();
+            element.sendKeys(dataList.get(j),Keys.TAB);
+        }
+    }
+
+    public void clickListData(WebElement element){
+        element.click();
+    }
+
+
+
+    //over-loaded methods
+    public void enterData(String locatorType, String locator, String fileName,String dataset, String key) throws IOException, ParseException {
+        List<WebElement> elementList = common.findWebElements(locatorType, locator);
+        for (WebElement i : elementList) {
+            i.click();
+            i.sendKeys(common.getData(fileName,dataset, key), Keys.TAB);
+            break;
+        }
+    }
 
 
 
@@ -4116,20 +4339,20 @@ public abstract class Transaction {
         System.out.println("Report verified Successfully");
     }
 
-    public void enterBranch(String dataFile,String dataset,String key) throws IOException, ParseException {
-        enterInput("xpath", "//Edit[@Name='Branch *']", dataFile,dataset, key);
+    public void enterBranch(String dataFile,String sheetName,String key) throws IOException, ParseException {
+        EnterData("//Edit[@Name='Branch *']", dataFile,sheetName, key);
+//        enterInput("xpath", "//Edit[@Name='Branch *']", dataFile,dataset, key);
     }
 
-    public void enterPartyCode(String dataFile,String dataset, String key) throws IOException, ParseException {
-        enterInput("xpath", "//Edit[@Name='Party Code']", dataFile,dataset, key);
+
+    public void enterPriceList(String dataFile,String sheetName, String key) throws IOException, ParseException {
+        EnterData("//Edit[@Name='Price List']",dataFile,sheetName,key);
+//        enterInput("xpath", "//Edit[@Name='Price List']", dataFile,dataset, key);
     }
 
-    public void enterPriceList(String dataFile,String dataset, String key) throws IOException, ParseException {
-        enterInput("xpath", "//Edit[@Name='Price List']", dataFile,dataset, key);
-    }
-
-    public void enterExecutive(String dataFile,String dataset, String key) throws IOException, ParseException {
-        enterInput("xpath", "//Edit[@Name='Executive *']", dataFile,dataset, key);
+    public void enterExecutive(String dataFile,String sheetName, String key) throws IOException, ParseException {
+        EnterData("//Edit[@Name='Executive *']",dataFile,sheetName,key);
+//        enterInput("xpath", "//Edit[@Name='Executive *']", dataFile,dataset, key);
     }
 
     public void validateStockLedger(String fileName,String dataSet) throws IOException, ParseException, InterruptedException {
@@ -4294,4 +4517,32 @@ public abstract class Transaction {
         Assert.assertEquals(targetElement.get().getText(),expectedData,targetName+"  mismatch in summary");
     }
 
+
+//    public String getValueByKeyFromSheet(String filePath, String sheetName, String key) throws IOException {
+//        FileInputStream fileInputStream = new FileInputStream(filePath);
+//        Workbook workbook = WorkbookFactory.create(fileInputStream);
+//        Sheet sheet = workbook.getSheet(sheetName);
+//        if (sheet == null) {
+//            workbook.close();
+//            throw new IllegalArgumentException("Sheet '" + sheetName + "' not found in the Excel file.");
+//        }
+//        Row headerRow = sheet.getRow(0); // Header row
+//        Row valueRow = sheet.getRow(1);  // First data row
+//        if (headerRow == null || valueRow == null) {
+//            workbook.close();
+//            throw new IllegalArgumentException("Sheet format is invalid. Expected header at row 0 and data at row 1.");
+//        }
+//        for (int i = 0; i < headerRow.getLastCellNum(); i++) {
+//            Cell headerCell = headerRow.getCell(i);
+//            if (headerCell != null && headerCell.getStringCellValue().equalsIgnoreCase(key)) {
+//                Cell valueCell = valueRow.getCell(i);
+//                workbook.close();
+//                return valueCell != null ? valueCell.toString() : null;
+//            }
+//        }
+//        workbook.close();
+//        throw new IllegalArgumentException("Key '" + key + "' not found in sheet '" + sheetName + "'.");
+//    }
+
 }
+

@@ -49,7 +49,7 @@ public class PurchaseVouchersAgainstReceipt extends TransactionsBaseClass {
         common.clickElement("xpath","//Button[@Name='OK']");
 //        common.clickElement("xpath","//Window[contains(@Name,'Wings Finance - PRO ')]/*/Button[@Name='OK']");
         enterCreditPeriod(dataFile,"PurchaseVoucherAgainstReceipts","creditPeriod");
-        enterPurchaseAccountCODE(dataFile,"PurchaseVoucherAgainstReceipts","PurchaseAccCode");
+        enterPurchaseAccountCode(dataFile,"PurchaseVoucherAgainstReceipts","PurchaseAccCode");
         enableCheckboxSelection("//CheckBox[@Name='Apply TCS']");
         enterTcsTransNature(dataFile,"PurchaseVoucherAgainstReceipts","tcsNature");
         enableCheckboxSelection("//CheckBox[@Name='Deduct TDS']");

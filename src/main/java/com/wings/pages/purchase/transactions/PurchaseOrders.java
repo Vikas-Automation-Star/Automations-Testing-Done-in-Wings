@@ -36,7 +36,7 @@ public class PurchaseOrders extends TransactionsBaseClass {
         navigateToMastersWhen3Steps("Purchase","Orders","Purchase Orders");
         Thread.sleep(4000);
         String oldVoucherID = oldTTransactionID();
-        enterVoucherType(dataFile,"PurchaseOrders","voucherType");
+             enterVoucherType(dataFile,"PurchaseOrders","voucherType");
         enterDate();
         enterBranchName(dataFile,"PurchaseOrders","branch");
         enterLocation(dataFile,"PurchaseOrders","location");
