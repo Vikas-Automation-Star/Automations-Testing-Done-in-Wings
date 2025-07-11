@@ -154,31 +154,31 @@ public class SalesInvoice extends TransactionsBaseClass {
         List<WebElement> summary=common.findWebElements("xpath","//Pane[@Name='']//Edit/*");
         System.out.println("Summary size: "+ summary.size());
         //validate summary
-        assertSummaaryFields(summary,"Quantity", common.getData(dataFile,"salesInvoice","expectedQuantityInSummary"));
-        assertSummaaryFields(summary,"Quantity In SKU", common.getData(dataFile,"salesInvoice","expectedQuantityInSKUSummary"));
-        assertSummaaryFields(summary,"Free Quantity", common.getData(dataFile,"salesInvoice","expectedFreeQuantity"));
-        assertSummaaryFields(summary,"Free Quantity In SKU", common.getData(dataFile,"salesInvoice","expectedFreeQuantitySKU"));
-        assertSummaaryFields(summary,"Gross Amount", common.getData(dataFile,"salesInvoice","expectedGrossAmount"));
-        assertSummaaryFields(summary,"Discount", common.getData(dataFile,"salesInvoice","expectedDiscount"));
-        assertSummaaryFields(summary,"Gross - Disc", common.getData(dataFile,"salesInvoice","expectedGrossMinusDiscount"));
-        assertSummaaryFields(summary,"IGST", common.getData(dataFile,"salesInvoice","expectedIGST"));
-        assertSummaaryFields(summary,"CESS", common.getData(dataFile,"salesInvoice","expectedCESS"));
-        assertSummaaryFields(summary,"Net Amount", common.getData(dataFile,"salesInvoice","expectedNetAmount"));
-        assertSummaaryFields(summary,"Charges", common.getData(dataFile,"salesInvoice","expectedCharges"));
-        assertSummaaryFields(summary,"Deductions", common.getData(dataFile,"salesInvoice","expectedDeductions"));
-        assertSummaaryFields(summary,"Other Charges", common.getData(dataFile,"salesInvoice","expectedOtherCharges"));
-        assertSummaaryFields(summary,"Other Charges IGST", common.getData(dataFile,"salesInvoice","expectedOtherChargesIGST"));
-        assertSummaaryFields(summary,"Other Charges CESS", common.getData(dataFile,"salesInvoice","expectedOtherChargesCESS"));
-        assertSummaaryFields(summary,"TCS Taxable Value", common.getData(dataFile,"salesInvoice","expectedTCSTaxableValue"));
-        assertSummaaryFields(summary,"TCS Amount", common.getData(dataFile,"salesInvoice","expectedTCSAmount"));
-        assertSummaaryFields(summary,"Total Value", common.getData(dataFile,"salesInvoice","expectedTotalValue"));
-        assertSummaaryFields(summary,"Cash", common.getData(dataFile,"salesInvoice","expectedCash"));
-        assertSummaaryFields(summary,"Cheques", common.getData(dataFile,"salesInvoice","expectedCheques"));
-        assertSummaaryFields(summary,"Post Dated Cheques", common.getData(dataFile,"salesInvoice","expectedPostDatedCheques"));
-        assertSummaaryFields(summary,"Cheques [PDC]", common.getData(dataFile,"salesInvoice","expectedChequesPDC"));
-        assertSummaaryFields(summary,"Credit Card", common.getData(dataFile,"salesInvoice","expectedCreditCard"));
-        assertSummaaryFields(summary,"Receipts Value", common.getData(dataFile,"salesInvoice","expectedReceiptsValue"));
-        assertSummaaryFields(summary,"Receivable Amount", common.getData(dataFile,"salesInvoice","expectedReceivableAmount"));
+        assertSummaryFields(summary,"Quantity", common.getData(dataFile,"salesInvoice","expectedQuantityInSummary"));
+        assertSummaryFields(summary,"Quantity In SKU", common.getData(dataFile,"salesInvoice","expectedQuantityInSKUSummary"));
+        assertSummaryFields(summary,"Free Quantity", common.getData(dataFile,"salesInvoice","expectedFreeQuantity"));
+        assertSummaryFields(summary,"Free Quantity In SKU", common.getData(dataFile,"salesInvoice","expectedFreeQuantitySKU"));
+        assertSummaryFields(summary,"Gross Amount", common.getData(dataFile,"salesInvoice","expectedGrossAmount"));
+        assertSummaryFields(summary,"Discount", common.getData(dataFile,"salesInvoice","expectedDiscount"));
+        assertSummaryFields(summary,"Gross - Disc", common.getData(dataFile,"salesInvoice","expectedGrossMinusDiscount"));
+        assertSummaryFields(summary,"IGST", common.getData(dataFile,"salesInvoice","expectedIGST"));
+        assertSummaryFields(summary,"CESS", common.getData(dataFile,"salesInvoice","expectedCESS"));
+        assertSummaryFields(summary,"Net Amount", common.getData(dataFile,"salesInvoice","expectedNetAmount"));
+        assertSummaryFields(summary,"Charges", common.getData(dataFile,"salesInvoice","expectedCharges"));
+        assertSummaryFields(summary,"Deductions", common.getData(dataFile,"salesInvoice","expectedDeductions"));
+        assertSummaryFields(summary,"Other Charges", common.getData(dataFile,"salesInvoice","expectedOtherCharges"));
+        assertSummaryFields(summary,"Other Charges IGST", common.getData(dataFile,"salesInvoice","expectedOtherChargesIGST"));
+        assertSummaryFields(summary,"Other Charges CESS", common.getData(dataFile,"salesInvoice","expectedOtherChargesCESS"));
+        assertSummaryFields(summary,"TCS Taxable Value", common.getData(dataFile,"salesInvoice","expectedTCSTaxableValue"));
+        assertSummaryFields(summary,"TCS Amount", common.getData(dataFile,"salesInvoice","expectedTCSAmount"));
+        assertSummaryFields(summary,"Total Value", common.getData(dataFile,"salesInvoice","expectedTotalValue"));
+        assertSummaryFields(summary,"Cash", common.getData(dataFile,"salesInvoice","expectedCash"));
+        assertSummaryFields(summary,"Cheques", common.getData(dataFile,"salesInvoice","expectedCheques"));
+        assertSummaryFields(summary,"Post Dated Cheques", common.getData(dataFile,"salesInvoice","expectedPostDatedCheques"));
+        assertSummaryFields(summary,"Cheques [PDC]", common.getData(dataFile,"salesInvoice","expectedChequesPDC"));
+        assertSummaryFields(summary,"Credit Card", common.getData(dataFile,"salesInvoice","expectedCreditCard"));
+        assertSummaryFields(summary,"Receipts Value", common.getData(dataFile,"salesInvoice","expectedReceiptsValue"));
+        assertSummaryFields(summary,"Receivable Amount", common.getData(dataFile,"salesInvoice","expectedReceivableAmount"));
         long summaryEnd=System.nanoTime()-summaryStart;
         FileUtil.writeTimeLogInMinutes("Sales Invoice Summary End:- ", summaryEnd);
         //end
@@ -188,24 +188,7 @@ public class SalesInvoice extends TransactionsBaseClass {
         transactionSave();
         return "";
     }
-    //save
-//        String newVoucherID =newTransactionID(oldVoucherID);
-//        System.out.println("newID: "+newVoucherID);
-//        Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
-//        Thread.sleep(1000);
-//        common.clickElement("name", "Sales");
-//        common.clickElement("name", "Invoices");
-//        common.clickElement("name", "Sales Book");
-//        Thread.sleep(1000);
-//        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
-//        Thread.sleep(1500);
-//        verifyReport(newVoucherID,dataFile,"salesInvoice");
-//
-//        long duration = System.nanoTime() - start;
-//        FileUtil.writeTimeLogInMinutes("Sales Invoice", duration);
-//
-//        return newVoucherID;
-//    }
+
     public void addProductSalesInvoice() throws InterruptedException, IOException, ParseException, AWTException {
         for (int v = 0; v < Integer.parseInt(common.getData(dataFile,"salesInvoice", "productCount")); v++) {
             enterData("xpath","//Edit[@Name='Product Code Row "+v+", Not sorted.']",dataFile,"salesInvoice","productCode" + v);

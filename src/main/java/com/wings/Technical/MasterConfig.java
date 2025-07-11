@@ -1,20 +1,16 @@
-package phase_1_TestCases;
+package com.wings.Technical;
 
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.List;
 
 public class MasterConfig extends Transaction {
@@ -236,31 +232,41 @@ public class MasterConfig extends Transaction {
             Assert.fail("Activated Master is not present");
         }
     }
-    public void searchMaster(String searchType) throws IOException, ParseException {
+
+    public void searchMaster(String searchType,String masterNameOrCode) throws IOException, ParseException {
+        boolean isFound=false;
         common.clickElement("xpath", "//MenuItem[@Name='Tools']");
         common.clickElement("xpath", "//MenuItem[@Name='Search Masters']");
         if (searchType.equals("name")) {
             common.clickElement("xpath", "//RadioButton[@Name='Master Name']");
-            common.inputText("xpath", "//Edit[@AutomationId='searchTextBox']", common.getData(dataFile, "masterName"));
+            common.inputText("xpath", "//Edit[@AutomationId='searchTextBox']", masterNameOrCode);
             common.clickElement("xpath", "//Button[@Name='Search']");
-            String master = common.findWebElement("xpath", "//DataItem[@Name='Master Name row 1']").getText();
-            System.out.println("Searched master:- " + common.getData(dataFile, "masterName"));
-            Assert.assertEquals(common.getData(dataFile, "masterName"), master, "Master you searched for is not Found");
-            System.out.println("Found master:- " + master);
-            System.out.println("Master is successfully found");
+            List<WebElement> elementsFound=common.findWebElements("xpath","//Table[@Name='Search Masters']/*[@Name='Data Panel']/ListItem[starts-with(@Name,'Row ')]/*[starts-with(@Name,'Master Name row')]");
+            for (WebElement webElement : elementsFound) {
+                if (common.getData(dataFile, "masterName").equals(webElement.getText())) {
+                    System.out.println("Searched master:- " + common.getData(dataFile, "masterName") + "| Found Master:- " + webElement.getText());
+                    isFound=true;
+                    break;
+                }
+            }
         } else if (searchType.equals("code")) {
             common.clickElement("xpath", "//RadioButton[@Name='Master Code']");
-            common.inputText("xpath", "//Edit[@AutomationId='searchTextBox']", common.getData(dataFile, "masterCode"));
+            common.inputText("xpath", "//Edit[@AutomationId='searchTextBox']", masterNameOrCode);
             common.clickElement("xpath", "//Button[@Name='Search']");
-            String code = common.findWebElement("xpath", "//DataItem[@Name='Master Code row 1']").getText();
-            System.out.println("Searched master:- " + common.getData(dataFile, "masterCode"));
-            Assert.assertEquals(common.getData(dataFile, "masterCode"), code, "Master you searched for is not Found");
-            System.out.println("Found master:- " + code);
-            System.out.println("Master is successfully found");
+            List<WebElement> elementsFound=common.findWebElements("xpath","//Table[@Name='Search Masters']/*[@Name='Data Panel']/ListItem[starts-with(@Name,'Row ')]/*[starts-with(@Name,'Master Code row')]");
+            for (WebElement webElement : elementsFound) {
+                if (common.getData(dataFile, "masterCode").equals(webElement.getText())) {
+                    System.out.println("Searched master:- " + common.getData(dataFile, "masterCode") + "| Found Master:- " + webElement.getText());
+                    isFound=true;
+                    break;
+                }
+            }
         } else {
             Assert.fail("Please enter correct input");
         }
+        if (!isFound) Assert.fail("Searched Master is Not Found");
     }
+
     public void createNode() throws InterruptedException, IOException, ParseException {
         common.clickElement("name", "Sales");
         common.clickElement("name", "Customers");

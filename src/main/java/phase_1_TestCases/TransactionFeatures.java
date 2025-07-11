@@ -17,6 +17,7 @@ import java.util.Date;
 import java.util.List;
 
 public class TransactionFeatures extends Transaction {
+
     WindowsDriver driver, rootdriver;
     Common common;
     String dataFile,dataset="beforeEditing";
@@ -32,21 +33,16 @@ public class TransactionFeatures extends Transaction {
         navigateToSalesEnquiryMenu();
         Thread.sleep(1500);
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
-//        selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
         common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
-//        selectAndValidateData(common.getData(dataFile, "transaction"), "xpath", "//Edit[@Name='Trans Currency *']");
         common.clickElement("xpath", "//Edit[@Name='Party Code']");
-//        selectAndValidateDataNew(common.getData(dataFile, "partyCode"), "xpath", "//Edit[@Name='Party Code']");
         common.clickElement("xpath", "//Edit[@Name='Party Account *']");
 //        Thread.sleep(5000);
 //        gstTransactionType(common.getData(dataFile, "gstType"));
         Thread.sleep(1500);
         common.clickElement("xpath", "//Edit[@Name='Price List']");
-//        selectAndValidateData(common.getData(dataFile, "priceList"), "xpath", "//Edit[@Name='Price List']");
         common.clickElement("xpath", "//Edit[@Name='Executive *']");
-//        selectAndValidateData(common.getData(dataFile, "executive"), "xpath", "//Edit[@Name='Executive *']");
         common.clickElement("xpath", "//Edit[@Name='Remarks']");
-//        selectOptionalMaster(common.getData(dataFile, "remarks"), "xpath", "//Edit[@Name='Remarks']");
+        common.inputText( "xpath", "//Edit[@Name='Remarks']",common.getData(dataFile, "remarks"));
         //items
         enterDataAndValidate("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']", dataFile,dataset, "draftProduct");
 //        enterData("xpath", "//Edit[@Name='Quantity * Row 0, Not sorted.']", dataFile, "draftQuantity");
@@ -297,38 +293,38 @@ public class TransactionFeatures extends Transaction {
 
 
 
-
-
-
-
-
-
-
-
-
-    public void addToFavourites() throws InterruptedException {
+    public void addToFavourites(String transactionName) throws InterruptedException, IOException, ParseException {
         navigateToSalesEnquiryMenu();
         Thread.sleep(5000);
         common.clickElement("xpath","//ToolBar/Button[@Name='Tools']");
         common.clickElement("xpath","//Button[@Name='Add To Favourites']");
         Thread.sleep(1500);
-        common.clickElement("xpath","//Button[@Name='OK']");
+        String myText=common.getText("xpath","//Window[starts-with(@Name,'Wings Finance - PRO')]/*/Text");
+        if (myText.contains(common.getData(dataFile,"addToFavorites","alreadyExists"))){
+            System.out.println("Item is already in favorites");
+            common.clickElement("xpath","//Button[@Name='OK']");
+        } else if (myText.contains(common.getData(dataFile,"addToFavorites","newlyAdded"))) {
+            System.out.println("Item is successfully added to favorites");
+            common.clickElement("xpath","//Button[@Name='OK']");
+        }
+        else{
+            Assert.fail("Something Went wrong. Please try again");
+        }
         //verify favourites
         Thread.sleep(1500);
         common.clickElement("xpath","//TabItem[@Name='My Page']");
         Thread.sleep(2000);
         //fetch list
-        String transactionName="Sales Enquiries";
-        boolean notFound=true;
-        List<WebElement> favouritesList = common.findWebElements("xpath", "//Pane[@Name='Apps']/Pane[@Name='Apps']/Pane[@Name='Apps']/*");
+        List<WebElement> favouritesList = common.findWebElements("xpath", "//Pane/Pane[@Name='Apps']/Pane[@Name='Apps']/*");
+        boolean notFound=false;
         for (WebElement list:favouritesList) {
             if (list.getText().equals(transactionName)) {
                 System.out.println("Screen is added to favourites successfully");
-                notFound = false;
+                notFound = true;
                 break;
             }
         }
-        if (notFound) Assert.fail("Screen is not added to favourites");
+        if (!notFound) Assert.fail("Screen is not added to favourites");
         //remove from favourites
         WebElement clickLink=common.findWebElement("xpath","//Pane[@Name='Sales Enquiries']/Text[@Name='Sales Enquiries']/*[@Name='Sales Enquiries']");
         Actions actions=new Actions(driver);

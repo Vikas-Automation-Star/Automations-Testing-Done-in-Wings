@@ -66,7 +66,7 @@
 
         <!--    <test name="MastersAndNodesCreationAndNavigation" description="Creating Masters,Nodes and Moving " testID="2">-->
         <!--    <classes>-->
-        <!--        <class name="phase_1_TestCases.MastersConfiguration"></class>-->
+        <!--        <class name="Technical.MastersConfiguration"></class>-->
         <!--    </classes>-->
 
         <!--    <test name="VoucherTypesAndSeries" description="VoucherTypes,Manual VoucherTypes,Multiple VoucherTypes" testID="2">-->

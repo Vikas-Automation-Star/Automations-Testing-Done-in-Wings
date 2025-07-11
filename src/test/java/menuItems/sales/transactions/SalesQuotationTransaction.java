@@ -2,7 +2,6 @@ package menuItems.sales.transactions;
 
 import com.wings.pages.AppLogin;
 import com.wings.pages.sales.transactions.SalesQuotations;
-import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
@@ -14,14 +13,11 @@ import java.io.IOException;
 public class SalesQuotationTransaction {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    Common common;
-    String file = "./src/main/resources/menuItems/Sales/Transactions/salesQuotation.json";
+    String file = "./src/main/resources/menuItems/Sales/Transactions/460553 - Sales Quotations-AC.xls";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        common=new Common(driver);
-        driver = appLogin.launchSingleUserApp();
-        appLogin.singleUserLogin(common.getData(file,"salesQuotation","userName"), common.getData(file,"salesQuotation","password"));
+        driver = appLogin.login();
     }
 
     @Test
@@ -32,6 +28,6 @@ public class SalesQuotationTransaction {
 
     @AfterTest
     public void afterTest() throws IOException {
-        appLogin.logout();
+//        appLogin.logout();
     }
 }

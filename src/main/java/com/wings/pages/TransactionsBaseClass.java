@@ -60,7 +60,7 @@ public class TransactionsBaseClass extends Transaction {
 //        enterInput("xpath","//Edit[@Name='Location *']",dataFile,dataSet,location);
     }
     public void enterCurrency(String dataFile,String sheetName,String key) throws IOException, ParseException {
-        EnterData("//Edit[@Name='Trans Currency *']",dataFile,sheetName,key);
+        EnterData("//Edit[@Name='Trans Currency *'] | //Edit[@Name='Transaction Currency *']",dataFile,sheetName,key);
 //        enterInput("xpath","//Edit[@Name='Trans Currency *']",dataFile,dataSet,currency);
     }
 

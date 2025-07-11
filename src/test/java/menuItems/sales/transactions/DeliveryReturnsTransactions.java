@@ -15,23 +15,23 @@ public class DeliveryReturnsTransactions {
 
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String dataFile = "./src/main/resources/menuItems/Sales/Transactions/deliveryReturns.json";
+    String dataFile = "./src/main/resources/menuItems/Sales/Transactions/458761 - Delivery Returns-AC.xls";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        driver = appLogin.launchSingleUserApp();
-        appLogin.singleUserLogin();
+        driver = appLogin.login();
+
     }
 
     @Test
     public void deliveryReturns() throws IOException, InterruptedException, ParseException, AWTException {
-        Deliveries deliveries=new Deliveries(driver,dataFile);
+//        Deliveries deliveries=new Deliveries(driver,dataFile);
         DeliveryReturns deliveryReturns = new DeliveryReturns(driver, dataFile);
-        deliveryReturns.deliveryreturns(deliveries.salesDeliveries());
+        deliveryReturns.deliveryreturns("DEL 17");
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-        appLogin.logout();
+//        appLogin.logout();
     }
 }

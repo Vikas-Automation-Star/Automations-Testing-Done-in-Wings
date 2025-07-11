@@ -16,25 +16,22 @@ import java.io.IOException;
 public class SalesQuotationsCancellationTransaction {
     WindowsDriver driver;
     AppLogin login = new AppLogin();
-    Common common;
-    String dataFile = "./src/main/resources/menuItems/Sales/Transactions/salesQuotation.json";
+    String dataFile = "./src/main/resources/menuItems/Sales/Transactions/460554 - Sales Quotations Cancellation.xls";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        common=new Common(driver);
-        driver = login.launchSingleUserApp();
-        login.singleUserLogin(common.getData(dataFile,"salesQuotation","userName"), common.getData(dataFile,"salesQuotation","password"));
+        driver = login.login();
     }
 
     @Test
     public void salesQuotationCancellation() throws InterruptedException, IOException, ParseException, AWTException {
         SalesQuotationCancellaton cancellation = new SalesQuotationCancellaton(driver, dataFile);
-        SalesQuotations salesQuotations=new SalesQuotations(driver,dataFile);
-        cancellation.salesQuotationCancelltion(salesQuotations.salesQuotation());
+//        SalesQuotations salesQuotations=new SalesQuotations(driver,dataFile);
+        cancellation.salesQuotationCancelltion("SQ 7");
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-        login.logout();
+//        login.logout();
     }
 }

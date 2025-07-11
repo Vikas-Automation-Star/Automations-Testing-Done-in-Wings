@@ -16,40 +16,37 @@ import java.io.IOException;
 public class SalesOrdersAgainstQuotationsTransaction {
     WindowsDriver driver;
     AppLogin login = new AppLogin();
-    Common common;
-    String dataFile = "./src/main/resources/menuItems/Sales/Transactions/salesEnquiry.json";
+    String dataFile = "./src/main/resources/menuItems/Sales/Transactions/477396 - Sales Orders against Quotations-AC.xls";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        common=new Common(driver);
-        driver = login.launchSingleUserApp();
-        login.singleUserLogin();
+        driver = login.login();
     }
 
     @Test
     public void salesOrderAgainstQuotations() throws IOException, ParseException, InterruptedException, AWTException {
-        SalesEnquiry salesEnquiry=new SalesEnquiry(driver,dataFile);
-        String salesEnquiryVoucher= salesEnquiry.salesEnquiry();
-
-        login.logout();
-        driver=login.launchSingleUserApp();
-        login.singleUserLogin(common.getData(dataFile,"salesEnquiry","userName"),common.getData(dataFile,"salesEnquiry","password"));
-
-        SalesQuotationAgainstEnquiry agnstEnquiry = new SalesQuotationAgainstEnquiry(driver, dataFile);
-        String orderAgainstQuotation=agnstEnquiry.quotationAgainstEnquiry(salesEnquiryVoucher);
-
-        login.logout();
-        driver=login.launchSingleUserApp();
-        login.singleUserLogin(common.getData(dataFile,"salesEnquiry","userName"),common.getData(dataFile,"salesEnquiry","password"));
+//        SalesEnquiry salesEnquiry=new SalesEnquiry(driver,dataFile);
+//        String salesEnquiryVoucher= salesEnquiry.salesEnquiry();
+//
+//        login.logout();
+//        driver=login.launchSingleUserApp();
+//        login.singleUserLogin(common.getData(dataFile,"salesEnquiry","userName"),common.getData(dataFile,"salesEnquiry","password"));
+//
+//        SalesQuotationAgainstEnquiry agnstEnquiry = new SalesQuotationAgainstEnquiry(driver, dataFile);
+//        String orderAgainstQuotation=agnstEnquiry.quotationAgainstEnquiry(salesEnquiryVoucher);
+//
+//        login.logout();
+//        driver=login.launchSingleUserApp();
+//        login.singleUserLogin(common.getData(dataFile,"salesEnquiry","userName"),common.getData(dataFile,"salesEnquiry","password"));
 
         SalesOrdersAgainstQuotations quotations = new SalesOrdersAgainstQuotations(driver, dataFile);
-        quotations.salesOrderAgainstQuotation(orderAgainstQuotation);
+        quotations.salesOrderAgainstQuotation("SQ 7");
 //        quotations.salesOrderAgainstQuotation("SQAE 2");
 
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-        login.logout();
+//        login.logout();
     }
 }

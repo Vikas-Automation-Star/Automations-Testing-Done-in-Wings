@@ -17,8 +17,7 @@ public class TestGraphicalInvoiceDesigns {
 
         @BeforeTest
         public void beforeTest() throws InterruptedException, IOException, ParseException {
-            driver = appLogin.launchSingleUserApp();
-            appLogin.singleUserLogin();
+            driver = appLogin.login();
         }
 
         @Test

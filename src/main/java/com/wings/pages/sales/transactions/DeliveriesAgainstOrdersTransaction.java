@@ -96,21 +96,21 @@ public class DeliveriesAgainstOrdersTransaction extends TransactionsBaseClass {
         java.util.List<WebElement> summary=common.findWebElements("xpath","//Pane[@Name='']//Edit/*");
         System.out.println("Summary size: "+ summary.size());
         //validate summary
-        assertSummaaryFields(summary,"Quantity", common.getData(dataFile,"deliveriesAgainstOrders","expectedQuantityInSummary"));
-        assertSummaaryFields(summary,"Quantity In SKU", common.getData(dataFile,"deliveriesAgainstOrders","expectedQuantityInSKUSummary"));
-        assertSummaaryFields(summary,"Gross Amount", common.getData(dataFile,"deliveriesAgainstOrders","expectedGrossAmount"));
-        assertSummaaryFields(summary,"Discount", common.getData(dataFile,"deliveriesAgainstOrders","expectedDiscount"));
-        assertSummaaryFields(summary,"Gross - Disc", common.getData(dataFile,"deliveriesAgainstOrders","expectedGrossMinusDiscount"));
-        assertSummaaryFields(summary,"IGST", common.getData(dataFile,"deliveriesAgainstOrders","expectedIGST"));
-        assertSummaaryFields(summary,"CESS", common.getData(dataFile,"deliveriesAgainstOrders","expectedCESS"));
-        assertSummaaryFields(summary,"Net Amount", common.getData(dataFile,"deliveriesAgainstOrders","expectedNetAmount"));
-        assertSummaaryFields(summary,"Charges", common.getData(dataFile,"deliveriesAgainstOrders","expectedCharges"));
-        assertSummaaryFields(summary,"Deductions", common.getData(dataFile,"deliveriesAgainstOrders","expectedDeductions"));
-        assertSummaaryFields(summary,"Other Charges", common.getData(dataFile,"deliveriesAgainstOrders","expectedOtherCharges"));
-        assertSummaaryFields(summary,"Other Charges IGST", common.getData(dataFile,"deliveriesAgainstOrders","expectedOtherChargesIGST"));
-        assertSummaaryFields(summary,"Other Charges CESS", common.getData(dataFile,"deliveriesAgainstOrders","expectedOtherChargesCESS"));
-        assertSummaaryFields(summary,"Total Value", common.getData(dataFile,"deliveriesAgainstOrders","expectedTotalValue"));
-        assertSummaaryFields(summary,"Total Value In Company Currency", common.getData(dataFile,"deliveriesAgainstOrders","expectedTotalValueInCompanyCurrency"));
+        assertSummaryFields(summary,"Quantity", common.getData(dataFile,"deliveriesAgainstOrders","expectedQuantityInSummary"));
+        assertSummaryFields(summary,"Quantity In SKU", common.getData(dataFile,"deliveriesAgainstOrders","expectedQuantityInSKUSummary"));
+        assertSummaryFields(summary,"Gross Amount", common.getData(dataFile,"deliveriesAgainstOrders","expectedGrossAmount"));
+        assertSummaryFields(summary,"Discount", common.getData(dataFile,"deliveriesAgainstOrders","expectedDiscount"));
+        assertSummaryFields(summary,"Gross - Disc", common.getData(dataFile,"deliveriesAgainstOrders","expectedGrossMinusDiscount"));
+        assertSummaryFields(summary,"IGST", common.getData(dataFile,"deliveriesAgainstOrders","expectedIGST"));
+        assertSummaryFields(summary,"CESS", common.getData(dataFile,"deliveriesAgainstOrders","expectedCESS"));
+        assertSummaryFields(summary,"Net Amount", common.getData(dataFile,"deliveriesAgainstOrders","expectedNetAmount"));
+        assertSummaryFields(summary,"Charges", common.getData(dataFile,"deliveriesAgainstOrders","expectedCharges"));
+        assertSummaryFields(summary,"Deductions", common.getData(dataFile,"deliveriesAgainstOrders","expectedDeductions"));
+        assertSummaryFields(summary,"Other Charges", common.getData(dataFile,"deliveriesAgainstOrders","expectedOtherCharges"));
+        assertSummaryFields(summary,"Other Charges IGST", common.getData(dataFile,"deliveriesAgainstOrders","expectedOtherChargesIGST"));
+        assertSummaryFields(summary,"Other Charges CESS", common.getData(dataFile,"deliveriesAgainstOrders","expectedOtherChargesCESS"));
+        assertSummaryFields(summary,"Total Value", common.getData(dataFile,"deliveriesAgainstOrders","expectedTotalValue"));
+        assertSummaryFields(summary,"Total Value In Company Currency", common.getData(dataFile,"deliveriesAgainstOrders","expectedTotalValueInCompanyCurrency"));
 
         long summaryEnd=System.nanoTime()-summaryStart;
         FileUtil.writeTimeLogInMinutes("deliveries Against Orders Summary End:- ", summaryEnd);

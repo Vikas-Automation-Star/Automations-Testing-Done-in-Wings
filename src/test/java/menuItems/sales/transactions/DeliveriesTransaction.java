@@ -13,12 +13,11 @@ import java.io.IOException;
 public class DeliveriesTransaction {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String dataFile = "./src/main/resources/menuItems/Sales/Transactions/deliveries.json";
+    String dataFile = "./src/main/resources/menuItems/Sales/Transactions/476979 - Deliveries-AC.xls";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        driver = appLogin.launchSingleUserApp();
-        appLogin.singleUserLogin();
+        driver = appLogin.login();
     }
 
     @Test
