@@ -47,6 +47,6 @@ public class MiscellaneousAssestsMaster {
         common.clickElement("name", "Yes");
         common.clickElement("name", "OK");
         common.clickElement("xpath", "//Button[@Name='Close']");
-//            Allure.step("");
+
     }
 }

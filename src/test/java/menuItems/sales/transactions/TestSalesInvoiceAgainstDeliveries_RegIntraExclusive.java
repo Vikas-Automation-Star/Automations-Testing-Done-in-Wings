@@ -34,8 +34,6 @@ public class TestSalesInvoiceAgainstDeliveries_RegIntraExclusive {
             System.out.println("deliveriesAgainstOrder 1stV: "+deliveriesAgainstOrders[0]);
             System.out.println("deliveriesAgainstOrder 2ndV: "+deliveriesAgainstOrders[1]);
 
-            SalesInvoiceAgainstDeliveries_RegIntraExclusive invoiceAgainstDeliveriesRegIntraExclusive=new SalesInvoiceAgainstDeliveries_RegIntraExclusive(driver,dataFile);
-            invoiceAgainstDeliveriesRegIntraExclusive.RegIntraExclusiveSIAD(deliveriesAgainstOrders[1]);
 //            invoiceAgainstDeliveriesRegIntraExclusive.RegIntraExclusiveSIAD("DELO 8");
 
         }

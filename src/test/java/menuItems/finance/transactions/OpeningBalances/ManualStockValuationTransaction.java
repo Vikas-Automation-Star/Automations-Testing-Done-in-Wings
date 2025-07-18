@@ -3,7 +3,7 @@ package menuItems.finance.transactions.OpeningBalances;
 import com.wings.pages.AppLogin;
 import com.wings.pages.finance.transactions.OpeningBalances.ManualStockValuation;
 import io.appium.java_client.windows.WindowsDriver;
-import io.qameta.allure.Allure;
+
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -21,7 +21,6 @@ public class ManualStockValuationTransaction {
     public void beforeTest() throws IOException, InterruptedException, ParseException {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
-        Allure.step("Before Test - Manual Stock Verification");
     }
 
     @Test
@@ -33,6 +32,5 @@ public class ManualStockValuationTransaction {
     @AfterTest
     public void afterTest() throws IOException {
         appLogin.logout();
-        Allure.step("After Test - Manual Stock Verification");
     }
 }

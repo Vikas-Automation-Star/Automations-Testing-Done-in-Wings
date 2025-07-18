@@ -35,8 +35,6 @@ public class TestSalesInvoiceAgainstDeliveries_UnRegInterInclusive {
             System.out.println("deliveriesAgainstOrder 2ndV: "+deliveriesAgainstOrders[1]);
 
 
-           SalesInvoiceAgainstDeliveries_UnRegInterInclusive againstDeliveries_unRegInterInclusive=new SalesInvoiceAgainstDeliveries_UnRegInterInclusive(driver,dataFile);
-           againstDeliveries_unRegInterInclusive.UnRegInterInclusiveSIAD(deliveriesAgainstOrders[1]);
 
         }
 

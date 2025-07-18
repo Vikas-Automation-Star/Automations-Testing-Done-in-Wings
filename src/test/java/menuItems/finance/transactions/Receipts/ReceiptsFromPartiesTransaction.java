@@ -2,7 +2,7 @@ package menuItems.finance.transactions.Receipts;
 
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
-import io.qameta.allure.Allure;
+
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;

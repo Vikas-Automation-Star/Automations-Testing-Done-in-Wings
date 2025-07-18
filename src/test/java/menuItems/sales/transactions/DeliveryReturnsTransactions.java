@@ -20,14 +20,19 @@ public class DeliveryReturnsTransactions {
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
         driver = appLogin.login();
-
     }
 
     @Test
     public void deliveryReturns() throws IOException, InterruptedException, ParseException, AWTException {
-//        Deliveries deliveries=new Deliveries(driver,dataFile);
+        Deliveries deliveries=new Deliveries(driver,dataFile);
+        String deliveryVoucher=deliveries.salesDeliveries();
+
+        appLogin.logout();
+
+        driver=appLogin.login();
+
         DeliveryReturns deliveryReturns = new DeliveryReturns(driver, dataFile);
-        deliveryReturns.deliveryreturns("DEL 17");
+        deliveryReturns.deliveryreturns(deliveryVoucher);
     }
 
     @AfterTest

@@ -3,7 +3,7 @@ package menuItems.purchase.transactions;
 import com.wings.pages.AppLogin;
 import com.wings.pages.purchase.transactions.PurchaseVouchersAgainstOrder;
 import io.appium.java_client.windows.WindowsDriver;
-import io.qameta.allure.Allure;
+
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;

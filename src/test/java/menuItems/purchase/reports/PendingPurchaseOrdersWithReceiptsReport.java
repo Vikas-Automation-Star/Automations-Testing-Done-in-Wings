@@ -4,7 +4,7 @@ package menuItems.purchase.reports;
 import com.wings.pages.AppLogin;
 import com.wings.pages.purchase.reports.PendingPurchaseOrdersWithReceipts;
 import io.appium.java_client.windows.WindowsDriver;
-import io.qameta.allure.Allure;
+
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;

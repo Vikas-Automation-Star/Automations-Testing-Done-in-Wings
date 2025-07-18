@@ -5,7 +5,7 @@ import com.wings.pages.finance.transactions.PartyAdjustments.AdjustPartyBills;
 import com.wings.pages.finance.transactions.PartyAdjustments.CreditNoteAdjustPartyBills;
 import com.wings.pages.sales.transactions.SalesInvoice;
 import io.appium.java_client.windows.WindowsDriver;
-import io.qameta.allure.Allure;
+
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -29,7 +29,7 @@ public class AdjustPartyBillsTransaction {
         salesInvoice.salesInvoice();
         CreditNoteAdjustPartyBills noteAdjustPartyBills = new CreditNoteAdjustPartyBills(driver, creditNoteFile);
         noteAdjustPartyBills.creditNoteAdjustBills();
-        Allure.step("Before Test - Adjust Party Bills");
+
     }
 
     @Test
@@ -41,6 +41,6 @@ public class AdjustPartyBillsTransaction {
     @AfterTest
     public void afterTest() throws IOException {
         appLogin.logout();
-        Allure.step("After Test - Adjust Party Bills");
+
     }
 }

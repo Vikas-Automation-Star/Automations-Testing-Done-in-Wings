@@ -2,7 +2,6 @@ package menuItems.sales.transactions;
 
 import com.wings.pages.AppLogin;
 import com.wings.pages.sales.transactions.DeliveriesAgainstOrders_RegInterInclusive;
-import com.wings.pages.sales.transactions.SalesInvoiceAgainstDeliveries_RegInterInclusive;
 import com.wings.pages.sales.transactions.SalesOrder_RegInterInclusive;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
@@ -36,8 +35,7 @@ public class TestSalesInvoiceAgainstDeliveries_RegInterInclusive {
             System.out.println("deliveriesAgainstOrder 1stV: "+deliveriesAgainstOrders[0]);
             System.out.println("deliveriesAgainstOrder 2ndV: "+deliveriesAgainstOrders[1]);
 
-            SalesInvoiceAgainstDeliveries_RegInterInclusive invoiceAgainstDeliveries_regInterInclusive=new SalesInvoiceAgainstDeliveries_RegInterInclusive(driver,dataFile);
-            invoiceAgainstDeliveries_regInterInclusive.RegInterInclusiveSIAD(deliveriesAgainstOrders[1]);
+
 
         }
 

@@ -1,7 +1,7 @@
 package menuItems.finance.transactions.Banking;
 
 import io.appium.java_client.windows.WindowsDriver;
-import io.qameta.allure.Allure;
+
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -23,7 +23,7 @@ public class DepositPostDatedChequesTransaction {
     public void beforeTest() throws IOException, ParseException, InterruptedException {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
-        Allure.step("Before Test - Deposit Post Dated Cheques");
+
             SalesOrderPostDatedCheques orderPostDatedCheques=new SalesOrderPostDatedCheques(driver,orderFile);
             orderPostDatedCheques.salesOrder();
     }
@@ -37,6 +37,6 @@ public class DepositPostDatedChequesTransaction {
     @AfterTest
     public void afterTest() throws IOException {
         appLogin.logout();
-        Allure.step("After Test - Deposit Post Dated Cheques");
+
     }
 }

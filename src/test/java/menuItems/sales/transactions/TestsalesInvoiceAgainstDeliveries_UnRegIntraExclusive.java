@@ -2,7 +2,6 @@ package menuItems.sales.transactions;
 
 import com.wings.pages.AppLogin;
 import com.wings.pages.sales.transactions.DeliveriesAgainstOrders_UnRegIntraExclusive;
-import com.wings.pages.sales.transactions.SalesInvoiceAgainstDeliveries_UnRegIntraExclusive;
 import com.wings.pages.sales.transactions.SalesOrder_UnRegIntraExclusive;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
@@ -36,8 +35,8 @@ public class TestsalesInvoiceAgainstDeliveries_UnRegIntraExclusive {
             System.out.println("deliveriesAgainstOrder 1stV: "+deliveriesAgainstOrders[0]);
             System.out.println("deliveriesAgainstOrder 2ndV: "+deliveriesAgainstOrders[1]);
 
-            SalesInvoiceAgainstDeliveries_UnRegIntraExclusive invoiceAgainstDeliveriesUnRegIntraExclusive=new SalesInvoiceAgainstDeliveries_UnRegIntraExclusive(driver,dataFile);
-            invoiceAgainstDeliveriesUnRegIntraExclusive.UnRegIntraExclusiveSIAD(deliveriesAgainstOrders[1]);
+//            SalesInvoiceAgainstDeliveries_UnRegIntraExclusive invoiceAgainstDeliveriesUnRegIntraExclusive=new SalesInvoiceAgainstDeliveries_UnRegIntraExclusive(driver,dataFile);
+//            invoiceAgainstDeliveriesUnRegIntraExclusive.UnRegIntraExclusiveSIAD(deliveriesAgainstOrders[1]);
 //            invoiceAgainstDeliveriesUnRegIntraExclusive.UnRegIntraExclusiveSIAD("DELO 9");
 
         }

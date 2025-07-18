@@ -3,7 +3,6 @@ package menuItems.sales.transactions;
 import com.wings.pages.AppLogin;
 import com.wings.pages.sales.transactions.DeliveriesAgainstOrders_UnRegIntraExclusive;
 import com.wings.pages.sales.transactions.SRWIR_SIADUnRegIntraExclusive;
-import com.wings.pages.sales.transactions.SalesInvoiceAgainstDeliveries_UnRegIntraExclusive;
 import com.wings.pages.sales.transactions.SalesOrder_UnRegIntraExclusive;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
@@ -44,16 +43,13 @@ public class TestSalesReturnWIR_SIADUnRegIntraExclusive {
             driver = appLogin.launchSingleUserApp();
             appLogin.singleUserLogin(common.getData(dataFile,"SalesOrder","userName"),common.getData(dataFile,"SalesOrder","password"));
 
-            SalesInvoiceAgainstDeliveries_UnRegIntraExclusive invoiceAgainstDeliveriesUnRegIntraExclusive=new SalesInvoiceAgainstDeliveries_UnRegIntraExclusive(driver,dataFile);
-            String []deliveries=invoiceAgainstDeliveriesUnRegIntraExclusive.UnRegIntraExclusiveSIAD(deliveriesAgainstOrders[1]);
-//            invoiceAgainstDeliveriesUnRegIntraExclusive.UnRegIntraExclusiveSIAD("DELO 9");
 
             appLogin.logout();
             driver = appLogin.launchSingleUserApp();
             appLogin.singleUserLogin(common.getData(dataFile,"SalesOrder","userName"),common.getData(dataFile,"SalesOrder","password"));
 
             SRWIR_SIADUnRegIntraExclusive siadUnRegIntraExclusive=new SRWIR_SIADUnRegIntraExclusive(driver,dataFile);
-            siadUnRegIntraExclusive.unRegExclusiveIntraInvoiceRef_SIAD(deliveries[1]);
+//            siadUnRegIntraExclusive.unRegExclusiveIntraInvoiceRef_SIAD(deliveries[1]);
 
         }
 

@@ -1,8 +1,6 @@
 package menuItems.sales.transactions;
 
 import com.wings.pages.AppLogin;
-import com.wings.pages.sales.transactions.DeliveriesAgainstOrders_RegIntraExclusive;
-import com.wings.pages.sales.transactions.SalesInvoiceAgainstDeliveries_RegIntraExclusive;
 import com.wings.pages.sales.transactions.SalesOrder_RegIntraExclusive;
 import com.wings.pages.sales.transactions.SalesinvoiceAgainstOrders_RegIntraExclusive;
 import io.appium.java_client.windows.WindowsDriver;

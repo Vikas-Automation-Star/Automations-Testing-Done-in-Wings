@@ -3,7 +3,7 @@ package menuItems.sales.transactions;
 import com.wings.pages.AppLogin;
 import com.wings.pages.sales.transactions.SalesReturns;
 import io.appium.java_client.windows.WindowsDriver;
-import io.qameta.allure.Allure;
+
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -21,7 +21,7 @@ public class SalesReturnTransaction {
     public void beforeTest() throws IOException, InterruptedException, ParseException {
         driver = login.launchSingleUserApp();
         login.singleUserLogin();
-        Allure.step("Before Test Sales Return");
+
     }
 
     @Test
@@ -33,6 +33,6 @@ public class SalesReturnTransaction {
     @AfterTest
     public void afterTest() throws IOException {
         login.logout();
-        Allure.step("After Test Sales Return");
+
     }
 }
