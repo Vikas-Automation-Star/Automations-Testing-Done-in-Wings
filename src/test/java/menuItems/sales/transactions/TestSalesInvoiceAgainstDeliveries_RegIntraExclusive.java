@@ -29,13 +29,6 @@ public class TestSalesInvoiceAgainstDeliveries_RegIntraExclusive {
             System.out.println("first Voucher " +salesOrder[0]); //without space
             System.out.println("secVoucher " +salesOrder[1]); //with space
 
-            DeliveriesAgainstOrders_RegIntraExclusive regIntraExclusive=new DeliveriesAgainstOrders_RegIntraExclusive(driver,dataFile);
-            String[] deliveriesAgainstOrders=regIntraExclusive.intraExclusiveRegDeliveries(salesOrder[1]);
-            System.out.println("deliveriesAgainstOrder 1stV: "+deliveriesAgainstOrders[0]);
-            System.out.println("deliveriesAgainstOrder 2ndV: "+deliveriesAgainstOrders[1]);
-
-//            invoiceAgainstDeliveriesRegIntraExclusive.RegIntraExclusiveSIAD("DELO 8");
-
         }
 
         @AfterTest

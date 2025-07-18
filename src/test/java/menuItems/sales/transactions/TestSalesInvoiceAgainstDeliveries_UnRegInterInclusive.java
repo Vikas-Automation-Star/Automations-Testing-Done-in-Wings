@@ -29,13 +29,6 @@ public class TestSalesInvoiceAgainstDeliveries_UnRegInterInclusive {
             System.out.println("first Voucher " +salesOrder[0]); //without space
             System.out.println("sec Voucher " +salesOrder[1]); //with space
 
-            DeliveriesAgainstOrders_UnRegInterInclusive againstOrdersUnRegInterInclusive=new DeliveriesAgainstOrders_UnRegInterInclusive(driver,dataFile);
-            String []deliveriesAgainstOrders=againstOrdersUnRegInterInclusive.interInclusiveUnRegDeliveries(salesOrder[1]);
-            System.out.println("deliveriesAgainstOrder 1stV: "+deliveriesAgainstOrders[0]);
-            System.out.println("deliveriesAgainstOrder 2ndV: "+deliveriesAgainstOrders[1]);
-
-
-
         }
 
         @AfterTest

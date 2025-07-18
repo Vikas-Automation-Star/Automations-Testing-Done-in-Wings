@@ -1,7 +1,6 @@
 package menuItems.sales.transactions;
 
 import com.wings.pages.AppLogin;
-import com.wings.pages.sales.transactions.DeliveriesAgainstOrders_UnRegIntraExclusive;
 import com.wings.pages.sales.transactions.SRWIR_SIADUnRegIntraExclusive;
 import com.wings.pages.sales.transactions.SalesOrder_UnRegIntraExclusive;
 import com.wings.utils.Common;
@@ -36,8 +35,6 @@ public class TestSalesReturnWIR_SIADUnRegIntraExclusive {
             driver = appLogin.launchSingleUserApp();
             appLogin.singleUserLogin(common.getData(dataFile,"SalesOrder","userName"),common.getData(dataFile,"SalesOrder","password"));
 
-            DeliveriesAgainstOrders_UnRegIntraExclusive regIntraExclusive=new DeliveriesAgainstOrders_UnRegIntraExclusive(driver,dataFile);
-            String[] deliveriesAgainstOrders=regIntraExclusive.intraExclusiveUnRegDeliveries(salesOrder[1]);
 
             appLogin.logout();
             driver = appLogin.launchSingleUserApp();

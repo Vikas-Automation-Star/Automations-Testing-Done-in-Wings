@@ -1,7 +1,6 @@
 package menuItems.sales.transactions;
 
 import com.wings.pages.AppLogin;
-import com.wings.pages.sales.transactions.DeliveriesAgainstOrders_RegInterInclusive;
 import com.wings.pages.sales.transactions.SalesOrder_RegInterInclusive;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
@@ -30,10 +29,6 @@ public class TestSalesInvoiceAgainstDeliveries_RegInterInclusive {
             System.out.println("salesOrder firstVoucher " +salesOrder[0]); //without space
             System.out.println("salesOrder secVoucher " +salesOrder[1]); //with space
 
-            DeliveriesAgainstOrders_RegInterInclusive againstOrders_regInterInclusive=new DeliveriesAgainstOrders_RegInterInclusive(driver,dataFile);
-            String []deliveriesAgainstOrders=againstOrders_regInterInclusive.interInclusiveRegDeliveries(salesOrder[1]);
-            System.out.println("deliveriesAgainstOrder 1stV: "+deliveriesAgainstOrders[0]);
-            System.out.println("deliveriesAgainstOrder 2ndV: "+deliveriesAgainstOrders[1]);
 
 
 

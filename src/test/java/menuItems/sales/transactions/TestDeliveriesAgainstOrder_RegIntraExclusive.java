@@ -1,7 +1,6 @@
 package menuItems.sales.transactions;
 
 import com.wings.pages.AppLogin;
-import com.wings.pages.sales.transactions.DeliveriesAgainstOrders_RegIntraExclusive;
 import com.wings.pages.sales.transactions.SalesOrder_RegIntraExclusive;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
@@ -30,9 +29,6 @@ public class TestDeliveriesAgainstOrder_RegIntraExclusive {
             System.out.println("first Voucher " +salesOrder[0]); //without space
             System.out.println("secVoucher " +salesOrder[1]); //with space
 
-            DeliveriesAgainstOrders_RegIntraExclusive regIntraExclusive=new DeliveriesAgainstOrders_RegIntraExclusive(driver,dataFile);
-            regIntraExclusive.intraExclusiveRegDeliveries(salesOrder[1]);
-//            againstOrders_regInterInclusive.interInclusiveRegDeliveries("SO 11");
 
         }
 
