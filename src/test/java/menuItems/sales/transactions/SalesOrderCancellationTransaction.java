@@ -16,26 +16,22 @@ import java.io.IOException;
 public class SalesOrderCancellationTransaction {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    Common common;
-    String dataFile = "./src/main/resources/menuItems/Sales/Transactions/salesEnquiry.json";
+    String dataFile="./src/main/resources/menuItems/Sales/Transactions/478887 - Sales Orders-AC.xls";
+    String dataFile1 = "./src/main/resources/menuItems/Sales/Transactions/458823 - Sales Orders Cancellation-AC.xls";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        common=new Common(driver);
-        driver = appLogin.launchSingleUserApp();
-        appLogin.singleUserLogin(common.getData(dataFile,"salesEnquiry","userName"),common.getData(dataFile,"salesEnquiry","password"));
+        driver = appLogin.login();
     }
 
     @Test
     public void salesOrderCancellation() throws IOException, InterruptedException, ParseException, AWTException {
         SalesOrders salesOrders=new SalesOrders(driver, dataFile);
-        String salesOrderVoucher= salesOrders.salesOrders();
-
+        String salesOrderVoucher= salesOrders.salesOrder();
         appLogin.logout();
-        driver=appLogin.launchSingleUserApp();
-        appLogin.singleUserLogin(common.getData(dataFile,"salesEnquiry","userName"),common.getData(dataFile,"salesEnquiry","password"));
+        driver=appLogin.login();
 
-        SalesOrderCancellation orderCancellation = new SalesOrderCancellation(driver, dataFile);
+        SalesOrderCancellation orderCancellation = new SalesOrderCancellation(driver, dataFile1);
         orderCancellation.salesOrderCancellations(salesOrderVoucher);
     }
 

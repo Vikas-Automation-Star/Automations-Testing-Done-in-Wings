@@ -15,14 +15,11 @@ import java.io.IOException;
 public class TestOpeningStock {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    Common common;
-    String file = "./src/main/resources/menuItems/inventory/transactions/openingStock.json";
+    String file = "./src/main/resources/menuItems/inventory/transactions/455721 - Opening Stock-AC_OS_3.xls";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        common=new Common(driver);
-        driver = appLogin.launchSingleUserApp();
-        appLogin.singleUserLogin(common.getData(file,"openingStock","userName"),common.getData(file,"openingStock","password"));
+        driver = appLogin.login();
     }
 
     @Test

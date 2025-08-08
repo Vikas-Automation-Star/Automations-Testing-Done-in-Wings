@@ -1,65 +1,101 @@
 package com.wings.pages.inventory.transactions;
 
-import com.wings.pages.Transaction;
+import com.wings.pages.TransactionsBaseClass;
 import com.wings.utils.Common;
+import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
-
-import java.awt.*;
 import java.io.IOException;
+import java.util.List;
 
-public class InitiateStockTake extends Transaction {
+public class InitiateStockTake extends TransactionsBaseClass {
     WindowsDriver driver;
     Common common;
     String dataFile;
 
     public InitiateStockTake(WindowsDriver driver, String file) {
         super(driver);
-        this.driver = driver;
-        common = new Common(this.driver);
+        common = new Common(this.driver = driver);
         dataFile = file;
     }
 
-    public void initiateStockTake() throws InterruptedException, AWTException, IOException, ParseException {
+    public String initiateStockTake() throws InterruptedException, IOException, ParseException {
+        long start = System.nanoTime();
         navigateToMastersWhen2Steps("Inventory", "Initiate Stock Take");
         Thread.sleep(1000);
-        String oldVoucherID = oldTTransactionID();
-        enterInput("xpath", "//Edit[@Name='Branch *']", dataFile, "initiateStockTake", "branch");
-        enterInput("xpath", "//Edit[@Name='Location *']", dataFile, "initiateStockTake", "location");
+        long generalInfoStart = System.nanoTime();
+        Thread.sleep(5000);
+        String oldVoucherID =oldTTransactionID();
+        enterVoucherType(dataFile,"GeneralInformation","VoucherType");
+        EnterDate("//Edit[@Name='Date *']",dataFile,"GeneralInformation","Date");
+        enterBranch(dataFile,"GeneralInformation","Branch");
+        enterLocation(dataFile,"GeneralInformation","Location");
+        enterCurrency(dataFile,"GeneralInformation","TransactionCurrency");
+        Thread.sleep(1000);
         common.clickElement("xpath","//Button[@Name='Get Stock']");
-        common.clickElement("xpath","//ListItem/*[@Name='Select row 1']");
-        common.clickElement("xpath","//Button[@Name='Ok']");
+            List<WebElement> elementList = common.findWebElements("xpath", "//Window[@Name='StorageBin Details']//Table/*[@Name='Data Panel']/*/*[starts-with(@Name,'StorageBin row ')]");
+            for (WebElement i : elementList) {
+                if (i.getText().equals("AT_Branch 1_Location 1 Default Bin")) {
+                    i.click();
+                    i.sendKeys(Keys.LEFT, Keys.SPACE, Keys.ENTER, Keys.ENTER);
+                    break;
+                }
+            }
+        long generalInfoEndTime = System.nanoTime() - generalInfoStart;
+        FileUtil.writeTimeLogInMinutes("Initiate Stock Take gen info:- ", generalInfoEndTime);
 
+        long addProductStart = System.nanoTime();
+        addProduct();
+        long addProductEnd = System.nanoTime() - addProductStart;
+        FileUtil.writeTimeLogInMinutes("Initiate Stock Take Add Products:- ", addProductEnd);
 
-        WebElement product=common.findWebElement("xpath","//Edit[@Name='Product * Row 0, Not sorted.']");
-        Actions actions=new Actions(driver);
-        actions.contextClick(product).perform();
-        common.clickElement("xpath","//MenuItem[@Name='Reports']");
-        common.clickElement("xpath","//MenuItem[@Name='Stock Ledger-AC']");
-        Thread.sleep(2000);
-        common.clickElement("xpath", "//Button[@Name='Submit']");
-        verifyReport("SCR12",dataFile,"stockLedgerReportInInitiateStock");
-        closeReport("Stock Ledger-AC");
-        Thread.sleep(1000);
-        enterOtherInfo(dataFile, "initiateStockTake");
-        navigateToSummaryTab();
-        initiateStockQuantityPresentInSummary();
-
+        long otherInfoTabStart = System.nanoTime();
+        otherInfo();
+        long otherInfoTabEnd = System.nanoTime() - otherInfoTabStart;
+        FileUtil.writeTimeLogInMinutes("Initiate Stock Take Other Info:- ", otherInfoTabEnd);
+        
+        //saving and IO generating
         transactionSave();
-        String newVoucherID = newTransactionID(oldVoucherID);
-        System.out.println("newID: " + newVoucherID);
-        String originalID = newTransactionID(oldVoucherID).replace(" ", "");
-        Assert.assertNotEquals(newVoucherID, oldVoucherID, "both ID's should not Equal when we perform transaction");
-        Thread.sleep(1000);
-        common.clickElement("name", "Inventory");
-        common.clickElement("xpath", "//MenuItem[@Name='Initiate Stock Take'][2]");
-        Thread.sleep(1000);
-        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
-        Thread.sleep(1500);
-        verifyReport(newVoucherID,dataFile,"initiateStockTake");
-//        deleteSingleTransaction(originalID);
+        String newVoucherID =newTransactionID(oldVoucherID);
+        System.out.println("newID: "+newVoucherID);
+        Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
+        //end
+        long initiateStockTake = System.nanoTime() - start;
+        FileUtil.writeTimeLogInMinutes("Initiate Stock Take ended at:- ", initiateStockTake);
+        String prefix = newVoucherID.replaceAll("\\d", "");
+        String number = newVoucherID.replaceAll("\\D", "");
+        Thread.sleep(2000);
+        long ioFIlesStart =System.nanoTime()-start;
+        FileUtil.writeTimeLogInMinutes("Initiate Stock Take IO files: ", ioFIlesStart);
+        exportIOFiles("Generate Input File",prefix,number);
+        exportIOFiles("Generate Output File",prefix,number);
+        long ioFIlesEnd =System.nanoTime()-start;
+        FileUtil.writeTimeLogInMinutes("Initiate Stock Take IO files end: ", ioFIlesEnd);
+//        excelUtil.excelComparator("","",newVoucherID);
+        return newVoucherID;
+    }
+
+    public void addProduct() throws IOException, ParseException, InterruptedException {
+        List<String> productCode=readExcelData(dataFile,"InitiateStock","ProductCode");
+        List<WebElement> Comments = common.findWebElements("xpath", "//Table[@Name='InitiateStock']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Comments Row ')]");
+        for (int i = 0; i < productCode.size(); i++) {
+            enterListData(Comments.get(i),dataFile,"InitiateStock","Comments",i);
+        }
+    }
+
+    public void otherInfo() throws InterruptedException, IOException {
+        navigateToOtherInfoTab();
+        EnterData("//Edit[@Name='Reference Bill No']",dataFile,"OtherInfo","ReferenceBillNo");
+        Thread.sleep(5000);
+//        common.clickElement("xpath","//Window/Button[@Name='OK']");
+        EnterDate("//Edit[@Name='Reference Bill Date']",dataFile,"OtherInfo","ReferenceBillDate");
+        EnterData("//Edit[@Name='Other Info 1']",dataFile,"OtherInfo","OtherInfo1");
+        EnterData("//Edit[@Name='Other Info 2']",dataFile,"OtherInfo","OtherInfo2");
+        EnterData("//Edit[@Name='Other Info 3']",dataFile,"OtherInfo","OtherInfo3");
+        EnterData("//Edit[@Name='Other Info 4']",dataFile,"OtherInfo","OtherInfo4");
+        EnterData("//Edit[@Name='Other Info 5']",dataFile,"OtherInfo","OtherInfo5");
     }
 }

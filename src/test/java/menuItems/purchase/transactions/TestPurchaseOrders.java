@@ -7,15 +7,13 @@ import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
 import java.awt.*;
 import java.io.IOException;
 
 public class TestPurchaseOrders {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-//    String file = "./src/main/resources/menuItems/purchase/transactions/purchaseOrders.json";
-    String file = "./src/main/resources/pv.xlsx";
+    String file = "./src/main/resources/menuItems/purchase/transactions/476937 - Purchase Orders-AC_PO_6.xls";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {

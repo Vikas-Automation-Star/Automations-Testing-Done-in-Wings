@@ -15,6 +15,7 @@ public class DeliveryReturnsTransactions {
 
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
+    String dataFile1="./src/main/resources/menuItems/Sales/Transactions/476979 - Deliveries-AC.xls";
     String dataFile = "./src/main/resources/menuItems/Sales/Transactions/458761 - Delivery Returns-AC.xls";
 
     @BeforeTest
@@ -24,11 +25,10 @@ public class DeliveryReturnsTransactions {
 
     @Test
     public void deliveryReturns() throws IOException, InterruptedException, ParseException, AWTException {
-        Deliveries deliveries=new Deliveries(driver,dataFile);
+        Deliveries deliveries=new Deliveries(driver,dataFile1);
         String deliveryVoucher=deliveries.salesDeliveries();
 
         appLogin.logout();
-
         driver=appLogin.login();
 
         DeliveryReturns deliveryReturns = new DeliveryReturns(driver, dataFile);
@@ -37,6 +37,6 @@ public class DeliveryReturnsTransactions {
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 }

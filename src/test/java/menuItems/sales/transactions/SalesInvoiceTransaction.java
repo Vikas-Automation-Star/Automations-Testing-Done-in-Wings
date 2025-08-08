@@ -13,7 +13,7 @@ import java.io.IOException;
 public class SalesInvoiceTransaction {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String dataFile = "./src/main/resources/menuItems/Sales/Transactions/salesEnquiry.json";
+    String dataFile = "./src/main/resources/menuItems/Sales/Transactions/480460 - Sales Invoices-AC.xls";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
@@ -28,6 +28,6 @@ public class SalesInvoiceTransaction {
 
     @AfterTest
     public void afterTest() throws IOException {
-        appLogin.logout();
+//        appLogin.logout();
     }
 }

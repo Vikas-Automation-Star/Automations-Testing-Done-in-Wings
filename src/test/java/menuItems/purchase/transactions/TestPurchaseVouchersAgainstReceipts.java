@@ -13,7 +13,7 @@ import java.io.IOException;
 public class TestPurchaseVouchersAgainstReceipts {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String file = "./src/main/resources/menuItems/purchase/transactions/purchaseOrders.json";
+    String file = "./src/main/resources/menuItems/purchase/transactions/479085 - Purchase Vouchers against Receipts-AC_PVAMR_1_MR_1.xls";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
@@ -22,20 +22,8 @@ public class TestPurchaseVouchersAgainstReceipts {
 
     @Test
     public void purchaseVouchersAgainstTheReceipts() throws IOException, ParseException, InterruptedException, AWTException {
-//        PurchaseOrders purchaseOrders=new PurchaseOrders(driver,file);
-//        String purchaseOrderVoucher= purchaseOrders.purchaseOrders();
-//
-//        appLogin.logout();
-//        driver=appLogin.login();
-//
-//        MaterialReceiptsAgainstOrder receiptsAgainstOrder = new MaterialReceiptsAgainstOrder(driver, file);
-//        String mrao = receiptsAgainstOrder.materialReceiptsAgainstOrder(purchaseOrderVoucher);
-//
-//        appLogin.logout();
-//        driver=appLogin.login();
-
         PurchaseVouchersAgainstReceipt vouchersAgainstReceipt=new PurchaseVouchersAgainstReceipt(driver,file);
-        vouchersAgainstReceipt.purchaseVouchersAgainstReceipt("mrao");
+        vouchersAgainstReceipt.purchaseVouchersAgainstReceipt("MR 3");
     }
 
     @AfterTest

@@ -145,8 +145,8 @@ public class Supplier extends Masters {
   robot.keyRelease(KeyEvent.VK_ENTER);
   common.clickElement("xpath", "//CheckBox[@Name='Apply TCS']");
   common.clickElement("xpath", "//Edit[@Name='TCS Assessee Type']/Button[@Name='Open']");
-  inputTextWithValidation("xpath", "//Edit[@Name='Date Of Birth']", common.getData(dataFile, "dateOfBirth"));
-  inputTextWithValidation("xpath", "//Edit[@Name='Anniversary Date']", common.getData(dataFile, "anniversaryDate"));
+//  inputTextWithValidation("xpath", "//Edit[@Name='Date Of Birth']", common.getData(dataFile, "dateOfBirth"));
+//  inputTextWithValidation("xpath", "//Edit[@Name='Anniversary Date']", common.getData(dataFile, "anniversaryDate"));
   Thread.sleep(1500);
   common.clickElement("xpath", "//Text[@Name='Shipping Address GST']/following-sibling::Button[@Name='...']");
   Thread.sleep(2000);

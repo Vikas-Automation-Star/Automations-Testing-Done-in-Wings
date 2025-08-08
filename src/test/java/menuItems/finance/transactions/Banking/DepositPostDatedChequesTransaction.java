@@ -8,7 +8,6 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.wings.pages.AppLogin;
 import com.wings.pages.finance.transactions.Banking.DepositPostDatedCheques;
-import com.wings.pages.sales.transactions.SalesOrderPostDatedCheques;
 
 import java.awt.*;
 import java.io.IOException;
@@ -24,8 +23,6 @@ public class DepositPostDatedChequesTransaction {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
 
-            SalesOrderPostDatedCheques orderPostDatedCheques=new SalesOrderPostDatedCheques(driver,orderFile);
-            orderPostDatedCheques.salesOrder();
     }
 
     @Test

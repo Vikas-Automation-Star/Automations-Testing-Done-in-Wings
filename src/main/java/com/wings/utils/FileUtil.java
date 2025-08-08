@@ -162,7 +162,7 @@ public class FileUtil {
             writer.write(timeOutput.toString());
             writer.close();
 
-            System.out.println("Time written to file: " + timeOutput.toString().trim());
+//            System.out.println("Time written to file: " + timeOutput.toString().trim());
 
         } catch (NullPointerException e) {
             System.err.println("Error: " + e.getMessage());

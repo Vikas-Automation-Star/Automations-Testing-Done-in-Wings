@@ -4,100 +4,71 @@
         <listener class-name="com.wings.utils.Listener"/>
     </listeners>
 
-<!--    <test name="SRWIR - SIAO 1" description="Sales Return with Invoice Reference- Sales Invoice Against Orders" testID="1">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.sales.transactions.SalesReturnWithInvoiceReferenceTransaction"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-
-<!--    <test name="SI test" description="Sales Order- DELO" testID="1">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.sales.transactions.TestDeliveriesAgainstOrder"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-
-<!--    <test name="SRWIR - SIAD 1" description="Sales Return with Invoice Reference- Sales Invoice Against Deliveries" testID="2">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.sales.transactions.TestSalesReturnWIR_SIADUnRegInterInclusive"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-
-    <test name="SE 1" description="Sales Enquiry" testID="3">
+    <test name="DELO 1" description="deliveries against Order" testID="5">
         <classes>
-            <class name="menuItems.sales.transactions.TestSalesEnquiry"/>
+            <class name="menuItems.sales.transactions.TestDeliveriesAgainstOrder"/>
         </classes>
     </test>
 
-<!--    <test name="SEC 1" description="Sales Enquiry Cancellation" testID="4">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.sales.transactions.TestSalesEnquiryCancellation"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="SQC 1" description="Sales Quotation Cancellation" testID="6">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesQuotationsCancellationTransaction"/>
+        </classes>
+    </test>
 
-<!--    <test name="SQ 1" description="Sales Quotation" testID="5">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.sales.transactions.SalesQuotationTransaction"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="SOC 1" description="Sales Order Cancellation" testID="10">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesOrderCancellationTransaction"/>
+        </classes>
+    </test>
 
-<!--    <test name="SQC 1" description="Sales Quotation Cancellation" testID="6">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.sales.transactions.SalesQuotationsCancellationTransaction"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="SOAQ 1" description="Sales Order against Quotation" testID="8">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesOrdersAgainstQuotationsTransaction"/>
+        </classes>
+    </test>
 
-<!--    <test name="SQAE 1" description="Sales Quotation against Enquiry" testID="7">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.sales.transactions.SalesQuotationAgainstEnquiryTransaction"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="SIAO 1" description="Sales Invoice Against Order" testID="9">
+        <classes>
+            <class name="menuItems.sales.transactions.TestSalesInvoiceAgainstOrder"/>
+        </classes>
+    </test>
 
-<!--    <test name="SOAQ 1" description="Sales Order against Quotation" testID="8">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.sales.transactions.SalesOrdersAgainstQuotationsTransaction"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="SIAD 1" description="invoice against deliveries" testID="4">
+        <classes>
+            <class name="menuItems.sales.transactions.TestSalesInvoiceAgainstDeliveries"/>
+        </classes>
+    </test>
 
-<!--    <test name="SIAO 1" description="Sales Invoice Against Order" testID="9">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.sales.transactions.TestSalesInvoiceAgainstOrder"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="DR 1" description="Delivery Returns" testID="11">
+        <classes>
+            <class name="menuItems.sales.transactions.DeliveryReturnsTransactions"/>
+        </classes>
+    </test>
 
-<!--    <test name="SOC 1" description="Sales Order Cancellation" testID="10">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.sales.transactions.SalesOrderCancellationTransaction"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="SU 1" description="Sales Prices" testID="12">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesPriceTransaction"/>
+        </classes>
+    </test>
 
-<!--    <test name="DR 1" description="Delivery Returns" testID="11">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.sales.transactions.DeliveryReturnsTransactions"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="PWD 1" description="Party and Product Wise Discount" testID="13">
+        <classes>
+            <class name="menuItems.sales.transactions.ProductPartyDiscountTransaction"/>
+        </classes>
+    </test>
 
-<!--    <test name="SU 1" description="Sales Prices" testID="12">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.sales.transactions.SalesPriceTransaction"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="PSI 1" description="Proforma Sales Invoice" testID="14">
+        <classes>
+            <class name="menuItems.sales.transactions.ProformaSalesInvoiceTransaction"/>
+        </classes>
+    </test>
 
-<!--    <test name="PWD 1" description="Party and Product Wise Discount" testID="13">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.sales.transactions.ProductPartyDiscountTransaction"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="ST 1" description="Define Sales Target Executive Wise" testID="15">
+        <classes>
+            <class name="menuItems.sales.transactions.SalesTargetExecutiveWiseTransaction"/>
+        </classes>
+    </test>
 
-<!--    <test name="PSI 1" description="Party and Product Wise Discount" testID="14">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.sales.transactions.ProformaSalesInvoiceTransaction"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-
-<!--    <test name="ST 1" description="Define Sales Target Executive Wise" testID="15">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.sales.transactions.SalesTragetExecutiveWiseTransaction"/>-->
-<!--        </classes>-->
-<!--    </test>-->
 
 </suite>

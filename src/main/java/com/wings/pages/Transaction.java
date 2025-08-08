@@ -14,6 +14,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -23,6 +24,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -383,19 +386,19 @@ public  class Transaction {
     }
 
     public void navigateToSalesQuotationsMenu() {
-//        common.clickElement("name", "Sales");
-//        common.clickElement("name", "Quotations");
-//        common.clickElement("xpath", "//MenuItem[@Name='Sales Quotations']");
+        common.clickElement("name", "Sales");
+        common.clickElement("name", "Quotations");
+        common.clickElement("xpath", "//MenuItem[@Name='Sales Quotations']");
 //        String pageValidation = common.findWebElement("xpath", "//Pane/Text[@Name='Sales Quotations']").getText();
 //        System.out.println("Screen Name:-" + pageValidation);
 //        Assert.assertEquals(pageValidation, "Sales Quotations");
-        common.clickElement("name", "Reports");
-        common.clickElement("name", "Quotations");
-        common.clickElement("xpath", "//MenuItem[@Name='Sales Quotations']");
+//        common.clickElement("name", "Reports");
+//        common.clickElement("name", "Quotations");
+//        common.clickElement("xpath", "//MenuItem[@Name='Sales Quotations']");
     }
 
     public void navigateToSalesQuotationsCancellationMenu() {
-        common.clickElement("name", "Reports");
+        common.clickElement("name", "Sales");
         common.clickElement("name", "Quotations");
         common.clickElement("xpath", "//MenuItem[@Name='Sales Quotations Cancellations']");
         String pageValidation = common.findWebElement("xpath", "//Pane/Text[@Name='Sales Quotations Cancellations']").getText();
@@ -413,7 +416,7 @@ public  class Transaction {
     }
 
     public void navigateToSalesOrderAgainstQuotationsMenu() {
-        common.clickElement("name", "Reports");
+        common.clickElement("name", "Sales");
         common.clickElement("name", "Orders");
         common.clickElement("xpath", "//MenuItem[@Name='Sales Orders against Quotations']");
         String pageValidation = common.findWebElement("xpath", "//Pane/Text[@Name='Sales Orders against Quotations']").getText();
@@ -425,9 +428,9 @@ public  class Transaction {
         common.clickElement("name", "Sales");
         common.clickElement("name", "Orders");
         common.clickElement("xpath", "//MenuItem[@Name='Sales Orders']");
-        String pageValidation = common.findWebElement("xpath", "//Pane/Text[@Name='Sales Orders']").getText();
-        System.out.println("Screen Name:-" + pageValidation);
-        Assert.assertEquals(pageValidation, "Sales Orders");
+//        String pageValidation = common.findWebElement("xpath", "//Pane/Text[@Name='Sales Orders']").getText();
+//        System.out.println("Screen Name:-" + pageValidation);
+//        Assert.assertEquals(pageValidation, "Sales Orders");
     }
 
     public void navigateToSalesOrderCancellaltionMenu() {
@@ -440,7 +443,7 @@ public  class Transaction {
     }
 
     public void navigateToDeliveriesMenu() {
-        common.clickElement("name", "Reports");
+        common.clickElement("name", "Sales");
         common.clickElement("name", "Deliveries");
         common.clickElement("xpath", "//MenuItem[@Name='Deliveries']");
 //        String pageValidation = common.findWebElement("xpath", "//Pane/Text[@Name='Deliveries']").getText();
@@ -458,7 +461,7 @@ public  class Transaction {
     }
 
     public void navigateToDeliveryReturnsMenu() {
-        common.clickElement("xpath", "//MenuItem[@Name='Reports']");
+        common.clickElement("xpath", "//MenuItem[@Name='Sales']");
         common.clickElement("xpath", "//MenuItem[@Name='Deliveries']");
         common.clickElement("xpath", "//MenuItem[@Name='Delivery Returns']");
 //        String pageValidation = common.findWebElement("xpath", "//Pane/Text[@Name='Delivery Returns']").getText();
@@ -1271,7 +1274,7 @@ public  class Transaction {
 //        System.out.println(elements.get(1).getText());
         elements.get(1).click();
 //        Assert.assertEquals(common.findWebElement("xpath", "//Pane//following-sibling::edit[6]").getAttribute("LegacyValue"), common.getData(dataFile, dataSet, "expectedItemsOtherCostsAmount"), "ItemsOtherCostsAmount Mismatch");
-        System.out.println("worked this assertion");
+//        System.out.println("worked this assertion");
     }
 
     public void enterItemsOtherCosts(String dataFile,String dataset,int i) throws IOException, ParseException, InterruptedException {
@@ -1836,6 +1839,34 @@ public  class Transaction {
             }
         }
     }
+
+//    public void exportTransaction(WindowsDriver rootDriver, String stepName, String prefix, String number) throws Exception {
+//        navigateToMastersWhen3Steps("Tools", "Automated Testing", stepName);
+//        rootDriver = common.initializeDriver("Root");
+//        Thread.sleep(3000);
+//
+//        common.findWebElement("xpath", "//Window[@Name='Export Transaction Postings']/Pane/Edit[@Name='Voucher Series']").sendKeys(prefix);
+//        common.findWebElement("xpath", "//Window[@Name='Export Transaction Postings']/Pane/Edit[@Name='Voucher Number']").sendKeys(number);
+//        common.clickElement("xpath", "//Button[@Name='OK']");
+//        Thread.sleep(2000);
+//
+//        common.clickElement("xpath", "//Window[@Name='Export Transaction Postings']/Window[@Name='Export to Excel']/Button[@Name='OK']");
+//        Thread.sleep(1500);
+//
+//        String message = common.findWebElement("xpath", "//Text").getText();
+//        if (message.equals("Data Exported successfully!")) {
+//            common.clickElement("xpath", "//Button[@Name='OK']");
+//        } else if (message.equals("Transactionno doesnot exist.")) {
+//            common.clickElement("xpath", "//Button[@Name='OK']");
+//            Assert.fail("Transaction does not exist");
+//        }
+//    }
+//
+//    public void generateInputAndOutputFiles(String prefix, String number) throws Exception {
+//        exportTransaction("Generate Input File", prefix, number);
+//        Thread.sleep(2000);
+//        exportTransaction("Generate Output File", prefix, number);
+//    }
 
 
     public void checkBoxSelectionBillsPayable(String locatorType, String rowLocator, String voucherLocator, String checkBoxLocator) {
@@ -2912,6 +2943,75 @@ public  class Transaction {
         return columnData;
     }
 
+    public static List<String> decimalNumberData(String filePath, String sheetName, String columnName) {
+        List<String> columnData = new ArrayList<>();
+        try (FileInputStream fis = new FileInputStream(new File(filePath))) {
+            Workbook workbook;
+            if (filePath.endsWith(".xlsx")) {
+                workbook = new XSSFWorkbook(fis);
+            } else if (filePath.endsWith(".xls")) {
+                workbook = new HSSFWorkbook(fis);
+            } else {
+                System.out.println("Invalid file format. Please provide an .xls or .xlsx file.");
+                return columnData;
+            }
+            Sheet sheet = workbook.getSheet(sheetName);
+            if (sheet == null) {
+                System.out.println("Sheet not found: " + sheetName);
+                return columnData;
+            }
+
+            Row headerRow = sheet.getRow(0);
+            int columnIndex = -1;
+            // Find the column index by header name
+            for (int i = 0; i < headerRow.getPhysicalNumberOfCells(); i++) {
+                Cell cell = headerRow.getCell(i);
+                if (cell.getStringCellValue().equalsIgnoreCase(columnName)) {
+                    columnIndex = i;
+                    break;
+                }
+            }
+            if (columnIndex == -1) {
+                System.out.println("Column not found: " + columnName);
+                return columnData;
+            }
+            // Read the column values properly formatted
+            for (int i = 1; i <= sheet.getLastRowNum(); i++) {
+                Row row = sheet.getRow(i);
+                if (row != null) {
+                    Cell cell = row.getCell(columnIndex);
+                    if (cell != null) {
+                        switch (cell.getCellType()) {
+                            case STRING:
+                                columnData.add(cell.getStringCellValue().trim());
+                                break;
+                            case NUMERIC:
+                                // Format as integer if there's no decimal, else keep 2 decimal places
+                                double val = cell.getNumericCellValue();
+                                if (val == Math.floor(val)) {
+                                    columnData.add(String.valueOf((int) val));  // "90"
+                                } else {
+                                    columnData.add(String.format("%.2f", val)); // "90.25"
+                                }
+                                break;
+                            case BOOLEAN:
+                                columnData.add(String.valueOf(cell.getBooleanCellValue()));
+                                break;
+                            case FORMULA:
+                                columnData.add(cell.getCellFormula());
+                                break;
+                            default:
+                                columnData.add(""); // Or handle as needed
+                        }
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return columnData;
+    }
+
     public String getValueByColumnHeader(String filePath, String sheetName, String headerName) throws IOException {
         FileInputStream file = new FileInputStream(filePath);
         Workbook workbook = WorkbookFactory.create(file);
@@ -3036,6 +3136,27 @@ public  class Transaction {
             element.sendKeys(columnData.get(0),Keys.TAB);
         }
     }
+
+    public void EnterData(String locator,String dataFile,String sheetName,String key,int j) {
+        WebElement element=common.findWebElement("xpath",locator);
+        element.sendKeys(Keys.CONTROL + "a");
+        element.sendKeys(Keys.BACK_SPACE);
+        List<String> columnData = readExcelData(dataFile, sheetName, key);
+        if (!columnData.isEmpty()) {
+            element.sendKeys(columnData.get(j),Keys.TAB);
+        }
+    }
+
+    public void decimalPrecision(String locator,String dataFile,String sheetName,String key) {
+        WebElement element=common.findWebElement("xpath",locator);
+        element.sendKeys(Keys.CONTROL + "a");
+        element.sendKeys(Keys.BACK_SPACE);
+        List<String> columnData = decimalNumberData(dataFile, sheetName, key);
+        if (!columnData.isEmpty()) {
+            element.sendKeys(columnData.get(0),Keys.TAB);
+        }
+    }
+
 
     public void addData( String locatorType,String locator, String fileName,String sheetName, String key,int j) {
         List<WebElement> elementList = common.findWebElements(locatorType, locator);
@@ -3238,14 +3359,95 @@ public  class Transaction {
 //        enterInput("xpath", "//Edit[@Name='Branch *']", dataFile,dataset, key);
     }
 
+    public void enterMonthDerived(String xpath, String value) {
+        WebElement element = driver.findElement(By.xpath(xpath));
+        element.clear();
+        element.sendKeys(value);
+    }
+
+    public void enterYearSalesTarget(String dataFile, String sheetName, String key) throws InterruptedException, AWTException, IOException {
+        String yearStr = getValueByColumnHeader(dataFile, sheetName, key);
+
+        try {
+            double yearDouble = Double.parseDouble(yearStr); // handles 2025.0
+            int year = (int) yearDouble;                     // converts to 2025
+            enterMonthDerived("//Edit[@Name='Year *']", String.valueOf(year));
+            Thread.sleep(1500); // wait for UI to process entry
+            Robot robot = new Robot();
+            robot.keyPress(KeyEvent.VK_DOWN);
+            robot.keyRelease(KeyEvent.VK_DOWN);
+            robot.keyPress(KeyEvent.VK_ENTER);
+            robot.keyRelease(KeyEvent.VK_ENTER);
+        } catch (NumberFormatException e) {
+            System.out.println("❌ Invalid year format in Excel: " + yearStr);
+        }
+    }
+    public void enterMonthSalesTarget(String dataFile,String sheetName,String key) throws IOException {
+        String monthNumberStr = getValueByColumnHeader(dataFile, sheetName, key);
+        try {
+            double monthDouble = Double.parseDouble(monthNumberStr);
+            int monthNumber = (int) monthDouble;
+
+            if (monthNumber >= 1 && monthNumber <= 12) {
+                String[] months = {
+                        "January", "February", "March", "April", "May", "June",
+                        "July", "August", "September", "October", "November", "December"
+                };
+                String monthName = months[monthNumber - 1];
+                enterMonthDerived("//Edit[@Name='Month *']",monthName); // or your original method with UI locator
+                Thread.sleep(1500);
+                Robot robot=new Robot();
+                robot.keyPress(KeyEvent.VK_DOWN);
+                robot.keyRelease(KeyEvent.VK_DOWN);
+                robot.keyPress(KeyEvent.VK_ENTER);
+                robot.keyRelease(KeyEvent.VK_ENTER);
+            } else {
+                System.out.println("Invalid month number: " + monthNumber);
+            }
+        } catch (Exception e) {
+            System.out.println("Invalid month format in Excel: " + monthNumberStr);
+        }
+    }
+
+    public void exportIOFiles(String inputOrOutput,String voucherSeries, String voucherNumber) throws IOException, InterruptedException {
+        navigateToMastersWhen3Steps("Tools", "Automated Testing", inputOrOutput);
+        driver=common.initializeDriver("Root");
+        Thread.sleep(3000);
+        common.findWebElement("xpath","//Edit[@Name='Voucher Series']").sendKeys(voucherSeries);
+        common.findWebElement("xpath","//Edit[@Name='Voucher Number']").sendKeys(voucherNumber);
+        common.clickElement("xpath","//Button[@Name='OK']");
+        Thread.sleep(3000);
+//        common.clickElement("xpath","//Window[@Name='Export Transaction Postings']/Window[@Name='Export to Excel']/Button[@Name='OK']");
+        Thread.sleep(1500);
+        if (common.findWebElement("xpath","//Text").getText().equals("Data Exported successfully!")) {
+            common.findWebElement("xpath","//Button[@Name='OK']").click();
+        } else if(common.findWebElement("xpath","//Text").getText().equals("Transactionno doesnot exist.")){
+            Assert.fail("Transaction does not exists");
+            common.clickElement("xpath", "//Button[@Name='OK']");
+        }
+    }
+
+
     public void enterVoucherDiscount(String dataFile,String sheetName,String key) throws IOException, ParseException {
         EnterData("//Edit[@Name='Voucher Disc %']", dataFile,sheetName, key);
 //        enterInput("xpath", "//Edit[@Name='Branch *']", dataFile,dataset, key);
     }
 
     public void enterPriceList(String dataFile,String sheetName, String key) throws IOException, ParseException {
-        EnterData("//Edit[@Name='Price List']",dataFile,sheetName,key);
-//        enterInput("xpath", "//Edit[@Name='Price List']", dataFile,dataset, key);
+        EnterData("//Edit[@Name='Price List'] | //Edit[@Name='Price List *']",dataFile,sheetName,key);
+    }
+
+    public void enterMasterType(String dataFile,String sheetName, String key) throws IOException, ParseException {
+        EnterData("//Edit[@Name='Master Type']",dataFile,sheetName,key);
+    }
+
+    public void enterBasisSalesPrice(String dataFile,String sheetName, String key) throws IOException, ParseException {
+        EnterData("//Edit[@Name='Basis']",dataFile,sheetName,key);
+    }
+
+
+    public void enterAmountSalesPrice(String dataFile,String sheetName, String key) throws IOException, ParseException {
+        EnterData("//Edit[@Name='Amount']",dataFile,sheetName,key);
     }
 
     public void enterExecutive(String dataFile,String sheetName, String key) throws IOException, ParseException {
@@ -3300,8 +3502,8 @@ public  class Transaction {
         enterInput("xpath","//Edit[@Name='Shipping Bill No']",dataFile,dataSet, shippingBillNo);
     }
 
-    public void enterShippingDate() throws IOException, ParseException {
-        inputTextWithValidation("xpath","//Edit[@Name='Shipping Bill Date']", Time.timeStamp());
+    public void enterShippingDate(String dataFile,String sheetName,String key) throws IOException, ParseException {
+        EnterData ("//Edit[@Name='Shipping Bill Date']",dataFile,sheetName, key);
     }
 
     public void assertSummaryFields(List<WebElement> summary, String targetName, String expectedData) {

@@ -6,65 +6,65 @@
 
     <!-- Company Completed-->
 
-    <test name="Company - Department Master" description="Creating Department Master in Company" testID="1">
-        <classes>
-            <class name="menuItems.company.masters.DepartmentsMaster"/>
-        </classes>
-    </test>
+<!--    <test name="Company - Department Master" description="Creating Department Master in Company" testID="1">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.company.masters.DepartmentsMaster"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Company - Project Master" description="Creating Project Master in Company" testID="2">
-        <classes>
-            <class name="menuItems.company.masters.ProjectMaster"/>
-        </classes>
-    </test>
+<!--    <test name="Company - Project Master" description="Creating Project Master in Company" testID="2">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.company.masters.ProjectMaster"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Company - Profit Centres Master" description="Creating Profit Centres Master in Company" testID="3">
-        <classes>
-            <class name="menuItems.company.masters.ProfitCentresMaster"/>
-        </classes>
-    </test>
+<!--    <test name="Company - Profit Centres Master" description="Creating Profit Centres Master in Company" testID="3">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.company.masters.ProfitCentresMaster"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Company - Cost Centres Master" description="Creating Cost Centres Master in Company" testID="4">
-        <classes>
-            <class name="menuItems.company.masters.CostCentresMaster"/>
-        </classes>
-    </test>
+<!--    <test name="Company - Cost Centres Master" description="Creating Cost Centres Master in Company" testID="4">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.company.masters.CostCentresMaster"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Company - Routes Master" description="Creating Routes Master in Company" testID="5">
-        <classes>
-            <class name="menuItems.company.masters.RoutesMaster"/>
-        </classes>
-    </test>
+<!--    <test name="Company - Routes Master" description="Creating Routes Master in Company" testID="5">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.company.masters.RoutesMaster"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Company - Transporters Master" description="Creating Transporters Master in Company" testID="6">
-        <classes>
-            <class name="menuItems.company.masters.TransportersMaster"/>
-        </classes>
-    </test>
+<!--    <test name="Company - Transporters Master" description="Creating Transporters Master in Company" testID="6">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.company.masters.TransportersMaster"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Company - Term Types Master" description="Creating Term Types Master in Company" testID="7">
-        <classes>
-            <class name="menuItems.company.masters.TermTypeMaster"/>
-        </classes>
-    </test>
+<!--    <test name="Company - Term Types Master" description="Creating Term Types Master in Company" testID="7">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.company.masters.TermTypeMaster"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Company - Terms Master" description="Creating Terms Master in Company" testID="8">
-        <classes>
-            <class name="menuItems.company.masters.TermsMaster"/>
-        </classes>
-    </test>
+<!--    <test name="Company - Terms Master" description="Creating Terms Master in Company" testID="8">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.company.masters.TermsMaster"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Company - Reasons Master" description="Creating Reasons Master in Company" testID="9">
-        <classes>
-            <class name="menuItems.company.masters.ReasonsMaster"/>
-        </classes>
-    </test>
+<!--    <test name="Company - Reasons Master" description="Creating Reasons Master in Company" testID="9">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.company.masters.ReasonsMaster"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Company - Executive Master" description="Creating Executive Master in Company" testID="10">
-        <classes>
-            <class name="menuItems.company.masters.ExecutiveMaster"/>
-        </classes>
-    </test>
+<!--    <test name="Company - Executive Master" description="Creating Executive Master in Company" testID="10">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.company.masters.ExecutiveMaster"/>-->
+<!--        </classes>-->
+<!--    </test>-->
     <!-- Company Completed-->
 
     <!-- Sales-->

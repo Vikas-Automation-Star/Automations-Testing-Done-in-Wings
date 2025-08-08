@@ -13,7 +13,7 @@ import java.io.IOException;
 public class SalesOrderTransaction {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String dataFile="./src/main/resources/menuItems/Sales/Transactions/salesEnquiry.json";
+    String dataFile="./src/main/resources/menuItems/Sales/Transactions/478887 - Sales Orders-AC.xls";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
@@ -22,10 +22,9 @@ public class SalesOrderTransaction {
 
     @Test
     public void salesOrder() throws IOException, ParseException, InterruptedException, AWTException {
-//        SalesOrder salesOrder = new SalesOrder(driver, file);
-//        salesOrder.salesOrder();
         SalesOrders salesOrders=new SalesOrders(driver,dataFile);
-        salesOrders.salesOrders();
+        salesOrders.salesOrder();
+
     }
 
     @AfterTest

@@ -1,11 +1,8 @@
 package menuItems.sales.transactions;
 
 import com.wings.pages.AppLogin;
-import com.wings.pages.sales.transactions.SalesEnquiry;
 import com.wings.pages.sales.transactions.SalesInvoiceAgainstOrders;
-import com.wings.pages.sales.transactions.SalesOrdersAgainstQuotations;
-import com.wings.pages.sales.transactions.SalesQuotationAgainstEnquiry;
-import com.wings.utils.Common;
+import com.wings.pages.sales.transactions.SalesOrders;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
@@ -21,42 +18,24 @@ public class TestSalesInvoiceAgainstOrder {
     private static final Logger log = LoggerFactory.getLogger(TestSalesInvoiceAgainstOrder.class);
     WindowsDriver driver;
     AppLogin login = new AppLogin();
-    Common common;
-    String dataFile = "./src/main/resources/menuItems/Sales/Transactions/salesEnquiry.json";
+    String dataFile = "./src/main/resources/menuItems/Sales/Transactions/480461 - Sales Invoices against Orders-AC.xls";
+    String dataFile1="./src/main/resources/menuItems/Sales/Transactions/478887 - Sales Orders-AC.xls";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        common=new Common(driver);
-        driver = login.launchSingleUserApp();
-        login.singleUserLogin(common.getData(dataFile,"salesEnquiry","userName"),common.getData(dataFile,"salesEnquiry","password"));
+        driver = login.login();
     }
 
     @Test
     public void salesInvoiceAgainstOrders() throws IOException, ParseException, InterruptedException, AWTException {
-        SalesEnquiry salesEnquiry=new SalesEnquiry(driver,dataFile);
-        String salesEnquiryVoucher=salesEnquiry.salesEnquiry();
+        SalesOrders salesOrders=new SalesOrders(driver,dataFile1);
+        String salesOrderVoucher=salesOrders.salesOrder();
 
         login.logout();
-        driver=login.launchSingleUserApp();
-        login.singleUserLogin(common.getData(dataFile,"salesEnquiry","userName"),common.getData(dataFile,"salesEnquiry","password"));
-
-        SalesQuotationAgainstEnquiry agnstEnquiry = new SalesQuotationAgainstEnquiry(driver, dataFile);
-        String orderAgainstQuotation=agnstEnquiry.quotationAgainstEnquiry(salesEnquiryVoucher);
-
-        login.logout();
-        driver=login.launchSingleUserApp();
-        login.singleUserLogin(common.getData(dataFile,"salesEnquiry","userName"),common.getData(dataFile,"salesEnquiry","password"));
-
-        SalesOrdersAgainstQuotations quotations = new SalesOrdersAgainstQuotations(driver, dataFile);
-        String ordersVoucherNum= quotations.salesOrderAgainstQuotation(orderAgainstQuotation);
-
-        login.logout();
-        driver=login.launchSingleUserApp();
-        login.singleUserLogin(common.getData(dataFile,"salesEnquiry","userName"),common.getData(dataFile,"salesEnquiry","password"));
+        driver=login.login();
 
         SalesInvoiceAgainstOrders invoiceAgainstOrders=new SalesInvoiceAgainstOrders(driver,dataFile);
-        invoiceAgainstOrders.invoiceAgainstOrders(ordersVoucherNum);
-//            invoiceAgainstOrders.invoiceAgainstOrders("SOAQ 2");
+        invoiceAgainstOrders.invoiceAgainstOrders(salesOrderVoucher);
 
     }
 

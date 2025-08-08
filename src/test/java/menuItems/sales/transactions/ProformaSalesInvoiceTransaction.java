@@ -13,12 +13,12 @@ import java.io.IOException;
 public class ProformaSalesInvoiceTransaction {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String file = "./src/main/resources/menuItems/Sales/Transactions/salesEnquiry.json";
+    String file = "./src/main/resources/menuItems/Sales/Transactions/475923 - Proforma Sales Invoices-AC.xls";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        driver = appLogin.launchSingleUserApp();
-        appLogin.singleUserLogin();
+        driver = appLogin.login();
+
     }
 
     @Test
@@ -29,6 +29,6 @@ public class ProformaSalesInvoiceTransaction {
 
     @AfterTest
     public void afterTest() throws IOException {
-        appLogin.logout();
+//        appLogin.logout();
     }
 }
