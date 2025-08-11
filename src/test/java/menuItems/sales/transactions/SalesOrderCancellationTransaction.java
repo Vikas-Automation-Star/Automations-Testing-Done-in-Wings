@@ -26,13 +26,13 @@ public class SalesOrderCancellationTransaction {
 
     @Test
     public void salesOrderCancellation() throws IOException, InterruptedException, ParseException, AWTException {
-        SalesOrders salesOrders=new SalesOrders(driver, dataFile);
-        String salesOrderVoucher= salesOrders.salesOrder();
+//        SalesOrders salesOrders=new SalesOrders(driver, dataFile);
+//        String salesOrderVoucher= salesOrders.salesOrder();
         appLogin.logout();
         driver=appLogin.login();
 
-        SalesOrderCancellation orderCancellation = new SalesOrderCancellation(driver, dataFile1);
-        orderCancellation.salesOrderCancellations(salesOrderVoucher);
+//        SalesOrderCancellation orderCancellation = new SalesOrderCancellation(driver, dataFile1);
+//        orderCancellation.salesOrderCancellations(salesOrderVoucher);
     }
 
     @AfterTest

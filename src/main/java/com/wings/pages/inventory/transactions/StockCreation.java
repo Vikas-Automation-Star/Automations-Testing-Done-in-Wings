@@ -35,7 +35,6 @@ public class StockCreation extends TransactionsBaseClass {
         enterLocation(dataFile,"GeneralInformation","Location");
         enterCurrency(dataFile,"GeneralInformation","TransactionCurrency");
         enterExchangeRate(dataFile,"GeneralInformation","ExchangeRate");
-        enterStockAccount(dataFile,"GeneralInformation","StockAccount");
         enterBatchPolicy(dataFile,"GeneralInformation","BatchPolicy");
         enterPriceList(dataFile,"GeneralInformation","PriceList");
         enterExecutive(dataFile,"GeneralInformation","Executive");

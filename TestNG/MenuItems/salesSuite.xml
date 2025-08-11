@@ -89,24 +89,24 @@
     </test>
 
 
-<!--    <test name="PV 11" description="Purchase Vouchers" testID="6">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.purchase.transactions.TestPurchaseVouchers"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="PV 11" description="Purchase Vouchers" testID="6">
+        <classes>
+            <class name="menuItems.purchase.transactions.TestPurchaseVouchers"/>
+        </classes>
+    </test>
 
-<!--    <test name="PVAPO 12" description="Purchase Vouchers Against PurchaseOrders" testID="7">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.purchase.transactions.TestPurchaseVouchersAgainstOrders"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="PVAPO 12" description="Purchase Vouchers Against PurchaseOrders" testID="7">
+        <classes>
+            <class name="menuItems.purchase.transactions.TestPurchaseVouchersAgainstOrders"/>
+        </classes>
+    </test>
 
 
-<!--    <test name="PRWIR-PVAO 16" description="Purchase Returns With Invoice Reference" testID="16">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.purchase.transactions.TestPurchaseReturnsWithInvoicesReference"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="PRWIR-PVAO 16" description="Purchase Returns With Invoice Reference" testID="16">
+        <classes>
+            <class name="menuItems.purchase.transactions.TestPurchaseReturnsWithInvoicesReference"/>
+        </classes>
+    </test>
 
 
 

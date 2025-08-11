@@ -41,7 +41,6 @@ public class MaterialReturn extends TransactionsBaseClass {
         EnterDate("//Edit[@Name='Date *']",dataFile,"GeneralInformation","Date");
         enterBranch(dataFile,"GeneralInformation","Branch");
         enterCurrency(dataFile,"GeneralInformation","TransactionCurrency");
-        enterReceiptNum(receiptsNum);
         Thread.sleep(5000);
         Robot robot=new Robot();
         robot.keyPress(KeyEvent.VK_ENTER);

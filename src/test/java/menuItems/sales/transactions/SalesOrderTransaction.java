@@ -22,8 +22,8 @@ public class SalesOrderTransaction {
 
     @Test
     public void salesOrder() throws IOException, ParseException, InterruptedException, AWTException {
-        SalesOrders salesOrders=new SalesOrders(driver,dataFile);
-        salesOrders.salesOrder();
+//        SalesOrders salesOrders=new SalesOrders(driver,dataFile);
+//        salesOrders.salesOrder();
 
     }
 

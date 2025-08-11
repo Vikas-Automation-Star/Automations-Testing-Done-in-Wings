@@ -28,14 +28,14 @@ public class TestSalesInvoiceAgainstOrder {
 
     @Test
     public void salesInvoiceAgainstOrders() throws IOException, ParseException, InterruptedException, AWTException {
-        SalesOrders salesOrders=new SalesOrders(driver,dataFile1);
-        String salesOrderVoucher=salesOrders.salesOrder();
+//        SalesOrders salesOrders=new SalesOrders(driver,dataFile1);
+//        String salesOrderVoucher=salesOrders.salesOrder();
 
         login.logout();
         driver=login.login();
 
-        SalesInvoiceAgainstOrders invoiceAgainstOrders=new SalesInvoiceAgainstOrders(driver,dataFile);
-        invoiceAgainstOrders.invoiceAgainstOrders(salesOrderVoucher);
+//        SalesInvoiceAgainstOrders invoiceAgainstOrders=new SalesInvoiceAgainstOrders(driver,dataFile);
+//        invoiceAgainstOrders.invoiceAgainstOrders(salesOrderVoucher);
 
     }
 

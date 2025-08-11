@@ -35,8 +35,6 @@ public class OpeningStock extends TransactionsBaseClass {
         enterLocation(dataFile,"GeneralInformation","Location");
         enterCurrency(dataFile,"GeneralInformation","TransactionCurrency");
         enterExchangeRate(dataFile,"GeneralInformation","ExchangeRate");
-        enterOpeningStockAccount(dataFile,"GeneralInformation","OpeningStockAccount");
-        enterOpeningStockAccountAsset(dataFile,"GeneralInformation","OpeningStockAccountAsset");
         enterBatchPolicy(dataFile,"GeneralInformation","BatchPolicy");
         enterPriceList(dataFile,"GeneralInformation","PriceList");
         enterExecutive(dataFile,"GeneralInformation","Executive");
