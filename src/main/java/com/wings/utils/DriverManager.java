@@ -8,10 +8,18 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.util.Properties;
 
 public class DriverManager {
     WindowsDriver driver, logindriver, rootdriver;
+
+//    public static Connection getConnection(String sqlUrl, String sqlUser, String sqlPassword) {
+//        sqlUrl="10.10.10.90";
+//        sqlUser="dbuser1";
+//        sqlPassword="dbuser1";
+//        return null;
+//    }
 
     public WindowsDriver login() throws IOException, InterruptedException {
         DesiredCapabilities capabilities = new DesiredCapabilities();

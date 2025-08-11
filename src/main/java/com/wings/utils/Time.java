@@ -1,11 +1,6 @@
 package com.wings.utils;
 
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
+
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -53,29 +48,9 @@ public class Time {
         return dateTime.format(formatter);
     }
 
-//    public static void main(String[] args) throws Exception {
-//        try {
-//            // Step 1: Create the folder (if it doesn't exist)
-//            Path folderPath = Paths.get("C:/example/newFolder");
-//            Files.createDirectories(folderPath);
-//            // Step 2: Create the text file inside the folder
-//            Path filePath = folderPath.resolve("sample.txt"); // "C:/example/newFolder/sample.txt"
-//            // Step 3: Write some content to the file
-//            String content = "This is a test file.\nHello from Java!.\nknowing the creation flow. \nknowing the moving flow";
-//            Files.write(filePath, content.getBytes(StandardCharsets.UTF_8));
-//            System.out.println("Text file created at: " + filePath);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        Path sourceDir = Paths.get("C:/example/newFolder");
-//        Path targetDir = Paths.get("C:\\vicks"); // <-- Note this change
-//
-//        Files.move(sourceDir, targetDir, StandardCopyOption.REPLACE_EXISTING);
-//        Files.deleteIfExists(Path.of("C:/example/newFolder"));
-//        System.out.println("Folder and its contents moved successfully!");
-//    }
 
     public static void main(String[] args) {
         System.out.println(getFormattedFutureDate(3));
+        System.out.println(timeStamp());
     }
 }

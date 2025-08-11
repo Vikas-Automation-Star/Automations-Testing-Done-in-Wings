@@ -15,24 +15,21 @@ import java.io.IOException;
 public class TestPurchaseEnquiries {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    Common common;
-    String file = "./src/main/resources/menuItems/purchase/transactions/purchaseEnquiries.json";
+    String dataFile = "./src/main/resources/menuItems/purchase/transactions/461617 - Purchase Enquiries-AC_PE_3.xlsx";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        common=new Common(driver);
-        driver = appLogin.launchSingleUserApp();
-        appLogin.singleUserLogin(common.getData(file,"Purchase Enquiries","userName"),common.getData(file,"Purchase Enquiries","password"));
+        driver= appLogin.login();
     }
 
     @Test
     public void purchaseEnquiries() throws IOException, ParseException, InterruptedException, AWTException {
-        PurchaseEnquiries pe = new PurchaseEnquiries(driver, file);
+        PurchaseEnquiries pe = new PurchaseEnquiries(driver, dataFile);
         pe.purchaseEnquires();
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-        appLogin.logout();
+//        appLogin.logout();
     }
 }

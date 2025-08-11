@@ -17,28 +17,27 @@ import java.io.IOException;
 public class TestPurchaseOrdersAgainstQuotations {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    Common common;
-    String file = "./src/main/resources/menuItems/purchase/transactions/purchaseEnquiries.json";
+
+    String dataFile = "./src/main/resources/menuItems/purchase/transactions/461617 - Purchase Enquiries-AC_PE_3.xlsx";
+    String dataFile1 = "./src/main/resources/menuItems/purchase/transactions/461887 - Purchase Quotations against Enquiries-AC_PQAPE_1.xlsx";
+    String dataFile2 = "./src/main/resources/menuItems/purchase/transactions/480465 - Purchase Orders against Quotations-AC_POAQ 1.xlsx";
+
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        common=new Common(driver);
-        driver = appLogin.launchSingleUserApp();
-        appLogin.singleUserLogin(common.getData(file,"Purchase Enquiries","userName"),common.getData(file,"Purchase Enquiries","password"));
+        driver= appLogin.login();
     }
 
     @Test
     public void purchaseOrdersAgainstQuotations() throws IOException, ParseException, InterruptedException, AWTException {
-        PurchaseEnquiries enquiries=new PurchaseEnquiries(driver,file);
-        PurchaseQuotationsAgainstEnquiries quotationsAgainstEnquiries = new PurchaseQuotationsAgainstEnquiries(driver, file);
-        String PQAE =quotationsAgainstEnquiries.purchaseQuotationsAgainstEnquiry(enquiries.purchaseEnquires());
+//        PurchaseEnquiries enquiries=new PurchaseEnquiries(driver,dataFile);
+//        PurchaseQuotationsAgainstEnquiries quotationsAgainstEnquiries = new PurchaseQuotationsAgainstEnquiries(driver, dataFile1);
+//        String PQAE =quotationsAgainstEnquiries.purchaseQuotationsAgainstEnquiry(enquiries.purchaseEnquires());
+//        appLogin.logout();
+//        driver= appLogin.login();
 
-        appLogin.logout();
-        driver = appLogin.launchSingleUserApp();
-        appLogin.singleUserLogin(common.getData(file,"Purchase Enquiries","userName"),common.getData(file,"Purchase Enquiries","password"));
-
-        PurchaseOrdersAgainstQuotation POAQ = new PurchaseOrdersAgainstQuotation(driver, file);
-        POAQ.purchaseOrdersAgainstQuotation(PQAE);
+        PurchaseOrdersAgainstQuotation POAQ = new PurchaseOrdersAgainstQuotation(driver, dataFile2);
+        POAQ.purchaseOrdersAgainstQuotation("PQAPE 1");
     }
 
     @AfterTest

@@ -14,45 +14,41 @@ import java.io.IOException;
 public class TestPurchaseReturnsWithInvoicesReference {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    Common common;
-    String file = "./src/main/resources/menuItems/purchase/transactions/purchaseEnquiries.json";
+    String dataFile = "./src/main/resources/menuItems/purchase/transactions/461617 - Purchase Enquiries-AC_PE_3.xlsx";
+    String dataFile1 = "./src/main/resources/menuItems/purchase/transactions/461887 - Purchase Quotations against Enquiries-AC_PQAPE_1.xlsx";
+    String dataFile2 = "./src/main/resources/menuItems/purchase/transactions/480465 - Purchase Orders against Quotations-AC_POAQ 1.xlsx";
+    String dataFile3 = "./src/main/resources/menuItems/purchase/transactions/479082 - Purchase Vouchers against Orders-AC_PVAO_1.xlsx";
+    String dataFile4 = "./src/main/resources/menuItems/purchase/transactions/461323 - Purchase Returns with Invoice Reference-AC_PRWIF_5.xlsx";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        common=new Common(driver);
-        driver = appLogin.launchSingleUserApp();
-        appLogin.singleUserLogin(common.getData(file,"Purchase Enquiries","userName"),common.getData(file,"Purchase Enquiries","password"));
+        driver=appLogin.login();
     }
 
     @Test
     public void purchaseReturnsWithInvoicesReferences() throws IOException, ParseException, InterruptedException, AWTException {
-        PurchaseEnquiries enquiries=new PurchaseEnquiries(driver,file);
-        PurchaseQuotationsAgainstEnquiries quotationsAgainstEnquiries = new PurchaseQuotationsAgainstEnquiries(driver, file);
-        String PQAE =quotationsAgainstEnquiries.purchaseQuotationsAgainstEnquiry(enquiries.purchaseEnquires());
-
-        appLogin.logout();
-        driver = appLogin.launchSingleUserApp();
-        appLogin.singleUserLogin(common.getData(file,"Purchase Enquiries","userName"),common.getData(file,"Purchase Enquiries","password"));
-
-        PurchaseOrdersAgainstQuotation ordersAgainstQuotation = new PurchaseOrdersAgainstQuotation(driver, file);
-        String POAPQ= ordersAgainstQuotation.purchaseOrdersAgainstQuotation(PQAE);
-
-        appLogin.logout();
-        driver = appLogin.launchSingleUserApp();
-        appLogin.singleUserLogin(common.getData(file,"Purchase Enquiries","userName"),common.getData(file,"Purchase Enquiries","password"));
-
-        PurchaseVoucherAgainstPurchaseOrders voucherAgainstPurchaseOrders=new PurchaseVoucherAgainstPurchaseOrders(driver,file);
-        String PVAPO=voucherAgainstPurchaseOrders.purchaseVoucherAgainstPurchaseOrders(POAPQ);
-        appLogin.logout();
-        driver = appLogin.launchSingleUserApp();
-        appLogin.singleUserLogin(common.getData(file,"Purchase Enquiries","userName"),common.getData(file,"Purchase Enquiries","password"));
-
-        PurchaseReturnsWithInvoicesReference prwir = new PurchaseReturnsWithInvoicesReference(driver, file);
-        prwir.purchaseReturnsWithInvoicesReference(PVAPO);
+//        PurchaseEnquiries enquiries=new PurchaseEnquiries(driver,dataFile);
+//        String pe=enquiries.purchaseEnquires();
+//        appLogin.logout();
+//        driver= appLogin.login();
+//        PurchaseQuotationsAgainstEnquiries quotationsAgainstEnquiries = new PurchaseQuotationsAgainstEnquiries(driver, dataFile1);
+//        String pqae =quotationsAgainstEnquiries.purchaseQuotationsAgainstEnquiry(pe);
+//        appLogin.logout();
+//        driver= appLogin.login();
+//        PurchaseOrdersAgainstQuotation POAQ = new PurchaseOrdersAgainstQuotation(driver, dataFile2);
+//        String poaq=POAQ.purchaseOrdersAgainstQuotation(pqae);
+//        appLogin.logout();
+//        driver= appLogin.login();
+//        PurchaseVouchersAgainstOrder pvao = new PurchaseVouchersAgainstOrder(driver, dataFile3);
+//        pvao.purchaseVouchersAgainstOrder(poaq);
+//        appLogin.logout();
+//        driver= appLogin.login();
+        PurchaseReturnsWithInvoicesReference prwir = new PurchaseReturnsWithInvoicesReference(driver, dataFile4);
+        prwir.purchaseReturnsWithInvoicesReference("PVAO 2");
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-        appLogin.logout();
+//        appLogin.logout();
     }
 }

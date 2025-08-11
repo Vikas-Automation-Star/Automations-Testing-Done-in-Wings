@@ -178,7 +178,7 @@
     <test name="Performing PurchaseVouchersAgainstOrders Transaction"
           description="description for PurchaseVouchersAgainstOrders Transaction" testID="WOW 27">
         <classes>
-            <class name="menuItems.purchase.transactions.PurchaseVouchersAgainstOrdersTransaction"></class>
+            <class name="menuItems.purchase.transactions.TestPurchaseVouchersAgainstOrders"></class>
         </classes>
     </test>
 

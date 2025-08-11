@@ -3,16 +3,30 @@ package com.wings.pages;
 import com.wings.utils.Time;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
-import org.openqa.selenium.Keys;
 import java.io.IOException;
+
+
+//public class SalesOrdersBaseClass extends Transaction{
+//    WindowsDriver baseClassdriver;
+//    Common common;
+//    String dataFile;
+//
+//    public SalesOrdersBaseClass(WindowsDriver driver,String file){
+//        super(driver);
+//        baseClassdriver=driver;
+//        common=new Common(baseClassdriver);
+//        dataFile=file;
+//    }
+
 
 public class TransactionsBaseClass extends Transaction {
     public TransactionsBaseClass(WindowsDriver driver) {
         super(driver);
     }
 
-    public void enterBranchName(String dataFile,String sheetName,String branch){
+    public void enterBranchName(String dataFile,String sheetName,String branch)  {
         EnterData("//Edit[@Name='Branch *']",dataFile,sheetName,branch);
+//        enterInput("xpath","//Edit[@Name='Branch *']",dataFile,dataSet,branch);
     }
     public void enterDate() throws IOException {
         inputTextWithValidation("xpath","//Edit[@Name='Date *']",Time.timeStamp());
@@ -28,12 +42,14 @@ public class TransactionsBaseClass extends Transaction {
         }
     }
 
-    public void enterVoucherType(String dataFile,String sheetName,String voucherType) throws IOException, ParseException {
+    public void enterVoucherType(String dataFile,String sheetName,String voucherType) {
         EnterData("//Edit[@Name='Voucher Type']",dataFile,sheetName,voucherType);
+//        enterInput("xpath","//Edit[@Name='Voucher Type']",dataFile,dataSet,voucherType);
     }
 
-    public void enterLocation(String dataFile,String sheetName,String key) throws IOException, ParseException {
+    public void enterLocation(String dataFile,String sheetName,String key)  {
         EnterData("//Edit[@Name='Location *']",dataFile,sheetName,key);
+//        enterInput("xpath","//Edit[@Name='Location *']",dataFile,dataSet,location);
     }
 
     public void enterToLocation(String dataFile,String sheetName,String key) {
@@ -41,42 +57,60 @@ public class TransactionsBaseClass extends Transaction {
     }
 
     public void enterCurrency(String dataFile,String sheetName,String key) throws IOException, ParseException {
-        EnterData("//Edit[@Name='Trans Currency *'] | //Edit[@Name='Transaction Currency *']",dataFile,sheetName,key);
+        EnterData("//Edit[@Name='Trans Currency *' or @Name='Transaction Currency *']",dataFile,sheetName,key);
+//        enterInput("xpath","//Edit[@Name='Trans Currency *']",dataFile,dataSet,currency);
     }
-    public void enterReceiptNum(String receiptNum){
-        common.findWebElement("xpath","//Edit[@Name='Receipt No']").sendKeys(receiptNum,Keys.TAB);
-    }
-    public void enterSalesInvoiceNo(String dataFile,String sheetName,String key) {
-        EnterData("//Edit[@Name='Sales Invoice No *']",dataFile,sheetName,key);
-    }
-    public void enterSalesReturnAccountCode(String dataFile,String sheetName,String key) {
-        EnterData("//Edit[@Name='Sales Return A/c Code']",dataFile,sheetName,key);
-    }
-    public void enterExchangeRate(String dataFile,String sheetName,String key) throws IOException {
+
+    public void enterExchangeRate(String dataFile,String sheetName,String key)  {
         EnterData("//Edit[@Name='Exchange Rate *']",dataFile,sheetName,key);
     }
 
-    public void enterPartyCode(String dataFile,String sheetName, String key) throws IOException, ParseException {
-        EnterData("//Edit[@Name='Party Code'] | //Edit[@Name='Cash/Party Code'] | //Edit[@Name='Party Account *']",dataFile,sheetName,key);
+    public void enterSalesInvoiceNumber(String dataFile,String sheetName,String key)  {
+        EnterData("//Edit[@Name='Sales Invoice No' or @Name='Sales Invoice No *']",dataFile,sheetName,key);
     }
 
-    public void enterOpeningStockAccount(String dataFile,String sheetName, String key) {
-        EnterData("//Edit[@Name='Opening Stock Account *']",dataFile,sheetName,key);
-    }
-    public void enterOpeningStockAccountAsset(String dataFile,String sheetName, String key) {
-        EnterData("//Edit[@Name='Opening Stock Account Asset *']",dataFile,sheetName,key);
-    }
-    public void enterStockAccount(String dataFile,String sheetName, String key) {
-        EnterData("//Edit[@Name='Stock Account']",dataFile,sheetName,key);
+    public void enterSalesInvoiceDate(String dataFile,String sheetName,String key) throws IOException {
+        EnterDate("//Edit[@Name='Sales Invoice Date']",dataFile,sheetName,key);
     }
 
-    public void enterCustomerEmail(String dataFile,String sheetName,String key)  {
+
+
+    public void enterPartyCode(String dataFile,String sheetName, String key)  {
+        EnterData("//Edit[@Name='Party Code' or @Name='Cash/Party Code']", dataFile, sheetName, key);
+        //        enterInput("xpath", "//Edit[@Name='Party Code']", dataFile,dataset, key);
+    }
+
+    public void enterPartyAcc(String dataFile,String sheetName, String key)  {
+        EnterData("//Edit[@Name='Party Account *']", dataFile, sheetName, key);
+        //        enterInput("xpath", "//Edit[@Name='Party Code']", dataFile,dataset, key);
+    }
+
+
+    public void enterVoucherDisc(String dataFile,String sheetName, String key){
+        EnterData("//Edit[@Name='Voucher Disc %']",dataFile,sheetName,key);
+
+    }
+    public void enterCustomerEmail(String dataFile,String sheetName,String key) throws IOException, ParseException {
+
         EnterData("//Edit[@Name='Customer Email']",dataFile,sheetName,key);
+
+//        enterInput("xpath","//Edit[@Name='Customer Email']",dataFile,dataSet,email);
+
     }
 
-    public void enterShippingBillNo(String dataFile,String sheetName,String key) {
+    public void enterCustomerMobileNum(String dataFile,String sheetName,String key) throws IOException, ParseException {
+
+        EnterData("//Edit[@Name='Customer Mobile Number']",dataFile,sheetName,key);
+
+//        enterInput("xpath","//Edit[@Name='Customer Mobile Number']",dataFile,dataSet, mobileNum);
+
+    }
+
+
+    public void enterShippingBillNo(String dataFile,String sheetName,String key) throws IOException, ParseException {
         EnterData("//Edit[@Name='Shipping Bill No']",dataFile,sheetName, key);
     }
+
 
     public void enterSupplierBillNumber(String dataFile,String sheetName,String key) {
         EnterData("//Edit[@Name='Supplier Bill No *']",dataFile,sheetName, key);
@@ -91,48 +125,61 @@ public class TransactionsBaseClass extends Transaction {
 //        enterInput("xpath","//Edit[@Name='Remarks']",dataFile,dataSet, remarks);
     }
 
-    public void enterSalesAccountCode(String dataFile,String sheetName,String key) {
+    public void enterSalesAccountCode(String dataFile,String sheetName,String key) throws IOException, ParseException {
         EnterData("//Edit[@Name='Sales A/c Code']",dataFile,sheetName,key);
     }
-    public void enterCustomerMobileNum(String dataFile,String sheetName,String key)  {
-        EnterData("//Edit[@Name='Customer Mobile Number']",dataFile,sheetName,key);
-    }
 
-    public void enterCashOrParty(String dataFile,String sheetName,String key){
+    public void enterCashOrParty(String dataFile,String sheetName,String key) {
         EnterData("//Edit[@Name='Cash/Party Code' or @Name='Party Code']",dataFile,sheetName,key);
+//        enterInput("xpath","//Edit[@Name='Cash/Party Code'] | //Edit[@Name='Party Code']",dataFile,dataSet,cashOrParty);
     }
 
-    public void enterConsigner(String dataFile,String sheetName,String key)  {
+    public void enterConsigner(String dataFile,String sheetName,String key) throws IOException, ParseException {
         EnterData("//Edit[@Name='Cash/Party Code']",dataFile,sheetName,key);
+//        enterInput("xpath","//Edit[@Name='Cash/Party Code']",dataFile,dataSet,Consigner);
     }
 
     public void enterCreditPeriod(String dataFile,String sheetName,String key) throws IOException, ParseException {
         decimalPrecision("//Edit[@Name='Credit Period']",dataFile,sheetName,key);
+//        enterInput("xpath","//Edit[@Name='Credit Period']",dataFile,dataSet,creditPeriod);
     }
 
-    public void enterPurchaseAccountCode(String dataFile,String sheetName,String key) {
+    public void enterSalesReturnAccCode(String dataFile,String sheetName,String key) throws IOException, ParseException {
+        EnterData("//Edit[@Name='Sales Return A/c Code']",dataFile,sheetName,key);
+    }
+
+    public void enterPurchaseAccountCode(String dataFile,String sheetName,String key){
         EnterData("//Edit[@Name='Purchase A/c Code'  or @Name='Purchase A/C Code']",dataFile,sheetName,key);
+//        enterInput("xpath","//Edit[@Name='Purchase A/c Code'  or @Name='Purchase A/C Code']",dataFile,dataSet,purchaseAccountCode);
     }
 
-    public void enterSuppliersBillNumber() {
-        inputTextWithValidation("xpath","//Edit[@Name='Supplier Bill No *']",String.valueOf(common.getRandom()));
+    public void enterSuppliersBillNumber(String dataFile,String sheetName,String key) {
+        EnterData("//Edit[@Name='Supplier Bill No *']",dataFile,sheetName,key);
+//        inputTextWithValidation("xpath","//Edit[@Name='Supplier Bill No *']",String.valueOf(common.getRandom()));
     }
-    public void enterSuppliersBillDate()  {
-        inputTextWithValidation("xpath","//Edit[@Name='Supplier Bill Date *']", Time.timeStamp());
+    public void enterSuppliersBillDate(String dataFile,String sheetName,String key) throws IOException {
+        EnterDate("//Edit[@Name='Supplier Bill Date *']",dataFile,sheetName,key);
+//        inputTextWithValidation("xpath","//Edit[@Name='Supplier Bill Date *']", Time.timeStamp());
     }
-    public void enterBatchPolicy(String dataFile,String sheetName,String key) {
+    public void enterBatchPolicy(String dataFile,String sheetName,String key)  {
         EnterData("//Edit[@Name='Batch Policy']",dataFile,sheetName,key);
+//        enterInput("xpath","//Edit[@Name='Batch Policy']",dataFile,dataSet,batchPolicy);
     }
-    public void enterTcsTransNature(String dataFile,String sheetName,String key) {
+    public void enterTcsTransNature(String dataFile,String sheetName,String key)  {
         EnterData("//Edit[@Name='TCS Trans Nature']",dataFile,sheetName,key);
+//        enterInput("xpath","//Edit[@Name='TCS Trans Nature']",dataFile,dataSet,tcsTransactionNature);
     }
-    public void enterTdsTransNature(String dataFile,String sheetName,String key) {
+    public void enterTdsTransNature(String dataFile,String sheetName,String key)  {
         EnterData("//Edit[@Name='TDS Trans Nature']",dataFile,sheetName,key);
+//        enterInput("xpath","//Edit[@Name='TDS Trans Nature']",dataFile,dataSet,tdsTransNature);
     }
 
-
-
-
+    public void enterPurchaseVoucherNum(String dataFile,String sheetName,String key)  {
+        EnterData("//Edit[@Name='Purchase VNo *']",dataFile,sheetName,key);
+    }
+    public void enterPurchaseReturnsAccount(String dataFile,String sheetName,String key)  {
+        EnterData("//Edit[@Name='Purchase Return A/c Code']",dataFile,sheetName,key);
+    }
 
 
 

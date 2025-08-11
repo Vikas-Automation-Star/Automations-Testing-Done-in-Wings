@@ -1,0 +1,12 @@
+{
+  "deviceType":1,
+  "subFunctionName":"None",
+  "aquaTempSessionId":"00000000-0000-0000-0000-000000000000",
+  "dataTable":null,
+  "dataSet":null,
+  "dataSetList":null,
+  "functionName":"GetShowPostingsForAutomation",
+  "stringList":["SRWIR","7"],
+  "userId":"2997b900-de42-4b85-844b-fecf7cc96a5d",
+  "sessionId":"e5e1f8a9-2329-4042-9b7c-85498c163fd9"
+}

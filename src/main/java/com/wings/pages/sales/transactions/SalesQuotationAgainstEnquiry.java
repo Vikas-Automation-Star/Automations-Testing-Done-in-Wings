@@ -7,9 +7,6 @@ import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-
-import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.List;
 
@@ -17,142 +14,94 @@ public class SalesQuotationAgainstEnquiry extends TransactionsBaseClass {
     WindowsDriver driver,rootDriver;
     Common common;
     String dataFile;
-    boolean discountIsClicked = false,gstAmountClicked=false,IsAmountHeaderClicked = false,otherChargesGSTCheckBox=false;
-
+    boolean discountIsClicked = false;
+    boolean gstAmountClicked=false;
+    boolean IsAmountHeaderClicked = false;
     public SalesQuotationAgainstEnquiry(WindowsDriver driver, String file) {
         super(driver);
         common = new Common(this.driver = driver);
         dataFile = file;
     }
 
-    public String quotationAgainstEnquiry(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
+    public String quotationAgainstEnquiry(String voucherNum) throws InterruptedException, IOException, ParseException {
         long start = System.nanoTime();
         System.out.println("sales quotation against enquiry startTime executed in :"+start);
-        long generalInfoStart = System.nanoTime();
         navigateToSalesQuotationAgainstEnquiryMenu();
         Thread.sleep(100);
         String oldVoucherID =oldTTransactionID();
         System.out.println("oldID: "+ oldVoucherID);
-        //branch selection
         enterVoucherType(dataFile,"GeneralInformation","VoucherType");
         EnterDate("//Edit[@Name='Date *']",dataFile,"GeneralInformation","Date");
         enterBranch(dataFile,"GeneralInformation","Branch");
         enterCurrency(dataFile,"GeneralInformation","TransactionCurrency");
-        enterExchangeRate(dataFile,"GeneralInformation","ExchangeRate");
         enterPartyCode(dataFile,"GeneralInformation","PartyAccountCode");
-        Thread.sleep(3000);
+        Thread.sleep(1000);
         gstTransactionType("Intra State Sales to Registered Dealers");
         Thread.sleep(1000);
-        selectPendingsSalesOrder(voucherNum,"20250401");
-        Robot robot=new Robot();
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-        enterVoucherDiscount(dataFile,"GeneralInformation","VoucherDiscountPercentage");
+        selectPendingsSalesOrder(voucherNum, "20250401");
+        Thread.sleep(3000);
+        common.clickElement("xpath","//Button[@Name='OK']");
         enterCreditPeriod(dataFile,"GeneralInformation","CreditPeriod");
-        enterPriceList(dataFile,"GeneralInformation","PriceList");
+        enterPriceList(dataFile, "GeneralInformation", "PriceList");
         enterExecutive(dataFile,"GeneralInformation","Executive");
         enterRemarks(dataFile,"GeneralInformation","Remarks");
 
-        long generalInfoEndTime = System.nanoTime() - generalInfoStart;
-        FileUtil.writeTimeLogInMinutes("SQAE General Information End:- ", generalInfoEndTime);
 
         long addProductStart = System.nanoTime();
         addProduct();
         long addProductEnd = System.nanoTime() - addProductStart;
-        FileUtil.writeTimeLogInMinutes("SQAE Add Products:- ", addProductEnd);
+        FileUtil.writeTimeLogInMinutes("Sale Quotations Products Entering",addProductEnd);
 
-        long chargesDeductionsStart = System.nanoTime();
+        long start1 = System.nanoTime();
         addChargesAndDeductions();
-        long chargesDeductionsEnd = System.nanoTime() - chargesDeductionsStart;
-        FileUtil.writeTimeLogInMinutes("SQAE Charges And Deductions:- ", chargesDeductionsEnd);
+        long duration1 = System.nanoTime() - start1;
+        FileUtil.writeTimeLogInMinutes("Charges And Deductions ", duration1);
 
-        long otherInfoTabStart = System.nanoTime();
+        long start3 = System.nanoTime();
         otherInfo();
-        long otherInfoTabEnd = System.nanoTime() - otherInfoTabStart;
-        FileUtil.writeTimeLogInMinutes("SQAE Other Info:- ", otherInfoTabEnd);
+        long duration3 = System.nanoTime() - start3;
+        FileUtil.writeTimeLogInMinutes("OtherInfo ", duration3);
 
-        long additionalInfoTabStart = System.nanoTime();
+        long start4 = System.nanoTime();
+        common.clickElement("xpath","//TabItem[contains(@Name,'Additional Information  ')]");
         additionalInformation();
-        long additionalInfoTabEnd = System.nanoTime() - additionalInfoTabStart;
-        FileUtil.writeTimeLogInMinutes("SQAE Additional Information:- ", additionalInfoTabEnd);
+        long duration4 = System.nanoTime() - start4;
+        FileUtil.writeTimeLogInMinutes("Additional Information ", duration4);
 
-        long shippingAddressTabStart = System.nanoTime();
-        shippingAddress();
-        long shippingAddressTabEnd = System.nanoTime() - shippingAddressTabStart;
-        FileUtil.writeTimeLogInMinutes("SQAE Additional Information:- ", shippingAddressTabEnd);
 
-        long termsConditionsTabStart = System.nanoTime();
+        long addShippingAddress =System.nanoTime();
+        navigateToShippingAddress();
+        addShippingAddress();
+        long addShippingAddressEnd =System.nanoTime()- addShippingAddress;
+        FileUtil.writeTimeLogInMinutes("Shipping Address:- ", addShippingAddressEnd);
+
+        long start5 = System.nanoTime();
+        navigateToTermsAndConditions();
         termsAndCondition();
-        long termsConditionsTabEnd = System.nanoTime() - termsConditionsTabStart;
-        FileUtil.writeTimeLogInMinutes("SQAE Terms And Conditions:- ", termsConditionsTabEnd);
+        long duration5 = System.nanoTime() - start5;
+        FileUtil.writeTimeLogInMinutes("Terms And Conditions ", duration5);
 
-        //saving and IO generating
+//        //save
         transactionSave();
-        String newVoucherID =newTransactionID(oldVoucherID);
-        System.out.println("newID: "+newVoucherID);
-        Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
-        String prefix = newVoucherID.replaceAll("\\d", "");
-        String number = newVoucherID.replaceAll("\\D", "");
-        Thread.sleep(2000);
-        navigateToMastersWhen3Steps("Tools","Automated Testing","Generate Input File");
-        rootDriver=common.initializeDriver("Root");
-        Thread.sleep(3000);
-        common.findWebElement("xpath", "//Window[@Name='Export Transaction Postings']/Pane/Edit[@Name='Voucher Series']").sendKeys(prefix);
-        common.findWebElement("xpath","//Window[@Name='Export Transaction Postings']/Pane/Edit[@Name='Voucher Number']").sendKeys(number);
-        common.clickElement("xpath","//Button[@Name='OK']");
-        Thread.sleep(2000);
-        common.clickElement("xpath","//Window[@Name='Export Transaction Postings']/Window[@Name='Export to Excel']/Button[@Name='OK']");
-        Thread.sleep(1500);
-        if (common.findWebElement("xpath","//Text").getText().equals("Data Exported successfully!")) {
-            common.clickElement("xpath", "//Button[@Name='OK']");
-        }
-        else if(common.findWebElement("xpath","//Text").getText().equals("Transactionno doesnot exist.")){
-            Assert.fail("Transaction does not exists");
-            common.clickElement("xpath", "//Button[@Name='OK']");
-        }
-
-        Thread.sleep(2000);
-        navigateToMastersWhen3Steps("Tools","Automated Testing","Generate Output File");
-        rootDriver=common.initializeDriver("Root");
-        Thread.sleep(3000);
-        common.findWebElement("xpath", "//Window[@Name='Export Transaction Postings']/Pane/Edit[@Name='Voucher Series']").sendKeys(prefix);
-        common.findWebElement("xpath","//Window[@Name='Export Transaction Postings']/Pane/Edit[@Name='Voucher Number']").sendKeys(number);
-        common.clickElement("xpath","//Button[@Name='OK']");
-        Thread.sleep(2000);
-        common.clickElement("xpath","//Window[@Name='Export Transaction Postings']/Window[@Name='Export to Excel']/Button[@Name='OK']");
-        Thread.sleep(1500);
-        if (common.findWebElement("xpath","//Text").getText().equals("Data Exported successfully!")) {
-            common.clickElement("xpath", "//Button[@Name='OK']");
-        }
-        else if(common.findWebElement("xpath","//Text").getText().equals("Transactionno doesnot exist.")){
-            Assert.fail("Transaction does not exists");
-            common.clickElement("xpath", "//Button[@Name='OK']");
-        }
-
-        long quotationAgainstEnquiry =System.nanoTime()-start;
-        FileUtil.writeTimeLogInMinutes("Sales Quotation against Enquiry End: ", quotationAgainstEnquiry);
-//        excelUtil.excelComparator("","",newVoucherID);
-
+        String newVoucherID = newTransactionID(oldVoucherID);
+        System.out.println("newID: " + newVoucherID);
+        Assert.assertNotEquals(newVoucherID, oldVoucherID, "Voucher Numbers are same. Check Transaction.");
+        exportIOFiles(newVoucherID,rootDriver);
         return newVoucherID;
-
     }
 
-    public void addProduct() throws IOException, ParseException, InterruptedException {
+    public void addProduct() throws IOException {
         List<String> productCode=readExcelData(dataFile,"Items","ProductCode");
         System.out.println("productCodes :"+productCode.size());
 
-//        for (int i = 0; i < productCode.size() ; i++) {
-//            addData("xpath","//Edit[@Name='Product Code Row "+i+", Not sorted.']",dataFile,"Items","ProductCode",i);
-//        }
         List<WebElement> uom = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'UOM * Row ')]");
-        List<WebElement> quantity = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Quantity * Row ')]");
+        List<WebElement> quantity = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Quantity * Row ')]");
         List<WebElement> DeliveryDate = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Delivery Date Row ')]");
         List<WebElement> Mrp = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'MRP Row ')]");
         List<WebElement> UnitRate = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Unit Rate Row ')]");
-
+        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 670, 0);
         if (!discountIsClicked) {
             common.clickElement("xpath", "//Header[@Name='Disc Amount 1']");
-            common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 700, 0);
             common.clickElement("xpath", "//Header[@Name='Disc Amount 2']");
             common.clickElement("xpath", "//Header[@Name='Disc Amount 3']");
             discountIsClicked = true;
@@ -166,6 +115,7 @@ public class SalesQuotationAgainstEnquiry extends TransactionsBaseClass {
         List<WebElement> HSNCode = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'HSN Row ')]");
         List<WebElement> GSTProductCategory = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'GST Product Category Row ')]");
         List<WebElement> CESSProductCategory = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'CESS Product Category Row ')]");
+        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 500, 0);
         if (!gstAmountClicked) {
             common.clickElement("xpath", "//Header[@Name='GST Amount']");
             gstAmountClicked = true;
@@ -173,7 +123,6 @@ public class SalesQuotationAgainstEnquiry extends TransactionsBaseClass {
         List<WebElement> Department = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Department Row ')]");
         List<WebElement> Project = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Project Row ')]");
         List<WebElement> ProfitCentre = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Profit Centre Row ')]");
-        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 500, 0);
         List<WebElement> CostCentre = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Cost Centre Row ')]");
         List<WebElement> Comments = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Comments Row ')]");
         List<WebElement> Info1 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Info 1 Row ')]");
@@ -189,6 +138,7 @@ public class SalesQuotationAgainstEnquiry extends TransactionsBaseClass {
         List<WebElement> Date1 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Date 1 Row ')]");
         List<WebElement> Date2 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Date 2 Row ')]");
         List<WebElement> Date3 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Date 3 Row ')]");
+        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 260, 0);
         List<WebElement> Bool1 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/CheckBox[contains(@Name,'Bool 1 Row ')]");
         List<WebElement> Bool2 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/CheckBox[contains(@Name,'Bool 2 Row ')]");
         List<WebElement> Bool3 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/CheckBox[contains(@Name,'Bool 3 Row ')]");
@@ -200,6 +150,7 @@ public class SalesQuotationAgainstEnquiry extends TransactionsBaseClass {
             enterListDate(DeliveryDate.get(i),dataFile,"Items","DeliveryDate",i);
             enterListData(Mrp.get(i),dataFile,"Items","MRP",i);
             enterListData(UnitRate.get(i),dataFile,"Items","UnitRate",i);
+            common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 550, 0);
             enterListData(DiscountBasis1.get(i),dataFile,"Items","DiscountBasis1",i);
             enterListData(Discount1.get(i),dataFile,"Items","Discount1",i);
             enterListData(DiscountBasis2.get(i),dataFile,"Items","DiscountBasis2",i);
@@ -207,7 +158,6 @@ public class SalesQuotationAgainstEnquiry extends TransactionsBaseClass {
             enterListData(DiscountBasis3.get(i),dataFile,"Items","DiscountBasis3",i);
             enterListData(Discount3.get(i),dataFile,"Items","Discount3",i);
             enterListData(HSNCode.get(i),dataFile,"Items","HSN",i);
-            common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 38, 0);
             enterListData(GSTProductCategory.get(i),dataFile,"Items","GSTProductCategory",i);
             enterListData(CESSProductCategory.get(i),dataFile,"Items","CESSProductCategory",i);
             enterListData(Department.get(i),dataFile,"Items","Department",i);
@@ -225,11 +175,10 @@ public class SalesQuotationAgainstEnquiry extends TransactionsBaseClass {
             enterListData(Value3.get(i),dataFile,"Items","Value3",i);
             enterListData(Value4.get(i),dataFile,"Items","Value4",i);
             enterListData(Value5.get(i),dataFile,"Items","Value5",i);
-            common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 38, 0);
             enterListDate(Date1.get(i),dataFile,"Items","Date1",i);
             enterListDate(Date2.get(i),dataFile,"Items","Date2",i);
             enterListDate(Date3.get(i),dataFile,"Items","Date3",i);
-            common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 50, 0);
+            common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 100, 0);
             clickListData(Bool1.get(i));
             clickListData(Bool2.get(i));
             clickListData(Bool3.get(i));
@@ -253,8 +202,8 @@ public class SalesQuotationAgainstEnquiry extends TransactionsBaseClass {
         List<WebElement> percentageRowList = common.findWebElements("xpath", "//Table[@Name='ChargesAndDeductions']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Percentage Row ')]");
         List<WebElement> departmentRowList = common.findWebElements("xpath", "//Table[@Name='ChargesAndDeductions']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Department Row ')]");
         List<WebElement> projectRowList = common.findWebElements("xpath", "//Table[@Name='ChargesAndDeductions']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Project Row ')]");
-        List<WebElement> profitCentreRowList = common.findWebElements("xpath", "//Table[@Name='ChargesAndDeductions']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Profit Centre Row ')]");
         List<WebElement> costCentreRowList = common.findWebElements("xpath", "//Table[@Name='ChargesAndDeductions']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Cost Centre Row ')]");
+        List<WebElement> profitCentreRowList = common.findWebElements("xpath", "//Table[@Name='ChargesAndDeductions']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Profit Centre Row ')]");
         List<WebElement> commentsRowList = common.findWebElements("xpath", "//Table[@Name='ChargesAndDeductions']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Comments Row ')]");
 
         for (int i = 0; i < chargesAndDeductions.size(); i++) {
@@ -269,11 +218,11 @@ public class SalesQuotationAgainstEnquiry extends TransactionsBaseClass {
         }
     }
 
-    public void otherInfo() throws InterruptedException, IOException {
+    public void otherInfo() throws IOException, InterruptedException {
         navigateToOtherInfoTab();
         EnterData("//Edit[@Name='Reference Bill No']",dataFile,"OtherInfo","ReferenceBillNo");
-        Thread.sleep(5000);
-        common.clickElement("xpath","//Window/Button[@Name='OK']");
+        Thread.sleep(1000);
+//        common.clickElement("xpath","//Button[@Name='OK']");
         EnterDate("//Edit[@Name='Reference Bill Date']",dataFile,"OtherInfo","ReferenceBillDate");
         EnterData("//Edit[@Name='Other Info 1']",dataFile,"OtherInfo","OtherInfo1");
         EnterData("//Edit[@Name='Other Info 2']",dataFile,"OtherInfo","OtherInfo2");
@@ -283,7 +232,6 @@ public class SalesQuotationAgainstEnquiry extends TransactionsBaseClass {
     }
 
     public void  additionalInformation() throws IOException {
-        common.clickElement("xpath","//TabItem[contains(@Name,'Additional Information  ')]");
         EnterData("//Edit[@Name='Info 1']",dataFile,"AdditionalInformation","Info1");
         EnterData("//Edit[@Name='Info 2']",dataFile,"AdditionalInformation","Info2");
         EnterData("//Edit[@Name='Info 3']",dataFile,"AdditionalInformation","Info3");
@@ -297,13 +245,13 @@ public class SalesQuotationAgainstEnquiry extends TransactionsBaseClass {
         EnterDate("//Edit[@Name='Date 1']",dataFile,"AdditionalInformation","Date1");
         EnterDate("//Edit[@Name='Date 2']",dataFile,"AdditionalInformation","Date2");
         EnterDate("//Edit[@Name='Date 3']",dataFile,"AdditionalInformation","Date3");
-        common.clickElement("xpath","//CheckBox[@Name='Bool 1']");
-        common.clickElement("xpath","//CheckBox[@Name='Bool 2']");
-        common.clickElement("xpath","//CheckBox[@Name='Bool 3']");
+        common.clickElement("xpath", "//CheckBox[@Name='Bool 1']");
+        common.clickElement("xpath", "//CheckBox[@Name='Bool 2']");
+        common.clickElement("xpath", "//CheckBox[@Name='Bool 3']");
     }
 
-    public void shippingAddress(){
-        common.clickElement("xpath","//TabItem[contains(@Name,'Shipping Address  ')]");
+    public void addShippingAddress(){
+        navigateToShippingAddress();
         EnterData("//Edit[@Name='Party Name']",dataFile,"ShippingAddress","PartyAccount");
         EnterData("//Edit[@Name='GSTIN']",dataFile,"ShippingAddress","GSTIN");
         EnterData("//Edit[@Name='Address 1 *']",dataFile,"ShippingAddress","Address1");
@@ -311,16 +259,14 @@ public class SalesQuotationAgainstEnquiry extends TransactionsBaseClass {
         EnterData("//Edit[@Name='Address 3']",dataFile,"ShippingAddress","Address3");
         EnterData("//Edit[@Name='City *']",dataFile,"ShippingAddress","City");
         EnterData("//Edit[@Name='State *']",dataFile,"ShippingAddress","State");
-        EnterData("//Edit[@Name='State Code *']",dataFile,"ShippingAddress","StateCode");
+//        EnterData("//Edit[@Name='State Code *']",dataFile,"ShippingAddress","StateCode");
         EnterData("//Edit[@Name='Country *']",dataFile,"ShippingAddress","Country");
         EnterData("//Edit[@Name='Zip *']",dataFile,"ShippingAddress","Zip");
         EnterData("//Edit[@Name='Telephone No']",dataFile,"ShippingAddress","TelephoneNo");
-        EnterData("//Edit[@Name='Mobile No']",dataFile,"ShippingAddress","MobileNo");
-
+        EnterData("//Edit[@Name='Mobile No']/ancestor::Edit[@Name='Mobile No']",dataFile,"ShippingAddress","MobileNo");
     }
 
     public  void termsAndCondition() throws IOException {
-        common.clickElement("xpath","//TabItem[contains(@Name,'Terms And Conditions')]");
         List<String> termsAndConditions=readExcelData(dataFile,"TermsAndConditions","TermType");
         for (int i = 0; i < termsAndConditions.size() ; i++) {
             addData("xpath","//Edit[@Name='Term Type * Row "+i+", Not sorted.']",dataFile,"TermsAndConditions","TermType",i);

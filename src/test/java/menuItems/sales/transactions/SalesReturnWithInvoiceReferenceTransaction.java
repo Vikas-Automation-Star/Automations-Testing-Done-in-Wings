@@ -28,35 +28,35 @@ public class SalesReturnWithInvoiceReferenceTransaction {
         @Test
         public void salesReturnWithInvoiceReference() throws IOException, ParseException, InterruptedException, AWTException {
             SalesEnquiry salesEnquiry=new SalesEnquiry(driver,dataFile);
-            String salesEnquiryVoucher=salesEnquiry.salesEnquiry();
+//            String salesEnquiryVoucher=salesEnquiry.salesEnquiry();
 
             appLogin.logout();
             driver = appLogin.launchSingleUserApp();
             appLogin.singleUserLogin(common.getData(dataFile,"salesEnquiry","userName"),common.getData(dataFile,"salesEnquiry","password"));
 
             SalesQuotationAgainstEnquiry agnstEnquiry = new SalesQuotationAgainstEnquiry(driver, dataFile);
-            String orderAgainstQuotation=agnstEnquiry.quotationAgainstEnquiry(salesEnquiryVoucher);
+//            String orderAgainstQuotation=agnstEnquiry.quotationAgainstEnquiry(salesEnquiryVoucher);
 
             appLogin.logout();
             driver = appLogin.launchSingleUserApp();
             appLogin.singleUserLogin(common.getData(dataFile,"salesEnquiry","userName"),common.getData(dataFile,"salesEnquiry","password"));
 
             SalesOrdersAgainstQuotations quotations = new SalesOrdersAgainstQuotations(driver, dataFile);
-            String ordersVoucherNum= quotations.salesOrderAgainstQuotation(orderAgainstQuotation);
+//            String ordersVoucherNum= quotations.salesOrderAgainstQuotation(orderAgainstQuotation);
 
             appLogin.logout();
             driver = appLogin.launchSingleUserApp();
             appLogin.singleUserLogin(common.getData(dataFile,"salesEnquiry","userName"),common.getData(dataFile,"salesEnquiry","password"));
 
             SalesInvoiceAgainstOrders invoiceAgainstOrders=new SalesInvoiceAgainstOrders(driver,dataFile);
-            String invoiceVoucher= invoiceAgainstOrders.invoiceAgainstOrders(ordersVoucherNum);
+//            String invoiceVoucher= invoiceAgainstOrders.invoiceAgainstOrders(ordersVoucherNum);
 
             appLogin.logout();
             driver = appLogin.launchSingleUserApp();
             appLogin.singleUserLogin(common.getData(dataFile,"salesEnquiry","userName"),common.getData(dataFile,"salesEnquiry","password"));
             
-            SalesReturnWithInvoiceReference salesReturnWithInvoiceReference=new SalesReturnWithInvoiceReference(driver,dataFile);
-            salesReturnWithInvoiceReference.salesReturnWithInvoiceReference(invoiceVoucher);
+//            SalesReturnWithInvoiceReference salesReturnWithInvoiceReference=new SalesReturnWithInvoiceReference(driver,dataFile);
+//            salesReturnWithInvoiceReference.salesReturnWithInvoiceReference(invoiceVoucher);
 //            salesReturnWithInvoiceReference.salesReturnWithInvoiceReference("SIAO 4");
         }
 

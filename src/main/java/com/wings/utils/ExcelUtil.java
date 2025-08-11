@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class ExcelUtil {
     public boolean  excelComparator(String file1Path,String file2Path,String transactionName) {
-       boolean diference=true;
+        boolean diference=true;
         String timestamp = Time.timeStamp();
         String diffOutputPath = "output/" + transactionName + "_" + timestamp + ".xlsx";
         try (
@@ -29,13 +29,9 @@ public class ExcelUtil {
                 Sheet sheet1 = s < wb1.getNumberOfSheets() ? wb1.getSheetAt(s) : null;
                 Sheet sheet2 = s < wb2.getNumberOfSheets() ? wb2.getSheetAt(s) : null;
 
-                String sheetName = (sheet1 != null) ? sheet1.getSheetName() :
-                        (sheet2 != null) ? sheet2.getSheetName() : "Sheet" + (s + 1);
+                String sheetName = (sheet1 != null) ? sheet1.getSheetName() : (sheet2 != null) ? sheet2.getSheetName() : "Sheet" + (s + 1);
 
-                int maxRows = Math.max(
-                        sheet1 != null ? sheet1.getLastRowNum() : 0,
-                        sheet2 != null ? sheet2.getLastRowNum() : 0
-                );
+                int maxRows = Math.max(sheet1 != null ? sheet1.getLastRowNum() : 0, sheet2 != null ? sheet2.getLastRowNum() : 0);
 
                 for (int i = 0; i <= maxRows; i++) {
                     Row row1 = sheet1 != null ? sheet1.getRow(i) : null;
@@ -67,7 +63,6 @@ public class ExcelUtil {
             try (FileOutputStream fos = new FileOutputStream(diffOutputPath)) {
                 diffWb.write(fos);
             }
-
             System.out.println("✅ Comparison completed. Differences saved to: " + diffOutputPath);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -110,7 +105,8 @@ public class ExcelUtil {
 
     public static void main(String[] args) throws FileNotFoundException {
         ExcelUtil excelUtil=new ExcelUtil();
-        excelUtil.excelComparator("./src/main/resources/menuItems/Sales/Transactions/460472_SE 16.xlsx",
-                "./src/main/resources/menuItems/Sales/Transactions/460472_SE 16_Output.xlsx","SE1");
+        excelUtil.excelComparator("./src/main/resources/menuItems/Sales/Transactions/480460_SI1 1_Output1.xlsx",
+                "./src/main/resources/menuItems/Sales/Transactions/480460_SI1 1_Output2.xlsx","SaleInvoiceOutputFile");
     }
+
 }

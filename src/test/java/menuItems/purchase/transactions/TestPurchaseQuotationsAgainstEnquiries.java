@@ -16,25 +16,26 @@ import java.io.IOException;
 public class TestPurchaseQuotationsAgainstEnquiries {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    Common common;
-    String file = "./src/main/resources/menuItems/purchase/transactions/purchaseEnquiries.json";
+
+    String dataFile = "./src/main/resources/menuItems/purchase/transactions/461617 - Purchase Enquiries-AC_PE_3.xlsx";
+    String dataFile1 = "./src/main/resources/menuItems/purchase/transactions/461887 - Purchase Quotations against Enquiries-AC_PQAPE_1.xlsx";
+
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        common=new Common(driver);
-        driver = appLogin.launchSingleUserApp();
-        appLogin.singleUserLogin(common.getData(file,"Purchase Enquiries","userName"),common.getData(file,"Purchase Enquiries","password"));
+        driver= appLogin.login();
     }
 
     @Test
     public void purchaseQuotationsAgainstEnquiries() throws IOException, ParseException, InterruptedException, AWTException {
-        PurchaseEnquiries enquiries=new PurchaseEnquiries(driver,file);
-        PurchaseQuotationsAgainstEnquiries pqae = new PurchaseQuotationsAgainstEnquiries(driver, file);
-        pqae.purchaseQuotationsAgainstEnquiry(enquiries.purchaseEnquires());
+        PurchaseEnquiries enquiries=new PurchaseEnquiries(driver,dataFile);
+        String pe=enquiries.purchaseEnquires();
+        PurchaseQuotationsAgainstEnquiries pqae = new PurchaseQuotationsAgainstEnquiries(driver, dataFile1);
+        pqae.purchaseQuotationsAgainstEnquiry(pe);
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-        appLogin.logout();
+//        appLogin.logout();
     }
 }

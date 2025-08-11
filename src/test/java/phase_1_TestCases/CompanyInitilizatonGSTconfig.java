@@ -18,8 +18,8 @@ public class CompanyInitilizatonGSTconfig {
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        company.login();
-        company.logout();
+//        company.login();
+//        company.logout();
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }

@@ -15,13 +15,11 @@ public class TestPurchaseVouchers {
 
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String file = "./src/main/resources/menuItems/purchase/transactions/479081_Purchase Vouchers-AC.xls";
+    String file = "./src/main/resources/menuItems/purchase/transactions/479081 - Purchase Vouchers-AC_PV_9.xlsx";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
         driver=appLogin.login();
-//        driver = appLogin.launchSingleUserApp();
-//        appLogin.singleUserLogin();
     }
 
     @Test
@@ -32,7 +30,6 @@ public class TestPurchaseVouchers {
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
-
 }

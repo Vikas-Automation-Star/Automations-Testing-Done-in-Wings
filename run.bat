@@ -1,4 +1,4 @@
 cd "C:\Users\Dell\IdeaProjects\wings-testautomation"
-call mvn clean install "-DTestNGFile=TestNG/MenuItems/purchaseSuite.xml"
+mvn clean install "-DTestNGFile=TestNG/MenuItems/salesSuite.xml"
 call mvn compile exec:java
 pause

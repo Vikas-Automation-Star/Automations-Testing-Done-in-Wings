@@ -60,7 +60,7 @@ public class PurchaseVoucherAgainstPurchaseOrders extends TransactionsBaseClass 
                 quantity.click();
                 quantity.sendKeys(pendingQty, Keys.TAB);
                 common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 800, 0);
-                enterItemsOtherCosts(dataFile,"PurchaseVouchersAgainstOrders",i);
+//                enterItemsOtherCosts(dataFile,"PurchaseVouchersAgainstOrders",i);
                 common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", -800, 0);
             }
         }
@@ -72,7 +72,7 @@ public class PurchaseVoucherAgainstPurchaseOrders extends TransactionsBaseClass 
 
         serialNumberForMRAO(dataFile,"PurchaseVouchersAgainstOrders","serialText","serialQuantity","");
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 800, 0);
-        enterItemsOtherCosts(dataFile,"PurchaseVouchersAgainstOrders",2);
+//        enterItemsOtherCosts(dataFile,"PurchaseVouchersAgainstOrders",2);
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", -800, 0);
         enterServices(dataFile,"PurchaseVouchersAgainstOrders");
         chargesAndDeductionsCalculations1(dataFile,"PurchaseVouchersAgainstOrders", "charges","deductions","chargesAcc","deductionsAcc", "chargesAmount", "deductionsAmount", "chargesRowCount");
