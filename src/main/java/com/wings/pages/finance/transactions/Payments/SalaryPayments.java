@@ -1,0 +1,122 @@
+package com.wings.pages.finance.transactions.Payments;
+
+import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.Common;
+import com.wings.utils.FileUtil;
+import io.appium.java_client.windows.WindowsDriver;
+import org.json.simple.parser.ParseException;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import java.awt.*;
+import java.io.IOException;
+import java.util.List;
+
+public class SalaryPayments extends TransactionsBaseClass {
+        WindowsDriver driver;
+        Common common;
+        String dataFile;
+
+        public SalaryPayments(WindowsDriver driver, String file) {
+            super(driver);
+            common = new Common( this.driver = driver);
+            dataFile = file;
+        }
+
+        public String salaryPayments() throws InterruptedException, IOException, ParseException, AWTException {
+            long start = System.nanoTime();
+            navigateToMastersWhen3Steps("Finance","Payments", "Salary Payments");
+            Thread.sleep(1000);
+            long generalInfoStart=System.nanoTime();
+            Thread.sleep(5000);
+            String oldVoucherID =oldTTransactionID();
+            enterVoucherType(dataFile,"GeneralInformation","VoucherType");
+            EnterDate("//Edit[@Name='Date *']",dataFile,"GeneralInformation","Date");
+            enterBranch(dataFile,"GeneralInformation","Branch");
+            enterCurrency(dataFile,"GeneralInformation","TransactionCurrency");
+            enterBankAccountCode(dataFile,"GeneralInformation","BankAccountCode");
+            enterExecutive(dataFile,"GeneralInformation","Executive");
+            enterRemarks(dataFile,"GeneralInformation","Remarks");
+            long generalInfoEndTime = System.nanoTime() - generalInfoStart;
+            FileUtil.writeTimeLogInMinutes("Salary Payments General information End:- ", generalInfoEndTime);
+
+            //F3-Parties
+            long addProductStart=System.nanoTime();
+            addParties();
+            long addProductEnd=System.nanoTime()-addProductStart;
+            FileUtil.writeTimeLogInMinutes("Salary Payments Add Products:- ",addProductEnd);
+            //allocations
+            long allocationsTabStart=System.nanoTime();
+            addAllocations();
+            long allocationsTabEnd=System.nanoTime() - allocationsTabStart;
+            FileUtil.writeTimeLogInMinutes("Salary Payments Allocations Tab:- ", allocationsTabEnd);
+            //save
+            transactionSave();
+            String newVoucherID =newTransactionID(oldVoucherID);
+            System.out.println("newID: "+newVoucherID);
+            Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
+            //end
+            long salesInvoiceEnd = System.nanoTime() - start ;
+            FileUtil.writeTimeLogInMinutes("Salary Payments ended at:- ", salesInvoiceEnd );
+            //IO
+            String voucher = newVoucherID.replaceAll("\\d", "");
+            String number = newVoucherID.replaceAll("\\D", "");
+            Thread.sleep(2000);
+            long iofIlesStart=System.nanoTime();
+            exportIOFiles("Generate Input File", voucher,number);
+            exportIOFiles("Generate Output File", voucher,number);
+            long ioFilesEnd=System.nanoTime()-iofIlesStart;
+            FileUtil.writeTimeLogInMinutes("Salary Payments IO files ended at:- ", ioFilesEnd );
+
+//        excelUtil.excelComparator("","",newVoucherID);
+            return newVoucherID;
+        }
+
+        public void addParties() throws IOException{
+            List<String> productCode = readExcelData(dataFile, "Parties", "AccountCode");
+            System.out.println("productCodes :" + productCode.size());
+            for (int i = 0; i < productCode.size(); i++) {
+                addData("xpath", "//Edit[@Name='Account Code Row "+i+", Not sorted.']", dataFile, "Parties", "AccountCode", i);
+            }
+            List<WebElement> chequeNumber = common.findWebElements("xpath", "//Table[@Name='Parties']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Cheque/EFT No * Row ')]");
+            List<WebElement> chequeDate = common.findWebElements("xpath", "//Table[@Name='Parties']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Cheque Date * Row ')]");
+            List<WebElement> amount = common.findWebElements("xpath", "//Table[@Name='Parties']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Amount * Row ')]");
+            List<WebElement> Department = common.findWebElements("xpath", "//Table[@Name='Parties']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Department Row ')]");
+            List<WebElement> Project = common.findWebElements("xpath", "//Table[@Name='Parties']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Project Row ')]");
+            List<WebElement> ProfitCentre = common.findWebElements("xpath", "//Table[@Name='Parties']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Profit Centre Row ')]");
+            List<WebElement> CostCentre = common.findWebElements("xpath", "//Table[@Name='Parties']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Cost Centre Row ')]");
+            List<WebElement> Comments = common.findWebElements("xpath", "//Table[@Name='Parties']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Comments Row ')]");
+
+            for (int i = 0; i < productCode.size(); i++) {
+                enterListData(chequeNumber.get(i), dataFile, "Parties", "ChequeNo", i);
+                enterListDate(chequeDate.get(i), dataFile, "Parties", "ChequeDate", i);
+                enterListData(amount.get(i), dataFile, "Parties", "Amount", i);
+                enterListData(Department.get(i), dataFile, "Parties", "Department", i);
+                enterListData(Project.get(i), dataFile, "Parties", "Project", i);
+                enterListData(ProfitCentre.get(i), dataFile, "Parties", "ProfitCentre", i);
+                enterListData(CostCentre.get(i), dataFile, "Parties", "CostCentre", i);
+                enterListData(Comments.get(i), dataFile, "Parties", "Comments", i);
+            }
+        }
+
+        public void otherInfo() throws InterruptedException, IOException {
+            navigateToOtherInfoTab();
+            EnterData("//Edit[@Name='Reference Bill No']",dataFile,"OtherInfo","ReferenceBillNo");
+            Thread.sleep(5000);
+            common.clickElement("xpath","//Window/Button[@Name='OK']");
+            EnterDate("//Edit[@Name='Reference Bill Date']",dataFile,"OtherInfo","ReferenceBillDate");
+            EnterData("//Edit[@Name='Other Info 1']",dataFile,"OtherInfo","OtherInfo1");
+            EnterData("//Edit[@Name='Other Info 2']",dataFile,"OtherInfo","OtherInfo2");
+            EnterData("//Edit[@Name='Other Info 3']",dataFile,"OtherInfo","OtherInfo3");
+            EnterData("//Edit[@Name='Other Info 4']",dataFile,"OtherInfo","OtherInfo4");
+            EnterData("//Edit[@Name='Other Info 5']",dataFile,"OtherInfo","OtherInfo5");
+        }
+        
+        public void addAllocations() {
+            common.clickElement("xpath", "//TabItem[contains(@Name,'Allocations')]");
+            EnterData( "//Edit[@Name='Department']", dataFile, "Allocations", "Department");
+            EnterData( "//Edit[@Name='Project']", dataFile, "Allocations", "Project");
+            EnterData("//Edit[@Name='Profit Centre']", dataFile, "Allocations", "ProfitCentre");
+            EnterData( "//Edit[@Name='Cost Centre']", dataFile, "Allocations", "CostCentre");
+        }
+
+    }

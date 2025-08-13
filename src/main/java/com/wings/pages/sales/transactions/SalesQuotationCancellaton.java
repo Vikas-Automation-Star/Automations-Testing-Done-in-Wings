@@ -77,8 +77,11 @@ public class SalesQuotationCancellaton extends TransactionsBaseClass {
         String prefix = newVoucherID.replaceAll("\\d", "");
         String number = newVoucherID.replaceAll("\\D", "");
         Thread.sleep(2000);
+        long iOFileStart =System.nanoTime();
         exportIOFiles("Generate Input File", prefix, number);
         exportIOFiles("Generate Output File", prefix, number);
+        long ioFileEnd =System.nanoTime()- iOFileStart;
+        FileUtil.writeTimeLogInMinutes("SQC IO End: ", ioFileEnd);
 
         long quotationsCancellationEnd = System.nanoTime() - quotationCancellationStart;
         FileUtil.writeTimeLogInMinutes("Sales Quotation Cancellation End: ", quotationsCancellationEnd);

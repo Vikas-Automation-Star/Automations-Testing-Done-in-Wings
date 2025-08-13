@@ -84,8 +84,11 @@ public class SalesOrderCancellation extends TransactionsBaseClass {
         String prefix = newVoucherID.replaceAll("\\d", "");
         String number = newVoucherID.replaceAll("\\D", "");
         Thread.sleep(2000);
+        long iOFileStart =System.nanoTime();
         exportIOFiles("Generate Input File",prefix,number);
         exportIOFiles("Generate Output File",prefix,number);
+        long ioFileEnd =System.nanoTime()- iOFileStart;
+        FileUtil.writeTimeLogInMinutes("SOC IO End: ", ioFileEnd);
 //        excelUtil.excelComparator("","",newVoucherID);
         return newVoucherID;
     }

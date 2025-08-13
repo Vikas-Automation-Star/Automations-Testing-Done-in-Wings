@@ -146,9 +146,11 @@ public class SalesInvoiceAgainstOrders extends TransactionsBaseClass {
         String series = newVoucherID.replaceAll("\\d", "");
         String number = newVoucherID.replaceAll("\\D", "");
         Thread.sleep(2000);
+        long iOFileStart =System.nanoTime();
         exportIOFiles("Generate Input File",series,number);
         exportIOFiles("Generate Output File",series,number);
-
+        long ioFileEnd =System.nanoTime()- iOFileStart;
+        FileUtil.writeTimeLogInMinutes("SIAO IO End: ", ioFileEnd);
 //        excelUtil.excelComparator("","",newVoucherID);
         return newVoucherID;
 

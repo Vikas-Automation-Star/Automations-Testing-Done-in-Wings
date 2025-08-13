@@ -83,7 +83,7 @@ public class PurchaseQuotation extends TransactionsBaseClass {
         Thread.sleep(2000);
         long quotationsEnd=System.nanoTime()-start;
         FileUtil.writeTimeLogInMinutes("PQ End: ", quotationsEnd);
-        long iOFileStart =System.nanoTime()-start;
+        long iOFileStart =System.nanoTime();
         exportIOFiles("Generate Input File",prefix,number);
         exportIOFiles("Generate Output File",prefix,number);
         long ioFileEnd =System.nanoTime()- iOFileStart;

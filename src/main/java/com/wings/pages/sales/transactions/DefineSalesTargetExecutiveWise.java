@@ -46,23 +46,29 @@ public class DefineSalesTargetExecutiveWise extends TransactionsBaseClass {
         long addProductStart = System.nanoTime();
         addProduct();
         long addProductEnd = System.nanoTime() - addProductStart;
-        FileUtil.writeTimeLogInMinutes("Deliveries Add Products:- ", addProductEnd);
+        FileUtil.writeTimeLogInMinutes("Define Sales Target Executive Wise Add Products:- ", addProductEnd);
 
         long otherInfoTabStart = System.nanoTime();
         otherInfo();
         long otherInfoTabEnd = System.nanoTime() - otherInfoTabStart;
-        FileUtil.writeTimeLogInMinutes("Deliveries Other Info:- ", otherInfoTabEnd);
+        FileUtil.writeTimeLogInMinutes("Define Sales Target Executive Wise Other Info:- ", otherInfoTabEnd);
 
         //saving and IO generating
         transactionSave();
         String newVoucherID =newTransactionID(oldVoucherID);
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
+        //end
+        long salesTargetEnd = System.nanoTime() - start ;
+        FileUtil.writeTimeLogInMinutes("Define Sales Target Executive Wise ended at:- ", salesTargetEnd);
         String prefix = newVoucherID.replaceAll("\\d", "");
         String number = newVoucherID.replaceAll("\\D", "");
         Thread.sleep(2000);
-       exportIOFiles("Generate Input File",prefix,number);
+        long iOFileStart =System.nanoTime();
+        exportIOFiles("Generate Input File",prefix,number);
        exportIOFiles("Generate Output File",prefix,number);
+        long ioFileEnd =System.nanoTime()- iOFileStart;
+        FileUtil.writeTimeLogInMinutes("Sales Target Executive wise IO End: ", ioFileEnd);
 //        excelUtil.excelComparator("","",newVoucherID);
         return newVoucherID;
     }

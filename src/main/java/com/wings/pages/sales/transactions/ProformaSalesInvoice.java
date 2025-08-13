@@ -104,8 +104,12 @@ public class ProformaSalesInvoice extends TransactionsBaseClass {
         String voucher = newVoucherID.replaceAll("\\d", "");
         String number = newVoucherID.replaceAll("\\D", "");
         Thread.sleep(2000);
-       exportIOFiles("Generate Input File", voucher,number);
+        long iOFileStart =System.nanoTime();
+
+        exportIOFiles("Generate Input File", voucher,number);
        exportIOFiles("Generate Output File", voucher,number);
+        long ioFileEnd =System.nanoTime()- iOFileStart;
+        FileUtil.writeTimeLogInMinutes("Proforma Sales Invoice IO End: ", ioFileEnd);
 //        excelUtil.excelComparator("","",newVoucherID);
         return newVoucherID;
     }

@@ -87,9 +87,11 @@ public class DeliveryReturns extends TransactionsBaseClass {
         String prefix = newVoucherID.replaceAll("\\d", "");
         String number = newVoucherID.replaceAll("\\D", "");
         Thread.sleep(2000);
+        long iOFileStart =System.nanoTime();
         exportIOFiles("Generate Input File",prefix,number);
         exportIOFiles("Generate Output File",prefix,number);
-
+        long ioFileEnd =System.nanoTime()- iOFileStart;
+        FileUtil.writeTimeLogInMinutes("DR IO End: ", ioFileEnd);
         long deliveryReturnsEnd =System.nanoTime()-start;
         FileUtil.writeTimeLogInMinutes("Delivery Returns End: ", deliveryReturnsEnd);
 //        excelUtil.excelComparator("","",newVoucherID);

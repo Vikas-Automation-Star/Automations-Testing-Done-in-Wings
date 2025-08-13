@@ -101,7 +101,7 @@ public class ProformaPurchaseVouchers extends TransactionsBaseClass {
         String voucher = newVoucherID.replaceAll("\\d", "");
         String number = newVoucherID.replaceAll("\\D", "");
         Thread.sleep(2000);
-        long iOFileStart =System.nanoTime()-start;
+        long iOFileStart =System.nanoTime();
         exportIOFiles("Generate Input File", voucher,number);
         exportIOFiles("Generate Output File", voucher,number);
         long ioFileEnd =System.nanoTime()- iOFileStart;

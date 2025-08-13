@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class PurchaseOrders extends TransactionsBaseClass {
-    WindowsDriver driver,rootDriver;
+    WindowsDriver driver;
     Common common;
     String dataFile;
     boolean gstAmountClicked=false,discountIsClicked=false,IsAmountHeaderClicked = false,otherChargesGSTCheckBox = false;
@@ -111,9 +111,11 @@ public class PurchaseOrders extends TransactionsBaseClass {
         String voucherString = newVoucherID.replaceAll("\\d", "");
         String number = newVoucherID.replaceAll("\\D", "");
         Thread.sleep(2000);
+        long iOFileStart =System.nanoTime();
         exportIOFiles("Generate Input File",voucherString,number);
-        Thread.sleep(1500);
         exportIOFiles("Generate Output File",voucherString,number);
+        long ioFileEnd =System.nanoTime()- iOFileStart;
+        FileUtil.writeTimeLogInMinutes("PO IO End: ", ioFileEnd);
 //        excelUtil.excelComparator("","",newVoucherID);
         return newVoucherID;
     }

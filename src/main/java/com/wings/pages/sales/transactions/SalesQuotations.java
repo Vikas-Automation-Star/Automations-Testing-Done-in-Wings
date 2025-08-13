@@ -98,8 +98,11 @@ public class SalesQuotations extends TransactionsBaseClass {
         String prefix = newVoucherID.replaceAll("\\d", "");
         String number = newVoucherID.replaceAll("\\D", "");
         Thread.sleep(2000);
+        long iOFileStart =System.nanoTime();
         exportIOFiles("Generate Input File",prefix,number);
         exportIOFiles("Generate Output File",prefix,number);
+        long ioFileEnd =System.nanoTime()- iOFileStart;
+        FileUtil.writeTimeLogInMinutes("SQ IO End: ", ioFileEnd);
 
         long quotationsEnd=System.nanoTime()-start;
         FileUtil.writeTimeLogInMinutes("Sales Quotation End: ", quotationsEnd);

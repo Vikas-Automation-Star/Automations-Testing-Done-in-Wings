@@ -114,6 +114,53 @@
 
 
 
+    <test name="PQ 1" description="Purchase Quotation" testID="1">
+        <classes>
+            <class name="menuItems.purchase.transactions.TestPurchaseQuotations"/>
+        </classes>
+    </test>
+
+    <test name="POC 1" description="Purchase Order Cancellation" testID="2">
+        <classes>
+            <class name="menuItems.purchase.transactions.TestPurchaseOrderCancellation"/>
+        </classes>
+    </test>
+
+    <test name="PPV 1" description="Proforma Purchase Vouchers" testID="3">
+        <classes>
+            <class name="menuItems.purchase.transactions.TestProformaPurchaseVouchers"/>
+        </classes>
+    </test>
+
+    <test name="MR 2" description="Material Receipts" testID="4">
+        <classes>
+            <class name="menuItems.purchase.transactions.TestMaterialReceipts"/>
+        </classes>
+    </test>
+
+    <test name="MRO 1" description="Material Receipts against Orders" testID="5">
+        <classes>
+            <class name="menuItems.purchase.transactions.TestMaterialReceiptsAgainstOrders"/>
+        </classes>
+    </test>
+
+    <test name="PVAMR 1" description="Purchase Vouchers Against Receipt" testID="6">
+        <classes>
+            <class name="menuItems.purchase.transactions.TestPurchaseVouchersAgainstReceipts"/>
+        </classes>
+    </test>
+
+    <test name="PPU 1" description="Purchase Prices" testID="7">
+        <classes>
+            <class name="menuItems.purchase.transactions.TestPurchasePrices"/>
+        </classes>
+    </test>
+
+    <test name="PR 1" description="Purchase Returns" testID="8">
+        <classes>
+            <class name="menuItems.purchase.transactions.TestPurchaseReturns"/>
+        </classes>
+    </test>
 
 
 

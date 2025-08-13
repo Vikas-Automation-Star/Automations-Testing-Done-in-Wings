@@ -57,11 +57,14 @@ public class SalesPrices extends TransactionsBaseClass {
         String prefix = newVoucherID.replaceAll("\\d", "");
         String number = newVoucherID.replaceAll("\\D", "");
         Thread.sleep(2000);
+        long iOFileStart =System.nanoTime();
         exportIOFiles("Generate Input File", prefix, number);
         exportIOFiles("Generate Output File", prefix, number);
+        long ioFileEnd =System.nanoTime()- iOFileStart;
+        FileUtil.writeTimeLogInMinutes("Sales Prices IO End: ", ioFileEnd);
 
-        long quotationsEnd = System.nanoTime() - start;
-        FileUtil.writeTimeLogInMinutes("Sales Prices End: ", quotationsEnd);
+        long saleSPriceEnd = System.nanoTime() - start;
+        FileUtil.writeTimeLogInMinutes("Sales Prices End: ", saleSPriceEnd);
 //        excelUtil.excelComparator("","",newVoucherID);
         return newVoucherID;
 
