@@ -15,6 +15,12 @@ import java.io.IOException;
 public class TestPurchaseEnquiries {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
+
+
+    private static final String TEMP_API_BODY_PURCHASE_ENQUIRY="./output/temp_api_request_bodies/purchaseEnquiries.json";
+    private static final String API_RESPONSE_PURCHASE_ENQUIRY="./output/api_responses/purchaseEnquiries.json";
+    private static final String OUTPUT_FILE="./src/main/resources/menuItems/purchase/transactions/461617 - Purchase Enquiries-AC_PE_3.xlsx";
+
     String dataFile = "./src/main/resources/menuItems/purchase/transactions/461617 - Purchase Enquiries-AC_PE_3.xlsx";
 
     @BeforeTest
@@ -23,13 +29,13 @@ public class TestPurchaseEnquiries {
     }
 
     @Test
-    public void purchaseEnquiries() throws IOException, ParseException, InterruptedException, AWTException {
+    public void purchaseEnquiries() throws IOException, ParseException, InterruptedException {
         PurchaseEnquiries pe = new PurchaseEnquiries(driver, dataFile);
-        pe.purchaseEnquires();
+        pe.purchaseEnquires(TEMP_API_BODY_PURCHASE_ENQUIRY,API_RESPONSE_PURCHASE_ENQUIRY,OUTPUT_FILE);
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 }

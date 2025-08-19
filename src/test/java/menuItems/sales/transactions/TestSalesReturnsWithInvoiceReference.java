@@ -14,6 +14,16 @@ import java.io.IOException;
 public class TestSalesReturnsWithInvoiceReference {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
+
+    private static final String TEMP_API_BODY_SALES_INVOICES="./output/temp_api_request_bodies/SalesInvoices.json";
+    private static final String API_RESPONSE_SALES_SALES_INVOICES="./output/api_responses/SalesInvoices.json";
+    private static final String OUTPUT_FILE1="./src/main/resources/menuItems/Sales/Transactions/480460 - Sales Invoices-AC_Output.xlsx";
+
+    private static final String TEMP_API_BODY_SRWIR="./output/temp_api_request_bodies/salesReturnsWithInvoiceReference.json";
+    private static final String API_RESPONSE_SRWIR="./output/api_responses/salesReturnsWithInvoiceReference.json";
+    private static final String OUTPUT_FILE2="./src/main/resources/menuItems/Sales/Transactions/480464 - Sales Return with Invoice Reference-AC_Output.xlsx";
+
+
     String dataFile = "./src/main/resources/menuItems/Sales/Transactions/480460 - Sales Invoices-AC.xlsx";
     String dataFile1 = "./src/main/resources/menuItems/Sales/Transactions/480464 - Sales Return with Invoice Reference-AC.xlsx";
 
@@ -24,14 +34,14 @@ public class TestSalesReturnsWithInvoiceReference {
 
     @Test
     public void salesReturnsWithInvoiceReference() throws IOException, ParseException, InterruptedException, AWTException {
-//        SalesInvoice salesInvoice=new SalesInvoice(driver,dataFile);
-//        String salesI=salesInvoice.salesInvoice();
-//
-//        appLogin.logout();
-//        driver= appLogin.login();
+        SalesInvoice invoice = new SalesInvoice(driver, dataFile);
+        String salesI= invoice.salesInvoice(TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_SALES_INVOICES,OUTPUT_FILE1);
+
+        appLogin.logout();
+        driver= appLogin.login();
 
         SalesReturnWithInvoiceReference salesRWIR =new SalesReturnWithInvoiceReference(driver,dataFile1);
-        salesRWIR.salesReturnWithInvoiceReference("SI 19");
+        salesRWIR.salesReturnWithInvoiceReference(salesI,TEMP_API_BODY_SRWIR,API_RESPONSE_SRWIR,OUTPUT_FILE2);
     }
 
     @AfterTest

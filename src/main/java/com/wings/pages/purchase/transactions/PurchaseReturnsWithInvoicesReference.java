@@ -2,6 +2,7 @@ package com.wings.pages.purchase.transactions;
 
 import com.wings.pages.Transaction;
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import com.wings.utils.Time;
@@ -15,7 +16,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class PurchaseReturnsWithInvoicesReference extends TransactionsBaseClass {
-    WindowsDriver driver;
+    WindowsDriver driver,rootDriver;
     Common common;
     String dataFile;
     boolean IsAmountHeaderClicked = false;
@@ -29,12 +30,15 @@ public class PurchaseReturnsWithInvoicesReference extends TransactionsBaseClass 
         dataFile = file;
     }
 
-    public void purchaseReturnsWithInvoicesReference(String voucherNum) throws InterruptedException, IOException, ParseException {
-        long start = System.nanoTime();
+    public void purchaseReturnsWithInvoicesReference(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException {
+        long start3 = System.nanoTime();
+        System.out.println("Purchase returns with invoice references stats at :"+start3);
 
         navigateToMastersWhen3Steps("Purchase","Invoices","Purchase Returns with Invoice Reference");
         Thread.sleep(3000);
         String oldVoucherID = oldTTransactionID();
+
+        long start = System.nanoTime();
 
         enterVoucherType(dataFile,"GeneralInformation","VoucherType");
         EnterDate("//Edit[@Name='Date *']",dataFile,"GeneralInformation","Date");
@@ -121,28 +125,14 @@ public class PurchaseReturnsWithInvoicesReference extends TransactionsBaseClass 
         long termsAndConditionsEnd = System.nanoTime() - termsAndConditions;
         FileUtil.writeTimeLogInMinutes("Enter Terms And Conditions", termsAndConditionsEnd);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        long start3 = System.nanoTime();
-
         transactionSave();
         String transactionId = newTransactionID(oldVoucherID);
+//        exportIOFiles(transactionId,rootDriver);
 
+        APIClient.validateAPIWithExcel(transactionId,tempAPIBodyUpdate,apiResponse,outputFile,"PurchaseReturnsWithInvoiceReferences");
 
         long duration3 = System.nanoTime() - start3;
-        FileUtil.writeTimeLog("purchaseReturns SaveAndVerify", duration3 /1000000000);
+        FileUtil.writeTimeLogInMinutes("purchase Returns with invoices references", duration3 /1000000000);
     }
 
     public void addProduct() throws InterruptedException, IOException, ParseException{
@@ -227,7 +217,7 @@ public class PurchaseReturnsWithInvoicesReference extends TransactionsBaseClass 
             enterListData(cessProductCategoryRowList.get(j), dataFile, "Items", "CESSProductCategory",j);
             Thread.sleep(1500);
 //            common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 700, 0);
-            enterListData(reasonRowList.get(j), dataFile, "Items", "Department",j);
+            enterListData(reasonRowList.get(j), dataFile, "Items", "Reason",j);
             enterListData(departmentRowList.get(j), dataFile, "Items", "Department",j);
             enterListData(projectRowList.get(j), dataFile, "Items", "Project",j);
             enterListData(profitCentreRowList.get(j), dataFile, "Items", "ProfitCentre",j);

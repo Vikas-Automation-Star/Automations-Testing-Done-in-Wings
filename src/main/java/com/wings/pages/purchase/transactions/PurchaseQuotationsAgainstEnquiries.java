@@ -1,6 +1,7 @@
 package com.wings.pages.purchase.transactions;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
@@ -25,7 +26,11 @@ public class PurchaseQuotationsAgainstEnquiries extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String purchaseQuotationsAgainstEnquiry(String voucherNum) throws InterruptedException, IOException, ParseException {
+    public String purchaseQuotationsAgainstEnquiry(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException {
+        long start1 = System.nanoTime();
+        System.out.println("Purchase quotations against enquiries start at :"+start1);
+
+
         navigateToMastersWhen3Steps("Purchase","Quotations","Purchase Quotations against Enquiries");
         Thread.sleep(3000);
         String oldVoucherID = oldTTransactionID();
@@ -83,12 +88,12 @@ public class PurchaseQuotationsAgainstEnquiries extends TransactionsBaseClass {
         long termsConditionsTabEnd =System.nanoTime()- termsConditionsTabStart;
         FileUtil.writeTimeLogInMinutes("Terms and Conditions Tab:- ", termsConditionsTabEnd);
 
-        long start1 = System.nanoTime();
         transactionSave();
         String transactionId = newTransactionID(oldVoucherID);
         Thread.sleep(1000);
-        exportIOFiles(transactionId,rootDriver);
+//        exportIOFiles(transactionId,rootDriver);
 
+        APIClient.validateAPIWithExcel(transactionId,tempAPIBodyUpdate,apiResponse,outputFile,"PurchaseQuotationsAgainstEnquiries");
         long duration1 = System.nanoTime() - start1;
         FileUtil.writeTimeLog("purchaseQuotationsAgainstEnquiry validating Tab Items UpTo summary",duration1/1000000000);
 

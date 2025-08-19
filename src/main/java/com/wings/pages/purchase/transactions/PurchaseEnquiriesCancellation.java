@@ -2,6 +2,7 @@ package com.wings.pages.purchase.transactions;
 
 import com.wings.pages.Transaction;
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import com.wings.utils.Time;
@@ -29,7 +30,10 @@ public class PurchaseEnquiriesCancellation extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public void purchaseEnquiriesCancellation(String voucherNum) throws InterruptedException, IOException, ParseException {
+    public void purchaseEnquiriesCancellation(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException {
+        long start = System.nanoTime();
+        System.out.println("Purchase Enquiries Cancellation Starts"+start);
+
         navigateToMastersWhen3Steps("Purchase","Enquiries","Purchase Enquiries Cancellation");
         Thread.sleep(2000);
         String oldVoucherID = oldTTransactionID();
@@ -75,10 +79,12 @@ public class PurchaseEnquiriesCancellation extends TransactionsBaseClass {
 
         transactionSave();
         String transactionId = newTransactionID(oldVoucherID);
-        long start = System.nanoTime();
+
         long PurchaseEnquiriesEnd = System.nanoTime() - start;
         FileUtil.writeTimeLog("purchaseEnquiries validating Tab Items UpTo summary", PurchaseEnquiriesEnd /1000000000);
-        exportIOFiles(transactionId,rootDriver);
+//        exportIOFiles(transactionId,rootDriver);
+
+        APIClient.validateAPIWithExcel(transactionId,tempAPIBodyUpdate,apiResponse,outputFile,"PurchaseEnquiriesCancellation");
 
     }
 

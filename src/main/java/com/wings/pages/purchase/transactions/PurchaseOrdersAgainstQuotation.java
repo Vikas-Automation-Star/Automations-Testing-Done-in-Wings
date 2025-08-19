@@ -1,6 +1,7 @@
 package com.wings.pages.purchase.transactions;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
@@ -24,7 +25,11 @@ public class PurchaseOrdersAgainstQuotation extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String purchaseOrdersAgainstQuotation(String voucherNum) throws InterruptedException, IOException, ParseException {
+    public String purchaseOrdersAgainstQuotation(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException {
+        long start3 = System.nanoTime();
+        System.out.println("PurchaseOrdersAgainstQuotations starts at :"+start3);
+
+
         navigateToMastersWhen3Steps("Purchase","Orders","Purchase Orders against Quotations");
         Thread.sleep(2000);
         String oldVoucherID = oldTTransactionID();
@@ -39,7 +44,7 @@ public class PurchaseOrdersAgainstQuotation extends TransactionsBaseClass {
         Thread.sleep(1000);
         selectPendingPurchaseOrder(voucherNum,"11-07-2025");
 //        selectPendingsSalesOrder(voucherNum,"11-07-2025");
-        Thread.sleep(3000);
+        Thread.sleep(4000);
         common.clickElement("xpath","//Button[@Name='OK']");
         enterCreditPeriod(dataFile,"GeneralInformation","CreditPeriod");
         enterPriceList(dataFile,"GeneralInformation","PriceList");
@@ -57,7 +62,6 @@ public class PurchaseOrdersAgainstQuotation extends TransactionsBaseClass {
         addChargesAndDeductions();
         long chargesDeductionsEnd=System.nanoTime()- chargesDeductionsStart;
         FileUtil.writeTimeLogInMinutes("Charges and Deductions:- ",chargesDeductionsEnd);
-        long start3 = System.nanoTime();
 
         //other charges
         long otherChargesStart =System.nanoTime();
@@ -97,11 +101,13 @@ public class PurchaseOrdersAgainstQuotation extends TransactionsBaseClass {
 
         transactionSave();
         String transactionId = newTransactionID(oldVoucherID);
+//        exportIOFiles(transactionId,rootDriver);
+
+        APIClient.validateAPIWithExcel(transactionId,tempAPIBodyUpdate,apiResponse,outputFile,"PurchaseOrdersAgainstQuotations");
 
         long duration3 = System.nanoTime() - start3;
-        FileUtil.writeTimeLogInMinutes("PurchaseOrdersAgainstQuotations", duration3 /1000000000);
+        FileUtil.writeTimeLogInMinutes("PurchaseOrdersAgainstQuotations ends at :", duration3 /1000000000);
 
-        exportIOFiles(transactionId,rootDriver);
         return transactionId;
     }
 

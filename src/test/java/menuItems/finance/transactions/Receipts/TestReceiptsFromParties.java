@@ -1,6 +1,6 @@
 package menuItems.finance.transactions.Receipts;
 
-import com.wings.utils.Common;
+
 import io.appium.java_client.windows.WindowsDriver;
 
 import org.json.simple.parser.ParseException;
@@ -13,22 +13,19 @@ import com.wings.pages.finance.transactions.Receipts.ReceiptsFromParties;
 import java.awt.*;
 import java.io.IOException;
 
-public class ReceiptsFromPartiesTransaction {
+public class TestReceiptsFromParties {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    Common common;
-    String file = "./src/main/resources/menuItems/finance/transaction/receiptFromParty.json";
+    String dataFile="./src/main/resources/menuItems/finance/transaction/465649 - Receipts from Parties-AC_PREC_1.xls";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        common=new Common(driver);
-        driver = appLogin.launchSingleUserApp();
-        appLogin.singleUserLogin(common.getData(file,"receiptsFromParties","userName"),common.getData(file,"receiptsFromParties","password"));
+        driver=appLogin.login();
     }
 
     @Test
     public void receiptFromParty() throws IOException, ParseException, InterruptedException, AWTException {
-        ReceiptsFromParties fromParties = new ReceiptsFromParties(driver, file);
+        ReceiptsFromParties fromParties = new ReceiptsFromParties(driver, dataFile);
         fromParties.receiptFromParty();
     }
 

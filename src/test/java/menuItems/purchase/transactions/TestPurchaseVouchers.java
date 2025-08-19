@@ -15,6 +15,12 @@ public class TestPurchaseVouchers {
 
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
+
+    private static final String TEMP_API_BODY_PURCHASE_VOUCHERS="./output/temp_api_request_bodies/PurchaseVouchers.json";
+    private static final String API_RESPONSE_PURCHASE_VOUCHERS="./output/api_responses/PurchaseVouchers.json";
+    private static final String OUTPUT_FILE="./src/main/resources/menuItems/purchase/transactions/479081 - Purchase Vouchers-AC_PV_9_Output.xlsx";
+
+
     String file = "./src/main/resources/menuItems/purchase/transactions/479081 - Purchase Vouchers-AC_PV_9.xlsx";
 
     @BeforeTest
@@ -25,7 +31,7 @@ public class TestPurchaseVouchers {
     @Test
     public void purchaseVouchers() throws IOException, ParseException, InterruptedException, AWTException {
         PurchaseVoucher po = new PurchaseVoucher(driver, file);
-        po.purchaseVoucher();
+        po.purchaseVoucher(TEMP_API_BODY_PURCHASE_VOUCHERS,API_RESPONSE_PURCHASE_VOUCHERS,OUTPUT_FILE);
     }
 
     @AfterTest

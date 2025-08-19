@@ -1,6 +1,7 @@
 package com.wings.pages.purchase.transactions;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
@@ -30,8 +31,9 @@ public class PurchaseVouchersAgainstOrder extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String purchaseVouchersAgainstOrder(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
+    public String purchaseVouchersAgainstOrder(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
         long PVAO = System.nanoTime();
+        System.out.println("PurchaseVouchersAgainstOrders starts at :"+PVAO);
 
         navigateToPurchaseVouchersAgainstOrders();
         Thread.sleep(3000);
@@ -154,12 +156,14 @@ public class PurchaseVouchersAgainstOrder extends TransactionsBaseClass {
         transactionSave();
         String newVoucherID = newTransactionID(oldVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"both ID's should not Equal when we perform transaction");
-
 //        exportIOFiles(newVoucherID,rootDriver);
-        long PurchaseVouchersAgainstOrdersEnd = System.nanoTime() - PVAO;
-        FileUtil.writeTimeLogInMinutes("PurchaseVouchersAgainstOrdersEnd", PurchaseVouchersAgainstOrdersEnd);
-        return newVoucherID;
 
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"PurchaseVouchersAgainstOrders");
+
+        long PurchaseVouchersAgainstOrdersEnd = System.nanoTime() - PVAO;
+        FileUtil.writeTimeLogInMinutes("PurchaseVouchersAgainstOrdersEnd ", PurchaseVouchersAgainstOrdersEnd);
+
+        return newVoucherID;
     }
 
     public void addProduct() throws InterruptedException, IOException, ParseException, AWTException {
@@ -515,9 +519,9 @@ public class PurchaseVouchersAgainstOrder extends TransactionsBaseClass {
     }
 
     public void addPostDatedCheques() throws IOException {
-        List<String> postDateDCheques=readExcelData(dataFile,"PostDatedCheques","PDCAccountCode");
+        List<String> postDateDCheques=readExcelData(dataFile,"PostDatedCheques","BankAccountCode");
         for (int i = 0; i< postDateDCheques.size(); i++) {
-            addData("xpath","//Edit[@Name='PDC Account Code Row "+i+", Not sorted.']",dataFile,"PostDatedCheques","PDCAccountCode",i);
+            addData("xpath","//Edit[@Name='Bank Account Code Row "+i+", Not sorted.']",dataFile,"PostDatedCheques","BankAccountCode",i);
         }
         List<WebElement> PDCAcc = common.findWebElements("xpath", "//Table[@Name='PostDatedCheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'PDC Account * Row ')]");
         List<WebElement> amoutRowList = common.findWebElements("xpath", "//Table[@Name='PostDatedCheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Amount * Row ')]");

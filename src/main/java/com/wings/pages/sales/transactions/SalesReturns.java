@@ -1,9 +1,9 @@
 package com.wings.pages.sales.transactions;
 
 import com.wings.pages.TransactionsBaseClass;
-import com.wings.utils.Common;
-import com.wings.utils.FileUtil;
+import com.wings.utils.*;
 import io.appium.java_client.windows.WindowsDriver;
+import io.restassured.response.Response;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -11,7 +11,13 @@ import org.testng.Assert;
 
 import java.awt.*;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+
+import static org.testng.Assert.assertEquals;
 
 public class SalesReturns extends TransactionsBaseClass {
     WindowsDriver driver,rootDriver;
@@ -26,7 +32,10 @@ public class SalesReturns extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String  salesReturns(String invoiceNumber) throws InterruptedException, IOException, ParseException, AWTException {
+    public String  salesReturns(String invoiceNumber,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
+        long salesReturnsStart = System.nanoTime();
+        System.out.println("Sales returns started in :" + salesReturnsStart);
+
         navigateToSalesReturnMenu();
         Thread.sleep(2000);
         long salesReturns = System.nanoTime();
@@ -112,6 +121,12 @@ public class SalesReturns extends TransactionsBaseClass {
         long chequesPDCTabEnd =System.nanoTime()- chequesPDCTabStart;
         FileUtil.writeTimeLogInMinutes("Cheques[PDC] Tab:- ", chequesPDCTabEnd);
 
+        //cheques[pdc]
+        long invoiceDetailsStart =System.nanoTime();
+        addInvoiceDetails();
+        long invoiceDetailsEnd =System.nanoTime()- invoiceDetailsStart;
+        FileUtil.writeTimeLogInMinutes("Cheques[PDC] Tab:- ", invoiceDetailsEnd);
+
         //Other info
         long otherInfoTabStart =System.nanoTime();
         otherInfo();
@@ -139,7 +154,7 @@ public class SalesReturns extends TransactionsBaseClass {
         long termsConditionsTabEnd =System.nanoTime()- termsConditionsTabStart;
         FileUtil.writeTimeLogInMinutes("Terms and Conditions Tab:- ", termsConditionsTabEnd);
 
-        //allocations
+//        allocations
 //        long allocationsTabStart=System.nanoTime();
 //        addAllocations();
 //        long allocationsTabEnd=System.nanoTime() - allocationsTabStart;
@@ -150,7 +165,13 @@ public class SalesReturns extends TransactionsBaseClass {
         String newVoucherID =newTransactionID(oldVoucherID);
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
-        exportIOFiles(newVoucherID,rootDriver);
+//        exportIOFiles(newVoucherID,rootDriver);
+
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"SalesReturns");
+
+        long salesReturnsEnd = System.nanoTime() - salesReturnsStart;
+        FileUtil.writeTimeLogInMinutes("Sales returns ended at:- ", salesReturnsEnd );
+
         return newVoucherID;
 
     }
@@ -467,6 +488,13 @@ public class SalesReturns extends TransactionsBaseClass {
             enterListData(costCentreRowList.get(i),dataFile,"PDC","CostCentre",i);
             enterListData(commentsRowList.get(i),dataFile,"PDC","Comments",i);
         }
+    }
+
+    public void addInvoiceDetails() throws InterruptedException {
+        Thread.sleep(500);
+        common.clickElement("xpath","//TabItem[contains(@Name,'Invoice Details ')]");
+        EnterData("//Edit[@Name='Invoice Value *']",dataFile,"InvoiceDetails","InvoiceValue");
+        EnterData("//Edit[@Name='Invoice Date *']",dataFile,"InvoiceDetails","InvoiceDate");
     }
 
     public void otherInfo() throws InterruptedException, IOException {

@@ -13,20 +13,26 @@ import java.awt.*;
 import java.io.IOException;
 
 public class JournalEntriesTransaction {
+
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String dataFile = "./src/main/resources/menuItems/finance/transaction/journalEntry.json";
+
+    private static final String TEMP_API_BODY_JOURNAL_ENTRIES="./output/temp_api_request_bodies/journalEntries.json";
+    private static final String API_RESPONSE_JOURNAL_ENTRIES="./output/api_responses/journalEntries.json";
+    private static final String OUTPUT_FILE="./src/main/resources/menuItems/finance/transaction/464159 - Journal Entries-AC_JE_3_Output.xls";
+
+    String dataFile = "./src/main/resources/menuItems/finance/transaction/464159 - Journal Entries-AC_JE_3.xls";
+
 
     @BeforeTest
-    public void beforeTest() throws IOException, ParseException, InterruptedException {
-        driver = appLogin.launchSingleUserApp();
-        appLogin.singleUserLogin();
+    public void beforeTest() throws IOException, InterruptedException, ParseException {
+        driver=appLogin.login();
     }
 
     @Test
     public void journalEntry() throws IOException, ParseException, InterruptedException, AWTException {
         JournalEntries journalEntries = new JournalEntries(driver, dataFile);
-        journalEntries.journalEntires();
+        journalEntries.journalEntries(TEMP_API_BODY_JOURNAL_ENTRIES,API_RESPONSE_JOURNAL_ENTRIES,OUTPUT_FILE);
     }
 
     @AfterTest

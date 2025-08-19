@@ -1,6 +1,7 @@
 package com.wings.pages.purchase.transactions;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
@@ -23,7 +24,11 @@ public class PurchaseEnquiries extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String purchaseEnquires() throws InterruptedException, IOException, ParseException, AWTException {
+    public String purchaseEnquires(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException {
+
+        long start = System.nanoTime();
+        System.out.println("Purchase Enquiries started at"+start);
+
         navigateToMastersWhen3Steps("Purchase","Enquiries","Purchase Enquiries");
         Thread.sleep(3000);
         String oldVoucherID = oldTTransactionID();
@@ -70,15 +75,15 @@ public class PurchaseEnquiries extends TransactionsBaseClass {
         long allocationsTabEnd=System.nanoTime() - allocationsTabStart;
         FileUtil.writeTimeLogInMinutes("Allocations Tab:- ", allocationsTabEnd);
 
-        long start = System.nanoTime();
         transactionSave();
         String transactionId = newTransactionID(oldVoucherID);
+        System.out.println("transactionNumber :"+transactionId);
+//        exportIOFiles(transactionId,rootDriver);
+
+        APIClient.validateAPIWithExcel(transactionId,tempAPIBodyUpdate,apiResponse,outputFile,"PurchaseEnquiries");
+
         long PurchaseEnquiriesEnd = System.nanoTime() - start;
-        FileUtil.writeTimeLog("purchaseEnquiries validating Tab Items UpTo summary", PurchaseEnquiriesEnd /1000000000);
-        exportIOFiles(transactionId,rootDriver);
-//        AdvancedJsonExcelComparatorNew.JsonExcelComparator("","","PurchaseEnquiries");
-
-
+        FileUtil.writeTimeLog("purchaseEnquiries ending at", PurchaseEnquiriesEnd /1000000000);
 
         return transactionId;
     }

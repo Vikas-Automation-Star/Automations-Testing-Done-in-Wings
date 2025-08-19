@@ -1,9 +1,9 @@
 package com.wings.pages.sales.transactions;
 
 import com.wings.pages.TransactionsBaseClass;
-import com.wings.utils.Common;
-import com.wings.utils.FileUtil;
+import com.wings.utils.*;
 import io.appium.java_client.windows.WindowsDriver;
+import io.restassured.response.Response;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -12,6 +12,12 @@ import org.testng.Assert;
 import java.awt.*;
 import java.util.List;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.Map;
+
+import static org.testng.Assert.assertEquals;
 
 public class SalesInvoice extends TransactionsBaseClass {
     WindowsDriver driver,rootDriver;
@@ -25,7 +31,7 @@ public class SalesInvoice extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String salesInvoice() throws InterruptedException, IOException, ParseException, AWTException {
+    public String salesInvoice(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
         long salesInvoiceStart = System.nanoTime();
         System.out.println("Sales Invoice started in :" + salesInvoiceStart);
 
@@ -191,13 +197,12 @@ public class SalesInvoice extends TransactionsBaseClass {
         String newVoucherID =newTransactionID(oldVoucherID);
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
+//        exportIOFiles(newVoucherID,rootDriver);
 
-        //end
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"SalesInvoices");
+
         long salesInvoiceEnd = System.nanoTime() - salesInvoiceStart;
         FileUtil.writeTimeLogInMinutes("Sales Invoice ended at:- ", salesInvoiceEnd );
-        exportIOFiles(newVoucherID,rootDriver);
-        Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
-
         return newVoucherID;
     }
 

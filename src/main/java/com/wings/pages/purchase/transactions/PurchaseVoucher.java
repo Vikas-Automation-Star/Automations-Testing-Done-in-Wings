@@ -2,6 +2,7 @@ package com.wings.pages.purchase.transactions;
 
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
@@ -33,9 +34,11 @@ public class PurchaseVoucher extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String purchaseVoucher() throws InterruptedException, IOException, AWTException, ParseException {
+    public String purchaseVoucher(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, AWTException, ParseException {
 
         long PV = System.nanoTime();
+        System.out.println("Purchase vouchers starts at :"+PV);
+
         navigateToMastersWhen3Steps("Purchase", "Invoices", "Purchase Vouchers");
         Thread.sleep(5000);
         String oldVoucherID = oldTTransactionID();
@@ -164,9 +167,12 @@ public class PurchaseVoucher extends TransactionsBaseClass {
         transactionSave();
         String newVoucherID = newTransactionID(oldVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"both ID's should not Equal when we perform transaction");
+//        exportIOFiles(newVoucherID,rootDriver);
+
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"PurchaseVouchers");
+
         long PurchaseVoucherEnd = System.nanoTime() - PV;
         FileUtil.writeTimeLogInMinutes("PurchaseVouchersAgainstOrdersEnd", PurchaseVoucherEnd);
-//        exportIOFiles(newVoucherID,rootDriver);
         return newVoucherID;
     }
 
@@ -489,10 +495,10 @@ public class PurchaseVoucher extends TransactionsBaseClass {
     }
 
     public void addOtherCosts() throws IOException {
-        List<String> productCode=readExcelData(dataFile,"","");
+        List<String> productCode=readExcelData(dataFile,"OtherCosts","ExpenseTypeCode");
         System.out.println("productCodes :"+productCode.size());
         for (int i = 0; i < productCode.size() ; i++) {
-            addData("xpath","//Edit[@Name='Expense Type Code Row "+i+", Not sorted.']",dataFile,"","",i);
+            addData("xpath","//Edit[@Name='Expense Type Code Row "+i+", Not sorted.']",dataFile,"OtherCosts","ExpenseTypeCode",i);
         }
         List<WebElement> vendorCodeList = common.findWebElements("xpath", "//Table[@Name='OtherCosts']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Vendor Code Row ')]");
         List<WebElement> currencyList = common.findWebElements("xpath", "//Table[@Name='OtherCosts']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Currency Row ')]");
@@ -503,14 +509,14 @@ public class PurchaseVoucher extends TransactionsBaseClass {
         List<WebElement> profitCentreRowList = common.findWebElements("xpath", "//Table[@Name='OtherCosts']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Profit Centre Row ')]");
         List<WebElement> commentsRowList = common.findWebElements("xpath", "//Table[@Name='OtherCosts']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Comments Row ')]");
         for (int i = 0; i < productCode.size(); i++) {
-            enterListData(vendorCodeList.get(i), dataFile, "", "",i);
-            enterListData(currencyList.get(i), dataFile, "", "",i);
-            enterListData(amountList.get(i), dataFile, "", "",i);
-            enterListData(departmentRowList.get(i), dataFile, "", "",i);
-            enterListData(projectRowList.get(i), dataFile, "", "",i);
-            enterListData(profitCentreRowList.get(i), dataFile, "", "",i);
-            enterListData(costCentreRowList.get(i), dataFile, "", "",i);
-            enterListData(commentsRowList.get(i), dataFile, "", "",i);
+            enterListData(vendorCodeList.get(i), dataFile, "OtherCosts", "VendorCode",i);
+            enterListData(currencyList.get(i), dataFile, "OtherCosts", "Currency",i);
+            enterListData(amountList.get(i), dataFile, "OtherCosts", "OtherCost",i);
+            enterListData(departmentRowList.get(i), dataFile, "OtherCosts", "Department",i);
+            enterListData(projectRowList.get(i), dataFile, "OtherCosts", "Project",i);
+            enterListData(profitCentreRowList.get(i), dataFile, "OtherCosts", "ProfitCentre",i);
+            enterListData(costCentreRowList.get(i), dataFile, "OtherCosts", "CostCentre",i);
+            enterListData(commentsRowList.get(i), dataFile, "OtherCosts", "Comments",i);
         }
     }
 
@@ -565,9 +571,9 @@ public class PurchaseVoucher extends TransactionsBaseClass {
     }
 
     public void addPostDatedCheques() throws IOException {
-        List<String> postDateDCheques=readExcelData(dataFile,"PostDatedCheques","PDCAccountCode");
+        List<String> postDateDCheques=readExcelData(dataFile,"PostDatedCheques","BankAccountCode");
         for (int i = 0; i< postDateDCheques.size(); i++) {
-            addData("xpath","//Edit[@Name='PDC Account Code Row "+i+", Not sorted.']",dataFile,"PostDatedCheques","PDCAccountCode",i);
+            addData("xpath","//Edit[@Name='Bank Account Code Row "+i+", Not sorted.']",dataFile,"PostDatedCheques","BankAccountCode",i);
         }
         List<WebElement> PDCAcc = common.findWebElements("xpath", "//Table[@Name='PostDatedCheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'PDC Account * Row ')]");
         List<WebElement> amoutRowList = common.findWebElements("xpath", "//Table[@Name='PostDatedCheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Amount * Row ')]");

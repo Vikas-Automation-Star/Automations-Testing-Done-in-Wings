@@ -123,7 +123,7 @@ public class AdvancedJsonExcelComparatorNew {
             }
         }
         if(diffWorkbook!=null){
-            System.out.println("Manoj");
+            System.out.println("Vikas");
             // Save differences
             try (FileOutputStream fos = new FileOutputStream(diffFilePath)) {
                 diffWorkbook.write(fos);
@@ -183,7 +183,9 @@ public class AdvancedJsonExcelComparatorNew {
 
 
     public static void main(String[] args) throws IOException {
-        JsonExcelComparator("./output/SRWIR.txt","./src/main/resources/menuItems/Sales/Transactions/480464 - Sales Return with Invoice Reference-AC_Output.xlsx","SalesReturnsWIR");
+        JsonExcelComparator("./output/PEC.txt","./src/main/resources/menuItems/purchase/transactions/461400 - Purchase Enquiries Cancellation-AC_PEC_1_Output.xlsx","PurchaseEnquiries");
+
+
     }
 
 }

@@ -1,17 +1,22 @@
 package com.wings.pages.sales.transactions;
 
 import com.wings.pages.TransactionsBaseClass;
-import com.wings.utils.Common;
-import com.wings.utils.ExcelUtil;
-import com.wings.utils.FileUtil;
+import com.wings.utils.*;
 import io.appium.java_client.windows.WindowsDriver;
+import io.restassured.response.Response;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import java.awt.*;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+
+import static org.testng.Assert.assertEquals;
 
 public class SalesEnquiry extends TransactionsBaseClass {
     WindowsDriver driver,rootDriver;
@@ -20,7 +25,6 @@ public class SalesEnquiry extends TransactionsBaseClass {
     boolean discountIsClicked = false;
     boolean gstAmountClicked=false;
     boolean IsAmountHeaderClicked = false;
-    ExcelUtil excelUtil=new ExcelUtil();
 
 
     public SalesEnquiry(WindowsDriver driver, String file) {
@@ -30,7 +34,10 @@ public class SalesEnquiry extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String salesEnquiries() throws InterruptedException, IOException, ParseException, AWTException {
+    public String salesEnquiries(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
+        long salesEnquiriesStart = System.nanoTime();
+        System.out.println("Sales Enquiries started in :" + salesEnquiriesStart);
+
         navigateToSalesEnquiryMenu();
         Thread.sleep(3000);
         String oldVoucherID =oldTTransactionID();
@@ -82,56 +89,25 @@ public class SalesEnquiry extends TransactionsBaseClass {
         long duration5 = System.nanoTime() - start5;
         FileUtil.writeTimeLogInMinutes("Terms And Conditions ", duration5);
 
-        long start12 = System.nanoTime();
-        common.clickElement("xpath", "//TabItem[contains(@Name,'Allocations')]");
-        addAllocations();
-        long duration12 = System.nanoTime() - start12;
-        FileUtil.writeTimeLogInMinutes("Enter Allocations ", duration12);
+//        long start12 = System.nanoTime();
+//        common.clickElement("xpath", "//TabItem[contains(@Name,'Allocations')]");
+//        addAllocations();
+//        long duration12 = System.nanoTime() - start12;
+//        FileUtil.writeTimeLogInMinutes("Enter Allocations ", duration12);
 
         transactionSave();
         String newVoucherID =newTransactionID(oldVoucherID);
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
-        exportIOFiles(newVoucherID,rootDriver);
-//        String prefix = newVoucherID.replaceAll("\\d", "");
-//        String number = newVoucherID.replaceAll("\\D", "");
-//        Thread.sleep(2000);
-//        navigateToMastersWhen3Steps("Tools","Automated Testing","Generate Input File");
-//        rootDriver=common.initializeDriver("Root");
-//        Thread.sleep(3000);
-//        common.findWebElement("xpath", "//Window[@Name='Export Transaction Postings']/Pane/Edit[@Name='Voucher Series']").sendKeys(prefix);
-//        common.findWebElement("xpath","//Window[@Name='Export Transaction Postings']/Pane/Edit[@Name='Voucher Number']").sendKeys(number);
-//        common.clickElement("xpath","//Button[@Name='OK']");
-//        Thread.sleep(2000);
-//        common.clickElement("xpath","//Window[@Name='Export Transaction Postings']/Window[@Name='Export to Excel']/Button[@Name='OK']");
-//        Thread.sleep(1500);
-//        if (common.findWebElement("xpath","//Text").getText().equals("Data Exported successfully!")) {
-//            common.clickElement("xpath", "//Button[@Name='OK']");
-//        }
-//        else if(common.findWebElement("xpath","//Text").getText().equals("Transactionno doesnot exist.")){
-//            Assert.fail("Transaction does not exists");
-//            common.clickElement("xpath", "//Button[@Name='OK']");
-//        }
-//
-//        Thread.sleep(2000);
-//        navigateToMastersWhen3Steps("Tools","Automated Testing","Generate Output File");
-//        rootDriver=common.initializeDriver("Root");
-//        Thread.sleep(3000);
-//        common.findWebElement("xpath", "//Window[@Name='Export Transaction Postings']/Pane/Edit[@Name='Voucher Series']").sendKeys(prefix);
-//        common.findWebElement("xpath","//Window[@Name='Export Transaction Postings']/Pane/Edit[@Name='Voucher Number']").sendKeys(number);
-//        common.clickElement("xpath","//Button[@Name='OK']");
-//        Thread.sleep(2000);
-//        common.clickElement("xpath","//Window[@Name='Export Transaction Postings']/Window[@Name='Export to Excel']/Button[@Name='OK']");
-//        Thread.sleep(1500);
-//        if (common.findWebElement("xpath","//Text").getText().equals("Data Exported successfully!")) {
-//            common.clickElement("xpath", "//Button[@Name='OK']");
-//        }
-//        else if(common.findWebElement("xpath","//Text").getText().equals("Transactionno doesnot exist.")){
-//            Assert.fail("Transaction does not exists");
-//            common.clickElement("xpath", "//Button[@Name='OK']");
-//        }
+
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"SalesEnquiries");
+
+        long salesEnquiriesEnd = System.nanoTime() - salesEnquiriesStart;
+        FileUtil.writeTimeLogInMinutes("Sales Enquiries ended at:- ", salesEnquiriesEnd );
         return newVoucherID;
+
     }
+
 
     public void addProduct() throws IOException, ParseException {
         List<String> productCode=readExcelData(dataFile,"Items","ProductCode");
@@ -140,7 +116,9 @@ public class SalesEnquiry extends TransactionsBaseClass {
             addData("xpath","//Edit[@Name='Product Code Row "+i+", Not sorted.']",dataFile,"Items","ProductCode",i);
         }
         List<WebElement> uom = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'UOM * Row ')]");
+        System.out.println("UOM :"+uom.size());
         List<WebElement> quantity = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Quantity * Row ')]");
+        System.out.println("quantity :"+quantity.size());
         List<WebElement> DeliveryDate = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Delivery Date Row ')]");
         List<WebElement> Mrp = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'MRP Row ')]");
         List<WebElement> UnitRate = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Unit Rate Row ')]");
@@ -167,7 +145,7 @@ public class SalesEnquiry extends TransactionsBaseClass {
         List<WebElement> Department = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Department Row ')]");
         List<WebElement> Project = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Project Row ')]");
         List<WebElement> ProfitCentre = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Profit Centre Row ')]");
-        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 500, 0);
+        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 550, 0);
         List<WebElement> CostCentre = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Cost Centre Row ')]");
         List<WebElement> Comments = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Comments Row ')]");
         List<WebElement> Info1 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Info 1 Row ')]");
@@ -188,7 +166,7 @@ public class SalesEnquiry extends TransactionsBaseClass {
         List<WebElement> Bool3 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/CheckBox[contains(@Name,'Bool 3 Row ')]");
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", -1500, 0);
 
-        for (int i = 0; i <productCode.size() ; i++) {
+        for (int i = 0; i < uom.size()-1; i++) {
             enterListData(uom.get(i),dataFile,"Items","UOM",i);
             enterListData(quantity.get(i),dataFile,"Items","Quantity",i);
             enterListDate(DeliveryDate.get(i),dataFile,"Items","DeliveryDate",i);
@@ -231,7 +209,7 @@ public class SalesEnquiry extends TransactionsBaseClass {
             clickListData(Bool1.get(i));
             clickListData(Bool2.get(i));
             clickListData(Bool3.get(i));
-            common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", -1500, 0);
+            common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", -1550, 0);
         }
     }
 
@@ -328,11 +306,11 @@ public class SalesEnquiry extends TransactionsBaseClass {
         }
     }
 
-    public void addAllocations()  {
-        EnterData( "//Edit[@Name='Department']", dataFile, "Allocations", "Department");
-        EnterData( "//Edit[@Name='Project']", dataFile, "Allocations", "Project");
-        EnterData("//Edit[@Name='Profit Centre']", dataFile, "Allocations", "ProfitCentre");
-        EnterData( "//Edit[@Name='Cost Centre']", dataFile, "Allocations", "CostCentre");
-    }
+//    public void addAllocations()  {
+//        EnterData( "//Edit[@Name='Department']", dataFile, "Allocations", "Department");
+//        EnterData( "//Edit[@Name='Project']", dataFile, "Allocations", "Project");
+//        EnterData("//Edit[@Name='Profit Centre']", dataFile, "Allocations", "ProfitCentre");
+//        EnterData( "//Edit[@Name='Cost Centre']", dataFile, "Allocations", "CostCentre");
+//    }
 
 }

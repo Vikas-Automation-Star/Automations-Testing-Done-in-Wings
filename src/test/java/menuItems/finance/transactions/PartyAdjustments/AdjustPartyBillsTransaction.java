@@ -25,8 +25,8 @@ public class AdjustPartyBillsTransaction {
     public void beforeTest() throws InterruptedException, IOException, ParseException, AWTException {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
-        SalesInvoice salesInvoice = new SalesInvoice(driver, salesInvoiceFile);
-        salesInvoice.salesInvoice();
+//        SalesInvoice salesInvoice = new SalesInvoice(driver, salesInvoiceFile);
+//        salesInvoice.salesInvoice();
         CreditNoteAdjustPartyBills noteAdjustPartyBills = new CreditNoteAdjustPartyBills(driver, creditNoteFile);
         noteAdjustPartyBills.creditNoteAdjustBills();
 

@@ -94,15 +94,12 @@ public class TransactionsBaseClass extends Transaction {
         EnterData("//Edit[@Name='Voucher Disc %']",dataFile,sheetName,key);
 
     }
-    public void enterStockConsumptionAccount(String dataFile,String sheetName, String key) {
-        EnterData("//Edit[@Name='Stock Consumption Account']",dataFile,sheetName,key);
-    }
-    public void enterCustomerEmail(String dataFile,String sheetName,String key) {
-        EnterData("//Edit[@Name='Customer Email']",dataFile,sheetName,key);
+    public void enterCustomerEmail(String dataFile,String sheetName,String key) throws IOException, ParseException {
+        EnterData("//Edit[@Name='Customer Email' or @Name='Email']",dataFile,sheetName,key);
     }
 
-    public void enterCustomerMobileNum(String dataFile,String sheetName,String key){
-        EnterData("//Edit[@Name='Customer Mobile Number']",dataFile,sheetName,key);
+    public void enterCustomerMobileNum(String dataFile,String sheetName,String key) throws IOException, ParseException {
+        EnterData("//Edit[@Name='Customer Mobile Number' or @Name='MobileNumber']",dataFile,sheetName,key);
     }
 
     public void enterShippingBillNo(String dataFile,String sheetName,String key) throws IOException, ParseException {

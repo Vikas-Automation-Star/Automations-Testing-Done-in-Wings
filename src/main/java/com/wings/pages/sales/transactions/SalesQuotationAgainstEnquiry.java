@@ -1,14 +1,21 @@
 package com.wings.pages.sales.transactions;
 
 import com.wings.pages.TransactionsBaseClass;
-import com.wings.utils.Common;
-import com.wings.utils.FileUtil;
+import com.wings.utils.*;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
+import java.util.Arrays;
+import java.util.Map;
+import java.nio.file.Paths;
+import io.restassured.response.Response;
+
+import static org.testng.Assert.assertEquals;
+
 
 public class SalesQuotationAgainstEnquiry extends TransactionsBaseClass {
     WindowsDriver driver,rootDriver;
@@ -17,15 +24,16 @@ public class SalesQuotationAgainstEnquiry extends TransactionsBaseClass {
     boolean discountIsClicked = false;
     boolean gstAmountClicked=false;
     boolean IsAmountHeaderClicked = false;
+
     public SalesQuotationAgainstEnquiry(WindowsDriver driver, String file) {
         super(driver);
         common = new Common(this.driver = driver);
         dataFile = file;
     }
 
-    public String quotationAgainstEnquiry(String voucherNum) throws InterruptedException, IOException, ParseException {
-        long start = System.nanoTime();
-        System.out.println("sales quotation against enquiry startTime executed in :"+start);
+    public String quotationAgainstEnquiry(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException {
+        long SQAEStart = System.nanoTime();
+        System.out.println("sales quotation against enquiry startTime executed in :"+SQAEStart);
         navigateToSalesQuotationAgainstEnquiryMenu();
         Thread.sleep(100);
         String oldVoucherID =oldTTransactionID();
@@ -39,7 +47,7 @@ public class SalesQuotationAgainstEnquiry extends TransactionsBaseClass {
         gstTransactionType("Intra State Sales to Registered Dealers");
         Thread.sleep(1000);
         selectPendingsSalesOrder(voucherNum, "20250401");
-        Thread.sleep(3000);
+        Thread.sleep(5000);
         common.clickElement("xpath","//Button[@Name='OK']");
         enterCreditPeriod(dataFile,"GeneralInformation","CreditPeriod");
         enterPriceList(dataFile, "GeneralInformation", "PriceList");
@@ -86,7 +94,12 @@ public class SalesQuotationAgainstEnquiry extends TransactionsBaseClass {
         String newVoucherID = newTransactionID(oldVoucherID);
         System.out.println("newID: " + newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID, "Voucher Numbers are same. Check Transaction.");
-        exportIOFiles(newVoucherID,rootDriver);
+//        exportIOFiles(newVoucherID,rootDriver);
+
+        APIClient.validateAPIWithExcel(newVoucherID, tempAPIBodyUpdate, apiResponse, outputFile, "SalesQuotationsAgainstEnquiries");
+        long SQAEnd = System.nanoTime() - SQAEStart;
+        FileUtil.writeTimeLogInMinutes("Sales quotations against Enquiries ended at:- ", SQAEnd );
+
         return newVoucherID;
     }
 

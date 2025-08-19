@@ -16,6 +16,7 @@ public class JsonUpdater {
         DocumentContext context = JsonPath.using(conf).parse(json);
         context.set(jsonPathExpr, newValue);
         return context.jsonString();
+
     }
 
     public static String updateJson(String json, Map<String,Object> map) {

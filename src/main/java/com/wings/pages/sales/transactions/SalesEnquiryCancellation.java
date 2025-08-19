@@ -1,15 +1,21 @@
 package com.wings.pages.sales.transactions;
 
 import com.wings.pages.TransactionsBaseClass;
-import com.wings.utils.Common;
-import com.wings.utils.FileUtil;
+import com.wings.utils.*;
 import io.appium.java_client.windows.WindowsDriver;
+import io.restassured.response.Response;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import java.awt.*;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Arrays;
+
+import static org.testng.Assert.assertEquals;
 
 public class SalesEnquiryCancellation extends TransactionsBaseClass {
     WindowsDriver driver,rootDriver;
@@ -22,7 +28,10 @@ public class SalesEnquiryCancellation extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public void salesEnquiryCancellation(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
+    public void salesEnquiryCancellation(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
+        long salesEnquiriesCancellationStart = System.nanoTime();
+        System.out.println("Sales EnquiriesCancellation started in :" + salesEnquiriesCancellationStart);
+
         navigateToSalesEnquiryCancellationMenu();
         Thread.sleep(4000);
         String oldVoucherID =oldTTransactionID();
@@ -63,8 +72,13 @@ public class SalesEnquiryCancellation extends TransactionsBaseClass {
         System.out.println("newID: " + newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID, "Voucher Numbers are same. Check Transaction.");
         Thread.sleep(1000);
-        exportIOFiles(newVoucherID,rootDriver);
+//        exportIOFiles(newVoucherID,rootDriver);
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile, "SalesEnquiriesCancellations");
+
+        long salesEnquiriesCancellationEnd = System.nanoTime() - salesEnquiriesCancellationStart;
+        FileUtil.writeTimeLogInMinutes("Sales EnquiriesCancellation ended at:- ", salesEnquiriesCancellationEnd );
     }
+
 
     public void addItems() throws IOException {
         List<String> productCode=readExcelData(dataFile,"Items","ProductCode");
