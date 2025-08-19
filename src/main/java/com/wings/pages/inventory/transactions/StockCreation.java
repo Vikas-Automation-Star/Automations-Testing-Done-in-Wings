@@ -35,6 +35,7 @@ public class StockCreation extends TransactionsBaseClass {
         enterLocation(dataFile,"GeneralInformation","Location");
         enterCurrency(dataFile,"GeneralInformation","TransactionCurrency");
         enterExchangeRate(dataFile,"GeneralInformation","ExchangeRate");
+        enterStockAccount(dataFile,"GeneralInformation","StockAccount");
         enterBatchPolicy(dataFile,"GeneralInformation","BatchPolicy");
         enterPriceList(dataFile,"GeneralInformation","PriceList");
         enterExecutive(dataFile,"GeneralInformation","Executive");
@@ -68,9 +69,11 @@ public class StockCreation extends TransactionsBaseClass {
         String prefix = newVoucherID.replaceAll("\\d", "");
         String number = newVoucherID.replaceAll("\\D", "");
         Thread.sleep(2000);
+        long ioFIlesStart =System.nanoTime();
         exportIOFiles("Generate Input File",prefix,number);
         exportIOFiles("Generate Output File",prefix,number);
-
+        long ioFIlesEnd =System.nanoTime()-ioFIlesStart;
+        FileUtil.writeTimeLogInMinutes("Stock Creation IO files end: ", ioFIlesEnd);
 //        excelUtil.excelComparator("","",newVoucherID);
         return newVoucherID;
     }

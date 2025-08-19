@@ -5,47 +5,47 @@
     </listeners>
 
 
-    <test name="OS 1" description="Opening stock" testID="5">
+    <test name="OS 1" description="Opening stock" testID="1">
         <classes>
             <class name="menuItems.inventory.transactions.TestOpeningStock"/>
         </classes>
     </test>
 
-    <test name="SCR 1" description="Stock Creation" testID="6">
+    <test name="SCR 1" description="Stock Creation" testID="2">
         <classes>
             <class name="menuItems.inventory.transactions.TestStockCreation"/>
         </classes>
     </test>
 
-    <!--    <test name="SCM 7" description="Stock Consumption" testID="7">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.inventory.transactions.TestStockConsumption"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="SCM 7" description="Stock Consumption" testID="3">
+        <classes>
+            <class name="menuItems.inventory.transactions.TestStockConsumption"/>
+        </classes>
+    </test>
 
-    <test name="SCN 1" description="Stock Conversation" testID="8">
+    <test name="SCN 1" description="Stock Conversation" testID="4">
         <classes>
             <class name="menuItems.inventory.transactions.TestStockConversion"/>
         </classes>
     </test>
 
-    <test name="ILT 1" description="Test 18 description" testID="5">
+    <test name="ILT 1" description="Inter Location Transfers" testID="5">
         <classes>
             <class name="menuItems.inventory.transactions.TestInterLocationTransfers"/>
         </classes>
     </test>
 
-    <!--    <test name="IST 9" description="Initiate stock take" testID="9">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.inventory.transactions.TestInitiateStockTake"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="IST 1" description="Initiate stock take" testID="6">
+        <classes>
+            <class name="menuItems.inventory.transactions.TestInitiateStockTake"/>
+        </classes>
+    </test>
 
-    <!--    <test name="PST 10" description="Physical stock Take" testID="10">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.inventory.transactions.TestPhysicalStockTake"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="PST 1" description="Physical stock Take" testID="7">
+        <classes>
+            <class name="menuItems.inventory.transactions.TestPhysicalStockTake"/>
+        </classes>
+    </test>
 
 </suite>
 

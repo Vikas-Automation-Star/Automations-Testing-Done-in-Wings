@@ -35,6 +35,8 @@ public class OpeningStock extends TransactionsBaseClass {
         enterLocation(dataFile,"GeneralInformation","Location");
         enterCurrency(dataFile,"GeneralInformation","TransactionCurrency");
         enterExchangeRate(dataFile,"GeneralInformation","ExchangeRate");
+        enterOpeningStockAccount(dataFile,"GeneralInformation","OpeningStockAccount");
+        enterOpeningStockAccountAsset(dataFile,"GeneralInformation","OpeningStockAccountAsset");
         enterBatchPolicy(dataFile,"GeneralInformation","BatchPolicy");
         enterPriceList(dataFile,"GeneralInformation","PriceList");
         enterExecutive(dataFile,"GeneralInformation","Executive");
@@ -68,11 +70,10 @@ public class OpeningStock extends TransactionsBaseClass {
         String prefix = newVoucherID.replaceAll("\\d", "");
         String number = newVoucherID.replaceAll("\\D", "");
         Thread.sleep(2000);
-        long ioFIlesStart =System.nanoTime()-start;
-        FileUtil.writeTimeLogInMinutes("Opening Stock IO files: ", ioFIlesStart);
+        long ioFIlesStart =System.nanoTime();
         exportIOFiles("Generate Input File",prefix,number);
         exportIOFiles("Generate Output File",prefix,number);
-        long ioFIlesEnd =System.nanoTime()-start;
+        long ioFIlesEnd =System.nanoTime()-ioFIlesStart;
         FileUtil.writeTimeLogInMinutes("Opening Stock IO files end: ", ioFIlesEnd);
 //        excelUtil.excelComparator("","",newVoucherID);
         return newVoucherID;

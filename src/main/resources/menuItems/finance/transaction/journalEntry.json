@@ -1,9 +1,0 @@
-{
-  "branch": "AT_Branch 1_Reg",
-  "executive": "AT_Executive 1",
-  "transaction": "INR",
-  "amount": 250,
-  "debitAccount":"AT_Debit Acc 1",
-  "creditAccount": "AT_Credit Account",
-  "close": "Journal Entries"
-}

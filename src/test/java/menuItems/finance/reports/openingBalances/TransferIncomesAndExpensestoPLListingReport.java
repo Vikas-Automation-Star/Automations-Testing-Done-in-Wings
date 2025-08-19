@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.io.IOException;
 
-public class TransferIncomesandExpensestoPLListingReport {
+public class TransferIncomesAndExpensestoPLListingReport {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
 

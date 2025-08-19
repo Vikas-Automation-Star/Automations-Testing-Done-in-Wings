@@ -74,11 +74,10 @@ public class StockConversion extends TransactionsBaseClass {
         String prefix = newVoucherID.replaceAll("\\d", "");
         String number = newVoucherID.replaceAll("\\D", "");
         Thread.sleep(2000);
-        long ioFIlesStart =System.nanoTime()-start;
-        FileUtil.writeTimeLogInMinutes("Stock Conversion IO files: ", ioFIlesStart);
+        long ioFIlesStart =System.nanoTime();
         exportIOFiles("Generate Input File",prefix,number);
         exportIOFiles("Generate Output File",prefix,number);
-        long ioFIlesEnd =System.nanoTime()-start;
+        long ioFIlesEnd =System.nanoTime()-ioFIlesStart;
         FileUtil.writeTimeLogInMinutes("Stock Conversion IO files end: ", ioFIlesEnd);
 //        excelUtil.excelComparator("","",newVoucherID);
         return newVoucherID;

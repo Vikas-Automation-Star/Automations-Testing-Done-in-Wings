@@ -52,10 +52,10 @@ public class AppLogin {
         driver = common.initializeDriver(common.getProperty("multiUserApp"));
 //    String currentwindowHandle = driver.getWindowHandle();
 //    System.out.println("Window 1 -" + currentwindowHandle);
-        driver.findElement(By.name(" 24D Books Automation")).click();
+        driver.findElement(By.name("24D Books Automation")).click();
         Thread.sleep(5000);
         rootDriver = common.initializeDriver("Root");
-        Thread.sleep(7000);
+        Thread.sleep(10000);
         WebElement login = rootDriver.findElement(By.name("Wings - Web Client"));
         String nativeWindow = login.getAttribute("NativeWindowHandle");
         String hexLoginId = Integer.toHexString(Integer.parseInt(nativeWindow));

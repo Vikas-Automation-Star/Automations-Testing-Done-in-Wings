@@ -1,9 +1,0 @@
-{
-  "branch": "AT_Branch 1_Reg",
-  "transaction": "INR",
-  "executive": "AT_Executive 1",
-  "from": "AT_Cash Acc 1",
-  "to": "AT_Cash Acc 2",
-  "amount": 50,
-  "close": "Cash Transfers"
-}

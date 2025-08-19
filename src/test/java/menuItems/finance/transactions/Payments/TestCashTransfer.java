@@ -10,7 +10,7 @@ import com.wings.pages.finance.transactions.Payments.CashTransfer;
 import java.awt.*;
 import java.io.IOException;
 
-public class CashTransferTransaction {
+public class TestCashTransfer {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
     String dataFile = "./src/main/resources/menuItems/finance/transaction/454215 - Cash Transfers-AC_CT_1.xls";
@@ -28,6 +28,6 @@ public class CashTransferTransaction {
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 }

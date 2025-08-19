@@ -29,6 +29,7 @@ public class InitiateStockTake extends TransactionsBaseClass {
         long generalInfoStart = System.nanoTime();
         Thread.sleep(5000);
         String oldVoucherID =oldTTransactionID();
+        System.out.println("Old ID: "+oldVoucherID);
         enterVoucherType(dataFile,"GeneralInformation","VoucherType");
         EnterDate("//Edit[@Name='Date *']",dataFile,"GeneralInformation","Date");
         enterBranch(dataFile,"GeneralInformation","Branch");
@@ -36,14 +37,14 @@ public class InitiateStockTake extends TransactionsBaseClass {
         enterCurrency(dataFile,"GeneralInformation","TransactionCurrency");
         Thread.sleep(1000);
         common.clickElement("xpath","//Button[@Name='Get Stock']");
-            List<WebElement> elementList = common.findWebElements("xpath", "//Window[@Name='StorageBin Details']//Table/*[@Name='Data Panel']/*/*[starts-with(@Name,'StorageBin row ')]");
-            for (WebElement i : elementList) {
-                if (i.getText().equals("AT_Branch 1_Location 1 Default Bin")) {
-                    i.click();
-                    i.sendKeys(Keys.LEFT, Keys.SPACE, Keys.ENTER, Keys.ENTER);
-                    break;
-                }
+        List<WebElement> elementList = common.findWebElements("xpath", "//Window[@Name='StorageBin Details']//Table/*[@Name='Data Panel']/*/*[starts-with(@Name,'StorageBin row ')]");
+        for (WebElement i : elementList) {
+            if (i.getText().equals("AT_Branch 1_Location 1 Default Bin")) {
+                i.click();
+                i.sendKeys(Keys.LEFT, Keys.SPACE, Keys.ENTER, Keys.ENTER);
+                break;
             }
+        }
         long generalInfoEndTime = System.nanoTime() - generalInfoStart;
         FileUtil.writeTimeLogInMinutes("Initiate Stock Take gen info:- ", generalInfoEndTime);
 
@@ -56,7 +57,7 @@ public class InitiateStockTake extends TransactionsBaseClass {
         otherInfo();
         long otherInfoTabEnd = System.nanoTime() - otherInfoTabStart;
         FileUtil.writeTimeLogInMinutes("Initiate Stock Take Other Info:- ", otherInfoTabEnd);
-        
+
         //saving and IO generating
         transactionSave();
         String newVoucherID =newTransactionID(oldVoucherID);
@@ -68,11 +69,10 @@ public class InitiateStockTake extends TransactionsBaseClass {
         String prefix = newVoucherID.replaceAll("\\d", "");
         String number = newVoucherID.replaceAll("\\D", "");
         Thread.sleep(2000);
-        long ioFIlesStart =System.nanoTime()-start;
-        FileUtil.writeTimeLogInMinutes("Initiate Stock Take IO files: ", ioFIlesStart);
+        long ioFIlesStart =System.nanoTime();
         exportIOFiles("Generate Input File",prefix,number);
         exportIOFiles("Generate Output File",prefix,number);
-        long ioFIlesEnd =System.nanoTime()-start;
+        long ioFIlesEnd =System.nanoTime()-ioFIlesStart;
         FileUtil.writeTimeLogInMinutes("Initiate Stock Take IO files end: ", ioFIlesEnd);
 //        excelUtil.excelComparator("","",newVoucherID);
         return newVoucherID;

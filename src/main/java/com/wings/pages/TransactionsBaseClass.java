@@ -82,6 +82,12 @@ public class TransactionsBaseClass extends Transaction {
         EnterData("//Edit[@Name='Opening Stock Account *']", dataFile, sheetName, key);
     }
 
+    public void enterOpeningStockAccountAsset(String dataFile,String sheetName, String key) {
+        EnterData("//Edit[@Name='Opening Stock Account Asset *']",dataFile,sheetName,key);
+    }
+    public void enterStockAccount(String dataFile,String sheetName, String key) {
+        EnterData("//Edit[@Name='Stock Account']",dataFile,sheetName,key);
+    }
     public void enterPartyCode(String dataFile,String sheetName, String key)  {
         EnterData("//Edit[@Name='Party Code' or @Name='Cash/Party Code']", dataFile, sheetName, key);
     }
@@ -118,6 +124,9 @@ public class TransactionsBaseClass extends Transaction {
         EnterData("//Edit[@Name='Remarks']",dataFile,sheetName,key);
     }
 
+    public void enterReservesAndSurplusAccount(String dataFile,String sheetName,String key) {
+        EnterData("//Edit[@Name='Reserves And Surplus Account *']",dataFile,sheetName,key);
+    }
     public void enterSalesAccountCode(String dataFile,String sheetName,String key) {
         EnterData("//Edit[@Name='Sales A/c Code']",dataFile,sheetName,key);
     }

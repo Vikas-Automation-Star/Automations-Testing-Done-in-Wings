@@ -15,12 +15,11 @@ import java.io.IOException;
 public class OpeningReceiptsFromCreditCardCompaniesTransaction {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String dataFile = "./src/main/resources/menuItems/finance/transaction/openingReceiptsFromCCC.json";
+    String dataFile = "./src/main/resources/menuItems/finance/transaction/460910 - Opening Receipts from Credit Card Companies-AC_ORFCC_1.xls";
 
     @BeforeTest
     public void beforeTest() throws IOException, ParseException, InterruptedException {
-        driver = appLogin.launchSingleUserApp();
-        appLogin.singleUserLogin();
+        driver = appLogin.login();
     }
 
     @Test

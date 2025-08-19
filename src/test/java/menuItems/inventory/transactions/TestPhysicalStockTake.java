@@ -1,9 +1,7 @@
 package menuItems.inventory.transactions;
 
 import com.wings.pages.AppLogin;
-import com.wings.pages.inventory.transactions.InitiateStockTake;
 import com.wings.pages.inventory.transactions.PhysicalStockTake;
-import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
@@ -16,14 +14,11 @@ import java.io.IOException;
 public class TestPhysicalStockTake {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    Common common;
-    String file = "./src/main/resources/menuItems/inventory/transactions/physicalStockTake.json";
+    String file = "./src/main/resources/menuItems/inventory/transactions/458873 - Physical Stock Take-AC_PST_1.xls";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        common=new Common(driver);
-        driver = appLogin.launchSingleUserApp();
-        appLogin.singleUserLogin(common.getData(file,"physicalStockTake","userName"),common.getData(file,"physicalStockTake","password"));
+        driver = appLogin.login();
     }
     @Test
     public void stockConversion() throws InterruptedException, AWTException, IOException, ParseException {

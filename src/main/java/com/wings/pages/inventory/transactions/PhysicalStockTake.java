@@ -1,76 +1,105 @@
 package com.wings.pages.inventory.transactions;
 
-import com.wings.pages.Transaction;
+import com.wings.pages.TransactionsBaseClass;
 import com.wings.utils.Common;
+import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
-
 import java.awt.*;
 import java.io.IOException;
+import java.util.List;
 
-public class PhysicalStockTake extends Transaction {
+public class PhysicalStockTake extends TransactionsBaseClass {
     WindowsDriver driver;
     Common common;
     String dataFile;
 
     public PhysicalStockTake(WindowsDriver driver, String file) {
         super(driver);
-        this.driver = driver;
-        common = new Common(this.driver);
+        common = new Common(this.driver = driver);
         dataFile = file;
     }
 
-    public void physicalStockTake() throws InterruptedException, AWTException, IOException, ParseException {
+    public String physicalStockTake() throws InterruptedException, AWTException, IOException, ParseException {
+        long start=System.nanoTime();
         navigateToMastersWhen2Steps("Inventory", "Physical Stock Take");
-        Thread.sleep(1000);
-        String oldVoucherID = oldTTransactionID();
-        enterInput("xpath", "//Edit[@Name='Branch *']", dataFile, "physicalStockTake", "branch");
-        enterInput("xpath", "//Edit[@Name='Location *']", dataFile, "physicalStockTake", "location");
-        enterInput("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']", dataFile, "physicalStockTake", "productCode");
+        long generalInfoStart = System.nanoTime();
+        Thread.sleep(5000);
+        String oldVoucherID =oldTTransactionID();
+        enterVoucherType(dataFile,"GeneralInformation","VoucherType");
+        EnterDate("//Edit[@Name='Date *']",dataFile,"GeneralInformation","Date");
+        enterBranch(dataFile,"GeneralInformation","Branch");
+        enterLocation(dataFile,"GeneralInformation","Location");
+        enterCurrency(dataFile,"GeneralInformation","TransactionCurrency");
+        enterRemarks(dataFile,"GeneralInformation","Remarks");
+        long generalInfoEndTime = System.nanoTime() - generalInfoStart;
+        FileUtil.writeTimeLogInMinutes("Physical Stock Take General Information:- ", generalInfoEndTime);
 
-        WebElement product=common.findWebElement("xpath","//Edit[@Name='Product * Row 0, Not sorted.']");
-        Actions actions=new Actions(driver);
-        actions.contextClick(product).perform();
-        common.clickElement("xpath","//MenuItem[@Name='Reports']");
-        common.clickElement("xpath","//MenuItem[@Name='Stock Ledger-AC']");
-        Thread.sleep(2000);
-        common.clickElement("xpath", "//Button[@Name='Submit']");
-        verifyReport("IST1",dataFile,"stockLedgerReportInPhysicalStock");
-        closeReport("Stock Ledger-AC");
-        Thread.sleep(1000);
-        common.clickElement("xpath","//CheckBox[@Name='Audit * Row 0']");
-        enterInput("xpath", "//Edit[@Name='Physical Stock Row 0, Not sorted.']", dataFile, "physicalStockTake", "ProductQuantity");
+        long addProductStart = System.nanoTime();
+        addStockDetails();
+        long addProductEnd = System.nanoTime() - addProductStart;
+        FileUtil.writeTimeLogInMinutes("Physical Stock Take Add Products:- ", addProductEnd);
 
-        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Variance Row 0, Not sorted.']"), common.getData(dataFile,"physicalStockTake", "variance" ),"variance Mismatch");
-        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Excess Row 0, Not sorted.']"), common.getData(dataFile,"physicalStockTake", "excess" ),"excess Mismatch");
-        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Shortage Row 0, Not sorted.']"), common.getData(dataFile,"physicalStockTake", "shortage" ),"shortage Mismatch");
+        long otherInfoTabStart = System.nanoTime();
+        otherInfo();
+        long otherInfoTabEnd = System.nanoTime() - otherInfoTabStart;
+        FileUtil.writeTimeLogInMinutes("Physical Stock Take Other Info:- ", otherInfoTabEnd);
 
-
-        enterOtherInfo(dataFile, "physicalStockTake");
-        navigateToSummaryTab();
-        physicalStockQuantityPresentInSummary();
-
+        //saving and IO generating
         transactionSave();
-        String newVoucherID = newTransactionID(oldVoucherID);
-        System.out.println("newID: " + newVoucherID);
-        String originalID = newTransactionID(oldVoucherID).replace(" ", "");
-        Assert.assertNotEquals(newVoucherID, oldVoucherID, "both ID's should not Equal when we perform transaction");
-        Thread.sleep(1000);
-        common.clickElement("name", "Inventory");
-        common.clickElement("xpath", "//MenuItem[@Name='Physical Stock Take'][2]");
-        Thread.sleep(1000);
-        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
-        Thread.sleep(1500);
-        verifyReport(newVoucherID,dataFile,"physicalStockTake");
-        deleteSingleTransaction(originalID);
-        common.clickElement("name", "Inventory");
-        common.clickElement("xpath", "//MenuItem[@Name='Initiate Stock Take'][2]");
-        Thread.sleep(1000);
-        common.clickElement("xpath", "//Pane/Button[@Name='Submit']");
-        Thread.sleep(1500);
-        deleteSingleTransaction("IST1");
+        String newVoucherID =newTransactionID(oldVoucherID);
+        System.out.println("newID: "+newVoucherID);
+        Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
+        //end
+        long stockConsumptionEnd = System.nanoTime() - start;
+        FileUtil.writeTimeLogInMinutes("Physical Stock Take ended at:- ", stockConsumptionEnd);
+        String prefix = newVoucherID.replaceAll("\\d", "");
+        String number = newVoucherID.replaceAll("\\D", "");
+        Thread.sleep(2000);
+        long ioFilesStart=System.nanoTime();
+        exportIOFiles("Generate Input File",prefix,number);
+        exportIOFiles("Generate Output File",prefix,number);
+        long ioFilesEnd = System.nanoTime() - ioFilesStart;
+        FileUtil.writeTimeLogInMinutes("Physical Stock Take IO ended at:- ", ioFilesEnd);
+
+//        excelUtil.excelComparator("","",newVoucherID);
+        return newVoucherID;
+    }
+
+    public void addStockDetails() throws IOException, ParseException, InterruptedException {
+        List<String> productCode=readExcelData(dataFile,"PhysicalStock","ProductCode");
+        for (int i = 0; i < productCode.size() ; i++)   {
+            addData("xpath","//Edit[@Name='Product Code Row "+i+", Not sorted.']",dataFile,"PhysicalStock","ProductCode",i);
+        }
+        List<WebElement> productBatch = common.findWebElements("xpath", "//Table[@Name='PhysicalStock']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Product Batch * Row ')]");
+        List<WebElement> storageBin = common.findWebElements("xpath", "//Table[@Name='PhysicalStock']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Storage Bin * Row ')]");
+        List<WebElement> physicalStockBin = common.findWebElements("xpath", "//Table[@Name='PhysicalStock']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Physical Stock Bin * Row ')]");
+        List<WebElement> physicalStock = common.findWebElements("xpath", "//Table[@Name='PhysicalStock']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Physical Stock Row ')]");
+        List<WebElement> Comments = common.findWebElements("xpath", "//Table[@Name='PhysicalStock']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Comments Row ')]");
+
+        for (int i = 0; i < productCode.size(); i++) {
+            enterListData(productBatch.get(i), dataFile, "PhysicalStock", "ProductBatch", i);
+            enterListData(storageBin.get(i), dataFile, "PhysicalStock", "StorageBin", i);
+            enterListData(physicalStockBin.get(i), dataFile, "PhysicalStock", "PhysicalStockBin", i);
+            common.clickElement("xpath","//CheckBox[@Name='Audit * Row "+i+"']");
+            enterListData(physicalStock.get(i),dataFile,"PhysicalStock","PhysicalStock",i);
+            enterListData(Comments.get(i),dataFile,"PhysicalStock","Comments",i);
+        }
+        common.deleteInvalidRows();
+    }
+
+    public void otherInfo() throws InterruptedException, IOException {
+        navigateToOtherInfoTab();
+        EnterData("//Edit[@Name='Reference Bill No']",dataFile,"OtherInfo","ReferenceBillNo");
+        Thread.sleep(5000);
+        common.clickElement("xpath","//Window/Button[@Name='OK']");
+        EnterDate("//Edit[@Name='Reference Bill Date']",dataFile,"OtherInfo","ReferenceBillDate");
+        EnterData("//Edit[@Name='Other Info 1']",dataFile,"OtherInfo","OtherInfo1");
+        EnterData("//Edit[@Name='Other Info 2']",dataFile,"OtherInfo","OtherInfo2");
+        EnterData("//Edit[@Name='Other Info 3']",dataFile,"OtherInfo","OtherInfo3");
+        EnterData("//Edit[@Name='Other Info 4']",dataFile,"OtherInfo","OtherInfo4");
+        EnterData("//Edit[@Name='Other Info 5']",dataFile,"OtherInfo","OtherInfo5");
     }
 }

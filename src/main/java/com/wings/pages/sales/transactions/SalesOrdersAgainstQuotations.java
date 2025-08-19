@@ -204,7 +204,6 @@ public class SalesOrdersAgainstQuotations extends TransactionsBaseClass {
             enterListData(voucherDiscount.get(i),dataFile,"Items","voucherDiscount",i);
             enterListData(partyDiscount.get(i),dataFile,"Items","partyDiscount",i);
 
-
             if (!discountIsClicked) {
                 common.clickElement("xpath", "//Header[@Name='Disc Amount 1']");
                 common.clickElement("xpath", "//Header[@Name='Disc Amount 2']");

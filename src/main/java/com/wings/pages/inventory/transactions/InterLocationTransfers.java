@@ -22,7 +22,7 @@ public class InterLocationTransfers extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String locationTransfer() throws InterruptedException, AWTException, IOException, ParseException {
+    public String locationTransfer() throws InterruptedException, IOException, ParseException {
         long start = System.nanoTime();
         navigateToMastersWhen2Steps("Inventory","Inter Location Transfers");
         long generalInfoStart = System.nanoTime();

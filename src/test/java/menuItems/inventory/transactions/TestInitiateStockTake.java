@@ -2,13 +2,11 @@ package menuItems.inventory.transactions;
 
 import com.wings.pages.AppLogin;
 import com.wings.pages.inventory.transactions.InitiateStockTake;
-import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import java.awt.*;
 import java.io.IOException;
 
 public class TestInitiateStockTake {
@@ -28,6 +26,6 @@ public class TestInitiateStockTake {
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 }

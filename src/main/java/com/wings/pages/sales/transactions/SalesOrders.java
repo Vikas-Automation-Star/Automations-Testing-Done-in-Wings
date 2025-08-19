@@ -551,7 +551,7 @@ public class SalesOrders extends TransactionsBaseClass {
 
     public void shippingAddress(){
         common.clickElement("xpath","//TabItem[contains(@Name,'Shipping Address  ')]");
-        EnterData("//Edit[@Name='Party Name']",dataFile,"ShippingAddress","PartyName");
+        EnterData("//Edit[@Name='Party Name']",dataFile,"ShippingAddress","PartyAccount");
         EnterData("//Edit[@Name='GSTIN']",dataFile,"ShippingAddress","GSTIN");
         EnterData("//Edit[@Name='Address 1 *']",dataFile,"ShippingAddress","Address1");
         EnterData("//Edit[@Name='Address 2']",dataFile,"ShippingAddress","Address2");

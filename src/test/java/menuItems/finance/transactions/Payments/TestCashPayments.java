@@ -8,7 +8,6 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.wings.pages.AppLogin;
 import com.wings.pages.finance.transactions.Payments.CashPayments;
-
 import java.awt.*;
 import java.io.IOException;
 
@@ -16,13 +15,12 @@ public class TestCashPayments {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
     Common common;
-    String file = "./src/main/resources/menuItems/finance/transaction/cashPayment.json";
+    String file = "./src/main/resources/menuItems/finance/transaction/459470 - Cash Payments-AC_CP_1.xls";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        common=new Common(driver);
-        driver = appLogin.launchSingleUserApp();
-        appLogin.singleUserLogin(common.getData(file,"cashPayments","userName"),common.getData(file,"cashPayments","password"));
+        common = new Common(driver);
+        driver = appLogin.login();
     }
 
     @Test
@@ -33,6 +31,6 @@ public class TestCashPayments {
 
     @AfterTest
     public void afterTest() throws IOException {
-        appLogin.logout();
+//        appLogin.logout();
     }
 }
