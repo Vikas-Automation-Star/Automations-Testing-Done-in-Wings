@@ -9,7 +9,6 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import java.awt.*;
 import java.io.IOException;
 
 public class TestPurchaseEnquiriesCancellation {
@@ -35,7 +34,7 @@ public class TestPurchaseEnquiriesCancellation {
     }
 
     @Test
-    public void purchaseEnquiriesCancellation() throws IOException, ParseException, InterruptedException, AWTException {
+    public void purchaseEnquiriesCancellation() throws Exception {
         PurchaseEnquiries purchaseEnquiries = new PurchaseEnquiries(driver, dataFile);
         String pe=purchaseEnquiries.purchaseEnquires(TEMP_API_BODY_PURCHASE_ENQUIRY,API_RESPONSE_PURCHASE_ENQUIRY,OUTPUT_FILE1);
 

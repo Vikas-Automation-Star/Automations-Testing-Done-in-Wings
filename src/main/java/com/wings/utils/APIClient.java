@@ -91,7 +91,7 @@ public class APIClient {
     }
 
 
-    public static void validateAPIWithExcel(String updatedTransactionNum,String tempAPIBodyUpdate,String writeAPIResponse,String outputFile,String diffFile) throws IOException {
+    public static void validateAPIWithExcel(String updatedTransactionNum,String tempAPIBodyUpdate,String writeAPIResponse,String outputFile,String diffFile) throws Exception {
         String voucherSeries = updatedTransactionNum.replaceAll("\\d", "");
         System.out.println("VoucherString :"+voucherSeries);
         String voucherNumber = updatedTransactionNum .replaceAll("\\D", "");
@@ -123,7 +123,8 @@ public class APIClient {
         assertStatusCode(response, 200);
 //        System.out.println(response.asString());
         Files.write(Paths.get(writeAPIResponse), response.asString().getBytes());
-        AdvancedJsonExcelComparatorNew.JsonExcelComparator(writeAPIResponse,outputFile,diffFile);
+//        AdvancedJsonExcelComparatorNew.JsonExcelComparator(writeAPIResponse,outputFile,diffFile);
+        OptimizedJsonExcelComparator.JsonExcelComparator(writeAPIResponse,outputFile,diffFile);
 
     }
 

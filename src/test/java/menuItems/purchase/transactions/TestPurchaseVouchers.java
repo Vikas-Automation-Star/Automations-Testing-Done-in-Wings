@@ -11,7 +11,8 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.io.IOException;
 
-public class TestPurchaseVouchers {
+public class
+TestPurchaseVouchers {
 
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
@@ -29,13 +30,13 @@ public class TestPurchaseVouchers {
     }
 
     @Test
-    public void purchaseVouchers() throws IOException, ParseException, InterruptedException, AWTException {
+    public void purchaseVouchers() throws Exception {
         PurchaseVoucher po = new PurchaseVoucher(driver, file);
         po.purchaseVoucher(TEMP_API_BODY_PURCHASE_VOUCHERS,API_RESPONSE_PURCHASE_VOUCHERS,OUTPUT_FILE);
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-        appLogin.logout();
+//        appLogin.logout();
     }
 }

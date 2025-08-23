@@ -312,6 +312,10 @@ public  class Transaction {
         common.clickElement("xpath", "//TabItem[contains(@Name,'Cash')]");
     }
 
+    public void navigateToParties() {
+        common.clickElement("xpath", "//TabItem[contains(@Name,'Parties  ')]");
+    }
+
     public void navigateToInvoiceDetails() {
         common.clickElement("xpath", "//TabItem[contains(@Name,'Invoice Details  ')]");
     }
@@ -963,7 +967,7 @@ public  class Transaction {
             String value = voucher.getText();
             System.out.println("Voucher value: " + value);
             if (value == (null) || "(null)".equals(value)) {
-                // If the value is null, throw an assertion error// value.isEmpty() ||
+                // If the value is nall, throw an assertion error// value.isEmpty() ||
                 if (rows.size() == 1) {
                     Assert.fail("No Accounts found in row: " + row.getAttribute("outerHTML"));
                 }

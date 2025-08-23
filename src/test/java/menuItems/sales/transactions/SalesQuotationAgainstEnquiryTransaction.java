@@ -9,7 +9,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import java.awt.*;
+
 import java.io.IOException;
 
 public class SalesQuotationAgainstEnquiryTransaction {
@@ -25,7 +25,7 @@ public class SalesQuotationAgainstEnquiryTransaction {
     private static final String OUTPUT_FILE2="./src/main/resources/menuItems/Sales/Transactions/460567 - Sales Quotations against Enquiries-AC_Output.xlsx";
 
 
-    String dataFile = "./src/main/resources/menuItems/Sales/Transactions/460472 - Sales Enquiries-AC.xlsx";
+    String dataFile = "./src/main/resources/menuItems/Sales/Transactions/460472 - Sales Enquiries-AC_SE_8.xlsx";
     String dataFile1 = "./src/main/resources/menuItems/Sales/Transactions/460567 - Sales Quotations against Enquiries-AC.xlsx";
 
     @BeforeTest
@@ -34,7 +34,7 @@ public class SalesQuotationAgainstEnquiryTransaction {
     }
 
     @Test
-    public void salesQuotationAgainstEnquiry() throws IOException, ParseException, InterruptedException, AWTException {
+    public void salesQuotationAgainstEnquiry() throws Exception {
         SalesEnquiry sales = new SalesEnquiry(driver, dataFile);
         String se= sales.salesEnquiries(TEMP_API_BODY_SALES_ENQUIRY,API_RESPONSE_SALES_ENQUIRY,OUTPUT_FILE1);
 

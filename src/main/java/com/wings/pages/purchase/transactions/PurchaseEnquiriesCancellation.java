@@ -30,7 +30,7 @@ public class PurchaseEnquiriesCancellation extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public void purchaseEnquiriesCancellation(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException {
+    public void purchaseEnquiriesCancellation(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
         System.out.println("Purchase Enquiries Cancellation Starts"+start);
 

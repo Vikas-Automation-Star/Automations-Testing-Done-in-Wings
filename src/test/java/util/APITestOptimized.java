@@ -62,11 +62,6 @@ public class APITestOptimized {
         // Example: ignoring JSON array element order in validation
         String expectedJson = "{ \"status\": \"Success\" }"; // replace with your actual expected JSON
         System.out.println(response.asString());
-
-
-        // Print sample fields
-        System.out.println("Column Name: " + response.jsonPath().getString("dataSet.tables[5].columns[4].name"));
-        System.out.println("Cell Value: " + response.jsonPath().getString("dataSet.tables[5].rows[4][4]"));
     }
 
     /** Utility to assert status code */

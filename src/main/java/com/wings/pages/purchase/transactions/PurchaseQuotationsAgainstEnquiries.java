@@ -26,7 +26,7 @@ public class PurchaseQuotationsAgainstEnquiries extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String purchaseQuotationsAgainstEnquiry(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException {
+    public String purchaseQuotationsAgainstEnquiry(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start1 = System.nanoTime();
         System.out.println("Purchase quotations against enquiries start at :"+start1);
 
@@ -45,9 +45,9 @@ public class PurchaseQuotationsAgainstEnquiries extends TransactionsBaseClass {
         enterPartyCode(dataFile,"GeneralInformation","PartyAccountCode");
         Thread.sleep(2000);
         gstTransactionType("Intra State Purchase from Registered Dealers");
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         selectPendingsSalesOrder(voucherNum,"20250401");
-        Thread.sleep(3000);
+        Thread.sleep(7000);
         common.clickElement("xpath","//Button[@Name='OK']");
         enterCreditPeriod(dataFile,"GeneralInformation","CreditPeriod");
         enterPriceList(dataFile,"GeneralInformation","PriceList");

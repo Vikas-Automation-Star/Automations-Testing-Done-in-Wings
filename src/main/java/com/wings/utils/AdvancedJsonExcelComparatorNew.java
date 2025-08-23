@@ -184,8 +184,6 @@ public class AdvancedJsonExcelComparatorNew {
 
     public static void main(String[] args) throws IOException {
         JsonExcelComparator("./output/PEC.txt","./src/main/resources/menuItems/purchase/transactions/461400 - Purchase Enquiries Cancellation-AC_PEC_1_Output.xlsx","PurchaseEnquiries");
-
-
     }
 
 }

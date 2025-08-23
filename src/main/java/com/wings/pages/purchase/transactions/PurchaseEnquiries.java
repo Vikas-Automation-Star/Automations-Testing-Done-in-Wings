@@ -24,7 +24,7 @@ public class PurchaseEnquiries extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String purchaseEnquires(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException {
+    public String purchaseEnquires(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
 
         long start = System.nanoTime();
         System.out.println("Purchase Enquiries started at"+start);

@@ -34,15 +34,15 @@ public class TestSalesReturnTransaction {
     }
 
     @Test
-    public void salesReturnsTransaction() throws IOException, InterruptedException, ParseException, AWTException {
-//        SalesInvoice invoice = new SalesInvoice(driver, dataFile);
-//        String salesI=invoice.salesInvoice(TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_SALES_INVOICES,OUTPUT_FILE1);
-//
-//        appLogin.logout();
-//        driver= appLogin.login();
+    public void salesReturnsTransaction() throws Exception {
+        SalesInvoice invoice = new SalesInvoice(driver, dataFile);
+        String salesI=invoice.salesInvoice(TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_SALES_INVOICES,OUTPUT_FILE1);
+
+        appLogin.logout();
+        driver= appLogin.login();
 
         SalesReturns salesReturns = new SalesReturns(driver, dataFile1);
-        salesReturns.salesReturns("SI 20",TEMP_API_BODY_SALES_RETURNS,API_RESPONSE_SALES_RETURNS,OUTPUT_FILE2);
+        salesReturns.salesReturns(salesI,TEMP_API_BODY_SALES_RETURNS,API_RESPONSE_SALES_RETURNS,OUTPUT_FILE2);
     }
 
     @AfterTest

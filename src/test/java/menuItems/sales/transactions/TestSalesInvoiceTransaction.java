@@ -7,7 +7,6 @@ import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import java.awt.*;
 import java.io.IOException;
 
 public class TestSalesInvoiceTransaction {
@@ -26,14 +25,14 @@ public class TestSalesInvoiceTransaction {
     }
 
     @Test
-    public void salesInvoiceTransaction() throws IOException, InterruptedException, ParseException, AWTException {
+    public void salesInvoiceTransaction() throws Exception {
         SalesInvoice invoice = new SalesInvoice(driver, dataFile);
         invoice.salesInvoice(TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_SALES_INVOICES,OUTPUT_FILE);
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-        appLogin.logout();
+//        appLogin.logout();
     }
 
 }

@@ -1,8 +1,0 @@
-{
-  "branch": "AT_Branch 1_Reg",
-  "executive": "AT_Executive 1",
-  "transaction": "INR",
-  "bankCode": "AT_Bank Acc 1",
-  "cheques": "AT_Cheques In Hand Acc 1",
-  "close": "Deposit Post Dated Cheques"
-}

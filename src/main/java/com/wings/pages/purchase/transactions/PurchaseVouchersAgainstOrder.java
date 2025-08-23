@@ -31,7 +31,7 @@ public class PurchaseVouchersAgainstOrder extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String purchaseVouchersAgainstOrder(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
+    public String purchaseVouchersAgainstOrder(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long PVAO = System.nanoTime();
         System.out.println("PurchaseVouchersAgainstOrders starts at :"+PVAO);
 

@@ -47,7 +47,7 @@ public class TestPurchaseReturnsWithInvoicesReference {
     }
 
     @Test
-    public void purchaseReturnsWithInvoicesReferences() throws IOException, ParseException, InterruptedException, AWTException {
+    public void purchaseReturnsWithInvoicesReferences() throws Exception {
         PurchaseEnquiries purchaseEnquiries = new PurchaseEnquiries(driver, dataFile);
         String pe=purchaseEnquiries.purchaseEnquires(TEMP_API_BODY_PURCHASE_ENQUIRY,API_RESPONSE_PURCHASE_ENQUIRY,OUTPUT_FILE1);
 

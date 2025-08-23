@@ -25,7 +25,7 @@ public class JournalEntries extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public void journalEntries(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
+    public void journalEntries(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
         System.out.println("Journal Entries  started in :" + start);
 

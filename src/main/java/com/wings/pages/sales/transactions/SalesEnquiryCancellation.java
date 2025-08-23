@@ -28,7 +28,7 @@ public class SalesEnquiryCancellation extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public void salesEnquiryCancellation(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
+    public void salesEnquiryCancellation(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long salesEnquiriesCancellationStart = System.nanoTime();
         System.out.println("Sales EnquiriesCancellation started in :" + salesEnquiriesCancellationStart);
 

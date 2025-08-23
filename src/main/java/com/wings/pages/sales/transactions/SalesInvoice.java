@@ -31,7 +31,7 @@ public class SalesInvoice extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String salesInvoice(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
+    public String salesInvoice(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long salesInvoiceStart = System.nanoTime();
         System.out.println("Sales Invoice started in :" + salesInvoiceStart);
 
@@ -284,8 +284,8 @@ public class SalesInvoice extends TransactionsBaseClass {
             } else if (masterType.get(j).equals("Products - MultiBatch")) {
                 common.clickElement("xpath", "//Button[@Name='Stock Details Row "+j+"']");
                 Thread.sleep(500);
-                EnterData("//Table[@Name='Batch Details']/*[@Name='Data Panel']/*[@Name='Row 1']/*[@Name='Quantity row 1']",dataFile,"Items","Quantity",j);
-                EnterData("//Table[@Name='Batch Details']/*[@Name='Data Panel']/*[@Name='Row 1']/*[@Name='Free Qty row 1']",dataFile,"Items","FreeQuantity",j);
+                EnterData("//Table[@Name='Batch Details']/*[@Name='Data Panel']/*[@Name='Row 2']/*[@Name='Quantity row 2']",dataFile,"Items","Quantity",j);
+                EnterData("//Table[@Name='Batch Details']/*[@Name='Data Panel']/*[@Name='Row 2']/*[@Name='Free Qty row 2']",dataFile,"Items","FreeQuantity",j);
                 Thread.sleep(1000);
                 common.clickElement("xpath", "//Button[@Name='OK']");
             }else if (masterType.get(j).equals("Products - Batches and Serial No")){

@@ -31,7 +31,7 @@ public class SalesQuotationAgainstEnquiry extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String quotationAgainstEnquiry(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException {
+    public String quotationAgainstEnquiry(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long SQAEStart = System.nanoTime();
         System.out.println("sales quotation against enquiry startTime executed in :"+SQAEStart);
         navigateToSalesQuotationAgainstEnquiryMenu();

@@ -30,7 +30,7 @@ public class ReceiptsFromParties extends TransactionsBaseClass {
 
     public void receiptFromParty() throws InterruptedException, IOException, ParseException, AWTException {
         navigateToMastersWhen3Steps("Finance","Receipts","Receipts from Parties");
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         String oldVoucherID =oldTTransactionID();
         Thread.sleep(1000);
         enterVoucherType(dataFile,"GeneralInformation","VoucherType");

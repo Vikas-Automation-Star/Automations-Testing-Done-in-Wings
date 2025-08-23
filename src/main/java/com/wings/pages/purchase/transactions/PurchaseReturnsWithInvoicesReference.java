@@ -30,7 +30,7 @@ public class PurchaseReturnsWithInvoicesReference extends TransactionsBaseClass 
         dataFile = file;
     }
 
-    public void purchaseReturnsWithInvoicesReference(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException {
+    public void purchaseReturnsWithInvoicesReference(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start3 = System.nanoTime();
         System.out.println("Purchase returns with invoice references stats at :"+start3);
 

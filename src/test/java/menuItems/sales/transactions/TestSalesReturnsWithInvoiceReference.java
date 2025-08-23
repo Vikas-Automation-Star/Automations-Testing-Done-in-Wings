@@ -33,7 +33,7 @@ public class TestSalesReturnsWithInvoiceReference {
     }
 
     @Test
-    public void salesReturnsWithInvoiceReference() throws IOException, ParseException, InterruptedException, AWTException {
+    public void salesReturnsWithInvoiceReference() throws Exception {
         SalesInvoice invoice = new SalesInvoice(driver, dataFile);
         String salesI= invoice.salesInvoice(TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_SALES_INVOICES,OUTPUT_FILE1);
 

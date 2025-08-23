@@ -34,7 +34,7 @@ public class PurchaseVoucher extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String purchaseVoucher(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, AWTException, ParseException {
+    public String purchaseVoucher(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
 
         long PV = System.nanoTime();
         System.out.println("Purchase vouchers starts at :"+PV);

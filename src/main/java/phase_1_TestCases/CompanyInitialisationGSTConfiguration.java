@@ -873,7 +873,7 @@ public class CompanyInitialisationGSTConfiguration extends Transaction {
         common.clickElement("xpath","//Button[@Name='Module Settings']");
         enableCheckboxSelection("//Pane//CheckBox[@Name='Enable multi currency in all transactions.']");
         enableCheckboxSelection("//Pane//CheckBox[@Name='Enable bill wise accounting in all transactions.']");
-        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable bills receivables and bills payables tabs in all transactions.']");
+        enableCheckboxSelection("//Pane//CheckBox[@Name='Enable bills receivables and bills Payables tabs in all transactions.']");
         enableCheckboxSelection("//Pane//CheckBox[@Name='Enable discount in receipts and payments transactions.']");
         enableCheckboxSelection("//Pane//CheckBox[@Name='Use PDCs']");
         //payments

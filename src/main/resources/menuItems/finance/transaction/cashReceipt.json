@@ -1,8 +1,0 @@
-{
-  "branch": "AT_Branch 1_Reg",
-  "transaction": "INR",
-  "executive": "AT_Executive 1",
-  "partyCode":"AT_Cus_Reg_Inter",
-  "adjustedAmount": 250,
-  "close": "Cash Receipts"
-}

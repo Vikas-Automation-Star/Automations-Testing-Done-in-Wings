@@ -32,7 +32,7 @@ public class SalesReturns extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String  salesReturns(String invoiceNumber,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
+    public String  salesReturns(String invoiceNumber,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long salesReturnsStart = System.nanoTime();
         System.out.println("Sales returns started in :" + salesReturnsStart);
 

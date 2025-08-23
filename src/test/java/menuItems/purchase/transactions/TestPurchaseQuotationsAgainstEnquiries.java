@@ -34,7 +34,7 @@ public class TestPurchaseQuotationsAgainstEnquiries {
     }
 
     @Test
-    public void purchaseQuotationsAgainstEnquiries() throws IOException, ParseException, InterruptedException, AWTException {
+    public void purchaseQuotationsAgainstEnquiries() throws Exception {
         PurchaseEnquiries pe = new PurchaseEnquiries(driver, dataFile);
        String purchaseEnq= pe.purchaseEnquires(TEMP_API_BODY_PURCHASE_ENQUIRY,API_RESPONSE_PURCHASE_ENQUIRY,OUTPUT_FILE);
 

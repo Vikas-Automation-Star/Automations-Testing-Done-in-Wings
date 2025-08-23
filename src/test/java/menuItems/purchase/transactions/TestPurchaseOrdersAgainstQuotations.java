@@ -40,7 +40,7 @@ public class TestPurchaseOrdersAgainstQuotations {
     }
 
     @Test
-    public void purchaseOrdersAgainstQuotations() throws IOException, ParseException, InterruptedException {
+    public void purchaseOrdersAgainstQuotations() throws Exception {
         PurchaseEnquiries purchaseEnquiries = new PurchaseEnquiries(driver, dataFile);
         String pe=purchaseEnquiries.purchaseEnquires(TEMP_API_BODY_PURCHASE_ENQUIRY,API_RESPONSE_PURCHASE_ENQUIRY,OUTPUT_FILE1);
 

@@ -33,7 +33,7 @@ public class SalesReturnWithInvoiceReference extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String salesReturnWithInvoiceReference(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
+    public String salesReturnWithInvoiceReference(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
 
         long salesRWIRStart = System.nanoTime();
         System.out.println("Sales returns with invoice reference started in :" + salesRWIRStart);

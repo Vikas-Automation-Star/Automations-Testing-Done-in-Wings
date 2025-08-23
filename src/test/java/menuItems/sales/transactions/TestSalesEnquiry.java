@@ -26,7 +26,7 @@ public class TestSalesEnquiry {
     }
 
     @Test
-    public void SalesEnquiryTransaction() throws IOException, InterruptedException, ParseException, AWTException {
+    public void SalesEnquiryTransaction() throws Exception {
         SalesEnquiry sales = new SalesEnquiry(driver, file);
         sales.salesEnquiries(TEMP_API_BODY_SALES_ENQUIRY,API_RESPONSE_SALES_ENQUIRY,OUTPUT_FILE);
     }

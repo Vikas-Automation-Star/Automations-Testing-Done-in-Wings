@@ -25,7 +25,7 @@ public class PurchaseOrdersAgainstQuotation extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String purchaseOrdersAgainstQuotation(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException {
+    public String purchaseOrdersAgainstQuotation(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start3 = System.nanoTime();
         System.out.println("PurchaseOrdersAgainstQuotations starts at :"+start3);
 
@@ -41,10 +41,10 @@ public class PurchaseOrdersAgainstQuotation extends TransactionsBaseClass {
         enterPartyCode(dataFile,"GeneralInformation","PartyAccountCode");
         Thread.sleep(2000);
         gstTransactionType("Intra State Purchase from Registered Dealers");
-        Thread.sleep(1000);
+        Thread.sleep(3000);
         selectPendingPurchaseOrder(voucherNum,"11-07-2025");
 //        selectPendingsSalesOrder(voucherNum,"11-07-2025");
-        Thread.sleep(4000);
+        Thread.sleep(7000);
         common.clickElement("xpath","//Button[@Name='OK']");
         enterCreditPeriod(dataFile,"GeneralInformation","CreditPeriod");
         enterPriceList(dataFile,"GeneralInformation","PriceList");
@@ -93,16 +93,33 @@ public class PurchaseOrdersAgainstQuotation extends TransactionsBaseClass {
         long chequesPDCTabEnd =System.nanoTime()- chequesPDCTabStart;
         FileUtil.writeTimeLogInMinutes("Cheques[PDC] Tab:- ", chequesPDCTabEnd);
 
-        //allocations
-        long allocationsTabStart=System.nanoTime();
-        addAllocations();
-        long allocationsTabEnd=System.nanoTime() - allocationsTabStart;
-        FileUtil.writeTimeLogInMinutes("Allocations Tab:- ", allocationsTabEnd);
+        //Other info
+        long otherInfoTabStart =System.nanoTime();
+        otherInfo();
+        long otherInfoTabEnd =System.nanoTime()- otherInfoTabStart;
+        FileUtil.writeTimeLogInMinutes("Other Info Tab:- ", otherInfoTabEnd);
+
+        //additional Info
+        long additionalInfoTabStart =System.nanoTime();
+        additionalInformation();
+        long additionalInfoTabEnd =System.nanoTime()- additionalInfoTabStart;
+        FileUtil.writeTimeLogInMinutes("Additional Info Tab:- ", additionalInfoTabEnd);
+
+        //terms and Cond
+        long termsConditionsTabStart =System.nanoTime();
+        termsAndCondition();
+        long termsConditionsTabEnd =System.nanoTime()- termsConditionsTabStart;
+        FileUtil.writeTimeLogInMinutes("Terms and Conditions Tab:- ", termsConditionsTabEnd);
+
+//        allocations
+//        long allocationsTabStart=System.nanoTime();
+//        addAllocations();
+//        long allocationsTabEnd=System.nanoTime() - allocationsTabStart;
+//        FileUtil.writeTimeLogInMinutes("Allocations Tab:- ", allocationsTabEnd);
 
         transactionSave();
         String transactionId = newTransactionID(oldVoucherID);
 //        exportIOFiles(transactionId,rootDriver);
-
         APIClient.validateAPIWithExcel(transactionId,tempAPIBodyUpdate,apiResponse,outputFile,"PurchaseOrdersAgainstQuotations");
 
         long duration3 = System.nanoTime() - start3;
@@ -358,28 +375,28 @@ public class PurchaseOrdersAgainstQuotation extends TransactionsBaseClass {
     }
 
     public void addChequesPDC() throws IOException {
-        navigateToPostdatedCheques();
-        List<String> postDatedCheques=readExcelData(dataFile,"PostDatedCheques","PDCAccountCode");
+        navigateToChequesPDC();
+        List<String> postDatedCheques=readExcelData(dataFile,"PDC","BankAccountCode");
         for (int i = 0; i < postDatedCheques.size(); i++) {
-            addData("xpath","//Edit[@Name='Bank Account Code Row "+i+", Not sorted.']",dataFile,"PostDatedCheques","BankAccountCode",i);
+            addData("xpath","//Edit[@Name='Bank Account Code Row "+i+", Not sorted.']",dataFile,"PDC","BankAccountCode",i);
         }
-        List<WebElement> amoutRowList = common.findWebElements("xpath", "//Table[@Name='PostDatedCheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Amount * Row ')]");
-        List<WebElement> chequeNo = common.findWebElements("xpath", "//Table[@Name='PostDatedCheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Cheque/EFT No * Row ')]");
-        List<WebElement> chequeDate = common.findWebElements("xpath", "//Table[@Name='PostDatedCheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Cheque Date * Row ')]");
-        List<WebElement> departmentRowList = common.findWebElements("xpath", "//Table[@Name='PostDatedCheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Department Row ')]");
-        List<WebElement> projectRowList = common.findWebElements("xpath", "//Table[@Name='PostDatedCheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Project Row ')]");
-        List<WebElement> costCentreRowList = common.findWebElements("xpath", "//Table[@Name='PostDatedCheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Cost Centre Row ')]");
-        List<WebElement> profitCentreRowList = common.findWebElements("xpath", "//Table[@Name='PostDatedCheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Profit Centre Row ')]");
-        List<WebElement> commentsRowList = common.findWebElements("xpath", "//Table[@Name='PostDatedCheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Comments Row ')]");
+        List<WebElement> amoutRowList = common.findWebElements("xpath", "//Table[@Name='PDC']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Amount * Row ')]");
+        List<WebElement> chequeNo = common.findWebElements("xpath", "//Table[@Name='PDC']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Cheque/EFT No * Row ')]");
+        List<WebElement> chequeDate = common.findWebElements("xpath", "//Table[@Name='PDC']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Cheque Date * Row ')]");
+        List<WebElement> departmentRowList = common.findWebElements("xpath", "//Table[@Name='PDC']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Department Row ')]");
+        List<WebElement> projectRowList = common.findWebElements("xpath", "//Table[@Name='PDC']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Project Row ')]");
+        List<WebElement> costCentreRowList = common.findWebElements("xpath", "//Table[@Name='PDC']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Cost Centre Row ')]");
+        List<WebElement> profitCentreRowList = common.findWebElements("xpath", "//Table[@Name='PDC']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Profit Centre Row ')]");
+        List<WebElement> commentsRowList = common.findWebElements("xpath", "//Table[@Name='PDC']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Comments Row ')]");
         for (int i = 0; i < postDatedCheques.size() ; i++) {
-            enterListData(amoutRowList.get(i), dataFile, "PostDatedCheques", "Amount" ,i);
-            enterListData(chequeNo.get(i), dataFile, "PostDatedCheques", "ChequeNo" ,i);
-            enterListDate(chequeDate.get(i),dataFile,"PostDatedCheques","ChequeDate",i);
-            enterListData(departmentRowList.get(i),dataFile,"PostDatedCheques","Department",i);
-            enterListData(projectRowList.get(i),dataFile,"PostDatedCheques","Project",i);
-            enterListData(profitCentreRowList.get(i),dataFile,"PostDatedCheques","ProfitCentre",i);
-            enterListData(costCentreRowList.get(i),dataFile,"PostDatedCheques","CostCentre",i);
-            enterListData(commentsRowList.get(i),dataFile,"PostDatedCheques","Comments",i);
+            enterListData(amoutRowList.get(i), dataFile, "PDC", "Amount" ,i);
+            enterListData(chequeNo.get(i), dataFile, "PDC", "ChequeNo" ,i);
+            enterListDate(chequeDate.get(i),dataFile,"PDC","ChequeDate",i);
+            enterListData(departmentRowList.get(i),dataFile,"PDC","Department",i);
+            enterListData(projectRowList.get(i),dataFile,"PDC","Project",i);
+            enterListData(profitCentreRowList.get(i),dataFile,"PDC","ProfitCentre",i);
+            enterListData(costCentreRowList.get(i),dataFile,"PDC","CostCentre",i);
+            enterListData(commentsRowList.get(i),dataFile,"PDC","Comments",i);
         }
     }
 
@@ -429,12 +446,12 @@ public class PurchaseOrdersAgainstQuotation extends TransactionsBaseClass {
         }
     }
 
-    public void addAllocations() {
-        navigateToAllocations();
-        EnterData( "//Edit[@Name='Department']", dataFile, "Allocations", "Department");
-        EnterData( "//Edit[@Name='Project']", dataFile, "Allocations", "Project");
-        EnterData("//Edit[@Name='Profit Centre']", dataFile, "Allocations", "ProfitCentre");
-        EnterData( "//Edit[@Name='Cost Centre']", dataFile, "Allocations", "CostCentre");
-    }
+//    public void addAllocations() {
+//        navigateToAllocations();
+//        EnterData( "//Edit[@Name='Department']", dataFile, "Allocations", "Department");
+//        EnterData( "//Edit[@Name='Project']", dataFile, "Allocations", "Project");
+//        EnterData("//Edit[@Name='Profit Centre']", dataFile, "Allocations", "ProfitCentre");
+//        EnterData( "//Edit[@Name='Cost Centre']", dataFile, "Allocations", "CostCentre");
+//    }
 
 }

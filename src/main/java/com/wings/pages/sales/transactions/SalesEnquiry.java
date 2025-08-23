@@ -34,7 +34,7 @@ public class SalesEnquiry extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String salesEnquiries(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
+    public String salesEnquiries(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long salesEnquiriesStart = System.nanoTime();
         System.out.println("Sales Enquiries started in :" + salesEnquiriesStart);
 
@@ -105,7 +105,6 @@ public class SalesEnquiry extends TransactionsBaseClass {
         long salesEnquiriesEnd = System.nanoTime() - salesEnquiriesStart;
         FileUtil.writeTimeLogInMinutes("Sales Enquiries ended at:- ", salesEnquiriesEnd );
         return newVoucherID;
-
     }
 
 

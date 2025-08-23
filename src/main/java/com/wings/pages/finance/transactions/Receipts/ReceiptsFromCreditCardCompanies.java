@@ -1,13 +1,19 @@
 package com.wings.pages.finance.transactions.Receipts;
 
+import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import com.wings.pages.Transaction;
 import com.wings.utils.Common;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+
 import java.awt.*;
 import java.io.IOException;
+import java.util.List;
 
-public class ReceiptsFromCreditCardCompanies extends Transaction {
+public class ReceiptsFromCreditCardCompanies extends TransactionsBaseClass {
     WindowsDriver driver;
     Common common;
     String dataFile;
@@ -19,49 +25,131 @@ public class ReceiptsFromCreditCardCompanies extends Transaction {
         dataFile = file;
     }
 
-    public void creditCardCompanyReceipt() throws InterruptedException, IOException, ParseException, AWTException {
+    public void creditCardCompanyReceipt(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
         navigateToReceiptsFromCreditCardCompanyMenu();
         Thread.sleep(1000);
-        lastTransactionName();
-        //enter data
-        common.clickElement("xpath","//Edit[@Name='Voucher Type']");
-        selectOptionalMaster(common.getData(dataFile,"voucher"),"xpath","//Edit[@Name='Voucher Type']");
-        common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        selectAndValidateData(common.getData(dataFile, "branch"),"xpath", "//Edit[@Name='Branch *']");
-        common.clickElement("xpath", "//Edit[@Name='Trans Currency *']");
-        selectAndValidateData(common.getData(dataFile, "transaction"),"xpath", "//Edit[@Name='Trans Currency *']");
-        common.clickElement("xpath", "//Edit[@Name='Credit Card Company *']");
-        selectAndValidateData(common.getData(dataFile,"ccc"),"xpath", "//Edit[@Name='Credit Card Company *']" );
-        common.clickElement("xpath","//Edit[@Name='Party Reg Type *']");
-        intraGSTRegistration("Intra State Purchase from Registered Dealers");
-        Thread.sleep(2500);
-        common.clickElement("xpath","//CheckBox[@Name='Select Row 0']");
-        common.clickElement("name","Ok");
+        String oldVoucherID =oldTTransactionID();
         Thread.sleep(1000);
-        common.clickElement("xpath", "//Edit[@Name='Bank Account *']");
-        Thread.sleep(1000);
-        common.inputAndVerify("xpath","//Edit[@Name='Cheque/EFT No *']", String.valueOf(common.getRandom()));
-        common.clickElement("xpath", "//Edit[@Name='Drawn On Bank *']");
-        selectAndValidateData(common.getData(dataFile,"drawnOn"), "xpath","//Edit[@Name='Drawn On Bank *']");
-        common.clickElement("xpath","//Edit[@Name='Drawn On Bank Branch']");
-        selectOptionalMaster(common.getData(dataFile,"Drawn On Bank Branch"),"xpath","//Edit[@Name='Drawn On Bank Branch']");
-        common.clickElement("xpath", "//Edit[@Name='Executive *']");
-        selectAndValidateData(common.getData(dataFile, "executive"),"xpath", "//Edit[@Name='Executive *']");
-        common.clickElement("xpath","//Edit[@Name='Remarks']");
-        selectOptionalMaster(common.getData(dataFile,"remarks"),"xpath","//Edit[@Name='Remarks']");
-        //f3-accounts
-        Thread.sleep(5000);
-        common.clickElement("xpath","//CheckBox[@Name='Received * Row 0']");
-        //f5-credit card company charges
-        navigateToCreditCardCompanyChargesTab();
-        enterDataAndValidate("xpath","//Edit[@Name='Account Code Row 0, Not sorted.']",dataFile,"accountCode");
-        enterData("xpath","//Edit[@Name='Amount * Row 0, Not sorted.']",dataFile,"amount");
-        //summary
+        enterVoucherType(dataFile,"GeneralInformation","VoucherType");
+        EnterDate("//Edit[@Name='Date *']",dataFile,"GeneralInformation","Date");
+        enterBranch(dataFile,"GeneralInformation","Branch");
+        enterCurrency(dataFile,"GeneralInformation","TransactionCurrency");
+        EnterData("//Edit[@Name='Credit Card Company *']", dataFile,"GeneralInformation", "CreditCardCompany");
+        Thread.sleep(2000);
+        gstTransactionType("Intra State Purchase from Registered Dealers");
+        selectPendingPurchaseOrder(voucherNum,"11-07-2025");
+//        selectPendingsSalesOrder(voucherNum,"11-07-2025");
+        EnterData("//Edit[@Name='Bank Account Code']", dataFile,"GeneralInformation", "BankAccountCode");
+        EnterData("//Edit[@Name='Cheque/EFT No *']", dataFile,"GeneralInformation", "ChequeNo");
+        EnterDate("//Edit[@Name='Cheque Date *']", dataFile,"GeneralInformation", "ChequeDate");
+        EnterData("//Edit[@Name='Drawn On Bank *']", dataFile,"GeneralInformation", "DrawnOnBankAccount");
+        EnterData("//Edit[@Name='Drawn On Bank Branch']", dataFile,"GeneralInformation", "DrawnOnBankBranch");
+        enterExecutive(dataFile,"GeneralInformation","Executive");
+        enterRemarks(dataFile,"GeneralInformation","Remarks");
 
-        common.clickElement("xpath", "//TabItem[contains(@Name,'Summary')]");
-        //save
+
+        //Accounts
+        long accountsStart =System.nanoTime();
+        accounts();
+        long accountsStartEnd =System.nanoTime()- accountsStart;
+        FileUtil.writeTimeLogInMinutes("Accounts tab End:- ", accountsStartEnd);
+
+        //credit card Company charges
+        long creditCardCompanyChargesStart =System.nanoTime();
+        creditCardCompanyCharges();
+        long creditCardCompanyChargesStartEnd =System.nanoTime()- creditCardCompanyChargesStart;
+        FileUtil.writeTimeLogInMinutes("creditCardCompanyCharges tab End:- ", creditCardCompanyChargesStartEnd);
+
+        //credit card
+        long otherDebitsStart =System.nanoTime();
+        otherDebit();
+        long otherDebitsEnd =System.nanoTime()- otherDebitsStart;
+        FileUtil.writeTimeLogInMinutes("Other DebitsEnd Tab:- ", otherDebitsEnd);
+
+        //Other info
+        long otherInfoTabStart =System.nanoTime();
+        otherInfo();
+        long otherInfoTabEnd =System.nanoTime()- otherInfoTabStart;
+        FileUtil.writeTimeLogInMinutes("Other Info Tab:- ", otherInfoTabEnd);
+
         transactionSave();
-        lastTransactionName();
-//        transactionClose(common.getData(dataFile,"close"));
+        String newVoucherID =newTransactionID(oldVoucherID);
+        System.out.println("newID: "+newVoucherID);
+        Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
+
     }
+
+    public void accounts() throws IOException, InterruptedException {
+        common.clickElement("xpath", "//TabItem[contains(@Name,'Accounts  ')]");
+        List<WebElement> receivedRow = common.findWebElements("xpath", "//Table[@Name='Accounts']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Received * Row')]");
+        List<WebElement> departmentRowList = common.findWebElements("xpath", "//Table[@Name='Accounts']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Department Row ')]");
+        List<WebElement> projectRowList = common.findWebElements("xpath", "//Table[@Name='Accounts']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Project Row ')]");
+        List<WebElement> costCentreRowList = common.findWebElements("xpath", "//Table[@Name='Accounts']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Cost Centre Row ')]");
+        List<WebElement> profitCentreRowList = common.findWebElements("xpath", "//Table[@Name='Accounts']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Profit Centre Row ')]");
+        List<WebElement> commentsRowList = common.findWebElements("xpath", "//Table[@Name='Accounts']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Comments Row ')]");
+        for (int j = 0; j < departmentRowList.size(); j++) {
+            clickListData(receivedRow.get(j));
+            enterListData(departmentRowList.get(j), dataFile, "Items", "Department", j);
+            enterListData(projectRowList.get(j), dataFile, "Items", "Project", j);
+            enterListData(profitCentreRowList.get(j), dataFile, "Items", "ProfitCentre", j);
+            enterListData(costCentreRowList.get(j), dataFile, "Items", "CostCentre", j);
+            enterListData(commentsRowList.get(j), dataFile, "Items", "Comments", j);
+
+        }
+    }
+
+    public void creditCardCompanyCharges() throws IOException {
+        common.clickElement("xpath", "//TabItem[contains(@Name,'Credit Card Company Charges')]");
+        List<String> debitAcc =readExcelData(dataFile,"CreditCardCompanyCharges","AccountCode");
+        for (int i = 0; i < debitAcc.size(); i++) {
+            addData("xpath","//Edit[@Name='Account Code Row "+i+", Not sorted.']",dataFile,"CreditCardCompanyCharges","AccountCode",i);
+        }
+        List<WebElement> amountRowList = common.findWebElements("xpath", "//Table[@Name='CreditCardCompanyCharges']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Amount Row ')]");
+        List<WebElement> hsnCodeRowList = common.findWebElements("xpath", "//Table[@Name='CreditCardCompanyCharges']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'HSN Row ')]");
+        List<WebElement> GSTProductCategory = common.findWebElements("xpath", "//Table[@Name='CreditCardCompanyCharges']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'GST Product Category Row ')]");
+        List<WebElement> CESSProductCategory = common.findWebElements("xpath", "//Table[@Name='CreditCardCompanyCharges']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'CESS Product Category Row ')]");
+
+        for (int i = 0; i < debitAcc.size() ; i++) {
+            enterListData(amountRowList.get(i), dataFile, "CreditCardCompanyCharges", "Amount",i);
+            enterListData(hsnCodeRowList.get(i),dataFile,"CreditCardCompanyCharges","HSN",i);
+            enterListData(GSTProductCategory.get(i),dataFile,"CreditCardCompanyCharges","GSTProductCategory",i);
+            enterListData(CESSProductCategory.get(i),dataFile,"CreditCardCompanyCharges","CESSProductCategory",i);
+        }
+    }
+
+    public void otherDebit() throws IOException {
+        common.clickElement("xpath", "//TabItem[contains(@Name,'Other Debits')]");
+        List<String> debitAcc =readExcelData(dataFile,"OtherDebits","AccountCode");
+        for (int i = 0; i < debitAcc.size(); i++) {
+            addData("xpath","//Edit[@Name='Account Code Row "+i+", Not sorted.']",dataFile,"OtherDebits","AccountCode",i);
+        }
+        List<WebElement> amountRowList = common.findWebElements("xpath", "//Table[@Name='OtherDebits']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Amount Row ')]");
+        List<WebElement> departmentRowList = common.findWebElements("xpath", "//Table[@Name='OtherDebits']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Department Row ')]");
+        List<WebElement> projectRowList = common.findWebElements("xpath", "//Table[@Name='OtherDebits']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Project Row ')]");
+        List<WebElement> costCentreRowList = common.findWebElements("xpath", "//Table[@Name='OtherDebits']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Cost Centre Row ')]");
+        List<WebElement> profitCentreRowList = common.findWebElements("xpath", "//Table[@Name='OtherDebits']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Profit Centre Row ')]");
+        List<WebElement> commentsRowList = common.findWebElements("xpath", "//Table[@Name='OtherDebits']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Comments Row ')]");
+        for (int i = 0; i < debitAcc.size() ; i++) {
+            enterListData(amountRowList.get(i), dataFile, "OtherDebits", "Amount",i);
+            enterListData(departmentRowList.get(i),dataFile,"OtherDebits","Department",i);
+            enterListData(projectRowList.get(i),dataFile,"OtherDebits","Project",i);
+            enterListData(profitCentreRowList.get(i),dataFile,"OtherDebits","ProfitCentre",i);
+            enterListData(costCentreRowList.get(i),dataFile,"OtherDebits","CostCentre",i);
+            enterListData(commentsRowList.get(i),dataFile,"OtherDebits","Comments",i);
+        }
+    }
+
+    public void otherInfo() throws InterruptedException, IOException {
+        navigateToOtherInfoTab();
+        EnterData("//Edit[@Name='Reference Bill No']",dataFile,"OtherInfo","ReferenceBillNo");
+        Thread.sleep(3500);
+        common.clickElement("xpath","//Window/Button[@Name='OK']");
+        EnterDate("//Edit[@Name='Reference Bill Date']",dataFile,"OtherInfo","ReferenceBillDate");
+        EnterData("//Edit[@Name='Other Info 1']",dataFile,"OtherInfo","OtherInfo1");
+        EnterData("//Edit[@Name='Other Info 2']",dataFile,"OtherInfo","OtherInfo2");
+        EnterData("//Edit[@Name='Other Info 3']",dataFile,"OtherInfo","OtherInfo3");
+        EnterData("//Edit[@Name='Other Info 4']",dataFile,"OtherInfo","OtherInfo4");
+        EnterData("//Edit[@Name='Other Info 5']",dataFile,"OtherInfo","OtherInfo5");
+    }
+
 }

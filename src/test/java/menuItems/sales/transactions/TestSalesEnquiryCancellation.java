@@ -8,7 +8,6 @@ import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import java.awt.*;
 import java.io.IOException;
 
 public class TestSalesEnquiryCancellation {
@@ -32,7 +31,7 @@ public class TestSalesEnquiryCancellation {
     }
 
     @Test
-    public void salesEnquiryCancellation() throws IOException, ParseException, InterruptedException, AWTException {
+    public void salesEnquiryCancellation() throws Exception {
         SalesEnquiry sales = new SalesEnquiry(driver, dataFile);
         String se=sales.salesEnquiries(TEMP_API_BODY_SALES_ENQUIRY,API_RESPONSE_SALES_ENQUIRY,OUTPUT_FILE1);
 
