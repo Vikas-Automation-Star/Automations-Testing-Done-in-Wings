@@ -22,7 +22,7 @@ public class StockTransactionAnalysisReport {
     }
 
     @Test
-    public void stockTransactionAnalysis() throws IOException, ParseException, InterruptedException, AWTException {
+    public void stockTransactionAnalysis() throws Exception, AWTException {
         StockTransactionAnalysis transactionAnalysis = new StockTransactionAnalysis(driver);
         transactionAnalysis.stckTransactionAnalysis();
     }

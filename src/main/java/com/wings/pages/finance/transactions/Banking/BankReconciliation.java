@@ -22,7 +22,7 @@ public class BankReconciliation extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public void bankReconciliation(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException {
+    public void bankReconciliation(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
         navigateToMastersWhen3Steps("Finance","Banking","Bank Reconciliation");
         Thread.sleep(1000);

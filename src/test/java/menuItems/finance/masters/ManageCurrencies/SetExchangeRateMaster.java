@@ -16,13 +16,13 @@ public class SetExchangeRateMaster {
     String dataFile = "./";
 
     @BeforeTest
-    public void beforeTest() throws IOException, ParseException, InterruptedException {
+    public void beforeTest() throws Exception {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
-    public void exchangeRate() throws IOException, ParseException, InterruptedException, AWTException {
+    public void exchangeRate() throws Exception, AWTException {
         SetExchangeRate exchangeRate = new SetExchangeRate(driver, dataFile);
         exchangeRate.exchangeRate();
 

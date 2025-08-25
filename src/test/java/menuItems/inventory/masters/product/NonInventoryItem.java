@@ -23,7 +23,7 @@ public class NonInventoryItem {
     }
 
     @Test
-    public void nonInventoryItems() throws IOException, ParseException, InterruptedException, AWTException {
+    public void nonInventoryItems() throws Exception, AWTException {
         NonInventoryItems inventoryItems = new NonInventoryItems(driver, file);
         inventoryItems.nonInventoryItemcreation();
     }

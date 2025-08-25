@@ -1381,7 +1381,7 @@ public  class Transaction {
         enterInput("xpath","//Edit[@Name='Charges Account Code Row 0, Not sorted.']",dataFile,dataSet,"chargesAcc");
         enterInput("xpath","//Edit[@Name='Charges Row 0, Not sorted.']",dataFile,dataSet,"chargesAmount");
     }
-    public void enterChequesInPRWIR(String dataFile,String dataSet) throws IOException, ParseException, InterruptedException {
+    public void enterChequesInPRWIR(String dataFile,String dataSet) throws Exception {
         List<WebElement> elements=common.findWebElements("xpath","//TabItem[contains(@Name,'Cheques')]");
         System.out.println(elements.get(0).getText());
         elements.get(0).click();
@@ -2105,7 +2105,7 @@ public  class Transaction {
         }
     }
 
-    public void enterServices(String dataFile,String dataset) throws IOException, ParseException, InterruptedException {
+    public void enterServices(String dataFile,String dataset) throws Exception {
         common.clickElement("xpath","//TabItem[contains(@Name,'Services')]");
         enterData("xpath", "//Edit[@Name='Service Code Row 0, Not sorted.']", dataFile,dataset, "servicesCode");
         enterData("xpath", "//Edit[@Name='Quantity Row 0, Not sorted.']", dataFile, dataset,"servicesQuantity");
@@ -2115,7 +2115,7 @@ public  class Transaction {
     }
 
 
-    public void enterServices(String dataFile,String dataSet,int i) throws IOException, ParseException, InterruptedException {
+    public void enterServices(String dataFile,String dataSet,int i) throws Exception {
         common.clickElement("xpath","//TabItem[contains(@Name,'Services')]");
         enterData("xpath", "//Edit[@Name='Service Code Row "+i+", Not sorted.']", dataFile,dataSet, "servicesCode"+i);
         enterData("xpath", "//Edit[@Name='Purchase Account * Row "+i+", Not sorted.']", dataFile,dataSet, "purchaseAccount"+i);
@@ -2389,7 +2389,7 @@ public  class Transaction {
         EnterData("//Edit[@Name='Executive *']",dataFile,sheetName,key);
     }
 
-    public void validateStockLedger(String fileName,String dataSet) throws IOException, ParseException, InterruptedException {
+    public void validateStockLedger(String fileName,String dataSet) throws Exception {
 
         for (int i=0; i < Integer.parseInt(common.getData(fileName,dataSet,"productCount")); i++){
             navigateToMastersWhen3Steps("Inventory","Stock","Stock Ledger");

@@ -22,7 +22,7 @@ public class TestDraftPageLayout {
         }
 
         @Test
-        public void draftPageLayout() throws IOException, ParseException, InterruptedException {
+        public void draftPageLayout() throws Exception {
             DraftPageLayout draftPageLayout=new DraftPageLayout(driver,file);
             draftPageLayout.draftPageLayout();
         }

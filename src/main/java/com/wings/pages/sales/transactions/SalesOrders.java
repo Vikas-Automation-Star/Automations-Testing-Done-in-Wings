@@ -25,7 +25,7 @@ public class SalesOrders extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String salesOrder(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
+    public String salesOrder(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
         System.out.println("Sales Order startTime in :" + start);
 

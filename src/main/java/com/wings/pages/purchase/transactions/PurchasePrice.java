@@ -21,7 +21,7 @@ public class PurchasePrice extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String purchasePrice() throws InterruptedException, IOException, ParseException {
+    public String purchasePrice() throws Exception {
         long start = System.nanoTime();
         navigateToMastersWhen3Steps("Purchase","Price", "Purchase Prices");
         Thread.sleep(1000);
@@ -69,7 +69,7 @@ public class PurchasePrice extends TransactionsBaseClass {
         return newVoucherID;
     }
 
-    public void addProduct() throws IOException, ParseException, InterruptedException {
+    public void addProduct() throws Exception {
         List<String> productCode = readExcelData(dataFile, "Items", "ProductCode");
         System.out.println("productCodes :" + productCode.size());
         for (int i = 0; i < productCode.size(); i++) {

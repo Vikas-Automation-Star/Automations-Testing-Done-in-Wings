@@ -26,7 +26,7 @@ public class SalesTargetExecutiveWiseTransaction {
         }
 
         @Test
-        public void salestargetExecutiveWise() throws IOException, InterruptedException, ParseException, AWTException {
+        public void salestargetExecutiveWise() throws Exception {
             DefineSalesTargetExecutiveWise salesTargetExecutiveWise=new DefineSalesTargetExecutiveWise(driver,dataFile);
             salesTargetExecutiveWise.salesTargetExecutiveWise(TEMP_API_SALES_TARGET,API_RESPONSE_SALES_TARGET,OUTPUT_FILE_SALES_TARGET);
         }

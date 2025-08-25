@@ -22,7 +22,7 @@ public class SalesInvoiceAgainstDeliveriesReport {
     }
 
     @Test
-    public void salesInvoiceAgainstDeliveries() throws IOException, ParseException, InterruptedException, AWTException {
+    public void salesInvoiceAgainstDeliveries() throws Exception, AWTException {
         SalesInvoiceAgainstDeliveriesReportCode deliveriesReportCode = new SalesInvoiceAgainstDeliveriesReportCode(driver);
         deliveriesReportCode.salesInvoiceAgainstDeliveries();
     }

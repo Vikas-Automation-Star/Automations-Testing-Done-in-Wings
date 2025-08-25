@@ -22,7 +22,7 @@ public class StockAgeingReport {
     }
 
     @Test
-    public void stockAgeing() throws IOException, ParseException, InterruptedException, AWTException {
+    public void stockAgeing() throws Exception, AWTException {
         StockAgeing ageing = new StockAgeing(driver);
         ageing.stckAgeing();
     }

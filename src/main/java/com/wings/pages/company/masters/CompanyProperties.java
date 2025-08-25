@@ -25,7 +25,7 @@ public class CompanyProperties extends Masters {
         dataFile = file;
     }
 
-    public void companyProperty() throws IOException, ParseException, InterruptedException, AWTException {
+    public void companyProperty() throws Exception, AWTException {
         navigateToMastersWhen2Steps("Company","Company Properties");
         Thread.sleep(1500);
         super.inputTextWithValidation("xpath", "//Edit[@Name='Registration Certificate No']", common.getData(dataFile, "Registration certificateNo") + common.getRandom());

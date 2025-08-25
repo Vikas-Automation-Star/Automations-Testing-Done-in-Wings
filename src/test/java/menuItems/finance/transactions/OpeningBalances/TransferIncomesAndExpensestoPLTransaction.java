@@ -15,12 +15,12 @@ public class TransferIncomesAndExpensestoPLTransaction {
     String dataFile = "./src/main/resources/menuItems/finance/transaction/439851 - Transfer Incomes and Expenses to PL-AC_TIE_1.xls";
 
     @BeforeTest
-    public void beforeTest() throws IOException, ParseException, InterruptedException {
+    public void beforeTest() throws Exception {
         driver = appLogin.login();
     }
 
     @Test
-    public void transferIncomeandExpenses() throws IOException, ParseException, InterruptedException {
+    public void transferIncomeandExpenses() throws Exception {
         TransferIncomesAndExpensestoPL incomesandExpensestoPL = new TransferIncomesAndExpensestoPL(driver, dataFile);
         incomesandExpensestoPL.incomeAndExpenses();
     }

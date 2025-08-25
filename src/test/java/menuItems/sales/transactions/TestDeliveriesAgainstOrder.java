@@ -32,7 +32,7 @@ public class TestDeliveriesAgainstOrder {
     }
 
     @Test
-    public void deliveriesAgainstOrders() throws IOException, ParseException, InterruptedException, AWTException {
+    public void deliveriesAgainstOrders() throws Exception, AWTException {
         SalesOrders salesOrders=new SalesOrders(driver,dataFile1);
         String salesOrderVoucher=salesOrders.salesOrder(TEMP_API_SALES_ORDER,API_RESPONSE_SALES_ORDER,OUTPUT_FILE_SALES_ORDER);
         appLogin.logout();

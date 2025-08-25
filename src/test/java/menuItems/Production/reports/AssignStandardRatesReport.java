@@ -21,7 +21,7 @@ public class AssignStandardRatesReport {
     }
 
     @Test
-    public void assignStandardRates() throws IOException, ParseException, InterruptedException {
+    public void assignStandardRates() throws Exception {
         AssignStandardRates asr = new AssignStandardRates(driver);
         asr.assignStandardRatesReport();
     }

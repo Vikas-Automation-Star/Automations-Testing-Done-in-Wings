@@ -27,7 +27,7 @@ public class StockLedgerReport {
     }
 
     @Test
-    public void stockLedger() throws IOException, ParseException, InterruptedException, AWTException {
+    public void stockLedger() throws Exception, AWTException {
         StockLedger stockLedger = new StockLedger(driver,file);
         stockLedger.stockLedger();
     }

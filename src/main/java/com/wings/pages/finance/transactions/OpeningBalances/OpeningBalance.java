@@ -24,7 +24,7 @@ public class OpeningBalance extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String openingBalance(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException {
+    public String openingBalance(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
         navigateToMastersWhen3Steps("Finance","Opening Balances","Opening Balances");
         Thread.sleep(1000);

@@ -23,7 +23,7 @@ public class PhysicalStockTake extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String physicalStockTake(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, AWTException, IOException, ParseException {
+    public String physicalStockTake(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start=System.nanoTime();
         navigateToMastersWhen2Steps("Inventory", "Physical Stock Take");
         long generalInfoStart = System.nanoTime();
@@ -61,7 +61,7 @@ public class PhysicalStockTake extends TransactionsBaseClass {
         return newVoucherID;
     }
 
-    public void addStockDetails() throws IOException, ParseException, InterruptedException {
+    public void addStockDetails() throws Exception {
         List<String> productCode=readExcelData(dataFile,"PhysicalStock","ProductCode");
         for (int i = 0; i < productCode.size() ; i++)   {
             addData("xpath","//Edit[@Name='Product Code Row "+i+", Not sorted.']",dataFile,"PhysicalStock","ProductCode",i);

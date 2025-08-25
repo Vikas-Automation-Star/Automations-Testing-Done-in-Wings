@@ -23,7 +23,7 @@ public class Service {
     }
 
     @Test
-    public void serviceMaster() throws IOException, ParseException, InterruptedException, AWTException {
+    public void serviceMaster() throws Exception, AWTException {
         Services services = new Services(driver, file);
         services.serviceMasterCreation();
     }

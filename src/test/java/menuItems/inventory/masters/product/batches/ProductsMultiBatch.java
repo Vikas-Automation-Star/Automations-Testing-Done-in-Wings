@@ -23,7 +23,7 @@ public class ProductsMultiBatch {
     }
 
     @Test
-    public void productMultiBatch() throws IOException, ParseException, InterruptedException, AWTException {
+    public void productMultiBatch() throws Exception, AWTException {
         ProductMultiBatch multiBatch = new ProductMultiBatch(driver, file);
         multiBatch.productMultiBatch();
     }

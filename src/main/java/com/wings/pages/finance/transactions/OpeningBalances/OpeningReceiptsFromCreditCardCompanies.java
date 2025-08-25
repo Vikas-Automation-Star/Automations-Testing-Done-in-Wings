@@ -24,7 +24,7 @@ public class OpeningReceiptsFromCreditCardCompanies extends TransactionsBaseClas
         dataFile = file;
     }
 
-    public String openingReceipts(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException {
+    public String openingReceipts(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
         navigateToMastersWhen3Steps("Finance","Opening Balances","Opening Receipts from Credit Card Companies");
         Thread.sleep(1000);

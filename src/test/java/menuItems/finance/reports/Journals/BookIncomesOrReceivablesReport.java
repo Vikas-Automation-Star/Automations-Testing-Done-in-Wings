@@ -16,13 +16,13 @@ public class BookIncomesOrReceivablesReport {
     AppLogin appLogin = new AppLogin();
 
     @BeforeTest
-    public void beforeTest() throws IOException, ParseException, InterruptedException {
+    public void beforeTest() throws Exception {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
-    public void receivablesReport() throws IOException, ParseException, InterruptedException, AWTException {
+    public void receivablesReport() throws Exception, AWTException {
         BookIncomesOrReceivablesReportCode receivablesReportCode = new BookIncomesOrReceivablesReportCode(driver);
         receivablesReportCode.receivablesReport();
     }

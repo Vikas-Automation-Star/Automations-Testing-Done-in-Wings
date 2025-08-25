@@ -29,7 +29,7 @@ public class MaterialReturn extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String materialReturn(String receiptsNum) throws InterruptedException, IOException, ParseException, AWTException {
+    public String materialReturn(String receiptsNum) throws Exception {
         long start = System.nanoTime();
 
         navigateToMastersWhen3Steps("Purchase","Receipts", "Material Returns");
@@ -107,7 +107,7 @@ public class MaterialReturn extends TransactionsBaseClass {
         return newVoucherID;
     }
 
-    //    public void addProduct() throws IOException, ParseException, InterruptedException {
+    //    public void addProduct() throws Exception {
 //        List<String> productsOrderInExcel=getValuesByColumnHeader(dataFile,"Items","Product");
 //        //read products order from excel
 ////        System.out.println(productsOrderInExcel.size()+"excel products order");
@@ -263,7 +263,7 @@ public class MaterialReturn extends TransactionsBaseClass {
 //        }
 //
 //    }
-    public void addProduct() throws IOException, ParseException, InterruptedException {
+    public void addProduct() throws Exception {
         List<String> productsOrderInExcel=getValuesByColumnHeader(dataFile,"Items","Product");
         //read products order from excel
         System.out.println(productsOrderInExcel.size()+"excel products order");

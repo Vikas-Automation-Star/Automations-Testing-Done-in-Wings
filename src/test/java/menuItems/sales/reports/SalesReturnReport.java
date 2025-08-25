@@ -22,7 +22,7 @@ public class SalesReturnReport {
     }
 
     @Test
-    public void salesReturn() throws IOException, ParseException, InterruptedException, AWTException {
+    public void salesReturn() throws Exception, AWTException {
         SalesReturnReportCode reportCode = new SalesReturnReportCode(driver);
         reportCode.salesReturnReport();
     }

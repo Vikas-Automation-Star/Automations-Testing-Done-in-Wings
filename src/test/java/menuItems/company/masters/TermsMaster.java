@@ -23,7 +23,7 @@ public class TermsMaster {
     }
 
     @Test
-    public void terms() throws IOException, ParseException, InterruptedException, AWTException {
+    public void terms() throws Exception, AWTException {
         Terms terms = new Terms(driver, file);
         terms.terms();
     }

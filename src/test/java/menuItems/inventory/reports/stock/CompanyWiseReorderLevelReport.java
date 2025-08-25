@@ -22,7 +22,7 @@ public class CompanyWiseReorderLevelReport {
     }
 
     @Test
-    public void companyWiseRecorderLevel() throws IOException, ParseException, InterruptedException, AWTException {
+    public void companyWiseRecorderLevel() throws Exception, AWTException {
         CompanyWiseReorderLevel reorderLevel = new CompanyWiseReorderLevel(driver);
         reorderLevel.companyWise();
     }

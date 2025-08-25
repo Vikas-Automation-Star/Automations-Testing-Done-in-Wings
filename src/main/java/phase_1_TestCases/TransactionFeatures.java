@@ -98,7 +98,7 @@ public class TransactionFeatures extends Transaction {
         }
     }
 
-    public void holdTransaction() throws IOException, ParseException, InterruptedException {
+    public void holdTransaction() throws Exception {
         navigateToSalesEnquiryMenu();
         Thread.sleep(1500);
         common.clickElement("xpath", "//Edit[@Name='Branch *']");
@@ -246,7 +246,7 @@ public class TransactionFeatures extends Transaction {
 
     }
 
-    public void editTransaction() throws IOException, ParseException, InterruptedException {
+    public void editTransaction() throws Exception {
         navigateToSalesEnquiryMenu();
         Thread.sleep(1500);
 //        enterBranch(dataFile,dataset,"branch");
@@ -343,7 +343,7 @@ public class TransactionFeatures extends Transaction {
         if (found) System.out.println("Removed From Favourites successfully");
     }
 
-    public void voidTransaction() throws IOException, ParseException, InterruptedException {
+    public void voidTransaction() throws Exception {
         common.clickElement("xpath", "//MenuItem[@Name='Tools']");
         common.clickElement("xpath", "//MenuItem[@Name='Vouchers']");
         common.clickElement("xpath", "//MenuItem[@Name='Void']");

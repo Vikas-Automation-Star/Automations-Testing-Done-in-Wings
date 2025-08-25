@@ -21,7 +21,7 @@ public class PendingSalesOrderReport {
     }
 
     @Test
-    public void pendingSalesOrder() throws IOException, ParseException, InterruptedException {
+    public void pendingSalesOrder() throws Exception {
         PendingSalesOrderReportCode salesOrderReportCode = new PendingSalesOrderReportCode(driver);
         salesOrderReportCode.PendingsalesOrderReport();
     }

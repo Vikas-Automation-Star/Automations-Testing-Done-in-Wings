@@ -17,38 +17,38 @@ public class TransactionFeatureConfig {
     String dataFile = "./src/main/resources/Technical/technicalFeatures.json"; //when running change the json file to transactionFeatureConfiguration.json
 
     @BeforeTest
-    public void beforeTest() throws IOException, ParseException, InterruptedException {
+    public void beforeTest() throws Exception {
         common=new Common(driver);
         driver = appLogin.login();
 
     }
 
 //    @Test(priority = 1)
-    public void draftTransaction() throws IOException, ParseException, InterruptedException {
+    public void draftTransaction() throws Exception {
         TransactionFeatures features=new TransactionFeatures(driver,dataFile);
         features.saveAsDraft();
     }
 
 //    @Test(priority = 2)
-    public void holdTransaction() throws IOException, ParseException, InterruptedException {
+    public void holdTransaction() throws Exception {
         TransactionFeatures features=new TransactionFeatures(driver,dataFile);
         features.holdTransaction();
     }
 
 //    @Test(priority = 3)
-    public void editTransaction() throws IOException, ParseException, InterruptedException {
+    public void editTransaction() throws Exception {
         TransactionFeatures editTrans=new TransactionFeatures(driver,dataFile);
         editTrans.editTransaction();
     }
 
     @Test(priority = 4)
-    public void addToFavourite() throws IOException, ParseException, InterruptedException {
+    public void addToFavourite() throws Exception {
         TransactionFeatures addToFav =new TransactionFeatures(driver,dataFile);
         addToFav.addToFavourites(common.getData(dataFile,"addToFavorites","transactionName"));
     }
 
 //    @Test(priority = 5)
-    public void saveAsTemplate() throws IOException, ParseException, InterruptedException {
+    public void saveAsTemplate() throws Exception {
         TransactionFeatures template=new TransactionFeatures(driver,dataFile);
         template.saveAsTemplate();
     }

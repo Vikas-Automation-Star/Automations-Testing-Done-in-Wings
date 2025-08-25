@@ -24,7 +24,7 @@ public class PurchaseVoucherAgainstPurchaseOrders extends TransactionsBaseClass 
         common = new Common(this.driver);
         dataFile = file;
     }
-    public String purchaseVoucherAgainstPurchaseOrders(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
+    public String purchaseVoucherAgainstPurchaseOrders(String voucherNum) throws Exception {
         long start = System.nanoTime();
 
         navigateToMastersWhen3Steps("Purchase","Invoices","Purchase Vouchers against Orders");

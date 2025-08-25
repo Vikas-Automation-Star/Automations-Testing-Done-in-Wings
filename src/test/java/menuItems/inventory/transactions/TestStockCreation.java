@@ -25,7 +25,7 @@ public class TestStockCreation {
     }
 
     @Test
-    public void stockCreation() throws InterruptedException, AWTException, IOException, ParseException {
+    public void stockCreation() throws Exception {
         StockCreation creationTrans = new StockCreation(driver, file);
         creationTrans.stockCreation(TEMP_API_BODY_STOCK_CREATION,API_RESPONSE_STOCK_CREATION,OUTPUT_FILE);
     }

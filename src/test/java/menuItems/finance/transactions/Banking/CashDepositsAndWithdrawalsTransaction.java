@@ -23,7 +23,7 @@ public class CashDepositsAndWithdrawalsTransaction {
     }
 
     @Test
-    public void cashDepositandWithdrawl() throws InterruptedException,IOException, ParseException {
+    public void cashDepositandWithdrawl() throws Exception {
         CashDepositsAndWithdrawls depositsAndWithdrawls = new CashDepositsAndWithdrawls(driver, dataFile);
         depositsAndWithdrawls.depositAndWithdrawal(TEMP_API_BODY_CASHDEPOSIT_WITHDRAWAL,API_RESPONSE_CASHDEPOSIT_WITHDRAWAL,OUTPUT_FILE);
     }

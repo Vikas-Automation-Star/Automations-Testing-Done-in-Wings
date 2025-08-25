@@ -25,7 +25,7 @@ public class SalesInvoiceAgainstOrders extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String invoiceAgainstOrders(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
+    public String invoiceAgainstOrders(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
         System.out.println("SIAO startTime executed in :"+start);
         Thread.sleep(100);
@@ -149,7 +149,7 @@ public class SalesInvoiceAgainstOrders extends TransactionsBaseClass {
 
     }
 
-    public void addProduct() throws IOException, ParseException, InterruptedException {
+    public void addProduct() throws Exception {
         List<String> productCode=readExcelData(dataFile,"Items","ProductCode");
         List<String> masterType=readExcelData(dataFile,"Items","MasterType");
         System.out.println(masterType.size());

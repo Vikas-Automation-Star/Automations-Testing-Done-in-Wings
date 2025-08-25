@@ -27,7 +27,7 @@ public class TestSalaryPayments {
     }
 
     @Test
-    public void salaryPayments() throws InterruptedException, AWTException, IOException, ParseException {
+    public void salaryPayments() throws Exception {
         SalaryPayments salaryPayments=new SalaryPayments(driver,file);
         salaryPayments.salaryPayments(TEMP_API_BODY_SALARY_PAYMENTS,API_RESPONSE_SALARY_PAYMENTS,OUTPUT_FILE);
     }

@@ -23,7 +23,7 @@ public class TestDocumentTypes {
         }
 
         @Test
-        public void documentTypes() throws IOException, ParseException, InterruptedException, AWTException {
+        public void documentTypes() throws Exception, AWTException {
             DocumentTypes documentTypes=new DocumentTypes(driver,file);
             documentTypes.documentTypes();
         }

@@ -16,13 +16,13 @@ public class PendingBillsForSupplierReport {
     AppLogin appLogin = new AppLogin();
 
     @BeforeTest
-    public void beforeTest() throws IOException, ParseException, InterruptedException {
+    public void beforeTest() throws Exception {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
-    public void pendingBillsForSupplier() throws IOException, ParseException, InterruptedException, AWTException {
+    public void pendingBillsForSupplier() throws Exception, AWTException {
         PendingBillsForSupplierReportCode billsForSupplierReportCode = new PendingBillsForSupplierReportCode(driver);
         billsForSupplierReportCode.pendingBillsForSupplier();
 

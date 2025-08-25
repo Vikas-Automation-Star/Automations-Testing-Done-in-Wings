@@ -19,7 +19,7 @@ public class LandingPage {
         common = new Common(this.driver);
     }
 
-    public void validateMenus() throws IOException, ParseException, InterruptedException {
+    public void validateMenus() throws Exception {
         navigateToFileMenu();
         navigateToCompanyMenu();
         navigateToSalesMenu();
@@ -47,7 +47,7 @@ public class LandingPage {
         Assert.assertTrue(common.isDisplayed("name", "Exit"), "it should displayed");
     }
 
-    public void navigateToCompanyMenu() throws IOException, ParseException, InterruptedException {
+    public void navigateToCompanyMenu() throws Exception {
         common.clickElement("name", common.getData(file1, "companyName"));
         Thread.sleep(1000);
         Assert.assertTrue(common.isDisplayed("name", "Company"), "Compose Option Is displayed");

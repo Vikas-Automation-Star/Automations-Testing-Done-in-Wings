@@ -21,7 +21,7 @@ public class PendingSaleEnquiryReport {
     }
 
     @Test
-    public void pendingSalesEnquiryReport() throws IOException, ParseException, InterruptedException {
+    public void pendingSalesEnquiryReport() throws Exception {
         PendingSalesEnquiryReportCode salesEnquiry = new PendingSalesEnquiryReportCode(driver);
         salesEnquiry.pendingEnquiryReport();
     }

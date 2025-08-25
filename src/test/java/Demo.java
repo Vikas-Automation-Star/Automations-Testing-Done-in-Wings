@@ -21,7 +21,7 @@ public class Demo {
     }
 
     @Test
-    public void validateMenuItems() throws IOException, InterruptedException, ParseException {
+    public void validateMenuItems() throws Exception {
         landingPage = new LandingPage(driver);
         landingPage.validateMenus();
     }

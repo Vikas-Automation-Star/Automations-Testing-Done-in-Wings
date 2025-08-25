@@ -20,7 +20,7 @@ public class InterBankFundTransfers extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public void bankFundTransfer(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException {
+    public void bankFundTransfer(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
         navigateToMastersWhen3Steps("Finance","Banking","Inter Bank Fund Transfers");
         Thread.sleep(1000);

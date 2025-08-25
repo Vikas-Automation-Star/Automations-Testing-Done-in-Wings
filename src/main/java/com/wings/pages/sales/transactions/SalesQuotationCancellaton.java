@@ -25,7 +25,7 @@ public class SalesQuotationCancellaton extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String salesQuotationCancelltion(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
+    public String salesQuotationCancelltion(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long quotationCancellationStart = System.nanoTime();
 //        System.out.println("sales quotation Cancellation startTime executed in :"+start);
         long generalInfoStart = System.nanoTime();
@@ -79,6 +79,7 @@ public class SalesQuotationCancellaton extends TransactionsBaseClass {
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"salesQuotationCancellation");
 
 
+
         long quotationsCancellationEnd = System.nanoTime() - quotationCancellationStart;
         FileUtil.writeTimeLogInMinutes("Sales Quotation Cancellation End: ", quotationsCancellationEnd);
 //        excelUtil.excelComparator("","",newVoucherID);
@@ -87,7 +88,7 @@ public class SalesQuotationCancellaton extends TransactionsBaseClass {
 
     }
 
-    public void addProduct() throws IOException, ParseException, InterruptedException {
+    public void addProduct() throws Exception {
         List<String> productCode = readExcelData(dataFile, "Items", "ProductCode");
         System.out.println("productCodes :" + productCode.size());
 

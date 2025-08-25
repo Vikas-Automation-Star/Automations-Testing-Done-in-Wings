@@ -24,7 +24,7 @@ public class ExecutiveMaster {
     }
 
     @Test
-    public void createExecutive() throws IOException, ParseException, InterruptedException, AWTException {
+    public void createExecutive() throws Exception, AWTException {
         newExecutive = new Executive(driver, file);
         newExecutive.Executive();
     }

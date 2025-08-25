@@ -23,7 +23,7 @@ public class PaymentToParties extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String paymentToParty(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException {
+    public String paymentToParty(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
         navigateToMastersWhen3Steps("Finance", "Payments", "Payments to Parties");
         Thread.sleep(1000);

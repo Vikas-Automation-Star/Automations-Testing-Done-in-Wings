@@ -23,7 +23,7 @@ public class TermTypeMaster {
     }
 
     @Test
-    public void termType() throws IOException, ParseException, InterruptedException, AWTException {
+    public void termType() throws Exception, AWTException {
         TermType termType = new TermType(driver, file);
         termType.termType();
     }

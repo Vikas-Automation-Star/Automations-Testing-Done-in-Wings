@@ -24,7 +24,7 @@ public class SuppliersMaster {
     }
 
     @Test
-    public void suppliersMaster() throws IOException, ParseException, InterruptedException, AWTException {
+    public void suppliersMaster() throws Exception, AWTException {
         Supplier supplier = new Supplier(driver, file);
         supplier.createSupplier();
     }

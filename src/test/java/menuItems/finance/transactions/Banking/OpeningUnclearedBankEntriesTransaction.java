@@ -22,12 +22,12 @@ public class OpeningUnclearedBankEntriesTransaction {
     String dataFile = "./src/main/resources/menuItems/finance/transaction/458165 - Opening Uncleared Bank Entries-AC_OUCBE_1.xls";
 
     @BeforeTest
-    public void beforeTest() throws IOException, ParseException, InterruptedException {
+    public void beforeTest() throws Exception {
         driver = appLogin.login();
     }
 
     @Test
-    public void openingUnclearedBankEntries() throws IOException, ParseException, InterruptedException, AWTException {
+    public void openingUnclearedBankEntries() throws Exception {
         OpeningUnclearedBankEntries unclearedBankEntries = new OpeningUnclearedBankEntries(driver, dataFile);
         unclearedBankEntries.unclearedBankEntries(TEMP_API_BODY_OPENING_UNCLEARED_BANKENTRIES, API_RESPONSE_OPENING_UNCLEARED_BANKENTRIES,OUTPUT_FILE);
     }

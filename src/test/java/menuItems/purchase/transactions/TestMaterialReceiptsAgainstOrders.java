@@ -23,7 +23,7 @@ public class TestMaterialReceiptsAgainstOrders {
     }
 
     @Test
-    public void materialReceiptsAgainstOrders() throws IOException, ParseException, InterruptedException, AWTException {
+    public void materialReceiptsAgainstOrders() throws Exception, AWTException {
         PurchaseOrders purchaseOrders=new PurchaseOrders(driver,dataFile);
         String po=purchaseOrders.purchaseOrders();
         appLogin.logout();

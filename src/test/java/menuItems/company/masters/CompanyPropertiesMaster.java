@@ -26,7 +26,7 @@ public class CompanyPropertiesMaster {
     }
 
     @Test
-    public void companyProperties() throws IOException, ParseException, InterruptedException, AWTException {
+    public void companyProperties() throws Exception, AWTException {
         companyProperties = new CompanyProperties(driver, file);
         companyProperties.companyProperty();
     }

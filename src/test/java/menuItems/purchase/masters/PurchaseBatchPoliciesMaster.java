@@ -25,7 +25,7 @@ public class PurchaseBatchPoliciesMaster {
     }
 
     @Test
-    public void purchaseBatchPolicies() throws IOException, ParseException, InterruptedException, AWTException {
+    public void purchaseBatchPolicies() throws Exception, AWTException {
         PurchaseBatchPolicies pbp = new PurchaseBatchPolicies(driver, file);
         pbp.batchPolicies();
     }

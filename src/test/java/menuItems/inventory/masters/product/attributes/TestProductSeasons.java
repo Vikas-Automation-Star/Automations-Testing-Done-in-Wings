@@ -23,7 +23,7 @@ public class TestProductSeasons {
         }
 
         @Test
-        public void productSeasons() throws IOException, ParseException, InterruptedException, AWTException {
+        public void productSeasons() throws Exception, AWTException {
             ProductSeasons productSeasons=new ProductSeasons(driver,file);
             productSeasons.productSeasons();
         }

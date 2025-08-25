@@ -23,7 +23,7 @@ public class TestBookExpensesOrPayables {
     }
 
     @Test
-    public void receiptFromParty() throws IOException, ParseException, InterruptedException, AWTException {
+    public void receiptFromParty() throws Exception, AWTException {
         BookExpensesOrPayables expensesOrPayables = new BookExpensesOrPayables(driver, dataFile);
         expensesOrPayables.Payables();
     }

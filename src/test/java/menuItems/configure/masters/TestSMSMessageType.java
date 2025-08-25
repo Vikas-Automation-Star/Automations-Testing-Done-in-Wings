@@ -23,7 +23,7 @@ public class TestSMSMessageType {
     }
 
     @Test
-    public void smsMessageType() throws IOException, ParseException, InterruptedException, AWTException {
+    public void smsMessageType() throws Exception, AWTException {
         SMS sms = new SMS(driver, file);
         sms.sMSMessageTypes();
     }

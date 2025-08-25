@@ -22,7 +22,7 @@ public class SerialNoHistoryReport {
     }
 
     @Test
-    public void serialNoHistory() throws IOException, ParseException, InterruptedException, AWTException {
+    public void serialNoHistory() throws Exception, AWTException {
         SerialNoHistory history = new SerialNoHistory(driver);
         history.serialNoHistory();
     }

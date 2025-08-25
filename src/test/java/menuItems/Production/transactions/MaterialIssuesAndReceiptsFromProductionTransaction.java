@@ -22,7 +22,7 @@ public class MaterialIssuesAndReceiptsFromProductionTransaction {
     }
 
     @Test
-    public void MaterialIssuesAndReceiptsFromProductionTransaction() throws IOException, ParseException, InterruptedException {
+    public void MaterialIssuesAndReceiptsFromProductionTransaction() throws Exception {
         MaterialIssuesAndReceiptsFromProduction mirp = new MaterialIssuesAndReceiptsFromProduction(driver, file);
         mirp.materialIssuesAndReceiptsFromProduction();
     }

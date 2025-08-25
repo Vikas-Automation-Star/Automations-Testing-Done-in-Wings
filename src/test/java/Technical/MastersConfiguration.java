@@ -46,7 +46,7 @@ public class MastersConfiguration {
     }
 
 //    @Test(priority = 5)
-    public void nodeRename() throws InterruptedException, IOException, ParseException, AWTException {
+    public void nodeRename() throws Exception {
         MasterConfig config = new MasterConfig(driver, dataFile);
         config.renameNode();
     }

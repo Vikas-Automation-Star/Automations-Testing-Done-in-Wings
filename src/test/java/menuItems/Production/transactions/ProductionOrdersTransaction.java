@@ -23,7 +23,7 @@ public class ProductionOrdersTransaction {
     }
 
     @Test
-    public void ProductionOrdersTransaction() throws IOException, ParseException, InterruptedException, AWTException {
+    public void ProductionOrdersTransaction() throws Exception, AWTException {
         ProductOrders po = new ProductOrders(driver, file);
         po.productOrders();
     }

@@ -26,7 +26,7 @@ public class MaterialReceiptsAgainstOrder extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String materialReceiptsAgainstOrder(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
+    public String materialReceiptsAgainstOrder(String voucherNum) throws Exception {
         long start = System.nanoTime();
         navigateToMastersWhen3Steps("Purchase","Receipts","Material Receipts against Orders");
         Thread.sleep(3000);
@@ -113,7 +113,7 @@ public class MaterialReceiptsAgainstOrder extends TransactionsBaseClass {
         return newVoucherID;
     }
 
-    public void addProduct() throws IOException, ParseException, InterruptedException {
+    public void addProduct() throws Exception {
         List<String> productCode = readExcelData(dataFile, "Items", "ProductCode");
         List<String> masterType=readExcelData(dataFile,"Items","MasterType");
         System.out.println("productCodes :" + productCode.size());

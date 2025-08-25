@@ -26,7 +26,7 @@ public class TestInitiateStockTake {
     }
 
     @Test
-    public void initiateStockTake() throws InterruptedException, IOException, ParseException {
+    public void initiateStockTake() throws Exception {
         InitiateStockTake initiateStockTake=new InitiateStockTake(driver,file);
         initiateStockTake.initiateStockTake(TEMP_API_BODY_INITIATE_STOCK_TAKE,API_RESPONSE_INITIATE_STOCK_TAKE,OUTPUT_FILE);
     }

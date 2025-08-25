@@ -23,7 +23,7 @@ public class UnitOfMeasure {
     }
 
     @Test
-    public void unitsOfMeasure() throws IOException, ParseException, InterruptedException, AWTException {
+    public void unitsOfMeasure() throws Exception, AWTException {
         UnitsOfMeasure units = new UnitsOfMeasure(driver, file);
         units.unitsOfMeasure();
     }

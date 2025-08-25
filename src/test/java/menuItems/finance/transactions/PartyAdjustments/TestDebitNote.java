@@ -23,7 +23,7 @@ public class TestDebitNote {
     }
 
     @Test
-    public void receiptFromParty() throws IOException, ParseException, InterruptedException, AWTException {
+    public void receiptFromParty() throws Exception, AWTException {
         DebitNote debitNote = new DebitNote(driver, dataFile);
         debitNote.debitNote();
     }

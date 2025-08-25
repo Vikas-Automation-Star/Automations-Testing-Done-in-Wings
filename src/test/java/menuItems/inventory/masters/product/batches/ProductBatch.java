@@ -23,7 +23,7 @@ public class ProductBatch {
     }
 
     @Test
-    public void productBatch() throws IOException, ParseException, InterruptedException, AWTException {
+    public void productBatch() throws Exception, AWTException {
         ProductBatches productBatches = new ProductBatches(driver, file);
         productBatches.productBatch();
 

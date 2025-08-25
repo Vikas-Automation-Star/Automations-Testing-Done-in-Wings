@@ -23,7 +23,7 @@ public class StockConversion extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String stockConversion(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException {
+    public String stockConversion(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
         navigateToMastersWhen2Steps("Inventory","Stock Conversion");
         Thread.sleep(1000);
@@ -75,7 +75,7 @@ public class StockConversion extends TransactionsBaseClass {
 //        excelUtil.excelComparator("","",newVoucherID);
         return newVoucherID;
     }
-    public void addInputProduct() throws IOException, ParseException, InterruptedException {
+    public void addInputProduct() throws Exception {
         List<String> productCode=readExcelData(dataFile,"Inputs","ProductCode");
         List<String> masterType=readExcelData(dataFile,"Inputs","MasterType");
         System.out.println(masterType.size());
@@ -124,7 +124,7 @@ public class StockConversion extends TransactionsBaseClass {
         }
     }
 
-    public void addOutputs() throws IOException, ParseException, InterruptedException {
+    public void addOutputs() throws Exception {
         List<String> productCode=readExcelData(dataFile,"Items","ProductCode");
         List<String> masterType=readExcelData(dataFile,"Items","MasterType");
         System.out.println(masterType.size());

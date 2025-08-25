@@ -23,7 +23,7 @@ public class PartyOpeningBalances extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String partyOpeningBalance(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException {
+    public String partyOpeningBalance(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
         navigateToMastersWhen3Steps("Finance","Opening Balances","Party Opening Balances");
         Thread.sleep(1000);

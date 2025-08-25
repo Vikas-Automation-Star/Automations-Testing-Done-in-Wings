@@ -22,7 +22,7 @@ public class CloseProductionOrderTransaction {
     }
 
     @Test
-    public void closeProductionOrderTransaction() throws IOException, ParseException, InterruptedException {
+    public void closeProductionOrderTransaction() throws Exception {
         CloseProductionOrder cpo = new CloseProductionOrder(driver, file);
         cpo.closeProductionOrder();
     }

@@ -21,7 +21,7 @@ public class TestProformaPurchaseVouchers {
     }
 
     @Test
-    public void proformaPurchaseVouchers() throws IOException, ParseException, InterruptedException, AWTException {
+    public void proformaPurchaseVouchers() throws Exception, AWTException {
         ProformaPurchaseVouchers proformaPurchaseVouchers=new ProformaPurchaseVouchers(driver,file);
         proformaPurchaseVouchers.proformaPurchaseVouchers();
     }

@@ -24,7 +24,7 @@ public class TestProductSubCategories {
     }
 
     @Test
-    public void productSubCategories() throws IOException, ParseException, InterruptedException, AWTException {
+    public void productSubCategories() throws Exception, AWTException {
         ProductSubCategories productSubCategories=new ProductSubCategories(driver,file);
         productSubCategories.productSubCategories();
     }

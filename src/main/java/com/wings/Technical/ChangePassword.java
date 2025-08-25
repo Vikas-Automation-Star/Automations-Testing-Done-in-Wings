@@ -19,7 +19,7 @@ public class ChangePassword extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public void changePassword() throws IOException, ParseException, InterruptedException {
+    public void changePassword() throws Exception {
         common.clickElement("xpath","//MenuItem[@Name='Tools']");
         common.clickElement("xpath","//MenuItem[@Name='Change Password']");
         enterData("xpath","//Window[@Name='Change Password']/Pane/Edit[@Name='Old Password']",dataFile,"changePassword","oldPassword");

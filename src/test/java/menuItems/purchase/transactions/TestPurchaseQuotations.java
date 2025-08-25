@@ -21,7 +21,7 @@ public class TestPurchaseQuotations {
     }
 
     @Test
-    public void purchaseQuotations() throws IOException, ParseException, InterruptedException, AWTException {
+    public void purchaseQuotations() throws Exception, AWTException {
         PurchaseQuotation pq = new PurchaseQuotation(driver, file);
         pq.purchaseQuotation();
     }

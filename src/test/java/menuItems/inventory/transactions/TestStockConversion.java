@@ -23,7 +23,7 @@ public class TestStockConversion {
         driver = appLogin.login();
     }
     @Test
-    public void stockConversion() throws InterruptedException, IOException, ParseException {
+    public void stockConversion() throws Exception {
         StockConversion conversionTrans = new StockConversion(driver, file);
         conversionTrans.stockConversion(TEMP_API_BODY_STOCK_CONVERSION,API_RESPONSE_STOCK_CONVERSION,OUTPUT_FILE);
     }

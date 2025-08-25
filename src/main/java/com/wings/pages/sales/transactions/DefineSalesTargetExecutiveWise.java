@@ -23,7 +23,7 @@ public class DefineSalesTargetExecutiveWise extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String salesTargetExecutiveWise(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
+    public String salesTargetExecutiveWise(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
         System.out.println("Define Sales Target Executive Wise started in :"+start);
         Thread.sleep(100);
@@ -65,7 +65,7 @@ public class DefineSalesTargetExecutiveWise extends TransactionsBaseClass {
         return newVoucherID;
     }
 
-    public void addProduct() throws IOException, ParseException, InterruptedException {
+    public void addProduct() throws Exception {
         List<String> productCode=readExcelData(dataFile,"Items","SalesExecutive");
         for (int i = 0; i < productCode.size() ; i++)   {
             addData("xpath","//Edit[@Name='Sales Executive * Row "+i+", Not sorted.']",dataFile,"Items","SalesExecutive",i);

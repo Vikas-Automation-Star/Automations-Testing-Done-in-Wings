@@ -28,7 +28,7 @@ public class DeliveryReturns extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String deliveryreturns(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, IOException, ParseException, AWTException {
+    public String deliveryreturns(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
         System.out.println("delivery Returns startTime executed in :"+start);
         Thread.sleep(100);
@@ -91,7 +91,7 @@ public class DeliveryReturns extends TransactionsBaseClass {
         return newVoucherID;
     }
 
-    public void addProduct() throws IOException, ParseException, InterruptedException {
+    public void addProduct() throws Exception {
         List<String> productsOrderInExcel=getValuesByColumnHeader(dataFile,"Items","Product");
         //read products order from excel
         System.out.println(productsOrderInExcel.size()+"excel products order");

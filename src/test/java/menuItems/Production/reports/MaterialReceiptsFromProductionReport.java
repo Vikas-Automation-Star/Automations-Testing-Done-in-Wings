@@ -21,7 +21,7 @@ public class MaterialReceiptsFromProductionReport {
     }
 
     @Test
-    public void materialReceiptsFromProductionReport() throws IOException, ParseException, InterruptedException {
+    public void materialReceiptsFromProductionReport() throws Exception {
         MaterialReceiptsFromProduction mrfp = new MaterialReceiptsFromProduction(driver);
         mrfp.materialReceiptsFromProduction();
     }

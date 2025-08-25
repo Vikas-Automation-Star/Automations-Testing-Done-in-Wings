@@ -23,7 +23,7 @@ public class InitiateStockTake extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String initiateStockTake(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException {
+    public String initiateStockTake(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
         navigateToMastersWhen2Steps("Inventory", "Initiate Stock Take");
         Thread.sleep(1000);
@@ -74,7 +74,7 @@ public class InitiateStockTake extends TransactionsBaseClass {
         return newVoucherID;
     }
 
-    public void addProduct() throws IOException, ParseException, InterruptedException {
+    public void addProduct() throws Exception {
         List<String> productCode=readExcelData(dataFile,"InitiateStock","ProductCode");
         List<WebElement> Comments = common.findWebElements("xpath", "//Table[@Name='InitiateStock']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Comments Row ')]");
         for (int i = 0; i < productCode.size(); i++) {

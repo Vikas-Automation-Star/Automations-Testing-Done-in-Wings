@@ -22,7 +22,7 @@ public class PurchaseQuotation extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String  purchaseQuotation() throws InterruptedException, IOException, ParseException{
+    public String  purchaseQuotation() throws Exception {
         long start=System.nanoTime();
         navigateToMastersWhen3Steps("Purchase","Quotations","Purchase Quotations");
         long generalInfoStart=System.nanoTime();
@@ -94,7 +94,7 @@ public class PurchaseQuotation extends TransactionsBaseClass {
 
     }
 
-    public void addProduct() throws IOException, ParseException, InterruptedException {
+    public void addProduct() throws Exception {
         List<String> productCode=readExcelData(dataFile,"Items","ProductCode");
         System.out.println("productCodes :"+productCode.size());
 

@@ -22,7 +22,7 @@ public class StockValuationReport {
     }
 
     @Test
-    public void stockValuation() throws IOException, ParseException, InterruptedException, AWTException {
+    public void stockValuation() throws Exception, AWTException {
         StockValuation valuation = new StockValuation(driver);
         valuation.stckValuation();
     }

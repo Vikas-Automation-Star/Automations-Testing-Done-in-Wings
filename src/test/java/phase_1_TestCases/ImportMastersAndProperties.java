@@ -20,61 +20,61 @@ public class ImportMastersAndProperties {
     }
 
     @Test(priority = 1)
-    public void importBranches() throws IOException, ParseException, InterruptedException {
+    public void importBranches() throws Exception {
         ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
         importing.branchesMastersImporting("Branches");
     }
 
     @Test(priority = 2)
-    public void importCustomers() throws IOException, ParseException, InterruptedException {
+    public void importCustomers() throws Exception {
         ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
         importing.customerMastersImport("Customers");
     }
 
     @Test (priority = 3)
-    public void importSuppliers() throws IOException, ParseException, InterruptedException {
+    public void importSuppliers() throws Exception {
         ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
         importing.suppliersMastersImport("Suppliers");
     }
 
     @Test(priority = 4)
-    public void importProducts() throws IOException, ParseException, InterruptedException {
+    public void importProducts() throws Exception {
         ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
         importing.productsMastersImport("Products");
     }
 
     @Test (priority = 5)
-    public void importBankAccount() throws IOException, ParseException, InterruptedException {
+    public void importBankAccount() throws Exception {
         ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
         importing.balanceSheetBankMastersImports("Balance Sheet");
     }
 
     @Test(priority = 6)
-    public void importCashAccount() throws IOException, ParseException, InterruptedException {
+    public void importCashAccount() throws Exception {
         ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
         importing.balanceSheetCashMastersImports("Balance Sheet");
     }
 
     @Test(priority = 7)
-    public void importHsnCode() throws IOException, ParseException, InterruptedException {
+    public void importHsnCode() throws Exception {
         ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
         importing.hsnCodesMastersImporting("HSN Codes");
     }
 
 //    @Test(priority = 8)        //issue in the application accepting only for the excutive
-//    public void addressAndContactInformationProperty() throws IOException, ParseException, InterruptedException {
+//    public void addressAndContactInformationProperty() throws Exception {
 //        ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
 //        importing.importAddressAndContactDetailsProperty("Address and Contact Details","Anjali Devi");
 //    }
 
     @Test(priority = 8)
-    public void BranchProperty() throws IOException, ParseException, InterruptedException {
+    public void BranchProperty() throws Exception {
         ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
         importing.branchContactDetails("Branch Address Details","Anantapur");
     }
 
     @Test(priority = 9)
-    public void customerProperty() throws IOException, ParseException, InterruptedException {
+    public void customerProperty() throws Exception {
         ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
         importing.importContactInformationGSTProperty("Contact Information GST","Anjali Devi");
         importing.importRegistrationGSTProperty("Registration GST","Anjali Devi");
@@ -82,21 +82,21 @@ public class ImportMastersAndProperties {
     }
 
     @Test(priority = 10)
-    public void ProductProperty() throws IOException, ParseException, InterruptedException {
+    public void ProductProperty() throws Exception {
         ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
         importing.importProductStandardPurchasePriceProperty("Standard Purchase Price", "Laptop");
         importing.importProductStandardSalesPriceProperty("Standard Sales Price","Laptop");
     }
 
     @Test(priority = 11)
-    public void balanceSheetBankAccountProperty() throws IOException, ParseException, InterruptedException {
+    public void balanceSheetBankAccountProperty() throws Exception {
         ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
         importing.importBankDetailsProperty("Bank Details","Axis Bank Account");
         importing.bankAddressAndContactDetails("Bank Address and Contact Details","Axis Bank Account");
     }
 
     @Test(priority = 12)
-    public void hsnCodeProperty() throws IOException, ParseException, InterruptedException {
+    public void hsnCodeProperty() throws Exception {
         ImportingMastersAndProperties importing = new ImportingMastersAndProperties(driver, dataFile);
         importing.importHSNCodesProperty("GST HSN Codes","Avinaya");
         importing.importHSNRoundOffProperty("HSN Round Off","Avinaya");

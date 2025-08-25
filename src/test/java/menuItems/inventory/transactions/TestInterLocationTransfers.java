@@ -26,7 +26,7 @@ public class TestInterLocationTransfers {
     }
 
     @Test
-    public void interLocationTransfer() throws InterruptedException, AWTException, IOException, ParseException {
+    public void interLocationTransfer() throws Exception {
         InterLocationTransfers locationTransfers = new InterLocationTransfers(driver, file);
         locationTransfers.locationTransfer(TEMP_API_BODY_INTER_LOCATION_TRANSFER, API_RESPONSE_INTER_LOCATION_TRANSFER,OUTPUT_FILE);
     }

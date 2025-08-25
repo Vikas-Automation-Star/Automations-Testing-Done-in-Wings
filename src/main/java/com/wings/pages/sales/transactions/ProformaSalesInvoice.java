@@ -24,7 +24,7 @@ public class ProformaSalesInvoice extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String proformaSalesInvoice(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
+    public String proformaSalesInvoice(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
         System.out.println("proforma Sales Invoice startTime executed in :" + start);
 

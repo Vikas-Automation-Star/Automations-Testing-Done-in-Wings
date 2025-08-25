@@ -24,7 +24,7 @@ public class OpeningStock extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String openingStock(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
+    public String openingStock(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
         navigateToMastersWhen2Steps("Inventory","Opening Stock");
         long generalInfoStart = System.nanoTime();
@@ -70,7 +70,7 @@ public class OpeningStock extends TransactionsBaseClass {
 
         return newVoucherID;
     }
-    public void addProduct() throws IOException, ParseException, InterruptedException {
+    public void addProduct() throws Exception {
         java.util.List<String> productCode=readExcelData(dataFile,"Items","ProductCode");
         java.util.List<String> masterType=readExcelData(dataFile,"Items","MasterType");
         System.out.println(masterType.size());

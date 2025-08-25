@@ -21,7 +21,7 @@ public class StockLedger extends Transaction {
         dataFile=file;
     }
 
-    public void stockLedger() throws InterruptedException, AWTException, IOException, ParseException {
+    public void stockLedger() throws Exception {
         validateStockLedger(dataFile,"stockLedger");
     }
 }

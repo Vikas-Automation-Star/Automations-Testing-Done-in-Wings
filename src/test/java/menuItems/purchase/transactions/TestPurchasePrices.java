@@ -20,7 +20,7 @@ public class TestPurchasePrices {
     }
 
     @Test
-    public void PurchasePrices() throws IOException, ParseException, InterruptedException {
+    public void PurchasePrices() throws Exception {
         PurchasePrice pp = new PurchasePrice(driver, file);
         pp.purchasePrice();
     }

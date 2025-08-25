@@ -22,7 +22,7 @@ public class ProductndPartyDiscount extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String productDiscount(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException {
+    public String productDiscount(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
         System.out.println("Party and Product Discount started in :"+start);
         Thread.sleep(100);
@@ -54,7 +54,7 @@ public class ProductndPartyDiscount extends TransactionsBaseClass {
         return newVoucherID;
     }
 
-    public void addProduct() throws IOException, ParseException, InterruptedException {
+    public void addProduct() throws Exception {
         List<String> partyDiscountGroup =readExcelData(dataFile,"Items","PartyDiscountGroup");
         for (int i = 0; i < partyDiscountGroup.size() ; i++)   {
             addData("xpath","//Edit[@Name='Party Discount Group * Row "+i+", Not sorted.']",dataFile,"Items","PartyDiscountGroup",i);

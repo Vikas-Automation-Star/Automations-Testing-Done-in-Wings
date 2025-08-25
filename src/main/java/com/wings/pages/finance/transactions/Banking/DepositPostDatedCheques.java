@@ -23,7 +23,7 @@ public class DepositPostDatedCheques extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public void postDatedChques(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException {
+    public void postDatedChques(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
         navigateToMastersWhen3Steps("Finance","Banking","Deposit Post Dated Cheques");
         Thread.sleep(1000);

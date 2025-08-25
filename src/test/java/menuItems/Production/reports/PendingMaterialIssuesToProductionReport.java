@@ -21,7 +21,7 @@ public class PendingMaterialIssuesToProductionReport {
     }
 
     @Test
-    public void pendingMaterialIssuesToProductionReport() throws IOException, ParseException, InterruptedException {
+    public void pendingMaterialIssuesToProductionReport() throws Exception {
         PendingMaterialIssuesToProduction pmitp = new PendingMaterialIssuesToProduction(driver);
         pmitp.pendingMaterialIssuesToProduction();
     }

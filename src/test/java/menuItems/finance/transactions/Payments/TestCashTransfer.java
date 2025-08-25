@@ -25,7 +25,7 @@ public class TestCashTransfer {
     }
 
     @Test
-    public void cashTransfer() throws InterruptedException, AWTException, IOException, ParseException {
+    public void cashTransfer() throws Exception {
         CashTransfer cashTransfer = new CashTransfer(driver, dataFile);
         cashTransfer.cashTransfer(TEMP_API_BODY_CASH_TRANSFER,API_RESPONSE_CASH_TRANSFER,OUTPUT_FILE);
     }

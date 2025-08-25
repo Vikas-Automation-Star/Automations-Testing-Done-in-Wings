@@ -23,7 +23,7 @@ public class Gstr1MonthEndTransactionReport {
     }
 
     @Test
-    public void gstr1MonthEndTransactionReport() throws IOException, ParseException, InterruptedException {
+    public void gstr1MonthEndTransactionReport() throws Exception {
         Gstr1MonthEnd report = new Gstr1MonthEnd(driver);
         report.gstr1MonthEnd();
     }

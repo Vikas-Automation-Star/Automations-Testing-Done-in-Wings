@@ -33,7 +33,7 @@ public class TestSalesInvoiceAgainstDeliveries {
     }
 
     @Test
-    public void deliveriesAgainstOrders() throws IOException, ParseException, InterruptedException, AWTException {
+    public void deliveriesAgainstOrders() throws Exception, AWTException {
         Deliveries deliveries=new Deliveries(driver,dataFile1);
         String deliveriesVoucher=deliveries.salesDeliveries(TEMP_API_SALES_DELIVERIES,API_RESPONSE_SALES_DELIVERIES,OUTPUT_FILE_SALES_DELIVERIES);
 

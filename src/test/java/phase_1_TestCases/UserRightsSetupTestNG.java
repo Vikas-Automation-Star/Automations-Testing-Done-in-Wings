@@ -17,14 +17,14 @@ public class UserRightsSetupTestNG {
     String dataFile = "./src/main/resources/phase_1_List/userRightsSetup.json";
     
     @BeforeTest
-    public void beforeTest() throws IOException, ParseException, InterruptedException {
+    public void beforeTest() throws Exception {
         common=new Common(driver);
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin(common.getData(dataFile,"superUser"), common.getData(dataFile,"password"));
     }
 
     @Test(priority = 1)
-    public void assignPasswordAndVerify() throws IOException, ParseException, InterruptedException {
+    public void assignPasswordAndVerify() throws Exception {
         System.out.println("PRIORITY-1");
         UserRightsSetup assignPassword = new UserRightsSetup(driver, dataFile, appLogin);
         assignPassword.userCreationAssignPassword();
@@ -101,7 +101,7 @@ public class UserRightsSetupTestNG {
     }
 
     @Test(priority = 4)
-    public void grantRevokeAccessReport() throws IOException, ParseException, InterruptedException {
+    public void grantRevokeAccessReport() throws Exception {
         System.out.println("PRIORITY-4");
         //grantAccess
         //use below lines(till singleUser Login) while doing suite execution, if individually, no need.
@@ -135,7 +135,7 @@ public class UserRightsSetupTestNG {
     }
 
 //    @Test(priority = 5)
-    public void grantRevokeAccessMasterProperties() throws IOException, ParseException, InterruptedException {
+    public void grantRevokeAccessMasterProperties() throws Exception {
         System.out.println("PRIORITY -5");
         //grant Access
         //use below lines in suite execution, if single, no need

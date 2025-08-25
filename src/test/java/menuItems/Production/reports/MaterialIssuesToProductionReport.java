@@ -21,7 +21,7 @@ public class MaterialIssuesToProductionReport {
     }
 
     @Test
-    public void materialIssuesToProductionReport() throws IOException, ParseException, InterruptedException {
+    public void materialIssuesToProductionReport() throws Exception {
         MaterialIssuesToProduction mitp = new MaterialIssuesToProduction(driver);
         mitp.MaterialIssuesToProduction();
     }

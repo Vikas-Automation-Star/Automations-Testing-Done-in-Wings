@@ -24,7 +24,7 @@ public class DepartmentsMaster {
     }
 
     @Test
-    public void departments() throws IOException, ParseException, InterruptedException, AWTException {
+    public void departments() throws Exception, AWTException {
         departments = new Departments(driver, file);
         departments.departments();
     }

@@ -26,7 +26,7 @@ public class TestOpeningStock {
     }
 
     @Test
-    public void openingStock() throws InterruptedException, AWTException, IOException, ParseException {
+    public void openingStock() throws Exception {
         OpeningStock stockTrans = new OpeningStock(driver, file);
         stockTrans.openingStock(TEMP_API_BODY_OPENING_STOCK,API_RESPONSE_OPENING_STOCK,OUTPUT_FILE);
     }

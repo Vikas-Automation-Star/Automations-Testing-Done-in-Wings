@@ -24,7 +24,7 @@ public class SalesQuotations extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String salesQuotation(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
+    public String salesQuotation(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
 //        System.out.println("Sales Quotations startTime executed in :"+start);
 
@@ -107,7 +107,7 @@ public class SalesQuotations extends TransactionsBaseClass {
 
     }
 
-    public void addProduct() throws IOException, ParseException, InterruptedException {
+    public void addProduct() throws Exception {
         List<String> productCode=readExcelData(dataFile,"Items","ProductCode");
         System.out.println("productCodes :"+productCode.size());
 

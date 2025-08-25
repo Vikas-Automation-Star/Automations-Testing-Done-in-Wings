@@ -24,7 +24,7 @@ public class ProfitCentresMaster {
     }
 
     @Test
-    public void profitCentres() throws IOException, ParseException, InterruptedException, AWTException {
+    public void profitCentres() throws Exception, AWTException {
         profitCentres = new ProfitCentres(driver, file);
         profitCentres.profitCentres();
     }

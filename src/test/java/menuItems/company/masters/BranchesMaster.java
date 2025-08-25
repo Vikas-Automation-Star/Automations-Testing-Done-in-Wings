@@ -24,7 +24,7 @@ public class BranchesMaster {
     }
 
     @Test
-    public void branches() throws IOException, ParseException, InterruptedException, AWTException {
+    public void branches() throws Exception, AWTException {
         Branches newBranch = new Branches(driver, file);
         newBranch.branch();
     }

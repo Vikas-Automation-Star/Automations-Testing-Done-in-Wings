@@ -300,7 +300,7 @@ public class MasterConfig extends Transaction {
         }
         common.clickElement("xpath","//TabItem[@Name='Customers']/Button[@Name='Close']");
     }
-    public void renameNode() throws IOException, ParseException, InterruptedException {
+    public void renameNode() throws Exception {
         navigateToMastersOrMenus("Sales","Customers","//TreeItem[@Name='Customers']/TreeItem[@Name='All Customers']");
         List<WebElement> listElements1 = common.findWebElements("xpath", "//Pane[@Name='Customers']/Pane/Pane/Pane/Pane/Pane/List/ListItem");
         System.out.println("Size of elements and List: " + listElements1.size());

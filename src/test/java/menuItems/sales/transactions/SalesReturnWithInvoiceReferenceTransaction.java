@@ -26,7 +26,7 @@ public class SalesReturnWithInvoiceReferenceTransaction {
         }
 
         @Test
-        public void salesReturnWithInvoiceReference() throws IOException, ParseException, InterruptedException, AWTException {
+        public void salesReturnWithInvoiceReference() throws Exception, AWTException {
             SalesEnquiry salesEnquiry=new SalesEnquiry(driver,dataFile);
 //            String salesEnquiryVoucher=salesEnquiry.salesEnquiry();
 

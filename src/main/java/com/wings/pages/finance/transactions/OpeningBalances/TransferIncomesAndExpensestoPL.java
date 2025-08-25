@@ -42,12 +42,12 @@ public class TransferIncomesAndExpensestoPL extends TransactionsBaseClass {
         FileUtil.writeTimeLogInMinutes("Opening Balances Cash:- ", addExpensesEnd);
 
         long addIncomeStart =System.nanoTime();
-//        addIncomes();
+        addIncomes();
         long addIncomeEnd =System.nanoTime()- addIncomeStart;
         FileUtil.writeTimeLogInMinutes("Opening Balances Bank:- ", addIncomeEnd);
 
         long otherInfoStart = System.nanoTime();
-//        otherInfo();
+        otherInfo();
         long otherInfoEnd = System.nanoTime() - otherInfoStart;
         FileUtil.writeTimeLogInMinutes("Opening Balances OtherInfo Tab:- ", otherInfoEnd);
         //save
@@ -58,15 +58,7 @@ public class TransferIncomesAndExpensestoPL extends TransactionsBaseClass {
         //end
         long transferIncomes = System.nanoTime() - start ;
         FileUtil.writeTimeLogInMinutes("Opening Balances ended at:- ", transferIncomes);
-        //IO
-        String voucher = newVoucherID.replaceAll("\\d", "");
-        String number = newVoucherID.replaceAll("\\D", "");
-        Thread.sleep(2000);
-        long iofIlesStart=System.nanoTime();
-        exportIOFiles("Generate Input File", voucher,number);
-        exportIOFiles("Generate Output File", voucher,number);
-        long ioFilesEnd=System.nanoTime()-iofIlesStart;
-        FileUtil.writeTimeLogInMinutes("Opening Balances IO files ended at:- ", ioFilesEnd );
+
 
 //        excelUtil.excelComparator("","",newVoucherID);
     }

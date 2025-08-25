@@ -21,7 +21,7 @@ public class SalesOrderStatusDetailsReport {
     }
 
     @Test
-    public void salesOrderStatusDetails() throws IOException, ParseException, InterruptedException {
+    public void salesOrderStatusDetails() throws Exception {
         SalesOrderStatusDetailsReportCode salesOrderStatusDetailsReportCode = new SalesOrderStatusDetailsReportCode(driver);
         salesOrderStatusDetailsReportCode.salesOrderStatusDetails();
     }

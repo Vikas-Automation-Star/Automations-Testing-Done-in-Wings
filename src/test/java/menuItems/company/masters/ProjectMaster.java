@@ -24,7 +24,7 @@ public class ProjectMaster {
     }
 
     @Test
-    public void createCostMaster() throws IOException, ParseException, InterruptedException, AWTException {
+    public void createCostMaster() throws Exception, AWTException {
         project = new Projects(driver, file);
         project.project();
     }

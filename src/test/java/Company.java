@@ -20,7 +20,7 @@ public class Company {
     }
 
     @Test
-    public void creation() throws InterruptedException, IOException, ParseException {
+    public void creation() throws Exception {
         company = new com.wings.pages.Company(driver);
         company.companyCreation();
         driver = appLogin.launchSingleUserApp();

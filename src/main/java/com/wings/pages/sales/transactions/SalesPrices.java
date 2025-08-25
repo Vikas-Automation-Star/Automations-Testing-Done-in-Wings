@@ -22,7 +22,7 @@ public class SalesPrices extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String salesPrices(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException {
+    public String salesPrices(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
         navigateToSalesPricesMenu();
         Thread.sleep(3000);
@@ -63,7 +63,7 @@ public class SalesPrices extends TransactionsBaseClass {
 
     }
 
-    public void addProduct() throws IOException, ParseException, InterruptedException {
+    public void addProduct() throws Exception {
         List<String> productCode = readExcelData(dataFile, "Items", "ProductCode");
         System.out.println("productCodes :" + productCode.size());
 

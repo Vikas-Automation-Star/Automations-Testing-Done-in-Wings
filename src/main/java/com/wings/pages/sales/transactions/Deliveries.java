@@ -24,7 +24,7 @@ public class Deliveries extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String salesDeliveries(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
+    public String salesDeliveries(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
 //        System.out.println("deliveries startTime executed in :" + start);
         Thread.sleep(100);
@@ -101,7 +101,7 @@ public class Deliveries extends TransactionsBaseClass {
         return newVoucherID;
     }
 
-    public void addProduct() throws IOException, ParseException, InterruptedException {
+    public void addProduct() throws Exception {
         List<String> productCode=readExcelData(dataFile,"Items","ProductCode");
         List<String> masterType=readExcelData(dataFile,"Items","MasterType");
         System.out.println(masterType.size());

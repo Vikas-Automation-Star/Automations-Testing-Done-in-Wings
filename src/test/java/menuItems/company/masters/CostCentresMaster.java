@@ -24,7 +24,7 @@ public class CostCentresMaster {
     }
 
     @Test
-    public void costCentres() throws IOException, ParseException, InterruptedException, AWTException {
+    public void costCentres() throws Exception, AWTException {
         costCentres = new CostCentres(driver, file);
         costCentres.costCentres();
     }

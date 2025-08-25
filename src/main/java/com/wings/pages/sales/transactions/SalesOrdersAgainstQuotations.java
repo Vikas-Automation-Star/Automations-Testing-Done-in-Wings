@@ -25,7 +25,7 @@ public class SalesOrdersAgainstQuotations extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String salesOrderAgainstQuotation(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
+    public String salesOrderAgainstQuotation(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
 //        System.out.println("Sales order against quotation startTime executed in :"+start);
         long generalInfoStart = System.nanoTime();

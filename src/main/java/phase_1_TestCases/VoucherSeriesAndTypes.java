@@ -94,7 +94,7 @@ public class VoucherSeriesAndTypes extends Transaction {
         voucherAndSeries.add(lastSaved);
         return voucherAndSeries;
     }
-    public void setManualVoucherSeries() throws IOException, ParseException, InterruptedException {
+    public void setManualVoucherSeries() throws Exception {
         navigateToMastersOrMenus("Sales","Enquiries","//Menu/MenuItem[@Name='Sales Enquiries']");
         common.clickElement("xpath", "//Button[@Name='Configure']");
         common.clickElement("xpath", "//Button[@Name='Voucher Series']");
@@ -148,7 +148,7 @@ public class VoucherSeriesAndTypes extends Transaction {
         common.clickElement("xpath", "//TabItem[@Name='Sales Enquiries']/Button[@Name='Close']");
     }
 
-    public void setMultipleVoucherSeries(String navigateMenu, String navigateSubMenu, String navigateSubMenu1, String closeTransactionTabItem) throws IOException, ParseException, InterruptedException {
+    public void setMultipleVoucherSeries(String navigateMenu, String navigateSubMenu, String navigateSubMenu1, String closeTransactionTabItem) throws Exception {
         common.clickElement("name", navigateMenu);
         common.clickElement("name", navigateSubMenu);
         common.clickElement("name", navigateSubMenu1);

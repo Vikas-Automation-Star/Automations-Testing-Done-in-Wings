@@ -23,7 +23,7 @@ public class Location {
     }
 
     @Test
-    public void locationMaster() throws IOException, ParseException, InterruptedException, AWTException {
+    public void locationMaster() throws Exception, AWTException {
         Locations locations = new Locations(driver, file);
         locations.locationMasterCreation();
     }

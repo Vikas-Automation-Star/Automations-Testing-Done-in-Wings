@@ -22,7 +22,7 @@ public class TestLabelDesigns {
         }
 
         @Test
-        public void labelDesigns() throws IOException, ParseException, InterruptedException {
+        public void labelDesigns() throws Exception {
            LabelDesigns labelDesigns=new LabelDesigns(driver,file);
            labelDesigns.labelDesigns();
         }

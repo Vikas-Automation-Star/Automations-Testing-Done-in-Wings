@@ -21,7 +21,7 @@ public class TestDraftRollInvoiceDesigns {
         }
 
         @Test
-        public void draftRollInvoiceDesigns() throws IOException, ParseException, InterruptedException {
+        public void draftRollInvoiceDesigns() throws Exception {
             DraftRollInvoiceDesigns draftRollInvoiceDesigns=new DraftRollInvoiceDesigns(driver,file);
             draftRollInvoiceDesigns.draftRollInvoiceDesigns();
         }

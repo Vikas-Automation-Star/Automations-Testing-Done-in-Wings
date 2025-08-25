@@ -20,12 +20,12 @@ public class InterBankFundTransferTransaction {
     String dataFile="./src/main/resources/menuItems/finance/transaction/482403 - Inter Bank Fund Transfers-AC_BFT_1.xls";
 
     @BeforeTest
-    public void beforeTest() throws IOException, ParseException, InterruptedException {
+    public void beforeTest() throws Exception {
         driver=appLogin.login();
     }
 
     @Test
-    public void bankFundTransfer() throws IOException, ParseException, InterruptedException {
+    public void bankFundTransfer() throws Exception {
         InterBankFundTransfers bankFundTransfers=new InterBankFundTransfers(driver,dataFile);
         bankFundTransfers.bankFundTransfer(TEMP_API_BODY_INTER_BANKFUND_TRANSFER,API_RESPONSE_INTER_BANKFUND_TRANSFER,OUTPUT_FILE);
     }

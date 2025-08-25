@@ -25,7 +25,7 @@ public class DebitNoteOnCustomersTransaction {
     }
 
     @Test
-    public void receiptFromParty() throws IOException, ParseException, InterruptedException, AWTException {
+    public void receiptFromParty() throws Exception, AWTException {
         DebitNoteOnCustomer noteOnCustomer = new DebitNoteOnCustomer(driver, dataFile);
         noteOnCustomer.debitNoteOnCustomer();
     }

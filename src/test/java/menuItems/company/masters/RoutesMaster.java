@@ -22,7 +22,7 @@ public class RoutesMaster {
     }
 
     @Test
-    public void routesMaster() throws IOException, ParseException, InterruptedException {
+    public void routesMaster() throws Exception {
         Routes routes = new Routes(driver, file);
         routes.createRoutes();
     }

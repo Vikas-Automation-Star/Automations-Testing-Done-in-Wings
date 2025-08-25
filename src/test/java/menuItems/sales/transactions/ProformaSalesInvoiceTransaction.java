@@ -26,7 +26,7 @@ public class ProformaSalesInvoiceTransaction {
     }
 
     @Test
-    public void proformaSalesInvoice() throws IOException, ParseException, InterruptedException, AWTException {
+    public void proformaSalesInvoice() throws Exception, AWTException {
         ProformaSalesInvoice sales = new ProformaSalesInvoice(driver, file);
         sales.proformaSalesInvoice(TEMP_API_PROFORMA_SALES_INVOICE,API_RESPONSE_PROFORMA_SALES_INVOICE,OUTPUT_FILE_PROFORMA_SALES_INVOICE);
     }

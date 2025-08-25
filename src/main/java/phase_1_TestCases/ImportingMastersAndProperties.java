@@ -518,7 +518,7 @@ public class ImportingMastersAndProperties {
 
     }
 
-    public void balanceSheetBankMastersImports(String selectMaster) throws IOException, ParseException, InterruptedException {
+    public void balanceSheetBankMastersImports(String selectMaster) throws Exception {
         common.clickElement("xpath", "//MenuItem[@Name='Tools']");
         common.clickElement("xpath", "//MenuItem[@Name='Import Data']");
         common.clickElement("xpath", "//Button[@Name='Next >']");
@@ -615,7 +615,7 @@ public class ImportingMastersAndProperties {
         common.clickElement("xpath", "//TabItem[@Name='Chart of Accounts']/Button[@Name='Close']");
     }
 
-    public void balanceSheetCashMastersImports(String selectMaster) throws IOException, ParseException, InterruptedException {
+    public void balanceSheetCashMastersImports(String selectMaster) throws Exception {
         common.clickElement("xpath", "//MenuItem[@Name='Tools']");
         common.clickElement("xpath", "//MenuItem[@Name='Import Data']");
         common.clickElement("xpath", "//Button[@Name='Next >']");
@@ -708,7 +708,7 @@ public class ImportingMastersAndProperties {
         common.clickElement("xpath", "//TabItem[@Name='Chart of Accounts']/Button[@Name='Close']");
     }
 
-    public void importAddressAndContactDetailsProperty(String selectProperty, String importedPropertyName) throws IOException, ParseException, InterruptedException {
+    public void importAddressAndContactDetailsProperty(String selectProperty, String importedPropertyName) throws Exception {
         common.clickElement("xpath", "//MenuItem[@Name='Tools']");
         common.clickElement("xpath", "//MenuItem[@Name='Import Data']");
         common.clickElement("xpath", "//Button[@Name='Next >']");
@@ -1138,7 +1138,7 @@ public class ImportingMastersAndProperties {
         common.clickElement("xpath", "//TabItem[@Name='Customers']/Button[@Name='Close']");
     }
 
-    public void importBankDetailsProperty(String selectProperty, String importedPropertyName) throws IOException, ParseException, InterruptedException {
+    public void importBankDetailsProperty(String selectProperty, String importedPropertyName) throws Exception {
         common.clickElement("xpath", "//MenuItem[@Name='Tools']");
         Thread.sleep(1000);
         common.clickElement("xpath", "//MenuItem[@Name='Import Data']");
@@ -1353,7 +1353,7 @@ public class ImportingMastersAndProperties {
         common.clickElement("xpath", "//TabItem[@Name='Chart of Accounts']/Button[@Name='Close']");
     }
 
-    public void importHSNCodesProperty(String selectProperty, String importedPropertyName) throws IOException, ParseException, InterruptedException {
+    public void importHSNCodesProperty(String selectProperty, String importedPropertyName) throws Exception {
         Thread.sleep(1000);
         common.clickElement("xpath", "//MenuItem[@Name='Tools']");
         common.clickElement("xpath", "//MenuItem[@Name='Import Data']");
@@ -1885,7 +1885,7 @@ public class ImportingMastersAndProperties {
         Thread.sleep(1000);
     }
 
-    public void importProductStandardSalesPriceProperty(String selectProperty, String importedPropertyName) throws IOException, ParseException, InterruptedException {
+    public void importProductStandardSalesPriceProperty(String selectProperty, String importedPropertyName) throws Exception {
         common.clickElement("xpath", "//MenuItem[@Name='Tools']");
         common.clickElement("xpath", "//MenuItem[@Name='Import Data']");
         common.clickElement("xpath", "//Button[@Name='Next >']");

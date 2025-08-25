@@ -15,7 +15,7 @@ public class TestQuickMenu {
     String dataFile="./src/main/resources/Technical/technicalFeatures.json";
 
     @BeforeTest
-    public void beforeTest() throws IOException, ParseException, InterruptedException {
+    public void beforeTest() throws Exception {
         driver=appLogin.login();
     }
 

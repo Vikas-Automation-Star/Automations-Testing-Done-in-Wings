@@ -33,7 +33,7 @@ public class DeliveryReturnsTransactions {
     }
 
     @Test
-    public void deliveryReturns() throws IOException, InterruptedException, ParseException, AWTException {
+    public void deliveryReturns() throws Exception {
         Deliveries deliveries=new Deliveries(driver,dataFile1);
         String deliveryVoucher=deliveries.salesDeliveries(TEMP_API_SALES_DELIVERIES,API_RESPONSE_SALES_DELIVERIES,OUTPUT_FILE_SALES_DELIVERIES);
 

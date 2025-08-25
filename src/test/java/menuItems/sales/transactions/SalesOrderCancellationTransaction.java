@@ -34,7 +34,7 @@ public class SalesOrderCancellationTransaction {
     }
 
     @Test
-    public void salesOrderCancellation() throws IOException, InterruptedException, ParseException, AWTException {
+    public void salesOrderCancellation() throws Exception {
         SalesOrders salesOrders=new SalesOrders(driver, dataFile);
         String salesOrderVoucher= salesOrders.salesOrder(TEMP_API_SALES_ORDER,API_RESPONSE_SALES_ORDER,OUTPUT_FILE_SALES_ORDER);
 

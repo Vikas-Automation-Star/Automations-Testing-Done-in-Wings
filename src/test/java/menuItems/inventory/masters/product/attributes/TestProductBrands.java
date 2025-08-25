@@ -24,7 +24,7 @@ public class TestProductBrands {
     }
 
     @Test
-    public void productTypes() throws IOException, ParseException, InterruptedException, AWTException {
+    public void productTypes() throws Exception, AWTException {
         ProductBrands productBrands=new ProductBrands(driver,file);
         productBrands.productBrands();
     }

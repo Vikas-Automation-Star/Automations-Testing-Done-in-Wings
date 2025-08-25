@@ -24,7 +24,7 @@ public class ManualStockValuationTransaction {
     }
 
     @Test
-    public void manualStockValuation() throws IOException, ParseException, InterruptedException, AWTException {
+    public void manualStockValuation() throws Exception, AWTException {
         ManualStockValuation stockValuation = new ManualStockValuation(driver, dataFile);
         stockValuation.manualStockValuation();
     }

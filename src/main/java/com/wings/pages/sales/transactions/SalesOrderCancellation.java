@@ -25,7 +25,7 @@ public class SalesOrderCancellation extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String salesOrderCancellations(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
+    public String salesOrderCancellations(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
 //        System.out.println("Sales Order Cancellation startTime executed in :"+start);
         Thread.sleep(100);

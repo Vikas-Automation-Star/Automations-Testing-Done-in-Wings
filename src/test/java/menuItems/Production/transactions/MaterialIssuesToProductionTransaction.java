@@ -22,7 +22,7 @@ public class MaterialIssuesToProductionTransaction {
     }
 
     @Test
-    public void materialIssuesToProductionTransaction() throws IOException, ParseException, InterruptedException {
+    public void materialIssuesToProductionTransaction() throws Exception {
         MaterialissuestoProduction mifp = new MaterialissuestoProduction(driver, file);
         mifp.materialIssuesToProduction();
 

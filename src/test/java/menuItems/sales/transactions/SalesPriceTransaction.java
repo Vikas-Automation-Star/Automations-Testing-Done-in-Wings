@@ -25,7 +25,7 @@ public class SalesPriceTransaction {
     }
 
     @Test
-    public void salesPrice() throws IOException, ParseException, InterruptedException {
+    public void salesPrice() throws Exception {
         SalesPrices pricesAndDiscount = new SalesPrices(driver, dataFile);
         pricesAndDiscount.salesPrices(TEMP_API_SALES_PRICE,API_RESPONSE_SALES_PRICE,OUTPUT_FILE_SALES_PRICE);
     }

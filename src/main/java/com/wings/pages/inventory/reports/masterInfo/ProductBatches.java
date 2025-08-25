@@ -19,7 +19,7 @@ public class ProductBatches extends Transaction {
         dataFile=file;
         common = new Common(this.driver);
     }
-    public void productBatches() throws IOException, ParseException, InterruptedException {
+    public void productBatches() throws Exception {
         navigateToMastersWhen3Steps("Inventory","Master Info","Product Batches");
         Thread.sleep(1500);
         common.clickElement("xpath","//Tab[@Name='Product Batches']/Pane[@Name='Product  Batch']/Pane/Pane/List[@Name=' All ']/RadioButton[@Name=' One ']");

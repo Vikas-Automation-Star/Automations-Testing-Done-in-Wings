@@ -24,7 +24,7 @@ public class TestBookIncomeOrReceivables {
     }
 
     @Test
-    public void receiptFromParty() throws IOException, ParseException, InterruptedException, AWTException {
+    public void receiptFromParty() throws Exception, AWTException {
         BookIncomesOrReceivables incomesOrReceivables = new BookIncomesOrReceivables(driver, dataFile);
         incomesOrReceivables.receivables();
     }

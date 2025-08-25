@@ -23,7 +23,7 @@ public class StockConsumption extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String stockConsumption(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException {
+    public String stockConsumption(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start=System.nanoTime();
         navigateToMastersWhen2Steps("Inventory","Stock Consumption");
         long generalInfoStart = System.nanoTime();
@@ -74,7 +74,7 @@ public class StockConsumption extends TransactionsBaseClass {
         return newVoucherID;
     }
 
-    public void addProduct() throws IOException, ParseException, InterruptedException {
+    public void addProduct() throws Exception {
         List<String> productCode=readExcelData(dataFile,"Items","ProductCode");
         List<String> masterType=readExcelData(dataFile,"Items","MasterType");
         System.out.println(masterType.size());

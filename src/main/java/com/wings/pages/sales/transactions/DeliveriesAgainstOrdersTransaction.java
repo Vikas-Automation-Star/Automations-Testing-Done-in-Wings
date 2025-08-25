@@ -28,7 +28,7 @@ public class DeliveriesAgainstOrdersTransaction extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String deliveriesAgainstOrders(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
+    public String deliveriesAgainstOrders(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long deliveriesAgainstOrderStart = System.nanoTime();
         System.out.println("DELO Against Orders startTime executed in :"+ deliveriesAgainstOrderStart);
         navigateToDeliveriesAgainstOrdersMenu();
@@ -106,7 +106,7 @@ public class DeliveriesAgainstOrdersTransaction extends TransactionsBaseClass {
         return newVoucherID;
     }
 
-    public void addProduct() throws IOException, ParseException, InterruptedException {
+    public void addProduct() throws Exception {
         List<String> productCode=readExcelData(dataFile,"Items","ProductCode");
         List<String> masterType=readExcelData(dataFile,"Items","MasterType");
         System.out.println(masterType.size());

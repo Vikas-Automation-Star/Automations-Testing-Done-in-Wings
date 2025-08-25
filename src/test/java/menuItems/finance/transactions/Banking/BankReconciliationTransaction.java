@@ -21,12 +21,12 @@ public class BankReconciliationTransaction {
     String dataFile = "./src/main/resources/menuItems/finance/transaction/439444 - Bank Reconciliation-AC_BNKRECO_1.xls";
 
     @BeforeTest
-    public void beforeTest() throws IOException, ParseException, InterruptedException {
+    public void beforeTest() throws Exception {
         driver = appLogin.login();
     }
 
     @Test
-    public void bankReconciliation() throws IOException, ParseException, InterruptedException {
+    public void bankReconciliation() throws Exception {
         BankReconciliation reconciliation = new BankReconciliation(driver, dataFile);
         reconciliation.bankReconciliation(TEMP_API_BODY_BANK_RECONCILIATION,API_RESPONSE_BANK_RECONCILIATION,OUTPUT_FILE);
     }

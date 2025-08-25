@@ -22,7 +22,7 @@ public class MaterialReceiptFromProductionTransaction {
     }
 
     @Test
-    public void MaterialReceiptFromProductionTransaction() throws IOException, ParseException, InterruptedException {
+    public void MaterialReceiptFromProductionTransaction() throws Exception {
         MaterialReceiptFromProduction mrfp = new MaterialReceiptFromProduction(driver, file);
         mrfp.materialReceiptFromProduction();
     }

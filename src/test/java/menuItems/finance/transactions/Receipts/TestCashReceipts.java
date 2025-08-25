@@ -22,7 +22,7 @@ public class TestCashReceipts {
     }
 
     @Test
-    public void receiptFromParty() throws IOException, ParseException, InterruptedException, AWTException {
+    public void receiptFromParty() throws Exception, AWTException {
         CashReceipts cashReceipts = new CashReceipts(driver, dataFile);
         cashReceipts.cashReceipt();
     }

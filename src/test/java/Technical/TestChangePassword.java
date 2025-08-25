@@ -25,7 +25,7 @@ public class TestChangePassword {
     }
 
     @Test
-    public void changePassword() throws IOException, ParseException, InterruptedException {
+    public void changePassword() throws Exception {
         ChangePassword changePassword=new ChangePassword(driver,dataFile);
         changePassword.changePassword();
 

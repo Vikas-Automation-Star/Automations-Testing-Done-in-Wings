@@ -25,7 +25,7 @@ public class PriceListMaster {
     }
 
     @Test
-    public void priceList() throws IOException, ParseException, InterruptedException, AWTException {
+    public void priceList() throws Exception, AWTException {
         PriceList pl = new PriceList(driver, file);
         pl.createPriceList();
     }

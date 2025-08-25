@@ -29,7 +29,7 @@ public class SalesInvoiceAgainstDeliveries extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String salesInvoiceAgainstDeliveries(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
+    public String salesInvoiceAgainstDeliveries(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long invoiceAgainstDeliveriesStart = System.nanoTime();
         System.out.println("SIAD startTime  in :" + invoiceAgainstDeliveriesStart);
         Thread.sleep(100);
@@ -154,7 +154,7 @@ public class SalesInvoiceAgainstDeliveries extends TransactionsBaseClass {
 
     }
 
-    public void addProduct() throws IOException, ParseException, InterruptedException {
+    public void addProduct() throws Exception {
         List<String> productsOrderInExcel=getValuesByColumnHeader(dataFile,"Items","Product");
         //read products order from excel
         System.out.println(productsOrderInExcel.size()+"excel products order");

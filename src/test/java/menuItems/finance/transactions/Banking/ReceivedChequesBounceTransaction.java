@@ -18,13 +18,13 @@ public class ReceivedChequesBounceTransaction {
     String dataFile = "./src/main/resources/menuItems/finance/transaction/chequesBounce.json";
 
     @BeforeTest
-    public void beforeTest() throws IOException, ParseException, InterruptedException {
+    public void beforeTest() throws Exception {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
-    public void chequesBounce() throws IOException, ParseException, InterruptedException, AWTException {
+    public void chequesBounce() throws Exception, AWTException {
         ReceivedChequesBounce chequesBounce = new ReceivedChequesBounce(driver, dataFile);
         chequesBounce.receivedCheckBounce();
     }

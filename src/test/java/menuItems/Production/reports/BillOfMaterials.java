@@ -22,7 +22,7 @@ public class BillOfMaterials {
     }
 
     @Test
-    public void billOfMaterials() throws IOException, ParseException, InterruptedException, AWTException {
+    public void billOfMaterials() throws Exception, AWTException {
         BillOfMaterial bom = new BillOfMaterial(driver);
         bom.billOfMaterial();
     }

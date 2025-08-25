@@ -22,7 +22,7 @@ public class CashDepositsAndWithdrawls extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public void depositAndWithdrawal(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException{
+    public void depositAndWithdrawal(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
         navigateToMastersWhen3Steps("Finance","Banking","Cash Deposits and withdrawals");
         Thread.sleep(1000);

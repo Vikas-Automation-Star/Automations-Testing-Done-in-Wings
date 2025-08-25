@@ -43,7 +43,7 @@ public class VoucherTypesAndSeries {
         appLogin.logout();
     }
     @Test(priority = 2)
-    public void manualVoucherSeries() throws IOException, ParseException, InterruptedException {
+    public void manualVoucherSeries() throws Exception {
         driver = appLogin.launchSingleUserApp();
         common = new Common(driver);
         appLogin.singleUserLogin();
@@ -51,7 +51,7 @@ public class VoucherTypesAndSeries {
         manualVS.setManualVoucherSeries();
     }
     //    @Test
-    public void multipleVoucherSeries() throws IOException, ParseException, InterruptedException {
+    public void multipleVoucherSeries() throws Exception {
         VoucherSeriesAndTypes multipleVT = new VoucherSeriesAndTypes(driver, dataFile);
         multipleVT.setMultipleVoucherSeries("Sales", "Enquiries", "Sales Enquiries", "Sales Enquiries");
     }

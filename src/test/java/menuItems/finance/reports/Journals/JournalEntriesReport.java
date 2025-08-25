@@ -16,13 +16,13 @@ public class JournalEntriesReport {
     AppLogin appLogin = new AppLogin();
 
     @BeforeTest
-    public void beforeTest() throws IOException, ParseException, InterruptedException {
+    public void beforeTest() throws Exception {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
-    public void journalEntry() throws IOException, ParseException, InterruptedException, AWTException {
+    public void journalEntry() throws Exception, AWTException {
         JournalEntriesReportCode entriesReportCode = new JournalEntriesReportCode(driver);
         entriesReportCode.journalEntry();
     }

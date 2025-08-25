@@ -25,7 +25,7 @@ public class ReasonsMaster {
     }
 
     @Test
-    public void createReasons() throws IOException, ParseException, InterruptedException, AWTException {
+    public void createReasons() throws Exception, AWTException {
         Reasons reasons = new Reasons(driver, file);
         reasons.createTransporters();
     }

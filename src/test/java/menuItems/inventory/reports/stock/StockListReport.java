@@ -22,7 +22,7 @@ public class StockListReport {
     }
 
     @Test
-    public void stockListing() throws IOException, ParseException, InterruptedException, AWTException {
+    public void stockListing() throws Exception, AWTException {
         StockList stockList = new StockList(driver);
         stockList.stckList();
     }

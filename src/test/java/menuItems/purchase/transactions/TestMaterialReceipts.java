@@ -20,7 +20,7 @@ public class TestMaterialReceipts {
         driver = appLogin.login();
     }
     @Test
-    public void MaterialReceipts() throws IOException, ParseException, InterruptedException, AWTException {
+    public void MaterialReceipts() throws Exception, AWTException {
         MaterialReceipt materialReceipt = new MaterialReceipt(driver, file);
         materialReceipt.materialReceipt();
     }

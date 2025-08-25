@@ -23,7 +23,7 @@ public class CashTransfer extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String cashTransfer(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException {
+    public String cashTransfer(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
         navigateToCashTransfersMenu();
         Thread.sleep(1000);

@@ -25,7 +25,7 @@ public class OpeningBalancesTransaction {
     }
 
     @Test
-    public void openingBalance() throws IOException, ParseException, InterruptedException {
+    public void openingBalance() throws Exception {
         OpeningBalance openingBalance = new OpeningBalance(driver, dataFile);
         openingBalance.openingBalance(TEMP_API_OPENING_BALANCES,API_RESPONSE_OPENING_BALANCES,OUTPUT_FILE);
     }

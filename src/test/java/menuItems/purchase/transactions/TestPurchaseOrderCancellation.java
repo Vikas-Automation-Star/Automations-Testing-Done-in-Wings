@@ -23,7 +23,7 @@ public class TestPurchaseOrderCancellation {
     }
 
     @Test
-    public void purchaseOrderCancellations() throws IOException, ParseException, InterruptedException, AWTException {
+    public void purchaseOrderCancellations() throws Exception, AWTException {
         PurchaseOrders purchaseOrders=new PurchaseOrders(driver,file);
         String purchaseOrderVoucher= purchaseOrders.purchaseOrders();
 

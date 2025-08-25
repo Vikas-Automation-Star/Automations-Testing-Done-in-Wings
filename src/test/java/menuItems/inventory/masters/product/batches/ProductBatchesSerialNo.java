@@ -22,7 +22,7 @@ public class ProductBatchesSerialNo {
     }
 
     @Test
-    public void productBatchSerialNo() throws IOException, ParseException, InterruptedException, AWTException {
+    public void productBatchSerialNo() throws Exception, AWTException {
         ProductBatchSerialNo serialNo = new ProductBatchSerialNo(driver, file);
         serialNo.productSerialNo();
     }

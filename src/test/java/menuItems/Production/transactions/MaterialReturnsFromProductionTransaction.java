@@ -22,7 +22,7 @@ public class MaterialReturnsFromProductionTransaction {
     }
 
     @Test
-    public void materialReturnsFromProductionTransaction() throws IOException, ParseException, InterruptedException {
+    public void materialReturnsFromProductionTransaction() throws Exception {
         MaterialReturnsFromProduction mrfp = new MaterialReturnsFromProduction(driver, file);
         mrfp.materialReturnsFromProduction();
     }

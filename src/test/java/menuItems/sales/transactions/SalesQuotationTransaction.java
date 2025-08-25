@@ -26,7 +26,7 @@ public class SalesQuotationTransaction {
     }
 
     @Test
-    public void salesQuotation() throws IOException, ParseException, InterruptedException, AWTException {
+    public void salesQuotation() throws Exception, AWTException {
         SalesQuotations quotations = new SalesQuotations(driver, file);
         quotations.salesQuotation(TEMP_API_SALES_QUOTATION,API_RESPONSE_SALES_QUOTATION,OUTPUT_FILE_SALES_QUOTATION);
     }

@@ -19,12 +19,12 @@ public class OpeningReceiptsFromCreditCardCompaniesTransaction {
     String dataFile = "./src/main/resources/menuItems/finance/transaction/460910 - Opening Receipts from Credit Card Companies-AC_ORFCC_1.xls";
 
     @BeforeTest
-    public void beforeTest() throws IOException, ParseException, InterruptedException {
+    public void beforeTest() throws Exception {
         driver = appLogin.login();
     }
 
     @Test
-    public void openingReceipts() throws IOException, ParseException, InterruptedException, AWTException {
+    public void openingReceipts() throws Exception, AWTException {
         OpeningReceiptsFromCreditCardCompanies receiptsFromCreditCardCompanies = new OpeningReceiptsFromCreditCardCompanies(driver, dataFile);
         receiptsFromCreditCardCompanies.openingReceipts(TEMP_API_BODY_OPENINGRECEIPTS_FROM_CCC,API_RESPONSE_OPENINGRECEIPTS_FROM_CCC,OUTPUT_FILE);
     }

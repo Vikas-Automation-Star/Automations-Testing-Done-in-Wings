@@ -18,12 +18,12 @@ public class PartyOpeningBalancesTransaction {
     String dataFile = "./src/main/resources/menuItems/finance/transaction/471552 - Party Opening Balances-AC_POB_1.xls";
 
     @BeforeTest
-    public void beforeTest() throws IOException, ParseException, InterruptedException {
+    public void beforeTest() throws Exception {
         driver = appLogin.login();
     }
 
     @Test
-    public void partyOpeningBalance() throws IOException, ParseException, InterruptedException {
+    public void partyOpeningBalance() throws Exception {
         PartyOpeningBalances partyOpeningBalances = new PartyOpeningBalances(driver, dataFile);
         partyOpeningBalances.partyOpeningBalance(TEMP_API_BODY_PARTY_OPENING_BALANCES,API_RESPONSE_PARTY_OPENING_BALANCES,OUTPUT_FILE);
     }

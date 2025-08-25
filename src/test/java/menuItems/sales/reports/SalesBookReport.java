@@ -22,7 +22,7 @@ public class SalesBookReport {
     }
 
     @Test
-    public void salesBook() throws IOException, ParseException, InterruptedException {
+    public void salesBook() throws Exception {
         SalesBookReportCode salesBook = new SalesBookReportCode(driver);
 //        salesBook.salesBookReport();
         salesBook.salesBookReport("SI2", dataFile);

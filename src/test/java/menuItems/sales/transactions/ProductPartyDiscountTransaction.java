@@ -25,7 +25,7 @@ public class ProductPartyDiscountTransaction {
     }
 
     @Test
-    public void productAndPartyDiscount() throws IOException, ParseException, InterruptedException {
+    public void productAndPartyDiscount() throws Exception {
         ProductndPartyDiscount partyDiscount = new ProductndPartyDiscount(driver, dataFile);
         partyDiscount.productDiscount(TEMP_API_PARTY_PRODUCT_DISCOUNT,API_RESPONSE_PARTY_PRODUCT_DISCOUNT,OUTPUT_FILE_PARTY_PRODUCT_DISCOUNT);
     }

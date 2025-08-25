@@ -22,7 +22,7 @@ public class OpeningUnclearedBankEntries extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public void unclearedBankEntries(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException{
+    public void unclearedBankEntries(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
         navigateToMastersWhen3Steps("Finance","Banking","Opening Uncleared Bank Entries");
         Thread.sleep(1000);

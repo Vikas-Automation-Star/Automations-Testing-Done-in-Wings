@@ -24,7 +24,7 @@ public class TestCreditNote {
     }
 
     @Test
-    public void receiptFromParty() throws IOException, ParseException, InterruptedException, AWTException {
+    public void receiptFromParty() throws Exception, AWTException {
         CreditNote creditNote = new CreditNote(driver, dataFile);
         creditNote.creditNote();
     }

@@ -39,7 +39,7 @@ public class SalesOrdersAgainstQuotationsTransaction {
     }
 
     @Test
-    public void salesOrderAgainstQuotations() throws IOException, ParseException, InterruptedException, AWTException {
+    public void salesOrderAgainstQuotations() throws Exception, AWTException {
         SalesEnquiry sales = new SalesEnquiry(driver, dataFile);
         String se= sales.salesEnquiries(TEMP_API_BODY_SALES_ENQUIRY,API_RESPONSE_SALES_ENQUIRY,OUTPUT_FILE1);
 

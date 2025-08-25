@@ -22,7 +22,7 @@ public class ProformaSalesInvoiceReport {
     }
 
     @Test
-    public void pfSalesReport() throws IOException, ParseException, InterruptedException, AWTException {
+    public void pfSalesReport() throws Exception, AWTException {
         ProformaSalesReportCode salesReport = new ProformaSalesReportCode(driver);
         salesReport.proformaSales();
     }

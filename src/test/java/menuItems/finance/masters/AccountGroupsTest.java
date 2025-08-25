@@ -16,13 +16,13 @@ public class AccountGroupsTest {
     String dataFile="src/main/resources/menuItems/finance/masters/accountGroups.json";
 
     @BeforeTest
-    public void beforeTest() throws IOException, ParseException, InterruptedException {
+    public void beforeTest() throws Exception {
         driver=appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
     }
 
     @Test
-    public void accountGroups() throws IOException, ParseException, InterruptedException, AWTException {
+    public void accountGroups() throws Exception, AWTException {
         AccountGroups accountGroups=new AccountGroups(driver,dataFile);
         accountGroups.accountGroups();
     }

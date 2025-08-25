@@ -22,7 +22,7 @@ public class StockBalanceReport {
     }
 
     @Test
-    public void stockBalance() throws IOException, ParseException, InterruptedException, AWTException {
+    public void stockBalance() throws Exception, AWTException {
         StockBalances balances = new StockBalances(driver);
         balances.stckBalance();
 

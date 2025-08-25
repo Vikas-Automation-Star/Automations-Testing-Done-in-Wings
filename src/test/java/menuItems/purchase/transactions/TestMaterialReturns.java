@@ -22,7 +22,7 @@ public class TestMaterialReturns {
     }
 
     @Test
-    public void materialReturns() throws IOException, ParseException, InterruptedException, AWTException {
+    public void materialReturns() throws Exception, AWTException {
 //        MaterialReceipt materialReceipt = new MaterialReceipt(driver, file);
         MaterialReturn materialReturn = new MaterialReturn(driver, file);
         materialReturn.materialReturn("MR 2");

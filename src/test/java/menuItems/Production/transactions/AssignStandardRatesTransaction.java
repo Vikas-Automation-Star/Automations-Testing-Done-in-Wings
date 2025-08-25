@@ -23,7 +23,7 @@ public class AssignStandardRatesTransaction {
     }
 
     @Test
-    public void assignStandardRatesTransaction() throws IOException, ParseException, InterruptedException, AWTException {
+    public void assignStandardRatesTransaction() throws Exception, AWTException {
         AssignStandardRates asr = new AssignStandardRates(driver, file);
         asr.assignStandardRates();
     }

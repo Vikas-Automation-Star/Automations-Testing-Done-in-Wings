@@ -23,7 +23,7 @@ public class TestImageTypes {
         }
 
         @Test
-        public void imageTypes() throws IOException, ParseException, InterruptedException, AWTException {
+        public void imageTypes() throws Exception, AWTException {
             ImageTypes imageTypes=new ImageTypes(driver,file);
             imageTypes.imageTypes();
         }

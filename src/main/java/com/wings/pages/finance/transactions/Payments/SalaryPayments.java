@@ -23,7 +23,7 @@ public class SalaryPayments extends TransactionsBaseClass {
             dataFile = file;
         }
 
-        public String salaryPayments(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
+        public String salaryPayments(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
             long start = System.nanoTime();
             navigateToMastersWhen3Steps("Finance","Payments", "Salary Payments");
             Thread.sleep(1000);

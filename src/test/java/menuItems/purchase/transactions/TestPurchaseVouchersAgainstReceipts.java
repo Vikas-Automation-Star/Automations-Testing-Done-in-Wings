@@ -21,7 +21,7 @@ public class TestPurchaseVouchersAgainstReceipts {
     }
 
     @Test
-    public void purchaseVouchersAgainstTheReceipts() throws IOException, ParseException, InterruptedException, AWTException {
+    public void purchaseVouchersAgainstTheReceipts() throws Exception, AWTException {
         PurchaseVouchersAgainstReceipt vouchersAgainstReceipt=new PurchaseVouchersAgainstReceipt(driver,file);
         vouchersAgainstReceipt.purchaseVouchersAgainstReceipt("MR 3");
     }

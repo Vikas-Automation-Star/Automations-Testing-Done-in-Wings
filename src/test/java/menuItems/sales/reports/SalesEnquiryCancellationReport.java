@@ -21,7 +21,7 @@ public class SalesEnquiryCancellationReport {
     }
 
     @Test
-    public void quotation() throws IOException, ParseException, InterruptedException {
+    public void quotation() throws Exception {
         SalesEnquiryCancellationReportCode reports = new SalesEnquiryCancellationReportCode(driver);
         reports.enquiryCancelReport();
     }

@@ -25,7 +25,7 @@ public class TestProductBatch {
     }
 
     @Test
-    public void ProductBatches() throws IOException, ParseException, InterruptedException {
+    public void ProductBatches() throws Exception {
         ProductBatches batches = new ProductBatches(driver,file);
         batches.productBatches();
     }

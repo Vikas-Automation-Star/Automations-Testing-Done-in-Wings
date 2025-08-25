@@ -23,7 +23,7 @@ public class TestPhysicalStockTake {
         driver = appLogin.login();
     }
     @Test
-    public void stockConversion() throws InterruptedException, AWTException, IOException, ParseException {
+    public void stockConversion() throws Exception {
         PhysicalStockTake physicalStockTake=new PhysicalStockTake(driver,file);
         physicalStockTake.physicalStockTake(TEMP_API_BODY_PHYSICAL_STOCK_TAKE,API_RESPONSE_PHYSICAL_STOCK_TAKE,OUTPUT_FILE);
     }

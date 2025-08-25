@@ -25,7 +25,7 @@ public class TestPaymentToParties {
     }
 
     @Test
-    public void paymentToParties() throws InterruptedException, IOException, ParseException {
+    public void paymentToParties() throws Exception {
         PaymentToParties paymentToParties = new PaymentToParties(driver, file);
         paymentToParties.paymentToParty(TEMP_API_BODY_PAYMENT_TO_PARTIES,API_RESPONSE_PAYMENT_TO_PARTIES,OUTPUT_FILE);
     }

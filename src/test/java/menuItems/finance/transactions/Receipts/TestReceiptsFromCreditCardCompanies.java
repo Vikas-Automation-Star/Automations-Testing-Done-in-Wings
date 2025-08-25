@@ -24,7 +24,7 @@ public class TestReceiptsFromCreditCardCompanies {
     }
 
     @Test
-    public void receiptFromParty() throws IOException, ParseException, InterruptedException, AWTException {
+    public void receiptFromParty() throws Exception, AWTException {
         ReceiptsFromCreditCardCompanies creditCardCompanies = new ReceiptsFromCreditCardCompanies(driver, dataFile);
         creditCardCompanies.creditCardCompanyReceipt("SI 2");
     }

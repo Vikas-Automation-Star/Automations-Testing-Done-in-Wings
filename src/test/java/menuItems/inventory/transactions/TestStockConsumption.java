@@ -23,7 +23,7 @@ public class TestStockConsumption {
     }
 
     @Test
-    public void stockConsumption() throws InterruptedException, IOException, ParseException {
+    public void stockConsumption() throws Exception {
         StockConsumption consumptionTrans = new StockConsumption(driver, file);
         consumptionTrans.stockConsumption(TEMP_API_BODY_STOCK_CONSUMPTION,API_RESPONSE_STOCK_CONSUMPTION,OUTPUT_FILE);
     }

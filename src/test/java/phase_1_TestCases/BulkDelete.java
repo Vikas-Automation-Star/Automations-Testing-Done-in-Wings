@@ -19,7 +19,7 @@ public class BulkDelete {
     List<String> voucherNumbers = new ArrayList<>();
 
     @BeforeTest
-    public void beforeTest() throws IOException, ParseException, InterruptedException {
+    public void beforeTest() throws Exception {
         driver = appLogin.launchSingleUserApp();
         appLogin.singleUserLogin();
         SalesEnquiry_BulkDelete enquiryBulkDelete = new SalesEnquiry_BulkDelete(driver, dataFile);
@@ -34,7 +34,7 @@ public class BulkDelete {
     }
 
     @Test
-    public void bulkDelete() throws IOException, ParseException, InterruptedException {
+    public void bulkDelete() throws Exception {
         BulkDeleteCode bulkDeleteCode=new BulkDeleteCode(driver,dataFile);
         bulkDeleteCode.bulkDelete(voucherNumbers);
     }

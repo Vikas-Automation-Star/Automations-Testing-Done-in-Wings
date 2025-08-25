@@ -35,7 +35,7 @@ public class SalesQuotationsCancellationTransaction {
     }
 
     @Test
-    public void salesQuotationCancellation() throws InterruptedException, IOException, ParseException, AWTException {
+    public void salesQuotationCancellation() throws Exception {
         SalesQuotations salesQuotations=new SalesQuotations(driver,file);
         String quotationVoucher=salesQuotations.salesQuotation(TEMP_API_SALES_QUOTATION,API_RESPONSE_SALES_QUOTATION,OUTPUT_FILE_QUOTATIONS);
 

@@ -22,7 +22,7 @@ public class TestProductStyles {
         }
 
         @Test
-        public void productStyles() throws IOException, ParseException, InterruptedException {
+        public void productStyles() throws Exception {
             ProductStyles productStyles=new ProductStyles(driver,file);
             productStyles.productStyles();
         }

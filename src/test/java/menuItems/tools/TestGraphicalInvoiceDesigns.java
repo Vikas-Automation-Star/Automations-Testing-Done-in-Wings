@@ -21,7 +21,7 @@ public class TestGraphicalInvoiceDesigns {
         }
 
         @Test
-        public void graphicalInvoiceDesigns() throws IOException, ParseException, InterruptedException {
+        public void graphicalInvoiceDesigns() throws Exception {
             GraphicalInvoiceDesigns graphicalInvoiceDesigns=new GraphicalInvoiceDesigns(driver,file);
             graphicalInvoiceDesigns.graphicalInvoiceDesigns();
         }

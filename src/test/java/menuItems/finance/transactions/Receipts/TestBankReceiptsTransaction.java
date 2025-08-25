@@ -24,7 +24,7 @@ public class TestBankReceiptsTransaction {
     }
 
     @Test
-    public void receiptFromParty() throws IOException, ParseException, InterruptedException, AWTException {
+    public void receiptFromParty() throws Exception, AWTException {
         BankReceipts bankReceipts = new BankReceipts(driver, dataFile);
         bankReceipts.bankReceipt();
     }

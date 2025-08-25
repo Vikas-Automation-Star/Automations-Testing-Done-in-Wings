@@ -23,7 +23,7 @@ public class TestProductTypes {
     }
 
     @Test
-    public void productTypes() throws IOException, ParseException, InterruptedException, AWTException {
+    public void productTypes() throws Exception, AWTException {
         ProductTypes productTypes=new ProductTypes(driver,file);
         productTypes.productTypes();
     }
