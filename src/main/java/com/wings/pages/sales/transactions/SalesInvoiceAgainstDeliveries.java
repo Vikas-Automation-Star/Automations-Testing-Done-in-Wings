@@ -1,6 +1,7 @@
 package com.wings.pages.sales.transactions;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import com.wings.utils.Time;
@@ -28,7 +29,7 @@ public class SalesInvoiceAgainstDeliveries extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String salesInvoiceAgainstDeliveries(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
+    public String salesInvoiceAgainstDeliveries(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
         long invoiceAgainstDeliveriesStart = System.nanoTime();
         System.out.println("SIAD startTime  in :" + invoiceAgainstDeliveriesStart);
         Thread.sleep(100);
@@ -143,15 +144,9 @@ public class SalesInvoiceAgainstDeliveries extends TransactionsBaseClass {
         String newVoucherID =newTransactionID(oldVoucherID);
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
-        //end
-        long salesInvoiceEnd = System.nanoTime() - invoiceAgainstDeliveriesStart;
-        FileUtil.writeTimeLogInMinutes("Sales Invoice against Deliveries ended at:- ", salesInvoiceEnd );
-        //IO
-        String series = newVoucherID.replaceAll("\\d", "");
-        String number = newVoucherID.replaceAll("\\D", "");
-        Thread.sleep(2000);
-        exportIOFiles("Generate Input File",series,number);
-        exportIOFiles("Generate Output File",series,number);
+        //api
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"salesInvoiceAgainstDeliveries");
+
 
 //        excelUtil.excelComparator("","",newVoucherID);
         return newVoucherID;

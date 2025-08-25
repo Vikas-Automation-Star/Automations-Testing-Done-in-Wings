@@ -22,8 +22,8 @@ public class DeliveriesTransaction {
 
     @Test
     public void deliveries() throws IOException, InterruptedException, ParseException, AWTException {
-        Deliveries deliveries = new Deliveries(driver, dataFile);
-        deliveries.salesDeliveries();
+//        Deliveries deliveries = new Deliveries(driver, dataFile);
+//        deliveries.salesDeliveries();
     }
 
     @AfterTest

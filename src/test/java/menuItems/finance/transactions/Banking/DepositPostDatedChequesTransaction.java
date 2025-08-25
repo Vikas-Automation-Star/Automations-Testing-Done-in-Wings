@@ -12,6 +12,11 @@ import java.io.IOException;
 public class DepositPostDatedChequesTransaction {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
+
+    private static final String TEMP_API_BODY_DEPOSIT_POSTDATED_CHEQUES="./output/temp_api_request_bodies/depositPostDatedCheques.json";
+    private static final String API_RESPONSE_DEPOSIT_POSTDATED_CHEQUES="./output/api_responses/depositPostDatedCheques.json";
+    private static final String OUTPUT_FILE="./src/main/resources/menuItems/finance/transaction/458330 - Deposit Post Dated Cheques-AC_DPDC_1_Output.xls";
+
     String dataFile = "./src/main/resources/menuItems/finance/transaction/458330 - Deposit Post Dated Cheques-AC_DPDC_1.xls";
 
     @BeforeTest
@@ -22,7 +27,7 @@ public class DepositPostDatedChequesTransaction {
     @Test
     public void postDatedCheques() throws IOException, ParseException, InterruptedException {
         DepositPostDatedCheques postDatedCheques = new DepositPostDatedCheques(driver, dataFile);
-        postDatedCheques.postDatedChques();
+        postDatedCheques.postDatedChques(TEMP_API_BODY_DEPOSIT_POSTDATED_CHEQUES,API_RESPONSE_DEPOSIT_POSTDATED_CHEQUES,OUTPUT_FILE);
     }
 
     @AfterTest

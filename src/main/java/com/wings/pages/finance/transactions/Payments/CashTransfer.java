@@ -1,13 +1,14 @@
 package com.wings.pages.finance.transactions.Payments;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import com.wings.utils.Common;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import java.awt.*;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class CashTransfer extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String cashTransfer() throws InterruptedException, IOException, ParseException, AWTException {
+    public String cashTransfer(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException {
         long start = System.nanoTime();
         navigateToCashTransfersMenu();
         Thread.sleep(1000);
@@ -44,6 +45,11 @@ public class CashTransfer extends TransactionsBaseClass {
         addAccounts();
         long addProductEnd=System.nanoTime()-addProductStart;
         FileUtil.writeTimeLogInMinutes("Cash Transfer Add Products:- ",addProductEnd);
+        //other Info
+        long addOtherInfoStart =System.nanoTime();
+        otherInfo();
+        long addOtherInfoEnd =System.nanoTime()- addOtherInfoStart;
+        FileUtil.writeTimeLogInMinutes("Cash Transfer Other Info:- ", addOtherInfoEnd);
         //allocations
         long allocationsTabStart=System.nanoTime();
         addAllocations();
@@ -54,18 +60,8 @@ public class CashTransfer extends TransactionsBaseClass {
         String newVoucherID =newTransactionID(oldVoucherID);
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
-        //end
-        long salesInvoiceEnd = System.nanoTime() - start ;
-        FileUtil.writeTimeLogInMinutes("Cash Transfer ended at:- ", salesInvoiceEnd );
-        //IO
-        String voucher = newVoucherID.replaceAll("\\d", "");
-        String number = newVoucherID.replaceAll("\\D", "");
-        Thread.sleep(2000);
-        long iofIlesStart=System.nanoTime();
-        exportIOFiles("Generate Input File", voucher,number);
-        exportIOFiles("Generate Output File", voucher,number);
-        long ioFilesEnd=System.nanoTime()-iofIlesStart;
-        FileUtil.writeTimeLogInMinutes("Cash Transfer IO files ended at:- ", ioFilesEnd );
+        //API
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"CashTransfer");
 
 //        excelUtil.excelComparator("","",newVoucherID);
         return newVoucherID;

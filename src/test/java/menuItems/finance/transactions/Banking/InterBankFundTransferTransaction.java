@@ -12,6 +12,11 @@ import java.io.IOException;
 public class InterBankFundTransferTransaction {
     WindowsDriver driver;
     AppLogin appLogin=new AppLogin();
+
+    private static final String TEMP_API_BODY_INTER_BANKFUND_TRANSFER="./output/temp_api_request_bodies/interBankFundTransfer.json";
+    private static final String API_RESPONSE_INTER_BANKFUND_TRANSFER="./output/api_responses/interBankFundTransfer.json";
+    private static final String OUTPUT_FILE="./src/main/resources/menuItems/finance/transaction/482403 - Inter Bank Fund Transfers-AC_BFT_1_Output.xls";
+
     String dataFile="./src/main/resources/menuItems/finance/transaction/482403 - Inter Bank Fund Transfers-AC_BFT_1.xls";
 
     @BeforeTest
@@ -22,7 +27,7 @@ public class InterBankFundTransferTransaction {
     @Test
     public void bankFundTransfer() throws IOException, ParseException, InterruptedException {
         InterBankFundTransfers bankFundTransfers=new InterBankFundTransfers(driver,dataFile);
-        bankFundTransfers.bankFundTransfer();
+        bankFundTransfers.bankFundTransfer(TEMP_API_BODY_INTER_BANKFUND_TRANSFER,API_RESPONSE_INTER_BANKFUND_TRANSFER,OUTPUT_FILE);
     }
 
     @AfterTest

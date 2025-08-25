@@ -13,18 +13,22 @@ import java.io.IOException;
 public class ProformaSalesInvoiceTransaction {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
+
+    private static final String TEMP_API_PROFORMA_SALES_INVOICE="./output/temp_api_request_bodies/proformaSaleSInvoice.json";
+    private static final String API_RESPONSE_PROFORMA_SALES_INVOICE="./output/api_responses/proformaSalesInvoice.json";
+    private static final String OUTPUT_FILE_PROFORMA_SALES_INVOICE="./src/main/resources/menuItems/Sales/Transactions/475923 - Proforma Sales Invoices-AC_Output.xls";
+
     String file = "./src/main/resources/menuItems/Sales/Transactions/475923 - Proforma Sales Invoices-AC.xls";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
         driver = appLogin.login();
-
     }
 
     @Test
     public void proformaSalesInvoice() throws IOException, ParseException, InterruptedException, AWTException {
         ProformaSalesInvoice sales = new ProformaSalesInvoice(driver, file);
-        sales.proformaSalesInvoice();
+        sales.proformaSalesInvoice(TEMP_API_PROFORMA_SALES_INVOICE,API_RESPONSE_PROFORMA_SALES_INVOICE,OUTPUT_FILE_PROFORMA_SALES_INVOICE);
     }
 
     @AfterTest

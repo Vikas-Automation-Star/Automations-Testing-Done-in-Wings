@@ -1,6 +1,7 @@
 package com.wings.pages.sales.transactions;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
@@ -22,7 +23,7 @@ public class DefineSalesTargetExecutiveWise extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String salesTargetExecutiveWise() throws InterruptedException, IOException, ParseException, AWTException {
+    public String salesTargetExecutiveWise(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
         long start = System.nanoTime();
         System.out.println("Define Sales Target Executive Wise started in :"+start);
         Thread.sleep(100);
@@ -58,18 +59,9 @@ public class DefineSalesTargetExecutiveWise extends TransactionsBaseClass {
         String newVoucherID =newTransactionID(oldVoucherID);
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
-        //end
-        long salesTargetEnd = System.nanoTime() - start ;
-        FileUtil.writeTimeLogInMinutes("Define Sales Target Executive Wise ended at:- ", salesTargetEnd);
-        String prefix = newVoucherID.replaceAll("\\d", "");
-        String number = newVoucherID.replaceAll("\\D", "");
-        Thread.sleep(2000);
-        long iOFileStart =System.nanoTime();
-        exportIOFiles("Generate Input File",prefix,number);
-       exportIOFiles("Generate Output File",prefix,number);
-        long ioFileEnd =System.nanoTime()- iOFileStart;
-        FileUtil.writeTimeLogInMinutes("Sales Target Executive wise IO End: ", ioFileEnd);
-//        excelUtil.excelComparator("","",newVoucherID);
+        //API
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"defineSalesTarget");
+
         return newVoucherID;
     }
 

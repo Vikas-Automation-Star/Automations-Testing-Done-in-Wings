@@ -7,12 +7,16 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.wings.pages.AppLogin;
 import com.wings.pages.finance.transactions.Payments.PaymentToParties;
-import java.awt.*;
 import java.io.IOException;
 
 public class TestPaymentToParties {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
+
+    private static final String TEMP_API_BODY_PAYMENT_TO_PARTIES="./output/temp_api_request_bodies/paymentToParties.json";
+    private static final String API_RESPONSE_PAYMENT_TO_PARTIES="./output/api_responses/paymentToParties.json";
+    private static final String OUTPUT_FILE="./src/main/resources/menuItems/finance/transaction/461060 - Payments to Parties-AC_PPAY_1_Output.xls";
+
     String file = "./src/main/resources/menuItems/finance/transaction/461060 - Payments to Parties-AC_PPAY_1.xls";
 
     @BeforeTest
@@ -23,7 +27,7 @@ public class TestPaymentToParties {
     @Test
     public void paymentToParties() throws InterruptedException, IOException, ParseException {
         PaymentToParties paymentToParties = new PaymentToParties(driver, file);
-        paymentToParties.paymentToParty();
+        paymentToParties.paymentToParty(TEMP_API_BODY_PAYMENT_TO_PARTIES,API_RESPONSE_PAYMENT_TO_PARTIES,OUTPUT_FILE);
     }
 
     @AfterTest

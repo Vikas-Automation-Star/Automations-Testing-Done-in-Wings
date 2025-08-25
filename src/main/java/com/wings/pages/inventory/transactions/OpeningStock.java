@@ -1,6 +1,7 @@
 package com.wings.pages.inventory.transactions;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
@@ -23,7 +24,7 @@ public class OpeningStock extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String openingStock() throws InterruptedException, IOException, ParseException, AWTException {
+    public String openingStock(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
         long start = System.nanoTime();
         navigateToMastersWhen2Steps("Inventory","Opening Stock");
         long generalInfoStart = System.nanoTime();
@@ -64,18 +65,9 @@ public class OpeningStock extends TransactionsBaseClass {
         String newVoucherID =newTransactionID(oldVoucherID);
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
-        //end
-        long deliveriesEnd = System.nanoTime() - start;
-        FileUtil.writeTimeLogInMinutes("Opening Stock ended at:- ", deliveriesEnd);
-        String prefix = newVoucherID.replaceAll("\\d", "");
-        String number = newVoucherID.replaceAll("\\D", "");
-        Thread.sleep(2000);
-        long ioFIlesStart =System.nanoTime();
-        exportIOFiles("Generate Input File",prefix,number);
-        exportIOFiles("Generate Output File",prefix,number);
-        long ioFIlesEnd =System.nanoTime()-ioFIlesStart;
-        FileUtil.writeTimeLogInMinutes("Opening Stock IO files end: ", ioFIlesEnd);
-//        excelUtil.excelComparator("","",newVoucherID);
+        //API
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"OpeningStock");
+
         return newVoucherID;
     }
     public void addProduct() throws IOException, ParseException, InterruptedException {
@@ -111,7 +103,7 @@ public class OpeningStock extends TransactionsBaseClass {
                 common.clickElement("xpath","//Button[@Name='Serial Nos Row "+i+"']");
                 Thread.sleep(2000);
                 WebElement increment = common.findWebElement("xpath", "//CheckBox[@Name='Exclude Box Barcode']");
-                increment.sendKeys(Keys.TAB,"OSI"+ Common.getRandomChar(), Keys.TAB, "1",Keys.ENTER);
+                increment.sendKeys(Keys.TAB,"OSABC"+ Common.getRandomChar(), Keys.TAB, "1",Keys.ENTER);
                 common.clickElement("xpath", "//Button[@Name='OK']");
             }else {
                 Assert.fail("No product present");

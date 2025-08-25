@@ -1,6 +1,7 @@
 package com.wings.pages.finance.transactions.Payments;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
@@ -22,7 +23,7 @@ public class SalaryPayments extends TransactionsBaseClass {
             dataFile = file;
         }
 
-        public String salaryPayments() throws InterruptedException, IOException, ParseException, AWTException {
+        public String salaryPayments(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
             long start = System.nanoTime();
             navigateToMastersWhen3Steps("Finance","Payments", "Salary Payments");
             Thread.sleep(1000);
@@ -44,6 +45,11 @@ public class SalaryPayments extends TransactionsBaseClass {
             addParties();
             long addProductEnd=System.nanoTime()-addProductStart;
             FileUtil.writeTimeLogInMinutes("Salary Payments Add Products:- ",addProductEnd);
+            //other Info
+            long otherInfoTabStart =System.nanoTime();
+            otherInfo();
+            long otherInfoTabEnd=System.nanoTime() - otherInfoTabStart;
+            FileUtil.writeTimeLogInMinutes("Salary Payments Other Info Tab:- ", otherInfoTabEnd);
             //allocations
             long allocationsTabStart=System.nanoTime();
             addAllocations();
@@ -54,18 +60,12 @@ public class SalaryPayments extends TransactionsBaseClass {
             String newVoucherID =newTransactionID(oldVoucherID);
             System.out.println("newID: "+newVoucherID);
             Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
-            //end
+            //api
+            APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"SalaryPayments");
+
             long salesInvoiceEnd = System.nanoTime() - start ;
             FileUtil.writeTimeLogInMinutes("Salary Payments ended at:- ", salesInvoiceEnd );
-            //IO
-            String voucher = newVoucherID.replaceAll("\\d", "");
-            String number = newVoucherID.replaceAll("\\D", "");
-            Thread.sleep(2000);
-            long iofIlesStart=System.nanoTime();
-            exportIOFiles("Generate Input File", voucher,number);
-            exportIOFiles("Generate Output File", voucher,number);
-            long ioFilesEnd=System.nanoTime()-iofIlesStart;
-            FileUtil.writeTimeLogInMinutes("Salary Payments IO files ended at:- ", ioFilesEnd );
+
 
 //        excelUtil.excelComparator("","",newVoucherID);
             return newVoucherID;

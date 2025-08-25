@@ -13,6 +13,10 @@ import java.io.IOException;
 public class TestCashTransfer {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
+    private static final String TEMP_API_BODY_CASH_TRANSFER="./output/temp_api_request_bodies/cashTransfer.json";
+    private static final String API_RESPONSE_CASH_TRANSFER ="./output/api_responses/cashTransfer.json";
+    private static final String OUTPUT_FILE="./src/main/resources/menuItems/finance/transaction/454215 - Cash Transfers-AC_CT_1_Output.xls";
+
     String dataFile = "./src/main/resources/menuItems/finance/transaction/454215 - Cash Transfers-AC_CT_1.xls";
 
     @BeforeTest
@@ -23,7 +27,7 @@ public class TestCashTransfer {
     @Test
     public void cashTransfer() throws InterruptedException, AWTException, IOException, ParseException {
         CashTransfer cashTransfer = new CashTransfer(driver, dataFile);
-        cashTransfer.cashTransfer();
+        cashTransfer.cashTransfer(TEMP_API_BODY_CASH_TRANSFER,API_RESPONSE_CASH_TRANSFER,OUTPUT_FILE);
     }
 
     @AfterTest

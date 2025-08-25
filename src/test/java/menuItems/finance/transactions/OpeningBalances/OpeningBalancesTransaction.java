@@ -13,6 +13,9 @@ import java.io.IOException;
 public class OpeningBalancesTransaction {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
+    private static final String TEMP_API_OPENING_BALANCES="./output/temp_api_request_bodies/openingBalances.json";
+    private static final String API_RESPONSE_OPENING_BALANCES="./output/api_responses/openingBalances.json";
+    private static final String OUTPUT_FILE="./src/main/resources/menuItems/finance/transaction/446452 - Opening Balances-AC_OB_3_Output.xls";
     String dataFile = "./src/main/resources/menuItems/finance/transaction/446452 - Opening Balances-AC_OB_3.xls";
 
     @BeforeTest
@@ -22,9 +25,9 @@ public class OpeningBalancesTransaction {
     }
 
     @Test
-    public void openingBalance() throws IOException, ParseException, InterruptedException, AWTException {
+    public void openingBalance() throws IOException, ParseException, InterruptedException {
         OpeningBalance openingBalance = new OpeningBalance(driver, dataFile);
-        openingBalance.openingBalance();
+        openingBalance.openingBalance(TEMP_API_OPENING_BALANCES,API_RESPONSE_OPENING_BALANCES,OUTPUT_FILE);
     }
 
     @AfterTest

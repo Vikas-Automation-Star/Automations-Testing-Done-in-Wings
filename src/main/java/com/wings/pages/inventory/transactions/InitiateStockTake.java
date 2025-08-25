@@ -1,6 +1,7 @@
 package com.wings.pages.inventory.transactions;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
@@ -22,7 +23,7 @@ public class InitiateStockTake extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String initiateStockTake() throws InterruptedException, IOException, ParseException {
+    public String initiateStockTake(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException {
         long start = System.nanoTime();
         navigateToMastersWhen2Steps("Inventory", "Initiate Stock Take");
         Thread.sleep(1000);
@@ -64,17 +65,12 @@ public class InitiateStockTake extends TransactionsBaseClass {
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         //end
+
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"InitiateStockTake");
+
         long initiateStockTake = System.nanoTime() - start;
         FileUtil.writeTimeLogInMinutes("Initiate Stock Take ended at:- ", initiateStockTake);
-        String prefix = newVoucherID.replaceAll("\\d", "");
-        String number = newVoucherID.replaceAll("\\D", "");
-        Thread.sleep(2000);
-        long ioFIlesStart =System.nanoTime();
-        exportIOFiles("Generate Input File",prefix,number);
-        exportIOFiles("Generate Output File",prefix,number);
-        long ioFIlesEnd =System.nanoTime()-ioFIlesStart;
-        FileUtil.writeTimeLogInMinutes("Initiate Stock Take IO files end: ", ioFIlesEnd);
-//        excelUtil.excelComparator("","",newVoucherID);
+
         return newVoucherID;
     }
 

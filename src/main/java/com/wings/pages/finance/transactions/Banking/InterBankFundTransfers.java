@@ -1,6 +1,7 @@
 package com.wings.pages.finance.transactions.Banking;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
@@ -19,7 +20,7 @@ public class InterBankFundTransfers extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public void bankFundTransfer() throws InterruptedException, IOException, ParseException {
+    public void bankFundTransfer(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException {
         long start = System.nanoTime();
         navigateToMastersWhen3Steps("Finance","Banking","Inter Bank Fund Transfers");
         Thread.sleep(1000);
@@ -55,13 +56,13 @@ public class InterBankFundTransfers extends TransactionsBaseClass {
         EnterData("//Edit[@Name='Remarks']",dataFile,"GeneralInformation","Remarks");
         enterRemarks(dataFile,"GeneralInformation","Remarks");
         long generalInfoEndTime = System.nanoTime() - generalInfoStart;
-        FileUtil.writeTimeLogInMinutes("Cash Payments General information End:- ", generalInfoEndTime);
+        FileUtil.writeTimeLogInMinutes("Inter Bank Fund Transfer General information End:- ", generalInfoEndTime);
 
         //other Info
         long otherInfoStart = System.nanoTime();
         otherInfo();
         long otherInfoEnd = System.nanoTime() - otherInfoStart;
-        FileUtil.writeTimeLogInMinutes("Cash Payments OtherInfo Tab:- ", otherInfoEnd);
+        FileUtil.writeTimeLogInMinutes("Inter Bank Fund Transfer OtherInfo Tab:- ", otherInfoEnd);
         //save
         transactionSave();
         String newVoucherID =newTransactionID(oldVoucherID);
@@ -69,16 +70,10 @@ public class InterBankFundTransfers extends TransactionsBaseClass {
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         //end
         long salesInvoiceEnd = System.nanoTime() - start ;
-        FileUtil.writeTimeLogInMinutes("Cash Payments ended at:- ", salesInvoiceEnd );
-        //IO
-        String voucher = newVoucherID.replaceAll("\\d", "");
-        String number = newVoucherID.replaceAll("\\D", "");
-        Thread.sleep(2000);
-        long iofIlesStart=System.nanoTime();
-        exportIOFiles("Generate Input File", voucher,number);
-        exportIOFiles("Generate Output File", voucher,number);
-        long ioFilesEnd=System.nanoTime()-iofIlesStart;
-        FileUtil.writeTimeLogInMinutes("Cash Payments IO files ended at:- ", ioFilesEnd );
+        FileUtil.writeTimeLogInMinutes("Inter Bank Fund Transfer ended at:- ", salesInvoiceEnd );
+        //API
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"InterBankFundTransfer");
+
 
 //        excelUtil.excelComparator("","",newVoucherID);
     }

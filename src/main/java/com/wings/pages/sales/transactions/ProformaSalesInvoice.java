@@ -1,6 +1,7 @@
 package com.wings.pages.sales.transactions;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
@@ -23,12 +24,12 @@ public class ProformaSalesInvoice extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String proformaSalesInvoice() throws InterruptedException, IOException, ParseException, AWTException {
+    public String proformaSalesInvoice(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
         long start = System.nanoTime();
         System.out.println("proforma Sales Invoice startTime executed in :" + start);
 
         long generalInfoStart=System.nanoTime();
-        navigateToProformaSalesInvoiceMenu();
+        navigateToMastersWhen3Steps("Sales","Invoices","Proforma Sales Invoices");
         Thread.sleep(2000);
 
         String oldVoucherID =oldTTransactionID();
@@ -100,16 +101,9 @@ public class ProformaSalesInvoice extends TransactionsBaseClass {
         //end
         long salesInvoiceEnd = System.nanoTime() - start ;
         FileUtil.writeTimeLogInMinutes("proforma Sales Invoice ended at:- ", salesInvoiceEnd );
-        //IO
-        String voucher = newVoucherID.replaceAll("\\d", "");
-        String number = newVoucherID.replaceAll("\\D", "");
-        Thread.sleep(2000);
-        long iOFileStart =System.nanoTime();
+        //API
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"proformaSalesInvoice");
 
-        exportIOFiles("Generate Input File", voucher,number);
-       exportIOFiles("Generate Output File", voucher,number);
-        long ioFileEnd =System.nanoTime()- iOFileStart;
-        FileUtil.writeTimeLogInMinutes("Proforma Sales Invoice IO End: ", ioFileEnd);
 //        excelUtil.excelComparator("","",newVoucherID);
         return newVoucherID;
     }

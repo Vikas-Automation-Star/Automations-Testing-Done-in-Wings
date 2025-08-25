@@ -16,6 +16,15 @@ import java.io.IOException;
 public class SalesOrderCancellationTransaction {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
+
+    private static final String TEMP_API_SALES_ORDER="./output/temp_api_request_bodies/salesOrder.json";
+    private static final String API_RESPONSE_SALES_ORDER="./output/api_responses/salesOrder.json";
+    private static final String OUTPUT_FILE_SALES_ORDER="./src/main/resources/menuItems/Sales/Transactions/478887 - Sales Orders-AC_Output.xls";
+
+    private static final String TEMP_API_SALES_ORDER_CANCELLATION="./output/temp_api_request_bodies/salesOrderCancellation.json";
+    private static final String API_RESPONSE_SALES_ORDER_CANCELLATION="./output/api_responses/salesOrderCancellation.json";
+    private static final String OUTPUT_FILE_SALES_ORDER_CANCELLATION="./src/main/resources/menuItems/Sales/Transactions/458823 - Sales Orders Cancellation-AC_Output.xls";
+
     String dataFile="./src/main/resources/menuItems/Sales/Transactions/478887 - Sales Orders-AC.xls";
     String dataFile1 = "./src/main/resources/menuItems/Sales/Transactions/458823 - Sales Orders Cancellation-AC.xls";
 
@@ -27,11 +36,13 @@ public class SalesOrderCancellationTransaction {
     @Test
     public void salesOrderCancellation() throws IOException, InterruptedException, ParseException, AWTException {
         SalesOrders salesOrders=new SalesOrders(driver, dataFile);
-        String salesOrderVoucher= salesOrders.salesOrder();
+        String salesOrderVoucher= salesOrders.salesOrder(TEMP_API_SALES_ORDER,API_RESPONSE_SALES_ORDER,OUTPUT_FILE_SALES_ORDER);
+
         appLogin.logout();
         driver=appLogin.login();
+
         SalesOrderCancellation orderCancellation = new SalesOrderCancellation(driver, dataFile1);
-        orderCancellation.salesOrderCancellations(salesOrderVoucher);
+        orderCancellation.salesOrderCancellations(salesOrderVoucher,TEMP_API_SALES_ORDER_CANCELLATION,API_RESPONSE_SALES_ORDER_CANCELLATION,OUTPUT_FILE_SALES_ORDER_CANCELLATION);
     }
 
     @AfterTest

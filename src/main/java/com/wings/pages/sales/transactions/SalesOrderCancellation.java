@@ -1,6 +1,7 @@
 package com.wings.pages.sales.transactions;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
@@ -24,7 +25,7 @@ public class SalesOrderCancellation extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String salesOrderCancellations(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
+    public String salesOrderCancellations(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
         long start = System.nanoTime();
 //        System.out.println("Sales Order Cancellation startTime executed in :"+start);
         Thread.sleep(100);
@@ -80,16 +81,9 @@ public class SalesOrderCancellation extends TransactionsBaseClass {
         //end
         long salesInvoiceEnd = System.nanoTime() - start;
         FileUtil.writeTimeLogInMinutes("SOC ended at:- ", salesInvoiceEnd );
-        //IO
-        String prefix = newVoucherID.replaceAll("\\d", "");
-        String number = newVoucherID.replaceAll("\\D", "");
-        Thread.sleep(2000);
-        long iOFileStart =System.nanoTime();
-        exportIOFiles("Generate Input File",prefix,number);
-        exportIOFiles("Generate Output File",prefix,number);
-        long ioFileEnd =System.nanoTime()- iOFileStart;
-        FileUtil.writeTimeLogInMinutes("SOC IO End: ", ioFileEnd);
-//        excelUtil.excelComparator("","",newVoucherID);
+        //api
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"salesOrderCancellation");
+
         return newVoucherID;
     }
 

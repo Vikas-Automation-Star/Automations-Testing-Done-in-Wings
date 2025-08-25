@@ -20,12 +20,10 @@ import java.math.RoundingMode;
 
 public class AdvancedJsonExcelComparatorNew {
     public static void JsonExcelComparator(String jsonFilePath,String excelFilePath,String transactionType) throws IOException {
-//        String jsonFilePath = "./SalesReturns.txt";
-//        String excelFilePath = "./480463 - Sales Returns-AC_Output.xlsx";
-//        String diffFilePath = "./Difference.xlsx";
 
         String timeStamp=Time.timeStamp();
         String diffFilePath = "./output/excelDifferences/" + transactionType + "_" + timeStamp + ".xlsx";
+
 
         // Read and parse JSON
         ObjectMapper mapper = new ObjectMapper();
@@ -34,7 +32,21 @@ public class AdvancedJsonExcelComparatorNew {
 
         // Read Excel
         Workbook workbook = WorkbookFactory.create(new FileInputStream(excelFilePath));
-        Workbook diffWorkbook=null;
+
+        // Create ONE workbook for differences
+        Workbook diffWorkbook = new XSSFWorkbook();
+        Sheet diffSheet = diffWorkbook.createSheet("Differences");
+
+        // Header row
+        int diffRowNum = 0;
+        Row diffHeader = diffSheet.createRow(diffRowNum++);
+        diffHeader.createCell(0).setCellValue("SourceSheet");
+        diffHeader.createCell(1).setCellValue("Row");
+        diffHeader.createCell(2).setCellValue("Column");
+        diffHeader.createCell(3).setCellValue("Expected");
+        diffHeader.createCell(4).setCellValue("Actual");
+
+        boolean hasDifferences = false;  // 🔹 Track if any differences found
 
         for (int i = 0; i < workbook.getNumberOfSheets(); i++) {
             Sheet sheet = workbook.getSheetAt(i);
@@ -54,20 +66,16 @@ public class AdvancedJsonExcelComparatorNew {
             JsonNode columnsNode = matchingTable.path("columns");
 
             Map<String, Integer> columnMap = new HashMap<>();
-            if(sheet.getRow(0)!=null){
-                org.apache.poi.ss.usermodel.Row headerRow = sheet.getRow(0);
+            if (sheet.getRow(0) != null) {
+                Row headerRow = sheet.getRow(0);
                 for (int c = 0; c < headerRow.getLastCellNum(); c++) {
                     String colName = headerRow.getCell(c).getStringCellValue();
-                    System.out.println("SheetName: "+sheetName+" | Column: "+colName);
                     columnMap.put(colName, c);
                 }
             }
-            // Create diff sheet
-            Sheet diffSheet = null;
-            int diffRowNum = 0;
 
             for (int r = 1; r <= sheet.getLastRowNum(); r++) {
-                org.apache.poi.ss.usermodel.Row excelRow = sheet.getRow(r);
+                Row excelRow = sheet.getRow(r);
                 if (excelRow == null || (r - 1) >= jsonRows.size()) continue;
 
                 JsonNode jsonRowArray = jsonRows.get(r - 1);
@@ -75,62 +83,47 @@ public class AdvancedJsonExcelComparatorNew {
                 for (int j = 0; j < columnsNode.size(); j++) {
                     String columnName = columnsNode.get(j).path("name").asText();
                     JsonNode actualNode = jsonRowArray.get(j);
+
                     String actualValue = "";
                     if (actualNode != null && !actualNode.isNull()) {
-
                         if (actualNode.asText().matches("-?\\d+(\\.\\d+)?")) {
-                            BigDecimal roundedValue = new BigDecimal(actualNode.asDouble()).setScale(2, RoundingMode.HALF_UP);
+                            BigDecimal roundedValue = new BigDecimal(actualNode.asDouble())
+                                    .setScale(2, RoundingMode.HALF_UP);
                             actualValue = roundedValue.stripTrailingZeros().toPlainString();
                         } else {
                             String rawText = actualNode.asText().trim();
-
-                            // Try to parse date strings and format to yyyy-MM-dd
                             String formattedDate = tryFormatDate(rawText);
-                            if (formattedDate != null) {
-                                actualValue = formattedDate;
-                            } else {
-                                actualValue = rawText;
-                            }
+                            actualValue = (formattedDate != null) ? formattedDate : rawText;
                         }
                     }
 
                     if (columnMap.containsKey(columnName)) {
                         Cell excelCell = excelRow.getCell(columnMap.get(columnName));
                         String expectedValue = getCellValue(excelCell);
-                        //String expectedValue = excelCell.getStringCellValue();
-                        //System.out.println("Exp value: "+expectedValue+" | Actual Value - "+actualValue);
-                        //System.out.println(jsonRows.size());
 
                         if (!expectedValue.equals(actualValue)) {
-                            if (diffSheet == null) {
-                                diffWorkbook= new XSSFWorkbook();
-
-                                diffSheet = diffWorkbook.createSheet(sheetName);
-                                Row diffHeader = diffSheet.createRow(diffRowNum++);
-                                diffHeader.createCell(0).setCellValue("Row");
-                                diffHeader.createCell(1).setCellValue("Column");
-                                diffHeader.createCell(2).setCellValue("Expected");
-                                diffHeader.createCell(3).setCellValue("Actual");
-                            }
+                            hasDifferences = true; // 🔹 Found at least one diff
                             Row diffRow = diffSheet.createRow(diffRowNum++);
-                            diffRow.createCell(0).setCellValue(r);
-                            diffRow.createCell(1).setCellValue(columnName);
-                            diffRow.createCell(2).setCellValue(expectedValue);
-                            diffRow.createCell(3).setCellValue(actualValue);
+                            diffRow.createCell(0).setCellValue(sheetName);
+                            diffRow.createCell(1).setCellValue(r);
+                            diffRow.createCell(2).setCellValue(columnName);
+                            diffRow.createCell(3).setCellValue(expectedValue);
+                            diffRow.createCell(4).setCellValue(actualValue);
                         }
                     }
                 }
             }
         }
-        if(diffWorkbook!=null){
-            System.out.println("Vikas");
-            // Save differences
+
+        if (hasDifferences) {
             try (FileOutputStream fos = new FileOutputStream(diffFilePath)) {
                 diffWorkbook.write(fos);
-                System.out.println("Comparison completed. Differences written to:😥 " + diffFilePath);
             }
-        }else {
-            System.out.println("No differences generated 😃 All sheets and it's values matched Perfectly🍟🍗");
+            diffWorkbook.close();
+            System.out.println("Comparison completed. Differences written to: " + diffFilePath);
+        } else {
+            diffWorkbook.close(); // just close without writing
+            System.out.println("✅ No differences found. No file created.");
         }
     }
 
@@ -144,7 +137,8 @@ public class AdvancedJsonExcelComparatorNew {
                 if (DateUtil.isCellDateFormatted(cell)) {
                     return DATE_FORMAT.format(cell.getDateCellValue());
                 } else {
-                    BigDecimal roundedValue = new BigDecimal(cell.getNumericCellValue()).setScale(2, RoundingMode.HALF_UP);
+                    BigDecimal roundedValue = new BigDecimal(cell.getNumericCellValue())
+                            .setScale(2, RoundingMode.HALF_UP);
                     return roundedValue.stripTrailingZeros().toPlainString();
                 }
             case BOOLEAN:
@@ -180,10 +174,4 @@ public class AdvancedJsonExcelComparatorNew {
         }
         return null; // Not a date
     }
-
-
-    public static void main(String[] args) throws IOException {
-        JsonExcelComparator("./output/PEC.txt","./src/main/resources/menuItems/purchase/transactions/461400 - Purchase Enquiries Cancellation-AC_PEC_1_Output.xlsx","PurchaseEnquiries");
-    }
-
 }

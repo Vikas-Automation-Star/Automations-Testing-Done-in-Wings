@@ -1,6 +1,7 @@
 package com.wings.pages.finance.transactions.Payments;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
@@ -22,7 +23,7 @@ public class PaymentToParties extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String paymentToParty() throws InterruptedException, IOException, ParseException {
+    public String paymentToParty(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException {
         long start = System.nanoTime();
         navigateToMastersWhen3Steps("Finance", "Payments", "Payments to Parties");
         Thread.sleep(1000);
@@ -86,15 +87,9 @@ public class PaymentToParties extends TransactionsBaseClass {
         //end
         long salesInvoiceEnd = System.nanoTime() - start ;
         FileUtil.writeTimeLogInMinutes("Payment to Parties ended at:- ", salesInvoiceEnd );
-        //IO
-        String voucher = newVoucherID.replaceAll("\\d", "");
-        String number = newVoucherID.replaceAll("\\D", "");
-        Thread.sleep(2000);
-        long iofIlesStart=System.nanoTime();
-        exportIOFiles("Generate Input File", voucher,number);
-        exportIOFiles("Generate Output File", voucher,number);
-        long ioFilesEnd=System.nanoTime()-iofIlesStart;
-        FileUtil.writeTimeLogInMinutes("Payment to Parties IO files ended at:- ", ioFilesEnd );
+        //API
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"PaymentToParties");
+
 
 //        excelUtil.excelComparator("","",newVoucherID);
         return newVoucherID;

@@ -13,31 +13,41 @@ import java.io.IOException;
 
 public class TestSalesInvoiceAgainstDeliveries {
 
-        WindowsDriver driver;
-        AppLogin appLogin=new AppLogin();
-        String dataFile1="./src/main/resources/menuItems/Sales/Transactions/476979 - Deliveries-AC.xls";
-        String dataFile2 ="./src/main/resources/menuItems/Sales/Transactions/480462 - Sales Invoices against Deliveries-AC.xls";
+    WindowsDriver driver;
+    AppLogin appLogin=new AppLogin();
 
-        @BeforeTest
-        public void beforeTest() throws IOException, InterruptedException, ParseException {
-            driver=appLogin.login();
-        }
+    private static final String TEMP_API_SALES_DELIVERIES="./output/temp_api_request_bodies/deliveries.json";
+    private static final String API_RESPONSE_SALES_DELIVERIES="./output/api_responses/deliveries.json";
+    private static final String OUTPUT_FILE_SALES_DELIVERIES="./src/main/resources/menuItems/Sales/Transactions/476979 - Deliveries-AC_Output.xls";
 
-        @Test
-        public void deliveriesAgainstOrders() throws IOException, ParseException, InterruptedException, AWTException {
-            Deliveries deliveries=new Deliveries(driver,dataFile1);
-            String deliveriesVoucher=deliveries.salesDeliveries();
+    private static final String TEMP_API_SALES_INVOICE_AGAINST_DELIVERIES="./output/temp_api_request_bodies/salesInvoiceAgainstDeliveries.json";
+    private static final String API_RESPONSE_SALES_INVOICE_AGAINST_DELIVERIES="./output/api_responses/salesInvoiceAgainstDeliveries.json";
+    private static final String OUTPUT_FILE_SALES_INVOICE_AGAINST_DELIVERIES="./src/main/resources/menuItems/Sales/Transactions/480462 - Sales Invoices against Deliveries-AC_SIAD_4_Output.xls";
 
-            appLogin.logout();
-            driver = appLogin.login();
+    String dataFile1="./src/main/resources/menuItems/Sales/Transactions/476979 - Deliveries-AC.xls";
+    String dataFile2 ="./src/main/resources/menuItems/Sales/Transactions/480462 - Sales Invoices against Deliveries-AC.xls";
 
-            SalesInvoiceAgainstDeliveries salesInvoiceAgainstDeliveries=new SalesInvoiceAgainstDeliveries(driver,dataFile2);
-            salesInvoiceAgainstDeliveries.salesInvoiceAgainstDeliveries(deliveriesVoucher);
-
-        }
-
-        @AfterTest
-        public void afterTest() throws IOException {
-            appLogin.logout();
-        }
+    @BeforeTest
+    public void beforeTest() throws IOException, InterruptedException, ParseException {
+        driver=appLogin.login();
     }
+
+    @Test
+    public void deliveriesAgainstOrders() throws IOException, ParseException, InterruptedException, AWTException {
+        Deliveries deliveries=new Deliveries(driver,dataFile1);
+        String deliveriesVoucher=deliveries.salesDeliveries(TEMP_API_SALES_DELIVERIES,API_RESPONSE_SALES_DELIVERIES,OUTPUT_FILE_SALES_DELIVERIES);
+
+        appLogin.logout();
+        driver = appLogin.login();
+
+        SalesInvoiceAgainstDeliveries salesInvoiceAgainstDeliveries=new SalesInvoiceAgainstDeliveries(driver,dataFile2);
+        salesInvoiceAgainstDeliveries.salesInvoiceAgainstDeliveries
+                (deliveriesVoucher,TEMP_API_SALES_INVOICE_AGAINST_DELIVERIES,API_RESPONSE_SALES_INVOICE_AGAINST_DELIVERIES,OUTPUT_FILE_SALES_INVOICE_AGAINST_DELIVERIES);
+
+    }
+
+    @AfterTest
+    public void afterTest() throws IOException {
+        appLogin.logout();
+    }
+}

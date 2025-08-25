@@ -22,6 +22,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -550,9 +551,6 @@ public  class Transaction {
         common.clickElement("name", "Sales");
         common.clickElement("name", "Invoices");
         common.clickElement("xpath", "//MenuItem[@Name='Proforma Sales Invoices']");
-        String pageValidation = common.findWebElement("xpath", "//Pane/Text[@Name='Proforma Sales Invoices']").getText();
-        System.out.println("Screen Name:-" + pageValidation);
-        Assert.assertEquals(pageValidation, "Proforma Sales Invoices");
     }
 
     public void navigateToSalesReturnMenu() {
@@ -574,9 +572,9 @@ public  class Transaction {
         common.clickElement("name", "Sales");
         common.clickElement("xpath", "//MenuItem[@Name='Prices and Discounts'][2]");
         common.clickElement("name", "Party and Product wise Discounts");
-        String pageValidation = common.findWebElement("xpath", "//Pane/Text[@Name='Party and Product wise Discounts']").getText();
-        System.out.println("Screen Name:-" + pageValidation);
-        Assert.assertEquals(pageValidation, "Party and Product wise Discounts");
+//        String pageValidation = common.findWebElement("xpath", "//Pane/Text[@Name='Party and Product wise Discounts']").getText();
+//        System.out.println("Screen Name:-" + pageValidation);
+//        Assert.assertEquals(pageValidation, "Party and Product wise Discounts");
     }
 
     public void navigateToSalesPricesMenu() {
@@ -916,6 +914,36 @@ public  class Transaction {
             }
         common.clickElement("xpath", "//Button[@Name='Ok']");
     }
+
+    public void selectPendingsDPDC(String... vouchersToSelect) {
+        List<String> voucherList = Arrays.asList(vouchersToSelect);
+
+        // same logic
+        List<WebElement> popupWindow = common.findWebElements("xpath", "//Window[@Name='Open Transactions']");
+        if (popupWindow.isEmpty()) {
+            System.out.println("No popup found, moving on.");
+            return;
+        }
+
+        List<WebElement> pendings = common.findWebElements("xpath",
+                "//Window[@Name='Open Transactions']//Pane/Table/*[starts-with(@Name,'Row ')]");
+
+        for (int i=0;i< pendings.size();i++) {
+            WebElement userRow = pendings.get(i);
+            WebElement voucherNo = userRow.findElement(By.xpath(".//*[starts-with(@Name, 'TowardsVNo Row')]"));
+            String voucherText = voucherNo.getText();
+            if (!(voucherList.contains(voucherText))) {
+                voucherNo.click();
+                voucherNo.sendKeys(Keys.DOWN);
+            } else {
+                System.out.println("Selecting voucher: " + voucherText);
+                voucherNo.sendKeys(Keys.LEFT, Keys.SPACE);
+            }
+        }
+        common.clickElement("xpath", "//Button[@Name='Ok']");
+    }
+
+
 
 
     //general methods

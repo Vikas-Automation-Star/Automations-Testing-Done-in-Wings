@@ -1,10 +1,12 @@
 package com.wings.pages.finance.transactions.Banking;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import com.wings.utils.Common;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import java.io.IOException;
@@ -21,7 +23,7 @@ public class DepositPostDatedCheques extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public void postDatedChques() throws InterruptedException, IOException, ParseException {
+    public void postDatedChques(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException {
         long start = System.nanoTime();
         navigateToMastersWhen3Steps("Finance","Banking","Deposit Post Dated Cheques");
         Thread.sleep(1000);
@@ -32,9 +34,18 @@ public class DepositPostDatedCheques extends TransactionsBaseClass {
         EnterDate("//Edit[@Name='Date *']",dataFile,"GeneralInformation","Date");
         enterBranch(dataFile,"GeneralInformation","Branch");
         enterCurrency(dataFile,"GeneralInformation","TransactionCurrency");
-        EnterData("//Edit[@Name='Bank Code']",dataFile,"GeneralInformation","BankAccountCode");
+        List<WebElement> elementList = common.findWebElements("xpath","//Edit[@Name='Bank Code']");
+        for (WebElement i : elementList) {
+//            i.click();
+            i.sendKeys(Keys.CONTROL + "a");
+            i.sendKeys(Keys.BACK_SPACE);
+            i.sendKeys("AT_Bank Acc 1", Keys.TAB);
+            break;
+        }
+//        EnterData("//Edit[@Name='Bank Code']",dataFile,"GeneralInformation","BankAccountCode");
         EnterData("//Edit[@Name='Cheques Received Account *']",dataFile,"GeneralInformation","ChequesReceivedAccount");
-        selectPendingsDPDC();
+        Thread.sleep(1500);
+        selectPendingsDPDC("SO 13","SI 3");
         enterExecutive(dataFile,"GeneralInformation","Executive");
         enterRemarks(dataFile,"GeneralInformation","Remarks");
         long generalInfoEndTime = System.nanoTime() - generalInfoStart;
@@ -47,7 +58,7 @@ public class DepositPostDatedCheques extends TransactionsBaseClass {
         FileUtil.writeTimeLogInMinutes("Deposit Post Dated Cheques Add Deposits:- ", addAccountsEnd);
         //other Info
         long otherInfoStart = System.nanoTime();
-        otherInfo();
+//        otherInfo();
         long otherInfoEnd = System.nanoTime() - otherInfoStart;
         FileUtil.writeTimeLogInMinutes("Deposit Post Dated Cheques OtherInfo Tab:- ", otherInfoEnd);
         //save
@@ -58,15 +69,9 @@ public class DepositPostDatedCheques extends TransactionsBaseClass {
         //end
         long salesInvoiceEnd = System.nanoTime() - start ;
         FileUtil.writeTimeLogInMinutes("Deposit Post Dated Cheques ended at:- ", salesInvoiceEnd );
-        //IO
-        String voucher = newVoucherID.replaceAll("\\d", "");
-        String number = newVoucherID.replaceAll("\\D", "");
-        Thread.sleep(2000);
-        long iofIlesStart=System.nanoTime();
-        exportIOFiles("Generate Input File", voucher,number);
-        exportIOFiles("Generate Output File", voucher,number);
-        long ioFilesEnd=System.nanoTime()-iofIlesStart;
-        FileUtil.writeTimeLogInMinutes("Deposit Post Dated Cheques IO files ended at:- ", ioFilesEnd );
+        //API
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"DepositPostDatedCheques");
+
 
 //        excelUtil.excelComparator("","",newVoucherID);
     }

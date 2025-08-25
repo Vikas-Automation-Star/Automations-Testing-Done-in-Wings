@@ -1,6 +1,7 @@
 package com.wings.pages.sales.transactions;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
@@ -24,7 +25,7 @@ public class SalesOrdersAgainstQuotations extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String salesOrderAgainstQuotation(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
+    public String salesOrderAgainstQuotation(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
         long start = System.nanoTime();
 //        System.out.println("Sales order against quotation startTime executed in :"+start);
         long generalInfoStart = System.nanoTime();
@@ -122,15 +123,9 @@ public class SalesOrdersAgainstQuotations extends TransactionsBaseClass {
 
         long transEnd=System.nanoTime()-start;
         FileUtil.writeTimeLogInMinutes("SOAQ ended at ",transEnd);
-        //IO
-        String voucher = newVoucherID.replaceAll("\\d", "");
-        String number = newVoucherID.replaceAll("\\D", "");
-        Thread.sleep(2000);
-        long iOFileStart =System.nanoTime();
-        exportIOFiles("Generate Input File", voucher,number);
-        exportIOFiles("Generate Output File", voucher,number);
-        long ioFileEnd =System.nanoTime()- iOFileStart;
-        FileUtil.writeTimeLogInMinutes("SOAQ IO End: ", ioFileEnd);
+        //API
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"salesOrderAgainstQuotation");
+
         return newVoucherID;
     }
 

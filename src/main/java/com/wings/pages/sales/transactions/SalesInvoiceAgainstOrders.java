@@ -1,6 +1,7 @@
 package com.wings.pages.sales.transactions;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
@@ -24,7 +25,7 @@ public class SalesInvoiceAgainstOrders extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String invoiceAgainstOrders(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
+    public String invoiceAgainstOrders(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
         long start = System.nanoTime();
         System.out.println("SIAO startTime executed in :"+start);
         Thread.sleep(100);
@@ -139,19 +140,11 @@ public class SalesInvoiceAgainstOrders extends TransactionsBaseClass {
         String newVoucherID =newTransactionID(oldVoucherID);
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
-        //end
-        long salesInvoiceEnd = System.nanoTime() - start;
-        FileUtil.writeTimeLogInMinutes("Sales Invoice against Orders ended at:- ", salesInvoiceEnd );
-        //IO
-        String series = newVoucherID.replaceAll("\\d", "");
-        String number = newVoucherID.replaceAll("\\D", "");
-        Thread.sleep(2000);
-        long iOFileStart =System.nanoTime();
-        exportIOFiles("Generate Input File",series,number);
-        exportIOFiles("Generate Output File",series,number);
-        long ioFileEnd =System.nanoTime()- iOFileStart;
-        FileUtil.writeTimeLogInMinutes("SIAO IO End: ", ioFileEnd);
-//        excelUtil.excelComparator("","",newVoucherID);
+        //api
+
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"salesInvoiceAgainstOrder");
+
+
         return newVoucherID;
 
     }
@@ -234,7 +227,7 @@ public class SalesInvoiceAgainstOrders extends TransactionsBaseClass {
             } else if (masterType.get(i).equals("Products - MultiBatch")) {
                 common.clickElement("xpath", "//Button[@Name='Stock Details Row "+i+"']");
                 Thread.sleep(500);
-                EnterData("//Table[@Name='Batch Details']/*[@Name='Data Panel']/*[@Name='Row 1']/*[@Name='Quantity row 1']",dataFile,"Items","Quantity",i);
+                EnterData("//Table[@Name='Batch Details']/*[@Name='Data Panel']/*[@Name='Row 2']/*[@Name='Quantity row 2']",dataFile,"Items","Quantity",i);
 //                EnterData("//Table[@Name='Batch Details']/*[@Name='Data Panel']/*[@Name='Row 1']/*[@Name='Free Qty row 1']",dataFile,"Items","FreeQuantity",i);
                 Thread.sleep(1000);
                 common.clickElement("xpath", "//Button[@Name='OK']");

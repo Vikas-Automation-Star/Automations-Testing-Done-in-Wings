@@ -1,6 +1,7 @@
 package com.wings.pages.sales.transactions;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
@@ -24,7 +25,7 @@ public class SalesQuotationCancellaton extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String salesQuotationCancelltion(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
+    public String salesQuotationCancelltion(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
         long quotationCancellationStart = System.nanoTime();
 //        System.out.println("sales quotation Cancellation startTime executed in :"+start);
         long generalInfoStart = System.nanoTime();
@@ -74,14 +75,9 @@ public class SalesQuotationCancellaton extends TransactionsBaseClass {
         String newVoucherID = newTransactionID(oldVoucherID);
         System.out.println("newID: " + newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID, "Voucher Numbers are same. Check Transaction.");
-        String prefix = newVoucherID.replaceAll("\\d", "");
-        String number = newVoucherID.replaceAll("\\D", "");
-        Thread.sleep(2000);
-        long iOFileStart =System.nanoTime();
-        exportIOFiles("Generate Input File", prefix, number);
-        exportIOFiles("Generate Output File", prefix, number);
-        long ioFileEnd =System.nanoTime()- iOFileStart;
-        FileUtil.writeTimeLogInMinutes("SQC IO End: ", ioFileEnd);
+
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"salesQuotationCancellation");
+
 
         long quotationsCancellationEnd = System.nanoTime() - quotationCancellationStart;
         FileUtil.writeTimeLogInMinutes("Sales Quotation Cancellation End: ", quotationsCancellationEnd);

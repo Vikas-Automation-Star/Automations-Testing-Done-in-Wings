@@ -15,6 +15,9 @@ import java.io.IOException;
 public class TestOpeningStock {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
+    private static final String TEMP_API_BODY_OPENING_STOCK="./output/temp_api_request_bodies/openingStock.json";
+    private static final String API_RESPONSE_OPENING_STOCK ="./output/api_responses/openingStock.json";
+    private static final String OUTPUT_FILE="./src/main/resources/menuItems/inventory/transactions/455721 - Opening Stock-AC_OS_3_Output.xls";
     String file = "./src/main/resources/menuItems/inventory/transactions/455721 - Opening Stock-AC_OS_3.xls";
 
     @BeforeTest
@@ -25,7 +28,7 @@ public class TestOpeningStock {
     @Test
     public void openingStock() throws InterruptedException, AWTException, IOException, ParseException {
         OpeningStock stockTrans = new OpeningStock(driver, file);
-        stockTrans.openingStock();
+        stockTrans.openingStock(TEMP_API_BODY_OPENING_STOCK,API_RESPONSE_OPENING_STOCK,OUTPUT_FILE);
     }
 
     @AfterTest

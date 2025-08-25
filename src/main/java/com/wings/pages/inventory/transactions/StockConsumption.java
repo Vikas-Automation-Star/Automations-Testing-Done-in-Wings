@@ -1,6 +1,7 @@
 package com.wings.pages.inventory.transactions;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
@@ -22,7 +23,7 @@ public class StockConsumption extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String stockConsumption() throws InterruptedException, IOException, ParseException {
+    public String stockConsumption(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException {
         long start=System.nanoTime();
         navigateToMastersWhen2Steps("Inventory","Stock Consumption");
         long generalInfoStart = System.nanoTime();
@@ -65,17 +66,9 @@ public class StockConsumption extends TransactionsBaseClass {
         String newVoucherID =newTransactionID(oldVoucherID);
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
-        //end
-        long stockConsumptionEnd = System.nanoTime() - start;
-        FileUtil.writeTimeLogInMinutes("Stock Consumption ended at:- ", stockConsumptionEnd);
-        String prefix = newVoucherID.replaceAll("\\d", "");
-        String number = newVoucherID.replaceAll("\\D", "");
-        Thread.sleep(2000);
-        long ioFilesStart=System.nanoTime();
-        exportIOFiles("Generate Input File",prefix,number);
-        exportIOFiles("Generate Output File",prefix,number);
-        long ioFilesEnd = System.nanoTime()- ioFilesStart;
-        FileUtil.writeTimeLogInMinutes("Stock Consumption IO ended at:- ", ioFilesEnd);
+        //api
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"Stock Consumption");
+
 
 //        excelUtil.excelComparator("","",newVoucherID);
         return newVoucherID;
@@ -118,7 +111,7 @@ public class StockConsumption extends TransactionsBaseClass {
             } else if (masterType.get(i).equals("Products - MultiBatch")) {
                 common.clickElement("xpath", "//Button[@Name='Stock Details Row "+i+"']");
                 Thread.sleep(500);
-                EnterData("//Table[@Name='Batch Details']/*[@Name='Data Panel']/*[@Name='Row 1']/*[@Name='Quantity row 1']",dataFile,"Items","Quantity",i);
+                EnterData("//Table[@Name='Batch Details']/*[@Name='Data Panel']/*[@Name='Row 2']/*[@Name='Quantity row 2']",dataFile,"Items","Quantity",i);
                 Thread.sleep(1000);
                 common.clickElement("xpath", "//Button[@Name='OK']");
             }else if (masterType.get(i).equals("Products - Batches and Serial No")){

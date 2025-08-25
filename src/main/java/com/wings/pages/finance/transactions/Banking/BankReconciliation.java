@@ -1,6 +1,7 @@
 package com.wings.pages.finance.transactions.Banking;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
@@ -21,7 +22,7 @@ public class BankReconciliation extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public void bankReconciliation() throws InterruptedException, IOException, ParseException {
+    public void bankReconciliation(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException {
         long start = System.nanoTime();
         navigateToMastersWhen3Steps("Finance","Banking","Bank Reconciliation");
         Thread.sleep(1000);
@@ -59,15 +60,9 @@ public class BankReconciliation extends TransactionsBaseClass {
         //end
         long salesInvoiceEnd = System.nanoTime() - start ;
         FileUtil.writeTimeLogInMinutes("Bank Reconciliation ended at:- ", salesInvoiceEnd );
-        //IO
-        String voucher = newVoucherID.replaceAll("\\d", "");
-        String number = newVoucherID.replaceAll("\\D", "");
-        Thread.sleep(2000);
-        long iofIlesStart=System.nanoTime();
-        exportIOFiles("Generate Input File", voucher,number);
-        exportIOFiles("Generate Output File", voucher,number);
-        long ioFilesEnd=System.nanoTime()-iofIlesStart;
-        FileUtil.writeTimeLogInMinutes("Bank Reconciliation IO files ended at:- ", ioFilesEnd );
+        //API
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"BankReconciliation");
+
 
 //        excelUtil.excelComparator("","",newVoucherID);
     }

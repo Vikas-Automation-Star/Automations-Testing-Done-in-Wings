@@ -1,6 +1,7 @@
 package com.wings.pages.sales.transactions;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
@@ -27,7 +28,7 @@ public class DeliveriesAgainstOrdersTransaction extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String deliveriesAgainstOrders(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
+    public String deliveriesAgainstOrders(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws InterruptedException, IOException, ParseException, AWTException {
         long deliveriesAgainstOrderStart = System.nanoTime();
         System.out.println("DELO Against Orders startTime executed in :"+ deliveriesAgainstOrderStart);
         navigateToDeliveriesAgainstOrdersMenu();
@@ -100,17 +101,8 @@ public class DeliveriesAgainstOrdersTransaction extends TransactionsBaseClass {
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         //end
-        long deliveriesEnd = System.nanoTime() - deliveriesAgainstOrderStart;
-        FileUtil.writeTimeLogInMinutes("DELO ended at:- ", deliveriesEnd);
-        String prefix = newVoucherID.replaceAll("\\d", "");
-        String number = newVoucherID.replaceAll("\\D", "");
-        Thread.sleep(2000);
-        long iOFileStart =System.nanoTime();
-        exportIOFiles("Generate Input File", prefix, number);
-        exportIOFiles("Generate Output File", prefix, number);
-        long ioFileEnd =System.nanoTime()- iOFileStart;
-        FileUtil.writeTimeLogInMinutes("DELO IO End: ", ioFileEnd);
-//        excelUtil.excelComparator("","",newVoucherID);
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"deliveriesAgainstOrder");
+
         return newVoucherID;
     }
 
@@ -188,8 +180,8 @@ public class DeliveriesAgainstOrdersTransaction extends TransactionsBaseClass {
             } else if (masterType.get(i).equals("Products - MultiBatch")) {
                 common.clickElement("xpath", "//Button[@Name='Stock Details Row "+i+"']");
                 Thread.sleep(500);
-                EnterData("//Table[@Name='Batch Details']/*[@Name='Data Panel']/*[@Name='Row 1']/*[@Name='Quantity row 1']",dataFile,"Items","Quantity",i);
-                EnterData("//Table[@Name='Batch Details']/*[@Name='Data Panel']/*[@Name='Row 1']/*[@Name='Free Qty row 1']",dataFile,"Items","FreeQuantity",i);
+                EnterData("//Table[@Name='Batch Details']/*[@Name='Data Panel']/*[@Name='Row 2']/*[@Name='Quantity row 2']",dataFile,"Items","Quantity",i);
+                EnterData("//Table[@Name='Batch Details']/*[@Name='Data Panel']/*[@Name='Row 2']/*[@Name='Free Qty row 2']",dataFile,"Items","FreeQuantity",i);
                 Thread.sleep(1000);
                 common.clickElement("xpath", "//Button[@Name='OK']");
             }else if (masterType.get(i).equals("Products - Batches and Serial No")){

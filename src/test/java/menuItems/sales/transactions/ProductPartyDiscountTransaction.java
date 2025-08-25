@@ -12,6 +12,11 @@ import java.io.IOException;
 public class ProductPartyDiscountTransaction {
     WindowsDriver driver;
     AppLogin login = new AppLogin();
+
+    private static final String TEMP_API_PARTY_PRODUCT_DISCOUNT="./output/temp_api_request_bodies/partyProductDiscount.json";
+    private static final String API_RESPONSE_PARTY_PRODUCT_DISCOUNT="./output/api_responses/partyProductDiscount.json";
+    private static final String OUTPUT_FILE_PARTY_PRODUCT_DISCOUNT="./src/main/resources/menuItems/Sales/Transactions/251491 - Party and Product wise Discounts-AC_Output.xls";
+
     String dataFile = "./src/main/resources/menuItems/Sales/Transactions/251491 - Party and Product wise Discounts-AC.xls";
 
     @BeforeTest
@@ -22,7 +27,7 @@ public class ProductPartyDiscountTransaction {
     @Test
     public void productAndPartyDiscount() throws IOException, ParseException, InterruptedException {
         ProductndPartyDiscount partyDiscount = new ProductndPartyDiscount(driver, dataFile);
-        partyDiscount.productDiscount();
+        partyDiscount.productDiscount(TEMP_API_PARTY_PRODUCT_DISCOUNT,API_RESPONSE_PARTY_PRODUCT_DISCOUNT,OUTPUT_FILE_PARTY_PRODUCT_DISCOUNT);
     }
 
     @AfterTest

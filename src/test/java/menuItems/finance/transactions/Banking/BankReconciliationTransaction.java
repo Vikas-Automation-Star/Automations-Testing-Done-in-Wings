@@ -13,6 +13,11 @@ import java.io.IOException;
 public class BankReconciliationTransaction {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
+
+    private static final String TEMP_API_BODY_BANK_RECONCILIATION="./output/temp_api_request_bodies/bankReconciliation.json";
+    private static final String API_RESPONSE_BANK_RECONCILIATION="./output/api_responses/bankReconciliation.json";
+    private static final String OUTPUT_FILE="./src/main/resources/menuItems/finance/transaction/439444 - Bank Reconciliation-AC_BNKRECO_1_Output.xls";
+
     String dataFile = "./src/main/resources/menuItems/finance/transaction/439444 - Bank Reconciliation-AC_BNKRECO_1.xls";
 
     @BeforeTest
@@ -21,9 +26,9 @@ public class BankReconciliationTransaction {
     }
 
     @Test
-    public void bankReconciliation() throws IOException, ParseException, InterruptedException, AWTException {
+    public void bankReconciliation() throws IOException, ParseException, InterruptedException {
         BankReconciliation reconciliation = new BankReconciliation(driver, dataFile);
-        reconciliation.bankReconciliation();
+        reconciliation.bankReconciliation(TEMP_API_BODY_BANK_RECONCILIATION,API_RESPONSE_BANK_RECONCILIATION,OUTPUT_FILE);
     }
 
     @AfterTest
