@@ -89,6 +89,7 @@ public class JournalEntries extends TransactionsBaseClass {
         EnterData("//Edit[@Name='Other Info 3']",dataFile,"OtherInfo","OtherInfo3");
         EnterData("//Edit[@Name='Other Info 4']",dataFile,"OtherInfo","OtherInfo4");
         EnterData("//Edit[@Name='Other Info 5']",dataFile,"OtherInfo","OtherInfo5");
+
     }
 
 }
