@@ -1,6 +1,7 @@
 package com.wings.pages.finance.transactions.Receipts;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
@@ -28,7 +29,7 @@ public class ReceiptsFromParties extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public void receiptFromParty() throws InterruptedException, IOException, ParseException, AWTException {
+    public void receiptFromParty(String desiredTowardsVoucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         navigateToMastersWhen3Steps("Finance","Receipts","Receipts from Parties");
         Thread.sleep(2000);
         String oldVoucherID =oldTTransactionID();
@@ -49,65 +50,65 @@ public class ReceiptsFromParties extends TransactionsBaseClass {
         enterExecutive(dataFile,"GeneralInformation","Executive");
         enterRemarks(dataFile,"GeneralInformation","Remarks");
 
-//        cash
-        long cashTabStart =System.nanoTime();
-        addCash();
-        long cashTabEnd =System.nanoTime()- cashTabStart;
-        FileUtil.writeTimeLogInMinutes("Cash Tab:- ", cashTabEnd);
-
-//        cheques
-        long chequesTabStart =System.nanoTime();
-        addCheques();
-        long chequesTabEnd =System.nanoTime()- chequesTabStart;
-        FileUtil.writeTimeLogInMinutes("Cheques Tab:- ", chequesTabEnd);
-
-        //post dated cheques
-        long postDatedChequesTabStart =System.nanoTime();
-        addPostDatedCheques();
-        long postDatedChequesTabEnd =System.nanoTime()- postDatedChequesTabStart;
-        FileUtil.writeTimeLogInMinutes("Post Dated Cheques Tab:- ", postDatedChequesTabEnd);
-
-        //cheques[pdc]
-        long chequesPDCTabStart =System.nanoTime();
-        addChequesPDC();
-        long chequesPDCTabEnd =System.nanoTime()- chequesPDCTabStart;
-        FileUtil.writeTimeLogInMinutes("Cheques[PDC] Tab:- ", chequesPDCTabEnd);
-
-        //credit card
-        long creditCardTabStart =System.nanoTime();
-        addCreditCard();
-        long creditCardTabEnd =System.nanoTime()- creditCardTabStart;
-        FileUtil.writeTimeLogInMinutes("Credit Card Tab:- ", creditCardTabEnd);
-
-        //credit card
-        long paytmStart =System.nanoTime();
-        paytm();
-        long paytmEnd =System.nanoTime()- paytmStart;
-        FileUtil.writeTimeLogInMinutes("payTm Tab:- ", paytmEnd);
-
-        //credit card
-        long otherDebitsStart =System.nanoTime();
-        otherDebit();
-        long otherDebitsEnd =System.nanoTime()- otherDebitsStart;
-        FileUtil.writeTimeLogInMinutes("Other DebitsEnd Tab:- ", otherDebitsEnd);
-
-        //charges and deductions
-        long chargesDeductionsStart =System.nanoTime();
-        addChargesAndDeductions();
-        long chargesDeductionsEnd=System.nanoTime()- chargesDeductionsStart;
-        FileUtil.writeTimeLogInMinutes("Charges and Deductions:- ",chargesDeductionsEnd);
-
+////        cash
+//        long cashTabStart =System.nanoTime();
+//        addCash();
+//        long cashTabEnd =System.nanoTime()- cashTabStart;
+//        FileUtil.writeTimeLogInMinutes("Cash Tab:- ", cashTabEnd);
+//
+////        cheques
+//        long chequesTabStart =System.nanoTime();
+//        addCheques();
+//        long chequesTabEnd =System.nanoTime()- chequesTabStart;
+//        FileUtil.writeTimeLogInMinutes("Cheques Tab:- ", chequesTabEnd);
+//
+//        //post dated cheques
+//        long postDatedChequesTabStart =System.nanoTime();
+//        addPostDatedCheques();
+//        long postDatedChequesTabEnd =System.nanoTime()- postDatedChequesTabStart;
+//        FileUtil.writeTimeLogInMinutes("Post Dated Cheques Tab:- ", postDatedChequesTabEnd);
+//
+//        //cheques[pdc]
+//        long chequesPDCTabStart =System.nanoTime();
+//        addChequesPDC();
+//        long chequesPDCTabEnd =System.nanoTime()- chequesPDCTabStart;
+//        FileUtil.writeTimeLogInMinutes("Cheques[PDC] Tab:- ", chequesPDCTabEnd);
+//
+//        //credit card
+//        long creditCardTabStart =System.nanoTime();
+//        addCreditCard();
+//        long creditCardTabEnd =System.nanoTime()- creditCardTabStart;
+//        FileUtil.writeTimeLogInMinutes("Credit Card Tab:- ", creditCardTabEnd);
+//
+//        //credit card
+//        long paytmStart =System.nanoTime();
+//        paytm();
+//        long paytmEnd =System.nanoTime()- paytmStart;
+//        FileUtil.writeTimeLogInMinutes("payTm Tab:- ", paytmEnd);
+//
+//        //credit card
+//        long otherDebitsStart =System.nanoTime();
+//        otherDebit();
+//        long otherDebitsEnd =System.nanoTime()- otherDebitsStart;
+//        FileUtil.writeTimeLogInMinutes("Other DebitsEnd Tab:- ", otherDebitsEnd);
+//
+//        //charges and deductions
+//        long chargesDeductionsStart =System.nanoTime();
+//        addChargesAndDeductions();
+//        long chargesDeductionsEnd=System.nanoTime()- chargesDeductionsStart;
+//        FileUtil.writeTimeLogInMinutes("Charges and Deductions:- ",chargesDeductionsEnd);
+//
         //bills Receivables
         long billsReceivablesStart =System.nanoTime();
-        billsReceivables();
+        billsReceivables(desiredTowardsVoucherNum);
         long billsReceivablesEnd=System.nanoTime()- billsReceivablesStart;
         FileUtil.writeTimeLogInMinutes("bills Receivables Tab:- ",billsReceivablesEnd);
-
-        //Other info
-        long otherInfoTabStart =System.nanoTime();
-        otherInfo();
-        long otherInfoTabEnd =System.nanoTime()- otherInfoTabStart;
-        FileUtil.writeTimeLogInMinutes("Other Info Tab:- ", otherInfoTabEnd);
+//
+//        //Other info
+//        long otherInfoTabStart =System.nanoTime();
+//        otherInfo();
+//        long otherInfoTabEnd =System.nanoTime()- otherInfoTabStart;
+//        FileUtil.writeTimeLogInMinutes("Other Info Tab:- ", otherInfoTabEnd);
 
 //        allocations
 //        long allocationsTabStart=System.nanoTime();
@@ -119,6 +120,9 @@ public class ReceiptsFromParties extends TransactionsBaseClass {
         String newVoucherID =newTransactionID(oldVoucherID);
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
+
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"receiptsFromParties");
+
 
     }
 
@@ -373,8 +377,26 @@ public class ReceiptsFromParties extends TransactionsBaseClass {
         }
     }
 
-    public void billsReceivables(){
+    public void billsReceivables(String desiredVoucher) throws IOException {
         navigateToBillsReceivablesTab();
+        List<String> adjustedAmount=readExcelData(dataFile,"BillsReceivable","AmountAdjusted");
+        System.out.println("Adjusted Amount :-"+adjustedAmount.size());
+        List<WebElement> towardsVoucherNum = common.findWebElements("xpath", "//Table[@Name='BillsReceivable']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Towards VNo * Row')]");
+        System.out.println("Towards vouchers Size :"+towardsVoucherNum.size());
+        List<WebElement> adjustedAmountRows = common.findWebElements("xpath", "//Table[@Name='BillsReceivable']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Amount Adjusted * Row')]");
+        System.out.println("AdjustedAmount size :"+adjustedAmountRows.size());
+        for (int i=0;i< towardsVoucherNum.size();i++){
+            WebElement text=towardsVoucherNum.get(i);
+            System.out.println("Towards vouchers getTet :"+text.getText());
+            if (text.getText().equals(desiredVoucher)){
+                text.click();
+//                text.sendKeys(Keys.TAB,Keys.TAB,Keys.SPACE);
+                EnterData("//Edit[@Name='Amount Adjusted * Row "+i+", Not sorted.']",dataFile,"BillsReceivable","AmountAdjusted",i);
+//                enterListData(adjustedAmountRows.get(i),dataFile,"BillsReceivable","AmountAdjusted",i);
+                common.deleteInvalidRows();
+            }
+        }
+
     }
 
     public void otherInfo() throws InterruptedException, IOException {

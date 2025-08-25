@@ -12,12 +12,12 @@ import java.util.*;
 
 public class OptimizedJsonExcelComparator {
     public static void JsonExcelComparator(String jsonFilePath,String excelFilePath,String transactionType) throws Exception {
-//        String jsonFilePath = "./journalEntries.txt";
-//        String excelFilePath = "./464159 - Journal Entries-AC_JE_3_Output.xls";
-//        String diffFilePath = "./Difference.xlsx";
 
-        String timeStamp=Time.timeStamp();
-        String diffFilePath = "./output/excelDifferences/" + transactionType + "_" + timeStamp + ".xlsx";
+//        String timedStamp=Time.timeStamp();
+//        String diffFilePath = "./output/excelDifferences/" + transactionType + "_" + timedStamp + ".xlsx";
+        String diffFilePath = "./output/excelDifferences/" + transactionType + "_"+ ".xlsx";
+
+
 
         // Read and parse JSON
         ObjectMapper mapper = new ObjectMapper();
@@ -114,7 +114,7 @@ public class OptimizedJsonExcelComparator {
                 diffWorkbook.write(fos);
             }
             diffWorkbook.close();
-            System.out.println("Comparison completed. Differences😴 written to: " + diffFilePath);
+            System.out.println("Comparison completed. Differences written to: " + diffFilePath);
         } else {
             diffWorkbook.close(); // just close without writing
             System.out.println("✅ No differences found. No file created.");
@@ -170,8 +170,10 @@ public class OptimizedJsonExcelComparator {
     }
 
     public static void main(String[] args) throws Exception {
-        JsonExcelComparator("./","./","");
+        JsonExcelComparator("./output/api_responses/journalEntries.json","./src/main/resources/menuItems/finance/transaction/464159 - Journal Entries-AC_JE_3_Output.xls","journalEntries");
     }
 
 }
+
+
 
