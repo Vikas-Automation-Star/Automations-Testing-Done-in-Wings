@@ -43,8 +43,9 @@ public class SalesEnquiryCancellation extends TransactionsBaseClass {
         enterCurrency(dataFile,"GeneralInformation","TransactionCurrency");
         enterExchangeRate(dataFile,"GeneralInformation","ExchangeRate");
         enterPartyCode(dataFile,"GeneralInformation","PartyAccountCode");
+        Thread.sleep(2000);
         selectPendingsSalesOrder(voucherNum,"20250401");
-        Thread.sleep(3000);
+        Thread.sleep(4000);
         common.clickElement("xpath","//Button[@Name='OK']");
         enterPriceList(dataFile, "GeneralInformation", "PriceList");
         enterExecutive(dataFile,"GeneralInformation","Executive");

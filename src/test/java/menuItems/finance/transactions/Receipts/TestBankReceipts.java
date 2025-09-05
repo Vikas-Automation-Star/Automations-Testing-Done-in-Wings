@@ -1,19 +1,19 @@
 package menuItems.finance.transactions.Receipts;
 
-import com.wings.pages.AppLogin;
-import com.wings.pages.finance.transactions.Receipts.ReceiptsFromCreditCardCompanies;
-import com.wings.pages.sales.transactions.SalesInvoice;
 import io.appium.java_client.windows.WindowsDriver;
 
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import com.wings.pages.AppLogin;
+import com.wings.pages.finance.transactions.Receipts.BankReceipts;
 
 import java.awt.*;
 import java.io.IOException;
 
-public class TestReceiptsFromCreditCardCompanies {
+public class TestBankReceipts {
+
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
 
@@ -21,12 +21,13 @@ public class TestReceiptsFromCreditCardCompanies {
     private static final String API_RESPONSE_SALES_SALES_INVOICES="./output/api_responses/SalesInvoices.json";
     private static final String OUTPUT_FILE="./";
 
-    private static final String TEMP_API_BODY_CREDIT_CARD_COMPANIES="./output/temp_api_request_bodies/creditCardReceipts.json";
-    private static final String API_RESPONSE_CREDIT_CARD_COMPANIES="./output/api_responses/creditCardReceipts.json";
-    private static final String OUTPUT_FILE1="./src/main/resources/menuItems/finance/transaction/458629 - Receipts from Credit Card Companies-AC_RFCCC_2_Output.xls";
+    private static final String TEMP_API_BODY_BANK_RECEIPTS="./output/temp_api_request_bodies/bankReceipts.json";
+    private static final String API_RESPONSE_BANK_RECEIPTS="./output/api_responses/bankReceipts.json";
+    private static final String OUTPUT_FILE1="./src/main/resources/menuItems/finance/transaction/456086 - Bank Receipts-AC_BR_4_Output.xls";
 
-    String dataFile = "./";
-    String dataFile1="./src/main/resources/menuItems/finance/transaction/458629 - Receipts from Credit Card Companies-AC_RFCCC_2.xls";
+    String dataFile = "./src/main/resources/menuItems/Sales/Transactions/480460 - Sales Invoices-AC.xlsx";
+    String dataFile1="./src/main/resources/menuItems/finance/transaction/456086 - Bank Receipts-AC_BR_4.xls";
+
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
@@ -41,13 +42,12 @@ public class TestReceiptsFromCreditCardCompanies {
 //        appLogin.logout();
 //        driver= appLogin.login();
 
-        ReceiptsFromCreditCardCompanies creditCardCompanies = new ReceiptsFromCreditCardCompanies(driver, dataFile1);
-        creditCardCompanies.creditCardCompanyReceipt("SI 16",TEMP_API_BODY_CREDIT_CARD_COMPANIES,API_RESPONSE_CREDIT_CARD_COMPANIES,OUTPUT_FILE1);
+        BankReceipts bankReceipts = new BankReceipts(driver, dataFile1);
+        bankReceipts.bankReceipt("SI 16",TEMP_API_BODY_BANK_RECEIPTS,API_RESPONSE_BANK_RECEIPTS,OUTPUT_FILE1);
     }
 
     @AfterTest
     public void afterTest() throws IOException {
 //        appLogin.logout();
     }
-
 }

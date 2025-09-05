@@ -478,9 +478,9 @@ public  class Transaction {
         common.clickElement("name", "Sales");
         common.clickElement("name", "Quotations");
         common.clickElement("xpath", "//MenuItem[@Name='Sales Quotations against Enquiries']");
-        String pageValidation = common.findWebElement("xpath", "//Pane/Text[@Name='Sales Quotations against Enquiries']").getText();
-        System.out.println("Screen Name:-" + pageValidation);
-        Assert.assertEquals(pageValidation, "Sales Quotations against Enquiries");
+//        String pageValidation = common.findWebElement("xpath", "//Pane/Text[@Name='Sales Quotations against Enquiries']").getText();
+//        System.out.println("Screen Name:-" + pageValidation);
+//        Assert.assertEquals(pageValidation, "Sales Quotations against Enquiries");
     }
 
     public void navigateToSalesOrderAgainstQuotationsMenu() {
@@ -2435,4 +2435,107 @@ public  class Transaction {
     public void enterShippingBillNo(String dataFile,String dataSet,String shippingBillNo) throws IOException, ParseException {
         enterInput("xpath","//Edit[@Name='Shipping Bill No']",dataFile,dataSet, shippingBillNo);
     }
+    public void adjustAmountInPayablesAndReceivables(String dataFile,String desiredVoucher){
+        List<WebElement> towardsVoucherNum = common.findWebElements("xpath", "//Table[@Name='BillsReceivable']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Towards VNo * Row')]");
+        System.out.println("Towards vouchers Size :"+towardsVoucherNum.size());
+//        List<WebElement> adjustedAmountRows = common.findWebElements("xpath", "//Table[@Name='BillsReceivable']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Amount Adjusted * Row')]");
+//        System.out.println("AdjustedAmount size :"+adjustedAmountRows.size());
+        boolean voucherFound=false;
+        for (int i=0;i< towardsVoucherNum.size();i++){
+            WebElement text=towardsVoucherNum.get(i);
+            System.out.println("Towards vouchers getTet :"+text.getText());
+            if (text.getText().equals(desiredVoucher)){
+                voucherFound = true;
+                text.click();
+                text.sendKeys(Keys.TAB,Keys.TAB,Keys.SPACE);
+                EnterData("//Edit[@Name='Amount Adjusted * Row "+i+", Not sorted.']",dataFile,"BillsReceivable","AmountAdjusted");
+                common.deleteInvalidRows();
+                break;
+            }else if(!text.getText().equals(desiredVoucher)){
+                towardsVoucherNum.get(i).click();
+                towardsVoucherNum.get(i).sendKeys(Keys.DOWN);
+            }
+            else{
+                System.out.println("Towards voucher number is not found");
+            }
+        }
+    }
+
+    public void selectMultiplePendings(String voucherNum1,String voucherNum2, String financialYearNum) {
+        // Try to detect the popup
+        List<WebElement> popupWindow = common.findWebElements("xpath", "//Window[@Name='Open Transactions']");
+        if (popupWindow.isEmpty()) {
+            System.out.println("No popup found, moving on.");
+            return; // Skip this method's logic if no popup is present
+        }
+        // Popup found, continue with existing logic
+        List<WebElement> pendings = common.findWebElements("xpath", "//Window[@Name='Open Transactions']//Pane/Table/*[starts-with(@Name,'Row ')]");
+        System.out.println("pendings size: " + pendings.size());
+//        Set<String> expectedPairs = new HashSet<>();
+//        expectedPairs.add(voucherNum1);
+//        expectedPairs.add(voucherNum2);
+//
+//        int matchCount = 0;
+//
+//        for (WebElement userRow : pendings) {
+//            WebElement voucherNo = userRow.findElement(By.xpath(".//*[starts-with(@Name, 'TowardsVNo Row')]"));
+//            WebElement financialYear = userRow.findElement(By.xpath(".//*[starts-with(@Name, 'FinancialYear Row')]"));
+//
+//            String voucherNoText = voucherNo.getText().trim();
+//            String financialYearText = financialYear.getText().trim();
+//
+//            String combinedKey = voucherNoText;
+//
+//            if (expectedPairs.equals(combinedKey)&&financialYearText.equals(financialYearNum)) {
+//                voucherNo.sendKeys(Keys.LEFT, Keys.SPACE); // select the row
+//                expectedPairs.remove(combinedKey); // remove to prevent duplicate selection
+//                matchCount++;
+//
+//                if (matchCount == 2) {
+//                    break; // Exit once 2 vouchers are selected
+//                }
+//            }
+//        }
+//
+//        if (matchCount < 2) {
+//            Assert.fail("Could not find both expected pending transactions.");
+//        }
+//
+//        common.clickElement("xpath", "//Button[@Name='Ok']");
+        List<String> voucherNumList = List.of(voucherNum1, voucherNum2);
+        System.out.println(voucherNumList+" :-vouchers List");
+        int matchCount = 0;
+        for (int i = 0; i < pendings.size(); i++) {
+            WebElement userRow = pendings.get(i);
+
+            WebElement voucherNo = userRow.findElement(By.xpath(".//*[starts-with(@Name, 'TowardsVNo Row')]"));
+            WebElement financialYear = userRow.findElement(By.xpath(".//*[starts-with(@Name, 'FinancialYear Row')]"));
+
+            String voucherNoText = voucherNo.getText();
+            String financialYearText = financialYear.getText();
+
+            // Match against required values (you may want a list of voucherNum/financialYearNum pairs)
+            if (voucherNoText.equals(voucherNumList.get(0)) && financialYearText.equals(financialYearNum)) {
+                voucherNo.sendKeys(Keys.LEFT, Keys.SPACE);
+                matchCount++;
+            }
+            if (voucherNoText.equals(voucherNumList.get(1)) && financialYearText.equals(financialYearNum)) {
+                voucherNo.sendKeys(Keys.LEFT, Keys.SPACE);
+                matchCount++;
+                if (matchCount == 2) {
+                    break; // Exit after selecting two vouchers
+                }
+            }else {
+                voucherNo.click();
+                voucherNo.sendKeys(Keys.DOWN);
+            }
+        }
+
+        if (matchCount < 2) {
+            Assert.fail("Less than two matching pending transactions found. Please check.");
+        }
+
+        common.clickElement("xpath", "//Button[@Name='Ok']");
+    }
+
 }

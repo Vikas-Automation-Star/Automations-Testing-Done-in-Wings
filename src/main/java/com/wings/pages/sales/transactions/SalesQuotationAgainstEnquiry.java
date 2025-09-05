@@ -45,7 +45,7 @@ public class SalesQuotationAgainstEnquiry extends TransactionsBaseClass {
         enterPartyCode(dataFile,"GeneralInformation","PartyAccountCode");
         Thread.sleep(1000);
         gstTransactionType("Intra State Sales to Registered Dealers");
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         selectPendingsSalesOrder(voucherNum, "20250401");
         Thread.sleep(5000);
         common.clickElement("xpath","//Button[@Name='OK']");

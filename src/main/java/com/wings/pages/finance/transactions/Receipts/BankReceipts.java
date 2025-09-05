@@ -1,6 +1,7 @@
 package com.wings.pages.finance.transactions.Receipts;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
@@ -18,8 +19,6 @@ public class BankReceipts extends TransactionsBaseClass {
     WindowsDriver driver;
     Common common;
     String dataFile;
-    double finalAmount = 0.0;
-
 
     public BankReceipts(WindowsDriver driver, String file) {
         super(driver);
@@ -28,7 +27,7 @@ public class BankReceipts extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public void bankReceipt() throws InterruptedException, IOException, ParseException {
+    public void bankReceipt(String desiredVoucher,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         navigateToBankReceiptsMenu();
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
@@ -43,7 +42,7 @@ public class BankReceipts extends TransactionsBaseClass {
         enterRemarks(dataFile,"GeneralInformation","Remarks");
 
 
-         //Parties
+        //Parties
         long partiesStart =System.nanoTime();
         parties();
         long partiesEnd =System.nanoTime()- partiesStart;
@@ -51,25 +50,27 @@ public class BankReceipts extends TransactionsBaseClass {
 
         //bills Receivables
         long billsReceivablesStart =System.nanoTime();
-        billsReceivables();
+        billsReceivables(desiredVoucher);
         long billsReceivablesEnd=System.nanoTime()- billsReceivablesStart;
         FileUtil.writeTimeLogInMinutes("bills Receivables Tab:- ",billsReceivablesEnd);
 
+        //other info
         long otherInfoTabStart =System.nanoTime();
         otherInfo();
         long otherInfoTabEnd =System.nanoTime()- otherInfoTabStart;
         FileUtil.writeTimeLogInMinutes("Other Info Tab:- ", otherInfoTabEnd);
 
-//        allocations
-//        long allocationsTabStart=System.nanoTime();
-//        addAllocations();
-//        long allocationsTabEnd=System.nanoTime() - allocationsTabStart;
-//        FileUtil.writeTimeLogInMinutes("Allocations Tab:- ", allocationsTabEnd);
+        // allocations
+        long allocationsTabStart=System.nanoTime();
+        addAllocations();
+        long allocationsTabEnd=System.nanoTime() - allocationsTabStart;
+        FileUtil.writeTimeLogInMinutes("Allocations Tab:- ", allocationsTabEnd);
 
         transactionSave();
         String newVoucherID =newTransactionID(oldVoucherID);
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"BankReceipts");
 
     }
 
@@ -120,8 +121,9 @@ public class BankReceipts extends TransactionsBaseClass {
         }
     }
 
-    public void billsReceivables(){
+    public void billsReceivables(String desiredVoucher){
         navigateToBillsReceivablesTab();
+        adjustAmountInPayablesAndReceivables(dataFile,desiredVoucher);
     }
 
     public void otherInfo() throws InterruptedException, IOException {
@@ -137,11 +139,11 @@ public class BankReceipts extends TransactionsBaseClass {
         EnterData("//Edit[@Name='Other Info 5']",dataFile,"OtherInfo","OtherInfo5");
     }
 
-    //       public void addAllocations() {
-//        navigateToAllocations();
-//        EnterData( "//Edit[@Name='Department']", dataFile, "Allocations", "Department");
-//        EnterData( "//Edit[@Name='Project']", dataFile, "Allocations", "Project");
-//        EnterData("//Edit[@Name='Profit Centre']", dataFile, "Allocations", "ProfitCentre");
-//        EnterData( "//Edit[@Name='Cost Centre']", dataFile, "Allocations", "CostCentre");
-//    }
+    public void addAllocations() {
+        navigateToAllocations();
+        EnterData( "//Edit[@Name='Department']", dataFile, "Allocations", "Department");
+        EnterData( "//Edit[@Name='Project']", dataFile, "Allocations", "Project");
+        EnterData("//Edit[@Name='Profit Centre']", dataFile, "Allocations", "ProfitCentre");
+        EnterData( "//Edit[@Name='Cost Centre']", dataFile, "Allocations", "CostCentre");
+    }
 }

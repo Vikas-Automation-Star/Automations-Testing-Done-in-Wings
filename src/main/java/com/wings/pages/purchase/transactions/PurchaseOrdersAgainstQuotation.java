@@ -112,10 +112,10 @@ public class PurchaseOrdersAgainstQuotation extends TransactionsBaseClass {
         FileUtil.writeTimeLogInMinutes("Terms and Conditions Tab:- ", termsConditionsTabEnd);
 
 //        allocations
-//        long allocationsTabStart=System.nanoTime();
-//        addAllocations();
-//        long allocationsTabEnd=System.nanoTime() - allocationsTabStart;
-//        FileUtil.writeTimeLogInMinutes("Allocations Tab:- ", allocationsTabEnd);
+        long allocationsTabStart=System.nanoTime();
+        addAllocations();
+        long allocationsTabEnd=System.nanoTime() - allocationsTabStart;
+        FileUtil.writeTimeLogInMinutes("Allocations Tab:- ", allocationsTabEnd);
 
         transactionSave();
         String transactionId = newTransactionID(oldVoucherID);
@@ -446,12 +446,12 @@ public class PurchaseOrdersAgainstQuotation extends TransactionsBaseClass {
         }
     }
 
-//    public void addAllocations() {
-//        navigateToAllocations();
-//        EnterData( "//Edit[@Name='Department']", dataFile, "Allocations", "Department");
-//        EnterData( "//Edit[@Name='Project']", dataFile, "Allocations", "Project");
-//        EnterData("//Edit[@Name='Profit Centre']", dataFile, "Allocations", "ProfitCentre");
-//        EnterData( "//Edit[@Name='Cost Centre']", dataFile, "Allocations", "CostCentre");
-//    }
+    public void addAllocations() {
+        navigateToAllocations();
+        EnterData( "//Edit[@Name='Department']", dataFile, "Allocations", "Department");
+        EnterData( "//Edit[@Name='Project']", dataFile, "Allocations", "Project");
+        EnterData("//Edit[@Name='Profit Centre']", dataFile, "Allocations", "ProfitCentre");
+        EnterData( "//Edit[@Name='Cost Centre']", dataFile, "Allocations", "CostCentre");
+    }
 
 }

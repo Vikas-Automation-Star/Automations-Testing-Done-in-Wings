@@ -1,12 +1,11 @@
 package com.wings.pages.finance.transactions.Receipts;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import com.wings.pages.Transaction;
 import com.wings.utils.Common;
 import org.testng.Assert;
 
@@ -26,7 +25,7 @@ public class CreditCardReceipts extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public void creditCardReceipt() throws InterruptedException, IOException, ParseException, AWTException {
+    public void creditCardReceipt(String desiredVoucher,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         navigateToCreditCardReceiptsMenu();
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
@@ -50,7 +49,7 @@ public class CreditCardReceipts extends TransactionsBaseClass {
 
         //bills Receivables
         long billsReceivablesStart =System.nanoTime();
-        billsReceivables();
+        billsReceivables(desiredVoucher);
         long billsReceivablesEnd=System.nanoTime()- billsReceivablesStart;
         FileUtil.writeTimeLogInMinutes("bills Receivables Tab:- ",billsReceivablesEnd);
 
@@ -60,16 +59,16 @@ public class CreditCardReceipts extends TransactionsBaseClass {
         FileUtil.writeTimeLogInMinutes("Other Info Tab:- ", otherInfoTabEnd);
 
 //        allocations
-//        long allocationsTabStart=System.nanoTime();
-//        addAllocations();
-//        long allocationsTabEnd=System.nanoTime() - allocationsTabStart;
-//        FileUtil.writeTimeLogInMinutes("Allocations Tab:- ", allocationsTabEnd);
+        long allocationsTabStart=System.nanoTime();
+        addAllocations();
+        long allocationsTabEnd=System.nanoTime() - allocationsTabStart;
+        FileUtil.writeTimeLogInMinutes("Allocations Tab:- ", allocationsTabEnd);
 
         transactionSave();
         String newVoucherID =newTransactionID(oldVoucherID);
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
-
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"CreditCardReceipts");
 
     }
 
@@ -119,8 +118,9 @@ public class CreditCardReceipts extends TransactionsBaseClass {
         }
     }
 
-    public void billsReceivables(){
+    public void billsReceivables(String desiredVoucher){
         navigateToBillsReceivablesTab();
+        adjustAmountInPayablesAndReceivables(dataFile,desiredVoucher);
     }
 
     public void otherInfo() throws InterruptedException, IOException {
@@ -136,11 +136,11 @@ public class CreditCardReceipts extends TransactionsBaseClass {
         EnterData("//Edit[@Name='Other Info 5']",dataFile,"OtherInfo","OtherInfo5");
     }
 
-    //       public void addAllocations() {
-//        navigateToAllocations();
-//        EnterData( "//Edit[@Name='Department']", dataFile, "Allocations", "Department");
-//        EnterData( "//Edit[@Name='Project']", dataFile, "Allocations", "Project");
-//        EnterData("//Edit[@Name='Profit Centre']", dataFile, "Allocations", "ProfitCentre");
-//        EnterData( "//Edit[@Name='Cost Centre']", dataFile, "Allocations", "CostCentre");
-//    }
+    public void addAllocations() {
+        navigateToAllocations();
+        EnterData( "//Edit[@Name='Department']", dataFile, "Allocations", "Department");
+        EnterData( "//Edit[@Name='Project']", dataFile, "Allocations", "Project");
+        EnterData("//Edit[@Name='Profit Centre']", dataFile, "Allocations", "ProfitCentre");
+        EnterData( "//Edit[@Name='Cost Centre']", dataFile, "Allocations", "CostCentre");
+    }
 }

@@ -27,11 +27,11 @@ public class TestPurchaseOrdersAgainstQuotations {
 
     private static final String TEMP_API_BODY_PURCHASE_ORDERS_AGAINST_QUOTATIONS="./output/temp_api_request_bodies/PurchaseOrdersAgainstQuotations.json";
     private static final String API_RESPONSE_PURCHASE_ORDERS_AGAINST_QUOTATIONS="./output/api_responses/PurchaseOrdersAgainstQuotations.json";
-    private static final String OUTPUT_FILE3="./src/main/resources/menuItems/purchase/transactions/480465 - Purchase Orders against Quotations-AC_POAQ 1_Output.xlsx";
+    private static final String OUTPUT_FILE3="./src/main/resources/menuItems/purchase/transactions/480465 - Purchase Orders against Quotations-AC_POAQ 1_Output.xls";
 
     String dataFile = "./src/main/resources/menuItems/purchase/transactions/461617 - Purchase Enquiries-AC_PE_3.xlsx";
     String dataFile1 = "./src/main/resources/menuItems/purchase/transactions/461887 - Purchase Quotations against Enquiries-AC_PQAPE_1.xlsx";
-    String dataFile2 = "./src/main/resources/menuItems/purchase/transactions/480465 - Purchase Orders against Quotations-AC_POAQ 1.xlsx";
+    String dataFile2 = "./src/main/resources/menuItems/purchase/transactions/480465 - Purchase Orders against Quotations-AC_POAQ 1.xls";
 
 
     @BeforeTest

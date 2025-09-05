@@ -490,11 +490,11 @@ public class SalesReturns extends TransactionsBaseClass {
         }
     }
 
-    public void addInvoiceDetails() throws InterruptedException {
+    public void addInvoiceDetails() throws InterruptedException, IOException {
         Thread.sleep(500);
         common.clickElement("xpath","//TabItem[contains(@Name,'Invoice Details ')]");
         EnterData("//Edit[@Name='Invoice Value *']",dataFile,"InvoiceDetails","InvoiceValue");
-        EnterData("//Edit[@Name='Invoice Date *']",dataFile,"InvoiceDetails","InvoiceDate");
+        EnterDate("//Edit[@Name='Invoice Date *']",dataFile,"InvoiceDetails","InvoiceDate");
     }
 
     public void otherInfo() throws InterruptedException, IOException {

@@ -419,7 +419,7 @@ public class SalesInvoice extends TransactionsBaseClass {
         common.sliderHandling("xpath", "//Table[@Name='OtherCharges']/*/Thumb[@Name='Position']", -400, 0);
 
         for (int i = 0; i < otherCharges.size(); i++) {
-            enterListData(amountRowList.get(i), dataFile, "OtherCharges", "Amount", i);
+            enterListData(amountRowList.get(i), dataFile, "OtherCharges", "InclusiveAmount", i);
             enterListData(hsnCodeRowList.get(i), dataFile, "OtherCharges", "HSN",i);
             enterListData(GSTProductCategory.get(i), dataFile, "OtherCharges", "GSTProductCategory",i);
             enterListData(CESSProductCategory.get(i), dataFile, "OtherCharges", "CESSProductCategory",i);
@@ -695,6 +695,7 @@ public class SalesInvoice extends TransactionsBaseClass {
         navigateToEWayBill();
 
         WebElement subTyp=common.findWebElement("xpath","//Edit[@Name='Sub Type']");
+        subTyp.click();
         subTyp.sendKeys("Supply", Keys.DOWN,Keys.ENTER);
 //        common.clickElement("xpath","//Edit[@Name='Sub Type']");
 //        Robot robot = new Robot();
@@ -704,6 +705,7 @@ public class SalesInvoice extends TransactionsBaseClass {
 //        robot.keyRelease(KeyEvent.VK_ENTER);
         Thread.sleep(1000);
         WebElement supplyType=common.findWebElement("xpath","//Edit[@Name='Supply Type']");
+        supplyType.click();
         supplyType.sendKeys("Outward", Keys.DOWN,Keys.ENTER);
 //        common.clickElement("xpath","//Edit[@Name='Supply Type']");
 //        Robot robot1 = new Robot();
@@ -713,6 +715,7 @@ public class SalesInvoice extends TransactionsBaseClass {
 //        robot1.keyRelease(KeyEvent.VK_ENTER);
         Thread.sleep(1000);
         WebElement documentType=common.findWebElement("xpath","//Edit[@Name='Document Type']");
+        documentType.click();
         documentType.sendKeys("Tax Invoice", Keys.DOWN,Keys.ENTER);
 //        common.clickElement("xpath","//Edit[@Name='Document Type']");
 //        Robot robot2 = new Robot();
@@ -722,6 +725,7 @@ public class SalesInvoice extends TransactionsBaseClass {
 //        robot2.keyRelease(KeyEvent.VK_ENTER);
         Thread.sleep(1000);
         WebElement transactionType=common.findWebElement("xpath","//Edit[@Name='TransactionType']");
+        transactionType.click();
         transactionType.sendKeys("Regular", Keys.DOWN,Keys.ENTER);
 //        common.clickElement("xpath","//Edit[@Name='TransactionType']");
 //        Robot robot3 = new Robot();
