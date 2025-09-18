@@ -113,27 +113,33 @@ public class ReceiptsFromParties extends TransactionsBaseClass {
         FileUtil.writeTimeLogInMinutes("Other Info Tab:- ", otherInfoTabEnd);
 
         navigateToOtherInfoTab();
-        moveToRight(1);
+        moveToRight(2);
 //        common.clickElement("xpath","//CheckBox[@Name='Auto Adjust']");
 
-//        allocations
-        long allocationsTabStart=System.nanoTime();
-        addAllocations();
-        long allocationsTabEnd=System.nanoTime() - allocationsTabStart;
-        FileUtil.writeTimeLogInMinutes("Allocations Tab:- ", allocationsTabEnd);
+//        long allocationsTabStart=System.nanoTime();
+//        addAllocations();
+//        long allocationsTabEnd=System.nanoTime() - allocationsTabStart;
+//        FileUtil.writeTimeLogInMinutes("Allocations Tab:- ", allocationsTabEnd);
 
 //        transactionSave();
         common.clickElement("xpath", "//Button[@Name='Save']");
-        Thread.sleep(3000);
-        gstTransactionType("Inter State Sales to Registered Dealers");
-        Thread.sleep(1500);
+        Thread.sleep(2000);
         common.clickElement("xpath", "//Button[@Name='Yes']");
-        WebDriverWait wait=new WebDriverWait(driver,40);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@Name='Transaction saved.']/Button[@Name='OK']"))).click();
+        Thread.sleep(3000);
+        common.clickElement("xpath", "//TitleBar/Button[@Name='Close']");
+        Thread.sleep(1500);
+//        Robot robot=new Robot();
+//        robot.keyRelease(KeyEvent.VK_ESCAPE);
+//        robot.keyRelease(KeyEvent.VK_ESCAPE);
+        common.clickElement("xpath", "//Button[@Name='OK']");
+//        WebDriverWait wait=new WebDriverWait(driver,40);
+//        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@Name='Transaction saved.']/Button[@Name='OK']"))).click();
+
+
         String newVoucherID =newTransactionID(oldVoucherID);
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
-        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"receiptsFromParties");
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"ReceiptsFromParties");
     }
 
     public void addCash() throws IOException {
@@ -319,7 +325,7 @@ public class ReceiptsFromParties extends TransactionsBaseClass {
             enterListData(tdsTransNatureRowList.get(i), dataFile, "CreditCard", "TDSTransactionNature",i);
             enterListData(tdsAccountRowList.get(i), dataFile, "CreditCard", "TDSAccount",i);
             enterListData(tdsAmountRowList.get(i), dataFile, "CreditCard", "TDSAmount",i);
-            enterListData(tdsAmountRowList.get(i), dataFile, "CreditCard", "Discount",i);
+            enterListData(discount.get(i), dataFile, "CreditCard", "Discount",i);
             enterListData(cardNo.get(i), dataFile, "CreditCard", "CardNo",i);
             enterListDate(expiryDate.get(i), dataFile, "CreditCard", "ExpiryDate",i);
             enterListData(approvalNo.get(i), dataFile, "CreditCard", "ApprovalNo",i);
@@ -396,7 +402,7 @@ public class ReceiptsFromParties extends TransactionsBaseClass {
 
     public void billsReceivables(String desiredVoucher) {
         navigateToBillsReceivablesTab();
-        adjustAmountInPayablesAndReceivables(dataFile,desiredVoucher);
+        adjustAmountInBillsReceivables(dataFile,desiredVoucher);
     }
 
     public void otherInfo() throws InterruptedException, IOException {
@@ -412,8 +418,10 @@ public class ReceiptsFromParties extends TransactionsBaseClass {
         EnterData("//Edit[@Name='Other Info 5']",dataFile,"OtherInfo","OtherInfo5");
     }
 
-    public void addAllocations() {
-        navigateToAllocations();
+    public void addAllocations() throws InterruptedException {
+        Thread.sleep(2000);
+//        navigateToAllocations();
+        common.clickElement("xpath","//TabItem[@Name='  Shift-F8 Allocations  ']");
         EnterData( "//Edit[@Name='Department']", dataFile, "Allocations", "Department");
         EnterData( "//Edit[@Name='Project']", dataFile, "Allocations", "Project");
         EnterData("//Edit[@Name='Profit Centre']", dataFile, "Allocations", "ProfitCentre");

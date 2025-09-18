@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Optional;
 
 public  class Transaction {
-    protected WindowsDriver driver;
+    protected WindowsDriver driver,rootDriver;
     protected Common common;
     protected boolean servicesGSTCheckBox=false;
     int servicesInclusive = 0;
@@ -909,9 +909,9 @@ public  class Transaction {
         for (int i = 0; i < 5; i++) {
             WebElement userRow = pendings.get(i);
             WebElement voucherNo = userRow.findElement(By.xpath(".//*[starts-with(@Name, 'TowardsVNo Row')]"));
-                voucherNo.click();
-                voucherNo.sendKeys(Keys.LEFT, Keys.SPACE);
-            }
+            voucherNo.click();
+            voucherNo.sendKeys(Keys.LEFT, Keys.SPACE);
+        }
         common.clickElement("xpath", "//Button[@Name='Ok']");
     }
 
@@ -1062,6 +1062,52 @@ public  class Transaction {
             }
         }
         System.out.println("Transaction is Deleted Successfully");
+    }
+
+    public void deleteRecentTransaction() throws InterruptedException {
+        Thread.sleep(5000);
+        List<WebElement> links = driver.findElementsByXPath("//Text[@Name='Last Saved :']/following-sibling::Text//HyperLink");
+        System.out.println("Total links found: " + links.size());
+        for (WebElement l : links) {
+            System.out.println("Found link: " + l.getAttribute("Name"));
+            l.click();
+        }
+        Thread.sleep(1500);
+        common.clickElement("xpath","//Window//Button[@Name='View']");
+        WebDriverWait wait=new WebDriverWait(driver,7);
+        WebElement tools=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//Button[@Name='Tools']")));
+        tools.click();
+        common.clickElement("xpath", "//Button[@Name='Delete']");
+        common.clickElement("xpath", "//Button[@Name='Yes']");
+        Thread.sleep(1000);
+        common.clickElement("xpath", "//Button[@Name='OK']");
+
+//        common.clickElement("xpath", "//*[contains(@Name, ' ')]");
+//        common.clickElement("xpath", "//*[(local-name()='Link') and contains(@Name, ' ')]");
+//        common.clickElement("xpath", "//Pane//Pane//Link[contains(@Name, ' ')]");
+//        List<WebElement> elements = driver.findElements(By.xpath("//Pane//Text/Text/Link"));
+//        for (WebElement el : elements) {
+//            String name = el.getAttribute("Name");
+//            if (name != null && !name.isEmpty()) {
+//                System.out.println("Element found: " + name);
+//            }
+//        }
+//        common.clickElement("xpath", "//Link[starts-with(@Name,'AB')]");
+//        common.clickElement("xpath", "//Text[@Name='Last Saved:']/following::*[contains(@Name, 'AB') or @ControlType='ControlType.Hyperlink']");
+//        List<WebElement>elements=common.findWebElements("xpath", "//Text[@Name='Last Saved:']/following::*[contains(@Name, 'AB') or @ControlType='ControlType.Hyperlink']");
+//        System.out.println("elements size :"+elements.size());
+//        for (WebElement i:elements){
+//            System.out.println(i.getText());
+//        }
+//        Thread.sleep(3000);
+//        common.clickElement("xpath", "//Button[@Name='View']");
+//        WebDriverWait wait=new WebDriverWait(driver,7);
+//        WebElement tools=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//Button[@Name='Tools']")));
+//        tools.click();
+////        common.clickElement("xpath", "//Button[@Name='Tools']");
+//        common.clickElement("xpath", "//Button[@Name='Delete']");
+//        common.clickElement("xpath", "//Button[@Name='Yes']");
+//        common.clickElement("xpath", "//Button[@Name='OK']");
     }
 
     //overloaded deleted Transaction method
@@ -2435,7 +2481,7 @@ public  class Transaction {
     public void enterShippingBillNo(String dataFile,String dataSet,String shippingBillNo) throws IOException, ParseException {
         enterInput("xpath","//Edit[@Name='Shipping Bill No']",dataFile,dataSet, shippingBillNo);
     }
-    public void adjustAmountInPayablesAndReceivables(String dataFile,String desiredVoucher){
+    public void adjustAmountInBillsReceivables(String dataFile,String desiredVoucher){
         List<WebElement> towardsVoucherNum = common.findWebElements("xpath", "//Table[@Name='BillsReceivable']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Towards VNo * Row')]");
         System.out.println("Towards vouchers Size :"+towardsVoucherNum.size());
 //        List<WebElement> adjustedAmountRows = common.findWebElements("xpath", "//Table[@Name='BillsReceivable']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Amount Adjusted * Row')]");
@@ -2460,6 +2506,41 @@ public  class Transaction {
             }
         }
     }
+
+    public void adjustAmountInBillsPayable(String dataFile,String desiredVoucher) throws InterruptedException, IOException {
+        List<WebElement> towardsVoucherNum = common.findWebElements("xpath", "//Table[@Name='BillsPayable']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Towards VNo * Row')]");
+        System.out.println("Towards vouchers Size :"+towardsVoucherNum.size());
+        boolean voucherFound=false;
+        for (int i=0;i< towardsVoucherNum.size();i++){
+            WebElement text=towardsVoucherNum.get(i);
+            System.out.println("Towards vouchers getTet :"+text.getText());
+            if (text.getText().equals(desiredVoucher)){
+                voucherFound = true;
+                text.click();
+                text.sendKeys(Keys.TAB,Keys.TAB,Keys.SPACE);
+                EnterData("//Edit[@Name='Amount Adjusted * Row "+i+", Not sorted.']",dataFile,"BillsPayable","AmountAdjusted");
+//                common.clickElement("xpath","//Edit[@Name='Amount Adjusted * Row "+i+", Not sorted.']");
+                Thread.sleep(1500);
+                WebElement element = common.findWebElement("xpath", "//Edit[@Name=' Row 10, Not sorted.']");
+                element.click();
+                Actions actions = new Actions(driver);
+                actions.contextClick(element).perform();
+                rootDriver = common.initializeDriver("Root");
+                System.out.println("root navigation done");
+                Thread.sleep(1500);
+                WebElement click=driver.findElementByXPath( "//MenuItem[@Name='Delete Invalid Rows']");
+                click.click();
+                break;
+            }else if(!text.getText().equals(desiredVoucher)){
+                towardsVoucherNum.get(i).click();
+                towardsVoucherNum.get(i).sendKeys(Keys.DOWN);
+            }
+            else{
+                System.out.println("Towards voucher number is not found");
+            }
+        }
+    }
+
 
     public void selectMultiplePendings(String voucherNum1,String voucherNum2, String financialYearNum) {
         // Try to detect the popup

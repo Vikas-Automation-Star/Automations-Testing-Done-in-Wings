@@ -1,6 +1,7 @@
 package com.wings.pages.finance.transactions.Journals;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
@@ -24,7 +25,7 @@ public class BookExpensesOrPayables extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public void Payables() throws InterruptedException, IOException, ParseException, AWTException {
+    public void Payable(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         navigateToBookExpensesOrPayablesMenu();
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
@@ -34,11 +35,16 @@ public class BookExpensesOrPayables extends TransactionsBaseClass {
         enterBranch(dataFile,"GeneralInformation","Branch");
         enterCurrency(dataFile,"GeneralInformation","TransactionCurrency");
         EnterData("//Edit[@Name='Account Code']", dataFile,"GeneralInformation", "Account");
-        gstTransactionType("Intra State Sales to Registered Dealers");
+        Thread.sleep(1000);
+        gstTransactionType("Intra State Purchase from Registered Dealers");
         enterCreditPeriod(dataFile,"GeneralInformation","CreditPeriod");
         common.clickElement("xpath","//CheckBox[@Name='Apply TCS']");
         enterTcsTransNature(dataFile, "GeneralInformation", "TCSTransactionNature");
+        enableCheckboxSelection("//CheckBox[@Name='Deduct TDS']");
+        enterTdsTransNature(dataFile,"GeneralInformation","TDSTransactionNature");
         enterSuppliersBillNumber(dataFile, "GeneralInformation", "SupplierBillNo");
+        common.clickElement("xpath","//Button[@Name='OK']");
+        common.inputText("xpath", "//Edit[@Name='Supplier Bill No *']", "supBillNum" + common.getRandom());
         enterSuppliersBillDate(dataFile, "GeneralInformation", "SupplierBillDate");
         enterExecutive(dataFile,"GeneralInformation","Executive");
         enterRemarks(dataFile,"GeneralInformation","Remarks");
@@ -63,21 +69,17 @@ public class BookExpensesOrPayables extends TransactionsBaseClass {
         long otherInfoTabEnd =System.nanoTime()- otherInfoTabStart;
         FileUtil.writeTimeLogInMinutes("Other Info Tab:- ", otherInfoTabEnd);
 
-        long shippingAddressTabStart = System.nanoTime();
-        shippingAddress();
-        long shippingAddressTabEnd = System.nanoTime() - shippingAddressTabStart;
-        FileUtil.writeTimeLogInMinutes("Deliveries Shipping Address:- ", shippingAddressTabEnd);
-
-        //allocations
-//        long allocationsTabStart=System.nanoTime();
-//        addAllocations();
-//        long allocationsTabEnd=System.nanoTime() - allocationsTabStart;
-//        FileUtil.writeTimeLogInMinutes("Allocations Tab:- ", allocationsTabEnd);
+        long allocationsTabStart=System.nanoTime();
+        addAllocations();
+        long allocationsTabEnd=System.nanoTime() - allocationsTabStart;
+        FileUtil.writeTimeLogInMinutes("Allocations Tab:- ", allocationsTabEnd);
 
         transactionSave();
         String newVoucherID =newTransactionID(oldVoucherID);
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"BookIncomesOrReceivable");
+
 
     }
 
@@ -88,12 +90,12 @@ public class BookExpensesOrPayables extends TransactionsBaseClass {
         for (int i = 0; i < cashTab.size(); i++) {
             addData("xpath", "//Edit[@Name='Account Code Row "+i+", Not sorted.']", dataFile, "Accounts", "AccountCode", i);
         }
-        List<WebElement> amountRowList = common.findWebElements("xpath", "//Table[@Name='Cash']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Amount * Row ')]");
-        List<WebElement> hsnCodeRowList = common.findWebElements("xpath", "//Table[@Name='Cash']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'HSN Row ')]");
-        List<WebElement> gstProductCategoryRowList = common.findWebElements("xpath", "//Table[@Name='Cash']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'GST Product Category Row ')]");
-        List<WebElement> cessProductCategoryRowList = common.findWebElements("xpath", "//Table[@Name='Cash']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'CESS Product Category Row ')]");
+        List<WebElement> amountRowList = common.findWebElements("xpath", "//Table[@Name='Accounts']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Amount * Row ')]");
+        List<WebElement> hsnCodeRowList = common.findWebElements("xpath", "//Table[@Name='Accounts']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'HSN Row ')]");
+        List<WebElement> gstProductCategoryRowList = common.findWebElements("xpath", "//Table[@Name='Accounts']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'GST Product Category Row ')]");
+        List<WebElement> cessProductCategoryRowList = common.findWebElements("xpath", "//Table[@Name='Accounts']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'CESS Product Category Row ')]");
         common.clickElement("xpath", "//Header[@Name='GST Amount']");
-        common.sliderHandling("xpath", "//Table[@Name='Cash']/*/Thumb[@Name='Position']", 800, 0);
+        common.sliderHandling("xpath", "//Table[@Name='Accounts']/*/Thumb[@Name='Position']", 800, 0);
         List<WebElement> departmentRowList = common.findWebElements("xpath", "//Table[@Name='Accounts']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Department Row ')]");
         List<WebElement> projectRowList = common.findWebElements("xpath", "//Table[@Name='Accounts']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Project Row ')]");
         List<WebElement> costCentreRowList = common.findWebElements("xpath", "//Table[@Name='Accounts']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Cost Centre Row ')]");
@@ -105,7 +107,6 @@ public class BookExpensesOrPayables extends TransactionsBaseClass {
             enterListData(hsnCodeRowList.get(i), dataFile, "Accounts", "HSN", i);
             enterListData(gstProductCategoryRowList.get(i), dataFile, "Accounts", "GSTProductCategory", i);
             enterListData(cessProductCategoryRowList.get(i), dataFile, "Accounts", "CESSProductCategory", i);
-            common.clickElement("xpath","//CheckBox[@Name='Deduct TDS Row "+i+"']");
             enterListData(departmentRowList.get(i), dataFile, "Accounts", "Department", i);
             enterListData(projectRowList.get(i), dataFile, "Accounts", "Project", i);
             enterListData(profitCentreRowList.get(i), dataFile, "Accounts", "ProfitCentre", i);
@@ -122,14 +123,14 @@ public class BookExpensesOrPayables extends TransactionsBaseClass {
         for (int i = 0; i < debitAcc.size(); i++) {
             addData("xpath","//Edit[@Name='Account Code Row "+i+", Not sorted.']",dataFile,"OtherDebits","AccountCode",i);
         }
-        List<WebElement> amountRowList = common.findWebElements("xpath", "//Table[@Name='OtherDebits']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Amount Row ')]");
+        List<WebElement> amountRowList = common.findWebElements("xpath", "//Table[@Name='OtherDebits']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Amount * Row ')]");
         List<WebElement> departmentRowList = common.findWebElements("xpath", "//Table[@Name='OtherDebits']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Department Row ')]");
         List<WebElement> projectRowList = common.findWebElements("xpath", "//Table[@Name='OtherDebits']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Project Row ')]");
         List<WebElement> costCentreRowList = common.findWebElements("xpath", "//Table[@Name='OtherDebits']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Cost Centre Row ')]");
         List<WebElement> profitCentreRowList = common.findWebElements("xpath", "//Table[@Name='OtherDebits']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Profit Centre Row ')]");
         List<WebElement> commentsRowList = common.findWebElements("xpath", "//Table[@Name='OtherDebits']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Comments Row ')]");
         for (int i = 0; i < debitAcc.size() ; i++) {
-            enterListData(amountRowList.get(i), dataFile, "OtherDebits", "Amount",i);
+            enterListData(amountRowList.get(i), dataFile, "OtherDebits", "DebitAmount",i);
             enterListData(departmentRowList.get(i),dataFile,"OtherDebits","Department",i);
             enterListData(projectRowList.get(i),dataFile,"OtherDebits","Project",i);
             enterListData(profitCentreRowList.get(i),dataFile,"OtherDebits","ProfitCentre",i);
@@ -151,27 +152,11 @@ public class BookExpensesOrPayables extends TransactionsBaseClass {
         EnterData("//Edit[@Name='Other Info 5']",dataFile,"OtherInfo","OtherInfo5");
     }
 
-    public void shippingAddress(){
-        common.clickElement("xpath","//TabItem[contains(@Name,'Shipping Address  ')]");
-        EnterData("//Edit[@Name='Party Name']",dataFile,"ShippingAddress","PartyAccount");
-        EnterData("//Edit[@Name='GSTIN']",dataFile,"ShippingAddress","GSTIN");
-        EnterData("//Edit[@Name='Address 1 *']",dataFile,"ShippingAddress","Address1");
-        EnterData("//Edit[@Name='Address 2']",dataFile,"ShippingAddress","Address2");
-        EnterData("//Edit[@Name='Address 3']",dataFile,"ShippingAddress","Address3");
-        EnterData("//Edit[@Name='City *']",dataFile,"ShippingAddress","City");
-        EnterData("//Edit[@Name='State *']",dataFile,"ShippingAddress","State");
-        EnterData("//Edit[@Name='State Code *']",dataFile,"ShippingAddress","StateCode");
-        EnterData("//Edit[@Name='Country *']",dataFile,"ShippingAddress","Country");
-        EnterData("//Edit[@Name='Zip *']",dataFile,"ShippingAddress","Zip");
-        EnterData("//Edit[@Name='Telephone No']",dataFile,"ShippingAddress","TelephoneNo");
-        EnterData("//Edit[@Name='Mobile No']",dataFile,"ShippingAddress","MobileNo");
+    public void addAllocations() {
+        navigateToAllocations();
+        EnterData( "//Edit[@Name='Department']", dataFile, "Allocations", "Department");
+        EnterData( "//Edit[@Name='Project']", dataFile, "Allocations", "Project");
+        EnterData("//Edit[@Name='Profit Centre']", dataFile, "Allocations", "ProfitCentre");
+        EnterData( "//Edit[@Name='Cost Centre']", dataFile, "Allocations", "CostCentre");
     }
-
-//    public void addAllocations() {
-//        navigateToAllocations();
-//        EnterData( "//Edit[@Name='Department']", dataFile, "Allocations", "Department");
-//        EnterData( "//Edit[@Name='Project']", dataFile, "Allocations", "Project");
-//        EnterData("//Edit[@Name='Profit Centre']", dataFile, "Allocations", "ProfitCentre");
-//        EnterData( "//Edit[@Name='Cost Centre']", dataFile, "Allocations", "CostCentre");
-//    }
 }

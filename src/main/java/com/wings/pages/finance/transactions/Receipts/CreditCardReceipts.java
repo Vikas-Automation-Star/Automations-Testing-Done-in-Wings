@@ -120,7 +120,7 @@ public class CreditCardReceipts extends TransactionsBaseClass {
 
     public void billsReceivables(String desiredVoucher){
         navigateToBillsReceivablesTab();
-        adjustAmountInPayablesAndReceivables(dataFile,desiredVoucher);
+        adjustAmountInBillsReceivables(dataFile,desiredVoucher);
     }
 
     public void otherInfo() throws InterruptedException, IOException {

@@ -1,5 +1,6 @@
 package menuItems.finance.transactions.Journals;
 
+import com.wings.pages.finance.transactions.PartyAdjustments.DebitNoteFromSuppliers;
 import io.appium.java_client.windows.WindowsDriver;
 
 import org.json.simple.parser.ParseException;
@@ -16,7 +17,17 @@ public class TestBookIncomeOrReceivables {
 
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
-    String dataFile="./src/main/resources/menuItems/finance/transaction/475835 - Book Incomes or Receivables-AC_BIR_1.xls";
+
+    private static final String TEMP_API_BODY_DEBIT_NOTE_FROM_CUSTOMERS="./output/temp_api_request_bodies/debitNoteFromCustomer.json";
+    private static final String API_RESPONSE_DEBIT_NOTE_FROM_CUSTOMERS="./output/api_responses/debitNoteFromCustomer.json";
+    private static final String OUTPUT_FILE1="./src/main/resources/menuItems/finance/transaction/460743 - Debit Note from Suppliers-AC_DNFS_1_Output.xls";
+
+    private static final String TEMP_API_BODY_BOOK_INCOMES_OR_RECEIVABLE="./output/temp_api_request_bodies/bookIncomesOrReceivable.json";
+    private static final String API_RESPONSE_BOOK_INCOMES_OR_RECEIVABLE="./output/api_responses/bookIncomesOrReceivable.json";
+    private static final String OUTPUT_FILE2="./src/main/resources/menuItems/finance/transaction/475835 - Book Incomes or Receivables-AC_BIR_1_Output.xls";
+
+    String dataFile="./src/main/resources/menuItems/finance/transaction/460743 - Debit Note from Suppliers-AC_DNFS_1.xls";
+    String dataFile1="./src/main/resources/menuItems/finance/transaction/475835 - Book Incomes or Receivables-AC_BIR_1.xls";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
@@ -24,9 +35,15 @@ public class TestBookIncomeOrReceivables {
     }
 
     @Test
-    public void receiptFromParty() throws Exception, AWTException {
-        BookIncomesOrReceivables incomesOrReceivables = new BookIncomesOrReceivables(driver, dataFile);
-        incomesOrReceivables.receivables();
+    public void bookIncomesOrReceivable() throws Exception {
+        DebitNoteFromSuppliers noteFromSuppliers = new DebitNoteFromSuppliers(driver, dataFile);
+        String DNFS=noteFromSuppliers.debitNoteFromSupplier("PV 11",TEMP_API_BODY_DEBIT_NOTE_FROM_CUSTOMERS,API_RESPONSE_DEBIT_NOTE_FROM_CUSTOMERS,OUTPUT_FILE1);
+
+        appLogin.logout();
+        driver= appLogin.login();
+
+        BookIncomesOrReceivables incomesOrReceivables = new BookIncomesOrReceivables(driver, dataFile1);
+        incomesOrReceivables.receivables(DNFS,TEMP_API_BODY_BOOK_INCOMES_OR_RECEIVABLE,API_RESPONSE_BOOK_INCOMES_OR_RECEIVABLE,OUTPUT_FILE2);
     }
 
     @AfterTest

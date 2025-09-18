@@ -111,11 +111,11 @@ public class PurchaseOrdersAgainstQuotation extends TransactionsBaseClass {
         long termsConditionsTabEnd =System.nanoTime()- termsConditionsTabStart;
         FileUtil.writeTimeLogInMinutes("Terms and Conditions Tab:- ", termsConditionsTabEnd);
 
-//        allocations
-        long allocationsTabStart=System.nanoTime();
-        addAllocations();
-        long allocationsTabEnd=System.nanoTime() - allocationsTabStart;
-        FileUtil.writeTimeLogInMinutes("Allocations Tab:- ", allocationsTabEnd);
+////        allocations
+//        long allocationsTabStart=System.nanoTime();
+//        addAllocations();
+//        long allocationsTabEnd=System.nanoTime() - allocationsTabStart;
+//        FileUtil.writeTimeLogInMinutes("Allocations Tab:- ", allocationsTabEnd);
 
         transactionSave();
         String transactionId = newTransactionID(oldVoucherID);

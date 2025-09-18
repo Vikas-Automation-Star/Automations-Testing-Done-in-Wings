@@ -59,8 +59,8 @@ public class PurchaseVouchersAgainstOrder extends TransactionsBaseClass {
         enableCheckboxSelection("//CheckBox[@Name='Deduct TDS']");
         enterTdsTransNature(dataFile,"GeneralInformation","TDSTransactionNature");
         enterSuppliersBillNumber(dataFile,"GeneralInformation","SupplierBillNo");
-        common.clickElement("xpath","//Button[@Name='OK']");
         common.inputText("xpath", "//Edit[@Name='Supplier Bill No *']", "supBillNum" + common.getRandom());
+        common.clickElement("xpath","//Button[@Name='OK']");
         enterSuppliersBillDate(dataFile,"GeneralInformation","SupplierBillDate");
         enterBatchPolicy(dataFile,"GeneralInformation","BatchPolicy");
         enterVoucherDisc(dataFile,"GeneralInformation","VoucherDiscountPercentage");

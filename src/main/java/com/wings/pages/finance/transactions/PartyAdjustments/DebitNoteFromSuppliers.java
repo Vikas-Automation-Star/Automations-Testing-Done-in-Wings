@@ -2,6 +2,7 @@ package com.wings.pages.finance.transactions.PartyAdjustments;
 
 import com.wings.pages.Transaction;
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
@@ -26,7 +27,7 @@ public class DebitNoteFromSuppliers extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public void debitNoteFromSupplier() throws InterruptedException, IOException, ParseException, AWTException {
+    public String debitNoteFromSupplier(String voucherNumber,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         navigateToDebitNoteFromSupplierMenu();
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
@@ -35,12 +36,15 @@ public class DebitNoteFromSuppliers extends TransactionsBaseClass {
         EnterDate("//Edit[@Name='Date *']",dataFile,"GeneralInformation","Date");
         enterBranch(dataFile,"GeneralInformation","Branch");
         enterCurrency(dataFile,"GeneralInformation","TransactionCurrency");
-        enterPurchaseVoucherNum(dataFile,"GeneralInformation","PurchaseVoucherNo");
+        common.findWebElement("xpath","//Edit[@Name='Purchase VNo *']").sendKeys(voucherNumber);
+//        enterPurchaseVoucherNum(dataFile,"GeneralInformation","PurchaseVoucherNo");
         EnterDate("//Edit[@Name='Voucher Date *']",dataFile,"GeneralInformation","VoucherDate");
         enterPartyCode(dataFile,"GeneralInformation","PartyAccountCode");
         common.clickElement("xpath","//CheckBox[@Name='Apply TCS']");
         enterTcsTransNature(dataFile, "GeneralInformation", "TCSTransactionNature");
         enterSupplierBillNumber(dataFile, "GeneralInformation", "SupplierBillNo");
+        common.clickElement("xpath","//Button[@Name='OK']");
+        common.findWebElement("xpath","//Edit[@Name='Supplier Bill No *']").sendKeys("billNUm"+common.getRandom());
         enterSuppliersBillDate(dataFile, "GeneralInformation", "SupplierBillDate");
         enterCreditPeriod(dataFile,"GeneralInformation","CreditPeriod");
         enterExecutive(dataFile,"GeneralInformation","Executive");
@@ -65,15 +69,17 @@ public class DebitNoteFromSuppliers extends TransactionsBaseClass {
         long otherInfoTabEnd =System.nanoTime()- otherInfoTabStart;
         FileUtil.writeTimeLogInMinutes("Other Info Tab:- ", otherInfoTabEnd);
 
-//        allocations
-//        long allocationsTabStart=System.nanoTime();
-//        addAllocations();
-//        long allocationsTabEnd=System.nanoTime() - allocationsTabStart;
-//        FileUtil.writeTimeLogInMinutes("Allocations Tab:- ", allocationsTabEnd);
+        long allocationsTabStart=System.nanoTime();
+        addAllocations();
+        long allocationsTabEnd=System.nanoTime() - allocationsTabStart;
+        FileUtil.writeTimeLogInMinutes("Allocations Tab:- ", allocationsTabEnd);
+
         transactionSave();
         String newVoucherID =newTransactionID(oldVoucherID);
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"DebitNoteFromSuppliers");
+        return  newVoucherID;
 
     }
 
@@ -87,6 +93,7 @@ public class DebitNoteFromSuppliers extends TransactionsBaseClass {
         List<WebElement> hsnCodeRowList = common.findWebElements("xpath", "//Table[@Name='Accounts']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'HSN Row ')]");
         List<WebElement> gstProductCategoryRowList = common.findWebElements("xpath", "//Table[@Name='Accounts']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'GST Product Category Row ')]");
         List<WebElement> cessProductCategoryRowList = common.findWebElements("xpath", "//Table[@Name='Accounts']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'CESS Product Category Row ')]");
+        List<WebElement> deductTDS = common.findWebElements("xpath", "//Table[@Name='Accounts']/*[contains(@Name,'Row ')]/CheckBox[starts-with(@Name,'Deduct TDS Row ')]");
         common.sliderHandling("xpath", "//Table[@Name='Accounts']/*/Thumb[@Name='Position']", 800, 0);
         common.clickElement("xpath", "//Header[@Name='GST Amount']");
         List<WebElement> tdsTransNatureRowList = common.findWebElements("xpath", "//Table[@Name='Accounts']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'TDS Transaction Nature Row ')]");
@@ -101,7 +108,9 @@ public class DebitNoteFromSuppliers extends TransactionsBaseClass {
             enterListData(hsnCodeRowList.get(i), dataFile, "Accounts", "HSN", i);
             enterListData(gstProductCategoryRowList.get(i), dataFile, "Accounts", "GSTProductCategory", i);
             enterListData(cessProductCategoryRowList.get(i), dataFile, "Accounts", "CESSProductCategory", i);
-            enterListData(tdsTransNatureRowList.get(i), dataFile, "Parties", "TDSTransactionNature",i);
+            clickListData(deductTDS.get(i));
+            enterListData(tdsTransNatureRowList.get(i), dataFile, "Accounts", "TDSTransactionNature",i);
+            Thread.sleep(100);
             enterListData(departmentRowList.get(i), dataFile, "Accounts", "Department", i);
             enterListData(projectRowList.get(i), dataFile, "Accounts", "Project", i);
             enterListData(profitCentreRowList.get(i), dataFile, "Accounts", "ProfitCentre", i);
@@ -113,29 +122,30 @@ public class DebitNoteFromSuppliers extends TransactionsBaseClass {
     }
 
     public void billsReceivables(){
-        common.clickElement("xpath", "//TabItem[contains(@Name,'Bills Payable  ')]");
+        common.clickElement("xpath", "//TabItem[contains(@Name,'Bills Receivable  ')]");
 
     }
 
     public void otherInfo() throws InterruptedException, IOException {
+        Thread.sleep(1000);
         navigateToOtherInfoTab();
         EnterData("//Edit[@Name='Reference Bill No']",dataFile,"OtherInfo","ReferenceBillNo");
-        Thread.sleep(3500);
+        Thread.sleep(2000);
         common.clickElement("xpath","//Window/Button[@Name='OK']");
         EnterDate("//Edit[@Name='Reference Bill Date']",dataFile,"OtherInfo","ReferenceBillDate");
-        EnterData("//Edit[@Name='Other Info 1']",dataFile,"OtherInfo","OtherInfo1");
-        EnterData("//Edit[@Name='Other Info 2']",dataFile,"OtherInfo","OtherInfo2");
-        EnterData("//Edit[@Name='Other Info 3']",dataFile,"OtherInfo","OtherInfo3");
-        EnterData("//Edit[@Name='Other Info 4']",dataFile,"OtherInfo","OtherInfo4");
-        EnterData("//Edit[@Name='Other Info 5']",dataFile,"OtherInfo","OtherInfo5");
+        EnterData("//Edit[@Name='Other Info1']",dataFile,"OtherInfo","OtherInfo1");
+        EnterData("//Edit[@Name='Other Info2']",dataFile,"OtherInfo","OtherInfo2");
+        EnterData("//Edit[@Name='Other Info3']",dataFile,"OtherInfo","OtherInfo3");
+        EnterData("//Edit[@Name='Other Info4']",dataFile,"OtherInfo","OtherInfo4");
+        EnterData("//Edit[@Name='Other Info5']",dataFile,"OtherInfo","OtherInfo5");
     }
 
-//    public void addAllocations() {
-//        navigateToAllocations();
-//        EnterData( "//Edit[@Name='Department']", dataFile, "Allocations", "Department");
-//        EnterData( "//Edit[@Name='Project']", dataFile, "Allocations", "Project");
-//        EnterData("//Edit[@Name='Profit Centre']", dataFile, "Allocations", "ProfitCentre");
-//        EnterData( "//Edit[@Name='Cost Centre']", dataFile, "Allocations", "CostCentre");
-//    }
+    public void addAllocations() {
+        navigateToAllocations();
+        EnterData( "//Edit[@Name='Department']", dataFile, "Allocations", "Department");
+        EnterData( "//Edit[@Name='Project']", dataFile, "Allocations", "Project");
+        EnterData("//Edit[@Name='Profit Centre']", dataFile, "Allocations", "ProfitCentre");
+        EnterData( "//Edit[@Name='Cost Centre']", dataFile, "Allocations", "CostCentre");
+    }
 
 }

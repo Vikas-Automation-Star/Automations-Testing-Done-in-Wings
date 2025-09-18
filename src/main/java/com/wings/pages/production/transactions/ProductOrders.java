@@ -1,14 +1,18 @@
 package com.wings.pages.production.transactions;
 
 import com.wings.pages.Transaction;
+import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import java.io.IOException;
+import java.util.List;
 
-public class ProductOrders extends Transaction {
+public class ProductOrders extends TransactionsBaseClass {
     WindowsDriver driver;
     Common common;
     String dataFile;
@@ -20,32 +24,75 @@ public class ProductOrders extends Transaction {
         dataFile = file;
     }
 
-    public void productOrders() throws InterruptedException, IOException, ParseException {
+    public void productOrders(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         common.clickElement("name", "Production");
         common.clickElement("name", "Standard");
         common.clickElement("name", "Production Orders");
         Thread.sleep(3000);
-        oldTTransaction();
-        common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        selectAndValidateData(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
-        common.clickElement("xpath", "//Edit[@Name='Location *']");
-        selectAndValidateData(common.getData(dataFile, "location"), "xpath", "//Edit[@Name='Location *']");
-        common.clickElement("xpath", "//Edit[@Name='Transaction Currency *']");
-        selectMasterWithValidation(common.getData(dataFile, "cuurency"), "xpath", "//Edit[@Name='Transaction Currency *']");
-        common.clickElement("xpath", "//Edit[@Name='Finished Product *']");
-        selectMasterWithValidation(common.getData(dataFile, "fProduct"), "xpath", "//Edit[@Name='Finished Product *']");
-        common.clickElement("xpath", "//Edit[@Name='BOM *']");
-        selectAndValidateData(common.getData(dataFile, "BillOfMaterial"), "xpath", "//Edit[@Name='BOM *']");
-        WebElement clear = common.findWebElement("xpath", "//Edit[@Name='Order Quantity *']");
-        clear.clear();
-        clear.sendKeys(common.getData(dataFile, "quantity"));
-        common.clickElement("xpath", "//Edit[@Name='Executive *']");
-        selectMasterWithValidation(common.getData(dataFile, "Executive"), "xpath", "//Edit[@Name='Executive *']");
+        String oldVoucherID =oldTTransactionID();
+
+        enterVoucherType(dataFile,"GeneralInformation","VoucherType");
+        EnterDate("//Edit[@Name='Date *']",dataFile,"GeneralInformation","Date");
+        enterBranch(dataFile,"GeneralInformation","Branch");
+        enterCurrency(dataFile,"GeneralInformation","TransactionCurrency");
+        EnterData("//Edit[@Name='Finished Product *']",dataFile,"GeneralInformation","FinishedProduct");
+        EnterData("//Edit[@Name='BOM *']",dataFile,"GeneralInformation","BOM");
+        EnterData("//Edit[@Name='Order Quantity *']",dataFile,"GeneralInformation","OrderQuantity");
+        EnterData("//Edit[@Name='Standard Rate Per Unit']",dataFile,"GeneralInformation","StandardRate");
+        EnterData("//Edit[@Name='Executive *']",dataFile,"GeneralInformation","Executive");
+        EnterData("//Edit[@Name='Department']",dataFile,"GeneralInformation","Department");
+        EnterData("//Edit[@Name='Project']",dataFile,"GeneralInformation","Project");
+        EnterData("//Edit[@Name='Profit Centre']",dataFile,"GeneralInformation","ProfitCentre");
+        EnterData("//Edit[@Name='Cost Centre']",dataFile,"GeneralInformation","CostCentre");
+        EnterData("//Edit[@Name='Remarks']",dataFile,"GeneralInformation","Remarks");
+
+        inputs();
+        otherInfo();
+
         transactionSave();
-        Thread.sleep(1000);
-        newTransaction();
-        closeTransaction("Production Orders");
-        Thread.sleep(2000);
+        String newVoucherID =newTransactionID(oldVoucherID);
+        System.out.println("newID: "+newVoucherID);
+        Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"ProductionOrder");
 
     }
+    public void inputs() throws IOException {
+//        List<String> productCode=readExcelData(dataFile,"Inputs","ProductCode");
+//        System.out.println("productCodes :"+productCode.size());
+//        for (int i = 0; i < productCode.size() ; i++) {
+//            addData("xpath","//Edit[@Name='Product Code Row "+i+", Not sorted.']",dataFile,"Inputs","ProductCode",i);
+//        }
+        List<WebElement> ProductCode = common.findWebElements("xpath", "//Table[@Name='Inputs']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Product Code Row ')]");
+        System.out.println("pls size :"+ProductCode.size());
+        List<WebElement> uom = common.findWebElements("xpath", "//Table[@Name='Inputs']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'UOM * Row ')]");
+        List<WebElement> quantity = common.findWebElements("xpath", "//Table[@Name='Inputs']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Quantity * Row ')]");
+        List<WebElement> Comments = common.findWebElements("xpath", "//Table[@Name='Inputs']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Comments Row ')]");
+        List<WebElement> Department = common.findWebElements("xpath", "//Table[@Name='Inputs']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Department Row ')]");
+        List<WebElement> Project = common.findWebElements("xpath", "//Table[@Name='Inputs']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Project Row ')]");
+        List<WebElement> ProfitCentre = common.findWebElements("xpath", "//Table[@Name='Inputs']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Profit Centre Row ')]");
+        List<WebElement> CostCentre = common.findWebElements("xpath", "//Table[@Name='Inputs']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Cost Centre Row ')]");
+        for (int i = 0; i < ProductCode.size()-1; i++) {
+            enterListData(ProductCode.get(i),dataFile,"Inputs","UOM",i);
+            enterListData(uom.get(i),dataFile,"Inputs","UOM",i);
+            enterListData(quantity.get(i),dataFile,"Inputs","Quantity",i);
+            enterListData(Comments.get(i),dataFile,"Inputs","Comments",i);
+            enterListData(Department.get(i),dataFile,"Inputs","Department",i);
+            enterListData(Project.get(i),dataFile,"Inputs","Project",i);
+            enterListData(ProfitCentre.get(i),dataFile,"Inputs","ProfitCentre",i);
+            enterListData(CostCentre.get(i),dataFile,"Inputs","CostCentre",i);
+        }
+    }
+    public void otherInfo() throws InterruptedException, IOException {
+        navigateToOtherInfoTab();
+        EnterData("//Edit[@Name='Reference Bill No']",dataFile,"OtherInfo","ReferenceBillNo");
+        Thread.sleep(5000);
+        common.clickElement("xpath","//Button[@Name='OK']");
+        EnterDate("//Edit[@Name='Reference Bill Date']",dataFile,"OtherInfo","ReferenceBillDate");
+        EnterData("//Edit[@Name='Other Info 1']",dataFile,"OtherInfo","OtherInfo1");
+        EnterData("//Edit[@Name='Other Info 2']",dataFile,"OtherInfo","OtherInfo2");
+        EnterData("//Edit[@Name='Other Info 3']",dataFile,"OtherInfo","OtherInfo3");
+        EnterData("//Edit[@Name='Other Info 4']",dataFile,"OtherInfo","OtherInfo4");
+        EnterData("//Edit[@Name='Other Info 5']",dataFile,"OtherInfo","OtherInfo5");
+    }
+
 }

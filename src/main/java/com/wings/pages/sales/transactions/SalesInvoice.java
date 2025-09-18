@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.util.List;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -54,15 +55,15 @@ public class SalesInvoice extends TransactionsBaseClass {
         Thread.sleep(3000);
         gstTransactionType("Intra State Sales to Registered Dealers");
         Thread.sleep(1000);
-//        common.clickElement("xpath", "//Edit[@Name='Invoice Type']");
-//        Thread.sleep(1000);
-//        Robot robot = new Robot();
+        common.clickElement("xpath", "//Edit[@Name='Invoice Type']");
+        Thread.sleep(1000);
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_DOWN);
+        robot.keyRelease(KeyEvent.VK_DOWN);
 //        robot.keyPress(KeyEvent.VK_DOWN);
 //        robot.keyRelease(KeyEvent.VK_DOWN);
-//        robot.keyPress(KeyEvent.VK_DOWN);
-//        robot.keyRelease(KeyEvent.VK_DOWN);
-//        robot.keyPress(KeyEvent.VK_ENTER);
-//        robot.keyRelease(KeyEvent.VK_ENTER);
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
         enterCustomerEmail(dataFile,"GeneralInformation","CustomerEmail");
         enterCustomerMobileNum(dataFile,"GeneralInformation","CustomerMobileNumber");
         enterSalesAccountCode(dataFile, "GeneralInformation", "SalesAccountCode");
@@ -201,6 +202,7 @@ public class SalesInvoice extends TransactionsBaseClass {
 
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"SalesInvoices");
 
+//        OptimizedJsonExcelComparator.ExcelColumnDifference(columnDifferences);
         long salesInvoiceEnd = System.nanoTime() - salesInvoiceStart;
         FileUtil.writeTimeLogInMinutes("Sales Invoice ended at:- ", salesInvoiceEnd );
         return newVoucherID;

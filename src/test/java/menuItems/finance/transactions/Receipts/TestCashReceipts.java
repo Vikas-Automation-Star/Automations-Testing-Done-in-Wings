@@ -43,7 +43,7 @@ public class TestCashReceipts {
 //        driver= appLogin.login();
 
         CashReceipts cashReceipts = new CashReceipts(driver, dataFile1);
-        cashReceipts.cashReceipt("SI 16",TEMP_API_BODY_CASH_RECEIPTS,API_RESPONSE_CASH_RECEIPTS,OUTPUT_FILE1);
+        cashReceipts.cashReceipt("SI 18",TEMP_API_BODY_CASH_RECEIPTS,API_RESPONSE_CASH_RECEIPTS,OUTPUT_FILE1);
     }
 
     @AfterTest

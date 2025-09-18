@@ -20,14 +20,14 @@
     <test name="Performing Assign StandardRates Transaction"
           description="description for AssignStandardRatesTransaction" testID="WOW 3">
         <classes>
-            <class name="menuItems.Production.transactions.AssignStandardRatesTransaction"></class>
+            <class name="menuItems.Production.transactions.TestAssignStandardRates"></class>
         </classes>
     </test>
 
     <test name="Performing ProductionOrder Transaction" description="description for ProductionOrderTransaction"
           testID="WOW 4">
         <classes>
-            <class name="menuItems.Production.transactions.ProductionOrdersTransaction"></class>
+            <class name="menuItems.Production.transactions.TestProductionOrders"></class>
         </classes>
     </test>
 

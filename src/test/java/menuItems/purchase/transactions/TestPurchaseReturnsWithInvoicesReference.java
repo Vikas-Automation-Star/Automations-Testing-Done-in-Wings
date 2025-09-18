@@ -24,7 +24,7 @@ public class TestPurchaseReturnsWithInvoicesReference {
 
     private static final String TEMP_API_BODY_PURCHASE_ORDERS_AGAINST_QUOTATIONS="./output/temp_api_request_bodies/PurchaseOrdersAgainstQuotations.json";
     private static final String API_RESPONSE_PURCHASE_ORDERS_AGAINST_QUOTATIONS="./output/api_responses/PurchaseOrdersAgainstQuotations.json";
-    private static final String OUTPUT_FILE3="./src/main/resources/menuItems/purchase/transactions/480465 - Purchase Orders against Quotations-AC_POAQ 1_Output.xlsx";
+    private static final String OUTPUT_FILE3="./src/main/resources/menuItems/purchase/transactions/480465 - Purchase Orders against Quotations-AC_POAQ 1_Output.xls";
 
 
     private static final String TEMP_API_BODY_PURCHASE_VOUCHERS_AGAINST_ORDERS="./output/temp_api_request_bodies/PurchaseVouchersAgainstOrders.json";
@@ -37,7 +37,7 @@ public class TestPurchaseReturnsWithInvoicesReference {
 
     String dataFile = "./src/main/resources/menuItems/purchase/transactions/461617 - Purchase Enquiries-AC_PE_3.xlsx";
     String dataFile1 = "./src/main/resources/menuItems/purchase/transactions/461887 - Purchase Quotations against Enquiries-AC_PQAPE_1.xlsx";
-    String dataFile2 = "./src/main/resources/menuItems/purchase/transactions/480465 - Purchase Orders against Quotations-AC_POAQ 1.xlsx";
+    String dataFile2 = "./src/main/resources/menuItems/purchase/transactions/480465 - Purchase Orders against Quotations-AC_POAQ 1.xls";
     String dataFile3 = "./src/main/resources/menuItems/purchase/transactions/479082 - Purchase Vouchers against Orders-AC_PVAO_1.xlsx";
     String dataFile4 = "./src/main/resources/menuItems/purchase/transactions/461323 - Purchase Returns with Invoice Reference-AC_PRWIF_5.xlsx";
 
@@ -61,7 +61,7 @@ public class TestPurchaseReturnsWithInvoicesReference {
         driver= appLogin.login();
 
         PurchaseOrdersAgainstQuotation POAQ = new PurchaseOrdersAgainstQuotation(driver, dataFile2);
-       String poaq= POAQ.purchaseOrdersAgainstQuotation(PQAE,TEMP_API_BODY_PURCHASE_ORDERS_AGAINST_QUOTATIONS,API_RESPONSE_PURCHASE_ORDERS_AGAINST_QUOTATIONS,OUTPUT_FILE3);
+        String poaq= POAQ.purchaseOrdersAgainstQuotation(PQAE,TEMP_API_BODY_PURCHASE_ORDERS_AGAINST_QUOTATIONS,API_RESPONSE_PURCHASE_ORDERS_AGAINST_QUOTATIONS,OUTPUT_FILE3);
 
         appLogin.logout();
         driver= appLogin.login();

@@ -1,6 +1,7 @@
 package com.wings.pages.finance.transactions.PartyAdjustments;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
@@ -9,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.List;
 
@@ -24,7 +26,7 @@ public class CreditNote extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public void creditNote() throws InterruptedException, IOException, ParseException, AWTException {
+    public void creditNote(String receivableVouchers,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         navigateToCreditNoteMenu();
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
@@ -35,6 +37,13 @@ public class CreditNote extends TransactionsBaseClass {
         enterCurrency(dataFile,"GeneralInformation","TransactionCurrency");
         enterPartyCode(dataFile,"GeneralInformation","PartyAccountCode");
         enterCreditPeriod(dataFile,"GeneralInformation","CreditPeriod");
+        common.clickElement("xpath", "//Edit[@Name='Invoice Type']");
+        Thread.sleep(1000);
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_DOWN);
+        robot.keyRelease(KeyEvent.VK_DOWN);
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
         enterExecutive(dataFile,"GeneralInformation","Executive");
         enterRemarks(dataFile,"GeneralInformation","Remarks");
 
@@ -46,7 +55,7 @@ public class CreditNote extends TransactionsBaseClass {
 
         //Bills Receivables
         long BillsReceivablesStart =System.nanoTime();
-        billsReceivables();
+        billsReceivables(receivableVouchers);
         long BillsReceivablesEnd =System.nanoTime()- BillsReceivablesStart;
         FileUtil.writeTimeLogInMinutes("BillsReceivables Tab End:- ", BillsReceivablesEnd);
 
@@ -61,16 +70,17 @@ public class CreditNote extends TransactionsBaseClass {
         long shippingAddressTabEnd = System.nanoTime() - shippingAddressTabStart;
         FileUtil.writeTimeLogInMinutes("Deliveries Shipping Address:- ", shippingAddressTabEnd);
 
-//        allocations
-//        long allocationsTabStart=System.nanoTime();
-//        addAllocations();
-//        long allocationsTabEnd=System.nanoTime() - allocationsTabStart;
-//        FileUtil.writeTimeLogInMinutes("Allocations Tab:- ", allocationsTabEnd);
+        long allocationsTabStart=System.nanoTime();
+        addAllocations();
+        long allocationsTabEnd=System.nanoTime() - allocationsTabStart;
+        FileUtil.writeTimeLogInMinutes("Allocations Tab:- ", allocationsTabEnd);
+
 
         transactionSave();
         String newVoucherID =newTransactionID(oldVoucherID);
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"CreditNote");
 
     }
 
@@ -82,6 +92,7 @@ public class CreditNote extends TransactionsBaseClass {
         }
         List<WebElement> uom = common.findWebElements("xpath", "//Table[@Name='Accounts']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'UOM * Row ')]");
         List<WebElement> amountRowList = common.findWebElements("xpath", "//Table[@Name='Accounts']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Amount * Row ')]");
+        List<WebElement> deductTDS = common.findWebElements("xpath", "//Table[@Name='Accounts']/*[contains(@Name,'Row ')]/CheckBox[starts-with(@Name,'Deduct TDS Row ')]");
         List<WebElement> tdsTransNatureRowList = common.findWebElements("xpath", "//Table[@Name='Accounts']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'TDS Transaction Nature Row ')]");
         List<WebElement> departmentRowList = common.findWebElements("xpath", "//Table[@Name='Accounts']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Department Row ')]");
         List<WebElement> projectRowList = common.findWebElements("xpath", "//Table[@Name='Accounts']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Project Row ')]");
@@ -91,6 +102,7 @@ public class CreditNote extends TransactionsBaseClass {
         for (int i = 0; i < cashTab.size(); i++) {
             enterListData(uom.get(i), dataFile, "Accounts", "UOM", i);
             enterListData(amountRowList.get(i), dataFile, "Accounts", "InclusiveAmount", i);
+            clickListData(deductTDS.get(i));
             enterListData(tdsTransNatureRowList.get(i), dataFile, "Accounts", "TDSTransactionNature",i);
             enterListData(departmentRowList.get(i), dataFile, "Accounts", "Department", i);
             enterListData(projectRowList.get(i), dataFile, "Accounts", "Project", i);
@@ -100,8 +112,9 @@ public class CreditNote extends TransactionsBaseClass {
         }
     }
 
-    public void billsReceivables(){
-        common.clickElement("xpath", "//TabItem[contains(@Name,'Bills Payable  ')]");
+    public void billsReceivables(String receivableVouchers){
+        common.clickElement("xpath", "//TabItem[contains(@Name,'Bills Receivable  ')]");
+        adjustAmountInBillsReceivables(dataFile,receivableVouchers);
 
     }
 
@@ -120,26 +133,25 @@ public class CreditNote extends TransactionsBaseClass {
 
     public void shippingAddress(){
         common.clickElement("xpath","//TabItem[contains(@Name,'Shipping Address  ')]");
-        EnterData("//Edit[@Name='Party Name']",dataFile,"ShippingAddress","PartyAccount");
-        EnterData("//Edit[@Name='GSTIN']",dataFile,"ShippingAddress","GSTIN");
+        EnterData("//Edit[@Name='Party Account']",dataFile,"ShippingAddress","PartyAccount");
         EnterData("//Edit[@Name='Address 1 *']",dataFile,"ShippingAddress","Address1");
         EnterData("//Edit[@Name='Address 2']",dataFile,"ShippingAddress","Address2");
         EnterData("//Edit[@Name='Address 3']",dataFile,"ShippingAddress","Address3");
         EnterData("//Edit[@Name='City *']",dataFile,"ShippingAddress","City");
-        EnterData("//Edit[@Name='State *']",dataFile,"ShippingAddress","State");
+        EnterData("//Edit[@Name='State']",dataFile,"ShippingAddress","State");
         EnterData("//Edit[@Name='State Code *']",dataFile,"ShippingAddress","StateCode");
-        EnterData("//Edit[@Name='Country *']",dataFile,"ShippingAddress","Country");
+        EnterData("//Edit[@Name='Country']",dataFile,"ShippingAddress","Country");
         EnterData("//Edit[@Name='Zip *']",dataFile,"ShippingAddress","Zip");
         EnterData("//Edit[@Name='Telephone No']",dataFile,"ShippingAddress","TelephoneNo");
         EnterData("//Edit[@Name='Mobile No']",dataFile,"ShippingAddress","MobileNo");
     }
 
-//    public void addAllocations() {
-//        navigateToAllocations();
-//        EnterData( "//Edit[@Name='Department']", dataFile, "Allocations", "Department");
-//        EnterData( "//Edit[@Name='Project']", dataFile, "Allocations", "Project");
-//        EnterData("//Edit[@Name='Profit Centre']", dataFile, "Allocations", "ProfitCentre");
-//        EnterData( "//Edit[@Name='Cost Centre']", dataFile, "Allocations", "CostCentre");
-//    }
+    public void addAllocations() {
+        navigateToAllocations();
+        EnterData( "//Edit[@Name='Department']", dataFile, "Allocations", "Department");
+        EnterData( "//Edit[@Name='Project']", dataFile, "Allocations", "Project");
+        EnterData("//Edit[@Name='Profit Centre']", dataFile, "Allocations", "ProfitCentre");
+        EnterData( "//Edit[@Name='Cost Centre']", dataFile, "Allocations", "CostCentre");
+    }
 
 }

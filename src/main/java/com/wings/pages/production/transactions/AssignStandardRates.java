@@ -1,13 +1,19 @@
 package com.wings.pages.production.transactions;
 
 import com.wings.pages.Transaction;
+import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
+import net.bytebuddy.asm.Advice;
 import org.json.simple.parser.ParseException;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import java.io.IOException;
+import java.util.List;
 
-public class AssignStandardRates extends Transaction {
+public class AssignStandardRates extends TransactionsBaseClass {
     WindowsDriver driver;
     Common common;
     String dataFile;
@@ -19,30 +25,39 @@ public class AssignStandardRates extends Transaction {
         dataFile = file;
     }
 
-    public void assignStandardRates() throws InterruptedException, IOException, ParseException {
-
+    public void assignStandardRates(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         common.clickElement("name", "Production");
         common.clickElement("name", "Assign Standard Rates");
-        Thread.sleep(3000);
-        oldTTransaction();
-        common.clickElement("xpath", "//Edit[@Name='Branch *']");
-        selectMasterWithValidation(common.getData(dataFile, "branch"), "xpath", "//Edit[@Name='Branch *']");
-        common.clickElement("xpath", "//Edit[@Name='Transaction Currency *']");
-        common.clickElement("xpath", "//Edit[@Name='Executive *']");
-        selectAndValidateDataNew(common.getData(dataFile, "executive"), "xpath", "//Edit[@Name='Executive *']");
-        common.clickElement("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']");
-        enterData("xpath", "//Edit[@Name='Product Code Row 0, Not sorted.']", dataFile, "pCode");
-        enterData("xpath", "//Edit[@Name='Rate * Row 0, Not sorted.']", dataFile, "uRate");
+        Thread.sleep(2000);
+        String oldVoucherID =oldTTransactionID();
+        enterVoucherType(dataFile,"GeneralInformation","VoucherType");
+        EnterDate("//Edit[@Name='Date *']",dataFile,"GeneralInformation","Date");
+        enterBranch(dataFile,"GeneralInformation","Branch");
+        enterCurrency(dataFile,"GeneralInformation","TransactionCurrency");
+        EnterDate("//Edit[@Name='With Effect From *']",dataFile,"GeneralInformation","WithEffectFrom");
+        enterExecutive(dataFile,"GeneralInformation","Executive");
+        enterRemarks(dataFile,"GeneralInformation","Remarks");
 
-//        WebElement uRate= common.findWebElement("xpath","//Edit[@Name='Rate * Row 0, Not sorted.']");
-//        uRate.click();
-//        uRate.sendKeys(common.getData(dataFile,"urate"),Keys.ENTER);
+        items();
 
         transactionSave();
-        Thread.sleep(1000);
-        newTransaction();
-        closeTransaction("Assign Standard Rates");
-        Thread.sleep(4000);
+        String newVoucherID =newTransactionID(oldVoucherID);
+        System.out.println("newID: "+newVoucherID);
+        Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
+//        closeTransaction("Assign Standard Rates");
 
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"JournalEntries");
+        deleteRecentTransaction();
+    }
+    public void items() throws IOException {
+            List<String> productCode=readExcelData(dataFile,"Items","ProductCode");
+            System.out.println("productCodes :"+productCode.size());
+            for (int i = 0; i < productCode.size() ; i++) {
+                addData("xpath","//Edit[@Name='Product Code Row "+i+", Not sorted.']",dataFile,"Items","ProductCode",i);
+            }
+            List<WebElement>  rate= common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Rate * Row ')]");
+            for (int i = 0; i < productCode.size(); i++) {
+                enterListData(rate.get(i), dataFile, "Items", "Rate" , i);
+            }
     }
 }

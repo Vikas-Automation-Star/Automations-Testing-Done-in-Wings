@@ -60,7 +60,6 @@ public class TransactionsBaseClass extends Transaction {
     public void enterSalesInvoiceNumber(String dataFile,String sheetName,String key)  {
         EnterData("//Edit[@Name='Sales Invoice No' or @Name='Sales Invoice No *']",dataFile,sheetName,key);
     }
-
     public void enterSalesInvoiceDate(String dataFile,String sheetName,String key) throws IOException {
         EnterDate("//Edit[@Name='Sales Invoice Date']",dataFile,sheetName,key);
     }
@@ -164,7 +163,7 @@ public class TransactionsBaseClass extends Transaction {
         EnterData("//Edit[@Name='Batch Policy']",dataFile,sheetName,key);
     }
     public void enterTcsTransNature(String dataFile,String sheetName,String key)  {
-        EnterData("//Edit[@Name='TCS Trans Nature']",dataFile,sheetName,key);
+        EnterData("//Edit[@Name='TCS Trans Nature' or @Name='TCS Trans Type']",dataFile,sheetName,key);
     }
     public void enterTdsTransNature(String dataFile,String sheetName,String key)  {
         EnterData("//Edit[@Name='TDS Trans Nature']",dataFile,sheetName,key);

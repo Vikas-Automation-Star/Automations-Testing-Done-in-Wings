@@ -1,12 +1,12 @@
 package com.wings.pages.finance.transactions.PartyAdjustments;
 
-import com.wings.pages.Transaction;
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
-import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
 import java.io.IOException;
@@ -23,7 +23,7 @@ public class AdjustPartyBills extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public void executeAdjustPartyBills() throws InterruptedException, IOException, ParseException {
+    public void executeAdjustPartyBills(String receivablesVoucher,String payableVouchers,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         navigateToAdjustPartyBills();
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
@@ -39,15 +39,15 @@ public class AdjustPartyBills extends TransactionsBaseClass {
 
         //Bills Receivables
         long BillsReceivablesStart =System.nanoTime();
-        billsReceivables();
+        billsReceivables(receivablesVoucher);
         long BillsReceivablesEnd =System.nanoTime()- BillsReceivablesStart;
         FileUtil.writeTimeLogInMinutes("BillsReceivables Tab End:- ", BillsReceivablesEnd);
 
-        //BillsPayables
-        long BillsPayablesStart =System.nanoTime();
-        billsPayables();
-        long BillsPayablesEnd =System.nanoTime()- BillsPayablesStart;
-        FileUtil.writeTimeLogInMinutes("BillsPayables Tab End:- ", BillsPayablesEnd);
+        //BillsPayable
+        long BillsPayableStart =System.nanoTime();
+        billsPayable(payableVouchers);
+        long BillsPayableEnd =System.nanoTime()- BillsPayableStart;
+        FileUtil.writeTimeLogInMinutes("BillsPayables Tab End:- ", BillsPayableEnd);
 
         //Other info
         long otherInfoTabStart =System.nanoTime();
@@ -59,20 +59,24 @@ public class AdjustPartyBills extends TransactionsBaseClass {
         String newVoucherID = newTransactionID(oldVoucherID);
         System.out.println("newID: " + newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID, "Voucher Numbers are same. Check Transaction.");
-
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"AdjustPartyBills");
+//        deleteRecentTransaction();
     }
 
-    public void billsReceivables(){
-        common.clickElement("xpath", "//TabItem[contains(@Name,'Bills Payable  ')]");
-
+    public void billsReceivables(String adjustReceivables) throws InterruptedException {
+        common.clickElement("xpath", "//TabItem[contains(@Name,'Receivables  ')]");
+        Thread.sleep(2000);
+        adjustAmountInBillsReceivables(dataFile,adjustReceivables);
     }
 
-    public void billsPayables(){
+    public void billsPayable(String adjustPayable) throws InterruptedException, IOException {
         common.clickElement("xpath", "//TabItem[contains(@Name,'Bills Payable  ')]");
-
+        Thread.sleep(2000);
+        adjustAmountInBillsPayable(dataFile,adjustPayable);
     }
 
     public void otherInfo() throws InterruptedException, IOException {
+        Thread.sleep(1000);
         navigateToOtherInfoTab();
         EnterData("//Edit[@Name='Reference Bill No']",dataFile,"OtherInfo","ReferenceBillNo");
         Thread.sleep(3500);

@@ -44,7 +44,7 @@ public class PurchaseVoucher extends TransactionsBaseClass {
         String oldVoucherID = oldTTransactionID();
 
         long start1 = System.nanoTime();
-
+//
         enterVoucherType(dataFile,"GeneralInformation","VoucherType");
         EnterDate("//Edit[@Name='Date *']",dataFile,"GeneralInformation","Date");
         enterBranchName(dataFile,"GeneralInformation","Branch");
@@ -158,17 +158,16 @@ public class PurchaseVoucher extends TransactionsBaseClass {
         long termsAndConditionsEnd = System.nanoTime() - termsAndConditions;
         FileUtil.writeTimeLogInMinutes("Enter Terms And Conditions", termsAndConditionsEnd);
 
-//        long allocations = System.nanoTime();
-//        navigateToAllocations();
-//        addAllocations();
-//        long allocationsEnd = System.nanoTime() - allocations;
-//        FileUtil.writeTimeLogInMinutes("Enter Allocations", allocationsEnd);
+        long allocations = System.nanoTime();
+        navigateToAllocations();
+        addAllocations();
+        long allocationsEnd = System.nanoTime() - allocations;
+        FileUtil.writeTimeLogInMinutes("Enter Allocations", allocationsEnd);
 
         transactionSave();
         String newVoucherID = newTransactionID(oldVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"both ID's should not Equal when we perform transaction");
 //        exportIOFiles(newVoucherID,rootDriver);
-
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"PurchaseVouchers");
 
         long PurchaseVoucherEnd = System.nanoTime() - PV;
@@ -441,7 +440,7 @@ public class PurchaseVoucher extends TransactionsBaseClass {
         common.sliderHandling("xpath", "//Table[@Name='OtherCharges']/*/Thumb[@Name='Position']", -400, 0);
 
         for (int i = 0; i < productCode.size(); i++) {
-            enterListData(amountRowList.get(i), dataFile, "OtherCharges", "Amount",i);
+            enterListData(amountRowList.get(i), dataFile, "OtherCharges", "InclusiveAmount",i);
             enterListData(hsnCodeRowList.get(i), dataFile, "OtherCharges", "HSN",i);
             enterListData(gstProductCategoryRowList.get(i), dataFile, "OtherCharges", "GSTProductCategory",i);
             enterListData(cessProductCategoryRowList.get(i), dataFile, "OtherCharges", "CESSProductCategory",i);
@@ -479,7 +478,7 @@ public class PurchaseVoucher extends TransactionsBaseClass {
         common.sliderHandling("xpath", "//Table[@Name='OtherDeductions']/*/Thumb[@Name='Position']", -500, 0);
 
         for (int i = 0; i < productCode.size(); i++) {
-            enterListData(amountRowList.get(i), dataFile, "OtherDeductions", "Amount",i);
+            enterListData(amountRowList.get(i), dataFile, "OtherDeductions", "InclusiveAmount",i);
             enterListData(hsnCodeRowList.get(i), dataFile, "OtherDeductions", "HSN",i);
             enterListData(gstProductCategoryRowList.get(i), dataFile, "OtherDeductions", "GSTProductCategory",i);
             enterListData(cessProductCategoryRowList.get(i), dataFile, "OtherDeductions", "CESSProductCategory",i);
@@ -667,11 +666,24 @@ public class PurchaseVoucher extends TransactionsBaseClass {
         }
     }
 
-//    public void addAllocations() {
+    public void addAllocations() throws InterruptedException {
 //        EnterData( "//Edit[@Name='Department']", dataFile, "Allocations", "Department");
 //        EnterData( "//Edit[@Name='Project']", dataFile, "Allocations", "Project");
 //        EnterData("//Edit[@Name='Profit Centre']", dataFile, "Allocations", "ProfitCentre");
 //        EnterData( "//Edit[@Name='Cost Centre']", dataFile, "Allocations", "CostCentre");
-//    }
+        WebElement element=common.findWebElement("xpath","//Edit[@Name='Department']");
+        element.sendKeys(Keys.CONTROL + "a");
+        element.sendKeys(Keys.BACK_SPACE);
+        WebElement element1=common.findWebElement("xpath","//Edit[@Name='Project']");
+        element1.sendKeys(Keys.CONTROL + "a");
+        element1.sendKeys(Keys.BACK_SPACE);
+        Thread.sleep(1000);
+        WebElement element2=common.findWebElement("xpath","//Edit[@Name='Profit Centre']");
+        element2.sendKeys(Keys.CONTROL + "a");
+        element2.sendKeys(Keys.BACK_SPACE);
+        WebElement element3=common.findWebElement("xpath","//Edit[@Name='Cost Centre']");
+        element3.sendKeys(Keys.CONTROL + "a");
+        element3.sendKeys(Keys.BACK_SPACE);
+    }
 
 }

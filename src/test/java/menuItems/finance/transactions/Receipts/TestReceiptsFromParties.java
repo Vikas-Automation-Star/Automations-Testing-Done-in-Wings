@@ -42,7 +42,7 @@ public class TestReceiptsFromParties {
 //        driver= appLogin.login();
 
         ReceiptsFromParties fromParties = new ReceiptsFromParties(driver, dataFile1);
-        fromParties.receiptFromParty("SI 16",TEMP_API_BODY_RECEIPTS_FROM_PARTIES,API_RESPONSE_RECEIPTS_FROM_PARTIES,OUTPUT_FILE1);
+        fromParties.receiptFromParty("SI 18",TEMP_API_BODY_RECEIPTS_FROM_PARTIES,API_RESPONSE_RECEIPTS_FROM_PARTIES,OUTPUT_FILE1);
     }
 
     @AfterTest

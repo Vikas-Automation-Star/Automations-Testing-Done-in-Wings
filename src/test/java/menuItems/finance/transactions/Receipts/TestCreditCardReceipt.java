@@ -19,14 +19,14 @@ public class TestCreditCardReceipt {
 
     private static final String TEMP_API_BODY_SALES_INVOICES="./output/temp_api_request_bodies/SalesInvoices.json";
     private static final String API_RESPONSE_SALES_SALES_INVOICES="./output/api_responses/SalesInvoices.json";
-    private static final String OUTPUT_FILE="./";
+    private static final String OUTPUT_FILE="./src/main/resources/menuItems/Sales/Transactions/480460 - Sales Invoices-AC_SI1_1_Output.xls";
 
     private static final String TEMP_API_BODY_CREDIT_CARD_RECEIPTS="./output/temp_api_request_bodies/creditCardReceipts.json";
     private static final String API_RESPONSE_CREDIT_CARD_RECEIPTS="./output/api_responses/creditCardReceipts.json";
     private static final String OUTPUT_FILE1="./src/main/resources/menuItems/finance/transaction/456088 - Credit Card Receipts-AC_CCR_2_Output.xls";
 
 
-    String dataFile = "./src/main/resources/menuItems/Sales/Transactions/480460 - Sales Invoices-AC.xlsx";
+    String dataFile = "./src/main/resources/menuItems/Sales/Transactions/480460 - Sales Invoices-AC_SI1_1.xls";
     String dataFile1="./src/main/resources/menuItems/finance/transaction/456088 - Credit Card Receipts-AC_CCR_2.xls";
 
     @BeforeTest
@@ -43,7 +43,7 @@ public class TestCreditCardReceipt {
 //        driver= appLogin.login();
 
         CreditCardReceipts creditCardReceipts = new CreditCardReceipts(driver, dataFile1);
-        creditCardReceipts.creditCardReceipt("SI 16",TEMP_API_BODY_CREDIT_CARD_RECEIPTS,API_RESPONSE_CREDIT_CARD_RECEIPTS,OUTPUT_FILE1);
+        creditCardReceipts.creditCardReceipt("SI 18",TEMP_API_BODY_CREDIT_CARD_RECEIPTS,API_RESPONSE_CREDIT_CARD_RECEIPTS,OUTPUT_FILE1);
     }
 
     @AfterTest

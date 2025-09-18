@@ -42,13 +42,16 @@ public class JournalEntries extends TransactionsBaseClass {
 
         accounts();
         otherInfo();
+        addAllocations();
+
 
         transactionSave();
         String newVoucherID =newTransactionID(oldVoucherID);
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
-
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"JournalEntries");
+
+        deleteRecentTransaction();
         long JeEnd = System.nanoTime() -start ;
         FileUtil.writeTimeLogInMinutes("Journal Entries ended at:- ", JeEnd );
     }
@@ -90,6 +93,15 @@ public class JournalEntries extends TransactionsBaseClass {
         EnterData("//Edit[@Name='Other Info 4']",dataFile,"OtherInfo","OtherInfo4");
         EnterData("//Edit[@Name='Other Info 5']",dataFile,"OtherInfo","OtherInfo5");
 
+    }
+
+    public void addAllocations() throws InterruptedException {
+        Thread.sleep(1000);
+        navigateToAllocations();
+        EnterData( "//Edit[@Name='Department']", dataFile, "Allocations", "Department");
+        EnterData( "//Edit[@Name='Project']", dataFile, "Allocations", "Project");
+        EnterData("//Edit[@Name='Profit Centre']", dataFile, "Allocations", "ProfitCentre");
+        EnterData( "//Edit[@Name='Cost Centre']", dataFile, "Allocations", "CostCentre");
     }
 
 }

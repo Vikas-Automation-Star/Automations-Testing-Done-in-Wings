@@ -147,7 +147,8 @@ public class Common {
     }
 
     public void deleteInvalidRows() {
-        WebElement element = findWebElement("xpath", "//Edit[@Name=' Row 0, Not sorted.']");
+        WebElement element = findWebElement("xpath", "//Edit[contains(@Name,'Row')]");
+        element.click();
         Actions actions = new Actions(driver);
         actions.contextClick(element).perform();
         clickElement("xpath", "//MenuItem[@Name='Delete Invalid Rows']");

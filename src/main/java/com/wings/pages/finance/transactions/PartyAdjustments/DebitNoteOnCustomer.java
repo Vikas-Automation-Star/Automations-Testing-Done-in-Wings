@@ -1,6 +1,7 @@
 package com.wings.pages.finance.transactions.PartyAdjustments;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
@@ -9,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.List;
 
@@ -24,7 +26,7 @@ public class DebitNoteOnCustomer extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public void debitNoteOnCustomer() throws InterruptedException, IOException, ParseException, AWTException {
+    public void debitNoteOnCustomer(String invoiceNumber,String payableVoucher,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         navigateToDebitNoteOnCustomerMenu();
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
@@ -33,10 +35,18 @@ public class DebitNoteOnCustomer extends TransactionsBaseClass {
         EnterDate("//Edit[@Name='Date *']",dataFile,"GeneralInformation","Date");
         enterBranch(dataFile,"GeneralInformation","Branch");
         enterCurrency(dataFile,"GeneralInformation","TransactionCurrency");
-        enterSalesInvoiceNumber(dataFile,"GeneralInformation","");
+        common.findWebElement("xpath","//Edit[@Name='Sales Invoice No *']").sendKeys(invoiceNumber);
+//        enterSalesInvoiceNumber(dataFile,"GeneralInformation",invoiceNumber);
         enterPartyCode(dataFile,"GeneralInformation","PartyAccountCode");
         enterCreditPeriod(dataFile,"GeneralInformation","CreditPeriod");
-        common.clickElement("xpath","//CheckBox[@Name='Apply TCS']");
+        common.clickElement("xpath", "//Edit[@Name='Invoice Type']");
+        Thread.sleep(1000);
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_DOWN);
+        robot.keyRelease(KeyEvent.VK_DOWN);
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
+        common.clickElement("xpath","//CheckBox[@Name='ApplyTCS']");
         enterTcsTransNature(dataFile, "GeneralInformation", "TCSTransactionNature");
         enterExecutive(dataFile,"GeneralInformation","Executive");
         enterRemarks(dataFile,"GeneralInformation","Remarks");
@@ -49,11 +59,17 @@ public class DebitNoteOnCustomer extends TransactionsBaseClass {
         long accountsStartEnd =System.nanoTime()- accountsStart;
         FileUtil.writeTimeLogInMinutes("Accounts tab End:- ", accountsStartEnd);
 
-        //BillsPayables
-        long BillsPayablesStart =System.nanoTime();
-        billsPayables();
-        long BillsPayablesEnd =System.nanoTime()- BillsPayablesStart;
-        FileUtil.writeTimeLogInMinutes("BillsPayables Tab End:- ", BillsPayablesEnd);
+        //BillsPayable
+        long BillsPayableStart =System.nanoTime();
+        billsPayable(payableVoucher);
+        long BillsPayableEnd =System.nanoTime()- BillsPayableStart;
+        FileUtil.writeTimeLogInMinutes("BillsPayables Tab End:- ", BillsPayableEnd);
+
+        //Other info
+        long otherInfoTabStart =System.nanoTime();
+        otherInfo();
+        long otherInfoTabEnd =System.nanoTime()- otherInfoTabStart;
+        FileUtil.writeTimeLogInMinutes("Other Info Tab:- ", otherInfoTabEnd);
 
         //InvoiceDetails
         long invoiceDetails =System.nanoTime();
@@ -62,28 +78,21 @@ public class DebitNoteOnCustomer extends TransactionsBaseClass {
         long invoiceDetailsEnd =System.nanoTime()- invoiceDetails;
         FileUtil.writeTimeLogInMinutes("InvoiceDetails End :- ", invoiceDetailsEnd);
 
-
-        //Other info
-        long otherInfoTabStart =System.nanoTime();
-        otherInfo();
-        long otherInfoTabEnd =System.nanoTime()- otherInfoTabStart;
-        FileUtil.writeTimeLogInMinutes("Other Info Tab:- ", otherInfoTabEnd);
-
         long shippingAddressTabStart = System.nanoTime();
         shippingAddress();
         long shippingAddressTabEnd = System.nanoTime() - shippingAddressTabStart;
         FileUtil.writeTimeLogInMinutes("Deliveries Shipping Address:- ", shippingAddressTabEnd);
 
-//        allocations
-//        long allocationsTabStart=System.nanoTime();
-//        addAllocations();
-//        long allocationsTabEnd=System.nanoTime() - allocationsTabStart;
-//        FileUtil.writeTimeLogInMinutes("Allocations Tab:- ", allocationsTabEnd);
+        long allocationsTabStart=System.nanoTime();
+        addAllocations();
+        long allocationsTabEnd=System.nanoTime() - allocationsTabStart;
+        FileUtil.writeTimeLogInMinutes("Allocations Tab:- ", allocationsTabEnd);
 
         transactionSave();
         String newVoucherID =newTransactionID(oldVoucherID);
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"AdjustPartyBills");
 
     }
 
@@ -128,9 +137,9 @@ public class DebitNoteOnCustomer extends TransactionsBaseClass {
 
     }
 
-    public void billsPayables(){
+    public void billsPayable(String payableVoucher) throws IOException, InterruptedException {
         common.clickElement("xpath", "//TabItem[contains(@Name,'Bills Payable  ')]");
-
+        adjustAmountInBillsPayable(dataFile,payableVoucher);
     }
 
     public void InvoiceDetails() throws IOException {
@@ -138,8 +147,8 @@ public class DebitNoteOnCustomer extends TransactionsBaseClass {
         EnterDate("//Edit[@Name='Invoice Date *']",dataFile,"InvoiceDetails","InvoiceDate");
     }
 
-
     public void otherInfo() throws InterruptedException, IOException {
+        Thread.sleep(1500);
         navigateToOtherInfoTab();
         EnterData("//Edit[@Name='Reference Bill No']",dataFile,"OtherInfo","ReferenceBillNo");
         Thread.sleep(3500);
@@ -154,7 +163,7 @@ public class DebitNoteOnCustomer extends TransactionsBaseClass {
 
     public void shippingAddress(){
         common.clickElement("xpath","//TabItem[contains(@Name,'Shipping Address  ')]");
-        EnterData("//Edit[@Name='Party Name']",dataFile,"ShippingAddress","PartyAccount");
+        EnterData("//Edit[@Name='Party Account']",dataFile,"ShippingAddress","PartyAccount");
         EnterData("//Edit[@Name='GSTIN']",dataFile,"ShippingAddress","GSTIN");
         EnterData("//Edit[@Name='Address 1 *']",dataFile,"ShippingAddress","Address1");
         EnterData("//Edit[@Name='Address 2']",dataFile,"ShippingAddress","Address2");
@@ -168,12 +177,12 @@ public class DebitNoteOnCustomer extends TransactionsBaseClass {
         EnterData("//Edit[@Name='Mobile No']",dataFile,"ShippingAddress","MobileNo");
     }
 
-//    public void addAllocations() {
-//        navigateToAllocations();
-//        EnterData( "//Edit[@Name='Department']", dataFile, "Allocations", "Department");
-//        EnterData( "//Edit[@Name='Project']", dataFile, "Allocations", "Project");
-//        EnterData("//Edit[@Name='Profit Centre']", dataFile, "Allocations", "ProfitCentre");
-//        EnterData( "//Edit[@Name='Cost Centre']", dataFile, "Allocations", "CostCentre");
-//    }
+    public void addAllocations() {
+        navigateToAllocations();
+        EnterData( "//Edit[@Name='Department']", dataFile, "Allocations", "Department");
+        EnterData( "//Edit[@Name='Project']", dataFile, "Allocations", "Project");
+        EnterData("//Edit[@Name='Profit Centre']", dataFile, "Allocations", "ProfitCentre");
+        EnterData( "//Edit[@Name='Cost Centre']", dataFile, "Allocations", "CostCentre");
+    }
 
 }

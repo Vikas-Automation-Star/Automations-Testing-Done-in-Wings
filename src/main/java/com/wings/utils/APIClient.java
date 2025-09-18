@@ -6,6 +6,7 @@ import io.restassured.specification.RequestSpecification;
 import org.testng.Assert;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -123,8 +124,20 @@ public class APIClient {
         assertStatusCode(response, 200);
 //        System.out.println(response.asString());
         Files.write(Paths.get(writeAPIResponse), response.asString().getBytes());
-//        AdvancedJsonExcelComparatorNew.JsonExcelComparator(writeAPIResponse,outputFile,diffFile);
         OptimizedJsonExcelComparator.JsonExcelComparator(writeAPIResponse,outputFile,diffFile);
+        try {
+            File file = new File(OptimizedJsonExcelComparator.diffFilePath);
+            System.out.println("Trying to open file: " + file.getAbsolutePath());
+            if (!file.exists()) {
+                System.err.println("File does not exist at: " + file.getAbsolutePath());
+                // Optional: return or throw custom exception
+            } else {
+                OptimizedJsonExcelComparator.ExcelColumnDifference(OptimizedJsonExcelComparator.diffFilePath);
+            }
+        } catch (FileNotFoundException e) {
+            System.err.println("Caught FileNotFoundException: " + e.getMessage());
+            e.printStackTrace();
+        }
 
     }
 
