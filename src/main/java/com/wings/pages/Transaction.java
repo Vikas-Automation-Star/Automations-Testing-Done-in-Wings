@@ -181,59 +181,6 @@ public  class Transaction {
         }
     }
 
-    public void intraGSTRegistration(String gstType) {
-        List<WebElement> elementList = common.findWebElements("xpath", "//Table/*[@Name='Data Panel']/*/*[contains(@Name,'GST Transaction Type row')]");
-        System.out.println("Size :" + elementList.size());
-        for (WebElement i : elementList) {
-//                System.out.println(i.getText());
-            if (i.getText().equals(gstType)) {
-                i.click();
-                i.sendKeys(Keys.LEFT, Keys.SPACE, Keys.ENTER, Keys.ENTER);
-                break;
-            }
-        }
-    }
-
-    public void gstTransactionTypeNew(String gstType) {
-        List<WebElement> elementList = common.findWebElements("xpath", "//Table/*[@Name='Data Panel']/*/*[contains(@Name,'GST Transaction Type row')]");
-        System.out.println("Size :" + elementList.size());
-        for (int index = 0; index < elementList.size(); index++) {
-            // Re-fetch the elements to avoid StaleElementReferenceException
-            elementList = common.findWebElements("xpath", "//Table/*[@Name='Data Panel']/*/*[contains(@Name,'GST Transaction Type row')]");
-            WebElement i = elementList.get(index);
-            if (i.getText().contains(gstType)) {
-                i.click();
-                i.sendKeys(Keys.LEFT, Keys.SPACE, Keys.ENTER, Keys.ENTER);
-                break; // Exit the loop once the match is found
-            }
-        }
-    }
-
-    public void gstSelectionWhenBothRegisteredDealers() {
-        List<WebElement> elementList = common.findWebElements("xpath", "//Table/*[@Name='Data Panel']/*/*[contains(@Name,'GST Transaction Type row')]");
-        System.out.println("Size :" + elementList.size());
-        for (WebElement j : elementList) {
-            System.out.println(j.getText());
-            if (j.getText().equals("Intra State Purchase from Registered Dealers")) {
-                j.click();
-                j.sendKeys(Keys.LEFT, Keys.SPACE, Keys.ENTER, Keys.ENTER);
-                break;
-            }
-        }
-    }
-
-    public void invoiceTypeWhenRegister() throws InterruptedException, AWTException {
-        common.clickElement("xpath", "//Edit[@Name='Invoice Type']");
-        Thread.sleep(1000);
-        Robot robot = new Robot();
-        robot.keyPress(KeyEvent.VK_DOWN);
-        robot.keyRelease(KeyEvent.VK_DOWN);
-//        robot.keyPress(KeyEvent.VK_DOWN);
-//        robot.keyRelease(KeyEvent.VK_DOWN);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-    }
-
     public void selectMasterWithValidation(String transaction, String locatorType, String locator) {
         List<WebElement> elementList = common.findWebElements("xpath", "//Table[@Name='Lookup']/*/*[contains(@Name,'Master Row')]");
         System.out.println("Size :" + elementList.size());
@@ -261,11 +208,6 @@ public  class Transaction {
         } else {
             Assert.fail("wrong input");
         }
-    }
-
-    public void enterBranchh(String dataFile,String sheetName, String key) throws IOException {
-        EnterData("//Edit[@Name='Branch *']",dataFile,sheetName,key);
-//        enterInput("xpath", "//Edit[@Name='Branch *']", dataFile, key);
     }
 
     public void enterPartyCode(String dataFile, String key) throws IOException, ParseException {
@@ -300,9 +242,6 @@ public  class Transaction {
         common.clickElement("xpath", "//TabItem[contains(@Name,'Bills Receivable')]");
     }
 
-    public void navigateToAccountsTab() {
-        common.clickElement("xpath", "//TabItem[contains(@Name,'Accounts')]");
-    }
 
     public void navigateToTCSTab() {
         common.clickElement("xpath", "//TabItem[contains(@Name,'TCS')]");
@@ -456,23 +395,6 @@ public  class Transaction {
         common.clickElement("xpath", "//MenuItem[@Name='Sales Enquiries Cancellation']");
     }
 
-    public void navigateToSalesQuotationsMenu() {
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Quotations");
-        common.clickElement("xpath", "//MenuItem[@Name='Sales Quotations']");
-        String pageValidation = common.findWebElement("xpath", "//Pane/Text[@Name='Sales Quotations']").getText();
-        System.out.println("Screen Name:-" + pageValidation);
-        Assert.assertEquals(pageValidation, "Sales Quotations");
-    }
-
-    public void navigateToSalesQuotationsCancellationMenu() {
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Quotations");
-        common.clickElement("xpath", "//MenuItem[@Name='Sales Quotations Cancellations']");
-        String pageValidation = common.findWebElement("xpath", "//Pane/Text[@Name='Sales Quotations Cancellations']").getText();
-        System.out.println("Screen Name:-" + pageValidation);
-        Assert.assertEquals(pageValidation, "Sales Quotations Cancellations");
-    }
 
     public void navigateToSalesQuotationAgainstEnquiryMenu() {
         common.clickElement("name", "Sales");
@@ -492,40 +414,10 @@ public  class Transaction {
         Assert.assertEquals(pageValidation, "Sales Orders against Quotations");
     }
 
-    public void navigateToSalesOrderMenu() {
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Orders");
-        common.clickElement("xpath", "//MenuItem[@Name='Sales Orders']");
-    }
-
-    public void navigateToSalesOrderCancellaltionMenu() {
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Orders");
-        common.clickElement("xpath", "//MenuItem[@Name='Sales Orders Cancellation']");
-        String pageValidation = common.findWebElement("xpath", "//Pane/Text[@Name='Sales Orders Cancellation']").getText();
-        System.out.println("Screen Name:-" + pageValidation);
-        Assert.assertEquals(pageValidation, "Sales Orders Cancellation");
-    }
-
-    public void navigateToDeliveriesMenu() {
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Deliveries");
-        common.clickElement("xpath", "//MenuItem[@Name='Deliveries']");
-    }
-
     public void navigateToDeliveriesAgainstOrdersMenu() {
         common.clickElement("name", "Sales");
         common.clickElement("name", "Deliveries");
         common.clickElement("xpath", "//MenuItem[@Name='Deliveries against Orders']");
-        String pageValidation = common.findWebElement("xpath", "//Pane/Text[@Name='Deliveries against Orders']").getText();
-        System.out.println("Screen Name:-" + pageValidation);
-        Assert.assertEquals(pageValidation, "Deliveries against Orders");
-    }
-
-    public void navigateToDeliveryReturnsMenu() {
-        common.clickElement("xpath", "//MenuItem[@Name='Sales']");
-        common.clickElement("xpath", "//MenuItem[@Name='Deliveries']");
-        common.clickElement("xpath", "//MenuItem[@Name='Delivery Returns']");
     }
 
     public void navigateToSalesInvoiceMenu() throws InterruptedException {
@@ -533,24 +425,6 @@ public  class Transaction {
         common.clickElement("name", "Invoices");
         common.clickElement("xpath", "//MenuItem[@Name='Sales Invoices']");
         Thread.sleep(3000);
-    }
-
-    public void navigateToSalesInvoiceAgainstDeliveriesMenu() {
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Invoices");
-        common.clickElement("xpath", "//MenuItem[@Name='Sales Invoices against Deliveries']");
-    }
-
-    public void navigateToSalesInvoiceAgainstOrdersMenu() {
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Invoices");
-        common.clickElement("xpath", "//MenuItem[@Name='Sales Invoices against Orders']");
-    }
-
-    public void navigateToProformaSalesInvoiceMenu() {
-        common.clickElement("name", "Sales");
-        common.clickElement("name", "Invoices");
-        common.clickElement("xpath", "//MenuItem[@Name='Proforma Sales Invoices']");
     }
 
     public void navigateToSalesReturnMenu() {
@@ -572,16 +446,12 @@ public  class Transaction {
         common.clickElement("name", "Sales");
         common.clickElement("xpath", "//MenuItem[@Name='Prices and Discounts'][2]");
         common.clickElement("name", "Party and Product wise Discounts");
-//        String pageValidation = common.findWebElement("xpath", "//Pane/Text[@Name='Party and Product wise Discounts']").getText();
-//        System.out.println("Screen Name:-" + pageValidation);
-//        Assert.assertEquals(pageValidation, "Party and Product wise Discounts");
     }
 
     public void navigateToSalesPricesMenu() {
         common.clickElement("name", "Sales");
         common.clickElement("xpath", "//MenuItem[@Name='Prices and Discounts'][2]");
         common.clickElement("name", "Sales Prices");
-
     }
 
     public void navigateToBankReceiptsMenu() {
@@ -618,15 +488,6 @@ public  class Transaction {
         String pageValidation = common.findWebElement("xpath", "//Pane/Text[@Name='Receipts from Credit Card Companies']").getText();
         System.out.println("Screen Name:-" + pageValidation);
         Assert.assertEquals(pageValidation, "Receipts from Credit Card Companies");
-    }
-
-    public void navigateToCashTransfersMenu() {
-        common.clickElement("name", "Finance");
-        common.clickElement("name", "Payments");
-        common.clickElement("xpath", "//MenuItem[@Name='Cash Transfers']");
-        String pageValidation = common.findWebElement("xpath", "//Pane/Text[@Name='Cash Transfers']").getText();
-        System.out.println("Screen Name:-" + pageValidation);
-        Assert.assertEquals(pageValidation, "Cash Transfers");
     }
 
     public void navigateToBookExpensesOrPayablesMenu() {
@@ -674,14 +535,6 @@ public  class Transaction {
         Assert.assertEquals(pageValidation, "Manual Stock Valuation");
     }
 
-    public void navigateToReceivedChequesBounceMenu() {
-        common.clickElement("name", "Finance");
-        common.clickElement("name", "Banking");
-        common.clickElement("xpath", "//MenuItem[@Name='Received Cheques Bounce']");
-        String pageValidation = common.findWebElement("xpath", "//Pane/Text[@Name='Received Cheques Bounce']").getText();
-        System.out.println("Screen Name:-" + pageValidation);
-        Assert.assertEquals(pageValidation, "Received Cheques Bounce");
-    }
 
     public void navigateToAdjustPartyBills() {
         common.clickElement("name", "Finance");
@@ -814,6 +667,18 @@ public  class Transaction {
     }
 
 
+    public void selectPendingsRCB(String voucherNum) {
+        List<WebElement> elementList = common.findWebElements("xpath", "//Window[@Name='Cheque Details']//Table/*[@Name='Data Panel']/*/*[starts-with(@Name,'Voucher No row')]");
+        System.out.println("Size :" + elementList.size());
+        for (WebElement i : elementList) {
+            System.out.println(i.getText());
+            if (i.getText().equals(voucherNum)) {
+                i.click();
+                i.sendKeys(Keys.LEFT, Keys.SPACE, Keys.ENTER, Keys.ENTER);
+                break;
+            }
+        }
+    }
 
 
     //transaction related methods
@@ -1331,14 +1196,6 @@ public  class Transaction {
             }
         }
     }
-    public void analysisReport( String dataFile,String dataSet) throws IOException, ParseException {
-        List<WebElement> elementList = common.findWebElements("xpath", "//Table/*[@Name='Data Panel']/ListItem[contains(@Name,'Row')]");
-        System.out.println("Size :" + elementList.size());
-        for (WebElement i : elementList) {
-            System.out.println("text :" + i.getText());
-            bulkVerifyAnalysisReport(i.getText(),dataFile,dataSet);
-        }
-    }
     public void bulkVerifyAnalysisReport(String text, String dataFile,String dataSet) throws IOException, ParseException {
         String[] columns = text.split(";");
         System.out.println("columSize :"+columns.length);
@@ -1569,13 +1426,6 @@ public  class Transaction {
         FileUtil.writeTimeLog("Charges",duration/1000000000);
     }
 
-    public void chargesPresentInSummary(String expectedChargesAmount) throws IOException {
-        long start = System.nanoTime();
-        Assert.assertEquals(common.findWebElement("xpath", "//Edit[@Name='Charges']").getText(),expectedChargesAmount,"Charges amount mismatch");
-        long duration = System.nanoTime() - start;
-        FileUtil.writeTimeLog("Charges amount mismatch",duration/1000000000);
-    }
-
     public void otherChargesPresentInSummary() throws IOException {
         long start = System.nanoTime();
         String otherCharges = common.findWebElement("xpath", "//Edit[@Name='Other Charges']").getText();
@@ -1602,13 +1452,6 @@ public  class Transaction {
         if ((serviceIGST == "0.000" )) {
             Assert.fail("Service IGST  field is empty");
         }
-        long duration = System.nanoTime() - start;
-        FileUtil.writeTimeLog("Services IGST",duration/1000000000);
-    }
-
-    public void servicesIGSTPresentInSummary(String expectedServicesIGST) throws IOException {
-        long start = System.nanoTime();
-        Assert.assertEquals(common.findWebElement("xpath", "//Edit[@Name='Services IGST']").getText(),expectedServicesIGST,"ServicesIGST mismatch in summary");
         long duration = System.nanoTime() - start;
         FileUtil.writeTimeLog("Services IGST",duration/1000000000);
     }
@@ -1749,23 +1592,6 @@ public  class Transaction {
         element.sendKeys(common.getData(fileName,sheetName, key), Keys.TAB);
     }
 
-
-//    public void enterDataNew(String locatorType, String locator, String fileName, String dataset, String key) throws IOException, ParseException {
-//        List<WebElement> elementList = common.findWebElements(locatorType, locator);
-//        System.out.println("Size :" + elementList.size());
-//        List<String> values = Collections.singletonList(common.getData(fileName, dataset, key));
-//
-//        for (int i = 0; i < elementList.size(); i++) {
-//            WebElement element = elementList.get(i);
-//            element.click();
-//            if (i < values.size()) {
-//                element.sendKeys(values.get(i), Keys.TAB);
-//            } else {
-//                element.sendKeys("", Keys.TAB);
-//            }
-//        }
-//    }
-
     // after move to Excel
     public static List<String> readExcelData(String filePath, String sheetName, String columnName) {
         List<String> columnData = new ArrayList<>();
@@ -1814,7 +1640,6 @@ public  class Transaction {
         }
         return columnData;
     }
-
 
     public String getValueByColumnHeader(String filePath, String sheetName, String headerName) throws IOException {
         FileInputStream file = new FileInputStream(filePath);
@@ -1944,7 +1769,6 @@ public  class Transaction {
         }
     }
 
-
     public void EnterData(String locator,String dataFile,String sheetName,String key,int i) {
         WebElement element=common.findWebElement("xpath",locator);
         element.sendKeys(Keys.CONTROL + "a");
@@ -1968,6 +1792,7 @@ public  class Transaction {
             }
         }
     }
+
     public void addDataStockConsumption(String locatorType, String locator, String fileName, String sheetName, String key, int j) {
         WebElement element = common.findWebElement(locatorType, locator);
         if (element != null) {
@@ -1990,7 +1815,6 @@ public  class Transaction {
         }
     }
 
-
     public void enterListData( WebElement element,String fileName,String sheetName, String columnName,int j) throws IOException {
         List<String> dataList = readExcelData(fileName, sheetName, columnName);
         if (!dataList.isEmpty()) {
@@ -2007,6 +1831,7 @@ public  class Transaction {
             element.sendKeys(dataList.get(j),Keys.TAB);
         }
     }
+
     public void decimalPrecision(String locator,String dataFile,String sheetName,String key) {
         WebElement element=common.findWebElement("xpath",locator);
         element.sendKeys(Keys.CONTROL + "a");
@@ -2138,8 +1963,6 @@ public  class Transaction {
         }
     }
 
-
-
     public void enterInput(String locatorType, String locator, String fileName,String dataset, String key) throws IOException, ParseException {
         List<WebElement> elementList = common.findWebElements(locatorType, locator);
         for (WebElement i : elementList) {
@@ -2159,45 +1982,6 @@ public  class Transaction {
         enterData("xpath", "//Edit[@Name='Rate Row 0, Not sorted.']", dataFile, dataset,"servicesRate");
         enterData("xpath", "//Edit[@Name='HSN Row 0, Not sorted.']", dataFile, dataset,"HSNCode");
     }
-
-
-    public void enterServices(String dataFile,String dataSet,int i) throws Exception {
-        common.clickElement("xpath","//TabItem[contains(@Name,'Services')]");
-        enterData("xpath", "//Edit[@Name='Service Code Row "+i+", Not sorted.']", dataFile,dataSet, "servicesCode"+i);
-        enterData("xpath", "//Edit[@Name='Purchase Account * Row "+i+", Not sorted.']", dataFile,dataSet, "purchaseAccount"+i);
-        enterData("xpath", "//Edit[@Name='Quantity Row "+i+", Not sorted.']", dataFile, dataSet,"ServicesQuantity"+i);
-        enterData("xpath", "//Edit[@Name='Rate Row "+i+", Not sorted.']", dataFile, dataSet,"unitRate"+i);
-        if (servicesInclusive < 3) {
-            common.clickElement("xpath", "//CheckBox[@Name='Inclusive Tax Row " + i + "']");
-            servicesInclusive++;
-        }
-        enterData("xpath", "//Edit[@Name='HSN Row "+i+", Not sorted.']", dataFile, dataSet,"HSNCode"+i);
-        enterData("xpath", "//Edit[@Name='GST Product Category Row "+i+", Not sorted.']", dataFile,dataSet, "GSTPercentage"+i);
-        enterData("xpath", "//Edit[@Name='CESS Product Category Row "+i+", Not sorted.']", dataFile,dataSet, "CESSPercentage"+i);
-        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Inclusive Amount * Row "+i+", Not sorted.']"), common.getData(dataFile, dataSet,"expectedInclusiveAmount" + i),"Inclusive Amount mismatch");
-        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Amount * Row "+i+", Not sorted.']"), common.getData(dataFile, dataSet,"expectedServicesAmount" + i),"Amount mismatch");
-        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Taxable Value Row "+i+", Not sorted.']"), common.getData(dataFile, dataSet,"expectedServicesTaxableValue" + i),"taxable value mismatch");
-        Thread.sleep(1000);
-        if (!servicesGSTCheckBox) {
-            common.clickElement("xpath", "//Header[@Name='GST Amount']");
-            servicesGSTCheckBox = true;
-        }
-        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='IGST Row " + i + ", Not sorted.']"), common.getData(dataFile, dataSet,"expectedServicesIGSTAmount" + i),"IGST mismatch");
-        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='CESS Row " + i + ", Not sorted.']"), common.getData(dataFile,dataSet, "expectedServicesCESSAmount" +i),"CESS mismatch");
-        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='GST Amount Row " + i + ", Not sorted.']"), common.getData(dataFile,dataSet, "expectedServicesGSTAmount" +i), "GST Amount mismatch");
-        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Net Amount Row " + i + ", Not sorted.']"), common.getData(dataFile, dataSet,"expectedServicesNetAmount" +i), "Net Amount mismatch");
-        Assert.assertEquals(common.getText("xpath", "//Edit[@Name='Net Amount In Company Currency Row "+i+", Not sorted.']"), common.getData(dataFile, dataSet,"expectedServicesNetAmountInCompanyCurrency" +i), "Net Amount in Company currency mismatch");
-        enterData("xpath", "//Edit[@Name='Department Row "+i+", Not sorted.']", dataFile,dataSet, "department"+i);
-        enterData("xpath", "//Edit[@Name='Project Row "+i+", Not sorted.']", dataFile,dataSet, "project"+i);
-        enterData("xpath", "//Edit[@Name='Profit Centre Row "+i+", Not sorted.']", dataFile,dataSet, "profitCentre"+i);
-        enterData("xpath", "//Edit[@Name='Cost Centre Row "+i+", Not sorted.']", dataFile,dataSet, "costCentre"+i);
-        enterData("xpath", "//Edit[@Name='Comments Row "+i+", Not sorted.']", dataFile,dataSet, "comments"+i);
-        enterData("xpath", "//Edit[@Name='Info 1 Row "+i+", Not sorted.']", dataFile,dataSet, "info"+i);
-        common.sliderHandling("xpath", "//Table[@Name='Services']/*/Thumb[@Name='Position']", 50, 0);
-        enterData("xpath", "//Edit[@Name='Value 1 Row "+i+", Not sorted.']", dataFile,dataSet, "value"+i);
-        common.findWebElement("xpath", "//Edit[@Name='Date 1 Row "+i+", Not sorted.']").sendKeys(Time.timeStamp());
-    }
-
 
     public void chargesAndDeductionsCalculations1(String dataFile, String dataSet,String type,String type2, String chargesAccCode,String deductionsAccCode,String chargesAmount, String deductionsAmount, String iterations) throws IOException, ParseException {
         navigateToChargesAndDeductionsTab();
@@ -2361,6 +2145,7 @@ public  class Transaction {
             System.out.println("❌ Invalid year format in Excel: " + yearStr);
         }
     }
+
     public void enterMonthSalesTarget(String dataFile,String sheetName,String key) throws IOException {
         String monthNumberStr = getValueByColumnHeader(dataFile, sheetName, key);
         try {

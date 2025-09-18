@@ -4,7 +4,6 @@ import com.wings.utils.Time;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.Keys;
-
 import java.io.IOException;
 
 public class TransactionsBaseClass extends Transaction {
@@ -14,9 +13,6 @@ public class TransactionsBaseClass extends Transaction {
 
     public void enterBranchName(String dataFile,String sheetName,String branch)  {
         EnterData("//Edit[@Name='Branch *']",dataFile,sheetName,branch);
-    }
-    public void enterDate() throws IOException {
-        inputTextWithValidation("xpath","//Edit[@Name='Date *']",Time.timeStamp());
     }
 
     public void EnterDate(String locator,String datFile, String sheetName, String column) throws IOException {
@@ -102,15 +98,15 @@ public class TransactionsBaseClass extends Transaction {
     public void enterStockConsumptionAccount(String dataFile,String sheetName, String key) {
         EnterData("//Edit[@Name='Stock Consumption Account']",dataFile,sheetName,key);
     }
-    public void enterCustomerEmail(String dataFile,String sheetName,String key) throws IOException, ParseException {
+    public void enterCustomerEmail(String dataFile,String sheetName,String key){
         EnterData("//Edit[@Name='Customer Email' or @Name='Email']",dataFile,sheetName,key);
     }
 
-    public void enterCustomerMobileNum(String dataFile,String sheetName,String key) throws IOException, ParseException {
+    public void enterCustomerMobileNum(String dataFile,String sheetName,String key){
         EnterData("//Edit[@Name='Customer Mobile Number' or @Name='MobileNumber']",dataFile,sheetName,key);
     }
 
-    public void enterShippingBillNo(String dataFile,String sheetName,String key) throws IOException, ParseException {
+    public void enterShippingBillNo(String dataFile,String sheetName,String key) {
         EnterData("//Edit[@Name='Shipping Bill No']",dataFile,sheetName, key);
     }
 
@@ -137,7 +133,7 @@ public class TransactionsBaseClass extends Transaction {
         EnterData("//Edit[@Name='Cash/Party Code' or @Name='Party Code']",dataFile,sheetName,key);
     }
 
-    public void enterConsigner(String dataFile,String sheetName,String key) throws IOException, ParseException {
+    public void enterConsigner(String dataFile,String sheetName,String key){
         EnterData("//Edit[@Name='Cash/Party Code']",dataFile,sheetName,key);
     }
 
@@ -145,7 +141,7 @@ public class TransactionsBaseClass extends Transaction {
         decimalPrecision("//Edit[@Name='Credit Period']",dataFile,sheetName,key);
     }
 
-    public void enterSalesReturnAccCode(String dataFile,String sheetName,String key) throws IOException, ParseException {
+    public void enterSalesReturnAccCode(String dataFile,String sheetName,String key){
         EnterData("//Edit[@Name='Sales Return A/c Code']",dataFile,sheetName,key);
     }
 
