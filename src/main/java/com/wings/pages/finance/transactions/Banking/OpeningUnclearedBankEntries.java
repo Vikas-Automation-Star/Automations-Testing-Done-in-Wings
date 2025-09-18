@@ -65,8 +65,6 @@ public class OpeningUnclearedBankEntries extends TransactionsBaseClass {
         //API
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"OpeningUnclearedBankEntries");
 
-
-//        excelUtil.excelComparator("","",newVoucherID);
     }
 
     public void addUnclearedReceipts() throws IOException {

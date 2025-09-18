@@ -63,8 +63,6 @@ public class BankReconciliation extends TransactionsBaseClass {
         //API
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"BankReconciliation");
 
-
-//        excelUtil.excelComparator("","",newVoucherID);
     }
 
     public void addAccounts() throws IOException {

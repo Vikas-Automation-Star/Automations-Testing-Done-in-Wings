@@ -180,8 +180,8 @@ public class DeliveriesAgainstOrdersTransaction extends TransactionsBaseClass {
             } else if (masterType.get(i).equals("Products - MultiBatch")) {
                 common.clickElement("xpath", "//Button[@Name='Stock Details Row "+i+"']");
                 Thread.sleep(500);
-                EnterData("//Table[@Name='Batch Details']/*[@Name='Data Panel']/*[@Name='Row 2']/*[@Name='Quantity row 2']",dataFile,"Items","Quantity",i);
-                EnterData("//Table[@Name='Batch Details']/*[@Name='Data Panel']/*[@Name='Row 2']/*[@Name='Free Qty row 2']",dataFile,"Items","FreeQuantity",i);
+                EnterData("//Table[@Name='Batch Details']/*[@Name='Data Panel']/*[@Name='Row 1']/*[@Name='Quantity row 1']",dataFile,"Items","Quantity",i);
+                EnterData("//Table[@Name='Batch Details']/*[@Name='Data Panel']/*[@Name='Row 1']/*[@Name='Free Qty row 1']",dataFile,"Items","FreeQuantity",i);
                 Thread.sleep(1000);
                 common.clickElement("xpath", "//Button[@Name='OK']");
             }else if (masterType.get(i).equals("Products - Batches and Serial No")){
@@ -301,7 +301,7 @@ public class DeliveriesAgainstOrdersTransaction extends TransactionsBaseClass {
 
         for (int i = 0; i < otherCharges.size(); i++) {
             enterListData(amountRowList.get(i), dataFile, "OtherCharges", "Amount", i);
-            enterListData(hsnCodeRowList.get(i), dataFile, "OtherCharges", "HSNCode",i);
+            enterListData(hsnCodeRowList.get(i), dataFile, "OtherCharges", "HSN",i);
             enterListData(GSTProductCategory.get(i), dataFile, "OtherCharges", "GSTProductCategory",i);
             enterListData(CESSProductCategory.get(i), dataFile, "OtherCharges", "CESSProductCategory",i);
             Thread.sleep(1000);

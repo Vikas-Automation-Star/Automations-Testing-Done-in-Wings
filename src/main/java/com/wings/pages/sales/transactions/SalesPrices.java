@@ -5,10 +5,8 @@ import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
-import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import java.io.IOException;
 import java.util.List;
 
 public class SalesPrices extends TransactionsBaseClass {
@@ -59,8 +57,6 @@ public class SalesPrices extends TransactionsBaseClass {
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"salesPrice");
 
         return newVoucherID;
-
-
     }
 
     public void addProduct() throws Exception {

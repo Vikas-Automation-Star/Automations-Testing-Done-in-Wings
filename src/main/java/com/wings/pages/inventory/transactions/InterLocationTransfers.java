@@ -5,10 +5,8 @@ import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
-import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import java.awt.*;
 import java.util.List;
 import java.io.IOException;
 
@@ -24,7 +22,6 @@ public class InterLocationTransfers extends TransactionsBaseClass {
     }
 
     public String locationTransfer(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
-        long start = System.nanoTime();
         navigateToMastersWhen2Steps("Inventory","Inter Location Transfers");
         long generalInfoStart = System.nanoTime();
         Thread.sleep(5000);
@@ -47,11 +44,13 @@ public class InterLocationTransfers extends TransactionsBaseClass {
         FileUtil.writeTimeLogInMinutes("Inter Location Transfers Add Products:- ", addProductEnd);
 
         long otherInfoTabStart = System.nanoTime();
+        navigateToOtherInfoTab();
         otherInfo();
         long otherInfoTabEnd = System.nanoTime() - otherInfoTabStart;
         FileUtil.writeTimeLogInMinutes("Inter Location Transfers Other Info:- ", otherInfoTabEnd);
 
         long allocationsTabStart = System.nanoTime();
+        common.clickElement("xpath", "//TabItem[contains(@Name,'Allocations')]");
         addAllocations();
         long allocationsTabEnd = System.nanoTime() - allocationsTabStart;
         FileUtil.writeTimeLogInMinutes("Inter Location Transfers Allocations:- ", allocationsTabEnd);
@@ -64,8 +63,6 @@ public class InterLocationTransfers extends TransactionsBaseClass {
         //API
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"InterLocationTransfer");
 
-
-//        excelUtil.excelComparator("","",newVoucherID);
         return newVoucherID;
     }
 
@@ -120,9 +117,7 @@ public class InterLocationTransfers extends TransactionsBaseClass {
         }
     }
 
-
     public void otherInfo() throws InterruptedException, IOException {
-        navigateToOtherInfoTab();
         EnterData("//Edit[@Name='Reference Bill No']",dataFile,"OtherInfo","ReferenceBillNo");
         Thread.sleep(5000);
         common.clickElement("xpath","//Window/Button[@Name='OK']");
@@ -135,11 +130,9 @@ public class InterLocationTransfers extends TransactionsBaseClass {
     }
 
     public void addAllocations() {
-        common.clickElement("xpath", "//TabItem[contains(@Name,'Allocations')]");
         EnterData( "//Edit[@Name='Department']", dataFile, "Allocations", "Department");
         EnterData( "//Edit[@Name='Project']", dataFile, "Allocations", "Project");
         EnterData("//Edit[@Name='Profit Centre']", dataFile, "Allocations", "ProfitCentre");
         EnterData( "//Edit[@Name='Cost Centre']", dataFile, "Allocations", "CostCentre");
     }
-
 }

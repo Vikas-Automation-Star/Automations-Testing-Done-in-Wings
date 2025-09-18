@@ -33,7 +33,7 @@ public class SalesInvoiceAgainstDeliveries extends TransactionsBaseClass {
         long invoiceAgainstDeliveriesStart = System.nanoTime();
         System.out.println("SIAD startTime  in :" + invoiceAgainstDeliveriesStart);
         Thread.sleep(100);
-        navigateToSalesInvoiceAgainstDeliveriesMenu();
+        navigateToMastersWhen3Steps("Sales","Invoices","Sales Invoices against Deliveries");
         long generalInfoStart = System.nanoTime();
         System.out.println("Sales Invoice against Deliveries general Info started  in :" + generalInfoStart);
         Thread.sleep(7000);
@@ -250,8 +250,8 @@ public class SalesInvoiceAgainstDeliveries extends TransactionsBaseClass {
                     enterListData(minimumRate.get(i),dataFile,"Items","MinimumRate",j );
                     enterListData(maximunRate.get(i),dataFile,"Items","MaximumRate",j );
                     enterListData(UnitRate.get(i), dataFile, "Items", "UnitRate", j);
-                    enterListData(voucherDiscount.get(i), dataFile, "Items", "VoucherDiscount", j);
-                    enterListData(partyDiscount.get(i), dataFile, "Items", "PartyDiscount", j);
+                    enterListData(voucherDiscount.get(i), dataFile, "Items", "VoucherDiscountPercentage", j);
+                    enterListData(partyDiscount.get(i), dataFile, "Items", "PartyDiscountPercentage", j);
                     enterListData(DiscountBasis1.get(i), dataFile, "Items", "DiscountBasis1", j);
                     enterListData(Discount1.get(i), dataFile, "Items", "Discount1", j);
                     enterListData(DiscountBasis2.get(i), dataFile, "Items", "DiscountBasis2", j);

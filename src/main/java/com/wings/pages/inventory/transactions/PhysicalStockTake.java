@@ -56,8 +56,6 @@ public class PhysicalStockTake extends TransactionsBaseClass {
         //api
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"physicalStockTake");
 
-
-//        excelUtil.excelComparator("","",newVoucherID);
         return newVoucherID;
     }
 

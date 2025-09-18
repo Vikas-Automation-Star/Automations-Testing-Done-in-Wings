@@ -4,6 +4,7 @@ import com.wings.pages.TransactionsBaseClass;
 import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
+import com.wings.utils.OptimizedJsonExcelComparator;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
@@ -125,6 +126,7 @@ public class SalesOrdersAgainstQuotations extends TransactionsBaseClass {
         FileUtil.writeTimeLogInMinutes("SOAQ ended at ",transEnd);
         //API
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"salesOrderAgainstQuotation");
+//        OptimizedJsonExcelComparator.ExcelColumnDifference("output/excelDifferences/salesOrderAgainstQuotation_08-09-2025.xlsx");
 
         return newVoucherID;
     }
@@ -196,8 +198,8 @@ public class SalesOrdersAgainstQuotations extends TransactionsBaseClass {
             enterListDate(DeliveryDate.get(i),dataFile,"Items","DeliveryDate",i);
             enterListData(Mrp.get(i),dataFile,"Items","MRP",i);
             enterListData(UnitRate.get(i),dataFile,"Items","UnitRate",i);
-            enterListData(voucherDiscount.get(i),dataFile,"Items","voucherDiscount",i);
-            enterListData(partyDiscount.get(i),dataFile,"Items","partyDiscount",i);
+            enterListData(voucherDiscount.get(i),dataFile,"Items","VoucherDiscountPercentage",i);
+            enterListData(partyDiscount.get(i),dataFile,"Items","PartyDiscountPercentage",i);
 
             if (!discountIsClicked) {
                 common.clickElement("xpath", "//Header[@Name='Disc Amount 1']");

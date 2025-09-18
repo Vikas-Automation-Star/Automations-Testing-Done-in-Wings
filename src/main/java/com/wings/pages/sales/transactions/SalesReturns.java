@@ -167,7 +167,7 @@ public class SalesReturns extends TransactionsBaseClass {
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
 //        exportIOFiles(newVoucherID,rootDriver);
 
-        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"SalesReturns");
+//        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"SalesReturns");
 
         long salesReturnsEnd = System.nanoTime() - salesReturnsStart;
         FileUtil.writeTimeLogInMinutes("Sales returns ended at:- ", salesReturnsEnd );

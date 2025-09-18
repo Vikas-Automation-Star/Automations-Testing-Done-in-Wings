@@ -1,6 +1,7 @@
 package com.wings.pages.purchase.transactions;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
@@ -14,7 +15,7 @@ public class PurchaseQuotation extends TransactionsBaseClass {
     WindowsDriver driver;
     Common common;
     String dataFile;
-    boolean discountIsClicked = false,gstAmountClicked=false,IsAmountHeaderClicked = false,otherChargesGSTCheckBox=false;
+    boolean discountIsClicked = false,gstAmountClicked=false,IsAmountHeaderClicked = false;
 
     public PurchaseQuotation(WindowsDriver driver, String file) {
         super(driver);
@@ -22,7 +23,7 @@ public class PurchaseQuotation extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String  purchaseQuotation() throws Exception {
+    public String  purchaseQuotation(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start=System.nanoTime();
         navigateToMastersWhen3Steps("Purchase","Quotations","Purchase Quotations");
         long generalInfoStart=System.nanoTime();
@@ -78,18 +79,9 @@ public class PurchaseQuotation extends TransactionsBaseClass {
         String newVoucherID =newTransactionID(oldVoucherID);
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
-        String prefix = newVoucherID.replaceAll("\\d", "");
-        String number = newVoucherID.replaceAll("\\D", "");
-        Thread.sleep(2000);
-        long quotationsEnd=System.nanoTime()-start;
-        FileUtil.writeTimeLogInMinutes("PQ End: ", quotationsEnd);
-        long iOFileStart =System.nanoTime();
-        exportIOFiles("Generate Input File",prefix,number);
-        exportIOFiles("Generate Output File",prefix,number);
-        long ioFileEnd =System.nanoTime()- iOFileStart;
-        FileUtil.writeTimeLogInMinutes("PQ IO file End: ", ioFileEnd);
+        //api
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"purchaseQuotations");
 
-//        excelUtil.excelComparator("","",newVoucherID);
         return newVoucherID;
 
     }

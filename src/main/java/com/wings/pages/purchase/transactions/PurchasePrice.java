@@ -1,6 +1,7 @@
 package com.wings.pages.purchase.transactions;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
@@ -21,7 +22,7 @@ public class PurchasePrice extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String purchasePrice() throws Exception {
+    public String purchasePrice(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
         navigateToMastersWhen3Steps("Purchase","Price", "Purchase Prices");
         Thread.sleep(1000);
@@ -56,16 +57,9 @@ public class PurchasePrice extends TransactionsBaseClass {
         Assert.assertNotEquals(newVoucherID, oldVoucherID, "Voucher Numbers are same. Check Transaction.");
         long quotationsEnd = System.nanoTime() - start;
         FileUtil.writeTimeLogInMinutes("Purchase Prices End: ", quotationsEnd);
-        String prefix = newVoucherID.replaceAll("\\d", "");
-        String number = newVoucherID.replaceAll("\\D", "");
-        Thread.sleep(2000);
-        long iOFileStart =System.nanoTime();
-        exportIOFiles("Generate Input File", prefix, number);
-        exportIOFiles("Generate Output File", prefix, number);
-        long ioFileEnd =System.nanoTime()- iOFileStart;
-        FileUtil.writeTimeLogInMinutes("Purchase Price IO End: ", ioFileEnd);
+        //API
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"purchasePrices");
 
-//        excelUtil.excelComparator("","",newVoucherID);
         return newVoucherID;
     }
 

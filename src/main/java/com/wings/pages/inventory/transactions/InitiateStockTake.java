@@ -5,7 +5,6 @@ import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
-import org.json.simple.parser.ParseException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -46,6 +45,7 @@ public class InitiateStockTake extends TransactionsBaseClass {
                 break;
             }
         }
+        enterRemarks(dataFile,"GeneralInformation","Remarks");
         long generalInfoEndTime = System.nanoTime() - generalInfoStart;
         FileUtil.writeTimeLogInMinutes("Initiate Stock Take gen info:- ", generalInfoEndTime);
 
@@ -55,6 +55,7 @@ public class InitiateStockTake extends TransactionsBaseClass {
         FileUtil.writeTimeLogInMinutes("Initiate Stock Take Add Products:- ", addProductEnd);
 
         long otherInfoTabStart = System.nanoTime();
+        navigateToOtherInfoTab();
         otherInfo();
         long otherInfoTabEnd = System.nanoTime() - otherInfoTabStart;
         FileUtil.writeTimeLogInMinutes("Initiate Stock Take Other Info:- ", otherInfoTabEnd);
@@ -83,7 +84,6 @@ public class InitiateStockTake extends TransactionsBaseClass {
     }
 
     public void otherInfo() throws InterruptedException, IOException {
-        navigateToOtherInfoTab();
         EnterData("//Edit[@Name='Reference Bill No']",dataFile,"OtherInfo","ReferenceBillNo");
         Thread.sleep(5000);
 //        common.clickElement("xpath","//Window/Button[@Name='OK']");

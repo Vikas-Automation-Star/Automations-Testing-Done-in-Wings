@@ -45,7 +45,7 @@ public class DepositPostDatedCheques extends TransactionsBaseClass {
 //        EnterData("//Edit[@Name='Bank Code']",dataFile,"GeneralInformation","BankAccountCode");
         EnterData("//Edit[@Name='Cheques Received Account *']",dataFile,"GeneralInformation","ChequesReceivedAccount");
         Thread.sleep(1500);
-        selectPendingsDPDC("SO 13","SI 3");
+        selectPendingsDPDC();
         enterExecutive(dataFile,"GeneralInformation","Executive");
         enterRemarks(dataFile,"GeneralInformation","Remarks");
         long generalInfoEndTime = System.nanoTime() - generalInfoStart;
@@ -58,7 +58,7 @@ public class DepositPostDatedCheques extends TransactionsBaseClass {
         FileUtil.writeTimeLogInMinutes("Deposit Post Dated Cheques Add Deposits:- ", addAccountsEnd);
         //other Info
         long otherInfoStart = System.nanoTime();
-//        otherInfo();
+        otherInfo();
         long otherInfoEnd = System.nanoTime() - otherInfoStart;
         FileUtil.writeTimeLogInMinutes("Deposit Post Dated Cheques OtherInfo Tab:- ", otherInfoEnd);
         //save
@@ -72,8 +72,6 @@ public class DepositPostDatedCheques extends TransactionsBaseClass {
         //API
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"DepositPostDatedCheques");
 
-
-//        excelUtil.excelComparator("","",newVoucherID);
     }
 
     public void addAccounts() throws IOException {

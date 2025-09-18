@@ -31,7 +31,7 @@ public class SalesQuotations extends TransactionsBaseClass {
         long generalInfoStart = System.nanoTime();
 //        System.out.println("Sales Quotations general Info started executed in :" + generalInfoStart);
 
-        navigateToSalesQuotationsMenu();
+        navigateToMastersWhen3Steps("Sales","Quotations","Sales Quotations");
         Thread.sleep(3000);
         String oldVoucherID =oldTTransactionID();
         enterVoucherType(dataFile,"GeneralInformation","VoucherType");
@@ -171,7 +171,7 @@ public class SalesQuotations extends TransactionsBaseClass {
             enterListDate(DeliveryDate.get(i),dataFile,"Items","DeliveryDate",i);
             enterListData(Mrp.get(i),dataFile,"Items","MRP",i);
             enterListData(UnitRate.get(i),dataFile,"Items","UnitRate",i);
-            enterListData(voucherDiscount.get(i),dataFile,"Items","voucherDiscount",i);
+            enterListData(voucherDiscount.get(i),dataFile,"Items","VoucherDiscountPercentage",i);
             enterListData(DiscountBasis1.get(i),dataFile,"Items","DiscountBasis1",i);
             enterListData(Discount1.get(i),dataFile,"Items","Discount1",i);
             enterListData(DiscountBasis2.get(i),dataFile,"Items","DiscountBasis2",i);
@@ -263,7 +263,7 @@ public class SalesQuotations extends TransactionsBaseClass {
         List<WebElement> profitCentreRowList = common.findWebElements("xpath", "//Table[@Name='OtherCharges']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Profit Centre Row ')]");
         List<WebElement> commentsRowList = common.findWebElements("xpath", "//Table[@Name='OtherCharges']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Comments Row ')]");
         for (int i = 0; i < otherCharges.size(); i++) {
-            enterListData(amountRowList.get(i), dataFile, "OtherCharges", "Amount", i);
+            enterListData(amountRowList.get(i), dataFile, "OtherCharges", "InclusiveAmount", i);
             enterListData(hsnCodeRowList.get(i), dataFile, "OtherCharges", "HSN",i);
             enterListData(GSTProductCategory.get(i), dataFile, "OtherCharges", "GSTProductCategory",i);
             enterListData(CESSProductCategory.get(i), dataFile, "OtherCharges", "CESSProductCategory",i);

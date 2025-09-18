@@ -25,7 +25,7 @@ public class CashTransfer extends TransactionsBaseClass {
 
     public String cashTransfer(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
-        navigateToCashTransfersMenu();
+        navigateToMastersWhen3Steps("Finance","Payments","Cash Transfers");
         Thread.sleep(1000);
         long generalInfoStart=System.nanoTime();
         Thread.sleep(5000);
@@ -63,7 +63,6 @@ public class CashTransfer extends TransactionsBaseClass {
         //API
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"CashTransfer");
 
-//        excelUtil.excelComparator("","",newVoucherID);
         return newVoucherID;
     }
 

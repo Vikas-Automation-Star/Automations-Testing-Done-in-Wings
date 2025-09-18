@@ -31,10 +31,10 @@ public class SalesOrders extends TransactionsBaseClass {
 
         long generalInfoStart = System.nanoTime();
         System.out.println("Sales Order general Info started in :" + generalInfoStart);
-
-        navigateToSalesOrderMenu();
+        navigateToMastersWhen3Steps("Sales","Orders","Sales Orders");
         Thread.sleep(3500);
         String oldVoucherID = oldTTransactionID();
+        System.out.println("oldID: "+ oldVoucherID);
         //gen info
         enterVoucherType(dataFile, "GeneralInformation", "VoucherType");
         EnterDate("//Edit[@Name='Date *']", dataFile, "GeneralInformation", "Date");

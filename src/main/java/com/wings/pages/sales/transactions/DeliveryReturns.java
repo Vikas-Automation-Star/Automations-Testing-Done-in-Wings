@@ -33,7 +33,7 @@ public class DeliveryReturns extends TransactionsBaseClass {
         System.out.println("delivery Returns startTime executed in :"+start);
         Thread.sleep(100);
         long generalInfoStart=System.nanoTime();
-        navigateToDeliveryReturnsMenu();
+        navigateToMastersWhen3Steps("Sales","Deliveries","Delivery Returns");
         Thread.sleep(3000);
 
         String oldVoucherID =oldTTransactionID();

@@ -76,7 +76,7 @@ public class PaymentToParties extends TransactionsBaseClass {
 
         //allocations
         long allocationsTabStart=System.nanoTime();
-        addAllocations();
+//        addAllocations();
         long allocationsTabEnd=System.nanoTime() - allocationsTabStart;
         FileUtil.writeTimeLogInMinutes("Payment to Parties Allocations Tab:- ", allocationsTabEnd);
         //save

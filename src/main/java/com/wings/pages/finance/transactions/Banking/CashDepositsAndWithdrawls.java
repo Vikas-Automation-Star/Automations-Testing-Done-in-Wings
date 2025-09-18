@@ -70,7 +70,6 @@ public class CashDepositsAndWithdrawls extends TransactionsBaseClass {
         //API
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"CashDepositAndWithdrawal");
 
-//        excelUtil.excelComparator("","",newVoucherID);
     }
 
     public void addDeposits() throws IOException {

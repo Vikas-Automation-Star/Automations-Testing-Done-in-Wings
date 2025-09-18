@@ -1,6 +1,7 @@
 package com.wings.pages.purchase.transactions;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
@@ -26,7 +27,7 @@ public class MaterialReceiptsAgainstOrder extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String materialReceiptsAgainstOrder(String voucherNum) throws Exception {
+    public String materialReceiptsAgainstOrder(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
         navigateToMastersWhen3Steps("Purchase","Receipts","Material Receipts against Orders");
         Thread.sleep(3000);
@@ -53,63 +54,51 @@ public class MaterialReceiptsAgainstOrder extends TransactionsBaseClass {
         enterExecutive(dataFile,"GeneralInformation","Executive");
         enterRemarks(dataFile,"GeneralInformation","Remarks");
         long generalInfoEndTime = System.nanoTime() - generalInfoStart;
-        FileUtil.writeTimeLogInMinutes("General information End:- ", generalInfoEndTime);
+        FileUtil.writeTimeLogInMinutes("Material Receipt Against Order General information End:- ", generalInfoEndTime);
 
         //F3-Items
         long addProductStart=System.nanoTime();
         addProduct();
         long addProductEnd=System.nanoTime()-addProductStart;
-        FileUtil.writeTimeLogInMinutes("Material Receipt Add Products:- ",addProductEnd);
+        FileUtil.writeTimeLogInMinutes("Material Receipt Against Order Add Products:- ",addProductEnd);
         //charges and deductions
         long chargesDeductionsStart =System.nanoTime();
         addChargesAndDeductions();
         long chargesDeductionsEnd=System.nanoTime()- chargesDeductionsStart;
-        FileUtil.writeTimeLogInMinutes("Material Receipt Charges and Deductions:- ",chargesDeductionsEnd);
+        FileUtil.writeTimeLogInMinutes("Material Receipt Against Order Charges and Deductions:- ",chargesDeductionsEnd);
         //other charges
         long otherChargesStart =System.nanoTime();
         addOtherCharges();
         long otherChargesEnd=System.nanoTime()- otherChargesStart;
-        FileUtil.writeTimeLogInMinutes("Material Receipt Other Charges:- ",otherChargesEnd);
+        FileUtil.writeTimeLogInMinutes("Material Receipt Against Order Other Charges:- ",otherChargesEnd);
         //Other Costs
         long otherCostsStart =System.nanoTime();
         addOtherCosts();
         long otherCostsEnd =System.nanoTime()- otherCostsStart;
-        FileUtil.writeTimeLogInMinutes("Material Receipt Other Costs:- ", otherCostsEnd);
+        FileUtil.writeTimeLogInMinutes("Material Receipt Against Order Other Costs:- ", otherCostsEnd);
         //Other info
         long otherInfoTabStart =System.nanoTime();
         otherInfo();
         long otherInfoTabEnd =System.nanoTime()- otherInfoTabStart;
-        FileUtil.writeTimeLogInMinutes("Material Receipt Other Info Tab:- ", otherInfoTabEnd);
+        FileUtil.writeTimeLogInMinutes("Material Receipt Against Order Other Info Tab:- ", otherInfoTabEnd);
         //additional Info
         long additionalInfoTabStart =System.nanoTime();
         additionalInformation();
         long additionalInfoTabEnd =System.nanoTime()- additionalInfoTabStart;
-        FileUtil.writeTimeLogInMinutes("Material Receipt Additional Info Tab:- ", additionalInfoTabEnd);
+        FileUtil.writeTimeLogInMinutes("Material Receipt Against Order Additional Info Tab:- ", additionalInfoTabEnd);
         //terms and Cond
         long termsConditionsTabStart =System.nanoTime();
         termsAndCondition();
         long termsConditionsTabEnd =System.nanoTime()- termsConditionsTabStart;
-        FileUtil.writeTimeLogInMinutes("Material Receipt Terms and Conditions Tab:- ", termsConditionsTabEnd);
+        FileUtil.writeTimeLogInMinutes("Material Receipt Against Order Terms and Conditions Tab:- ", termsConditionsTabEnd);
         //save
         transactionSave();
         String newVoucherID =newTransactionID(oldVoucherID);
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
-        //end
-        long salesInvoiceEnd = System.nanoTime() - start ;
-        FileUtil.writeTimeLogInMinutes("Material Receipt ended at:- ", salesInvoiceEnd );
-        //IO
-        String voucher = newVoucherID.replaceAll("\\d", "");
-        String number = newVoucherID.replaceAll("\\D", "");
-        Thread.sleep(2000);
-        long iofIlesStart=System.nanoTime();
-        exportIOFiles("Generate Input File", voucher,number);
-        exportIOFiles("Generate Output File", voucher,number);
-        long ioFilesEnd=System.nanoTime()-iofIlesStart;
-        FileUtil.writeTimeLogInMinutes("Material Receipt IO files ended at:- ", ioFilesEnd );
+        //API
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"materialReceiptAgainstOrder");
 
-
-//        excelUtil.excelComparator("","",newVoucherID);
         return newVoucherID;
     }
 

@@ -72,7 +72,6 @@ public class StockConversion extends TransactionsBaseClass {
         //API
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"Stock Conversion");
 
-//        excelUtil.excelComparator("","",newVoucherID);
         return newVoucherID;
     }
     public void addInputProduct() throws Exception {

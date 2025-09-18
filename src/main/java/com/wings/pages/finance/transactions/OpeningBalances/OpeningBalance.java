@@ -156,7 +156,7 @@ public class OpeningBalance extends TransactionsBaseClass {
         navigateToOtherInfoTab();
         EnterData("//Edit[@Name='Reference Bill No']",dataFile,"OtherInfo","ReferenceBillNo");
         Thread.sleep(5000);
-        common.clickElement("xpath","//Window/Button[@Name='OK']");
+//        common.clickElement("xpath","//Window/Button[@Name='OK']");
         EnterDate("//Edit[@Name='Reference Bill Date']",dataFile,"OtherInfo","ReferenceBillDate");
         EnterData("//Edit[@Name='Other Info 1']",dataFile,"OtherInfo","OtherInfo1");
         EnterData("//Edit[@Name='Other Info 2']",dataFile,"OtherInfo","OtherInfo2");

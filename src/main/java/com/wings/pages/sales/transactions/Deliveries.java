@@ -29,7 +29,7 @@ public class Deliveries extends TransactionsBaseClass {
 //        System.out.println("deliveries startTime executed in :" + start);
         Thread.sleep(100);
         long generalInfoStart = System.nanoTime();
-        navigateToDeliveriesMenu();
+        navigateToMastersWhen3Steps("Sales","Deliveries","Deliveries");
         Thread.sleep(5000);
         String oldVoucherID =oldTTransactionID();
         enterVoucherType(dataFile,"GeneralInformation","VoucherType");
@@ -301,7 +301,7 @@ public class Deliveries extends TransactionsBaseClass {
 
         for (int i = 0; i < otherCharges.size(); i++) {
             enterListData(amountRowList.get(i), dataFile, "OtherCharges", "Amount", i);
-            enterListData(hsnCodeRowList.get(i), dataFile, "OtherCharges", "HSNCode",i);
+            enterListData(hsnCodeRowList.get(i), dataFile, "OtherCharges", "HSN",i);
             enterListData(GSTProductCategory.get(i), dataFile, "OtherCharges", "GSTProductCategory",i);
             enterListData(CESSProductCategory.get(i), dataFile, "OtherCharges", "CESSProductCategory",i);
             Thread.sleep(1000);

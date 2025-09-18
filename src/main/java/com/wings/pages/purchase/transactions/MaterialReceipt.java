@@ -1,6 +1,7 @@
 package com.wings.pages.purchase.transactions;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
@@ -24,7 +25,7 @@ public class MaterialReceipt extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String materialReceipt() throws Exception {
+    public String materialReceipt(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
         navigateToMastersWhen3Steps("Purchase","Receipts", "Material Receipts");
         Thread.sleep(1000);
@@ -85,7 +86,7 @@ public class MaterialReceipt extends TransactionsBaseClass {
         FileUtil.writeTimeLogInMinutes("Material Receipt Terms and Conditions Tab:- ", termsConditionsTabEnd);
         //allocations
         long allocationsTabStart=System.nanoTime();
-        addAllocations();
+//        addAllocations();
         long allocationsTabEnd=System.nanoTime() - allocationsTabStart;
         FileUtil.writeTimeLogInMinutes("Material Receipt Allocations Tab:- ", allocationsTabEnd);
         //save
@@ -96,18 +97,9 @@ public class MaterialReceipt extends TransactionsBaseClass {
         //end
         long salesInvoiceEnd = System.nanoTime() - start ;
         FileUtil.writeTimeLogInMinutes("Material Receipt ended at:- ", salesInvoiceEnd );
-        //IO
-        String voucher = newVoucherID.replaceAll("\\d", "");
-        String number = newVoucherID.replaceAll("\\D", "");
-        Thread.sleep(2000);
-        long iofIlesStart=System.nanoTime();
-        exportIOFiles("Generate Input File", voucher,number);
-        exportIOFiles("Generate Output File", voucher,number);
-        long ioFilesEnd=System.nanoTime()-iofIlesStart;
-        FileUtil.writeTimeLogInMinutes("Material Receipt IO files ended at:- ", ioFilesEnd );
+        //API
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"materialReceipt");
 
-
-//        excelUtil.excelComparator("","",newVoucherID);
         return newVoucherID;
     }
 

@@ -1,6 +1,7 @@
 package com.wings.pages.purchase.transactions;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
@@ -23,7 +24,7 @@ public class PurchaseOrders extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String  purchaseOrders() throws InterruptedException, IOException, ParseException, AWTException {
+    public String  purchaseOrders(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
         navigateToMastersWhen3Steps("Purchase","Orders","Purchase Orders");
         long genInfoStart=System.nanoTime();
@@ -51,51 +52,65 @@ public class PurchaseOrders extends TransactionsBaseClass {
         FileUtil.writeTimeLogInMinutes("PO Add Products:- ", addProductEnd);
 
         long chargesDeductionsStart = System.nanoTime();
+        navigateToChargesAndDeductionsTab();
         addChargesAndDeductions();
         long chargesDeductionsEnd = System.nanoTime() - chargesDeductionsStart;
         FileUtil.writeTimeLogInMinutes("PO Charges And Deductions:- ", chargesDeductionsEnd);
 
         long otherChargesStart = System.nanoTime();
+        navigateToOtherChargesTab();
         addOtherCharges();
         long otherChargesEnd = System.nanoTime() - otherChargesStart;
         FileUtil.writeTimeLogInMinutes("PO Other Charges:- ", otherChargesEnd);
 
         long cashStart = System.nanoTime();
+        navigateToCashTab();
         addCash();
         long cashEnd = System.nanoTime() - cashStart;
         FileUtil.writeTimeLogInMinutes("PO Cash Tab:- ", cashEnd);
 
         long chequesStart = System.nanoTime();
+        List<WebElement> elements = common.findWebElements("xpath", "//TabItem[contains(@Name,'Cheques')]");
+        System.out.println(elements.get(0).getText());
+        elements.get(0).click();
         addCheques();
         long chequesEnd = System.nanoTime() - chequesStart;
         FileUtil.writeTimeLogInMinutes("PO Cheques Tab:- ", chequesEnd);
 
         long postDatedChequesStart = System.nanoTime();
+        common.clickElement("xpath", "//TabItem[contains(@Name,'Post Dated Cheques')]");
         addPostDatedCheques();
         long postDatedChequesEnd = System.nanoTime() - postDatedChequesStart;
         FileUtil.writeTimeLogInMinutes("PO Post Dated Cheques Tab:- ", postDatedChequesEnd);
 
         long chequesPDCStart = System.nanoTime();
+        List<WebElement> element = common.findWebElements("xpath", "//TabItem[contains(@Name,'Cheques')]");
+        System.out.println(element.get(2).getText());
+        element.get(2).click();
         addChequesPDC();
         long chequesPDCEnd = System.nanoTime() - chequesPDCStart;
         FileUtil.writeTimeLogInMinutes("PO Cheques PDC Tab:- ", chequesPDCEnd);
 
         long otherInfoTabStart = System.nanoTime();
+        navigateToOtherInfoTab();
         otherInfo();
         long otherInfoTabEnd = System.nanoTime() - otherInfoTabStart;
         FileUtil.writeTimeLogInMinutes("PO Other Info:- ", otherInfoTabEnd);
         //additional Info
         long additionalInfoTabStart = System.nanoTime();
+        common.clickElement("xpath", "//TabItem[contains(@Name,'Additional Information  ')]");
         additionalInformation();
         long additionalInfoTabEnd = System.nanoTime() - additionalInfoTabStart;
         FileUtil.writeTimeLogInMinutes("PO Additional Information:- ", additionalInfoTabEnd);
         //terms and conditions
         long termsConditionsTabStart = System.nanoTime();
+        common.clickElement("xpath", "//TabItem[contains(@Name,'Terms And Conditions')]");
         termsAndCondition();
         long termsConditionsTabEnd = System.nanoTime() - termsConditionsTabStart;
         FileUtil.writeTimeLogInMinutes("PO Terms And Conditions:- ", termsConditionsTabEnd);
 
         long allocationsTabStart = System.nanoTime();
+        common.clickElement("xpath", "//TabItem[contains(@Name,'Allocations')]");
         addAllocations();
         long allocationsTabEnd = System.nanoTime() - allocationsTabStart;
         FileUtil.writeTimeLogInMinutes("PO Enter Allocations:- ", allocationsTabEnd);
@@ -107,16 +122,9 @@ public class PurchaseOrders extends TransactionsBaseClass {
         //end
         long purchaseOrderEnd = System.nanoTime() - start;
         FileUtil.writeTimeLogInMinutes("Purchase Order ended at:- ", purchaseOrderEnd);
-        //IO
-        String voucherString = newVoucherID.replaceAll("\\d", "");
-        String number = newVoucherID.replaceAll("\\D", "");
-        Thread.sleep(2000);
-        long iOFileStart =System.nanoTime();
-        exportIOFiles("Generate Input File",voucherString,number);
-        exportIOFiles("Generate Output File",voucherString,number);
-        long ioFileEnd =System.nanoTime()- iOFileStart;
-        FileUtil.writeTimeLogInMinutes("PO IO End: ", ioFileEnd);
-//        excelUtil.excelComparator("","",newVoucherID);
+        //API
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"purchaseOrders");
+
         return newVoucherID;
     }
 
@@ -223,7 +231,6 @@ public class PurchaseOrders extends TransactionsBaseClass {
     }
 
     public void addChargesAndDeductions() throws IOException {
-        navigateToChargesAndDeductionsTab();
         List<String> chargesAndDeductions = readExcelData(dataFile, "ChargesAndDeductions", "ChargesOrDeductions");
 //        System.out.println("productCodes :"+chargesAndDeductions.size());
         for (int i = 0; i < chargesAndDeductions.size(); i++) {
@@ -255,7 +262,6 @@ public class PurchaseOrders extends TransactionsBaseClass {
     }
 
     public void addOtherCharges() throws IOException, InterruptedException {
-        navigateToOtherChargesTab();
         List<String> otherCharges = readExcelData(dataFile, "OtherCharges", "AccountCode");
         for (int i = 0; i < otherCharges.size(); i++) {
             addData("xpath", "//Edit[@Name='Account Code Row " + i + ", Not sorted.']", dataFile, "OtherCharges", "AccountCode", i);
@@ -275,7 +281,7 @@ public class PurchaseOrders extends TransactionsBaseClass {
         List<WebElement> profitCentreRowList = common.findWebElements("xpath", "//Table[@Name='OtherCharges']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Profit Centre Row ')]");
         List<WebElement> commentsRowList = common.findWebElements("xpath", "//Table[@Name='OtherCharges']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Comments Row ')]");
         for (int i = 0; i < otherCharges.size(); i++) {
-            enterListData(amountRowList.get(i), dataFile, "OtherCharges", "Amount", i);
+            enterListData(amountRowList.get(i), dataFile, "OtherCharges", "InclusiveAmount", i);
             enterListData(hsnCodeRowList.get(i), dataFile, "OtherCharges", "HSN", i);
             enterListData(GSTProductCategory.get(i), dataFile, "OtherCharges", "GSTProductCategory", i);
             enterListData(CESSProductCategory.get(i), dataFile, "OtherCharges", "CESSProductCategory", i);
@@ -290,7 +296,6 @@ public class PurchaseOrders extends TransactionsBaseClass {
     }
 
     public void addCash() throws IOException {
-        navigateToCashTab();
         List<String> cashTab = readExcelData(dataFile, "Cash", "CashAccountCode");
         for (int i = 0; i < cashTab.size(); i++) {
             addData("xpath", "//Edit[@Name='Cash Account Code Row " + i + ", Not sorted.']", dataFile, "Cash", "CashAccountCode", i);
@@ -312,9 +317,6 @@ public class PurchaseOrders extends TransactionsBaseClass {
     }
 
     public void addCheques() throws IOException {
-        List<WebElement> elements = common.findWebElements("xpath", "//TabItem[contains(@Name,'Cheques')]");
-        System.out.println(elements.get(0).getText());
-        elements.get(0).click();
         List<String> chequesTab = readExcelData(dataFile, "Cheques", "BankAccountCode");
         for (int i = 0; i < chequesTab.size(); i++) {
             addData("xpath", "//Edit[@Name='Bank Account Code Row " + i + ", Not sorted.']", dataFile, "Cheques", "BankAccountCode", i);
@@ -344,7 +346,6 @@ public class PurchaseOrders extends TransactionsBaseClass {
     }
 
     public void addPostDatedCheques() throws IOException {
-        common.clickElement("xpath", "//TabItem[contains(@Name,'Post Dated Cheques')]");
         List<String> postDatedCheques = readExcelData(dataFile, "PostDatedCheques", "BankAccountCode");
         for (int i = 0; i < postDatedCheques.size(); i++) {
             addData("xpath", "//Edit[@Name='Bank Account Code Row "+i+", Not sorted.']", dataFile, "PostDatedCheques", "BankAccountCode", i);
@@ -372,9 +373,6 @@ public class PurchaseOrders extends TransactionsBaseClass {
     }
 
     public void addChequesPDC() throws IOException {
-        List<WebElement> elements = common.findWebElements("xpath", "//TabItem[contains(@Name,'Cheques')]");
-        System.out.println(elements.get(2).getText());
-        elements.get(2).click();
         List<String> chequesPDC = readExcelData(dataFile, "PDC", "BankAccountCode");
         for (int i = 0; i < chequesPDC.size(); i++) {
             addData("xpath", "//Edit[@Name='Bank Account Code Row " + i + ", Not sorted.']", dataFile, "PDC", "BankAccountCode", i);
@@ -401,7 +399,6 @@ public class PurchaseOrders extends TransactionsBaseClass {
     }
 
     public void otherInfo() throws InterruptedException, IOException {
-        navigateToOtherInfoTab();
         EnterData("//Edit[@Name='Reference Bill No']", dataFile, "OtherInfo", "ReferenceBillNo");
         Thread.sleep(5000);
         common.clickElement("xpath", "//Button[@Name='OK']");
@@ -414,7 +411,6 @@ public class PurchaseOrders extends TransactionsBaseClass {
     }
 
     public void additionalInformation() throws IOException {
-        common.clickElement("xpath", "//TabItem[contains(@Name,'Additional Information  ')]");
         EnterData("//Edit[@Name='Info 1']", dataFile, "AdditionalInformation", "Info1");
         EnterData("//Edit[@Name='Info 2']", dataFile, "AdditionalInformation", "Info2");
         EnterData("//Edit[@Name='Info 3']", dataFile, "AdditionalInformation", "Info3");
@@ -434,7 +430,6 @@ public class PurchaseOrders extends TransactionsBaseClass {
     }
 
     public void termsAndCondition() throws IOException {
-        common.clickElement("xpath", "//TabItem[contains(@Name,'Terms And Conditions')]");
         List<String> termsAndConditions = readExcelData(dataFile, "TermsAndConditions", "TermType");
         for (int i = 0; i < termsAndConditions.size(); i++) {
             addData("xpath", "//Edit[@Name='Term Type * Row " + i + ", Not sorted.']", dataFile, "TermsAndConditions", "TermType", i);
@@ -448,7 +443,6 @@ public class PurchaseOrders extends TransactionsBaseClass {
     }
 
     public void addAllocations() throws IOException, ParseException {
-        common.clickElement("xpath", "//TabItem[contains(@Name,'Allocations')]");
         EnterData("//Edit[@Name='Department']", dataFile, "Allocations", "Department");
         EnterData("//Edit[@Name='Project']", dataFile, "Allocations", "Project");
         EnterData("//Edit[@Name='Profit Centre']", dataFile, "Allocations", "ProfitCentre");

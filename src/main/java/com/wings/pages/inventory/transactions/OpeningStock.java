@@ -51,11 +51,13 @@ public class OpeningStock extends TransactionsBaseClass {
         FileUtil.writeTimeLogInMinutes("Opening Stock Add Products:- ", addProductEnd);
 
         long otherInfoTabStart = System.nanoTime();
+        navigateToOtherInfoTab();
         otherInfo();
         long otherInfoTabEnd = System.nanoTime() - otherInfoTabStart;
         FileUtil.writeTimeLogInMinutes("Opening Stock Other Info:- ", otherInfoTabEnd);
 
         long allocationsTabStart = System.nanoTime();
+        common.clickElement("xpath", "//TabItem[contains(@Name,'Allocations')]");
         addAllocations();
         long allocationsTabEnd = System.nanoTime() - allocationsTabStart;
         FileUtil.writeTimeLogInMinutes("Opening Stock Allocations:- ", allocationsTabEnd);
@@ -120,25 +122,23 @@ public class OpeningStock extends TransactionsBaseClass {
     }
 
 
-public void otherInfo() throws InterruptedException, IOException {
-    navigateToOtherInfoTab();
-    EnterData("//Edit[@Name='Reference Bill No']",dataFile,"OtherInfo","ReferenceBillNo");
-    Thread.sleep(5000);
+    public void otherInfo() throws InterruptedException, IOException {
+        EnterData("//Edit[@Name='Reference Bill No']",dataFile,"OtherInfo","ReferenceBillNo");
+        Thread.sleep(5000);
 //    common.clickElement("xpath","//Window/Button[@Name='OK']");
-    EnterDate("//Edit[@Name='Reference Bill Date']",dataFile,"OtherInfo","ReferenceBillDate");
-    EnterData("//Edit[@Name='Other Info 1']",dataFile,"OtherInfo","OtherInfo1");
-    EnterData("//Edit[@Name='Other Info 2']",dataFile,"OtherInfo","OtherInfo2");
-    EnterData("//Edit[@Name='Other Info 3']",dataFile,"OtherInfo","OtherInfo3");
-    EnterData("//Edit[@Name='Other Info 4']",dataFile,"OtherInfo","OtherInfo4");
-    EnterData("//Edit[@Name='Other Info 5']",dataFile,"OtherInfo","OtherInfo5");
-}
+        EnterDate("//Edit[@Name='Reference Bill Date']",dataFile,"OtherInfo","ReferenceBillDate");
+        EnterData("//Edit[@Name='Other Info 1']",dataFile,"OtherInfo","OtherInfo1");
+        EnterData("//Edit[@Name='Other Info 2']",dataFile,"OtherInfo","OtherInfo2");
+        EnterData("//Edit[@Name='Other Info 3']",dataFile,"OtherInfo","OtherInfo3");
+        EnterData("//Edit[@Name='Other Info 4']",dataFile,"OtherInfo","OtherInfo4");
+        EnterData("//Edit[@Name='Other Info 5']",dataFile,"OtherInfo","OtherInfo5");
+    }
 
-public void addAllocations() {
-    common.clickElement("xpath", "//TabItem[contains(@Name,'Allocations')]");
-    EnterData( "//Edit[@Name='Department']", dataFile, "Allocations", "Department");
-    EnterData( "//Edit[@Name='Project']", dataFile, "Allocations", "Project");
-    EnterData("//Edit[@Name='Profit Centre']", dataFile, "Allocations", "ProfitCentre");
-    EnterData( "//Edit[@Name='Cost Centre']", dataFile, "Allocations", "CostCentre");
-}
+    public void addAllocations() {
+        EnterData( "//Edit[@Name='Department']", dataFile, "Allocations", "Department");
+        EnterData( "//Edit[@Name='Project']", dataFile, "Allocations", "Project");
+        EnterData("//Edit[@Name='Profit Centre']", dataFile, "Allocations", "ProfitCentre");
+        EnterData( "//Edit[@Name='Cost Centre']", dataFile, "Allocations", "CostCentre");
+    }
 
 }

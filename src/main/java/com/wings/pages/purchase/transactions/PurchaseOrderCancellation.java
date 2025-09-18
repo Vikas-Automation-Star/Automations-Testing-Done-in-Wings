@@ -1,6 +1,7 @@
 package com.wings.pages.purchase.transactions;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
@@ -25,7 +26,7 @@ public class PurchaseOrderCancellation extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String purchaseOrderCancellation(String voucherNum) throws InterruptedException, IOException, ParseException, AWTException {
+    public String purchaseOrderCancellation(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start=System.nanoTime();
         navigateToMastersWhen3Steps("Purchase","Orders","Purchase Orders Cancellation");
         long generalInfoStart=System.nanoTime();
@@ -48,6 +49,7 @@ public class PurchaseOrderCancellation extends TransactionsBaseClass {
         Robot robot=new Robot();
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
+        enterCreditPeriod(dataFile,"GeneralInformation","CreditPeriod");
         enterExecutive(dataFile, "GeneralInformation", "Executive");
         enterRemarks(dataFile, "GeneralInformation", "Remarks");
 
@@ -81,16 +83,9 @@ public class PurchaseOrderCancellation extends TransactionsBaseClass {
         //end
         long salesInvoiceEnd = System.nanoTime() - start;
         FileUtil.writeTimeLogInMinutes("POC ended at:- ", salesInvoiceEnd );
-        //IO
-        String prefix = newVoucherID.replaceAll("\\d", "");
-        String number = newVoucherID.replaceAll("\\D", "");
-        Thread.sleep(2000);
-        long iofilesStart=System.nanoTime();
-        exportIOFiles("Generate Input File",prefix,number);
-        exportIOFiles("Generate Output File",prefix,number);
-        long ioFilesEnd=System.nanoTime()-iofilesStart;
-        FileUtil.writeTimeLogInMinutes("POC IO files ended at:- ", ioFilesEnd );
-//        excelUtil.excelComparator("","",newVoucherID);
+        //api
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"purchaseOrderCancellation");
+
         return newVoucherID;
     }
 

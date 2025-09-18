@@ -29,7 +29,7 @@ public class SalesQuotationCancellaton extends TransactionsBaseClass {
         long quotationCancellationStart = System.nanoTime();
 //        System.out.println("sales quotation Cancellation startTime executed in :"+start);
         long generalInfoStart = System.nanoTime();
-        navigateToSalesQuotationsCancellationMenu();
+        navigateToMastersWhen3Steps("Sales","Quotations","Sales Quotations Cancellations");
         Thread.sleep(100);
         String oldVoucherID = oldTTransactionID();
         System.out.println("oldID: " + oldVoucherID);

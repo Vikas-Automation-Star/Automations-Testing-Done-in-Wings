@@ -31,7 +31,7 @@ public class SalesOrderCancellation extends TransactionsBaseClass {
         Thread.sleep(100);
         long generalInfoStart = System.nanoTime();
         System.out.println("Sales Order cancellation general Info started in :" + generalInfoStart);
-        navigateToSalesOrderCancellaltionMenu();
+        navigateToMastersWhen3Steps("Sales","Orders","Sales Orders Cancellation");
         Thread.sleep(4000);
         String oldVoucherID =oldTTransactionID();
         System.out.println("oldID: "+ oldVoucherID);
