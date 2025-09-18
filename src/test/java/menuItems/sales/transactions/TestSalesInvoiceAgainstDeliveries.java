@@ -25,7 +25,7 @@ public class TestSalesInvoiceAgainstDeliveries {
     private static final String OUTPUT_FILE_SALES_INVOICE_AGAINST_DELIVERIES="./src/main/resources/menuItems/Sales/Transactions/480462 - Sales Invoices against Deliveries-AC_SIAD_4_Output.xls";
 
     String dataFile1="./src/main/resources/menuItems/Sales/Transactions/476979 - Deliveries-AC.xls";
-    String dataFile2 ="./src/main/resources/menuItems/Sales/Transactions/480462 - Sales Invoices against Deliveries-AC.xls";
+    String dataFile2 ="./src/main/resources/menuItems/Sales/Transactions/480462 - Sales Invoices against Deliveries-AC_SIAD_4.xls";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {

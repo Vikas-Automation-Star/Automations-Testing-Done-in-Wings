@@ -17,7 +17,6 @@ public class TestInitiateStockTake {
     private static final String API_RESPONSE_INITIATE_STOCK_TAKE="./output/api_responses/initiateStockTake.json";
     private static final String OUTPUT_FILE="./src/main/resources/menuItems/inventory/transactions/450889 - Initiate Stock Take-AC_IST_1_Output.xls";
 
-
     String file = "./src/main/resources/menuItems/inventory/transactions/450889 - Initiate Stock Take-AC_IST_1.xls";
 
     @BeforeTest

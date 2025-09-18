@@ -34,5 +34,4 @@ public class TestStockCreation {
     public void afterTest() throws IOException {
         appLogin.logout();
     }
-
 }

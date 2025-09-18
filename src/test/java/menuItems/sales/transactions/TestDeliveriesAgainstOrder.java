@@ -32,11 +32,12 @@ public class TestDeliveriesAgainstOrder {
     }
 
     @Test
-    public void deliveriesAgainstOrders() throws Exception, AWTException {
+    public void deliveriesAgainstOrders() throws Exception {
         SalesOrders salesOrders=new SalesOrders(driver,dataFile1);
         String salesOrderVoucher=salesOrders.salesOrder(TEMP_API_SALES_ORDER,API_RESPONSE_SALES_ORDER,OUTPUT_FILE_SALES_ORDER);
         appLogin.logout();
         driver = appLogin.login();
+
         DeliveriesAgainstOrdersTransaction deliveriesAgainstOrdersTransaction=new DeliveriesAgainstOrdersTransaction(driver,dataFile2);
         String deliveriesAgainstOrdersVoucher=
                 deliveriesAgainstOrdersTransaction.deliveriesAgainstOrders

@@ -17,7 +17,6 @@ public class TestInterLocationTransfers {
     private static final String API_RESPONSE_INTER_LOCATION_TRANSFER ="./output/api_responses/interLocationTransfer.json";
     private static final String OUTPUT_FILE="./src/main/resources/menuItems/inventory/transactions/473073 - Inter Location Transfers-AC_ILT_1_Output.xls";
 
-
     String file = "./src/main/resources/menuItems/inventory/transactions/473073 - Inter Location Transfers-AC_ILT_1.xls";
 
     @BeforeTest
