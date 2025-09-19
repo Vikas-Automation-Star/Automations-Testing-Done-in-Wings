@@ -24,7 +24,6 @@ public class TestSalesOrdersAgainstQuotations {
     private static final String API_RESPONSE_SALES_QUOTATIONS_AGAINST_ENQUIRIES="./output/api_responses/salesQuotationsAgainstEnquiries.json";
     private static final String OUTPUT_FILE2="./src/main/resources/menuItems/Sales/Transactions/460567 - Sales Quotations against Enquiries-AC_Output.xlsx";
 
-
     private static final String TEMP_API_SALES_ORDER_AGAINST_QUOTATION="./output/temp_api_request_bodies/salesOrderAgainstQuotation.json";
     private static final String API_RESPONSE_SALES_ORDER_AGAINST_QUOTATION="./output/api_responses/salesOrderAgainstQuotation.json";
     private static final String OUTPUT_FILE_SALES_ORDER_AGAINST_QUOTATION="./src/main/resources/menuItems/Sales/Transactions/477396 - Sales Orders against Quotations-AC_Output.xls";

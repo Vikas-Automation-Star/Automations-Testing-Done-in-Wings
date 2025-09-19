@@ -254,11 +254,11 @@ public class SalesInvoiceAgainstOrders extends TransactionsBaseClass {
                 List<WebElement> editfields=common.findWebElements("xpath","//Table[@Name='Serial Numbers List']/*[@Name='Data Panel']/*[contains(@Name,'Row')]/*[contains(@Name,'Select row')]");
                 System.out.println("Serial number edit fields :"+editfields.size());
                 editfields.get(0).click();
-//                editfields.get(1).click();
+                editfields.get(1).click();
                 Thread.sleep(2000);
-//                List<WebElement> freeQuantityMultiBatch =common.findWebElements("xpath","//Table[@Name='Selected Serial Numbers']/*[@Name='Data Panel']/*[contains(@Name,'Row')]/*[contains(@Name,'FreeQuantity row ')]");
-//                System.out.println("free  Size :"+ freeQuantityMultiBatch.size());
-//                freeQuantityMultiBatch.get(1).click();
+                List<WebElement> freeQuantityMultiBatch =common.findWebElements("xpath","//Table[@Name='Selected Serial Numbers']/*[@Name='Data Panel']/*[contains(@Name,'Row')]/*[contains(@Name,'FreeQuantity row ')]");
+                System.out.println("free  Size :"+ freeQuantityMultiBatch.size());
+                freeQuantityMultiBatch.get(1).click();
                 common.clickElement("xpath", "//Button[@Name='OK']");
                 common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 350, 0);
             }else {
@@ -587,7 +587,7 @@ public class SalesInvoiceAgainstOrders extends TransactionsBaseClass {
         EnterDate("//Edit[@Name='Date 3']",dataFile,"AdditionalInformation","Date3");
         common.clickElement("xpath","//CheckBox[@Name='Bool 1']");
         common.clickElement("xpath","//CheckBox[@Name='Bool 2']");
-//        common.clickElement("xpath","//CheckBox[@Name='Bool 3']");
+        common.clickElement("xpath","//CheckBox[@Name='Bool 3']");
     }
 
     public void shippingAddress(){

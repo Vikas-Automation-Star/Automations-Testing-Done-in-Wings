@@ -56,7 +56,7 @@ public class CashDepositsAndWithdrawls extends TransactionsBaseClass {
         FileUtil.writeTimeLogInMinutes("Cash Deposits and Withdrawals OtherInfo Tab:- ", otherInfoEnd);
         //allocations
         long allocationsTabStart=System.nanoTime();
-        addAllocations();
+//        addAllocations();
         long allocationsTabEnd=System.nanoTime() - allocationsTabStart;
         FileUtil.writeTimeLogInMinutes("Cash Deposits and Withdrawals Allocations Tab:- ", allocationsTabEnd);
         //save

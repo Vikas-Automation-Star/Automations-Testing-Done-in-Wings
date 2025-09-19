@@ -583,7 +583,7 @@ public class SalesInvoiceAgainstDeliveries extends TransactionsBaseClass {
         EnterDate("//Edit[@Name='Date 3']",dataFile,"AdditionalInformation","Date3");
         common.clickElement("xpath","//CheckBox[@Name='Bool 1']");
         common.clickElement("xpath","//CheckBox[@Name='Bool 2']");
-//        common.clickElement("xpath","//CheckBox[@Name='Bool 3']");
+        common.clickElement("xpath","//CheckBox[@Name='Bool 3']");
     }
 
     public void shippingAddress(){

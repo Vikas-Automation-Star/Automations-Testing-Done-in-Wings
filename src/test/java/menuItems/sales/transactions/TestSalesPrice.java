@@ -32,6 +32,6 @@ public class TestSalesPrice {
 
     @AfterTest
     public void afterTest() throws IOException {
-//        login.logout();
+        login.logout();
     }
 }

@@ -23,7 +23,7 @@ public class DepositPostDatedCheques extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public void postDatedChques(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
+    public void postDatedChques(String voucherNumber,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
         navigateToMastersWhen3Steps("Finance","Banking","Deposit Post Dated Cheques");
         Thread.sleep(1000);
@@ -34,18 +34,10 @@ public class DepositPostDatedCheques extends TransactionsBaseClass {
         EnterDate("//Edit[@Name='Date *']",dataFile,"GeneralInformation","Date");
         enterBranch(dataFile,"GeneralInformation","Branch");
         enterCurrency(dataFile,"GeneralInformation","TransactionCurrency");
-        List<WebElement> elementList = common.findWebElements("xpath","//Edit[@Name='Bank Code']");
-        for (WebElement i : elementList) {
-//            i.click();
-            i.sendKeys(Keys.CONTROL + "a");
-            i.sendKeys(Keys.BACK_SPACE);
-            i.sendKeys("AT_Bank Acc 1", Keys.TAB);
-            break;
-        }
-//        EnterData("//Edit[@Name='Bank Code']",dataFile,"GeneralInformation","BankAccountCode");
+        EnterData("//Edit[@Name='Bank Code']",dataFile,"GeneralInformation","BankAccountCode");
         EnterData("//Edit[@Name='Cheques Received Account *']",dataFile,"GeneralInformation","ChequesReceivedAccount");
         Thread.sleep(1500);
-        selectPendingsDPDC();
+        selectPendingsSalesOrder(voucherNumber, "20250401");
         enterExecutive(dataFile,"GeneralInformation","Executive");
         enterRemarks(dataFile,"GeneralInformation","Remarks");
         long generalInfoEndTime = System.nanoTime() - generalInfoStart;
