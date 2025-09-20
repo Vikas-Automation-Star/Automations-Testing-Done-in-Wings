@@ -35,7 +35,7 @@ public class TestCreditCardReceipt {
     }
 
     @Test
-    public void receiptFromParty() throws Exception {
+    public void creditCardReceipts() throws Exception {
 //        SalesInvoice invoice = new SalesInvoice(driver, dataFile);
 //        String salesInvoice =invoice.salesInvoice(TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_SALES_INVOICES,OUTPUT_FILE);
 //
@@ -48,6 +48,6 @@ public class TestCreditCardReceipt {
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 }

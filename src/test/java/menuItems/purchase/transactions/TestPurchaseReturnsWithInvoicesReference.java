@@ -16,7 +16,7 @@ public class TestPurchaseReturnsWithInvoicesReference {
     AppLogin appLogin = new AppLogin();
     private static final String TEMP_API_BODY_PURCHASE_ENQUIRY="./output/temp_api_request_bodies/purchaseEnquiries.json";
     private static final String API_RESPONSE_PURCHASE_ENQUIRY="./output/api_responses/purchaseEnquiries.json";
-    private static final String OUTPUT_FILE1="./src/main/resources/menuItems/purchase/transactions/461617 - Purchase Enquiries-AC_PE_3.xlsx";
+    private static final String OUTPUT_FILE1="./src/main/resources/menuItems/purchase/transactions/461617 - Purchase Enquiries-AC_PE_3_Output.xls";
 
     private static final String TEMP_API_BODY_PURCHASE_QUOTATIONS_AGAINST_ENQUIRY="./output/temp_api_request_bodies/purchaseQuotationsAgainstEnquiries.json";
     private static final String API_RESPONSE_PURCHASE_QUOTATIONS_AGAINST_ENQUIRY="./output/api_responses/purchaseQuotationsAgainstEnquiries.json";
@@ -35,7 +35,7 @@ public class TestPurchaseReturnsWithInvoicesReference {
     private static final String API_RESPONSE_PURCHASE_RETURNS_WITH_INVOICE_REFERENCE="./output/api_responses/PurchaseReturnsWithInvoiceReferences.json";
     private static final String OUTPUT_FILE5="./src/main/resources/menuItems/purchase/transactions/461323 - Purchase Returns with Invoice Reference-AC_PRWIF_5_Output.xlsx";
 
-    String dataFile = "./src/main/resources/menuItems/purchase/transactions/461617 - Purchase Enquiries-AC_PE_3.xlsx";
+    String dataFile = "./src/main/resources/menuItems/purchase/transactions/461617 - Purchase Enquiries-AC_PE_3.xls";
     String dataFile1 = "./src/main/resources/menuItems/purchase/transactions/461887 - Purchase Quotations against Enquiries-AC_PQAPE_1.xlsx";
     String dataFile2 = "./src/main/resources/menuItems/purchase/transactions/480465 - Purchase Orders against Quotations-AC_POAQ 1.xls";
     String dataFile3 = "./src/main/resources/menuItems/purchase/transactions/479082 - Purchase Vouchers against Orders-AC_PVAO_1.xlsx";

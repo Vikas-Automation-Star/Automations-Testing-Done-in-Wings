@@ -130,7 +130,6 @@ public class APIClient {
             System.out.println("Trying to open file: " + file.getAbsolutePath());
             if (!file.exists()) {
                 System.err.println("File does not exist at: " + file.getAbsolutePath());
-                // Optional: return or throw custom exception
             } else {
                 OptimizedJsonExcelComparator.ExcelColumnDifference(OptimizedJsonExcelComparator.diffFilePath);
             }

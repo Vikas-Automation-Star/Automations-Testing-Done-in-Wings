@@ -27,14 +27,14 @@ public class TestBookExpensesOrPayable {
     }
 
     @Test
-    public void bookIncomesOrPayable() throws Exception {
+    public void bookExpensesOrPayable() throws Exception {
         BookExpensesOrPayables expensesOrPayable = new BookExpensesOrPayables(driver, dataFile);
         expensesOrPayable.Payable(TEMP_API_BODY_BOOK_INCOMES_OR_PAYABLE,API_RESPONSE_BOOK_INCOMES_OR_PAYABLE,OUTPUT_FILE);
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 
 }

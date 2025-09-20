@@ -116,10 +116,10 @@ public class ReceiptsFromParties extends TransactionsBaseClass {
         moveToRight(2);
 //        common.clickElement("xpath","//CheckBox[@Name='Auto Adjust']");
 
-//        long allocationsTabStart=System.nanoTime();
-//        addAllocations();
-//        long allocationsTabEnd=System.nanoTime() - allocationsTabStart;
-//        FileUtil.writeTimeLogInMinutes("Allocations Tab:- ", allocationsTabEnd);
+        long allocationsTabStart=System.nanoTime();
+        addAllocations();
+        long allocationsTabEnd=System.nanoTime() - allocationsTabStart;
+        FileUtil.writeTimeLogInMinutes("Allocations Tab:- ", allocationsTabEnd);
 
 //        transactionSave();
         common.clickElement("xpath", "//Button[@Name='Save']");
@@ -128,9 +128,6 @@ public class ReceiptsFromParties extends TransactionsBaseClass {
         Thread.sleep(3000);
         common.clickElement("xpath", "//TitleBar/Button[@Name='Close']");
         Thread.sleep(1500);
-//        Robot robot=new Robot();
-//        robot.keyRelease(KeyEvent.VK_ESCAPE);
-//        robot.keyRelease(KeyEvent.VK_ESCAPE);
         common.clickElement("xpath", "//Button[@Name='OK']");
 //        WebDriverWait wait=new WebDriverWait(driver,40);
 //        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@Name='Transaction saved.']/Button[@Name='OK']"))).click();

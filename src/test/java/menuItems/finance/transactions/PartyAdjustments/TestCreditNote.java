@@ -49,6 +49,6 @@ public class TestCreditNote {
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 }

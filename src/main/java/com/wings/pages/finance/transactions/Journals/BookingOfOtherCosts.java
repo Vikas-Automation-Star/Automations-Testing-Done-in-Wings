@@ -26,7 +26,7 @@ public class BookingOfOtherCosts extends TransactionsBaseClass {
     }
 
     public void otherBookingCosts(String pendingVoucher,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
-        navigateToBookingOfOtherCosts();
+        navigateToMastersWhen3Steps("Finance","Journals","Booking Of Other Costs");
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
         Thread.sleep(1000);
@@ -61,6 +61,7 @@ public class BookingOfOtherCosts extends TransactionsBaseClass {
         FileUtil.writeTimeLogInMinutes("Other DebitsEnd Tab:- ", otherDebitsEnd);
 
         navigateToBillsReceivablesTab();
+        common.deleteInvalidRows();
 
         //Other info
         long otherInfoTabStart =System.nanoTime();
@@ -82,7 +83,6 @@ public class BookingOfOtherCosts extends TransactionsBaseClass {
 
     public void accounts() throws IOException, InterruptedException {
         common.clickElement("xpath", "//TabItem[contains(@Name,'Accounts')]");
-        List<WebElement> amountRowList = common.findWebElements("xpath", "//Table[@Name='Accounts']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Amount * Row ')]");
         List<WebElement> hsnCodeRowList = common.findWebElements("xpath", "//Table[@Name='Accounts']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'HSN Row ')]");
         List<WebElement> gstProductCategoryRowList = common.findWebElements("xpath", "//Table[@Name='Accounts']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'GST Product Category Row ')]");
         List<WebElement> cessProductCategoryRowList = common.findWebElements("xpath", "//Table[@Name='Accounts']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'CESS Product Category Row ')]");
@@ -96,12 +96,10 @@ public class BookingOfOtherCosts extends TransactionsBaseClass {
         List<WebElement> billRefDate = common.findWebElements("xpath", "//Table[@Name='Accounts']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Reference Bill Date Row ')]");
         List<WebElement> commentsRowList = common.findWebElements("xpath", "//Table[@Name='Accounts']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Comments Row ')]");
         common.sliderHandling("xpath", "//Table[@Name='Accounts']/*/Thumb[@Name='Position']", -1000, 0);
-        for (int i = 0; i < amountRowList.size(); i++) {
-            enterListData(amountRowList.get(i), dataFile, "Accounts", "InclusiveAmount", i);
+        for (int i = 0; i < hsnCodeRowList.size(); i++) {
             enterListData(hsnCodeRowList.get(i), dataFile, "Accounts", "HSN", i);
             enterListData(gstProductCategoryRowList.get(i), dataFile, "Accounts", "GSTProductCategory", i);
             enterListData(cessProductCategoryRowList.get(i), dataFile, "Accounts", "CESSProductCategory", i);
-            common.clickElement("xpath","//CheckBox[@Name='Deduct TDS Row "+i+"']");
             enterListData(departmentRowList.get(i), dataFile, "Accounts", "Department", i);
             enterListData(projectRowList.get(i), dataFile, "Accounts", "Project", i);
             enterListData(profitCentreRowList.get(i), dataFile, "Accounts", "ProfitCentre", i);
@@ -127,7 +125,7 @@ public class BookingOfOtherCosts extends TransactionsBaseClass {
         List<WebElement> profitCentreRowList = common.findWebElements("xpath", "//Table[@Name='OtherDebits']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Profit Centre Row ')]");
         List<WebElement> commentsRowList = common.findWebElements("xpath", "//Table[@Name='OtherDebits']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Comments Row ')]");
         for (int i = 0; i < debitAcc.size() ; i++) {
-            enterListData(amountRowList.get(i), dataFile, "OtherDebits", "Amount",i);
+            enterListData(amountRowList.get(i), dataFile, "OtherDebits", "DebitAmount",i);
             enterListData(departmentRowList.get(i),dataFile,"OtherDebits","Department",i);
             enterListData(projectRowList.get(i),dataFile,"OtherDebits","Project",i);
             enterListData(profitCentreRowList.get(i),dataFile,"OtherDebits","ProfitCentre",i);
@@ -142,11 +140,11 @@ public class BookingOfOtherCosts extends TransactionsBaseClass {
         Thread.sleep(3500);
         common.clickElement("xpath","//Window/Button[@Name='OK']");
         EnterDate("//Edit[@Name='Reference Bill Date']",dataFile,"OtherInfo","ReferenceBillDate");
-        EnterData("//Edit[@Name='Other Info 1']",dataFile,"OtherInfo","OtherInfo1");
-        EnterData("//Edit[@Name='Other Info 2']",dataFile,"OtherInfo","OtherInfo2");
-        EnterData("//Edit[@Name='Other Info 3']",dataFile,"OtherInfo","OtherInfo3");
-        EnterData("//Edit[@Name='Other Info 4']",dataFile,"OtherInfo","OtherInfo4");
-        EnterData("//Edit[@Name='Other Info 5']",dataFile,"OtherInfo","OtherInfo5");
+        EnterData("//Edit[@Name='OtherInfo 1']",dataFile,"OtherInfo","OtherInfo1");
+        EnterData("//Edit[@Name='OtherInfo 2']",dataFile,"OtherInfo","OtherInfo2");
+        EnterData("//Edit[@Name='OtherInfo 3']",dataFile,"OtherInfo","OtherInfo3");
+        EnterData("//Edit[@Name='OtherInfo 4']",dataFile,"OtherInfo","OtherInfo4");
+        EnterData("//Edit[@Name='OtherInfo 5']",dataFile,"OtherInfo","OtherInfo5");
     }
 
     public void addAllocations() {

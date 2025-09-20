@@ -34,7 +34,7 @@ public class TestReceiptsFromCreditCardCompanies {
     }
 
     @Test
-    public void receiptFromParty() throws Exception, AWTException {
+    public void receiptsFromCreditCardCompanies() throws Exception, AWTException {
 //        SalesInvoice invoice = new SalesInvoice(driver, dataFile);
 //        String salesInvoice =invoice.salesInvoice(TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_SALES_INVOICES,OUTPUT_FILE);
 //
@@ -47,7 +47,7 @@ public class TestReceiptsFromCreditCardCompanies {
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 
 }

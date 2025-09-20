@@ -35,20 +35,20 @@ public class TestBookingOfOtherCosts {
     }
 
     @Test
-    public void receiptFromParty() throws Exception {
-//        PurchaseVoucher po = new PurchaseVoucher(driver, file);
-//        String purchaseVoucher=po.purchaseVoucher(TEMP_API_BODY_PURCHASE_VOUCHERS,API_RESPONSE_PURCHASE_VOUCHERS,OUTPUT_FILE);
+    public void bookingOfOtherCosts() throws Exception {
+        PurchaseVoucher po = new PurchaseVoucher(driver, file);
+        String purchaseVoucher=po.purchaseVoucher(TEMP_API_BODY_PURCHASE_VOUCHERS,API_RESPONSE_PURCHASE_VOUCHERS,OUTPUT_FILE);
 
-//        appLogin.logout();
-//        driver= appLogin.login();
+        appLogin.logout();
+        driver= appLogin.login();
 
         BookingOfOtherCosts bookingOfOtherCosts=new BookingOfOtherCosts(driver,dataFile);
-        bookingOfOtherCosts.otherBookingCosts("PV 12",TEMP_API_BODY_BOOKING_OF_OTHER_COSTS,API_RESPONSE_BOOKING_OF_OTHER_COSTS,OUTPUT_FILE);
+        bookingOfOtherCosts.otherBookingCosts(purchaseVoucher,TEMP_API_BODY_BOOKING_OF_OTHER_COSTS,API_RESPONSE_BOOKING_OF_OTHER_COSTS,OUTPUT_FILE1);
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 
 }

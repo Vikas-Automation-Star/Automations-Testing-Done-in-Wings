@@ -26,8 +26,9 @@ public class AssignStandardRates extends TransactionsBaseClass {
     }
 
     public void assignStandardRates(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
-        common.clickElement("name", "Production");
-        common.clickElement("name", "Assign Standard Rates");
+        navigateToMastersWhen2Steps("Production","Assign Standard Rates");
+//        common.clickElement("name", "Production");
+//        common.clickElement("name", "Assign Standard Rates");
         Thread.sleep(2000);
         String oldVoucherID =oldTTransactionID();
         enterVoucherType(dataFile,"GeneralInformation","VoucherType");

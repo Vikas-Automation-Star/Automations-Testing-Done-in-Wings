@@ -512,9 +512,6 @@ public  class Transaction {
         common.clickElement("name", "Finance");
         common.clickElement("name", "Journals");
         common.clickElement("xpath", "//MenuItem[@Name='Booking Of Other Costs']");
-        String pageValidation = common.findWebElement("xpath", "//Pane/Text[@Name='Booking Of Other Costs']").getText();
-        System.out.println("Screen Name:-" + pageValidation);
-        Assert.assertEquals(pageValidation, "Booking Of Other Costs");
     }
 
     public void navigateToJournalEntriesMenu() {
@@ -684,7 +681,7 @@ public  class Transaction {
     //transaction related methods
     public void transactionSave() throws InterruptedException {
         common.clickElement("xpath", "//Button[@Name='Save']");
-        Thread.sleep(2000);
+        Thread.sleep(3000);
         common.clickElement("xpath", "//Button[@Name='Yes']");
         WebDriverWait wait=new WebDriverWait(driver,40);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@Name='Transaction saved.']/Button[@Name='OK']"))).click();

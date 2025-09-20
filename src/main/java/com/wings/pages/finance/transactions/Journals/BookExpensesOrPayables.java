@@ -80,7 +80,6 @@ public class BookExpensesOrPayables extends TransactionsBaseClass {
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"BookIncomesOrReceivable");
 
-
     }
 
 

@@ -17,7 +17,7 @@ public class TestPurchaseEnquiriesCancellation {
 
     private static final String TEMP_API_BODY_PURCHASE_ENQUIRY="./output/temp_api_request_bodies/purchaseEnquiries.json";
     private static final String API_RESPONSE_PURCHASE_ENQUIRY="./output/api_responses/purchaseEnquiries.json";
-    private static final String OUTPUT_FILE1="./src/main/resources/menuItems/purchase/transactions/461617 - Purchase Enquiries-AC_PE_3.xlsx";
+    private static final String OUTPUT_FILE1="./src/main/resources/menuItems/purchase/transactions/461617 - Purchase Enquiries-AC_PE_3_Output.xls";
 
 
     private static final String TEMP_API_BODY_PURCHASE_ENQUIRY_CANCELLATIONS="./output/temp_api_request_bodies/purchaseEnquiriesCancellations.json";
@@ -25,7 +25,7 @@ public class TestPurchaseEnquiriesCancellation {
     private static final String OUTPUT_FILE2="./src/main/resources/menuItems/purchase/transactions/461400 - Purchase Enquiries Cancellation-AC_PEC_1_Output.xlsx";
 
 
-    String dataFile = "./src/main/resources/menuItems/purchase/transactions/461617 - Purchase Enquiries-AC_PE_3.xlsx";
+    String dataFile = "./src/main/resources/menuItems/purchase/transactions/461617 - Purchase Enquiries-AC_PE_3.xls";
     String dataFile1 = "./src/main/resources/menuItems/purchase/transactions/461400 - Purchase Enquiries Cancellation-AC_PEC_1.xlsx";
 
     @BeforeTest

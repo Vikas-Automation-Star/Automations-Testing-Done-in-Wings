@@ -24,10 +24,11 @@ public class ProductOrders extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public void productOrders(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
-        common.clickElement("name", "Production");
-        common.clickElement("name", "Standard");
-        common.clickElement("name", "Production Orders");
+    public String productOrders(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
+        navigateToMastersWhen3Steps("Production","Standard","Production Orders");
+//        common.clickElement("name", "Production");
+//        common.clickElement("name", "Standard");
+//        common.clickElement("name", "Production Orders");
         Thread.sleep(3000);
         String oldVoucherID =oldTTransactionID();
 
@@ -54,7 +55,8 @@ public class ProductOrders extends TransactionsBaseClass {
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"ProductionOrder");
-
+//        deleteRecentTransaction();
+        return newVoucherID;
     }
     public void inputs() throws IOException {
 //        List<String> productCode=readExcelData(dataFile,"Inputs","ProductCode");
@@ -63,7 +65,6 @@ public class ProductOrders extends TransactionsBaseClass {
 //            addData("xpath","//Edit[@Name='Product Code Row "+i+", Not sorted.']",dataFile,"Inputs","ProductCode",i);
 //        }
         List<WebElement> ProductCode = common.findWebElements("xpath", "//Table[@Name='Inputs']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Product Code Row ')]");
-        System.out.println("pls size :"+ProductCode.size());
         List<WebElement> uom = common.findWebElements("xpath", "//Table[@Name='Inputs']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'UOM * Row ')]");
         List<WebElement> quantity = common.findWebElements("xpath", "//Table[@Name='Inputs']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Quantity * Row ')]");
         List<WebElement> Comments = common.findWebElements("xpath", "//Table[@Name='Inputs']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Comments Row ')]");
@@ -72,7 +73,7 @@ public class ProductOrders extends TransactionsBaseClass {
         List<WebElement> ProfitCentre = common.findWebElements("xpath", "//Table[@Name='Inputs']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Profit Centre Row ')]");
         List<WebElement> CostCentre = common.findWebElements("xpath", "//Table[@Name='Inputs']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Cost Centre Row ')]");
         for (int i = 0; i < ProductCode.size()-1; i++) {
-            enterListData(ProductCode.get(i),dataFile,"Inputs","UOM",i);
+            enterListData(ProductCode.get(i),dataFile,"Inputs","ProductCode",i);
             enterListData(uom.get(i),dataFile,"Inputs","UOM",i);
             enterListData(quantity.get(i),dataFile,"Inputs","Quantity",i);
             enterListData(Comments.get(i),dataFile,"Inputs","Comments",i);
