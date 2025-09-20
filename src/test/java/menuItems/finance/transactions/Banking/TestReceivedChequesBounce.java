@@ -26,7 +26,7 @@ public class TestReceivedChequesBounce {
     @Test
     public void chequesBounce() throws Exception {
         ReceivedChequesBounce chequesBounce = new ReceivedChequesBounce(driver, dataFile);
-        chequesBounce.receivedCheckBounce("CBI 1",TEMP_API_RECEIVED_CHEQUES_BOUNCE,API_RESPONSE_RECEIVED_CHEQUES_BOUNCE,OUTPUT_FILE_RECEIVED_CHEQUES_BOUNCE);
+        chequesBounce.receivedCheckBounce("CBI 3",TEMP_API_RECEIVED_CHEQUES_BOUNCE,API_RESPONSE_RECEIVED_CHEQUES_BOUNCE,OUTPUT_FILE_RECEIVED_CHEQUES_BOUNCE);
     }
 
     @AfterTest

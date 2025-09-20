@@ -85,7 +85,7 @@ public class ReceivedChequesBounce extends TransactionsBaseClass {
     }
 
     public void adjustAmountInPayablesAndReceivables(String dataFile, String desiredVoucher) {
-        List<WebElement> towardsVoucherNum = common.findWebElements("xpath", "//Table[@Name='BillsPayable']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Towards VNo * Row')]");
+        List<WebElement> towardsVoucherNum = common.findWebElements("xpath", "//Table[@Name='BillsPayable']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Voucherentity No * Row ')]");
         System.out.println("Towards vouchers Size :" + towardsVoucherNum.size());
         boolean voucherFound = false;
         for (int i = 0; i < towardsVoucherNum.size(); i++) {

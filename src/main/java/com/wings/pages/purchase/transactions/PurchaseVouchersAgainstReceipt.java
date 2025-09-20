@@ -53,8 +53,8 @@ public class PurchaseVouchersAgainstReceipt extends TransactionsBaseClass {
         enterTcsTransNature(dataFile,"GeneralInformation","TCSTransactionNature");
         common.clickElement("xpath","//CheckBox[@Name='Deduct TDS']");
         enterTdsTransNature(dataFile,"GeneralInformation","TDSTransactionNature");
-//        common.findWebElement("xpath","//Edit[@Name='Supplier Bill No *']").sendKeys("PVAR12");
-        enterSupplierBillNumber(dataFile,"GeneralInformation","SupplierBillNo");
+        common.findWebElement("xpath","//Edit[@Name='Supplier Bill No *']").sendKeys("PVAR12"+common.getRandom());
+//        enterSupplierBillNumber(dataFile,"GeneralInformation","SupplierBillNo");
         EnterDate("//Edit[@Name='Supplier Bill Date *']",dataFile,"GeneralInformation","SupplierBillDate");
         enterPriceList(dataFile, "GeneralInformation", "PriceList");
         enterVoucherDiscount(dataFile,"GeneralInformation","VoucherDiscountPercentage");
