@@ -668,15 +668,15 @@ public  class Transaction {
 
 
     public void selectPendingsRCB(String voucherNum) {
-        List<WebElement> elementList = common.findWebElements("xpath", "//Window[@Name='Cheque Details']//Table/*[@Name='Data Panel']/*/*[starts-with(@Name,'Voucher No row')]");
+        List<WebElement> elementList = common.findWebElements("xpath", "//Window[@Name='Cheque Details']//Table/*[@Name='Data Panel']/*/*[@Name='Voucher No row 1']");
         System.out.println("Size :" + elementList.size());
         for (WebElement i : elementList) {
             System.out.println(i.getText());
-            if (i.getText().equals(voucherNum)) {
+//            if (i.getText().equals(voucherNum)) {
                 i.click();
                 i.sendKeys(Keys.LEFT, Keys.SPACE, Keys.ENTER, Keys.ENTER);
                 break;
-            }
+//            }
         }
     }
 
