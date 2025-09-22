@@ -44,7 +44,7 @@ public class PurchaseOrders extends TransactionsBaseClass {
         enterExecutive(dataFile, "GeneralInformation", "Executive");
         enterRemarks(dataFile, "GeneralInformation", "Remarks");
         long duration1 = System.nanoTime() - genInfoStart;
-        FileUtil.writeTimeLog("PO General information end:- ", duration1);
+        FileUtil.writeTimeLogInMinutes("PO General information end:- ", duration1);
 
         long addProductStart = System.nanoTime();
         addProduct();

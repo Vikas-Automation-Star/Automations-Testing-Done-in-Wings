@@ -78,6 +78,9 @@ public class IssuedChequesBounce extends TransactionsBaseClass {
         //api
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"issuedChequesBounce");
 
+        long issuedChequesBounceEnd = System.nanoTime() - start;
+        FileUtil.writeTimeLogInMinutes("Issued Cheques Bounce End:- ", issuedChequesBounceEnd );
+
         return newVoucherID;
 
     }

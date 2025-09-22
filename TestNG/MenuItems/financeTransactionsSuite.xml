@@ -98,45 +98,51 @@
         </classes>
     </test>
 
+    <test name="CBI 1" description="Banking - Issued Cheques Bounce" testID="16">
+        <classes>
+            <class name="menuItems.finance.transactions.Banking.TestIssuedChequesBounce"/>
+        </classes>
+    </test>
+
     <!-- Party Adjustments !-->
 
-    <test name="AB 1" description="Party Adjustments- Adjust Party Bills" testID="16">
+    <test name="AB 1" description="Party Adjustments- Adjust Party Bills" testID="17">
         <classes>
             <class name="menuItems.finance.transactions.PartyAdjustments.TestAdjustPartyBills"/>
         </classes>
     </test>
 
-    <test name="DN 1" description="Party Adjustments- Debit Note" testID="17">
+    <test name="DN 1" description="Party Adjustments- Debit Note" testID="18">
         <classes>
             <class name="menuItems.finance.transactions.PartyAdjustments.TestDebitNote"/>
         </classes>
     </test>
 
-    <test name="CN 1" description="Party Adjustments- Credit Note" testID="18">
+    <test name="CN 1" description="Party Adjustments- Credit Note" testID="19">
         <classes>
             <class name="menuItems.finance.transactions.PartyAdjustments.TestCreditNote"/>
         </classes>
     </test>
 
-    <test name="DNOC 1" description="Party Adjustments- Debit Note on Customers" testID="19">
+    <test name="DNOC 1" description="Party Adjustments- Debit Note on Customers" testID="20">
         <classes>
             <class name="menuItems.finance.transactions.PartyAdjustments.TestDebitNoteOnCustomers"/>
         </classes>
     </test>
 
-    <test name="CNOC 1" description="Party Adjustments- Credit Note on Customer" testID="20">
+    <test name="CNOC 1" description="Party Adjustments- Credit Note on Customer" testID="21">
         <classes>
             <class name="menuItems.finance.transactions.PartyAdjustments.TestCreditNoteOnCustomer"/>
         </classes>
     </test>
 
-    <test name="CNFS 1" description="Party Adjustments- Credit Note from Suppliers" testID="21">
+    <test name="CNFS 1" description="Party Adjustments- Credit Note from Suppliers" testID="22">
         <classes>
             <class name="menuItems.finance.transactions.PartyAdjustments.TestCreditNoteFromSupplier"/>
         </classes>
     </test>
 
-    <test name="DNFS 1" description="Party Adjustments- Debit Note from Suppliers" testID="22">
+    <test name="DNFS 1" description="Party Adjustments- Debit Note from Suppliers" testID="23">
         <classes>
             <class name="menuItems.finance.transactions.PartyAdjustments.TestDebitNoteFromSuppliers"/>
         </classes>
@@ -144,43 +150,43 @@
 
     <!-- Journals !-->
 
-    <test name="JE 1"  description="journal Entries" testID="23">
+    <test name="JE 1"  description="journal Entries" testID="24">
         <classes>
             <class name="menuItems.finance.transactions.Journals.TestJournalEntries"/>
         </classes>
     </test>
 
-    <test name="BIR 1" description= "ournals - Book Income or Receivables" testID="24">
+    <test name="BIR 1" description= "ournals - Book Income or Receivables" testID="25">
         <classes>
             <class name="menuItems.finance.transactions.Journals.TestBookIncomeOrReceivables"/>
         </classes>
     </test>
 
-    <test name="BEP 1" description= "Journals - Book Expenses or Payable" testID="25">
+    <test name="BEP 1" description= "Journals - Book Expenses or Payable" testID="26">
         <classes>
             <class name="menuItems.finance.transactions.Journals.TestBookExpensesOrPayable"/>
         </classes>
     </test>
 
-    <test name="BOC 1" description="Journals - Booking Of Other Costs" testID="26">
+    <test name="BOC 1" description="Journals - Booking Of Other Costs" testID="27">
         <classes>
             <class name="menuItems.finance.transactions.Journals.TestBookingOfOtherCosts"/>
         </classes>
     </test>
     <!-- Opening Balances !-->
-    <test name="POB 1" description="Opening Balances - Party Opening Balances" testID="27">
+    <test name="POB 1" description="Opening Balances - Party Opening Balances" testID="28">
         <classes>
             <class name="menuItems.finance.transactions.OpeningBalances.TestPartyOpeningBalances"/>
         </classes>
     </test>
 
-    <test name="OB 1" description="Opening Balances -  Opening Balances" testID="28">
+    <test name="OB 1" description="Opening Balances -  Opening Balances" testID="29">
         <classes>
             <class name="menuItems.finance.transactions.OpeningBalances.TestOpeningBalances"/>
         </classes>
     </test>
 
-    <test name="ORCCC 1" description="Opening Balances -  Opening Receipts from Credit Card Companies" testID="29">
+    <test name="ORCCC 1" description="Opening Balances -  Opening Receipts from Credit Card Companies" testID="30">
         <classes>
             <class name="menuItems.finance.transactions.OpeningBalances.TestOpeningReceiptsFromCreditCardCompanies"/>
         </classes>

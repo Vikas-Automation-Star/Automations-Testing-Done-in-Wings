@@ -121,6 +121,8 @@ public class PurchaseReturns extends TransactionsBaseClass {
         //API
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"purchaseReturns");
 
+        long PurchaseReturnsEnd = System.nanoTime() - start;
+        FileUtil.writeTimeLogInMinutes("Purchase Returns end:- ", PurchaseReturnsEnd);
         return newVoucherID;
     }
 

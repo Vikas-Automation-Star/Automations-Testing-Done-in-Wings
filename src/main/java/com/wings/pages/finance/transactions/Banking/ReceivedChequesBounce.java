@@ -80,6 +80,10 @@ public class ReceivedChequesBounce extends TransactionsBaseClass {
         //api
         APIClient.validateAPIWithExcel(newVoucherID, tempAPIBodyUpdate, apiResponse, outputFile, "receivedChequesBounce");
 
+
+        long receivedChequesBounceEnd = System.nanoTime() - start;
+        FileUtil.writeTimeLogInMinutes("Received Cheques Bounce End:- ", receivedChequesBounceEnd);
+
         return newVoucherID;
 
     }
