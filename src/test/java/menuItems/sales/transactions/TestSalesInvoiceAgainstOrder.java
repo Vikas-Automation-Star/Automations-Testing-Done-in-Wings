@@ -39,10 +39,8 @@ public class TestSalesInvoiceAgainstOrder {
     public void salesInvoiceAgainstOrders() throws Exception, AWTException {
         SalesOrders salesOrders=new SalesOrders(driver,dataFile1);
         String salesOrderVoucher=salesOrders.salesOrder(TEMP_API_SALES_ORDER,API_RESPONSE_SALES_ORDER,OUTPUT_FILE_SALES_ORDER);
-
         login.logout();
         driver=login.login();
-
         SalesInvoiceAgainstOrders invoiceAgainstOrders=new SalesInvoiceAgainstOrders(driver,dataFile);
         invoiceAgainstOrders.invoiceAgainstOrders(salesOrderVoucher,TEMP_API_SALES_INVOICE_AGAINST_ORDER,API_RESPONSE_SALES_INVOICE_AGAINST_ORDER,OUTPUT_FILE_SALES_INVOICE_AGAINST_ORDER);
     }

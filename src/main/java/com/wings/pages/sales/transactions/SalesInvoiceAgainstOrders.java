@@ -6,6 +6,7 @@ import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import java.awt.*;
@@ -256,9 +257,12 @@ public class SalesInvoiceAgainstOrders extends TransactionsBaseClass {
                 editfields.get(0).click();
                 editfields.get(1).click();
                 Thread.sleep(2000);
-                List<WebElement> freeQuantityMultiBatch =common.findWebElements("xpath","//Table[@Name='Selected Serial Numbers']/*[@Name='Data Panel']/*[contains(@Name,'Row')]/*[contains(@Name,'FreeQuantity row ')]");
-                System.out.println("free  Size :"+ freeQuantityMultiBatch.size());
-                freeQuantityMultiBatch.get(1).click();
+                WebElement freeQty=common.findWebElement("xpath","//Window[@Name='Serial Number Details']/*/Text[@Name='Free Quantity :']/following-sibling::Edit");
+                freeQty.click();
+                freeQty.sendKeys(Keys.HOME, Keys.SHIFT, Keys.END, Keys.BACK_SPACE);
+                Thread.sleep(1000);
+                freeQty.sendKeys("1");
+                freeQty.sendKeys(Keys.ENTER);
                 common.clickElement("xpath", "//Button[@Name='OK']");
                 common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 350, 0);
             }else {
