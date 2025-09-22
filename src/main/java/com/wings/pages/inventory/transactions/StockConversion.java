@@ -5,7 +5,6 @@ import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
-import org.json.simple.parser.ParseException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -41,7 +40,7 @@ public class StockConversion extends TransactionsBaseClass {
         enterExecutive(dataFile,"GeneralInformation","Executive");
         enterRemarks(dataFile,"GeneralInformation","Remarks");
         long generalInfoEndTime = System.nanoTime() - generalInfoStart;
-        FileUtil.writeTimeLogInMinutes("Stock Conversion:- ", generalInfoEndTime);
+        FileUtil.writeTimeLogInMinutes("Stock Conversion Gen Info:- ", generalInfoEndTime);
 
         long addProductStart = System.nanoTime();
         addInputProduct();
@@ -71,6 +70,9 @@ public class StockConversion extends TransactionsBaseClass {
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         //API
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"Stock Conversion");
+
+        long stockConversionEnd = System.nanoTime() - start;
+        FileUtil.writeTimeLogInMinutes("Stock Conversion End:- ", stockConversionEnd);
 
         return newVoucherID;
     }

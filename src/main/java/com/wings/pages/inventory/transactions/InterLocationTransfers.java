@@ -22,6 +22,7 @@ public class InterLocationTransfers extends TransactionsBaseClass {
     }
 
     public String locationTransfer(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
+        long start=System.nanoTime();
         navigateToMastersWhen2Steps("Inventory","Inter Location Transfers");
         long generalInfoStart = System.nanoTime();
         Thread.sleep(5000);
@@ -36,7 +37,7 @@ public class InterLocationTransfers extends TransactionsBaseClass {
         enterExecutive(dataFile,"GeneralInformation","Executive");
         enterRemarks(dataFile,"GeneralInformation","Remarks");
         long generalInfoEndTime = System.nanoTime() - generalInfoStart;
-        FileUtil.writeTimeLogInMinutes("Inter Location Transfers:- ", generalInfoEndTime);
+        FileUtil.writeTimeLogInMinutes("Inter Location Transfers Gen Info:- ", generalInfoEndTime);
 
         long addProductStart = System.nanoTime();
         addProduct();
@@ -62,6 +63,9 @@ public class InterLocationTransfers extends TransactionsBaseClass {
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         //API
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"InterLocationTransfer");
+
+        long interLocationTransferEnd = System.nanoTime() - start;
+        FileUtil.writeTimeLogInMinutes("InterLocation Transfer End:- ", interLocationTransferEnd);
 
         return newVoucherID;
     }

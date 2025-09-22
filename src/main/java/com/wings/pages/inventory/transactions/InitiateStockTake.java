@@ -66,7 +66,6 @@ public class InitiateStockTake extends TransactionsBaseClass {
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         //end
-
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"InitiateStockTake");
 
         long initiateStockTake = System.nanoTime() - start;

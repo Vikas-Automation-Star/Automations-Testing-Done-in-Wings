@@ -5,7 +5,6 @@ import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
-import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import java.io.IOException;
@@ -68,6 +67,9 @@ public class StockConsumption extends TransactionsBaseClass {
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         //api
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"Stock Consumption");
+
+        long stockConsumptionEnd = System.nanoTime() - start;
+        FileUtil.writeTimeLogInMinutes("Stock Consumption End:- ", stockConsumptionEnd);
 
         return newVoucherID;
     }

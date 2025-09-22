@@ -5,10 +5,9 @@ import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
-import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import java.awt.*;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -55,6 +54,9 @@ public class PhysicalStockTake extends TransactionsBaseClass {
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         //api
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"physicalStockTake");
+
+        long physicalStockTakeEnd = System.nanoTime() - start;
+        FileUtil.writeTimeLogInMinutes("Physical Stock Take Ended at:- ", physicalStockTakeEnd);
 
         return newVoucherID;
     }

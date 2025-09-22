@@ -5,12 +5,10 @@ import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
-import org.json.simple.parser.ParseException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
-import java.awt.*;
 import java.io.IOException;
 
 public class StockCreation extends TransactionsBaseClass {
@@ -42,7 +40,7 @@ public class StockCreation extends TransactionsBaseClass {
         enterExecutive(dataFile,"GeneralInformation","Executive");
         enterRemarks(dataFile,"GeneralInformation","Remarks");
         long generalInfoEndTime = System.nanoTime() - generalInfoStart;
-        FileUtil.writeTimeLogInMinutes("Stock Creation:- ", generalInfoEndTime);
+        FileUtil.writeTimeLogInMinutes("Stock Creation Gen Info:- ", generalInfoEndTime);
 
         long addProductStart = System.nanoTime();
         addProduct();
@@ -67,7 +65,9 @@ public class StockCreation extends TransactionsBaseClass {
         //api
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"stockCreation");
 
-//        excelUtil.excelComparator("","",newVoucherID);
+        long stockCreationEnd = System.nanoTime() - start;
+        FileUtil.writeTimeLogInMinutes("Stock Creation End:- ", stockCreationEnd);
+
         return newVoucherID;
     }
     public void addProduct() throws Exception {
