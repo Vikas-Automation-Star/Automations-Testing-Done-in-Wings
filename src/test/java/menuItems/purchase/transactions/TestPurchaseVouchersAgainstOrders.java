@@ -48,26 +48,26 @@ public class TestPurchaseVouchersAgainstOrders {
 
     @Test
     public void purchaseVouchersAgainstOrders() throws Exception {
-//        PurchaseEnquiries purchaseEnquiries = new PurchaseEnquiries(driver, dataFile);
-//        String pe=purchaseEnquiries.purchaseEnquires(TEMP_API_BODY_PURCHASE_ENQUIRY,API_RESPONSE_PURCHASE_ENQUIRY,OUTPUT_FILE1);
-//
-//        appLogin.logout();
-//        driver= appLogin.login();
-//
-//        PurchaseQuotationsAgainstEnquiries quotationsAgainstEnquiries = new PurchaseQuotationsAgainstEnquiries(driver, dataFile1);
-//        String PQAE =quotationsAgainstEnquiries.purchaseQuotationsAgainstEnquiry(pe,TEMP_API_BODY_PURCHASE_QUOTATIONS_AGAINST_ENQUIRY,API_RESPONSE_PURCHASE_QUOTATIONS_AGAINST_ENQUIRY,OUTPUT_FILE2);
-//
-//        appLogin.logout();
-//        driver= appLogin.login();
-//
-//        PurchaseOrdersAgainstQuotation POAQ = new PurchaseOrdersAgainstQuotation(driver, dataFile2);
-//        String poaq= POAQ.purchaseOrdersAgainstQuotation(PQAE,TEMP_API_BODY_PURCHASE_ORDERS_AGAINST_QUOTATIONS,API_RESPONSE_PURCHASE_ORDERS_AGAINST_QUOTATIONS,OUTPUT_FILE3);
-//
-//        appLogin.logout();
-//        driver= appLogin.login();
+        PurchaseEnquiries purchaseEnquiries = new PurchaseEnquiries(driver, dataFile);
+        String pe=purchaseEnquiries.purchaseEnquires(TEMP_API_BODY_PURCHASE_ENQUIRY,API_RESPONSE_PURCHASE_ENQUIRY,OUTPUT_FILE1);
+
+        appLogin.logout();
+        driver= appLogin.login();
+
+        PurchaseQuotationsAgainstEnquiries quotationsAgainstEnquiries = new PurchaseQuotationsAgainstEnquiries(driver, dataFile1);
+        String PQAE =quotationsAgainstEnquiries.purchaseQuotationsAgainstEnquiry(pe,TEMP_API_BODY_PURCHASE_QUOTATIONS_AGAINST_ENQUIRY,API_RESPONSE_PURCHASE_QUOTATIONS_AGAINST_ENQUIRY,OUTPUT_FILE2);
+
+        appLogin.logout();
+        driver= appLogin.login();
+
+        PurchaseOrdersAgainstQuotation POAQ = new PurchaseOrdersAgainstQuotation(driver, dataFile2);
+        String poaq= POAQ.purchaseOrdersAgainstQuotation(PQAE,TEMP_API_BODY_PURCHASE_ORDERS_AGAINST_QUOTATIONS,API_RESPONSE_PURCHASE_ORDERS_AGAINST_QUOTATIONS,OUTPUT_FILE3);
+
+        appLogin.logout();
+        driver= appLogin.login();
 
         PurchaseVouchersAgainstOrder pvao = new PurchaseVouchersAgainstOrder(driver, dataFile3);
-        String PVAPO=pvao.purchaseVouchersAgainstOrder("POAQ 2",TEMP_API_BODY_PURCHASE_VOUCHERS_AGAINST_ORDERS,API_RESPONSE_PURCHASE_VOUCHERS_AGAINST_ORDERS,OUTPUT_FILE4);
+        String PVAPO=pvao.purchaseVouchersAgainstOrder(poaq,TEMP_API_BODY_PURCHASE_VOUCHERS_AGAINST_ORDERS,API_RESPONSE_PURCHASE_VOUCHERS_AGAINST_ORDERS,OUTPUT_FILE4);
 
     }
 

@@ -49,6 +49,11 @@ public class ReceiptsFromParties extends TransactionsBaseClass {
         enterCustomerEmail(dataFile,"GeneralInformation","CustomerEmail");
         enterCustomerMobileNum(dataFile,"GeneralInformation","CustomerMobileNumber");
         EnterData("//Edit[@Name='Discount Account']", dataFile,"GeneralInformation", "DiscountAccount");
+        common.clickElement("xpath", "//Edit[@Name='Invoice Type']");
+        Thread.sleep(1000);
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_DOWN);
+        robot.keyRelease(KeyEvent.VK_DOWN);
         enterExecutive(dataFile,"GeneralInformation","Executive");
         enterRemarks(dataFile,"GeneralInformation","Remarks");
 

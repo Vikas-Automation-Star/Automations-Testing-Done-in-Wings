@@ -60,15 +60,6 @@ public class SalesReturns extends TransactionsBaseClass {
         Thread.sleep(3000);
         gstTransactionType("Intra State Sales Returns from Registered Dealers");
         Thread.sleep(1000);
-//        common.clickElement("xpath", "//Edit[@Name='Invoice Type']");
-//        Thread.sleep(1000);
-//        Robot robot = new Robot();
-//        robot.keyPress(KeyEvent.VK_DOWN);
-//        robot.keyRelease(KeyEvent.VK_DOWN);
-//        robot.keyPress(KeyEvent.VK_DOWN);
-//        robot.keyRelease(KeyEvent.VK_DOWN);
-//        robot.keyPress(KeyEvent.VK_ENTER);
-//        robot.keyRelease(KeyEvent.VK_ENTER);
         enterCreditPeriod(dataFile,"GeneralInformation","CreditPeriod");
         enterSalesReturnAccCode(dataFile,"GeneralInformation","SalesReturnsAccountCode");
         enterTcsTransNature(dataFile, "GeneralInformation", "TCSTransactionNature");

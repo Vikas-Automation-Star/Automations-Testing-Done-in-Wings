@@ -260,56 +260,58 @@ public class OptimizedJsonExcelComparator {
         jsonOnlySheet.autoSizeColumn(1);
 
         // Excel-only tables: (a) workbook sheets not present in Tables sheet; (b) mapped lookups with no JSON table
-        Sheet excelOnlySheet = diffWorkbook.createSheet("ExcelOnlyTables");
-        int excelOnlyRowIdx = 0;
-        Row excelHeader = excelOnlySheet.createRow(excelOnlyRowIdx++);
-        excelHeader.createCell(0).setCellValue("Type"); // UNMAPPED_SHEET or MAPPED_BUT_JSON_MISSING
-        excelHeader.createCell(1).setCellValue("SheetName");
-        excelHeader.createCell(2).setCellValue("VirtualName");
-        excelHeader.createCell(3).setCellValue("LookupName");
-        excelHeader.createCell(4).setCellValue("JsonTableFound");
+        /*** Sheet excelOnlySheet = diffWorkbook.createSheet("ExcelOnlyTables");
+         int excelOnlyRowIdx = 0;
+         Row excelHeader = excelOnlySheet.createRow(excelOnlyRowIdx++);
+         excelHeader.createCell(0).setCellValue("Type"); // UNMAPPED_SHEET or MAPPED_BUT_JSON_MISSING
+         excelHeader.createCell(1).setCellValue("SheetName");
+         excelHeader.createCell(2).setCellValue("VirtualName");
+         excelHeader.createCell(3).setCellValue("LookupName");
+         excelHeader.createCell(4).setCellValue("JsonTableFound");
 
-        // (a) Unmapped sheets present in workbook but not listed in Tables sheet (SheetNames column)
-        for (int i = 0; i < workbook.getNumberOfSheets(); i++) {
-            String sheetName = workbook.getSheetAt(i).getSheetName();
-            if ("Tables".equalsIgnoreCase(sheetName)) continue;
-            String normalized = normalizeName(sheetName);
-            if (!sheetNamesFromTablesNormalized.contains(normalized)) {
-                Row row = excelOnlySheet.createRow(excelOnlyRowIdx++);
-                row.createCell(0).setCellValue("UNMAPPED_SHEET");
-                row.createCell(1).setCellValue(sheetName);
-                row.createCell(2).setCellValue("");
-                row.createCell(3).setCellValue("");
-                row.createCell(4).setCellValue("N/A");
-            }
-        }
+         // (a) Unmapped sheets present in workbook but not listed in Tables sheet (SheetNames column)
+         for (int i = 0; i < workbook.getNumberOfSheets(); i++) {
+         String sheetName = workbook.getSheetAt(i).getSheetName();
+         if ("Tables".equalsIgnoreCase(sheetName)) continue;
+         String normalized = normalizeName(sheetName);
+         if (!sheetNamesFromTablesNormalized.contains(normalized)) {
+         Row row = excelOnlySheet.createRow(excelOnlyRowIdx++);
+         row.createCell(0).setCellValue("UNMAPPED_SHEET");
+         row.createCell(1).setCellValue(sheetName);
+         row.createCell(2).setCellValue("");
+         row.createCell(3).setCellValue("");
+         row.createCell(4).setCellValue("N/A");
+         }
+         }
 
-        // (b) Mappings (from Tables sheet) whose lookupName doesn't have a JSON table
-        for (String normLookup : lookupNormalizedSet) {
-            boolean jsonExists = jsonTableNamesNormalized.contains(normLookup);
-            if (!jsonExists) {
-                TableMapping tm = lookupNormalizedToMapping.get(normLookup);
-                String effectiveLookup = (tm.virtualName != null && tm.virtualName.contains("$")) ? tm.sheetName : tm.virtualName;
-                Row row = excelOnlySheet.createRow(excelOnlyRowIdx++);
-                row.createCell(0).setCellValue("MAPPED_BUT_JSON_MISSING");
-                row.createCell(1).setCellValue(tm.sheetName == null ? "" : tm.sheetName);
-                row.createCell(2).setCellValue(tm.virtualName == null ? "" : tm.virtualName);
-                row.createCell(3).setCellValue(effectiveLookup == null ? "" : effectiveLookup);
-                row.createCell(4).setCellValue("No");
-            }
-        }
+         // (b) Mappings (from Tables sheet) whose lookupName doesn't have a JSON table
+         for (String normLookup : lookupNormalizedSet) {
+         boolean jsonExists = jsonTableNamesNormalized.contains(normLookup);
+         if (!jsonExists) {
+         TableMapping tm = lookupNormalizedToMapping.get(normLookup);
+         String effectiveLookup = (tm.virtualName != null && tm.virtualName.contains("$")) ? tm.sheetName : tm.virtualName;
+         Row row = excelOnlySheet.createRow(excelOnlyRowIdx++);
+         row.createCell(0).setCellValue("MAPPED_BUT_JSON_MISSING");
+         row.createCell(1).setCellValue(tm.sheetName == null ? "" : tm.sheetName);
+         row.createCell(2).setCellValue(tm.virtualName == null ? "" : tm.virtualName);
+         row.createCell(3).setCellValue(effectiveLookup == null ? "" : effectiveLookup);
+         row.createCell(4).setCellValue("No");
+         }
+         }
 
-        excelOnlySheet.autoSizeColumn(0);
-        excelOnlySheet.autoSizeColumn(1);
-        excelOnlySheet.autoSizeColumn(2);
-        excelOnlySheet.autoSizeColumn(3);
-        excelOnlySheet.autoSizeColumn(4);
+         excelOnlySheet.autoSizeColumn(0);
+         excelOnlySheet.autoSizeColumn(1);
+         excelOnlySheet.autoSizeColumn(2);
+         excelOnlySheet.autoSizeColumn(3);
+         excelOnlySheet.autoSizeColumn(4);
+         **/
 
         // Save differences
         boolean jsonOnlyHasRows = jsonOnlySheet.getLastRowNum() > 0;
-        boolean excelOnlyHasRows = excelOnlySheet.getLastRowNum() > 0;
+        //boolean excelOnlyHasRows = excelOnlySheet.getLastRowNum() > 0;
 
-        if (hasDifferences || jsonOnlyHasRows || excelOnlyHasRows) {
+        //if (hasDifferences || jsonOnlyHasRows || excelOnlyHasRows) {
+        if (hasDifferences || jsonOnlyHasRows) {
             for (int c = 0; c <= 5; c++) diffSheet.autoSizeColumn(c);
             try (FileOutputStream fos = new FileOutputStream(diffFilePath)) {
                 diffWorkbook.write(fos);
@@ -475,6 +477,7 @@ public class OptimizedJsonExcelComparator {
         }
         return null;
     }
+
 
     public static void ExcelColumnDifference(String filePath) throws IOException {
 //        String filePath = "./Difference.xlsx";
