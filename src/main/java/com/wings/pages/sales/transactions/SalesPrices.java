@@ -56,6 +56,9 @@ public class SalesPrices extends TransactionsBaseClass {
         //api
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"salesPrice");
 
+        long salesPriceEnd = System.nanoTime() - start;
+        FileUtil.writeTimeLogInMinutes("Sales Price End:- ", salesPriceEnd);
+
         return newVoucherID;
     }
 
