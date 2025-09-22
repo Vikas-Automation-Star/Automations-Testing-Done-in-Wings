@@ -15,6 +15,7 @@ public class OptimizedJsonExcelComparator {
 
     private static Set<String> IGNORE_COLUMNS = new HashSet<>();
 
+
     private static class TableMapping {
         final String sheetName;
         final String virtualName;
