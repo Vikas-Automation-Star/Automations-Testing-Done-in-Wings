@@ -8,61 +8,61 @@
 
 <!--    <test name="Company - Department Master" description="Creating Department Master in Company" testID="1">-->
 <!--        <classes>-->
-<!--            <class name="menuItems.company.masters.DepartmentsMaster"/>-->
+<!--            <class name="menuItems.company.masters.TestDepartmentsMaster"/>-->
 <!--        </classes>-->
 <!--    </test>-->
 
 <!--    <test name="Company - Project Master" description="Creating Project Master in Company" testID="2">-->
 <!--        <classes>-->
-<!--            <class name="menuItems.company.masters.ProjectMaster"/>-->
+<!--            <class name="menuItems.company.masters.TestProjectMaster"/>-->
 <!--        </classes>-->
 <!--    </test>-->
 
 <!--    <test name="Company - Profit Centres Master" description="Creating Profit Centres Master in Company" testID="3">-->
 <!--        <classes>-->
-<!--            <class name="menuItems.company.masters.ProfitCentresMaster"/>-->
+<!--            <class name="menuItems.company.masters.TestProfitCentresMaster"/>-->
 <!--        </classes>-->
 <!--    </test>-->
 
 <!--    <test name="Company - Cost Centres Master" description="Creating Cost Centres Master in Company" testID="4">-->
 <!--        <classes>-->
-<!--            <class name="menuItems.company.masters.CostCentresMaster"/>-->
+<!--            <class name="menuItems.company.masters.TestCostCentresMaster"/>-->
 <!--        </classes>-->
 <!--    </test>-->
 
 <!--    <test name="Company - Routes Master" description="Creating Routes Master in Company" testID="5">-->
 <!--        <classes>-->
-<!--            <class name="menuItems.company.masters.RoutesMaster"/>-->
+<!--            <class name="menuItems.company.masters.TestRoutesMaster"/>-->
 <!--        </classes>-->
 <!--    </test>-->
 
 <!--    <test name="Company - Transporters Master" description="Creating Transporters Master in Company" testID="6">-->
 <!--        <classes>-->
-<!--            <class name="menuItems.company.masters.TransportersMaster"/>-->
+<!--            <class name="menuItems.company.masters.TestTransportersMaster"/>-->
 <!--        </classes>-->
 <!--    </test>-->
 
 <!--    <test name="Company - Term Types Master" description="Creating Term Types Master in Company" testID="7">-->
 <!--        <classes>-->
-<!--            <class name="menuItems.company.masters.TermTypeMaster"/>-->
+<!--            <class name="menuItems.company.masters.TestTermTypeMaster"/>-->
 <!--        </classes>-->
 <!--    </test>-->
 
 <!--    <test name="Company - Terms Master" description="Creating Terms Master in Company" testID="8">-->
 <!--        <classes>-->
-<!--            <class name="menuItems.company.masters.TermsMaster"/>-->
+<!--            <class name="menuItems.company.masters.TestTermsMaster"/>-->
 <!--        </classes>-->
 <!--    </test>-->
 
 <!--    <test name="Company - Reasons Master" description="Creating Reasons Master in Company" testID="9">-->
 <!--        <classes>-->
-<!--            <class name="menuItems.company.masters.ReasonsMaster"/>-->
+<!--            <class name="menuItems.company.masters.TestReasonsMaster"/>-->
 <!--        </classes>-->
 <!--    </test>-->
 
 <!--    <test name="Company - Executive Master" description="Creating Executive Master in Company" testID="10">-->
 <!--        <classes>-->
-<!--            <class name="menuItems.company.masters.ExecutiveMaster"/>-->
+<!--            <class name="menuItems.company.masters.TestExecutiveMaster"/>-->
 <!--        </classes>-->
 <!--    </test>-->
     <!-- Company Completed-->
@@ -71,37 +71,37 @@
 
     <test name="Sales - Customers Master" description="Creating Customer Master in Sales" testID="11">
         <classes>
-            <class name="menuItems.sales.masters.CustomerMaster"/>
+            <class name="menuItems.sales.masters.TestCustomerMaster"/>
         </classes>
     </test>
 
     <test name="Sales - Types of Customers Master" description="Creating Types of Customers Master in Sales" testID="12">
         <classes>
-            <class name="menuItems.sales.masters.TypeOfCustomerMaster"/>
+            <class name="menuItems.sales.masters.TestTypeOfCustomerMaster"/>
         </classes>
     </test>
 
     <test name="Sales - Sales Price Lists Master" description="Creating Price and Discount - Sales Price Lists Master in Sales" testID="13">
         <classes>
-            <class name="menuItems.sales.masters.SalesPriceListMaster"/>
+            <class name="menuItems.sales.masters.TestSalesPriceListMaster"/>
         </classes>
     </test>
 
     <test name="Sales - Party Discount Group Master" description="Creating Price and Discount - Party Discount Group Master in Sales" testID="14">
         <classes>
-            <class name="menuItems.sales.masters.PartyDiscountGroupMaster"/>
+            <class name="menuItems.sales.masters.TestPartyDiscountGroupMaster"/>
         </classes>
     </test>
 
     <test name="Sales - Product Discount Group Master" description="Creating Price and Discount - Product Discount Group Master in Sales" testID="15">
         <classes>
-            <class name="menuItems.sales.masters.ProductDiscountMaster"/>
+            <class name="menuItems.sales.masters.TestProductDiscountMaster"/>
         </classes>
     </test>
 
     <test name="Sales - Product Sales Target Groups Master" description="Creating Sales Target - Product Sales Target Groups Master in Sales" testID="16">
         <classes>
-            <class name="menuItems.sales.masters.SalesTargetGroupMaster"/>
+            <class name="menuItems.sales.masters.TestSalesTargetGroupMaster"/>
         </classes>
     </test>
     <!-- Sales Completed-->
@@ -110,19 +110,19 @@
 
     <test name="Purchase - Supplier Master" description="Creating Supplier Master in Purchase" testID="17">
         <classes>
-            <class name="menuItems.purchase.masters.SuppliersMaster"/>
+            <class name="menuItems.purchase.masters.TestSuppliersMaster"/>
         </classes>
     </test>
 
     <test name="Purchase - Purchase Batch Policies Master" description="Creating Purchase Batch Policies Master in Purchase" testID="18">
         <classes>
-            <class name="menuItems.purchase.masters.PurchaseBatchPoliciesMaster"/>
+            <class name="menuItems.purchase.masters.TestPurchaseBatchPoliciesMaster"/>
         </classes>
     </test>
 
     <test name="Purchase - Purchase Price List Master" description="Creating Price List - Purchase Price List Master in Purchase" testID="19">
         <classes>
-            <class name="menuItems.purchase.masters.PriceListMaster"/>
+            <class name="menuItems.purchase.masters.TestPriceListMaster"/>
         </classes>
     </test>
     <!-- Purchase Completed-->
