@@ -98,7 +98,7 @@ public class OptimizedJsonExcelComparator {
         diffHeader.createCell(5).setCellValue("Data");
 
         boolean hasDifferences = false;
-
+        boolean noDifferences=false;
         // Step 2: Loop through Excel sheets and compare using aliasMap / TableMapping logic
         for (int i = 0; i < workbook.getNumberOfSheets(); i++) {
             Sheet sheet = workbook.getSheetAt(i);
@@ -382,10 +382,7 @@ public class OptimizedJsonExcelComparator {
     private static String canonicalRowKey(Map<String, String> rowMap) {
         StringBuilder sb = new StringBuilder();
         for (Map.Entry<String, String> e : rowMap.entrySet()) {
-            sb.append(e.getKey().toLowerCase(Locale.ROOT))
-                    .append("=")
-                    .append(e.getValue())
-                    .append("||");
+            sb.append(e.getKey().toLowerCase(Locale.ROOT)).append("=").append(e.getValue()).append("||");
         }
         return sb.toString();
     }

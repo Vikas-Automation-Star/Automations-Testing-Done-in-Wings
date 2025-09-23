@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class CreditNoteFromSupplier extends TransactionsBaseClass {
     }
 
     public void creditNoteFromSupplier(String payableVoucher,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
-        navigateToCreditNoteFromSupplierMenu();
+        navigateToMastersWhen3Steps("Finance","Party Adjustments","Credit Note from Suppliers");
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
         Thread.sleep(1000);
@@ -48,6 +49,12 @@ public class CreditNoteFromSupplier extends TransactionsBaseClass {
 //        EnterDate ("//Edit[@Name='Shipping Bill Number']",dataFile,"GeneralInformation","ShippingBillDate");
         enterSuppliersBillDate(dataFile, "GeneralInformation", "SupplierBillDate");
         enterCreditPeriod(dataFile,"GeneralInformation","CreditPeriod");
+        common.clickElement ("xpath","//Edit[@Name='Reason For Issuing Document']");
+        Robot robot=new Robot();
+        robot.keyPress(KeyEvent.VK_DOWN);
+        robot.keyRelease(KeyEvent.VK_DOWN);
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
         enterExecutive(dataFile,"GeneralInformation","Executive");
         enterRemarks(dataFile,"GeneralInformation","Remarks");
 

@@ -21,8 +21,8 @@ public class TestCreditNoteFromSupplier {
     private static final String API_RESPONSE_PURCHASE_VOUCHERS="./output/api_responses/PurchaseVouchers.json";
     private static final String OUTPUT_FILE="./src/main/resources/menuItems/purchase/transactions/479081 - Purchase Vouchers-AC_PV_9_Output.xls";
 
-    private static final String TEMP_API_BODY_CREDIT_NOTE_FROM_SUPPLIER="./output/temp_api_request_bodies/creditNoteFromSupplier.json";
-    private static final String API_RESPONSE_CREDIT_NOTE_FROM_SUPPLIER="./output/api_responses/creditNoteFromSupplier.json";
+    private static final String TEMP_API_BODY_CREDIT_NOTE_FROM_SUPPLIER="./output/temp_api_request_bodies/CreditNoteFromSupplier.json";
+    private static final String API_RESPONSE_CREDIT_NOTE_FROM_SUPPLIER="./output/api_responses/CreditNoteFromSupplier.json";
     private static final String OUTPUT_FILE1="./src/main/resources/menuItems/finance/transaction/475833 - Credit Note from Suppliers-AC_CNFS_1_Output.xls";
 
     String file = "./src/main/resources/menuItems/purchase/transactions/479081 - Purchase Vouchers-AC_PV_9.xls";

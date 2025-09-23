@@ -31,7 +31,7 @@ public class BookIncomesOrReceivables extends TransactionsBaseClass {
     }
 
     public void receivables(String payableVoucher,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
-        navigateToBookIncomesOrReceivablesMenu();
+        navigateToMastersWhen3Steps("Finance","Journals","Book Incomes or Receivables");
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
         Thread.sleep(1000);

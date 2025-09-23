@@ -16,8 +16,8 @@ public class TestJournalEntries {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
 
-    private static final String TEMP_API_BODY_JOURNAL_ENTRIES="./output/temp_api_request_bodies/journalEntries.json";
-    private static final String API_RESPONSE_JOURNAL_ENTRIES="./output/api_responses/journalEntries.json";
+    private static final String TEMP_API_BODY_JOURNAL_ENTRIES="./output/temp_api_request_bodies/JournalEntries.json";
+    private static final String API_RESPONSE_JOURNAL_ENTRIES="./output/api_responses/JournalEntries.json";
     private static final String OUTPUT_FILE="./src/main/resources/menuItems/finance/transaction/464159 - Journal Entries-AC_JE_3_Output.xls";
 
     String dataFile = "./src/main/resources/menuItems/finance/transaction/464159 - Journal Entries-AC_JE_3.xls";

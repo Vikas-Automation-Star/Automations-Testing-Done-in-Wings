@@ -28,7 +28,7 @@ public class BankReceipts extends TransactionsBaseClass {
     }
 
     public void bankReceipt(String desiredVoucher,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
-        navigateToBankReceiptsMenu();
+        navigateToMastersWhen3Steps("Finance","Receipts","Bank Receipts");
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
         Thread.sleep(1000);

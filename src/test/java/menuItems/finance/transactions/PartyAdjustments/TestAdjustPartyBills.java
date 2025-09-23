@@ -25,8 +25,8 @@ public class TestAdjustPartyBills {
     private static final String API_RESPONSE_SRWIR="./output/api_responses/salesReturnsWithInvoiceReference.json";
     private static final String OUTPUT_FILE2="./src/main/resources/menuItems/Sales/Transactions/480464 - Sales Return with Invoice Reference-AC_Output.xlsx";
 
-    private static final String TEMP_API_BODY_ADJUST_PARTY_BILLS="./output/temp_api_request_bodies/adjustPartyBills.json";
-    private static final String API_RESPONSE_ADJUST_PARTY_BILLS="./output/api_responses/adjustPartyBills.json";
+    private static final String TEMP_API_BODY_ADJUST_PARTY_BILLS="./output/temp_api_request_bodies/AdjustPartyBills.json";
+    private static final String API_RESPONSE_ADJUST_PARTY_BILLS="./output/api_responses/AdjustPartyBills.json";
     private static final String OUTPUT_FILE3="./src/main/resources/menuItems/finance/transaction/458148 - Adjust Party Bills-AC_AB_2_Output.xls";
 
 

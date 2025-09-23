@@ -29,7 +29,7 @@ public class CashReceipts extends TransactionsBaseClass {
     }
 
     public void cashReceipt(String desiredVoucher,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
-        navigateToCashReceiptsMenu();
+        navigateToMastersWhen3Steps("Finance","Receipts","Cash Receipts");
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
         Thread.sleep(1000);

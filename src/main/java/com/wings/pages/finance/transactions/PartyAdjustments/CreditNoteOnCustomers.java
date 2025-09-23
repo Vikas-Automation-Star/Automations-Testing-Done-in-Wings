@@ -27,7 +27,7 @@ public class CreditNoteOnCustomers extends TransactionsBaseClass {
     }
 
     public void creditNoteOnCustomer(String receivableVouchers,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
-        navigateToCreditNoteOnCustomerMenu();
+        navigateToMastersWhen3Steps("Finance","Party Adjustments","Credit Note on Customers");
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
         Thread.sleep(1000);

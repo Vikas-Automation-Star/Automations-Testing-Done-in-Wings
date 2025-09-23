@@ -21,8 +21,8 @@ public class TestDebitNote {
     private static final String API_RESPONSE_PURCHASE_VOUCHERS="./output/api_responses/PurchaseVouchers.json";
     private static final String OUTPUT_FILE="./src/main/resources/menuItems/purchase/transactions/479081 - Purchase Vouchers-AC_PV_9_Output.xls";
 
-    private static final String TEMP_API_BODY_DEBIT_NOTE="./output/temp_api_request_bodies/debitNote.json";
-    private static final String API_RESPONSE_DEBIT_NOTE="./output/api_responses/debitNote.json";
+    private static final String TEMP_API_BODY_DEBIT_NOTE="./output/temp_api_request_bodies/DebitNote.json";
+    private static final String API_RESPONSE_DEBIT_NOTE="./output/api_responses/DebitNote.json";
     private static final String OUTPUT_FILE1="./src/main/resources/menuItems/finance/transaction/475827 - Debit Note-AC_DN_2_Output.xls";
 
     String file = "./src/main/resources/menuItems/purchase/transactions/479081 - Purchase Vouchers-AC_PV_9.xls";

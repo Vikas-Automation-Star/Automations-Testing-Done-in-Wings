@@ -24,7 +24,7 @@ public class AdjustPartyBills extends TransactionsBaseClass {
     }
 
     public void executeAdjustPartyBills(String receivablesVoucher,String payableVouchers,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
-        navigateToAdjustPartyBills();
+        navigateToMastersWhen3Steps("Finance","Party Adjustments","Adjust Party Bills");
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
         Thread.sleep(1000);

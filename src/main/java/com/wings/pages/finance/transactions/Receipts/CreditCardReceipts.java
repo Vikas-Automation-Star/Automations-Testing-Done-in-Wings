@@ -26,7 +26,7 @@ public class CreditCardReceipts extends TransactionsBaseClass {
     }
 
     public void creditCardReceipt(String desiredVoucher,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
-        navigateToCreditCardReceiptsMenu();
+        navigateToMastersWhen3Steps("Finance","Receipts","Credit Card Receipts");
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
         Thread.sleep(1000);

@@ -12,6 +12,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class DebitNoteFromSuppliers extends TransactionsBaseClass {
     }
 
     public String debitNoteFromSupplier(String voucherNumber,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
-        navigateToDebitNoteFromSupplierMenu();
+        navigateToMastersWhen3Steps("Finance","Party Adjustments","Debit Note from Suppliers");
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
         Thread.sleep(1000);
@@ -47,6 +48,12 @@ public class DebitNoteFromSuppliers extends TransactionsBaseClass {
         common.findWebElement("xpath","//Edit[@Name='Supplier Bill No *']").sendKeys("billNUm"+common.getRandom());
         enterSuppliersBillDate(dataFile, "GeneralInformation", "SupplierBillDate");
         enterCreditPeriod(dataFile,"GeneralInformation","CreditPeriod");
+        common.clickElement ("xpath","//Edit[@Name='Reason For Issuing Document']");
+        Robot robot=new Robot();
+        robot.keyPress(KeyEvent.VK_DOWN);
+        robot.keyRelease(KeyEvent.VK_DOWN);
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
         enterExecutive(dataFile,"GeneralInformation","Executive");
         enterRemarks(dataFile,"GeneralInformation","Remarks");
 

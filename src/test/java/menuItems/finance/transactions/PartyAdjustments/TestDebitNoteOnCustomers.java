@@ -28,8 +28,8 @@ public class TestDebitNoteOnCustomers {
     private static final String OUTPUT_FILE2="./src/main/resources/menuItems/Sales/Transactions/480464 - Sales Return with Invoice Reference-AC_Output.xlsx";
 
 
-    private static final String TEMP_API_DEBIT_NOTE_ON_CUSTOMERS="./output/temp_api_request_bodies/debitNoteOnCustomers.json";
-    private static final String API_RESPONSE_DEBIT_NOTE_ON_CUSTOMERS="./output/api_responses/debitNoteOnCustomers.json";
+    private static final String TEMP_API_DEBIT_NOTE_ON_CUSTOMERS="./output/temp_api_request_bodies/DebitNoteOnCustomers.json";
+    private static final String API_RESPONSE_DEBIT_NOTE_ON_CUSTOMERS="./output/api_responses/DebitNoteOnCustomers.json";
     private static final String OUTPUT_FILE3="./src/main/resources/menuItems/finance/transaction/475830 - Debit Note on Customers-AC_DNOC_1_Output.xls";
 
 

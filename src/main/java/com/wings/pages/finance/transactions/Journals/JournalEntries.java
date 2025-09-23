@@ -29,7 +29,7 @@ public class JournalEntries extends TransactionsBaseClass {
         long start = System.nanoTime();
         System.out.println("Journal Entries  started in :" + start);
 
-        navigateToJournalEntriesMenu();
+        navigateToMastersWhen3Steps("Finance","Journals","Journal Entries");
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
         Thread.sleep(1000);

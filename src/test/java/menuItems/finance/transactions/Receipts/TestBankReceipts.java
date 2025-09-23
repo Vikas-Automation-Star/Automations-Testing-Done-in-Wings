@@ -22,8 +22,8 @@ public class TestBankReceipts {
     private static final String API_RESPONSE_SALES_SALES_INVOICES="./output/api_responses/SalesInvoices.json";
     private static final String OUTPUT_FILE="./src/main/resources/menuItems/Sales/Transactions/480460 - Sales Invoices-AC_SI1_1_Output.xls";
 
-    private static final String TEMP_API_BODY_BANK_RECEIPTS="./output/temp_api_request_bodies/bankReceipts.json";
-    private static final String API_RESPONSE_BANK_RECEIPTS="./output/api_responses/bankReceipts.json";
+    private static final String TEMP_API_BODY_BANK_RECEIPTS="./output/temp_api_request_bodies/BankReceipts.json";
+    private static final String API_RESPONSE_BANK_RECEIPTS="./output/api_responses/BankReceipts.json";
     private static final String OUTPUT_FILE1="./src/main/resources/menuItems/finance/transaction/456086 - Bank Receipts-AC_BR_4_Output.xls";
 
     String dataFile = "./src/main/resources/menuItems/Sales/Transactions/480460 - Sales Invoices-AC_SI1_1.xls";

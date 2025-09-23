@@ -27,7 +27,7 @@ public class DebitNote extends TransactionsBaseClass {
     }
 
     public void debitNote(String payableVouchers,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
-        navigateToDebitNoteMenu();
+        navigateToMastersWhen3Steps("Finance","Party Adjustments","Debit Note");
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
         Thread.sleep(1000);

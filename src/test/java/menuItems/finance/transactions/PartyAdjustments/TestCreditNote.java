@@ -22,8 +22,8 @@ public class TestCreditNote {
     private static final String API_RESPONSE_SALES_SALES_INVOICES="./output/api_responses/SalesInvoices.json";
     private static final String OUTPUT_FILE="./src/main/resources/menuItems/Sales/Transactions/480460 - Sales Invoices-AC_SI1_1_Output.xls";
 
-    private static final String TEMP_API_BODY_CREDIT_NOTE="./output/temp_api_request_bodies/creditNote.json";
-    private static final String API_RESPONSE_CREDIT_NOTE="./output/api_responses/creditNote.json";
+    private static final String TEMP_API_BODY_CREDIT_NOTE="./output/temp_api_request_bodies/CreditNote.json";
+    private static final String API_RESPONSE_CREDIT_NOTE="./output/api_responses/CreditNote.json";
     private static final String OUTPUT_FILE1="./src/main/resources/menuItems/finance/transaction/477090 - Credit Note-AC_CN_2_Output.xls";
 
 

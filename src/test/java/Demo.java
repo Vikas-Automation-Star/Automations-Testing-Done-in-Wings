@@ -65,6 +65,25 @@ public class Demo {
     private static final String OUTPUT_FILE14="./src/main/resources/menuItems/finance/transaction/464159 - Journal Entries-AC_JE_3_Output.xls";
 
 
+    private static final String TEMP_API_BODY_CREDIT_NOTE_FROM_SUPPLIER="./output/temp_api_request_bodies/CreditNoteFromSupplier.json";
+    private static final String API_RESPONSE_CREDIT_NOTE_FROM_SUPPLIER="./output/api_responses/CreditNoteFromSupplier.json";
+    private static final String OUTPUT_FILE25="./src/main/resources/menuItems/finance/transaction/475833 - Credit Note from Suppliers-AC_CNFS_1_Output.xls";
+
+    private static final String TEMP_API_BODY_DEBIT_NOTE_FROM_SUPPLIER="./output/temp_api_request_bodies/DebitNoteFromSupplier.json";
+    private static final String API_RESPONSE_DEBIT_NOTE_FROM_SUPPLIER="./output/api_responses/DebitNoteFromSupplier.json";
+    private static final String OUTPUT_FILE26="./src/main/resources/menuItems/finance/transaction/460743 - Debit Note from Suppliers-AC_DNFS_1_Output.xls";
+
+    private static final String TEMP_API_BODY_BOOK_INCOMES_OR_RECEIVABLE="./output/temp_api_request_bodies/BookIncomesOrReceivable.json";
+    private static final String API_RESPONSE_BOOK_INCOMES_OR_RECEIVABLE="./output/api_responses/BookIncomesOrReceivable.json";
+    private static final String OUTPUT_FILE27="./src/main/resources/menuItems/finance/transaction/475835 - Book Incomes or Receivables-AC_BIR_1_Output.xls";
+
+    private static final String TEMP_API_BODY_BOOK_EXPENSES_OR_PAYABLE="./output/temp_api_request_bodies/BookExpensesOrPayable.json";
+    private static final String API_RESPONSE_BOOK_EXPENSES_OR_PAYABLE="./output/api_responses/BookExpensesOrPayable.json";
+    private static final String OUTPUT_FILE28="./src/main/resources/menuItems/finance/transaction/462279 - Book Expenses or Payables-AC_BEP_1_Output.xls";
+
+    private static final String TEMP_API_BODY_BOOKING_OF_OTHER_COSTS="./output/temp_api_request_bodies/BookingOfOtherCosts.json";
+    private static final String API_RESPONSE_BOOKING_OF_OTHER_COSTS="./output/api_responses/BookingOfOtherCosts.json";
+    private static final String OUTPUT_FILE29="./src/main/resources/menuItems/finance/transaction/479089 - Booking Of Other Costs-AC_BOC_2_PV_11_Output.xls";
 
     @Test
     public void salesEnquiryCancellation() throws Exception {
@@ -81,7 +100,6 @@ public class Demo {
 //        APIClient.validateAPIWithExcel("PV 18",TEMP_API_BODY_PURCHASE_VOUCHERS,API_RESPONSE_PURCHASE_VOUCHERS,OUTPUT_FILE11,"PurchaseVouchers");
 //        APIClient.validateAPIWithExcel("PVAO 18",TEMP_API_BODY_PURCHASE_VOUCHERS_AGAINST_ORDERS,API_RESPONSE_PURCHASE_VOUCHERS_AGAINST_ORDERS,OUTPUT_FILE12,"PurchaseVouchersAgainstTheOrders");
 //        APIClient.validateAPIWithExcel("PRWIR 18",TEMP_API_BODY_PURCHASE_RETURNS_WITH_INVOICE_REFERENCE,API_RESPONSE_PURCHASE_RETURNS_WITH_INVOICE_REFERENCE,OUTPUT_FILE13,"PurchaseReturnsWithInvoiceReferences");
-//        APIClient.validateAPIWithExcel("JE 6",TEMP_API_BODY_JOURNAL_ENTRIES,API_RESPONSE_JOURNAL_ENTRIES,OUTPUT_FILE14,"JournalEntries");
 
     }
 

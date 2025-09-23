@@ -19,8 +19,8 @@ public class TestCashReceipts {
     private static final String API_RESPONSE_SALES_SALES_INVOICES="./output/api_responses/SalesInvoices.json";
     private static final String OUTPUT_FILE="./src/main/resources/menuItems/Sales/Transactions/480460 - Sales Invoices-AC_SI1_1_Output.xls";
 
-    private static final String TEMP_API_BODY_CASH_RECEIPTS="./output/temp_api_request_bodies/cashReceipts.json";
-    private static final String API_RESPONSE_CASH_RECEIPTS="./output/api_responses/cashReceipts.json";
+    private static final String TEMP_API_BODY_CASH_RECEIPTS="./output/temp_api_request_bodies/CashReceipts.json";
+    private static final String API_RESPONSE_CASH_RECEIPTS="./output/api_responses/CashReceipts.json";
     private static final String OUTPUT_FILE1="./src/main/resources/menuItems/finance/transaction/458632 - Cash Receipts-AC_CR_2_Output.xls";
 
 

@@ -21,8 +21,8 @@ public class TestReceiptsFromCreditCardCompanies {
     private static final String API_RESPONSE_SALES_SALES_INVOICES="./output/api_responses/SalesInvoices.json";
     private static final String OUTPUT_FILE="./src/main/resources/menuItems/Sales/Transactions/480460 - Sales Invoices-AC_SI1_1_Output.xls";
 
-    private static final String TEMP_API_BODY_CREDIT_CARD_COMPANIES="./output/temp_api_request_bodies/creditCardReceipts.json";
-    private static final String API_RESPONSE_CREDIT_CARD_COMPANIES="./output/api_responses/creditCardReceipts.json";
+    private static final String TEMP_API_BODY_CREDIT_CARD_COMPANIES="./output/temp_api_request_bodies/ReceiptsFromCreditCardCompanies.json";
+    private static final String API_RESPONSE_CREDIT_CARD_COMPANIES="./output/api_responses/ReceiptsFromCreditCardCompanies.json";
     private static final String OUTPUT_FILE1="./src/main/resources/menuItems/finance/transaction/458629 - Receipts from Credit Card Companies-AC_RFCCC_2_Output.xls";
 
     String dataFile = "./src/main/resources/menuItems/Sales/Transactions/480460 - Sales Invoices-AC_SI1_1.xls";
@@ -34,7 +34,7 @@ public class TestReceiptsFromCreditCardCompanies {
     }
 
     @Test
-    public void receiptsFromCreditCardCompanies() throws Exception, AWTException {
+    public void receiptsFromCreditCardCompanies() throws Exception {
 //        SalesInvoice invoice = new SalesInvoice(driver, dataFile);
 //        String salesInvoice =invoice.salesInvoice(TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_SALES_INVOICES,OUTPUT_FILE);
 //
