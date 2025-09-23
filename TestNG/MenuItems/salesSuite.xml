@@ -94,7 +94,6 @@
         </classes>
     </test>
 
-
     <test name="ST 1" description="Define Sales Target Executive Wise" testID="16">
         <classes>
             <class name="menuItems.sales.transactions.TestSalesTargetExecutiveWise"/>

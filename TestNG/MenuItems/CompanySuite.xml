@@ -4,75 +4,75 @@
         <listener class-name="com.wings.utils.Listener"/>
     </listeners>
 
-    <test name="Creating BranchMaster" description="description for BranchMaster" testID="WOW 1">
+    <test name="Creating BranchMaster" description="description for BranchMaster" testID="1">
         <classes>
-            <class name="menuItems.company.masters.BranchesMaster"/>
+            <class name="menuItems.company.masters.TestBranchesMaster"/>
         </classes>
     </test>
 
-    <test name="Creating CompanyPropertiesMaster" description="description for CompanyPropertiesMaster" testID="WOW 2">
+    <test name="Creating CompanyPropertiesMaster" description="description for CompanyPropertiesMaster" testID="2">
         <classes>
-            <class name="menuItems.company.masters.CompanyPropertiesMaster"/>
+            <class name="menuItems.company.masters.TestCompanyPropertiesMaster"/>
         </classes>
     </test>
 
-    <test name="Creating DepartmentMaster" description="description for DepartmentMaster" testID="WOW 3">
+    <test name="Creating DepartmentMaster" description="description for DepartmentMaster" testID="3">
         <classes>
-            <class name="menuItems.company.masters.DepartmentsMaster"/>
+            <class name="menuItems.company.masters.TestDepartmentsMaster"/>
         </classes>
     </test>
 
-    <test name="Creating ProjectMaster" description="description for ProjectMaster" testID="WOW 4">
+    <test name="Creating ProjectMaster" description="description for ProjectMaster" testID="4">
         <classes>
-            <class name="menuItems.company.masters.ProjectMaster"/>
+            <class name="menuItems.company.masters.TestProjectMaster"/>
         </classes>
     </test>
 
-    <test name="Creating CostCentresMaster" description="description for ProjectMaster" testID="WOW 5">
+    <test name="Creating CostCentresMaster" description="description for ProjectMaster" testID="5">
         <classes>
-            <class name="menuItems.company.masters.CostCentresMaster"/>
+            <class name="menuItems.company.masters.TestCostCentresMaster"/>
         </classes>
     </test>
 
-    <test name="Creating ProfitCentresMaster" description="description for ProfitCentresMaster" testID="WOW 6">
+    <test name="Creating ProfitCentresMaster" description="description for ProfitCentresMaster" testID="6">
         <classes>
-            <class name="menuItems.company.masters.ProfitCentresMaster"/>
+            <class name="menuItems.company.masters.TestProfitCentresMaster"/>
         </classes>
     </test>
 
-    <test name="Creating RoutesMaster" description="description for RoutesMaster" testID="WOW 7">
+    <test name="Creating RoutesMaster" description="description for RoutesMaster" testID="7">
         <classes>
-            <class name="menuItems.company.masters.RoutesMaster"/>
+            <class name="menuItems.company.masters.TestRoutesMaster"/>
         </classes>
     </test>
 
-    <test name="Creating TransportersMaster" description="description for TransportersMaster" testID="WOW 8">
+    <test name="Creating TransportersMaster" description="description for TransportersMaster" testID="8">
         <classes>
-            <class name="menuItems.company.masters.TransportersMaster"/>
+            <class name="menuItems.company.masters.TestTransportersMaster"/>
         </classes>
     </test>
 
-    <test name="Creating TermTypesMaster" description="description for TermTypesMaster" testID="WOW 9">
+    <test name="Creating TermTypesMaster" description="description for TermTypesMaster" testID="9">
         <classes>
-            <class name="menuItems.company.masters.TermTypeMaster"/>
+            <class name="menuItems.company.masters.TestTermTypeMaster"/>
         </classes>
     </test>
 
-    <test name="Creating TermsMaster" description="description for TermsMaster" testID="WOW 10">
+    <test name="Creating TermsMaster" description="description for TermsMaster" testID="10">
         <classes>
-            <class name="menuItems.company.masters.TermsMaster"/>
+            <class name="menuItems.company.masters.TestTermsMaster"/>
         </classes>
     </test>
 
-    <test name="Creating ReasonsMaster" description="description for ReasonsMaster" testID="WOW 11">
+    <test name="Creating ReasonsMaster" description="description for ReasonsMaster" testID="11">
         <classes>
-            <class name="menuItems.company.masters.ReasonsMaster"/>
+            <class name="menuItems.company.masters.TestReasonsMaster"/>
         </classes>
     </test>
 
-    <test name="Creating ExecutiveMaster" description="description for ExecutiveMaster" testID="WOW 12">
+    <test name="Creating ExecutiveMaster" description="description for ExecutiveMaster" testID="12">
         <classes>
-            <class name="menuItems.company.masters.ExecutiveMaster"/>
+            <class name="menuItems.company.masters.TestExecutiveMaster"/>
         </classes>
     </test>
 

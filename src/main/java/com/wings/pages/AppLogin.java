@@ -17,42 +17,12 @@ public class AppLogin {
     Common common = new Common(driver);
     String fileData = "./src/main/resources/company_Name.json";
 
-
-    //    public WindowsDriver login() throws IOException, InterruptedException, ParseException {
-//
-//        driver = common.initializeDriver(common.getProperty("multiUserApp"));
-////        String currentWindowHandle = driver.getWindowHandle();
-////        System.out.println("Window 1 -" + currentWindowHandle);
-//
-//        driver.findElement(By.name("24DBooks_Testing")).click();
-//        Thread.sleep(20000);
-//
-//        rootDriver = common.initializeDriver("Root");
-//        WebElement login = rootDriver.findElement(By.name("Wings 24 - Web Client"));
-//
-//        String nativeWindow = login.getAttribute("NativeWindowHandle");
-//        String hexLoginId = Integer.toHexString(Integer.parseInt(nativeWindow));
-////        System.out.println("window id: " + hexLoginId);
-//        loginDriver = common.navigateToAppWindow(hexLoginId);
-//        common = new Common(loginDriver);
-//        common.inputText("xpath", "//Edit[@Name='Password']", common.getProperty("password"));
-////        System.out.println("Password TagName " + common.getTagName("name", "Password"));
-//        common.clickElement("name", "Submit");
-//        Thread.sleep(3000);
-//        rootDriver = common.initializeDriver("Root");
-//        Thread.sleep(4000);
-//        common.clickElement("xpath","//Window[contains(@Name,'Wings Finance - PRO ')]//Window[@Name='Information']//Button[@Name='OK']");
-//
-//        driver.quit();
-//        rootDriver.quit();
-//        return loginDriver;
-//    }
     public WindowsDriver login() throws IOException, InterruptedException, ParseException {
 
         driver = common.initializeDriver(common.getProperty("multiUserApp"));
 //    String currentwindowHandle = driver.getWindowHandle();
 //    System.out.println("Window 1 -" + currentwindowHandle);
-        driver.findElement(By.name(" 24D Books Automation")).click();
+        driver.findElement(By.name("24D Books Automation")).click();
         Thread.sleep(5000);
         rootDriver = common.initializeDriver("Root");
         Thread.sleep(10000);
