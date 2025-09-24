@@ -60,8 +60,6 @@ public class SalesInvoice extends TransactionsBaseClass {
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_DOWN);
         robot.keyRelease(KeyEvent.VK_DOWN);
-//        robot.keyPress(KeyEvent.VK_DOWN);
-//        robot.keyRelease(KeyEvent.VK_DOWN);
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
         enterCustomerEmail(dataFile,"GeneralInformation","CustomerEmail");
@@ -82,7 +80,6 @@ public class SalesInvoice extends TransactionsBaseClass {
 
         long generalInfoEndTime = System.nanoTime() - generalInfoStart;
         FileUtil.writeTimeLogInMinutes("Sales Invoice General information End:- ", generalInfoEndTime);
-
 
         //F3-Items
         long addProductStart=System.nanoTime();

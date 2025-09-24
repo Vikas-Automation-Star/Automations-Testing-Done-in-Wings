@@ -2303,7 +2303,7 @@ public  class Transaction {
                 EnterData("//Edit[@Name='Amount Adjusted * Row "+i+", Not sorted.']",dataFile,"BillsPayable","AmountAdjusted");
 //                common.clickElement("xpath","//Edit[@Name='Amount Adjusted * Row "+i+", Not sorted.']");
                 Thread.sleep(1500);
-                WebElement element = common.findWebElement("xpath", "//Edit[@Name=' Row 10, Not sorted.']");
+                WebElement element = common.findWebElement("xpath", "//Edit[@Name=' Row "+i+", Not sorted.']");
                 element.click();
                 Actions actions = new Actions(driver);
                 actions.contextClick(element).perform();

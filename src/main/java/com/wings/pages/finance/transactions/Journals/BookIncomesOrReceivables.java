@@ -21,7 +21,6 @@ public class BookIncomesOrReceivables extends TransactionsBaseClass {
     WindowsDriver driver;
     Common common;
     String dataFile;
-    double finalAmount = 0.0;
 
     public BookIncomesOrReceivables(WindowsDriver driver, String file) {
         super(driver);
@@ -40,6 +39,7 @@ public class BookIncomesOrReceivables extends TransactionsBaseClass {
         enterBranch(dataFile,"GeneralInformation","Branch");
         enterCurrency(dataFile,"GeneralInformation","TransactionCurrency");
         EnterData("//Edit[@Name='Account Code']", dataFile,"GeneralInformation", "AccountCode");
+        Thread.sleep(1000);
         gstTransactionType("Intra State Sales to Registered Dealers");
         enterCreditPeriod(dataFile,"GeneralInformation","CreditPeriod");
         common.clickElement("xpath", "//Edit[@Name='Invoice Type']");
@@ -176,12 +176,11 @@ public class BookIncomesOrReceivables extends TransactionsBaseClass {
                 EnterData("//Edit[@Name='Amount Adjusted * Row " + i + ", Not sorted.']", dataFile, "BillsPayable", "AmountAdjusted");
 //                common.clickElement("xpath","//Edit[@Name='Amount Adjusted * Row "+i+", Not sorted.']");
                 Thread.sleep(1500);
-                WebElement element = common.findWebElement("xpath", "//Edit[@Name=' Row 35, Not sorted.']");
+                WebElement element = common.findWebElement("xpath", "//Edit[@Name=' Row "+i+", Not sorted.']");
                 element.click();
                 Actions actions = new Actions(driver);
                 actions.contextClick(element).perform();
                 rootDriver = common.initializeDriver("Root");
-                System.out.println("root navigation done");
                 Thread.sleep(1500);
                 WebElement click = driver.findElementByXPath("//MenuItem[@Name='Delete Invalid Rows']");
                 click.click();
@@ -192,7 +191,6 @@ public class BookIncomesOrReceivables extends TransactionsBaseClass {
             } else {
                 System.out.println("Towards voucher number is not found");
             }
-//        adjustAmountInBillsPayable(dataFile,payableVoucher);
         }
     }
 

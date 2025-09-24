@@ -1,6 +1,7 @@
 package menuItems.finance.transactions.PartyAdjustments;
 
 import com.wings.pages.AppLogin;
+import com.wings.pages.finance.transactions.PartyAdjustments.AdjustPartyBills;
 import com.wings.pages.sales.transactions.SalesInvoice;
 import com.wings.pages.sales.transactions.SalesReturnWithInvoiceReference;
 import io.appium.java_client.windows.WindowsDriver;
@@ -55,7 +56,7 @@ public class TestAdjustPartyBills {
         appLogin.logout();
         driver= appLogin.login();
 
-        com.wings.pages.finance.transactions.PartyAdjustments.AdjustPartyBills partyBills = new com.wings.pages.finance.transactions.PartyAdjustments.AdjustPartyBills(driver, dataFile2);
+        AdjustPartyBills partyBills = new AdjustPartyBills(driver, dataFile2);
         partyBills.executeAdjustPartyBills(salesI,salesRwir,TEMP_API_BODY_ADJUST_PARTY_BILLS,API_RESPONSE_ADJUST_PARTY_BILLS,OUTPUT_FILE3);
     }
 

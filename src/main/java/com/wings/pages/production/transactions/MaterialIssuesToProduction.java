@@ -25,9 +25,6 @@ public class MaterialIssuesToProduction extends TransactionsBaseClass {
     }
     public void materialIssuesToProduction(String productionOrderVoucher,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         navigateToMastersWhen3Steps("Production","Standard","Material Issues to Production");
-//        common.clickElement("name", "Production");
-//        common.clickElement("name", "Standard");
-//        common.clickElement("name", "Material Issues to Production");
         Thread.sleep(2000);
         String oldVoucherID =oldTTransactionID();
 
@@ -68,7 +65,7 @@ public class MaterialIssuesToProduction extends TransactionsBaseClass {
         List<WebElement> ProfitCentre = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Profit Centre Row ')]");
         List<WebElement> CostCentre = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Cost Centre Row ')]");
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", -1000, 0);
-        for (int i = 0; i < storageBin.size()-1; i++) {
+        for (int i = 0; i < storageBin.size(); i++) {
             enterListData(uom.get(i),dataFile,"Items","UOM",i);
             enterListData(storageBin.get(i),dataFile,"Items","StorageBin",i);
             if (masterType.get(i).equals("Products")){
@@ -77,7 +74,7 @@ public class MaterialIssuesToProduction extends TransactionsBaseClass {
                 common.clickElement("xpath", "//Button[@Name='Stock Details Row "+i+"']");
                 Thread.sleep(500);
                 EnterData("//Table[@Name='Batch Details']/*[@Name='Data Panel']/*[@Name='Row 1']/*[@Name='Quantity row 1']",dataFile,"Items","Quantity",i);
-                EnterData("//Table[@Name='Batch Details']/*[@Name='Data Panel']/*[@Name='Row 1']/*[@Name='Free Qty row 1']",dataFile,"Items","FreeQuantity",i);
+//                EnterData("//Table[@Name='Batch Details']/*[@Name='Data Panel']/*[@Name='Row 1']/*[@Name='Free Qty row 1']",dataFile,"Items","FreeQuantity",i);
                 Thread.sleep(1000);
                 common.clickElement("xpath", "//Button[@Name='OK']");
             }else if (masterType.get(i).equals("Products - Batches and Serial No")){
@@ -87,16 +84,20 @@ public class MaterialIssuesToProduction extends TransactionsBaseClass {
                 List<WebElement> editfields=common.findWebElements("xpath","//Table[@Name='Serial Numbers List']/*[@Name='Data Panel']/*[contains(@Name,'Row')]/*[contains(@Name,'Select row')]");
                 System.out.println("Serial number edit fields :"+editfields.size());
                 editfields.get(0).click();
-//                editfields.get(1).click();
+                editfields.get(1).click();
+                editfields.get(2).click();
+                editfields.get(3).click();
+                editfields.get(4).click();
+                common.clickElement("xpath", "//Button[@Name='OK']");
 //                Thread.sleep(2000);
 //                List<WebElement> freeQuantity=common.findWebElements("xpath","//Table[@Name='Selected Serial Numbers']/*[@Name='Data Panel']/*[contains(@Name,'Row')]/*[contains(@Name,'FreeQuantity row ')]");
 //                System.out.println("free  Size :"+freeQuantity.size());
 //                freeQuantity.get(1).click();
-                common.clickElement("xpath", "//Button[@Name='OK']");
             }else {
                 Assert.fail("No product present");
             }
 //            enterListData(quantity.get(i),dataFile,"Items","Quantity",i);
+            Thread.sleep(1000);
             common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 700, 0);
             enterListData(unitRate.get(i),dataFile,"Items","UnitRate",i);
             enterListData(Department.get(i),dataFile,"Items","Department",i);
@@ -109,7 +110,7 @@ public class MaterialIssuesToProduction extends TransactionsBaseClass {
     }
     public void itemsNonPlannedIssues() throws IOException, InterruptedException {
         Thread.sleep(1000);
-        List<String> masterType=readExcelData(dataFile,"Items","MasterType");
+        List<String> masterType=readExcelData(dataFile,"ItemsNonPlannedIssues","MasterType");
         common.clickElement("xpath","//TabItem[contains(@Name,'Items Non Planned Issues ')]");
         List<String> productCode=readExcelData(dataFile,"ItemsNonPlannedIssues","ProductCode");
         System.out.println("productCodes :"+productCode.size());
@@ -132,11 +133,11 @@ public class MaterialIssuesToProduction extends TransactionsBaseClass {
             enterListData(uom.get(i),dataFile,"ItemsNonPlannedIssues","UOM",i);
             enterListData(storageBin.get(i),dataFile,"ItemsNonPlannedIssues","StorageBin",i);
             if (masterType.get(i).equals("Products")){
-                enterListData(quantity.get(i),dataFile,"Items","Quantity",i);
+                enterListData(quantity.get(i),dataFile,"ItemsNonPlannedIssues","Quantity",i);
             } else if (masterType.get(i).equals("Products - MultiBatch")) {
                 common.clickElement("xpath", "//Button[@Name='Stock Details Row "+i+"']");
                 Thread.sleep(1000);
-                EnterData("//Table[@Name='Batch Details']/*[@Name='Data Panel']/*[@Name='Row 1']/*[@Name='Quantity row 1']",dataFile,"Items","Quantity",i);
+                EnterData("//Table[@Name='Batch Details']/*[@Name='Data Panel']/*[@Name='Row 1']/*[@Name='Quantity row 1']",dataFile,"ItemsNonPlannedIssues","Quantity",i);
 //                EnterData("//Table[@Name='Batch Details']/*[@Name='Data Panel']/*[@Name='Row 1']/*[@Name='Free Qty row 1']",dataFile,"Items","FreeQuantity",i);
                 Thread.sleep(1000);
                 common.clickElement("xpath", "//Button[@Name='OK']");
@@ -155,9 +156,7 @@ public class MaterialIssuesToProduction extends TransactionsBaseClass {
             }else {
                 Assert.fail("No product present");
             }
-//            enterListData(quantity.get(i),dataFile,"ItemsNonPlannedIssues","Quantity",i);
             enterListData(unitRate.get(i),dataFile,"ItemsNonPlannedIssues","UnitRate",i);
-            enterListData(quantity.get(i),dataFile,"ItemsNonPlannedIssues","Quantity",i);
             enterListData(Department.get(i),dataFile,"ItemsNonPlannedIssues","Department",i);
             enterListData(Project.get(i),dataFile,"ItemsNonPlannedIssues","Project",i);
             enterListData(ProfitCentre.get(i),dataFile,"ItemsNonPlannedIssues","ProfitCentre",i);

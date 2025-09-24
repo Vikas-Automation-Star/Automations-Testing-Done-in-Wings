@@ -17,52 +17,49 @@
         </classes>
     </test>
 
-    <test name="Performing Assign StandardRates Transaction"
-          description="description for AssignStandardRatesTransaction" testID="WOW 3">
+    <test name="ASR" description="AssignStandardRatesTransaction" testID="1">
         <classes>
             <class name="menuItems.Production.transactions.TestAssignStandardRates"></class>
         </classes>
     </test>
 
-    <test name="Performing ProductionOrder Transaction" description="description for ProductionOrderTransaction"
-          testID="WOW 4">
+    <test name="PO" description="ProductionOrderTransaction" testID="2">
         <classes>
             <class name="menuItems.Production.transactions.TestProductionOrders"></class>
         </classes>
     </test>
 
-    <test name="Performing MaterialIssuesToProduction Transaction"
-          description="description for MaterialIssuesToProductionTransaction" testID="WOW 5">
+    <test name="" description="MaterialIssuesToProductionTransaction" testID="3">
         <classes>
-            <class name="menuItems.Production.transactions.MaterialIssuesToProductionTransaction"></class>
+            <class name="menuItems.Production.transactions.TestMaterialIssuesToProduction"></class>
         </classes>
     </test>
 
     <test name="Performing MaterialReturnsFromProduction Transaction"
           description="description for MaterialReturnsFromProductionTransaction" testID="WOW 6">
         <classes>
-            <class name="menuItems.Production.transactions.MaterialReturnsFromProductionTransaction"></class>
+            <class name="menuItems.Production.transactions.MaterialReturnsFromProduction"></class>
         </classes>
     </test>
 
     <test name="Performing MaterialReceiptsFrom Production Transaction"
           description="description for MaterialReceiptsFromProductionTransaction" testID="WOW 7">
         <classes>
-            <class name="menuItems.Production.transactions.MaterialReceiptFromProductionTransaction"></class>
+            <class name="menuItems.Production.transactions.TestMaterialReceiptFromProduction"></class>
         </classes>
     </test>
 
     <test name="Performing CloseProductionOrder Transaction"
           description="description for CloseProductionOrderTransaction" testID="WOW 8">
         <classes>
-            <class name="menuItems.Production.transactions.CloseProductionOrderTransaction"></class>
+            <class name="menuItems.Production.transactions.TestCloseProductionOrder"></class>
         </classes>
     </test>
 
     <test name="Performing MaterialIssuesAndReceiptsFromProduction Transaction "
           description="description for MaterialIssuesAndReceiptsFromProductionTransaction" testID="WOW 9">
         <classes>
-            <class name="menuItems.Production.transactions.MaterialIssuesAndReceiptsFromProductionTransaction"></class>
+            <class name="menuItems.Production.transactions.TestMaterialIssuesAndReceiptsFromProduction"></class>
         </classes>
     </test>
     <!-- Transactions of production menu completed-->
