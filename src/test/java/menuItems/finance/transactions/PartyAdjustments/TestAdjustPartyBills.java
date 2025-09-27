@@ -44,20 +44,20 @@ public class TestAdjustPartyBills {
 
     @Test
     public void adjustPartyBills() throws Exception {
-        SalesInvoice invoice = new SalesInvoice(driver, dataFile);
-        String salesI= invoice.salesInvoice(TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_SALES_INVOICES,OUTPUT_FILE1);
-
-        appLogin.logout();
-        driver= appLogin.login();
-
-        SalesReturnWithInvoiceReference salesRWIR =new SalesReturnWithInvoiceReference(driver,dataFile1);
-        String salesRwir=salesRWIR.salesReturnWithInvoiceReference(salesI,TEMP_API_BODY_SRWIR,API_RESPONSE_SRWIR,OUTPUT_FILE2);
-
-        appLogin.logout();
-        driver= appLogin.login();
+//        SalesInvoice invoice = new SalesInvoice(driver, dataFile);
+//        String salesI= invoice.salesInvoice(TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_SALES_INVOICES,OUTPUT_FILE1);
+//
+//        appLogin.logout();
+//        driver= appLogin.login();
+//
+//        SalesReturnWithInvoiceReference salesRWIR =new SalesReturnWithInvoiceReference(driver,dataFile1);
+//        String salesRwir=salesRWIR.salesReturnWithInvoiceReference(salesI,TEMP_API_BODY_SRWIR,API_RESPONSE_SRWIR,OUTPUT_FILE2);
+//
+//        appLogin.logout();
+//        driver= appLogin.login();
 
         AdjustPartyBills partyBills = new AdjustPartyBills(driver, dataFile2);
-        partyBills.executeAdjustPartyBills(salesI,salesRwir,TEMP_API_BODY_ADJUST_PARTY_BILLS,API_RESPONSE_ADJUST_PARTY_BILLS,OUTPUT_FILE3);
+        partyBills.executeAdjustPartyBills("SI 19","SRWIR 6",TEMP_API_BODY_ADJUST_PARTY_BILLS,API_RESPONSE_ADJUST_PARTY_BILLS,OUTPUT_FILE3);
     }
 
     @AfterTest

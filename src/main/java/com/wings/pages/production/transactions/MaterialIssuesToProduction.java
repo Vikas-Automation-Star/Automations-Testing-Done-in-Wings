@@ -23,7 +23,7 @@ public class MaterialIssuesToProduction extends TransactionsBaseClass {
         common = new Common(this.driver);
         dataFile = file;
     }
-    public void materialIssuesToProduction(String productionOrderVoucher,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
+    public String materialIssuesToProduction(String productionOrderVoucher,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         navigateToMastersWhen3Steps("Production","Standard","Material Issues to Production");
         Thread.sleep(2000);
         String oldVoucherID =oldTTransactionID();
@@ -50,14 +50,15 @@ public class MaterialIssuesToProduction extends TransactionsBaseClass {
         String newVoucherID =newTransactionID(oldVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"MaterialIssuesToProduction");
-
+        return newVoucherID;
     }
     public void items() throws IOException, InterruptedException {
         List<String> masterType=readExcelData(dataFile,"Items","MasterType");
         List<WebElement> uom = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'UOM * Row ')]");
         List<WebElement> storageBin = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Storage Bin * Row ')]");
-        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 700, 0);
+        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 800, 0);
         List<WebElement> quantity = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Quantity * Row ')]");
+        List<WebElement> costPerUnit = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/CheckBox[contains(@Name,'Apply Cost Per Unit Row ')]");
         List<WebElement> unitRate = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Unit Rate Row ')]");
         List<WebElement> Comments = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Comments Row ')]");
         List<WebElement> Department = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Department Row ')]");
@@ -84,10 +85,10 @@ public class MaterialIssuesToProduction extends TransactionsBaseClass {
                 List<WebElement> editfields=common.findWebElements("xpath","//Table[@Name='Serial Numbers List']/*[@Name='Data Panel']/*[contains(@Name,'Row')]/*[contains(@Name,'Select row')]");
                 System.out.println("Serial number edit fields :"+editfields.size());
                 editfields.get(0).click();
-                editfields.get(1).click();
-                editfields.get(2).click();
-                editfields.get(3).click();
-                editfields.get(4).click();
+//                editfields.get(1).click();
+//                editfields.get(2).click();
+//                editfields.get(3).click();
+//                editfields.get(4).click();
                 common.clickElement("xpath", "//Button[@Name='OK']");
 //                Thread.sleep(2000);
 //                List<WebElement> freeQuantity=common.findWebElements("xpath","//Table[@Name='Selected Serial Numbers']/*[@Name='Data Panel']/*[contains(@Name,'Row')]/*[contains(@Name,'FreeQuantity row ')]");
@@ -99,6 +100,7 @@ public class MaterialIssuesToProduction extends TransactionsBaseClass {
 //            enterListData(quantity.get(i),dataFile,"Items","Quantity",i);
             Thread.sleep(1000);
             common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 700, 0);
+            clickListData(costPerUnit.get(i));
             enterListData(unitRate.get(i),dataFile,"Items","UnitRate",i);
             enterListData(Department.get(i),dataFile,"Items","Department",i);
             enterListData(Project.get(i),dataFile,"Items","Project",i);
@@ -108,6 +110,7 @@ public class MaterialIssuesToProduction extends TransactionsBaseClass {
             common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", -1000, 0);
         }
     }
+
     public void itemsNonPlannedIssues() throws IOException, InterruptedException {
         Thread.sleep(1000);
         List<String> masterType=readExcelData(dataFile,"ItemsNonPlannedIssues","MasterType");
@@ -121,6 +124,7 @@ public class MaterialIssuesToProduction extends TransactionsBaseClass {
         List<WebElement> uom = common.findWebElements("xpath", "//Table[@Name='ItemsNonPlannedIssues']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'UOM * Row ')]");
         List<WebElement> storageBin = common.findWebElements("xpath", "//Table[@Name='ItemsNonPlannedIssues']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Storage Bin * Row ')]");
         List<WebElement> quantity = common.findWebElements("xpath", "//Table[@Name='ItemsNonPlannedIssues']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Quantity * Row ')]");
+        List<WebElement> costPerUnit = common.findWebElements("xpath", "//Table[@Name='ItemsNonPlannedIssues']/*[contains(@Name,'Row ')]/CheckBox[contains(@Name,'Apply Cost Per Unit Row ')]");
         List<WebElement> unitRate = common.findWebElements("xpath", "//Table[@Name='ItemsNonPlannedIssues']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Unit Rate Row ')]");
         common.sliderHandling("xpath", "//Table[@Name='ItemsNonPlannedIssues']/*/Thumb[@Name='Position']", 700, 0);
         List<WebElement> Comments = common.findWebElements("xpath", "//Table[@Name='ItemsNonPlannedIssues']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Comments Row ')]");
@@ -148,14 +152,16 @@ public class MaterialIssuesToProduction extends TransactionsBaseClass {
                 List<WebElement> editfields=common.findWebElements("xpath","//Table[@Name='Serial Numbers List']/*[@Name='Data Panel']/*[contains(@Name,'Row')]/*[contains(@Name,'Select row')]");
                 System.out.println("Serial number edit fields :"+editfields.size());
                 editfields.get(0).click();
-                editfields.get(1).click();
-                editfields.get(2).click();
-                editfields.get(3).click();
-                editfields.get(4).click();
+//                editfields.get(1).click();
+//                editfields.get(2).click();
+//                editfields.get(3).click();
+//                editfields.get(4).click();
                 common.clickElement("xpath", "//Button[@Name='OK']");
             }else {
                 Assert.fail("No product present");
             }
+            Thread.sleep(500);
+            clickListData(costPerUnit.get(i));
             enterListData(unitRate.get(i),dataFile,"ItemsNonPlannedIssues","UnitRate",i);
             enterListData(Department.get(i),dataFile,"ItemsNonPlannedIssues","Department",i);
             enterListData(Project.get(i),dataFile,"ItemsNonPlannedIssues","Project",i);

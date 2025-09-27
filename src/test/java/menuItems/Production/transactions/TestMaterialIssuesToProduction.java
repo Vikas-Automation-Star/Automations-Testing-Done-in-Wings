@@ -2,6 +2,7 @@ package menuItems.Production.transactions;
 
 import com.wings.pages.AppLogin;
 import com.wings.pages.production.transactions.MaterialIssuesToProduction;
+import com.wings.pages.production.transactions.ProductOrders;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
@@ -32,19 +33,19 @@ public class TestMaterialIssuesToProduction {
 
     @Test
     public void materialIssuesToProductionTransaction() throws Exception {
-//        ProductOrders po = new ProductOrders(driver, file);
-//        String productionOrder=po.productOrders(TEMP_API_BODY_PRODUCTION_ORDERS,API_RESPONSE_PRODUCTION_ORDERS,OUTPUT_FILE);
+        ProductOrders po = new ProductOrders(driver, file);
+        String productionOrder=po.productOrders(TEMP_API_BODY_PRODUCTION_ORDERS,API_RESPONSE_PRODUCTION_ORDERS,OUTPUT_FILE);
 
-//        appLogin.logout();
-//        driver= appLogin.login();
+        appLogin.logout();
+        driver= appLogin.login();
 
         MaterialIssuesToProduction mifp = new MaterialIssuesToProduction(driver, file1);
-        mifp.materialIssuesToProduction("PRO 2",TEMP_API_BODY_MATERIAL_ISSUES_PRODUCTION,API_RESPONSE_MATERIAL_ISSUES_PRODUCTION,OUTPUT_FILE1);
+        mifp.materialIssuesToProduction(productionOrder,TEMP_API_BODY_MATERIAL_ISSUES_PRODUCTION,API_RESPONSE_MATERIAL_ISSUES_PRODUCTION,OUTPUT_FILE1);
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 
 }

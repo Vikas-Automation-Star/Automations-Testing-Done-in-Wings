@@ -35,4 +35,5 @@ public class TestMaterialIssuesAndReceiptsFromProduction {
     public void afterTest() throws IOException {
         appLogin.logout();
     }
+
 }

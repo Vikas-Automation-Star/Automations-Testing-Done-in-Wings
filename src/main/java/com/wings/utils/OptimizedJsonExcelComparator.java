@@ -98,7 +98,6 @@ public class OptimizedJsonExcelComparator {
         diffHeader.createCell(5).setCellValue("Data");
 
         boolean hasDifferences = false;
-        boolean noDifferences=false;
         // Step 2: Loop through Excel sheets and compare using aliasMap / TableMapping logic
         for (int i = 0; i < workbook.getNumberOfSheets(); i++) {
             Sheet sheet = workbook.getSheetAt(i);

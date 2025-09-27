@@ -26,9 +26,6 @@ public class ProductOrders extends TransactionsBaseClass {
 
     public String productOrders(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         navigateToMastersWhen3Steps("Production","Standard","Production Orders");
-//        common.clickElement("name", "Production");
-//        common.clickElement("name", "Standard");
-//        common.clickElement("name", "Production Orders");
         Thread.sleep(3000);
         String oldVoucherID =oldTTransactionID();
 
@@ -55,7 +52,6 @@ public class ProductOrders extends TransactionsBaseClass {
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"ProductionOrder");
-//        deleteRecentTransaction();
         return newVoucherID;
     }
     public void inputs() throws IOException {

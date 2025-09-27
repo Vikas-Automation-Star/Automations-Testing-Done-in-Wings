@@ -33,14 +33,14 @@ public class TestCloseProductionOrder {
 
     @Test
     public void closeProductionOrderTransaction() throws Exception {
-//        ProductOrders po = new ProductOrders(driver, file);
-//        String productionOrder=po.productOrders(TEMP_API_BODY_PRODUCTION_ORDERS,API_RESPONSE_PRODUCTION_ORDERS,OUTPUT_FILE);
-//
-//        appLogin.logout();
-//        driver= appLogin.login();
+        ProductOrders po = new ProductOrders(driver, file);
+        String productionOrder=po.productOrders(TEMP_API_BODY_PRODUCTION_ORDERS,API_RESPONSE_PRODUCTION_ORDERS,OUTPUT_FILE);
+
+        appLogin.logout();
+        driver= appLogin.login();
 
         CloseProductionOrder cpo = new CloseProductionOrder(driver, file1);
-        cpo.closeProductionOrder("PRO 2",TEMP_API_BODY_CLOSE_PRODUCTION_ORDERS,API_RESPONSE_CLOSE_PRODUCTION_ORDERS,OUTPUT_FILE1);
+        cpo.closeProductionOrder(productionOrder,TEMP_API_BODY_CLOSE_PRODUCTION_ORDERS,API_RESPONSE_CLOSE_PRODUCTION_ORDERS,OUTPUT_FILE1);
     }
 
     @AfterTest

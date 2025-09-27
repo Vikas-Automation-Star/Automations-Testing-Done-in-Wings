@@ -26,7 +26,6 @@ public class TestJournalEntries {
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
         driver=appLogin.login();
-
     }
 
     @Test

@@ -35,14 +35,14 @@ public class TestDebitNoteFromSuppliers {
 
     @Test
     public void debitNoteFromSupplier() throws Exception {
-        PurchaseVoucher po = new PurchaseVoucher(driver, file);
-        String purchaseVoucher=po.purchaseVoucher(TEMP_API_BODY_PURCHASE_VOUCHERS,API_RESPONSE_PURCHASE_VOUCHERS,OUTPUT_FILE);
-
-        appLogin.logout();
-        driver= appLogin.login();
+//        PurchaseVoucher po = new PurchaseVoucher(driver, file);
+//        String purchaseVoucher=po.purchaseVoucher(TEMP_API_BODY_PURCHASE_VOUCHERS,API_RESPONSE_PURCHASE_VOUCHERS,OUTPUT_FILE);
+//
+//        appLogin.logout();
+//        driver= appLogin.login();
 
         DebitNoteFromSuppliers noteFromSuppliers = new DebitNoteFromSuppliers(driver, dataFile);
-        noteFromSuppliers.debitNoteFromSupplier(purchaseVoucher,TEMP_API_BODY_DEBIT_NOTE_FROM_SUPPLIER,API_RESPONSE_DEBIT_NOTE_FROM_SUPPLIER,OUTPUT_FILE1);
+        noteFromSuppliers.debitNoteFromSupplier("PV 12",TEMP_API_BODY_DEBIT_NOTE_FROM_SUPPLIER,API_RESPONSE_DEBIT_NOTE_FROM_SUPPLIER,OUTPUT_FILE1);
     }
 
     @AfterTest

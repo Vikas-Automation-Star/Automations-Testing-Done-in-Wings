@@ -33,6 +33,7 @@ public class MaterialReceiptFromProduction extends TransactionsBaseClass {
         enterBranch(dataFile,"GeneralInformation","Branch");
         enterCurrency(dataFile,"GeneralInformation","TransactionCurrency");
         EnterData("//Edit[@Name='Finished Product Code']",dataFile,"GeneralInformation","FinishedProductCode");
+        Thread.sleep(1000);
         selectPendingsSalesOrder(ordersNum,"20250401");
         enterBatchPolicy(dataFile,"GeneralInformation","BatchPolicy");
         common.clickElement("xpath","//Edit[@Name='Executive *']");
@@ -73,10 +74,10 @@ public class MaterialReceiptFromProduction extends TransactionsBaseClass {
         List<WebElement> ProfitCentre = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Profit Centre Row ')]");
         List<WebElement> CostCentre = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Cost Centre Row ')]");
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", -1000, 0);
-        for (int i = 0; i < storageBin.size(); i++) {
+        for (int i = 0; i < productBatch.size()-1; i++) {
             enterListData(productBatch.get(i),dataFile,"Items","ProductBatch",i);
-            enterListData(manufactureDate.get(i),dataFile,"Items","MfgDate",i);
-            enterListData(expiryDates.get(i),dataFile,"Items","ExpiryDate",i);
+            enterListDate(manufactureDate.get(i),dataFile,"Items","MfgDate",i);
+            enterListDate(expiryDates.get(i),dataFile,"Items","ExpiryDate",i);
             enterListData(storageBin.get(i),dataFile,"Items","StorageBin",i);
             enterListData(uom.get(i),dataFile,"Items","UOM",i);
             common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 800, 0);
@@ -90,7 +91,6 @@ public class MaterialReceiptFromProduction extends TransactionsBaseClass {
             common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", -1000, 0);
         }
     }
-
     public void byProducts() throws InterruptedException, IOException {
         Thread.sleep(1000);
         common.clickElement("xpath","//TabItem[contains(@Name,'By Products  ')]");
@@ -130,6 +130,7 @@ public class MaterialReceiptFromProduction extends TransactionsBaseClass {
             addData("xpath","//Edit[@Name='Over Head Type Code Row "+i+", Not sorted.']",dataFile,"OverHeads","OverHeadTypeCode",i);
         }
         List<WebElement> amount = common.findWebElements("xpath", "//Table[@Name='OverHeads']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Amount * Row ')]");
+
         List<WebElement> Department = common.findWebElements("xpath", "//Table[@Name='OverHeads']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Department Row ')]");
         List<WebElement> Project = common.findWebElements("xpath", "//Table[@Name='OverHeads']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Project Row ')]");
         List<WebElement> ProfitCentre = common.findWebElements("xpath", "//Table[@Name='OverHeads']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Profit Centre Row ')]");

@@ -44,20 +44,20 @@ public class TestDebitNoteOnCustomers {
 
     @Test
     public void debitNoteOnCustomers() throws Exception {
-        SalesInvoice invoice = new SalesInvoice(driver, dataFile);
-        String salesI= invoice.salesInvoice(TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_SALES_INVOICES,OUTPUT_FILE1);
-
-        appLogin.logout();
-        driver= appLogin.login();
-
-        SalesReturnWithInvoiceReference salesRWIR =new SalesReturnWithInvoiceReference(driver,dataFile1);
-        String salesRwir=salesRWIR.salesReturnWithInvoiceReference(salesI,TEMP_API_BODY_SRWIR,API_RESPONSE_SRWIR,OUTPUT_FILE2);
-
-        appLogin.logout();
-        driver= appLogin.login();
+//        SalesInvoice invoice = new SalesInvoice(driver, dataFile);
+//        String salesI= invoice.salesInvoice(TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_SALES_INVOICES,OUTPUT_FILE1);
+//
+//        appLogin.logout();
+//        driver= appLogin.login();
+//
+//        SalesReturnWithInvoiceReference salesRWIR =new SalesReturnWithInvoiceReference(driver,dataFile1);
+//        String salesRwir=salesRWIR.salesReturnWithInvoiceReference(salesI,TEMP_API_BODY_SRWIR,API_RESPONSE_SRWIR,OUTPUT_FILE2);
+//
+//        appLogin.logout();
+//        driver= appLogin.login();
 
         DebitNoteOnCustomer noteOnCustomer = new DebitNoteOnCustomer(driver, dataFile2);
-        noteOnCustomer.debitNoteOnCustomer(salesI,salesRwir,TEMP_API_DEBIT_NOTE_ON_CUSTOMERS,API_RESPONSE_DEBIT_NOTE_ON_CUSTOMERS,OUTPUT_FILE3);
+        noteOnCustomer.debitNoteOnCustomer("SI 20","SRWIR 7",TEMP_API_DEBIT_NOTE_ON_CUSTOMERS,API_RESPONSE_DEBIT_NOTE_ON_CUSTOMERS,OUTPUT_FILE3);
     }
 
     @AfterTest
