@@ -42,7 +42,7 @@ public class TestDebitNoteFromSuppliers {
 //        driver= appLogin.login();
 
         DebitNoteFromSuppliers noteFromSuppliers = new DebitNoteFromSuppliers(driver, dataFile);
-        noteFromSuppliers.debitNoteFromSupplier("PV 12",TEMP_API_BODY_DEBIT_NOTE_FROM_SUPPLIER,API_RESPONSE_DEBIT_NOTE_FROM_SUPPLIER,OUTPUT_FILE1);
+        noteFromSuppliers.debitNoteFromSupplier("PV 14",TEMP_API_BODY_DEBIT_NOTE_FROM_SUPPLIER,API_RESPONSE_DEBIT_NOTE_FROM_SUPPLIER,OUTPUT_FILE1);
     }
 
     @AfterTest

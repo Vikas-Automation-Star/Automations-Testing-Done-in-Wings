@@ -33,6 +33,6 @@ public class TestPurchaseVouchers {
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 }

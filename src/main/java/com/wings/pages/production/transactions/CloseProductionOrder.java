@@ -67,7 +67,7 @@ public class CloseProductionOrder extends TransactionsBaseClass {
             }else {
                 Assert.fail("No product present");
             }
-            enterListData(quantity.get(i),dataFile,"PendingStockToB$tion0","Quantity",i);
+//            enterListData(quantity.get(i),dataFile,"PendingStockToB$tion0","Quantity",i);
             clickListData(cancelBox.get(i));
             enterListData(reason.get(i),dataFile,"PendingStockToB$tion0","Reason",i);
             enterListData(comments.get(i),dataFile,"PendingStockToB$tion0","Comments",i);

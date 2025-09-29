@@ -127,11 +127,12 @@ public class MaterialIssuesToProduction extends TransactionsBaseClass {
         List<WebElement> costPerUnit = common.findWebElements("xpath", "//Table[@Name='ItemsNonPlannedIssues']/*[contains(@Name,'Row ')]/CheckBox[contains(@Name,'Apply Cost Per Unit Row ')]");
         List<WebElement> unitRate = common.findWebElements("xpath", "//Table[@Name='ItemsNonPlannedIssues']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Unit Rate Row ')]");
         common.sliderHandling("xpath", "//Table[@Name='ItemsNonPlannedIssues']/*/Thumb[@Name='Position']", 700, 0);
-        List<WebElement> Comments = common.findWebElements("xpath", "//Table[@Name='ItemsNonPlannedIssues']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Comments Row ')]");
+        List<WebElement> executive = common.findWebElements("xpath", "//Table[@Name='ItemsNonPlannedIssues']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Executive Row ')]");
         List<WebElement> Department = common.findWebElements("xpath", "//Table[@Name='ItemsNonPlannedIssues']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Department Row ')]");
         List<WebElement> Project = common.findWebElements("xpath", "//Table[@Name='ItemsNonPlannedIssues']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Project Row ')]");
         List<WebElement> ProfitCentre = common.findWebElements("xpath", "//Table[@Name='ItemsNonPlannedIssues']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Profit Centre Row ')]");
         List<WebElement> CostCentre = common.findWebElements("xpath", "//Table[@Name='ItemsNonPlannedIssues']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Cost Centre Row ')]");
+        List<WebElement> Comments = common.findWebElements("xpath", "//Table[@Name='ItemsNonPlannedIssues']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Comments Row ')]");
         for (int i = 0; i < ProductCode.size(); i++) {
             enterListData(ProductCode.get(i),dataFile,"ItemsNonPlannedIssues","ProductCode",i);
             enterListData(uom.get(i),dataFile,"ItemsNonPlannedIssues","UOM",i);
@@ -163,6 +164,7 @@ public class MaterialIssuesToProduction extends TransactionsBaseClass {
             Thread.sleep(500);
             clickListData(costPerUnit.get(i));
             enterListData(unitRate.get(i),dataFile,"ItemsNonPlannedIssues","UnitRate",i);
+            enterListData(executive.get(i),dataFile,"ItemsNonPlannedIssues","Executive",i);
             enterListData(Department.get(i),dataFile,"ItemsNonPlannedIssues","Department",i);
             enterListData(Project.get(i),dataFile,"ItemsNonPlannedIssues","Project",i);
             enterListData(ProfitCentre.get(i),dataFile,"ItemsNonPlannedIssues","ProfitCentre",i);

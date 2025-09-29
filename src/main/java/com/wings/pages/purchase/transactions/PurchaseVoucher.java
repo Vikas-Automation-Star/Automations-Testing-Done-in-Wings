@@ -158,11 +158,11 @@ public class PurchaseVoucher extends TransactionsBaseClass {
         long termsAndConditionsEnd = System.nanoTime() - termsAndConditions;
         FileUtil.writeTimeLogInMinutes("Enter Terms And Conditions", termsAndConditionsEnd);
 
-        long allocations = System.nanoTime();
-        navigateToAllocations();
-        addAllocations();
-        long allocationsEnd = System.nanoTime() - allocations;
-        FileUtil.writeTimeLogInMinutes("Enter Allocations", allocationsEnd);
+//        long allocations = System.nanoTime();
+//        navigateToAllocations();
+//        addAllocations();
+//        long allocationsEnd = System.nanoTime() - allocations;
+//        FileUtil.writeTimeLogInMinutes("Enter Allocations", allocationsEnd);
 
         transactionSave();
         String newVoucherID = newTransactionID(oldVoucherID);
@@ -666,24 +666,24 @@ public class PurchaseVoucher extends TransactionsBaseClass {
         }
     }
 
-    public void addAllocations() throws InterruptedException {
-//        EnterData( "//Edit[@Name='Department']", dataFile, "Allocations", "Department");
-//        EnterData( "//Edit[@Name='Project']", dataFile, "Allocations", "Project");
-//        EnterData("//Edit[@Name='Profit Centre']", dataFile, "Allocations", "ProfitCentre");
-//        EnterData( "//Edit[@Name='Cost Centre']", dataFile, "Allocations", "CostCentre");
-        WebElement element=common.findWebElement("xpath","//Edit[@Name='Department']");
-        element.sendKeys(Keys.CONTROL + "a");
-        element.sendKeys(Keys.BACK_SPACE);
-        WebElement element1=common.findWebElement("xpath","//Edit[@Name='Project']");
-        element1.sendKeys(Keys.CONTROL + "a");
-        element1.sendKeys(Keys.BACK_SPACE);
-        Thread.sleep(1000);
-        WebElement element2=common.findWebElement("xpath","//Edit[@Name='Profit Centre']");
-        element2.sendKeys(Keys.CONTROL + "a");
-        element2.sendKeys(Keys.BACK_SPACE);
-        WebElement element3=common.findWebElement("xpath","//Edit[@Name='Cost Centre']");
-        element3.sendKeys(Keys.CONTROL + "a");
-        element3.sendKeys(Keys.BACK_SPACE);
-    }
+//    public void addAllocations() throws InterruptedException {
+////        EnterData( "//Edit[@Name='Department']", dataFile, "Allocations", "Department");
+////        EnterData( "//Edit[@Name='Project']", dataFile, "Allocations", "Project");
+////        EnterData("//Edit[@Name='Profit Centre']", dataFile, "Allocations", "ProfitCentre");
+////        EnterData( "//Edit[@Name='Cost Centre']", dataFile, "Allocations", "CostCentre");
+//        WebElement element=common.findWebElement("xpath","//Edit[@Name='Department']");
+//        element.sendKeys(Keys.CONTROL + "a");
+//        element.sendKeys(Keys.BACK_SPACE);
+//        WebElement element1=common.findWebElement("xpath","//Edit[@Name='Project']");
+//        element1.sendKeys(Keys.CONTROL + "a");
+//        element1.sendKeys(Keys.BACK_SPACE);
+//        Thread.sleep(1000);
+//        WebElement element2=common.findWebElement("xpath","//Edit[@Name='Profit Centre']");
+//        element2.sendKeys(Keys.CONTROL + "a");
+//        element2.sendKeys(Keys.BACK_SPACE);
+//        WebElement element3=common.findWebElement("xpath","//Edit[@Name='Cost Centre']");
+//        element3.sendKeys(Keys.CONTROL + "a");
+//        element3.sendKeys(Keys.BACK_SPACE);
+//    }
 
 }

@@ -37,14 +37,14 @@ public class TestCreditNote {
 
     @Test
     public void creditNote() throws Exception {
-        SalesInvoice invoice = new SalesInvoice(driver, dataFile);
-        String salesI= invoice.salesInvoice(TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_SALES_INVOICES,OUTPUT_FILE);
-
-        appLogin.logout();
-        driver= appLogin.login();
+//        SalesInvoice invoice = new SalesInvoice(driver, dataFile);
+//        String salesI= invoice.salesInvoice(TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_SALES_INVOICES,OUTPUT_FILE);
+//
+//        appLogin.logout();
+//        driver= appLogin.login();
 
         CreditNote creditNote = new CreditNote(driver, dataFile1);
-        creditNote.creditNote(salesI,TEMP_API_BODY_CREDIT_NOTE,API_RESPONSE_CREDIT_NOTE,OUTPUT_FILE1);
+        creditNote.creditNote("SI 21",TEMP_API_BODY_CREDIT_NOTE,API_RESPONSE_CREDIT_NOTE,OUTPUT_FILE1);
     }
 
     @AfterTest

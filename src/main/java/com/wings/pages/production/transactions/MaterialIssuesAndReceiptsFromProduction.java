@@ -73,6 +73,7 @@ public class MaterialIssuesAndReceiptsFromProduction extends TransactionsBaseCla
         List<WebElement> storageBin = common.findWebElements("xpath", "//Table[@Name='IssuesToProduction']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Storage Bin * Row ')]");
         List<WebElement> bomQuantity = common.findWebElements("xpath", "//Table[@Name='IssuesToProduction']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'BOM Quantity Row ')]");
         List<WebElement> quantity = common.findWebElements("xpath", "//Table[@Name='IssuesToProduction']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Quantity * Row ')]");
+        List<WebElement> landedCost = common.findWebElements("xpath", "//Table[@Name='IssuesToProduction']/*[contains(@Name,'Row ')]/CheckBox[contains(@Name,'Apply Cost Per Unit Row ')]");
         List<WebElement> unitRate = common.findWebElements("xpath", "//Table[@Name='IssuesToProduction']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Unit Rate Row ')]");
         common.sliderHandling("xpath", "//Table[@Name='IssuesToProduction']/*/Thumb[@Name='Position']", 700, 0);
         List<WebElement> Department = common.findWebElements("xpath", "//Table[@Name='IssuesToProduction']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Department Row ')]");
@@ -111,6 +112,7 @@ public class MaterialIssuesAndReceiptsFromProduction extends TransactionsBaseCla
                 Assert.fail("No product present");
             }
 //            enterListData(quantity.get(i),dataFile,"IssuesToProduction","Quantity",i);;
+            clickListData(landedCost.get(i));
             enterListData(unitRate.get(i),dataFile,"IssuesToProduction","UnitRate",i);
 //            common.sliderHandling("xpath", "//Table[@Name='IssuesToProduction']/*/Thumb[@Name='Position']", 800, 0);
             enterListData(Department.get(i),dataFile,"IssuesToProduction","Department",i);
@@ -121,7 +123,6 @@ public class MaterialIssuesAndReceiptsFromProduction extends TransactionsBaseCla
 //            common.sliderHandling("xpath", "//Table[@Name='IssuesToProduction']/*/Thumb[@Name='Position']", -1000, 0);
         }
     }
-
     public void receiptsFromProduction() throws InterruptedException, IOException {
         Thread.sleep(1000);
         common.clickElement("xpath","//TabItem[contains(@Name,'Receipts From Production  ')]");
@@ -131,6 +132,7 @@ public class MaterialIssuesAndReceiptsFromProduction extends TransactionsBaseCla
         List<WebElement> uom = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'UOM * Row ')]");
         List<WebElement> finishedProductQuantity = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Finished Product Quantity * Row ')]");
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 700, 0);
+        List<WebElement> unitRate = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Unit Rate Row ')]");
         List<WebElement> Department = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Department Row ')]");
         List<WebElement> Project = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Project Row ')]");
         List<WebElement> ProfitCentre = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Profit Centre Row ')]");
@@ -144,6 +146,7 @@ public class MaterialIssuesAndReceiptsFromProduction extends TransactionsBaseCla
             enterListData(uom.get(i),dataFile,"Items","UOM",i);
             enterListData(finishedProductQuantity.get(i),dataFile,"Items","FinishedProductQuantityInSKU",i);
             common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 800, 0);
+            enterListData(unitRate.get(i),dataFile,"Items","UnitRate",i);
             enterListData(Department.get(i),dataFile,"Items","Department",i);
             enterListData(Project.get(i),dataFile,"Items","Project",i);
             enterListData(ProfitCentre.get(i),dataFile,"Items","ProfitCentre",i);
@@ -206,7 +209,6 @@ public class MaterialIssuesAndReceiptsFromProduction extends TransactionsBaseCla
 
         }
     }
-
     public void otherInfo() throws InterruptedException, IOException {
         navigateToOtherInfoTab();
         EnterData("//Edit[@Name='Reference Bill No']",dataFile,"OtherInfo","ReferenceBillNo");
