@@ -17,7 +17,7 @@ public class PurchaseQuotationsAgainstEnquiries extends TransactionsBaseClass {
     WindowsDriver driver,rootDriver;
     Common common;
     String dataFile;
-    boolean gstAmountClicked = false,IsAmountHeaderClicked=false,otherChargesGSTCheckBox=false,discountIsClicked=false;
+    boolean gstAmountClicked = false,IsAmountHeaderClicked=false,discountIsClicked=false;
 
     public PurchaseQuotationsAgainstEnquiries(WindowsDriver driver, String file) {
         super(driver);
@@ -36,7 +36,7 @@ public class PurchaseQuotationsAgainstEnquiries extends TransactionsBaseClass {
         String oldVoucherID = oldTTransactionID();
 
         long generalInfoStart = System.nanoTime();
-        System.out.println("Sales Invoice general Info started executed in :" + generalInfoStart);
+        System.out.println("Purchase quotations against enquiries gen info started at:- " + generalInfoStart);
 
         enterVoucherType(dataFile,"GeneralInformation","VoucherType");
         EnterDate("//Edit[@Name='Date *']",dataFile,"GeneralInformation","Date");
@@ -62,31 +62,31 @@ public class PurchaseQuotationsAgainstEnquiries extends TransactionsBaseClass {
         long addProductStart=System.nanoTime();
         addProducts();
         long addProductEnd=System.nanoTime()-addProductStart;
-        FileUtil.writeTimeLogInMinutes("Add Products:- ",addProductEnd);
+        FileUtil.writeTimeLogInMinutes("Purchase Quotations Against Enquiries Add Products:- ",addProductEnd);
 
         //charges and deductions
         long chargesDeductionsStart =System.nanoTime();
         addChargesAndDeductions();
         long chargesDeductionsEnd=System.nanoTime()- chargesDeductionsStart;
-        FileUtil.writeTimeLogInMinutes("Charges and Deductions:- ",chargesDeductionsEnd);
+        FileUtil.writeTimeLogInMinutes("Purchase Quotations Against Enquiries Charges and Deductions:- ",chargesDeductionsEnd);
 
         //Other info
         long otherInfoTabStart =System.nanoTime();
         otherInfo();
         long otherInfoTabEnd =System.nanoTime()- otherInfoTabStart;
-        FileUtil.writeTimeLogInMinutes("Other Info Tab:- ", otherInfoTabEnd);
+        FileUtil.writeTimeLogInMinutes("Purchase Quotations Against Enquiries Other Info Tab:- ", otherInfoTabEnd);
 
         //additional Info
         long additionalInfoTabStart =System.nanoTime();
         additionalInformation();
         long additionalInfoTabEnd =System.nanoTime()- additionalInfoTabStart;
-        FileUtil.writeTimeLogInMinutes("Additional Info Tab:- ", additionalInfoTabEnd);
+        FileUtil.writeTimeLogInMinutes("Purchase Quotations Against Enquiries Additional Info Tab:- ", additionalInfoTabEnd);
 
         //terms and Cond
         long termsConditionsTabStart =System.nanoTime();
         termsAndCondition();
         long termsConditionsTabEnd =System.nanoTime()- termsConditionsTabStart;
-        FileUtil.writeTimeLogInMinutes("Terms and Conditions Tab:- ", termsConditionsTabEnd);
+        FileUtil.writeTimeLogInMinutes("Purchase Quotations Against Enquiries Terms and Conditions Tab:- ", termsConditionsTabEnd);
 
         transactionSave();
         String transactionId = newTransactionID(oldVoucherID);
@@ -95,7 +95,7 @@ public class PurchaseQuotationsAgainstEnquiries extends TransactionsBaseClass {
 
         APIClient.validateAPIWithExcel(transactionId,tempAPIBodyUpdate,apiResponse,outputFile,"PurchaseQuotationsAgainstEnquiries");
         long duration1 = System.nanoTime() - start1;
-        FileUtil.writeTimeLog("purchaseQuotationsAgainstEnquiry validating Tab Items UpTo summary",duration1/1000000000);
+        FileUtil.writeTimeLogInMinutes("Purchase Quotations Against Enquiries Ended at:- ",duration1);
 
         return transactionId;
     }

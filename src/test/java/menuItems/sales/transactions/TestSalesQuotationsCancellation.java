@@ -47,7 +47,7 @@ public class TestSalesQuotationsCancellation {
 
     @AfterTest
     public void afterTest() throws IOException {
-//        login.logout();
+        login.logout();
 
     }
 }

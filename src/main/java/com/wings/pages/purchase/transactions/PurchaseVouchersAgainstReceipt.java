@@ -62,7 +62,7 @@ public class PurchaseVouchersAgainstReceipt extends TransactionsBaseClass {
         enterRemarks(dataFile,"GeneralInformation","Remarks");
 
         long generalInfoEndTime = System.nanoTime() - generalInfoStart;
-        FileUtil.writeTimeLogInMinutes("General information End:- ", generalInfoEndTime);
+        FileUtil.writeTimeLogInMinutes("Purchase Voucher against Receipt General information End:- ", generalInfoEndTime);
 
         //F3-Items
         long addProductStart=System.nanoTime();
@@ -157,6 +157,9 @@ public class PurchaseVouchersAgainstReceipt extends TransactionsBaseClass {
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         //API
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"purchaseVoucherAgainstReceipts");
+
+        long pvarTransactionEnd=System.nanoTime()-start;
+        FileUtil.writeTimeLogInMinutes("Purchase Voucher against Receipt Ended at:- ",pvarTransactionEnd);
 
         return newVoucherID;
     }

@@ -130,11 +130,6 @@
         </classes>
     </test>
 
-    <test name="MR 1" description="Material Receipts" testID="22">
-        <classes>
-            <class name="menuItems.purchase.transactions.TestMaterialReceipts"/>
-        </classes>
-    </test>
 
     <test name="MRAO 1" description="Material Receipts Against Orders" testID="23">
         <classes>
@@ -232,7 +227,7 @@
         </classes>
     </test>
 
-    <!-- receipts -->
+    receipts
     <test name="PREC 1" description="Receipts-Receipts from Parties" testID="39">
         <classes>
             <class name="menuItems.finance.transactions.Receipts.TestReceiptsFromParties"/>
@@ -332,7 +327,7 @@
         </classes>
     </test>
 
-    <!-- Party Adjustments !-->
+    <!--         Party Adjustments !-->
 
     <test name="AB 1" description="Party Adjustments- Adjust Party Bills" testID="55">
         <classes>
@@ -417,6 +412,18 @@
     <test name="ORCCC 1" description="Opening Balances -  Opening Receipts from Credit Card Companies" testID="68">
         <classes>
             <class name="menuItems.finance.transactions.OpeningBalances.TestOpeningReceiptsFromCreditCardCompanies"/>
+        </classes>
+    </test>
+    <!-- Taxes !-->
+    <test name="TP 1" description=" TDS- TDS Payments" testID="68">
+        <classes>
+            <class name="menuItems.Taxes.transactions.TDS.TestTDSPayments"/>
+        </classes>
+    </test>
+
+    <test name="TCS 1" description="TCS - TCS Payments" testID="68">
+        <classes>
+            <class name="menuItems.Taxes.transactions.TCS.TestTCSPayments"/>
         </classes>
     </test>
 

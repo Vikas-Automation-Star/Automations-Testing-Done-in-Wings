@@ -1,0 +1,139 @@
+Time taken to execute Purchase Voucher General information End:- 57 sec
+Time taken to execute Add Products:- 6 min 14 sec
+Time taken to execute Other Info Tab:- 57 sec
+Time taken to execute Additional Info Tab:- 1 min 51 sec
+Time taken to execute Terms and Conditions Tab:- 59 sec
+Time taken to execute Allocations Tab:- 40 sec
+Time taken to execute purchaseEnquiries ending at760min
+Time taken to execute Purchase Quotations Against Enquiries General information End:- 2 min 6 sec
+Time taken to execute Add Products:- 9 min 46 sec
+Time taken to execute Charges and Deductions:- 2 min 25 sec
+Time taken to execute Other Info Tab:- 55 sec
+Time taken to execute Additional Info Tab:- 2 min 0 sec
+Time taken to execute Terms and Conditions Tab:- 1 min 1 sec
+Time taken to execute purchaseQuotationsAgainstEnquiry validating Tab Items UpTo summary1154min
+Time taken to execute Add Products:- 10 min 15 sec
+Time taken to execute Charges and Deductions:- 2 min 31 sec
+Time taken to execute Other Charges:- 3 min 45 sec
+Time taken to execute Cash Tab:- 1 min 58 sec
+Time taken to execute Cheques Tab:- 2 min 49 sec
+Time taken to execute Post Dated Cheques Tab:- 2 min 40 sec
+Time taken to execute Cheques[PDC] Tab:- 2 min 27 sec
+Time taken to execute Other Info Tab:- 1 min 1 sec
+Time taken to execute Additional Info Tab:- 2 min 17 sec
+Time taken to execute Terms and Conditions Tab:- 1 min 11 sec
+Time taken to execute PurchaseOrdersAgainstQuotations ends at :0 sec
+Time taken to execute General information Purchase voucher4 min 58 sec
+Time taken to execute Enter Products Purchase Vouchers24 min 47 sec
+Time taken to execute Enter services10 min 21 sec
+Time taken to execute Enter Charges And Deductions3 min 19 sec
+Time taken to execute Enter Other5 min 55 sec
+Time taken to execute Enter Other Costs3 min 28 sec
+Time taken to execute Enter Cash2 min 39 sec
+Time taken to execute Enter Cheque3 min 51 sec
+Time taken to execute Enter Post Dated Cheques3 min 40 sec
+Time taken to execute Enter Cheque PDC3 min 16 sec
+Time taken to execute OtherInfo 1 min 32 sec
+Time taken to execute Enter Additional Information3 min 24 sec
+Time taken to execute Enter Terms And Conditions1 min 40 sec
+Time taken to execute PurchaseVouchersAgainstOrdersEnd 74 min 31 sec
+Time taken to execute Material Receipt General information End:- 1 min 49 sec
+Time taken to execute Material Receipt Add Products:- 15 min 31 sec
+Time taken to execute Material Receipt Charges and Deductions:- 2 min 41 sec
+Time taken to execute Material Receipt Other Charges:- 3 min 57 sec
+Time taken to execute Material Receipt Other Costs:- 2 min 37 sec
+Time taken to execute Material Receipt Other Info Tab:- 1 min 12 sec
+Time taken to execute Material Receipt Additional Info Tab:- 2 min 19 sec
+Time taken to execute Material Receipt Terms and Conditions Tab:- 1 min 13 sec
+Time taken to execute Material Receipt Allocations Tab:- 0 sec
+Time taken to execute Material Receipt ended at:- 32 min 9 sec
+Time taken to execute General information End:- 4 min 55 sec
+Time taken to execute Purchase Voucher against Receipt Add Products:- 48 min 37 sec
+Time taken to execute Purchase Voucher against Receipt Add Services:- 13 min 5 sec
+Time taken to execute Purchase Voucher against Receipt Charges and Deductions:- 3 min 40 sec
+Time taken to execute Purchase Voucher against Receipt Other Charges:- 5 min 32 sec
+Time taken to execute Purchase Voucher against Receipt Other Costs:- 3 min 31 sec
+Time taken to execute Purchase Voucher against Receipt Cash Tab:- 2 min 54 sec
+Time taken to execute Purchase Voucher against Receipt Cheques Tab:- 4 min 5 sec
+Time taken to execute Purchase Voucher against Receipt Post Dated Cheques Tab:- 3 min 46 sec
+Time taken to execute Purchase Voucher against Receipt Cheques PDC Tab:- 3 min 30 sec
+Time taken to execute Purchase Voucher against Receipt Other Info Tab:- 1 min 41 sec
+Time taken to execute Purchase Voucher against Receipt Additional Info Tab:- 3 min 42 sec
+Time taken to execute Purchase Voucher against Receipt Terms and Conditions Tab:- 1 min 47 sec
+Time taken to execute Proforma Purchase Voucher General information End:- 1 min 48 sec
+Time taken to execute proforma purchase Voucher Add Products:- 14 min 17 sec
+Time taken to execute proforma Purchase voucher Charges and Deductions:- 2 min 35 sec
+Time taken to execute proforma Purchase voucher Other Charges:- 3 min 54 sec
+Time taken to execute proforma Purchase voucher Other Costs:- 2 min 52 sec
+Time taken to execute proforma Purchase voucher Other Info Tab:- 1 min 11 sec
+Time taken to execute proforma Purchase voucher Additional Info Tab:- 2 min 16 sec
+Time taken to execute proforma Purchase voucher Terms and Conditions Tab:- 1 min 9 sec
+Time taken to execute proforma Purchase voucher Allocations Tab:- 40 sec
+Time taken to execute proforma Purchase voucher ended at:- 31 min 34 sec
+Time taken to execute PR General information end:- 172207775500min
+Time taken to execute Purchase Return Add Products:- 21 min 15 sec
+Time taken to execute Purchase Return Charges And Deductions:- 2 min 58 sec
+Time taken to execute Purchase Return Other Charges:- 4 min 14 sec
+Time taken to execute Purchase Return Cash Tab:- 2 min 14 sec
+Time taken to execute Purchase Return Cheques Tab:- 3 min 51 sec
+Time taken to execute Purchase Return Post Dated Cheques Tab:- 3 min 26 sec
+Time taken to execute Purchase Return Cheques PDC Tab:- 3 min 25 sec
+Time taken to execute Purchase Return Other Info:- 1 min 27 sec
+Time taken to execute Purchase Return Additional Information:- 2 min 50 sec
+Time taken to execute Purchase Return Terms And Conditions:- 1 min 26 sec
+Time taken to execute Purchase Return Enter Allocations:- 54 sec
+Time taken to execute Purchase Returns end:- 52 min 29 sec
+Time taken to execute Purchase Voucher General information End:- 57 sec
+Time taken to execute Add Products:- 6 min 13 sec
+Time taken to execute Other Info Tab:- 57 sec
+Time taken to execute Additional Info Tab:- 1 min 51 sec
+Time taken to execute Terms and Conditions Tab:- 58 sec
+Time taken to execute Allocations Tab:- 38 sec
+Time taken to execute purchaseEnquiries ending at753min
+Time taken to execute Purchase Quotations Against Enquiries General information End:- 2 min 7 sec
+Time taken to execute Add Products:- 9 min 55 sec
+Time taken to execute Charges and Deductions:- 2 min 26 sec
+Time taken to execute Other Info Tab:- 55 sec
+Time taken to execute Additional Info Tab:- 2 min 2 sec
+Time taken to execute Terms and Conditions Tab:- 1 min 2 sec
+Time taken to execute purchaseQuotationsAgainstEnquiry validating Tab Items UpTo summary1167min
+Time taken to execute Add Products:- 10 min 15 sec
+Time taken to execute Charges and Deductions:- 2 min 32 sec
+Time taken to execute Other Charges:- 3 min 47 sec
+Time taken to execute Cash Tab:- 2 min 1 sec
+Time taken to execute Cheques Tab:- 2 min 51 sec
+Time taken to execute Post Dated Cheques Tab:- 2 min 42 sec
+Time taken to execute Cheques[PDC] Tab:- 2 min 27 sec
+Time taken to execute Other Info Tab:- 1 min 1 sec
+Time taken to execute Additional Info Tab:- 2 min 20 sec
+Time taken to execute Terms and Conditions Tab:- 1 min 12 sec
+Time taken to execute PurchaseOrdersAgainstQuotations ends at :0 sec
+Time taken to execute General information Purchase voucher4 min 56 sec
+Time taken to execute Enter Products Purchase Vouchers24 min 50 sec
+Time taken to execute Enter services10 min 19 sec
+Time taken to execute Enter Charges And Deductions3 min 27 sec
+Time taken to execute Enter Other5 min 54 sec
+Time taken to execute Enter Other Costs3 min 26 sec
+Time taken to execute Enter Cash2 min 39 sec
+Time taken to execute Enter Cheque3 min 45 sec
+Time taken to execute Enter Post Dated Cheques3 min 35 sec
+Time taken to execute Enter Cheque PDC3 min 17 sec
+Time taken to execute OtherInfo 1 min 33 sec
+Time taken to execute Enter Additional Information3 min 24 sec
+Time taken to execute Enter Terms And Conditions1 min 40 sec
+Time taken to execute PurchaseVouchersAgainstOrdersEnd 74 min 23 sec
+Time taken to execute purchaseReturns generalInformation167min
+Time taken to execute Enter Products Purchase Vouchers14 min 36 sec
+Time taken to execute Enter Charges And Deductions2 min 50 sec
+Time taken to execute Enter Other4 min 47 sec
+Time taken to execute Enter Cash2 min 14 sec
+Time taken to execute Enter Cheques3 min 39 sec
+Time taken to execute Enter Cash3 min 24 sec
+Time taken to execute Enter Cash3 min 17 sec
+Time taken to execute OtherInfo 1 min 15 sec
+Time taken to execute Enter Additional Information2 min 43 sec
+Time taken to execute Enter Terms And Conditions1 min 22 sec
+Time taken to execute purchase Returns with invoices references0 sec
+Time taken to execute Purchase Price General Information End:- 1 min 3 sec
+Time taken to execute Purchase Price Items:- 2 min 10 sec
+Time taken to execute Purchase Prices End: 3 min 59 sec

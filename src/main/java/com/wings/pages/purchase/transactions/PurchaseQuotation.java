@@ -50,26 +50,31 @@ public class PurchaseQuotation extends TransactionsBaseClass {
         FileUtil.writeTimeLogInMinutes("PQ Add Products:- ", addProductEnd);
 
         long chargesDeductionsStart = System.nanoTime();
+        navigateToChargesAndDeductionsTab();
         addChargesAndDeductions();
         long chargesDeductionsEnd = System.nanoTime() - chargesDeductionsStart;
         FileUtil.writeTimeLogInMinutes("PQ Charges And Deductions:- ", chargesDeductionsEnd);
 
         long otherInfoTabStart = System.nanoTime();
+        navigateToOtherInfoTab();
         otherInfo();
         long otherInfoTabEnd = System.nanoTime() - otherInfoTabStart;
         FileUtil.writeTimeLogInMinutes("PQ Other Info:- ", otherInfoTabEnd);
 
         long additionalInfoTabStart = System.nanoTime();
+        common.clickElement("xpath","//TabItem[contains(@Name,'Additional Information  ')]");
         additionalInformation();
         long additionalInfoTabEnd = System.nanoTime() - additionalInfoTabStart;
         FileUtil.writeTimeLogInMinutes("PQ Additional Information:- ", additionalInfoTabEnd);
 
         long termsConditionsTabStart = System.nanoTime();
+        common.clickElement("xpath","//TabItem[contains(@Name,'Terms And Conditions')]");
         termsAndCondition();
         long termsConditionsTabEnd = System.nanoTime() - termsConditionsTabStart;
         FileUtil.writeTimeLogInMinutes("PQ Terms And Conditions:- ", termsConditionsTabEnd);
 
         long allocationsTabStart = System.nanoTime();
+        common.clickElement("xpath", "//TabItem[contains(@Name,'Allocations')]");
         addAllocations();
         long allocationsTabEnd = System.nanoTime() - allocationsTabStart;
         FileUtil.writeTimeLogInMinutes("PQ Allocations:- ", allocationsTabEnd);
@@ -191,7 +196,6 @@ public class PurchaseQuotation extends TransactionsBaseClass {
     }
 
     public void addChargesAndDeductions() throws IOException {
-        navigateToChargesAndDeductionsTab();
         List<String> chargesAndDeductions=readExcelData(dataFile,"ChargesAndDeductions","ChargesOrDeductions");
         System.out.println("productCodes :"+chargesAndDeductions.size());
         for (int i = 0; i < chargesAndDeductions.size() ; i++) {
@@ -223,7 +227,6 @@ public class PurchaseQuotation extends TransactionsBaseClass {
     }
 
     public void otherInfo() throws InterruptedException, IOException {
-        navigateToOtherInfoTab();
         EnterData("//Edit[@Name='Reference Bill No']",dataFile,"OtherInfo","ReferenceBillNo");
         Thread.sleep(5000);
         common.clickElement("xpath","//Window/Button[@Name='OK']");
@@ -236,7 +239,6 @@ public class PurchaseQuotation extends TransactionsBaseClass {
     }
 
     public void  additionalInformation() throws IOException {
-        common.clickElement("xpath","//TabItem[contains(@Name,'Additional Information  ')]");
         EnterData("//Edit[@Name='Info 1']",dataFile,"AdditionalInformation","Info1");
         EnterData("//Edit[@Name='Info 2']",dataFile,"AdditionalInformation","Info2");
         EnterData("//Edit[@Name='Info 3']",dataFile,"AdditionalInformation","Info3");
@@ -256,7 +258,6 @@ public class PurchaseQuotation extends TransactionsBaseClass {
     }
 
     public  void termsAndCondition() throws IOException {
-        common.clickElement("xpath","//TabItem[contains(@Name,'Terms And Conditions')]");
         List<String> termsAndConditions=readExcelData(dataFile,"TermsAndConditions","TermType");
         for (int i = 0; i < termsAndConditions.size() ; i++) {
             addData("xpath","//Edit[@Name='Term Type * Row "+i+", Not sorted.']",dataFile,"TermsAndConditions","TermType",i);
@@ -270,7 +271,6 @@ public class PurchaseQuotation extends TransactionsBaseClass {
     }
 
     public void addAllocations() throws IOException, ParseException {
-        common.clickElement("xpath", "//TabItem[contains(@Name,'Allocations')]");
         EnterData( "//Edit[@Name='Department']", dataFile, "Allocations", "Department");
         EnterData( "//Edit[@Name='Project']", dataFile, "Allocations", "Project");
         EnterData("//Edit[@Name='Profit Centre']", dataFile, "Allocations", "ProfitCentre");

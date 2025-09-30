@@ -100,6 +100,7 @@ public class ReceivedChequesBounce extends TransactionsBaseClass {
                 text.click();
                 text.sendKeys(Keys.TAB, Keys.TAB, Keys.SPACE);
                 EnterData("//Edit[@Name='Amount Adjusted * Row " + i + ", Not sorted.']", dataFile, "BillsPayable", "AmountAdjusted");
+                common.sliderHandling("xpath", "//Table[@Name='BillsPayable']/*/Thumb[@Name='Position']", 0, -250);
                 common.deleteInvalidRows();
                 break;
             } else if (!text.getText().equals(desiredVoucher)) {

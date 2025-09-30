@@ -13,6 +13,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
@@ -46,8 +47,9 @@ public class PurchaseEnquiriesCancellation extends TransactionsBaseClass {
         enterCurrency(dataFile,"GeneralInformation","TransactionCurrency");
         enterPartyCode(dataFile,"GeneralInformation","PartyAccountCode");
         selectPendingsSalesOrder(voucherNum,"20250401");
-        Thread.sleep(1000);
-        common.clickElement("xpath","//Button[@Name='OK']");
+        Robot robot=new Robot();
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
         enterExecutive(dataFile,"GeneralInformation","Executive");
         enterRemarks(dataFile,"GeneralInformation","Remarks");
 

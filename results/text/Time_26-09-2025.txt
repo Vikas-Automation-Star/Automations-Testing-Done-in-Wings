@@ -1,0 +1,340 @@
+Time taken to execute Purchase Voucher General information End:- 57 sec
+Time taken to execute Purchase Enquiries Add Products:- 6 min 4 sec
+Time taken to execute Purchase Enquiries Other Info Tab:- 57 sec
+Time taken to execute Purchase Enquiries Additional Info Tab:- 1 min 47 sec
+Time taken to execute Purchase Enquiries Terms and Conditions Tab:- 56 sec
+Time taken to execute Purchase Enquiries Allocations Tab:- 37 sec
+Time taken to execute Purchase Enquiries ending at:- 12 min 22 sec
+Time taken to execute PQ General Information End:- 1 min 34 sec
+Time taken to execute PQ Add Products:- 12 min 12 sec
+Time taken to execute PQ Charges And Deductions:- 2 min 27 sec
+Time taken to execute PQ Other Info:- 1 min 2 sec
+Time taken to execute PQ Additional Information:- 2 min 2 sec
+Time taken to execute PQ Terms And Conditions:- 1 min 5 sec
+Time taken to execute PQ Allocations:- 40 sec
+Time taken to execute Purchase Voucher General information End:- 55 sec
+Time taken to execute Purchase Enquiries Add Products:- 6 min 13 sec
+Time taken to execute Purchase Enquiries Other Info Tab:- 56 sec
+Time taken to execute Purchase Enquiries Additional Info Tab:- 1 min 47 sec
+Time taken to execute Purchase Enquiries Terms and Conditions Tab:- 1 min 0 sec
+Time taken to execute Purchase Enquiries Allocations Tab:- 35 sec
+Time taken to execute Purchase Enquiries ending at:- 12 min 25 sec
+Time taken to execute Purchase Quotations Against Enquiries General information End:- 2 min 7 sec
+Time taken to execute Purchase Quotations Against Enquiries Add Products:- 9 min 43 sec
+Time taken to execute Purchase Quotations Against Enquiries Charges and Deductions:- 2 min 22 sec
+Time taken to execute Purchase Quotations Against Enquiries Other Info Tab:- 52 sec
+Time taken to execute Purchase Quotations Against Enquiries Additional Info Tab:- 1 min 58 sec
+Time taken to execute Purchase Quotations Against Enquiries Terms and Conditions Tab:- 1 min 1 sec
+Time taken to execute Purchase Quotations Against Enquiries Ended at:- 19 min 6 sec
+Time taken to execute Purchase Voucher General information End:- 54 sec
+Time taken to execute Purchase Enquiries Add Products:- 6 min 8 sec
+Time taken to execute Purchase Enquiries Other Info Tab:- 54 sec
+Time taken to execute Purchase Enquiries Additional Info Tab:- 1 min 46 sec
+Time taken to execute Purchase Enquiries Terms and Conditions Tab:- 56 sec
+Time taken to execute Purchase Enquiries Allocations Tab:- 36 sec
+Time taken to execute PO General information end:- 1 min 43 sec
+Time taken to execute PO Add Products:- 13 min 5 sec
+Time taken to execute PO Charges And Deductions:- 2 min 28 sec
+Time taken to execute PO Other Charges:- 3 min 34 sec
+Time taken to execute PO Cash Tab:- 1 min 57 sec
+Time taken to execute PO Cheques Tab:- 2 min 52 sec
+Time taken to execute PO Post Dated Cheques Tab:- 2 min 37 sec
+Time taken to execute PO Cheques PDC Tab:- 2 min 26 sec
+Time taken to execute PO Other Info:- 1 min 11 sec
+Time taken to execute PO Additional Information:- 2 min 17 sec
+Time taken to execute PO Terms And Conditions:- 1 min 10 sec
+Time taken to execute PO Enter Allocations:- 44 sec
+Time taken to execute Purchase Order ended at:- 36 min 56 sec
+Time taken to execute POC General Information End:- 1 min 51 sec
+Time taken to execute POC Add Products:- 8 min 35 sec
+Time taken to execute POC Other Info:- 50 sec
+Time taken to execute POC Additional Information:- 1 min 49 sec
+Time taken to execute POC Terms And Conditions:- 56 sec
+Time taken to execute POC ended at:- 14 min 44 sec
+Time taken to execute Purchase Voucher General information End:- 1 min 0 sec
+Time taken to execute Purchase Enquiries Add Products:- 6 min 20 sec
+Time taken to execute Purchase Enquiries Other Info Tab:- 1 min 0 sec
+Time taken to execute Purchase Enquiries Additional Info Tab:- 1 min 53 sec
+Time taken to execute TDS Opening Balances Gen info1 min 11 sec
+Time taken to execute TDS Opening Balances - TDS Deducted By Us Ended at:- 3 min 4 sec
+Time taken to execute TDS Opening Balances - TDS Deducted By Others Ended at:- 2 min 13 sec
+Time taken to execute TDS Opening Balances - Other Info:- 1 min 1 sec
+Time taken to execute TDS Opening Balances ended at:- 8 min 3 sec
+Time taken to execute TDS Payments Gen info3 min 51 sec
+Time taken to execute TDS Payments - TDS Details:- 1 min 40 sec
+Time taken to execute TDS Payments - Cheques:- 2 min 15 sec
+Time taken to execute TDS Payments - Other Charges:- 2 min 44 sec
+Time taken to execute TDS Payments - Other Info:- 57 sec
+Time taken to execute TDS Opening Balances Gen info1 min 11 sec
+Time taken to execute TDS Opening Balances - TDS Deducted By Us Ended at:- 3 min 2 sec
+Time taken to execute TDS Opening Balances - TDS Deducted By Others Ended at:- 2 min 16 sec
+Time taken to execute TDS Opening Balances - Other Info:- 58 sec
+Time taken to execute TDS Opening Balances ended at:- 8 min 5 sec
+Time taken to execute TDS Payments Gen info3 min 47 sec
+Time taken to execute TDS Payments - TDS Details:- 1 min 20 sec
+Time taken to execute TDS Payments - Cheques:- 2 min 13 sec
+Time taken to execute TDS Payments - Other Charges:- 2 min 41 sec
+Time taken to execute TDS Payments - Other Info:- 53 sec
+Time taken to execute Sale Enquiry End Products11 min 37 sec
+Time taken to execute Charges And Deductions 2 min 36 sec
+Time taken to execute OtherInfo 1 min 5 sec
+Time taken to execute Additional Information 2 min 2 sec
+Time taken to execute Shipping Address:- 1 min 57 sec
+Time taken to execute Terms And Conditions 1 min 8 sec
+Time taken to execute Sales Enquiries ended at:- 23 min 2 sec
+Time taken to execute Sales Enquiry cancellation End products5 min 8 sec
+Time taken to execute OtherInfo 49 sec
+Time taken to execute Additional Information 1 min 46 sec
+Time taken to execute Sales EnquiriesCancellation ended at:- 10 min 17 sec
+Time taken to execute Sale Enquiry End Products11 min 43 sec
+Time taken to execute Charges And Deductions 2 min 34 sec
+Time taken to execute OtherInfo 1 min 4 sec
+Time taken to execute Additional Information 2 min 1 sec
+Time taken to execute Shipping Address:- 1 min 55 sec
+Time taken to execute Terms And Conditions 1 min 7 sec
+Time taken to execute Sales Enquiries ended at:- 22 min 46 sec
+Time taken to execute Sale Quotations Products Entering10 min 50 sec
+Time taken to execute Charges And Deductions 2 min 33 sec
+Time taken to execute OtherInfo 54 sec
+Time taken to execute Additional Information 2 min 1 sec
+Time taken to execute Shipping Address:- 1 min 46 sec
+Time taken to execute Terms And Conditions 1 min 7 sec
+Time taken to execute Sales quotations against Enquiries ended at:- 22 min 7 sec
+Time taken to execute SQ General Information End:- 1 min 59 sec
+Time taken to execute SQ Add Products:- 12 min 23 sec
+Time taken to execute SQ Charges And Deductions:- 2 min 40 sec
+Time taken to execute SQ Other Charges:- 3 min 38 sec
+Time taken to execute SQ Other Info:- 1 min 8 sec
+Time taken to execute SQ Additional Information:- 2 min 9 sec
+Time taken to execute SQ Shipping Address:- 1 min 52 sec
+Time taken to execute SQ Terms And Conditions:- 1 min 8 sec
+Time taken to execute SQ Allocations:- 0 sec
+Time taken to execute Sales Quotation End: 27 min 39 sec
+Time taken to execute SQC General Information End:- 1 min 42 sec
+Time taken to execute SQC Add Products:- 5 min 8 sec
+Time taken to execute SQC Other Info:- 49 sec
+Time taken to execute SQC Additional Information:- 1 min 46 sec
+Time taken to execute Sales Quotation Cancellation End: 9 min 59 sec
+Time taken to execute Sale Enquiry End Products11 min 30 sec
+Time taken to execute Charges And Deductions 2 min 33 sec
+Time taken to execute OtherInfo 1 min 3 sec
+Time taken to execute Additional Information 2 min 4 sec
+Time taken to execute Shipping Address:- 1 min 55 sec
+Time taken to execute Terms And Conditions 1 min 5 sec
+Time taken to execute Sales Enquiries ended at:- 22 min 30 sec
+Time taken to execute Sale Quotations Products Entering10 min 44 sec
+Time taken to execute Charges And Deductions 2 min 39 sec
+Time taken to execute OtherInfo 56 sec
+Time taken to execute Additional Information 2 min 4 sec
+Time taken to execute Shipping Address:- 1 min 46 sec
+Time taken to execute Terms And Conditions 1 min 5 sec
+Time taken to execute Sales quotations against Enquiries ended at:- 22 min 14 sec
+Time taken to execute SOAQ General Information End:- 2 min 29 sec
+Time taken to execute SOAQ Add Products:- 11 min 46 sec
+Time taken to execute SOAQ Charges And Deductions:- 2 min 42 sec
+Time taken to execute SOAQ Other Charges:- 3 min 43 sec
+Time taken to execute SOAQ Cash Tab:- 2 min 0 sec
+Time taken to execute SOAQ Cheques Tab:- 3 min 17 sec
+Time taken to execute SOAQ Post Dated Cheques Tab:- 2 min 51 sec
+Time taken to execute SOAQ Cheques PDC Tab:- 2 min 54 sec
+Time taken to execute SOAQ Credit Card Tab:- 3 min 12 sec
+Time taken to execute SOAQ OtherInfo Tab:- 1 min 4 sec
+Time taken to execute SOAQ Additional Information:- 2 min 27 sec
+Time taken to execute SOAQ Shipping address tab: 2 min 5 sec
+Time taken to execute SOAQ Terms And Conditions:- 1 min 15 sec
+Time taken to execute SOAQ ended at 43 min 1 sec
+Time taken to execute SO General Information End:- 2 min 38 sec
+Time taken to execute SO Add Products:- 14 min 20 sec
+Time taken to execute SO Charges And Deductions:- 2 min 53 sec
+Time taken to execute SO Other Charges:- 3 min 50 sec
+Time taken to execute SO Cash Tab:- 2 min 11 sec
+Time taken to execute SO Cheques Tab:- 3 min 37 sec
+Time taken to execute SO Post Dated Cheques Tab:- 3 min 8 sec
+Time taken to execute SO Cheques PDC Tab:- 3 min 7 sec
+Time taken to execute SO Credit Card Tab:- 3 min 34 sec
+Time taken to execute SO PayTym Tab:- 1 min 34 sec
+Time taken to execute SO pineLab Tab:- 1 min 47 sec
+Time taken to execute SO Other Info:- 1 min 21 sec
+Time taken to execute SO Additional Information:- 2 min 43 sec
+Time taken to execute SO  Shipping address tab: 2 min 18 sec
+Time taken to execute SO Terms And Conditions:- 1 min 24 sec
+Time taken to execute SO Enter Allocations:- 53 sec
+Time taken to execute Sales Order ended at:- 52 min 17 sec
+Time taken to execute SO General Information End:- 2 min 43 sec
+Time taken to execute SO Add Products:- 14 min 28 sec
+Time taken to execute SO Charges And Deductions:- 2 min 47 sec
+Time taken to execute SO Other Charges:- 3 min 50 sec
+Time taken to execute SO Cash Tab:- 2 min 8 sec
+Time taken to execute SO Cheques Tab:- 3 min 32 sec
+Time taken to execute SO Post Dated Cheques Tab:- 3 min 3 sec
+Time taken to execute SO Cheques PDC Tab:- 3 min 6 sec
+Time taken to execute SO Credit Card Tab:- 3 min 27 sec
+Time taken to execute SO PayTym Tab:- 1 min 35 sec
+Time taken to execute SO pineLab Tab:- 1 min 47 sec
+Time taken to execute SO Other Info:- 1 min 23 sec
+Time taken to execute SO Additional Information:- 2 min 43 sec
+Time taken to execute SO  Shipping address tab: 2 min 15 sec
+Time taken to execute SO Terms And Conditions:- 1 min 23 sec
+Time taken to execute SO Enter Allocations:- 53 sec
+Time taken to execute Sales Order ended at:- 51 min 59 sec
+Time taken to execute DELO General information End:- 2 min 29 sec
+Time taken to execute DELO Add Products:- 16 min 20 sec
+Time taken to execute DELO Charges And Deductions:- 2 min 41 sec
+Time taken to execute DELO Other Charges:- 4 min 4 sec
+Time taken to execute DELO Other Info:- 1 min 1 sec
+Time taken to execute DELO Additional Information:- 2 min 14 sec
+Time taken to execute DELO Shipping Address:- 1 min 56 sec
+Time taken to execute DELO Terms And Conditions:- 1 min 11 sec
+Time taken to execute Sales Invoice General information End:- 4 min 1 sec
+Time taken to execute SO General Information End:- 2 min 42 sec
+Time taken to execute SO Add Products:- 14 min 24 sec
+Time taken to execute SO Charges And Deductions:- 2 min 52 sec
+Time taken to execute SO Other Charges:- 3 min 47 sec
+Time taken to execute SO Cash Tab:- 2 min 8 sec
+Time taken to execute SO Cheques Tab:- 3 min 40 sec
+Time taken to execute SO Post Dated Cheques Tab:- 3 min 9 sec
+Time taken to execute SO Cheques PDC Tab:- 3 min 10 sec
+Time taken to execute SO Credit Card Tab:- 3 min 35 sec
+Time taken to execute SO PayTym Tab:- 1 min 37 sec
+Time taken to execute SO pineLab Tab:- 1 min 53 sec
+Time taken to execute SO Other Info:- 1 min 25 sec
+Time taken to execute SO Additional Information:- 2 min 50 sec
+Time taken to execute SO  Shipping address tab: 2 min 20 sec
+Time taken to execute SO Terms And Conditions:- 1 min 25 sec
+Time taken to execute SO Enter Allocations:- 53 sec
+Time taken to execute Sales Order ended at:- 52 min 48 sec
+Time taken to execute Sales Invoice against Orders General information End:- 4 min 20 sec
+Time taken to execute Sales Invoice against Orders Add Products:- 19 min 15 sec
+Time taken to execute Sales Invoice against Orders Charges and Deductions:- 3 min 2 sec
+Time taken to execute Sales Invoice against Orders Other Charges:- 4 min 28 sec
+Time taken to execute Sales Invoice against Orders Cash Tab:- 3 min 5 sec
+Time taken to execute Sales Invoice against Orders Cheques Tab:- 5 min 31 sec
+Time taken to execute Sales Invoice against Orders Post Dated Cheques Tab:- 4 min 13 sec
+Time taken to execute Sales Invoice against Orders Cheques[PDC] Tab:- 4 min 19 sec
+Time taken to execute Sales Invoice against Orders Credit Card Tab:- 6 min 34 sec
+Time taken to execute Sales Invoice against Orders Other Info Tab:- 1 min 29 sec
+Time taken to execute Sales Invoice against Orders Additional Info Tab:- 3 min 6 sec
+Time taken to execute Sales Invoice Against Deliveries Shipping Address Tab: 2 min 37 sec
+Time taken to execute Sales Invoice against Orders Dispatch Address Tab: 2 min 1 sec
+Time taken to execute Sales Invoice against Orders Terms and Conditions Tab:- 1 min 33 sec
+Time taken to execute Deliveries General Information End:- 2 min 5 sec
+Time taken to execute Deliveries Add Products:- 15 min 39 sec
+Time taken to execute Deliveries Charges And Deductions:- 2 min 44 sec
+Time taken to execute Deliveries Other Charges:- 3 min 57 sec
+Time taken to execute Deliveries Other Info:- 1 min 11 sec
+Time taken to execute Deliveries Additional Information:- 2 min 14 sec
+Time taken to execute Deliveries Shipping Address:- 1 min 56 sec
+Time taken to execute Deliveries Terms And Conditions:- 1 min 10 sec
+Time taken to execute Deliveries Allocations:- 43 sec
+Time taken to execute General information End:- 4 min 53 sec
+Time taken to execute Sales Invoice against Deliveries Add Products:- 31 min 56 sec
+Time taken to execute Sales Invoice against Deliveries Charges and Deductions:- 3 min 10 sec
+Time taken to execute Sales Invoice against Deliveries Other Charges:- 4 min 40 sec
+Time taken to execute Sales Invoice against Deliveries Cash Tab:- 3 min 13 sec
+Time taken to execute Sales Invoice against Deliveries Cheques Tab:- 5 min 40 sec
+Time taken to execute Sales Invoice against Deliveries Post Dated Cheques Tab:- 4 min 20 sec
+Time taken to execute Sales Invoice against Deliveries Cheques[PDC] Tab:- 4 min 28 sec
+Time taken to execute Sales Invoice against Deliveries Credit Card Tab:- 6 min 49 sec
+Time taken to execute Sales Invoice against Deliveries Other Info Tab:- 1 min 31 sec
+Time taken to execute Sales Invoice against Deliveries Additional Info Tab:- 3 min 2 sec
+Time taken to execute Sales Invoice Against Deliveries Shipping Address Tab: 2 min 43 sec
+Time taken to execute Sales Invoice against Deliveries Dispatch Address Tab: 2 min 3 sec
+Time taken to execute Sales Invoice against Deliveries Terms and Conditions Tab:- 1 min 37 sec
+Time taken to execute Deliveries General Information End:- 2 min 6 sec
+Time taken to execute Deliveries Add Products:- 15 min 25 sec
+Time taken to execute Deliveries Charges And Deductions:- 2 min 44 sec
+Time taken to execute Deliveries Other Charges:- 3 min 56 sec
+Time taken to execute Deliveries Other Info:- 1 min 10 sec
+Time taken to execute Deliveries Additional Information:- 2 min 12 sec
+Time taken to execute Deliveries Shipping Address:- 1 min 57 sec
+Time taken to execute Deliveries Terms And Conditions:- 1 min 9 sec
+Time taken to execute Deliveries Allocations:- 45 sec
+Time taken to execute Delivery Returns General Information End:- 2 min 21 sec
+Time taken to execute Delivery Returns Add Products:- 22 min 20 sec
+Time taken to execute Delivery Returns Charges And Deductions:- 2 min 40 sec
+Time taken to execute Delivery Returns Other Info:- 1 min 0 sec
+Time taken to execute Delivery Returns Additional Information:- 2 min 1 sec
+Time taken to execute Sales Invoice General information End:- 3 min 58 sec
+Time taken to execute Sales Invoice General information End:- 3 min 58 sec
+Time taken to execute Add Products:- 19 min 51 sec
+Time taken to execute Charges and Deductions:- 3 min 13 sec
+Time taken to execute Other Charges:- 4 min 39 sec
+Time taken to execute Cash Tab:- 3 min 13 sec
+Time taken to execute Cheques Tab:- 5 min 45 sec
+Time taken to execute Post Dated Cheques Tab:- 4 min 29 sec
+Time taken to execute Cheques[PDC] Tab:- 4 min 33 sec
+Time taken to execute Credit Card Tab:- 6 min 58 sec
+Time taken to execute PayTym Tab:- 1 min 58 sec
+Time taken to execute pineLab Tab:- 2 min 12 sec
+Time taken to execute Other Info Tab:- 1 min 41 sec
+Time taken to execute Additional Info Tab:- 3 min 24 sec
+Time taken to execute Additional Info Tab:- 2 min 7 sec
+Time taken to execute Additional Info Tab:- 2 min 43 sec
+Time taken to execute Additional Info Tab:- 2 min 22 sec
+Time taken to execute Terms and Conditions Tab:- 1 min 45 sec
+Time taken to execute Sales Invoice ended at:- 76 min 29 sec
+Time taken to execute Sales returns with invoice reference End Add Products:- 14 min 10 sec
+Time taken to execute Charges and Deductions:- 2 min 52 sec
+Time taken to execute Other Charges:- 4 min 12 sec
+Time taken to execute Cash Tab:- 2 min 6 sec
+Time taken to execute Cheques Tab:- 3 min 2 sec
+Time taken to execute Post Dated Cheques Tab:- 2 min 50 sec
+Time taken to execute Cheques[PDC] Tab:- 2 min 35 sec
+Time taken to execute Cheques[PDC] Tab:- 25 sec
+Time taken to execute Other Info Tab:- 1 min 7 sec
+Time taken to execute Additional Info Tab:- 2 min 35 sec
+Time taken to execute Shipping Address:- 2 min 18 sec
+Time taken to execute Terms and Conditions Tab:- 1 min 22 sec
+Time taken to execute Sales Returns with invoice reference ended at:- 43 min 48 sec
+Time taken to execute General information End:- 2 min 1 sec
+Time taken to execute proforma Sales Invoice Add Products:- 15 min 8 sec
+Time taken to execute proforma Sales Invoice Charges and Deductions:- 2 min 39 sec
+Time taken to execute proforma Sales Invoice Other Charges:- 3 min 50 sec
+Time taken to execute proforma Sales Invoice Other Info Tab:- 1 min 10 sec
+Time taken to execute proforma Sales Invoice Additional Info Tab:- 2 min 15 sec
+Time taken to execute Proforma sales Invoice Shipping address tab: 1 min 57 sec
+Time taken to execute proforma Sales Invoice Terms and Conditions Tab:- 1 min 11 sec
+Time taken to execute proforma Sales Invoice Allocations Tab:- 45 sec
+Time taken to execute proforma Sales Invoice ended at:- 31 min 36 sec
+Time taken to execute Sales Price General Information End:- 1 min 24 sec
+Time taken to execute Sales Price Items:- 1 min 57 sec
+Time taken to execute Sales Price End:- 4 min 0 sec
+Time taken to execute Party and Product Discount General Information End:- 32 sec
+Time taken to execute Party and Product Discount Add Products:- 1 min 5 sec
+Time taken to execute Define Sales Target Executive Wise General Information End:- 57 sec
+Time taken to execute Define Sales Target Executive Wise Add Products:- 1 min 4 sec
+Time taken to execute Define Sales Target Executive Wise Other Info:- 53 sec
+Time taken to execute Purchase Voucher General information End:- 55 sec
+Time taken to execute Purchase Enquiries Add Products:- 6 min 4 sec
+Time taken to execute Purchase Enquiries Other Info Tab:- 57 sec
+Time taken to execute Purchase Enquiries Additional Info Tab:- 1 min 46 sec
+Time taken to execute Purchase Enquiries Terms and Conditions Tab:- 58 sec
+Time taken to execute Purchase Enquiries Allocations Tab:- 36 sec
+Time taken to execute Purchase Enquiries ending at:- 12 min 14 sec
+Time taken to execute Purchase Voucher General information End:- 1 min 9 sec
+Time taken to execute Add Products:- 4 min 21 sec
+Time taken to execute Other Info Tab:- 49 sec
+Time taken to execute Additional Info Tab:- 1 min 44 sec
+Time taken to execute Terms and Conditions Tab:- 56 sec
+Time taken to execute purchaseEnquiries validating Tab Items UpTo summary593min
+Time taken to execute PQ General Information End:- 1 min 31 sec
+Time taken to execute PQ Add Products:- 12 min 7 sec
+Time taken to execute PQ Charges And Deductions:- 2 min 26 sec
+Time taken to execute PQ Other Info:- 1 min 1 sec
+Time taken to execute PQ Additional Information:- 1 min 58 sec
+Time taken to execute PQ Terms And Conditions:- 1 min 4 sec
+Time taken to execute PQ Allocations:- 39 sec
+Time taken to execute Purchase Voucher General information End:- 56 sec
+Time taken to execute Purchase Enquiries Add Products:- 6 min 4 sec
+Time taken to execute Purchase Enquiries Other Info Tab:- 57 sec
+Time taken to execute Purchase Enquiries Additional Info Tab:- 1 min 44 sec
+Time taken to execute Purchase Enquiries Terms and Conditions Tab:- 55 sec
+Time taken to execute Purchase Enquiries Allocations Tab:- 37 sec
+Time taken to execute Purchase Enquiries ending at:- 12 min 9 sec
+Time taken to execute Purchase Quotations Against Enquiries General information End:- 2 min 4 sec
+Time taken to execute Purchase Quotations Against Enquiries Add Products:- 9 min 41 sec
+Time taken to execute Purchase Quotations Against Enquiries Charges and Deductions:- 2 min 24 sec
+Time taken to execute Purchase Quotations Against Enquiries Other Info Tab:- 52 sec
+Time taken to execute Purchase Quotations Against Enquiries Additional Info Tab:- 1 min 56 sec
+Time taken to execute Purchase Quotations Against Enquiries Terms and Conditions Tab:- 1 min 4 sec
+Time taken to execute Purchase Quotations Against Enquiries Ended at:- 19 min 0 sec

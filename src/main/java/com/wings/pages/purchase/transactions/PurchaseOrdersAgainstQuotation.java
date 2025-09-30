@@ -27,13 +27,13 @@ public class PurchaseOrdersAgainstQuotation extends TransactionsBaseClass {
 
     public String purchaseOrdersAgainstQuotation(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start3 = System.nanoTime();
-        System.out.println("PurchaseOrdersAgainstQuotations starts at :"+start3);
+        System.out.println("Purchase Orders Against Quotations starts at:- "+start3);
 
 
         navigateToMastersWhen3Steps("Purchase","Orders","Purchase Orders against Quotations");
         Thread.sleep(2000);
         String oldVoucherID = oldTTransactionID();
-
+        long poaqGenInfoStart=System.nanoTime();
         enterVoucherType(dataFile,"GeneralInformation","VoucherType");
         EnterDate("//Edit[@Name='Date *']",dataFile,"GeneralInformation","Date");
         enterBranch(dataFile,"GeneralInformation","Branch");
@@ -50,72 +50,73 @@ public class PurchaseOrdersAgainstQuotation extends TransactionsBaseClass {
         enterPriceList(dataFile,"GeneralInformation","PriceList");
         enterExecutive(dataFile,"GeneralInformation","Executive");
         enterRemarks(dataFile,"GeneralInformation","Remarks");
-
+        long poaqGenInfoEnd=System.nanoTime()-poaqGenInfoStart;
+        FileUtil.writeTimeLogInMinutes("Purchase Orders Against Quotations Gen Info ended at:- ",poaqGenInfoEnd);
         //F3-Items
         long addProductStart=System.nanoTime();
         addProducts();
         long addProductEnd=System.nanoTime()-addProductStart;
-        FileUtil.writeTimeLogInMinutes("Add Products:- ",addProductEnd);
+        FileUtil.writeTimeLogInMinutes("Purchase Orders Against Quotations Add Products:- ",addProductEnd);
 
         //charges and deductions
         long chargesDeductionsStart =System.nanoTime();
         addChargesAndDeductions();
         long chargesDeductionsEnd=System.nanoTime()- chargesDeductionsStart;
-        FileUtil.writeTimeLogInMinutes("Charges and Deductions:- ",chargesDeductionsEnd);
+        FileUtil.writeTimeLogInMinutes("Purchase Orders Against Quotations Charges and Deductions:- ",chargesDeductionsEnd);
 
         //other charges
         long otherChargesStart =System.nanoTime();
         addOtherCharges();
         long otherChargesEnd=System.nanoTime()- otherChargesStart;
-        FileUtil.writeTimeLogInMinutes("Other Charges:- ",otherChargesEnd);
+        FileUtil.writeTimeLogInMinutes("Purchase Orders Against Quotations Other Charges:- ",otherChargesEnd);
 
         //cash
         long cashTabStart =System.nanoTime();
         addCash();
         long cashTabEnd =System.nanoTime()- cashTabStart;
-        FileUtil.writeTimeLogInMinutes("Cash Tab:- ", cashTabEnd);
+        FileUtil.writeTimeLogInMinutes("Purchase Orders Against Quotations Cash Tab:- ", cashTabEnd);
 
         //cheques
         long chequesTabStart =System.nanoTime();
         addCheques();
         long chequesTabEnd =System.nanoTime()- chequesTabStart;
-        FileUtil.writeTimeLogInMinutes("Cheques Tab:- ", chequesTabEnd);
+        FileUtil.writeTimeLogInMinutes("Purchase Orders Against Quotations Cheques Tab:- ", chequesTabEnd);
 
         //post dated cheques
         long postDatedChequesTabStart =System.nanoTime();
         addPostDatedCheques();
         long postDatedChequesTabEnd =System.nanoTime()- postDatedChequesTabStart;
-        FileUtil.writeTimeLogInMinutes("Post Dated Cheques Tab:- ", postDatedChequesTabEnd);
+        FileUtil.writeTimeLogInMinutes("Purchase Orders Against Quotations Post Dated Cheques Tab:- ", postDatedChequesTabEnd);
 
         //cheques[pdc]
         long chequesPDCTabStart =System.nanoTime();
         addChequesPDC();
         long chequesPDCTabEnd =System.nanoTime()- chequesPDCTabStart;
-        FileUtil.writeTimeLogInMinutes("Cheques[PDC] Tab:- ", chequesPDCTabEnd);
+        FileUtil.writeTimeLogInMinutes("Purchase Orders Against Quotations Cheques[PDC] Tab:- ", chequesPDCTabEnd);
 
         //Other info
         long otherInfoTabStart =System.nanoTime();
         otherInfo();
         long otherInfoTabEnd =System.nanoTime()- otherInfoTabStart;
-        FileUtil.writeTimeLogInMinutes("Other Info Tab:- ", otherInfoTabEnd);
+        FileUtil.writeTimeLogInMinutes("Purchase Orders Against Quotations Other Info Tab:- ", otherInfoTabEnd);
 
         //additional Info
         long additionalInfoTabStart =System.nanoTime();
         additionalInformation();
         long additionalInfoTabEnd =System.nanoTime()- additionalInfoTabStart;
-        FileUtil.writeTimeLogInMinutes("Additional Info Tab:- ", additionalInfoTabEnd);
+        FileUtil.writeTimeLogInMinutes("Purchase Orders Against Quotations Additional Info Tab:- ", additionalInfoTabEnd);
 
         //terms and Cond
         long termsConditionsTabStart =System.nanoTime();
         termsAndCondition();
         long termsConditionsTabEnd =System.nanoTime()- termsConditionsTabStart;
-        FileUtil.writeTimeLogInMinutes("Terms and Conditions Tab:- ", termsConditionsTabEnd);
+        FileUtil.writeTimeLogInMinutes("Purchase Orders Against Quotations Terms and Conditions Tab:- ", termsConditionsTabEnd);
 
 ////        allocations
 //        long allocationsTabStart=System.nanoTime();
 //        addAllocations();
 //        long allocationsTabEnd=System.nanoTime() - allocationsTabStart;
-//        FileUtil.writeTimeLogInMinutes("Allocations Tab:- ", allocationsTabEnd);
+//        FileUtil.writeTimeLogInMinutes("Purchase Orders Against Quotations Allocations Tab:- ", allocationsTabEnd);
 
         transactionSave();
         String transactionId = newTransactionID(oldVoucherID);
@@ -123,7 +124,7 @@ public class PurchaseOrdersAgainstQuotation extends TransactionsBaseClass {
         APIClient.validateAPIWithExcel(transactionId,tempAPIBodyUpdate,apiResponse,outputFile,"PurchaseOrdersAgainstQuotations");
 
         long duration3 = System.nanoTime() - start3;
-        FileUtil.writeTimeLogInMinutes("PurchaseOrdersAgainstQuotations ends at :", duration3 /1000000000);
+        FileUtil.writeTimeLogInMinutes("Purchase Orders Against Quotations ends at:- ", duration3);
 
         return transactionId;
     }

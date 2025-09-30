@@ -33,7 +33,7 @@ public class PurchaseVouchersAgainstOrder extends TransactionsBaseClass {
 
     public String purchaseVouchersAgainstOrder(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long PVAO = System.nanoTime();
-        System.out.println("PurchaseVouchersAgainstOrders starts at :"+PVAO);
+        System.out.println("Purchase Vouchers Against Orders starts at :"+PVAO);
 
         navigateToPurchaseVouchersAgainstOrders();
         Thread.sleep(3000);
@@ -69,30 +69,30 @@ public class PurchaseVouchersAgainstOrder extends TransactionsBaseClass {
         enterRemarks(dataFile,"GeneralInformation","Remarks");
 
         long duration1 = System.nanoTime() - start1;
-        FileUtil.writeTimeLogInMinutes("General information Purchase voucher", duration1);
+        FileUtil.writeTimeLogInMinutes("Purchase Vouchers Against Orders General information Purchase voucher:- ", duration1);
 
         long products = System.nanoTime();
         addProduct();
         long productsEnd = System.nanoTime() - products;
-        FileUtil.writeTimeLogInMinutes("Enter Products Purchase Vouchers", productsEnd);
+        FileUtil.writeTimeLogInMinutes("Purchase Vouchers Against Orders Add Products:- ", productsEnd);
 
         long services = System.nanoTime();
         navigateToServices();
         addServices();
         long servicesEnd = System.nanoTime() - services;
-        FileUtil.writeTimeLogInMinutes("Enter services", servicesEnd);
+        FileUtil.writeTimeLogInMinutes("Purchase Vouchers Against Orders Add Enter services:- ", servicesEnd);
 
         long chargesAndDeductions = System.nanoTime();
         navigateToChargesAndDeductionsTab();
         addChargesAndDeductions();
         long chargesAndDeductionsEnd = System.nanoTime() - chargesAndDeductions;
-        FileUtil.writeTimeLogInMinutes("Enter Charges And Deductions", chargesAndDeductionsEnd);
+        FileUtil.writeTimeLogInMinutes("Purchase Vouchers Against Orders Add Enter Charges And Deductions:- ", chargesAndDeductionsEnd);
 
         long otherCharges = System.nanoTime();
         navigateToOtherChargesTab();
         addOtherCharges();
         long otherChargesEnd = System.nanoTime() - otherCharges;
-        FileUtil.writeTimeLogInMinutes("Enter Other", otherChargesEnd);
+        FileUtil.writeTimeLogInMinutes("Purchase Vouchers Against Orders Add Enter Other:- ", otherChargesEnd);
 
         navigateToBillsReceivablesTab();
         common.deleteInvalidRows();
@@ -105,7 +105,7 @@ public class PurchaseVouchersAgainstOrder extends TransactionsBaseClass {
         List<WebElement> elements1=common.findWebElements("xpath","//TabItem[contains(@Name,'Other Costs ')]");
         elements1.get(1).click();
         long otherCostsEnd = System.nanoTime() - otherCosts;
-        FileUtil.writeTimeLogInMinutes("Enter Other Costs", otherCostsEnd);
+        FileUtil.writeTimeLogInMinutes("Purchase Vouchers Against Orders Add Other Costs:- ", otherCostsEnd);
         elements.get(0).click();
         moveToRight(9);
 
@@ -115,43 +115,43 @@ public class PurchaseVouchersAgainstOrder extends TransactionsBaseClass {
         navigateToCashTab();
         addCash();
         long cashEnd = System.nanoTime() - cash;
-        FileUtil.writeTimeLogInMinutes("Enter Cash", cashEnd);
+        FileUtil.writeTimeLogInMinutes("Purchase Vouchers Against Orders Add Cash:- ", cashEnd);
 
         long cheques = System.nanoTime();
         navigateToCheques();
         addCheques();
         long chequesEnd = System.nanoTime() - cheques;
-        FileUtil.writeTimeLogInMinutes("Enter Cheque", chequesEnd);
+        FileUtil.writeTimeLogInMinutes("Purchase Vouchers Against Orders Add Cheque:- ", chequesEnd);
 
         long postDatedCheques = System.nanoTime();
         navigateToPostdatedCheques();
         addPostDatedCheques();
         long postDatedChequesEnd = System.nanoTime() - postDatedCheques;
-        FileUtil.writeTimeLogInMinutes("Enter Post Dated Cheques", postDatedChequesEnd);
+        FileUtil.writeTimeLogInMinutes("Purchase Vouchers Against Orders Add Post Dated Cheques:- ", postDatedChequesEnd);
 
         long chequesPDC = System.nanoTime();
         navigateToChequesPDC();
         addChequesPDC();
         long chequesPDCEnd = System.nanoTime() - chequesPDC;
-        FileUtil.writeTimeLogInMinutes("Enter Cheque PDC", chequesPDCEnd);
+        FileUtil.writeTimeLogInMinutes("Purchase Vouchers Against Orders Add Cheque PDC:- ", chequesPDCEnd);
 
         long otherInfo = System.nanoTime();
         navigateToOtherInfoTab();
         otherInfo();
         long otherInfoEnd = System.nanoTime() - otherInfo;
-        FileUtil.writeTimeLogInMinutes("OtherInfo ", otherInfoEnd);
+        FileUtil.writeTimeLogInMinutes("Purchase Vouchers Against Orders Add OtherInfo:- ", otherInfoEnd);
 
         long additionalInfo = System.nanoTime();
         navigateToAdditionalInfo();
         additionalInformation();
         long additionalInfoEnd = System.nanoTime() - additionalInfo;
-        FileUtil.writeTimeLogInMinutes("Enter Additional Information", additionalInfoEnd);
+        FileUtil.writeTimeLogInMinutes("Purchase Vouchers Against Orders Add Additional Information:- ", additionalInfoEnd);
 
         long termsAndConditions = System.nanoTime();
         navigateToTermsAndConditions();
         termsAndCondition();
         long termsAndConditionsEnd = System.nanoTime() - termsAndConditions;
-        FileUtil.writeTimeLogInMinutes("Enter Terms And Conditions", termsAndConditionsEnd);
+        FileUtil.writeTimeLogInMinutes("Purchase Vouchers Against Orders Add Terms And Conditions:- ", termsAndConditionsEnd);
 
         transactionSave();
         String newVoucherID = newTransactionID(oldVoucherID);
@@ -160,7 +160,7 @@ public class PurchaseVouchersAgainstOrder extends TransactionsBaseClass {
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"PurchaseVouchersAgainstOrders");
 
         long PurchaseVouchersAgainstOrdersEnd = System.nanoTime() - PVAO;
-        FileUtil.writeTimeLogInMinutes("PurchaseVouchersAgainstOrdersEnd ", PurchaseVouchersAgainstOrdersEnd);
+        FileUtil.writeTimeLogInMinutes("Purchase Vouchers Against Orders Ended at:- ", PurchaseVouchersAgainstOrdersEnd);
 
         return newVoucherID;
     }

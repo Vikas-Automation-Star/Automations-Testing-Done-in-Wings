@@ -12,6 +12,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -20,6 +21,8 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -180,6 +183,55 @@ public  class Transaction {
             }
         }
     }
+
+    public void referenceBillNumberTDSPayments(String voucherNum) throws InterruptedException, MalformedURLException {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("app", "Root");
+        rootDriver = new WindowsDriver<>(new URL("http://127.0.0.1:4723/"), capabilities);
+        Thread.sleep(1500);
+        List<WebElement> panes = By.tagName("Window").findElements(rootDriver);
+        Thread.sleep(2500);
+        if (panes.isEmpty()) {
+            System.out.println("No windows found.");
+        } else {
+            for (WebElement i : panes) {
+                String name = i.getAttribute("Name");
+                System.out.println("Name:- " + name);
+                if (name.equals("Reference Bill No Details")) {
+                    // Find rows inside the table
+                    List<WebElement> elementList = common.findWebElements("xpath", "//Window[@Name='Reference Bill No Details']//Table/*[starts-with(@Name,'Row')]/*[starts-with(@Name,'VoucherNo Row ')]");
+                    System.out.println("Size :" + elementList.size());
+                    boolean voucherFound = false;
+                    if (!elementList.isEmpty()) {
+                        WebElement firstRow = elementList.get(0);
+                        firstRow.click(); // Focus the table
+
+                        for (int iRow = 0; iRow < elementList.size(); iRow++) {
+                            WebElement currentRow = elementList.get(iRow);
+                            String rowText = currentRow.getAttribute("LegacyValue");
+//                            System.out.println("Row Text: " + rowText);
+                            if (rowText.equals(voucherNum)){
+                                voucherFound=true;
+                                currentRow.click();
+                                currentRow.sendKeys(Keys.TAB,Keys.TAB,Keys.SPACE);
+                            } else {
+                                currentRow.click();
+                                currentRow.sendKeys(Keys.DOWN);
+                            }
+                        }
+                    }
+                    if (!voucherFound) {
+                        System.out.println("Voucher not found in Reference Bill No Details. Failing test.");
+                        Assert.fail("Voucher number " + voucherNum + " not found in Reference Bill No Details.");
+                    }
+                    common.clickElement("xpath", "//Button[@Name='Ok']");
+                    break; // Exit after handling the correct window
+                }
+            }
+        }
+    }
+
+
 
     public void selectMasterWithValidation(String transaction, String locatorType, String locator) {
         List<WebElement> elementList = common.findWebElements("xpath", "//Table[@Name='Lookup']/*/*[contains(@Name,'Master Row')]");
@@ -1250,6 +1302,7 @@ public  class Transaction {
         }
         common.clickElement("xpath", "//Button[@Name='Ok']");
     }
+
     public void enterPostDatedChequesInPurchase(String dataFile,String dataSet) throws IOException, ParseException {
         List<WebElement> elements=common.findWebElements("xpath","//TabItem[contains(@Name,'Cheques')]");
 //        System.out.println(elements.get(1).getText());

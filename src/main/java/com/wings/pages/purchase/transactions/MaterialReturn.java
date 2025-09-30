@@ -29,6 +29,7 @@ public class MaterialReturn extends TransactionsBaseClass {
     }
 
     public String materialReturn(String receiptsNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
+        long materialReturnsStart=System.nanoTime();
         navigateToMastersWhen3Steps("Purchase","Receipts", "Material Returns");
         Thread.sleep(1000);
         long generalInfoStart=System.nanoTime();
@@ -51,7 +52,7 @@ public class MaterialReturn extends TransactionsBaseClass {
         enterRemarks(dataFile,"GeneralInformation","Remarks");
 
         long generalInfoEndTime = System.nanoTime() - generalInfoStart;
-        FileUtil.writeTimeLogInMinutes("General information End:- ", generalInfoEndTime);
+        FileUtil.writeTimeLogInMinutes("Material Returns General information End:- ", generalInfoEndTime);
 
         //F3-Items
         long addProductStart=System.nanoTime();
@@ -98,6 +99,9 @@ public class MaterialReturn extends TransactionsBaseClass {
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         //API
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"materialReturns");
+
+        long materialReturnsEnd=System.nanoTime()-materialReturnsStart;
+        FileUtil.writeTimeLogInMinutes("Material Returns Ended at:- ",materialReturnsEnd);
 
         return newVoucherID;
     }

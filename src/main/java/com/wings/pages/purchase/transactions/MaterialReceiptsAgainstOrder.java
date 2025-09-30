@@ -99,6 +99,9 @@ public class MaterialReceiptsAgainstOrder extends TransactionsBaseClass {
         //API
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"materialReceiptAgainstOrder");
 
+        long transactionEnd=System.nanoTime()-start;
+        FileUtil.writeTimeLogInMinutes("Material Receipts Against Orders Ended at:- ",transactionEnd);
+
         return newVoucherID;
     }
 

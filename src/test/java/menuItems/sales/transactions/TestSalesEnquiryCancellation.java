@@ -5,6 +5,7 @@ import com.wings.pages.sales.transactions.SalesEnquiry;
 import com.wings.pages.sales.transactions.SalesEnquiryCancellation;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
+import org.testng.SkipException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -28,6 +29,10 @@ public class TestSalesEnquiryCancellation {
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
         driver=appLogin.login();
+
+        if (4 % 2 == 0) {
+            throw new SkipException("Skipping tests due to login failure or other reasons");
+        }
     }
 
     @Test

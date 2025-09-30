@@ -9,7 +9,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Listener implements ITestListener, ISuiteListener, IExecutionListener {
+public class Listener implements ITestListener, ISuiteListener, IExecutionListener, IConfigurationListener  {
     int totalTest, passed, failed, skipped = 0;
     int suiteTotalTest = 0;
     int suitePassed = 0;
@@ -105,12 +105,13 @@ public class Listener implements ITestListener, ISuiteListener, IExecutionListen
 
     @Override
     public void onTestSkipped(ITestResult result) {
+        String reason = "";
         Time time = new Time();
         TestScript ts = new TestScript();
         JSONObject jsonObject = new JSONObject();
         if (result.getStatus() == ITestResult.SKIP) {
             ts.setTestName(result.getName());
-            ts.setStatus("FAILED");
+            ts.setStatus("SKIPPED");
             ts.setExecutionStartTime(time.getLocalDateTime(result.getStartMillis()));
             ts.setExecutionEndTime(time.getLocalDateTime(result.getEndMillis()));
             ts.setExetime(String.valueOf(result.getEndMillis() - result.getStartMillis()));
@@ -130,6 +131,23 @@ public class Listener implements ITestListener, ISuiteListener, IExecutionListen
             Reporter.log("Test execution is success:-" + result.getName(), true);
         }
         skipped++;
+
+        Throwable throwable = result.getThrowable();
+        if (throwable != null) {
+            reason = throwable.getMessage();
+        } else if (result.getMethod().getMethodsDependedUpon().length > 0) {
+            reason = "Dependent test(s) failed/skipped";
+        }
+        System.out.printf("SKIPPED: %s - Reason: %s%n",
+                result.getMethod().getMethodName(), reason);
+        // Optionally push to DB/ELK for analytics
+    }
+
+    @Override
+    public void onConfigurationFailure(ITestResult result) {
+        System.out.println("Configuration Failure in: " +
+                result.getMethod().getMethodName() +
+                " Cause: " + result.getThrowable());
     }
 
     @Override
@@ -187,4 +205,5 @@ public class Listener implements ITestListener, ISuiteListener, IExecutionListen
         System.out.println(("Total suite failed: " + suiteFailed));
         System.out.println(("Total suite skipped: " + suiteSkipped));
     }
+
 }

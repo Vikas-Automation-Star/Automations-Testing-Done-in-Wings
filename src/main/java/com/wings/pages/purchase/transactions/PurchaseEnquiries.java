@@ -34,7 +34,7 @@ public class PurchaseEnquiries extends TransactionsBaseClass {
         String oldVoucherID = oldTTransactionID();
 
         long generalInfoStart = System.nanoTime();
-        System.out.println("Purchase Voucher General information started executed in :" + generalInfoStart);
+        System.out.println("Purchase Voucher General information started executed in :- " + generalInfoStart);
 
         enterVoucherType(dataFile,"GeneralInformation","VoucherType");
         EnterDate("//Edit[@Name='Date *']",dataFile,"GeneralInformation","Date");
@@ -51,29 +51,29 @@ public class PurchaseEnquiries extends TransactionsBaseClass {
         long addProductStart=System.nanoTime();
         addProducts();
         long addProductEnd=System.nanoTime()-addProductStart;
-        FileUtil.writeTimeLogInMinutes("Add Products:- ",addProductEnd);
+        FileUtil.writeTimeLogInMinutes("Purchase Enquiries Add Products:- ",addProductEnd);
 
         //Other info
         long otherInfoTabStart =System.nanoTime();
         otherInfo();
         long otherInfoTabEnd =System.nanoTime()- otherInfoTabStart;
-        FileUtil.writeTimeLogInMinutes("Other Info Tab:- ", otherInfoTabEnd);
+        FileUtil.writeTimeLogInMinutes("Purchase Enquiries Other Info Tab:- ", otherInfoTabEnd);
 
         //additional Info
         long additionalInfoTabStart =System.nanoTime();
         additionalInformation();
         long additionalInfoTabEnd =System.nanoTime()- additionalInfoTabStart;
-        FileUtil.writeTimeLogInMinutes("Additional Info Tab:- ", additionalInfoTabEnd);
+        FileUtil.writeTimeLogInMinutes("Purchase Enquiries Additional Info Tab:- ", additionalInfoTabEnd);
 
         long termsConditionsTabStart =System.nanoTime();
         termsAndCondition();
         long termsConditionsTabEnd =System.nanoTime()- termsConditionsTabStart;
-        FileUtil.writeTimeLogInMinutes("Terms and Conditions Tab:- ", termsConditionsTabEnd);
+        FileUtil.writeTimeLogInMinutes("Purchase Enquiries Terms and Conditions Tab:- ", termsConditionsTabEnd);
 
         long allocationsTabStart=System.nanoTime();
         addAllocations();
         long allocationsTabEnd=System.nanoTime() - allocationsTabStart;
-        FileUtil.writeTimeLogInMinutes("Allocations Tab:- ", allocationsTabEnd);
+        FileUtil.writeTimeLogInMinutes("Purchase Enquiries Allocations Tab:- ", allocationsTabEnd);
 
         transactionSave();
         String transactionId = newTransactionID(oldVoucherID);
@@ -83,7 +83,7 @@ public class PurchaseEnquiries extends TransactionsBaseClass {
         APIClient.validateAPIWithExcel(transactionId,tempAPIBodyUpdate,apiResponse,outputFile,"PurchaseEnquiries");
 
         long PurchaseEnquiriesEnd = System.nanoTime() - start;
-        FileUtil.writeTimeLog("purchaseEnquiries ending at", PurchaseEnquiriesEnd /1000000000);
+        FileUtil.writeTimeLogInMinutes("Purchase Enquiries ending at:- ", PurchaseEnquiriesEnd);
 
         return transactionId;
     }
