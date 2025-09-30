@@ -78,6 +78,6 @@ public class TestPurchaseReturnsWithInvoicesReference {
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 }

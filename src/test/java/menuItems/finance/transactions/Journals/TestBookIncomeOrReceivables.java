@@ -37,7 +37,7 @@ public class TestBookIncomeOrReceivables {
     @Test
     public void bookIncomesOrReceivable() throws Exception {
         DebitNoteFromSuppliers noteFromSuppliers = new DebitNoteFromSuppliers(driver, dataFile);
-        String DNFS=noteFromSuppliers.debitNoteFromSupplier("PV 11",TEMP_API_BODY_DEBIT_NOTE_FROM_CUSTOMERS,API_RESPONSE_DEBIT_NOTE_FROM_CUSTOMERS,OUTPUT_FILE1);
+        String DNFS=noteFromSuppliers.debitNoteFromSupplier("PV 14",TEMP_API_BODY_DEBIT_NOTE_FROM_CUSTOMERS,API_RESPONSE_DEBIT_NOTE_FROM_CUSTOMERS,OUTPUT_FILE1);
 
         appLogin.logout();
         driver= appLogin.login();

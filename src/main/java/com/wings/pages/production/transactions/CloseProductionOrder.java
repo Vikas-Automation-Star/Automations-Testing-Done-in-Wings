@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.*;
 
 public class CloseProductionOrder extends TransactionsBaseClass {
     WindowsDriver driver;
@@ -45,33 +45,38 @@ public class CloseProductionOrder extends TransactionsBaseClass {
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"CloseProductionOrder");
-
     }
+
     public void pendingStockToBeIssuedToProduction() throws InterruptedException, IOException {
         Thread.sleep(1000);
-        List<String> masterType=readExcelData(dataFile,"PendingStockToB$tion0","MasterType");
+        List<String> productsOrderInExcel=getValuesByColumnHeader(dataFile,"PendingStockToB$tion0","Product");
+        List<String> productCode=readExcelData(dataFile,"PendingStockToB$tion0","ProductCode");
+        //read products order from app
+        List<WebElement> productsOrderInApp=common.findWebElements("xpath","//Table[@Name='PendingStockToBeIssuedToProduction']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Product * Row ')]");
         common.clickElement("xpath","//TabItem[contains(@Name,'Pending Stock To Be Issued To Production  ')]");
         List<WebElement> uom = common.findWebElements("xpath", "//Table[@Name='PendingStockToBeIssuedToProduction']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'UOM * Row ')]");
         List<WebElement>  quantity= common.findWebElements("xpath", "//Table[@Name='PendingStockToBeIssuedToProduction']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Quantity * Row ')]");
         List<WebElement>  cancelBox= common.findWebElements("xpath", "//Table[@Name='PendingStockToBeIssuedToProduction']/*[contains(@Name,'Row ')]/CheckBox[contains(@Name,'Cancel * Row ')]");
         List<WebElement>  reason= common.findWebElements("xpath", "//Table[@Name='PendingStockToBeIssuedToProduction']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Reason Row ')]");
         List<WebElement>  comments= common.findWebElements("xpath", "//Table[@Name='PendingStockToBeIssuedToProduction']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Comments Row ')]");
-        for (int i = 0; i < uom.size(); i++) {
-            enterListData(uom.get(i),dataFile,"PendingStockToB$tion0","UOM",i);
-            if (masterType.get(i).equals("Products")){
-                enterListData(quantity.get(i),dataFile,"PendingStockToB$tion0","Quantity",i);
-            } else if (masterType.get(i).equals("Products - MultiBatch")) {
-                enterListData(quantity.get(i),dataFile,"PendingStockToB$tion0","Quantity",i);
-            }else if (masterType.get(i).equals("Products - Batches and Serial No")){
-                enterListData(quantity.get(i),dataFile,"PendingStockToB$tion0","Quantity",i);
-            }else {
-                Assert.fail("No product present");
+
+        Set<Integer> usedAppRows = new HashSet<>();
+        for (int i = 0; i < productCode.size(); i++) {
+            String excelProduct = productsOrderInExcel.get(i);
+            for (int j = 0; j < productsOrderInApp.size(); j++) {
+                String appProduct = productsOrderInApp.get(j).getText().trim();
+                if (excelProduct.equalsIgnoreCase(appProduct) && !usedAppRows.contains(j)) {
+                    enterListData(uom.get(i), dataFile, "PendingStockToB$tion0", "UOM", j);
+                    enterListData(quantity.get(i), dataFile, "PendingStockToB$tion0", "Quantity", j);
+                    clickListData(cancelBox.get(i));
+                    enterListData(reason.get(i),dataFile,"PendingStockToB$tion0","Reason",i);
+                    enterListData(comments.get(i),dataFile,"PendingStockToB$tion0","Comments",i);
+                    usedAppRows.add(j);
+                    break; // go to next Excel row once matched
+                }
             }
-//            enterListData(quantity.get(i),dataFile,"PendingStockToB$tion0","Quantity",i);
-            clickListData(cancelBox.get(i));
-            enterListData(reason.get(i),dataFile,"PendingStockToB$tion0","Reason",i);
-            enterListData(comments.get(i),dataFile,"PendingStockToB$tion0","Comments",i);
         }
+
     }
     public void pendingStockToBeReceivedFromProduction() throws InterruptedException, IOException {
         Thread.sleep(1000);
