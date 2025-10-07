@@ -59,6 +59,192 @@ Time taken to execute Physical Stock Take General Information:- 53 sec
 Time taken to execute Payment to Parties General information End:- 1 min 22 sec
 Time taken to execute Payment to Parties Add Parties:- 4 min 26 sec
 Time taken to execute Payment to Parties Cheques Tab:- 6 min 15 sec
+Time taken to execute Sales Invoice General information End:- 4 min 2 sec
+Time taken to execute Add Products:- 19 min 47 sec
+Time taken to execute Charges and Deductions:- 3 min 16 sec
+Time taken to execute Other Charges:- 4 min 39 sec
+Time taken to execute Cash Tab:- 3 min 15 sec
+Time taken to execute Cheques Tab:- 5 min 49 sec
+Time taken to execute Post Dated Cheques Tab:- 4 min 21 sec
+Time taken to execute Cheques[PDC] Tab:- 4 min 31 sec
+Time taken to execute Credit Card Tab:- 6 min 53 sec
+Time taken to execute PayTym Tab:- 1 min 56 sec
+Time taken to execute pineLab Tab:- 2 min 14 sec
+Time taken to execute Other Info Tab:- 1 min 42 sec
+Time taken to execute Additional Info Tab:- 3 min 24 sec
+Time taken to execute Additional Info Tab:- 2 min 7 sec
+Time taken to execute Additional Info Tab:- 2 min 40 sec
+Time taken to execute Additional Info Tab:- 2 min 23 sec
+Time taken to execute Terms and Conditions Tab:- 1 min 44 sec
+Time taken to execute Parties Tab:- 2 min 29 sec
+Time taken to execute bills Receivables Tab:- 39 sec
+Time taken to execute Other Info Tab:- 53 sec
+Time taken to execute Allocations Tab:- 37 sec
+Time taken to execute Other Info Tab:- 5 min 2 sec
+Time taken to execute bills Receivables Tab:- 37 sec
+Time taken to execute Other Info Tab:- 56 sec
+Time taken to execute Allocations Tab:- 35 sec
+Time taken to execute Other Info Tab:- 4 min 52 sec
+Time taken to execute bills Receivables Tab:- 40 sec
+Time taken to execute Other Info Tab:- 55 sec
+Time taken to execute Allocations Tab:- 37 sec
+Time taken to execute Payment to Parties General information End:- 1 min 19 sec
+Time taken to execute Payment to Parties Add Parties:- 4 min 29 sec
+Time taken to execute Payment to Parties Cheques Tab:- 6 min 13 sec
+Time taken to execute Payment to Parties Post Dated Cheques Tab:- 6 min 6 sec
+Time taken to execute Payment to Parties Cheques PDC Tab:- 6 min 4 sec
+Time taken to execute Payment to Parties Cheques PDC Tab:- 1 min 59 sec
+Time taken to execute Payment to Parties OtherInfo Tab:- 1 min 9 sec
+Time taken to execute Payment to Parties Allocations Tab:- 0 sec
+Time taken to execute Payment to Parties ended at:- 28 min 6 sec
+Time taken to execute General information Purchase voucher3 min 19 sec
+Time taken to execute Enter Products Purchase Vouchers25 min 35 sec
+Time taken to execute Enter services10 min 4 sec
+Time taken to execute Enter Charges And Deductions3 min 22 sec
+Time taken to execute Enter Other5 min 50 sec
+Time taken to execute Enter Other Deductions6 min 26 sec
+Time taken to execute Enter Other Costs3 min 17 sec
+Time taken to execute Enter Cash2 min 41 sec
+Time taken to execute Enter Cheque3 min 52 sec
+Time taken to execute Enter Post Dated Cheques3 min 35 sec
+Time taken to execute Enter Cheque PDC3 min 19 sec
+Time taken to execute OtherInfo 1 min 40 sec
+Time taken to execute Enter Additional Information3 min 24 sec
+Time taken to execute Enter Terms And Conditions1 min 40 sec
+Time taken to execute PurchaseVouchersAgainstOrdersEnd80 min 0 sec
+Time taken to execute Cash Payments General information End:- 1 min 5 sec
+Time taken to execute Cash Payments Add Parties:- 2 min 20 sec
+Time taken to execute Cash Payments Bills Payable:- 49 sec
+Time taken to execute Cash Payments OtherInfo Tab:- 56 sec
+Time taken to execute Cash Payments Allocations Tab:- 34 sec
+Time taken to execute Bank Payment General information End:- 1 min 8 sec
+Time taken to execute Bank Payment Add Parties:- 3 min 42 sec
+Time taken to execute Bank Payments Bills Payable:- 45 sec
+Time taken to execute Bank Payments OtherInfo Tab:- 58 sec
+Time taken to execute Bank Payment Allocations Tab:- 37 sec
+Time taken to execute Cash Transfer General information End:- 56 sec
+Time taken to execute Cash Transfer Add Products:- 1 min 35 sec
+Time taken to execute Cash Transfer Other Info:- 53 sec
+Time taken to execute Cash Transfer Allocations Tab:- 35 sec
+Time taken to execute Salary Payments General information End:- 59 sec
+Time taken to execute Salary Payments Add Products:- 2 min 1 sec
+Time taken to execute Salary Payments Other Info Tab:- 56 sec
+Time taken to execute Salary Payments Allocations Tab:- 34 sec
+Time taken to execute Salary Payments ended at:- 5 min 14 sec
+Time taken to execute Cash Deposits and Withdrawals General information End:- 58 sec
+Time taken to execute Cash Deposits and Withdrawals Add Deposits:- 1 min 33 sec
+Time taken to execute Cash Deposits and Withdrawals Add Withdrawals:- 2 min 2 sec
+Time taken to execute Cash Deposits and Withdrawals OtherInfo Tab:- 57 sec
+Time taken to execute Cash Deposits and Withdrawals Allocations Tab:- 0 sec
+Time taken to execute Cash Deposits and Withdrawals ended at:- 6 min 13 sec
+Time taken to execute Inter Bank Fund Transfer General information End:- 3 min 49 sec
+Time taken to execute Inter Bank Fund Transfer OtherInfo Tab:- 1 min 4 sec
+Time taken to execute Inter Bank Fund Transfer ended at:- 5 min 42 sec
+Time taken to execute Deposit Post Dated Cheques General information End:- 59 sec
+Time taken to execute Deposit Post Dated Cheques Add Deposits:- 2 min 24 sec
+Time taken to execute Deposit Post Dated Cheques Add Deposits:- 2 min 32 sec
+Time taken to execute Deposit Post Dated Cheques OtherInfo Tab:- 58 sec
+Time taken to execute Deposit Post Dated Cheques ended at:- 7 min 35 sec
+Time taken to execute PO General information end:- 1 min 46 sec
+Time taken to execute PO Add Products:- 13 min 26 sec
+Time taken to execute PO Charges And Deductions:- 2 min 31 sec
+Time taken to execute PO Other Charges:- 3 min 39 sec
+Time taken to execute PO Cash Tab:- 2 min 0 sec
+Time taken to execute PO Cheques Tab:- 2 min 49 sec
+Time taken to execute PO Post Dated Cheques Tab:- 2 min 42 sec
+Time taken to execute PO Cheques PDC Tab:- 2 min 29 sec
+Time taken to execute PO Other Info:- 1 min 12 sec
+Time taken to execute PO Additional Information:- 2 min 17 sec
+Time taken to execute PO Terms And Conditions:- 1 min 11 sec
+Time taken to execute PO Enter Allocations:- 44 sec
+Time taken to execute Purchase Order ended at:- 37 min 41 sec
+Time taken to execute Issued Cheques Bounce General information End:- 4 min 37 sec
+Time taken to execute BillsReceivables Tab End:- 25 sec
+Time taken to execute BillsPayables Tab End:- 56 sec
+Time taken to execute Other Info Tab:- 4 min 54 sec
+Time taken to execute Accounts tab End:- 2 min 35 sec
+Time taken to execute BillsPayables Tab End:- 46 sec
+Time taken to execute Other Info Tab:- 5 min 36 sec
+Time taken to execute Deliveries Shipping Address:- 8 min 33 sec
+Time taken to execute Allocations Tab:- 3 min 30 sec
+Time taken to execute Accounts tab End:- 2 min 19 sec
+Time taken to execute BillsReceivables Tab End:- 23 sec
+Time taken to execute Other Info Tab:- 59 sec
+Time taken to execute Deliveries Shipping Address:- 1 min 28 sec
+Time taken to execute Allocations Tab:- 36 sec
+Time taken to execute Accounts tab End:- 4 min 23 sec
+Time taken to execute BillsPayables Tab End:- 47 sec
+Time taken to execute Other Info Tab:- 6 min 20 sec
+Time taken to execute InvoiceDetails End :- 2 min 17 sec
+Time taken to execute Deliveries Shipping Address:- 9 min 40 sec
+Time taken to execute Allocations Tab:- 3 min 59 sec
+Time taken to execute Accounts tab End:- 4 min 44 sec
+Time taken to execute BillsReceivables Tab End:- 36 sec
+Time taken to execute Other Info Tab:- 1 min 0 sec
+Time taken to execute InvoiceDetails:- 19 sec
+Time taken to execute Deliveries Shipping Address:- 1 min 45 sec
+Time taken to execute Allocations Tab:- 42 sec
+Time taken to execute Accounts tab End:- 4 min 29 sec
+Time taken to execute BillsPayable Tab End:- 42 sec
+Time taken to execute Other Info Tab:- 6 min 25 sec
+Time taken to execute Deliveries Shipping Address:- 9 min 45 sec
+Time taken to execute Allocations Tab:- 4 min 5 sec
+Time taken to execute Accounts tab End:- 4 min 1 sec
+Time taken to execute BillsReceivables Tab End:- 7 sec
+Time taken to execute Other Info Tab:- 1 min 4 sec
+Time taken to execute Allocations Tab:- 40 sec
+Time taken to execute Journal Entries ended at:- 4 min 38 sec
+Time taken to execute Accounts tab End:- 4 min 4 sec
+Time taken to execute BillsReceivables Tab End:- 6 sec
+Time taken to execute Other Info Tab:- 1 min 4 sec
+Time taken to execute Allocations Tab:- 39 sec
+Time taken to execute Accounts tab End:- 4 min 27 sec
+Time taken to execute otherCredits Tab End:- 1 min 54 sec
+Time taken to execute BillsPayable Tab End:- 1 min 15 sec
+Time taken to execute Other Info Tab:- 1 min 41 sec
+Time taken to execute Deliveries Shipping Address:- 2 min 23 sec
+Time taken to execute Allocations Tab:- 41 sec
+Time taken to execute Accounts tab End:- 3 min 34 sec
+Time taken to execute Other DebitsEnd Tab:- 1 min 47 sec
+Time taken to execute Other Info Tab:- 1 min 4 sec
+Time taken to execute Allocations Tab:- 40 sec
+Time taken to execute Party Opening Balances General information End:- 57 sec
+Time taken to execute Party Opening Balances Add Accounts:- 1 min 35 sec
+Time taken to execute Party Opening Balances Allocations Tab:- 34 sec
+Time taken to execute Party Opening Balances ended at:- 3 min 49 sec
+Time taken to execute Opening Balances General information End:- 57 sec
+Time taken to execute Opening Balances Cash:- 1 min 34 sec
+Time taken to execute Opening Balances Bank:- 1 min 49 sec
+Time taken to execute Opening Balances Accounts:- 1 min 56 sec
+Time taken to execute Opening Balances OtherInfo Tab:- 50 sec
+Time taken to execute Opening Balances Allocations Tab:- 36 sec
+Time taken to execute Opening Balances ended at:- 8 min 25 sec
+Time taken to execute Opening Receipts from CCC General information End:- 57 sec
+Time taken to execute Opening Receipts from CCC Add Accounts:- 2 min 34 sec
+Time taken to execute Opening Receipts from CCC Other Info:- 51 sec
+Time taken to execute Opening Receipts from CCC Allocations Tab:- 36 sec
+Time taken to execute Opening Receipts from CCC ended at:- 5 min 42 sec
+Time taken to execute TDS Opening Balances Gen info1 min 6 sec
+Time taken to execute TDS Opening Balances - TDS Deducted By Us Ended at:- 2 min 53 sec
+Time taken to execute TDS Opening Balances - TDS Deducted By Others Ended at:- 2 min 8 sec
+Time taken to execute TDS Opening Balances - Other Info:- 56 sec
+Time taken to execute TDS Opening Balances ended at:- 7 min 35 sec
+Time taken to execute TDS Payments Gen info4 min 15 sec
+Time taken to execute TDS Payments - TDS Details:- 2 min 1 sec
+Time taken to execute TDS Payments - Cheques:- 2 min 8 sec
+Time taken to execute TDS Payments - Other Charges:- 2 min 37 sec
+Time taken to execute TDS Payments - Other Info:- 55 sec
+Time taken to execute TDS Payments ended at:- 13 min 5 sec
+Time taken to execute TCS Opening Balances Gen info1 min 9 sec
+Time taken to execute TCS Opening Balances - Accounts Ended at:- 2 min 53 sec
+Time taken to execute TCS Opening Balances - Other Info:- 56 sec
+Time taken to execute TCS Opening Balances ended at:- 5 min 29 sec
+Time taken to execute TCS Payments Gen info1 min 35 sec
+Time taken to execute TCS Payments - TCS Details:- 1 min 8 sec
+Time taken to execute TCS Payments - Cheques:- 2 min 3 sec
+Time taken to execute TCS Payments - Other Charges:- 2 min 34 sec
+Time taken to execute TCS Payments - Other Info:- 52 sec
+Time taken to execute TCS Payments ended at:- 9 min 16 sec
 Time taken to execute Cash Tab:- 2 min 19 sec
 Time taken to execute Cheques Tab:- 3 min 57 sec
 Time taken to execute Post Dated Cheques Tab:- 3 min 6 sec
