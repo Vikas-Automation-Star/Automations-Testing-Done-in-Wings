@@ -42,7 +42,7 @@
 
     <test name="SI 1" description="Sales Invoice" testID="7">
         <classes>
-            <class name="menuItems.sales.transactions.TestSalesInvoiceTransaction"/>
+            <class name="menuItems.sales.transactions.TestSalesInvoice"/>
         </classes>
     </test>
 
@@ -66,7 +66,7 @@
 
     <test name="SR 1" description="Sales Returns" testID="11">
         <classes>
-            <class name="menuItems.sales.transactions.TestSalesReturnTransaction"/>
+            <class name="menuItems.sales.transactions.TestSalesReturn"/>
         </classes>
     </test>
 

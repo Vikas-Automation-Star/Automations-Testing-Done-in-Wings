@@ -26,7 +26,7 @@ public class TestMaterialIssuesAndReceiptsFromProduction {
     }
 
     @Test
-    public void MaterialIssuesAndReceiptsFromProductionTransaction() throws Exception {
+    public void MaterialIssuesAndReceiptsFromProduction() throws Exception {
         MaterialIssuesAndReceiptsFromProduction mirp = new MaterialIssuesAndReceiptsFromProduction(driver, file);
         mirp.materialIssuesAndReceiptsFromProduction(TEMP_API_BODY_MATERIAL_ISSUES_RECEIPTS_FROM_PRODUCTION,API_RESPONSE_MATERIAL_ISSUES_RECEIPTS_FROM_PRODUCTION,OUTPUT_FILE1);
     }

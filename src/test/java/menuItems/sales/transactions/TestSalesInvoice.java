@@ -9,7 +9,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import java.io.IOException;
 
-public class TestSalesInvoiceTransaction {
+public class TestSalesInvoice {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
 
@@ -25,7 +25,7 @@ public class TestSalesInvoiceTransaction {
     }
 
     @Test
-    public void salesInvoiceTransaction() throws Exception {
+    public void salesInvoice() throws Exception {
         SalesInvoice invoice = new SalesInvoice(driver, dataFile);
         invoice.salesInvoice(TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_SALES_INVOICES,OUTPUT_FILE);
     }

@@ -1,18 +1,19 @@
 package menuItems.sales.transactions;
 
 import com.wings.pages.AppLogin;
-import com.wings.pages.sales.transactions.SalesInvoice;
+import com.wings.pages.Transaction;
+import com.wings.pages.TransactionsBaseClass;
 import com.wings.pages.sales.transactions.SalesReturns;
+import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import java.awt.*;
 import java.io.IOException;
 
-public class TestSalesReturnTransaction {
+public class TestSalesReturn {
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
 
@@ -34,19 +35,24 @@ public class TestSalesReturnTransaction {
     }
 
     @Test
-    public void salesReturnsTransaction() throws Exception {
-        SalesInvoice invoice = new SalesInvoice(driver, dataFile);
-        String salesI=invoice.salesInvoice(TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_SALES_INVOICES,OUTPUT_FILE1);
-
-        appLogin.logout();
-        driver= appLogin.login();
+    public void salesReturns() throws Exception {
+//        SalesInvoice invoice = new SalesInvoice(driver, dataFile);
+//        String salesI=invoice.salesInvoice(TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_SALES_INVOICES,OUTPUT_FILE1);
+//
+//        appLogin.logout();
+//        driver= appLogin.login();
 
         SalesReturns salesReturns = new SalesReturns(driver, dataFile1);
-        salesReturns.salesReturns(salesI,TEMP_API_BODY_SALES_RETURNS,API_RESPONSE_SALES_RETURNS,OUTPUT_FILE2);
+        salesReturns.salesReturns("SI 23",TEMP_API_BODY_SALES_RETURNS,API_RESPONSE_SALES_RETURNS,OUTPUT_FILE2);
     }
 
     @AfterTest
-    public void afterTest() throws IOException {
+    public void afterTest() throws IOException, InterruptedException {
+//        TransactionsBaseClass transactionsBaseClass=new TransactionsBaseClass(driver);
+//        Transaction transaction=new Transaction(driver);
+//        transaction.navigateToMastersWhen3Steps("Sales","Invoices","Sales Returns");
+//        Thread.sleep(1000);
+//        transactionsBaseClass.deleteRecentTransaction();
         appLogin.logout();
     }
 }

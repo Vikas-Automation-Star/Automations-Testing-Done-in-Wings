@@ -93,7 +93,7 @@ public class CreditNoteOnCustomers extends TransactionsBaseClass {
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"CreditNoteOnCustomer");
-
+        deleteRecentTransaction();
     }
 
     public void accounts() throws IOException, InterruptedException {

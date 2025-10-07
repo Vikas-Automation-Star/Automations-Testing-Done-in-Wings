@@ -1,8 +1,10 @@
 package menuItems.finance.transactions.Receipts;
 
 import com.wings.pages.AppLogin;
+import com.wings.pages.TransactionsBaseClass;
 import com.wings.pages.finance.transactions.Receipts.ReceiptsFromCreditCardCompanies;
 import com.wings.pages.sales.transactions.SalesInvoice;
+import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
 
 import org.json.simple.parser.ParseException;
@@ -46,7 +48,7 @@ public class TestReceiptsFromCreditCardCompanies {
     }
 
     @AfterTest
-    public void afterTest() throws IOException {
+    public void afterTest() throws IOException, InterruptedException {
         appLogin.logout();
     }
 

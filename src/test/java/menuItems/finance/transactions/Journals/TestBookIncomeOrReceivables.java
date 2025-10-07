@@ -1,5 +1,7 @@
 package menuItems.finance.transactions.Journals;
 
+import com.wings.pages.Transaction;
+import com.wings.pages.TransactionsBaseClass;
 import com.wings.pages.finance.transactions.PartyAdjustments.DebitNoteFromSuppliers;
 import io.appium.java_client.windows.WindowsDriver;
 
@@ -47,7 +49,12 @@ public class TestBookIncomeOrReceivables {
     }
 
     @AfterTest
-    public void afterTest() throws IOException {
+    public void afterTest() throws IOException, InterruptedException {
+//        TransactionsBaseClass transactionsBaseClass=new TransactionsBaseClass(driver);
+//        Transaction transaction=new Transaction(driver);
+//        transaction.navigateToMastersWhen3Steps("Finance","Party Adjustments","Debit Note from Suppliers");
+//        Thread.sleep(1000);
+//        transactionsBaseClass.deleteRecentTransaction();
         appLogin.logout();
     }
 }

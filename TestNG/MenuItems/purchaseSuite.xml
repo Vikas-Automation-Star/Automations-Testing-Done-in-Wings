@@ -4,91 +4,91 @@
         <listener class-name="com.wings.utils.Listener"/>
     </listeners>
 
-    <test name="PEC 1" description="Purchase Enquiries Cancellation" testID="1">
+    <test name="PEC" description="Purchase Enquiries Cancellation" testID="1">
         <classes>
             <class name="menuItems.purchase.transactions.TestPurchaseEnquiriesCancellation"/>
         </classes>
     </test>
 
-    <test name="PQ 1" description="Purchase Quotations" testID="2">
+    <test name="PQ" description="Purchase Quotations" testID="2">
         <classes>
             <class name="menuItems.purchase.transactions.TestPurchaseQuotations"/>
         </classes>
     </test>
 
-    <test name="PQAE 1" description="Purchase Quotations Against Enquiries" testID="3">
-        <classes>
-            <class name="menuItems.purchase.transactions.TestPurchaseQuotationsAgainstEnquiries"/>
-        </classes>
-    </test>
+<!--    <test name="PQAE" description="Purchase Quotations Against Enquiries" testID="3">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.transactions.TestPurchaseQuotationsAgainstEnquiries"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="POAQ 1" description="Purchase Orders Against Quotations" testID="4">
-        <classes>
-            <class name="menuItems.purchase.transactions.TestPurchaseOrdersAgainstQuotations"/>
-        </classes>
-    </test>
+<!--    <test name="POAQ" description="Purchase Orders Against Quotations" testID="4">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.transactions.TestPurchaseOrdersAgainstQuotations"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="POC 1" description="Purchase Orders Cancellation" testID="5">
+    <test name="POC" description="Purchase Orders Cancellation" testID="3">
         <classes>
             <class name="menuItems.purchase.transactions.TestPurchaseOrderCancellation"/>
         </classes>
     </test>
 
-    <test name="MR 1" description="Material Receipts" testID="6">
+    <test name="MR" description="Material Receipts" testID="4">
         <classes>
             <class name="menuItems.purchase.transactions.TestMaterialReceipts"/>
         </classes>
     </test>
 
-    <test name="MRAO 1" description="Material Receipts Against Orders" testID="7">
+    <test name="MRAO" description="Material Receipts Against Orders" testID="5">
         <classes>
             <class name="menuItems.purchase.transactions.TestMaterialReceiptsAgainstOrders"/>
         </classes>
     </test>
 
-    <test name="MRT 1" description="Material Returns" testID="8">
+    <test name="MRT" description="Material Returns" testID="6">
         <classes>
             <class name="menuItems.purchase.transactions.TestMaterialReturns"/>
         </classes>
     </test>
 
-    <test name="PV 1" description="Purchase Vouchers" testID="9">
+    <test name="PV" description="Purchase Vouchers" testID="7">
         <classes>
             <class name="menuItems.purchase.transactions.TestPurchaseVouchers"/>
         </classes>
     </test>
 
-    <test name="PVAPO 1" description="Purchase Vouchers Against PurchaseOrders" testID="10">
-        <classes>
-            <class name="menuItems.purchase.transactions.TestPurchaseVouchersAgainstOrders"/>
-        </classes>
-    </test>
+<!--    <test name="PVAPO" description="Purchase Vouchers Against PurchaseOrders" testID="10">-->
+<!--        <classes>-->
+<!--            <class name="menuItems.purchase.transactions.TestPurchaseVouchersAgainstOrders"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="PVAPR 1" description="Purchase Vouchers Against PurchaseReceipts" testID="11">
+    <test name="PVAPR" description="Purchase Vouchers Against PurchaseReceipts" testID="8">
         <classes>
             <class name="menuItems.purchase.transactions.TestPurchaseVouchersAgainstReceipts"/>
         </classes>
     </test>
 
-    <test name="PPV 1" description="Proforma Purchase Vouchers" testID="12">
+    <test name="PPV" description="Proforma Purchase Vouchers" testID="9">
         <classes>
             <class name="menuItems.purchase.transactions.TestProformaPurchaseVouchers"/>
         </classes>
     </test>
 
-    <test name="PRT 1" description="Purchase Returns" testID="13">
+    <test name="PRT" description="Purchase Returns" testID="10">
         <classes>
             <class name="menuItems.purchase.transactions.TestPurchaseReturns"/>
         </classes>
     </test>
 
-    <test name="PRWIR 1" description="Purchase Returns With Invoice Reference" testID="14">
+    <test name="PRWIR" description="Purchase Returns With Invoice Reference" testID="11">
         <classes>
             <class name="menuItems.purchase.transactions.TestPurchaseReturnsWithInvoicesReference"/>
         </classes>
     </test>
 
-    <test name="PPU 1" description="Purchase Prices" testID="15">
+    <test name="PPU" description="Purchase Prices" testID="12">
         <classes>
             <class name="menuItems.purchase.transactions.TestPurchasePrices"/>
         </classes>

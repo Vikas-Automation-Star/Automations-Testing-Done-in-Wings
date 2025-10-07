@@ -36,6 +36,7 @@ public class PurchaseVouchersAgainstOrder extends TransactionsBaseClass {
         System.out.println("Purchase Vouchers Against Orders starts at :"+PVAO);
 
         navigateToPurchaseVouchersAgainstOrders();
+        navigateToMastersWhen3Steps("Purchase","Invoices","Purchase Vouchers against Orders");
         Thread.sleep(3000);
         long start1 = System.nanoTime();
         String oldVoucherID = oldTTransactionID();
@@ -300,7 +301,7 @@ public class PurchaseVouchersAgainstOrder extends TransactionsBaseClass {
         }
     }
 
-    public void addServices() throws IOException {
+    public void addServices() throws IOException, InterruptedException {
         List<String> productCode=readExcelData(dataFile,"Services","ServiceCode");
         System.out.println("productCodes :"+productCode.size());
         for (int i = 0; i < productCode.size() ; i++) {
@@ -347,6 +348,7 @@ public class PurchaseVouchersAgainstOrder extends TransactionsBaseClass {
             enterListData(hsnRowList.get(j), dataFile, "Services", "HSN",j);
             enterListData(gstProdctCategoryRowList.get(j), dataFile, "Services", "GSTProductCategory",j);
             enterListData(cessProductCategoryRowList.get(j), dataFile, "Services", "CESSProductCategory",j);
+            Thread.sleep(1500);
             enterListData(departmentRowList.get(j), dataFile, "Services", "Department",j);
             enterListData(projectRowList.get(j), dataFile, "Services", "Project",j);
             enterListData(profitCentreRowList.get(j), dataFile, "Services", "ProfitCentre",j);

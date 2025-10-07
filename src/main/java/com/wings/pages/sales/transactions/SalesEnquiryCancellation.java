@@ -32,8 +32,8 @@ public class SalesEnquiryCancellation extends TransactionsBaseClass {
         long salesEnquiriesCancellationStart = System.nanoTime();
         System.out.println("Sales EnquiriesCancellation started in :" + salesEnquiriesCancellationStart);
 
-        navigateToSalesEnquiryCancellationMenu();
-        Thread.sleep(4000);
+        navigateToMastersWhen3Steps("Sales","Enquiries","Sales Enquiries Cancellation");
+        Thread.sleep(3000);
         String oldVoucherID =oldTTransactionID();
         System.out.println("oldID: "+ oldVoucherID);
 

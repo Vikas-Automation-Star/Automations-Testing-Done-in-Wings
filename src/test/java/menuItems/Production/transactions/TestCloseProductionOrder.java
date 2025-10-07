@@ -27,12 +27,12 @@ public class TestCloseProductionOrder {
     String file1= "./src/main/resources/menuItems/production/transactions/456300 - Close Production Order-AC_CPO_1.xls";
 
     @BeforeTest
-    public void CloseProductionOrderTransaction() throws IOException, InterruptedException, ParseException {
+    public void CloseProductionOrder() throws IOException, InterruptedException, ParseException {
         driver=appLogin.login();
     }
 
     @Test
-    public void closeProductionOrderTransaction() throws Exception {
+    public void closeProductionOrder() throws Exception {
         ProductOrders po = new ProductOrders(driver, file);
         String productionOrder=po.productOrders(TEMP_API_BODY_PRODUCTION_ORDERS,API_RESPONSE_PRODUCTION_ORDERS,OUTPUT_FILE);
 

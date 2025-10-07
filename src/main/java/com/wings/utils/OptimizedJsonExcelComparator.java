@@ -31,7 +31,6 @@ public class OptimizedJsonExcelComparator {
         String timedStamp=Time.timeStamp();
         diffFilePath = "./output/excelDifferences/" + transactionType + "_" + timedStamp + ".xlsx";
         String ignoreConfigPath = "./output/ignored_columns.txt";   // new config file
-
 //        String jsonFilePath = "./salesEnquires.json"; // your JSON path
 //        String excelFilePath = "./460472 - Sales Enquiries-AC_SE_8_Output.xlsx"; // your Excel path
 //        String ignoreConfigPath = "./ignored_columns.txt";

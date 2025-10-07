@@ -60,7 +60,7 @@ public class AdjustPartyBills extends TransactionsBaseClass {
         System.out.println("newID: " + newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID, "Voucher Numbers are same. Check Transaction.");
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"AdjustPartyBills");
-//        deleteRecentTransaction();
+        deleteRecentTransaction();
     }
 
     public void billsReceivables(String adjustReceivables) throws InterruptedException {

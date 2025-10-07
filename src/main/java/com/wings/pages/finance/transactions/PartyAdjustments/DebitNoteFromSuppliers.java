@@ -87,7 +87,6 @@ public class DebitNoteFromSuppliers extends TransactionsBaseClass {
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"DebitNoteFromSuppliers");
         return  newVoucherID;
-
     }
 
     public void accounts() throws IOException, InterruptedException {

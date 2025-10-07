@@ -59,3 +59,281 @@ Time taken to execute Physical Stock Take General Information:- 53 sec
 Time taken to execute Payment to Parties General information End:- 1 min 22 sec
 Time taken to execute Payment to Parties Add Parties:- 4 min 26 sec
 Time taken to execute Payment to Parties Cheques Tab:- 6 min 15 sec
+Time taken to execute Cash Tab:- 2 min 19 sec
+Time taken to execute Cheques Tab:- 3 min 57 sec
+Time taken to execute Post Dated Cheques Tab:- 3 min 6 sec
+Time taken to execute Cheques[PDC] Tab:- 3 min 11 sec
+Time taken to execute Credit Card Tab:- 4 min 33 sec
+Time taken to execute payTm Tab:- 1 min 3 sec
+Time taken to execute Other DebitsEnd Tab:- 1 min 45 sec
+Time taken to execute Charges and Deductions:- 2 min 10 sec
+Time taken to execute bills Receivables Tab:- 38 sec
+Time taken to execute Other Info Tab:- 59 sec
+Time taken to execute Allocations Tab:- 39 sec
+Time taken to execute Parties Tab:- 2 min 9 sec
+Time taken to execute bills Receivables Tab:- 31 sec
+Time taken to execute Other Info Tab:- 44 sec
+Time taken to execute Allocations Tab:- 27 sec
+Time taken to execute Other Info Tab:- 4 min 11 sec
+Time taken to execute bills Receivables Tab:- 33 sec
+Time taken to execute Other Info Tab:- 45 sec
+Time taken to execute Allocations Tab:- 28 sec
+Time taken to execute Other Info Tab:- 4 min 5 sec
+Time taken to execute bills Receivables Tab:- 31 sec
+Time taken to execute Other Info Tab:- 44 sec
+Time taken to execute Allocations Tab:- 28 sec
+Time taken to execute Accounts tab End:- 1 min 42 sec
+Time taken to execute creditCardCompanyCharges tab End:- 1 min 10 sec
+Time taken to execute Other DebitsEnd Tab:- 1 min 31 sec
+Time taken to execute Other Info Tab:- 49 sec
+Time taken to execute BillsReceivables Tab End:- 32 sec
+Time taken to execute BillsPayables Tab End:- 45 sec
+Time taken to execute Other Info Tab:- 1 min 7 sec
+Time taken to execute Accounts tab End:- 2 min 11 sec
+Time taken to execute BillsPayables Tab End:- 35 sec
+Time taken to execute Other Info Tab:- 1 min 7 sec
+Time taken to execute Deliveries Shipping Address:- 1 min 51 sec
+Time taken to execute Allocations Tab:- 44 sec
+Time taken to execute Accounts tab End:- 1 min 59 sec
+Time taken to execute BillsReceivables Tab End:- 28 sec
+Time taken to execute Other Info Tab:- 44 sec
+Time taken to execute Deliveries Shipping Address:- 1 min 11 sec
+Time taken to execute Allocations Tab:- 28 sec
+Time taken to execute Accounts tab End:- 3 min 34 sec
+Time taken to execute BillsPayables Tab End:- 34 sec
+Time taken to execute Other Info Tab:- 1 min 13 sec
+Time taken to execute InvoiceDetails End :- 22 sec
+Time taken to execute Deliveries Shipping Address:- 1 min 56 sec
+Time taken to execute Allocations Tab:- 45 sec
+Time taken to execute Accounts tab End:- 3 min 45 sec
+Time taken to execute BillsReceivables Tab End:- 29 sec
+Time taken to execute Other Info Tab:- 49 sec
+Time taken to execute InvoiceDetails:- 15 sec
+Time taken to execute Deliveries Shipping Address:- 1 min 25 sec
+Time taken to execute Allocations Tab:- 33 sec
+Time taken to execute Accounts tab End:- 3 min 40 sec
+Time taken to execute BillsPayable Tab End:- 35 sec
+Time taken to execute Other Info Tab:- 1 min 12 sec
+Time taken to execute Deliveries Shipping Address:- 1 min 58 sec
+Time taken to execute Allocations Tab:- 47 sec
+Time taken to execute Accounts tab End:- 3 min 21 sec
+Time taken to execute BillsReceivables Tab End:- 6 sec
+Time taken to execute Other Info Tab:- 50 sec
+Time taken to execute Allocations Tab:- 32 sec
+Time taken to execute Journal Entries ended at:- 3 min 46 sec
+Time taken to execute Journal Entries ended at:- 6 min 37 sec
+Time taken to execute Accounts tab End:- 3 min 20 sec
+Time taken to execute BillsReceivables Tab End:- 5 sec
+Time taken to execute Other Info Tab:- 50 sec
+Time taken to execute Allocations Tab:- 33 sec
+Time taken to execute Accounts tab End:- 3 min 40 sec
+Time taken to execute otherCredits Tab End:- 1 min 34 sec
+Time taken to execute BillsPayable Tab End:- 1 min 1 sec
+Time taken to execute Other Info Tab:- 53 sec
+Time taken to execute Deliveries Shipping Address:- 1 min 26 sec
+Time taken to execute Allocations Tab:- 34 sec
+Time taken to execute Accounts tab End:- 2 min 51 sec
+Time taken to execute Other DebitsEnd Tab:- 1 min 26 sec
+Time taken to execute Other Info Tab:- 51 sec
+Time taken to execute Allocations Tab:- 31 sec
+Time taken to execute Accounts tab End:- 1 min 19 sec
+Time taken to execute Other DebitsEnd Tab:- 1 min 34 sec
+Time taken to execute Other Info Tab:- 47 sec
+Time taken to execute Allocations Tab:- 31 sec
+Time taken to execute Opening Stock Gen Info:- 1 min 20 sec
+Time taken to execute Opening Stock Add Products:- 3 min 11 sec
+Time taken to execute Opening Stock Other Info:- 44 sec
+Time taken to execute Opening Stock Allocations:- 29 sec
+Time taken to execute Opening Stock ended at:- 6 min 16 sec
+Time taken to execute Stock Creation Gen Info:- 1 min 18 sec
+Time taken to execute Stock Creation Add Products:- 3 min 56 sec
+Time taken to execute Stock Creation Other Info:- 48 sec
+Time taken to execute Stock Creation Allocations:- 28 sec
+Time taken to execute Stock Creation End:- 7 min 2 sec
+Time taken to execute Stock Consumption General Information:- 1 min 28 sec
+Time taken to execute Stock Consumption Add Products:- 5 min 34 sec
+Time taken to execute Stock Consumption Other Info:- 49 sec
+Time taken to execute Stock Consumption Allocations:- 29 sec
+Time taken to execute Stock Conversion Gen Info:- 1 min 8 sec
+Time taken to execute Stock Conversion Inputs:- 3 min 5 sec
+Time taken to execute Stock Conversion Outputs:- 2 min 48 sec
+Time taken to execute Stock Conversion Other Info:- 46 sec
+Time taken to execute Stock Conversion Allocations:- 28 sec
+Time taken to execute Inter Location Transfers Gen Info:- 1 min 2 sec
+Time taken to execute Inter Location Transfers Add Products:- 3 min 25 sec
+Time taken to execute Inter Location Transfers Other Info:- 47 sec
+Time taken to execute Inter Location Transfers Allocations:- 29 sec
+Time taken to execute Initiate Stock Take gen info:- 51 sec
+Time taken to execute Initiate Stock Take Add Products:- 8 sec
+Time taken to execute Initiate Stock Take Other Info:- 40 sec
+Time taken to execute Initiate Stock Take ended at:- 2 min 10 sec
+Time taken to execute Physical Stock Take General Information:- 43 sec
+Time taken to execute Physical Stock Take Add Products:- 1 min 58 sec
+Time taken to execute Physical Stock Take Other Info:- 45 sec
+Time taken to execute Physical Stock Take Ended at:- 3 min 56 sec
+Time taken to execute Purchase Voucher General information End:- 45 sec
+Time taken to execute Purchase Enquiries Add Products:- 5 min 10 sec
+Time taken to execute Purchase Enquiries Other Info Tab:- 46 sec
+Time taken to execute Purchase Enquiries Additional Info Tab:- 1 min 22 sec
+Time taken to execute Purchase Enquiries Terms and Conditions Tab:- 46 sec
+Time taken to execute Purchase Enquiries Allocations Tab:- 29 sec
+Time taken to execute Purchase Enquiries ending at:- 10 min 13 sec
+Time taken to execute Purchase Voucher General information End:- 52 sec
+Time taken to execute Add Products:- 3 min 34 sec
+Time taken to execute Other Info Tab:- 38 sec
+Time taken to execute Additional Info Tab:- 1 min 23 sec
+Time taken to execute Terms and Conditions Tab:- 45 sec
+Time taken to execute purchaseEnquiries validating Tab Items UpTo summary476min
+Time taken to execute PQ General Information End:- 1 min 16 sec
+Time taken to execute PQ Add Products:- 9 min 55 sec
+Time taken to execute PQ Charges And Deductions:- 2 min 4 sec
+Time taken to execute PQ Other Info:- 51 sec
+Time taken to execute PQ Additional Information:- 1 min 37 sec
+Time taken to execute PQ Terms And Conditions:- 53 sec
+Time taken to execute PQ Allocations:- 33 sec
+Time taken to execute PO General information end:- 1 min 28 sec
+Time taken to execute PO Add Products:- 10 min 51 sec
+Time taken to execute PO Charges And Deductions:- 2 min 10 sec
+Time taken to execute PO Other Charges:- 3 min 5 sec
+Time taken to execute PO Cash Tab:- 1 min 45 sec
+Time taken to execute PO Cheques Tab:- 2 min 31 sec
+Time taken to execute PO Post Dated Cheques Tab:- 2 min 21 sec
+Time taken to execute PO Cheques PDC Tab:- 2 min 6 sec
+Time taken to execute PO Other Info:- 1 min 0 sec
+Time taken to execute PO Additional Information:- 1 min 51 sec
+Time taken to execute PO Terms And Conditions:- 1 min 0 sec
+Time taken to execute PO Enter Allocations:- 37 sec
+Time taken to execute Purchase Order ended at:- 31 min 33 sec
+Time taken to execute POC General Information End:- 1 min 31 sec
+Time taken to execute POC Add Products:- 7 min 8 sec
+Time taken to execute POC Other Info:- 41 sec
+Time taken to execute POC Additional Information:- 1 min 25 sec
+Time taken to execute POC Terms And Conditions:- 49 sec
+Time taken to execute POC ended at:- 12 min 9 sec
+Time taken to execute Material Receipt General information End:- 1 min 26 sec
+Time taken to execute Material Receipt Add Products:- 12 min 12 sec
+Time taken to execute Material Receipt Charges and Deductions:- 2 min 12 sec
+Time taken to execute Material Receipt Other Charges:- 3 min 13 sec
+Time taken to execute Material Receipt Other Costs:- 2 min 13 sec
+Time taken to execute Material Receipt Other Info Tab:- 58 sec
+Time taken to execute Material Receipt Additional Info Tab:- 1 min 47 sec
+Time taken to execute Material Receipt Terms and Conditions Tab:- 58 sec
+Time taken to execute Material Receipt Allocations Tab:- 0 sec
+Time taken to execute Material Receipt ended at:- 25 min 43 sec
+Time taken to execute PO General information end:- 1 min 25 sec
+Time taken to execute PO Add Products:- 10 min 48 sec
+Time taken to execute PO Charges And Deductions:- 2 min 7 sec
+Time taken to execute PO Other Charges:- 3 min 4 sec
+Time taken to execute PO Cash Tab:- 1 min 42 sec
+Time taken to execute PO Cheques Tab:- 2 min 30 sec
+Time taken to execute PO Post Dated Cheques Tab:- 2 min 19 sec
+Time taken to execute PO Cheques PDC Tab:- 2 min 5 sec
+Time taken to execute PO Other Info:- 1 min 1 sec
+Time taken to execute PO Additional Information:- 1 min 50 sec
+Time taken to execute PO Terms And Conditions:- 1 min 0 sec
+Time taken to execute PO Enter Allocations:- 38 sec
+Time taken to execute Purchase Order ended at:- 31 min 15 sec
+Time taken to execute Material Receipt Against Order General information End:- 2 min 14 sec
+Time taken to execute Material Receipt Against Order Add Products:- 12 min 1 sec
+Time taken to execute Material Receipt Against Order Charges and Deductions:- 2 min 15 sec
+Time taken to execute Material Receipt Against Order Other Charges:- 3 min 14 sec
+Time taken to execute Material Receipt Against Order Other Costs:- 2 min 13 sec
+Time taken to execute Material Receipt Against Order Other Info Tab:- 53 sec
+Time taken to execute Material Receipt Against Order Additional Info Tab:- 1 min 49 sec
+Time taken to execute Material Receipt Against Order Terms and Conditions Tab:- 58 sec
+Time taken to execute Material Receipts Against Orders Ended at:- 26 min 23 sec
+Time taken to execute Material Receipt General information End:- 1 min 28 sec
+Time taken to execute Material Receipt Add Products:- 12 min 25 sec
+Time taken to execute Material Receipt Charges and Deductions:- 2 min 14 sec
+Time taken to execute Material Receipt Other Charges:- 3 min 17 sec
+Time taken to execute Material Receipt Other Costs:- 2 min 14 sec
+Time taken to execute Material Receipt Other Info Tab:- 58 sec
+Time taken to execute Material Receipt Additional Info Tab:- 1 min 50 sec
+Time taken to execute Material Receipt Terms and Conditions Tab:- 57 sec
+Time taken to execute Material Receipt Allocations Tab:- 0 sec
+Time taken to execute Material Receipt ended at:- 26 min 8 sec
+Time taken to execute Material Returns General information End:- 1 min 22 sec
+Time taken to execute Material Returns Add Products:- 17 min 21 sec
+Time taken to execute Material Returns Charges and Deductions:- 2 min 12 sec
+Time taken to execute Material Returns Other Costs:- 2 min 4 sec
+Time taken to execute Material Returns Other Info Tab:- 49 sec
+Time taken to execute Material Returns Additional Info Tab:- 1 min 40 sec
+Time taken to execute Material Returns Terms and Conditions Tab:- 56 sec
+Time taken to execute Material Returns Ended at:- 27 min 6 sec
+Time taken to execute General information Purchase voucher2 min 38 sec
+Time taken to execute Enter Products Purchase Vouchers20 min 48 sec
+Time taken to execute Enter services8 min 34 sec
+Time taken to execute Enter Charges And Deductions2 min 53 sec
+Time taken to execute Enter Other4 min 52 sec
+Time taken to execute Enter Other Deductions5 min 24 sec
+Time taken to execute Enter Other Costs2 min 52 sec
+Time taken to execute Enter Cash2 min 23 sec
+Time taken to execute Enter Cheque3 min 22 sec
+Time taken to execute Enter Post Dated Cheques3 min 5 sec
+Time taken to execute Enter Cheque PDC2 min 59 sec
+Time taken to execute OtherInfo 1 min 30 sec
+Time taken to execute Enter Additional Information2 min 55 sec
+Time taken to execute Enter Terms And Conditions1 min 28 sec
+Time taken to execute PurchaseVouchersAgainstOrdersEnd67 min 37 sec
+Time taken to execute Material Receipt General information End:- 1 min 27 sec
+Time taken to execute Material Receipt Add Products:- 12 min 10 sec
+Time taken to execute Material Receipt Charges and Deductions:- 2 min 15 sec
+Time taken to execute Material Receipt Other Charges:- 3 min 13 sec
+Time taken to execute Material Receipt Other Costs:- 2 min 14 sec
+Time taken to execute Material Receipt Other Info Tab:- 56 sec
+Time taken to execute Material Receipt Additional Info Tab:- 1 min 50 sec
+Time taken to execute Material Receipt Terms and Conditions Tab:- 57 sec
+Time taken to execute Material Receipt Allocations Tab:- 0 sec
+Time taken to execute Material Receipt ended at:- 25 min 46 sec
+Time taken to execute Purchase Voucher against Receipt General information End:- 3 min 56 sec
+Time taken to execute Purchase Voucher against Receipt Add Products:- 38 min 15 sec
+Time taken to execute Purchase Voucher against Receipt Add Services:- 10 min 33 sec
+Time taken to execute Purchase Voucher against Receipt Charges and Deductions:- 3 min 8 sec
+Time taken to execute Purchase Voucher against Receipt Other Charges:- 4 min 36 sec
+Time taken to execute Purchase Voucher against Receipt Other Costs:- 3 min 1 sec
+Time taken to execute Purchase Voucher against Receipt Cash Tab:- 2 min 26 sec
+Time taken to execute Purchase Voucher against Receipt Cheques Tab:- 3 min 27 sec
+Time taken to execute Purchase Voucher against Receipt Post Dated Cheques Tab:- 3 min 14 sec
+Time taken to execute Purchase Voucher against Receipt Cheques PDC Tab:- 2 min 57 sec
+Time taken to execute Purchase Voucher against Receipt Other Info Tab:- 1 min 26 sec
+Time taken to execute Purchase Voucher against Receipt Additional Info Tab:- 3 min 0 sec
+Time taken to execute Purchase Voucher against Receipt Terms and Conditions Tab:- 1 min 29 sec
+Time taken to execute Purchase Voucher against Receipt Ended at:- 83 min 15 sec
+Time taken to execute Proforma Purchase Voucher General information End:- 1 min 26 sec
+Time taken to execute proforma purchase Voucher Add Products:- 11 min 9 sec
+Time taken to execute proforma Purchase voucher Charges and Deductions:- 2 min 10 sec
+Time taken to execute proforma Purchase voucher Other Charges:- 3 min 9 sec
+Time taken to execute proforma Purchase voucher Other Costs:- 2 min 27 sec
+Time taken to execute proforma Purchase voucher Other Info Tab:- 56 sec
+Time taken to execute proforma Purchase voucher Additional Info Tab:- 1 min 43 sec
+Time taken to execute proforma Purchase voucher Terms and Conditions Tab:- 58 sec
+Time taken to execute proforma Purchase voucher Allocations Tab:- 32 sec
+Time taken to execute proforma Purchase voucher ended at:- 25 min 15 sec
+Time taken to execute PR General information end:- 135003550700min
+Time taken to execute Purchase Voucher General information End:- 44 sec
+Time taken to execute Purchase Enquiries Add Products:- 5 min 5 sec
+Time taken to execute Purchase Enquiries Other Info Tab:- 46 sec
+Time taken to execute Purchase Enquiries Additional Info Tab:- 1 min 23 sec
+Time taken to execute Purchase Enquiries Terms and Conditions Tab:- 47 sec
+Time taken to execute Purchase Enquiries Allocations Tab:- 28 sec
+Time taken to execute Purchase Enquiries ending at:- 10 min 5 sec
+Time taken to execute Purchase Quotations Against Enquiries General information End:- 1 min 38 sec
+Time taken to execute Purchase Quotations Against Enquiries Add Products:- 8 min 3 sec
+Time taken to execute Purchase Quotations Against Enquiries Charges and Deductions:- 2 min 3 sec
+Time taken to execute Purchase Quotations Against Enquiries Other Info Tab:- 43 sec
+Time taken to execute Purchase Quotations Against Enquiries Additional Info Tab:- 1 min 32 sec
+Time taken to execute Purchase Quotations Against Enquiries Terms and Conditions Tab:- 51 sec
+Time taken to execute Purchase Quotations Against Enquiries Ended at:- 15 min 42 sec
+Time taken to execute Purchase Orders Against Quotations Gen Info ended at:- 1 min 44 sec
+Time taken to execute Purchase Orders Against Quotations Add Products:- 8 min 20 sec
+Time taken to execute Purchase Orders Against Quotations Charges and Deductions:- 2 min 7 sec
+Time taken to execute Purchase Orders Against Quotations Other Charges:- 3 min 4 sec
+Time taken to execute Purchase Orders Against Quotations Cash Tab:- 1 min 42 sec
+Time taken to execute Purchase Orders Against Quotations Cheques Tab:- 2 min 26 sec
+Time taken to execute Purchase Orders Against Quotations Post Dated Cheques Tab:- 2 min 16 sec
+Time taken to execute Purchase Orders Against Quotations Cheques[PDC] Tab:- 2 min 4 sec
+Time taken to execute Purchase Orders Against Quotations Other Info Tab:- 49 sec
+Time taken to execute Purchase Orders Against Quotations Additional Info Tab:- 1 min 50 sec
+Time taken to execute Purchase Orders Against Quotations Terms and Conditions Tab:- 58 sec
+Time taken to execute Purchase Orders Against Quotations ends at:- 28 min 19 sec
+Time taken to execute Purchase Vouchers Against Orders General information Purchase voucher:- 3 min 50 sec

@@ -988,40 +988,15 @@ public  class Transaction {
         }
         Thread.sleep(1500);
         common.clickElement("xpath","//Window//Button[@Name='View']");
-        WebDriverWait wait=new WebDriverWait(driver,7);
+        WebDriverWait wait=new WebDriverWait(driver,30);
         WebElement tools=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//Button[@Name='Tools']")));
         tools.click();
+        Thread.sleep(1500);
         common.clickElement("xpath", "//Button[@Name='Delete']");
+        Thread.sleep(1000);
         common.clickElement("xpath", "//Button[@Name='Yes']");
         Thread.sleep(1000);
         common.clickElement("xpath", "//Button[@Name='OK']");
-
-//        common.clickElement("xpath", "//*[contains(@Name, ' ')]");
-//        common.clickElement("xpath", "//*[(local-name()='Link') and contains(@Name, ' ')]");
-//        common.clickElement("xpath", "//Pane//Pane//Link[contains(@Name, ' ')]");
-//        List<WebElement> elements = driver.findElements(By.xpath("//Pane//Text/Text/Link"));
-//        for (WebElement el : elements) {
-//            String name = el.getAttribute("Name");
-//            if (name != null && !name.isEmpty()) {
-//                System.out.println("Element found: " + name);
-//            }
-//        }
-//        common.clickElement("xpath", "//Link[starts-with(@Name,'AB')]");
-//        common.clickElement("xpath", "//Text[@Name='Last Saved:']/following::*[contains(@Name, 'AB') or @ControlType='ControlType.Hyperlink']");
-//        List<WebElement>elements=common.findWebElements("xpath", "//Text[@Name='Last Saved:']/following::*[contains(@Name, 'AB') or @ControlType='ControlType.Hyperlink']");
-//        System.out.println("elements size :"+elements.size());
-//        for (WebElement i:elements){
-//            System.out.println(i.getText());
-//        }
-//        Thread.sleep(3000);
-//        common.clickElement("xpath", "//Button[@Name='View']");
-//        WebDriverWait wait=new WebDriverWait(driver,7);
-//        WebElement tools=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//Button[@Name='Tools']")));
-//        tools.click();
-////        common.clickElement("xpath", "//Button[@Name='Tools']");
-//        common.clickElement("xpath", "//Button[@Name='Delete']");
-//        common.clickElement("xpath", "//Button[@Name='Yes']");
-//        common.clickElement("xpath", "//Button[@Name='OK']");
     }
 
     //overloaded deleted Transaction method

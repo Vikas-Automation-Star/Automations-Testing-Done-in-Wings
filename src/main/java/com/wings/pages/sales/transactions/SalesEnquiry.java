@@ -38,7 +38,7 @@ public class SalesEnquiry extends TransactionsBaseClass {
         long salesEnquiriesStart = System.nanoTime();
         System.out.println("Sales Enquiries started in :" + salesEnquiriesStart);
 
-        navigateToSalesEnquiryMenu();
+        navigateToMastersWhen3Steps("Sales","Enquiries","Sales Enquiries");
         Thread.sleep(3000);
         String oldVoucherID =oldTTransactionID();
         Thread.sleep(1000);

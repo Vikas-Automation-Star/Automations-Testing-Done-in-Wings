@@ -43,7 +43,7 @@ public class MaterialReceiptFromProduction extends TransactionsBaseClass {
         editables.get(4).sendKeys("test"+common.getRandom());
         common.clickElement("xpath","//CheckBox[@Name='Check Availability']");
         common.clickElement("xpath","//Button[@Name='Create Batch']");
-        Thread.sleep(500);
+        Thread.sleep(1500);
         EnterData("//Edit[@Name='Executive *']",dataFile,"GeneralInformation","Executive");
         EnterData("//Edit[@Name='Remarks']",dataFile,"GeneralInformation","Remarks");
 
@@ -57,6 +57,7 @@ public class MaterialReceiptFromProduction extends TransactionsBaseClass {
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"MaterialReceiptsFromProduction");
+        deleteRecentTransaction();
     }
 
     public void items() throws IOException, InterruptedException {

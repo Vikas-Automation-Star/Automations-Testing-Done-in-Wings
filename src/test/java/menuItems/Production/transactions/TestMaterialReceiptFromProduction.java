@@ -38,7 +38,7 @@ public class TestMaterialReceiptFromProduction {
     }
 
     @Test
-    public void MaterialReceiptFromProductionTransaction() throws Exception {
+    public void MaterialReceiptFromProduction() throws Exception {
         ProductOrders po = new ProductOrders(driver, file);
         String productionOrder=po.productOrders(TEMP_API_BODY_PRODUCTION_ORDERS,API_RESPONSE_PRODUCTION_ORDERS,OUTPUT_FILE);
 

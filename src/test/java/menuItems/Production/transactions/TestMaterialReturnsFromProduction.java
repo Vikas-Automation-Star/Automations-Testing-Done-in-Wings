@@ -38,7 +38,7 @@ public class TestMaterialReturnsFromProduction {
     }
 
     @Test
-    public void materialReturnsFromProductionTransaction() throws Exception {
+    public void materialReturnsFromProduction() throws Exception {
 //        ProductOrders po = new ProductOrders(driver, file);
 //        String productionOrder=po.productOrders(TEMP_API_BODY_PRODUCTION_ORDERS,API_RESPONSE_PRODUCTION_ORDERS,OUTPUT_FILE);
 //

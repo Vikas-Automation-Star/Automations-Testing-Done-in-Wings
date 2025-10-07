@@ -81,6 +81,20 @@ public class ReceiptsFromCreditCardCompanies extends TransactionsBaseClass {
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"ReceiptsFromCreditCardCompanies");
 
+        deleteRecentTransaction();
+        navigateToMastersWhen3Steps("Finance","Receipts","Credit Card Receipts");
+        Thread.sleep(1500);
+        deleteRecentTransaction();
+        navigateToMastersWhen3Steps("Finance","Receipts","Bank Receipts");
+        Thread.sleep(1500);
+        deleteRecentTransaction();
+        navigateToMastersWhen3Steps("Finance","Receipts","Cash Receipts");
+        Thread.sleep(1500);
+        deleteRecentTransaction();
+        navigateToMastersWhen3Steps("Finance","Receipts","Receipts from Parties");
+        Thread.sleep(3000);
+        deleteRecentTransaction();
+
     }
 
     public void accounts() throws IOException, InterruptedException {

@@ -24,7 +24,7 @@ public class MaterialReturnsFromProduction extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String  materialReturnsFromProduction(String issueNo,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
+    public void   materialReturnsFromProduction(String issueNo,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         navigateToMastersWhen3Steps("Production","Standard","Material Returns from Production");
         Thread.sleep(3000);
         String oldVoucherID =oldTTransactionID();
@@ -43,7 +43,7 @@ public class MaterialReturnsFromProduction extends TransactionsBaseClass {
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"MaterialReturnsFromProduction");
-        return newVoucherID;
+        deleteRecentTransaction();
     }
 
     public void items() throws IOException {

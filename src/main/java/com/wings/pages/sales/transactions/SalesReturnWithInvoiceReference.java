@@ -37,10 +37,8 @@ public class SalesReturnWithInvoiceReference extends TransactionsBaseClass {
 
         long salesRWIRStart = System.nanoTime();
         System.out.println("Sales returns with invoice reference started in :" + salesRWIRStart);
-
-        navigateToSalesReturnWithInvoiceReferenceMenu();
         Thread.sleep(2000);
-
+        navigateToMastersWhen3Steps("Sales","Invoices","Sales Return with Invoice Reference");
         String oldVoucherID =oldTTransactionID();
         System.out.println("oldID: "+ oldVoucherID);
         enterVoucherType(dataFile,"GeneralInformation","VoucherType");
@@ -162,40 +160,37 @@ public class SalesReturnWithInvoiceReference extends TransactionsBaseClass {
     public void addPendingProducts() throws IOException, InterruptedException {
         List<String> productsOrderInExcel=getValuesByColumnHeader(dataFile,"Items","Product");
         List<String> productsCode=getValuesByColumnHeader(dataFile,"Items","ProductCode");
-//        List<String> masterType=readExcelData(dataFile,"Items","MasterType");
+        List<String> masterType=readExcelData(dataFile,"Items","MasterType");
+        List<String> productPendingQuantityExcel=readExcelData(dataFile,"Items","PendingQuantity");
+        List<String> productPendingFreeQuantityExel=readExcelData(dataFile,"Items","PendingFreeQuantity");
+//        for (String element2:masterType){
+//            System.out.println(element2+"masterType");
+//        }
+//        for (String element3:productsCode){
+//            System.out.println(element3+"productCode in Excel");
+//        }
+//        for (String element:productPendingQuantityExcel){
+//            System.out.println(element+"pending quantity in excel");
+//        }
+//        for (String element1:productPendingFreeQuantityExel){
+//            System.out.println(element1+"pending  free quantity in excel");
+//        }
+
 //        List<String> quantityData=readExcelData(dataFile,"Items","Quantity");
 //        List<String> freeQuantityData=readExcelData(dataFile,"Items","FreeQuantity");
-        //read products order from excel
-//        System.out.println(productsOrderInExcel.size()+"excel products order");
-//        System.out.println(quantityData.size()+"quantity");
-//        System.out.println(freeQuantityData.size()+"quantity");
-//        for (String product : productsOrderInExcel) {
-//            System.out.println(product);
-//        }
-//        for (String product : quantityData) {
-//            System.out.println(product);
-//        }
-//        for (String product : freeQuantityData) {
-//            System.out.println(product);
-//        }
 
         //read products order from app
         List<WebElement> productsOrderInApp=common.findWebElements("xpath","//Table[@Name='Items']/*[starts-with(@Name,'Row ')]/Edit[starts-with(@Name,'Product * Row ')]");
-//        System.out.println(productsOrderInApp.size()+"application products order");
-//        for (WebElement element:productsOrderInApp){
-//            System.out.println(element.getText());
-//        }
-
 //        List<WebElement> appProduct = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Product * Row ')]");
 //        List<WebElement> productCodeRowList = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Product Code Row')]");
-//        List<WebElement> productPendingQuantity = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Pending Quantity Row ')]");
-//        for (WebElement element:productPendingQuantity){
-//            System.out.println(element.getText()+"product pending");
-//        }
-//        List<WebElement> productPendingFreeQuantity = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Pending Free Quantity Row ')]");
-//        for (WebElement element:productPendingFreeQuantity){
-//            System.out.println(element.getText()+"free pending quantity");
-//        }
+        List<WebElement> productPendingQuantity = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Pending Quantity Row ')]");
+        for (WebElement element5:productPendingQuantity){
+            System.out.println(element5.getText()+"pending quantity in App");
+        }
+        List<WebElement> productPendingFreeQuantity = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Pending Free Quantity Row ')]");
+        for (WebElement element6:productPendingFreeQuantity){
+            System.out.println(element6.getText()+"free pending quantity in App");
+        }
         List<WebElement> productAccRowList = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Sales Returns Account * Row ')]");
         List<WebElement> productUOMRowList = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'UOM * Row ')]");
         List<WebElement> storageBin = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Storage Bin * Row ')]");
@@ -252,6 +247,46 @@ public class SalesReturnWithInvoiceReference extends TransactionsBaseClass {
         List<WebElement> Bool3 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/CheckBox[contains(@Name,'Bool 3 Row ')]");
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", -2500, 0);
 
+//        for (int i = 0; i < masterType.size(); i++) {
+//            String type = masterType.get(i);
+//            double pendingQty = Double.parseDouble(productPendingQuantity.get(i).getText());
+//            double pendingFreeQty = Double.parseDouble(productPendingFreeQuantity.get(i).getText());
+//            double excelPendingQty = Double.parseDouble(productPendingQuantityExcel.get(i));
+//            double excelPendingFreeQty = Double.parseDouble(productPendingFreeQuantityExel.get(i));
+//            common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 200, 0);
+//
+//            if (type.equals("Products") || type.equals("Products - MultiBatch")) {
+//                enterListData(productQuantityRowList.get(i), dataFile, "Items", "Quantity", i);
+//                Thread.sleep(1000);
+//                enterListData(freeQuantityRowList.get(i), dataFile, "Items", "FreeQuantity", i);
+//            }
+//            else if (type.equals("Products - Batches and Serial No")) {
+//                if (pendingQty == 1.0 && pendingFreeQty == 0.0 && excelPendingQty == 1.0 && excelPendingFreeQty == 0.0) {
+//                    enterListData(productQuantityRowList.get(i), dataFile, "Items", "Quantity", i);
+//                    Thread.sleep(1000);
+//                    enterListData(freeQuantityRowList.get(i), dataFile, "Items", "FreeQuantity", i);
+//
+//                } else if (pendingQty == 0.0 && pendingFreeQty == 1.0 && excelPendingQty == 0.0 && excelPendingFreeQty == 1.0) {
+//                    enterListData(productQuantityRowList.get(i), dataFile, "Items", "Quantity", i);
+//                    Thread.sleep(1000);
+//                    enterListData(freeQuantityRowList.get(i), dataFile, "Items", "FreeQuantity", i);
+//
+//                } else {
+//                    System.out.println("⚠ Skipping unmatched row: " + i +
+//                            " | App Pending=" + pendingQty +
+//                            ", Excel Pending=" + excelPendingQty +
+//                            " | App Free=" + pendingFreeQty +
+//                            ", Excel Free=" + excelPendingFreeQty);
+//                    continue; // skip instead of fail
+//                }
+//            } else {
+//                System.out.println("⚠ Skipping invalid master type for row: " + i);
+//                continue;
+//            }
+//            common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", -400, 0);
+//        }
+
+
 //        for (int i = 0; i < productsCode.size(); i++) {
 //            enterListData(productAccRowList.get(i),dataFile,"Items","SalesReturnsAccount",i);
 //            enterListData(productUOMRowList.get(i),dataFile,"Items","UOM",i);
@@ -265,13 +300,13 @@ public class SalesReturnWithInvoiceReference extends TransactionsBaseClass {
 //                Thread.sleep(2000);
 //                enterListData(freeQuantityRowList.get(i),dataFile,"Items","FreeQuantity",i);
 //            }else if (masterType.get(i).equals("Products - Batches and Serial No") && productPendingQuantity.get(i).getText().equals("1.000")&&
-//                    productPendingFreeQuantity.get(i).getText().equals("0.000")){
+//                    productPendingFreeQuantity.get(i).getText().equals("0.000")&& productPendingQuantityExcel.get(i).equals("1.0")&& productPendingFreeQuantityExel.get(i).equals("0.0")){
 //                    Thread.sleep(1000);
 //                enterListData(productQuantityRowList.get(i), dataFile, "Items", "Quantity",i);
 //                Thread.sleep(2000);
 //                enterListData(freeQuantityRowList.get(i),dataFile,"Items","FreeQuantity",i);
 //            }else if (masterType.get(i).equals("Products - Batches and Serial No") && productPendingQuantity.get(i).getText().equals("0.000")&&
-//            productPendingFreeQuantity.get(i).getText().equals("1.000")){
+//            productPendingFreeQuantity.get(i).getText().equals("1.000")&&productPendingQuantityExcel.get(i).equals("0.0")&& productPendingFreeQuantityExel.get(i).equals("1.0")){
 //                enterListData(productQuantityRowList.get(i), dataFile, "Items", "Quantity",i);
 //                Thread.sleep(2000);
 //                enterListData(freeQuantityRowList.get(i),dataFile,"Items","FreeQuantity",i);
@@ -280,41 +315,41 @@ public class SalesReturnWithInvoiceReference extends TransactionsBaseClass {
 //            }
 //            enterListData(mrpRowList.get(i), dataFile, "Items", "MRP", i);
 //            enterListData(unitRateRowList.get(i), dataFile, "Items", "UnitRate", i);
-//            enterListData(grossAmount.get(i), dataFile, "Items", "GrossAmount", i);
-//            enterListData(voucherDiscountList.get(i), dataFile, "Items", "VoucherDiscountPercentage", i);
-//            enterListData(partyDiscountList.get(i), dataFile, "Items", "PartyDiscountPercentage", i);
-//            enterListData(discountBasis1RowList.get(i), dataFile, "Items", "DiscountBasis1", i);
-//            enterListData(disount1RowList.get(i), dataFile, "Items", "Discount1", i);
-//            Thread.sleep(1000);
-//            enterListData(disount2BasisRowList.get(i), dataFile, "Items", "DiscountBasis2", i);
-//            enterListData(disount2RowList.get(i), dataFile, "Items", "Discount2", i);
-//            enterListData(disount3BasisRowList.get(i), dataFile, "Items", "DiscountBasis3", i);
-//            enterListData(disount3RowList.get(i), dataFile, "Items", "Discount3", i);
-//            enterListData(hsnCodeRowList.get(i), dataFile, "Items", "HSN", i);
-//            enterListData(GSTProductCategory.get(i), dataFile, "Items", "GSTProductCategory", i);
-//            enterListData(CESSProductCategory.get(i), dataFile, "Items", "CESSProductCategory", i);
-//            enterListData(departmentRowList.get(i), dataFile, "Items", "Department", i);
-//            enterListData(projectRowList.get(i), dataFile, "Items", "Project", i);
-//            enterListData(profitCentreRowList.get(i), dataFile, "Items", "ProfitCentre", i);
-//            enterListData(costCentreRowList.get(i), dataFile, "Items", "CostCentre", i);
-//            enterListData(commentsRowList.get(i), dataFile, "Items", "Comments", i);
-//            enterListData(Info1.get(i), dataFile, "Items", "Info1", i);
-//            enterListData(Info2.get(i), dataFile, "Items", "Info2", i);
-//            enterListData(Info3.get(i), dataFile, "Items", "Info3", i);
-//            enterListData(Info4.get(i), dataFile, "Items", "Info4", i);
-//            enterListData(Info5.get(i), dataFile, "Items", "Info5", i);
-//            enterListData(Value1.get(i), dataFile, "Items", "Value1", i);
-//            enterListData(Value2.get(i), dataFile, "Items", "Value2", i);
-//            enterListData(Value3.get(i), dataFile, "Items", "Value3", i);
-//            enterListData(Value4.get(i), dataFile, "Items", "Value4", i);
-//            enterListData(Value5.get(i), dataFile, "Items", "Value5", i);
-//            enterListDate(Date1.get(i), dataFile, "Items", "Date1", i);
-//            enterListDate(Date2.get(i), dataFile, "Items", "Date2", i);
-//            enterListDate(Date3.get(i), dataFile, "Items", "Date3", i);
-//            common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 70, 0);
-//            clickListData(Bool1.get(i));
-//            clickListData(Bool2.get(i));
-//            clickListData(Bool3.get(i));
+////            enterListData(grossAmount.get(i), dataFile, "Items", "GrossAmount", i);
+////            enterListData(voucherDiscountList.get(i), dataFile, "Items", "VoucherDiscountPercentage", i);
+////            enterListData(partyDiscountList.get(i), dataFile, "Items", "PartyDiscountPercentage", i);
+////            enterListData(discountBasis1RowList.get(i), dataFile, "Items", "DiscountBasis1", i);
+////            enterListData(disount1RowList.get(i), dataFile, "Items", "Discount1", i);
+////            Thread.sleep(1000);
+////            enterListData(disount2BasisRowList.get(i), dataFile, "Items", "DiscountBasis2", i);
+////            enterListData(disount2RowList.get(i), dataFile, "Items", "Discount2", i);
+////            enterListData(disount3BasisRowList.get(i), dataFile, "Items", "DiscountBasis3", i);
+////            enterListData(disount3RowList.get(i), dataFile, "Items", "Discount3", i);
+////            enterListData(hsnCodeRowList.get(i), dataFile, "Items", "HSN", i);
+////            enterListData(GSTProductCategory.get(i), dataFile, "Items", "GSTProductCategory", i);
+////            enterListData(CESSProductCategory.get(i), dataFile, "Items", "CESSProductCategory", i);
+////            enterListData(departmentRowList.get(i), dataFile, "Items", "Department", i);
+////            enterListData(projectRowList.get(i), dataFile, "Items", "Project", i);
+////            enterListData(profitCentreRowList.get(i), dataFile, "Items", "ProfitCentre", i);
+////            enterListData(costCentreRowList.get(i), dataFile, "Items", "CostCentre", i);
+////            enterListData(commentsRowList.get(i), dataFile, "Items", "Comments", i);
+////            enterListData(Info1.get(i), dataFile, "Items", "Info1", i);
+////            enterListData(Info2.get(i), dataFile, "Items", "Info2", i);
+////            enterListData(Info3.get(i), dataFile, "Items", "Info3", i);
+////            enterListData(Info4.get(i), dataFile, "Items", "Info4", i);
+////            enterListData(Info5.get(i), dataFile, "Items", "Info5", i);
+////            enterListData(Value1.get(i), dataFile, "Items", "Value1", i);
+////            enterListData(Value2.get(i), dataFile, "Items", "Value2", i);
+////            enterListData(Value3.get(i), dataFile, "Items", "Value3", i);
+////            enterListData(Value4.get(i), dataFile, "Items", "Value4", i);
+////            enterListData(Value5.get(i), dataFile, "Items", "Value5", i);
+////            enterListDate(Date1.get(i), dataFile, "Items", "Date1", i);
+////            enterListDate(Date2.get(i), dataFile, "Items", "Date2", i);
+////            enterListDate(Date3.get(i), dataFile, "Items", "Date3", i);
+////            common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 70, 0);
+////            clickListData(Bool1.get(i));
+////            clickListData(Bool2.get(i));
+////            clickListData(Bool3.get(i));
 //            if (i < 6) {
 //                common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", -2500, 0);
 //            }
@@ -378,6 +413,7 @@ public class SalesReturnWithInvoiceReference extends TransactionsBaseClass {
                 }
             }
         }
+
     }
 
     public void addChargesAndDeductions() throws IOException {

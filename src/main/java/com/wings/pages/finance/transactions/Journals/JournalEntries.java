@@ -51,7 +51,7 @@ public class JournalEntries extends TransactionsBaseClass {
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"JournalEntries");
 
-//        deleteRecentTransaction();
+        deleteRecentTransaction();
         long JeEnd = System.nanoTime() -start ;
         FileUtil.writeTimeLogInMinutes("Journal Entries ended at:- ", JeEnd );
     }

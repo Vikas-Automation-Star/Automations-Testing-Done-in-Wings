@@ -36,7 +36,7 @@ public class SalesReturns extends TransactionsBaseClass {
         long salesReturnsStart = System.nanoTime();
         System.out.println("Sales returns started in :" + salesReturnsStart);
 
-        navigateToSalesReturnMenu();
+        navigateToMastersWhen3Steps("Sales","Invoices","Sales Returns");
         Thread.sleep(2000);
         long salesReturns = System.nanoTime();
         System.out.println("Sales Returns started in :" + salesReturns);
@@ -156,15 +156,12 @@ public class SalesReturns extends TransactionsBaseClass {
         String newVoucherID =newTransactionID(oldVoucherID);
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
-//        exportIOFiles(newVoucherID,rootDriver);
 
-//        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"SalesReturns");
-
+        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"SalesReturns");
         long salesReturnsEnd = System.nanoTime() - salesReturnsStart;
         FileUtil.writeTimeLogInMinutes("Sales returns ended at:- ", salesReturnsEnd );
 
         return newVoucherID;
-
     }
 
     public void addProducts() throws InterruptedException, IOException {
@@ -252,7 +249,7 @@ public class SalesReturns extends TransactionsBaseClass {
                 common.clickElement("xpath", "//Button[@Name='OK']");
             }
             if (!masterType.get(j).equals("Products - Batches and Serial No")){
-            enterListData(freeQuantityRowList.get(j),dataFile,"Items","FreeQuantity",j);
+                enterListData(freeQuantityRowList.get(j),dataFile,"Items","FreeQuantity",j);
             }
             if (j==3){
                 common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']",50, 0);

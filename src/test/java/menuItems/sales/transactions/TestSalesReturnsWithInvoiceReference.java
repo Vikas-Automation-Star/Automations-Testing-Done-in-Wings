@@ -1,6 +1,8 @@
 package menuItems.sales.transactions;
 
 import com.wings.pages.AppLogin;
+import com.wings.pages.Transaction;
+import com.wings.pages.TransactionsBaseClass;
 import com.wings.pages.sales.transactions.SalesInvoice;
 import com.wings.pages.sales.transactions.SalesReturnWithInvoiceReference;
 import io.appium.java_client.windows.WindowsDriver;
@@ -45,7 +47,13 @@ public class TestSalesReturnsWithInvoiceReference {
     }
 
     @AfterTest
-    public void afterTest() throws IOException {
-//        appLogin.logout();
+    public void afterTest() throws IOException, InterruptedException {
+//        TransactionsBaseClass transactionsBaseClass=new TransactionsBaseClass(driver);
+//        Transaction transaction=new Transaction(driver);
+//        transaction.navigateToMastersWhen3Steps("Sales","Invoices","Sales Return with Invoice Reference");
+//        Thread.sleep(1000);
+//        transactionsBaseClass.deleteRecentTransaction();
+        appLogin.logout();
     }
+
 }

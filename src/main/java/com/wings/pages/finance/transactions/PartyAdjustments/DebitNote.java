@@ -80,7 +80,7 @@ public class DebitNote extends TransactionsBaseClass {
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"DebitNote");
-
+        deleteRecentTransaction();
     }
 
     public void accounts() throws IOException, InterruptedException {

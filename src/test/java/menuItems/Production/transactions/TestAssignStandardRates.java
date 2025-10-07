@@ -27,13 +27,13 @@ public class TestAssignStandardRates {
     }
 
     @Test
-    public void assignStandardRatesTransaction() throws Exception, AWTException {
+    public void assignStandardRates() throws Exception, AWTException {
         AssignStandardRates asr = new AssignStandardRates(driver, file);
         asr.assignStandardRates(TEMP_API_BODY_ASSIGN_STANDARD_RATES,API_RESPONSE_ASSIGN_STANDARD_RATES,OUTPUT_FILE);
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 }
