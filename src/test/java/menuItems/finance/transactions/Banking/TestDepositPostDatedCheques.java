@@ -19,10 +19,10 @@ public class TestDepositPostDatedCheques {
 
     private static final String TEMP_API_BODY_DEPOSIT_POSTDATED_CHEQUES="./output/temp_api_request_bodies/depositPostDatedCheques.json";
     private static final String API_RESPONSE_DEPOSIT_POSTDATED_CHEQUES="./output/api_responses/depositPostDatedCheques.json";
-    private static final String OUTPUT_FILE_DEPOSIT_POSTDATED_CHEQUES="./src/main/resources/menuItems/finance/transaction/458330 - Deposit Post Dated Cheques-AC_DPDC_1_Output.xls";
+    private static final String OUTPUT_FILE_DEPOSIT_POSTDATED_CHEQUES="./src/main/resources/menuItems/finance/transaction/458330 - Deposit Post Dated Cheques-AC_DPDC_1_SI_25_Output.xls";
     String dataFile1 = "./src/main/resources/menuItems/Sales/Transactions/480460 - Sales Invoices-AC_SI1_1.xls";
 
-    String dataFile = "./src/main/resources/menuItems/finance/transaction/458330 - Deposit Post Dated Cheques-AC_DPDC_1.xls";
+    String dataFile = "./src/main/resources/menuItems/finance/transaction/458330 - Deposit Post Dated Cheques-AC_DPDC_1_SI_25.xls";
 
     @BeforeTest
     public void beforeTest() throws Exception {
@@ -38,7 +38,7 @@ public class TestDepositPostDatedCheques {
 //        driver=appLogin.login();
 
         DepositPostDatedCheques postDatedCheques = new DepositPostDatedCheques(driver, dataFile);
-        postDatedCheques.postDatedChques("SI 7",TEMP_API_BODY_DEPOSIT_POSTDATED_CHEQUES,API_RESPONSE_DEPOSIT_POSTDATED_CHEQUES,OUTPUT_FILE_DEPOSIT_POSTDATED_CHEQUES);
+        postDatedCheques.postDatedChques("SI 10",TEMP_API_BODY_DEPOSIT_POSTDATED_CHEQUES,API_RESPONSE_DEPOSIT_POSTDATED_CHEQUES,OUTPUT_FILE_DEPOSIT_POSTDATED_CHEQUES);
     }
 
     @AfterTest

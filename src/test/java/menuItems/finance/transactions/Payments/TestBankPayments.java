@@ -39,7 +39,7 @@ public class TestBankPayments {
 //        driver=appLogin.login();
 
         BankPayment bankPayment = new BankPayment(driver, file);
-        bankPayment.bankPayment("PV 18",TEMP_API_BANK_PAYMENTS,API_RESPONSE_BANK_PAYMENTS,OUTPUT_FILE_BANK_PAYMENTS);
+        bankPayment.bankPayment("PV 16",TEMP_API_BANK_PAYMENTS,API_RESPONSE_BANK_PAYMENTS,OUTPUT_FILE_BANK_PAYMENTS);
     }
 
     @AfterTest

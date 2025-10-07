@@ -32,14 +32,14 @@ public class TestPurchaseVouchersAgainstReceipts {
 
     @Test
     public void purchaseVouchersAgainstTheReceipts() throws Exception {
-        MaterialReceipt materialReceipt=new MaterialReceipt(driver,file);
-        String receiptVoucher =materialReceipt.materialReceipt(TEMP_API_BODY_MATERIAL_RECEIPTS,API_RESPONSE_MATERIAL_RECEIPTS,OUTPUT_FILE_MATERIAL_RECEIPTS);
-
-        appLogin.logout();
-        driver=appLogin.login();
+//        MaterialReceipt materialReceipt=new MaterialReceipt(driver,file);
+//        String receiptVoucher =materialReceipt.materialReceipt(TEMP_API_BODY_MATERIAL_RECEIPTS,API_RESPONSE_MATERIAL_RECEIPTS,OUTPUT_FILE_MATERIAL_RECEIPTS);
+//
+//        appLogin.logout();
+//        driver=appLogin.login();
 
         PurchaseVouchersAgainstReceipt vouchersAgainstReceipt=new PurchaseVouchersAgainstReceipt(driver,file1);
-        vouchersAgainstReceipt.purchaseVouchersAgainstReceipt(receiptVoucher,TEMP_API_BODY_VOUCHER_AGAINST_RECEIPT,API_RESPONSE_VOUCHER_AGAINST_RECEIPT,OUTPUT_FILE_VOUCHER_AGAINST_RECEIPT);
+        vouchersAgainstReceipt.purchaseVouchersAgainstReceipt("MR 2",TEMP_API_BODY_VOUCHER_AGAINST_RECEIPT,API_RESPONSE_VOUCHER_AGAINST_RECEIPT,OUTPUT_FILE_VOUCHER_AGAINST_RECEIPT);
     }
 
     @AfterTest

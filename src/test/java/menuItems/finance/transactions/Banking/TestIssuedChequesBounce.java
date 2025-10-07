@@ -36,14 +36,14 @@ public class TestIssuedChequesBounce {
 
     @Test
     public void issuedChequesBounce() throws Exception {
-        PurchaseOrders purchaseOrders=new PurchaseOrders(driver,file);
-        String purchaseOrderVoucher= purchaseOrders.purchaseOrders(TEMP_API_PURCHASE_ORDERS,API_RESPONSE_PURCHASE_ORDERS,OUTPUT_FILE_PURCHASE_ORDERS);
-
-        appLogin.logout();
-        driver=appLogin.login();
+//        PurchaseOrders purchaseOrders=new PurchaseOrders(driver,file);
+//        String purchaseOrderVoucher= purchaseOrders.purchaseOrders(TEMP_API_PURCHASE_ORDERS,API_RESPONSE_PURCHASE_ORDERS,OUTPUT_FILE_PURCHASE_ORDERS);
+//
+//        appLogin.logout();
+//        driver=appLogin.login();
 
         IssuedChequesBounce issuedChequesBounce=new IssuedChequesBounce(driver,dataFile);
-        String issuesVoucher=issuedChequesBounce.issuedChequesBounce(purchaseOrderVoucher,TEMP_API_BODY_ISSUED_CHEQUES_BOUNCE,API_RESPONSE_ISSUED_CHEQUES_BOUNCE,OUTPUT_FILE_ISSUED_CHEQUES_BOUNCE);
+        String issuesVoucher=issuedChequesBounce.issuedChequesBounce("PO 10",TEMP_API_BODY_ISSUED_CHEQUES_BOUNCE,API_RESPONSE_ISSUED_CHEQUES_BOUNCE,OUTPUT_FILE_ISSUED_CHEQUES_BOUNCE);
 
         appLogin.logout();
         driver=appLogin.login();

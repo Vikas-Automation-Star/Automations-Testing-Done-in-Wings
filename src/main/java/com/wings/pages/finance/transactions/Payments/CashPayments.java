@@ -115,7 +115,7 @@ public class CashPayments extends TransactionsBaseClass {
                 text.click();
                 text.sendKeys(Keys.TAB, Keys.TAB, Keys.SPACE);
                 EnterData("//Edit[@Name='Amount Adjusted * Row " + i + ", Not sorted.']", dataFile, "BillsPayable", "AmountAdjusted");
-                common.sliderHandling("xpath", "//Table[@Name='BillsPayable']//ScrollBar[@Name='Vertical']//Thumb[@Name='Position']", 0, -100);
+//                common.sliderHandling("xpath", "//Table[@Name='BillsPayable']//ScrollBar[@Name='Vertical']//Thumb[@Name='Position']", 0, -100);
                 common.deleteInvalidRows();
                 break;
             } else if (!text.getText().equals(desiredVoucher)) {

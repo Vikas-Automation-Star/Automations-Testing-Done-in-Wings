@@ -1,0 +1,50 @@
+Time taken to execute SO General Information End:- 2 min 41 sec
+Time taken to execute Deliveries General Information End:- 2 min 6 sec
+Time taken to execute Deliveries Add Products:- 15 min 46 sec
+Time taken to execute Deliveries Charges And Deductions:- 2 min 45 sec
+Time taken to execute Deliveries Other Charges:- 4 min 3 sec
+Time taken to execute Deliveries Other Info:- 1 min 13 sec
+Time taken to execute Deliveries Additional Information:- 2 min 16 sec
+Time taken to execute Deliveries Shipping Address:- 2 min 3 sec
+Time taken to execute Deliveries Terms And Conditions:- 1 min 13 sec
+Time taken to execute Deliveries Allocations:- 46 sec
+Time taken to execute Sale Enquiry End Products9 min 53 sec
+Time taken to execute Charges And Deductions 2 min 10 sec
+Time taken to execute OtherInfo 49 sec
+Time taken to execute Additional Information 1 min 30 sec
+Time taken to execute Shipping Address:- 1 min 30 sec
+Time taken to execute Terms And Conditions 51 sec
+Time taken to execute Sales Enquiries ended at:- 18 min 42 sec
+Time taken to execute Sales Enquiry cancellation End products4 min 23 sec
+Time taken to execute OtherInfo 37 sec
+Time taken to execute Additional Information 1 min 16 sec
+Time taken to execute Sales EnquiriesCancellation ended at:- 8 min 18 sec
+Time taken to execute Sale Enquiry End Products10 min 2 sec
+Time taken to execute Charges And Deductions 2 min 15 sec
+Time taken to execute OtherInfo 51 sec
+Time taken to execute Additional Information 1 min 32 sec
+Time taken to execute Shipping Address:- 1 min 30 sec
+Time taken to execute Terms And Conditions 52 sec
+Time taken to execute Sales Enquiries ended at:- 18 min 57 sec
+Time taken to execute Sale Quotations Products Entering9 min 22 sec
+Time taken to execute Charges And Deductions 2 min 13 sec
+Time taken to execute OtherInfo 42 sec
+Time taken to execute Additional Information 1 min 32 sec
+Time taken to execute Shipping Address:- 1 min 23 sec
+Time taken to execute Terms And Conditions 50 sec
+Time taken to execute Sales quotations against Enquiries ended at:- 18 min 28 sec
+Time taken to execute SQ General Information End:- 1 min 36 sec
+Time taken to execute SQ Add Products:- 10 min 40 sec
+Time taken to execute SQ Charges And Deductions:- 2 min 13 sec
+Time taken to execute SQ Other Charges:- 3 min 5 sec
+Time taken to execute SQ Other Info:- 51 sec
+Time taken to execute SQ Additional Information:- 1 min 35 sec
+Time taken to execute SQ Shipping Address:- 1 min 27 sec
+Time taken to execute SQ Terms And Conditions:- 54 sec
+Time taken to execute SQ Allocations:- 0 sec
+Time taken to execute Sales Quotation End: 22 min 52 sec
+Time taken to execute SQC General Information End:- 1 min 21 sec
+Time taken to execute SQC Add Products:- 4 min 25 sec
+Time taken to execute SQC Other Info:- 36 sec
+Time taken to execute SQC Additional Information:- 1 min 18 sec
+Time taken to execute Sales Quotation Cancellation End: 8 min 7 sec

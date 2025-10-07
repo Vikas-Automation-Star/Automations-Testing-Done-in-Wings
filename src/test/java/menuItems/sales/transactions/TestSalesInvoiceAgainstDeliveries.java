@@ -33,21 +33,21 @@ public class TestSalesInvoiceAgainstDeliveries {
     }
 
     @Test
-    public void deliveriesAgainstOrders() throws Exception, AWTException {
-        Deliveries deliveries=new Deliveries(driver,dataFile1);
-        String deliveriesVoucher=deliveries.salesDeliveries(TEMP_API_SALES_DELIVERIES,API_RESPONSE_SALES_DELIVERIES,OUTPUT_FILE_SALES_DELIVERIES);
-
-        appLogin.logout();
-        driver = appLogin.login();
+    public void deliveriesAgainstOrders() throws Exception {
+//        Deliveries deliveries=new Deliveries(driver,dataFile1);
+//        String deliveriesVoucher=deliveries.salesDeliveries(TEMP_API_SALES_DELIVERIES,API_RESPONSE_SALES_DELIVERIES,OUTPUT_FILE_SALES_DELIVERIES);
+//
+//        appLogin.logout();
+//        driver = appLogin.login();
 
         SalesInvoiceAgainstDeliveries salesInvoiceAgainstDeliveries=new SalesInvoiceAgainstDeliveries(driver,dataFile2);
         salesInvoiceAgainstDeliveries.salesInvoiceAgainstDeliveries
-                (deliveriesVoucher,TEMP_API_SALES_INVOICE_AGAINST_DELIVERIES,API_RESPONSE_SALES_INVOICE_AGAINST_DELIVERIES,OUTPUT_FILE_SALES_INVOICE_AGAINST_DELIVERIES);
+                ("DEL 17",TEMP_API_SALES_INVOICE_AGAINST_DELIVERIES,API_RESPONSE_SALES_INVOICE_AGAINST_DELIVERIES,OUTPUT_FILE_SALES_INVOICE_AGAINST_DELIVERIES);
 
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 }

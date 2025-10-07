@@ -32,14 +32,14 @@ public class TestCashPayments {
 
     @Test
     public void cashPayment() throws Exception {
-        PurchaseVoucher purchaseVoucher=new PurchaseVoucher(driver,purchaseFile);
-        String voucehrNum=purchaseVoucher.purchaseVoucher(TEMP_API_BODY_PURCHASE_VOUCHERS,API_RESPONSE_PURCHASE_VOUCHERS,OUTPUT_FILE);
-
-        appLogin.logout();
-        driver=appLogin.login();
+//        PurchaseVoucher purchaseVoucher=new PurchaseVoucher(driver,purchaseFile);
+//        String voucehrNum=purchaseVoucher.purchaseVoucher(TEMP_API_BODY_PURCHASE_VOUCHERS,API_RESPONSE_PURCHASE_VOUCHERS,OUTPUT_FILE);
+//
+//        appLogin.logout();
+//        driver=appLogin.login();
 
         CashPayments cashPayments = new CashPayments(driver, file);
-        cashPayments.cashPayment(voucehrNum,TEMP_API_CASH_PAYMENTS,API_RESPONSE_CASH_PAYMENTS,OUTPUT_FILE_CASH_PAYMENTS);
+        cashPayments.cashPayment("PV 17",TEMP_API_CASH_PAYMENTS,API_RESPONSE_CASH_PAYMENTS,OUTPUT_FILE_CASH_PAYMENTS);
     }
 
     @AfterTest

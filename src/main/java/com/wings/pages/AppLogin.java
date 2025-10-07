@@ -22,7 +22,7 @@ public class AppLogin {
         driver = common.initializeDriver(common.getProperty("multiUserApp"));
 //    String currentwindowHandle = driver.getWindowHandle();
 //    System.out.println("Window 1 -" + currentwindowHandle);
-        driver.findElement(By.name(" 24D Books Automation")).click();
+        driver.findElement(By.name("24D Books Automation")).click();
         Thread.sleep(5000);
         rootDriver = common.initializeDriver("Root");
         Thread.sleep(10000);
@@ -33,6 +33,7 @@ public class AppLogin {
         loginDriver = common.navigateToAppWindow(hexLoginId);
         common = new Common(loginDriver);
 
+        common.inputText("xpath", "//Edit[@Name='User name']", common.getProperty("userLevel"));
         common.inputText("xpath", "//Edit[@Name='Password']", common.getProperty("password"));
         System.out.println("Password TagName " + common.getTagName("name", "Password"));
         common.clickElement("name", "Submit");

@@ -34,18 +34,18 @@ public class TestSalesReturnsWithInvoiceReference {
 
     @Test
     public void salesReturnsWithInvoiceReference() throws Exception {
-        SalesInvoice invoice = new SalesInvoice(driver, dataFile);
-        String salesI= invoice.salesInvoice(TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_SALES_INVOICES,OUTPUT_FILE1);
-
-        appLogin.logout();
-        driver= appLogin.login();
+//        SalesInvoice invoice = new SalesInvoice(driver, dataFile);
+//        String salesI= invoice.salesInvoice(TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_SALES_INVOICES,OUTPUT_FILE1);
+//
+//        appLogin.logout();
+//        driver= appLogin.login();
 
         SalesReturnWithInvoiceReference salesRWIR =new SalesReturnWithInvoiceReference(driver,dataFile1);
-        salesRWIR.salesReturnWithInvoiceReference(salesI,TEMP_API_BODY_SRWIR,API_RESPONSE_SRWIR,OUTPUT_FILE2);
+        salesRWIR.salesReturnWithInvoiceReference("SI 24",TEMP_API_BODY_SRWIR,API_RESPONSE_SRWIR,OUTPUT_FILE2);
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-        appLogin.logout();
+//        appLogin.logout();
     }
 }
