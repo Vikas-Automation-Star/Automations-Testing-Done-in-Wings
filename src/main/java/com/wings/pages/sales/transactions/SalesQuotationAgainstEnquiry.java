@@ -89,7 +89,7 @@ public class SalesQuotationAgainstEnquiry extends TransactionsBaseClass {
         long duration5 = System.nanoTime() - start5;
         FileUtil.writeTimeLogInMinutes("Terms And Conditions ", duration5);
 
-//        //save
+        //save
         transactionSave();
         String newVoucherID = newTransactionID(oldVoucherID);
         System.out.println("newID: " + newVoucherID);
@@ -99,6 +99,7 @@ public class SalesQuotationAgainstEnquiry extends TransactionsBaseClass {
         APIClient.validateAPIWithExcel(newVoucherID, tempAPIBodyUpdate, apiResponse, outputFile, "SalesQuotationsAgainstEnquiries");
         long SQAEnd = System.nanoTime() - SQAEStart;
         FileUtil.writeTimeLogInMinutes("Sales quotations against Enquiries ended at:- ", SQAEnd );
+        deleteTransactionUsingVoucherNumber(voucherNum);
 
         return newVoucherID;
     }

@@ -62,12 +62,10 @@ public class SalaryPayments extends TransactionsBaseClass {
             Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
             //api
             APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"SalaryPayments");
-
+            deleteTransactionUsingVoucherNumber(newVoucherID);
             long salesInvoiceEnd = System.nanoTime() - start ;
             FileUtil.writeTimeLogInMinutes("Salary Payments ended at:- ", salesInvoiceEnd );
 
-
-//        excelUtil.excelComparator("","",newVoucherID);
             return newVoucherID;
         }
 

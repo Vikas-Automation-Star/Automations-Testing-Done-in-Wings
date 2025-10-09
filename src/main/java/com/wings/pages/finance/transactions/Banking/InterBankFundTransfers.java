@@ -73,9 +73,7 @@ public class InterBankFundTransfers extends TransactionsBaseClass {
         FileUtil.writeTimeLogInMinutes("Inter Bank Fund Transfer ended at:- ", salesInvoiceEnd );
         //API
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"InterBankFundTransfer");
-
-
-//        excelUtil.excelComparator("","",newVoucherID);
+        deleteTransactionUsingVoucherNumber(newVoucherID);
     }
 
     public void otherInfo() throws InterruptedException, IOException {

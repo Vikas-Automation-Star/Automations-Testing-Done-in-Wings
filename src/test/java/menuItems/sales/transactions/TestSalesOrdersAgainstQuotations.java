@@ -39,15 +39,15 @@ public class TestSalesOrdersAgainstQuotations {
 
     @Test
     public void salesOrderAgainstQuotations() throws Exception, AWTException {
-        SalesEnquiry sales = new SalesEnquiry(driver, dataFile);
-        String se= sales.salesEnquiries(TEMP_API_BODY_SALES_ENQUIRY,API_RESPONSE_SALES_ENQUIRY,OUTPUT_FILE1);
-
-        appLogin.logout();
-        driver= appLogin.login();
+//        SalesEnquiry sales = new SalesEnquiry(driver, dataFile);
+//        String se= sales.salesEnquiries(TEMP_API_BODY_SALES_ENQUIRY,API_RESPONSE_SALES_ENQUIRY,OUTPUT_FILE1);
+//
+//        appLogin.logout();
+//        driver= appLogin.login();
 
         SalesQuotationAgainstEnquiry againstEnquiry = new SalesQuotationAgainstEnquiry(driver, dataFile1);
         String againstEnquiryVoucher=againstEnquiry.
-                quotationAgainstEnquiry(se,TEMP_API_BODY_SALES_QUOTATIONS_AGAINST_ENQUIRIES,API_RESPONSE_SALES_QUOTATIONS_AGAINST_ENQUIRIES,OUTPUT_FILE2);
+                quotationAgainstEnquiry("SE 14",TEMP_API_BODY_SALES_QUOTATIONS_AGAINST_ENQUIRIES,API_RESPONSE_SALES_QUOTATIONS_AGAINST_ENQUIRIES,OUTPUT_FILE2);
 
         appLogin.logout();
         driver= appLogin.login();

@@ -63,6 +63,7 @@ public class DepositPostDatedCheques extends TransactionsBaseClass {
         FileUtil.writeTimeLogInMinutes("Deposit Post Dated Cheques ended at:- ", salesInvoiceEnd );
         //API
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"DepositPostDatedCheques");
+        deleteTransactionUsingVoucherNumber(newVoucherID);
 
     }
 

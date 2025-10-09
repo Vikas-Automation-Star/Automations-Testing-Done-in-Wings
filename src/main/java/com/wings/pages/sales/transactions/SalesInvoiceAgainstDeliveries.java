@@ -4,7 +4,6 @@ import com.wings.pages.TransactionsBaseClass;
 import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
-import com.wings.utils.Time;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
@@ -146,10 +145,11 @@ public class SalesInvoiceAgainstDeliveries extends TransactionsBaseClass {
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         //api
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"salesInvoiceAgainstDeliveries");
+        long invoiceAgainstDeliveriesEnd = System.nanoTime() - invoiceAgainstDeliveriesStart;
+        FileUtil.writeTimeLogInMinutes("Sales Invoice against Deliveries transaction Ended at:- ", invoiceAgainstDeliveriesEnd);
+        deleteTransactionUsingVoucherNumber(newVoucherID);
 
         return newVoucherID;
-
-
     }
 
     public void addProduct() throws Exception {

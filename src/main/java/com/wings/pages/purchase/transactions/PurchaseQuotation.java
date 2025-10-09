@@ -86,6 +86,9 @@ public class PurchaseQuotation extends TransactionsBaseClass {
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         //api
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"purchaseQuotations");
+        long quotationEnd=System.nanoTime()-start;
+        FileUtil.writeTimeLogInMinutes("PQ Ended at:- ",quotationEnd);
+        deleteTransactionUsingVoucherNumber(newVoucherID);
 
         return newVoucherID;
 

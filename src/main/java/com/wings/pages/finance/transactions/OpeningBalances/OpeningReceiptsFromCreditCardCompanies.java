@@ -67,9 +67,7 @@ public class OpeningReceiptsFromCreditCardCompanies extends TransactionsBaseClas
         FileUtil.writeTimeLogInMinutes("Opening Receipts from CCC ended at:- ", salesInvoiceEnd );
         //API
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"OpeningReceiptsFromCCC");
-
-
-//        excelUtil.excelComparator("","",newVoucherID);
+        deleteTransactionUsingVoucherNumber(newVoucherID);
         return newVoucherID;
     }
 

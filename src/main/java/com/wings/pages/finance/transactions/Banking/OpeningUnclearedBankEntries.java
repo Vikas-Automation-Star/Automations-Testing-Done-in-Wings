@@ -64,6 +64,7 @@ public class OpeningUnclearedBankEntries extends TransactionsBaseClass {
         FileUtil.writeTimeLogInMinutes("Deposit Post Dated Cheques ended at:- ", salesInvoiceEnd );
         //API
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"OpeningUnclearedBankEntries");
+        deleteTransactionUsingVoucherNumber(newVoucherID);
 
     }
 

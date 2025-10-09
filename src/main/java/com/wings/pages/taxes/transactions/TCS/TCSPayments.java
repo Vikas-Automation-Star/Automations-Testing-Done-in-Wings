@@ -86,6 +86,8 @@ public class TCSPayments extends TransactionsBaseClass {
         FileUtil.writeTimeLogInMinutes("TCS Payments ended at:- ", tdsPaymentsEnd);
         //API
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"tcsPayments");
+        deleteTransactionUsingVoucherNumber(newVoucherID);
+        deleteTransactionUsingVoucherNumber(voucher);
 
     }
 

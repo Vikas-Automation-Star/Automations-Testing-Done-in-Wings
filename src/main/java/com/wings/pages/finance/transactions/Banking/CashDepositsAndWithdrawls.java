@@ -69,6 +69,7 @@ public class CashDepositsAndWithdrawls extends TransactionsBaseClass {
         FileUtil.writeTimeLogInMinutes("Cash Deposits and Withdrawals ended at:- ", salesInvoiceEnd );
         //API
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"CashDepositAndWithdrawal");
+        deleteTransactionUsingVoucherNumber(newVoucherID);
 
     }
 

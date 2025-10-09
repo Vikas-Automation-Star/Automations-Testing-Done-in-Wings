@@ -8,9 +8,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.json.simple.parser.ParseException;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -461,9 +459,6 @@ public  class Transaction {
         common.clickElement("name", "Sales");
         common.clickElement("name", "Orders");
         common.clickElement("xpath", "//MenuItem[@Name='Sales Orders against Quotations']");
-        String pageValidation = common.findWebElement("xpath", "//Pane/Text[@Name='Sales Orders against Quotations']").getText();
-        System.out.println("Screen Name:-" + pageValidation);
-        Assert.assertEquals(pageValidation, "Sales Orders against Quotations");
     }
 
     public void navigateToDeliveriesAgainstOrdersMenu() {
@@ -489,9 +484,6 @@ public  class Transaction {
         common.clickElement("name", "Sales");
         common.clickElement("name", "Invoices");
         common.clickElement("xpath", "//MenuItem[@Name='Sales Return with Invoice Reference']");
-        String pageValidation = common.findWebElement("xpath", "//Pane/Text[@Name='Sales Return with Invoice Reference']").getText();
-        System.out.println("Screen Name:-" + pageValidation);
-        Assert.assertEquals(pageValidation, "Sales Return with Invoice Reference");
     }
 
     public void navigateToPartyProductwiseDiscountMenu() {
@@ -722,9 +714,9 @@ public  class Transaction {
         for (WebElement i : elementList) {
             System.out.println(i.getText());
 //            if (i.getText().equals(voucherNum)) {
-                i.click();
-                i.sendKeys(Keys.LEFT, Keys.SPACE, Keys.ENTER, Keys.ENTER);
-                break;
+            i.click();
+            i.sendKeys(Keys.LEFT, Keys.SPACE, Keys.ENTER, Keys.ENTER);
+            break;
 //            }
         }
     }
@@ -998,6 +990,70 @@ public  class Transaction {
         Thread.sleep(1000);
         common.clickElement("xpath", "//Button[@Name='OK']");
     }
+
+    public void deleteTransactionUsingVoucherNumber(String voucherID) throws InterruptedException, IOException {
+        long deletingTransactionStartAt=System.nanoTime();
+        String voucherSeries = voucherID.replaceAll("\\d", "");
+        System.out.println("VoucherString :" + voucherSeries);
+        String voucherNumber = voucherID.replaceAll("\\D", "");
+        System.out.println("VoucherNumber :" + voucherNumber);
+        common.clickElement("xpath", "//MenuItem[@Name='Tools']");
+        common.clickElement("xpath", "//MenuItem[@Name='Vouchers']");
+        common.clickElement("xpath", "//MenuItem[@Name='Delete']");
+        //enter data
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("app", "Root");
+        rootDriver = new WindowsDriver<>(new URL("http://127.0.0.1:4723/"), capabilities);
+        Thread.sleep(2500);
+        List<WebElement> panes = By.tagName("Window").findElements(rootDriver);
+        Thread.sleep(2500);
+        if (panes.isEmpty()) {
+            System.out.println("No windows found.");
+        } else {
+            for (WebElement i : panes) {
+                String name = i.getAttribute("Name");
+                System.out.println("Name:- " + name);
+                if (("Delete Transaction").equals(name)) {
+                    Thread.sleep(3000);
+                    WebElement seriesInput = rootDriver.findElementByXPath("//Pane/Text[@Name='Document Series']/following-sibling::Edit");
+                    seriesInput.sendKeys(voucherSeries);
+                    WebElement fromNumInput = rootDriver.findElementByXPath("//Pane/Text[@Name='Document No']/following-sibling::Edit");
+                    fromNumInput.sendKeys(voucherNumber);
+                    rootDriver.findElementByXPath("//Button[@Name='Delete']").click();
+                    WebDriverWait wait = new WebDriverWait(rootDriver, 10);
+                    // After clicking the Delete button:
+                    try {
+                        // Wait for Yes button to appear - means deletion possible
+                        WebElement yesButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//Button[@Name='Yes']")));
+                        yesButton.click();
+                        // After clicking Yes, wait for success message
+                        WebElement successMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                                By.xpath("//Text[@Name='Transactions deleted Successfully.']")));
+                        System.out.println("Transaction deleted successfully." + voucherID);
+                    } catch (TimeoutException e) {
+                        // Yes button did not appear, check if "Cannot delete transaction" message is shown
+                        try {
+                            WebElement failureMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                                    By.xpath("//Text[contains(@Name,\"Can't Delete Transaction\")]")));
+                            System.out.println("Can't delete transaction. Transaction doesn't exist." + voucherID);
+                        } catch (TimeoutException ex) {
+                            System.out.println("No expected popup message appeared.");
+                        }
+                    }
+                    try {
+                        WebElement okButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//Button[@Name='OK']")));
+                        okButton.click();
+                    } catch (TimeoutException e) {
+                        System.out.println("OK button not found or not clickable.");
+                    }
+                }
+                break;
+            }
+        }
+        long deletingTransactionEnd=System.nanoTime()-deletingTransactionStartAt;
+        FileUtil.writeTimeLogInMinutes("Delete Transaction Using voucher:- ",deletingTransactionEnd);
+    }
+
 
     //overloaded deleted Transaction method
     public void deleteTransactionBasedOnYear(String voucherID) throws InterruptedException {

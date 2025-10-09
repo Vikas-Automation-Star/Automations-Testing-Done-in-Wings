@@ -32,12 +32,12 @@ public class TestMaterialReceiptsAgainstOrders {
 
     @Test
     public void materialReceiptsAgainstOrders() throws Exception {
-        PurchaseOrders purchaseOrders=new PurchaseOrders(driver,dataFile);
-        String po=purchaseOrders.purchaseOrders(TEMP_API_PURCHASE_ORDERS,API_RESPONSE_PURCHASE_ORDERS,OUTPUT_FILE_PURCHASE_ORDERS);
-        appLogin.logout();
-        driver=appLogin.login();
+//        PurchaseOrders purchaseOrders=new PurchaseOrders(driver,dataFile);
+//        String po=purchaseOrders.purchaseOrders(TEMP_API_PURCHASE_ORDERS,API_RESPONSE_PURCHASE_ORDERS,OUTPUT_FILE_PURCHASE_ORDERS);
+//        appLogin.logout();
+//        driver=appLogin.login();
         MaterialReceiptsAgainstOrder mrao = new MaterialReceiptsAgainstOrder(driver, file);
-        mrao.materialReceiptsAgainstOrder(po,TEMP_API_MATERIAL_RECEIPT_AGAINST_ORDER,API_RESPONSE_MATERIAL_RECEIPT_AGAINST_ORDER,OUTPUT_FILE_MATERIAL_RECEIPT_AGAINST_ORDER);
+        mrao.materialReceiptsAgainstOrder("PO 14",TEMP_API_MATERIAL_RECEIPT_AGAINST_ORDER,API_RESPONSE_MATERIAL_RECEIPT_AGAINST_ORDER,OUTPUT_FILE_MATERIAL_RECEIPT_AGAINST_ORDER);
     }
 
     @AfterTest

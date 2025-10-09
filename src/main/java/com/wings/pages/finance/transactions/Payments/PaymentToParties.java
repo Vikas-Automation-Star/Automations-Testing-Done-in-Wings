@@ -89,9 +89,8 @@ public class PaymentToParties extends TransactionsBaseClass {
         FileUtil.writeTimeLogInMinutes("Payment to Parties ended at:- ", salesInvoiceEnd );
         //API
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"PaymentToParties");
+        deleteTransactionUsingVoucherNumber(newVoucherID);
 
-
-//        excelUtil.excelComparator("","",newVoucherID);
         return newVoucherID;
     }
 

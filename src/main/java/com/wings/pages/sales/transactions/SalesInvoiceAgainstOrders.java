@@ -158,9 +158,10 @@ public class SalesInvoiceAgainstOrders extends TransactionsBaseClass {
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         //api
-
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"salesInvoiceAgainstOrder");
-
+        long invoiceAgainstOrdersEnd = System.nanoTime() - start;
+        FileUtil.writeTimeLogInMinutes("Sales Invoice against Orders transaction Ended at:- ", invoiceAgainstOrdersEnd);
+        deleteTransactionUsingVoucherNumber(newVoucherID);
 
         return newVoucherID;
     }

@@ -101,6 +101,7 @@ public class MaterialReceiptsAgainstOrder extends TransactionsBaseClass {
 
         long transactionEnd=System.nanoTime()-start;
         FileUtil.writeTimeLogInMinutes("Material Receipts Against Orders Ended at:- ",transactionEnd);
+        deleteTransactionUsingVoucherNumber(newVoucherID);
 
         return newVoucherID;
     }
@@ -302,7 +303,6 @@ public class MaterialReceiptsAgainstOrder extends TransactionsBaseClass {
             addData("xpath","//Edit[@Name='Expense Type Code Row "+i+", Not sorted.']",dataFile,"OtherCosts","ExpenseTypeCode",i);
         }
         List<WebElement> vendorCode = common.findWebElements("xpath", "//Table[@Name='OtherCosts']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Vendor Code Row ')]");
-        List<WebElement> vendorRow = common.findWebElements("xpath", "//Table[@Name='OtherCosts']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Vendor Row ')]");
         List<WebElement> otherCostRow = common.findWebElements("xpath", "//Table[@Name='OtherCosts']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Other Cost * Row ')]");
         List<WebElement> departmentRowList = common.findWebElements("xpath", "//Table[@Name='OtherCosts']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Department Row ')]");
         List<WebElement> projectRowList = common.findWebElements("xpath", "//Table[@Name='OtherCosts']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Project Row ')]");
@@ -312,7 +312,6 @@ public class MaterialReceiptsAgainstOrder extends TransactionsBaseClass {
 
         for (int i = 0; i < otherCosts.size(); i++) {
             enterListData(vendorCode.get(i), dataFile, "OtherCosts", "VendorCode",i);
-            enterListData(vendorRow.get(i), dataFile, "OtherCosts", "Vendor",i);
             enterListData(otherCostRow.get(i),dataFile,"OtherCosts","OtherCost",i);
             enterListData(departmentRowList.get(i), dataFile, "OtherCosts", "Department", i);
             enterListData(projectRowList.get(i), dataFile, "OtherCosts", "Project", i);

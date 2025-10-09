@@ -5,10 +5,9 @@ import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
-import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import java.io.IOException;
+
 import java.util.List;
 
 public class PurchasePrice extends TransactionsBaseClass {
@@ -25,7 +24,6 @@ public class PurchasePrice extends TransactionsBaseClass {
     public String purchasePrice(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
         navigateToMastersWhen3Steps("Purchase","Price", "Purchase Prices");
-        Thread.sleep(1000);
         Thread.sleep(3000);
         long generalInfoStart = System.nanoTime();
         Thread.sleep(3000);
@@ -55,10 +53,11 @@ public class PurchasePrice extends TransactionsBaseClass {
         String newVoucherID = newTransactionID(oldVoucherID);
         System.out.println("newID: " + newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID, "Voucher Numbers are same. Check Transaction.");
-        long quotationsEnd = System.nanoTime() - start;
-        FileUtil.writeTimeLogInMinutes("Purchase Prices End: ", quotationsEnd);
+        long purchasePriceEnd = System.nanoTime() - start;
+        FileUtil.writeTimeLogInMinutes("Purchase Prices End: ", purchasePriceEnd);
         //API
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"purchasePrices");
+        deleteTransactionUsingVoucherNumber(newVoucherID);
 
         return newVoucherID;
     }

@@ -5,7 +5,6 @@ import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
-import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import java.awt.*;
@@ -23,8 +22,7 @@ public class DeliveryReturns extends TransactionsBaseClass {
 
     public DeliveryReturns(WindowsDriver driver, String file) {
         super(driver);
-        this.driver = driver;
-        common = new Common(driver);
+        common = new Common(this.driver = driver);
         dataFile = file;
     }
 
@@ -87,6 +85,10 @@ public class DeliveryReturns extends TransactionsBaseClass {
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         //api
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"deliveryReturns");
+        long deliveryReturnsEnd = System.nanoTime() - start;
+        FileUtil.writeTimeLogInMinutes("Delivery Returns transaction Ended at:- ", deliveryReturnsEnd);
+        deleteTransactionUsingVoucherNumber(newVoucherID);
+        deleteTransactionUsingVoucherNumber(voucherNum);
 
         return newVoucherID;
     }

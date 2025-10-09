@@ -87,6 +87,8 @@ public class TDSPayments extends TransactionsBaseClass {
         FileUtil.writeTimeLogInMinutes("TDS Payments ended at:- ", tdsPaymentsEnd);
         //API
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"tdsPayments");
+        deleteTransactionUsingVoucherNumber(newVoucherID);
+        deleteTransactionUsingVoucherNumber(voucher);
 
     }
 

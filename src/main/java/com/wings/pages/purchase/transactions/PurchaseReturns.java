@@ -123,6 +123,7 @@ public class PurchaseReturns extends TransactionsBaseClass {
 
         long PurchaseReturnsEnd = System.nanoTime() - start;
         FileUtil.writeTimeLogInMinutes("Purchase Returns end:- ", PurchaseReturnsEnd);
+        deleteTransactionUsingVoucherNumber(newVoucherID);
         return newVoucherID;
     }
 

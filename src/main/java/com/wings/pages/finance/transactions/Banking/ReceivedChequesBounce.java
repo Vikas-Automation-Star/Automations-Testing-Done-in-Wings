@@ -79,7 +79,8 @@ public class ReceivedChequesBounce extends TransactionsBaseClass {
         Assert.assertNotEquals(newVoucherID, oldVoucherID, "Voucher Numbers are same. Check Transaction.");
         //api
         APIClient.validateAPIWithExcel(newVoucherID, tempAPIBodyUpdate, apiResponse, outputFile, "receivedChequesBounce");
-
+        deleteTransactionUsingVoucherNumber(newVoucherID); //RCB
+        deleteTransactionUsingVoucherNumber(voucherNumber); //ICB
 
         long receivedChequesBounceEnd = System.nanoTime() - start;
         FileUtil.writeTimeLogInMinutes("Received Cheques Bounce End:- ", receivedChequesBounceEnd);

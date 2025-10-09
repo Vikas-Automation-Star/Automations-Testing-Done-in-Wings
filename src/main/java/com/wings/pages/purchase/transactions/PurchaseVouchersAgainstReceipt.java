@@ -160,6 +160,7 @@ public class PurchaseVouchersAgainstReceipt extends TransactionsBaseClass {
 
         long pvarTransactionEnd=System.nanoTime()-start;
         FileUtil.writeTimeLogInMinutes("Purchase Voucher against Receipt Ended at:- ",pvarTransactionEnd);
+        deleteTransactionUsingVoucherNumber(newVoucherID);
 
         return newVoucherID;
     }

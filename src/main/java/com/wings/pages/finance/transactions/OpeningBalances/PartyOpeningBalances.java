@@ -61,9 +61,8 @@ public class PartyOpeningBalances extends TransactionsBaseClass {
         FileUtil.writeTimeLogInMinutes("Party Opening Balances ended at:- ", salesInvoiceEnd );
         //API
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"PartyOpeningBalances");
+        deleteTransactionUsingVoucherNumber(newVoucherID);
 
-
-//        excelUtil.excelComparator("","",newVoucherID);
         return newVoucherID;
     }
 

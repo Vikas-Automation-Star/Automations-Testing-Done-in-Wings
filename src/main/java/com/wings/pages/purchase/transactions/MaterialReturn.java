@@ -102,6 +102,8 @@ public class MaterialReturn extends TransactionsBaseClass {
 
         long materialReturnsEnd=System.nanoTime()-materialReturnsStart;
         FileUtil.writeTimeLogInMinutes("Material Returns Ended at:- ",materialReturnsEnd);
+        deleteTransactionUsingVoucherNumber(newVoucherID);
+        deleteTransactionUsingVoucherNumber(receiptsNum);
 
         return newVoucherID;
     }

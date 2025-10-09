@@ -5,8 +5,7 @@ import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
-import org.json.simple.parser.ParseException;
-import java.awt.*;
+
 import java.util.List;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -61,6 +60,9 @@ public class DefineSalesTargetExecutiveWise extends TransactionsBaseClass {
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         //API
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"defineSalesTarget");
+        long defineSalesTargetEnd = System.nanoTime() - start;
+        FileUtil.writeTimeLogInMinutes("Define Sales Target Executive Wise Transaction Ended at:- ", defineSalesTargetEnd);
+        deleteTransactionUsingVoucherNumber(newVoucherID);
 
         return newVoucherID;
     }

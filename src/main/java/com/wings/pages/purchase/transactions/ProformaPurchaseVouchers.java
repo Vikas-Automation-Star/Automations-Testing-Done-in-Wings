@@ -8,7 +8,7 @@ import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import java.awt.*;
+
 import java.util.List;
 import java.io.IOException;
 
@@ -96,10 +96,11 @@ public class ProformaPurchaseVouchers extends TransactionsBaseClass {
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         //end
-        long salesInvoiceEnd = System.nanoTime() - start ;
-        FileUtil.writeTimeLogInMinutes("proforma Purchase voucher ended at:- ", salesInvoiceEnd );
+        long proformaPurchaseEnd = System.nanoTime() - start ;
+        FileUtil.writeTimeLogInMinutes("proforma Purchase voucher ended at:- ", proformaPurchaseEnd);
         //API
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"proformaPurchaseVoucher");
+        deleteTransactionUsingVoucherNumber(newVoucherID);
 
         return newVoucherID;
     }

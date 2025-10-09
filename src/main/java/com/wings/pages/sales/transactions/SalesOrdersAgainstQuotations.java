@@ -126,7 +126,8 @@ public class SalesOrdersAgainstQuotations extends TransactionsBaseClass {
         FileUtil.writeTimeLogInMinutes("SOAQ ended at ",transEnd);
         //API
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"salesOrderAgainstQuotation");
-//        OptimizedJsonExcelComparator.ExcelColumnDifference("output/excelDifferences/salesOrderAgainstQuotation_08-09-2025.xlsx");
+        deleteTransactionUsingVoucherNumber(newVoucherID);
+        deleteTransactionUsingVoucherNumber(voucherNum);
 
         return newVoucherID;
     }

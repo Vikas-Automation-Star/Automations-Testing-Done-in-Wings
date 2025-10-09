@@ -103,8 +103,8 @@ public class ProformaSalesInvoice extends TransactionsBaseClass {
         FileUtil.writeTimeLogInMinutes("proforma Sales Invoice ended at:- ", salesInvoiceEnd );
         //API
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"proformaSalesInvoice");
+        deleteTransactionUsingVoucherNumber(newVoucherID);
 
-//        excelUtil.excelComparator("","",newVoucherID);
         return newVoucherID;
     }
 

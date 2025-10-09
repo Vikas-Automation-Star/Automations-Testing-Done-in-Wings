@@ -62,6 +62,7 @@ public class BankReconciliation extends TransactionsBaseClass {
         FileUtil.writeTimeLogInMinutes("Bank Reconciliation ended at:- ", salesInvoiceEnd );
         //API
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"BankReconciliation");
+        deleteTransactionUsingVoucherNumber(newVoucherID);
 
     }
 

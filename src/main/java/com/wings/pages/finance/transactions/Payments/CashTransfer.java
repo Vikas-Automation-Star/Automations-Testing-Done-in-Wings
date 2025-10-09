@@ -62,6 +62,7 @@ public class CashTransfer extends TransactionsBaseClass {
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         //API
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"CashTransfer");
+        deleteTransactionUsingVoucherNumber(newVoucherID);
 
         return newVoucherID;
     }

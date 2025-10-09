@@ -101,7 +101,10 @@ public class DeliveriesAgainstOrdersTransaction extends TransactionsBaseClass {
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         //end
+        long deliveriesAgainstOrdersEnd = System.nanoTime() - deliveriesAgainstOrderStart;
+        FileUtil.writeTimeLogInMinutes("DELO transaction Ended at:- ", deliveriesAgainstOrdersEnd);
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"deliveriesAgainstOrder");
+        deleteTransactionUsingVoucherNumber(newVoucherID);
 
         return newVoucherID;
     }
@@ -180,8 +183,8 @@ public class DeliveriesAgainstOrdersTransaction extends TransactionsBaseClass {
             } else if (masterType.get(i).equals("Products - MultiBatch")) {
                 common.clickElement("xpath", "//Button[@Name='Stock Details Row "+i+"']");
                 Thread.sleep(500);
-                EnterData("//Table[@Name='Batch Details']/*[@Name='Data Panel']/*[@Name='Row 1']/*[@Name='Quantity row 1']",dataFile,"Items","Quantity",i);
-                EnterData("//Table[@Name='Batch Details']/*[@Name='Data Panel']/*[@Name='Row 1']/*[@Name='Free Qty row 1']",dataFile,"Items","FreeQuantity",i);
+                EnterData("//Table[@Name='Batch Details']/*[@Name='Data Panel']/*[@Name='Row 2']/*[@Name='Quantity row 2']",dataFile,"Items","Quantity",i);
+                EnterData("//Table[@Name='Batch Details']/*[@Name='Data Panel']/*[@Name='Row 2']/*[@Name='Free Qty row 2']",dataFile,"Items","FreeQuantity",i);
                 Thread.sleep(1000);
                 common.clickElement("xpath", "//Button[@Name='OK']");
             }else if (masterType.get(i).equals("Products - Batches and Serial No")){

@@ -25,7 +25,7 @@ public class ProductndPartyDiscount extends TransactionsBaseClass {
     public String productDiscount(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
         System.out.println("Party and Product Discount started in :"+start);
-        Thread.sleep(100);
+        Thread.sleep(1000);
         long generalInfoStart=System.nanoTime();
         navigateToPartyProductwiseDiscountMenu();
         Thread.sleep(2500);
@@ -50,6 +50,9 @@ public class ProductndPartyDiscount extends TransactionsBaseClass {
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
        //API
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"partyProductDiscount");
+        deleteTransactionUsingVoucherNumber(newVoucherID);
+        long productDiscountend=System.nanoTime()-start;
+        FileUtil.writeTimeLogInMinutes("Party and Product Discount Ended at:- ",productDiscountend);
 
         return newVoucherID;
     }
