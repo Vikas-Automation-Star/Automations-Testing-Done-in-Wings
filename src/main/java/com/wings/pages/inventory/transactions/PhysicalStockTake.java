@@ -57,7 +57,7 @@ public class PhysicalStockTake extends TransactionsBaseClass {
 
         long physicalStockTakeEnd = System.nanoTime() - start;
         FileUtil.writeTimeLogInMinutes("Physical Stock Take Ended at:- ", physicalStockTakeEnd);
-
+        deleteTransactionUsingVoucherNumber(newVoucherID);
         return newVoucherID;
     }
 

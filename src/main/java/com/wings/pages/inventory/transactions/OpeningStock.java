@@ -70,6 +70,7 @@ public class OpeningStock extends TransactionsBaseClass {
 
         long openingStockEnd = System.nanoTime() - start;
         FileUtil.writeTimeLogInMinutes("Opening Stock ended at:- ", openingStockEnd);
+        deleteTransactionUsingVoucherNumber(newVoucherID);
 
         return newVoucherID;
     }

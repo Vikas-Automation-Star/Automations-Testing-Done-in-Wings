@@ -66,6 +66,7 @@ public class InterLocationTransfers extends TransactionsBaseClass {
 
         long interLocationTransferEnd = System.nanoTime() - start;
         FileUtil.writeTimeLogInMinutes("InterLocation Transfer End:- ", interLocationTransferEnd);
+        deleteTransactionUsingVoucherNumber(newVoucherID);
 
         return newVoucherID;
     }

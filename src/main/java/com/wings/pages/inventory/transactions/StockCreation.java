@@ -67,6 +67,7 @@ public class StockCreation extends TransactionsBaseClass {
 
         long stockCreationEnd = System.nanoTime() - start;
         FileUtil.writeTimeLogInMinutes("Stock Creation End:- ", stockCreationEnd);
+        deleteTransactionUsingVoucherNumber(newVoucherID);
 
         return newVoucherID;
     }

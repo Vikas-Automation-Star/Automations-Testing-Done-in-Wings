@@ -73,6 +73,7 @@ public class StockConversion extends TransactionsBaseClass {
 
         long stockConversionEnd = System.nanoTime() - start;
         FileUtil.writeTimeLogInMinutes("Stock Conversion End:- ", stockConversionEnd);
+        deleteTransactionUsingVoucherNumber(newVoucherID);
 
         return newVoucherID;
     }

@@ -70,6 +70,7 @@ public class InitiateStockTake extends TransactionsBaseClass {
 
         long initiateStockTake = System.nanoTime() - start;
         FileUtil.writeTimeLogInMinutes("Initiate Stock Take ended at:- ", initiateStockTake);
+        deleteTransactionUsingVoucherNumber(newVoucherID);
 
         return newVoucherID;
     }

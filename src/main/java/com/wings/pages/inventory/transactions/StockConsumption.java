@@ -70,6 +70,7 @@ public class StockConsumption extends TransactionsBaseClass {
 
         long stockConsumptionEnd = System.nanoTime() - start;
         FileUtil.writeTimeLogInMinutes("Stock Consumption End:- ", stockConsumptionEnd);
+        deleteTransactionUsingVoucherNumber(newVoucherID);
 
         return newVoucherID;
     }
