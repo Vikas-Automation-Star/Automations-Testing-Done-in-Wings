@@ -35,8 +35,8 @@ public class TestDebitNoteFromSuppliers {
 
     @Test
     public void debitNoteFromSupplier() throws Exception {
-//        PurchaseVoucher po = new PurchaseVoucher(driver, file);
-//        String purchaseVoucher=po.purchaseVoucher(TEMP_API_BODY_PURCHASE_VOUCHERS,API_RESPONSE_PURCHASE_VOUCHERS,OUTPUT_FILE);
+//        PurchaseVoucher pv = new PurchaseVoucher(driver, file);
+//        String purchaseVoucher=pv.purchaseVoucher(TEMP_API_BODY_PURCHASE_VOUCHERS,API_RESPONSE_PURCHASE_VOUCHERS,OUTPUT_FILE);
 //
 //        appLogin.logout();
 //        driver= appLogin.login();

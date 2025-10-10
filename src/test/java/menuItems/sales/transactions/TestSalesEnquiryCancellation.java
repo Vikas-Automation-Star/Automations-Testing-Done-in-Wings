@@ -32,14 +32,14 @@ public class TestSalesEnquiryCancellation {
 
     @Test
     public void salesEnquiryCancellation() throws Exception {
-        SalesEnquiry sales = new SalesEnquiry(driver, dataFile);
-        String se=sales.salesEnquiries(TEMP_API_BODY_SALES_ENQUIRY,API_RESPONSE_SALES_ENQUIRY,OUTPUT_FILE1);
+        SalesEnquiry salesEnquiry = new SalesEnquiry(driver, dataFile);
+        String enquiriesVoucher=salesEnquiry.salesEnquiries(TEMP_API_BODY_SALES_ENQUIRY,API_RESPONSE_SALES_ENQUIRY,OUTPUT_FILE1);
 
         appLogin.logout();
         driver= appLogin.login();
 
-        SalesEnquiryCancellation cancellation = new SalesEnquiryCancellation(driver, dataFile1);
-        cancellation.salesEnquiryCancellation(se,TEMP_API_BODY_SALES_ENQUIRY_CANCELLATION,API_RESPONSE_SALES_ENQUIRY_CANCELLATION,OUTPUT_FILE2);
+        SalesEnquiryCancellation enquiryCancellation = new SalesEnquiryCancellation(driver, dataFile1);
+        enquiryCancellation.salesEnquiryCancellation(enquiriesVoucher,TEMP_API_BODY_SALES_ENQUIRY_CANCELLATION,API_RESPONSE_SALES_ENQUIRY_CANCELLATION,OUTPUT_FILE2);
     }
 
     @AfterTest

@@ -35,14 +35,14 @@ public class TestPurchaseQuotationsAgainstEnquiries {
 
     @Test
     public void purchaseQuotationsAgainstEnquiries() throws Exception {
-        PurchaseEnquiries pe = new PurchaseEnquiries(driver, dataFile);
-        String purchaseEnq= pe.purchaseEnquires(TEMP_API_BODY_PURCHASE_ENQUIRY,API_RESPONSE_PURCHASE_ENQUIRY,OUTPUT_FILE);
+        PurchaseEnquiries enquiries = new PurchaseEnquiries(driver, dataFile);
+        String enquiresVoucher= enquiries.purchaseEnquires(TEMP_API_BODY_PURCHASE_ENQUIRY,API_RESPONSE_PURCHASE_ENQUIRY,OUTPUT_FILE);
 
         appLogin.logout();
         driver= appLogin.login();
 
         PurchaseQuotationsAgainstEnquiries quotationsAgainstEnquiries = new PurchaseQuotationsAgainstEnquiries(driver, dataFile1);
-        String PQAE =quotationsAgainstEnquiries.purchaseQuotationsAgainstEnquiry(purchaseEnq,TEMP_API_BODY_PURCHASE_QUOTATIONS_AGAINST_ENQUIRY,API_RESPONSE_PURCHASE_QUOTATIONS_AGAINST_ENQUIRY,OUTPUT_FILE2);
+        String quotationsAgainstEnquiryVoucher =quotationsAgainstEnquiries.purchaseQuotationsAgainstEnquiry(enquiresVoucher,TEMP_API_BODY_PURCHASE_QUOTATIONS_AGAINST_ENQUIRY,API_RESPONSE_PURCHASE_QUOTATIONS_AGAINST_ENQUIRY,OUTPUT_FILE2);
     }
 
     @AfterTest

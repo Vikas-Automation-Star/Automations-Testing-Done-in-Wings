@@ -33,14 +33,14 @@ public class TestMaterialIssuesToProduction {
 
     @Test
     public void materialIssuesToProduction() throws Exception {
-        ProductOrders po = new ProductOrders(driver, file);
-        String productionOrder=po.productOrders(TEMP_API_BODY_PRODUCTION_ORDERS,API_RESPONSE_PRODUCTION_ORDERS,OUTPUT_FILE);
+        ProductOrders productOrders = new ProductOrders(driver, file);
+        String productionOrderVoucher=productOrders.productOrders(TEMP_API_BODY_PRODUCTION_ORDERS,API_RESPONSE_PRODUCTION_ORDERS,OUTPUT_FILE);
 
         appLogin.logout();
         driver= appLogin.login();
 
         MaterialIssuesToProduction mifp = new MaterialIssuesToProduction(driver, file1);
-        mifp.materialIssuesToProduction(productionOrder,TEMP_API_BODY_MATERIAL_ISSUES_PRODUCTION,API_RESPONSE_MATERIAL_ISSUES_PRODUCTION,OUTPUT_FILE1);
+        mifp.materialIssuesToProduction(productionOrderVoucher,TEMP_API_BODY_MATERIAL_ISSUES_PRODUCTION,API_RESPONSE_MATERIAL_ISSUES_PRODUCTION,OUTPUT_FILE1);
     }
 
     @AfterTest

@@ -31,7 +31,7 @@ public class PurchaseEnquiriesCancellation extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public void purchaseEnquiriesCancellation(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
+    public void purchaseEnquiriesCancellation(String enquiriesVoucher,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
         System.out.println("Purchase Enquiries Cancellation Starts"+start);
 
@@ -46,7 +46,7 @@ public class PurchaseEnquiriesCancellation extends TransactionsBaseClass {
         enterBranch(dataFile,"GeneralInformation","Branch");
         enterCurrency(dataFile,"GeneralInformation","TransactionCurrency");
         enterPartyCode(dataFile,"GeneralInformation","PartyAccountCode");
-        selectPendingsSalesOrder(voucherNum,"20250401");
+        selectPendingsSalesOrder(enquiriesVoucher,"20250401");
         Robot robot=new Robot();
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);

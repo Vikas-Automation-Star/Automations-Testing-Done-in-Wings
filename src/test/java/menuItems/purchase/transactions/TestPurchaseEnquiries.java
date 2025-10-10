@@ -30,8 +30,8 @@ public class TestPurchaseEnquiries {
 
     @Test
     public void purchaseEnquiries() throws Exception {
-        PurchaseEnquiries pe = new PurchaseEnquiries(driver, dataFile);
-        pe.purchaseEnquires(TEMP_API_BODY_PURCHASE_ENQUIRY,API_RESPONSE_PURCHASE_ENQUIRY,OUTPUT_FILE);
+        PurchaseEnquiries purchaseEnquiries = new PurchaseEnquiries(driver, dataFile);
+        purchaseEnquiries.purchaseEnquires(TEMP_API_BODY_PURCHASE_ENQUIRY,API_RESPONSE_PURCHASE_ENQUIRY,OUTPUT_FILE);
     }
 
     @AfterTest

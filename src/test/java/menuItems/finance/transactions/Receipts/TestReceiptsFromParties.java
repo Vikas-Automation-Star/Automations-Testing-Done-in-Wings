@@ -41,8 +41,8 @@ public class TestReceiptsFromParties {
 //        appLogin.logout();
 //        driver= appLogin.login();
 
-        ReceiptsFromParties fromParties = new ReceiptsFromParties(driver, dataFile1);
-        fromParties.receiptFromParty("SI 18",TEMP_API_BODY_RECEIPTS_FROM_PARTIES,API_RESPONSE_RECEIPTS_FROM_PARTIES,OUTPUT_FILE1);
+        ReceiptsFromParties receiptsFromParties = new ReceiptsFromParties(driver, dataFile1);
+        receiptsFromParties.receiptFromParty("SI 18",TEMP_API_BODY_RECEIPTS_FROM_PARTIES,API_RESPONSE_RECEIPTS_FROM_PARTIES,OUTPUT_FILE1);
     }
 
     @AfterTest

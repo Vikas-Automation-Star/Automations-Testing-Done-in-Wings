@@ -33,7 +33,7 @@ public class SalesReturnWithInvoiceReference extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String salesReturnWithInvoiceReference(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
+    public String salesReturnWithInvoiceReference(String invoiceVoucher,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
 
         long salesRWIRStart = System.nanoTime();
         System.out.println("Sales returns with invoice reference started in :" + salesRWIRStart);
@@ -49,7 +49,7 @@ public class SalesReturnWithInvoiceReference extends TransactionsBaseClass {
         enterExchangeRate(dataFile,"GeneralInformation","ExchangeRate");
 //        enterSalesInvoiceNumber(dataFile,"GeneralInformation","SalesInvoiceNo");
         WebElement element= driver.findElementByXPath("//Edit[@Name='Sales Invoice No *']");
-        element.sendKeys(voucherNum, Keys.TAB);
+        element.sendKeys(invoiceVoucher, Keys.TAB);
 //        enterPartyAcc(dataFile,"GeneralInformation","PartyAccountCode");
         Thread.sleep(3000);
         gstTransactionType("Intra State Sales Returns from Registered Dealers");

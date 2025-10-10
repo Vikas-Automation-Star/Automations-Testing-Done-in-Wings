@@ -27,8 +27,8 @@ public class TestPurchaseVouchers {
 
     @Test
     public void purchaseVouchers() throws Exception {
-        PurchaseVoucher po = new PurchaseVoucher(driver, file);
-        po.purchaseVoucher(TEMP_API_BODY_PURCHASE_VOUCHERS,API_RESPONSE_PURCHASE_VOUCHERS,OUTPUT_FILE);
+        PurchaseVoucher purchaseVoucher = new PurchaseVoucher(driver, file);
+        purchaseVoucher.purchaseVoucher(TEMP_API_BODY_PURCHASE_VOUCHERS,API_RESPONSE_PURCHASE_VOUCHERS,OUTPUT_FILE);
     }
 
     @AfterTest

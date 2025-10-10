@@ -42,19 +42,19 @@ public class TestPurchaseOrdersAgainstQuotations {
     @Test
     public void purchaseOrdersAgainstQuotations() throws Exception {
         PurchaseEnquiries purchaseEnquiries = new PurchaseEnquiries(driver, dataFile);
-        String pe=purchaseEnquiries.purchaseEnquires(TEMP_API_BODY_PURCHASE_ENQUIRY,API_RESPONSE_PURCHASE_ENQUIRY,OUTPUT_FILE1);
+        String enquiriesVoucher=purchaseEnquiries.purchaseEnquires(TEMP_API_BODY_PURCHASE_ENQUIRY,API_RESPONSE_PURCHASE_ENQUIRY,OUTPUT_FILE1);
 
         appLogin.logout();
         driver= appLogin.login();
 
         PurchaseQuotationsAgainstEnquiries quotationsAgainstEnquiries = new PurchaseQuotationsAgainstEnquiries(driver, dataFile1);
-        String PQAE =quotationsAgainstEnquiries.purchaseQuotationsAgainstEnquiry(pe,TEMP_API_BODY_PURCHASE_QUOTATIONS_AGAINST_ENQUIRY,API_RESPONSE_PURCHASE_QUOTATIONS_AGAINST_ENQUIRY,OUTPUT_FILE2);
+        String quotationsAgainstEnquiryVoucher =quotationsAgainstEnquiries.purchaseQuotationsAgainstEnquiry(enquiriesVoucher,TEMP_API_BODY_PURCHASE_QUOTATIONS_AGAINST_ENQUIRY,API_RESPONSE_PURCHASE_QUOTATIONS_AGAINST_ENQUIRY,OUTPUT_FILE2);
 
         appLogin.logout();
         driver= appLogin.login();
 
-        PurchaseOrdersAgainstQuotation POAQ = new PurchaseOrdersAgainstQuotation(driver, dataFile2);
-        POAQ.purchaseOrdersAgainstQuotation(PQAE,TEMP_API_BODY_PURCHASE_ORDERS_AGAINST_QUOTATIONS,API_RESPONSE_PURCHASE_ORDERS_AGAINST_QUOTATIONS,OUTPUT_FILE3);
+        PurchaseOrdersAgainstQuotation ordersAgainstQuotation = new PurchaseOrdersAgainstQuotation(driver, dataFile2);
+        ordersAgainstQuotation.purchaseOrdersAgainstQuotation(quotationsAgainstEnquiryVoucher,TEMP_API_BODY_PURCHASE_ORDERS_AGAINST_QUOTATIONS,API_RESPONSE_PURCHASE_ORDERS_AGAINST_QUOTATIONS,OUTPUT_FILE3);
     }
 
     @AfterTest

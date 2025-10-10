@@ -45,14 +45,14 @@ public class TestAdjustPartyBills {
     @Test
     public void adjustPartyBills() throws Exception {
 //        SalesInvoice invoice = new SalesInvoice(driver, dataFile);
-//        String salesI= invoice.salesInvoice(TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_SALES_INVOICES,OUTPUT_FILE1);
-//
+//        String invoiceVoucher= invoice.salesInvoice(TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_SALES_INVOICES,OUTPUT_FILE1);
+
 //        appLogin.logout();
 //        driver= appLogin.login();
 //
-//        SalesReturnWithInvoiceReference salesRWIR =new SalesReturnWithInvoiceReference(driver,dataFile1);
-//        String salesRwir=salesRWIR.salesReturnWithInvoiceReference(salesI,TEMP_API_BODY_SRWIR,API_RESPONSE_SRWIR,OUTPUT_FILE2);
-//
+//        SalesReturnWithInvoiceReference returnWithInvoiceReference =new SalesReturnWithInvoiceReference(driver,dataFile1);
+//        String referenceVoucher=returnWithInvoiceReference.salesReturnWithInvoiceReference(invoiceVoucher,TEMP_API_BODY_SRWIR,API_RESPONSE_SRWIR,OUTPUT_FILE2);
+
 //        appLogin.logout();
 //        driver= appLogin.login();
 

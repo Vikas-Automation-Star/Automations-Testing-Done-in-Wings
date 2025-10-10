@@ -36,13 +36,13 @@ public class TestPurchaseEnquiriesCancellation {
     @Test
     public void purchaseEnquiriesCancellation() throws Exception {
 //        PurchaseEnquiries purchaseEnquiries = new PurchaseEnquiries(driver, dataFile);
-//        String pe=purchaseEnquiries.purchaseEnquires(TEMP_API_BODY_PURCHASE_ENQUIRY,API_RESPONSE_PURCHASE_ENQUIRY,OUTPUT_FILE1);
+//        String enquiriesVoucher=purchaseEnquiries.purchaseEnquires(TEMP_API_BODY_PURCHASE_ENQUIRY,API_RESPONSE_PURCHASE_ENQUIRY,OUTPUT_FILE1);
 //
 //        appLogin.logout();
 //        driver= appLogin.login();
 
-        PurchaseEnquiriesCancellation pec = new PurchaseEnquiriesCancellation(driver, dataFile1);
-        pec.purchaseEnquiriesCancellation("PE 9",TEMP_API_BODY_PURCHASE_ENQUIRY_CANCELLATIONS,API_RESPONSE_PURCHASE_ENQUIRY_CANCELLATIONS,OUTPUT_FILE2);
+        PurchaseEnquiriesCancellation enquiriesCancellation = new PurchaseEnquiriesCancellation(driver, dataFile1);
+        enquiriesCancellation.purchaseEnquiriesCancellation("PE 9",TEMP_API_BODY_PURCHASE_ENQUIRY_CANCELLATIONS,API_RESPONSE_PURCHASE_ENQUIRY_CANCELLATIONS,OUTPUT_FILE2);
     }
 
     @AfterTest

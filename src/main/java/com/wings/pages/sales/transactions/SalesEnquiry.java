@@ -99,11 +99,11 @@ public class SalesEnquiry extends TransactionsBaseClass {
         String newVoucherID =newTransactionID(oldVoucherID);
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
-
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"SalesEnquiries");
 
         long salesEnquiriesEnd = System.nanoTime() - salesEnquiriesStart;
         FileUtil.writeTimeLogInMinutes("Sales Enquiries ended at:- ", salesEnquiriesEnd );
+
         return newVoucherID;
     }
 

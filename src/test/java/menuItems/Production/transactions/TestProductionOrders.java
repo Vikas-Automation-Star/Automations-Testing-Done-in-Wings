@@ -28,8 +28,8 @@ public class TestProductionOrders {
 
     @Test
     public void ProductionOrders() throws Exception {
-        ProductOrders po = new ProductOrders(driver, file);
-        po.productOrders(TEMP_API_BODY_PRODUCTION_ORDERS,API_RESPONSE_PRODUCTION_ORDERS,OUTPUT_FILE);
+        ProductOrders productOrders = new ProductOrders(driver, file);
+        productOrders.productOrders(TEMP_API_BODY_PRODUCTION_ORDERS,API_RESPONSE_PRODUCTION_ORDERS,OUTPUT_FILE);
     }
 
     @AfterTest

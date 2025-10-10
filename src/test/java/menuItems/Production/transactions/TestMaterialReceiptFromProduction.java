@@ -39,20 +39,20 @@ public class TestMaterialReceiptFromProduction {
 
     @Test
     public void MaterialReceiptFromProduction() throws Exception {
-        ProductOrders po = new ProductOrders(driver, file);
-        String productionOrder=po.productOrders(TEMP_API_BODY_PRODUCTION_ORDERS,API_RESPONSE_PRODUCTION_ORDERS,OUTPUT_FILE);
+        ProductOrders productOrders = new ProductOrders(driver, file);
+        String productionOrderVoucher=productOrders.productOrders(TEMP_API_BODY_PRODUCTION_ORDERS,API_RESPONSE_PRODUCTION_ORDERS,OUTPUT_FILE);
 
         appLogin.logout();
         driver= appLogin.login();
 
-        MaterialIssuesToProduction mifp = new MaterialIssuesToProduction(driver, file2);
-        mifp.materialIssuesToProduction(productionOrder,TEMP_API_BODY_MATERIAL_ISSUES_PRODUCTION,API_RESPONSE_MATERIAL_ISSUES_PRODUCTION,OUTPUT_FILE1);
+        MaterialIssuesToProduction materialIssuesToProduction = new MaterialIssuesToProduction(driver, file2);
+        String materialIssuesToProductionVoucher= materialIssuesToProduction.materialIssuesToProduction(productionOrderVoucher,TEMP_API_BODY_MATERIAL_ISSUES_PRODUCTION,API_RESPONSE_MATERIAL_ISSUES_PRODUCTION,OUTPUT_FILE1);
 
         appLogin.logout();
         driver= appLogin.login();
 
-        MaterialReceiptFromProduction mrfp = new MaterialReceiptFromProduction(driver, file3);
-        mrfp.materialReceiptFromProduction(productionOrder,TEMP_API_BODY_MATERIAL_RECEIPTS_FROM_PRODUCTION,API_RESPONSE_MATERIAL_RECEIPTS_FROM_PRODUCTION,OUTPUT_FILE2);
+        MaterialReceiptFromProduction materialReceiptFromProduction = new MaterialReceiptFromProduction(driver, file3);
+        materialReceiptFromProduction.materialReceiptFromProduction(materialIssuesToProductionVoucher,TEMP_API_BODY_MATERIAL_RECEIPTS_FROM_PRODUCTION,API_RESPONSE_MATERIAL_RECEIPTS_FROM_PRODUCTION,OUTPUT_FILE2);
     }
 
     @AfterTest

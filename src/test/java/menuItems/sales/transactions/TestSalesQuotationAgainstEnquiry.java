@@ -35,14 +35,14 @@ public class TestSalesQuotationAgainstEnquiry {
 
     @Test
     public void salesQuotationAgainstEnquiry() throws Exception {
-        SalesEnquiry sales = new SalesEnquiry(driver, dataFile);
-        String se= sales.salesEnquiries(TEMP_API_BODY_SALES_ENQUIRY,API_RESPONSE_SALES_ENQUIRY,OUTPUT_FILE1);
+        SalesEnquiry salesEnquiry = new SalesEnquiry(driver, dataFile);
+        String enquiriesVoucher= salesEnquiry.salesEnquiries(TEMP_API_BODY_SALES_ENQUIRY,API_RESPONSE_SALES_ENQUIRY,OUTPUT_FILE1);
 
         appLogin.logout();
         driver= appLogin.login();
 
-        SalesQuotationAgainstEnquiry againstEnquiry = new SalesQuotationAgainstEnquiry(driver, dataFile1);
-        againstEnquiry.quotationAgainstEnquiry(se,TEMP_API_BODY_SALES_QUOTATIONS_AGAINST_ENQUIRIES,API_RESPONSE_SALES_QUOTATIONS_AGAINST_ENQUIRIES,OUTPUT_FILE2);
+        SalesQuotationAgainstEnquiry quotationAgainstEnquiry = new SalesQuotationAgainstEnquiry(driver, dataFile1);
+        quotationAgainstEnquiry.quotationAgainstEnquiry(enquiriesVoucher,TEMP_API_BODY_SALES_QUOTATIONS_AGAINST_ENQUIRIES,API_RESPONSE_SALES_QUOTATIONS_AGAINST_ENQUIRIES,OUTPUT_FILE2);
     }
 
     @AfterTest

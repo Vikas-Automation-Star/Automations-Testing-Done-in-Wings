@@ -28,10 +28,10 @@ public class TestSalesEnquiry {
 
     @Test
     public void SalesEnquiryTransaction() throws Exception {
-        SalesEnquiry sales = new SalesEnquiry(driver, file);
-        String se=sales.salesEnquiries(TEMP_API_BODY_SALES_ENQUIRY,API_RESPONSE_SALES_ENQUIRY,OUTPUT_FILE);
-        Transaction transaction=new Transaction(driver);
-        transaction.deleteTransactionUsingVoucherNumber(se);
+        SalesEnquiry salesEnquiry = new SalesEnquiry(driver, file);
+        String enquiriesVoucher=salesEnquiry.salesEnquiries(TEMP_API_BODY_SALES_ENQUIRY,API_RESPONSE_SALES_ENQUIRY,OUTPUT_FILE);
+//        Transaction transaction=new Transaction(driver);
+//        transaction.deleteTransactionUsingVoucherNumber(enquiriesVoucher);
     }
 
     @AfterTest

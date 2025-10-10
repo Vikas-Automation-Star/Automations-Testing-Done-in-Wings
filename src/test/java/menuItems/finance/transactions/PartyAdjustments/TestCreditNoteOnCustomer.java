@@ -38,13 +38,13 @@ public class TestCreditNoteOnCustomer {
     @Test
     public void creditNoteOnCustomer() throws Exception {
 //        SalesInvoice invoice = new SalesInvoice(driver, dataFile);
-//        String salesI= invoice.salesInvoice(TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_SALES_INVOICES,OUTPUT_FILE);
+//        String salesVoucher= invoice.salesInvoice(TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_SALES_INVOICES,OUTPUT_FILE);
 //
 //        appLogin.logout();
 //        driver= appLogin.login();
 
-        CreditNoteOnCustomers noteOnCustomers = new CreditNoteOnCustomers(driver, dataFile1);
-        noteOnCustomers.creditNoteOnCustomer("SI 22",TEMP_API_BODY_CREDIT_NOTE_ON_CUSTOMERS,API_RESPONSE_CREDIT_NOTE_ON_CUSTOMERS,OUTPUT_FILE1);
+        CreditNoteOnCustomers creditNoteOnCustomers = new CreditNoteOnCustomers(driver, dataFile1);
+        creditNoteOnCustomers.creditNoteOnCustomer("SI 22",TEMP_API_BODY_CREDIT_NOTE_ON_CUSTOMERS,API_RESPONSE_CREDIT_NOTE_ON_CUSTOMERS,OUTPUT_FILE1);
     }
 
     @AfterTest

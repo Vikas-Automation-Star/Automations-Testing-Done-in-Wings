@@ -38,8 +38,8 @@ public class TestCreditNote {
     @Test
     public void creditNote() throws Exception {
 //        SalesInvoice invoice = new SalesInvoice(driver, dataFile);
-//        String salesI= invoice.salesInvoice(TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_SALES_INVOICES,OUTPUT_FILE);
-//
+//        String invoiceVoucher= invoice.salesInvoice(TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_SALES_INVOICES,OUTPUT_FILE);
+
 //        appLogin.logout();
 //        driver= appLogin.login();
 

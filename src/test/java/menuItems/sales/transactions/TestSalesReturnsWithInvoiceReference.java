@@ -36,16 +36,16 @@ public class TestSalesReturnsWithInvoiceReference {
 
     @Test
     public void salesReturnsWithInvoiceReference() throws Exception {
-//        SalesInvoice invoice = new SalesInvoice(driver, dataFile);
-//        String salesI= invoice.salesInvoice(TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_SALES_INVOICES,OUTPUT_FILE1);
-//
+//        SalesInvoice salesInvoice = new SalesInvoice(driver, dataFile);
+//        String invoiceVoucher= salesInvoice.salesInvoice(TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_SALES_INVOICES,OUTPUT_FILE1);
+
 //        appLogin.logout();
 //        driver= appLogin.login();
 
-        SalesReturnWithInvoiceReference salesRWIR =new SalesReturnWithInvoiceReference(driver,dataFile1);
-        String salesReturns=salesRWIR.salesReturnWithInvoiceReference("SI 24",TEMP_API_BODY_SRWIR,API_RESPONSE_SRWIR,OUTPUT_FILE2);
+        SalesReturnWithInvoiceReference returnWithInvoiceReference =new SalesReturnWithInvoiceReference(driver,dataFile1);
+        String returnsWithInvoiceVoucher=returnWithInvoiceReference.salesReturnWithInvoiceReference("SI 24",TEMP_API_BODY_SRWIR,API_RESPONSE_SRWIR,OUTPUT_FILE2);
         Transaction transaction=new Transaction(driver);
-        transaction.deleteTransactionUsingVoucherNumber(salesReturns);
+        transaction.deleteTransactionUsingVoucherNumber(returnsWithInvoiceVoucher);
     }
 
     @AfterTest

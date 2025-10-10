@@ -78,8 +78,6 @@ public class PurchaseEnquiries extends TransactionsBaseClass {
         transactionSave();
         String transactionId = newTransactionID(oldVoucherID);
         System.out.println("transactionNumber :"+transactionId);
-//        exportIOFiles(transactionId,rootDriver);
-
         APIClient.validateAPIWithExcel(transactionId,tempAPIBodyUpdate,apiResponse,outputFile,"PurchaseEnquiries");
 
         long PurchaseEnquiriesEnd = System.nanoTime() - start;

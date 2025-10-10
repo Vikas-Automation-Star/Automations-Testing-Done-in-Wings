@@ -3,6 +3,7 @@ package menuItems.sales.transactions;
 import com.wings.pages.AppLogin;
 import com.wings.pages.Transaction;
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.pages.sales.transactions.SalesInvoice;
 import com.wings.pages.sales.transactions.SalesReturns;
 import com.wings.utils.Common;
 import io.appium.java_client.windows.WindowsDriver;
@@ -36,21 +37,20 @@ public class TestSalesReturn {
 
     @Test
     public void salesReturns() throws Exception {
-//        SalesInvoice invoice = new SalesInvoice(driver, dataFile);
-//        String salesI=invoice.salesInvoice(TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_SALES_INVOICES,OUTPUT_FILE1);
+//        SalesInvoice salesInvoice = new SalesInvoice(driver, dataFile);
+//        String invoiceVoucher=salesInvoice.salesInvoice(TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_SALES_INVOICES,OUTPUT_FILE1);
 //
 //        appLogin.logout();
 //        driver= appLogin.login();
 
         SalesReturns salesReturns = new SalesReturns(driver, dataFile1);
-        String returns=salesReturns.salesReturns("SI 23",TEMP_API_BODY_SALES_RETURNS,API_RESPONSE_SALES_RETURNS,OUTPUT_FILE2);
+        String returnsVoucher=salesReturns.salesReturns("SI 23",TEMP_API_BODY_SALES_RETURNS,API_RESPONSE_SALES_RETURNS,OUTPUT_FILE2);
         Transaction transaction=new Transaction(driver);
-        transaction.deleteTransactionUsingVoucherNumber(returns);
+        transaction.deleteTransactionUsingVoucherNumber(returnsVoucher);
     }
 
     @AfterTest
     public void afterTest() throws IOException, InterruptedException {
-
         appLogin.logout();
     }
 }

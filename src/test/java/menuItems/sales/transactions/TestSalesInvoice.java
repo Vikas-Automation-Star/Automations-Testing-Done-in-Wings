@@ -27,10 +27,10 @@ public class TestSalesInvoice {
 
     @Test
     public void salesInvoice() throws Exception {
-        SalesInvoice invoice = new SalesInvoice(driver, dataFile);
-        String SI=invoice.salesInvoice(TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_SALES_INVOICES,OUTPUT_FILE);
+        SalesInvoice salesInvoice = new SalesInvoice(driver, dataFile);
+        String invoiceVoucher=salesInvoice.salesInvoice(TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_SALES_INVOICES,OUTPUT_FILE);
         Transaction transaction=new Transaction(driver);
-        transaction.deleteTransactionUsingVoucherNumber(SI);
+        transaction.deleteTransactionUsingVoucherNumber(invoiceVoucher);
     }
 
     @AfterTest

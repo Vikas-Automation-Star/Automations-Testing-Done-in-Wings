@@ -32,7 +32,7 @@ public class SalesReturns extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String  salesReturns(String invoiceNumber,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
+    public String  salesReturns(String invoiceVoucher,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long salesReturnsStart = System.nanoTime();
         System.out.println("Sales returns started in :" + salesReturnsStart);
 
@@ -53,7 +53,7 @@ public class SalesReturns extends TransactionsBaseClass {
         enterCurrency(dataFile,"GeneralInformation","TransactionCurrency");
         enterExchangeRate(dataFile,"GeneralInformation","ExchangeRate");
         WebElement invoiceNum=common.findWebElement("xpath","//Edit[@Name='Sales Invoice No' or @Name='Sales Invoice No *']");
-        invoiceNum.sendKeys(invoiceNumber);
+        invoiceNum.sendKeys(invoiceVoucher);
 //        enterSalesInvoiceNumber(dataFile,"GeneralInformation","SalesInvoiceNo");
         enterSalesInvoiceDate(dataFile,"GeneralInformation","SalesInvoiceDate");
         enterPartyCode(dataFile,"GeneralInformation","PartyAccountCode");
