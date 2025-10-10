@@ -167,7 +167,6 @@ public class PurchaseVoucher extends TransactionsBaseClass {
         transactionSave();
         String newVoucherID = newTransactionID(oldVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"both ID's should not Equal when we perform transaction");
-//        exportIOFiles(newVoucherID,rootDriver);
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"PurchaseVouchers");
 
         long PurchaseVoucherEnd = System.nanoTime() - PV;

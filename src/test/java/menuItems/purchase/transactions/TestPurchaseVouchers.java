@@ -1,6 +1,7 @@
 package menuItems.purchase.transactions;
 
 import com.wings.pages.AppLogin;
+import com.wings.pages.Transaction;
 import com.wings.pages.purchase.transactions.PurchaseVoucher;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
@@ -28,7 +29,9 @@ public class TestPurchaseVouchers {
     @Test
     public void purchaseVouchers() throws Exception {
         PurchaseVoucher purchaseVoucher = new PurchaseVoucher(driver, file);
-        purchaseVoucher.purchaseVoucher(TEMP_API_BODY_PURCHASE_VOUCHERS,API_RESPONSE_PURCHASE_VOUCHERS,OUTPUT_FILE);
+        String pv=purchaseVoucher.purchaseVoucher(TEMP_API_BODY_PURCHASE_VOUCHERS,API_RESPONSE_PURCHASE_VOUCHERS,OUTPUT_FILE);
+        Transaction transaction=new Transaction(driver);
+        transaction.deleteTransactionUsingVoucherNumber(pv);
     }
 
     @AfterTest

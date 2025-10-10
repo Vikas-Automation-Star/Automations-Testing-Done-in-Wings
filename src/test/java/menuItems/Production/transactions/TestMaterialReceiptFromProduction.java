@@ -52,7 +52,7 @@ public class TestMaterialReceiptFromProduction {
         driver= appLogin.login();
 
         MaterialReceiptFromProduction materialReceiptFromProduction = new MaterialReceiptFromProduction(driver, file3);
-        materialReceiptFromProduction.materialReceiptFromProduction(materialIssuesToProductionVoucher,TEMP_API_BODY_MATERIAL_RECEIPTS_FROM_PRODUCTION,API_RESPONSE_MATERIAL_RECEIPTS_FROM_PRODUCTION,OUTPUT_FILE2);
+        materialReceiptFromProduction.materialReceiptFromProduction(productionOrderVoucher,TEMP_API_BODY_MATERIAL_RECEIPTS_FROM_PRODUCTION,API_RESPONSE_MATERIAL_RECEIPTS_FROM_PRODUCTION,OUTPUT_FILE2);
     }
 
     @AfterTest
