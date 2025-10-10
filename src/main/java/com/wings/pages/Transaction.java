@@ -8,7 +8,10 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.json.simple.parser.ParseException;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -459,6 +462,9 @@ public  class Transaction {
         common.clickElement("name", "Sales");
         common.clickElement("name", "Orders");
         common.clickElement("xpath", "//MenuItem[@Name='Sales Orders against Quotations']");
+        String pageValidation = common.findWebElement("xpath", "//Pane/Text[@Name='Sales Orders against Quotations']").getText();
+        System.out.println("Screen Name:-" + pageValidation);
+        Assert.assertEquals(pageValidation, "Sales Orders against Quotations");
     }
 
     public void navigateToDeliveriesAgainstOrdersMenu() {
@@ -714,9 +720,9 @@ public  class Transaction {
         for (WebElement i : elementList) {
             System.out.println(i.getText());
 //            if (i.getText().equals(voucherNum)) {
-            i.click();
-            i.sendKeys(Keys.LEFT, Keys.SPACE, Keys.ENTER, Keys.ENTER);
-            break;
+                i.click();
+                i.sendKeys(Keys.LEFT, Keys.SPACE, Keys.ENTER, Keys.ENTER);
+                break;
 //            }
         }
     }
