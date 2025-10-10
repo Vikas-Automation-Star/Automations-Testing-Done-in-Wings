@@ -93,7 +93,9 @@ public class BookIncomesOrReceivables extends TransactionsBaseClass {
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"BookIncomesOrReceivable");
-        deleteRecentTransaction();
+        deleteTransactionUsingVoucherNumber(newVoucherID);
+        deleteTransactionUsingVoucherNumber("DNFS 2");
+        deleteTransactionUsingVoucherNumber("DNFS 3");
     }
 
     public void accounts() throws IOException, InterruptedException {

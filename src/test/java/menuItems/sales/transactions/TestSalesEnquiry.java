@@ -1,6 +1,7 @@
 package menuItems.sales.transactions;
 
 import com.wings.pages.AppLogin;
+import com.wings.pages.Transaction;
 import com.wings.pages.sales.transactions.SalesEnquiry;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
@@ -28,12 +29,13 @@ public class TestSalesEnquiry {
     @Test
     public void SalesEnquiryTransaction() throws Exception {
         SalesEnquiry sales = new SalesEnquiry(driver, file);
-        sales.salesEnquiries(TEMP_API_BODY_SALES_ENQUIRY,API_RESPONSE_SALES_ENQUIRY,OUTPUT_FILE);
+        String se=sales.salesEnquiries(TEMP_API_BODY_SALES_ENQUIRY,API_RESPONSE_SALES_ENQUIRY,OUTPUT_FILE);
+        Transaction transaction=new Transaction(driver);
+        transaction.deleteTransactionUsingVoucherNumber(se);
     }
 
     @AfterTest
     public void afterTest() throws IOException {
         appLogin.logout();
     }
-
 }

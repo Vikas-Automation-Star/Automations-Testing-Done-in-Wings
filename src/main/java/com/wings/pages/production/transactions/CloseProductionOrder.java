@@ -45,7 +45,7 @@ public class CloseProductionOrder extends TransactionsBaseClass {
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"CloseProductionOrder");
-        deleteRecentTransaction();
+        deleteTransactionUsingVoucherNumber(newVoucherID);
     }
 
     public void pendingStockToBeIssuedToProduction() throws InterruptedException, IOException {

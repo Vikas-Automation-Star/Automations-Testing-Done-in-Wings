@@ -127,8 +127,6 @@ public class PurchaseReturnsWithInvoicesReference extends TransactionsBaseClass 
 
         transactionSave();
         String transactionId = newTransactionID(oldVoucherID);
-//        exportIOFiles(transactionId,rootDriver);
-
         APIClient.validateAPIWithExcel(transactionId,tempAPIBodyUpdate,apiResponse,outputFile,"PurchaseReturnsWithInvoiceReferences");
 
         long duration3 = System.nanoTime() - start3;

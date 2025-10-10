@@ -43,16 +43,14 @@ public class TestSalesReturn {
 //        driver= appLogin.login();
 
         SalesReturns salesReturns = new SalesReturns(driver, dataFile1);
-        salesReturns.salesReturns("SI 23",TEMP_API_BODY_SALES_RETURNS,API_RESPONSE_SALES_RETURNS,OUTPUT_FILE2);
+        String returns=salesReturns.salesReturns("SI 23",TEMP_API_BODY_SALES_RETURNS,API_RESPONSE_SALES_RETURNS,OUTPUT_FILE2);
+        Transaction transaction=new Transaction(driver);
+        transaction.deleteTransactionUsingVoucherNumber(returns);
     }
 
     @AfterTest
     public void afterTest() throws IOException, InterruptedException {
-//        TransactionsBaseClass transactionsBaseClass=new TransactionsBaseClass(driver);
-//        Transaction transaction=new Transaction(driver);
-//        transaction.navigateToMastersWhen3Steps("Sales","Invoices","Sales Returns");
-//        Thread.sleep(1000);
-//        transactionsBaseClass.deleteRecentTransaction();
+
         appLogin.logout();
     }
 }

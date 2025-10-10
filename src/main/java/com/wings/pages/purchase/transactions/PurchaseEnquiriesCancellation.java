@@ -84,10 +84,8 @@ public class PurchaseEnquiriesCancellation extends TransactionsBaseClass {
 
         long PurchaseEnquiriesEnd = System.nanoTime() - start;
         FileUtil.writeTimeLog("purchaseEnquiries validating Tab Items UpTo summary", PurchaseEnquiriesEnd /1000000000);
-//        exportIOFiles(transactionId,rootDriver);
-
         APIClient.validateAPIWithExcel(transactionId,tempAPIBodyUpdate,apiResponse,outputFile,"PurchaseEnquiriesCancellation");
-
+        deleteTransactionUsingVoucherNumber(transactionId);
     }
 
     public void addProducts() throws  IOException {

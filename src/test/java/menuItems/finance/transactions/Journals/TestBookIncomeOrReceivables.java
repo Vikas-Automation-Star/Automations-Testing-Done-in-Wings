@@ -50,11 +50,6 @@ public class TestBookIncomeOrReceivables {
 
     @AfterTest
     public void afterTest() throws IOException, InterruptedException {
-//        TransactionsBaseClass transactionsBaseClass=new TransactionsBaseClass(driver);
-//        Transaction transaction=new Transaction(driver);
-//        transaction.navigateToMastersWhen3Steps("Finance","Party Adjustments","Debit Note from Suppliers");
-//        Thread.sleep(1000);
-//        transactionsBaseClass.deleteRecentTransaction();
         appLogin.logout();
     }
 }

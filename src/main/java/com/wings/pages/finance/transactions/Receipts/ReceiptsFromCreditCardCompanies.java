@@ -81,20 +81,30 @@ public class ReceiptsFromCreditCardCompanies extends TransactionsBaseClass {
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"ReceiptsFromCreditCardCompanies");
 
-        deleteRecentTransaction();
-        navigateToMastersWhen3Steps("Finance","Receipts","Credit Card Receipts");
-        Thread.sleep(1500);
-        deleteRecentTransaction();
-        navigateToMastersWhen3Steps("Finance","Receipts","Bank Receipts");
-        Thread.sleep(1500);
-        deleteRecentTransaction();
-        navigateToMastersWhen3Steps("Finance","Receipts","Cash Receipts");
-        Thread.sleep(1500);
-        deleteRecentTransaction();
-        navigateToMastersWhen3Steps("Finance","Receipts","Receipts from Parties");
-        Thread.sleep(3000);
-        deleteRecentTransaction();
+        long deleteReceiptsVouchers =System.nanoTime();
+        deleteTransactionUsingVoucherNumber(newVoucherID);
+        deleteTransactionUsingVoucherNumber("PREC 4");
+        deleteTransactionUsingVoucherNumber("CR 3");
+        deleteTransactionUsingVoucherNumber("BR 5");
+        deleteTransactionUsingVoucherNumber("CCR 3");
+        deleteTransactionUsingVoucherNumber("RFCCC 3");
+        long AllReceiptsDeletions =System.nanoTime()- deleteReceiptsVouchers;
+        FileUtil.writeTimeLogInMinutes("Delete Voucher Of All Receipts:- ", AllReceiptsDeletions);
 
+
+//        deleteRecentTransaction();
+//        navigateToMastersWhen3Steps("Finance","Receipts","Credit Card Receipts");
+//        Thread.sleep(2000);
+//        deleteRecentTransaction();
+//        navigateToMastersWhen3Steps("Finance","Receipts","Bank Receipts");
+//        Thread.sleep(2000);
+//        deleteRecentTransaction();
+//        navigateToMastersWhen3Steps("Finance","Receipts","Cash Receipts");
+//        Thread.sleep(2000);
+//        deleteRecentTransaction();
+//        navigateToMastersWhen3Steps("Finance","Receipts","Receipts from Parties");
+//        Thread.sleep(3000);
+//        deleteRecentTransaction();
     }
 
     public void accounts() throws IOException, InterruptedException {

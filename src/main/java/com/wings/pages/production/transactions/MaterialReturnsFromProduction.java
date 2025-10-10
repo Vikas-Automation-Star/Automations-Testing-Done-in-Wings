@@ -43,7 +43,7 @@ public class MaterialReturnsFromProduction extends TransactionsBaseClass {
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"MaterialReturnsFromProduction");
-        deleteRecentTransaction();
+        deleteTransactionUsingVoucherNumber(newVoucherID);
     }
 
     public void items() throws IOException {

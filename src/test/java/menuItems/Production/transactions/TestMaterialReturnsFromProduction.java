@@ -39,14 +39,14 @@ public class TestMaterialReturnsFromProduction {
 
     @Test
     public void materialReturnsFromProduction() throws Exception {
-//        ProductOrders po = new ProductOrders(driver, file);
-//        String productionOrder=po.productOrders(TEMP_API_BODY_PRODUCTION_ORDERS,API_RESPONSE_PRODUCTION_ORDERS,OUTPUT_FILE);
-//
-//        appLogin.logout();
-//        driver= appLogin.login();
-//
-//        MaterialIssuesToProduction mifp = new MaterialIssuesToProduction(driver, file1);
-//        String materialIssuesToProduction=mifp.materialIssuesToProduction(productionOrder,TEMP_API_BODY_MATERIAL_ISSUES_PRODUCTION,API_RESPONSE_MATERIAL_ISSUES_PRODUCTION,OUTPUT_FILE1);
+        ProductOrders po = new ProductOrders(driver, file);
+        String productionOrder=po.productOrders(TEMP_API_BODY_PRODUCTION_ORDERS,API_RESPONSE_PRODUCTION_ORDERS,OUTPUT_FILE);
+
+        appLogin.logout();
+        driver= appLogin.login();
+
+        MaterialIssuesToProduction mifp = new MaterialIssuesToProduction(driver, file1);
+        String materialIssuesToProduction=mifp.materialIssuesToProduction(productionOrder,TEMP_API_BODY_MATERIAL_ISSUES_PRODUCTION,API_RESPONSE_MATERIAL_ISSUES_PRODUCTION,OUTPUT_FILE1);
 
         MaterialReturnsFromProduction materialReturnsFromProduction=new MaterialReturnsFromProduction(driver,file2);
         materialReturnsFromProduction.materialReturnsFromProduction("MITP2",TEMP_API_BODY_MATERIAL_RETURNS_FROM_PRODUCTION,API_RESPONSE_MATERIAL_RETURNS_FROM_PRODUCTION,OUTPUT_FILE2);

@@ -73,9 +73,9 @@ public class SalesEnquiryCancellation extends TransactionsBaseClass {
         System.out.println("newID: " + newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID, "Voucher Numbers are same. Check Transaction.");
         Thread.sleep(1000);
-//        exportIOFiles(newVoucherID,rootDriver);
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile, "SalesEnquiriesCancellations");
 
+        deleteTransactionUsingVoucherNumber(newVoucherID);
         long salesEnquiriesCancellationEnd = System.nanoTime() - salesEnquiriesCancellationStart;
         FileUtil.writeTimeLogInMinutes("Sales EnquiriesCancellation ended at:- ", salesEnquiriesCancellationEnd );
     }

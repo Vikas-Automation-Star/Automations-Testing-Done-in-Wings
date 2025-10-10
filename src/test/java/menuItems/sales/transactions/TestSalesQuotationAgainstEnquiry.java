@@ -43,7 +43,6 @@ public class TestSalesQuotationAgainstEnquiry {
 
         SalesQuotationAgainstEnquiry againstEnquiry = new SalesQuotationAgainstEnquiry(driver, dataFile1);
         againstEnquiry.quotationAgainstEnquiry(se,TEMP_API_BODY_SALES_QUOTATIONS_AGAINST_ENQUIRIES,API_RESPONSE_SALES_QUOTATIONS_AGAINST_ENQUIRIES,OUTPUT_FILE2);
-
     }
 
     @AfterTest

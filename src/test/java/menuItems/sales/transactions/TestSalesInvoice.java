@@ -1,6 +1,7 @@
 package menuItems.sales.transactions;
 
 import com.wings.pages.AppLogin;
+import com.wings.pages.Transaction;
 import com.wings.pages.sales.transactions.SalesInvoice;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
@@ -27,7 +28,9 @@ public class TestSalesInvoice {
     @Test
     public void salesInvoice() throws Exception {
         SalesInvoice invoice = new SalesInvoice(driver, dataFile);
-        invoice.salesInvoice(TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_SALES_INVOICES,OUTPUT_FILE);
+        String SI=invoice.salesInvoice(TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_SALES_INVOICES,OUTPUT_FILE);
+        Transaction transaction=new Transaction(driver);
+        transaction.deleteTransactionUsingVoucherNumber(SI);
     }
 
     @AfterTest

@@ -43,16 +43,13 @@ public class TestSalesReturnsWithInvoiceReference {
 //        driver= appLogin.login();
 
         SalesReturnWithInvoiceReference salesRWIR =new SalesReturnWithInvoiceReference(driver,dataFile1);
-        salesRWIR.salesReturnWithInvoiceReference("SI 24",TEMP_API_BODY_SRWIR,API_RESPONSE_SRWIR,OUTPUT_FILE2);
+        String salesReturns=salesRWIR.salesReturnWithInvoiceReference("SI 24",TEMP_API_BODY_SRWIR,API_RESPONSE_SRWIR,OUTPUT_FILE2);
+        Transaction transaction=new Transaction(driver);
+        transaction.deleteTransactionUsingVoucherNumber(salesReturns);
     }
 
     @AfterTest
     public void afterTest() throws IOException, InterruptedException {
-//        TransactionsBaseClass transactionsBaseClass=new TransactionsBaseClass(driver);
-//        Transaction transaction=new Transaction(driver);
-//        transaction.navigateToMastersWhen3Steps("Sales","Invoices","Sales Return with Invoice Reference");
-//        Thread.sleep(1000);
-//        transactionsBaseClass.deleteRecentTransaction();
         appLogin.logout();
     }
 

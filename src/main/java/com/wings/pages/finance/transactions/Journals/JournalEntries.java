@@ -44,16 +44,15 @@ public class JournalEntries extends TransactionsBaseClass {
         otherInfo();
         addAllocations();
 
-
         transactionSave();
         String newVoucherID =newTransactionID(oldVoucherID);
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"JournalEntries");
 
-        deleteRecentTransaction();
         long JeEnd = System.nanoTime() -start ;
         FileUtil.writeTimeLogInMinutes("Journal Entries ended at:- ", JeEnd );
+        deleteTransactionUsingVoucherNumber(newVoucherID);
     }
 
     public void accounts() throws IOException {

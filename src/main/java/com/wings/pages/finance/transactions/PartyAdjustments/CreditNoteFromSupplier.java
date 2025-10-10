@@ -92,7 +92,7 @@ public class CreditNoteFromSupplier extends TransactionsBaseClass {
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"CreditNoteFromSuppliers");
-        deleteRecentTransaction();
+        deleteTransactionUsingVoucherNumber(newVoucherID);
     }
 
     public void accounts() throws IOException, InterruptedException {
@@ -126,6 +126,7 @@ public class CreditNoteFromSupplier extends TransactionsBaseClass {
             enterListData(tdsTransNatureRowList.get(i), dataFile, "Accounts", "TDSTransactionNature",i);
             enterListData(tdsAccountRowList.get(i), dataFile, "Accounts", "TDSAccount",i);
             enterListData(tdsAmountRowList.get(i), dataFile, "Accounts", "TDSAmount",i);
+            Thread.sleep(1000);
             enterListData(departmentRowList.get(i), dataFile, "Accounts", "Department", i);
             enterListData(projectRowList.get(i), dataFile, "Accounts", "Project", i);
             enterListData(profitCentreRowList.get(i), dataFile, "Accounts", "ProfitCentre", i);

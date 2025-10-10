@@ -195,7 +195,6 @@ public class SalesInvoice extends TransactionsBaseClass {
         String newVoucherID =newTransactionID(oldVoucherID);
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
-//        exportIOFiles(newVoucherID,rootDriver);
 
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"SalesInvoices");
         long salesInvoiceEnd = System.nanoTime() - salesInvoiceStart;

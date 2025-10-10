@@ -132,7 +132,7 @@ public class ReceiptsFromParties extends TransactionsBaseClass {
         common.clickElement("xpath", "//Button[@Name='Save']");
         Thread.sleep(2000);
         common.clickElement("xpath", "//Button[@Name='Yes']");
-        Thread.sleep(3000);
+        Thread.sleep(4000);
         common.clickElement("xpath", "//Button[@Name='OK']");
 
 //        Thread.sleep(3000);
