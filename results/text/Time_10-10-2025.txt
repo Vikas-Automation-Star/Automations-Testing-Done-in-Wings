@@ -1,0 +1,44 @@
+Time taken to execute Salary Payments General information End:- 48 sec
+Time taken to execute Salary Payments Add Products:- 1 min 47 sec
+Time taken to execute Salary Payments Other Info Tab:- 43 sec
+Time taken to execute Salary Payments Allocations Tab:- 27 sec
+Time taken to execute Salary Payments ended at:- 4 min 23 sec
+Time taken to execute Delete Transaction Using Voucher: 32 sec
+Time taken to execute DELO General information End:- 2 min 4 sec
+-----------------------------------------------
+
+Time taken to execute DELO General information End:- 1 min 40 sec
+Time taken to execute DELO General information End:- 2 min 1 sec
+Time taken to execute DELO Add Products:- 14 min 21 sec
+Time taken to execute DELO Charges And Deductions:- 2 min 10 sec
+Time taken to execute DELO Other Charges:- 3 min 16 sec
+Time taken to execute DELO Other Info:- 44 sec
+Time taken to execute DELO Additional Information:- 1 min 39 sec
+Time taken to execute DELO Shipping Address:- 1 min 29 sec
+Time taken to execute DELO Terms And Conditions:- 56 sec
+Time taken to execute DELO transaction Ended at:- 27 min 9 sec
+Time taken to execute Delete Transaction Using Voucher: 1 min 0 sec
+Time taken to execute Sale Quotations Products Entering9 min 23 sec
+Time taken to execute Charges And Deductions 2 min 12 sec
+Time taken to execute OtherInfo 43 sec
+Time taken to execute Additional Information 1 min 33 sec
+Time taken to execute Shipping Address:- 1 min 21 sec
+Time taken to execute Terms And Conditions 51 sec
+Time taken to execute Sales quotations against Enquiries ended at:- 18 min 39 sec
+Time taken to execute Delete Transaction Using Voucher: 1 min 33 sec
+Time taken to execute SOAQ General Information End:- 2 min 0 sec
+Time taken to execute SOAQ Add Products:- 10 min 14 sec
+Time taken to execute SOAQ Charges And Deductions:- 2 min 18 sec
+Time taken to execute SOAQ Other Charges:- 3 min 8 sec
+Time taken to execute SOAQ Cash Tab:- 1 min 39 sec
+Time taken to execute SOAQ Cheques Tab:- 2 min 47 sec
+Time taken to execute SOAQ Post Dated Cheques Tab:- 2 min 21 sec
+Time taken to execute SOAQ Cheques PDC Tab:- 2 min 23 sec
+Time taken to execute SOAQ Credit Card Tab:- 2 min 41 sec
+Time taken to execute SOAQ OtherInfo Tab:- 47 sec
+Time taken to execute SOAQ Additional Information:- 1 min 49 sec
+Time taken to execute SOAQ Shipping address tab: 1 min 36 sec
+Time taken to execute SOAQ Terms And Conditions:- 56 sec
+Time taken to execute SOAQ ended at 35 min 35 sec
+Time taken to execute Delete Transaction Using Voucher: 58 sec
+Time taken to execute Delete Transaction Using Voucher: 1 min 2 sec

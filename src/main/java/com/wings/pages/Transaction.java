@@ -998,68 +998,75 @@ public  class Transaction {
     }
 
     public void deleteTransactionUsingVoucherNumber(String voucherID) throws InterruptedException, IOException {
-        long deletingTransactionStartAt=System.nanoTime();
+        long methodStart = System.nanoTime();
+        // Extract voucher series and number
         String voucherSeries = voucherID.replaceAll("\\d", "");
-        System.out.println("VoucherString :" + voucherSeries);
         String voucherNumber = voucherID.replaceAll("\\D", "");
-        System.out.println("VoucherNumber :" + voucherNumber);
-        common.clickElement("xpath", "//MenuItem[@Name='Tools']");
-        common.clickElement("xpath", "//MenuItem[@Name='Vouchers']");
-        common.clickElement("xpath", "//MenuItem[@Name='Delete']");
-        //enter data
+        long navStart = System.nanoTime();
+        // Navigate through menus[u can write separately too]
+        navigateToMastersWhen3Steps("Tools","Vouchers","Delete");
+        System.out.println("Menu navigation time: " + (navStart/ 1_000_000_000.0) + " sec");
+        // Start WinAppDriver session with Root access (note: this is often slow)
+        long sessionStart = System.nanoTime();
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("app", "Root");
         rootDriver = new WindowsDriver<>(new URL("http://127.0.0.1:4723/"), capabilities);
-        Thread.sleep(2500);
-        List<WebElement> panes = By.tagName("Window").findElements(rootDriver);
-        Thread.sleep(2500);
-        if (panes.isEmpty()) {
-            System.out.println("No windows found.");
-        } else {
-            for (WebElement i : panes) {
-                String name = i.getAttribute("Name");
-                System.out.println("Name:- " + name);
-                if (("Delete Transaction").equals(name)) {
-                    Thread.sleep(3000);
-                    WebElement seriesInput = rootDriver.findElementByXPath("//Pane/Text[@Name='Document Series']/following-sibling::Edit");
-                    seriesInput.sendKeys(voucherSeries);
-                    WebElement fromNumInput = rootDriver.findElementByXPath("//Pane/Text[@Name='Document No']/following-sibling::Edit");
-                    fromNumInput.sendKeys(voucherNumber);
-                    rootDriver.findElementByXPath("//Button[@Name='Delete']").click();
-                    WebDriverWait wait = new WebDriverWait(rootDriver, 10);
-                    // After clicking the Delete button:
-                    try {
-                        // Wait for Yes button to appear - means deletion possible
-                        WebElement yesButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//Button[@Name='Yes']")));
-                        yesButton.click();
-                        // After clicking Yes, wait for success message
-                        WebElement successMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                                By.xpath("//Text[@Name='Transactions deleted Successfully.']")));
-                        System.out.println("Transaction deleted successfully." + voucherID);
-                    } catch (TimeoutException e) {
-                        // Yes button did not appear, check if "Cannot delete transaction" message is shown
-                        try {
-                            WebElement failureMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                                    By.xpath("//Text[contains(@Name,\"Can't Delete Transaction\")]")));
-                            System.out.println("Can't delete transaction. Transaction doesn't exist." + voucherID);
-                        } catch (TimeoutException ex) {
-                            System.out.println("No expected popup message appeared.");
-                        }
-                    }
-                    try {
-                        WebElement okButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//Button[@Name='OK']")));
-                        okButton.click();
-                    } catch (TimeoutException e) {
-                        System.out.println("OK button not found or not clickable.");
-                    }
+        System.out.println("Session init time: " + (sessionStart / 1_000_000_000.0) + " sec");
+
+        // Use explicit wait instead of Thread.sleep
+        WebDriverWait wait = new WebDriverWait(rootDriver,10);
+        try {
+            long findWindowStart = System.nanoTime();
+            // Find the Delete Transaction window
+            WebElement deleteWindow = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.xpath("//Window[@Name='Delete Transaction']")));
+            System.out.println("Window found in: " + (findWindowStart/ 1_000_000_000.0) + " sec") ;
+            // Fill form inputs
+            WebElement seriesInput = deleteWindow.findElement(By.xpath(".//Text[@Name='Document Series']/following-sibling::Edit"));
+            WebElement numberInput = deleteWindow.findElement(By.xpath(".//Text[@Name='Document No']/following-sibling::Edit"));
+            seriesInput.sendKeys(voucherSeries);
+            numberInput.sendKeys(voucherNumber);
+            // Click Delete
+            deleteWindow.findElement(By.xpath(".//Button[@Name='Delete']")).click();
+            System.out.println("Clicked Delete.");
+            // Handle popup (success or failure)
+            try {
+                WebElement yesButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//Button[@Name='Yes']")));
+                yesButton.click();
+                System.out.println("Confirmed deletion.");
+
+                WebElement successMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                        By.xpath("//Text[@Name='Transactions deleted Successfully.']")));
+                System.out.println("Transaction deleted successfully: " + voucherID);
+            } catch (TimeoutException e) {
+                try {
+                    WebElement failureMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                            By.xpath("//Text[contains(@Name, \"Can't Delete Transaction\")]")));
+                    System.out.println("Cannot delete transaction. It may not exist: " + voucherID);
+                } catch (TimeoutException ex) {
+                    System.out.println("No confirmation or error message appeared after deletion attempt.");
                 }
-                break;
+            }
+            // Handle OK button
+            try {
+                WebElement okButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//Button[@Name='OK']")));
+                okButton.click();
+                System.out.println("Clicked OK.");
+            } catch (TimeoutException e) {
+                System.out.println("OK button not found or not clickable.");
+            }
+
+        } catch (TimeoutException e) {
+            System.out.println("Delete Transaction window did not appear.");
+        } finally {
+            if (rootDriver != null) {
+                rootDriver.quit(); // Clean up session
             }
         }
-        long deletingTransactionEnd=System.nanoTime()-deletingTransactionStartAt;
-        FileUtil.writeTimeLogInMinutes("Delete Transaction Using voucher:- ",deletingTransactionEnd);
+        long methodDuration = System.nanoTime() - methodStart;
+        FileUtil.writeTimeLogInMinutes("Delete Transaction Using Voucher: ", methodDuration);
+        System.out.println("Total method duration: " + (methodDuration / 1_000_000_000.0) + " sec");
     }
-
 
     //overloaded deleted Transaction method
     public void deleteTransactionBasedOnYear(String voucherID) throws InterruptedException {

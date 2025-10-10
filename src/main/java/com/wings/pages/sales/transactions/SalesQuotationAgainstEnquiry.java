@@ -58,36 +58,36 @@ public class SalesQuotationAgainstEnquiry extends TransactionsBaseClass {
         long addProductStart = System.nanoTime();
         addProduct();
         long addProductEnd = System.nanoTime() - addProductStart;
-        FileUtil.writeTimeLogInMinutes("Sale Quotations Products Entering",addProductEnd);
+        FileUtil.writeTimeLogInMinutes("Sales Quotations against Enquiries Add Products:- ",addProductEnd);
 
         long start1 = System.nanoTime();
         addChargesAndDeductions();
         long duration1 = System.nanoTime() - start1;
-        FileUtil.writeTimeLogInMinutes("Charges And Deductions ", duration1);
+        FileUtil.writeTimeLogInMinutes("Sales Quotations against Enquiries Charges And Deductions:- ", duration1);
 
         long start3 = System.nanoTime();
         otherInfo();
         long duration3 = System.nanoTime() - start3;
-        FileUtil.writeTimeLogInMinutes("OtherInfo ", duration3);
+        FileUtil.writeTimeLogInMinutes("Sales Quotations against Enquiries OtherInfo:- ", duration3);
 
         long start4 = System.nanoTime();
         common.clickElement("xpath","//TabItem[contains(@Name,'Additional Information  ')]");
         additionalInformation();
         long duration4 = System.nanoTime() - start4;
-        FileUtil.writeTimeLogInMinutes("Additional Information ", duration4);
+        FileUtil.writeTimeLogInMinutes("Sales Quotations against Enquiries Additional Information:- ", duration4);
 
 
         long addShippingAddress =System.nanoTime();
         navigateToShippingAddress();
         addShippingAddress();
         long addShippingAddressEnd =System.nanoTime()- addShippingAddress;
-        FileUtil.writeTimeLogInMinutes("Shipping Address:- ", addShippingAddressEnd);
+        FileUtil.writeTimeLogInMinutes("Sales Quotations against Enquiries Shipping Address:- ", addShippingAddressEnd);
 
         long start5 = System.nanoTime();
         navigateToTermsAndConditions();
         termsAndCondition();
         long duration5 = System.nanoTime() - start5;
-        FileUtil.writeTimeLogInMinutes("Terms And Conditions ", duration5);
+        FileUtil.writeTimeLogInMinutes("Sales Quotations against Enquiries Terms And Conditions:- ", duration5);
 
         //save
         transactionSave();
@@ -98,8 +98,7 @@ public class SalesQuotationAgainstEnquiry extends TransactionsBaseClass {
 
         APIClient.validateAPIWithExcel(newVoucherID, tempAPIBodyUpdate, apiResponse, outputFile, "SalesQuotationsAgainstEnquiries");
         long SQAEnd = System.nanoTime() - SQAEStart;
-        FileUtil.writeTimeLogInMinutes("Sales quotations against Enquiries ended at:- ", SQAEnd );
-        deleteTransactionUsingVoucherNumber(voucherNum);
+        FileUtil.writeTimeLogInMinutes("Sales Quotations against Enquiries ended at:- ", SQAEnd );
 
         return newVoucherID;
     }

@@ -216,7 +216,7 @@ public class DeliveriesAgainstOrdersTransaction extends TransactionsBaseClass {
             enterListData(Discount2.get(i),dataFile,"Items","Discount2",i);
             enterListData(DiscountBasis3.get(i),dataFile,"Items","DiscountBasis3",i);
             enterListData(Discount3.get(i),dataFile,"Items","Discount3",i);
-            common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 300, 0);
+            common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 400, 0);
             enterListData(HSNCode.get(i),dataFile,"Items","HSN",i);
             enterListData(GSTProductCategory.get(i),dataFile,"Items","GSTProductCategory",i);
             enterListData(CESSProductCategory.get(i),dataFile,"Items","CESSProductCategory",i);
