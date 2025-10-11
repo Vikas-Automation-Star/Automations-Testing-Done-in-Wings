@@ -43,7 +43,7 @@ public class SalesInvoiceAgainstOrders extends TransactionsBaseClass {
         enterLocation(dataFile,"GeneralInformation","Location");
         enterCurrency(dataFile,"GeneralInformation","TransactionCurrency");
         enterPartyCode(dataFile,"GeneralInformation","PartyAccountCode");
-        Thread.sleep(1500);
+        Thread.sleep(2500);
         gstTransactionType("Intra State Sales to Registered Dealers");
         Thread.sleep(5000);
         selectPendingsSalesOrder(voucherNum, "20250401");

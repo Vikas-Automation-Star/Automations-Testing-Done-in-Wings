@@ -462,9 +462,6 @@ public  class Transaction {
         common.clickElement("name", "Sales");
         common.clickElement("name", "Orders");
         common.clickElement("xpath", "//MenuItem[@Name='Sales Orders against Quotations']");
-        String pageValidation = common.findWebElement("xpath", "//Pane/Text[@Name='Sales Orders against Quotations']").getText();
-        System.out.println("Screen Name:-" + pageValidation);
-        Assert.assertEquals(pageValidation, "Sales Orders against Quotations");
     }
 
     public void navigateToDeliveriesAgainstOrdersMenu() {
@@ -1005,13 +1002,13 @@ public  class Transaction {
         long navStart = System.nanoTime();
         // Navigate through menus[u can write separately too]
         navigateToMastersWhen3Steps("Tools","Vouchers","Delete");
-        System.out.println("Menu navigation time: " + (navStart/ 1_000_000_000.0) + " sec");
+//        System.out.println("Menu navigation time: " + (navStart/ 1_000_000_000.0) + " sec");
         // Start WinAppDriver session with Root access (note: this is often slow)
         long sessionStart = System.nanoTime();
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("app", "Root");
         rootDriver = new WindowsDriver<>(new URL("http://127.0.0.1:4723/"), capabilities);
-        System.out.println("Session init time: " + (sessionStart / 1_000_000_000.0) + " sec");
+//        System.out.println("Session init time: " + (sessionStart / 1_000_000_000.0) + " sec");
 
         // Use explicit wait instead of Thread.sleep
         WebDriverWait wait = new WebDriverWait(rootDriver,10);

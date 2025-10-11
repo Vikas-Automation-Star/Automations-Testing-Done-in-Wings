@@ -30,11 +30,11 @@ public class SalesInvoiceAgainstDeliveries extends TransactionsBaseClass {
 
     public String salesInvoiceAgainstDeliveries(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long invoiceAgainstDeliveriesStart = System.nanoTime();
-        System.out.println("SIAD startTime  in :" + invoiceAgainstDeliveriesStart);
+//        System.out.println("SIAD startTime  in :" + invoiceAgainstDeliveriesStart);
         Thread.sleep(100);
         navigateToMastersWhen3Steps("Sales","Invoices","Sales Invoices against Deliveries");
         long generalInfoStart = System.nanoTime();
-        System.out.println("Sales Invoice against Deliveries general Info started  in :" + generalInfoStart);
+//        System.out.println("Sales Invoice against Deliveries general Info started  in :" + generalInfoStart);
         Thread.sleep(7000);
         String oldVoucherID = oldTTransactionID();
         System.out.println("oldID: " + oldVoucherID);
