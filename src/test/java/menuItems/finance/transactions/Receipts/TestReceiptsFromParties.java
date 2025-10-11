@@ -49,4 +49,5 @@ public class TestReceiptsFromParties {
     public void afterTest() throws IOException {
         appLogin.logout();
     }
+
 }

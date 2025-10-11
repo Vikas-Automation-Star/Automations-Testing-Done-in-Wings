@@ -135,8 +135,8 @@ public class ReceiptsFromParties extends TransactionsBaseClass {
         Thread.sleep(4000);
         common.clickElement("xpath", "//Button[@Name='OK']");
 
-//        Thread.sleep(3000);
-//        common.clickElement("xpath", "//TitleBar/Button[@Name='Close']");
+        Thread.sleep(3000);
+        common.clickElement("xpath", "//TitleBar/Button[@Name='Close']");
 //        Thread.sleep(1500);
 //        common.clickElement("xpath", "//Button[@Name='OK']");
 //        WebDriverWait wait=new WebDriverWait(driver,40);

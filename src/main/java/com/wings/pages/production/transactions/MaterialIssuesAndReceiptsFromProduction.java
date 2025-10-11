@@ -63,6 +63,12 @@ public class MaterialIssuesAndReceiptsFromProduction extends TransactionsBaseCla
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"MaterialIssuesAndReceiptsFromProduction");
         deleteTransactionUsingVoucherNumber(newVoucherID);
+
+        deleteTransactionUsingVoucherNumber("MITP 2");
+        deleteTransactionUsingVoucherNumber("MITP 3");
+        deleteTransactionUsingVoucherNumber("PRO 3");
+        deleteTransactionUsingVoucherNumber("PRO 4");
+        deleteTransactionUsingVoucherNumber("PRO 5");
     }
 
     public void issuesToProduction() throws InterruptedException, IOException {
