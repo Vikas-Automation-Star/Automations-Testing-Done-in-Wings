@@ -26,6 +26,9 @@ public class AssignStandardRates extends TransactionsBaseClass {
     }
 
     public void assignStandardRates(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
+        long assignStandardRatesStarts = System.nanoTime();
+        System.out.println("Assign standard rates started in :" + assignStandardRatesStarts);
+
         navigateToMastersWhen2Steps("Production","Assign Standard Rates");
         Thread.sleep(2000);
         String oldVoucherID =oldTTransactionID();
@@ -43,10 +46,10 @@ public class AssignStandardRates extends TransactionsBaseClass {
         String newVoucherID =newTransactionID(oldVoucherID);
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
-//        closeTransaction("Assign Standard Rates");
-
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"JournalEntries");
-//        deleteRecentTransaction();
+
+        long assignStandardRatesEnd = System.nanoTime()- assignStandardRatesStarts;
+        System.out.println("Assign standard rates End at :" + assignStandardRatesEnd);
     }
     public void items() throws IOException {
             List<String> productCode=readExcelData(dataFile,"Items","ProductCode");

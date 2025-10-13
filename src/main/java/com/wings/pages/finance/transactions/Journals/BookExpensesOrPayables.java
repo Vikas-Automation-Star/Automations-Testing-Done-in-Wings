@@ -26,6 +26,9 @@ public class BookExpensesOrPayables extends TransactionsBaseClass {
     }
 
     public void Payable(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
+        long bookExpensesOrPayableStarts = System.nanoTime();
+        System.out.println("Book Expenses or Payable started in :" + bookExpensesOrPayableStarts);
+
         navigateToMastersWhen3Steps("Finance","Journals","Book Expenses or Payables");
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
@@ -80,6 +83,9 @@ public class BookExpensesOrPayables extends TransactionsBaseClass {
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"BookExpensesOrPayables");
         deleteTransactionUsingVoucherNumber(newVoucherID);
+
+        long bookExpensesOrPayableEnd = System.nanoTime()- bookExpensesOrPayableStarts;
+        System.out.println("Book Expenses or payable End at :" + bookExpensesOrPayableEnd);
     }
 
 

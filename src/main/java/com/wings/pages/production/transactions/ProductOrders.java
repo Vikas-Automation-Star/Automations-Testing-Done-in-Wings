@@ -25,6 +25,9 @@ public class ProductOrders extends TransactionsBaseClass {
     }
 
     public String productOrders(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
+        long productionOrdersStarts = System.nanoTime();
+        System.out.println("Production Orders started in :" + productionOrdersStarts);
+
         navigateToMastersWhen3Steps("Production","Standard","Production Orders");
         Thread.sleep(3000);
         String oldVoucherID =oldTTransactionID();
@@ -52,7 +55,8 @@ public class ProductOrders extends TransactionsBaseClass {
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"ProductionOrder");
-//        deleteTransactionUsingVoucherNumber(newVoucherID);
+        long productionOrdersEnd = System.nanoTime()- productionOrdersStarts;
+        System.out.println("Production Orders End at :" + productionOrdersEnd);
         return newVoucherID;
     }
     public void inputs() throws IOException {

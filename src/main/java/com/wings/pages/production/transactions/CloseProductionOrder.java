@@ -23,6 +23,9 @@ public class CloseProductionOrder extends TransactionsBaseClass {
         dataFile = file;
     }
     public void closeProductionOrder(String orderNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
+        long closeProductionOrders = System.nanoTime();
+        System.out.println("Close Production Orders started in :" + closeProductionOrders);
+
         navigateToMastersWhen3Steps("Production","Standard","Close Production Order");
         Thread.sleep(3000);
         String oldVoucherID =oldTTransactionID();
@@ -46,6 +49,8 @@ public class CloseProductionOrder extends TransactionsBaseClass {
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"CloseProductionOrder");
         deleteTransactionUsingVoucherNumber(newVoucherID);
+        long closeProductionOrdersEnds = System.nanoTime()- closeProductionOrders;
+        System.out.println("Close production Orders End at :" + closeProductionOrdersEnds);
     }
 
     public void pendingStockToBeIssuedToProduction() throws InterruptedException, IOException {

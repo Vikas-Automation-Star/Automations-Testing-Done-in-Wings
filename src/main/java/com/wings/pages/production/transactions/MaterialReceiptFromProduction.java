@@ -24,6 +24,9 @@ public class MaterialReceiptFromProduction extends TransactionsBaseClass {
     }
 
     public void materialReceiptFromProduction(String ordersNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
+        long materialReceiptsFromProduction = System.nanoTime();
+        System.out.println("Material Receipts From Production started in :" + materialReceiptsFromProduction);
+
         navigateToMastersWhen3Steps("Production","Standard","Material Receipts from Production");
         Thread.sleep(3000);
         String oldVoucherID =oldTTransactionID();
@@ -58,6 +61,8 @@ public class MaterialReceiptFromProduction extends TransactionsBaseClass {
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"MaterialReceiptsFromProduction");
         deleteTransactionUsingVoucherNumber(newVoucherID);
+        long materialReceiptsFromProductionEnds = System.nanoTime()- materialReceiptsFromProduction;
+        System.out.println("Material Receipts From Production End at :" + materialReceiptsFromProductionEnds);
     }
 
     public void items() throws IOException, InterruptedException {

@@ -27,6 +27,9 @@ public class ReceiptsFromCreditCardCompanies extends TransactionsBaseClass {
     }
 
     public void creditCardCompanyReceipt(String voucherNum1,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
+        long receiptsFromCreditCardCompanies = System.nanoTime();
+        System.out.println("Receipts from credit card Receipts started in :" + receiptsFromCreditCardCompanies);
+
         navigateToMastersWhen3Steps("Finance","Receipts","Receipts from Credit Card Companies");
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
@@ -90,21 +93,8 @@ public class ReceiptsFromCreditCardCompanies extends TransactionsBaseClass {
         deleteTransactionUsingVoucherNumber("RFCCC 3");
         long AllReceiptsDeletions =System.nanoTime()- deleteReceiptsVouchers;
         FileUtil.writeTimeLogInMinutes("Delete Voucher Of All Receipts:- ", AllReceiptsDeletions);
-
-
-//        deleteRecentTransaction();
-//        navigateToMastersWhen3Steps("Finance","Receipts","Credit Card Receipts");
-//        Thread.sleep(2000);
-//        deleteRecentTransaction();
-//        navigateToMastersWhen3Steps("Finance","Receipts","Bank Receipts");
-//        Thread.sleep(2000);
-//        deleteRecentTransaction();
-//        navigateToMastersWhen3Steps("Finance","Receipts","Cash Receipts");
-//        Thread.sleep(2000);
-//        deleteRecentTransaction();
-//        navigateToMastersWhen3Steps("Finance","Receipts","Receipts from Parties");
-//        Thread.sleep(3000);
-//        deleteRecentTransaction();
+        long receiptsFromCreditCardCompaniesEnd = System.nanoTime()- receiptsFromCreditCardCompanies;
+        System.out.println("Receipts From CreditCard Companies End at :" + receiptsFromCreditCardCompaniesEnd);
     }
 
     public void accounts() throws IOException, InterruptedException {

@@ -30,6 +30,9 @@ public class BookIncomesOrReceivables extends TransactionsBaseClass {
     }
 
     public void receivables(String payableVoucher,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
+        long bookIncomesOrReceivablesStart = System.nanoTime();
+        System.out.println("Book Incomes or Receivables started in :" + bookIncomesOrReceivablesStart);
+
         navigateToMastersWhen3Steps("Finance","Journals","Book Incomes or Receivables");
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
@@ -96,6 +99,9 @@ public class BookIncomesOrReceivables extends TransactionsBaseClass {
         deleteTransactionUsingVoucherNumber(newVoucherID);
         deleteTransactionUsingVoucherNumber("DNFS 2");
         deleteTransactionUsingVoucherNumber("DNFS 3");
+
+        long bookIncomesOrReceivablesEnds = System.nanoTime()- bookIncomesOrReceivablesStart;
+        System.out.println("Book incomes or receivables End at :" + bookIncomesOrReceivablesEnds);
     }
 
     public void accounts() throws IOException, InterruptedException {

@@ -24,6 +24,9 @@ public class MaterialIssuesToProduction extends TransactionsBaseClass {
         dataFile = file;
     }
     public String materialIssuesToProduction(String productionOrderVoucher,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
+        long materialIssuesToProduction = System.nanoTime();
+        System.out.println("Material issues to production started in :" + materialIssuesToProduction);
+
         navigateToMastersWhen3Steps("Production","Standard","Material Issues to Production");
         Thread.sleep(2000);
         String oldVoucherID =oldTTransactionID();
@@ -50,6 +53,9 @@ public class MaterialIssuesToProduction extends TransactionsBaseClass {
         String newVoucherID =newTransactionID(oldVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"MaterialIssuesToProduction");
+
+        long materialIssuesToProductionEnds = System.nanoTime()- materialIssuesToProduction;
+        System.out.println("Material Issues to Production End at :" + materialIssuesToProductionEnds);
         return newVoucherID;
     }
     public void items() throws IOException, InterruptedException {

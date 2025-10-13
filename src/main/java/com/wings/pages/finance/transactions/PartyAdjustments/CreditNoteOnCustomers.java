@@ -27,6 +27,9 @@ public class CreditNoteOnCustomers extends TransactionsBaseClass {
     }
 
     public void creditNoteOnCustomer(String receivableVouchers,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
+        long creditNoteOnCustomersStarts = System.nanoTime();
+        System.out.println("Credit not On Customers started in :" + creditNoteOnCustomersStarts);
+
         navigateToMastersWhen3Steps("Finance","Party Adjustments","Credit Note on Customers");
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
@@ -94,6 +97,9 @@ public class CreditNoteOnCustomers extends TransactionsBaseClass {
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"CreditNoteOnCustomer");
         deleteTransactionUsingVoucherNumber(newVoucherID);
+
+        long creditNoteOnCustomersEnd = System.nanoTime()- creditNoteOnCustomersStarts;
+        System.out.println("Credit Note on Customers End at :" + creditNoteOnCustomersEnd);
     }
 
     public void accounts() throws IOException, InterruptedException {

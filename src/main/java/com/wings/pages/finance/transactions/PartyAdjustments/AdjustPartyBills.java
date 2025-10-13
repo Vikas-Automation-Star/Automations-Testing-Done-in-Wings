@@ -24,6 +24,9 @@ public class AdjustPartyBills extends TransactionsBaseClass {
     }
 
     public void executeAdjustPartyBills(String receivablesVoucher,String payableVouchers,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
+        long adjustPartyBillsStarts = System.nanoTime();
+        System.out.println("AdjustParty Bills started in :" + adjustPartyBillsStarts);
+
         navigateToMastersWhen3Steps("Finance","Party Adjustments","Adjust Party Bills");
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
@@ -61,6 +64,8 @@ public class AdjustPartyBills extends TransactionsBaseClass {
         Assert.assertNotEquals(newVoucherID, oldVoucherID, "Voucher Numbers are same. Check Transaction.");
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"AdjustPartyBills");
         deleteTransactionUsingVoucherNumber(newVoucherID);
+        long adjustPartyBillsEnd = System.nanoTime()- adjustPartyBillsStarts;
+        System.out.println("Adjust Party Bills End at :" + adjustPartyBillsEnd);
     }
 
     public void billsReceivables(String adjustReceivables) throws InterruptedException {

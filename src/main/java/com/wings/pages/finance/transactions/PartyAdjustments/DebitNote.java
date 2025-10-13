@@ -27,6 +27,11 @@ public class DebitNote extends TransactionsBaseClass {
     }
 
     public void debitNote(String payableVouchers,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
+        long debitNoteStarts = System.nanoTime();
+        System.out.println("Debit Note started in :" + debitNoteStarts);
+
+
+
         navigateToMastersWhen3Steps("Finance","Party Adjustments","Debit Note");
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
@@ -81,6 +86,8 @@ public class DebitNote extends TransactionsBaseClass {
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"DebitNote");
         deleteTransactionUsingVoucherNumber(newVoucherID);
+        long debitNoteEnd = System.nanoTime()- debitNoteStarts;
+        System.out.println("Debit Note End at :" + debitNoteEnd);
     }
 
     public void accounts() throws IOException, InterruptedException {
