@@ -51,7 +51,7 @@ public class PurchaseReturns extends TransactionsBaseClass {
         enterExecutive(dataFile, "GeneralInformation", "Executive");
         enterRemarks(dataFile, "GeneralInformation", "Remarks");
         long duration1 = System.nanoTime() - genInfoStart;
-        FileUtil.writeTimeLog("PR General information end:- ", duration1);
+        FileUtil.writeTimeLogInMinutes("Purchase Return General information end:- ", duration1);
 
         long addProductStart = System.nanoTime();
         addProduct();

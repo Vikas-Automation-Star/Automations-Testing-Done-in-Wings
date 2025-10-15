@@ -50,9 +50,9 @@ public class ProductndPartyDiscount extends TransactionsBaseClass {
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
        //API
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"partyProductDiscount");
-        deleteTransactionUsingVoucherNumber(newVoucherID);
         long productDiscountend=System.nanoTime()-start;
         FileUtil.writeTimeLogInMinutes("Party and Product Discount Ended at:- ",productDiscountend);
+        deleteTransactionUsingVoucherNumber(newVoucherID);
 
         return newVoucherID;
     }

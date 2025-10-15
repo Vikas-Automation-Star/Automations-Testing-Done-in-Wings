@@ -58,6 +58,7 @@ public class SalesPrices extends TransactionsBaseClass {
 
         long salesPriceEnd = System.nanoTime() - start;
         FileUtil.writeTimeLogInMinutes("Sales Price End:- ", salesPriceEnd);
+        deleteTransactionUsingVoucherNumber(newVoucherID);
 
         return newVoucherID;
     }
