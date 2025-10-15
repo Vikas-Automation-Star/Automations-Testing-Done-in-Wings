@@ -9,6 +9,14 @@ public class TestScript {
     String description;
     String exetime;
 
+    public String getExecutionStartTime() {
+        return executionStartTime;
+    }
+
+    public String getExecutionEndTime() {
+        return executionEndTime;
+    }
+
     public String getTestName() {
         return testName;
     }
@@ -23,10 +31,6 @@ public class TestScript {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public String getExecutionStartTime() {
-        return executionStartTime;
     }
 
     public void setExecutionStartTime(String executionStartTime) {
@@ -55,10 +59,6 @@ public class TestScript {
 
     public void setExetime(String exetime) {
         this.exetime = exetime;
-    }
-
-    public String getExecutionEndTime() {
-        return executionEndTime;
     }
 
     public void setExecutionEndTime(String executionEndTime) {

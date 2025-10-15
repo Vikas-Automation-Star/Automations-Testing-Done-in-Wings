@@ -28,7 +28,6 @@ public class CreditNote extends TransactionsBaseClass {
 
     public void creditNote(String receivableVouchers,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long creditNoteStarts = System.nanoTime();
-        System.out.println("Credit Note started in :" + creditNoteStarts);
 
         navigateToMastersWhen3Steps("Finance","Party Adjustments","Credit Note");
         Thread.sleep(1000);
@@ -86,7 +85,7 @@ public class CreditNote extends TransactionsBaseClass {
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"CreditNote");
         deleteTransactionUsingVoucherNumber(newVoucherID);
         long creditNoteEnd = System.nanoTime()- creditNoteStarts;
-        System.out.println("Credit Note End at :" + creditNoteEnd);
+        FileUtil.writeTimeLogInMinutes("Credit note End at:- ", creditNoteEnd );
     }
 
     public void accounts() throws IOException, InterruptedException {

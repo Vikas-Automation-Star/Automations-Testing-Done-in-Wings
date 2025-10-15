@@ -4,6 +4,7 @@ import com.wings.pages.Transaction;
 import com.wings.pages.TransactionsBaseClass;
 import com.wings.utils.APIClient;
 import com.wings.utils.Common;
+import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
@@ -26,7 +27,6 @@ public class ProductOrders extends TransactionsBaseClass {
 
     public String productOrders(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long productionOrdersStarts = System.nanoTime();
-        System.out.println("Production Orders started in :" + productionOrdersStarts);
 
         navigateToMastersWhen3Steps("Production","Standard","Production Orders");
         Thread.sleep(3000);
@@ -56,7 +56,7 @@ public class ProductOrders extends TransactionsBaseClass {
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"ProductionOrder");
         long productionOrdersEnd = System.nanoTime()- productionOrdersStarts;
-        System.out.println("Production Orders End at :" + productionOrdersEnd);
+        FileUtil.writeTimeLogInMinutes("Production Orders End at:- ", productionOrdersEnd );
         return newVoucherID;
     }
     public void inputs() throws IOException {

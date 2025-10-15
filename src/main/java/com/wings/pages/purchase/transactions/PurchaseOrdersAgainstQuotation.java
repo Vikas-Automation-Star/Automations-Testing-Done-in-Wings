@@ -27,8 +27,6 @@ public class PurchaseOrdersAgainstQuotation extends TransactionsBaseClass {
 
     public String purchaseOrdersAgainstQuotation(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start3 = System.nanoTime();
-        System.out.println("Purchase Orders Against Quotations starts at:- "+start3);
-
 
         navigateToMastersWhen3Steps("Purchase","Orders","Purchase Orders against Quotations");
         Thread.sleep(2000);
@@ -50,6 +48,7 @@ public class PurchaseOrdersAgainstQuotation extends TransactionsBaseClass {
         enterPriceList(dataFile,"GeneralInformation","PriceList");
         enterExecutive(dataFile,"GeneralInformation","Executive");
         enterRemarks(dataFile,"GeneralInformation","Remarks");
+
         long poaqGenInfoEnd=System.nanoTime()-poaqGenInfoStart;
         FileUtil.writeTimeLogInMinutes("Purchase Orders Against Quotations Gen Info ended at:- ",poaqGenInfoEnd);
         //F3-Items
@@ -112,7 +111,7 @@ public class PurchaseOrdersAgainstQuotation extends TransactionsBaseClass {
         long termsConditionsTabEnd =System.nanoTime()- termsConditionsTabStart;
         FileUtil.writeTimeLogInMinutes("Purchase Orders Against Quotations Terms and Conditions Tab:- ", termsConditionsTabEnd);
 
-////        allocations
+//        allocations
 //        long allocationsTabStart=System.nanoTime();
 //        addAllocations();
 //        long allocationsTabEnd=System.nanoTime() - allocationsTabStart;
@@ -120,7 +119,6 @@ public class PurchaseOrdersAgainstQuotation extends TransactionsBaseClass {
 
         transactionSave();
         String transactionId = newTransactionID(oldVoucherID);
-//        exportIOFiles(transactionId,rootDriver);
         APIClient.validateAPIWithExcel(transactionId,tempAPIBodyUpdate,apiResponse,outputFile,"PurchaseOrdersAgainstQuotations");
 
         long duration3 = System.nanoTime() - start3;

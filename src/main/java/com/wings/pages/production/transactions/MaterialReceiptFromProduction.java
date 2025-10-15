@@ -3,6 +3,7 @@ package com.wings.pages.production.transactions;
 import com.wings.pages.TransactionsBaseClass;
 import com.wings.utils.APIClient;
 import com.wings.utils.Common;
+import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -25,7 +26,6 @@ public class MaterialReceiptFromProduction extends TransactionsBaseClass {
 
     public void materialReceiptFromProduction(String ordersNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long materialReceiptsFromProduction = System.nanoTime();
-        System.out.println("Material Receipts From Production started in :" + materialReceiptsFromProduction);
 
         navigateToMastersWhen3Steps("Production","Standard","Material Receipts from Production");
         Thread.sleep(3000);
@@ -62,7 +62,7 @@ public class MaterialReceiptFromProduction extends TransactionsBaseClass {
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"MaterialReceiptsFromProduction");
         deleteTransactionUsingVoucherNumber(newVoucherID);
         long materialReceiptsFromProductionEnds = System.nanoTime()- materialReceiptsFromProduction;
-        System.out.println("Material Receipts From Production End at :" + materialReceiptsFromProductionEnds);
+        FileUtil.writeTimeLogInMinutes("Material receipts from Production End at:- ", materialReceiptsFromProductionEnds );
     }
 
     public void items() throws IOException, InterruptedException {

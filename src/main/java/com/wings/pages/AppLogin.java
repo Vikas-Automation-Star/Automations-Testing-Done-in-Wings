@@ -18,10 +18,7 @@ public class AppLogin {
     String fileData = "./src/main/resources/company_Name.json";
 
     public WindowsDriver login() throws IOException, InterruptedException, ParseException {
-
         driver = common.initializeDriver(common.getProperty("multiUserApp"));
-//    String currentwindowHandle = driver.getWindowHandle();
-//    System.out.println("Window 1 -" + currentwindowHandle);
         driver.findElement(By.name(" 24D Books Automation")).click();
         Thread.sleep(5000);
         rootDriver = common.initializeDriver("Root");
@@ -34,7 +31,6 @@ public class AppLogin {
         common = new Common(loginDriver);
         common.inputText("xpath","//Edit[@Name='User name']",common.getProperty("userName"));
         common.inputText("xpath", "//Edit[@Name='Password']", common.getProperty("password"));
-        System.out.println("Password TagName " + common.getTagName("name", "Password"));
         common.clickElement("name", "Submit");
         Thread.sleep(10000);
         common.clickElement("xpath","//Button[@Name='OK']");
@@ -103,7 +99,7 @@ public class AppLogin {
 
     public void logout() throws IOException {
         try {
-            Thread.sleep(1500);
+            Thread.sleep(2500);
             common.clickElement("xpath", "//MenuItem[@Name='File']");
             Thread.sleep(1500);
             common.clickElement("name", "Exit");

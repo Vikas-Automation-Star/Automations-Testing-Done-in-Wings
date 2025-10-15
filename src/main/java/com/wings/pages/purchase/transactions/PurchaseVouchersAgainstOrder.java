@@ -33,9 +33,7 @@ public class PurchaseVouchersAgainstOrder extends TransactionsBaseClass {
 
     public String purchaseVouchersAgainstOrder(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long PVAO = System.nanoTime();
-        System.out.println("Purchase Vouchers Against Orders starts at :"+PVAO);
 
-        navigateToPurchaseVouchersAgainstOrders();
         navigateToMastersWhen3Steps("Purchase","Invoices","Purchase Vouchers against Orders");
         Thread.sleep(3000);
         long start1 = System.nanoTime();
@@ -157,7 +155,6 @@ public class PurchaseVouchersAgainstOrder extends TransactionsBaseClass {
         transactionSave();
         String newVoucherID = newTransactionID(oldVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"both ID's should not Equal when we perform transaction");
-//        exportIOFiles(newVoucherID,rootDriver);
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"PurchaseVouchersAgainstOrders");
 
         long PurchaseVouchersAgainstOrdersEnd = System.nanoTime() - PVAO;

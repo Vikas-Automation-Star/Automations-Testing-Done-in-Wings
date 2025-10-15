@@ -30,7 +30,6 @@ public class SalesEnquiryCancellation extends TransactionsBaseClass {
 
     public void salesEnquiryCancellation(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long salesEnquiriesCancellationStart = System.nanoTime();
-        System.out.println("Sales EnquiriesCancellation started in :" + salesEnquiriesCancellationStart);
 
         navigateToMastersWhen3Steps("Sales","Enquiries","Sales Enquiries Cancellation");
         Thread.sleep(3000);

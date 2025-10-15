@@ -28,9 +28,6 @@ public class DebitNote extends TransactionsBaseClass {
 
     public void debitNote(String payableVouchers,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long debitNoteStarts = System.nanoTime();
-        System.out.println("Debit Note started in :" + debitNoteStarts);
-
-
 
         navigateToMastersWhen3Steps("Finance","Party Adjustments","Debit Note");
         Thread.sleep(1000);
@@ -87,7 +84,7 @@ public class DebitNote extends TransactionsBaseClass {
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"DebitNote");
         deleteTransactionUsingVoucherNumber(newVoucherID);
         long debitNoteEnd = System.nanoTime()- debitNoteStarts;
-        System.out.println("Debit Note End at :" + debitNoteEnd);
+        FileUtil.writeTimeLogInMinutes("Debit note End at:- ",debitNoteEnd );
     }
 
     public void accounts() throws IOException, InterruptedException {

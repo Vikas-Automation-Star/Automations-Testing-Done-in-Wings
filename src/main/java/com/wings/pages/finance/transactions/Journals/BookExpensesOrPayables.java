@@ -27,7 +27,6 @@ public class BookExpensesOrPayables extends TransactionsBaseClass {
 
     public void Payable(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long bookExpensesOrPayableStarts = System.nanoTime();
-        System.out.println("Book Expenses or Payable started in :" + bookExpensesOrPayableStarts);
 
         navigateToMastersWhen3Steps("Finance","Journals","Book Expenses or Payables");
         Thread.sleep(1000);
@@ -85,7 +84,7 @@ public class BookExpensesOrPayables extends TransactionsBaseClass {
         deleteTransactionUsingVoucherNumber(newVoucherID);
 
         long bookExpensesOrPayableEnd = System.nanoTime()- bookExpensesOrPayableStarts;
-        System.out.println("Book Expenses or payable End at :" + bookExpensesOrPayableEnd);
+        FileUtil.writeTimeLogInMinutes("Book expenses or payable End at:- ", bookExpensesOrPayableEnd );
     }
 
 

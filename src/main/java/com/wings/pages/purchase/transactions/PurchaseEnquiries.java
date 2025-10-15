@@ -25,9 +25,7 @@ public class PurchaseEnquiries extends TransactionsBaseClass {
     }
 
     public String purchaseEnquires(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
-
         long start = System.nanoTime();
-        System.out.println("Purchase Enquiries started at"+start);
 
         navigateToMastersWhen3Steps("Purchase","Enquiries","Purchase Enquiries");
         Thread.sleep(3000);
@@ -81,7 +79,7 @@ public class PurchaseEnquiries extends TransactionsBaseClass {
         APIClient.validateAPIWithExcel(transactionId,tempAPIBodyUpdate,apiResponse,outputFile,"PurchaseEnquiries");
 
         long PurchaseEnquiriesEnd = System.nanoTime() - start;
-        FileUtil.writeTimeLogInMinutes("Purchase Enquiries ending at:- ", PurchaseEnquiriesEnd);
+        FileUtil.writeTimeLogInMinutes("Purchase Enquiries end at:- ", PurchaseEnquiriesEnd);
 
         return transactionId;
     }

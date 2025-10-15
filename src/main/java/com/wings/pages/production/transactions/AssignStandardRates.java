@@ -4,6 +4,7 @@ import com.wings.pages.Transaction;
 import com.wings.pages.TransactionsBaseClass;
 import com.wings.utils.APIClient;
 import com.wings.utils.Common;
+import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import net.bytebuddy.asm.Advice;
 import org.json.simple.parser.ParseException;
@@ -27,7 +28,6 @@ public class AssignStandardRates extends TransactionsBaseClass {
 
     public void assignStandardRates(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long assignStandardRatesStarts = System.nanoTime();
-        System.out.println("Assign standard rates started in :" + assignStandardRatesStarts);
 
         navigateToMastersWhen2Steps("Production","Assign Standard Rates");
         Thread.sleep(2000);
@@ -49,7 +49,7 @@ public class AssignStandardRates extends TransactionsBaseClass {
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"JournalEntries");
 
         long assignStandardRatesEnd = System.nanoTime()- assignStandardRatesStarts;
-        System.out.println("Assign standard rates End at :" + assignStandardRatesEnd);
+        FileUtil.writeTimeLogInMinutes("Assign standard rates End at:- ", assignStandardRatesEnd );
     }
     public void items() throws IOException {
             List<String> productCode=readExcelData(dataFile,"Items","ProductCode");

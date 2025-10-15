@@ -34,9 +34,8 @@ public class SalesReturnWithInvoiceReference extends TransactionsBaseClass {
     }
 
     public String salesReturnWithInvoiceReference(String invoiceVoucher,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
-
         long salesRWIRStart = System.nanoTime();
-        System.out.println("Sales returns with invoice reference started in :" + salesRWIRStart);
+
         Thread.sleep(2000);
         navigateToMastersWhen3Steps("Sales","Invoices","Sales Return with Invoice Reference");
         String oldVoucherID =oldTTransactionID();

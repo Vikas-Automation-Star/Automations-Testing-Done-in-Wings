@@ -28,8 +28,6 @@ public class PurchaseQuotationsAgainstEnquiries extends TransactionsBaseClass {
 
     public String purchaseQuotationsAgainstEnquiry(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start1 = System.nanoTime();
-        System.out.println("Purchase quotations against enquiries start at :"+start1);
-
 
         navigateToMastersWhen3Steps("Purchase","Quotations","Purchase Quotations against Enquiries");
         Thread.sleep(3000);

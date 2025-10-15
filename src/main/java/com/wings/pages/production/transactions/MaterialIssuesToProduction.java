@@ -4,6 +4,7 @@ import com.wings.pages.Transaction;
 import com.wings.pages.TransactionsBaseClass;
 import com.wings.utils.APIClient;
 import com.wings.utils.Common;
+import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
@@ -25,7 +26,6 @@ public class MaterialIssuesToProduction extends TransactionsBaseClass {
     }
     public String materialIssuesToProduction(String productionOrderVoucher,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long materialIssuesToProduction = System.nanoTime();
-        System.out.println("Material issues to production started in :" + materialIssuesToProduction);
 
         navigateToMastersWhen3Steps("Production","Standard","Material Issues to Production");
         Thread.sleep(2000);
@@ -47,7 +47,6 @@ public class MaterialIssuesToProduction extends TransactionsBaseClass {
         overHeads();
         otherInfo();
 
-
         transactionSave();
         Thread.sleep(1000);
         String newVoucherID =newTransactionID(oldVoucherID);
@@ -55,7 +54,7 @@ public class MaterialIssuesToProduction extends TransactionsBaseClass {
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"MaterialIssuesToProduction");
 
         long materialIssuesToProductionEnds = System.nanoTime()- materialIssuesToProduction;
-        System.out.println("Material Issues to Production End at :" + materialIssuesToProductionEnds);
+        FileUtil.writeTimeLogInMinutes("Material issues to production End at:- ", materialIssuesToProductionEnds );
         return newVoucherID;
     }
     public void items() throws IOException, InterruptedException {

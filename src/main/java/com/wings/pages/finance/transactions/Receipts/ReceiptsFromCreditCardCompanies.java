@@ -28,7 +28,6 @@ public class ReceiptsFromCreditCardCompanies extends TransactionsBaseClass {
 
     public void creditCardCompanyReceipt(String voucherNum1,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long receiptsFromCreditCardCompanies = System.nanoTime();
-        System.out.println("Receipts from credit card Receipts started in :" + receiptsFromCreditCardCompanies);
 
         navigateToMastersWhen3Steps("Finance","Receipts","Receipts from Credit Card Companies");
         Thread.sleep(1000);
@@ -94,7 +93,7 @@ public class ReceiptsFromCreditCardCompanies extends TransactionsBaseClass {
         long AllReceiptsDeletions =System.nanoTime()- deleteReceiptsVouchers;
         FileUtil.writeTimeLogInMinutes("Delete Voucher Of All Receipts:- ", AllReceiptsDeletions);
         long receiptsFromCreditCardCompaniesEnd = System.nanoTime()- receiptsFromCreditCardCompanies;
-        System.out.println("Receipts From CreditCard Companies End at :" + receiptsFromCreditCardCompaniesEnd);
+        FileUtil.writeTimeLogInMinutes("Receipts from credit card companies End at:- ", receiptsFromCreditCardCompaniesEnd );
     }
 
     public void accounts() throws IOException, InterruptedException {

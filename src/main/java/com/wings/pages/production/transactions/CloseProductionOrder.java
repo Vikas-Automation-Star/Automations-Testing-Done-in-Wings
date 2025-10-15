@@ -4,6 +4,7 @@ import com.wings.pages.Transaction;
 import com.wings.pages.TransactionsBaseClass;
 import com.wings.utils.APIClient;
 import com.wings.utils.Common;
+import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -24,7 +25,6 @@ public class CloseProductionOrder extends TransactionsBaseClass {
     }
     public void closeProductionOrder(String orderNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long closeProductionOrders = System.nanoTime();
-        System.out.println("Close Production Orders started in :" + closeProductionOrders);
 
         navigateToMastersWhen3Steps("Production","Standard","Close Production Order");
         Thread.sleep(3000);
@@ -50,7 +50,7 @@ public class CloseProductionOrder extends TransactionsBaseClass {
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"CloseProductionOrder");
         deleteTransactionUsingVoucherNumber(newVoucherID);
         long closeProductionOrdersEnds = System.nanoTime()- closeProductionOrders;
-        System.out.println("Close production Orders End at :" + closeProductionOrdersEnds);
+        FileUtil.writeTimeLogInMinutes("Close production orders End at:- ", closeProductionOrdersEnds );
     }
 
     public void pendingStockToBeIssuedToProduction() throws InterruptedException, IOException {

@@ -330,7 +330,8 @@ public  class Transaction {
         common.clickElement("xpath", "//MenuItem[@Name='"+menuItem+"']");
     }
 
-    public void navigateToMastersWhen3Steps(String menu, String menuItem, String subMenuItem) {
+    public void navigateToMastersWhen3Steps(String menu, String menuItem, String subMenuItem) throws InterruptedException {
+        Thread.sleep(1500);
         common.clickElement("xpath", "//MenuItem[@Name='"+menu+"']");
         common.clickElement("xpath", "//MenuItem[@Name='"+menuItem+"']");
         common.clickElement("xpath", "//MenuItem[@Name='"+subMenuItem+"']");

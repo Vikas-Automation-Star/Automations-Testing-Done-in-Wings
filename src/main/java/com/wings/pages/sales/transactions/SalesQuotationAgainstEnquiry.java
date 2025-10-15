@@ -33,7 +33,7 @@ public class SalesQuotationAgainstEnquiry extends TransactionsBaseClass {
 
     public String quotationAgainstEnquiry(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long SQAEStart = System.nanoTime();
-        System.out.println("sales quotation against enquiry startTime executed in :"+SQAEStart);
+
         navigateToMastersWhen3Steps("Sales","Quotations","Sales Quotations against Enquiries");
         Thread.sleep(100);
         String oldVoucherID =oldTTransactionID();

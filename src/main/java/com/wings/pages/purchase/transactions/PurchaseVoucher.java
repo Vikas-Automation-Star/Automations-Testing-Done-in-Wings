@@ -35,16 +35,14 @@ public class PurchaseVoucher extends TransactionsBaseClass {
     }
 
     public String purchaseVoucher(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
-
         long PV = System.nanoTime();
-        System.out.println("Purchase vouchers starts at :"+PV);
 
         navigateToMastersWhen3Steps("Purchase", "Invoices", "Purchase Vouchers");
         Thread.sleep(5000);
         String oldVoucherID = oldTTransactionID();
 
         long start1 = System.nanoTime();
-//
+
         enterVoucherType(dataFile,"GeneralInformation","VoucherType");
         EnterDate("//Edit[@Name='Date *']",dataFile,"GeneralInformation","Date");
         enterBranchName(dataFile,"GeneralInformation","Branch");

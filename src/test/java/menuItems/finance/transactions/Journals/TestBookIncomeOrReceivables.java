@@ -38,14 +38,14 @@ public class TestBookIncomeOrReceivables {
 
     @Test
     public void bookIncomesOrReceivable() throws Exception {
-        DebitNoteFromSuppliers debitNoteFromSuppliers = new DebitNoteFromSuppliers(driver, dataFile);
-        String debitNoteFromSupplierVoucher=debitNoteFromSuppliers.debitNoteFromSupplier("PV 14",TEMP_API_BODY_DEBIT_NOTE_FROM_CUSTOMERS,API_RESPONSE_DEBIT_NOTE_FROM_CUSTOMERS,OUTPUT_FILE1);
-
-        appLogin.logout();
-        driver= appLogin.login();
+//        DebitNoteFromSuppliers debitNoteFromSuppliers = new DebitNoteFromSuppliers(driver, dataFile);
+//        String debitNoteFromSupplierVoucher=debitNoteFromSuppliers.debitNoteFromSupplier("PV 14",TEMP_API_BODY_DEBIT_NOTE_FROM_CUSTOMERS,API_RESPONSE_DEBIT_NOTE_FROM_CUSTOMERS,OUTPUT_FILE1);
+//
+//        appLogin.logout();
+//        driver= appLogin.login();
 
         BookIncomesOrReceivables bookIncomesOrReceivables = new BookIncomesOrReceivables(driver, dataFile1);
-        bookIncomesOrReceivables.receivables(debitNoteFromSupplierVoucher,TEMP_API_BODY_BOOK_INCOMES_OR_RECEIVABLE,API_RESPONSE_BOOK_INCOMES_OR_RECEIVABLE,OUTPUT_FILE2);
+        bookIncomesOrReceivables.receivables("DNFS 2",TEMP_API_BODY_BOOK_INCOMES_OR_RECEIVABLE,API_RESPONSE_BOOK_INCOMES_OR_RECEIVABLE,OUTPUT_FILE2);
     }
 
     @AfterTest

@@ -4,6 +4,7 @@ import com.wings.pages.Transaction;
 import com.wings.pages.TransactionsBaseClass;
 import com.wings.utils.APIClient;
 import com.wings.utils.Common;
+import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
@@ -26,7 +27,6 @@ public class MaterialIssuesAndReceiptsFromProduction extends TransactionsBaseCla
 
     public void materialIssuesAndReceiptsFromProduction(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long materialIssuesAndReceiptsFromProduction = System.nanoTime();
-        System.out.println("Material Issues and Receipts From Production started in :" + materialIssuesAndReceiptsFromProduction);
 
         navigateToMastersWhen3Steps("Production","Simple","Material Issues and Receipts from Production");
         Thread.sleep(3000);
@@ -73,7 +73,7 @@ public class MaterialIssuesAndReceiptsFromProduction extends TransactionsBaseCla
         deleteTransactionUsingVoucherNumber("PRO 4");
         deleteTransactionUsingVoucherNumber("PRO 5");
         long materialIssuesAndReceiptsFromProductionEnds = System.nanoTime()- materialIssuesAndReceiptsFromProduction;
-        System.out.println("Material Issues and Receipts From Production End at :" + materialIssuesAndReceiptsFromProductionEnds);
+        FileUtil.writeTimeLogInMinutes("Material issues and receipts from production at:- ", materialIssuesAndReceiptsFromProductionEnds );
     }
 
     public void issuesToProduction() throws InterruptedException, IOException {

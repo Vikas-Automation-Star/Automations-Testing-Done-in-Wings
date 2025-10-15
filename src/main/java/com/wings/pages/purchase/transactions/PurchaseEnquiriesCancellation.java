@@ -33,7 +33,6 @@ public class PurchaseEnquiriesCancellation extends TransactionsBaseClass {
 
     public void purchaseEnquiriesCancellation(String enquiriesVoucher,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
-        System.out.println("Purchase Enquiries Cancellation Starts"+start);
 
         navigateToMastersWhen3Steps("Purchase","Enquiries","Purchase Enquiries Cancellation");
         Thread.sleep(2000);
@@ -81,11 +80,11 @@ public class PurchaseEnquiriesCancellation extends TransactionsBaseClass {
 
         transactionSave();
         String transactionId = newTransactionID(oldVoucherID);
-
-        long PurchaseEnquiriesEnd = System.nanoTime() - start;
-        FileUtil.writeTimeLog("purchaseEnquiries validating Tab Items UpTo summary", PurchaseEnquiriesEnd /1000000000);
         APIClient.validateAPIWithExcel(transactionId,tempAPIBodyUpdate,apiResponse,outputFile,"PurchaseEnquiriesCancellation");
         deleteTransactionUsingVoucherNumber(transactionId);
+        long PurchaseEnquiriesEnd = System.nanoTime() - start;
+        FileUtil.writeTimeLogInMinutes("Purchase Enquiries Cancellation End at :-", PurchaseEnquiriesEnd);
+
     }
 
     public void addProducts() throws  IOException {

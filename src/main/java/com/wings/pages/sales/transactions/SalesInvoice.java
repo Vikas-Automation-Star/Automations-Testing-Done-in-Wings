@@ -34,7 +34,6 @@ public class SalesInvoice extends TransactionsBaseClass {
 
     public String salesInvoice(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long salesInvoiceStart = System.nanoTime();
-        System.out.println("Sales Invoice started in :" + salesInvoiceStart);
 
         long generalInfoStart = System.nanoTime();
         System.out.println("Sales Invoice general Info started executed in :" + generalInfoStart);

@@ -28,7 +28,6 @@ public class CreditNoteOnCustomers extends TransactionsBaseClass {
 
     public void creditNoteOnCustomer(String receivableVouchers,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long creditNoteOnCustomersStarts = System.nanoTime();
-        System.out.println("Credit not On Customers started in :" + creditNoteOnCustomersStarts);
 
         navigateToMastersWhen3Steps("Finance","Party Adjustments","Credit Note on Customers");
         Thread.sleep(1000);
@@ -99,7 +98,7 @@ public class CreditNoteOnCustomers extends TransactionsBaseClass {
         deleteTransactionUsingVoucherNumber(newVoucherID);
 
         long creditNoteOnCustomersEnd = System.nanoTime()- creditNoteOnCustomersStarts;
-        System.out.println("Credit Note on Customers End at :" + creditNoteOnCustomersEnd);
+        FileUtil.writeTimeLogInMinutes("Credit note on customers End at:- ", creditNoteOnCustomersEnd );
     }
 
     public void accounts() throws IOException, InterruptedException {

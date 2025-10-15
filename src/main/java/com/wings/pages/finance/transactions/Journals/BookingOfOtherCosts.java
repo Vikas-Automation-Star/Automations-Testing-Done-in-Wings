@@ -26,6 +26,8 @@ public class BookingOfOtherCosts extends TransactionsBaseClass {
     }
 
     public void otherBookingCosts(String pendingVoucher,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
+        long bookingOfOtherCostsStart = System.nanoTime();
+
         navigateToMastersWhen3Steps("Finance","Journals","Booking Of Other Costs");
         Thread.sleep(1000);
         String oldVoucherID =oldTTransactionID();
@@ -80,6 +82,8 @@ public class BookingOfOtherCosts extends TransactionsBaseClass {
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"BookingOfOtherCosts");
         deleteTransactionUsingVoucherNumber(newVoucherID);
+        long bookingOfOtherCostsEnd = System.nanoTime()- bookingOfOtherCostsStart;
+        FileUtil.writeTimeLogInMinutes("Booking of other costs at:- ", bookingOfOtherCostsEnd );
     }
 
     public void accounts() throws IOException, InterruptedException {

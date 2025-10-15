@@ -36,7 +36,6 @@ public class SalesEnquiry extends TransactionsBaseClass {
 
     public String salesEnquiries(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long salesEnquiriesStart = System.nanoTime();
-        System.out.println("Sales Enquiries started in :" + salesEnquiriesStart);
 
         navigateToMastersWhen3Steps("Sales","Enquiries","Sales Enquiries");
         Thread.sleep(3000);

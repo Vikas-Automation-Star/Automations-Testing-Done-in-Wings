@@ -34,7 +34,6 @@ public class SalesReturns extends TransactionsBaseClass {
 
     public String  salesReturns(String invoiceVoucher,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long salesReturnsStart = System.nanoTime();
-        System.out.println("Sales returns started in :" + salesReturnsStart);
 
         navigateToMastersWhen3Steps("Sales","Invoices","Sales Returns");
         Thread.sleep(2000);

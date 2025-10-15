@@ -25,7 +25,6 @@ public class JournalEntriesComplex extends TransactionsBaseClass {
 
     public void journalEntriesComplex(String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
-        System.out.println("Journal Entries  started in :" + start);
 
         navigateToMastersWhen3Steps("Finance","Journals","Journal Entries [Complex]");
         Thread.sleep(1000);
@@ -49,10 +48,10 @@ public class JournalEntriesComplex extends TransactionsBaseClass {
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"JournalEntriesComplex");
-
-        long JeEnd = System.nanoTime() -start ;
-        FileUtil.writeTimeLogInMinutes("Journal Entries ended at:- ", JeEnd );
         deleteTransactionUsingVoucherNumber(newVoucherID);
+        long JeEnd = System.nanoTime() -start ;
+        FileUtil.writeTimeLogInMinutes("Complex Journal Entries ended at:- ", JeEnd );
+
     }
 
     public void accounts() throws IOException {

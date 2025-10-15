@@ -27,7 +27,6 @@ public class CreditCardReceipts extends TransactionsBaseClass {
 
     public void creditCardReceipt(String desiredVoucher,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long creditCardReceiptsStart = System.nanoTime();
-        System.out.println("CreditCard Receipts started in :" + creditCardReceiptsStart);
 
         navigateToMastersWhen3Steps("Finance","Receipts","Credit Card Receipts");
         Thread.sleep(1000);
@@ -73,7 +72,7 @@ public class CreditCardReceipts extends TransactionsBaseClass {
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"CreditCardReceipts");
         long creditCardReceiptsEnd = System.nanoTime()- creditCardReceiptsStart;
-        System.out.println("CreditCard Receipts End at :" + creditCardReceiptsEnd);
+        FileUtil.writeTimeLogInMinutes("Credit card receipts End at:- ", creditCardReceiptsEnd );
     }
 
     public void parties() throws IOException {

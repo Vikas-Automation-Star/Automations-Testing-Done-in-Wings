@@ -32,7 +32,6 @@ public class PurchaseReturnsWithInvoicesReference extends TransactionsBaseClass 
 
     public void purchaseReturnsWithInvoicesReference(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start3 = System.nanoTime();
-        System.out.println("Purchase returns with invoice references stats at :"+start3);
 
         navigateToMastersWhen3Steps("Purchase","Invoices","Purchase Returns with Invoice Reference");
         Thread.sleep(3000);
@@ -130,7 +129,7 @@ public class PurchaseReturnsWithInvoicesReference extends TransactionsBaseClass 
         APIClient.validateAPIWithExcel(transactionId,tempAPIBodyUpdate,apiResponse,outputFile,"PurchaseReturnsWithInvoiceReferences");
 
         long duration3 = System.nanoTime() - start3;
-        FileUtil.writeTimeLogInMinutes("purchase Returns with invoices references", duration3 /1000000000);
+        FileUtil.writeTimeLogInMinutes("purchase Returns with invoices references", duration3);
     }
 
     public void addProduct() throws InterruptedException, IOException, ParseException{
