@@ -21,9 +21,9 @@ public class TestSalesTargetExecutiveWise {
 
     @BeforeMethod
     public void beforeTest() throws ParseException, InterruptedException, IOException {
-        winAppDriverProcess = new ProcessBuilder("cmd.exe", "/c", "start", "WinAppDriver.exe", "127.0.0.1", "4723").start();
-        Thread.sleep(5000);
-        System.out.println("✅ WinAppDriver started");
+//        winAppDriverProcess = new ProcessBuilder("cmd.exe", "/c", "start", "WinAppDriver.exe", "127.0.0.1", "4723").start();
+//        Thread.sleep(5000);
+//        System.out.println("✅ WinAppDriver started");
         driver = appLogin.login();
     }
 
@@ -36,9 +36,9 @@ public class TestSalesTargetExecutiveWise {
     @AfterMethod
     public void afterTest() throws IOException {
         appLogin.logout();
-        if(driver != null) driver.quit();
-        Runtime.getRuntime().exec("taskkill /F /IM WinAppDriver.exe");
-        System.out.println("✅ WinAppDriver stopped");
+//        if(driver != null) driver.quit();
+//        Runtime.getRuntime().exec("taskkill /F /IM WinAppDriver.exe");
+//        System.out.println("✅ WinAppDriver stopped");
     }
 
 }
