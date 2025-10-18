@@ -259,7 +259,6 @@ public class Common {
             File temp = screenshot.getScreenshotAs(OutputType.FILE);
             File perm = new File("./results/screenshots/failure" + time.timeStamp() + ".png");
             FileHandler.copy(temp, perm);
-
         } catch (Exception e) {
             e.printStackTrace();
         }

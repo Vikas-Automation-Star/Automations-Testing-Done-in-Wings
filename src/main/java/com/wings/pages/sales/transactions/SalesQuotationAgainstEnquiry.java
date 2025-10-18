@@ -94,8 +94,6 @@ public class SalesQuotationAgainstEnquiry extends TransactionsBaseClass {
         String newVoucherID = newTransactionID(oldVoucherID);
         System.out.println("newID: " + newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID, "Voucher Numbers are same. Check Transaction.");
-//        exportIOFiles(newVoucherID,rootDriver);
-
         APIClient.validateAPIWithExcel(newVoucherID, tempAPIBodyUpdate, apiResponse, outputFile, "SalesQuotationsAgainstEnquiries");
         long SQAEnd = System.nanoTime() - SQAEStart;
         FileUtil.writeTimeLogInMinutes("Sales Quotations against Enquiries ended at:- ", SQAEnd );

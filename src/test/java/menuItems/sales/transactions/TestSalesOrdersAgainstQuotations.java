@@ -54,7 +54,6 @@ public class TestSalesOrdersAgainstQuotations {
 
         SalesOrdersAgainstQuotations quotations = new SalesOrdersAgainstQuotations(driver, dataFile2);
         quotations.salesOrderAgainstQuotation(againstEnquiryVoucher,TEMP_API_SALES_ORDER_AGAINST_QUOTATION,API_RESPONSE_SALES_ORDER_AGAINST_QUOTATION,OUTPUT_FILE_SALES_ORDER_AGAINST_QUOTATION);
-//        quotations.salesOrderAgainstQuotation("SQAE 2");
 
     }
 
