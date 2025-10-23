@@ -57,7 +57,7 @@ public class SalesEnquiry extends TransactionsBaseClass {
         long start = System.nanoTime();
         addProduct();
         long duration = System.nanoTime() - start;
-        FileUtil.writeTimeLogInMinutes("Sale Enquiry End Products",duration);
+        FileUtil.writeTimeLogInMinutes("Sale Enquiry End Products ",duration);
 
         long start1 = System.nanoTime();
         addChargesAndDeductions();

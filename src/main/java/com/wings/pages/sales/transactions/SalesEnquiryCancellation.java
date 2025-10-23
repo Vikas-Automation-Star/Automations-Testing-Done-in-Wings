@@ -53,7 +53,7 @@ public class SalesEnquiryCancellation extends TransactionsBaseClass {
         long start = System.nanoTime();
         addItems();
         long duration = System.nanoTime() - start;
-        FileUtil.writeTimeLogInMinutes("Sales Enquiry cancellation End products",duration);
+        FileUtil.writeTimeLogInMinutes("Sales Enquiry cancellation End products ",duration);
 
         long start3 = System.nanoTime();
         navigateToOtherInfoTab();

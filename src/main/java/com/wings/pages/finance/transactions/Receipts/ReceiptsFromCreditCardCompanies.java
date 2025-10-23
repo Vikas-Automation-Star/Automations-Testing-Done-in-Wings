@@ -89,7 +89,6 @@ public class ReceiptsFromCreditCardCompanies extends TransactionsBaseClass {
         deleteTransactionUsingVoucherNumber("CR 3");
         deleteTransactionUsingVoucherNumber("BR 5");
         deleteTransactionUsingVoucherNumber("CCR 3");
-        deleteTransactionUsingVoucherNumber("RFCCC 3");
         long AllReceiptsDeletions =System.nanoTime()- deleteReceiptsVouchers;
         FileUtil.writeTimeLogInMinutes("Delete Voucher Of All Receipts:- ", AllReceiptsDeletions);
         long receiptsFromCreditCardCompaniesEnd = System.nanoTime()- receiptsFromCreditCardCompanies;
