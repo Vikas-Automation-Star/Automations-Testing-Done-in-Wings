@@ -128,11 +128,11 @@ public class PurchaseReturnsWithInvoicesReference extends TransactionsBaseClass 
         String transactionId = newTransactionID(oldVoucherID);
         APIClient.validateAPIWithExcel(transactionId,tempAPIBodyUpdate,apiResponse,outputFile,"PurchaseReturnsWithInvoiceReferences");
 
-//        deleteTransactionUsingVoucherNumber(transactionId);
-//        deleteTransactionUsingVoucherNumber("PVAO 3");
-//        deleteTransactionUsingVoucherNumber("POAQ 3");
-//        deleteTransactionUsingVoucherNumber("PQAPE 3");
-//        deleteTransactionUsingVoucherNumber("PE 11");
+        deleteTransactionUsingVoucherNumber(transactionId);
+        deleteTransactionUsingVoucherNumber("PVAO 3");
+        deleteTransactionUsingVoucherNumber("POAQ 3");
+        deleteTransactionUsingVoucherNumber("PQAPE 3");
+        deleteTransactionUsingVoucherNumber("PE 11");
 
         long duration3 = System.nanoTime() - start3;
         FileUtil.writeTimeLogInMinutes("purchase Returns with invoices references", duration3);
