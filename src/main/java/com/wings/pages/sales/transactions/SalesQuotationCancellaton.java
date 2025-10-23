@@ -82,7 +82,8 @@ public class SalesQuotationCancellaton extends TransactionsBaseClass {
 
         long quotationsCancellationEnd = System.nanoTime() - quotationCancellationStart;
         FileUtil.writeTimeLogInMinutes("Sales Quotation Cancellation End: ", quotationsCancellationEnd);
-//        excelUtil.excelComparator("","",newVoucherID);
+        deleteTransactionUsingVoucherNumber(newVoucherID);
+        deleteTransactionUsingVoucherNumber(voucherNum);
         return newVoucherID;
 
 

@@ -83,6 +83,8 @@ public class SalesOrderCancellation extends TransactionsBaseClass {
         FileUtil.writeTimeLogInMinutes("SOC ended at:- ", salesInvoiceEnd );
         //api
         APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"salesOrderCancellation");
+        deleteTransactionUsingVoucherNumber(newVoucherID);
+        deleteTransactionUsingVoucherNumber(voucherNum);
 
         return newVoucherID;
     }
