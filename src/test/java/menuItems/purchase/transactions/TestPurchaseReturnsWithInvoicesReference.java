@@ -74,6 +74,7 @@ public class TestPurchaseReturnsWithInvoicesReference {
 
         PurchaseReturnsWithInvoicesReference returnsWithInvoicesReference = new PurchaseReturnsWithInvoicesReference(driver, dataFile4);
         returnsWithInvoicesReference.purchaseReturnsWithInvoicesReference(purchaseVouchersAgainstOrderVoucher,TEMP_API_BODY_PURCHASE_RETURNS_WITH_INVOICE_REFERENCE,API_RESPONSE_PURCHASE_RETURNS_WITH_INVOICE_REFERENCE,OUTPUT_FILE5);
+
     }
 
     @AfterTest
