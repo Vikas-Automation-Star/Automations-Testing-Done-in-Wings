@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 
 public class AppLogin {
@@ -18,8 +20,11 @@ public class AppLogin {
     String fileData = "./src/main/resources/company_Name.json";
 
     public WindowsDriver login() throws IOException, InterruptedException, ParseException {
+        Desktop desktop = Desktop.getDesktop();
+        desktop.open (new File("C:\\Program Files (x86)\\Windows Application Driver\\WinAppDriver.exe"));
+        Thread.sleep(5000);
         driver = common.initializeDriver(common.getProperty("multiUserApp"));
-        driver.findElement(By.name(" 24D Books Automation")).click();
+        driver.findElement(By.name("24D Books Automation")).click();
         Thread.sleep(5000);
         rootDriver = common.initializeDriver("Root");
         Thread.sleep(10000);
@@ -29,7 +34,7 @@ public class AppLogin {
         System.out.println("window id: " + hexLoginId);
         loginDriver = common.navigateToAppWindow(hexLoginId);
         common = new Common(loginDriver);
-        common.inputText("xpath","//Edit[@Name='User name']",common.getProperty("userName"));
+        common.inputText("xpath","//Edit[@Name='User name']",common.getProperty("userLevel"));
         common.inputText("xpath", "//Edit[@Name='Password']", common.getProperty("password"));
         common.clickElement("name", "Submit");
         Thread.sleep(10000);
@@ -99,11 +104,14 @@ public class AppLogin {
 
     public void logout() throws IOException {
         try {
-            Thread.sleep(2500);
+            Thread.sleep(2000);
             common.clickElement("xpath", "//MenuItem[@Name='File']");
             Thread.sleep(1500);
             common.clickElement("name", "Exit");
             common.clickElement("name", "Yes");
+            Runtime.getRuntime().exec("taskkill /F /IM WinAppDriver.exe");
+            System.out.println("✅ WinAppDriver stopped");
+            Thread.sleep(10000);
         } catch (Exception exception) {
             exception.printStackTrace();
         }

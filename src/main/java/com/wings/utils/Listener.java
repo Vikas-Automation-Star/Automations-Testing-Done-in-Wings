@@ -8,8 +8,10 @@ import org.testng.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
-public class Listener implements ITestListener, ISuiteListener, IExecutionListener, IConfigurationListener  {
+public class Listener implements ITestListener, ISuiteListener, IExecutionListener, IConfigurationListener, IClassListener  {
     int totalTest, passed, failed, skipped = 0;
     int suiteTotalTest = 0;
     int suitePassed = 0;
@@ -20,6 +22,8 @@ public class Listener implements ITestListener, ISuiteListener, IExecutionListen
     JSONArray results = new JSONArray();
     File TimeLogFile;
     Process process;
+
+    private static Process winAppDriverProcess;
 
 
     @Override
@@ -205,5 +209,84 @@ public class Listener implements ITestListener, ISuiteListener, IExecutionListen
         System.out.println(("Total suite failed: " + suiteFailed));
         System.out.println(("Total suite skipped: " + suiteSkipped));
     }
+
+//    @Override
+//    public void onBeforeClass(ITestClass testClass) {
+//        System.out.println("[WinAppDriverListener] Starting WinAppDriver before class: " + testClass.getName());
+//        startWinAppDriver();
+//    }
+//
+//    @Override
+//    public void onAfterClass(ITestClass testClass) {
+//        System.out.println("[WinAppDriverListener] Stopping WinAppDriver after class: " + testClass.getName());
+//        stopWinAppDriver();
+//    }
+//
+//    private void startWinAppDriver() {
+//        try {
+//            // Start WinAppDriver process
+//            winAppDriverProcess = new ProcessBuilder("cmd.exe", "/c", "start", "\"\"", "\"C:\\Program Files (x86)\\Windows Application Driver\\WinAppDriver.exe\"", "127.0.0.1", "4723").start();
+////            Runtime.getRuntime().exec(
+//                    "cmd.exe /c start \"\" \"C:\\Program Files (x86)\\Windows Application Driver\\WinAppDriver.exe\"");
+//
+//            waitForWinAppDriver();
+//            System.out.println("✅ WinAppDriver started successfully.");
+//        } catch (IOException e) {
+//            throw new RuntimeException("Failed to start WinAppDriver", e);
+//        }
+//    }
+//
+//    private void stopWinAppDriver() {
+//        try {
+//            // Kill the WinAppDriver process
+////            if (winAppDriverProcess != null) {
+////                winAppDriverProcess.destroy();
+////                System.out.println("✅ WinAppDriver process terminated.");
+////            } else {
+//            // Fallback: ensure process is killed in case of orphaned process
+//            Runtime.getRuntime().exec("taskkill /F /IM WinAppDriver.exe");
+//            Thread.sleep(5000);
+//            System.out.println("✅ WinAppDriver forcibly terminated (fallback).");
+////            winAppDriverProcess = new ProcessBuilder("cmd.exe", "/c", "start", "\"\"", "\"C:\\Program Files (x86)\\Windows Application Driver\\WinAppDriver.exe\"", "127.0.0.1", "4723").start();
+////            System.out.println("✅ WinAppDriver started successfully.");
+//
+////            }
+//
+//        } catch (IOException | InterruptedException e) {
+//            System.err.println("⚠️ Failed to stop WinAppDriver cleanly: " + e.getMessage());
+//        }
+//    }
+//
+//    private void waitForWinAppDriver() throws IOException {
+//        int retries = 10;
+//        int waitTime = 1000; // milliseconds
+//        boolean isReady = false;
+//
+//        while (retries-- > 0) {
+//            try {
+//                URL url = new URL("http://127.0.0.1:4723/status"); // ✅ Fixed path
+//                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+//                connection.setConnectTimeout(1000);
+//                connection.connect();
+//
+//                if (connection.getResponseCode() == 200) {
+//                    isReady = true;
+//                    break;
+//                }
+//            } catch (IOException ignored) {
+//                try {
+//                    Thread.sleep(waitTime);
+//                } catch (InterruptedException e) {
+//                    Thread.currentThread().interrupt();
+//                }
+//            }
+//        }
+//
+//        if (!isReady) {
+//            throw new RuntimeException("❌ WinAppDriver is not ready at http://127.0.0.1:4723");
+//        }
+//    }
+
+
 
 }
