@@ -45,6 +45,7 @@ public class TestSalesEnquiryCancellation {
     @AfterTest
     public void afterTest() throws IOException {
         appLogin.logout();
+
     }
 
 }
