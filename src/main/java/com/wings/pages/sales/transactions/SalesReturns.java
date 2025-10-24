@@ -166,7 +166,7 @@ public class SalesReturns extends TransactionsBaseClass {
     public void addProducts() throws InterruptedException, IOException {
         List<String> productCode=readExcelData(dataFile,"Items","ProductCode");
         List<String> masterType=readExcelData(dataFile,"Items","MasterType");
-        System.out.println(masterType.size());
+//        System.out.println(masterType.size());
         for (int i = 0; i < productCode.size() ; i++)   {
             addData("xpath","//Edit[@Name='Product Code Row "+i+", Not sorted.']",dataFile,"Items","ProductCode",i);
         }

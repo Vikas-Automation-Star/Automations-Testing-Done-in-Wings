@@ -109,7 +109,7 @@ public class SalesEnquiry extends TransactionsBaseClass {
 
     public void addProduct() throws IOException, ParseException {
         List<String> productCode=readExcelData(dataFile,"Items","ProductCode");
-        System.out.println("productCodes :"+productCode.size());
+//        System.out.println("productCodes :"+productCode.size());
         for (int i = 0; i < productCode.size() ; i++) {
             addData("xpath","//Edit[@Name='Product Code Row "+i+", Not sorted.']",dataFile,"Items","ProductCode",i);
         }
@@ -212,7 +212,7 @@ public class SalesEnquiry extends TransactionsBaseClass {
     public void addChargesAndDeductions() throws IOException {
         navigateToChargesAndDeductionsTab();
         List<String> chargesAndDeductions=readExcelData(dataFile,"ChargesAndDeductions","ChargesOrDeductions");
-        System.out.println("productCodes :"+chargesAndDeductions.size());
+//        System.out.println("productCodes :"+chargesAndDeductions.size());
         for (int i = 0; i < chargesAndDeductions.size() ; i++) {
             addData("xpath","//Edit[@Name='Charges Or Deductions * Row "+i+", Not sorted.']",dataFile,"ChargesAndDeductions","ChargesOrDeductions",i);
         }

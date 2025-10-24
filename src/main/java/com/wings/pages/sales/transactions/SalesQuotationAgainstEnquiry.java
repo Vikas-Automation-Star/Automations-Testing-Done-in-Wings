@@ -103,7 +103,7 @@ public class SalesQuotationAgainstEnquiry extends TransactionsBaseClass {
 
     public void addProduct() throws IOException {
         List<String> productCode=readExcelData(dataFile,"Items","ProductCode");
-        System.out.println("productCodes :"+productCode.size());
+//        System.out.println("productCodes :"+productCode.size());
 
         List<WebElement> uom = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'UOM * Row ')]");
         List<WebElement> quantity = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Quantity * Row ')]");

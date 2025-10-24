@@ -119,7 +119,6 @@ public class CreditNote extends TransactionsBaseClass {
     public void billsReceivables(String receivableVouchers){
         common.clickElement("xpath", "//TabItem[contains(@Name,'Bills Receivable  ')]");
         adjustAmountInBillsReceivables(dataFile,receivableVouchers);
-
     }
 
     public void otherInfo() throws InterruptedException, IOException {

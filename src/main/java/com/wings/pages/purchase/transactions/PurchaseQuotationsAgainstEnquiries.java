@@ -34,7 +34,6 @@ public class PurchaseQuotationsAgainstEnquiries extends TransactionsBaseClass {
         String oldVoucherID = oldTTransactionID();
 
         long generalInfoStart = System.nanoTime();
-        System.out.println("Purchase quotations against enquiries gen info started at:- " + generalInfoStart);
 
         enterVoucherType(dataFile,"GeneralInformation","VoucherType");
         EnterDate("//Edit[@Name='Date *']",dataFile,"GeneralInformation","Date");

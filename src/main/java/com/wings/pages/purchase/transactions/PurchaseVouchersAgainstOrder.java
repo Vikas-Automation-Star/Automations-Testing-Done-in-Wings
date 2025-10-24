@@ -166,7 +166,7 @@ public class PurchaseVouchersAgainstOrder extends TransactionsBaseClass {
     public void addProduct() throws InterruptedException, IOException, ParseException, AWTException {
         List<String> productCode=readExcelData(dataFile,"Items","ProductCode");
         List<String> masterType=readExcelData(dataFile,"Items","MasterType");
-        System.out.println("productCodes :"+productCode.size());
+//        System.out.println("productCodes :"+productCode.size());
         List<WebElement> productAccRowList = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Purchase Account * Row')]");
         List<WebElement> productUOMRowList = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'UOM * Row')]");
         List<WebElement> storageBin = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Storage Bin * Row ')]");
@@ -300,7 +300,7 @@ public class PurchaseVouchersAgainstOrder extends TransactionsBaseClass {
 
     public void addServices() throws IOException, InterruptedException {
         List<String> productCode=readExcelData(dataFile,"Services","ServiceCode");
-        System.out.println("productCodes :"+productCode.size());
+//        System.out.println("productCodes :"+productCode.size());
         for (int i = 0; i < productCode.size() ; i++) {
             addData("xpath","//Edit[@Name='Service Code Row "+i+", Not sorted.']",dataFile,"Services","ServiceCode",i);
         }
@@ -374,7 +374,7 @@ public class PurchaseVouchersAgainstOrder extends TransactionsBaseClass {
 
     public void addChargesAndDeductions() throws IOException, ParseException {
         List<String> productCode=readExcelData(dataFile,"ChargesAndDeductions","ChargesOrDeductions");
-        System.out.println("productCodes :"+productCode.size());
+//        System.out.println("productCodes :"+productCode.size());
         for (int i = 0; i < productCode.size() ; i++) {
             addData("xpath","//Edit[@Name='Charges Or Deductions * Row "+i+", Not sorted.']",dataFile,"ChargesAndDeductions","ChargesOrDeductions",i);
         }
@@ -405,7 +405,7 @@ public class PurchaseVouchersAgainstOrder extends TransactionsBaseClass {
 
     public void addOtherCharges() throws IOException {
         List<String> productCode=readExcelData(dataFile,"OtherCharges","AccountCode");
-        System.out.println("productCodes :"+productCode.size());
+//        System.out.println("productCodes :"+productCode.size());
         for (int i = 0; i < productCode.size() ; i++) {
             addData("xpath","//Edit[@Name='Account Code Row "+i+", Not sorted.']",dataFile,"OtherCharges","AccountCode",i);
         }
@@ -442,7 +442,7 @@ public class PurchaseVouchersAgainstOrder extends TransactionsBaseClass {
 
     public void addOtherCosts() throws IOException {
         List<String> productCode=readExcelData(dataFile,"OtherCosts","ExpenseTypeCode");
-        System.out.println("productCodes :"+productCode.size());
+//        System.out.println("productCodes :"+productCode.size());
         for (int i = 0; i < productCode.size() ; i++) {
             addData("xpath","//Edit[@Name='Expense Type Code Row "+i+", Not sorted.']",dataFile,"OtherCosts","ExpenseTypeCode",i);
         }

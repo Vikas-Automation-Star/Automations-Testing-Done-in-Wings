@@ -56,7 +56,7 @@ public class JournalEntriesComplex extends TransactionsBaseClass {
 
     public void accounts() throws IOException {
         List<String> productCode=readExcelData(dataFile,"Accounts","AccountCode");
-        System.out.println("productCodes :"+productCode.size());
+//        System.out.println("productCodes :"+productCode.size());
         for (int i = 0; i < productCode.size() ; i++) {
             addData("xpath","//Edit[@Name='Account Code Row "+i+", Not sorted.']",dataFile,"Accounts","AccountCode",i);
         }

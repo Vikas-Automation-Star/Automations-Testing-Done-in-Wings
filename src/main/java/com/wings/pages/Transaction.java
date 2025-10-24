@@ -175,9 +175,9 @@ public  class Transaction {
 
     public void gstTransactionType(String gstType) {
         List<WebElement> elementList = common.findWebElements("xpath", "//Window[@Name='GST Transaction Type']//Table/*[@Name='Data Panel']/*/*[starts-with(@Name,'GST Transaction Type row ')]");
-        System.out.println("Size :" + elementList.size());
+//        System.out.println("Size :" + elementList.size());
         for (WebElement i : elementList) {
-            System.out.println(i.getText());
+//            System.out.println(i.getText());
             if (i.getText().equals(gstType)) {
                 i.click();
                 i.sendKeys(Keys.LEFT, Keys.SPACE, Keys.ENTER, Keys.ENTER);
@@ -375,19 +375,19 @@ public  class Transaction {
 
     public void navigateToCheques() {
         List<WebElement> Cheques=common.findWebElements("xpath","//TabItem[contains(@Name,'Cheques')]");
-        System.out.println(Cheques.get(0).getText());
+//        System.out.println(Cheques.get(0).getText());
         Cheques.get(0).click();
     }
 
     public void navigateToPostdatedCheques() {
         List<WebElement> PostdatedCheques=common.findWebElements("xpath","//TabItem[contains(@Name,'Cheques')]");
-        System.out.println(PostdatedCheques.get(1).getText());
+//        System.out.println(PostdatedCheques.get(1).getText());
         PostdatedCheques.get(1).click();
     }
 
     public void navigateToChequesPDC() {
         List<WebElement> ChequesPDC=common.findWebElements("xpath","//TabItem[contains(@Name,'Cheques')]");
-        System.out.println(ChequesPDC.get(2).getText());
+//        System.out.println(ChequesPDC.get(2).getText());
         ChequesPDC.get(2).click();
     }
 
@@ -783,7 +783,7 @@ public  class Transaction {
         }
         // Popup found, continue with existing logic
         List<WebElement> pendings = common.findWebElements("xpath", "//Window[@Name='Open Transactions']//Pane/Table/*[starts-with(@Name,'Row ')]");
-        System.out.println("pendings size: " + pendings.size());
+//        System.out.println("pendings size: " + pendings.size());
         boolean voucherFound = false;
         for (int i = 0; i < pendings.size(); i++) {
             WebElement userRow = pendings.get(i);

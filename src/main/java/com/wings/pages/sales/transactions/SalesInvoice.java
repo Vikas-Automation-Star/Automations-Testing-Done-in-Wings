@@ -204,8 +204,8 @@ public class SalesInvoice extends TransactionsBaseClass {
     public void addProducts() throws InterruptedException, IOException {
         List<String> productCode=readExcelData(dataFile,"Items","ProductCode");
         List<String> masterType=readExcelData(dataFile,"Items","MasterType");
-        System.out.println(masterType.size());
-        for (int i = 0; i < productCode.size() ; i++)   {
+//        System.out.println(masterType.size());
+        for (int i = 0; i < productCode.size() ; i++) {
             addData("xpath","//Edit[@Name='Product Code Row "+i+", Not sorted.']",dataFile,"Items","ProductCode",i);
         }
         List<WebElement> productAccRowList = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Sales Account * Row')]");
@@ -288,12 +288,12 @@ public class SalesInvoice extends TransactionsBaseClass {
                 common.clickElement("xpath", "//Button[@Name='Stock Details Row "+j+"']");
                 Thread.sleep(1000);
                 List<WebElement> editfields=common.findWebElements("xpath","//Table[@Name='Serial Numbers List']/*[@Name='Data Panel']/*[contains(@Name,'Row')]/*[contains(@Name,'Select row')]");
-                System.out.println("Serial number edit fields :"+editfields.size());
+//                System.out.println("Serial number edit fields :"+editfields.size());
                 editfields.get(0).click();
                 editfields.get(1).click();
                 Thread.sleep(2000);
                 List<WebElement> freeQuantity=common.findWebElements("xpath","//Table[@Name='Selected Serial Numbers']/*[@Name='Data Panel']/*[contains(@Name,'Row')]/*[contains(@Name,'FreeQuantity row ')]");
-                System.out.println("free  Size :"+freeQuantity.size());
+//                System.out.println("free  Size :"+freeQuantity.size());
                 freeQuantity.get(1).click();
                 common.clickElement("xpath", "//Button[@Name='OK']");
             }else {

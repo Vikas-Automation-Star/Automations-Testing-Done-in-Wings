@@ -38,7 +38,6 @@ public class PurchaseEnquiriesCancellation extends TransactionsBaseClass {
         Thread.sleep(2000);
         String oldVoucherID = oldTTransactionID();
         long generalInfoStart = System.nanoTime();
-        System.out.println("Purchase Voucher General information started executed in :" + generalInfoStart);
 
         enterVoucherType(dataFile,"GeneralInformation","VoucherType");
         EnterDate("//Edit[@Name='Date *']",dataFile,"GeneralInformation","Date");

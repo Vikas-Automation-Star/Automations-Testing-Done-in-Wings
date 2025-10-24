@@ -169,11 +169,11 @@ public class BookIncomesOrReceivables extends TransactionsBaseClass {
     public void billsPayable(String payableVoucher) throws IOException, InterruptedException {
         common.clickElement("xpath", "//TabItem[contains(@Name,'Bills Payable  ')]");
         List<WebElement> towardsVoucherNum = common.findWebElements("xpath", "//Table[@Name='BillsPayable']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Towards VNo * Row')]");
-        System.out.println("Towards vouchers Size :"+towardsVoucherNum.size());
+//        System.out.println("Towards vouchers Size :"+towardsVoucherNum.size());
         boolean voucherFound=false;
         for (int i=0;i< towardsVoucherNum.size();i++) {
             WebElement text = towardsVoucherNum.get(i);
-            System.out.println("Towards vouchers getTet :" + text.getText());
+//            System.out.println("Towards vouchers getTet :" + text.getText());
             if (text.getText().equals(payableVoucher)) {
                 voucherFound = true;
                 text.click();

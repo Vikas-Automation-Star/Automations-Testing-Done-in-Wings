@@ -101,7 +101,7 @@ public class MaterialReceiptFromProduction extends TransactionsBaseClass {
         Thread.sleep(1000);
         common.clickElement("xpath","//TabItem[contains(@Name,'By Products  ')]");
         List<String> productCode=readExcelData(dataFile,"ByProducts","ProductCode");
-        System.out.println("OverHeads Size :"+productCode.size());
+//        System.out.println("OverHeads Size :"+productCode.size());
         for (int i = 0; i < productCode.size() ; i++) {
             addData("xpath","//Edit[@Name='Product Code Row "+i+", Not sorted.']",dataFile,"ByProducts","ProductCode",i);
         }
@@ -131,7 +131,7 @@ public class MaterialReceiptFromProduction extends TransactionsBaseClass {
         Thread.sleep(1000);
         common.clickElement("xpath","//TabItem[contains(@Name,'Over Heads  ')]");
         List<String> productCode=readExcelData(dataFile,"OverHeads","OverHeadTypeCode");
-        System.out.println("OverHeads Size :"+productCode.size());
+//        System.out.println("OverHeads Size :"+productCode.size());
         for (int i = 0; i < productCode.size() ; i++) {
             addData("xpath","//Edit[@Name='Over Head Type Code Row "+i+", Not sorted.']",dataFile,"OverHeads","OverHeadTypeCode",i);
         }

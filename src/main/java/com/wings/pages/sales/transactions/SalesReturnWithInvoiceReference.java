@@ -158,9 +158,9 @@ public class SalesReturnWithInvoiceReference extends TransactionsBaseClass {
     public void addPendingProducts() throws IOException, InterruptedException {
         List<String> productsOrderInExcel=getValuesByColumnHeader(dataFile,"Items","Product");
         List<String> productsCode=getValuesByColumnHeader(dataFile,"Items","ProductCode");
-        List<String> masterType=readExcelData(dataFile,"Items","MasterType");
-        List<String> productPendingQuantityExcel=readExcelData(dataFile,"Items","PendingQuantity");
-        List<String> productPendingFreeQuantityExel=readExcelData(dataFile,"Items","PendingFreeQuantity");
+//        List<String> masterType=readExcelData(dataFile,"Items","MasterType");
+//        List<String> productPendingQuantityExcel=readExcelData(dataFile,"Items","PendingQuantity");
+//        List<String> productPendingFreeQuantityExel=readExcelData(dataFile,"Items","PendingFreeQuantity");
 //        for (String element2:masterType){
 //            System.out.println(element2+"masterType");
 //        }
@@ -181,14 +181,14 @@ public class SalesReturnWithInvoiceReference extends TransactionsBaseClass {
         List<WebElement> productsOrderInApp=common.findWebElements("xpath","//Table[@Name='Items']/*[starts-with(@Name,'Row ')]/Edit[starts-with(@Name,'Product * Row ')]");
 //        List<WebElement> appProduct = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Product * Row ')]");
 //        List<WebElement> productCodeRowList = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Product Code Row')]");
-        List<WebElement> productPendingQuantity = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Pending Quantity Row ')]");
-        for (WebElement element5:productPendingQuantity){
-            System.out.println(element5.getText()+"pending quantity in App");
-        }
-        List<WebElement> productPendingFreeQuantity = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Pending Free Quantity Row ')]");
-        for (WebElement element6:productPendingFreeQuantity){
-            System.out.println(element6.getText()+"free pending quantity in App");
-        }
+//        List<WebElement> productPendingQuantity = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Pending Quantity Row ')]");
+//        for (WebElement element5:productPendingQuantity){
+//            System.out.println(element5.getText()+"pending quantity in App");
+//        }
+//        List<WebElement> productPendingFreeQuantity = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Pending Free Quantity Row ')]");
+//        for (WebElement element6:productPendingFreeQuantity){
+//            System.out.println(element6.getText()+"free pending quantity in App");
+//        }
         List<WebElement> productAccRowList = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Sales Returns Account * Row ')]");
         List<WebElement> productUOMRowList = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'UOM * Row ')]");
         List<WebElement> storageBin = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Storage Bin * Row ')]");

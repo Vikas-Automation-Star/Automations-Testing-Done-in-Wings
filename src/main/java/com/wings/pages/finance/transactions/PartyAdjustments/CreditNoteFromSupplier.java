@@ -144,7 +144,6 @@ public class CreditNoteFromSupplier extends TransactionsBaseClass {
     public void billsPayable(String payableVoucher) throws IOException, InterruptedException {
         common.clickElement("xpath", "//TabItem[contains(@Name,'Bills Payable  ')]");
         adjustAmountInBillsPayable(dataFile,payableVoucher);
-
     }
 
     public void otherInfo() throws InterruptedException, IOException {
