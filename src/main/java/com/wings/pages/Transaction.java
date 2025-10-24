@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -1003,15 +1004,10 @@ public  class Transaction {
         long navStart = System.nanoTime();
         // Navigate through menus[u can write separately too]
         navigateToMastersWhen3Steps("Tools","Vouchers","Delete");
-//        System.out.println("Menu navigation time: " + (navStart/ 1_000_000_000.0) + " sec");
-        // Start WinAppDriver session with Root access (note: this is often slow)
         long sessionStart = System.nanoTime();
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("app", "Root");
         rootDriver = new WindowsDriver<>(new URL("http://127.0.0.1:4723/"), capabilities);
-//        System.out.println("Session init time: " + (sessionStart / 1_000_000_000.0) + " sec");
-
-        // Use explicit wait instead of Thread.sleep
         WebDriverWait wait = new WebDriverWait(rootDriver,10);
         try {
             long findWindowStart = System.nanoTime();
@@ -1027,33 +1023,43 @@ public  class Transaction {
             // Click Delete
             deleteWindow.findElement(By.xpath(".//Button[@Name='Delete']")).click();
             System.out.println("Clicked Delete.");
-            // Handle popup (success or failure)
+            WebDriverWait shortWait = new WebDriverWait(rootDriver, 3);
+            shortWait.pollingEvery(Duration.ofMillis(100));
             try {
-                WebElement yesButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//Button[@Name='Yes']")));
+                WebElement yesButton = shortWait.until(ExpectedConditions.elementToBeClickable(By.xpath("//Button[@Name='Yes']")));
+                System.out.println("Clicking Yes at: " + System.currentTimeMillis());
                 yesButton.click();
-                System.out.println("Confirmed deletion.");
-
-                WebElement successMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                        By.xpath("//Text[@Name='Transactions deleted Successfully.']")));
-                System.out.println("Transaction deleted successfully: " + voucherID);
-            } catch (TimeoutException e) {
+                // Wait for success or failure message (whichever comes first)
                 try {
-                    WebElement failureMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                            By.xpath("//Text[contains(@Name, \"Can't Delete Transaction\")]")));
-                    System.out.println("Cannot delete transaction. It may not exist: " + voucherID);
-                } catch (TimeoutException ex) {
-                    System.out.println("No confirmation or error message appeared after deletion attempt.");
+                    WebElement successMessage = shortWait.until(ExpectedConditions.visibilityOfElementLocated(
+                            By.xpath("//Text[@Name='Transactions deleted Successfully.']")));
+                    System.out.println("Transaction deleted successfully at: " + System.currentTimeMillis() + " for: " + voucherID);
+                } catch (TimeoutException e) {
+                    try {
+                        WebElement failureMessage = shortWait.until(ExpectedConditions.visibilityOfElementLocated(
+                                By.xpath("//Text[contains(@Name, \"Can't Delete Transaction\")]")));
+                        System.out.println("Cannot delete transaction. It may not exist: " + voucherID);
+                    } catch (TimeoutException ex) {
+                        System.out.println("No success or failure message appeared.");
+                    }
                 }
-            }
-            // Handle OK button
-            try {
-                WebElement okButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//Button[@Name='OK']")));
-                okButton.click();
-                System.out.println("Clicked OK.");
-            } catch (TimeoutException e) {
-                System.out.println("OK button not found or not clickable.");
-            }
+                // Try finding OK with shorter timeout, retry if needed
+                boolean okClicked = false;
+                try {
+                    WebElement okButton = wait.until(ExpectedConditions.elementToBeClickable(
+                            By.xpath("//Button[@Name='OK']")));
+                    okButton.click();
+                    okClicked=true;
+                } catch (TimeoutException e) {
+                    System.out.println("OK button not found.");
+                }
 
+                if (!okClicked) {
+                    System.out.println("OK button not found after retries.");
+                }
+            } catch (TimeoutException e) {
+                System.out.println("Yes button not found. Delete confirmation may not have appeared.");
+            }
         } catch (TimeoutException e) {
             System.out.println("Delete Transaction window did not appear.");
         } finally {

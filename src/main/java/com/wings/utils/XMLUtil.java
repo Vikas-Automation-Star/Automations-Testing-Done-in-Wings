@@ -147,7 +147,16 @@ public class XMLUtil {
         totalTests = passedTests + failedTests + skippedTests;
         passRate = (totalTests > 0) ? (passedTests / (double) totalTests) * 100 : 0;
 
-        String executionTimeFormatted = String.format("%02d:%02d:%02d", (executionTimeMillis / (1000 * 60 * 60)) % 24, (executionTimeMillis / (1000 * 60)) % 60, (executionTimeMillis / 1000) % 60);
+        long totalSeconds = executionTimeMillis / 1000;
+        long hours = totalSeconds / 3600;
+        long minutes = (totalSeconds % 3600) / 60;
+        long seconds = totalSeconds % 60;
+
+        String executionTimeFormatted = String.format("%02d:%02d:%02d", hours, minutes, seconds);
+
+
+//        String executionTimeFormatted = String.format("%02d:%02d:%02d",
+//                (executionTimeMillis / (1000 * 60 * 60)) % 24, (executionTimeMillis / (1000 * 60)) % 60, (executionTimeMillis / 1000) % 60);
 
         // Read and update HTML template
         String htmlTemplate = new String(Files.readAllBytes(Paths.get("mailTemplates/executionTemplate.html")), "UTF-8");
