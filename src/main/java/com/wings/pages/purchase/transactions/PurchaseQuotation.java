@@ -8,6 +8,9 @@ import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+
+import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.List;
 
@@ -229,10 +232,11 @@ public class PurchaseQuotation extends TransactionsBaseClass {
         }
     }
 
-    public void otherInfo() throws InterruptedException, IOException {
+    public void otherInfo() throws InterruptedException, IOException, AWTException {
         EnterData("//Edit[@Name='Reference Bill No']",dataFile,"OtherInfo","ReferenceBillNo");
-        Thread.sleep(5000);
-        common.clickElement("xpath","//Window/Button[@Name='OK']");
+        Robot robot=new Robot();
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
         EnterDate("//Edit[@Name='Reference Bill Date']",dataFile,"OtherInfo","ReferenceBillDate");
         EnterData("//Edit[@Name='Other Info 1']",dataFile,"OtherInfo","OtherInfo1");
         EnterData("//Edit[@Name='Other Info 2']",dataFile,"OtherInfo","OtherInfo2");

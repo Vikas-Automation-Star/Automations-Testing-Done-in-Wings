@@ -1014,7 +1014,7 @@ public  class Transaction {
             // Find the Delete Transaction window
             WebElement deleteWindow = wait.until(ExpectedConditions.presenceOfElementLocated(
                     By.xpath("//Window[@Name='Delete Transaction']")));
-            System.out.println("Window found in: " + (findWindowStart/ 1_000_000_000.0) + " sec") ;
+            System.out.println("Window found in: " + ((System.nanoTime() - findWindowStart) / 1_000_000_000.0) + " sec");
             // Fill form inputs
             WebElement seriesInput = deleteWindow.findElement(By.xpath(".//Text[@Name='Document Series']/following-sibling::Edit"));
             WebElement numberInput = deleteWindow.findElement(By.xpath(".//Text[@Name='Document No']/following-sibling::Edit"));
