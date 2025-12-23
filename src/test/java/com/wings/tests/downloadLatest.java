@@ -27,8 +27,7 @@ public class downloadLatest {
         try {
             System.out.println(System.getProperty("user.dir") + "\\downloads");
             FileUtils.cleanDirectory(new File(System.getProperty("user.dir") + "\\downloads"));
-            System.setProperty("webdriver.chrome.driver",
-                    "C:\\Users\\Manoj\\IdeaProjects\\WingsDemo\\drivers\\chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", "C:\\Users\\Manoj\\IdeaProjects\\WingsDemo\\drivers\\chromedriver.exe");
             ChromeOptions options = new ChromeOptions();
             options.addArguments("start-maximized");
             options.addArguments("--safebrowsing-disable-download-protection");

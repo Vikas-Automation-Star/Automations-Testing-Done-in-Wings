@@ -69,7 +69,7 @@ public class downloadLatestBuild_Resource {
         try {
             String username = "Downloads";
             String password = "@*WINGS12";
-            // appending username, password with URL
+            // appending username, password with URL http://downloads.wingsoncloud.com/downloads/Wings24D/24DBooks/
             String s = "http://" + username + ":" + password + "@" + "downloads.wingsoncloud.com/downloads/";
             driver.manage().window().maximize();
             driver.navigate().to(s);

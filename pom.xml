@@ -13,11 +13,13 @@
     </properties>
 
     <dependencies>
+
         <!--<dependency>
           <groupId>org.seleniumhq.selenium</groupId>
           <artifactId>selenium-java</artifactId>
           <version>3.3.1</version>
         </dependency>-->
+
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
@@ -106,8 +108,6 @@
         </dependency>
         <!-- JSON parsing -->
 
-
-
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
@@ -154,18 +154,22 @@
             <artifactId>kie-api</artifactId>
             <version>7.63.0.Final</version> <!-- Use the appropriate version -->
         </dependency>
+
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
             <version>5.5.5</version>
             <scope>compile</scope>
         </dependency>
-        <!-- upto here -->
+
+        <!-- up to here -->
+
             <dependency>
                 <groupId>com.microsoft.sqlserver</groupId>
                 <artifactId>mssql-jdbc</artifactId>
                 <version>12.2.0.jre11</version>
             </dependency>
+
         <!-- jdbc sql -->
 
     </dependencies>

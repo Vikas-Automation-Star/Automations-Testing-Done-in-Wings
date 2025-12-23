@@ -1,0 +1,86 @@
+[
+  {
+    "dataset": "GenInfo",
+    "data": {
+      "remarks": "No remarks"
+    }
+  },
+  {
+    "dataset": "Cash",
+    "data": {
+      "cashRows": "3",
+      "cashAccount0": "AT_Cash Acc 1",
+      "cashAccount1": "AT_Cash Acc 2",
+      "cashAccount2": "AT_Cash Acc 3",
+
+      "cashPath0": "//*[text()='AT_Cash Acc 1']",
+      "cashPath1": "//*[text()='AT_Cash Acc 2']",
+      "cashPath2": "//*[text()='AT_Cash Acc 3']",
+
+      "cashAmount0": "30.123",
+      "cashAmount1": "20.123",
+      "cashAmount2": "10.123",
+
+      "tdsAmount0": "3.13",
+      "tdsAmount1": "4.13",
+      "tdsAmount2": "5.13",
+
+      "comments": "no cash comments"
+    }
+  },
+  {
+    "dataset": "Cheques",
+    "data": {
+      "chequesRows": "3",
+      "chequesAmount": "100.123",
+      "chequesEFT/No": "2001",
+      "chequesDate": "10-01-2026",
+      "chequesTdsAmount": "50.13",
+      "chequesComments": "no cash comments",
+      "chequesCharges": "50.13"
+    }
+  },
+  {
+    "dataset": "PostDatedCheque",
+    "data": {
+      "postDatedChequesDateRows": "3",
+      "postDCAmount": "100.123",
+      "postDCChequesEFT/No": "2000",
+      "postDChequesDate": "10-02-2026",
+      "postDCTdsAmount": "50.13",
+      "postDCChequesComments": "no cash comments"
+    }
+  },
+  {
+    "dataset": "cheque[PDC]",
+    "data": {
+      "cheque[PDC]Rows": "3",
+      "PDCAmount": "100.123",
+      "PDCChequesEFT/No": "2000",
+      "PDChequesDate": "10-03-2026",
+      "PDCTdsAmount": "50.13",
+      "PDCChequesComments": "no cash comments"
+    }
+  },
+  {
+    "dataset": "creditCard",
+    "data": {
+      "creditCardRows": "3",
+      "cardAmount": "100.123",
+      "cardTdsAmount": "50.13",
+      "cardNumber": "987654321",
+      "cardApprovalNumber": "998921"
+    }
+  },
+  {
+    "dataset": "summary",
+    "data": {
+      "expectedCashAmount": "150.25",
+      "expectedChequesAmount": "150.25",
+      "expectedPostDatedChequesAmount": "300.5",
+      "expectedCreditCardAmount": "150.25",
+      "expectedReceiptsAmount": "751.25"
+    }
+  }
+
+]

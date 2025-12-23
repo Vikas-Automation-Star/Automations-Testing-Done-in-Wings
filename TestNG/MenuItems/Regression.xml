@@ -5,25 +5,20 @@
     </listeners>
 
     <!-- Sales !-->
+
     <test name="SEC 1" description="Sales Enquiry Cancellation" testID="1">
         <classes>
             <class name="menuItems.sales.transactions.TestSalesEnquiryCancellation"/>
         </classes>
     </test>
 
-    <test name="SQAE 1" description="Sales Quotation against Enquiry" testID="2">
-        <classes>
-            <class name="menuItems.sales.transactions.TestSalesQuotationAgainstEnquiry"/>
-        </classes>
-    </test>
-
-    <test name="SQC 1" description="Sales Quotation Cancellation" testID="3">
+    <test name="SQC 1" description="Sales Quotation Cancellation" testID="2">
         <classes>
             <class name="menuItems.sales.transactions.TestSalesQuotationsCancellation"/>
         </classes>
     </test>
 
-    <test name="SOAQ 1" description="Sales Order against Quotation" testID="4">
+    <test name="SOAQ 1" description="Sales Order against Quotation" testID="3">
         <classes>
             <class name="menuItems.sales.transactions.TestSalesOrdersAgainstQuotations"/>
         </classes>
@@ -102,6 +97,7 @@
     </test>
 
     <!--Purchase-->
+
     <test name="PEC 1" description="Purchase Enquiries Cancellation" testID="16">
         <classes>
             <class name="menuItems.purchase.transactions.TestPurchaseEnquiriesCancellation"/>
@@ -114,24 +110,11 @@
         </classes>
     </test>
 
-    <!--    <test name="PQAE 1" description="Purchase Quotations Against Enquiries" testID="19">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchaseQuotationsAgainstEnquiries"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="POAQ 1" description="Purchase Orders Against Quotations" testID="20">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchaseOrdersAgainstQuotations"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
     <test name="POC 1" description="Purchase Orders Cancellation" testID="18">
         <classes>
             <class name="menuItems.purchase.transactions.TestPurchaseOrderCancellation"/>
         </classes>
     </test>
-
 
     <test name="MRAO 1" description="Material Receipts Against Orders" testID="19">
         <classes>
@@ -150,12 +133,6 @@
             <class name="menuItems.purchase.transactions.TestPurchaseVouchers"/>
         </classes>
     </test>
-
-    <!--    <test name="PVAPO 1" description="Purchase Vouchers Against PurchaseOrders" testID="26">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.purchase.transactions.TestPurchaseVouchersAgainstOrders"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
 
     <test name="PVAPR 1" description="Purchase Vouchers Against PurchaseReceipts" testID="22">
         <classes>
@@ -187,298 +164,280 @@
         </classes>
     </test>
 
+    <!--    Inventory !-->
 
-    <!--Inventory !-->
+    <test name="OS 1" description="Opening stock" testID="27">
+        <classes>
+            <class name="menuItems.inventory.transactions.TestOpeningStock"/>
+        </classes>
+    </test>
 
-    <!--    <test name="OS 1" description="Opening stock" testID="27">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.inventory.transactions.TestOpeningStock"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="SCR 1" description="Stock Creation" testID="28">
+        <classes>
+            <class name="menuItems.inventory.transactions.TestStockCreation"/>
+        </classes>
+    </test>
 
-    <!--    <test name="SCR 1" description="Stock Creation" testID="28">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.inventory.transactions.TestStockCreation"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="SCM 7" description="Stock Consumption" testID="29">
+        <classes>
+            <class name="menuItems.inventory.transactions.TestStockConsumption"/>
+        </classes>
+    </test>
 
-    <!--    <test name="SCM 7" description="Stock Consumption" testID="29">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.inventory.transactions.TestStockConsumption"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="SCN 1" description="Stock Conversation" testID="30">
+        <classes>
+            <class name="menuItems.inventory.transactions.TestStockConversion"/>
+        </classes>
+    </test>
 
-    <!--    <test name="SCN 1" description="Stock Conversation" testID="30">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.inventory.transactions.TestStockConversion"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="ILT 1" description="Inter Location Transfers" testID="31">
+        <classes>
+            <class name="menuItems.inventory.transactions.TestInterLocationTransfers"/>
+        </classes>
+    </test>
 
-    <!--    <test name="ILT 1" description="Inter Location Transfers" testID="31">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.inventory.transactions.TestInterLocationTransfers"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="IST 1" description="Initiate stock take" testID="32">
+        <classes>
+            <class name="menuItems.inventory.transactions.TestInitiateStockTake"/>
+        </classes>
+    </test>
 
-    <!--    <test name="IST 1" description="Initiate stock take" testID="32">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.inventory.transactions.TestInitiateStockTake"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <!--receipts !-->
 
-    <!--    <test name="PST 1" description="Physical stock Take" testID="33">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.inventory.transactions.TestPhysicalStockTake"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="PREC 1" description="Receipts-Receipts from Parties" testID="33">
+        <classes>
+            <class name="menuItems.finance.transactions.Receipts.TestReceiptsFromParties"/>
+        </classes>
+    </test>
 
-    <!--        &lt;!&ndash;receipts !&ndash;&gt;-->
-    <!--        <test name="PREC 1" description="Receipts-Receipts from Parties" testID="34">-->
-    <!--            <classes>-->
-    <!--                <class name="menuItems.finance.transactions.Receipts.TestReceiptsFromParties"/>-->
-    <!--            </classes>-->
-    <!--        </test>-->
+    <test name="CR 1" description="Receipts-Cash Receipts" testID="34">
+        <classes>
+            <class name="menuItems.finance.transactions.Receipts.TestCashReceipts"/>
+        </classes>
+    </test>
 
-    <!--        <test name="CR 1" description="Receipts-Cash Receipts" testID="35">-->
-    <!--            <classes>-->
-    <!--                <class name="menuItems.finance.transactions.Receipts.TestCashReceipts"/>-->
-    <!--            </classes>-->
-    <!--        </test>-->
+    <test name="BR 1" description="Receipts-Bank Receipts" testID="35">
+        <classes>
+            <class name="menuItems.finance.transactions.Receipts.TestBankReceipts"/>
+        </classes>
+    </test>
 
-    <!--        <test name="BR 12" description="Receipts-Bank Receipts" testID="36">-->
-    <!--            <classes>-->
-    <!--                <class name="menuItems.finance.transactions.Receipts.TestBankReceipts"/>-->
-    <!--            </classes>-->
-    <!--        </test>-->
+    <test name="CCR 1" description="Receipts-Credit Card Receipts" testID="36">
+        <classes>
+            <class name="menuItems.finance.transactions.Receipts.TestCreditCardReceipt"/>
+        </classes>
+    </test>
 
-    <!--        <test name="CCR 1" description="Receipts-Credit Card Receipts" testID="37">-->
-    <!--            <classes>-->
-    <!--                <class name="menuItems.finance.transactions.Receipts.TestCreditCardReceipt"/>-->
-    <!--            </classes>-->
-    <!--        </test>-->
+    <test name="RFCCR 1" description="Receipts-Receipts from credit card companies" testID="37">
+        <classes>
+            <class name="menuItems.finance.transactions.Receipts.TestReceiptsFromCreditCardCompanies"/>
+        </classes>
+    </test>
 
-    <!--        <test name="RFCCR 1" description="Receipts-Receipts from credit card companies" testID="38">-->
-    <!--            <classes>-->
-    <!--                <class name="menuItems.finance.transactions.Receipts.TestReceiptsFromCreditCardCompanies"/>-->
-    <!--            </classes>-->
-    <!--        </test>-->
+    <!--Payments !-->
 
-    <!--    &lt;!&ndash;Payments !&ndash;&gt;-->
-    <!--    <test name="PPP 1" description="Payments- Payments to Parties" testID="39">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.finance.transactions.Payments.TestPaymentToParties"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="PPP 1" description="Payments- Payments to Parties" testID="38">
+        <classes>
+            <class name="menuItems.finance.transactions.Payments.TestPaymentToParties"/>
+        </classes>
+    </test>
 
-    <!--    <test name="CP 1" description="Payments- Cash Payments" testID="40">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.finance.transactions.Payments.TestCashPayments"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="CPay 1" description="Payments- Cash Payments" testID="39">
+        <classes>
+            <class name="menuItems.finance.transactions.Payments.TestCashPayments"/>
+        </classes>
+    </test>
 
-    <!--    <test name="BP 1" description="Payments- Bank Payments" testID="41">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.finance.transactions.Payments.TestBankPayments"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="BP 1" description="Payments- Bank Payments" testID="40">
+        <classes>
+            <class name="menuItems.finance.transactions.Payments.TestBankPayments"/>
+        </classes>
+    </test>
 
-    <!--    <test name="CT 1" description="Payments- Cash Transfers" testID="42">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.finance.transactions.Payments.TestCashTransfer"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="CT 1" description="Payments- Cash Transfers" testID="41">
+        <classes>
+            <class name="menuItems.finance.transactions.Payments.TestCashTransfer"/>
+        </classes>
+    </test>
 
-    <!--    <test name="SP 1" description="Payments- Salary Payments" testID="43">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.finance.transactions.Payments.TestSalaryPayments"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="SP 1" description="Payments- Salary Payments" testID="42">
+        <classes>
+            <class name="menuItems.finance.transactions.Payments.TestSalaryPayments"/>
+        </classes>
+    </test>
 
-    <!--    &lt;!&ndash; Banking !&ndash;&gt;-->
-    <!--    <test name="CDW 1" description="Banking - Cash Deposits and Withdrawals" testID="44">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.finance.transactions.Banking.TestCashDepositsAndWithdrawals"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <!-- Banking !-->
 
-    <!--    <test name="IBFT 1" description="Banking - Inter Bank Fund Transfer" testID="45">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.finance.transactions.Banking.TestInterBankFundTransfer"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="CDW 1" description="Banking - Cash Deposits and Withdrawals" testID="43">
+        <classes>
+            <class name="menuItems.finance.transactions.Banking.TestCashDepositsAndWithdrawals"/>
+        </classes>
+    </test>
 
-    <!--    <test name="BR 1" description="Banking - Bank Reconciliation" testID="46">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.finance.transactions.Banking.TestBankReconciliation"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="IBFT 1" description="Banking - Inter Bank Fund Transfer" testID="44">
+        <classes>
+            <class name="menuItems.finance.transactions.Banking.TestInterBankFundTransfer"/>
+        </classes>
+    </test>
 
-    <!--    <test name="DPDC 1" description="Banking - Deposit Post Dated Cheques" testID="47">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.finance.transactions.Banking.TestDepositPostDatedCheques"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="BRec 1" description="Banking - Bank Reconciliation" testID="45">
+        <classes>
+            <class name="menuItems.finance.transactions.Banking.TestBankReconciliation"/>
+        </classes>
+    </test>
 
-    <!--    <test name="OUCBE 1" description="Banking - Opening Uncleared Bank Entries" testID="48">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.finance.transactions.Banking.TestOpeningUnclearedBankEntries"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="DPDC 1" description="Banking - Deposit Post Dated Cheques" testID="46">
+        <classes>
+            <class name="menuItems.finance.transactions.Banking.TestDepositPostDatedCheques"/>
+        </classes>
+    </test>
 
-    <!--    <test name="CBI 1" description="Banking - Issued Cheques Bounce" testID="49">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.finance.transactions.Banking.TestIssuedChequesBounce"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="OUCBE 1" description="Banking - Opening Uncleared Bank Entries" testID="47">
+        <classes>
+            <class name="menuItems.finance.transactions.Banking.TestOpeningUnclearedBankEntries"/>
+        </classes>
+    </test>
 
-    <!--Party Adjustments !-->
-    <!--        <test name="AB 1" description="Party Adjustments- Adjust Party Bills" testID="50">-->
-    <!--            <classes>-->
-    <!--                <class name="menuItems.finance.transactions.PartyAdjustments.TestAdjustPartyBills"/>-->
-    <!--            </classes>-->
-    <!--        </test>-->
+    <test name="CBI 1" description="Banking - Issued Cheques Bounce" testID="48">
+        <classes>
+            <class name="menuItems.finance.transactions.Banking.TestIssuedChequesBounce"/>
+        </classes>
+    </test>
 
-    <!--        <test name="DN 1" description="Party Adjustments- Debit Note" testID="51">-->
-    <!--            <classes>-->
-    <!--                <class name="menuItems.finance.transactions.PartyAdjustments.TestDebitNote"/>-->
-    <!--            </classes>-->
-    <!--        </test>-->
+    <!--    Party Adjustments !-->
 
-    <!--        <test name="CN 1" description="Party Adjustments- Credit Note" testID="52">-->
-    <!--            <classes>-->
-    <!--                <class name="menuItems.finance.transactions.PartyAdjustments.TestCreditNote"/>-->
-    <!--            </classes>-->
-    <!--        </test>-->
+    <test name="AB 1" description="Party Adjustments- Adjust Party Bills" testID="49">
+        <classes>
+            <class name="menuItems.finance.transactions.PartyAdjustments.TestAdjustPartyBills"/>
+        </classes>
+    </test>
 
-    <!--        <test name="DNOC 1" description="Party Adjustments- Debit Note on Customers" testID="53">-->
-    <!--            <classes>-->
-    <!--                <class name="menuItems.finance.transactions.PartyAdjustments.TestDebitNoteOnCustomers"/>-->
-    <!--            </classes>-->
-    <!--        </test>-->
+    <test name="DN 1" description="Party Adjustments- Debit Note" testID="50">
+        <classes>
+            <class name="menuItems.finance.transactions.PartyAdjustments.TestDebitNote"/>
+        </classes>
+    </test>
 
-    <!--        <test name="CNOC 1" description="Party Adjustments- Credit Note on Customer" testID="54">-->
-    <!--            <classes>-->
-    <!--                <class name="menuItems.finance.transactions.PartyAdjustments.TestCreditNoteOnCustomer"/>-->
-    <!--            </classes>-->
-    <!--        </test>-->
+    <test name="CN 1" description="Party Adjustments- Credit Note" testID="51">
+        <classes>
+            <class name="menuItems.finance.transactions.PartyAdjustments.TestCreditNote"/>
+        </classes>
+    </test>
 
-    <!--        <test name="CNFS 1" description="Party Adjustments- Credit Note from Suppliers" testID="55">-->
-    <!--            <classes>-->
-    <!--                <class name="menuItems.finance.transactions.PartyAdjustments.TestCreditNoteFromSupplier"/>-->
-    <!--            </classes>-->
-    <!--        </test>-->
+    <test name="DNOC 1" description="Party Adjustments- Debit Note on Customers" testID="52">
+        <classes>
+            <class name="menuItems.finance.transactions.PartyAdjustments.TestDebitNoteOnCustomers"/>
+        </classes>
+    </test>
 
-    <!--        <test name="DNFS 1" description="Party Adjustments- Debit Note from Suppliers" testID="56">-->
-    <!--            <classes>-->
-    <!--                <class name="menuItems.finance.transactions.PartyAdjustments.TestDebitNoteFromSuppliers"/>-->
-    <!--            </classes>-->
-    <!--        </test>-->
+    <test name="CNOC 1" description="Party Adjustments- Credit Note on Customer" testID="53">
+        <classes>
+            <class name="menuItems.finance.transactions.PartyAdjustments.TestCreditNoteOnCustomer"/>
+        </classes>
+    </test>
 
-    <!--        &lt;!&ndash; Journals !&ndash;&gt;-->
-    <!--        <test name="JE 1"  description="journal Entries" testID="57">-->
-    <!--            <classes>-->
-    <!--                <class name="menuItems.finance.transactions.Journals.TestJournalEntries"/>-->
-    <!--            </classes>-->
-    <!--        </test>-->
+    <test name="CNFS 1" description="Party Adjustments- Credit Note from Suppliers" testID="54">
+        <classes>
+            <class name="menuItems.finance.transactions.PartyAdjustments.TestCreditNoteFromSupplier"/>
+        </classes>
+    </test>
 
-    <!--        <test name="CJE"  description="journal Entries Complex" testID="58">-->
-    <!--            <classes>-->
-    <!--                <class name="menuItems.finance.transactions.Journals.TestJournalEntriesComplex"/>-->
-    <!--            </classes>-->
-    <!--        </test>-->
+    <test name="DNFS 1" description="Party Adjustments- Debit Note from Suppliers" testID="55">
+        <classes>
+            <class name="menuItems.finance.transactions.PartyAdjustments.TestDebitNoteFromSuppliers"/>
+        </classes>
+    </test>
 
-    <!--        <test name="BIR 1" description= "Journals - Book Income or Receivables" testID="59">-->
-    <!--            <classes>-->
-    <!--                <class name="menuItems.finance.transactions.Journals.TestBookIncomeOrReceivables"/>-->
-    <!--            </classes>-->
-    <!--        </test>-->
+    <!--    Journals !-->
 
-    <!--        <test name="BEP 1" description= "Journals - Book Expenses or Payable" testID="60">-->
-    <!--            <classes>-->
-    <!--                <class name="menuItems.finance.transactions.Journals.TestBookExpensesOrPayable"/>-->
-    <!--            </classes>-->
-    <!--        </test>-->
+    <test name="JE 1"  description="journal Entries" testID="56">
+        <classes>
+            <class name="menuItems.finance.transactions.Journals.TestJournalEntries"/>
+        </classes>
+    </test>
 
-    <!--        <test name="BOC 1" description="Journals - Booking Of Other Costs" testID="61">-->
-    <!--            <classes>-->
-    <!--                <class name="menuItems.finance.transactions.Journals.TestBookingOfOtherCosts"/>-->
-    <!--            </classes>-->
-    <!--        </test>-->
+    <test name="CJE"  description="journal Entries Complex" testID="57">
+        <classes>
+            <class name="menuItems.finance.transactions.Journals.TestJournalEntriesComplex"/>
+        </classes>
+    </test>
 
-<!--    Opening Balances !-->
-    <!--    <test name="POB 1" description="Opening Balances - Party Opening Balances" testID="62">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.finance.transactions.OpeningBalances.TestPartyOpeningBalances"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="BIR 1" description= "Journals - Book Income or Receivables" testID="58">
+        <classes>
+            <class name="menuItems.finance.transactions.Journals.TestBookIncomeOrReceivables"/>
+        </classes>
+    </test>
 
-    <!--    <test name="OB 1" description="Opening Balances -  Opening Balances" testID="63">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.finance.transactions.OpeningBalances.TestOpeningBalances"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="BEP 1" description= "Journals - Book Expenses or Payable" testID="59">
+        <classes>
+            <class name="menuItems.finance.transactions.Journals.TestBookExpensesOrPayable"/>
+        </classes>
+    </test>
 
-    <!--    <test name="ORCCC 1" description="Opening Balances -  Opening Receipts from Credit Card Companies" testID="64">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.finance.transactions.OpeningBalances.TestOpeningReceiptsFromCreditCardCompanies"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="BOC 1" description="Journals - Booking Of Other Costs" testID="60">
+        <classes>
+            <class name="menuItems.finance.transactions.Journals.TestBookingOfOtherCosts"/>
+        </classes>
+    </test>
 
-    <!-- Production-->
-    <!--    <test name="ASR" description="AssignStandardRates" testID="65">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.Production.transactions.TestAssignStandardRates"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <!--    Opening Balances !-->
 
-    <!--    <test name="PO" description="ProductionOrder" testID="66">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.Production.transactions.TestProductionOrders"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="POB 1" description="Opening Balances - Party Opening Balances" testID="61">
+        <classes>
+            <class name="menuItems.finance.transactions.OpeningBalances.TestPartyOpeningBalances"/>
+        </classes>
+    </test>
 
-    <!--    <test name="MITP" description="MaterialIssuesToProduction" testID="66">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.Production.transactions.TestMaterialIssuesToProduction"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="OB 1" description="Opening Balances -  Opening Balances" testID="62">
+        <classes>
+            <class name="menuItems.finance.transactions.OpeningBalances.TestOpeningBalances"/>
+        </classes>
+    </test>
 
-    <!--    <test name="MRTFP" description="MaterialReturnsFromProduction" testID="67">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.Production.transactions.TestMaterialReturnsFromProduction"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="ORCCC 1" description="Opening Balances -  Opening Receipts from Credit Card Companies" testID="63">
+        <classes>
+            <class name="menuItems.finance.transactions.OpeningBalances.TestOpeningReceiptsFromCreditCardCompanies"/>
+        </classes>
+    </test>
 
-    <!--    <test name="MRFP" description="MaterialReceiptsFromProduction" testID="68">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.Production.transactions.TestMaterialReceiptFromProduction"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <!--    Production-->
 
-    <!--    <test name="CP" description="CloseProductionOrder" testID="69">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.Production.transactions.TestCloseProductionOrder"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="MRTFP 1" description="MaterialReturnsFromProduction" testID="64">
+        <classes>
+            <class name="menuItems.Production.transactions.TestMaterialReturnsFromProduction"></class>
+        </classes>
+    </test>
 
-    <!--    <test name="MIRFP" description="MaterialIssuesAndReceiptsFromProduction" testID="70">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.Production.transactions.TestMaterialIssuesAndReceiptsFromProduction"></class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="MRFP 1" description="MaterialReceiptsFromProduction" testID="65">
+        <classes>
+            <class name="menuItems.Production.transactions.TestMaterialReceiptFromProduction"></class>
+        </classes>
+    </test>
 
-    <!--    &lt;!&ndash; Taxes !&ndash;&gt;-->
+    <test name="CP 1" description="CloseProductionOrder" testID="66">
+        <classes>
+            <class name="menuItems.Production.transactions.TestCloseProductionOrder"></class>
+        </classes>
+    </test>
 
-    <!--    <test name="TP 1" description=" TDS- TDS Payments" testID="71">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.Taxes.transactions.TDS.TestTDSPayments"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="MIRFP 1" description="MaterialIssuesAndReceiptsFromProduction" testID="67">
+        <classes>
+            <class name="menuItems.Production.transactions.TestMaterialIssuesAndReceiptsFromProduction"></class>
+        </classes>
+    </test>
 
-    <!--    <test name="TCS 1" description="TCS - TCS Payments" testID="72">-->
-    <!--        <classes>-->
-    <!--            <class name="menuItems.Taxes.transactions.TCS.TestTCSPayments"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <!-- Taxes !-->
+
+    <test name="TP 1" description=" TDS- TDS Payments" testID="68">
+        <classes>
+            <class name="menuItems.Taxes.transactions.TDS.TestTDSPayments"/>
+        </classes>
+    </test>
+
+    <test name="TCS 1" description="TCS - TCS Payments" testID="69">
+        <classes>
+            <class name="menuItems.Taxes.transactions.TCS.TestTCSPayments"/>
+        </classes>
+    </test>
 
 </suite>

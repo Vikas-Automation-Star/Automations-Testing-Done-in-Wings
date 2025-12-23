@@ -2,6 +2,8 @@ package com.wings.Technical;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
@@ -27,18 +29,20 @@ public class GetUsersTest {
 //        System.out.println("Response Body:\n" + response.asPrettyString());
 //    }
 
-        public static void main(String[] args) {
-            // Base URI
-            RestAssured.baseURI = "https://reqres.in";
+//        public static void main(String[] args) {
+//            // Base URI
+//            RestAssured.baseURI = "https://reqres.in";
+//
+//            // Send GET request
+//            Response response = RestAssured
+//                    .given()
+//                    .get("/api/users?page=2");
+//
+//            // Print status code and body
+//            System.out.println("Status Code: " + response.getStatusCode());
+//            System.out.println("Response Body:");
+//            System.out.println(response.getBody().asString());
+//        }
+    
 
-            // Send GET request
-            Response response = RestAssured
-                    .given()
-                    .get("/api/users?page=2");
-
-            // Print status code and body
-            System.out.println("Status Code: " + response.getStatusCode());
-            System.out.println("Response Body:");
-            System.out.println(response.getBody().asString());
-        }
     }

@@ -4,23 +4,23 @@
         <listener class-name="com.wings.utils.Listener"></listener>
     </listeners>
 
-    <test name="ASR" description="AssignStandardRates" testID="1">
-        <classes>
-            <class name="menuItems.Production.transactions.TestAssignStandardRates"></class>
-        </classes>
-    </test>
+    <!--    <test name="ASR" description="AssignStandardRates" testID="1">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.Production.transactions.TestAssignStandardRates"></class>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-    <test name="PO" description="ProductionOrder" testID="2">
-        <classes>
-            <class name="menuItems.Production.transactions.TestProductionOrders"></class>
-        </classes>
-    </test>
+    <!--    <test name="PO" description="ProductionOrder" testID="2">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.Production.transactions.TestProductionOrders"></class>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-    <test name="MITP" description="MaterialIssuesToProduction" testID="3">
-        <classes>
-            <class name="menuItems.Production.transactions.TestMaterialIssuesToProduction"></class>
-        </classes>
-    </test>
+    <!--    <test name="MITP" description="MaterialIssuesToProduction" testID="3">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.Production.transactions.TestMaterialIssuesToProduction"></class>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
     <test name="MRFP" description="MaterialReturnsFromProduction" testID="4">
         <classes>

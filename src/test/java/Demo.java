@@ -1,7 +1,14 @@
 
 import com.wings.utils.APIClient;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.Test;
+
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.util.Set;
 
 
 public class Demo {
@@ -62,8 +69,8 @@ public class Demo {
     private static final String OUTPUT_FILE13="./src/main/resources/menuItems/purchase/transactions/461323 - Purchase Returns with Invoice Reference-AC_PRWIF_5_Output.xlsx";
 
     //Finance
-    private static final String TEMP_API_BODY_RECEIPTS_FROM_PARTIES="./output/temp_api_request_bodies/ReceiptsFromParties.json";
-    private static final String API_RESPONSE_RECEIPTS_FROM_PARTIES="./output/api_responses/ReceiptsFromParties.json";
+    private static final String TEMP_API_BODY_RECEIPTS_FROM_PARTIES="./output/temp_api_request_bodies/TestReceiptsFromPartiesMobile.json";
+    private static final String API_RESPONSE_RECEIPTS_FROM_PARTIES="./output/api_responses/TestReceiptsFromPartiesMobile.json";
     private static final String OUTPUT_FILE14="./src/main/resources/menuItems/finance/transaction/465649 - Receipts from Parties-AC_PREC_3_Output.xls";
 
     private static final String TEMP_API_BODY_CASH_RECEIPTS="./output/temp_api_request_bodies/CashReceipts.json";
@@ -161,55 +168,80 @@ public class Demo {
 
     @Test
     public void salesEnquiryCancellation() throws Exception {
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Dell\\Downloads\\chromedriver.exe");
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--incognito");
+        options.addArguments("--disable-notifications");
+        options.addArguments("--disable-extensions");
+//        options.addArguments("--start-fullscreen");
+        options.addArguments("--start-maximized");
+        options.addArguments("--headless=new");
+        WebDriver driver=new ChromeDriver(options);
+        driver.manage().window().maximize();
+        System.out.println("chrome opened and maximised in Headless mode");
+//        driver.get("https://10.10.10.90:8080");
+//        driver.navigate().to("https://10.10.10.90:8080");
+//        String window=driver.getWindowHandle();
+//        System.out.println(window);
+//        Set<String> windows=driver.getWindowHandles();
+//        System.out.println(windows);
+//        for (String wi:windows){
+//            if (!wi.equals(window)){
+//                driver.switchTo().window(wi);
+//                driver.get("https://10.10.10.90:8080");
+//            }
+//        }
+         driver.quit();
+
         //Sales
 
-        APIClient.validateAPIWithExcel("SE 14",TEMP_API_BODY_SALES_ENQUIRY,API_RESPONSE_SALES_ENQUIRY,OUTPUT_FILE1,"SalesEnquiries");
-        APIClient.validateAPIWithExcel("SEC 10",TEMP_API_BODY_SALES_ENQUIRY_CANCELLATION,API_RESPONSE_SALES_ENQUIRY_CANCELLATION,OUTPUT_FILE2,"SalesEnquiriesCancellations");
-        APIClient.validateAPIWithExcel("SQAE 6",TEMP_API_BODY_SALES_QUOTATIONS_AGAINST_ENQUIRIES,API_RESPONSE_SALES_QUOTATIONS_AGAINST_ENQUIRIES,OUTPUT_FILE3,"SalesQuotationsAgainstEnquiries4");
-        APIClient.validateAPIWithExcel("SI 18",TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_INVOICES,OUTPUT_FILE4,"SalesInvoices");
-        APIClient.validateAPIWithExcel("SR 18",TEMP_API_BODY_SALES_RETURNS,API_RESPONSE_SALES_RETURNS,OUTPUT_FILE5,"SalesReturns");
-        APIClient.validateAPIWithExcel("SRWIR 18",TEMP_API_BODY_SRWIR,API_RESPONSE_SRWIR,OUTPUT_FILE6,"SalesReturnsWithInvoiceReference");
-
-        //purchase
-
-        APIClient.validateAPIWithExcel("PE 10",TEMP_API_BODY_PURCHASE_ENQUIRY,API_RESPONSE_PURCHASE_ENQUIRY,OUTPUT_FILE7,"PurchaseEnquiries");
-        APIClient.validateAPIWithExcel("PEC 3",TEMP_API_BODY_PURCHASE_ENQUIRY_CANCELLATIONS,API_RESPONSE_PURCHASE_ENQUIRY_CANCELLATIONS,OUTPUT_FILE8,"PurchaseEnquiriesCancellations1");
-        APIClient.validateAPIWithExcel("PQAE 18",TEMP_API_BODY_PURCHASE_QUOTATIONS_AGAINST_ENQUIRY,API_RESPONSE_PURCHASE_QUOTATIONS_AGAINST_ENQUIRY,OUTPUT_FILE9,"PurchaseQuotationsAgainstEnquiries");
-        APIClient.validateAPIWithExcel("POAQ 18",TEMP_API_BODY_PURCHASE_ORDERS_AGAINST_QUOTATIONS,API_RESPONSE_PURCHASE_ORDERS_AGAINST_QUOTATIONS,OUTPUT_FILE10,"PurchaseOrdersAgainstTheQuotations");
-        APIClient.validateAPIWithExcel("PV 18",TEMP_API_BODY_PURCHASE_VOUCHERS,API_RESPONSE_PURCHASE_VOUCHERS,OUTPUT_FILE11,"PurchaseVouchers");
-        APIClient.validateAPIWithExcel("PVAO 18",TEMP_API_BODY_PURCHASE_VOUCHERS_AGAINST_ORDERS,API_RESPONSE_PURCHASE_VOUCHERS_AGAINST_ORDERS,OUTPUT_FILE12,"PurchaseVouchersAgainstTheOrders");
-        APIClient.validateAPIWithExcel("PRWIR 18",TEMP_API_BODY_PURCHASE_RETURNS_WITH_INVOICE_REFERENCE,API_RESPONSE_PURCHASE_RETURNS_WITH_INVOICE_REFERENCE,OUTPUT_FILE13,"PurchaseReturnsWithInvoiceReferences");
-
-        //finance
-
-        APIClient.validateAPIWithExcel("",TEMP_API_BODY_RECEIPTS_FROM_PARTIES,API_RESPONSE_RECEIPTS_FROM_PARTIES,OUTPUT_FILE14,"ReceiptsFromParties");
-        APIClient.validateAPIWithExcel("",TEMP_API_BODY_CASH_RECEIPTS,API_RESPONSE_CASH_RECEIPTS,OUTPUT_FILE15,"CashReceipts");
-        APIClient.validateAPIWithExcel("",TEMP_API_BODY_BANK_RECEIPTS,API_RESPONSE_BANK_RECEIPTS,OUTPUT_FILE16,"BankReceipts");
-        APIClient.validateAPIWithExcel("",TEMP_API_BODY_CREDIT_CARD_RECEIPTS,API_RESPONSE_CREDIT_CARD_RECEIPTS,OUTPUT_FILE17,"CreditCardReceipts");
-        APIClient.validateAPIWithExcel("",TEMP_API_BODY_CREDIT_CARD_COMPANIES,API_RESPONSE_CREDIT_CARD_COMPANIES,OUTPUT_FILE18,"ReceiptsFromCreditCardCompanies");
-
-        APIClient.validateAPIWithExcel("",TEMP_API_BODY_ADJUST_PARTY_BILLS,API_RESPONSE_ADJUST_PARTY_BILLS,OUTPUT_FILE19,"AdjustPartyBills");
-        APIClient.validateAPIWithExcel("",TEMP_API_BODY_DEBIT_NOTE,API_RESPONSE_DEBIT_NOTE,OUTPUT_FILE20,"DebitNote");
-        APIClient.validateAPIWithExcel("",TEMP_API_BODY_CREDIT_NOTE,API_RESPONSE_CREDIT_NOTE,OUTPUT_FILE21,"CreditNote");
-        APIClient.validateAPIWithExcel("",TEMP_API_DEBIT_NOTE_ON_CUSTOMERS,API_RESPONSE_DEBIT_NOTE_ON_CUSTOMERS,OUTPUT_FILE22,"DebitNoteOnCustomer");
-        APIClient.validateAPIWithExcel("",TEMP_API_BODY_CREDIT_NOTE_ON_CUSTOMERS,API_RESPONSE_CREDIT_NOTE_ON_CUSTOMERS,OUTPUT_FILE23,"CreditNoteOnCustomer");
-        APIClient.validateAPIWithExcel("",TEMP_API_BODY_CREDIT_NOTE_FROM_SUPPLIER,API_RESPONSE_CREDIT_NOTE_FROM_SUPPLIER,OUTPUT_FILE24,"CreditNoteFromSuppliers");
-        APIClient.validateAPIWithExcel("",TEMP_API_BODY_DEBIT_NOTE_FROM_SUPPLIER,API_RESPONSE_DEBIT_NOTE_FROM_SUPPLIER,OUTPUT_FILE25,"DebitNoteFromSuppliers");
-
-        APIClient.validateAPIWithExcel("",TEMP_API_BODY_JOURNAL_ENTRIES,API_RESPONSE_JOURNAL_ENTRIES,OUTPUT_FILE126,"JournalEntries");
-        APIClient.validateAPIWithExcel("",TEMP_API_BODY_COMPLEX_JOURNAL_ENTRIES,API_RESPONSE_COMPLEX_JOURNAL_ENTRIES,OUTPUT_FILE27,"ComplexJournalEntries");
-        APIClient.validateAPIWithExcel("",TEMP_API_BODY_BOOK_INCOMES_OR_RECEIVABLE,API_RESPONSE_BOOK_INCOMES_OR_RECEIVABLE,OUTPUT_FILE28,"BookIncomesOrReceivable");
-        APIClient.validateAPIWithExcel("",TEMP_API_BODY_BOOK_EXPENSES_OR_PAYABLE,API_RESPONSE_BOOK_EXPENSES_OR_PAYABLE,OUTPUT_FILE29,"BookExpensesOrPayable");
-        APIClient.validateAPIWithExcel("",TEMP_API_BODY_BOOKING_OF_OTHER_COSTS,API_RESPONSE_BOOKING_OF_OTHER_COSTS,OUTPUT_FILE30,"BookingOfOtherCosts");
-
-        //Production
-        APIClient.validateAPIWithExcel("",TEMP_API_BODY_ASSIGN_STANDARD_RATES,API_RESPONSE_ASSIGN_STANDARD_RATES,OUTPUT_FILE31,"AssignStandardRates");
-        APIClient.validateAPIWithExcel("",TEMP_API_BODY_PRODUCTION_ORDERS,API_RESPONSE_PRODUCTION_ORDERS,OUTPUT_FILE32,"ProductionOrders");
-        APIClient.validateAPIWithExcel("",TEMP_API_BODY_MATERIAL_ISSUES_PRODUCTION,API_RESPONSE_MATERIAL_ISSUES_PRODUCTION,OUTPUT_FILE33,"MaterialIssuesToProduction");
-        APIClient.validateAPIWithExcel("",TEMP_API_BODY_MATERIAL_RETURNS_FROM_PRODUCTION,API_RESPONSE_MATERIAL_RETURNS_FROM_PRODUCTION,OUTPUT_FILE34,"MaterialReturnsFromProduction");
-        APIClient.validateAPIWithExcel("",TEMP_API_BODY_MATERIAL_RECEIPTS_FROM_PRODUCTION,API_RESPONSE_MATERIAL_RECEIPTS_FROM_PRODUCTION,OUTPUT_FILE35,"MaterialReceiptsFromProduction");
-        APIClient.validateAPIWithExcel("",TEMP_API_BODY_CLOSE_PRODUCTION_ORDERS,API_RESPONSE_CLOSE_PRODUCTION_ORDERS,OUTPUT_FILE36,"CloseProductionOrders");
-        APIClient.validateAPIWithExcel("",TEMP_API_BODY_MATERIAL_ISSUES_RECEIPTS_FROM_PRODUCTION,API_RESPONSE_MATERIAL_ISSUES_RECEIPTS_FROM_PRODUCTION,OUTPUT_FILE37,"MaterialIssuesAndReceiptsFromProduction");
+//        APIClient.validateAPIWithExcel("SE 14",TEMP_API_BODY_SALES_ENQUIRY,API_RESPONSE_SALES_ENQUIRY,OUTPUT_FILE1,"SalesEnquiries");
+//        APIClient.validateAPIWithExcel("SEC 10",TEMP_API_BODY_SALES_ENQUIRY_CANCELLATION,API_RESPONSE_SALES_ENQUIRY_CANCELLATION,OUTPUT_FILE2,"SalesEnquiriesCancellations");
+//        APIClient.validateAPIWithExcel("SQAE 6",TEMP_API_BODY_SALES_QUOTATIONS_AGAINST_ENQUIRIES,API_RESPONSE_SALES_QUOTATIONS_AGAINST_ENQUIRIES,OUTPUT_FILE3,"SalesQuotationsAgainstEnquiries4");
+//        APIClient.validateAPIWithExcel("SI 18",TEMP_API_BODY_SALES_INVOICES,API_RESPONSE_SALES_INVOICES,OUTPUT_FILE4,"SalesInvoices");
+//        APIClient.validateAPIWithExcel("SR 18",TEMP_API_BODY_SALES_RETURNS,API_RESPONSE_SALES_RETURNS,OUTPUT_FILE5,"SalesReturns");
+//        APIClient.validateAPIWithExcel("SRWIR 18",TEMP_API_BODY_SRWIR,API_RESPONSE_SRWIR,OUTPUT_FILE6,"SalesReturnsWithInvoiceReference");
+//
+//        //purchase
+//
+//        APIClient.validateAPIWithExcel("PE 10",TEMP_API_BODY_PURCHASE_ENQUIRY,API_RESPONSE_PURCHASE_ENQUIRY,OUTPUT_FILE7,"PurchaseEnquiries");
+//        APIClient.validateAPIWithExcel("PEC 3",TEMP_API_BODY_PURCHASE_ENQUIRY_CANCELLATIONS,API_RESPONSE_PURCHASE_ENQUIRY_CANCELLATIONS,OUTPUT_FILE8,"PurchaseEnquiriesCancellations1");
+//        APIClient.validateAPIWithExcel("PQAE 18",TEMP_API_BODY_PURCHASE_QUOTATIONS_AGAINST_ENQUIRY,API_RESPONSE_PURCHASE_QUOTATIONS_AGAINST_ENQUIRY,OUTPUT_FILE9,"PurchaseQuotationsAgainstEnquiries");
+//        APIClient.validateAPIWithExcel("POAQ 18",TEMP_API_BODY_PURCHASE_ORDERS_AGAINST_QUOTATIONS,API_RESPONSE_PURCHASE_ORDERS_AGAINST_QUOTATIONS,OUTPUT_FILE10,"PurchaseOrdersAgainstTheQuotations");
+//        APIClient.validateAPIWithExcel("PV 18",TEMP_API_BODY_PURCHASE_VOUCHERS,API_RESPONSE_PURCHASE_VOUCHERS,OUTPUT_FILE11,"PurchaseVouchers");
+//        APIClient.validateAPIWithExcel("PVAO 18",TEMP_API_BODY_PURCHASE_VOUCHERS_AGAINST_ORDERS,API_RESPONSE_PURCHASE_VOUCHERS_AGAINST_ORDERS,OUTPUT_FILE12,"PurchaseVouchersAgainstTheOrders");
+//        APIClient.validateAPIWithExcel("PRWIR 18",TEMP_API_BODY_PURCHASE_RETURNS_WITH_INVOICE_REFERENCE,API_RESPONSE_PURCHASE_RETURNS_WITH_INVOICE_REFERENCE,OUTPUT_FILE13,"PurchaseReturnsWithInvoiceReferences");
+//
+//        //finance
+//
+//        APIClient.validateAPIWithExcel("",TEMP_API_BODY_RECEIPTS_FROM_PARTIES,API_RESPONSE_RECEIPTS_FROM_PARTIES,OUTPUT_FILE14,"TestReceiptsFromPartiesMobile");
+//        APIClient.validateAPIWithExcel("",TEMP_API_BODY_CASH_RECEIPTS,API_RESPONSE_CASH_RECEIPTS,OUTPUT_FILE15,"CashReceipts");
+//        APIClient.validateAPIWithExcel("",TEMP_API_BODY_BANK_RECEIPTS,API_RESPONSE_BANK_RECEIPTS,OUTPUT_FILE16,"BankReceipts");
+//        APIClient.validateAPIWithExcel("",TEMP_API_BODY_CREDIT_CARD_RECEIPTS,API_RESPONSE_CREDIT_CARD_RECEIPTS,OUTPUT_FILE17,"CreditCardReceipts");
+//        APIClient.validateAPIWithExcel("",TEMP_API_BODY_CREDIT_CARD_COMPANIES,API_RESPONSE_CREDIT_CARD_COMPANIES,OUTPUT_FILE18,"ReceiptsFromCreditCardCompanies");
+//
+//        APIClient.validateAPIWithExcel("",TEMP_API_BODY_ADJUST_PARTY_BILLS,API_RESPONSE_ADJUST_PARTY_BILLS,OUTPUT_FILE19,"AdjustPartyBills");
+//        APIClient.validateAPIWithExcel("",TEMP_API_BODY_DEBIT_NOTE,API_RESPONSE_DEBIT_NOTE,OUTPUT_FILE20,"DebitNote");
+//        APIClient.validateAPIWithExcel("",TEMP_API_BODY_CREDIT_NOTE,API_RESPONSE_CREDIT_NOTE,OUTPUT_FILE21,"CreditNote");
+//        APIClient.validateAPIWithExcel("",TEMP_API_DEBIT_NOTE_ON_CUSTOMERS,API_RESPONSE_DEBIT_NOTE_ON_CUSTOMERS,OUTPUT_FILE22,"DebitNoteOnCustomer");
+//        APIClient.validateAPIWithExcel("",TEMP_API_BODY_CREDIT_NOTE_ON_CUSTOMERS,API_RESPONSE_CREDIT_NOTE_ON_CUSTOMERS,OUTPUT_FILE23,"CreditNoteOnCustomer");
+//        APIClient.validateAPIWithExcel("",TEMP_API_BODY_CREDIT_NOTE_FROM_SUPPLIER,API_RESPONSE_CREDIT_NOTE_FROM_SUPPLIER,OUTPUT_FILE24,"CreditNoteFromSuppliers");
+//        APIClient.validateAPIWithExcel("",TEMP_API_BODY_DEBIT_NOTE_FROM_SUPPLIER,API_RESPONSE_DEBIT_NOTE_FROM_SUPPLIER,OUTPUT_FILE25,"DebitNoteFromSuppliers");
+//
+//        APIClient.validateAPIWithExcel("",TEMP_API_BODY_JOURNAL_ENTRIES,API_RESPONSE_JOURNAL_ENTRIES,OUTPUT_FILE126,"JournalEntries");
+//        APIClient.validateAPIWithExcel("",TEMP_API_BODY_COMPLEX_JOURNAL_ENTRIES,API_RESPONSE_COMPLEX_JOURNAL_ENTRIES,OUTPUT_FILE27,"ComplexJournalEntries");
+//        APIClient.validateAPIWithExcel("",TEMP_API_BODY_BOOK_INCOMES_OR_RECEIVABLE,API_RESPONSE_BOOK_INCOMES_OR_RECEIVABLE,OUTPUT_FILE28,"BookIncomesOrReceivable");
+//        APIClient.validateAPIWithExcel("",TEMP_API_BODY_BOOK_EXPENSES_OR_PAYABLE,API_RESPONSE_BOOK_EXPENSES_OR_PAYABLE,OUTPUT_FILE29,"BookExpensesOrPayable");
+//        APIClient.validateAPIWithExcel("",TEMP_API_BODY_BOOKING_OF_OTHER_COSTS,API_RESPONSE_BOOKING_OF_OTHER_COSTS,OUTPUT_FILE30,"BookingOfOtherCosts");
+//
+//        //Production
+//        APIClient.validateAPIWithExcel("",TEMP_API_BODY_ASSIGN_STANDARD_RATES,API_RESPONSE_ASSIGN_STANDARD_RATES,OUTPUT_FILE31,"AssignStandardRates");
+//        APIClient.validateAPIWithExcel("",TEMP_API_BODY_PRODUCTION_ORDERS,API_RESPONSE_PRODUCTION_ORDERS,OUTPUT_FILE32,"ProductionOrders");
+//        APIClient.validateAPIWithExcel("",TEMP_API_BODY_MATERIAL_ISSUES_PRODUCTION,API_RESPONSE_MATERIAL_ISSUES_PRODUCTION,OUTPUT_FILE33,"MaterialIssuesToProduction");
+//        APIClient.validateAPIWithExcel("",TEMP_API_BODY_MATERIAL_RETURNS_FROM_PRODUCTION,API_RESPONSE_MATERIAL_RETURNS_FROM_PRODUCTION,OUTPUT_FILE34,"MaterialReturnsFromProduction");
+//        APIClient.validateAPIWithExcel("",TEMP_API_BODY_MATERIAL_RECEIPTS_FROM_PRODUCTION,API_RESPONSE_MATERIAL_RECEIPTS_FROM_PRODUCTION,OUTPUT_FILE35,"MaterialReceiptsFromProduction");
+//        APIClient.validateAPIWithExcel("",TEMP_API_BODY_CLOSE_PRODUCTION_ORDERS,API_RESPONSE_CLOSE_PRODUCTION_ORDERS,OUTPUT_FILE36,"CloseProductionOrders");
+//        APIClient.validateAPIWithExcel("",TEMP_API_BODY_MATERIAL_ISSUES_RECEIPTS_FROM_PRODUCTION,API_RESPONSE_MATERIAL_ISSUES_RECEIPTS_FROM_PRODUCTION,OUTPUT_FILE37,"MaterialIssuesAndReceiptsFromProduction");
 
     }
 

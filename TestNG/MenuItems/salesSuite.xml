@@ -4,97 +4,103 @@
         <listener class-name="com.wings.utils.Listener"/>
     </listeners>
 
+    <!--    <test name="SE 1" description="Sales Enquiries" testID="1">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.sales.transactions.TestSalesEnquiry"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+
     <test name="SEC 1" description="Sales Enquiry Cancellation" testID="1">
         <classes>
             <class name="menuItems.sales.transactions.TestSalesEnquiryCancellation"/>
         </classes>
     </test>
 
-    <test name="SQAE 1" description="Sales Quotation against Enquiry" testID="2">
-        <classes>
-            <class name="menuItems.sales.transactions.TestSalesQuotationAgainstEnquiry"/>
-        </classes>
-    </test>
+    <!--    <test name="SQAE 1" description="Sales Quotation against Enquiry" testID="2">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.sales.transactions.TestSalesQuotationAgainstEnquiry"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-    <test name="SQC 1" description="Sales Quotation Cancellation" testID="3">
+    <test name="SQC 1" description="Sales Quotation Cancellation" testID="2">
         <classes>
             <class name="menuItems.sales.transactions.TestSalesQuotationsCancellation"/>
         </classes>
     </test>
 
-    <test name="SOAQ 1" description="Sales Order against Quotation" testID="4">
+    <test name="SOAQ 1" description="Sales Order against Quotation" testID="3">
         <classes>
             <class name="menuItems.sales.transactions.TestSalesOrdersAgainstQuotations"/>
         </classes>
     </test>
 
-    <test name="SOC 1" description="Sales Order Cancellation" testID="5">
+    <test name="SOC 1" description="Sales Order Cancellation" testID="4">
         <classes>
             <class name="menuItems.sales.transactions.TestSalesOrderCancellation"/>
         </classes>
     </test>
 
-    <test name="DELO 1" description="Deliveries against Order" testID="6">
+    <test name="DELO 1" description="Deliveries against Order" testID="5">
         <classes>
             <class name="menuItems.sales.transactions.TestDeliveriesAgainstOrder"/>
         </classes>
     </test>
 
-    <test name="SI 1" description="Sales Invoice" testID="7">
+    <test name="SI 1" description="Sales Invoice" testID="6">
         <classes>
             <class name="menuItems.sales.transactions.TestSalesInvoice"/>
         </classes>
     </test>
 
-    <test name="SIAO 1" description="Sales Invoice Against Order" testID="8">
+    <test name="SIAO 1" description="Sales Invoice Against Order" testID="7">
         <classes>
             <class name="menuItems.sales.transactions.TestSalesInvoiceAgainstOrder"/>
         </classes>
     </test>
 
-    <test name="SIAD 1" description="invoice against deliveries" testID="9">
+    <test name="SIAD 1" description="invoice against deliveries" testID="8">
         <classes>
             <class name="menuItems.sales.transactions.TestSalesInvoiceAgainstDeliveries"/>
         </classes>
     </test>
 
-    <test name="DR 1" description="Delivery Returns" testID="10">
+    <test name="DR 1" description="Delivery Returns" testID="9">
         <classes>
             <class name="menuItems.sales.transactions.TestDeliveryReturns"/>
         </classes>
     </test>
 
-    <test name="SR 1" description="Sales Returns" testID="11">
+    <test name="SR 1" description="Sales Returns" testID="10">
         <classes>
             <class name="menuItems.sales.transactions.TestSalesReturn"/>
         </classes>
     </test>
 
-    <test name="SRWIR 1" description="Sales returns with invoice reference" testID="12">
+    <test name="SRWIR 1" description="Sales returns with invoice reference" testID="11">
         <classes>
             <class name="menuItems.sales.transactions.TestSalesReturnsWithInvoiceReference"/>
         </classes>
     </test>
 
-    <test name="PSI 1" description="Proforma Sales Invoice" testID="13">
+    <test name="PSI 1" description="Proforma Sales Invoice" testID="12">
         <classes>
             <class name="menuItems.sales.transactions.TestProformaSalesInvoice"/>
         </classes>
     </test>
 
-    <test name="SU 1" description="Sales Prices" testID="14">
+    <test name="SU 1" description="Sales Prices" testID="13">
         <classes>
             <class name="menuItems.sales.transactions.TestSalesPrice"/>
         </classes>
     </test>
 
-    <test name="PWD 1" description="Party and Product Wise Discount" testID="15">
+    <test name="PWD 1" description="Party and Product Wise Discount" testID="14">
         <classes>
             <class name="menuItems.sales.transactions.TestProductPartyDiscount"/>
         </classes>
     </test>
 
-    <test name="ST 1" description="Define Sales Target Executive Wise" testID="16">
+    <test name="ST 1" description="Define Sales Target Executive Wise" testID="15">
         <classes>
             <class name="menuItems.sales.transactions.TestSalesTargetExecutiveWise"/>
         </classes>

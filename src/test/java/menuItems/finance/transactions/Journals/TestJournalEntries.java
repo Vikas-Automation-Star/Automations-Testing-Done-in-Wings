@@ -38,4 +38,5 @@ public class TestJournalEntries {
     public void afterTest() throws IOException {
         appLogin.logout();
     }
+
 }

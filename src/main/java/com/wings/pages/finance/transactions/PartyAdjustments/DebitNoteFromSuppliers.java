@@ -51,6 +51,8 @@ public class DebitNoteFromSuppliers extends TransactionsBaseClass {
         enterSuppliersBillDate(dataFile, "GeneralInformation", "SupplierBillDate");
         enterCreditPeriod(dataFile,"GeneralInformation","CreditPeriod");
         common.clickElement ("xpath","//Edit[@Name='Reason For Issuing Document']");
+        WebElement dropdown= common.findWebElement ("xpath","//Edit[@Name='Reason For Issuing Document']");
+        dropdown.sendKeys("01-Sales Return");
         Robot robot=new Robot();
         robot.keyPress(KeyEvent.VK_DOWN);
         robot.keyRelease(KeyEvent.VK_DOWN);

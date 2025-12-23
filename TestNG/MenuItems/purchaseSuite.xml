@@ -4,6 +4,12 @@
         <listener class-name="com.wings.utils.Listener"/>
     </listeners>
 
+    <!--    <test name="PE" description="Purchase Enquiries" testID="1">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.transactions.TestPurchaseEnquiries"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+
     <test name="PEC" description="Purchase Enquiries Cancellation" testID="1">
         <classes>
             <class name="menuItems.purchase.transactions.TestPurchaseEnquiriesCancellation"/>
@@ -16,17 +22,17 @@
         </classes>
     </test>
 
-<!--    <test name="PQAE" description="Purchase Quotations Against Enquiries" testID="3">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.purchase.transactions.TestPurchaseQuotationsAgainstEnquiries"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <!--    <test name="PQAE" description="Purchase Quotations Against Enquiries" testID="3">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.transactions.TestPurchaseQuotationsAgainstEnquiries"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-<!--    <test name="POAQ" description="Purchase Orders Against Quotations" testID="4">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.purchase.transactions.TestPurchaseOrdersAgainstQuotations"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <!--    <test name="POAQ" description="Purchase Orders Against Quotations" testID="4">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.transactions.TestPurchaseOrdersAgainstQuotations"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
     <test name="POC" description="Purchase Orders Cancellation" testID="3">
         <classes>
@@ -58,11 +64,11 @@
         </classes>
     </test>
 
-<!--    <test name="PVAPO" description="Purchase Vouchers Against PurchaseOrders" testID="10">-->
-<!--        <classes>-->
-<!--            <class name="menuItems.purchase.transactions.TestPurchaseVouchersAgainstOrders"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <!--    <test name="PVAPO" description="Purchase Vouchers Against PurchaseOrders" testID="10">-->
+    <!--        <classes>-->
+    <!--            <class name="menuItems.purchase.transactions.TestPurchaseVouchersAgainstOrders"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
     <test name="PVAPR" description="Purchase Vouchers Against PurchaseReceipts" testID="8">
         <classes>

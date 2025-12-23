@@ -19,7 +19,6 @@ import java.util.Properties;
 import java.util.Random;
 
 public class Common {
-
     WindowsDriver driver;
     Time time = new Time();
     Process process;
@@ -30,8 +29,6 @@ public class Common {
 
 
     public WindowsDriver initializeDriver(String app) throws IOException {
-//        initiateWinAppServer();
-
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("app", app);
         capabilities.setCapability("platformName", getProperty("platformName"));
@@ -61,11 +58,11 @@ public class Common {
             element = this.driver.findElement(by);
         } catch (Exception e) {
             e.printStackTrace();
-            screnShot();
+            screenShot();
         }
         return element;
-
     }
+
 
     public List<WebElement> findWebElements(String locatorType, String locator) {
         By by = null;
@@ -79,7 +76,7 @@ public class Common {
             element = this.driver.findElements(by);
         } catch (Exception e) {
             e.printStackTrace();
-            screnShot();
+            screenShot();
         }
         return element;
 
@@ -253,7 +250,7 @@ public class Common {
         return chars.charAt(random.nextInt(chars.length()));
     }
 
-    public void screnShot() {
+    public void screenShot() {
         try {
             TakesScreenshot screenshot = (TakesScreenshot) driver;
             File temp = screenshot.getScreenshotAs(OutputType.FILE);
@@ -318,8 +315,5 @@ public class Common {
         String command = "taskkill /IM \"WinAppDriver.exe\" /F";
         Process p = Runtime.getRuntime().exec(command);
     }
-
-
-
 
 }

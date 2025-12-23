@@ -85,11 +85,11 @@ public class MobileTesting {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='transaction-tables']//div[1]//ion-list[1]//ion-list-header[1]//ion-button[1]"))).click();
         Thread.sleep(1500);
         driver.findElement(By.id("ion-input-6")).sendKeys("21-11-2025");
-        Thread.sleep(1000);
-        driver.findElement(By.id("ion-input-7")).click();
+        Thread.sleep(1500);
+        driver.findElement(By.xpath("//*[contains(@placeholder,'Select Branch')]")).click();
         Thread.sleep(1500);
         driver.findElement(By.xpath("//*[text()='AT_Branch 1_Reg']")).click();
-        driver.findElement(By.id("ion-input-8")).click();
+        driver.findElement(By.xpath("//*[contains(@placeholder,'Select Party Account')]")).click();
         Thread.sleep(2000);
         driver.findElement(By.xpath("//ion-label[normalize-space()='At_Cus_Reg_Intra']")).click();
         Thread.sleep(2000);
@@ -144,7 +144,7 @@ public class MobileTesting {
         driver.findElement(By.xpath("//*[@placeholder='Enter Cheque/EFT No']")).click();
         driver.findElement(By.xpath("//*[@placeholder='Enter Cheque/EFT No']")).sendKeys("2001");
         Thread.sleep(1000);
-        driver.findElement(By.xpath("//*[contains(@placeholder,'Enter Cheque Date')]")).sendKeys("24-11-2025");
+        driver.findElement(By.xpath("//*[contains(@placeholder,'Enter Cheque Date')]")).sendKeys("24-12-2025");
         Thread.sleep(1000);
         driver.findElement(By.xpath("//*[contains(@placeholder,'Select Drawn On Bank')]")).click();
         Thread.sleep(1500);
@@ -187,7 +187,7 @@ public class MobileTesting {
         driver.findElement(By.xpath("//*[contains(@placeholder,'Enter Cheque/EFT No')]")).click();
         driver.findElement(By.xpath("//*[contains(@placeholder,'Enter Cheque/EFT No')]")).sendKeys("1980");
         Thread.sleep(1000);
-        driver.findElement(By.xpath("//*[contains(@placeholder,'Enter Cheque Date')]")).sendKeys("24-11-2025");
+        driver.findElement(By.xpath("//*[contains(@placeholder,'Enter Cheque Date')]")).sendKeys("24-12-2025");
         Thread.sleep(1000);
         driver.findElement(By.xpath("//*[contains(@placeholder,'Select Drawn On Bank')]")).click();
         Thread.sleep(1500);
@@ -204,7 +204,7 @@ public class MobileTesting {
         WebElement tdsAmount2= driver.findElement(By.xpath("//*[contains(@placeholder,'Enter TDS Amount')]"));tdsAmount2.sendKeys("50.13");
         Thread.sleep(1500);
         driver.findElement(By.xpath("//*[contains(@placeholder,'Enter Comments')]")).sendKeys("no comments");
-        Thread.sleep(2000);
+        Thread.sleep(2500);
         driver.findElement(By.cssSelector("body > app-root:nth-child(1) > ion-app:nth-child(1) > ion-modal:nth-child(3) > div:nth-child(1) > ion-footer:nth-child(3) > ion-toolbar:nth-child(1) > ion-button:nth-child(1)")).click();
         driver.findElement(By.xpath("//ion-button[@class='ion-color ion-color-wings ios button button-block button-solid in-toolbar ion-activatable ion-focusable']")).click();
 
@@ -223,7 +223,7 @@ public class MobileTesting {
         driver.findElement(By.xpath("//*[@placeholder='Enter Cheque/EFT No']")).click();
         driver.findElement(By.xpath("//*[@placeholder='Enter Cheque/EFT No']")).sendKeys("2001");
         Thread.sleep(1000);
-        driver.findElement(By.xpath("//*[contains(@placeholder,'Enter Cheque Date')]")).sendKeys("24-11-2025");
+        driver.findElement(By.xpath("//*[contains(@placeholder,'Enter Cheque Date')]")).sendKeys("24-12-2025");
         Thread.sleep(1000);
         driver.findElement(By.xpath("//*[contains(@placeholder,'Select Drawn On Bank')]")).click();
         Thread.sleep(1500);
@@ -310,7 +310,7 @@ public class MobileTesting {
         driver.findElement(By.xpath("(//ion-button[@class='ion-color ion-color-wings ios button button-block button-solid in-toolbar ion-activatable ion-focusable'])[1]")).click();
         Thread.sleep(1500);
         driver.findElement(By.xpath("(//ion-button[@class='ion-color ion-color-wings ios button button-block button-solid in-toolbar in-toolbar-color ion-activatable ion-focusable'])[1]")).click();
-        Thread.sleep(20000);
+        Thread.sleep(25000);
         WebElement validateTransaction=driver.findElement(By.xpath("//*[contains(text(),'Transaction saved successfully')]"));
         if (validateTransaction.getText().contains("Transaction saved successfully")) {
             driver.findElements(By.xpath("//button[.//span[normalize-space()='OK']]")).get(4).click();
