@@ -62,7 +62,7 @@ public class ReceiptsFromCreditCardCompanies extends TransactionsBaseClass {
         long creditCardCompanyChargesStart =System.nanoTime();
         creditCardCompanyCharges();
         long creditCardCompanyChargesStartEnd =System.nanoTime()- creditCardCompanyChargesStart;
-        FileUtil.writeTimeLogInMinutes("creditCardCompanyCharges tab End:- ", creditCardCompanyChargesStartEnd);
+        FileUtil.writeTimeLogInMinutes("creditCard CompanyCharges tab End:- ", creditCardCompanyChargesStartEnd);
 
         //credit card
         long otherDebitsStart =System.nanoTime();

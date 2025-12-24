@@ -1,0 +1,43 @@
+<suite name="Mobile Testing Transactions">
+
+    <listeners>
+        <listener class-name="com.wings.utils.Listener"/>
+    </listeners>
+
+    <test name="PREC" description="Receipts from parties" testID="1">
+        <classes>
+            <class name="mobileAppTesting.TestReceiptsFromPartiesMobile"/>
+        </classes>
+    </test>
+
+    <test name="CR" description="Cash Receipts" testID="1">
+        <classes>
+            <class name="mobileAppTesting.TestCashReceiptsMobile"/>
+        </classes>
+    </test>
+
+    <test name="BR" description="Bank Receipts" testID="1">
+        <classes>
+            <class name="mobileAppTesting.TestBankReceiptsMobile"/>
+        </classes>
+    </test>
+
+    <test name="CCR" description="Bank Receipts" testID="1">
+        <classes>
+            <class name="mobileAppTesting.TestCreditCardReceiptsMobile"/>
+        </classes>
+    </test>
+
+    <test name="SO" description="Sales Orders" testID="1">
+        <classes>
+            <class name="mobileAppTesting.TestSalesOrdersMobile"/>
+        </classes>
+    </test>
+
+    <test name="SI" description="Sales Invoices" testID="1">
+        <classes>
+            <class name="mobileAppTesting.TestSalesInvoiceMobile"/>
+        </classes>
+    </test>
+
+</suite>

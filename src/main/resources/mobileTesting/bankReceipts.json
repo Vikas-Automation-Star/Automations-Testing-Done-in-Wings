@@ -1,0 +1,52 @@
+[
+  {
+    "dataset": "GenInfo",
+    "data": {
+      "remarks": "No remarks"
+    }
+  },
+  {
+    "dataset": "parties",
+    "data": {
+      "partiesRows": "3",
+
+      "partyAccount0": "At_Cus_Reg_Intra",
+      "partyAccount1": "AT_Cus_Reg_Inter",
+      "partyAccount2": "AT_Cus_UnReg_Intra",
+
+      "partyAccountPath0": "//ion-label[normalize-space()='At_Cus_Reg_Intra']",
+      "partyAccountPath1": "//ion-label[normalize-space()='AT_Cus_Reg_Inter']",
+      "partyAccountPath2": "(//ion-label[normalize-space()='AT_Cus_UnReg_Intra'])[1]",
+
+      "partyAmount0": "30.123",
+      "partyAmount1": "40.123",
+      "partyAmount2": "50.123",
+
+      "tdsAmount0": "10.13",
+      "tdsAmount1": "15.13",
+      "tdsAmount2": "20.13",
+
+      "EFT/NO": "9989",
+
+      "charges0": "4.12",
+      "charges1": "5.12",
+      "charges2": "6.12",
+
+      "comments0": "no parties comments",
+      "comments1": "no parties comments",
+      "comments2": "no parties comments"
+
+    }
+  },
+  {
+    "dataset": "summary",
+    "data": {
+      "expectedCashAmount": "150.25",
+      "expectedChequesAmount": "150.25",
+      "expectedPostDatedChequesAmount": "300.5",
+      "expectedCreditCardAmount": "150.25",
+      "expectedReceiptsAmount": "751.25"
+    }
+  }
+
+]

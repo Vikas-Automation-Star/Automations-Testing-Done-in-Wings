@@ -1,0 +1,149 @@
+[
+  {
+    "dataset": "GenInfo",
+    "data": {
+      "custMobileNum": "9989211079",
+      "party": "At_Cus_Reg_Intra",
+      "remarks": "No remarks"
+    }
+  },
+  {
+    "dataset": "createParty",
+    "data": {
+      "customerName": "Empuluri Vikas",
+      "gstin": "36AAFCB7707D1ZV",
+      "MobileNo": "7093682449",
+      "Fax": "9989211079",
+      "Email": "vikasempuluri@gamil.com",
+      "Website": "https://peduruVillageDevelopementSceme.com",
+      "ContactPersonName": "Empuluri Vikas",
+      "ContactPersonDesignation": "Automation Test Engineer",
+      "ContactPersonMobileNo": "7093682449",
+      "ContactPersonEmail": "empulurivikas022@gmail.com",
+
+      "AddressName": "Peduru(v),t.p gudur(m),spsr nellore(d),AP",
+      "City": "Nellore",
+      "Zip/PostalCode": "524311",
+      "remarks": "No remarks"
+    }
+  },
+  {
+    "dataset": "items",
+    "data": {
+      "itemsSizeCount": "3",
+
+      "product0": "AT_Product 5",
+      "product1": "AT_Multi batch Product 1",
+      "product2": "AT_Product With SN 1",
+
+      "productPath0": "//*[text()='AT_Product 5']",
+      "productPath1": "//*[text()='AT_Multi batch Product 1']",
+      "productPath2": "//*[text()='AT_Product With SN 1']",
+
+      "quantity0": "2.11",
+      "quantity1": "3.11",
+      "quantity2": "4.11",
+
+      "freeQuantity0": "1.11",
+      "freeQuantity1": "2.11",
+      "freeQuantity2": "3.11",
+
+      "numOfPacks0": "2",
+      "numOfPacks1": "1",
+      "numOfPacks2": "2",
+
+      "minRate": "50.12",
+      "maxRate": "100.12",
+      "unitRate": "80.59",
+
+      "comments": "No items comments"
+    }
+  },
+  {
+    "dataset": "chargesAndDeduction",
+    "data": {
+      "chargesAndDeductionCount": "2",
+      "chargesOrDeductions0":"Charges",
+      "chargesOrDeductions1": "Deductions",
+      "chargesOrDeductionsPath0": "//*[text()='Charges']",
+      "chargesOrDeductionsPath1": "//*[text()='Deductions']",
+      "chargesAndDeductionAmount0": "50.12",
+      "chargesAndDeductionAmount1": "30.12",
+      "comments": "No chargesAndDeduction comments"
+    }
+  },
+  {
+    "dataset": "otherCharges",
+    "data": {
+      "otherChargesCount": "3",
+      "otherChargesAmount": "10.12",
+      "comments": "no OtherCharges comments"
+    }
+  },
+  {
+    "dataset": "Cash",
+    "data": {
+      "cashCount": "3",
+      "cashAmount": "30.123",
+      "comments": "No Cash comments"
+    }
+  },
+  {
+    "dataset": "Cheques",
+    "data": {
+      "chequesCount":"3",
+      "chequesAmount": "100.123",
+      "chequesEFT/No": "2001",
+      "chequesDate": "10-01-2026",
+      "chequesTdsAmount": "50.13",
+      "drawnOnBranch": "Hyderabad",
+      "chequesComments": "no Cheques comments",
+      "chequesCharges": "12.13"
+    }
+  },
+  {
+    "dataset": "PostDatedCheque",
+    "data": {
+      "PostDatedChequeCount":"3",
+      "postDCAmount": "50.123",
+      "postDCChequesEFT/No": "2000",
+      "postDChequesDate": "10-02-2026",
+      "postDCTdsAmount": "30.13",
+      "drawnOnBranch": "Nellore",
+      "postDCChequesComments": "no PostDatedCheque comments"
+    }
+  },
+  {
+    "dataset": "cheque[PDC]",
+    "data": {
+      "Cheques[PDC]Count":"2",
+      "PDCAmount": "100.123",
+      "PDCChequesEFT/No": "2000",
+      "PDChequesDate": "10-03-2026",
+      "PDCTdsAmount": "50.13",
+      "drawnOnBranch": "Gudur",
+      "PDCChequesComments": "no cheque[PDC] comments"
+    }
+  },
+  {
+    "dataset": "creditCard",
+    "data": {
+      "CreditCardCount":"3",
+      "cardAmount": "100.123",
+      "cardNumber": "9876543214257",
+      "cardApprovalNumber": "998921",
+      "creditCardComments": "no credit card comments"
+    }
+  },
+  {
+    "dataset": "summary",
+    "data": {
+      "expectedCashAmount": "150.25",
+      "expectedChequesAmount": "150.25",
+      "expectedPostDatedChequesAmount": "300.5",
+      "expectedCreditCardAmount": "150.25",
+      "expectedReceiptsAmount": "751.25"
+    }
+  }
+
+]
