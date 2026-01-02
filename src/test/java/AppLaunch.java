@@ -69,8 +69,8 @@ public class AppLaunch {
         Assert.assertTrue(Customers.isDisplayed(), "Customers isn't displayed");
 
         logindriver.findElement(By.xpath("//MenuItem[@Name='Purchase']")).click();
-        WebElement Suppliers = logindriver.findElement(By.name("Suppliers"));
-        Assert.assertTrue(Suppliers.isDisplayed(), "Suppliers isn't displayed");
+        WebElement Suppliers = logindriver.findElement(By.name("CreateSuppliers"));
+        Assert.assertTrue(Suppliers.isDisplayed(), "CreateSuppliers isn't displayed");
 
         logindriver.findElement(By.xpath("//MenuItem[@Name='Inventory']")).click();
         WebElement Opening_Stock = logindriver.findElement(By.name("Opening Stock"));

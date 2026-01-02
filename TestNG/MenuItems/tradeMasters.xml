@@ -1,0 +1,351 @@
+<suite name="Trade Masters Suite">
+
+    <listeners>
+        <listener class-name="com.wings.utils.Listener"/>
+    </listeners>
+
+    <test name="Company - Branches" description="Trade Branches" testID="1">
+        <classes>
+            <class name="tradeTesting.company.masters.TestBranches"/>
+        </classes>
+    </test>
+
+    <test name="Company - Departments" description="Trade Departments" testID="2">
+        <classes>
+            <class name="tradeTesting.company.masters.TestDepartments"/>
+        </classes>
+    </test>
+
+    <test name="Company - Projects" description="Trade Projects" testID="3">
+        <classes>
+            <class name="tradeTesting.company.masters.TestProjects"/>
+        </classes>
+    </test>
+
+    <test name="Company - ProfitCentres" description="Trade ProfitCentres" testID="4">
+        <classes>
+            <class name="tradeTesting.company.masters.TestProfitCentres"/>
+        </classes>
+    </test>
+
+    <test name="Company - CostCentres" description="Trade CostCentres" testID="5">
+        <classes>
+            <class name="tradeTesting.company.masters.TestCostCentres"/>
+        </classes>
+    </test>
+
+    <test name="Company - Routes" description="Trade Routes" testID="6">
+        <classes>
+            <class name="tradeTesting.company.masters.TestRoutes"/>
+        </classes>
+    </test>
+
+    <test name="Company - Transporters" description="Trade Transporters" testID="7">
+        <classes>
+            <class name="tradeTesting.company.masters.TestTransporters"/>
+        </classes>
+    </test>
+
+    <test name="Company - TermTypes" description="Trade TermTypes" testID="8">
+        <classes>
+            <class name="tradeTesting.company.masters.TestTermTypes"/>
+        </classes>
+    </test>
+
+    <test name="Company - Terms" description="Trade Terms" testID="9">
+        <classes>
+            <class name="tradeTesting.company.masters.TestTerms"/>
+        </classes>
+    </test>
+
+    <test name="Company - Reasons" description="Trade Reasons" testID="10">
+        <classes>
+            <class name="tradeTesting.company.masters.TestReasons"/>
+        </classes>
+    </test>
+
+    <test name="Company - Divisions" description="Trade Divisions" testID="11">
+        <classes>
+            <class name="tradeTesting.company.masters.TestDivisions"/>
+        </classes>
+    </test>
+
+    <test name="Company - Distributions" description="Trade Distributions" testID="12">
+        <classes>
+            <class name="tradeTesting.company.masters.TestDistributions"/>
+        </classes>
+    </test>
+
+    <test name="Company - SalesExecutives" description="Trade SalesExecutives" testID="13">
+        <classes>
+            <class name="tradeTesting.company.masters.TestSalesExecutives"/>
+        </classes>
+    </test>
+
+    <!-- Sales !-->
+
+    <test name="Sales - Customers" description="Trade Customers" testID="14">
+        <classes>
+            <class name="tradeTesting.sales.masters.TestCustomers"/>
+        </classes>
+    </test>
+
+    <test name="Sales - Types Customer" description="Trade Types Customer" testID="15">
+        <classes>
+            <class name="tradeTesting.sales.masters.TestTypesOfCustomer"/>
+        </classes>
+    </test>
+
+    <test name="Sales - Sales PriceLists" description="Trade Sales PriceLists" testID="16">
+        <classes>
+            <class name="tradeTesting.sales.masters.TestSalesPriceLists"/>
+        </classes>
+    </test>
+
+    <test name="Sales - Inclusive SalesPriceLists" description="Trade Inclusive SalesPriceLists" testID="17">
+        <classes>
+            <class name="tradeTesting.sales.masters.TestInclusiveSalesPriceLists"/>
+        </classes>
+    </test>
+
+    <test name="Sales - SimpleSchemes - Primary" description="Trade SimpleSchemes - Primary" testID="18">
+        <classes>
+            <class name="tradeTesting.sales.masters.TestSimpleSchemesPrimary"/>
+        </classes>
+    </test>
+
+    <test name="Sales - CombinationSchemes - Primary" description="Trade CombinationSchemes - Primary" testID="19">
+        <classes>
+            <class name="tradeTesting.sales.masters.TestCombinationSchemesPrimary"/>
+        </classes>
+    </test>
+
+    <test name="Sales - SimpleSchemes" description="Trade SimpleSchemes" testID="20">
+        <classes>
+            <class name="tradeTesting.sales.masters.TestSimpleSchemes"/>
+        </classes>
+    </test>
+
+    <test name="Sales - CombinationSchemes" description="Trade CombinationSchemes" testID="21">
+        <classes>
+            <class name="tradeTesting.sales.masters.TestCombinationSchemes"/>
+        </classes>
+    </test>
+
+    <test name="Sales - BillWiseDiscounts" description="Trade BillWiseDiscounts" testID="22">
+        <classes>
+            <class name="tradeTesting.sales.masters.TestBillWiseDiscounts"/>
+        </classes>
+    </test>
+
+    <test name="Sales - ModeOfTransport" description="Trade ModeOfTransport" testID="23">
+        <classes>
+            <class name="tradeTesting.sales.masters.TestModeOfTransport"/>
+        </classes>
+    </test>
+
+    <test name="Sales - LoyaltySchemes" description="Trade LoyaltySchemes" testID="24">
+        <classes>
+            <class name="tradeTesting.sales.masters.TestLoyaltySchemes"/>
+        </classes>
+    </test>
+
+    <test name="Sales - Trays" description="Trade Trays" testID="24">
+        <classes>
+            <class name="tradeTesting.sales.masters.TestTrays"/>
+        </classes>
+    </test>
+
+    <test name="Sales - PriceTypes" description="Trade PriceTypes" testID="26">
+        <classes>
+            <class name="tradeTesting.sales.masters.TestPriceType"/>
+        </classes>
+    </test>
+
+    <!-- Purchases !-->
+
+    <test name="Purchases - Suppliers" description="Trade Suppliers" testID="26">
+        <classes>
+            <class name="tradeTesting.purchase.masters.TestSuppliers"/>
+        </classes>
+    </test>
+
+    <test name="Purchases - Purchase PriceLists" description="Trade Purchase PriceLists" testID="26">
+        <classes>
+            <class name="tradeTesting.purchase.masters.TestPurchasePriceLists"/>
+        </classes>
+    </test>
+
+    <test name="Purchases - Inclusive Purchase PriceLists" description="Trade Inclusive Purchase PriceLists" testID="26">
+        <classes>
+            <class name="tradeTesting.purchase.masters.TestInclusivePurchasePriceLists"/>
+        </classes>
+    </test>
+
+    <test name="Purchases - Batch Policies" description="Trade Batch Policies" testID="26">
+        <classes>
+            <class name="tradeTesting.purchase.masters.TestPurchaseBatchPolicies"/>
+        </classes>
+    </test>
+
+    <!-- Inventory !-->
+
+    <test name="Inventory - Products" description="Trade Products" testID="27">
+        <classes>
+            <class name="tradeTesting.inventory.masters.TestProducts"/>
+        </classes>
+    </test>
+
+    <test name="Inventory - Product Batches" description="Trade Product Batches" testID="28">
+        <classes>
+            <class name="tradeTesting.inventory.masters.TestProductBatches"/>
+        </classes>
+    </test>
+
+    <test name="Inventory - Units Of Measure" description="Trade Units Of Measure" testID="29">
+        <classes>
+            <class name="tradeTesting.inventory.masters.TestUnitsOfMeasure"/>
+        </classes>
+    </test>
+
+    <test name="Inventory - Locations" description="Trade Locations" testID="30">
+        <classes>
+            <class name="tradeTesting.inventory.masters.TestLocations"/>
+        </classes>
+    </test>
+
+    <test name="Inventory - Storage Bins" description="Trade Storage Bins" testID="31">
+        <classes>
+            <class name="tradeTesting.inventory.masters.TestStorageBins"/>
+        </classes>
+    </test>
+
+    <test name="Inventory - Product Categories" description="Trade Product Categories" testID="32">
+        <classes>
+            <class name="tradeTesting.inventory.masters.TestProductCategories"/>
+        </classes>
+    </test>
+
+    <test name="Inventory - Product Types" description="Trade Product Types" testID="33">
+        <classes>
+            <class name="tradeTesting.inventory.masters.TestProductTypes"/>
+        </classes>
+    </test>
+
+    <test name="Inventory - Product Brands" description="Trade Product Brands" testID="34">
+        <classes>
+            <class name="tradeTesting.inventory.masters.TestProductBrands"/>
+        </classes>
+    </test>
+
+    <test name="Inventory - Distributions" description="Trade Distributions" testID="35">
+        <classes>
+            <class name="tradeTesting.inventory.masters.TestDistributions"/>
+        </classes>
+    </test>
+
+    <test name="Inventory - Brand Extensions" description="Trade Brand Extensions" testID="36">
+        <classes>
+            <class name="tradeTesting.inventory.masters.TestBrandExtensions"/>
+        </classes>
+    </test>
+
+    <test name="Inventory - Product Variants" description="Trade Product Variants" testID="37">
+        <classes>
+            <class name="tradeTesting.inventory.masters.TestProductVariants"/>
+        </classes>
+    </test>
+
+    <test name="Inventory - Pack Sizes" description="Trade Pack Sizes" testID="38">
+        <classes>
+            <class name="tradeTesting.inventory.masters.TestPackSizes"/>
+        </classes>
+    </test>
+
+    <test name="Inventory - Pack Formats" description="Trade Pack Formats" testID="39">
+        <classes>
+            <class name="tradeTesting.inventory.masters.TestFormate"/>
+        </classes>
+    </test>
+
+    <test name="Inventory - Stock Types" description="Trade Stock Types" testID="40">
+        <classes>
+            <class name="tradeTesting.inventory.masters.TestStockTypes"/>
+        </classes>
+    </test>
+
+    <test name="Inventory - Damage Bins" description="Trade Damage Bins" testID="41">
+        <classes>
+            <class name="tradeTesting.inventory.masters.TestDamageBin"/>
+        </classes>
+    </test>
+
+    <test name="Inventory - Customer Categories" description="Trade Customer Categories" testID="42">
+        <classes>
+            <class name="tradeTesting.inventory.masters.TestCustomerCategories"/>
+        </classes>
+    </test>
+
+    <test name="Inventory - Customer Types" description="Trade Customer Types" testID="43">
+        <classes>
+            <class name="tradeTesting.inventory.masters.TestCustomerTypes"/>
+        </classes>
+    </test>
+
+    <test name="Inventory - Outlet Types" description="Trade Outlet Types" testID="44">
+        <classes>
+            <class name="tradeTesting.inventory.masters.TestOutletTypes"/>
+        </classes>
+    </test>
+
+    <test name="Inventory - Outlet Segments" description="Trade Outlet Segments" testID="45">
+        <classes>
+            <class name="tradeTesting.inventory.masters.TestOutletSegments"/>
+        </classes>
+    </test>
+
+    <test name="Inventory - Income Groups" description="Trade Income Groups" testID="46">
+        <classes>
+            <class name="tradeTesting.inventory.masters.TestIncomeGroups"/>
+        </classes>
+    </test>
+
+    <test name="Inventory - Regions" description="Trade Regions" testID="47">
+        <classes>
+            <class name="tradeTesting.inventory.masters.TestRegions"/>
+        </classes>
+    </test>
+
+    <test name="Inventory - Territories" description="Trade Territories" testID="48">
+        <classes>
+            <class name="tradeTesting.inventory.masters.TestTerritories"/>
+        </classes>
+    </test>
+
+    <test name="Inventory - Cities" description="Trade Cities" testID="49">
+        <classes>
+            <class name="tradeTesting.inventory.masters.TestCities"/>
+        </classes>
+    </test>
+
+    <test name="Inventory - Product Margin Categories" description="Trade Product Margin Categories" testID="50">
+        <classes>
+            <class name="tradeTesting.inventory.masters.TestProductMarginCategories"/>
+        </classes>
+    </test>
+
+    <!-- Configure !-->
+
+    <test name="Configure - Voucher Types" description="Trade Voucher Types" testID="50">
+        <classes>
+            <class name="tradeTesting.configure.TestVoucherTypes"/>
+        </classes>
+    </test>
+
+    <test name="Configure - Users" description="Trade Users" testID="50">
+        <classes>
+            <class name="tradeTesting.configure.TestUsers"/>
+        </classes>
+    </test>
+
+</suite>

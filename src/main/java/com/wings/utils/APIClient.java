@@ -82,7 +82,8 @@ public class APIClient {
 
     /** Performs API authentication and stores UserId & SessionId */
     public static Response APIAuth(String loginFile) {
-        var response = callApi("POST", "http://10.10.10.90:8080/WingsApi/api/Login/SignIn", loginFile, false);
+        RestAssured.useRelaxedHTTPSValidation();
+        var response = callApi("POST", "https://10.10.10.90:8080/WingsApi/api/Login/SignIn", loginFile, false);
         userID = response.getBody().jsonPath().getString("UserId");
         sessionId = response.getBody().jsonPath().getString("SessionId");
         System.out.println("UserId :" + userID);
@@ -119,10 +120,10 @@ public class APIClient {
         String updatedJson = JsonUpdater.updateJson(jsonTemplate, updateMap);
         // Save updated JSON temporarily (optional if APIClient can accept raw JSON)
         Files.write(Paths.get(tempAPIBodyUpdate), updatedJson.getBytes());
-
-        Response response = APIClient.callApi("POST", "http://10.10.10.90:8080/WingsApi/api/Process/Handler",tempAPIBodyUpdate);
+        RestAssured.useRelaxedHTTPSValidation();
+        Response response = APIClient.callApi("POST", "https://10.10.10.90:8080/WingsApi/api/Process/Handler",tempAPIBodyUpdate);
         assertStatusCode(response, 200);
-//        System.out.println(response.asString());
+        System.out.println(response.asString());
         Files.write(Paths.get(writeAPIResponse), response.asString().getBytes());
         OptimizedJsonExcelComparator.JsonExcelComparator(writeAPIResponse,outputFile,diffFile);
         try {

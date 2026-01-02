@@ -29,7 +29,7 @@ public class Branches extends Masters {
         Thread.sleep(1500);
         super.createMaster("xpath", "//TreeItem[@Name='Branches']/TreeItem[@Name='All Branches']");
         Thread.sleep(2000);
-        common.clickElement("xpath", "//Edit[@Name='New Branch *']");
+        common.clickElement("xpath", "//Edit[@Name='New Master']");
         inputTextWithValidation("xpath", "//Edit[@Name='New Branch *']", common.getData(dataFile, "newBranch") + common.getRandom());
         String master=common.findWebElement("xpath","//Edit[@Name='New Branch *']").getText();
         common.clickElement("xpath", "//Edit[@Name='Company *']");

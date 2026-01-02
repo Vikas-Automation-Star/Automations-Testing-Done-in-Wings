@@ -3,6 +3,9 @@ package com.wings.utils;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.testng.ISuite;
+import org.testng.ITestResult;
+import org.testng.Reporter;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -144,8 +147,8 @@ public class FileUtil {
 
     public static void writeTimeLogInMinutes(String methodName, long timeStampInNano) throws IOException {
         try {
-            org.testng.ITestResult result = org.testng.Reporter.getCurrentTestResult();
-            org.testng.ISuite currentSuite = result.getTestContext().getSuite();
+            ITestResult result = Reporter.getCurrentTestResult();
+            ISuite currentSuite = result.getTestContext().getSuite();
             FileWriter writer = new FileWriter(String.valueOf(currentSuite.getAttribute("TimeLogFile")), true);
             System.out.println("path " + currentSuite.getAttribute("TimeLogFile"));
 

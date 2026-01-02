@@ -1,0 +1,8 @@
+{
+  "route": "HimayathNagar",
+  "description": "Wings",
+  "applicableDeliveryDates": "Sunday",
+  "startingCustomers": "Customers 1",
+  "endingCustomers": "Customers 2"
+
+}

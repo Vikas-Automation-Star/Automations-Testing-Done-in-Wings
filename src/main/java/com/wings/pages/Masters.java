@@ -61,7 +61,7 @@ public class Masters {
     public void inputTextWithValidation(String locatorType, String locator, String inputText) {
         WebElement element = common.findWebElement(locatorType, locator);
         element.sendKeys(inputText);
-        System.out.println(element.getText());
+//        System.out.println(element.getText());
         if (element.getText().equals(inputText)) {
 //            System.out.println("entered correct Input :" + element.getText());
         } else {
@@ -78,6 +78,7 @@ public class Masters {
 
     public void saveAfterMasterCreate() throws InterruptedException {
         common.clickElement("xpath", "//Button[@Name='Save']");
+        Thread.sleep(1500);
         common.clickElement("xpath", "//Button[@Name='OK']");
         Thread.sleep(2000);
         common.clickElement("xpath", "//Button[@Name='Close']");
@@ -132,12 +133,21 @@ public class Masters {
         common.clickElement("xpath", "//MenuItem[@Name='"+fourthMenu+"']");
     }
 
+    public void sendData(String locatorType,String locator,String dataFile,String key) throws IOException, ParseException {
+        WebElement stockType = common.findWebElement(locatorType, locator);
+        stockType.clear();
+        stockType.sendKeys(common.getData(dataFile, key), Keys.ENTER);
+    }
+
+
     public void validateMastersAndInactive(String menuItem,String master){
         common.clickElement("xpath","//TreeItem[@Name='"+menuItem+"']");
         common.clickElement("xpath","//TreeItem[@Name='All "+ menuItem +"']");
         List<WebElement> fetchMasters=common.findWebElements("xpath","//List//ListItem");
+        boolean masterValidation=false;
         for (WebElement v:fetchMasters){
             if (v.getText().equals(master)) {
+                masterValidation=true;
                 System.out.println("masterName :"+v.getText());
                 System.out.println("Master validated do Inactive");
                 Actions actions=new Actions(driver);
@@ -148,16 +158,7 @@ public class Masters {
                 closeMaster(menuItem);
                 break;
             }
-            else {
-                System.out.println("check another Master");
-            }
         }
-
-//        WebElement fetchMaster=common.findWebElement(listXpath,listLocator);
-//        Actions actions=new Actions(driver);
-//        actions.contextClick(fetchMaster).perform();
-//        common.clickElement("xpath","//MenuItem[@Name='Inactivate']");
-//        common.clickElement("xpath","//*/Button[@Name='OK']");
-//        System.out.println("Master inactive successfully");
+        if (!masterValidation) Assert.fail("Master is not validated");
     }
 }

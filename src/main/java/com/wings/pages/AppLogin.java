@@ -51,6 +51,33 @@ public class AppLogin {
         return loginDriver;
     }
 
+    public WindowsDriver tradeLogin() throws IOException, InterruptedException {
+        Desktop desktop = Desktop.getDesktop();
+        desktop.open (new File("C:\\Program Files (x86)\\Windows Application Driver\\WinAppDriver.exe"));
+        Thread.sleep(5000);
+        driver = common.initializeDriver(common.getProperty("multiUserApp"));
+        driver.findElement(By.name("24D Trade Automation")).click();
+        Thread.sleep(5000);
+        rootDriver = common.initializeDriver("Root");
+        Thread.sleep(7000);
+        WebElement login = rootDriver.findElement(By.name("Wings - Web Client"));
+        String nativeWindow = login.getAttribute("NativeWindowHandle");
+        String hexLoginId = Integer.toHexString(Integer.parseInt(nativeWindow));
+        System.out.println("window id: " + hexLoginId);
+        loginDriver = common.navigateToAppWindow(hexLoginId);
+        common = new Common(loginDriver);
+//        common.inputText("xpath", "//Edit[@Name='Server']", common.getProperty("serverPath"));
+//        common.inputText("xpath","//Edit[@Name='Company']",common.getProperty("dataBase"));
+//        common.inputText("xpath","//Edit[@Name='User name']",common.getProperty("userName"));
+        common.inputText("xpath", "//Edit[@Name='Password']", common.getProperty("password"));
+        common.clickElement("name", "Submit");
+        Thread.sleep(7000);
+        common.clickElement("xpath","//Button[@Name='OK']");
+        driver.quit();
+        rootDriver.quit();
+        return loginDriver;
+    }
+
     public WebDriver mobileLogin() throws InterruptedException, IOException {
         Map<String, String> mobileEmulation = new HashMap<>();
         mobileEmulation.put("deviceName", "Pixel 7");
