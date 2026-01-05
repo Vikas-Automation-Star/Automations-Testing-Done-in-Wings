@@ -1,0 +1,12 @@
+{
+  "newLoyaltySchemes": "newLoyaltySchemes",
+  "description": "Wings",
+  "fromDate": "30-12-2025",
+  "toDate": "30-12-2026",
+  "lowerLimit": "1",
+  "forEveryBillValues": "1.00",
+  "points": "1",
+  "masterNode": "Loyalty Schemes",
+  "upperLimit": "1",
+  "discount": "1.11"
+}

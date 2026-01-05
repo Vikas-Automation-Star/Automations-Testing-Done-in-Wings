@@ -1,0 +1,16 @@
+{
+  "newBillWiseDiscount": "newBillWiseDiscount",
+  "description": "Wings",
+  "fromDate": "31-03-2025",
+  "toDate": "01-04-2026",
+  "fromValue": "1.00",
+  "toValue": "100000.00",
+  "discountBasis": "Percentage",
+  "discount": "10.12",
+  "valueMoreThan": "0.00",
+  "discountBasis1": "None",
+  "discount1": "0.00",
+  "customerCategories": "Customer Categories 1",
+  "customerType": "Customer Types 1",
+  "customer": "Customers 1"
+}

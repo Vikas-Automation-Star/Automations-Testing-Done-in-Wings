@@ -1,0 +1,17 @@
+{
+  "newSimpleSchemePrimary": "newSimpleSchemePrimary",
+  "description": "Wings",
+  "fromDate": "31-03-2025",
+  "toDate": "01-04-2026",
+  "schemeType": "Primary",
+  "units": "Base Unit",
+  "eligibilityCriteria": "Quantity",
+  "minLimit": "1.00",
+  "forEvery": "1.00",
+  "discountBasis": "None",
+  "discount": "0.00",
+  "freeProduct": "Product 1",
+  "freeProductBatch": "Product 1 Default Batch",
+  "freeUnits": "1.00"
+
+}
