@@ -1,0 +1,48 @@
+{
+  "deviceType": 3,
+  "subFunctionName": "None",
+  "aquaTempSessionId": "00000000-0000-0000-0000-000000000000",
+  "dataTable": {
+    "tableName": "table1",
+    "columns": [
+      {
+        "name": "Type",
+        "dataType": "String"
+      },
+      {
+        "name": "DocumentSeries",
+        "dataType": "String"
+      },
+      {
+        "name": "DocumentNo",
+        "dataType": "Int32"
+      },
+      {
+        "name": "TransactionNo",
+        "dataType": "Guid"
+      }
+    ],
+    "rows": [
+      [
+        "EditTransaction",
+        "si ",
+        "23",
+        "619ed808-1a38-44ff-9530-686e0955fa8b"
+      ]
+    ]
+  },
+  "dataSet": null,
+  "dataSetList": null,
+  "functionName": "GetNewTransactionByDesignNo",
+  "stringList": [
+    "e3345c54-cdbb-9c4d-5929-bce60564e1ea",
+    "00000000-0000-0000-0000-000000000000",
+    "00000000-0000-0000-0000-000000000000"
+  ],
+  "integerList": [
+    null,
+    0
+  ],
+  "userId": "",
+  "sessionId": ""
+}
