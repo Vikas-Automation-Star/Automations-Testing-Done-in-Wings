@@ -1,0 +1,11 @@
+{
+  "newBatchPolicy":"newBatchPolicy",
+  "supplierCode":"2001",
+  "separator": "-",
+  "batchPolicyType": "Create If Does Not Exist",
+  "description":"Wings",
+  "includeOption": "Include Batch Text",
+  "policySequence": "1",
+  "policyOptionFormat": "<Text>",
+  "policyText": "Wings"
+}

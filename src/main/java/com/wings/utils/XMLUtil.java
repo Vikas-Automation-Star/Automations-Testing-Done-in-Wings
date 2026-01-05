@@ -154,7 +154,6 @@ public class XMLUtil {
 
         String executionTimeFormatted = String.format("%02d:%02d:%02d", hours, minutes, seconds);
 
-
 //        String executionTimeFormatted = String.format("%02d:%02d:%02d",
 //                (executionTimeMillis / (1000 * 60 * 60)) % 24, (executionTimeMillis / (1000 * 60)) % 60, (executionTimeMillis / 1000) % 60);
 
@@ -180,7 +179,7 @@ public class XMLUtil {
 
         final String fromEmail = "productupdates@wingsinfo.net";
         final String password = "Zuy97283";
-        final String toEmail = "vikas.empuluri@wingsinfo.net,venkatarathaiah.m@wingsinfo.net,manoj.c@wingsinfo.net,madhuri.matta@wingsinfo.net";//,manoj.c@wingsinfo.net,venkatarathaiah.m@wingsinfo.net";//,manoj.c@wingsinfo.net,venkatarathaiah.m@wingsinfo.net,madhuri.matta@wingsinfo.net,sudheer.s@wingsinfo.net";
+        final String toEmail = "vikas.empuluri@wingsinfo.net";//,venkatarathaiah.m@wingsinfo.net,manoj.c@wingsinfo.net,madhuri.matta@wingsinfo.net";//sudheer.s@wingsinfo.net";
 
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.office365.com");
@@ -201,7 +200,7 @@ public class XMLUtil {
     public static void main(String[] args) {
         XMLUtil xmlUtil = new XMLUtil();
         try {
-            xmlUtil.readTestNG("./TestNG/MenuItems/Regression.xml");// Parse bothSuite.xml and testng-results.xml
+            xmlUtil.readTestNG("./TestNG/MenuItems/tradeMasters.xml");// Parse bothSuite.xml and testng-results.xml
             xmlUtil.readTestNGResults("./target/surefire-reports/testng-results.xml"); // Process test results and send email
         } catch (Exception e) {
             e.printStackTrace();

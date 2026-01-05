@@ -1,0 +1,31 @@
+{
+
+  "location": "Location",
+  "branch": "Branch 1",
+  "description": "Wings",
+  "storageBin": "Regular Storage Bin Type",
+  "stockType": "Normal",
+
+  "address1": "TpGudur",
+  "address2": "peduru",
+  "address3": "gamallapalem",
+  "city": "Nellore",
+  "state": "Andhra Pradesh",
+  "country": "india",
+  "zip": "524311",
+  "postalCode": "524311",
+  "Telephone1": "7093682449",
+  "Telephone2": "7093682449",
+  "Telephone3": "7093682449",
+  "Telephone4": "7093682449",
+  "fax": "QuickFax",
+  "email": "vikasempuluri@gmail.com",
+  "website": "https://vikas.com",
+  "contactPersion": "madhuri",
+  "contactPersonDesignation": "AutomationTestEngineer",
+  "contactPersonTelephoneNo": "12345678",
+  "contactPersonMobileNo": "456123456",
+  "contactPersonEmail": "madhuri@gmail.com",
+
+  "gstin": "36AAFCB7707D1ZV"
+}

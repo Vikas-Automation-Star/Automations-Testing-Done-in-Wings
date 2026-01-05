@@ -1,0 +1,19 @@
+{
+  "product": "Product 10",
+  "mrp": "500.12",
+  "batch": "Wings",
+  "description": "Wings",
+  "mfgBatchNum": "998921",
+  "mfgDate": "10-12-2025",
+  "mfgMonth": "12",
+  "expiryDate": "10-12-2026",
+  "expiryMonth": "12",
+  "wef": "31-12-2025",
+  "priceList": "Sales Price Lists Default",
+  "purchasePriceList": "Purchase Default Price Lists",
+  "PriceType": "Default Price Type",
+  "rateInSalesUnit": "1.00",
+  "RateInBaseUnit": "1.00",
+  "location": "Branch 2 Default Location",
+  "storageBin": "Branch 2 Default Location Default Bin"
+}
