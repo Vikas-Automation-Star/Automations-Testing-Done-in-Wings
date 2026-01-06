@@ -54,6 +54,14 @@ public class Masters {
         common.clickElement("xpath", "//Button[@Name='Close']");
     }
 
+    public void saveMasterTrade() throws InterruptedException {
+        common.clickElement("name", "Save");
+        Thread.sleep(2000);
+        common.clickElement("name", "Yes");
+        common.clickElement("name", "OK");
+        common.clickElement("xpath", "//Button[@Name='Close']");
+    }
+
     public void closeMaster(String masterName) {
         common.clickElement("xpath", "//TabItem[@Name='" + masterName + "']/Button[@Name='Close']");
     }

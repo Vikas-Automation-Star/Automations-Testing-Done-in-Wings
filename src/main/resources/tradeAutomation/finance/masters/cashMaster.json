@@ -1,0 +1,14 @@
+{
+  "accountName": "Sample_Cash_Account",
+  "accNum": "9874569856",
+  "bankBranch": "newBranch",
+  "accType": "newAccountType",
+  "ifsc": "ICIC000890",
+  "upi": "890912@icicibank",
+  "description": "This is sample master",
+  "gst": "36AADCR9381B1ZB",
+  "city": "Nellore",
+  "state": "Andhra Pradesh",
+  "country": "India",
+  "zip": "524311"
+}
