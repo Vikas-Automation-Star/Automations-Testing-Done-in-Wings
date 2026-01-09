@@ -26,11 +26,12 @@ public class TestPurchaseOrdersCancellation {
 
     @Test
     public void purchaseOrdersCancellation() throws Exception {
-
+        PurchaseOrdersCancellation cancellation=new PurchaseOrdersCancellation(driver,dataFile);
+        cancellation.purchaseOrderCancellation("PO 5");
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-        appLogin.logout();
+//        appLogin.logout();
     }
 }

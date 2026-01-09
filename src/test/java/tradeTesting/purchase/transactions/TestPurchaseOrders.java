@@ -29,11 +29,11 @@ public class TestPurchaseOrders {
     public void purchaseOrders() throws Exception {
         PurchaseOrders orders=new PurchaseOrders(driver,dataFile);
         orders.purchaseOrders();
-
     }
 
     @AfterTest
     public void afterTest() throws IOException {
 //        appLogin.logout();
     }
+
 }

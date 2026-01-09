@@ -52,78 +52,84 @@ public class PurchaseOrders extends TransactionsBaseClass {
         long addProductEnd = System.nanoTime() - addProductStart;
         FileUtil.writeTimeLogInMinutes("PO Add Products:- ", addProductEnd);
 
-//        long chargesDeductionsStart = System.nanoTime();
-//        navigateToChargesAndDeductionsTab();
-//        addChargesAndDeductions();
-//        long chargesDeductionsEnd = System.nanoTime() - chargesDeductionsStart;
-//        FileUtil.writeTimeLogInMinutes("PO Charges And Deductions:- ", chargesDeductionsEnd);
-//
-//        long otherChargesStart = System.nanoTime();
-//        navigateToOtherChargesTab();
-//        addOtherCharges();
-//        long otherChargesEnd = System.nanoTime() - otherChargesStart;
-//        FileUtil.writeTimeLogInMinutes("PO Other Charges:- ", otherChargesEnd);
-//
-//        long cashStart = System.nanoTime();
-//        navigateToCashTab();
-//        addCash();
-//        long cashEnd = System.nanoTime() - cashStart;
-//        FileUtil.writeTimeLogInMinutes("PO Cash Tab:- ", cashEnd);
-//
-//        long chequesStart = System.nanoTime();
-//        List<WebElement> elements = common.findWebElements("xpath", "//TabItem[contains(@Name,'Cheques')]");
-//        System.out.println(elements.get(0).getText());
-//        elements.get(0).click();
-//        addCheques();
-//        long chequesEnd = System.nanoTime() - chequesStart;
-//        FileUtil.writeTimeLogInMinutes("PO Cheques Tab:- ", chequesEnd);
-//
-//        long postDatedChequesStart = System.nanoTime();
-//        common.clickElement("xpath", "//TabItem[contains(@Name,'Post Dated Cheques')]");
-//        addPostDatedCheques();
-//        long postDatedChequesEnd = System.nanoTime() - postDatedChequesStart;
-//        FileUtil.writeTimeLogInMinutes("PO Post Dated Cheques Tab:- ", postDatedChequesEnd);
-//
-//        long chequesPDCStart = System.nanoTime();
-//        List<WebElement> element = common.findWebElements("xpath", "//TabItem[contains(@Name,'Cheques')]");
-//        System.out.println(element.get(2).getText());
-//        element.get(2).click();
-//        addChequesPDC();
-//        long chequesPDCEnd = System.nanoTime() - chequesPDCStart;
-//        FileUtil.writeTimeLogInMinutes("PO Cheques PDC Tab:- ", chequesPDCEnd);
-//
-//        long otherInfoTabStart = System.nanoTime();
-//        navigateToOtherInfoTab();
-//        otherInfo();
-//        long otherInfoTabEnd = System.nanoTime() - otherInfoTabStart;
-//        FileUtil.writeTimeLogInMinutes("PO Other Info:- ", otherInfoTabEnd);
-//        //additional Info
-//        long additionalInfoTabStart = System.nanoTime();
-//        common.clickElement("xpath", "//TabItem[contains(@Name,'Additional Information  ')]");
-//        additionalInformation();
-//        long additionalInfoTabEnd = System.nanoTime() - additionalInfoTabStart;
-//        FileUtil.writeTimeLogInMinutes("PO Additional Information:- ", additionalInfoTabEnd);
-//        //terms and conditions
-//        long termsConditionsTabStart = System.nanoTime();
-//        common.clickElement("xpath", "//TabItem[contains(@Name,'Terms And Conditions')]");
-//        termsAndCondition();
-//        long termsConditionsTabEnd = System.nanoTime() - termsConditionsTabStart;
-//        FileUtil.writeTimeLogInMinutes("PO Terms And Conditions:- ", termsConditionsTabEnd);
-//
-//        long allocationsTabStart = System.nanoTime();
-//        common.clickElement("xpath", "//TabItem[contains(@Name,'Allocations')]");
-//        addAllocations();
-//        long allocationsTabEnd = System.nanoTime() - allocationsTabStart;
-//        FileUtil.writeTimeLogInMinutes("PO Enter Allocations:- ", allocationsTabEnd);
-//
-//        transactionSave();
+        long chargesDeductionsStart = System.nanoTime();
+        common.clickElement("xpath", "//TabItem[contains(@Name,'  ChargesAndDeductions  ')]");
+        addChargesAndDeductions();
+        long chargesDeductionsEnd = System.nanoTime() - chargesDeductionsStart;
+        FileUtil.writeTimeLogInMinutes("PO Charges And Deductions:- ", chargesDeductionsEnd);
+
+        long otherChargesStart = System.nanoTime();
+        common.clickElement("xpath", "//TabItem[contains(@Name,'  TaxableOtherCharges  ')]");
+        addTaxableOtherCharges();
+        long otherChargesEnd = System.nanoTime() - otherChargesStart;
+        FileUtil.writeTimeLogInMinutes("PO Other Charges:- ", otherChargesEnd);
+
+        long cashStart = System.nanoTime();
+        navigateToCashTab();
+        addCash();
+        long cashEnd = System.nanoTime() - cashStart;
+        FileUtil.writeTimeLogInMinutes("PO Cash Tab:- ", cashEnd);
+
+        long chequesStart = System.nanoTime();
+        List<WebElement> elements = common.findWebElements("xpath", "//TabItem[contains(@Name,'Cheques')]");
+        System.out.println(elements.get(0).getText());
+        elements.get(0).click();
+        addCheques();
+        long chequesEnd = System.nanoTime() - chequesStart;
+        FileUtil.writeTimeLogInMinutes("PO Cheques Tab:- ", chequesEnd);
+
+        long postDatedChequesStart = System.nanoTime();
+        common.clickElement("xpath", "//TabItem[contains(@Name,'  PostDatedCheques  ')]");
+        addPostDatedCheques();
+        long postDatedChequesEnd = System.nanoTime() - postDatedChequesStart;
+        FileUtil.writeTimeLogInMinutes("PO Post Dated Cheques Tab:- ", postDatedChequesEnd);
+
+        long chequesPDCStart = System.nanoTime();
+        common.clickElement("xpath", "//TabItem[contains(@Name,'  PDC  ')]");
+        addChequesPDC();
+        long chequesPDCEnd = System.nanoTime() - chequesPDCStart;
+        FileUtil.writeTimeLogInMinutes("PO Cheques PDC Tab:- ", chequesPDCEnd);
+
+        long otherInfoTabStart = System.nanoTime();
+        common.clickElement("xpath", "//TabItem[contains(@Name,'  OtherInfo  ')]");
+        otherInfo();
+        long otherInfoTabEnd = System.nanoTime() - otherInfoTabStart;
+        FileUtil.writeTimeLogInMinutes("PO Other Info:- ", otherInfoTabEnd);
+
+        long additionalInfoTabStart = System.nanoTime();
+        common.clickElement("xpath", "//TabItem[contains(@Name,'  AdditionalInformation  ')]");
+        additionalInformation();
+        long additionalInfoTabEnd = System.nanoTime() - additionalInfoTabStart;
+        FileUtil.writeTimeLogInMinutes("PO Additional Information:- ", additionalInfoTabEnd);
+
+        long materialDispatchAddress = System.nanoTime();
+        common.clickElement("xpath", "//TabItem[contains(@Name,'  MaterialDespatchAddress  ')]");
+        materialDispatchAddress();
+        long materialDispatchAddressEnd = System.nanoTime() - materialDispatchAddress;
+        FileUtil.writeTimeLogInMinutes("Material Dispatch address:- ", materialDispatchAddressEnd);
+
+        long termsConditionsTabStart = System.nanoTime();
+        common.clickElement("xpath", "//TabItem[contains(@Name,'  MaterialDespatchAddress  ')]");
+        scrollRight(3);
+        common.clickElement("xpath", "//TabItem[contains(@Name,'  TermsAndConditions  ')]");
+        termsAndCondition();
+        long termsConditionsTabEnd = System.nanoTime() - termsConditionsTabStart;
+        FileUtil.writeTimeLogInMinutes("PO Terms And Conditions:- ", termsConditionsTabEnd);
+
+        long allocationsTabStart = System.nanoTime();
+        common.clickElement("xpath", "//TabItem[contains(@Name,'Allocations')]");
+        addAllocations();
+        long allocationsTabEnd = System.nanoTime() - allocationsTabStart;
+        FileUtil.writeTimeLogInMinutes("PO Enter Allocations:- ", allocationsTabEnd);
+
+        transactionSave();
         String newVoucherID =newTransactionID(oldVoucherID);
-//        System.out.println("newID: "+newVoucherID);
-//        Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
-//        //end
-//        long purchaseOrderEnd = System.nanoTime() - start;
-//        FileUtil.writeTimeLogInMinutes("Purchase Order ended at:- ", purchaseOrderEnd);
-        //API
+        System.out.println("newID: "+newVoucherID);
+        Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
+        //end
+        long purchaseOrderEnd = System.nanoTime() - start;
+        FileUtil.writeTimeLogInMinutes("Purchase Order ended at:- ", purchaseOrderEnd);
+//        API
 //        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"purchaseOrders");
 
         return newVoucherID;
@@ -152,7 +158,7 @@ public class PurchaseOrders extends TransactionsBaseClass {
             common.clickElement("xpath", "//Header[@Name='Discount Amount3']");
             discountIsClicked = true;
         }
-        List<WebElement> disc = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Disc')]");
+        List<WebElement> disc = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Disc % Row ')]");
         List<WebElement> discountAcc1 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Discount Account1 Row ')]");
         List<WebElement> discountBasis1 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Discount Basis1 Row ')]");
         List<WebElement> discount1 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Discount1 Row ')]");
@@ -166,61 +172,66 @@ public class PurchaseOrders extends TransactionsBaseClass {
         List<WebElement> hsnCodeRowList = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'HSN Row ')]");
         List<WebElement> gstProductCategoryRowList = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'GST Product Category Row ')]");
         List<WebElement> cessProductCategoryRowList = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'CESS Product Category Row ')]");
-        List<WebElement> executives = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Executive Row ')]");
+//        List<WebElement> executives = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Executive Row ')]");
         List<WebElement> departmentRowList = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Department Row ')]");
         List<WebElement> projectRowList = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Project Row ')]");
         List<WebElement> profitCentreRowList = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Profit Centre Row ')]");
         List<WebElement> costCentreRowList = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Cost Centre Row ')]");
         List<WebElement> commentsRowList = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Comments Row ')]");
-        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 350, 0);
-        common.clickElement("xpath", "//Header[@Name='Info5']");
-        List<WebElement> Info1 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Info1 Row ')]");
-        List<WebElement> Info2 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Info2 Row ')]");
-        List<WebElement> Info3 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Info3 Row ')]");
-        List<WebElement> Info4 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Info4 Row ')]");
-        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 350, 0);
-        List<WebElement> Info5 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Info5 Row ')]");
-        common.clickElement("xpath", "//Header[@Name='Value5']");
-        List<WebElement> Value1 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Value1 Row  ')]");
-        List<WebElement> Value2 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Value2 Row ')]");
-        List<WebElement> Value3 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Value3 Row ')]");
-        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 350, 0);
-        List<WebElement> Value4 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Value4 Row ')]");
-        List<WebElement> Value5 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Value5 Row ')]");
-        common.clickElement("xpath", "//Header[@Name='Date3']");
-        List<WebElement> Date1 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Date1 Row ')]");
-        List<WebElement> Date2 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Date2 Row ')]");
-        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 350, 0);
-        List<WebElement> Date3 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Date3 Row ')]");
-        common.clickElement("xpath", "//Header[@Name='Bool3']");
-        List<WebElement> Bool1 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/CheckBox[contains(@Name,'Bool 1 Row ')]");
-        List<WebElement> Bool2 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/CheckBox[contains(@Name,'Bool 2 Row ')]");
-        List<WebElement> Bool3 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/CheckBox[contains(@Name,'Bool 3 Row ')]");
+//        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 350, 0);
+//        common.clickElement("xpath", "//Header[@Name='Info5']");
+//        List<WebElement> Info1 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Info1 Row ')]");
+//        List<WebElement> Info2 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Info2 Row ')]");
+//        List<WebElement> Info3 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Info3 Row ')]");
+//        List<WebElement> Info4 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Info4 Row ')]");
+//        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 350, 0);
+//        List<WebElement> Info5 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Info5 Row ')]");
+//        common.clickElement("xpath", "//Header[@Name='Value5']");
+//        List<WebElement> Value1 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Value1 Row  ')]");
+//        List<WebElement> Value2 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Value2 Row ')]");
+//        List<WebElement> Value3 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Value3 Row ')]");
+//        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 350, 0);
+//        List<WebElement> Value4 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Value4 Row ')]");
+//        List<WebElement> Value5 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Value5 Row ')]");
+//        common.clickElement("xpath", "//Header[@Name='Date3']");
+//        List<WebElement> Date1 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Date1 Row ')]");
+//        List<WebElement> Date2 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Date2 Row ')]");
+//        common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 350, 0);
+//        List<WebElement> Date3 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Date3 Row ')]");
+//        common.clickElement("xpath", "//Header[@Name='Bool3']");
+//        List<WebElement> Bool1 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/CheckBox[contains(@Name,'Bool 1 Row ')]");
+//        List<WebElement> Bool2 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/CheckBox[contains(@Name,'Bool 2 Row ')]");
+//        List<WebElement> Bool3 = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/CheckBox[contains(@Name,'Bool 3 Row ')]");
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", -1900, 0);
 
-        for (int i = 0; i < productCode.size(); i++) {
-//            enterListData(productUOMRowList.get(i), dataFile, "Items", "UOM", i);
-//            enterListData(productQuantityRowList.get(i), dataFile, "Items", "Quantity", i);
-//            enterListDate(DeliveryDate.get(i), dataFile, "Items", "DeliveryDate", i);
-//            enterListData(mrpRowList.get(i), dataFile, "Items", "MRP", i);
-//            enterListData(unitRateRowList.get(i), dataFile, "Items", "UnitRate", i);
-//            enterListData(editableGrossAmountList.get(i), dataFile, "Items", "EditableGrossAmount", i);
-//            common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 250, 0);
-//            enterListData(discountBasis1RowList.get(i), dataFile, "Items", "DiscountBasis1", i);
-//            enterListData(discount1RowList.get(i), dataFile, "Items", "Discount1", i);
-//            enterListData(discount2BasisRowList.get(i), dataFile, "Items", "DiscountBasis2", i);
-//            enterListData(discount2RowList.get(i), dataFile, "Items", "Discount2", i);
-//            common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 250, 0);
-//            enterListData(discount3BasisRowList.get(i), dataFile, "Items", "DiscountBasis3", i);
-//            enterListData(discount3RowList.get(i), dataFile, "Items", "Discount3", i);
-//            enterListData(hsnCodeRowList.get(i), dataFile, "Items", "HSN", i);
-//            enterListData(gstProductCategoryRowList.get(i), dataFile, "Items", "GSTProductCategory", i);
-//            enterListData(cessProductCategoryRowList.get(i), dataFile, "Items", "CESSProductCategory", i);
-//            enterListData(departmentRowList.get(i), dataFile, "Items", "Department", i);
-//            enterListData(projectRowList.get(i), dataFile, "Items", "Project", i);
-//            enterListData(profitCentreRowList.get(i), dataFile, "Items", "ProfitCentre", i);
-//            enterListData(costCentreRowList.get(i), dataFile, "Items", "CostCentre", i);
-//            enterListData(commentsRowList.get(i), dataFile, "Items", "Comments", i);
+        for (int i = 0; i < priceType.size()-1; i++) {
+            enterListData(productBatchRow.get(i), dataFile, "Items", "ProductBatch", i);
+            enterListData(priceType.get(i), dataFile, "Items", "PriceType", i);
+            enterListData(quantity.get(i), dataFile, "Items", "Qty", i);
+            enterListData(unitRow.get(i), dataFile, "Items", "UnitRate", i);
+            enterListData(purchaseQuantityBaseUnit.get(i), dataFile, "Items", "PurchaseQtyInBaseUnit", i);
+            enterListData(baseUnitRate.get(i), dataFile, "Items", "UnitRateInBaseUnit", i);
+            enterListData(mrp.get(i), dataFile, "Items", "MRP", i);
+            enterListData(disc.get(i), dataFile, "Items", "DiscountPercentage", i);
+            enterListData(discountAcc1.get(i), dataFile, "Items", "Discount Accounts", i);
+            enterListData(discountBasis1.get(i), dataFile, "Items", "DiscountBasis1", i);
+            enterListData(discount1.get(i), dataFile, "Items", "Discount1", i);
+            enterListData(discountAcc2.get(i), dataFile, "Items", "DiscountAccount2", i);
+            enterListData(discountBasis2.get(i), dataFile, "Items", "DiscountBasis2", i);
+            enterListData(discount2.get(i), dataFile, "Items", "Discount2", i);
+            enterListData(discountAcc3.get(i), dataFile, "Items", "DiscountAccount3", i);
+            enterListData(discountBasis3.get(i), dataFile, "Items", "DiscountBasis3", i);
+            enterListData(discount3.get(i), dataFile, "Items", "Discount3", i);
+            enterListData(hsnCodeRowList.get(i), dataFile, "Items", "HSN", i);
+            enterListData(gstProductCategoryRowList.get(i), dataFile, "Items", "GSTProductCategory", i);
+            enterListData(cessProductCategoryRowList.get(i), dataFile, "Items", "CESSProductCategory", i);
+//            enterListData(executives.get(i), dataFile, "Items", "", i);
+            enterListData(departmentRowList.get(i), dataFile, "Items", "Department", i);
+            enterListData(projectRowList.get(i), dataFile, "Items", "Project", i);
+            enterListData(profitCentreRowList.get(i), dataFile, "Items", "ProfitCentre", i);
+            enterListData(costCentreRowList.get(i), dataFile, "Items", "CostCentre", i);
+            enterListData(commentsRowList.get(i), dataFile, "Items", "Comments", i);
+
 //            enterListData(Info1.get(i), dataFile, "Items", "Info1", i);
 //            enterListData(Info2.get(i), dataFile, "Items", "Info2", i);
 //            enterListData(Info3.get(i), dataFile, "Items", "Info3", i);
@@ -239,13 +250,12 @@ public class PurchaseOrders extends TransactionsBaseClass {
 //            clickListData(Bool1.get(i));
 //            clickListData(Bool2.get(i));
 //            clickListData(Bool3.get(i));
-//            common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", -1550, 0);
+            common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", -1550, 0);
         }
     }
 
     public void addChargesAndDeductions() throws IOException {
         List<String> chargesAndDeductions = readExcelData(dataFile, "ChargesAndDeductions", "ChargesOrDeductions");
-//        System.out.println("productCodes :"+chargesAndDeductions.size());
         for (int i = 0; i < chargesAndDeductions.size(); i++) {
             addData("xpath", "//Edit[@Name='Charges Or Deductions * Row " + i + ", Not sorted.']", dataFile, "ChargesAndDeductions", "ChargesOrDeductions", i);
         }
@@ -256,6 +266,9 @@ public class PurchaseOrders extends TransactionsBaseClass {
         }
         List<WebElement> basisRowList = common.findWebElements("xpath", "//Table[@Name='ChargesAndDeductions']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Basis Row ')]");
         List<WebElement> percentageRowList = common.findWebElements("xpath", "//Table[@Name='ChargesAndDeductions']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Percentage Row ')]");
+        List<WebElement> amount = common.findWebElements("xpath", "//Table[@Name='ChargesAndDeductions']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Amount * Row ')]");
+        //        List<WebElement> executive = common.findWebElements("xpath", "//Table[@Name='ChargesAndDeductions']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Executive Row ')]");
+        List<WebElement> division = common.findWebElements("xpath", "//Table[@Name='ChargesAndDeductions']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Division Row ')]");
         List<WebElement> departmentRowList = common.findWebElements("xpath", "//Table[@Name='ChargesAndDeductions']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Department Row ')]");
         List<WebElement> projectRowList = common.findWebElements("xpath", "//Table[@Name='ChargesAndDeductions']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Project Row ')]");
         List<WebElement> profitCentreRowList = common.findWebElements("xpath", "//Table[@Name='ChargesAndDeductions']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Profit Centre Row ')]");
@@ -266,6 +279,9 @@ public class PurchaseOrders extends TransactionsBaseClass {
             enterListData(accCodeRowList.get(i), dataFile, "ChargesAndDeductions", "AccountCode", i);
             enterListData(basisRowList.get(i), dataFile, "ChargesAndDeductions", "Basis", i);
             enterListData(percentageRowList.get(i), dataFile, "ChargesAndDeductions", "Percentage", i);
+            enterListData(amount.get(i), dataFile, "ChargesAndDeductions", "Amount", i);
+//            enterListData(executive.get(i), dataFile, "ChargesAndDeductions", "", i);
+            enterListData(division.get(i), dataFile, "ChargesAndDeductions", "Division", i);
             enterListData(departmentRowList.get(i), dataFile, "ChargesAndDeductions", "Department", i);
             enterListData(projectRowList.get(i), dataFile, "ChargesAndDeductions", "Project", i);
             enterListData(profitCentreRowList.get(i), dataFile, "ChargesAndDeductions", "ProfitCentre", i);
@@ -274,37 +290,41 @@ public class PurchaseOrders extends TransactionsBaseClass {
         }
     }
 
-    public void addOtherCharges() throws IOException, InterruptedException {
-        List<String> otherCharges = readExcelData(dataFile, "OtherCharges", "AccountCode");
+    public void addTaxableOtherCharges() throws IOException, InterruptedException {
+        List<String> otherCharges = readExcelData(dataFile, "TaxableOtherCharges", "AccountCode");
         for (int i = 0; i < otherCharges.size(); i++) {
-            addData("xpath", "//Edit[@Name='Account Code Row " + i + ", Not sorted.']", dataFile, "OtherCharges", "AccountCode", i);
+            addData("xpath", "//Edit[@Name='Account Code Row " + i + ", Not sorted.']", dataFile, "TaxableOtherCharges", "AccountCode", i);
         }
-        List<WebElement> amountRowList = common.findWebElements("xpath", "//Table[@Name='OtherCharges']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Amount * Row ')]");
-        List<WebElement> hsnCodeRowList = common.findWebElements("xpath", "//Table[@Name='OtherCharges']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'HSN Row ')]");
-        List<WebElement> GSTProductCategory = common.findWebElements("xpath", "//Table[@Name='OtherCharges']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'GST Product Category Row ')]");
-        List<WebElement> CESSProductCategory = common.findWebElements("xpath", "//Table[@Name='OtherCharges']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'CESS Product Category Row ')]");
-        if (!otherChargesGSTCheckBox) {
-            common.clickElement("xpath", "//Header[@Name='GST Amount']");
-            otherChargesGSTCheckBox = true;
-        }
-        common.sliderHandling("xpath", "//Table[@Name='OtherCharges']/*/Thumb[@Name='Position']", 300, 0);
-        List<WebElement> departmentRowList = common.findWebElements("xpath", "//Table[@Name='OtherCharges']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Department Row ')]");
-        List<WebElement> projectRowList = common.findWebElements("xpath", "//Table[@Name='OtherCharges']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Project Row ')]");
-        List<WebElement> costCentreRowList = common.findWebElements("xpath", "//Table[@Name='OtherCharges']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Cost Centre Row ')]");
-        List<WebElement> profitCentreRowList = common.findWebElements("xpath", "//Table[@Name='OtherCharges']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Profit Centre Row ')]");
-        List<WebElement> commentsRowList = common.findWebElements("xpath", "//Table[@Name='OtherCharges']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Comments Row ')]");
+        List<WebElement> amountRowList = common.findWebElements("xpath", "//Table[@Name='TaxableOtherCharges']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Amount * Row ')]");
+        List<WebElement> hsnCodeRowList = common.findWebElements("xpath", "//Table[@Name='TaxableOtherCharges']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'HSN Row ')]");
+        List<WebElement> GSTProductCategory = common.findWebElements("xpath", "//Table[@Name='TaxableOtherCharges']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'GST Product Category Row ')]");
+        List<WebElement> CESSProductCategory = common.findWebElements("xpath", "//Table[@Name='TaxableOtherCharges']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'CESS Product Category Row ')]");
+//        if (!otherChargesGSTCheckBox) {
+//            common.clickElement("xpath", "//Header[@Name='GST Amount']");
+//            otherChargesGSTCheckBox = true;
+//        }
+        common.sliderHandling("xpath", "//Table[@Name='TaxableOtherCharges']/*/Thumb[@Name='Position']", 300, 0);
+        List<WebElement> division = common.findWebElements("xpath", "//Table[@Name='TaxableOtherCharges']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Division Row ')]");
+        List<WebElement> departmentRowList = common.findWebElements("xpath", "//Table[@Name='TaxableOtherCharges']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Department Row ')]");
+        List<WebElement> projectRowList = common.findWebElements("xpath", "//Table[@Name='TaxableOtherCharges']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Project Row ')]");
+        List<WebElement> costCentreRowList = common.findWebElements("xpath", "//Table[@Name='TaxableOtherCharges']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Cost Centre Row ')]");
+        List<WebElement> profitCentreRowList = common.findWebElements("xpath", "//Table[@Name='TaxableOtherCharges']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Profit Centre Row ')]");
+        List<WebElement> commentsRowList = common.findWebElements("xpath", "//Table[@Name='TaxableOtherCharges']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Comments Row ')]");
+        common.sliderHandling("xpath", "//Table[@Name='TaxableOtherCharges']/*/Thumb[@Name='Position']", -300, 0);
         for (int i = 0; i < otherCharges.size(); i++) {
-            enterListData(amountRowList.get(i), dataFile, "OtherCharges", "InclusiveAmount", i);
-            enterListData(hsnCodeRowList.get(i), dataFile, "OtherCharges", "HSN", i);
-            enterListData(GSTProductCategory.get(i), dataFile, "OtherCharges", "GSTProductCategory", i);
-            enterListData(CESSProductCategory.get(i), dataFile, "OtherCharges", "CESSProductCategory", i);
+            enterListData(amountRowList.get(i), dataFile, "TaxableOtherCharges", "InclusiveAmount", i);
+            enterListData(hsnCodeRowList.get(i), dataFile, "TaxableOtherCharges", "HSN", i);
+            enterListData(GSTProductCategory.get(i), dataFile, "TaxableOtherCharges", "GSTProductCategory", i);
+            enterListData(CESSProductCategory.get(i), dataFile, "TaxableOtherCharges", "CESSProductCategory", i);
             Thread.sleep(1000);
-            enterListData(departmentRowList.get(i), dataFile, "OtherCharges", "Department", i);
-            enterListData(projectRowList.get(i), dataFile, "OtherCharges", "Project", i);
-            enterListData(profitCentreRowList.get(i), dataFile, "OtherCharges", "ProfitCentre", i);
-            enterListData(costCentreRowList.get(i), dataFile, "OtherCharges", "CostCentre", i);
-            enterListData(commentsRowList.get(i), dataFile, "OtherCharges", "Comments", i);
-            common.sliderHandling("xpath", "//Table[@Name='OtherCharges']/*/Thumb[@Name='Position']", -550, 0);
+            common.sliderHandling("xpath", "//Table[@Name='TaxableOtherCharges']/*/Thumb[@Name='Position']", 300, 0);
+            enterListData(division.get(i), dataFile, "ChargesAndDeductions", "Division", i);
+            enterListData(departmentRowList.get(i), dataFile, "TaxableOtherCharges", "Department", i);
+            enterListData(projectRowList.get(i), dataFile, "TaxableOtherCharges", "Project", i);
+            enterListData(profitCentreRowList.get(i), dataFile, "TaxableOtherCharges", "ProfitCentre", i);
+            enterListData(costCentreRowList.get(i), dataFile, "TaxableOtherCharges", "CostCentre", i);
+            enterListData(commentsRowList.get(i), dataFile, "TaxableOtherCharges", "Comments", i);
+            common.sliderHandling("xpath", "//Table[@Name='TaxableOtherCharges']/*/Thumb[@Name='Position']", -550, 0);
         }
     }
 
@@ -314,6 +334,7 @@ public class PurchaseOrders extends TransactionsBaseClass {
             addData("xpath", "//Edit[@Name='Cash Account Code Row " + i + ", Not sorted.']", dataFile, "Cash", "CashAccountCode", i);
         }
         List<WebElement> amountRowList = common.findWebElements("xpath", "//Table[@Name='Cash']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Amount * Row ')]");
+        List<WebElement> divisions = common.findWebElements("xpath", "//Table[@Name='Cash']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Division Row ')]");
         List<WebElement> departmentRowList = common.findWebElements("xpath", "//Table[@Name='Cash']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Department Row ')]");
         List<WebElement> projectRowList = common.findWebElements("xpath", "//Table[@Name='Cash']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Project Row ')]");
         List<WebElement> costCentreRowList = common.findWebElements("xpath", "//Table[@Name='Cash']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Cost Centre Row ')]");
@@ -321,6 +342,7 @@ public class PurchaseOrders extends TransactionsBaseClass {
         List<WebElement> commentsRowList = common.findWebElements("xpath", "//Table[@Name='Cash']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Comments Row ')]");
         for (int i = 0; i < cashTab.size(); i++) {
             enterListData(amountRowList.get(i), dataFile, "Cash", "Amount", i);
+            enterListData(divisions.get(i), dataFile, "Cash", "Division", i);
             enterListData(departmentRowList.get(i), dataFile, "Cash", "Department", i);
             enterListData(projectRowList.get(i), dataFile, "Cash", "Project", i);
             enterListData(profitCentreRowList.get(i), dataFile, "Cash", "ProfitCentre", i);
@@ -337,8 +359,10 @@ public class PurchaseOrders extends TransactionsBaseClass {
         List<WebElement> amountRowList = common.findWebElements("xpath", "//Table[@Name='Cheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Amount * Row ')]");
         List<WebElement> chequeNo = common.findWebElements("xpath", "//Table[@Name='Cheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Cheque/EFT No * Row ')]");
         List<WebElement> chequeDate = common.findWebElements("xpath", "//Table[@Name='Cheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Cheque Date * Row ')]");
+        List<WebElement> drawnOnBranch = common.findWebElements("xpath", "//Table[@Name='Cheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Drawn On Bank Branch Row ')]");
         List<WebElement> chargesAccRowList = common.findWebElements("xpath", "//Table[@Name='Cheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Charges Account Code Row ')]");
         List<WebElement> chargesAmountRowList = common.findWebElements("xpath", "//Table[@Name='Cheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Charges Row ')]");
+        List<WebElement> divisions = common.findWebElements("xpath", "//Table[@Name='Cheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Division Row ')]");
         List<WebElement> departmentRowList = common.findWebElements("xpath", "//Table[@Name='Cheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Department Row ')]");
         List<WebElement> projectRowList = common.findWebElements("xpath", "//Table[@Name='Cheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Project Row ')]");
         List<WebElement> costCentreRowList = common.findWebElements("xpath", "//Table[@Name='Cheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Cost Centre Row ')]");
@@ -348,8 +372,10 @@ public class PurchaseOrders extends TransactionsBaseClass {
             enterListData(amountRowList.get(i), dataFile, "Cheques", "Amount", i);
             enterListData(chequeNo.get(i), dataFile, "Cheques", "ChequeNo", i);
             enterListDate(chequeDate.get(i), dataFile, "Cheques", "ChequeDate", i);
+            enterListData(drawnOnBranch.get(i), dataFile, "Cheques", "DrawnOnBankBranch", i);
             enterListData(chargesAccRowList.get(i), dataFile, "Cheques", "ChargesAccount", i);
             enterListData(chargesAmountRowList.get(i), dataFile, "Cheques", "Charges", i);
+            enterListData(divisions.get(i), dataFile, "Cheques", "Division", i);
             enterListData(departmentRowList.get(i), dataFile, "Cheques", "Department", i);
             enterListData(projectRowList.get(i), dataFile, "Cheques", "Project", i);
             enterListData(profitCentreRowList.get(i), dataFile, "Cheques", "ProfitCentre", i);
@@ -359,24 +385,28 @@ public class PurchaseOrders extends TransactionsBaseClass {
     }
 
     public void addPostDatedCheques() throws IOException {
-        List<String> postDatedCheques = readExcelData(dataFile, "PostDatedCheques", "BankAccountCode");
+        List<String> postDatedCheques = readExcelData(dataFile, "PostDatedCheques", "BankAccount");
         for (int i = 0; i < postDatedCheques.size(); i++) {
-            addData("xpath", "//Edit[@Name='Bank Account Code Row "+i+", Not sorted.']", dataFile, "PostDatedCheques", "BankAccountCode", i);
+            addData("xpath", "//Edit[@Name='Bank Account * Row "+i+", Not sorted.']", dataFile, "PostDatedCheques", "BankAccount", i);
         }
+//        List<WebElement> bankAcct = common.findWebElements("xpath", "//Table[@Name='PostDatedCheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Bank Account Code Row')]");
         List<WebElement> pdcAccount = common.findWebElements("xpath", "//Table[@Name='PostDatedCheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'PDC Account * Row ')]");
         List<WebElement> amoutRowList = common.findWebElements("xpath", "//Table[@Name='PostDatedCheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Amount * Row ')]");
         List<WebElement> chequeNo = common.findWebElements("xpath", "//Table[@Name='PostDatedCheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Cheque/EFT No * Row ')]");
         List<WebElement> chequeDate = common.findWebElements("xpath", "//Table[@Name='PostDatedCheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Cheque Date * Row ')]");
+        List<WebElement> divisions = common.findWebElements("xpath", "//Table[@Name='PostDatedCheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Division Row ')]");
         List<WebElement> departmentRowList = common.findWebElements("xpath", "//Table[@Name='PostDatedCheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Department Row ')]");
         List<WebElement> projectRowList = common.findWebElements("xpath", "//Table[@Name='PostDatedCheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Project Row ')]");
         List<WebElement> costCentreRowList = common.findWebElements("xpath", "//Table[@Name='PostDatedCheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Cost Centre Row ')]");
         List<WebElement> profitCentreRowList = common.findWebElements("xpath", "//Table[@Name='PostDatedCheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Profit Centre Row ')]");
         List<WebElement> commentsRowList = common.findWebElements("xpath", "//Table[@Name='PostDatedCheques']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Comments Row ')]");
         for (int i = 0; i < postDatedCheques.size(); i++) {
+//            enterListData(bankAcct.get(i), dataFile, "PostDatedCheques", "BankAccountCode", i);
             enterListData(pdcAccount.get(i), dataFile, "PostDatedCheques", "PDCAccount", i);
             enterListData(amoutRowList.get(i), dataFile, "PostDatedCheques", "Amount", i);
             enterListData(chequeNo.get(i), dataFile, "PostDatedCheques", "ChequeNo", i);
             enterListDate(chequeDate.get(i), dataFile, "PostDatedCheques", "ChequeDate", i);
+            enterListData(divisions.get(i), dataFile, "PostDatedCheques", "Division", i);
             enterListData(departmentRowList.get(i), dataFile, "PostDatedCheques", "Department", i);
             enterListData(projectRowList.get(i), dataFile, "PostDatedCheques", "Project", i);
             enterListData(profitCentreRowList.get(i), dataFile, "PostDatedCheques", "ProfitCentre", i);
@@ -393,6 +423,7 @@ public class PurchaseOrders extends TransactionsBaseClass {
         List<WebElement> chequeAmountRowList = common.findWebElements("xpath", "//Table[@Name='PDC']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Amount * Row ')]");
         List<WebElement> chequeNo = common.findWebElements("xpath", "//Table[@Name='PDC']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Cheque/EFT No * Row ')]");
         List<WebElement> chequeDate = common.findWebElements("xpath", "//Table[@Name='PDC']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Cheque Date * Row ')]");
+        List<WebElement> divisions = common.findWebElements("xpath", "//Table[@Name='PDC']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Division Row ')]");
         List<WebElement> departmentRowList = common.findWebElements("xpath", "//Table[@Name='PDC']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Department Row ')]");
         List<WebElement> projectRowList = common.findWebElements("xpath", "//Table[@Name='PDC']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Project Row ')]");
         List<WebElement> costCentreRowList = common.findWebElements("xpath", "//Table[@Name='PDC']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Cost Centre Row ')]");
@@ -403,6 +434,7 @@ public class PurchaseOrders extends TransactionsBaseClass {
             enterListData(chequeAmountRowList.get(i), dataFile, "PDC", "Amount", i);
             enterListData(chequeNo.get(i), dataFile, "PDC", "ChequeNo", i);
             enterListDate(chequeDate.get(i), dataFile, "PDC", "ChequeDate", i);
+            enterListData(divisions.get(i), dataFile, "PDC", "Division", i);
             enterListData(departmentRowList.get(i), dataFile, "PDC", "Department", i);
             enterListData(projectRowList.get(i), dataFile, "PDC", "Project", i);
             enterListData(profitCentreRowList.get(i), dataFile, "PDC", "ProfitCentre", i);
@@ -439,8 +471,26 @@ public class PurchaseOrders extends TransactionsBaseClass {
         EnterDate("//Edit[@Name='Date 2']", dataFile, "AdditionalInformation", "Date2");
         EnterDate("//Edit[@Name='Date 3']", dataFile, "AdditionalInformation", "Date3");
         common.clickElement("xpath", "//CheckBox[@Name='Bool 1']");
-        common.clickElement("xpath", "//CheckBox[@Name='Bool 2']");
-        common.clickElement("xpath", "//CheckBox[@Name='Bool 3']");
+//        common.clickElement("xpath", "//CheckBox[@Name='Bool 2']");
+//        common.clickElement("xpath", "//CheckBox[@Name='Bool 3']");
+    }
+
+    public void materialDispatchAddress(){
+        EnterData("//Edit[@Name='Address 1']", dataFile, "MaterialDespatchAddress", "Address1");
+        EnterData("//Edit[@Name='Address 2']", dataFile, "MaterialDespatchAddress", "Address2");
+        EnterData("//Edit[@Name='Address 3']", dataFile, "MaterialDespatchAddress", "Address3");
+        EnterData("//Edit[@Name='City']", dataFile, "MaterialDespatchAddress", "City");
+        EnterData("//Edit[@Name='State']", dataFile, "MaterialDespatchAddress", "State");
+        EnterData("//Edit[@Name='Country']", dataFile, "MaterialDespatchAddress", "Country");
+        EnterData("//Edit[@Name='Zip']", dataFile, "MaterialDespatchAddress", "Zip");
+        EnterData("//Edit[@Name='Fax']", dataFile, "MaterialDespatchAddress", "Fax");
+        EnterData("//Edit[@Name='Email']", dataFile, "MaterialDespatchAddress", "Email");
+        EnterData("//Edit[@Name='Contact Person']", dataFile, "MaterialDespatchAddress", "ContactPersonName");
+        EnterData("//Edit[@Name='Contact Person Designation']", dataFile, "MaterialDespatchAddress", "ContactPersonDesignation");
+        EnterData("//Edit[@Name='Contact Person Telephone No']", dataFile, "MaterialDespatchAddress", "ContactPersonTelephoneNo");
+        EnterData("//Edit[@Name='Contact Person Mobile No']", dataFile, "MaterialDespatchAddress", "ContactPersonMobileNo");
+        EnterData("//Edit[@Name='Contact Person Email']", dataFile, "MaterialDespatchAddress", "ContactPersonEmail");
+
     }
 
     public void termsAndCondition() throws IOException {
