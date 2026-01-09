@@ -13,7 +13,6 @@ public class StockTransferToNonSaleableStockTypeBinTrade extends TransactionsBas
     WindowsDriver driver;
     Common common;
     String dataFile;
-    boolean isFromStoragebinClicked =false,isToStorageBinClicked=false;
 
     public StockTransferToNonSaleableStockTypeBinTrade(WindowsDriver driver, String file) {
         super(driver);
@@ -29,10 +28,8 @@ public class StockTransferToNonSaleableStockTypeBinTrade extends TransactionsBas
         enterVoucherType(dataFile,"GeneralInformation","VoucherType");
         EnterDate("//Edit[@Name='Date *']",dataFile,"GeneralInformation","Date");
         enterBranch(dataFile,"GeneralInformation","Branch");
-
-        EnterData("//Edit[@Name='Location *']",dataFile,"GeneralInformation","StockType");
-        EnterData("//Edit[@Name='Storage Bin *']",dataFile,"GeneralInformation","FromLocation");
-        
+        EnterData("//Edit[@Name='Location *']",dataFile,"GeneralInformation","Location");
+        EnterData("//Edit[@Name='Storage Bin *']",dataFile,"GeneralInformation","StorageBin");
         EnterData("//Edit[@Name='Executive']",dataFile,"GeneralInformation","Executive");
         EnterData("//Edit[@Name='Division']",dataFile,"GeneralInformation","Division");
         enterRemarks(dataFile,"GeneralInformation","Remarks");
@@ -68,6 +65,13 @@ public class StockTransferToNonSaleableStockTypeBinTrade extends TransactionsBas
         List<String> productCode=readExcelData(dataFile,"Items","ProductCode");
         for (int i = 0; i < productCode.size() ; i++)   {
             addData("xpath","//Edit[@Name='Product Code Row "+i+", Not sorted.']",dataFile,"Items","ProductCode",i);
+            if((common.findWebElements("xpath", "//Window[@Name='Product Batch Selection']").size() > 0) ){
+                common.clickElement("xpath","//Edit[@Name='Product Batch Row 0, Not sorted.']");
+                common.clickElement("xpath","//Button[@Name='Ok']");
+                Thread.sleep(1000);
+                common.clickElement("xpath","//Edit[@Name='Product Code Row 0, Not sorted.']");
+
+            }
         }
         List<WebElement> productBatch = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Product Batch Row ')]");
         List<WebElement> baseUnitRate = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Base Unit Rate * Row ')]");
@@ -81,9 +85,9 @@ public class StockTransferToNonSaleableStockTypeBinTrade extends TransactionsBas
 
         for (int i = 0; i < productCode.size(); i++) {
             enterListData(productBatch.get(i), dataFile, "Items", "ProductBatchId", i);
-            enterListData(baseUnitRate.get(i),dataFile,"Items","QtyInBaseUnit",i);
+            enterListData(baseUnitRate.get(i),dataFile,"Items","BaseUnitRate",i);
             enterListData(baseQuantity.get(i),dataFile,"Items","QtyInBaseUnit",i);
-            enterListData(executives.get(i),dataFile,"Items","Department",i);
+            enterListData(executives.get(i),dataFile,"Items","Executive",i);
             enterListData(Department.get(i),dataFile,"Items","Department",i);
             enterListData(ProfitCentre.get(i),dataFile,"Items","ProfitCentre",i);
             enterListData(Project.get(i),dataFile,"Items","Project",i);
