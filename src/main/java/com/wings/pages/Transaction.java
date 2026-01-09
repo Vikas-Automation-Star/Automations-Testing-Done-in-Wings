@@ -719,9 +719,9 @@ public  class Transaction {
         for (WebElement i : elementList) {
             System.out.println(i.getText());
 //            if (i.getText().equals(voucherNum)) {
-                i.click();
-                i.sendKeys(Keys.LEFT, Keys.SPACE, Keys.ENTER, Keys.ENTER);
-                break;
+            i.click();
+            i.sendKeys(Keys.LEFT, Keys.SPACE, Keys.ENTER, Keys.ENTER);
+            break;
 //            }
         }
     }
@@ -730,9 +730,9 @@ public  class Transaction {
     //transaction related methods
     public void transactionSave() throws InterruptedException {
         common.clickElement("xpath", "//Button[@Name='Save']");
-        Thread.sleep(3000);
+        Thread.sleep(1500);
         common.clickElement("xpath", "//Button[@Name='Yes']");
-        WebDriverWait wait=new WebDriverWait(driver,40);
+        WebDriverWait wait=new WebDriverWait(driver,30);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@Name='Transaction saved.']/Button[@Name='OK']"))).click();
     }
 
@@ -1030,19 +1030,19 @@ public  class Transaction {
                 System.out.println("Clicking Yes at: " + System.currentTimeMillis());
                 yesButton.click();
                 // Wait for success or failure message (whichever comes first)
-                try {
-                    WebElement successMessage = shortWait.until(ExpectedConditions.visibilityOfElementLocated(
-                            By.xpath("//Text[@Name='Transactions deleted Successfully.']")));
-                    System.out.println("Transaction deleted successfully at: " + System.currentTimeMillis() + " for: " + voucherID);
-                } catch (TimeoutException e) {
-                    try {
-                        WebElement failureMessage = shortWait.until(ExpectedConditions.visibilityOfElementLocated(
-                                By.xpath("//Text[contains(@Name, \"Can't Delete Transaction\")]")));
-                        System.out.println("Cannot delete transaction. It may not exist: " + voucherID);
-                    } catch (TimeoutException ex) {
-                        System.out.println("No success or failure message appeared.");
-                    }
-                }
+//                try {
+//                    WebElement successMessage = shortWait.until(ExpectedConditions.visibilityOfElementLocated(
+//                            By.xpath("//Text[@Name='Transactions deleted Successfully.']")));
+//                    System.out.println("Transaction deleted successfully at: " + System.currentTimeMillis() + " for: " + voucherID);
+//                } catch (TimeoutException e) {
+//                    try {
+//                        WebElement failureMessage = shortWait.until(ExpectedConditions.visibilityOfElementLocated(
+//                                By.xpath("//Text[contains(@Name, \"Can't Delete Transaction\")]")));
+//                        System.out.println("Cannot delete transaction. It may not exist: " + voucherID);
+//                    } catch (TimeoutException ex) {
+//                        System.out.println("No Failure message appeared.");
+//                    }
+//                }
                 // Try finding OK with shorter timeout, retry if needed
                 boolean okClicked = false;
                 try {

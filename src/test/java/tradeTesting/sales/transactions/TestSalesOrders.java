@@ -6,13 +6,12 @@ import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
 import java.io.IOException;
 
 public class TestSalesOrders {
-
     WindowsDriver driver;
     AppLogin appLogin = new AppLogin();
+    String dataFile="./src/main/resources/tradeAutomation/sales/transactions/491020 - Sales Orders-Trd_SO_3.xls";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
@@ -20,13 +19,13 @@ public class TestSalesOrders {
     }
 
     @Test
-    public void journalEntry() throws Exception {
-//        JournalEntries journalEntries = new JournalEntries(driver, dataFile);
-//        journalEntries.journalEntries(TEMP_API_BODY_JOURNAL_ENTRIES,API_RESPONSE_JOURNAL_ENTRIES,OUTPUT_FILE);
+    public void salesOrderTrade() throws Exception {
+        SalesOrdersTrade salesOrdersTrade=new SalesOrdersTrade(driver,dataFile);
+        salesOrdersTrade.salesOrderTrade();
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-        appLogin.logout();
+//        appLogin.logout();
     }
 }
