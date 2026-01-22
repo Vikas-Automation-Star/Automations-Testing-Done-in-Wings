@@ -179,7 +179,7 @@ public class Supplier extends Masters {
   Thread.sleep(2000);
   common.clickElement("xpath", "//Button[@Name='Ok']");
   Thread.sleep(2000);
-    common.clickElement("xpath", "//Text[@Name='Account Group']/following-sibling::Button[@Name='...']");
+  common.clickElement("xpath", "//Text[@Name='Account Group']/following-sibling::Button[@Name='...']");
   WebElement accountGroup = common.findWebElement("xpath", "//Edit[@Name='Account Group Row 0, Not sorted.']");
   accountGroup.click();
   accountGroup.sendKeys(common.getData(dataFile, "accountGroup"), Keys.ENTER);
