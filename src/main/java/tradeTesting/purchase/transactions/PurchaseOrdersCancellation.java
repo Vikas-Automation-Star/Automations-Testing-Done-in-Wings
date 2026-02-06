@@ -26,7 +26,7 @@ public class PurchaseOrdersCancellation extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String purchaseOrderCancellation(String voucherNum) throws Exception {
+    public String purchaseOrderCancellation(String voucherNum,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long start=System.nanoTime();
         navigateToMastersWhen3Steps("Purchase", "Orders", "Purchase Order Cancellation");
         long genInfoStart=System.nanoTime();
@@ -40,6 +40,7 @@ public class PurchaseOrdersCancellation extends TransactionsBaseClass {
         enterBranch(dataFile, "GeneralInformation", "Branch");
         enterLocation(dataFile,"GeneralInformation","Location");
         EnterData("//Edit[@Name='Supplier Code']",dataFile,"GeneralInformation","SupplierCode");
+        Thread.sleep(1500);
         selectPendingsSalesOrder(voucherNum, "20250401");
         EnterData("//Edit[@Name='Division']",dataFile,"GeneralInformation","Division");
         enterCreditPeriod(dataFile, "GeneralInformation", "CreditPeriod");
@@ -78,7 +79,7 @@ public class PurchaseOrdersCancellation extends TransactionsBaseClass {
         //api
 //        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"purchaseOrderCancellation");
         deleteTransactionUsingVoucherNumber(newVoucherID);
-        deleteTransactionUsingVoucherNumber(voucherNum);
+//        deleteTransactionUsingVoucherNumber(voucherNum);
 
         return newVoucherID;
     }
@@ -87,6 +88,8 @@ public class PurchaseOrdersCancellation extends TransactionsBaseClass {
         common.clickElement("xpath", "//Header[@Name='Cancel Qty']");
         common.clickElement("xpath", "//Header[@Name='Cancel Base Qty']");
         List<WebElement> cancelQty = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Cancel Qty Row ')]");
+        List<WebElement> cancelBaseQty = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Cancel Base Qty Row ')]");
+
         List<WebElement> reason = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Reason Row ')]");
         common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 600, 0);
         List<WebElement> discPercent = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Disc % Row ')]");
@@ -111,7 +114,7 @@ public class PurchaseOrdersCancellation extends TransactionsBaseClass {
         List<WebElement> hsnCodeRowList = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'HSN Row ')]");
         List<WebElement> gstProductCategoryRowList = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'GST Product Category Row ')]");
         List<WebElement> cessProductCategoryRowList = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'CESS Product Category Row ')]");
-//        List<WebElement> executives = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Executive Row ')]");
+        List<WebElement> executives = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Executive Row ')]");
         List<WebElement> departmentRowList = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Department Row ')]");
         List<WebElement> projectRowList = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Project Row ')]");
         List<WebElement> profitCentreRowList = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Profit Centre Row ')]");
@@ -145,6 +148,7 @@ public class PurchaseOrdersCancellation extends TransactionsBaseClass {
 
         for (int i = 0; i < reason.size()-1; i++) {
             enterListData(cancelQty.get(i),dataFile,"Items","CancelQty",i );
+            enterListData(cancelBaseQty.get(i),dataFile,"Items","CancelBaseQty",i );
             enterListData(reason.get(i),dataFile,"Items","Reason",i );
             enterListData(discPercent.get(i),dataFile,"Items","DiscountPercentage",i );
             enterListData(disc.get(i),dataFile,"Items","Discount",i );
@@ -162,6 +166,7 @@ public class PurchaseOrdersCancellation extends TransactionsBaseClass {
             enterListData(gstProductCategoryRowList.get(i),dataFile,"Items","GSTProductCategory",i );
             enterListData(cessProductCategoryRowList.get(i),dataFile,"Items","CESSProductCategory",i );
             common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 450, 0);
+            enterListData(executives.get(i),dataFile,"Items","LatestExecutive",i );
             enterListData(departmentRowList.get(i),dataFile,"Items","Department",i );
             enterListData(projectRowList.get(i),dataFile,"Items","Project",i );
             enterListData(profitCentreRowList.get(i),dataFile,"Items","ProfitCentre",i );

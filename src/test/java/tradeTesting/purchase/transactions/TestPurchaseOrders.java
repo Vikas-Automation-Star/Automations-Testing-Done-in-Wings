@@ -15,10 +15,10 @@ public class TestPurchaseOrders {
 
 
     private static final String TEMP_API_BODY_PurchaseOrders="./output/tradeOutputs/temp_api_request_bodies/PurchaseOrders.json";
-    private static final String API_RESPONSE_BatchPurchasePrices="./output/tradeOutputs/api_responses/PurchaseOrders.json";
-    private static final String OUTPUT_FILE="./src/main/resources/tradeAutomation/purchase/transactions/487547 - Purchase Orders-Trd_PO_1_Output.xls";
+    private static final String API_RESPONSE_PurchaseOrders="./output/tradeOutputs/api_responses/PurchaseOrders.json";
+    private static final String OUTPUT_FILE="./src/main/resources/tradeAutomation/purchase/transactions/493145 - Purchase Orders-Trd_PO_4_Output.xls";
 
-    String dataFile = "./src/main/resources/tradeAutomation/purchase/transactions/487547 - Purchase Orders-Trd_PO_1.xls";
+    String dataFile = "./src/main/resources/tradeAutomation/purchase/transactions/493145 - Purchase Orders-Trd_PO_4.xls";
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
@@ -28,12 +28,12 @@ public class TestPurchaseOrders {
     @Test
     public void purchaseOrders() throws Exception {
         PurchaseOrders orders=new PurchaseOrders(driver,dataFile);
-        orders.purchaseOrders();
+        orders.purchaseOrders("","","");
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 
 }

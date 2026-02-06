@@ -1,0 +1,198 @@
+<suite name="Trade Transactions Suite">
+
+    <listeners>
+        <listener class-name="com.wings.utils.Listener"/>
+    </listeners>
+
+    <test name="Purchase - BatchPurchasePrices" description="Trade BatchPurchasePrices " testID="1">
+        <classes>
+            <class name="tradeTesting.purchase.transactions.TestBatchPurchasePrices"/>
+        </classes>
+    </test>
+
+    <test name="Purchase - PurchaseOrders" description="Trade PurchaseOrders" testID="1">
+        <classes>
+            <class name="tradeTesting.purchase.transactions.TestPurchaseOrders"/>
+        </classes>
+    </test>
+
+    <test name="Purchase - PurchaseOrders Cancellation" description="Trade PurchaseOrders Cancellation" testID="1">
+        <classes>
+            <class name="tradeTesting.purchase.transactions.TestPurchaseOrdersCancellation"/>
+        </classes>
+    </test>
+
+    <test name="Purchase - PurchaseVouchers" description="Trade PurchaseVouchers" testID="1">
+        <classes>
+            <class name="tradeTesting.purchase.transactions.TestPurchaseVouchers"/>
+        </classes>
+    </test>
+
+    <test name="Purchase - Purchase Voucher Against orders" description="Trade Voucher Against orders" testID="1">
+        <classes>
+            <class name="tradeTesting.purchase.transactions.TestPurchaseVoucherAgainstOrders"/>
+        </classes>
+    </test>
+
+    <test name="Purchase - Purchase Returns" description="Trade PurchaseReturns" testID="1">
+        <classes>
+            <class name="tradeTesting.purchase.transactions.TestPurchaseReturns"/>
+        </classes>
+    </test>
+
+    <test name="Purchase - PurchaseReturns With InvoiceReference" description="Trade Purchase Returns With Invoice Reference" testID="1">
+        <classes>
+            <class name="tradeTesting.purchase.transactions.TestPurchaseReturnsWithInvoiceReference"/>
+        </classes>
+    </test>
+
+    <!-- Finance !-->
+
+    <test name="Finance - Receipts from parties" description="Trade Receipts from parties" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.receipts.TestReceiptsFromParties"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Cash receipts" description="Trade Cash receipts" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.receipts.TestCashReceipts"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Bank receipts" description="Trade Bank receipts" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.receipts.TestBankReceipts"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Credit card receipts" description="Trade Credit card receipts" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.receipts.TestCreditCardReceipts"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Receipts from credit card companies" description="Trade Receipts from credit card companies" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.receipts.TestReceiptsFromCreditCardCompanies"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Gift voucher receipts" description="Trade Gift voucher receipts" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.receipts.GiftVoucherReceipts"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Bank receipts by multi party" description="Trade Bank receipts by multi party" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.receipts.TestBankReceiptsByMultiParty"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Cash receipts by multi party" description="Trade Cash receipts by multi party" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.receipts.TestCashReceiptsByMultiParty"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Cash wise collections" description="Trade Cash wise collections" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.receipts.TestCashWiseCollection"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Cheque wise collections" description="Trade Cheque wise collections" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.receipts.TestChequeWiseCollection"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Trade receipts from parties" description="Trade Cheque wise collections" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.receipts.TestTradeReceiptsFromParties"/>
+        </classes>
+    </test>
+
+
+    <test name="Finance - Journal Entries" description="Trade Journal Entries" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.journals.TestJournalEntries"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Complex JournalEntries" description="Trade Complex JournalEntries" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.journals.TestComplexJournalEntries"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Book Incomes or Receivables" description="Trade Book Incomes or Receivables" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.journals.TestBookIncomesOrReceivables"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Book Expenses Or Payable" description="Trade Book Expenses or Payable" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.journals.TestComplexJournalEntries"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Adjust party bills" description="Trade Adjust party bills" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.partyAdjustments.TestAdjustPartyBills"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Credit note" description="Trade Credit note" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.partyAdjustments.TestCreditNote"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Debit note " description="Trade Debit note" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.partyAdjustments.TestDebitNote"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Debit note on Customer" description="Trade Debit note on Customer" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.partyAdjustments.TestDebitNoteOnCustomer"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Credit note on Customer" description="Trade Credit note on Customer" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.partyAdjustments.TestCreditNoteOnCustomer"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Credit note from supplier" description="Trade Credit note from supplier" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.partyAdjustments.TestCreditNoteFromSupplier"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Debit note from Supplier" description="Trade Debit note from Supplier" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.partyAdjustments.TestDebitNoteFromSupplier"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Product wise Debit note" description="Trade Product wise Debit note" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.partyAdjustments.TestProductWiseDebitNote"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Product wise Credit note" description="Trade Product wise Credit note" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.partyAdjustments.TestProductWiseCreditNote"/>
+        </classes>
+    </test>
+
+
+
+</suite>
