@@ -47,6 +47,7 @@ public class CashTransfer extends TransactionsBaseClass {
         FileUtil.writeTimeLogInMinutes("Cash Transfer Add Products:- ",addProductEnd);
         //other Info
         long addOtherInfoStart =System.nanoTime();
+        common.clickElement("xpath", "//TabItem[contains(@Name,'Other Info')]");
         otherInfo();
         long addOtherInfoEnd =System.nanoTime()- addOtherInfoStart;
         FileUtil.writeTimeLogInMinutes("Cash Transfer Other Info:- ", addOtherInfoEnd);
@@ -91,7 +92,6 @@ public class CashTransfer extends TransactionsBaseClass {
     }
 
     public void otherInfo() throws InterruptedException, IOException {
-        navigateToOtherInfoTab();
         EnterData("//Edit[@Name='Reference Bill No']",dataFile,"OtherInfo","ReferenceBillNo");
         Thread.sleep(5000);
         common.clickElement("xpath","//Window/Button[@Name='OK']");

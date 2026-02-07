@@ -13,7 +13,6 @@ public class GodownDamagesTrade extends TransactionsBaseClass {
     WindowsDriver driver;
     Common common;
     String dataFile;
-    boolean isFromStoragebinClicked =false,isToStorageBinClicked=false;
 
     public GodownDamagesTrade(WindowsDriver driver, String file) {
         super(driver);

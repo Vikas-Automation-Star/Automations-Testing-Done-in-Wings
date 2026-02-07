@@ -4,6 +4,10 @@ import com.wings.utils.Time;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+
+import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 
 public class TransactionsBaseClass extends Transaction {
@@ -170,5 +174,12 @@ public class TransactionsBaseClass extends Transaction {
     }
     public void enterPurchaseReturnsAccount(String dataFile,String sheetName,String key)  {
         EnterData("//Edit[@Name='Purchase Return A/c Code']",dataFile,sheetName,key);
+    }
+
+    public void enterDropDownData(String xpath,String input) throws AWTException {
+//        common.clickElement("xpath",xpath);
+        WebElement dropdown=common.findWebElement("xpath",xpath);
+        dropdown.click();
+        dropdown.sendKeys(input,Keys.DOWN,Keys.ENTER);
     }
 }

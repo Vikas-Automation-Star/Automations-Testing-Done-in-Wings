@@ -69,8 +69,6 @@ public class StockTransferToNonSaleableStockTypeBinTrade extends TransactionsBas
                 common.clickElement("xpath","//Edit[@Name='Product Batch Row 0, Not sorted.']");
                 common.clickElement("xpath","//Button[@Name='Ok']");
                 Thread.sleep(1000);
-                common.clickElement("xpath","//Edit[@Name='Product Code Row 0, Not sorted.']");
-
             }
         }
         List<WebElement> productBatch = common.findWebElements("xpath", "//Table[@Name='Items']/*[contains(@Name,'Row ')]/Edit[contains(@Name,'Product Batch Row ')]");

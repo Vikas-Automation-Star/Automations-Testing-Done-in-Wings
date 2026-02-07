@@ -84,7 +84,7 @@ public class StockReplacementTrade extends TransactionsBaseClass {
             enterListData(baseUnitRate.get(i),dataFile,"Items","BaseUnitRate",i);
             enterListData(receivedQtyInBaseUnit.get(i),dataFile,"Items","ReplacedQtyInBaseUnit",i);
             enterListData(mrp.get(i),dataFile,"Items","MRP",i);
-//            enterListData(executive.get(i),dataFile,"Items","ToStockType",i);
+            enterListData(executive.get(i),dataFile,"Items","Executive",i);
             enterListData(Comments.get(i),dataFile,"Items","Comments",i);
         }
     }

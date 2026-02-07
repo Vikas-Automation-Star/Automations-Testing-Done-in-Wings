@@ -15,7 +15,7 @@ public class TestSalesOrders {
 
     @BeforeTest
     public void beforeTest() throws IOException, InterruptedException, ParseException {
-        driver=appLogin.tradeLogin();
+        driver = appLogin.tradeLogin();
     }
 
     @Test
@@ -26,6 +26,6 @@ public class TestSalesOrders {
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 }

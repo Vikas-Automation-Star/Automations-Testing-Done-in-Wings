@@ -107,7 +107,7 @@ public class StockTransferBetweenLocationsTrade extends TransactionsBaseClass {
             enterListData(qtyInPurchaseUnit.get(i),dataFile,"Items","QtyInPurchaseUnit",i);
             enterListData(baseUnitRate.get(i),dataFile,"Items","BaseUnitRate",i);
             enterListData(baseQuantity.get(i),dataFile,"Items","QtyInBaseUnit",i);
-//            enterListData(executives.get(i),dataFile,"Items","Executive",i);
+            enterListData(executives.get(i),dataFile,"Items","Executive",i);
             enterListData(Department.get(i),dataFile,"Items","Department",i);
             enterListData(ProfitCentre.get(i),dataFile,"Items","ProfitCentre",i);
             enterListData(Project.get(i),dataFile,"Items","Project",i);

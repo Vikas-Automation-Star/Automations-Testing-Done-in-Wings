@@ -148,7 +148,7 @@ public class SalesOrders extends TransactionsBaseClass {
         return newVoucherID;
     }
 
-    public void addProduct() throws IOException, ParseException {
+    public void addProduct() throws IOException, ParseException{
         List<String> productCode = readExcelData(dataFile, "Items", "ProductCode");
         System.out.println("productCodes :" + productCode.size());
         for (int i = 0; i < productCode.size(); i++) {
