@@ -126,12 +126,11 @@ public class PurchaseOrders extends TransactionsBaseClass {
         String newVoucherID =newTransactionID(oldVoucherID);
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
-//        deleteTransactionUsingVoucherNumber(newVoucherID);
-        //end
+//        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"purchaseOrders");
+
+        deleteTransactionUsingVoucherNumber(newVoucherID);
         long purchaseOrderEnd = System.nanoTime() - start;
         FileUtil.writeTimeLogInMinutes("Purchase Order ended at:- ", purchaseOrderEnd);
-//        API
-//        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"purchaseOrders");
 
         return newVoucherID;
     }

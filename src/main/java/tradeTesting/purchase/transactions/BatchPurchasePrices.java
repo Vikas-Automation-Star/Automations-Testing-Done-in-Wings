@@ -1,6 +1,7 @@
 package tradeTesting.purchase.transactions;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
@@ -21,7 +22,7 @@ public class BatchPurchasePrices extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public void batchPurchasePrices() throws Exception {
+    public void batchPurchasePrices(String tempAPIBodyUpdate, String apiResponse,String outputFile) throws Exception {
         long start = System.nanoTime();
         navigateToMastersWhen3Steps("Purchase","Prices","Batch Purchase Prices");
         Thread.sleep(3000);
@@ -48,9 +49,9 @@ public class BatchPurchasePrices extends TransactionsBaseClass {
 
         transactionSave();
         String transactionId = newTransactionID(oldVoucherID);
-        System.out.println("transactionNumber :"+transactionId);
-//        APIClient.validateAPIWithExcel(transactionId,tempAPIBodyUpdate,apiResponse,outputFile,"PurchaseEnquiries");
+//        APIClient.validateAPIWithExcel(transactionId,tempAPIBodyUpdate,apiResponse,outputFile,"BatchPurchasePrices");
 
+        deleteTransactionUsingVoucherNumber(transactionId);
         long batchPurchasePrices = System.nanoTime() - start;
         FileUtil.writeTimeLogInMinutes("Batch Purchase Prices end at:- ", batchPurchasePrices);
 

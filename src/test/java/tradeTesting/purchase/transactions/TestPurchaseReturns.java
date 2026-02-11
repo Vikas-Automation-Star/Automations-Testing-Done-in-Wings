@@ -38,12 +38,12 @@ public class TestPurchaseReturns {
 //        driver= appLogin.tradeLogin();
 
         PurchaseReturns purchaseReturns=new PurchaseReturns(driver,file);
-        purchaseReturns.purchaseReturns("PV 2");
+        purchaseReturns.purchaseReturns("PV 2","","","");
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 
 }

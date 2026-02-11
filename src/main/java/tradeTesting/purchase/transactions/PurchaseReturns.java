@@ -1,6 +1,7 @@
 package tradeTesting.purchase.transactions;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
@@ -30,7 +31,7 @@ public class PurchaseReturns extends TransactionsBaseClass {
     }
 
 
-    public String purchaseReturns(String receivableVoucher) throws Exception {
+    public String purchaseReturns(String receivableVoucher,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long PR = System.nanoTime();
 
         navigateToMastersWhen3Steps("Purchase","Returns","Purchase Returns");
@@ -129,7 +130,7 @@ public class PurchaseReturns extends TransactionsBaseClass {
         long termsConditionsTabEnd = System.nanoTime() - termsConditionsTabStart;
         FileUtil.writeTimeLogInMinutes("PR Terms And Conditions:- ", termsConditionsTabEnd);
 
-       long allocationsTabStart=System.nanoTime();
+        long allocationsTabStart=System.nanoTime();
         addAllocations();
         long allocationsTabEnd=System.nanoTime() - allocationsTabStart;
         FileUtil.writeTimeLogInMinutes("Allocations Tab:- ", allocationsTabEnd);
@@ -139,9 +140,9 @@ public class PurchaseReturns extends TransactionsBaseClass {
         transactionSave();
         String newVoucherID = newTransactionID(oldVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"both ID's should not Equal when we perform transaction");
-//        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"PurchaseVouchers");
-        deleteTransactionUsingVoucherNumber(newVoucherID);
+//        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"PurchaseReturns");
 
+        deleteTransactionUsingVoucherNumber(newVoucherID);
         long PurchaseVoucherEnd = System.nanoTime() - PR;
         FileUtil.writeTimeLogInMinutes("Purchase returns End", PurchaseVoucherEnd);
         return newVoucherID;

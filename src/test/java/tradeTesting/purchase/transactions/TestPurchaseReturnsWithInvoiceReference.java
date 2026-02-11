@@ -39,12 +39,12 @@ public class TestPurchaseReturnsWithInvoiceReference {
 //        driver= appLogin.tradeLogin();
 
         PurchaseReturnsWithInvoiceReference invoiceReference=new PurchaseReturnsWithInvoiceReference(driver,dataFile1);
-        invoiceReference.purchaseReturnsWithInvoiceReference("PV 9","CCR 3");
+        invoiceReference.purchaseReturnsWithInvoiceReference("PV 9","CCR 3","","","");
     }
 
     @AfterTest
     public void afterTest() throws IOException {
-//        appLogin.logout();
+        appLogin.logout();
     }
 
 }

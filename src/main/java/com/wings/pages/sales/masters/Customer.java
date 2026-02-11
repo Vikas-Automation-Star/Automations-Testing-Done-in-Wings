@@ -65,26 +65,26 @@ public class Customer extends Masters {
         Thread.sleep(1000);
         inputTextWithValidation("xpath", "//Edit[@Name='Address 1']", common.getData(dataFile, "Address1"));
         inputTextWithValidation("xpath", "//Edit[@Name='Address 2']", common.getData(dataFile, "Address2"));
-         inputTextWithValidation("xpath", "//Edit[@Name='Address 3']", common.getData(dataFile, "Address3"));
-         inputTextWithValidation("xpath", "//Edit[@Name='City']", common.getData(dataFile, "city"));
-         inputTextWithValidation("xpath", "//Edit[@Name='State']", common.getData(dataFile, "state"));
+        inputTextWithValidation("xpath", "//Edit[@Name='Address 3']", common.getData(dataFile, "Address3"));
+        inputTextWithValidation("xpath", "//Edit[@Name='City']", common.getData(dataFile, "city"));
+        inputTextWithValidation("xpath", "//Edit[@Name='State']", common.getData(dataFile, "state"));
         Thread.sleep(1000);
         WebElement country = common.findWebElement("xpath", "//Edit[@Name='Country']");
         country.clear();
         country.sendKeys(common.getData(dataFile, "country"), Keys.ENTER);
-         inputTextWithValidation("xpath", "//Edit[@Name='Zip']", common.getData(dataFile, "zip"));
-         inputTextWithValidation("xpath", "//Edit[@Name='Telephones 1']", common.getData(dataFile, "Telephone1"));
-         inputTextWithValidation("xpath", "//Edit[@Name='Telephones 2']", common.getData(dataFile, "Telephone2"));
-         inputTextWithValidation("xpath", "//Edit[@Name='Telephones 3']", common.getData(dataFile, "Telephone3"));
-         inputTextWithValidation("xpath", "//Edit[@Name='Telephones 4']", common.getData(dataFile, "Telephone4"));
-         inputTextWithValidation("xpath", "//Edit[@Name='Fax']", common.getData(dataFile, "fax"));
-         inputTextWithValidation("xpath", "//Edit[@Name='Email']", common.getData(dataFile, "email"));
-         inputTextWithValidation("xpath", "//Edit[@Name='Website']", common.getData(dataFile, "website"));
-         inputTextWithValidation("xpath", "//Edit[@Name='Contact Person']", common.getData(dataFile, "contactPersion"));
-         inputTextWithValidation("xpath", "//Edit[@Name='Contact Person Designation']", common.getData(dataFile, "contactPersonDesignation"));
-         inputTextWithValidation("xpath", "//Edit[@Name='Contact Person Telephone No']", common.getData(dataFile, "contactPersonTelephoneNo"));
-         inputTextWithValidation("xpath", "//Edit[@Name='Contact Person Mobile No']", common.getData(dataFile, "contactPersonMobileNo"));
-         inputTextWithValidation("xpath", "//Edit[@Name='Contact Person Email']", common.getData(dataFile, "contactPersonEmail"));
+        inputTextWithValidation("xpath", "//Edit[@Name='Zip']", common.getData(dataFile, "zip"));
+        inputTextWithValidation("xpath", "//Edit[@Name='Telephones 1']", common.getData(dataFile, "Telephone1"));
+        inputTextWithValidation("xpath", "//Edit[@Name='Telephones 2']", common.getData(dataFile, "Telephone2"));
+        inputTextWithValidation("xpath", "//Edit[@Name='Telephones 3']", common.getData(dataFile, "Telephone3"));
+        inputTextWithValidation("xpath", "//Edit[@Name='Telephones 4']", common.getData(dataFile, "Telephone4"));
+        inputTextWithValidation("xpath", "//Edit[@Name='Fax']", common.getData(dataFile, "fax"));
+        inputTextWithValidation("xpath", "//Edit[@Name='Email']", common.getData(dataFile, "email"));
+        inputTextWithValidation("xpath", "//Edit[@Name='Website']", common.getData(dataFile, "website"));
+        inputTextWithValidation("xpath", "//Edit[@Name='Contact Person']", common.getData(dataFile, "contactPersion"));
+        inputTextWithValidation("xpath", "//Edit[@Name='Contact Person Designation']", common.getData(dataFile, "contactPersonDesignation"));
+        inputTextWithValidation("xpath", "//Edit[@Name='Contact Person Telephone No']", common.getData(dataFile, "contactPersonTelephoneNo"));
+        inputTextWithValidation("xpath", "//Edit[@Name='Contact Person Mobile No']", common.getData(dataFile, "contactPersonMobileNo"));
+        inputTextWithValidation("xpath", "//Edit[@Name='Contact Person Email']", common.getData(dataFile, "contactPersonEmail"));
         common.clickElement("xpath", "//Button[@Name='Ok']");
         common.sliderHandling("xpath","//*/Thumb[@Name='Position']",0,190);
         common.clickElement("xpath", "//Pane[@Name='Registration']/Button[@Name='...']");
@@ -144,10 +144,10 @@ public class Customer extends Masters {
         state.sendKeys(common.getData(dataFile, "ShippingState"), Keys.ENTER);
         Thread.sleep(3000);
         //verify this
-            int offset = 300;
-            WebElement slider = common.findWebElement("xpath", "//ScrollBar[@Name='Horizontal']/Thumb[@Name='Position']");
-            Actions actions = new Actions(driver);
-            actions.clickAndHold(slider).moveByOffset(offset, 0).release().perform();
+        int offset = 300;
+        WebElement slider = common.findWebElement("xpath", "//ScrollBar[@Name='Horizontal']/Thumb[@Name='Position']");
+        Actions actions = new Actions(driver);
+        actions.clickAndHold(slider).moveByOffset(offset, 0).release().perform();
 
         common.clickElement("xpath", "//Edit[@Name='Zip/PostalCode * Row 0, Not sorted.']");
         common.inputText("xpath", "//Edit[@Name='Zip/PostalCode * Row 0, Not sorted.']", common.getData(dataFile, "stateZipcode"));
@@ -163,7 +163,7 @@ public class Customer extends Masters {
 //        consignor.click();
 //        consignor.sendKeys(common.getData(dataFile, "consignor"), Keys.ENTER);
 //        common.clickElement("xpath", "//Button[@Name='Ok']");
-       //save
+        //save
         saveAfterMasterCreate();
         //close
         closeMaster(common.getData(dataFile,"close"));

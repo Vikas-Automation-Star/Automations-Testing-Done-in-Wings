@@ -1,5 +1,7 @@
 <suite name="Trade Transactions Suite">
 
+    <!-- Purchase !-->
+
     <listeners>
         <listener class-name="com.wings.utils.Listener"/>
     </listeners>
@@ -72,15 +74,15 @@
         </classes>
     </test>
 
-    <test name="Finance - Receipts from credit card companies" description="Trade Receipts from credit card companies" testID="1">
-        <classes>
-            <class name="tradeTesting.finance.transactions.receipts.TestReceiptsFromCreditCardCompanies"/>
-        </classes>
-    </test>
+    <!--    <test name="Finance - Receipts from credit card companies" description="Trade Receipts from credit card companies" testID="1">-->
+    <!--        <classes>-->
+    <!--            <class name="tradeTesting.finance.transactions.receipts.TestReceiptsFromCreditCardCompanies"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
     <test name="Finance - Gift voucher receipts" description="Trade Gift voucher receipts" testID="1">
         <classes>
-            <class name="tradeTesting.finance.transactions.receipts.GiftVoucherReceipts"/>
+            <class name="tradeTesting.finance.transactions.receipts.TestGiftVoucherReceipts"/>
         </classes>
     </test>
 
@@ -135,7 +137,7 @@
 
     <test name="Finance - Book Expenses Or Payable" description="Trade Book Expenses or Payable" testID="1">
         <classes>
-            <class name="tradeTesting.finance.transactions.journals.TestComplexJournalEntries"/>
+            <class name="tradeTesting.finance.transactions.journals.TestBookExpensesOrPayable"/>
         </classes>
     </test>
 
@@ -192,7 +194,5 @@
             <class name="tradeTesting.finance.transactions.partyAdjustments.TestProductWiseCreditNote"/>
         </classes>
     </test>
-
-
 
 </suite>

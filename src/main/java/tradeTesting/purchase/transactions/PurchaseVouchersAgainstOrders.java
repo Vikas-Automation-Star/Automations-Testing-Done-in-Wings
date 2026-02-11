@@ -31,7 +31,7 @@ public class PurchaseVouchersAgainstOrders extends TransactionsBaseClass {
         dataFile = file;
     }
 
-    public String purchaseVouchersAgainstOrder(String voucherNum,String receivableVoucher) throws Exception {
+    public String purchaseVouchersAgainstOrder(String voucherNum,String receivableVoucher,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long PVAO = System.nanoTime();
 
         navigateToMastersWhen3Steps("Purchase","Invoices","Purchase Vouchers against Order");
@@ -76,13 +76,13 @@ public class PurchaseVouchersAgainstOrders extends TransactionsBaseClass {
         common.clickElement("xpath", "//TabItem[contains(@Name,'  ChargesAndDeductions  ')]");
         addChargesAndDeductions();
         long chargesDeductionsEnd = System.nanoTime() - chargesDeductionsStart;
-        FileUtil.writeTimeLogInMinutes("PO Charges And Deductions:- ", chargesDeductionsEnd);
+        FileUtil.writeTimeLogInMinutes("PVAO Charges And Deductions:- ", chargesDeductionsEnd);
 
         long otherChargesStart = System.nanoTime();
         common.clickElement("xpath", "//TabItem[contains(@Name,'  TaxableOtherCharges  ')]");
         addTaxableOtherCharges();
         long otherChargesEnd = System.nanoTime() - otherChargesStart;
-        FileUtil.writeTimeLogInMinutes("PO Other Charges:- ", otherChargesEnd);
+        FileUtil.writeTimeLogInMinutes("PVAO Other Charges:- ", otherChargesEnd);
 
         adjustADVTcs();
 
@@ -97,7 +97,7 @@ public class PurchaseVouchersAgainstOrders extends TransactionsBaseClass {
         navigateToCashTab();
         addCash();
         long cashEnd = System.nanoTime() - cashStart;
-        FileUtil.writeTimeLogInMinutes("PO Cash Tab:- ", cashEnd);
+        FileUtil.writeTimeLogInMinutes("PVAO Cash Tab:- ", cashEnd);
 
         long chequesStart = System.nanoTime();
         List<WebElement> elements = common.findWebElements("xpath", "//TabItem[contains(@Name,'Cheques')]");
@@ -105,25 +105,25 @@ public class PurchaseVouchersAgainstOrders extends TransactionsBaseClass {
         elements.get(0).click();
         addCheques();
         long chequesEnd = System.nanoTime() - chequesStart;
-        FileUtil.writeTimeLogInMinutes("PO Cheques Tab:- ", chequesEnd);
+        FileUtil.writeTimeLogInMinutes("PVAO Cheques Tab:- ", chequesEnd);
 
         long postDatedChequesStart = System.nanoTime();
         common.clickElement("xpath", "//TabItem[contains(@Name,'  PostDatedCheques  ')]");
         addPostDatedCheques();
         long postDatedChequesEnd = System.nanoTime() - postDatedChequesStart;
-        FileUtil.writeTimeLogInMinutes("PO Post Dated Cheques Tab:- ", postDatedChequesEnd);
+        FileUtil.writeTimeLogInMinutes("PVAO Post Dated Cheques Tab:- ", postDatedChequesEnd);
 
         long chequesPDCStart = System.nanoTime();
         common.clickElement("xpath", "//TabItem[contains(@Name,'  PDC  ')]");
         addChequesPDC();
         long chequesPDCEnd = System.nanoTime() - chequesPDCStart;
-        FileUtil.writeTimeLogInMinutes("PO Cheques PDC Tab:- ", chequesPDCEnd);
+        FileUtil.writeTimeLogInMinutes("PVAO Cheques PDC Tab:- ", chequesPDCEnd);
 
         long otherInfoTabStart = System.nanoTime();
         common.clickElement("xpath", "//TabItem[contains(@Name,'  OtherInfo  ')]");
         otherInfo();
         long otherInfoTabEnd = System.nanoTime() - otherInfoTabStart;
-        FileUtil.writeTimeLogInMinutes("PO Other Info:- ", otherInfoTabEnd);
+        FileUtil.writeTimeLogInMinutes("PVAO Other Info:- ", otherInfoTabEnd);
 
         common.clickElement("xpath", "//TabItem[contains(@Name,'  PDC  ')]");
         moveToRight(3);
@@ -132,13 +132,14 @@ public class PurchaseVouchersAgainstOrders extends TransactionsBaseClass {
         common.clickElement("xpath", "//TabItem[contains(@Name,'  TermsAndConditions  ')]");
         termsAndCondition();
         long termsConditionsTabEnd = System.nanoTime() - termsConditionsTabStart;
-        FileUtil.writeTimeLogInMinutes("PV Terms And Conditions:- ", termsConditionsTabEnd);
+        FileUtil.writeTimeLogInMinutes("PVAO Terms And Conditions:- ", termsConditionsTabEnd);
 
 
         transactionSave();
         String newVoucherID = newTransactionID(oldVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"both ID's should not Equal when we perform transaction");
-//        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"PurchaseVouchers");
+//        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"PurchaseVouchersAgainstOrders");
+
         deleteTransactionUsingVoucherNumber(newVoucherID);
         long PurchaseVoucherEnd = System.nanoTime() - PVAO;
         FileUtil.writeTimeLogInMinutes("PurchaseVouchers Against orders End", PurchaseVoucherEnd);

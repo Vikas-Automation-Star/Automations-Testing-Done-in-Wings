@@ -73,14 +73,13 @@ public class PurchaseOrdersCancellation extends TransactionsBaseClass {
         String newVoucherID =newTransactionID(oldVoucherID);
         System.out.println("newID: "+newVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"Voucher Numbers are same. Check Transaction.");
-        //end
-        long salesInvoiceEnd = System.nanoTime() - start;
-        FileUtil.writeTimeLogInMinutes("POC ended at:- ", salesInvoiceEnd );
-        //api
 //        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"purchaseOrderCancellation");
+
         deleteTransactionUsingVoucherNumber(newVoucherID);
 //        deleteTransactionUsingVoucherNumber(voucherNum);
 
+        long salesInvoiceEnd = System.nanoTime() - start;
+        FileUtil.writeTimeLogInMinutes("POC ended at:- ", salesInvoiceEnd );
         return newVoucherID;
     }
 

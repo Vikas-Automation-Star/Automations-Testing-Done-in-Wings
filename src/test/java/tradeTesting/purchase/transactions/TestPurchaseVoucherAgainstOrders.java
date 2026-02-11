@@ -40,7 +40,7 @@ public class TestPurchaseVoucherAgainstOrders {
 //        driver= appLogin.tradeLogin();
 
         PurchaseVouchersAgainstOrders vouchersAgainstOrder = new PurchaseVouchersAgainstOrders(driver, dataFile1);
-        String PurchaseVouchersAgainstOrder=vouchersAgainstOrder.purchaseVouchersAgainstOrder("PO 6","BP 2");
+        String PurchaseVouchersAgainstOrder=vouchersAgainstOrder.purchaseVouchersAgainstOrder("PO 6","BP 2","","","");
     }
 
     @AfterTest

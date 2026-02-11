@@ -1,6 +1,7 @@
 package tradeTesting.purchase.transactions;
 
 import com.wings.pages.TransactionsBaseClass;
+import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import com.wings.utils.Time;
@@ -28,7 +29,7 @@ public class PurchaseReturnsWithInvoiceReference extends TransactionsBaseClass {
     }
 
 
-    public String purchaseReturnsWithInvoiceReference(String voucherNum,String payableVoucher) throws Exception {
+    public String purchaseReturnsWithInvoiceReference(String voucherNum,String payableVoucher,String tempAPIBodyUpdate,String apiResponse,String outputFile) throws Exception {
         long prwir = System.nanoTime();
 
         navigateToMastersWhen3Steps("Purchase","Returns","Purchase Returns With Invoice Reference");
@@ -69,19 +70,19 @@ public class PurchaseReturnsWithInvoiceReference extends TransactionsBaseClass {
         common.clickElement("xpath", "//TabItem[contains(@Name,'  ChargesAndDeductions  ')]");
         addChargesAndDeductions();
         long chargesDeductionsEnd = System.nanoTime() - chargesDeductionsStart;
-        FileUtil.writeTimeLogInMinutes("Charges And Deductions:- ", chargesDeductionsEnd);
+        FileUtil.writeTimeLogInMinutes("PRWIR Charges And Deductions:- ", chargesDeductionsEnd);
 
         long otherChargesStart = System.nanoTime();
         common.clickElement("xpath", "//TabItem[contains(@Name,'  TaxableOtherCharges  ')]");
         addTaxableOtherCharges();
         long otherChargesEnd = System.nanoTime() - otherChargesStart;
-        FileUtil.writeTimeLogInMinutes("Other Charges:- ", otherChargesEnd);
+        FileUtil.writeTimeLogInMinutes("PRWIR Other Charges:- ", otherChargesEnd);
 
         long cashStart = System.nanoTime();
         navigateToCashTab();
         addCash();
         long cashEnd = System.nanoTime() - cashStart;
-        FileUtil.writeTimeLogInMinutes("PO Cash Tab:- ", cashEnd);
+        FileUtil.writeTimeLogInMinutes("PRWIR Cash Tab:- ", cashEnd);
 
         long chequesStart = System.nanoTime();
         List<WebElement> elements = common.findWebElements("xpath", "//TabItem[contains(@Name,'Cheques')]");
@@ -89,19 +90,19 @@ public class PurchaseReturnsWithInvoiceReference extends TransactionsBaseClass {
         elements.get(0).click();
         addCheques();
         long chequesEnd = System.nanoTime() - chequesStart;
-        FileUtil.writeTimeLogInMinutes("PO Cheques Tab:- ", chequesEnd);
+        FileUtil.writeTimeLogInMinutes("PRWIR Cheques Tab:- ", chequesEnd);
 
         long postDatedChequesStart = System.nanoTime();
         common.clickElement("xpath", "//TabItem[contains(@Name,'  PostDatedCheques  ')]");
         addPostDatedCheques();
         long postDatedChequesEnd = System.nanoTime() - postDatedChequesStart;
-        FileUtil.writeTimeLogInMinutes("PO Post Dated Cheques Tab:- ", postDatedChequesEnd);
+        FileUtil.writeTimeLogInMinutes("PRWIR Post Dated Cheques Tab:- ", postDatedChequesEnd);
 
         long chequesPDCStart = System.nanoTime();
         common.clickElement("xpath", "//TabItem[contains(@Name,'  PDC  ')]");
         addChequesPDC();
         long chequesPDCEnd = System.nanoTime() - chequesPDCStart;
-        FileUtil.writeTimeLogInMinutes("PO Cheques PDC Tab:- ", chequesPDCEnd);
+        FileUtil.writeTimeLogInMinutes("PRWIR Cheques PDC Tab:- ", chequesPDCEnd);
 
         common.clickElement("xpath", "//TabItem[contains(@Name,'  BillsPayable  ')]");
         adjustAmountInBillsPayable(dataFile,payableVoucher);
@@ -114,32 +115,33 @@ public class PurchaseReturnsWithInvoiceReference extends TransactionsBaseClass {
         common.clickElement("xpath", "//TabItem[contains(@Name,'  OtherInfo  ')]");
         otherInfo();
         long otherInfoTabEnd = System.nanoTime() - otherInfoTabStart;
-        FileUtil.writeTimeLogInMinutes("PO Other Info:- ", otherInfoTabEnd);
+        FileUtil.writeTimeLogInMinutes("PRWIR Other Info:- ", otherInfoTabEnd);
 
 
         long termsConditionsTabStart = System.nanoTime();
         common.clickElement("xpath", "//TabItem[contains(@Name,'  TermsAndConditions  ')]");
         termsAndCondition();
         long termsConditionsTabEnd = System.nanoTime() - termsConditionsTabStart;
-        FileUtil.writeTimeLogInMinutes("Terms And Conditions:- ", termsConditionsTabEnd);
+        FileUtil.writeTimeLogInMinutes("PRWIR Terms And Conditions:- ", termsConditionsTabEnd);
 
         long shippingAddressTabStart = System.nanoTime();
         shippingAddress();
         long shippingAddressTabEnd = System.nanoTime() - shippingAddressTabStart;
-        FileUtil.writeTimeLogInMinutes("Shipping Address:- ", shippingAddressTabEnd);
+        FileUtil.writeTimeLogInMinutes("PRWIR Shipping Address:- ", shippingAddressTabEnd);
 
         long allocationsTabStart=System.nanoTime();
         addAllocations();
         long allocationsTabEnd=System.nanoTime() - allocationsTabStart;
-        FileUtil.writeTimeLogInMinutes("Allocations Tab:- ", allocationsTabEnd);
+        FileUtil.writeTimeLogInMinutes("PRWIR Allocations Tab:- ", allocationsTabEnd);
 
         transactionSave();
         String newVoucherID = newTransactionID(oldVoucherID);
         Assert.assertNotEquals(newVoucherID, oldVoucherID,"both ID's should not Equal when we perform transaction");
-//        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"PurchaseVouchers");
+//        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"PurchaseReturnsWithInvoiceReference");
+
         deleteTransactionUsingVoucherNumber(newVoucherID);
         long PurchaseVoucherEnd = System.nanoTime() - prwir;
-        FileUtil.writeTimeLogInMinutes("PurchaseVouchers Against orders End", PurchaseVoucherEnd);
+        FileUtil.writeTimeLogInMinutes("PurchaseReturns With Invoice Reference End", PurchaseVoucherEnd);
         return newVoucherID;
     }
 

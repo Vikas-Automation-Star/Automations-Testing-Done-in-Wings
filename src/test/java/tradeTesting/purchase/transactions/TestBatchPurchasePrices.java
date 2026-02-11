@@ -28,7 +28,7 @@ public class TestBatchPurchasePrices {
     @Test
     public void purchaseEnquiries() throws Exception {
         BatchPurchasePrices purchasePrices=new BatchPurchasePrices(driver,dataFile);
-        purchasePrices.batchPurchasePrices();
+        purchasePrices.batchPurchasePrices("","","");
     }
 
     @AfterTest

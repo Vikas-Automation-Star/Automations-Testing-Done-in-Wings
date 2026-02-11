@@ -31,8 +31,8 @@ public class TestPurchaseOrdersCancellation {
 
     @Test
     public void purchaseOrdersCancellation() throws Exception {
-        PurchaseOrders orders=new PurchaseOrders(driver,dataFile);
-        String order= orders.purchaseOrders("","","");
+//        PurchaseOrders orders=new PurchaseOrders(driver,dataFile);
+//        String order= orders.purchaseOrders("","","");
 //
 //        appLogin.logout();
 //        driver= appLogin.tradeLogin();
