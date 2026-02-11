@@ -150,7 +150,7 @@
         </classes>
     </test>
 
-    <test name="Sales - Trays" description="Trade Trays" testID="24">
+    <test name="Sales - Trays" description="Trade Trays" testID="25">
         <classes>
             <class name="tradeTesting.sales.masters.TestTrays"/>
         </classes>
@@ -164,25 +164,25 @@
 
     <!-- Purchases !-->
 
-    <test name="Purchases - Suppliers" description="Trade Suppliers" testID="26">
+    <test name="Purchases - Suppliers" description="Trade Suppliers" testID="27">
         <classes>
             <class name="tradeTesting.purchase.masters.TestSuppliers"/>
         </classes>
     </test>
 
-    <test name="Purchases - Purchase PriceLists" description="Trade Purchase PriceLists" testID="26">
+    <test name="Purchases - Purchase PriceLists" description="Trade Purchase PriceLists" testID="28">
         <classes>
             <class name="tradeTesting.purchase.masters.TestPurchasePriceLists"/>
         </classes>
     </test>
 
-    <test name="Purchases - Inclusive Purchase PriceLists" description="Trade Inclusive Purchase PriceLists" testID="26">
+    <test name="Purchases - Inclusive Purchase PriceLists" description="Trade Inclusive Purchase PriceLists" testID="29">
         <classes>
             <class name="tradeTesting.purchase.masters.TestInclusivePurchasePriceLists"/>
         </classes>
     </test>
 
-    <test name="Purchases - Batch Policies" description="Trade Batch Policies" testID="26">
+    <test name="Purchases - Batch Policies" description="Trade Batch Policies" testID="30">
         <classes>
             <class name="tradeTesting.purchase.masters.TestPurchaseBatchPolicies"/>
         </classes>
@@ -190,159 +190,321 @@
 
     <!-- Inventory !-->
 
-    <test name="Inventory - Products" description="Trade Products" testID="27">
+    <test name="Inventory - Products" description="Trade Products" testID="31">
         <classes>
             <class name="tradeTesting.inventory.masters.TestProducts"/>
         </classes>
     </test>
 
-    <test name="Inventory - Product Batches" description="Trade Product Batches" testID="28">
+    <test name="Inventory - Product Batches" description="Trade Product Batches" testID="32">
         <classes>
             <class name="tradeTesting.inventory.masters.TestProductBatches"/>
         </classes>
     </test>
 
-    <test name="Inventory - Units Of Measure" description="Trade Units Of Measure" testID="29">
+    <test name="Inventory - Units Of Measure" description="Trade Units Of Measure" testID="33">
         <classes>
             <class name="tradeTesting.inventory.masters.TestUnitsOfMeasure"/>
         </classes>
     </test>
 
-    <test name="Inventory - Locations" description="Trade Locations" testID="30">
+    <test name="Inventory - Locations" description="Trade Locations" testID="34">
         <classes>
             <class name="tradeTesting.inventory.masters.TestLocations"/>
         </classes>
     </test>
 
-    <test name="Inventory - Storage Bins" description="Trade Storage Bins" testID="31">
+    <test name="Inventory - Storage Bins" description="Trade Storage Bins" testID="35">
         <classes>
             <class name="tradeTesting.inventory.masters.TestStorageBins"/>
         </classes>
     </test>
 
-    <test name="Inventory - Product Categories" description="Trade Product Categories" testID="32">
+    <test name="Inventory - Product Categories" description="Trade Product Categories" testID="36">
         <classes>
             <class name="tradeTesting.inventory.masters.TestProductCategories"/>
         </classes>
     </test>
 
-    <test name="Inventory - Product Types" description="Trade Product Types" testID="33">
+    <test name="Inventory - Product Types" description="Trade Product Types" testID="37">
         <classes>
             <class name="tradeTesting.inventory.masters.TestProductTypes"/>
         </classes>
     </test>
 
-    <test name="Inventory - Product Brands" description="Trade Product Brands" testID="34">
+    <test name="Inventory - Product Brands" description="Trade Product Brands" testID="38">
         <classes>
             <class name="tradeTesting.inventory.masters.TestProductBrands"/>
         </classes>
     </test>
 
-    <test name="Inventory - Distributions" description="Trade Distributions" testID="35">
+    <test name="Inventory - Distributions" description="Trade Distributions" testID="39">
         <classes>
             <class name="tradeTesting.inventory.masters.TestDistributions"/>
         </classes>
     </test>
 
-    <test name="Inventory - Brand Extensions" description="Trade Brand Extensions" testID="36">
+    <test name="Inventory - Brand Extensions" description="Trade Brand Extensions" testID="40">
         <classes>
             <class name="tradeTesting.inventory.masters.TestBrandExtensions"/>
         </classes>
     </test>
 
-    <test name="Inventory - Product Variants" description="Trade Product Variants" testID="37">
+    <test name="Inventory - Product Variants" description="Trade Product Variants" testID="41">
         <classes>
             <class name="tradeTesting.inventory.masters.TestProductVariants"/>
         </classes>
     </test>
 
-    <test name="Inventory - Pack Sizes" description="Trade Pack Sizes" testID="38">
+    <test name="Inventory - Pack Sizes" description="Trade Pack Sizes" testID="42">
         <classes>
             <class name="tradeTesting.inventory.masters.TestPackSizes"/>
         </classes>
     </test>
 
-    <test name="Inventory - Pack Formats" description="Trade Pack Formats" testID="39">
+    <test name="Inventory - Pack Formats" description="Trade Pack Formats" testID="43">
         <classes>
             <class name="tradeTesting.inventory.masters.TestFormate"/>
         </classes>
     </test>
 
-    <test name="Inventory - Stock Types" description="Trade Stock Types" testID="40">
+    <test name="Inventory - Stock Types" description="Trade Stock Types" testID="44">
         <classes>
             <class name="tradeTesting.inventory.masters.TestStockTypes"/>
         </classes>
     </test>
 
-    <test name="Inventory - Damage Bins" description="Trade Damage Bins" testID="41">
+    <test name="Inventory - Damage Bins" description="Trade Damage Bins" testID="45">
         <classes>
             <class name="tradeTesting.inventory.masters.TestDamageBin"/>
         </classes>
     </test>
 
-    <test name="Inventory - Customer Categories" description="Trade Customer Categories" testID="42">
+    <test name="Inventory - Customer Categories" description="Trade Customer Categories" testID="46">
         <classes>
             <class name="tradeTesting.inventory.masters.TestCustomerCategories"/>
         </classes>
     </test>
 
-    <test name="Inventory - Customer Types" description="Trade Customer Types" testID="43">
+    <test name="Inventory - Customer Types" description="Trade Customer Types" testID="47">
         <classes>
             <class name="tradeTesting.inventory.masters.TestCustomerTypes"/>
         </classes>
     </test>
 
-    <test name="Inventory - Outlet Types" description="Trade Outlet Types" testID="44">
+    <test name="Inventory - Outlet Types" description="Trade Outlet Types" testID="48">
         <classes>
             <class name="tradeTesting.inventory.masters.TestOutletTypes"/>
         </classes>
     </test>
 
-    <test name="Inventory - Outlet Segments" description="Trade Outlet Segments" testID="45">
+    <test name="Inventory - Outlet Segments" description="Trade Outlet Segments" testID="49">
         <classes>
             <class name="tradeTesting.inventory.masters.TestOutletSegments"/>
         </classes>
     </test>
 
-    <test name="Inventory - Income Groups" description="Trade Income Groups" testID="46">
+    <test name="Inventory - Income Groups" description="Trade Income Groups" testID="50">
         <classes>
             <class name="tradeTesting.inventory.masters.TestIncomeGroups"/>
         </classes>
     </test>
 
-    <test name="Inventory - Regions" description="Trade Regions" testID="47">
+    <test name="Inventory - Regions" description="Trade Regions" testID="51">
         <classes>
             <class name="tradeTesting.inventory.masters.TestRegions"/>
         </classes>
     </test>
 
-    <test name="Inventory - Territories" description="Trade Territories" testID="48">
+    <test name="Inventory - Territories" description="Trade Territories" testID="52">
         <classes>
             <class name="tradeTesting.inventory.masters.TestTerritories"/>
         </classes>
     </test>
 
-    <test name="Inventory - Cities" description="Trade Cities" testID="49">
+    <test name="Inventory - Cities" description="Trade Cities" testID="53">
         <classes>
             <class name="tradeTesting.inventory.masters.TestCities"/>
         </classes>
     </test>
 
-    <test name="Inventory - Product Margin Categories" description="Trade Product Margin Categories" testID="50">
+    <test name="Inventory - Product Margin Categories" description="Trade Product Margin Categories" testID="54">
         <classes>
             <class name="tradeTesting.inventory.masters.TestProductMarginCategories"/>
         </classes>
     </test>
 
+    <!-- finance -->
+
+    <test name="Finance - Bank" description="Bank Master" testID="55">
+        <classes>
+            <class name="tradeTesting.finance.masters.chartOfAccounts.Assets.TestBankMaster"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Cash" description="Cash Master" testID="56">
+        <classes>
+            <class name="tradeTesting.finance.masters.chartOfAccounts.Assets.TestCashMaster"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Fixed Assets" description="Fixed Asset Master" testID="57">
+    <classes>
+        <class name="tradeTesting.finance.masters.chartOfAccounts.Assets.TestFixedAssestsMaster"/>
+    </classes>
+</test>
+    <test name="Finance - Inventory" description="Inventory Master" testID="58">
+    <classes>
+        <class name="tradeTesting.finance.masters.chartOfAccounts.Assets.TestInventoryMaster"/>
+    </classes>
+</test>
+    <test name="Finance - Investment" description="Investment Master" testID="59">
+    <classes>
+        <class name="tradeTesting.finance.masters.chartOfAccounts.Assets.TestInvestmentsMaster"/>
+    </classes>
+</test>
+    <test name="Finance - Miscellaneous Assets" description="Miscellaneous Assets Master" testID="60">
+    <classes>
+        <class name="tradeTesting.finance.masters.chartOfAccounts.Assets.TestMiscellaneousAssetsMaster"/>
+    </classes>
+</test>
+
+    <test name="Finance - Sundry Debtors" description="Sundry Debtors Master" testID="61">
+    <classes>
+        <class name="tradeTesting.finance.masters.chartOfAccounts.Assets.TestSundryDebtorsMaster"/>
+    </classes>
+</test>
+
+    <test name="Finance - Capital Share Holder" description="Capital Share Holder Master" testID="62">
+        <classes>
+            <class name="tradeTesting.finance.masters.chartOfAccounts.Liabilities.TestCapitalShareHolderMaster"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Other Current Liabilities" description="Other Current Liabilities Master" testID="63">
+        <classes>
+            <class name="tradeTesting.finance.masters.chartOfAccounts.Liabilities.TestOtherCurrentLiabilitiesMaster"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Provisions" description="Provisions Master" testID="64">
+        <classes>
+            <class name="tradeTesting.finance.masters.chartOfAccounts.Liabilities.TestProvisionsMaster"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Reserves and Surplus" description="Reserves and Surplus Master" testID="65">
+        <classes>
+            <class name="tradeTesting.finance.masters.chartOfAccounts.Liabilities.TestReservesandSurplusMaster"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Secured Loans" description="Secure Loans Master" testID="66">
+        <classes>
+            <class name="tradeTesting.finance.masters.chartOfAccounts.Liabilities.TestSecuredLoansMaster"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Sundry Creditors and Suppliers" description="Sundry Creditors And Suppliers Master" testID="67">
+        <classes>
+            <class name="tradeTesting.finance.masters.chartOfAccounts.Liabilities.TestSundryCreditorsSuppliersMaster"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Unsecured Loans" description="Unsecured Loans Master" testID="68">
+        <classes>
+            <class name="tradeTesting.finance.masters.chartOfAccounts.Liabilities.TestUnSecuredLoansMaster"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Administrative Expenses" description="Administrative Expenses Master" testID="69">
+        <classes>
+            <class name="tradeTesting.finance.masters.chartOfAccounts.ProfitAndLossAccount.TestAdministrativeExpensesMaster"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Appropriations" description="Appropriations Master" testID="70">
+        <classes>
+            <class name="tradeTesting.finance.masters.chartOfAccounts.ProfitAndLossAccount.TestAppropriationsMaster"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Depreciation" description="Depreciation Master" testID="71">
+        <classes>
+            <class name="tradeTesting.finance.masters.chartOfAccounts.ProfitAndLossAccount.TestDepreciationMaster"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Finance Expenses" description="Finance Expenses Master" testID="72">
+        <classes>
+            <class name="tradeTesting.finance.masters.chartOfAccounts.ProfitAndLossAccount.TestFinanceExpensesMaster"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Selling Distribution Expenses" description="Selling Distribution Expenses Master" testID="73">
+        <classes>
+            <class name="tradeTesting.finance.masters.chartOfAccounts.ProfitAndLossAccount.TestSellingDistributionExpensesMaster"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Taxes and Other Charges" description="Taxes and Other Charges Master" testID="74">
+        <classes>
+            <class name="tradeTesting.finance.masters.chartOfAccounts.ProfitAndLossAccount.TestTaxesAndOtherChargesMaster"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Opening and Closing Stock" description="Opening And CLosing Stock Master" testID="75">
+        <classes>
+            <class name="tradeTesting.finance.masters.chartOfAccounts.TradingAccount.TestOpeningClosingStockMaster"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Purchases" description="Purchases Master" testID="76">
+        <classes>
+            <class name="tradeTesting.finance.masters.chartOfAccounts.TradingAccount.TestPurchasesMaster"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Sales" description="Sales Master" testID="77">
+        <classes>
+            <class name="tradeTesting.finance.masters.chartOfAccounts.TradingAccount.TestSalesMaster"/>
+        </classes>
+    </test>
+
+
+    <test name="Finance - Swipe Machine Type" description="Swipe Machine Type Master" testID="78">
+        <classes>
+            <class name="tradeTesting.finance.masters.CreditCards.TestSwipeMachineTypeTrade"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Swipe Type" description="Swipe Type Master" testID="79">
+        <classes>
+            <class name="tradeTesting.finance.masters.CreditCards.TestSwipeTypeTrade"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Account Groups" description="Account Groups Master" testID="80">
+        <classes>
+            <class name="tradeTesting.finance.masters.TestAccountGroupsTrade"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Drawn On Bank" description="Drawn On Bank Master" testID="81">
+        <classes>
+            <class name="tradeTesting.finance.masters.TestDrawnOnBankTrade"/>
+        </classes>
+    </test>
+
     <!-- Configure !-->
 
-    <test name="Configure - Voucher Types" description="Trade Voucher Types" testID="50">
+    <test name="Configure - Voucher Types" description="Trade Voucher Types" testID="82">
         <classes>
             <class name="tradeTesting.configure.TestVoucherTypes"/>
         </classes>
     </test>
 
-    <test name="Configure - Users" description="Trade Users" testID="50">
+    <test name="Configure - Users" description="Trade Users" testID="83">
         <classes>
             <class name="tradeTesting.configure.TestUsers"/>
         </classes>

@@ -10,7 +10,7 @@ import tradeTesting.finance.masters.ChartOfAccounts.Liabilities.CreateCapitalSha
 import java.awt.*;
 import java.io.IOException;
 
-public class TestCaptialShareHolderMaster {
+public class TestCapitalShareHolderMaster {
     WindowsDriver driver;
     AppLogin appLogin=new AppLogin();
     String file="./src/main/resources/tradeAutomation/finance/masters/capitalShareHoldersMaster.json";
