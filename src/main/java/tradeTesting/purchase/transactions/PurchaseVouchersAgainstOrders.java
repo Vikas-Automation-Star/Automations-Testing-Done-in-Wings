@@ -1,17 +1,16 @@
 package tradeTesting.purchase.transactions;
 
 import com.wings.pages.TransactionsBaseClass;
-import com.wings.utils.APIClient;
 import com.wings.utils.Common;
 import com.wings.utils.FileUtil;
 import io.appium.java_client.windows.WindowsDriver;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.List;
 
@@ -344,10 +343,69 @@ public class PurchaseVouchersAgainstOrders extends TransactionsBaseClass {
     public void adjustADVTcs() throws InterruptedException {
         Thread.sleep(1000);
         common.clickElement("xpath","//TabItem[@Name='  AdjustAdvTDS  ']");
-        List<WebElement> adjust = common.findWebElements("xpath", "//Table[@Name='AdjustAdvTDS']/*[contains(@Name,'Row ')]/CheckBox[contains(@Name,'Adjust Row ')]");
-        for (int i = 0; i < adjust.size() ; i++) {
-            clickListData(adjust.get(i));
+        List<WebElement> towardsVoucherNum = common.findWebElements("xpath", "//Table[@Name='AdjustAdvTDS']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Towards VNo * Row ')]");
+        System.out.println("Towards vouchers Size :"+towardsVoucherNum.size());
+        boolean voucherFound=false;
+        boolean voucherFound1=false;
+        boolean voucherFound2=false;
+
+        for (int i=0;i< towardsVoucherNum.size();i++){
+            WebElement text=towardsVoucherNum.get(i);
+            System.out.println("Towards vouchers getTet :"+text.getText());
+            if (text.getText().contains(" ")){
+                text.click();
+                text.sendKeys(Keys.TAB,Keys.SPACE,Keys.DOWN);
+            }
         }
+//        List<WebElement> towardsVoucherNum1 = common.findWebElements("xpath", "//Table[@Name='AdjustAdvTDS']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Towards VNo * Row ')]");
+//        System.out.println("Towards vouchers Size :"+towardsVoucherNum1.size());
+//
+//        for (int i=0;i< towardsVoucherNum1.size();i++){
+//            WebElement text=towardsVoucherNum1.get(i);
+//            System.out.println("Towards vouchers getTet :"+text.getText());
+//            if (text.getText().equals(advTcs2)){
+//                voucherFound2 = true;
+//                text.click();
+//                text.sendKeys(Keys.TAB,Keys.SPACE);
+//                break;
+//            }
+//            else if(!text.getText().equals(advTcs2)){
+//                towardsVoucherNum1.get(i).sendKeys(Keys.DOWN);
+//            }
+//            else{
+//                System.out.println("AdvTcs2 voucher number is not found");
+//            }
+//        }
+//        List<WebElement> towardsVoucherNum2 = common.findWebElements("xpath", "//Table[@Name='AdjustAdvTDS']/*[contains(@Name,'Row ')]/Edit[starts-with(@Name,'Towards VNo * Row ')]");
+//        System.out.println("Towards vouchers Size :"+towardsVoucherNum2.size());
+//
+//        for (int i=0;i< towardsVoucherNum2.size();i++){
+//            WebElement text=towardsVoucherNum2.get(i);
+//            System.out.println("Towards vouchers getTet :"+text.getText());
+//            if (text.getText().equals(advTcs3)){
+//                text.click();
+//                text.sendKeys(Keys.TAB,Keys.SPACE,Keys.DOWN);
+//            }
+//            else if(!text.getText().equals(advTcs3)){
+//                towardsVoucherNum2.get(i).sendKeys(Keys.DOWN);
+//            }
+//            else{
+//                System.out.println("AdvTcs3 voucher number is not found");
+//            }
+//        }
+//
+//        WebElement element = common.findWebElement("xpath", "//Edit[contains(@Name,' Row 21, Not sorted.')]");
+//        element.click();
+//        Actions actions = new Actions(driver);
+//        actions.contextClick(element).perform();
+//        common.clickElement("xpath", "//MenuItem[@Name='Delete Invalid Rows']");
+//
+//        common.deleteInvalidRows();
+
+//        List<WebElement> adjust = common.findWebElements("xpath", "//Table[@Name='AdjustAdvTDS']/*[contains(@Name,'Row ')]/CheckBox[contains(@Name,'Adjust Row ')]");
+//        for (int i = 0; i < adjust.size() ; i++) {
+//            clickListData(adjust.get(i));
+//        }
     }
 
     public void addCash() throws IOException {
