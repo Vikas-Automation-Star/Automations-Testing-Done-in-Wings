@@ -1,14 +1,54 @@
 <suite name="Trade Transactions Suite">
 
-    <!-- Purchase !-->
-
     <listeners>
         <listener class-name="com.wings.utils.Listener"/>
     </listeners>
 
-    <test name="Purchase - BatchPurchasePrices" description="Trade BatchPurchasePrices " testID="1">
+    <test name="Sales - Batch Sales Price" description="Trade Batch Sales Price Transaction " testID="1">
         <classes>
-            <class name="tradeTesting.purchase.transactions.TestBatchPurchasePrices"/>
+            <class name="tradeTesting.sales.transactions.TestBatchSalesPrice"/>
+        </classes>
+    </test>
+
+    <test name="Sales - Party Targets" description="Trade Party Targets Transaction " testID="1">
+        <classes>
+            <class name="tradeTesting.sales.transactions.TestPartyTargets"/>
+        </classes>
+    </test>
+
+    <test name="Sales - Sales Invoice against Order" description="Trade Sales Invoice against Order Transaction " testID="1">
+        <classes>
+            <class name="tradeTesting.sales.transactions.TestSalesInvoiceAgainstOrderTrade"/>
+        </classes>
+    </test>
+
+    <test name="Sales - Sales Invoice" description="Trade Sales Invoice Transaction " testID="1">
+        <classes>
+            <class name="tradeTesting.sales.transactions.TestSalesInvoiceTrade"/>
+        </classes>
+    </test>
+
+    <test name="Sales - Salesman Targets" description="Trade Salesman Targets Transaction " testID="1">
+        <classes>
+            <class name="tradeTesting.sales.transactions.TestSalesmanTargets"/>
+        </classes>
+    </test>
+
+    <test name="Sales - Sales Order Cancellation" description="Trade Sales Order Cancellation Transaction " testID="1">
+        <classes>
+            <class name="tradeTesting.sales.transactions.TestSalesOrderCancellationTrade"/>
+        </classes>
+    </test>
+
+    <test name="Sales - Sales Return" description="Trade Sales Return Transaction " testID="1">
+        <classes>
+            <class name="tradeTesting.sales.transactions.TestSalesReturnTrade"/>
+        </classes>
+    </test>
+
+    <test name="Sales - Sales Return with Invoice Reference" description="Trade Sales Return with Invoice Reference Transaction " testID="1">
+        <classes>
+            <class name="tradeTesting.sales.transactions.TestSalesReturnWithInvoiceReferenceTrade"/>
         </classes>
     </test>
 
@@ -74,11 +114,11 @@
         </classes>
     </test>
 
-    <!--    <test name="Finance - Receipts from credit card companies" description="Trade Receipts from credit card companies" testID="1">-->
-    <!--        <classes>-->
-    <!--            <class name="tradeTesting.finance.transactions.receipts.TestReceiptsFromCreditCardCompanies"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="Finance - Receipts from credit card companies" description="Trade Receipts from credit card companies" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.receipts.TestReceiptsFromCreditCardCompanies"/>
+        </classes>
+    </test>
 
     <test name="Finance - Gift voucher receipts" description="Trade Gift voucher receipts" testID="1">
         <classes>
@@ -115,6 +155,117 @@
             <class name="tradeTesting.finance.transactions.receipts.TestTradeReceiptsFromParties"/>
         </classes>
     </test>
+
+    <test name="Finance - Bank Reconciliation Trade" description="Bank Reconciliation Trade" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.banking.TestBankReconciliationTrade"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Cash Deposit and Withdrawals Trade" description="Cash Deposit and Withdrawals Trade" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.banking.TestCashDepositsAndWithdrawalsTrade"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Deposit Post Dated Cheques Trade" description="Deposit Post Dated Cheques Trade" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.banking.TestDepositPostDatedChequesTrade"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Inter Bank Fund Transfer Trade" description="Inter Bank Fund Transfer Trade" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.banking.TestInterBankFundTransferTrade"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Issued Cheques Bounce Trade" description="Issued Cheques Bounce Trade" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.banking.TestIssuedChequesBounceTrade"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Opening Uncleared Bank Entries" description="Opening Uncleared Bank Entries Trade" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.banking.TestOpeningUnclearedBankEntriesTrade"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Received Cheques Bounce Trade" description="Received Cheques Bounce Trade" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.banking.TestReceivedChequesBounceTrade"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Opening Balance Trade" description="Opening Balances Trade" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.openingBalances.TestOpeningBalancesTrade"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Opening Receipts From Credit Card Companies Trade" description="Opening Receipts From CCC Trade" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.openingBalances.TestOpeningReceiptsFromCreditCardCompaniesTrade"/>
+        </classes>
+    </test>
+
+    <test name="Finance -  Party Opening Balance_Trade" description=" Party Opening Balances Trade" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.openingBalances.PartyOpeningBalances_Trade"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Party Opening Balance Trade" description="Party Opening Balances Trade - 2" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.openingBalances.TestPartyOpeningBalancesTrade"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Transfer Incomes and Expenses to PL Trade" description="Transfer Incomes and Expenses to PL Trade" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.openingBalances.TestTransferIncomesAndExpensesToPLTrade"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Bank Payments Trade" description="Bank Payments Trade" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.payments.TestBankPaymentsTrade"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Cash Payments Trade" description="Cash Payments Trade" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.payments.TestCashPaymentsTrade"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Cash Transfer Trade" description="Cash Transfer Trade" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.payments.TestCashTransferTrade"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Payments To Parties Trade" description="Payments To Parties Trade" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.payments.TestPaymentsToPartiesTrade"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Salary Payments Trade" description="Salary Payments Trade" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.payments.TestSalaryPaymentsTrade"/>
+        </classes>
+    </test>
+
+    <test name="Finance - Trade Salary Payments" description="Trade Salary Payments" testID="1">
+        <classes>
+            <class name="tradeTesting.finance.transactions.payments.TestTradeSalaryPayments"/>
+        </classes>
+    </test>
+
+
+
 
 
     <test name="Finance - Journal Entries" description="Trade Journal Entries" testID="1">

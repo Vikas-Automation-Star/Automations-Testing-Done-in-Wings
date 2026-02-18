@@ -109,7 +109,6 @@ public class SalesInvoiceTrade extends TransactionsBaseClass {
         long creditCardReceiptsStart = System.nanoTime();
         common.clickElement("xpath", "//TabItem[contains(@Name,'  CreditCardReceipts  ')]");
         addCreditCardReceipts();
-        scrollRight(6);
         long creditCardReceiptEnd = System.nanoTime() - creditCardReceiptsStart;
         FileUtil.writeTimeLogInMinutes("SI Credit Card Receipts Tab:- ", creditCardReceiptEnd);
 
@@ -153,7 +152,7 @@ public class SalesInvoiceTrade extends TransactionsBaseClass {
         FileUtil.writeTimeLogInMinutes("SI ended at:- ", salesOrderEnd);
         //API
 //        APIClient.validateAPIWithExcel(newVoucherID,tempAPIBodyUpdate,apiResponse,outputFile,"purchaseOrders");
-//        deleteTransactionUsingVoucherNumber(newVoucherID);
+        deleteTransactionUsingVoucherNumber(newVoucherID);
 
 
         return newVoucherID;
@@ -244,9 +243,12 @@ public class SalesInvoiceTrade extends TransactionsBaseClass {
             enterListData(productBatch.get(i), dataFile, "Items", "Batch", i);
             enterListData(storageBin.get(i), dataFile, "Items", "StorageBin", i);
             enterListDate(uUnitQty.get(i), dataFile, "Items", "Qty", i);
+            Thread.sleep(5000);
             enterListData(unitRate.get(i), dataFile, "Items", "UnitRate", i);
             enterListData(lUnitQty.get(i), dataFile, "Items", "QtyInBaseUnit", i);
+            Thread.sleep(5000);
             enterListData(baseUnitRate.get(i), dataFile, "Items", "BaseUnitRate", i);
+            Thread.sleep(5000);
             enterListData(freeQuantity.get(i), dataFile, "Items", "FreeQty", i);
             enterListData(freeQuantityInBaseUnit.get(i), dataFile, "Items", "FreeQtyInBaseUnit", i);
             common.sliderHandling("xpath", "//Table[@Name='Items']/*/Thumb[@Name='Position']", 200, 0);
@@ -587,13 +589,12 @@ public class SalesInvoiceTrade extends TransactionsBaseClass {
 
     public void addEWayBillDetails() throws IOException {
         EnterData("//Edit[@Name='Transporter']",dataFile,"EWayBillDetails","Transporter");
-        EnterData("//Edit[@Name='Mode Of Transport']",dataFile,"EWayBillDetails","Mode Of Transport");
+        EnterData("//Edit[@Name='Mode Of Transport']",dataFile,"EWayBillDetails","ModeOfTransport");
         EnterData("//Edit[@Name='Distance']",dataFile,"EWayBillDetails","Distance");
         EnterData("//Edit[@Name='Trans Doc No']",dataFile,"EWayBillDetails","TransDocNo");
-        EnterData("//Edit[@Name='Trans Date']",dataFile,"EWayBillDetails","TransDate");
+        EnterDate("//Edit[@Name='Trans Date']",dataFile,"EWayBillDetails","TransDate");
         EnterData("//Edit[@Name='Vehicle No']",dataFile,"EWayBillDetails","VehicleNo");
     }
-
 
     public void otherInfo() throws InterruptedException, IOException, AWTException {
         EnterData("//Edit[@Name='Reference Bill No']", dataFile, "OtherInfo", "ReferenceBillNo");
