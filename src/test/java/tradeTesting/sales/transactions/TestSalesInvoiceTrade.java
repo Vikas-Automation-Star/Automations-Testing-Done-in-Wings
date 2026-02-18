@@ -23,6 +23,7 @@ public class TestSalesInvoiceTrade {
     public void testSalesInvoiceTrade() throws IOException, ParseException, InterruptedException, AWTException {
         SalesInvoiceTrade salesInvoiceTrade=new SalesInvoiceTrade(driver,dataFile);
         salesInvoiceTrade.salesInvoiceTrade();
+
     }
 
     @AfterTest
