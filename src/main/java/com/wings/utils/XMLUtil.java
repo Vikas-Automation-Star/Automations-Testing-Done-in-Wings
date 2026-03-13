@@ -179,7 +179,7 @@ public class XMLUtil {
 
         final String fromEmail = "productupdates@wingsinfo.net";
         final String password = "Zuy97283";
-        final String toEmail = "vikas.empuluri@wingsinfo.net,madhuri.matta@wingsinfo.net";
+        final String toEmail = "vikas.empuluri@wingsinfo.net,madhuri.matta@wingsinfo.net";//,venkatarathaiah.m@wingsinfo.net,manoj.c@wingsinfo.net,madhuri.matta@wingsinfo.net";//sudheer.s@wingsinfo.net";
 
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.office365.com");
@@ -200,7 +200,7 @@ public class XMLUtil {
     public static void main(String[] args) {
         XMLUtil xmlUtil = new XMLUtil();
         try {
-            xmlUtil.readTestNG("./TestNG/MenuItems/tradeTransactions.xml");// Parse bothSuite.xml and testng-results.xml
+            xmlUtil.readTestNG("./TestNG/MenuItems/tradeMasters.xml");// Parse bothSuite.xml and testng-results.xml
             xmlUtil.readTestNGResults("./target/surefire-reports/testng-results.xml"); // Process test results and send email
         } catch (Exception e) {
             e.printStackTrace();
