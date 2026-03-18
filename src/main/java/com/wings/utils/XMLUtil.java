@@ -204,6 +204,9 @@ public class XMLUtil {
             xmlUtil.readTestNGResults("./target/surefire-reports/testng-results.xml"); // Process test results and send email
         } catch (Exception e) {
             e.printStackTrace();
+            System.out.print("hey this is just checking whether the new Wings Repository is pushed to Personal Vikas Account or not");
         }
     }
+
+
 }
